@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "experiment": "original_VGGT_112_shared_RKNN_CameraHead_plus_CPU_XNNPACK_FP16",
+  "status": "passed",
+  "board": "RK3588S",
+  "original_weights": true,
+  "checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "ORB_used": false,
+  "controlled_input": true,
+  "controlled_thermal_state": false,
+  "number_of_fixed_pairs": 3,
+  "frames_per_pair": 2,
+  "input_preprocessing": "same rectification and original VGGT RGB resize/crop; byte-identical prepared CPU tensors",
+  "inference_devices": {
+    "camera": "RKNN FP16 shared four-step graph, CPU FP32 recurrence and activation",
+    "remaining_linear": "CPU XNNPACK FP16 including FP16 accumulation",
+    "remaining_non_linear": "CPU"
+  },
+  "CPU_and_hybrid_cpu_affinity": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "CPU_and_hybrid_threads": 4,
+  "XNNPACK_threads": 4,
+  "NPU_core_mask": 7,
+  "pairs": [
+    {
+      "pair": 1,
+      "source_timestamps": [
+        1305031102.175304,
+        1305031102.443271
+      ],
+      "input_shape": [
+        2,
+        3,
+        84,
+        112
+      ],
+      "prepared_input_tensor_sha256": "f68fe0c78c95c2207d5678cfcba747cd98ccfd126eb9be147753a3e98b5e680d",
+      "CPU_FP32_forward_seconds": 4.739411102003942,
+      "hybrid_forward_seconds": 4.900869283999782,
+      "hybrid_camera_seconds": 0.20018581100157462,
+      "hybrid_tensor_preparation_seconds": 0.7050765290041454,
+      "comparisons_to_CPU_FP32": {
+        "depth": {
+          "array_equal": false,
+          "max_abs_error": 0.13409936428070068,
+          "rmse": 0.015009518405781606,
+          "relative_l2": 0.015791694724279545,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        },
+        "depth_conf": {
+          "array_equal": false,
+          "max_abs_error": 0.6007802486419678,
+          "rmse": 0.10834153807889896,
+          "relative_l2": 0.04300063046720113,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        },
+        "intrinsic": {
+          "array_equal": false,
+          "max_abs_error": 11.78656005859375,
+          "rmse": 3.4036990154927773,
+          "relative_l2": 0.025998832832155747,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        },
+        "extrinsic": {
+          "array_equal": false,
+          "max_abs_error": 0.008090130984783173,
+          "rmse": 0.0038232981141325005,
+          "relative_l2": 0.0076462980779667435,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        },
+        "pose_enc": {
+          "array_equal": false,
+          "max_abs_error": 0.013139486312866211,
+          "rmse": 0.005032874410239514,
+          "relative_l2": 0.010398513446924999,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        }
+      },
+      "CPU_reference_file_sha256": "14b32fa070f452285c5113be5494610f01e42afa178900de7dc8707930cb356c",
+      "hybrid_file_sha256": "0a535bd87e9cfcd40191c1a8cc4c8c8a152446861b7e5b601fc6d6f881b2bcbd"
+    },
+    {
+      "pair": 2,
+      "source_timestamps": [
+        1305031102.443271,
+        1305031106.475345
+      ],
+      "input_shape": [
+        2,
+        3,
+        84,
+        112
+      ],
+      "prepared_input_tensor_sha256": "1682ddadc3c3c6a074aeb3c95251ed604299652d0d6a657cb44c86fb05061358",
+      "CPU_FP32_forward_seconds": 4.664505926994025,
+      "hybrid_forward_seconds": 4.683698636996269,
+      "hybrid_camera_seconds": 0.19842768599482952,
+      "hybrid_tensor_preparation_seconds": 0.13640259700332535,
+      "comparisons_to_CPU_FP32": {
+        "depth": {
+          "array_equal": false,
+          "max_abs_error": 0.07616156339645386,
+          "rmse": 0.014769855909216801,
+          "relative_l2": 0.018137663550916002,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        },
+        "depth_conf": {
+          "array_equal": false,
+          "max_abs_error": 0.7235620021820068,
+          "rmse": 0.17364253563388446,
+          "relative_l2": 0.07193312667334133,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        },
+        "intrinsic": {
+          "array_equal": false,
+          "max_abs_error": 5.550506591796875,
+          "rmse": 1.8344543167197795,
+          "relative_l2": 0.016232764004632333,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        },
+        "extrinsic": {
+          "array_equal": false,
+          "max_abs_error": 0.016423016786575317,
+          "rmse": 0.006543102220705945,
+          "relative_l2": 0.013018645014971937,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        },
+        "pose_enc": {
+          "array_equal": false,
+          "max_abs_error": 0.018735885620117188,
+          "rmse": 0.007225953517036361,
+          "relative_l2": 0.01383774031893265,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        }
+      },
+      "CPU_reference_file_sha256": "563ec12a5c5e09f8500253e78b35e6e0b1daa4f2d6611eb2a520c3e51b95b177",
+      "hybrid_file_sha256": "3756d73a3b739ad0965a26297b08dd082ab31e87e90d1e26056f5f9126a5d9ac"
+    },
+    {
+      "pair": 3,
+      "source_timestamps": [
+        1305031106.475345,
+        1305031110.111325
+      ],
+      "input_shape": [
+        2,
+        3,
+        84,
+        112
+      ],
+      "prepared_input_tensor_sha256": "6fbf87a90a9649456e8a7d51eaef31d2bfc69bfa9ec8555b0dcaffd8cf3a5cd0",
+      "CPU_FP32_forward_seconds": 4.7038931810020586,
+      "hybrid_forward_seconds": 4.149880500001018,
+      "hybrid_camera_seconds": 0.1909754360021907,
+      "hybrid_tensor_preparation_seconds": 0.1387601390015334,
+      "comparisons_to_CPU_FP32": {
+        "depth": {
+          "array_equal": false,
+          "max_abs_error": 0.12982118129730225,
+          "rmse": 0.07451828481557998,
+          "relative_l2": 0.06456262846408851,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        },
+        "depth_conf": {
+          "array_equal": false,
+          "max_abs_error": 0.33002257347106934,
+          "rmse": 0.09645193914150899,
+          "relative_l2": 0.07157183460688218,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        },
+        "intrinsic": {
+          "array_equal": false,
+          "max_abs_error": 45.03125,
+          "rmse": 11.422548530967337,
+          "relative_l2": 0.08999621894045168,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        },
+        "extrinsic": {
+          "array_equal": false,
+          "max_abs_error": 0.0868057906627655,
+          "rmse": 0.021348465364080457,
+          "relative_l2": 0.04184172935448983,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        },
+        "pose_enc": {
+          "array_equal": false,
+          "max_abs_error": 0.0868057906627655,
+          "rmse": 0.03134694668754847,
+          "relative_l2": 0.061990771662262474,
+          "relative_l2_defined": true,
+          "tolerance_applied": false,
+          "accuracy_pass_inferred": false
+        }
+      },
+      "CPU_reference_file_sha256": "2419e6d30508330586e47c349a47a901b1518177203b272f5561ba2feddc5dd7",
+      "hybrid_file_sha256": "773de63d049a837b3f7e7e9f30c9955a4a31b644246bbd322bca4a62d06477e2"
+    }
+  ],
+  "means": {
+    "CPU_FP32_forward_seconds": 4.702603403333342,
+    "hybrid_forward_seconds": 4.57814947366569,
+    "hybrid_camera_seconds": 0.19652964433286493
+  },
+  "runtime_evidence": {
+    "actual_successful_NPU_calls": 12,
+    "output_copies_and_releases": 12,
+    "completed_camera_heads": 3,
+    "created_and_destroyed_shared_contexts": 1,
+    "camera_closed": true,
+    "current_DMA_bytes_after_close": 0,
+    "peak_SDK_DMA_bytes": 869425152,
+    "compiled_RKNN_bytes": 434452453,
+    "XNNPACK_CPU_calls": 864,
+    "XNNPACK_closed_and_restored": true,
+    "peak_process_RSS_mib": 7043.55859375,
+    "source_and_inputs_unchanged": true
+  },
+  "operator_placement": {
+    "evidence": "separate actual SDK profile of the same frozen compiled step",
+    "NPU_internal_per_step": 57,
+    "CPU_internal_reshape_per_step": 2,
+    "CPU_IO_per_step": 3,
+    "all_graph_operators_on_NPU": false,
+    "profiling_repeated_in_hybrid_run": false
+  },
+  "measurement_scope": {
+    "full_VGGT_camera_and_depth_forward": true,
+    "graph": false,
+    "live_frontend": false,
+    "camera_capture": false,
+    "GT": false,
+    "model_load_and_backend_packing_in_forward": false,
+    "image_rectification_and_preprocessing_in_forward": false,
+    "original_CPU_model_load_seconds": 1.6369122480027727,
+    "hybrid_model_load_seconds": 1.657709832994442,
+    "hybrid_camera_install_seconds": 1.6498149990002275,
+    "hybrid_XNNPACK_install_seconds": 8.41800747099478,
+    "hybrid_total_diagnostic_seconds": 33.41994956700364
+  },
+  "assertions": {
+    "NPU_camera_actually_used": true,
+    "whole_model_on_NPU": false,
+    "trajectory_accuracy_validated": false,
+    "real_time_20Hz_validated": false,
+    "three_second_mapping_validated": false,
+    "eight_GB_board_validated": false
+  },
+  "provenance_sha256": {
+    "hybrid_capture": "4cf6886e5ec02d0e194f40f9c07c83fe5d94eafde921b26fd25fb14567364b0e",
+    "original_CPU_capture": "76f39338bf634363ed6fa4a889147b4d2383feb6a4cf0ec8f16098c1b3530cfc",
+    "compiled_RKNN": "0821683fe1f9526c52777b0ef1ba45ba4c744375f9fd731f0f3d2068e4355af9",
+    "hybrid_capture_script": "db5b9289f353107df15bc289579c92370a71c27a206e68c20f3b92e11d815caa",
+    "rknn_camera_module": "8c10c11157589623528555a3bfa7e529e7e44cfda1bc9212e86be467272ab994",
+    "independent_review": "0c12a669eb67df6607a93b2894a92db374460d14c77b5b9128a9ffc04fa734e5",
+    "independent_step_profile": "cdf9ec63d2b5f889267d6d08cce365d9d07889c59aad1e73af436d96ac32e8e6"
+  },
+  "limitations": [
+    "The CPU and hybrid runs use the same pixels and four CPU threads but have uncontrolled different thermal/scheduling states; no causal speedup is established.",
+    "Each pair is evaluated once, with no unreported warmup. Pairwise timings are retained; the hybrid is not faster on every pair.",
+    "Depth/confidence/intrinsic/extrinsic/pose-encoding relative L2 compares saved tensors only, not ATE, RPE or GT pose accuracy.",
+    "NPU CameraHead receives tokens already changed by CPU FP16 XNNPACK; these full-model errors cannot be attributed to the camera kernel alone.",
+    "The head has explicit CPU reshapes, I/O, recurrence and activation. The rest of VGGT is CPU; this is not full-model NPU execution.",
+    "Peak RSS and SDK DMA have different scopes; neither establishes total pipeline RAM or 8 GB feasibility.",
+    "No online, physical-camera, 20Hz tracking, three-second map, or endurance acceptance follows from fixed-pair forward timings."
+  ]
+}

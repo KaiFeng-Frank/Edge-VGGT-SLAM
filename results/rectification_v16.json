@@ -1,0 +1,2302 @@
+{
+  "dataset": "TUM rgbd_dataset_freiburg1_xyz",
+  "original_RGB_frames": 798,
+  "scheduled_duration_seconds": 26.572059,
+  "real_time_validated": false,
+  "physical_camera_validated": false,
+  "full_quality_baseline_acceptance": false,
+  "runs": {
+    "r6": {
+      "status": "completed_experiment",
+      "ORB_used": false,
+      "npu_used": false,
+      "model_backbone": "original_VGGT",
+      "pose_timing": {
+        "delivered_observations": 757,
+        "fresh_valid_poses": 595,
+        "valid_fraction_of_original_frames": 0.7456140350877193,
+        "valid_fraction_of_delivered_frames": 0.7859973579920739,
+        "replay_duration_seconds": 26.572059055913996,
+        "valid_pose_publications_per_full_second": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          27,
+          26,
+          23,
+          24,
+          27,
+          26,
+          22,
+          26,
+          27,
+          28,
+          24,
+          21,
+          17,
+          26,
+          19,
+          17,
+          25,
+          25,
+          22,
+          23
+        ],
+        "minimum_full_second_pose_count": 0,
+        "first_valid_seconds_after_start": 5.824974167997425,
+        "valid_pose_latency_p50_ms": 2203.576371699455,
+        "valid_pose_latency_p95_ms": 3667.4219232605537,
+        "valid_pose_latency_max_ms": 3859.783093605074,
+        "maximum_valid_pose_publication_gap_seconds": 0.18874918499932392,
+        "latency_origin": "scheduled_RGB_replay_arrival_before_decode",
+        "latency_end": "pose_JSONL_write_and_flush_return",
+        "physical_camera_latency_validated": false,
+        "startup_and_losses_included_in_per_second_counts": true
+      },
+      "map_updates": 8,
+      "common_rectification": {
+        "K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "distortion": [
+          0.2624,
+          -0.9531,
+          -0.0054,
+          0.0026,
+          1.1633
+        ],
+        "image_hw": [
+          480,
+          640
+        ],
+        "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera",
+        "output_K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_distortion": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "R": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "crop": null,
+        "method": "opencv_initUndistortRectifyMap_remap",
+        "map_type": "CV_32FC1",
+        "interpolation": "INTER_LINEAR",
+        "border_mode": "BORDER_CONSTANT",
+        "border_value": [
+          0,
+          0,
+          0
+        ],
+        "map_bytes": 2457600,
+        "calibration_sha256": "29b6ca7e7a19570f0821fbb28b729d8ff8a73f239ff74efa31525f293a92cbaa",
+        "calibration_hash_basis": "normalized_json_utf8_sort_keys_compact"
+      },
+      "rectification_timing": "capture remap after scheduled arrival; mapper remap inside map processing",
+      "mapper_exitcode": 0,
+      "cleanup_errors": [],
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 798,
+        "delivered": 757,
+        "overwritten": 41,
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "map_timing": [
+        {
+          "revision": 1,
+          "processing_seconds": 4.0247664880007505,
+          "age_seconds": 4.100943842895504
+        },
+        {
+          "revision": 2,
+          "processing_seconds": 3.707614247003221,
+          "age_seconds": 4.265212822996546
+        },
+        {
+          "revision": 3,
+          "processing_seconds": 3.650093199998082,
+          "age_seconds": 4.691934824848431
+        },
+        {
+          "revision": 4,
+          "processing_seconds": 4.238898550000158,
+          "age_seconds": 5.729766254742572
+        },
+        {
+          "revision": 5,
+          "processing_seconds": 4.14411708300031,
+          "age_seconds": 6.118248684724676
+        },
+        {
+          "revision": 6,
+          "processing_seconds": 4.05107744900306,
+          "age_seconds": 6.571674784754578
+        },
+        {
+          "revision": 7,
+          "processing_seconds": 5.223733899998479,
+          "age_seconds": 8.379044790170155
+        },
+        {
+          "revision": 8,
+          "processing_seconds": 5.296880739995686,
+          "age_seconds": 9.031586106983013
+        }
+      ],
+      "mapper": {
+        "image_size": 112,
+        "threads": 3,
+        "cpus": [
+          4,
+          5,
+          6
+        ],
+        "backend": "xnnpack-f16",
+        "max_loops": 0,
+        "max_submaps": 1024,
+        "memory_limit_mib": 8500.0,
+        "save_predictions": true,
+        "rectification_calibration": {
+          "K": [
+            [
+              517.3,
+              0.0,
+              318.6
+            ],
+            [
+              0.0,
+              516.5,
+              255.3
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "distortion": [
+            0.2624,
+            -0.9531,
+            -0.0054,
+            0.0026,
+            1.1633
+          ],
+          "image_hw": [
+            480,
+            640
+          ],
+          "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera"
+        }
+      },
+      "mapper_peak_rss_mib": 7141.7265625,
+      "provenance": {
+        "kind": "shared live rectification before latest-due decode fix",
+        "real_time_validated": false,
+        "source_archive_sha256": "c53e3ab0ed27fdc226fee08ed4050c12676f6fefd1906a6f7957aefe16f839fe",
+        "artifacts": {
+          "events.jsonl": {
+            "bytes": 45251,
+            "sha256": "e3dd3e5f522b4fd3df6d975433191bd3d40012ee18b507d38e419d63ca574006"
+          },
+          "map.json": {
+            "bytes": 6904,
+            "sha256": "b255b468c1c99c62c46346a59d1d8fb951596ebae551b371f0049075167e338c"
+          },
+          "map_chunks/submap_000000.npz": {
+            "bytes": 212694,
+            "sha256": "9fbeced6e56a890fe24ff3e36dd1b94e02e6edb5e0fa16e8bfc193f212f68c63"
+          },
+          "map_chunks/submap_000002.npz": {
+            "bytes": 212694,
+            "sha256": "ed1302d11b5f6fb7bd80d39e390b8a96741007e56feff110e141391a4a2f5372"
+          },
+          "map_chunks/submap_000004.npz": {
+            "bytes": 212694,
+            "sha256": "5ed8fd70f8d07940b2bd937e18ecfed0a6e9a243fd5d51f05256ed5d14459cc3"
+          },
+          "map_chunks/submap_000006.npz": {
+            "bytes": 212694,
+            "sha256": "5aee4007554debcad96b01f9fa371ea22592707f2cd8505c1f990a2c31403f4b"
+          },
+          "map_chunks/submap_000008.npz": {
+            "bytes": 212694,
+            "sha256": "2aeeb7e6e7dc6721708197272c00817207f6861be1179a28ed52e5cd133542ff"
+          },
+          "map_chunks/submap_000010.npz": {
+            "bytes": 212694,
+            "sha256": "1b329a007395675727d38a6c3fdeaf82ffb2574048bb9d6a8164f272e321bead"
+          },
+          "map_chunks/submap_000012.npz": {
+            "bytes": 212694,
+            "sha256": "7561c97db48bc53b2f49562e9da3cb369e2e4cc35d5758c8f2afa8fd10c05c93"
+          },
+          "map_chunks/submap_000014.npz": {
+            "bytes": 212694,
+            "sha256": "7762fbc49db0acfc4acc18cfe650731733a5c3d5197512527fff056a08e105a5"
+          },
+          "metrics.json": {
+            "bytes": 7921,
+            "sha256": "253eada8a973b25d4d723801b2b54935ddf2bc0bf8ab17174c5e4fb137136e33"
+          },
+          "poses.tum": {
+            "bytes": 902,
+            "sha256": "c4378fddb4db0a90c64f1bd9c3570e0782d26e423b3bc0a861fc19691215950e"
+          },
+          "predictions_0001.npz": {
+            "bytes": 151978,
+            "sha256": "2fea6a245a3df07e55481895475cbc1ca691a658cb66170574e8bcf20a4b826c"
+          },
+          "predictions_0002.npz": {
+            "bytes": 151978,
+            "sha256": "f49d16ae465e2bcef4ef957c4e4f621ce7db65515bb289e355dfca133f0882a6"
+          },
+          "predictions_0003.npz": {
+            "bytes": 151978,
+            "sha256": "09f8e37b458f50c3b23d24a45006d3d28410dff9776938986ddb962d218a332d"
+          },
+          "predictions_0004.npz": {
+            "bytes": 151978,
+            "sha256": "dea0aa85d87633e5aa720d93e2b818e068aa528e20881b98d8bd5655e68cb3ca"
+          },
+          "predictions_0005.npz": {
+            "bytes": 151978,
+            "sha256": "f2f0eb5fd4c4b10111b7a70d0ba1f7c6bc8ed1029ba92618cd9204a9ab85517e"
+          },
+          "predictions_0006.npz": {
+            "bytes": 151978,
+            "sha256": "ee99871ec277d384d01e178fca7dd3a2c5f27a35e6fbb0e08a96f46ecfe81e6d"
+          },
+          "predictions_0007.npz": {
+            "bytes": 151978,
+            "sha256": "c2cd17da54b7dc8e857a52a729bae18e603a56e8f73082e5040ff79160cb335d"
+          },
+          "predictions_0008.npz": {
+            "bytes": 151978,
+            "sha256": "37c7a2bfd44e72dfec6ac69ce30e218ca6ca75b77ac1d69f7359f59992d8b29e"
+          },
+          "publications.jsonl": {
+            "bytes": 127156,
+            "sha256": "c36bb6d7a7ece20ac4d7048e97635bbbc424ed5cd4055ef7ceb5a686f4767459"
+          },
+          "tracking.jsonl": {
+            "bytes": 2778774,
+            "sha256": "dbd3698606e1ebf7e1808c4051ff471c14c5e72f97feda411f5654574fc3288e"
+          }
+        }
+      },
+      "rigid_global_pose_available": false,
+      "projective_association_available": true,
+      "limitations": "Only 26.57 seconds on 16 GB board; disabled loop closure; no metric global SE3 acceptance or 8 GB/endurance validation."
+    },
+    "r7": {
+      "status": "completed_experiment",
+      "ORB_used": false,
+      "npu_used": false,
+      "model_backbone": "original_VGGT",
+      "pose_timing": {
+        "delivered_observations": 663,
+        "fresh_valid_poses": 515,
+        "valid_fraction_of_original_frames": 0.6453634085213033,
+        "valid_fraction_of_delivered_frames": 0.7767722473604827,
+        "replay_duration_seconds": 26.572059133730363,
+        "valid_pose_publications_per_full_second": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          27,
+          27,
+          19,
+          25,
+          26,
+          25,
+          20,
+          24,
+          27,
+          23,
+          19,
+          27,
+          28,
+          26,
+          22,
+          21,
+          28,
+          27,
+          26,
+          23
+        ],
+        "minimum_full_second_pose_count": 0,
+        "first_valid_seconds_after_start": 5.639533358000335,
+        "valid_pose_latency_p50_ms": 95.75365778437117,
+        "valid_pose_latency_p95_ms": 139.65398935324623,
+        "valid_pose_latency_max_ms": 167.39859489462106,
+        "maximum_valid_pose_publication_gap_seconds": 0.06506063200504286,
+        "latency_origin": "scheduled_RGB_replay_arrival_before_decode",
+        "latency_end": "pose_JSONL_write_and_flush_return",
+        "physical_camera_latency_validated": false,
+        "startup_and_losses_included_in_per_second_counts": true
+      },
+      "map_updates": 7,
+      "common_rectification": {
+        "K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "distortion": [
+          0.2624,
+          -0.9531,
+          -0.0054,
+          0.0026,
+          1.1633
+        ],
+        "image_hw": [
+          480,
+          640
+        ],
+        "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera",
+        "output_K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_distortion": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "R": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "crop": null,
+        "method": "opencv_initUndistortRectifyMap_remap",
+        "map_type": "CV_32FC1",
+        "interpolation": "INTER_LINEAR",
+        "border_mode": "BORDER_CONSTANT",
+        "border_value": [
+          0,
+          0,
+          0
+        ],
+        "map_bytes": 2457600,
+        "calibration_sha256": "29b6ca7e7a19570f0821fbb28b729d8ff8a73f239ff74efa31525f293a92cbaa",
+        "calibration_hash_basis": "normalized_json_utf8_sort_keys_compact"
+      },
+      "rectification_timing": "capture remap after scheduled arrival; mapper remap inside map processing",
+      "mapper_exitcode": 0,
+      "cleanup_errors": [],
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 701,
+        "delivered": 663,
+        "overwritten": 38,
+        "skipped_before_decode": 97,
+        "decode_policy": "first_then_latest_due_original_timestamp",
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "map_timing": [
+        {
+          "revision": 1,
+          "processing_seconds": 3.9497533129979274,
+          "age_seconds": 4.03007050807355
+        },
+        {
+          "revision": 2,
+          "processing_seconds": 3.624758739002573,
+          "age_seconds": 3.6857237794683897
+        },
+        {
+          "revision": 3,
+          "processing_seconds": 3.653206159004185,
+          "age_seconds": 3.7665337322250707
+        },
+        {
+          "revision": 4,
+          "processing_seconds": 3.7271311250005965,
+          "age_seconds": 3.8317496254312573
+        },
+        {
+          "revision": 5,
+          "processing_seconds": 4.557145999999193,
+          "age_seconds": 4.654215139555163
+        },
+        {
+          "revision": 6,
+          "processing_seconds": 5.180992478002736,
+          "age_seconds": 5.267744509612385
+        },
+        {
+          "revision": 7,
+          "processing_seconds": 5.15669376799633,
+          "age_seconds": 5.239020264823921
+        }
+      ],
+      "mapper": {
+        "image_size": 112,
+        "threads": 3,
+        "cpus": [
+          4,
+          5,
+          6
+        ],
+        "backend": "xnnpack-f16",
+        "max_loops": 0,
+        "max_submaps": 1024,
+        "memory_limit_mib": 8500.0,
+        "save_predictions": true,
+        "rectification_calibration": {
+          "K": [
+            [
+              517.3,
+              0.0,
+              318.6
+            ],
+            [
+              0.0,
+              516.5,
+              255.3
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "distortion": [
+            0.2624,
+            -0.9531,
+            -0.0054,
+            0.0026,
+            1.1633
+          ],
+          "image_hw": [
+            480,
+            640
+          ],
+          "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera"
+        }
+      },
+      "mapper_peak_rss_mib": 7141.70703125,
+      "provenance": {
+        "kind": "shared live rectification with latest-due decode skip accounting",
+        "real_time_validated": false,
+        "source_archive_sha256": "ba558c4295ec8539162943cfe70b4d6d89475978548598c9fa783870df4e396d",
+        "artifacts": {
+          "events.jsonl": {
+            "bytes": 38303,
+            "sha256": "c9fcb4582b3f4c1545ce023eaef0d8e6d6a64c7be97bec73014a4840ff1d6754"
+          },
+          "map.json": {
+            "bytes": 6144,
+            "sha256": "ff922f59b22112f79d44ed8de8bdaf28180c38c9bb52950f1ad8097a6a22d085"
+          },
+          "map_chunks/submap_000000.npz": {
+            "bytes": 212694,
+            "sha256": "9fbeced6e56a890fe24ff3e36dd1b94e02e6edb5e0fa16e8bfc193f212f68c63"
+          },
+          "map_chunks/submap_000002.npz": {
+            "bytes": 212694,
+            "sha256": "b0286db073573d63aefae635550e0962dc81c09098f3800d45df10c9fb4423c6"
+          },
+          "map_chunks/submap_000004.npz": {
+            "bytes": 212679,
+            "sha256": "67165eac6858d38ca9003ae67dd2ecb6648d17bb6ccd3c6c572bf0a99c79e835"
+          },
+          "map_chunks/submap_000006.npz": {
+            "bytes": 212694,
+            "sha256": "6fee2d72e6389fb4b494996efbf1938053c543deba0656cf52fe893f156e580e"
+          },
+          "map_chunks/submap_000008.npz": {
+            "bytes": 212694,
+            "sha256": "8c4a4bc8878b61b1bd22aa2fb4ab6a8ad9a44d550c25952c8d8dcf2a75c55a71"
+          },
+          "map_chunks/submap_000010.npz": {
+            "bytes": 212694,
+            "sha256": "97323dab8458dfbfa128e94c5eecfecff5052a78efe6b224485a20dedf505f81"
+          },
+          "map_chunks/submap_000012.npz": {
+            "bytes": 212694,
+            "sha256": "5e1f0e0821a0d2c41af6819d735a21ab0faf5e1101c8f50b110e72365c964ada"
+          },
+          "metrics.json": {
+            "bytes": 7893,
+            "sha256": "124648b3629217978d2e94350c23966e2dd50a18c37fbfd7911d98fdf837ba93"
+          },
+          "poses.tum": {
+            "bytes": 802,
+            "sha256": "5af12ead2e3e9f7ea730af7e0e2a9a68e002e48177c852927bf0e6fa9702685a"
+          },
+          "predictions_0001.npz": {
+            "bytes": 151978,
+            "sha256": "2fea6a245a3df07e55481895475cbc1ca691a658cb66170574e8bcf20a4b826c"
+          },
+          "predictions_0002.npz": {
+            "bytes": 151978,
+            "sha256": "e6627409a660c10ab550356119c469027b8ccc3fbcd7a4e3f768d1e2916a2e74"
+          },
+          "predictions_0003.npz": {
+            "bytes": 151978,
+            "sha256": "ba6f2484066b071fff395be4459bec344d9b6dd97aca998f7d9f93aa341663a6"
+          },
+          "predictions_0004.npz": {
+            "bytes": 151978,
+            "sha256": "cf96382ade85213fc2f19301532f43907f828303000de897582b82e92dd1970e"
+          },
+          "predictions_0005.npz": {
+            "bytes": 151978,
+            "sha256": "afd4820a23ec286b27908c2c8926211a69dfb3d9f35b940d54e92e496ba39bd1"
+          },
+          "predictions_0006.npz": {
+            "bytes": 151978,
+            "sha256": "a7d9ef88e3879516696419c6c259092786ce762af9cb1da2822f4532db1a9a52"
+          },
+          "predictions_0007.npz": {
+            "bytes": 151978,
+            "sha256": "8378eddbcc90bcf5ff95eb5e830d65b13814fe87a818462eae89c53ed239284a"
+          },
+          "publications.jsonl": {
+            "bytes": 112065,
+            "sha256": "c2849f511d8e37f26eea793875f478474c09ea55155b36f475cd1b500b169c1f"
+          },
+          "tracking.jsonl": {
+            "bytes": 2413214,
+            "sha256": "7fe7f5454ed75237139922b4b2fab38bf425afefe48bc2081ba83008824bed78"
+          }
+        }
+      },
+      "rigid_global_pose_available": false,
+      "projective_association_available": true,
+      "limitations": "Only 26.57 seconds on 16 GB board; disabled loop closure; no metric global SE3 acceptance or 8 GB/endurance validation."
+    },
+    "r8": {
+      "status": "completed_experiment",
+      "ORB_used": false,
+      "npu_used": false,
+      "model_backbone": "original_VGGT",
+      "pose_timing": {
+        "delivered_observations": 711,
+        "fresh_valid_poses": 258,
+        "valid_fraction_of_original_frames": 0.3233082706766917,
+        "valid_fraction_of_delivered_frames": 0.3628691983122363,
+        "replay_duration_seconds": 26.572059236372297,
+        "valid_pose_publications_per_full_second": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          27,
+          26,
+          27,
+          27,
+          25,
+          26,
+          25,
+          20,
+          18,
+          19
+        ],
+        "minimum_full_second_pose_count": 0,
+        "first_valid_seconds_after_start": 16.112393285999133,
+        "valid_pose_latency_p50_ms": 81.42278120431001,
+        "valid_pose_latency_p95_ms": 111.85289754466794,
+        "valid_pose_latency_max_ms": 141.36316761141643,
+        "maximum_valid_pose_publication_gap_seconds": 0.07119554899691138,
+        "latency_origin": "scheduled_RGB_replay_arrival_before_decode",
+        "latency_end": "pose_JSONL_write_and_flush_return",
+        "physical_camera_latency_validated": false,
+        "startup_and_losses_included_in_per_second_counts": true
+      },
+      "map_updates": 4,
+      "common_rectification": {
+        "K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "distortion": [
+          0.2624,
+          -0.9531,
+          -0.0054,
+          0.0026,
+          1.1633
+        ],
+        "image_hw": [
+          480,
+          640
+        ],
+        "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera",
+        "output_K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_distortion": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "R": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "crop": null,
+        "method": "opencv_initUndistortRectifyMap_remap",
+        "map_type": "CV_32FC1",
+        "interpolation": "INTER_LINEAR",
+        "border_mode": "BORDER_CONSTANT",
+        "border_value": [
+          0,
+          0,
+          0
+        ],
+        "map_bytes": 2457600,
+        "calibration_sha256": "29b6ca7e7a19570f0821fbb28b729d8ff8a73f239ff74efa31525f293a92cbaa",
+        "calibration_hash_basis": "normalized_json_utf8_sort_keys_compact"
+      },
+      "rectification_timing": "capture remap after scheduled arrival; mapper remap inside map processing",
+      "mapper_exitcode": 0,
+      "cleanup_errors": [],
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 787,
+        "delivered": 711,
+        "overwritten": 76,
+        "skipped_before_decode": 11,
+        "decode_policy": "first_then_latest_due_original_timestamp",
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "map_timing": [
+        {
+          "revision": 1,
+          "processing_seconds": 6.152661410000292,
+          "age_seconds": 6.201211624436837
+        },
+        {
+          "revision": 2,
+          "processing_seconds": 6.483742484000686,
+          "age_seconds": 6.535477284662193
+        },
+        {
+          "revision": 3,
+          "processing_seconds": 9.620144300002721,
+          "age_seconds": 9.679628486628644
+        },
+        {
+          "revision": 4,
+          "processing_seconds": 7.53162996500032,
+          "age_seconds": 7.604340647216304
+        }
+      ],
+      "mapper": {
+        "image_size": 112,
+        "threads": 3,
+        "cpus": [
+          4,
+          5,
+          6
+        ],
+        "backend": "xnnpack-f16",
+        "max_loops": 0,
+        "max_submaps": 1024,
+        "memory_limit_mib": 8500.0,
+        "save_predictions": true,
+        "rectification_calibration": {
+          "K": [
+            [
+              517.3,
+              0.0,
+              318.6
+            ],
+            [
+              0.0,
+              516.5,
+              255.3
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "distortion": [
+            0.2624,
+            -0.9531,
+            -0.0054,
+            0.0026,
+            1.1633
+          ],
+          "image_hw": [
+            480,
+            640
+          ],
+          "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera"
+        }
+      },
+      "tracking_features": 400,
+      "capture_cpus": "6",
+      "mapper_peak_rss_mib": 7141.5625,
+      "initial_platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 71.153,
+          "soc-thermal": 69.307,
+          "gpu-thermal": 67.461,
+          "littlecore-thermal": 70.23,
+          "bigcore0-thermal": 71.153,
+          "npu-thermal": 68.384,
+          "center-thermal": 68.384
+        },
+        "cpu_frequency_khz": {
+          "policy6": 2352000,
+          "policy4": 408000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 2985910272,
+          "MemAvailable": 16028864512,
+          "Buffers": 132521984,
+          "Cached": 12557922304,
+          "Shmem": 11096064,
+          "SReclaimable": 527708160,
+          "CmaTotal": 8388608,
+          "CmaFree": 32768
+        },
+        "peak_rss_mib": 53.96875
+      },
+      "mapper_ready_platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 76.692,
+          "soc-thermal": 75.769,
+          "gpu-thermal": 73.923,
+          "littlecore-thermal": 75.769,
+          "bigcore0-thermal": 76.692,
+          "npu-thermal": 73.923,
+          "center-thermal": 75.769
+        },
+        "cpu_frequency_khz": {
+          "policy6": 408000,
+          "policy4": 2352000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 360542208,
+          "MemAvailable": 13404127232,
+          "Buffers": 132530176,
+          "Cached": 12558548992,
+          "Shmem": 11120640,
+          "SReclaimable": 527736832,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 6971.13671875
+      },
+      "mapper_stopped_platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 79.461,
+          "soc-thermal": 79.461,
+          "gpu-thermal": 78.538,
+          "littlecore-thermal": 79.461,
+          "bigcore0-thermal": 79.461,
+          "npu-thermal": 78.538,
+          "center-thermal": 79.461
+        },
+        "cpu_frequency_khz": {
+          "policy6": 408000,
+          "policy4": 408000,
+          "policy0": 1608000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 321060864,
+          "MemAvailable": 13353603072,
+          "Buffers": 132554752,
+          "Cached": 12547596288,
+          "Shmem": 11120640,
+          "SReclaimable": 527646720,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 7141.5625
+      },
+      "provenance": {
+        "kind": "shared rectification; capture shares A76 core 6 with mapper; original timestamps",
+        "real_time_validated": false,
+        "source_archive_sha256": "e7411b01d5543ba518693bffaeb5849487e6dad555f73dd5271a80a2c307d284",
+        "artifacts": {
+          "events.jsonl": {
+            "bytes": 20974,
+            "sha256": "dec5a69bbe8a39a77ec91ce360f7e8bc98b2d765e9a1c142098120f0755b7901"
+          },
+          "map.json": {
+            "bytes": 3774,
+            "sha256": "e631fce72fcc7254f8327aefa700ea08ff5ff078080d7d49346a4535a16fc5d6"
+          },
+          "map_chunks/submap_000000.npz": {
+            "bytes": 212694,
+            "sha256": "9fbeced6e56a890fe24ff3e36dd1b94e02e6edb5e0fa16e8bfc193f212f68c63"
+          },
+          "map_chunks/submap_000002.npz": {
+            "bytes": 212694,
+            "sha256": "a7be6b7f8e0f42aba1a535e8eb73661e5fc2f872714c1ea20d530cc2d74e94dc"
+          },
+          "map_chunks/submap_000004.npz": {
+            "bytes": 212694,
+            "sha256": "e33b712fedb80196c1fe048ad14ab112700010a78e62cc190ae5cea18722c424"
+          },
+          "map_chunks/submap_000006.npz": {
+            "bytes": 212694,
+            "sha256": "3919ab1541aeff97f07c5bca4fe12752660baef3baf2dabee72425e7f2b4b7b7"
+          },
+          "metrics.json": {
+            "bytes": 8442,
+            "sha256": "1d2c237154861f9c84f991e0ad2be63cfd75c6330dc5f8ce00d2b6ce0be3fc2e"
+          },
+          "poses.tum": {
+            "bytes": 497,
+            "sha256": "b5377fa8bd329f24d97ef0154edc61f9b63d2eeddc397c403cf455e2db51000a"
+          },
+          "predictions_0001.npz": {
+            "bytes": 151978,
+            "sha256": "2fea6a245a3df07e55481895475cbc1ca691a658cb66170574e8bcf20a4b826c"
+          },
+          "predictions_0002.npz": {
+            "bytes": 151978,
+            "sha256": "ec859431ca35217b696a0c7e0c8ce94700046fd446501840a485f757ffc044ad"
+          },
+          "predictions_0003.npz": {
+            "bytes": 151978,
+            "sha256": "c4c593d521f484d924a70c37ac1e4d2b56e0e31df0597293b49a1b8327db3581"
+          },
+          "predictions_0004.npz": {
+            "bytes": 151978,
+            "sha256": "1ba080efd04c89a6ec4901f7f92864ae868df20a08b1b9a88386dea01d11e445"
+          },
+          "publications.jsonl": {
+            "bytes": 120585,
+            "sha256": "b8e9842cddc3f2bb7088ef7e0576f9f16cc425484bc7209fd0cc7c2ef31c1f00"
+          },
+          "tracking.jsonl": {
+            "bytes": 1699604,
+            "sha256": "9d51d3813a9bf10130771099cdcc015761c7f794664e0f9a8cb0ceeeddd12d67"
+          }
+        }
+      },
+      "rigid_global_pose_available": false,
+      "projective_association_available": true,
+      "limitations": "Only 26.57 seconds on 16 GB board; disabled loop closure; no metric global SE3 acceptance or 8 GB/endurance validation."
+    },
+    "r9": {
+      "status": "completed_experiment",
+      "ORB_used": false,
+      "npu_used": true,
+      "model_backbone": "original_VGGT",
+      "pose_timing": {
+        "delivered_observations": 646,
+        "fresh_valid_poses": 432,
+        "valid_fraction_of_original_frames": 0.5413533834586466,
+        "valid_fraction_of_delivered_frames": 0.6687306501547987,
+        "replay_duration_seconds": 26.572059136691678,
+        "valid_pose_publications_per_full_second": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          23,
+          26,
+          28,
+          26,
+          17,
+          19,
+          23,
+          30,
+          27,
+          18,
+          14,
+          18,
+          23,
+          25,
+          23,
+          16,
+          16,
+          21,
+          23
+        ],
+        "minimum_full_second_pose_count": 0,
+        "first_valid_seconds_after_start": 7.194994431003579,
+        "valid_pose_latency_p50_ms": 84.03768939024303,
+        "valid_pose_latency_p95_ms": 121.46945071835944,
+        "valid_pose_latency_max_ms": 132.73823618510505,
+        "maximum_valid_pose_publication_gap_seconds": 0.08196271700580837,
+        "latency_origin": "scheduled_RGB_replay_arrival_before_decode",
+        "latency_end": "pose_JSONL_write_and_flush_return",
+        "physical_camera_latency_validated": false,
+        "startup_and_losses_included_in_per_second_counts": true
+      },
+      "map_updates": 5,
+      "common_rectification": {
+        "K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "distortion": [
+          0.2624,
+          -0.9531,
+          -0.0054,
+          0.0026,
+          1.1633
+        ],
+        "image_hw": [
+          480,
+          640
+        ],
+        "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera",
+        "output_K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_distortion": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "R": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "crop": null,
+        "method": "opencv_initUndistortRectifyMap_remap",
+        "map_type": "CV_32FC1",
+        "interpolation": "INTER_LINEAR",
+        "border_mode": "BORDER_CONSTANT",
+        "border_value": [
+          0,
+          0,
+          0
+        ],
+        "map_bytes": 2457600,
+        "calibration_sha256": "29b6ca7e7a19570f0821fbb28b729d8ff8a73f239ff74efa31525f293a92cbaa",
+        "calibration_hash_basis": "normalized_json_utf8_sort_keys_compact"
+      },
+      "rectification_timing": "capture remap after scheduled arrival; mapper remap inside map processing",
+      "mapper_exitcode": 0,
+      "cleanup_errors": [],
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 798,
+        "delivered": 646,
+        "overwritten": 152,
+        "skipped_before_decode": 0,
+        "decode_policy": "first_then_latest_due_original_timestamp",
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "map_timing": [
+        {
+          "revision": 1,
+          "processing_seconds": 4.736315975002071,
+          "age_seconds": 4.78330787212326
+        },
+        {
+          "revision": 2,
+          "processing_seconds": 4.995141085004434,
+          "age_seconds": 5.04464421186276
+        },
+        {
+          "revision": 3,
+          "processing_seconds": 5.64132794199395,
+          "age_seconds": 5.703514513457776
+        },
+        {
+          "revision": 4,
+          "processing_seconds": 5.773395954995067,
+          "age_seconds": 5.845934901110013
+        },
+        {
+          "revision": 5,
+          "processing_seconds": 6.132171990997449,
+          "age_seconds": 6.219678896988626
+        }
+      ],
+      "mapper": {
+        "image_size": 112,
+        "threads": 2,
+        "cpus": [
+          4,
+          5
+        ],
+        "backend": "xnnpack-f16",
+        "max_loops": 0,
+        "max_submaps": 1024,
+        "memory_limit_mib": 8500.0,
+        "save_predictions": true,
+        "rectification_calibration": {
+          "K": [
+            [
+              517.3,
+              0.0,
+              318.6
+            ],
+            [
+              0.0,
+              516.5,
+              255.3
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "distortion": [
+            0.2624,
+            -0.9531,
+            -0.0054,
+            0.0026,
+            1.1633
+          ],
+          "image_hw": [
+            480,
+            640
+          ],
+          "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera"
+        }
+      },
+      "tracking_features": 400,
+      "capture_cpus": "6",
+      "mapper_peak_rss_mib": 7137.453125,
+      "initial_platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 62.846,
+          "soc-thermal": 61.923,
+          "gpu-thermal": 60.076,
+          "littlecore-thermal": 61.923,
+          "bigcore0-thermal": 61.923,
+          "npu-thermal": 61.0,
+          "center-thermal": 61.0
+        },
+        "cpu_frequency_khz": {
+          "policy6": 408000,
+          "policy4": 2352000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 2991095808,
+          "MemAvailable": 16026480640,
+          "Buffers": 132636672,
+          "Cached": 12550283264,
+          "Shmem": 11096064,
+          "SReclaimable": 527663104,
+          "CmaTotal": 8388608,
+          "CmaFree": 114688
+        },
+        "peak_rss_mib": 54.04296875
+      },
+      "mapper_ready_platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 69.307,
+          "soc-thermal": 68.384,
+          "gpu-thermal": 66.538,
+          "littlecore-thermal": 68.384,
+          "bigcore0-thermal": 69.307,
+          "npu-thermal": 66.538,
+          "center-thermal": 68.384
+        },
+        "cpu_frequency_khz": {
+          "policy6": 408000,
+          "policy4": 2352000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 360157184,
+          "MemAvailable": 13396783104,
+          "Buffers": 132648960,
+          "Cached": 12985905152,
+          "Shmem": 446091264,
+          "SReclaimable": 528269312,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 6916.71875
+      },
+      "mapper_stopped_platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 78.538,
+          "soc-thermal": 78.538,
+          "gpu-thermal": 76.692,
+          "littlecore-thermal": 77.615,
+          "bigcore0-thermal": 78.538,
+          "npu-thermal": 77.615,
+          "center-thermal": 77.615
+        },
+        "cpu_frequency_khz": {
+          "policy6": 408000,
+          "policy4": 408000,
+          "policy0": 1608000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 317272064,
+          "MemAvailable": 13358645248,
+          "Buffers": 132677632,
+          "Cached": 12990660608,
+          "Shmem": 446132224,
+          "SReclaimable": 528302080,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 7137.453125
+      },
+      "provenance": {
+        "kind": "original VGGT with shared RKNN CameraHead; two CPU mapping cores; dedicated capture/frontend cores",
+        "real_time_validated": false,
+        "source_archive_sha256": "e7411b01d5543ba518693bffaeb5849487e6dad555f73dd5271a80a2c307d284",
+        "additional_source_sha256": {
+          "vggt_slam/rknn_camera.py": "8c10c11157589623528555a3bfa7e529e7e44cfda1bc9212e86be467272ab994"
+        },
+        "artifacts": {
+          "events.jsonl": {
+            "bytes": 61582,
+            "sha256": "7bf20961878709f94c4e2db3824d9600670a99e4f53c686d1ab451883717fa99"
+          },
+          "map.json": {
+            "bytes": 4600,
+            "sha256": "dfc14d72be26ff5dad8acb8a546bc6fd137c138636b0be5a8088ae39417ad085"
+          },
+          "map_chunks/submap_000000.npz": {
+            "bytes": 212694,
+            "sha256": "8f27f69a806df4ed546624cbb173bdc96110abe8410ac5e3c4341b1a5e802370"
+          },
+          "map_chunks/submap_000002.npz": {
+            "bytes": 212694,
+            "sha256": "41035f9fd8b877f35c7b1887b1272bec476185383f636f424fc6c8748fdfd25e"
+          },
+          "map_chunks/submap_000004.npz": {
+            "bytes": 212694,
+            "sha256": "5e92936f2250ff706a9102e752ccb71b805a15336d84af6e84cc55e135f64e04"
+          },
+          "map_chunks/submap_000006.npz": {
+            "bytes": 212694,
+            "sha256": "787ff05c6afae194f1fd44f7974339fe096692cb91c16b7c579ab534ee8613aa"
+          },
+          "map_chunks/submap_000008.npz": {
+            "bytes": 212694,
+            "sha256": "6d4246b880d847cebd05d03af34cd6fbf4396a63ad99374c71f7e508d959dd8e"
+          },
+          "metrics.json": {
+            "bytes": 30410,
+            "sha256": "def84d4844ccba9d7bcc62bc00aa0745331b7cdaaa7cadfb6efec3b9cf1a361b"
+          },
+          "poses.tum": {
+            "bytes": 598,
+            "sha256": "52df9e5e4f08881a9740fb6eb139468ef048a611cfb1e785c85c1cb71d757a31"
+          },
+          "predictions_0001.npz": {
+            "bytes": 151978,
+            "sha256": "5086948b40e00995e7ee135fc47f3675b4eae23a3a31577ccbc573e9d6004f17"
+          },
+          "predictions_0002.npz": {
+            "bytes": 151978,
+            "sha256": "e5bb8a8d20214295b39069933b24d7ae20d47d89a943e5667b862ed65bf08c6a"
+          },
+          "predictions_0003.npz": {
+            "bytes": 151978,
+            "sha256": "f9abf70cccb465930070e4097e331c9f065fa12b1eacb5e9e86f0bdc39115385"
+          },
+          "predictions_0004.npz": {
+            "bytes": 151978,
+            "sha256": "12e6dc208baf3f979a488bb4fa647a4267228e95bc6a9eee2eb3501487824be6"
+          },
+          "predictions_0005.npz": {
+            "bytes": 151978,
+            "sha256": "dca50e62129ef50ce1d7890ff21666f62340a892667b24add7f6d7631b6cf066"
+          },
+          "publications.jsonl": {
+            "bytes": 109360,
+            "sha256": "66d948ac63f34c8c0ad29fb154d36dc834bee8e91c9b5081d95675fb3d522d74"
+          },
+          "tracking.jsonl": {
+            "bytes": 2108861,
+            "sha256": "89eeff5163a2e879e381621c5f0a09bd16c855c37d6d2c1c1df6919fa144ad08"
+          }
+        }
+      },
+      "camera_runtime": {
+        "backend": "rknn-camera-step",
+        "sdk_calls": 20,
+        "sdk_run_attempts": 20,
+        "sdk_outputs_copied": 20,
+        "completed_heads": 5,
+        "head_seconds": 0.9091577579893055,
+        "sdk_io_seconds": 0.8997360509965802,
+        "model_memory_bytes": {
+          "total_weight_size": 432555136,
+          "total_internal_size": 315584,
+          "total_dma_allocated_size": 869425152,
+          "total_sram_size": 0,
+          "free_sram_size": 0
+        },
+        "current_dma_bytes": 0,
+        "peak_dma_bytes": 869425152,
+        "closed": true,
+        "failed": false,
+        "cleanup_errors": [],
+        "npu_used": true,
+        "context_creates": 1,
+        "context_destroys": 1
+      },
+      "rigid_global_pose_available": false,
+      "projective_association_available": true,
+      "limitations": "Only 26.57 seconds on 16 GB board; disabled loop closure; no metric global SE3 acceptance or 8 GB/endurance validation."
+    },
+    "r10": {
+      "status": "completed_experiment",
+      "ORB_used": false,
+      "npu_used": true,
+      "model_backbone": "original_VGGT",
+      "pose_timing": {
+        "delivered_observations": 717,
+        "fresh_valid_poses": 511,
+        "valid_fraction_of_original_frames": 0.6403508771929824,
+        "valid_fraction_of_delivered_frames": 0.7126917712691772,
+        "replay_duration_seconds": 26.57205904573493,
+        "valid_pose_publications_per_full_second": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          30,
+          30,
+          29,
+          21,
+          21,
+          29,
+          30,
+          29,
+          20,
+          21,
+          27,
+          28,
+          30,
+          24,
+          17,
+          20,
+          25,
+          27,
+          31
+        ],
+        "minimum_full_second_pose_count": 0,
+        "first_valid_seconds_after_start": 6.922018778997881,
+        "valid_pose_latency_p50_ms": 66.39505989005556,
+        "valid_pose_latency_p95_ms": 103.64505548204761,
+        "valid_pose_latency_max_ms": 121.20987584785325,
+        "maximum_valid_pose_publication_gap_seconds": 0.07064692399580963,
+        "latency_origin": "scheduled_RGB_replay_arrival_before_decode",
+        "latency_end": "pose_JSONL_write_and_flush_return",
+        "physical_camera_latency_validated": false,
+        "startup_and_losses_included_in_per_second_counts": true
+      },
+      "map_updates": 6,
+      "common_rectification": {
+        "K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "distortion": [
+          0.2624,
+          -0.9531,
+          -0.0054,
+          0.0026,
+          1.1633
+        ],
+        "image_hw": [
+          480,
+          640
+        ],
+        "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera",
+        "output_K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_distortion": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "R": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "crop": null,
+        "method": "opencv_initUndistortRectifyMap_remap",
+        "map_type": "CV_32FC1",
+        "interpolation": "INTER_LINEAR",
+        "border_mode": "BORDER_CONSTANT",
+        "border_value": [
+          0,
+          0,
+          0
+        ],
+        "map_bytes": 2457600,
+        "calibration_sha256": "29b6ca7e7a19570f0821fbb28b729d8ff8a73f239ff74efa31525f293a92cbaa",
+        "calibration_hash_basis": "normalized_json_utf8_sort_keys_compact"
+      },
+      "rectification_timing": "capture remap after scheduled arrival; mapper remap inside map processing",
+      "mapper_exitcode": 0,
+      "cleanup_errors": [],
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 798,
+        "delivered": 717,
+        "overwritten": 81,
+        "skipped_before_decode": 0,
+        "decode_policy": "first_then_latest_due_original_timestamp",
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "map_timing": [
+        {
+          "revision": 1,
+          "processing_seconds": 4.823266776002129,
+          "age_seconds": 4.8722585980722215
+        },
+        {
+          "revision": 2,
+          "processing_seconds": 4.6270480070015765,
+          "age_seconds": 4.6823727208029595
+        },
+        {
+          "revision": 3,
+          "processing_seconds": 4.764456520999374,
+          "age_seconds": 4.816411377003533
+        },
+        {
+          "revision": 4,
+          "processing_seconds": 5.6579270270012785,
+          "age_seconds": 5.706455056591949
+        },
+        {
+          "revision": 5,
+          "processing_seconds": 6.052115316000709,
+          "age_seconds": 6.117259456346801
+        },
+        {
+          "revision": 6,
+          "processing_seconds": 5.0168057959963335,
+          "age_seconds": 5.066550349940371
+        }
+      ],
+      "mapper": {
+        "image_size": 112,
+        "threads": 2,
+        "cpus": [
+          4,
+          5
+        ],
+        "backend": "xnnpack-f16",
+        "max_loops": 0,
+        "max_submaps": 1024,
+        "memory_limit_mib": 8500.0,
+        "save_predictions": true,
+        "rectification_calibration": {
+          "K": [
+            [
+              517.3,
+              0.0,
+              318.6
+            ],
+            [
+              0.0,
+              516.5,
+              255.3
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "distortion": [
+            0.2624,
+            -0.9531,
+            -0.0054,
+            0.0026,
+            1.1633
+          ],
+          "image_hw": [
+            480,
+            640
+          ],
+          "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera"
+        }
+      },
+      "tracking_features": 300,
+      "capture_cpus": "6",
+      "mapper_peak_rss_mib": 7164.640625,
+      "initial_platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 59.153,
+          "soc-thermal": 58.23,
+          "gpu-thermal": 56.384,
+          "littlecore-thermal": 58.23,
+          "bigcore0-thermal": 58.23,
+          "npu-thermal": 56.384,
+          "center-thermal": 57.307
+        },
+        "cpu_frequency_khz": {
+          "policy6": 408000,
+          "policy4": 2352000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 2984157184,
+          "MemAvailable": 16026128384,
+          "Buffers": 132702208,
+          "Cached": 12556607488,
+          "Shmem": 11096064,
+          "SReclaimable": 527859712,
+          "CmaTotal": 8388608,
+          "CmaFree": 155648
+        },
+        "peak_rss_mib": 54.1640625
+      },
+      "mapper_ready_platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 66.538,
+          "soc-thermal": 65.615,
+          "gpu-thermal": 63.769,
+          "littlecore-thermal": 66.538,
+          "bigcore0-thermal": 66.538,
+          "npu-thermal": 64.692,
+          "center-thermal": 66.538
+        },
+        "cpu_frequency_khz": {
+          "policy6": 408000,
+          "policy4": 2352000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 354754560,
+          "MemAvailable": 13397549056,
+          "Buffers": 132718592,
+          "Cached": 12991733760,
+          "Shmem": 446091264,
+          "SReclaimable": 528539648,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 6916.7265625
+      },
+      "mapper_stopped_platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 81.307,
+          "soc-thermal": 80.384,
+          "gpu-thermal": 78.538,
+          "littlecore-thermal": 81.307,
+          "bigcore0-thermal": 81.307,
+          "npu-thermal": 79.461,
+          "center-thermal": 81.307
+        },
+        "cpu_frequency_khz": {
+          "policy6": 408000,
+          "policy4": 1416000,
+          "policy0": 1200000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 314286080,
+          "MemAvailable": 13362188288,
+          "Buffers": 132743168,
+          "Cached": 12996845568,
+          "Shmem": 446132224,
+          "SReclaimable": 528588800,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 7164.640625
+      },
+      "provenance": {
+        "kind": "shared RKNN CameraHead, two mapping cores, capture6/frontend7, 300 features",
+        "real_time_validated": false,
+        "source_archive_sha256": "e7411b01d5543ba518693bffaeb5849487e6dad555f73dd5271a80a2c307d284",
+        "additional_source_sha256": {
+          "vggt_slam/rknn_camera.py": "8c10c11157589623528555a3bfa7e529e7e44cfda1bc9212e86be467272ab994"
+        },
+        "artifacts": {
+          "events.jsonl": {
+            "bytes": 74169,
+            "sha256": "02bfdba17475e126df2ef95e41fa7c2ce2dbba797fd6ad642796dee93ff82fb7"
+          },
+          "map.json": {
+            "bytes": 5365,
+            "sha256": "4ff933146e02da9c2e5e3a92aeded0be68553509fa8bd008b24f3dd3ec5da709"
+          },
+          "map_chunks/submap_000000.npz": {
+            "bytes": 212694,
+            "sha256": "8f27f69a806df4ed546624cbb173bdc96110abe8410ac5e3c4341b1a5e802370"
+          },
+          "map_chunks/submap_000002.npz": {
+            "bytes": 212694,
+            "sha256": "0a6e3650b2afb6ef69b321c0ef6669305d82d77cff399af35331e5aaa97d6528"
+          },
+          "map_chunks/submap_000004.npz": {
+            "bytes": 212694,
+            "sha256": "c0c970e5251241800503b1d273c2000c332724a2763e1adabc9ae616b230bd2f"
+          },
+          "map_chunks/submap_000006.npz": {
+            "bytes": 212694,
+            "sha256": "75e1d136f86379c034940095f9139fa24ab2a76bc300e1163ebdaa9874c0fc41"
+          },
+          "map_chunks/submap_000008.npz": {
+            "bytes": 212694,
+            "sha256": "4065fd9dfbc428214052a71da67f7762a52de23bd9ac11f9019f9a1427b05c84"
+          },
+          "map_chunks/submap_000010.npz": {
+            "bytes": 212694,
+            "sha256": "577475857f19c27e36da245ceacbdd047039c37f39bfa121dee620b8e864523a"
+          },
+          "metrics.json": {
+            "bytes": 30530,
+            "sha256": "974d68121ea7888ae5eb32bb82ce0d54acc013780897e8fad9e3784e0e8d1e82"
+          },
+          "poses.tum": {
+            "bytes": 695,
+            "sha256": "1fbd0eeb32be54e25c4010f00a23c4693526eb84ede17f119ddc3711e12ce4f2"
+          },
+          "predictions_0001.npz": {
+            "bytes": 151978,
+            "sha256": "5086948b40e00995e7ee135fc47f3675b4eae23a3a31577ccbc573e9d6004f17"
+          },
+          "predictions_0002.npz": {
+            "bytes": 151978,
+            "sha256": "075ab1add750aeab8dace63b82a962df2e2831377c32123e29aad52909b25135"
+          },
+          "predictions_0003.npz": {
+            "bytes": 151978,
+            "sha256": "31e2bb9ac960d528897a88d5c4cfa51f2abde24a4949a290378eb7221a8c635f"
+          },
+          "predictions_0004.npz": {
+            "bytes": 151978,
+            "sha256": "27912c0826bd8e07e3b379d7df5c628e421d23ea627493d3cfe4b1b0d37d16ae"
+          },
+          "predictions_0005.npz": {
+            "bytes": 151978,
+            "sha256": "8d7f996c8527ea23a4861cc73a23351e3821ab7cd6c6deb7dd7d94c117fcf34d"
+          },
+          "predictions_0006.npz": {
+            "bytes": 151978,
+            "sha256": "5631b97b7a120cadd65d2677458edf780ec2e92a24921ca2e2eca0f617872acb"
+          },
+          "publications.jsonl": {
+            "bytes": 121410,
+            "sha256": "1687a402a24b3f0cb7942724f5779aa241d8523eee05db09210967d29a64f0fb"
+          },
+          "tracking.jsonl": {
+            "bytes": 2377128,
+            "sha256": "de8d92571007e023e9ab3259f16efca918b125a4ace8db5c3f6a40090f631aab"
+          }
+        }
+      },
+      "camera_runtime": {
+        "backend": "rknn-camera-step",
+        "sdk_calls": 24,
+        "sdk_run_attempts": 24,
+        "sdk_outputs_copied": 24,
+        "completed_heads": 6,
+        "head_seconds": 1.0765066100138938,
+        "sdk_io_seconds": 1.0655492710138788,
+        "model_memory_bytes": {
+          "total_weight_size": 432555136,
+          "total_internal_size": 315584,
+          "total_dma_allocated_size": 869425152,
+          "total_sram_size": 0,
+          "free_sram_size": 0
+        },
+        "current_dma_bytes": 0,
+        "peak_dma_bytes": 869425152,
+        "closed": true,
+        "failed": false,
+        "cleanup_errors": [],
+        "npu_used": true,
+        "context_creates": 1,
+        "context_destroys": 1
+      },
+      "rigid_global_pose_available": false,
+      "projective_association_available": true,
+      "limitations": "Only 26.57 seconds on 16 GB board; disabled loop closure; no metric global SE3 acceptance or 8 GB/endurance validation."
+    },
+    "r11": {
+      "status": "completed_experiment",
+      "ORB_used": false,
+      "npu_used": true,
+      "model_backbone": "original_VGGT",
+      "pose_timing": {
+        "delivered_observations": 762,
+        "fresh_valid_poses": 567,
+        "valid_fraction_of_original_frames": 0.7105263157894737,
+        "valid_fraction_of_delivered_frames": 0.7440944881889764,
+        "replay_duration_seconds": 26.57205921660352,
+        "valid_pose_publications_per_full_second": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          14,
+          30,
+          30,
+          29,
+          23,
+          28,
+          30,
+          30,
+          26,
+          22,
+          30,
+          30,
+          30,
+          29,
+          23,
+          23,
+          30,
+          30,
+          31,
+          30
+        ],
+        "minimum_full_second_pose_count": 0,
+        "first_valid_seconds_after_start": 6.554342575000192,
+        "valid_pose_latency_p50_ms": 50.505553917901125,
+        "valid_pose_latency_p95_ms": 93.94431617329244,
+        "valid_pose_latency_max_ms": 110.05730021861382,
+        "maximum_valid_pose_publication_gap_seconds": 0.05666238100093324,
+        "latency_origin": "scheduled_RGB_replay_arrival_before_decode",
+        "latency_end": "pose_JSONL_write_and_flush_return",
+        "physical_camera_latency_validated": false,
+        "startup_and_losses_included_in_per_second_counts": true
+      },
+      "map_updates": 6,
+      "common_rectification": {
+        "K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "distortion": [
+          0.2624,
+          -0.9531,
+          -0.0054,
+          0.0026,
+          1.1633
+        ],
+        "image_hw": [
+          480,
+          640
+        ],
+        "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera",
+        "output_K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_distortion": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "R": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "crop": null,
+        "method": "opencv_initUndistortRectifyMap_remap",
+        "map_type": "CV_32FC1",
+        "interpolation": "INTER_LINEAR",
+        "border_mode": "BORDER_CONSTANT",
+        "border_value": [
+          0,
+          0,
+          0
+        ],
+        "map_bytes": 2457600,
+        "calibration_sha256": "29b6ca7e7a19570f0821fbb28b729d8ff8a73f239ff74efa31525f293a92cbaa",
+        "calibration_hash_basis": "normalized_json_utf8_sort_keys_compact"
+      },
+      "rectification_timing": "capture remap after scheduled arrival; mapper remap inside map processing",
+      "mapper_exitcode": 0,
+      "cleanup_errors": [],
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 798,
+        "delivered": 762,
+        "overwritten": 36,
+        "skipped_before_decode": 0,
+        "decode_policy": "first_then_latest_due_original_timestamp",
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "map_timing": [
+        {
+          "revision": 1,
+          "processing_seconds": 4.751596686000994,
+          "age_seconds": 4.795992544204637
+        },
+        {
+          "revision": 2,
+          "processing_seconds": 4.588332169994828,
+          "age_seconds": 4.640908192537609
+        },
+        {
+          "revision": 3,
+          "processing_seconds": 4.675476178003009,
+          "age_seconds": 4.7284331277769525
+        },
+        {
+          "revision": 4,
+          "processing_seconds": 5.410482294006215,
+          "age_seconds": 5.462751571954868
+        },
+        {
+          "revision": 5,
+          "processing_seconds": 5.89544430100068,
+          "age_seconds": 5.94885221356526
+        },
+        {
+          "revision": 6,
+          "processing_seconds": 4.950833288996364,
+          "age_seconds": 5.00098997119494
+        }
+      ],
+      "mapper": {
+        "image_size": 112,
+        "threads": 2,
+        "cpus": [
+          4,
+          5
+        ],
+        "backend": "xnnpack-f16",
+        "max_loops": 0,
+        "max_submaps": 1024,
+        "memory_limit_mib": 8500.0,
+        "save_predictions": true,
+        "rectification_calibration": {
+          "K": [
+            [
+              517.3,
+              0.0,
+              318.6
+            ],
+            [
+              0.0,
+              516.5,
+              255.3
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "distortion": [
+            0.2624,
+            -0.9531,
+            -0.0054,
+            0.0026,
+            1.1633
+          ],
+          "image_hw": [
+            480,
+            640
+          ],
+          "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera"
+        }
+      },
+      "tracking_features": 240,
+      "capture_cpus": "6",
+      "mapper_peak_rss_mib": 7164.5703125,
+      "initial_platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 58.23,
+          "soc-thermal": 57.307,
+          "gpu-thermal": 55.461,
+          "littlecore-thermal": 57.307,
+          "bigcore0-thermal": 58.23,
+          "npu-thermal": 56.384,
+          "center-thermal": 57.307
+        },
+        "cpu_frequency_khz": {
+          "policy6": 408000,
+          "policy4": 2352000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 2978603008,
+          "MemAvailable": 16027021312,
+          "Buffers": 132767744,
+          "Cached": 12562862080,
+          "Shmem": 11096064,
+          "SReclaimable": 527986688,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 54.16796875
+      },
+      "mapper_ready_platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 67.461,
+          "soc-thermal": 65.615,
+          "gpu-thermal": 63.769,
+          "littlecore-thermal": 66.538,
+          "bigcore0-thermal": 67.461,
+          "npu-thermal": 63.769,
+          "center-thermal": 64.692
+        },
+        "cpu_frequency_khz": {
+          "policy6": 408000,
+          "policy4": 2352000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 351264768,
+          "MemAvailable": 13400322048,
+          "Buffers": 132780032,
+          "Cached": 12997988352,
+          "Shmem": 446091264,
+          "SReclaimable": 528482304,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 6916.74609375
+      },
+      "mapper_stopped_platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 79.461,
+          "soc-thermal": 79.461,
+          "gpu-thermal": 77.615,
+          "littlecore-thermal": 79.461,
+          "bigcore0-thermal": 79.461,
+          "npu-thermal": 77.615,
+          "center-thermal": 78.538
+        },
+        "cpu_frequency_khz": {
+          "policy6": 408000,
+          "policy4": 408000,
+          "policy0": 1416000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 307265536,
+          "MemAvailable": 13361668096,
+          "Buffers": 132800512,
+          "Cached": 13003231232,
+          "Shmem": 446132224,
+          "SReclaimable": 528650240,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 7164.5703125
+      },
+      "provenance": {
+        "kind": "shared RKNN CameraHead, two mapping cores, capture6/frontend7, 240 features",
+        "real_time_validated": false,
+        "source_archive_sha256": "e7411b01d5543ba518693bffaeb5849487e6dad555f73dd5271a80a2c307d284",
+        "additional_source_sha256": {
+          "vggt_slam/rknn_camera.py": "8c10c11157589623528555a3bfa7e529e7e44cfda1bc9212e86be467272ab994"
+        },
+        "artifacts": {
+          "events.jsonl": {
+            "bytes": 73828,
+            "sha256": "b9302c78afce78f765502f56382441b5ffe8eb0efb14a32b0d2b19b6234e6df5"
+          },
+          "map.json": {
+            "bytes": 5362,
+            "sha256": "4461271e78606e6887aaa2ca100705da9838e3d807f713588260a480cc616113"
+          },
+          "map_chunks/submap_000000.npz": {
+            "bytes": 212694,
+            "sha256": "8f27f69a806df4ed546624cbb173bdc96110abe8410ac5e3c4341b1a5e802370"
+          },
+          "map_chunks/submap_000002.npz": {
+            "bytes": 212694,
+            "sha256": "07d6bf400d19e4c66225cb51f6cb8dfafb805d2a76c9261d0aa9d193afdc3af2"
+          },
+          "map_chunks/submap_000004.npz": {
+            "bytes": 212694,
+            "sha256": "ca824aa7912c2d31ee1e892e8de17c7eddef5f90704efa6da96ab4a963b1a81b"
+          },
+          "map_chunks/submap_000006.npz": {
+            "bytes": 212694,
+            "sha256": "603bcc8d252f65b1e074dc6d3ff89213064de3e7c5853ed759122da1be5ba2df"
+          },
+          "map_chunks/submap_000008.npz": {
+            "bytes": 212694,
+            "sha256": "3a0dd6c323a1f9e65856767627ca769b0a64de7ebb026393ded81da0af94736d"
+          },
+          "map_chunks/submap_000010.npz": {
+            "bytes": 212694,
+            "sha256": "711845ff0ae486e42128a1b42d36837f6be3a6d82b8bce1519d168270dd4537c"
+          },
+          "metrics.json": {
+            "bytes": 30520,
+            "sha256": "2d70baea0f27d924af09cf3177f630e94133039b286933be0857b5f8766e3245"
+          },
+          "poses.tum": {
+            "bytes": 694,
+            "sha256": "66b45f7c8841dad7050c088ce7d839b79306b11b9317ef49137ae438cda35433"
+          },
+          "predictions_0001.npz": {
+            "bytes": 151978,
+            "sha256": "5086948b40e00995e7ee135fc47f3675b4eae23a3a31577ccbc573e9d6004f17"
+          },
+          "predictions_0002.npz": {
+            "bytes": 151978,
+            "sha256": "0fd1860a3272d159fbc1b3bfbf056ebd964601a6883778a47616380d09af2e73"
+          },
+          "predictions_0003.npz": {
+            "bytes": 151978,
+            "sha256": "0586f6bdad32fec3e419d11dc783a5763fe10a46bade085d8bda7694123832ba"
+          },
+          "predictions_0004.npz": {
+            "bytes": 151978,
+            "sha256": "e5763ccce49b78c562a9236638f5925fed407a401a0ca3c91d0d3c7df5d7e35e"
+          },
+          "predictions_0005.npz": {
+            "bytes": 151978,
+            "sha256": "18803564900184b0e6ed676932d04b4e1a323324d7e54dc6659e49980636718d"
+          },
+          "predictions_0006.npz": {
+            "bytes": 151978,
+            "sha256": "9284606a5db3b1fd1b8b19dd4fe6f99ec78c422beea811fcb4351906e463dc1f"
+          },
+          "publications.jsonl": {
+            "bytes": 129068,
+            "sha256": "8db0afef4c2f503ffaa748db1cef126da8022fd3853835bbfe6d3063cda9891a"
+          },
+          "tracking.jsonl": {
+            "bytes": 2501959,
+            "sha256": "a96906ea78e4b6a29a5a74f5340e8437e9d3fa379e52b414093ed33f28646619"
+          }
+        }
+      },
+      "camera_runtime": {
+        "backend": "rknn-camera-step",
+        "sdk_calls": 24,
+        "sdk_run_attempts": 24,
+        "sdk_outputs_copied": 24,
+        "completed_heads": 6,
+        "head_seconds": 1.074611982992792,
+        "sdk_io_seconds": 1.0633306079980684,
+        "model_memory_bytes": {
+          "total_weight_size": 432555136,
+          "total_internal_size": 315584,
+          "total_dma_allocated_size": 869425152,
+          "total_sram_size": 0,
+          "free_sram_size": 0
+        },
+        "current_dma_bytes": 0,
+        "peak_dma_bytes": 869425152,
+        "closed": true,
+        "failed": false,
+        "cleanup_errors": [],
+        "npu_used": true,
+        "context_creates": 1,
+        "context_destroys": 1
+      },
+      "rigid_global_pose_available": false,
+      "projective_association_available": true,
+      "limitations": "Only 26.57 seconds on 16 GB board; disabled loop closure; no metric global SE3 acceptance or 8 GB/endurance validation."
+    }
+  }
+}

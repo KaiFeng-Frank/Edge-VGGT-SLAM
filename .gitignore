@@ -37,6 +37,10 @@ tmp/
 deploy/rk3588/validation/*.json
 deploy/rk3588/validation/*.jsonl
 deploy/rk3588/validation/*.log
+# Reviewed numeric/provenance metadata used by synthetic contract fixtures.
+!deploy/rk3588/validation/vggt-v15-camera-capture112.json
+!deploy/rk3588/validation/vggt-v16-camera-step-export112-r1.json
+!deploy/rk3588/validation/vggt-v16-camera-step-compile112-r1.json
 __pycache__/
 *.py[cod]
 .pytest_cache/

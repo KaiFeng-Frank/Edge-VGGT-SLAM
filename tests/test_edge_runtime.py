@@ -71,7 +71,8 @@ def test_timestamp_replay_single_slot_overwrites_and_retains_last_eof_frame():
     source.start()
     source._thread.join(timeout=2)
     assert not source._thread.is_alive() and source.done and not source.exhausted
-    assert source.generated == 4 and source.overwritten == 3 and source.delivered == 0
+    assert source.generated + source.skipped_before_decode == 4
+    assert source.overwritten == source.generated - 1 and source.delivered == 0
     last = source.read(timeout=0)
     assert last["sequence"] == 3 and last["frame_id"] == last["timestamp"] == stamps[-1]
     np.testing.assert_array_equal(last["frame"], np.full((2, 3, 3), 3, np.uint8))
@@ -82,6 +83,36 @@ def test_timestamp_replay_single_slot_overwrites_and_retains_last_eof_frame():
     assert metrics["generated"] == metrics["delivered"] + metrics["overwritten"]
     assert metrics["queue_capacity"] == 1 and not metrics["physical_sensor_latency_validated"]
     source.close()
+
+
+def test_slow_decode_skips_expired_arrivals_without_retimestamps(monkeypatch):
+    import vggt_slam.timestamp_replay as replay
+    clock = [100.]
+    decoded = []
+    class Stop:
+        def wait(self, seconds):
+            clock[0] += seconds
+            return False
+    def decode(path):
+        decoded.append((path, clock[0]))
+        clock[0] += .08
+        return np.full((2, 2, 3), int(path), np.uint8)
+    monkeypatch.setattr(replay, 'time', SimpleNamespace(monotonic=lambda: clock[0]))
+    stamps = [10., 10.01, 10.03, 10.09, 10.12]
+    source = replay.TimestampReplay([dict(timestamp=t, path=str(i)) for i,t in enumerate(stamps)], decoder=decode)
+    source._stop = Stop()
+    source._run()
+    assert [row[0] for row in decoded] == ['0', '2', '4']
+    item = source.read(timeout=0)
+    assert item['frame_id'] == stamps[4] and item['sequence'] == 4
+    assert item['captured_monotonic'] == pytest.approx(100.12)
+    assert item['decode_started_monotonic'] == pytest.approx(100.16)
+    assert item['ready_monotonic'] == pytest.approx(100.24)
+    metrics = source.metrics()
+    assert metrics['skipped_before_decode'] == 2 and metrics['generated'] == 3
+    assert metrics['generated'] == metrics['delivered'] + metrics['overwritten']
+    assert metrics['original_frames'] == metrics['skipped_before_decode'] + metrics['generated']
+    assert source.done and source.exhausted
 
 
 def test_timestamp_latency_starts_before_decode_and_preserves_irregular_cadence():
@@ -207,7 +238,9 @@ class RunnerService:
             def start(self):
                 self.alive = mode != "startup_failure"
                 if self.alive:
-                    service.results.put(dict(kind="ready", load_seconds=.1))
+                    metadata = getattr(service, "rectification_metadata", None)
+                    service.results.put(dict(kind="ready", load_seconds=.1,
+                        rectification=None if mode == "rectification_mismatch" else metadata))
                 else:
                     self.exitcode = 2
                     service.results.put(dict(kind="error", traceback="synthetic mapper startup failure"))
@@ -262,11 +295,13 @@ class RunnerService:
                 return service.jobs if self.queues == 1 else results
 
             def Process(self, **kwargs):
+                service.mapper_config = kwargs["args"][0]
                 return service.worker
 
         class Source:
-            def __init__(self, rows, cpus):
+            def __init__(self, rows, cpus, decoder=None):
                 self.rows, self.index, self.done = rows, 0, False
+                service.capture_decoder = decoder
 
             def start(self):
                 if mode == "early_stopped":
@@ -305,6 +340,7 @@ class RunnerService:
 
         class Tracker:
             def __init__(self, **kwargs):
+                service.tracker_config = kwargs
                 self.observations = []
                 self.active = False
 
@@ -469,6 +505,38 @@ def test_rejected_candidate_never_creates_a_fresh_pose(edge, monkeypatch, tmp_pa
     assert service.applies and service.source_closed
 
 
+@pytest.mark.parametrize("mismatch", [False, True])
+def test_shared_rectification_binds_capture_mapper_and_zero_distortion_frontend(edge, monkeypatch, tmp_path, mismatch):
+    service = RunnerService(edge, monkeypatch, tmp_path, "rectification_mismatch" if mismatch else "normal")
+    calibration = dict(K=[[80., 0., 1.], [0., 81., 1.], [0., 0., 1.]],
+                       distortion=[.1, 0., 0., 0., 0.], image_hw=[2, 2], source="synthetic")
+    service.args.rectify_calibration = tmp_path / "calibration.json"
+    service.args.rectify_calibration.write_text(json.dumps(calibration))
+    class Rectifier:
+        def __init__(self, received):
+            assert received == calibration
+            service.rectification_metadata = self.metadata()
+        def metadata(self):
+            return dict(calibration, output_K=calibration['K'], output_distortion=[0.] * 5)
+        def decode_bgr(self, path):
+            raise AssertionError("Fake transport must not open images")
+    monkeypatch.setitem(sys.modules, "vggt_slam.image_rectification", SimpleNamespace(CalibrationRectifier=Rectifier))
+    if mismatch:
+        with pytest.raises(RuntimeError, match="rectification configurations differ"):
+            edge.run(service.args)
+        assert not service.batch_jobs
+    else:
+        result = edge.run(service.args)
+        assert service.mapper_config["rectification_calibration"] == calibration
+        assert service.capture_decoder.__self__.metadata() == service.rectification_metadata
+        assert service.tracker_config["intrinsic_raw"] == calibration['K']
+        assert service.tracker_config["distortion"] == [0.] * 5
+        assert result["common_rectification"] == service.rectification_metadata
+        assert "after scheduled arrival" in result['rectification_timing']
+        assert result["pose_timing"]["fresh_valid_poses"] > 0
+    assert service.joins >= 1 and not service.worker.is_alive()
+
+
 def test_coordinator_advances_large_gap_before_owner_adoption(edge, monkeypatch, tmp_path):
     service = RunnerService(edge, monkeypatch, tmp_path, "background_advance")
     metrics = edge.run(service.args)
@@ -502,7 +570,8 @@ def test_coordinator_budget_exhaustion_rejects_without_owner_replay_or_hidden_re
 
 
 @pytest.mark.parametrize("close_failure", [False, True])
-def test_mapping_terminal_is_emitted_after_runtime_cleanup(monkeypatch, tmp_path, close_failure):
+@pytest.mark.parametrize("use_camera", [False, True])
+def test_mapping_terminal_is_emitted_after_runtime_cleanup(monkeypatch, tmp_path, close_failure, use_camera):
     import vggt_slam.edge_mapping as mapping
 
     order = []
@@ -516,8 +585,19 @@ def test_mapping_terminal_is_emitted_after_runtime_cleanup(monkeypatch, tmp_path
         if close_failure:
             raise RuntimeError("synthetic backend close failure")
 
+    def install_xnn(*args, **kwargs):
+        order.append("install_xnn")
+        return SimpleNamespace(close=close)
+    def install_camera(*args, **kwargs):
+        order.append("install_camera")
+        def camera_close():
+            order.append("camera_cleanup")
+        return SimpleNamespace(close=camera_close, metrics=lambda: dict(
+            sdk_calls=0, npu_used=False, closed="camera_cleanup" in order))
     monkeypatch.setitem(sys.modules, "vggt_slam.xnnpack_linear",
-                        SimpleNamespace(install_xnnpack_linear=lambda *a, **k: SimpleNamespace(close=close)))
+                        SimpleNamespace(install_xnnpack_linear=install_xnn))
+    monkeypatch.setitem(sys.modules, "vggt_slam.rknn_camera",
+                        SimpleNamespace(install_rknn_camera=install_camera))
     monkeypatch.setattr(mapping.os, "sched_getaffinity", lambda pid: {4, 5})
     monkeypatch.setattr(mapping, "platform_sample", lambda: {"peak_rss_mib": 1.})
     packets = []
@@ -529,8 +609,43 @@ def test_mapping_terminal_is_emitted_after_runtime_cleanup(monkeypatch, tmp_path
 
     config = dict(cpus=None, threads=2, checkpoint="fake.pt", image_size=14, backend="xnnpack-f16",
                   max_loops=0, salad_checkpoint=None, output=str(tmp_path))
+    if use_camera:
+        config["camera_rknn"] = {"model_path": "fake.rknn"}
     mapping.mapping_worker(config, SimpleNamespace(get=lambda: None), Results())
-    assert order == ["ready", "cleanup", "error" if close_failure else "stopped"]
+    assert order == (["install_camera"] if use_camera else []) + ["install_xnn", "ready", "cleanup"] + (
+        ["camera_cleanup"] if use_camera else []) + ["error" if close_failure else "stopped"]
+    if use_camera:
+        assert packets[0]["camera_runtime"]["closed"] is False
+        assert packets[-1]["camera_runtime"] == dict(sdk_calls=0, npu_used=False, closed=True)
     if close_failure:
         assert packets[-1]["previous_terminal"]["kind"] == "stopped"
         assert "Runtime cleanup failed" in packets[-1]["error"]
+
+
+@pytest.mark.parametrize("failure", [None, "missing_sha", "missing_file", "uppercase_sha", "loop", "cpu"])
+def test_camera_artifact_configuration_is_complete_before_start(edge, tmp_path, failure):
+    a = SimpleNamespace(camera_backend="rknn-step", max_loops=0)
+    for name in ("model", "export_receipt", "compile_receipt", "capture_receipt"):
+        path = tmp_path / name
+        path.write_text("synthetic artifact")
+        setattr(a, f"camera_{name}", path)
+        setattr(a, f"camera_{name}_sha256", "a" * 64)
+    if failure == "missing_sha":
+        a.camera_capture_receipt_sha256 = None
+    elif failure == "missing_file":
+        a.camera_model = tmp_path / "absent"
+    elif failure == "uppercase_sha":
+        a.camera_model_sha256 = "A" * 64
+    elif failure == "loop":
+        a.max_loops = 1
+    elif failure == "cpu":
+        a.camera_backend = "cpu"
+    if failure:
+        with pytest.raises(ValueError):
+            edge.camera_configuration(a)
+    else:
+        config = edge.camera_configuration(a)
+        assert len(config) == 8
+        assert config["model_path"] == str(a.camera_model.resolve())
+        assert config["capture_sha256"] == "a" * 64
+    assert edge.camera_configuration(SimpleNamespace(max_loops=0)) is None

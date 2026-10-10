@@ -4,6 +4,7 @@ Scheduled arrival is a software replay timestamp, not an exposure timestamp.
 Decode and queuing occur after arrival and are included in replay pose latency.
 """
 from pathlib import Path
+from bisect import bisect_right
 import math
 import threading
 import time
@@ -41,6 +42,7 @@ class TimestampReplay:
         self.error = None
         self.done = False
         self.generated = self.delivered = self.overwritten = 0
+        self.skipped_before_decode = 0
         self.start_monotonic = self.end_monotonic = None
         self.last_capture_monotonic = None
 
@@ -60,10 +62,21 @@ class TimestampReplay:
                 self.decoder = cv2.imread
             self.start_monotonic = time.monotonic()
             first = self.rows[0]["timestamp"]
-            for sequence, row in enumerate(self.rows):
-                captured = self.start_monotonic + row["timestamp"] - first
+            deadlines = [self.start_monotonic + row["timestamp"] - first for row in self.rows]
+            sequence = 0
+            while sequence < len(self.rows):
+                captured = deadlines[sequence]
                 if self._stop.wait(max(0., captured - time.monotonic())):
                     break
+                # The decoder itself must not become an unbounded queue of
+                # expired arrivals. Preserve the first observation, then decode
+                # only the newest frame already due; never retimestamp a frame.
+                if sequence:
+                    newest = max(sequence, bisect_right(deadlines, time.monotonic()) - 1)
+                    self.skipped_before_decode += newest - sequence
+                    sequence = newest
+                    captured = deadlines[sequence]
+                row = self.rows[sequence]
                 decode_started = time.monotonic()
                 frame = self.decoder(row["path"])
                 ready = time.monotonic()
@@ -78,6 +91,7 @@ class TimestampReplay:
                     self.generated += 1
                     self.last_capture_monotonic = captured
                     self._condition.notify_all()
+                sequence += 1
         except BaseException as exc:
             self.error = f"{type(exc).__name__}: {exc}"
         finally:
@@ -113,6 +127,7 @@ class TimestampReplay:
     def metrics(self):
         return dict(source="original_timestamp_rgb_replay", queue_capacity=1,
                     original_frames=len(self.rows), generated=self.generated, delivered=self.delivered,
-                    overwritten=self.overwritten, start_monotonic=self.start_monotonic,
+                    overwritten=self.overwritten, skipped_before_decode=self.skipped_before_decode,
+                    decode_policy="first_then_latest_due_original_timestamp", start_monotonic=self.start_monotonic,
                     end_monotonic=self.end_monotonic, last_capture_monotonic=self.last_capture_monotonic,
                     physical_sensor_latency_validated=False, error=self.error)

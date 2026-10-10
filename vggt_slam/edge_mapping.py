@@ -9,6 +9,28 @@ import time
 import traceback
 
 
+def prepare_rectified_images(image_names, rectifier, image_size):
+    """Use the unchanged VGGT PIL preprocessing on identical rectified pixels.
+
+    Lossless in-memory PNGs bridge BGR capture to PIL's RGB loader without
+    writing a dataset, accumulating a frame cache, or changing input identities.
+    This work belongs inside the timed mapping job.
+    """
+    from contextlib import ExitStack
+    from io import BytesIO
+    import cv2
+    from vggt.utils.load_fn import load_and_preprocess_images
+    with ExitStack() as stack:
+        streams = []
+        for path in image_names:
+            frame = rectifier.decode_bgr(path)
+            ok, encoded = cv2.imencode(".png", frame, [cv2.IMWRITE_PNG_COMPRESSION, 1])
+            if not ok:
+                raise RuntimeError("Cannot encode rectified mapper input")
+            streams.append(stack.enter_context(BytesIO(encoded.tobytes())))
+        return load_and_preprocess_images(streams, image_size=image_size)
+
+
 def atomic_json(path, value):
     path = Path(path)
     temporary = path.with_suffix(path.suffix + ".tmp")
@@ -18,6 +40,16 @@ def atomic_json(path, value):
 
 def platform_sample():
     result = dict(temperature_c={}, cpu_frequency_khz={})
+    try:
+        fields = {"MemTotal", "MemAvailable", "MemFree", "Buffers", "Cached",
+                  "SReclaimable", "Shmem", "CmaTotal", "CmaFree"}
+        result["linux_memory_bytes"] = {
+            parts[0].rstrip(":"): int(parts[1]) * 1024
+            for line in Path("/proc/meminfo").read_text().splitlines()
+            for parts in [line.split()]
+            if len(parts) == 3 and parts[0].rstrip(":") in fields and parts[2] == "kB"}
+    except (OSError, ValueError):
+        result["linux_memory_bytes"] = None
     for p in Path("/sys/class/thermal").glob("thermal_zone*"):
         try:
             result["temperature_c"][p.joinpath("type").read_text().strip()] = int(p.joinpath("temp").read_text()) / 1000
@@ -40,6 +72,7 @@ def mapping_worker(config, jobs, results):
     while reporting that dense mapping is continuing.
     """
     handle = None
+    camera_handle = None
     terminal = None
     try:
         if config["cpus"] is not None:
@@ -53,8 +86,19 @@ def mapping_worker(config, jobs, results):
         torch.set_num_threads(config["threads"])
         torch.set_num_interop_threads(1)
         started = time.monotonic()
+        rectifier = None
+        if config.get("rectification_calibration") is not None:
+            from vggt_slam.image_rectification import CalibrationRectifier
+            rectifier = CalibrationRectifier(config["rectification_calibration"])
         model = load_model(config["checkpoint"], device="cpu", image_size=config["image_size"],
                            prune_unused_heads=True, offline=True)
+        if config.get("camera_rknn") is not None:
+            if config["max_loops"]:
+                raise ValueError("RKNN camera currently requires fixed two-frame mapping without loop candidates")
+            from vggt_slam.rknn_camera import install_rknn_camera
+            # Release the original CPU CameraHead before packing remaining
+            # Linear weights; the NPU context owns its shared FP16 weights.
+            camera_handle = install_rknn_camera(model, **config["camera_rknn"])
         if config["backend"] == "xnnpack-f16":
             from vggt_slam.xnnpack_linear import install_xnnpack_linear
             handle = install_xnnpack_linear(model, threads=config["threads"], dtype="float16",
@@ -66,10 +110,13 @@ def mapping_worker(config, jobs, results):
         chunks = output / "map_chunks"
         chunks.mkdir()
         manifest = dict(format="vggt_camera_local_dense_chunks_with_SL4_graph", units="model_units",
-                        chunks=[], nodes={}, revision=0, metric_scale_validated=False)
+                        chunks=[], nodes={}, revision=0, metric_scale_validated=False,
+                        rectification=rectifier.metadata() if rectifier is not None else None)
         saved = set()
         results.put(dict(kind="ready", load_seconds=time.monotonic()-started,
-                         platform=platform_sample(), cpus=sorted(os.sched_getaffinity(0))))
+                         platform=platform_sample(), cpus=sorted(os.sched_getaffinity(0)),
+                         camera_runtime=camera_handle.metrics() if camera_handle is not None else None,
+                         rectification=rectifier.metadata() if rectifier is not None else None))
         while True:
             job = jobs.get()
             if job is None:
@@ -78,7 +125,14 @@ def mapping_worker(config, jobs, results):
                 raise RuntimeError("Configured map capacity exhausted; mapping stopped explicitly")
             begin = time.monotonic()
             batch = job["batch"]
-            prediction = solver.run_predictions([x["path"] for x in batch], model, config["max_loops"], None, None)
+            paths = [x["path"] for x in batch]
+            if rectifier is None:
+                prediction = solver.run_predictions(paths, model, config["max_loops"], None, None)
+            else:
+                images = prepare_rectified_images(paths, rectifier, config["image_size"])
+                prediction = solver.run_predictions(paths, model, config["max_loops"], None, None,
+                                                    prepared_images=images)
+                del images
             predicted = time.monotonic()
             for key in ("depth", "depth_conf", "intrinsic", "extrinsic"):
                 if not np.asarray(prediction[key]).size or not np.isfinite(prediction[key]).all():
@@ -139,6 +193,8 @@ def mapping_worker(config, jobs, results):
                        graph_error=graph_error, graph_nodes=int(solver.graph.values.size()),
                        graph_factors=int(solver.graph.graph.size()), submaps=solver.map.get_num_submaps(),
                        accepted_loop_closures=int(solver.graph.get_num_loops()), platform=sample)
+            if camera_handle is not None:
+                row["camera_runtime"] = camera_handle.metrics()
             if config["save_predictions"]:
                 np.savez(output / f"predictions_{manifest['revision']:04d}.npz",
                          **{k: prediction[k] for k in ("depth", "depth_conf", "intrinsic", "extrinsic")},
@@ -148,12 +204,19 @@ def mapping_worker(config, jobs, results):
     except BaseException as exc:
         terminal = dict(kind="error", error=f"{type(exc).__name__}: {exc}", traceback=traceback.format_exc())
     finally:
-        if handle is not None:
+        cleanup_errors = []
+        for backend in (handle, camera_handle):
+            if backend is None:
+                continue
             try:
-                handle.close()
+                backend.close()
             except BaseException as exc:
-                terminal = dict(kind="error", error=f"Runtime cleanup failed: {exc}", traceback=traceback.format_exc(),
-                                previous_terminal=terminal)
+                cleanup_errors.append(f"{type(exc).__name__}: {exc}")
+        if cleanup_errors:
+            terminal = dict(kind="error", error=f"Runtime cleanup failed: {cleanup_errors}",
+                            traceback="; ".join(cleanup_errors), previous_terminal=terminal)
+        if terminal is not None and camera_handle is not None:
+            terminal["camera_runtime"] = camera_handle.metrics()
         if terminal is not None:
             try:
                 results.put(terminal, timeout=2)

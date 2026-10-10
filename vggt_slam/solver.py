@@ -320,15 +320,30 @@ class Solver:
         pixel_coords = torch.stack((y_coords, x_coords), dim=1)
         return pixel_coords
 
-    def run_predictions(self, image_names, model, max_loops, clip_model, clip_preprocess):
+    def run_predictions(self, image_names, model, max_loops, clip_model, clip_preprocess, *, prepared_images=None):
         if max_loops not in (0, 1):
             raise ValueError("VGGT-SLAM2 supports max_loops=0 or 1 only")
+        if prepared_images is not None:
+            if clip_model is not None or clip_preprocess is not None:
+                raise ValueError("Prepared image tensors cannot be mixed with path-based CLIP preprocessing")
+            if (not isinstance(prepared_images, torch.Tensor) or prepared_images.ndim != 4
+                    or prepared_images.shape[0] != len(image_names) or prepared_images.shape[1] != 3
+                    or prepared_images.device.type != "cpu"
+                    or prepared_images.dtype != torch.float32 or prepared_images.shape[0] < 1
+                    or min(prepared_images.shape[-2:]) < 14
+                    or prepared_images.shape[-1] != self.image_size
+                    or prepared_images.shape[-2] > self.image_size
+                    or any(n % 14 for n in prepared_images.shape[-2:])
+                    or not torch.isfinite(prepared_images).all()
+                    or prepared_images.min() < 0 or prepared_images.max() > 1):
+                raise ValueError("Prepared images must be finite float32 NCHW RGB in [0,1], matching the image names and patch grid")
         model_parameter = next(model.parameters())
         device = model_parameter.device
         self.device = device
         t1 = time.time()
         with self.vggt_timer:
-            images = load_and_preprocess_images(image_names, image_size=self.image_size).to(device)
+            images = (load_and_preprocess_images(image_names, image_size=self.image_size)
+                      if prepared_images is None else prepared_images).to(device)
         print(f"Loaded and preprocessed {len(image_names)} images in {time.time() - t1:.2f} seconds")
         print(f"Preprocessed images shape: {images.shape}")
 

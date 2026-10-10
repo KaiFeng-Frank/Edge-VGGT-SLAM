@@ -1,0 +1,279 @@
+{
+  "schema": "vggt_v16_hybrid_replay_review",
+  "run_label": "r11",
+  "status": "passed",
+  "audit_scope": {
+    "saved_logs_and_numpy_only": true,
+    "images_read": false,
+    "model_or_tracking_executed": false,
+    "board_operations": false,
+    "original_image_pixel_equality_retested": false
+  },
+  "result": {
+    "original_RGB_frames": 798,
+    "delivered_observations": 762,
+    "overwritten_before_owner": 36,
+    "skipped_before_decode": 0,
+    "fresh_valid_poses": 567,
+    "valid_fraction_original": 0.7105263157894737,
+    "replay_seconds": 26.57205921660352,
+    "first_valid_seconds": 6.554342575000192,
+    "valid_pose_latency_ms": {
+      "count": 567,
+      "mean": 59.45213777556446,
+      "rms": 61.82473470150563,
+      "p50": 50.505553917901125,
+      "p95": 93.94431617329244,
+      "max": 110.05730021861382
+    },
+    "full_second_pose_publications": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      14,
+      30,
+      30,
+      29,
+      23,
+      28,
+      30,
+      30,
+      26,
+      22,
+      30,
+      30,
+      30,
+      29,
+      23,
+      23,
+      30,
+      30,
+      31,
+      30
+    ],
+    "complete_seconds_7_through_25_minimum": 22,
+    "complete_seconds_7_through_25_maximum": 31,
+    "initialization_full_seconds_with_zero_poses": 6,
+    "longest_valid_publication_gap_seconds": 0.05666238100093324,
+    "latency_definition": "scheduled original RGB arrival before decode through pose JSONL write and flush return",
+    "latency_components_ms": {
+      "scheduling_before_decode": {
+        "count": 567,
+        "mean": 0.2817144366873328,
+        "rms": 0.5288318375128777,
+        "p50": 0.11431408347561955,
+        "p95": 1.2457568824174807,
+        "max": 4.541245398286264
+      },
+      "decode_rectify": {
+        "count": 567,
+        "mean": 22.694044672043578,
+        "rms": 22.84651627267982,
+        "p50": 22.327085003780667,
+        "p95": 27.57988619778189,
+        "max": 31.671503995312378
+      },
+      "delivery_queue": {
+        "count": 567,
+        "mean": 5.560239028276767,
+        "rms": 10.56697943640988,
+        "p50": 0.277083003311418,
+        "p95": 26.752777996443893,
+        "max": 37.933004001388326
+      },
+      "owner_before_processing": {
+        "count": 567,
+        "mean": 0.04864456243439359,
+        "rms": 0.12216009050357779,
+        "p50": 0.009916999260894954,
+        "p95": 0.3487168003630357,
+        "max": 0.6060829982743599
+      },
+      "processing_and_pose_flush": {
+        "count": 567,
+        "mean": 30.86749507612239,
+        "rms": 31.80282255495286,
+        "p50": 27.528377999260556,
+        "p95": 46.45885850331979,
+        "max": 55.56804699881468
+      }
+    },
+    "pose_publications_before_reader_end": 565,
+    "pose_publications_at_or_after_reader_end": 2,
+    "pose_publications_after_last_scheduled_arrival": 3
+  },
+  "mapping": {
+    "updates": 6,
+    "processing_seconds": [
+      4.751596686000994,
+      4.588332169994828,
+      4.675476178003009,
+      5.410482294006215,
+      5.89544430100068,
+      4.950833288996364
+    ],
+    "newest_frame_age_at_map_publication_seconds": [
+      4.795992544204637,
+      4.640908192537609,
+      4.7284331277769525,
+      5.462751571954868,
+      5.94885221356526,
+      5.00098997119494
+    ],
+    "depth_adoptions_source_active": 4,
+    "depth_adoptions_after_source_end": 2,
+    "EOF_depth_adoptions_add_zero_fresh_poses": true,
+    "dense_points": 84672,
+    "graph_nodes": 12,
+    "global_projective_associations": 567,
+    "rigid_global_poses": 0,
+    "gauge_pose_counts": {
+      "0": 138,
+      "1": 127,
+      "2": 157,
+      "3": 145
+    },
+    "rigid_null_reasons": {
+      "anchor_linear_part_has_nonuniform_scale_or_shear": 567
+    },
+    "metric_scale_validated": false
+  },
+  "compute": {
+    "model_backbone": "original VGGT",
+    "image_size": 112,
+    "actual_image_hw": [
+      84,
+      112
+    ],
+    "mapper_backend": "CPU XNNPACK FP16 plus RKNN CameraHead",
+    "mapper_threads": 2,
+    "mapper_cpus": [
+      4,
+      5
+    ],
+    "frontend_cpu": 7,
+    "capture_cpu": 6,
+    "candidate_cpus": [
+      2,
+      3
+    ],
+    "tracking_hw": [
+      240,
+      320
+    ],
+    "tracking_features": 240,
+    "camera_NPU_SDK_successful_calls": 24,
+    "camera_NPU_completed_heads": 6,
+    "camera_NPU_head_seconds": [
+      0.17595580899796914,
+      0.17891710099502234,
+      0.17303476800589124,
+      0.16943530799471773,
+      0.1819541019940516,
+      0.19531489500514
+    ],
+    "camera_runtime_closed": true,
+    "SDK_DMA_current_bytes": 0,
+    "SDK_DMA_peak_bytes": 869425152,
+    "mapper_peak_rss_mib": 7164.5703125,
+    "whole_model_all_NPU": false,
+    "reference_camera_operator_profile": "57 NPU internal operators, 2 CPU reshapes per SDK step; outer FP32 recurrence/activation on CPU"
+  },
+  "common_GT_comparison_r10_vs_r11": {
+    "common_original_RPE_endpoint_pairs": 319,
+    "rotation_degrees": {
+      "r10": {
+        "count": 319,
+        "mean": 3.54664771792294,
+        "rms": 4.241176030129884,
+        "p50": 3.185653940449375,
+        "p95": 8.24319737704207,
+        "max": 9.686844763849424
+      },
+      "r11": {
+        "count": 319,
+        "mean": 3.2504602183984623,
+        "rms": 4.147941122719913,
+        "p50": 2.3262918925128004,
+        "p95": 8.632360175406573,
+        "max": 10.27797341997878
+      }
+    },
+    "translation_direction_degrees": {
+      "r10": {
+        "count": 315,
+        "mean": 10.027669375196256,
+        "rms": 14.547238137437375,
+        "p50": 6.982074794238474,
+        "p95": 27.03466440524833,
+        "max": 80.82626399382882
+      },
+      "r11": {
+        "count": 315,
+        "mean": 8.81527285956437,
+        "rms": 13.168857161117835,
+        "p50": 6.970957369098748,
+        "p95": 19.334926564525258,
+        "max": 103.96650983551473
+      }
+    },
+    "direction_below_1cm_GT_motion_unavailable": 4,
+    "interpretation": "Direction P95 and rotation RMS improve, but rotation P95 and direction maximum worsen. No uniform accuracy improvement established.",
+    "GT_scale_fitted": false,
+    "metric_trajectory_or_ATE_validated": false,
+    "accuracy_retention_against_518_validated": false
+  },
+  "acceptance": {
+    "prototype_NPU_CameraHead_integration_verified": true,
+    "whole_source_20Hz_tracking_passed": false,
+    "three_second_mapping_passed": false,
+    "physical_camera_test_passed": false,
+    "endurance_30_minutes_passed": false,
+    "original_518_accuracy_retention_passed": false,
+    "eight_GB_board_passed": false,
+    "full_goal_passed": false
+  },
+  "limitations": [
+    "One 26.57 second software replay, not a camera or endurance run.",
+    "All original798 frames remain the coverage denominator; 36 were overwritten and 195 delivered observations had no valid pose.",
+    "Six initial complete seconds contain zero valid pose publications; 22\u201331 poses/s only describes complete seconds7\u201325.",
+    "Every map takes4.59\u20135.90 seconds, exceeding the3 second target.",
+    "Global outputs are SL4/projective projections and centers, not metric or rigid global trajectories.",
+    "GT common endpoints control evaluation times, not identical landmarks, anchors, model batches or thermal conditions.",
+    "Runtime source archive identity is retained from the transfer receipt; this audit does not rerun compilation, pixels or models."
+  ],
+  "audit": {
+    "checks_passed": 17440,
+    "checks_failed": 0,
+    "matrix_rows": 567,
+    "transfer_artifacts_verified": 18,
+    "GT_report_sha256": "6539f1e2a303941a8d523e462ab363db95ca60b9efa0c55cb9e0e1bdc8cf62bc",
+    "RGB_index_sha256": "532884d60bef0c9a05e14bf311998883baf59a2fa47009d1021f2c7937bd69a3",
+    "groundtruth_sha256": "aac0319a6ef4e1cdf61e779d2152b95aa7e9f7b1749d6d18717b43ddabffede2",
+    "run_artifact_SHA256": {
+      "events.jsonl": "b9302c78afce78f765502f56382441b5ffe8eb0efb14a32b0d2b19b6234e6df5",
+      "map.json": "4461271e78606e6887aaa2ca100705da9838e3d807f713588260a480cc616113",
+      "map_chunks/submap_000000.npz": "8f27f69a806df4ed546624cbb173bdc96110abe8410ac5e3c4341b1a5e802370",
+      "map_chunks/submap_000002.npz": "07d6bf400d19e4c66225cb51f6cb8dfafb805d2a76c9261d0aa9d193afdc3af2",
+      "map_chunks/submap_000004.npz": "ca824aa7912c2d31ee1e892e8de17c7eddef5f90704efa6da96ab4a963b1a81b",
+      "map_chunks/submap_000006.npz": "603bcc8d252f65b1e074dc6d3ff89213064de3e7c5853ed759122da1be5ba2df",
+      "map_chunks/submap_000008.npz": "3a0dd6c323a1f9e65856767627ca769b0a64de7ebb026393ded81da0af94736d",
+      "map_chunks/submap_000010.npz": "711845ff0ae486e42128a1b42d36837f6be3a6d82b8bce1519d168270dd4537c",
+      "metrics.json": "2d70baea0f27d924af09cf3177f630e94133039b286933be0857b5f8766e3245",
+      "poses.tum": "66b45f7c8841dad7050c088ce7d839b79306b11b9317ef49137ae438cda35433",
+      "predictions_0001.npz": "5086948b40e00995e7ee135fc47f3675b4eae23a3a31577ccbc573e9d6004f17",
+      "predictions_0002.npz": "0fd1860a3272d159fbc1b3bfbf056ebd964601a6883778a47616380d09af2e73",
+      "predictions_0003.npz": "0586f6bdad32fec3e419d11dc783a5763fe10a46bade085d8bda7694123832ba",
+      "predictions_0004.npz": "e5763ccce49b78c562a9236638f5925fed407a401a0ca3c91d0d3c7df5d7e35e",
+      "predictions_0005.npz": "18803564900184b0e6ed676932d04b4e1a323324d7e54dc6659e49980636718d",
+      "predictions_0006.npz": "9284606a5db3b1fd1b8b19dd4fe6f99ec78c422beea811fcb4351906e463dc1f",
+      "publications.jsonl": "8db0afef4c2f503ffaa748db1cef126da8022fd3853835bbfe6d3063cda9891a",
+      "tracking.jsonl": "a96906ea78e4b6a29a5a74f5340e8437e9d3fa379e52b414093ed33f28646619"
+    },
+    "measured_source_archive_sha256": "e7411b01d5543ba518693bffaeb5849487e6dad555f73dd5271a80a2c307d284",
+    "camera_module_sha256": "8c10c11157589623528555a3bfa7e529e7e44cfda1bc9212e86be467272ab994"
+  }
+}

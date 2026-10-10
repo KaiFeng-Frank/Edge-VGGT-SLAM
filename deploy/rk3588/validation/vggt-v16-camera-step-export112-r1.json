@@ -1,0 +1,1197 @@
+{
+  "kind": "original_shared_CameraHead_single_step_board_ONNX_export",
+  "status": "exported_and_structurally_checked",
+  "script_sha256": "b26efe9c6cd62a2b7977e6e9c096cf0bd9bbf63076a063b9a332ef59565af258",
+  "camera_iterations": 4,
+  "trunk_blocks_per_step": 4,
+  "host_model_inference_executed": false,
+  "npu_used": false,
+  "ORB_used": false,
+  "production_modified": false,
+  "real_time_validated": false,
+  "full_model_quality_validated": false,
+  "original_head_reference_calls": 1,
+  "CPU_step_reference_calls": 4,
+  "board_export_trace_step_calls": 1,
+  "cleanup_errors": [],
+  "artifacts": {
+    "conditioning-seed.npy": {
+      "bytes": 200,
+      "sha256": "13f5d624904ba2787977993da059e3fbb36692e989533b9a4d73876f4c0de9be",
+      "shape": [
+        1,
+        2,
+        9
+      ],
+      "dtype": "float32",
+      "finite": true,
+      "tensor_sha256": "ed992fd679659e6dd3ea8f250aed45f6e5dc0b3dff0ef87c0814ae2a9975053e"
+    },
+    "empty-pose-token.npy": {
+      "bytes": 164,
+      "sha256": "907c7a5c50eecbcea7e4012cf0e505de60507587dd8aa53aca47e5e2065bd4e9",
+      "shape": [
+        1,
+        1,
+        9
+      ],
+      "dtype": "float32",
+      "finite": true,
+      "tensor_sha256": "a4f798a79001dce1fb81a8081beb6cefa8c37ecb8e19379f582367a40e41da83"
+    },
+    "step-iterations.npz": {
+      "sha256": "a2fcdd89a49ce2f5e02df7ba57e38b993ebb5cb0229d18a8b824df5d967beb9b",
+      "bytes": 5270,
+      "tensors": {
+        "conditioning_0": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "ed992fd679659e6dd3ea8f250aed45f6e5dc0b3dff0ef87c0814ae2a9975053e"
+        },
+        "delta_0": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "850f5f3259d69bf5e2aea00a88f492f216e8049752d54bfcb2110b65516b504a"
+        },
+        "preactivation_0": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "850f5f3259d69bf5e2aea00a88f492f216e8049752d54bfcb2110b65516b504a"
+        },
+        "activation_0": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "850f5f3259d69bf5e2aea00a88f492f216e8049752d54bfcb2110b65516b504a"
+        },
+        "conditioning_1": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "850f5f3259d69bf5e2aea00a88f492f216e8049752d54bfcb2110b65516b504a"
+        },
+        "delta_1": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "378afa5432d2732597260ecbfc57243810ee62f48484904ce238758e77f8e6c5"
+        },
+        "preactivation_1": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "f6088b6136f7315d6d750e8e1137c2d979976f8c71d72b95f9fca084b42c0710"
+        },
+        "activation_1": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "f6088b6136f7315d6d750e8e1137c2d979976f8c71d72b95f9fca084b42c0710"
+        },
+        "conditioning_2": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "f6088b6136f7315d6d750e8e1137c2d979976f8c71d72b95f9fca084b42c0710"
+        },
+        "delta_2": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "5dc51bfe126040d543bf3d42a765c9bf8b073cca60922038d318b46b4fb112c4"
+        },
+        "preactivation_2": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "4319ea290509575b08b3a45874a76131f4d51dce6ff09618bdf1ff0afe2af944"
+        },
+        "activation_2": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "4319ea290509575b08b3a45874a76131f4d51dce6ff09618bdf1ff0afe2af944"
+        },
+        "conditioning_3": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "4319ea290509575b08b3a45874a76131f4d51dce6ff09618bdf1ff0afe2af944"
+        },
+        "delta_3": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "3a2f997cde89bb4f17a656fc0cdac380d06ffccca08747b627726591e3ac2395"
+        },
+        "preactivation_3": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "f191e3a0b8b593061d7d0abe4eb41d99f2d52c911510f0648a99aa4f27c0d5ad"
+        },
+        "activation_3": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "f191e3a0b8b593061d7d0abe4eb41d99f2d52c911510f0648a99aa4f27c0d5ad"
+        }
+      }
+    }
+  },
+  "device_tree_compatible": "9tripod,rk3588s,rockchip,rk3588,",
+  "runtime": {
+    "torch": "2.3.1",
+    "onnx": "1.16.2",
+    "numpy": "1.26.4",
+    "cpu_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "threads": 4
+  },
+  "reference_iterations": [
+    {
+      "iteration": 0,
+      "conditioning_array_equal": true,
+      "delta_array_equal": true,
+      "activated_array_equal": true,
+      "explicit_FP32_activation_array_equal": true
+    },
+    {
+      "iteration": 1,
+      "conditioning_array_equal": true,
+      "delta_array_equal": true,
+      "activated_array_equal": true,
+      "explicit_FP32_activation_array_equal": true
+    },
+    {
+      "iteration": 2,
+      "conditioning_array_equal": true,
+      "delta_array_equal": true,
+      "activated_array_equal": true,
+      "explicit_FP32_activation_array_equal": true
+    },
+    {
+      "iteration": 3,
+      "conditioning_array_equal": true,
+      "delta_array_equal": true,
+      "activated_array_equal": true,
+      "explicit_FP32_activation_array_equal": true
+    }
+  ],
+  "export_seconds_including_board_trace_and_IO": 8.948772898998868,
+  "weight_sharing": {
+    "original_parameters_verified": 68,
+    "initializer_count": 68,
+    "initializer_bytes": 864698404,
+    "original_unique_parameter_bytes": 864698404,
+    "weights_not_duplicated_per_iteration": true,
+    "parameters": [
+      {
+        "parameter": "trunk.0.norm1.weight",
+        "initializer": "camera_head.trunk.0.norm1.weight",
+        "raw_sha256": "da25dd9937d923e37d08119d2da9b54ec802a2d10eb87a9336330948cba6f614",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.norm1.bias",
+        "initializer": "camera_head.trunk.0.norm1.bias",
+        "raw_sha256": "cef789ebeb9d66359121915d0bc2e0f3b2e111043fd05a5eb87fccbc84620c0d",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.attn.qkv.weight",
+        "initializer": "camera_head.trunk.0.attn.qkv.weight",
+        "raw_sha256": "df2f366c592c3228aa84d575446f4716d67cfed2c705cf5645189e81d6e2f1bd",
+        "shape": [
+          6144,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.attn.qkv.bias",
+        "initializer": "camera_head.trunk.0.attn.qkv.bias",
+        "raw_sha256": "cb39247b4f2c129f9cf21cd0274e920be81b8caa7f6ce5e06b778adcf050cf08",
+        "shape": [
+          6144
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.attn.proj.weight",
+        "initializer": "camera_head.trunk.0.attn.proj.weight",
+        "raw_sha256": "5a7eec4aab27ce0784f02f7b8c5da5d70ab43b47a2fb1e805d3f933a20725190",
+        "shape": [
+          2048,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.attn.proj.bias",
+        "initializer": "camera_head.trunk.0.attn.proj.bias",
+        "raw_sha256": "08658026db233c3a00e7c4d49ffa2ef26555d52ead0f1c578e423bb817eff471",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.ls1.gamma",
+        "initializer": "camera_head.trunk.0.ls1.gamma",
+        "raw_sha256": "1210a5a617cede5a4189d8b18f2edcda702a366e0ef15be09ec6381b016945a2",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.norm2.weight",
+        "initializer": "camera_head.trunk.0.norm2.weight",
+        "raw_sha256": "6182175c3ca6285ea3cbf8e0ca0d2290b14e63f84bfeb5523cddfeb7caf26b4c",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.norm2.bias",
+        "initializer": "camera_head.trunk.0.norm2.bias",
+        "raw_sha256": "488c1f87d9bebab45e2781eda4db918846518552d3e76ae568551eddd9fd0075",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.mlp.fc1.weight",
+        "initializer": "camera_head.trunk.0.mlp.fc1.weight",
+        "raw_sha256": "fb11713df490d28ad5e3691e684556824cb001e7fa52450297650c1ce65e42e5",
+        "shape": [
+          8192,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.mlp.fc1.bias",
+        "initializer": "camera_head.trunk.0.mlp.fc1.bias",
+        "raw_sha256": "b75a509e0e799c5a88912fa94bc9d1590663ceaf1f17defce0fd8043d81ab3a1",
+        "shape": [
+          8192
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.mlp.fc2.weight",
+        "initializer": "camera_head.trunk.0.mlp.fc2.weight",
+        "raw_sha256": "035d7c2b60cfecb2c93bb6b2c82c3a3fe8bb1ccdbcb1230eb4167f95aec51dbb",
+        "shape": [
+          2048,
+          8192
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.mlp.fc2.bias",
+        "initializer": "camera_head.trunk.0.mlp.fc2.bias",
+        "raw_sha256": "3e676604ad131d4568f0e39b55fca23c9382bbb422bb0aae0b2065221700da6c",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.0.ls2.gamma",
+        "initializer": "camera_head.trunk.0.ls2.gamma",
+        "raw_sha256": "13cf7e9b8815ca92b485148f97d9e9e716ef289bc4c9f81f17813bcc4abfc1c6",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.norm1.weight",
+        "initializer": "camera_head.trunk.1.norm1.weight",
+        "raw_sha256": "91381e3c4c1fed5ff4ff027169d2b18a6f26a503da1f688317c2f8703bb97c10",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.norm1.bias",
+        "initializer": "camera_head.trunk.1.norm1.bias",
+        "raw_sha256": "1ed7f4306c53b0291fb30281c910bd0cdcf6a2cbf5e019d8f57290637d1a89ad",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.attn.qkv.weight",
+        "initializer": "camera_head.trunk.1.attn.qkv.weight",
+        "raw_sha256": "4abea0e3d7d10744425c7a7f355372c9879688c0e173c3acf64f0296f616dc51",
+        "shape": [
+          6144,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.attn.qkv.bias",
+        "initializer": "camera_head.trunk.1.attn.qkv.bias",
+        "raw_sha256": "7969564769dd89c4bc438d0c10163f460f32bbb12b42a10195fc3e594665e190",
+        "shape": [
+          6144
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.attn.proj.weight",
+        "initializer": "camera_head.trunk.1.attn.proj.weight",
+        "raw_sha256": "ad331e2fa18ec5646e37827115254d7196f47ea8509082a6e1f807f53a8cdb01",
+        "shape": [
+          2048,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.attn.proj.bias",
+        "initializer": "camera_head.trunk.1.attn.proj.bias",
+        "raw_sha256": "f95c65f47b11cdc8a4f6d95ae4afd277770af779814dafc0b633069ae72b6daf",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.ls1.gamma",
+        "initializer": "camera_head.trunk.1.ls1.gamma",
+        "raw_sha256": "d619c13664c0b851880bd68fbf0fe0962847b7d971a97a4bc2a37071c98ad209",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.norm2.weight",
+        "initializer": "camera_head.trunk.1.norm2.weight",
+        "raw_sha256": "f64a04075e4f221885483b020a1f185bfe6d3f6c27a79fc4f39bf126116605fe",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.norm2.bias",
+        "initializer": "camera_head.trunk.1.norm2.bias",
+        "raw_sha256": "7105c50cf7f9e60553deb183d9efd7d7a35c368a04334e515c3e6453c1c161b1",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.mlp.fc1.weight",
+        "initializer": "camera_head.trunk.1.mlp.fc1.weight",
+        "raw_sha256": "7494f47e0ab560fe96c08f9182fb91d3b08a8933b0c04d5f7974f14f3e534ba2",
+        "shape": [
+          8192,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.mlp.fc1.bias",
+        "initializer": "camera_head.trunk.1.mlp.fc1.bias",
+        "raw_sha256": "5989273fcc8eeef3aa2813938c10d4c17ca08375b379440f22024b49e1956a72",
+        "shape": [
+          8192
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.mlp.fc2.weight",
+        "initializer": "camera_head.trunk.1.mlp.fc2.weight",
+        "raw_sha256": "656628f824c40312d5d343512e5a56d426d46528b946454293b1f48df337a8c5",
+        "shape": [
+          2048,
+          8192
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.mlp.fc2.bias",
+        "initializer": "camera_head.trunk.1.mlp.fc2.bias",
+        "raw_sha256": "59b841d46e00eb808e527523b9aaefb15bb6267c558d6b06332ad42114e1f574",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.1.ls2.gamma",
+        "initializer": "camera_head.trunk.1.ls2.gamma",
+        "raw_sha256": "879e86048dce654655713fe502c34b4349e0010c82ce671c6ac2cf6d654e5c1a",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.norm1.weight",
+        "initializer": "camera_head.trunk.2.norm1.weight",
+        "raw_sha256": "ac030ed6e705aee4e0f28b6a05ff4febac778532d59078d1bdaaeee73fb7bcee",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.norm1.bias",
+        "initializer": "camera_head.trunk.2.norm1.bias",
+        "raw_sha256": "2eb2883c687c223388b87ae1bbade6c42e2178f71f80a2440c0107f9a133bf08",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.attn.qkv.weight",
+        "initializer": "camera_head.trunk.2.attn.qkv.weight",
+        "raw_sha256": "870e958e8956dfe89471fd85460003958d8bcc86430c7d3fb0b0d1ac8280b81a",
+        "shape": [
+          6144,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.attn.qkv.bias",
+        "initializer": "camera_head.trunk.2.attn.qkv.bias",
+        "raw_sha256": "c29fa6e890df06f1aac60db5e6f9c9bc8576b69bf2a24a2cdb93e7b20c3a7538",
+        "shape": [
+          6144
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.attn.proj.weight",
+        "initializer": "camera_head.trunk.2.attn.proj.weight",
+        "raw_sha256": "1652ca21fcd0d15bf504dbc9c4f1191ece6eec242f08041f50cb6e51558843eb",
+        "shape": [
+          2048,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.attn.proj.bias",
+        "initializer": "camera_head.trunk.2.attn.proj.bias",
+        "raw_sha256": "4cc133db6313212279b560a1ac727494264640c33de838b92eb101df7dd89f18",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.ls1.gamma",
+        "initializer": "camera_head.trunk.2.ls1.gamma",
+        "raw_sha256": "2991e39e0fd057a495a13867452c70582c5f648874f0f92b54356947fbbae329",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.norm2.weight",
+        "initializer": "camera_head.trunk.2.norm2.weight",
+        "raw_sha256": "714e28cf7255a539599cf0397d5824fc4f8e83777646bce0404ee10425c17cbf",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.norm2.bias",
+        "initializer": "camera_head.trunk.2.norm2.bias",
+        "raw_sha256": "d815320bf90fc58c0b2a876e2ae8e42fe303f3534b5fd7cddf953c37cd495084",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.mlp.fc1.weight",
+        "initializer": "camera_head.trunk.2.mlp.fc1.weight",
+        "raw_sha256": "d3b45033a52f98bdeed6531e3f411fb4914b56bf6122d32f2a2ac7c6433b1d1e",
+        "shape": [
+          8192,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.mlp.fc1.bias",
+        "initializer": "camera_head.trunk.2.mlp.fc1.bias",
+        "raw_sha256": "3df88781aab1df51bada02e7d8584dc66bea90f9319308bdae2782d6463b4bf8",
+        "shape": [
+          8192
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.mlp.fc2.weight",
+        "initializer": "camera_head.trunk.2.mlp.fc2.weight",
+        "raw_sha256": "5708537c7fd8c7d36a9bc872ab3e2e7abbde290d61e2d0cbc32a989df2617b16",
+        "shape": [
+          2048,
+          8192
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.mlp.fc2.bias",
+        "initializer": "camera_head.trunk.2.mlp.fc2.bias",
+        "raw_sha256": "1a46f9d4605b8adb640d106a9c87ffc35f43239246e8e74add42493ad8a27f88",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.2.ls2.gamma",
+        "initializer": "camera_head.trunk.2.ls2.gamma",
+        "raw_sha256": "223e33359ec803376527fb22b9e96d66134da1afd28049eafb6f7ace26a328cc",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.norm1.weight",
+        "initializer": "camera_head.trunk.3.norm1.weight",
+        "raw_sha256": "337516c4e20098c92ff9ad7670ff4ee93ae13027cbde505a5fb775dc22c20c06",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.norm1.bias",
+        "initializer": "camera_head.trunk.3.norm1.bias",
+        "raw_sha256": "4643d17378020f20b86e2dccca4be33fc28af269798d434ee1eaf50a5c0d4b29",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.attn.qkv.weight",
+        "initializer": "camera_head.trunk.3.attn.qkv.weight",
+        "raw_sha256": "2f618ae5f35356f5f902ec652a5749fdf075887412f48f24126852af082485ae",
+        "shape": [
+          6144,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.attn.qkv.bias",
+        "initializer": "camera_head.trunk.3.attn.qkv.bias",
+        "raw_sha256": "801f8233091a3fb1e1a4f6bf7fc397be9597c5f8e9e4f29fa83abb34401e89d5",
+        "shape": [
+          6144
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.attn.proj.weight",
+        "initializer": "camera_head.trunk.3.attn.proj.weight",
+        "raw_sha256": "daa9b7796d57dc428b2d98bacd05d4e258fcbcffc6dba8dc3205f8f98ecc7892",
+        "shape": [
+          2048,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.attn.proj.bias",
+        "initializer": "camera_head.trunk.3.attn.proj.bias",
+        "raw_sha256": "e76a60aadae1cfc676f0559baa77da23c4b8a202f7612c5dda015f80953fa7f2",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.ls1.gamma",
+        "initializer": "camera_head.trunk.3.ls1.gamma",
+        "raw_sha256": "126efffb584cd01fd4c19dedf64ac38d16f963ec987da1f501e2e8c21af3bfab",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.norm2.weight",
+        "initializer": "camera_head.trunk.3.norm2.weight",
+        "raw_sha256": "bd5f681c404580612028eb1e84ccbd47acb2cc8dc4445abf84a09472662955ec",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.norm2.bias",
+        "initializer": "camera_head.trunk.3.norm2.bias",
+        "raw_sha256": "7149736c38f2389dd7d1c19a6499b51468f0ca375f410fd0ab70d1e063842fc9",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.mlp.fc1.weight",
+        "initializer": "camera_head.trunk.3.mlp.fc1.weight",
+        "raw_sha256": "bd3d1a410e5ffa622728e7a1e27a11d1760f64cea98437418ecbb17434d6d6c8",
+        "shape": [
+          8192,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.mlp.fc1.bias",
+        "initializer": "camera_head.trunk.3.mlp.fc1.bias",
+        "raw_sha256": "c7776c391b7ddda60d92cdfb2a90db75a53c0fa3ae4f7239f25df8621b13373e",
+        "shape": [
+          8192
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.mlp.fc2.weight",
+        "initializer": "camera_head.trunk.3.mlp.fc2.weight",
+        "raw_sha256": "84005d5b6f0b0b844129ea1861b7baae5ac2f795ce5fbf70ca06fc176076494f",
+        "shape": [
+          2048,
+          8192
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.mlp.fc2.bias",
+        "initializer": "camera_head.trunk.3.mlp.fc2.bias",
+        "raw_sha256": "85304722371eaa685a3bf19d873dc34f85f11773ea6a8bfb065c42df29cc18ff",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk.3.ls2.gamma",
+        "initializer": "camera_head.trunk.3.ls2.gamma",
+        "raw_sha256": "d695ae3f926a332dd6feff68a5029963abb8c86b4effeaef2ca2a3df3b288c17",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "token_norm.weight",
+        "initializer": "camera_head.token_norm.weight",
+        "raw_sha256": "341c3d357ebf7e7b64808941272fb6f6fab2fa188e56cdfebf53dbd0824acf6d",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "token_norm.bias",
+        "initializer": "camera_head.token_norm.bias",
+        "raw_sha256": "b2d7df8ad51595444c8851685cd156c0bc8f4e501a2591e589794234b84872bb",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk_norm.weight",
+        "initializer": "camera_head.trunk_norm.weight",
+        "raw_sha256": "73cd3a1577fa1b06c069a7ffd054e7bc35b384eb65682602df18aa73c9d4cc99",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "trunk_norm.bias",
+        "initializer": "camera_head.trunk_norm.bias",
+        "raw_sha256": "3c16fec210bfd7b2428a78b45aab460a2636f44919f3967cbbc026c81854c6b3",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "embed_pose.weight",
+        "initializer": "camera_head.embed_pose.weight",
+        "raw_sha256": "7575cec917cf4d9b7d9704c0d55f55d2bbacca7b05efba5fe5cca3fb495c78ea",
+        "shape": [
+          2048,
+          9
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "embed_pose.bias",
+        "initializer": "camera_head.embed_pose.bias",
+        "raw_sha256": "e96cf41120453a880ee98c29f7917b52e5d1f6c863dbbc9a6e6d96104707cc0c",
+        "shape": [
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "poseLN_modulation.1.weight",
+        "initializer": "camera_head.poseLN_modulation.1.weight",
+        "raw_sha256": "4a6100a3d7fb7dd3543621aca4b642dc851646ed74763e8ed95883730644686b",
+        "shape": [
+          6144,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "poseLN_modulation.1.bias",
+        "initializer": "camera_head.poseLN_modulation.1.bias",
+        "raw_sha256": "552475e44dafa80d49ca91e3777cfde02fb6811937cbeac1bbfa9f799a2c03f0",
+        "shape": [
+          6144
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "pose_branch.fc1.weight",
+        "initializer": "camera_head.pose_branch.fc1.weight",
+        "raw_sha256": "81f34d7927f0d288ca251a1612570fcbe503bf045ebbec1aead1b65e4de3dcba",
+        "shape": [
+          1024,
+          2048
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "pose_branch.fc1.bias",
+        "initializer": "camera_head.pose_branch.fc1.bias",
+        "raw_sha256": "00d455d3fa01084c10b60c4b2dbd9caae2e8e55b79e2a630a5b1fd69d7cdea02",
+        "shape": [
+          1024
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "pose_branch.fc2.weight",
+        "initializer": "camera_head.pose_branch.fc2.weight",
+        "raw_sha256": "53c98734e99e38c6d6ceadc11ccfe1a206cd5ccf9043219533d990cc1be35e2b",
+        "shape": [
+          9,
+          1024
+        ],
+        "identity_aliases": []
+      },
+      {
+        "parameter": "pose_branch.fc2.bias",
+        "initializer": "camera_head.pose_branch.fc2.bias",
+        "raw_sha256": "20f62bd1376c045c4b05961f585847f662d1b6059b5693c27d4d7ab54e2db5a2",
+        "shape": [
+          9
+        ],
+        "identity_aliases": []
+      }
+    ]
+  },
+  "onnx": {
+    "path": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v16-camera-step/export112-r1/camera-step.onnx",
+    "bytes": 864766584,
+    "sha256": "f89fb0e66f43a3d3b94a76ec0124d4f521fa1ce9a6c93efab5e362d3a614eb9f",
+    "input_bindings": [
+      {
+        "index": 0,
+        "name": "camera_tokens",
+        "shape": [
+          1,
+          2,
+          2048
+        ]
+      },
+      {
+        "index": 1,
+        "name": "conditioning_pose",
+        "shape": [
+          1,
+          2,
+          9
+        ]
+      }
+    ],
+    "output_bindings": [
+      {
+        "index": 0,
+        "name": "pose_delta",
+        "shape": [
+          1,
+          2,
+          9
+        ]
+      }
+    ],
+    "node_count": 357,
+    "initializer_count": 68,
+    "both_dynamic_inputs_reach_output": true,
+    "opset": 17,
+    "constant_folding": false
+  },
+  "capture": {
+    "path": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v15-camera/capture112-r1/capture.json",
+    "sha256": "1c3234cfa65914a6f41634432153fa8ebb6dcf9c8d3eb3215f0955fc0ed000f1",
+    "checkpoint": {
+      "path": "/mnt/vggt-data/vggt-slam2/weights/model.pt",
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "artifacts": {
+      "input.npy": {
+        "bytes": 16512,
+        "sha256": "7416aa324ec053451cd8edd912bae1bd6678cd8befbf8feb418211579a2eb926",
+        "shape": [
+          1,
+          2,
+          2048
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "tensor_sha256": "5418f33df000856f8b456f12f4a8fa63709a8b2e4c28e1621af34fd769f1ba13"
+      },
+      "output.npy": {
+        "bytes": 200,
+        "sha256": "bfdd32c1c7a2f4e734e164f38ad96fe913d81bfebf96f6223045cf4f94d2df38",
+        "shape": [
+          1,
+          2,
+          9
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "tensor_sha256": "f191e3a0b8b593061d7d0abe4eb41d99f2d52c911510f0648a99aa4f27c0d5ad"
+      },
+      "pose-iterations.npz": {
+        "bytes": 1326,
+        "sha256": "ad6232baed9581c6f5e145f4f2d76292080b40be5cd80d58684e837363f2c35f",
+        "tensors": {
+          "iteration_0": {
+            "shape": [
+              1,
+              2,
+              9
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 72,
+            "sha256": "850f5f3259d69bf5e2aea00a88f492f216e8049752d54bfcb2110b65516b504a"
+          },
+          "iteration_1": {
+            "shape": [
+              1,
+              2,
+              9
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 72,
+            "sha256": "f6088b6136f7315d6d750e8e1137c2d979976f8c71d72b95f9fca084b42c0710"
+          },
+          "iteration_2": {
+            "shape": [
+              1,
+              2,
+              9
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 72,
+            "sha256": "4319ea290509575b08b3a45874a76131f4d51dce6ff09618bdf1ff0afe2af944"
+          },
+          "iteration_3": {
+            "shape": [
+              1,
+              2,
+              9
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 72,
+            "sha256": "f191e3a0b8b593061d7d0abe4eb41d99f2d52c911510f0648a99aa4f27c0d5ad"
+          }
+        }
+      }
+    }
+  },
+  "architecture": {
+    "input_shape": [
+      1,
+      2,
+      2048
+    ],
+    "output_shape": [
+      1,
+      2,
+      9
+    ],
+    "trunk_depth": 4,
+    "iterations": 4,
+    "trunk_calls_per_forward": 16,
+    "token_norm_eps": 1e-05,
+    "trunk_norm_eps": 1e-05,
+    "adaln_eps": 1e-06,
+    "adaln_elementwise_affine": false,
+    "qk_norm": false,
+    "rope": false,
+    "pose_encoding_type": "absT_quaR_FoV",
+    "target_dim": 9,
+    "trans_act": "linear",
+    "quat_act": "linear",
+    "fl_act": "relu",
+    "pose_branch_gelu_approximate": "none",
+    "modulation_activation": "SiLU",
+    "blocks": [
+      {
+        "index": 0,
+        "norm1_eps": 1e-05,
+        "norm2_eps": 1e-05,
+        "num_heads": 16,
+        "head_dim": 128,
+        "mlp_hidden_dim": 8192,
+        "gelu_approximate": "none",
+        "layerscale_shape": [
+          2048
+        ]
+      },
+      {
+        "index": 1,
+        "norm1_eps": 1e-05,
+        "norm2_eps": 1e-05,
+        "num_heads": 16,
+        "head_dim": 128,
+        "mlp_hidden_dim": 8192,
+        "gelu_approximate": "none",
+        "layerscale_shape": [
+          2048
+        ]
+      },
+      {
+        "index": 2,
+        "norm1_eps": 1e-05,
+        "norm2_eps": 1e-05,
+        "num_heads": 16,
+        "head_dim": 128,
+        "mlp_hidden_dim": 8192,
+        "gelu_approximate": "none",
+        "layerscale_shape": [
+          2048
+        ]
+      },
+      {
+        "index": 3,
+        "norm1_eps": 1e-05,
+        "norm2_eps": 1e-05,
+        "num_heads": 16,
+        "head_dim": 128,
+        "mlp_hidden_dim": 8192,
+        "gelu_approximate": "none",
+        "layerscale_shape": [
+          2048
+        ]
+      }
+    ],
+    "all_original_iterations_retained": true
+  },
+  "outer_iteration_contract": {
+    "iterations": 4,
+    "first_conditioning": "original_empty_pose_tokens_expanded",
+    "later_conditioning": "previous_unactivated_FP32_prediction",
+    "first_update": "prediction = delta",
+    "later_update": "prediction = prediction + delta",
+    "final_activation": "linear/linear/ReLU",
+    "FP32_scalar_additions_after_first_step": 54,
+    "activation_scalars": 18,
+    "all_four_original_iterations_array_equal": true,
+    "empty_weight": {
+      "shape": [
+        1,
+        1,
+        9
+      ],
+      "dtype": "float32",
+      "finite": true,
+      "bytes": 36,
+      "sha256": "a4f798a79001dce1fb81a8081beb6cefa8c37ecb8e19379f582367a40e41da83"
+    }
+  },
+  "source_and_input_hashes": {
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v15-camera/capture112-r1/capture.json": "1c3234cfa65914a6f41634432153fa8ebb6dcf9c8d3eb3215f0955fc0ed000f1",
+    "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/export-v15-camera-board.py": "3f97e96e6e9f7beaf5a5de56569774aa79fa17eb7e30664e54cdbbfec224a033",
+    "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/capture-v15-camera-board.py": "d50c217354b2f48f50626ff1ea2c98671d5611743ae0e97bed1c04b2991341a0",
+    "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/capture-v12-dino-block-board.py": "0485a463ef851f2f41230c5af95a9df41cb6e8536a4dd52c19ace1f683214d7b",
+    "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/export-v16-camera-step-board.py": "b26efe9c6cd62a2b7977e6e9c096cf0bd9bbf63076a063b9a332ef59565af258",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/__init__.py": "e3c28c7b775165b6844000eb69f44d104d6c3803ac7da5d59f6ac3ecfb46d9d8",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/vision_transformer.py": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/block.py": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/attention.py": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/patch_embed.py": "c2543ec293951d081db662b2125027625f6e632971630facaa7f911c2377d335",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/layer_scale.py": "83586eaa81ef11828b1001f3dd85747ba362df23ddb57c8454b2eba279f5a558",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/mlp.py": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/drop_path.py": "b9f8236e86054b9d9a71275efcad2a9ecaa1f86b529d4b8d6109ddb5e806f67a",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/swiglu_ffn.py": "af287ee5b7e6a2a5608ed78cf8d392a00191718825a3889c224ccaa0fd914089",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/utils/load_fn.py": "b0fe762f65497dca9a22069a3e4a37fd3508398c55383a8c1cb85c403fb3e9dd",
+    "/mnt/vggt-data/vggt-slam2/src/vggt_slam/runtime.py": "baf65a5afcfa98584e25b1ef85d7cae31507a7da2b4cc03f97d2015776796e8c",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/models/vggt.py": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/heads/camera_head.py": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/heads/head_act.py": "428bdb087f457b809a66e22d7d01147c1cb4dab43bb0d98bc61c7f05d8383a1e",
+    "/mnt/vggt-data/vggt-slam2/datasets/office_loop/frame_0001.jpg": "c23e57b9612522a10e61b1723749acddfe5b96b3a3642ec8c9db06e604d7f511",
+    "/mnt/vggt-data/vggt-slam2/datasets/office_loop/frame_0002.jpg": "dbffc9baa67d44e75a96a81a5f7e6582fdc07e86f3ffe9aa9bca76d3b717ae6f",
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v15-camera/capture112-r1/input.npy": "7416aa324ec053451cd8edd912bae1bd6678cd8befbf8feb418211579a2eb926",
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v15-camera/capture112-r1/output.npy": "bfdd32c1c7a2f4e734e164f38ad96fe913d81bfebf96f6223045cf4f94d2df38",
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v15-camera/capture112-r1/camera-state.npz": "8f4fd6accc1ca0899d86ecb2583659cdfdf3c8807888fdb1c0f827b552a5647c",
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v15-camera/capture112-r1/pose-iterations.npz": "ad6232baed9581c6f5e145f4f2d76292080b40be5cd80d58684e837363f2c35f"
+  },
+  "source_and_input_hashes_after": {
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v15-camera/capture112-r1/capture.json": "1c3234cfa65914a6f41634432153fa8ebb6dcf9c8d3eb3215f0955fc0ed000f1",
+    "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/export-v15-camera-board.py": "3f97e96e6e9f7beaf5a5de56569774aa79fa17eb7e30664e54cdbbfec224a033",
+    "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/capture-v15-camera-board.py": "d50c217354b2f48f50626ff1ea2c98671d5611743ae0e97bed1c04b2991341a0",
+    "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/capture-v12-dino-block-board.py": "0485a463ef851f2f41230c5af95a9df41cb6e8536a4dd52c19ace1f683214d7b",
+    "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/export-v16-camera-step-board.py": "b26efe9c6cd62a2b7977e6e9c096cf0bd9bbf63076a063b9a332ef59565af258",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/__init__.py": "e3c28c7b775165b6844000eb69f44d104d6c3803ac7da5d59f6ac3ecfb46d9d8",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/vision_transformer.py": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/block.py": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/attention.py": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/patch_embed.py": "c2543ec293951d081db662b2125027625f6e632971630facaa7f911c2377d335",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/layer_scale.py": "83586eaa81ef11828b1001f3dd85747ba362df23ddb57c8454b2eba279f5a558",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/mlp.py": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/drop_path.py": "b9f8236e86054b9d9a71275efcad2a9ecaa1f86b529d4b8d6109ddb5e806f67a",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/layers/swiglu_ffn.py": "af287ee5b7e6a2a5608ed78cf8d392a00191718825a3889c224ccaa0fd914089",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/utils/load_fn.py": "b0fe762f65497dca9a22069a3e4a37fd3508398c55383a8c1cb85c403fb3e9dd",
+    "/mnt/vggt-data/vggt-slam2/src/vggt_slam/runtime.py": "baf65a5afcfa98584e25b1ef85d7cae31507a7da2b4cc03f97d2015776796e8c",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/models/vggt.py": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/heads/camera_head.py": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+    "/mnt/vggt-data/vggt-slam2/src/third_party/vggt/vggt/heads/head_act.py": "428bdb087f457b809a66e22d7d01147c1cb4dab43bb0d98bc61c7f05d8383a1e",
+    "/mnt/vggt-data/vggt-slam2/datasets/office_loop/frame_0001.jpg": "c23e57b9612522a10e61b1723749acddfe5b96b3a3642ec8c9db06e604d7f511",
+    "/mnt/vggt-data/vggt-slam2/datasets/office_loop/frame_0002.jpg": "dbffc9baa67d44e75a96a81a5f7e6582fdc07e86f3ffe9aa9bca76d3b717ae6f",
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v15-camera/capture112-r1/input.npy": "7416aa324ec053451cd8edd912bae1bd6678cd8befbf8feb418211579a2eb926",
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v15-camera/capture112-r1/output.npy": "bfdd32c1c7a2f4e734e164f38ad96fe913d81bfebf96f6223045cf4f94d2df38",
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v15-camera/capture112-r1/camera-state.npz": "8f4fd6accc1ca0899d86ecb2583659cdfdf3c8807888fdb1c0f827b552a5647c",
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v15-camera/capture112-r1/pose-iterations.npz": "ad6232baed9581c6f5e145f4f2d76292080b40be5cd80d58684e837363f2c35f"
+  },
+  "source_and_inputs_unchanged": true,
+  "affinity_restored": true,
+  "peak_rss_mib": 3562.68359375,
+  "total_seconds_including_hash_reference_trace_IO": 24.37861299100041
+}

@@ -1,0 +1,112 @@
+{
+  "status": "passed",
+  "checks_passed": 7894,
+  "checks_failed": 0,
+  "check_counts": {
+    "completed_CPU_experiment": 1,
+    "source_coverage": 1,
+    "map_count": 1,
+    "rectification_metadata_shared": 1,
+    "R_identity_K_same_zero_output_distortion": 1,
+    "map_order_and_pair_node": 7,
+    "map_submission_anchor_identity": 7,
+    "prediction_actual_batch_identity": 7,
+    "map_event_actual_EOF_flag": 7,
+    "adoption_exact_anchor_node": 7,
+    "adoption_not_fresh_pose": 7,
+    "adoption_actual_EOF_flag": 7,
+    "adoption_model_pixel_affine": 7,
+    "adoption_tracking_pixel_affine": 7,
+    "adoption_K_tracking": 7,
+    "adoption_K_model_tracking": 7,
+    "adoption_J_independent_formula": 7,
+    "publication_exact_identity": 663,
+    "publication_age_arithmetic": 663,
+    "capture_decode_processing_order": 663,
+    "invalid_pose_not_filled": 148,
+    "pose_active_adoption_identity": 515,
+    "pose_not_historical_or_EOF_adoption": 515,
+    "pose_J_bound_to_adoption": 515,
+    "pose_K_bound_to_adoption": 515,
+    "pose_actual_received_graph_revision": 515,
+    "global_anchor_from_current": 515,
+    "global_current_homography": 515,
+    "global_projection": 515,
+    "global_projective_center": 515,
+    "rigid_null_independent_nonSim3": 515,
+    "projective_units_not_metric": 515,
+    "all_valid_projection_rows": 1,
+    "tail_gauges_have_no_fresh_pose": 1,
+    "source_files_unchanged": 1
+  },
+  "failures": [],
+  "scope": {
+    "images_read": false,
+    "model_inference_executed": false,
+    "tracking_executed": false,
+    "saved_matrix_only": true,
+    "physical_camera_latency_validated": false,
+    "accuracy_acceptance_validated": false,
+    "real_time_validated": false
+  },
+  "input_SHA256": {
+    "metrics.json": "124648b3629217978d2e94350c23966e2dd50a18c37fbfd7911d98fdf837ba93",
+    "events.jsonl": "c9fcb4582b3f4c1545ce023eaef0d8e6d6a64c7be97bec73014a4840ff1d6754",
+    "tracking.jsonl": "7fe7f5454ed75237139922b4b2fab38bf425afefe48bc2081ba83008824bed78",
+    "publications.jsonl": "c2849f511d8e37f26eea793875f478474c09ea55155b36f475cd1b500b169c1f",
+    "map.json": "ff922f59b22112f79d44ed8de8bdaf28180c38c9bb52950f1ad8097a6a22d085",
+    "predictions_0001.npz": "2fea6a245a3df07e55481895475cbc1ca691a658cb66170574e8bcf20a4b826c",
+    "predictions_0002.npz": "e6627409a660c10ab550356119c469027b8ccc3fbcd7a4e3f768d1e2916a2e74",
+    "predictions_0003.npz": "ba6f2484066b071fff395be4459bec344d9b6dd97aca998f7d9f93aa341663a6",
+    "predictions_0004.npz": "cf96382ade85213fc2f19301532f43907f828303000de897582b82e92dd1970e",
+    "predictions_0005.npz": "afd4820a23ec286b27908c2c8926211a69dfb3d9f35b940d54e92e496ba39bd1",
+    "predictions_0006.npz": "a7d9ef88e3879516696419c6c259092786ce762af9cb1da2822f4532db1a9a52",
+    "predictions_0007.npz": "8378eddbcc90bcf5ff95eb5e830d65b13814fe87a818462eae89c53ed239284a",
+    "vggt-v16-edge-trajectory-diagnostic-r2.json": "d7a502d9bbc5ddaefc8b2012f6427f635a8c34edf942fd6512d93cacf60379ff",
+    "vggt-v16-edge-bridge-review-r7.py": "984e1f68e0c0b44c122eabd92fe11beb0bad24385651e521dbe10eb8a91e0f2d"
+  },
+  "max_matrix_absolute_errors": {
+    "adoption_model_pixel_affine": 0.0,
+    "adoption_tracking_pixel_affine": 0.0,
+    "adoption_K_tracking": 0.0,
+    "adoption_K_model_tracking": 0.0,
+    "adoption_J_independent_formula": 2.220446049250313e-16,
+    "pose_J_bound_to_adoption": 0.0,
+    "pose_K_bound_to_adoption": 0.0,
+    "global_anchor_from_current": 2.220446049250313e-16,
+    "global_current_homography": 4.440892098500626e-16,
+    "global_projection": 2.2737367544323206e-13,
+    "global_projective_center": 1.0234868508263162e-16
+  },
+  "depth_adoptions": {
+    "total": 7,
+    "source_active": 5,
+    "after_source_eof": 2,
+    "EOF_adoptions_emitted_fresh_poses": false
+  },
+  "fresh_local_and_projective_poses": 515,
+  "rigid_global_poses": 0,
+  "rigid_null_reasons": {
+    "anchor_linear_part_has_nonuniform_scale_or_shear": 515
+  },
+  "pose_counts_by_gauge": {
+    "0": 90,
+    "1": 91,
+    "2": 90,
+    "3": 120,
+    "4": 124
+  },
+  "temporal_counts": {
+    "valid_published_before_actual_reader_end": 513,
+    "valid_published_at_or_after_actual_reader_end": 2,
+    "valid_published_after_last_scheduled_arrival": 3
+  },
+  "latency_p95_ms": 139.65398935324623,
+  "limitations": [
+    "Matrix arithmetic and log binding are not independent depth/SLAM accuracy proof.",
+    "No image pixels were read; rectified frontend/mapper equality is based on separate board checks, not this audit.",
+    "Latest-due replay skipped 97 original arrivals before decode; source coverage retains all798 as denominator and no realtime acceptance is claimed.",
+    "EOF depth adoptions are internal catch-up only. Final fresh observed rows published after the actual reader ended are counted separately.",
+    "No original518 accuracy baseline, endurance or hardware-camera test was performed."
+  ]
+}

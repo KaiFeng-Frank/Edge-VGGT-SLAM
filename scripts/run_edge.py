@@ -33,6 +33,10 @@ def arguments():
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--image-size", type=int, default=112)
     p.add_argument("--backend", choices=["cpu", "xnnpack-f16"], default="cpu")
+    p.add_argument("--camera-backend", choices=["cpu", "rknn-step"], default="cpu")
+    for name in ("model", "export-receipt", "compile-receipt", "capture-receipt"):
+        p.add_argument(f"--camera-{name}", type=Path)
+        p.add_argument(f"--camera-{name}-sha256")
     p.add_argument("--threads", type=int, default=2)
     p.add_argument("--mapper-cpus", type=cpu_list, default=(4, 5))
     p.add_argument("--frontend-cpus", type=cpu_list, default=(6, 7))
@@ -48,8 +52,11 @@ def arguments():
                    help="Measured-observation stride for delayed depth replay; live frames remain unchanged")
     p.add_argument("--tracking-width", type=int, default=480)
     p.add_argument("--tracking-features", type=int, default=800)
-    p.add_argument("--local-calibration", type=Path,
+    camera = p.add_mutually_exclusive_group()
+    camera.add_argument("--local-calibration", type=Path,
                    help="Diagnostic frontend K/distortion JSON; nonzero distortion disables global map association")
+    camera.add_argument("--rectify-calibration", type=Path,
+                   help="Undistort both capture and mapper with the same K; remap time is included in replay latency")
     p.add_argument("--max-loops", type=int, choices=[0, 1], default=0)
     p.add_argument("--salad-checkpoint", type=str)
     p.add_argument("--save-predictions", action="store_true")
@@ -63,7 +70,33 @@ def arguments():
         p.error("Checkpoint is missing")
     if a.max_loops and not a.salad_checkpoint:
         p.error("Loop closure requires an explicit local SALAD checkpoint")
+    try:
+        camera_configuration(a)
+    except ValueError as exc:
+        p.error(str(exc))
     return a
+
+
+def camera_configuration(a):
+    """Require a complete, explicit artifact chain for the fixed two-frame head."""
+    import re
+    enabled = getattr(a, "camera_backend", "cpu") == "rknn-step"
+    config = {}
+    for name in ("model", "export_receipt", "compile_receipt", "capture_receipt"):
+        path = getattr(a, f"camera_{name}", None)
+        digest = getattr(a, f"camera_{name}_sha256", None)
+        if not enabled:
+            if path is not None or digest is not None:
+                raise ValueError("Camera artifacts require --camera-backend rknn-step")
+            continue
+        if path is None or not path.is_file() or not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+            raise ValueError(f"RKNN camera requires an existing {name} and its explicit lowercase SHA256")
+        config["model_path" if name == "model" else name] = str(path.resolve())
+        config[{"model": "model_sha256", "export_receipt": "export_sha256",
+                "compile_receipt": "compile_sha256", "capture_receipt": "capture_sha256"}[name]] = digest
+    if enabled and a.max_loops:
+        raise ValueError("RKNN camera currently supports two-frame mapping with --max-loops 0 only")
+    return config if enabled else None
 
 
 def json_value(value):
@@ -118,21 +151,35 @@ def summarize_pose_timing(rows, source):
 def run(a):
     from vggt_slam.edge_mapping import atomic_json, mapping_worker, platform_sample
     from vggt_slam.timestamp_replay import TimestampReplay, read_rgb_index
+    camera_rknn = camera_configuration(a)
     rows = read_rgb_index(a.rgb_index)
     if a.max_frames:
         rows = rows[:a.max_frames]
+    rectifier = None
+    rectification_calibration = None
+    if getattr(a, "rectify_calibration", None) is not None:
+        if getattr(a, "local_calibration", None) is not None:
+            raise ValueError("Select either common rectification or frontend-only calibration")
+        from vggt_slam.image_rectification import CalibrationRectifier
+        rectification_calibration = json.loads(a.rectify_calibration.read_text())
+        rectifier = CalibrationRectifier(rectification_calibration)
     a.output.mkdir(parents=True, exist_ok=False)
     config = dict(checkpoint=str(a.checkpoint.resolve()), image_size=a.image_size, threads=a.threads,
                   cpus=a.mapper_cpus, backend=a.backend, output=str(a.output.resolve()),
                   max_loops=a.max_loops, salad_checkpoint=a.salad_checkpoint,
                   max_submaps=a.max_submaps, memory_limit_mib=a.mapper_memory_limit_mib,
-                  save_predictions=a.save_predictions)
+                  save_predictions=a.save_predictions,
+                  rectification_calibration=rectification_calibration, camera_rknn=camera_rknn)
     stats = dict(status="starting", ORB_used=False, npu_used=False, model_backbone="original_VGGT",
                  mapper_config=config, command=sys.argv, queues=dict(capture=1, mapping_jobs=1,
                  mapping_results=1, pending_geometry=1, candidate_workers=1),
                  real_time_validated=False, accuracy_validated=False, endurance_validated=False,
                  eight_gb_board_validated=False, loop_closure_nonblocking_validated=False,
                  initial_platform=platform_sample())
+    stats["camera_backend_requested"] = "rknn-step" if camera_rknn is not None else "cpu"
+    if rectifier is not None:
+        stats["common_rectification"] = rectifier.metadata()
+        stats["rectification_timing"] = "capture remap after scheduled arrival; mapper remap inside map processing"
     ctx = mp.get_context("spawn")
     jobs, results = ctx.Queue(1), ctx.Queue(1)
     worker = ctx.Process(target=mapping_worker, args=(config, jobs, results), name="vggt-mapper")
@@ -166,6 +213,8 @@ def run(a):
         if ready["kind"] != "ready":
             raise RuntimeError(ready.get("traceback", str(ready)))
         stats["mapper_ready"] = ready
+        if rectifier is not None and ready.get("rectification") != rectifier.metadata():
+            raise RuntimeError("Mapper and capture rectification configurations differ")
         os.sched_setaffinity(0, a.frontend_cpus)
         import cv2
         import numpy as np
@@ -174,7 +223,13 @@ def run(a):
         from vggt_slam.tracking_geometry import associate_pose
         cv2.setNumThreads(1)
         calibration = None
-        if getattr(a, "local_calibration", None) is not None:
+        if rectifier is not None:
+            info = rectifier.metadata()
+            calibration = dict(K=info["output_K"], distortion=info["output_distortion"],
+                               image_hw=info["image_hw"], source=info["source"])
+            stats["local_frontend_calibration"] = calibration
+            stats["calibration_scope"] = "capture and VGGT/SL4 use identical rectified RGB; frontend uses rectified K with zero distortion; mapper estimates its own K"
+        elif getattr(a, "local_calibration", None) is not None:
             calibration = json.loads(a.local_calibration.read_text())
             if (set(calibration) != {"K", "distortion", "image_hw", "source"}
                     or len(calibration["image_hw"]) != 2
@@ -192,7 +247,8 @@ def run(a):
         poses = (a.output / "tracking.jsonl").open("w")
         receipts = (a.output / "publications.jsonl").open("w")
         events = (a.output / "events.jsonl").open("w")
-        source = TimestampReplay(rows, cpus=a.capture_cpus)
+        source = (TimestampReplay(rows, cpus=a.capture_cpus, decoder=rectifier.decode_bgr)
+                  if rectifier is not None else TimestampReplay(rows, cpus=a.capture_cpus))
         source.start()
         stats["status"] = "running"
         eof_started = None
@@ -202,6 +258,9 @@ def run(a):
             except queue.Empty:
                 packet = None
             if packet is not None:
+                if packet.get("camera_runtime") is not None:
+                    stats["camera_runtime"] = packet["camera_runtime"]
+                    stats["npu_used"] = bool(packet["camera_runtime"].get("npu_used", False))
                 if packet["kind"] == "error":
                     raise RuntimeError(packet["traceback"])
                 if packet["kind"] == "stopped":

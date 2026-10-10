@@ -1,0 +1,1635 @@
+{
+  "status": "passed",
+  "kind": "independent_saved_array_and_actual_SDK_profile_review",
+  "reviewer_sha256": "ee170d3d46c2977d60382e8c040500d0817c9d7c9f0a77d44d0d87e624d9287b",
+  "checks_passed": 624,
+  "checks_failed": 0,
+  "check_counts": {
+    "chain": 12,
+    "SHA": 98,
+    "array_contract": 161,
+    "recurrence": 49,
+    "SDK": 45,
+    "timing": 44,
+    "cleanup": 34,
+    "numerics": 25,
+    "profile": 81,
+    "ORT": 18,
+    "unchanged": 57
+  },
+  "failures": [],
+  "scope": {
+    "saved_arrays_only": true,
+    "host_model_inference_executed": false,
+    "images_read": false,
+    "board_operations_executed_by_reviewer": false,
+    "frozen_helpers_modified": false,
+    "ORB_used": false,
+    "whole_VGGT_pipeline_integrated": false,
+    "full_model_quality_validated": false,
+    "real_time_validated": false
+  },
+  "source_and_artifact_SHA256": {
+    "ABI_runtime": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608",
+    "CPU_capture_receipt": "1c3234cfa65914a6f41634432153fa8ebb6dcf9c8d3eb3215f0955fc0ed000f1",
+    "CPU_output": "bfdd32c1c7a2f4e734e164f38ad96fe913d81bfebf96f6223045cf4f94d2df38",
+    "ORT:iterations-00.npz": "c6cead83f21ecbe38bd0c96d6c645309a792f6a7a7a2c1a31d82d0ceeb9d9b6f",
+    "ORT:iterations-01.npz": "bfd50a3d44159b862c59f0151bf26466ef9f5b135fe9ed9da4f52d891544e4b4",
+    "ORT_checker": "c0d09e91f4a76271ce58d8dd7eb7bb76b2f836337f5c838b466d3b18968584fc",
+    "board_ORT_receipt": "5b738e1addc7ed5907fe337872a3d8de9cd2d995e26bb61fbf5c6c8b67ccc401",
+    "compiler_wrapper": "1fd295bc2b42bdbf51fddb5a277b93a77d72b6131868763412e0d588ce427690",
+    "exporter": "b26efe9c6cd62a2b7977e6e9c096cf0bd9bbf63076a063b9a332ef59565af258",
+    "normal:head-iterations-00.npz": "83f5e0d47e0a9db6776eeac0cf53b587d8f869bb1c763caac03c4e6066f60e1c",
+    "normal:head-iterations-01.npz": "83f5e0d47e0a9db6776eeac0cf53b587d8f869bb1c763caac03c4e6066f60e1c",
+    "normal:head-iterations-02.npz": "83f5e0d47e0a9db6776eeac0cf53b587d8f869bb1c763caac03c4e6066f60e1c",
+    "normal:head-iterations-03.npz": "83f5e0d47e0a9db6776eeac0cf53b587d8f869bb1c763caac03c4e6066f60e1c",
+    "normal:output-00.npy": "7c899898a4477fe74c18429bfc3d60738a8c87997911b01075b0885c186cea38",
+    "normal:output-01.npy": "7c899898a4477fe74c18429bfc3d60738a8c87997911b01075b0885c186cea38",
+    "normal:output-02.npy": "7c899898a4477fe74c18429bfc3d60738a8c87997911b01075b0885c186cea38",
+    "normal:output-03.npy": "7c899898a4477fe74c18429bfc3d60738a8c87997911b01075b0885c186cea38",
+    "normal_receipt": "cd8520c9cbc359a18c5c1087754adeda05e6edb3ab43c5113f7d6475c5a1dd4f",
+    "profile:head-iterations-00.npz": "83f5e0d47e0a9db6776eeac0cf53b587d8f869bb1c763caac03c4e6066f60e1c",
+    "profile:head-iterations-01.npz": "83f5e0d47e0a9db6776eeac0cf53b587d8f869bb1c763caac03c4e6066f60e1c",
+    "profile:head-iterations-02.npz": "83f5e0d47e0a9db6776eeac0cf53b587d8f869bb1c763caac03c4e6066f60e1c",
+    "profile:head-iterations-03.npz": "83f5e0d47e0a9db6776eeac0cf53b587d8f869bb1c763caac03c4e6066f60e1c",
+    "profile:output-00.npy": "7c899898a4477fe74c18429bfc3d60738a8c87997911b01075b0885c186cea38",
+    "profile:output-01.npy": "7c899898a4477fe74c18429bfc3d60738a8c87997911b01075b0885c186cea38",
+    "profile:output-02.npy": "7c899898a4477fe74c18429bfc3d60738a8c87997911b01075b0885c186cea38",
+    "profile:output-03.npy": "7c899898a4477fe74c18429bfc3d60738a8c87997911b01075b0885c186cea38",
+    "profile_receipt": "f215453be83b7524fc56f48bdb5c25014295805514d41abffeaf6454343099bf",
+    "runtime": "dbe4fc933891581099084a569e2e847e15c582082680bf31bcf5dacc86210109",
+    "source:deploy/rk3588/reference/rknn_api_v2.3.2.h": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a",
+    "source:deploy/rk3588/validation/capture-v12-dino-block-board.py": "0485a463ef851f2f41230c5af95a9df41cb6e8536a4dd52c19ace1f683214d7b",
+    "source:deploy/rk3588/validation/capture-v15-camera-board.py": "d50c217354b2f48f50626ff1ea2c98671d5611743ae0e97bed1c04b2991341a0",
+    "source:deploy/rk3588/validation/export-v15-camera-board.py": "3f97e96e6e9f7beaf5a5de56569774aa79fa17eb7e30664e54cdbbfec224a033",
+    "source:deploy/rk3588/validation/export-v16-camera-step-board.py": "b26efe9c6cd62a2b7977e6e9c096cf0bd9bbf63076a063b9a332ef59565af258",
+    "source:deploy/rk3588/validation/run-v12-rknn-block-board.py": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608",
+    "source:deploy/rk3588/validation/run-v16-camera-step-board.py": "dbe4fc933891581099084a569e2e847e15c582082680bf31bcf5dacc86210109",
+    "source:third_party/vggt/vggt/heads/camera_head.py": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+    "source:third_party/vggt/vggt/heads/head_act.py": "428bdb087f457b809a66e22d7d01147c1cb4dab43bb0d98bc61c7f05d8383a1e",
+    "source:third_party/vggt/vggt/layers/__init__.py": "e3c28c7b775165b6844000eb69f44d104d6c3803ac7da5d59f6ac3ecfb46d9d8",
+    "source:third_party/vggt/vggt/layers/attention.py": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+    "source:third_party/vggt/vggt/layers/block.py": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+    "source:third_party/vggt/vggt/layers/drop_path.py": "b9f8236e86054b9d9a71275efcad2a9ecaa1f86b529d4b8d6109ddb5e806f67a",
+    "source:third_party/vggt/vggt/layers/layer_scale.py": "83586eaa81ef11828b1001f3dd85747ba362df23ddb57c8454b2eba279f5a558",
+    "source:third_party/vggt/vggt/layers/mlp.py": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa",
+    "source:third_party/vggt/vggt/layers/patch_embed.py": "c2543ec293951d081db662b2125027625f6e632971630facaa7f911c2377d335",
+    "source:third_party/vggt/vggt/layers/swiglu_ffn.py": "af287ee5b7e6a2a5608ed78cf8d392a00191718825a3889c224ccaa0fd914089",
+    "source:third_party/vggt/vggt/layers/vision_transformer.py": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+    "source:third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+    "source:third_party/vggt/vggt/models/vggt.py": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+    "source:third_party/vggt/vggt/utils/load_fn.py": "b0fe762f65497dca9a22069a3e4a37fd3508398c55383a8c1cb85c403fb3e9dd",
+    "source:vggt_slam/runtime.py": "baf65a5afcfa98584e25b1ef85d7cae31507a7da2b4cc03f97d2015776796e8c",
+    "step_ONNX": "f89fb0e66f43a3d3b94a76ec0124d4f521fa1ce9a6c93efab5e362d3a614eb9f",
+    "step_RKNN": "0821683fe1f9526c52777b0ef1ba45ba4c744375f9fd731f0f3d2068e4355af9",
+    "step_compile_receipt": "c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a",
+    "step_export_receipt": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
+    "step_reference:conditioning-seed.npy": "13f5d624904ba2787977993da059e3fbb36692e989533b9a4d73876f4c0de9be",
+    "step_reference:empty-pose-token.npy": "907c7a5c50eecbcea7e4012cf0e505de60507587dd8aa53aca47e5e2065bd4e9",
+    "step_reference:step-iterations.npz": "a2fcdd89a49ce2f5e02df7ba57e38b993ebb5cb0229d18a8b824df5d967beb9b"
+  },
+  "checkpoint_provenance": {
+    "official_bytes": 5026874952,
+    "official_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "board_receipts_checked_checkpoint": true,
+    "checkpoint_rehashed_by_reviewer": false
+  },
+  "model": {
+    "original_parameter_tensors_per_step": 68,
+    "original_FP32_parameter_bytes": 864698404,
+    "empty_seed_FP32_parameter_bytes": 36,
+    "compiled_RKNN_bytes": 434452453,
+    "input_shapes": [
+      [
+        1,
+        2,
+        2048
+      ],
+      [
+        1,
+        2,
+        9
+      ]
+    ],
+    "output_shape": [
+      1,
+      2,
+      9
+    ],
+    "required_steps_per_head": 4,
+    "core_mask": 7,
+    "SDK_version": "2.3.2",
+    "driver_version": "0.7.2"
+  },
+  "normal_and_separate_profile": {
+    "normal": {
+      "heads": 4,
+      "SDK_calls": 16,
+      "output_release_count": 16,
+      "one_context": true,
+      "context_destroyed": true,
+      "affinity_restored": true,
+      "init_flags": 0,
+      "first_head_ms": 192.65114500012714,
+      "subsequent_mean_ms": 212.70703566551674,
+      "calls": [
+        {
+          "head": 0,
+          "whole_head_ms": 192.65114500012714,
+          "summed_synchronous_SDK_IO_ms": 191.33251999301137,
+          "CPU_FP32_recurrence_and_final_activation_ms": 0.42233300337102264,
+          "versus_original_CPU": {
+            "array_equal": false,
+            "max_abs_error": 0.006448331288993359,
+            "rmse": 0.003661828297869303,
+            "relative_l2": 0.007872656637062313,
+            "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+          },
+          "iteration_errors": [
+            {
+              "iteration": 0,
+              "conditioning_equals_CPU": true,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              }
+            },
+            {
+              "iteration": 1,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.003080482594668865,
+                "rmse": 0.00117826714885209,
+                "relative_l2": 0.2260368174354563,
+                "raw_sha256": "b74ecd74e2dc9750bb1b36d9bc678ae699ffe3379fc564e6148b871d63577801"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0033580809831619263,
+                "rmse": 0.0017753357455602486,
+                "relative_l2": 0.003840968634091439,
+                "raw_sha256": "edc2cf79e08b6c590a306aa0caf4487a1d3674c85439c2bc41d63d6125aa85e5"
+              }
+            },
+            {
+              "iteration": 2,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0030835019424557686,
+                "rmse": 0.001541780485357603,
+                "relative_l2": 0.34796952694358424,
+                "raw_sha256": "0bf6643e6bc5e154904c0662e3fb79046e2ac4f5e48d77f8a46bd244f0912262"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006441578269004822,
+                "rmse": 0.0023957529349835833,
+                "relative_l2": 0.005173356855558902,
+                "raw_sha256": "dc05550e47881c249016d0604e8033906b4af9aff9bc4b699c715a801e5949c9"
+              }
+            },
+            {
+              "iteration": 3,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.005715173203498125,
+                "rmse": 0.0026237316896504485,
+                "relative_l2": 0.7072064283636146,
+                "raw_sha256": "f37b7f3573d1e30833ecf1c0279a8649b02b786c5d11f29b02d3af7dda9ac7a8"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006448331288993359,
+                "rmse": 0.003661828297869303,
+                "relative_l2": 0.007872656637062313,
+                "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+              }
+            }
+          ]
+        },
+        {
+          "head": 1,
+          "whole_head_ms": 213.56797999760602,
+          "summed_synchronous_SDK_IO_ms": 212.0428549897042,
+          "CPU_FP32_recurrence_and_final_activation_ms": 0.47804199130041525,
+          "versus_original_CPU": {
+            "array_equal": false,
+            "max_abs_error": 0.006448331288993359,
+            "rmse": 0.003661828297869303,
+            "relative_l2": 0.007872656637062313,
+            "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+          },
+          "iteration_errors": [
+            {
+              "iteration": 0,
+              "conditioning_equals_CPU": true,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              }
+            },
+            {
+              "iteration": 1,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.003080482594668865,
+                "rmse": 0.00117826714885209,
+                "relative_l2": 0.2260368174354563,
+                "raw_sha256": "b74ecd74e2dc9750bb1b36d9bc678ae699ffe3379fc564e6148b871d63577801"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0033580809831619263,
+                "rmse": 0.0017753357455602486,
+                "relative_l2": 0.003840968634091439,
+                "raw_sha256": "edc2cf79e08b6c590a306aa0caf4487a1d3674c85439c2bc41d63d6125aa85e5"
+              }
+            },
+            {
+              "iteration": 2,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0030835019424557686,
+                "rmse": 0.001541780485357603,
+                "relative_l2": 0.34796952694358424,
+                "raw_sha256": "0bf6643e6bc5e154904c0662e3fb79046e2ac4f5e48d77f8a46bd244f0912262"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006441578269004822,
+                "rmse": 0.0023957529349835833,
+                "relative_l2": 0.005173356855558902,
+                "raw_sha256": "dc05550e47881c249016d0604e8033906b4af9aff9bc4b699c715a801e5949c9"
+              }
+            },
+            {
+              "iteration": 3,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.005715173203498125,
+                "rmse": 0.0026237316896504485,
+                "relative_l2": 0.7072064283636146,
+                "raw_sha256": "f37b7f3573d1e30833ecf1c0279a8649b02b786c5d11f29b02d3af7dda9ac7a8"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006448331288993359,
+                "rmse": 0.003661828297869303,
+                "relative_l2": 0.007872656637062313,
+                "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+              }
+            }
+          ]
+        },
+        {
+          "head": 2,
+          "whole_head_ms": 214.06135500001255,
+          "summed_synchronous_SDK_IO_ms": 212.38864500628551,
+          "CPU_FP32_recurrence_and_final_activation_ms": 0.42845799907809123,
+          "versus_original_CPU": {
+            "array_equal": false,
+            "max_abs_error": 0.006448331288993359,
+            "rmse": 0.003661828297869303,
+            "relative_l2": 0.007872656637062313,
+            "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+          },
+          "iteration_errors": [
+            {
+              "iteration": 0,
+              "conditioning_equals_CPU": true,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              }
+            },
+            {
+              "iteration": 1,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.003080482594668865,
+                "rmse": 0.00117826714885209,
+                "relative_l2": 0.2260368174354563,
+                "raw_sha256": "b74ecd74e2dc9750bb1b36d9bc678ae699ffe3379fc564e6148b871d63577801"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0033580809831619263,
+                "rmse": 0.0017753357455602486,
+                "relative_l2": 0.003840968634091439,
+                "raw_sha256": "edc2cf79e08b6c590a306aa0caf4487a1d3674c85439c2bc41d63d6125aa85e5"
+              }
+            },
+            {
+              "iteration": 2,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0030835019424557686,
+                "rmse": 0.001541780485357603,
+                "relative_l2": 0.34796952694358424,
+                "raw_sha256": "0bf6643e6bc5e154904c0662e3fb79046e2ac4f5e48d77f8a46bd244f0912262"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006441578269004822,
+                "rmse": 0.0023957529349835833,
+                "relative_l2": 0.005173356855558902,
+                "raw_sha256": "dc05550e47881c249016d0604e8033906b4af9aff9bc4b699c715a801e5949c9"
+              }
+            },
+            {
+              "iteration": 3,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.005715173203498125,
+                "rmse": 0.0026237316896504485,
+                "relative_l2": 0.7072064283636146,
+                "raw_sha256": "f37b7f3573d1e30833ecf1c0279a8649b02b786c5d11f29b02d3af7dda9ac7a8"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006448331288993359,
+                "rmse": 0.003661828297869303,
+                "relative_l2": 0.007872656637062313,
+                "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+              }
+            }
+          ]
+        },
+        {
+          "head": 3,
+          "whole_head_ms": 210.49177199893165,
+          "summed_synchronous_SDK_IO_ms": 209.01943699573167,
+          "CPU_FP32_recurrence_and_final_activation_ms": 0.43924999044975266,
+          "versus_original_CPU": {
+            "array_equal": false,
+            "max_abs_error": 0.006448331288993359,
+            "rmse": 0.003661828297869303,
+            "relative_l2": 0.007872656637062313,
+            "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+          },
+          "iteration_errors": [
+            {
+              "iteration": 0,
+              "conditioning_equals_CPU": true,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              }
+            },
+            {
+              "iteration": 1,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.003080482594668865,
+                "rmse": 0.00117826714885209,
+                "relative_l2": 0.2260368174354563,
+                "raw_sha256": "b74ecd74e2dc9750bb1b36d9bc678ae699ffe3379fc564e6148b871d63577801"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0033580809831619263,
+                "rmse": 0.0017753357455602486,
+                "relative_l2": 0.003840968634091439,
+                "raw_sha256": "edc2cf79e08b6c590a306aa0caf4487a1d3674c85439c2bc41d63d6125aa85e5"
+              }
+            },
+            {
+              "iteration": 2,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0030835019424557686,
+                "rmse": 0.001541780485357603,
+                "relative_l2": 0.34796952694358424,
+                "raw_sha256": "0bf6643e6bc5e154904c0662e3fb79046e2ac4f5e48d77f8a46bd244f0912262"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006441578269004822,
+                "rmse": 0.0023957529349835833,
+                "relative_l2": 0.005173356855558902,
+                "raw_sha256": "dc05550e47881c249016d0604e8033906b4af9aff9bc4b699c715a801e5949c9"
+              }
+            },
+            {
+              "iteration": 3,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.005715173203498125,
+                "rmse": 0.0026237316896504485,
+                "relative_l2": 0.7072064283636146,
+                "raw_sha256": "f37b7f3573d1e30833ecf1c0279a8649b02b786c5d11f29b02d3af7dda9ac7a8"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006448331288993359,
+                "rmse": 0.003661828297869303,
+                "relative_l2": 0.007872656637062313,
+                "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+              }
+            }
+          ]
+        }
+      ],
+      "SDK_memory_bytes": {
+        "total_weight_size": 432555136,
+        "total_internal_size": 315584,
+        "total_dma_allocated_size": 869425152,
+        "total_sram_size": 0,
+        "free_sram_size": 0
+      }
+    },
+    "profile": {
+      "heads": 4,
+      "SDK_calls": 16,
+      "output_release_count": 16,
+      "one_context": true,
+      "context_destroyed": true,
+      "affinity_restored": true,
+      "init_flags": 8,
+      "first_head_ms": 202.59868699940853,
+      "subsequent_mean_ms": 231.17570400063414,
+      "calls": [
+        {
+          "head": 0,
+          "whole_head_ms": 202.59868699940853,
+          "summed_synchronous_SDK_IO_ms": 197.01327100483468,
+          "CPU_FP32_recurrence_and_final_activation_ms": 0.4739600044558756,
+          "versus_original_CPU": {
+            "array_equal": false,
+            "max_abs_error": 0.006448331288993359,
+            "rmse": 0.003661828297869303,
+            "relative_l2": 0.007872656637062313,
+            "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+          },
+          "iteration_errors": [
+            {
+              "iteration": 0,
+              "conditioning_equals_CPU": true,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              }
+            },
+            {
+              "iteration": 1,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.003080482594668865,
+                "rmse": 0.00117826714885209,
+                "relative_l2": 0.2260368174354563,
+                "raw_sha256": "b74ecd74e2dc9750bb1b36d9bc678ae699ffe3379fc564e6148b871d63577801"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0033580809831619263,
+                "rmse": 0.0017753357455602486,
+                "relative_l2": 0.003840968634091439,
+                "raw_sha256": "edc2cf79e08b6c590a306aa0caf4487a1d3674c85439c2bc41d63d6125aa85e5"
+              }
+            },
+            {
+              "iteration": 2,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0030835019424557686,
+                "rmse": 0.001541780485357603,
+                "relative_l2": 0.34796952694358424,
+                "raw_sha256": "0bf6643e6bc5e154904c0662e3fb79046e2ac4f5e48d77f8a46bd244f0912262"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006441578269004822,
+                "rmse": 0.0023957529349835833,
+                "relative_l2": 0.005173356855558902,
+                "raw_sha256": "dc05550e47881c249016d0604e8033906b4af9aff9bc4b699c715a801e5949c9"
+              }
+            },
+            {
+              "iteration": 3,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.005715173203498125,
+                "rmse": 0.0026237316896504485,
+                "relative_l2": 0.7072064283636146,
+                "raw_sha256": "f37b7f3573d1e30833ecf1c0279a8649b02b786c5d11f29b02d3af7dda9ac7a8"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006448331288993359,
+                "rmse": 0.003661828297869303,
+                "relative_l2": 0.007872656637062313,
+                "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+              }
+            }
+          ]
+        },
+        {
+          "head": 1,
+          "whole_head_ms": 231.4661070049624,
+          "summed_synchronous_SDK_IO_ms": 225.07452300487785,
+          "CPU_FP32_recurrence_and_final_activation_ms": 0.4993330003344454,
+          "versus_original_CPU": {
+            "array_equal": false,
+            "max_abs_error": 0.006448331288993359,
+            "rmse": 0.003661828297869303,
+            "relative_l2": 0.007872656637062313,
+            "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+          },
+          "iteration_errors": [
+            {
+              "iteration": 0,
+              "conditioning_equals_CPU": true,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              }
+            },
+            {
+              "iteration": 1,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.003080482594668865,
+                "rmse": 0.00117826714885209,
+                "relative_l2": 0.2260368174354563,
+                "raw_sha256": "b74ecd74e2dc9750bb1b36d9bc678ae699ffe3379fc564e6148b871d63577801"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0033580809831619263,
+                "rmse": 0.0017753357455602486,
+                "relative_l2": 0.003840968634091439,
+                "raw_sha256": "edc2cf79e08b6c590a306aa0caf4487a1d3674c85439c2bc41d63d6125aa85e5"
+              }
+            },
+            {
+              "iteration": 2,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0030835019424557686,
+                "rmse": 0.001541780485357603,
+                "relative_l2": 0.34796952694358424,
+                "raw_sha256": "0bf6643e6bc5e154904c0662e3fb79046e2ac4f5e48d77f8a46bd244f0912262"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006441578269004822,
+                "rmse": 0.0023957529349835833,
+                "relative_l2": 0.005173356855558902,
+                "raw_sha256": "dc05550e47881c249016d0604e8033906b4af9aff9bc4b699c715a801e5949c9"
+              }
+            },
+            {
+              "iteration": 3,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.005715173203498125,
+                "rmse": 0.0026237316896504485,
+                "relative_l2": 0.7072064283636146,
+                "raw_sha256": "f37b7f3573d1e30833ecf1c0279a8649b02b786c5d11f29b02d3af7dda9ac7a8"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006448331288993359,
+                "rmse": 0.003661828297869303,
+                "relative_l2": 0.007872656637062313,
+                "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+              }
+            }
+          ]
+        },
+        {
+          "head": 2,
+          "whole_head_ms": 230.86119000072358,
+          "summed_synchronous_SDK_IO_ms": 224.10852299799444,
+          "CPU_FP32_recurrence_and_final_activation_ms": 0.4759989897138439,
+          "versus_original_CPU": {
+            "array_equal": false,
+            "max_abs_error": 0.006448331288993359,
+            "rmse": 0.003661828297869303,
+            "relative_l2": 0.007872656637062313,
+            "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+          },
+          "iteration_errors": [
+            {
+              "iteration": 0,
+              "conditioning_equals_CPU": true,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              }
+            },
+            {
+              "iteration": 1,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.003080482594668865,
+                "rmse": 0.00117826714885209,
+                "relative_l2": 0.2260368174354563,
+                "raw_sha256": "b74ecd74e2dc9750bb1b36d9bc678ae699ffe3379fc564e6148b871d63577801"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0033580809831619263,
+                "rmse": 0.0017753357455602486,
+                "relative_l2": 0.003840968634091439,
+                "raw_sha256": "edc2cf79e08b6c590a306aa0caf4487a1d3674c85439c2bc41d63d6125aa85e5"
+              }
+            },
+            {
+              "iteration": 2,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0030835019424557686,
+                "rmse": 0.001541780485357603,
+                "relative_l2": 0.34796952694358424,
+                "raw_sha256": "0bf6643e6bc5e154904c0662e3fb79046e2ac4f5e48d77f8a46bd244f0912262"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006441578269004822,
+                "rmse": 0.0023957529349835833,
+                "relative_l2": 0.005173356855558902,
+                "raw_sha256": "dc05550e47881c249016d0604e8033906b4af9aff9bc4b699c715a801e5949c9"
+              }
+            },
+            {
+              "iteration": 3,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.005715173203498125,
+                "rmse": 0.0026237316896504485,
+                "relative_l2": 0.7072064283636146,
+                "raw_sha256": "f37b7f3573d1e30833ecf1c0279a8649b02b786c5d11f29b02d3af7dda9ac7a8"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006448331288993359,
+                "rmse": 0.003661828297869303,
+                "relative_l2": 0.007872656637062313,
+                "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+              }
+            }
+          ]
+        },
+        {
+          "head": 3,
+          "whole_head_ms": 231.19981499621645,
+          "summed_synchronous_SDK_IO_ms": 224.87968900531996,
+          "CPU_FP32_recurrence_and_final_activation_ms": 0.4497499976423569,
+          "versus_original_CPU": {
+            "array_equal": false,
+            "max_abs_error": 0.006448331288993359,
+            "rmse": 0.003661828297869303,
+            "relative_l2": 0.007872656637062313,
+            "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+          },
+          "iteration_errors": [
+            {
+              "iteration": 0,
+              "conditioning_equals_CPU": true,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0037349951453506947,
+                "rmse": 0.0019380236266747517,
+                "relative_l2": 0.00419499459812684,
+                "raw_sha256": "5556aa0a37a5ccdb458c59245643b89948e71b6da0afb3e71eb02cd6a147dea7"
+              }
+            },
+            {
+              "iteration": 1,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.003080482594668865,
+                "rmse": 0.00117826714885209,
+                "relative_l2": 0.2260368174354563,
+                "raw_sha256": "b74ecd74e2dc9750bb1b36d9bc678ae699ffe3379fc564e6148b871d63577801"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0033580809831619263,
+                "rmse": 0.0017753357455602486,
+                "relative_l2": 0.003840968634091439,
+                "raw_sha256": "edc2cf79e08b6c590a306aa0caf4487a1d3674c85439c2bc41d63d6125aa85e5"
+              }
+            },
+            {
+              "iteration": 2,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.0030835019424557686,
+                "rmse": 0.001541780485357603,
+                "relative_l2": 0.34796952694358424,
+                "raw_sha256": "0bf6643e6bc5e154904c0662e3fb79046e2ac4f5e48d77f8a46bd244f0912262"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006441578269004822,
+                "rmse": 0.0023957529349835833,
+                "relative_l2": 0.005173356855558902,
+                "raw_sha256": "dc05550e47881c249016d0604e8033906b4af9aff9bc4b699c715a801e5949c9"
+              }
+            },
+            {
+              "iteration": 3,
+              "conditioning_equals_CPU": false,
+              "delta_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.005715173203498125,
+                "rmse": 0.0026237316896504485,
+                "relative_l2": 0.7072064283636146,
+                "raw_sha256": "f37b7f3573d1e30833ecf1c0279a8649b02b786c5d11f29b02d3af7dda9ac7a8"
+              },
+              "activation_vs_original_CPU": {
+                "array_equal": false,
+                "max_abs_error": 0.006448331288993359,
+                "rmse": 0.003661828297869303,
+                "relative_l2": 0.007872656637062313,
+                "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+              }
+            }
+          ]
+        }
+      ],
+      "SDK_memory_bytes": {
+        "total_weight_size": 432555136,
+        "total_internal_size": 315584,
+        "total_dma_allocated_size": 869425152,
+        "total_sram_size": 0,
+        "free_sram_size": 0
+      }
+    }
+  },
+  "actual_operator_placement": {
+    "profile_tables_checked": 16,
+    "unique_graph_rows_per_step": 62,
+    "per_step": {
+      "NPU_internal": 57,
+      "CPU_internal_Reshape": 2,
+      "CPU_input_output": 3
+    },
+    "per_complete_four_step_head": {
+      "NPU_operator_executions": 228,
+      "CPU_internal_Reshape_executions": 8,
+      "CPU_input_output_executions": 12
+    },
+    "all_profile_calls": {
+      "NPU_operator_executions": 912,
+      "CPU_internal_Reshape_executions": 32,
+      "CPU_input_output_executions": 48
+    },
+    "unique_operator_type_counts": [
+      {
+        "target": "CPU",
+        "operator": "InputOperator",
+        "count": 2
+      },
+      {
+        "target": "CPU",
+        "operator": "OutputOperator",
+        "count": 1
+      },
+      {
+        "target": "CPU",
+        "operator": "Reshape",
+        "count": 2
+      },
+      {
+        "target": "NPU",
+        "operator": "Add",
+        "count": 3
+      },
+      {
+        "target": "NPU",
+        "operator": "Conv",
+        "count": 6
+      },
+      {
+        "target": "NPU",
+        "operator": "ConvAdd",
+        "count": 8
+      },
+      {
+        "target": "NPU",
+        "operator": "ConvExGelu",
+        "count": 5
+      },
+      {
+        "target": "NPU",
+        "operator": "ConvExSwish",
+        "count": 1
+      },
+      {
+        "target": "NPU",
+        "operator": "Mul",
+        "count": 2
+      },
+      {
+        "target": "NPU",
+        "operator": "Reshape",
+        "count": 9
+      },
+      {
+        "target": "NPU",
+        "operator": "Split",
+        "count": 5
+      },
+      {
+        "target": "NPU",
+        "operator": "Transpose",
+        "count": 3
+      },
+      {
+        "target": "NPU",
+        "operator": "exNorm",
+        "count": 11
+      },
+      {
+        "target": "NPU",
+        "operator": "exSDPAttention",
+        "count": 4
+      }
+    ],
+    "CPU_internal_names": [
+      "Reshape:conditioning_pose_rs",
+      "Reshape:pose_delta-rs"
+    ],
+    "all_graph_operators_on_NPU": false,
+    "FP32_outer_recurrence_on_CPU": true,
+    "first_update_is_delta_not_seed_plus_delta": true,
+    "CPU_additions_per_head": 54,
+    "CPU_final_activation_output_scalars": 18,
+    "profiles": [
+      {
+        "head": 0,
+        "iteration": 0,
+        "profile_raw_sha256": "809824c8f542193d5b97361baa09f5747136a4913aed06299cc5ed8dd722da77",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 45,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 66,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 39732,
+        "CPU_internal_time_us": 111
+      },
+      {
+        "head": 0,
+        "iteration": 1,
+        "profile_raw_sha256": "d1d97fe8d0ba0ed73c1f30d2504e41264f2db64251edcc6df77f6f3ae1e39aff",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 46,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 102,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 42403,
+        "CPU_internal_time_us": 148
+      },
+      {
+        "head": 0,
+        "iteration": 2,
+        "profile_raw_sha256": "0ec43b1ca57ff3d4c1f80832bf39aa600e219e908535d4b3e660d011e8e909e6",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 84,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 168,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 49484,
+        "CPU_internal_time_us": 252
+      },
+      {
+        "head": 0,
+        "iteration": 3,
+        "profile_raw_sha256": "850c7691f6795dff435ff1f76807fc25557156024c34322c284875b921c31c41",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 145,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 165,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 49619,
+        "CPU_internal_time_us": 310
+      },
+      {
+        "head": 1,
+        "iteration": 0,
+        "profile_raw_sha256": "8808f016195514eceb4fcd356c10a29a02fbf710196fe8c2a336aabf335d04f3",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 148,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 167,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 47051,
+        "CPU_internal_time_us": 315
+      },
+      {
+        "head": 1,
+        "iteration": 1,
+        "profile_raw_sha256": "5cd63fb21014ada53e376ad1a2c10ad9eb32c0a6e2f1398adfff160ff351c044",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 143,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 167,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 51769,
+        "CPU_internal_time_us": 310
+      },
+      {
+        "head": 1,
+        "iteration": 2,
+        "profile_raw_sha256": "bf233e94912f567a66b41e54706a2a7a4007644e8a812a0e9a58d26f9202895b",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 141,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 166,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 49635,
+        "CPU_internal_time_us": 307
+      },
+      {
+        "head": 1,
+        "iteration": 3,
+        "profile_raw_sha256": "4d562ff2037a2d3532e9b41a772b35aa070511aaad6d773bb7012e8f61915a50",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 141,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 168,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 52215,
+        "CPU_internal_time_us": 309
+      },
+      {
+        "head": 2,
+        "iteration": 0,
+        "profile_raw_sha256": "ca75d6302c63d1a3b9ef92f91e2ceed7277191e58ca60fe5f482aa87684405be",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 149,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 172,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 48896,
+        "CPU_internal_time_us": 321
+      },
+      {
+        "head": 2,
+        "iteration": 1,
+        "profile_raw_sha256": "237a5bcd5c8fee0ca15be4e33dd77d483869229901c9d97551cdd2420b1a88a5",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 198,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 169,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 49524,
+        "CPU_internal_time_us": 367
+      },
+      {
+        "head": 2,
+        "iteration": 2,
+        "profile_raw_sha256": "38d5c597e77fd5ed85941e071a5accbb11a43cc357b7e79008c9a96657b9b8a3",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 141,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 172,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 49843,
+        "CPU_internal_time_us": 313
+      },
+      {
+        "head": 2,
+        "iteration": 3,
+        "profile_raw_sha256": "3df0cb5e6ed610c586557ad1c10c8a5f1a868f83ab02904551f48411c84e767c",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 144,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 165,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 51325,
+        "CPU_internal_time_us": 309
+      },
+      {
+        "head": 3,
+        "iteration": 0,
+        "profile_raw_sha256": "f064cc79d18bad800c39af244b9308e7fb0443f061a795d12693290755cec186",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 150,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 167,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 48860,
+        "CPU_internal_time_us": 317
+      },
+      {
+        "head": 3,
+        "iteration": 1,
+        "profile_raw_sha256": "f677720f1720f0c0fc923cd724a4d1187668160505e3caf54abc3538e9cd773d",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 140,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 168,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 51290,
+        "CPU_internal_time_us": 308
+      },
+      {
+        "head": 3,
+        "iteration": 2,
+        "profile_raw_sha256": "0c78bff1ee6cde1aae3b710c77334eb16f1681786a8d9801385f74c8c30b6bb4",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 144,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 170,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 49685,
+        "CPU_internal_time_us": 314
+      },
+      {
+        "head": 3,
+        "iteration": 3,
+        "profile_raw_sha256": "2bdcd383a2237e1277b21759b48d1b93e15e5dce2736d6109a4361c4f973f4d0",
+        "NPU_operators": 57,
+        "CPU_internal": [
+          {
+            "id": 3,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 140,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:conditioning_pose_rs"
+          },
+          {
+            "id": 61,
+            "operator_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "cycles_DDR_NPU_total": [
+              0,
+              0,
+              0
+            ],
+            "time_us": 166,
+            "workload_core012": "0.0%/0.0%/0.0%",
+            "full_name": "Reshape:pose_delta-rs"
+          }
+        ],
+        "CPU_IO_operators": 3,
+        "NPU_time_us": 50488,
+        "CPU_internal_time_us": 306
+      }
+    ]
+  },
+  "final_output": {
+    "all_eight_outputs_array_equal": true,
+    "file_sha256": "7c899898a4477fe74c18429bfc3d60738a8c87997911b01075b0885c186cea38",
+    "error_versus_original_CPU": {
+      "array_equal": false,
+      "max_abs_error": 0.006448331288993359,
+      "rmse": 0.003661828297869303,
+      "relative_l2": 0.007872656637062313,
+      "raw_sha256": "8cafc5aba49e0206993d87e69f0212d604fee1d3bbf15d077104a78688c98c96"
+    },
+    "error_is_diagnostic_not_accuracy_acceptance": true
+  },
+  "board_CPU_reference_mean_ms": 1253.9935426660425,
+  "ORT_validation": {
+    "actual_board_ORT_calls": 16,
+    "raw_token_inputs": 2,
+    "one_step_captured_conditioning_separate_from_closed_loop": true,
+    "saved_own_FP32_closed_loop_recurrence_checked": true,
+    "CPU_comparison_tolerance": {
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "predefined": true
+    },
+    "NPU_inference": false
+  },
+  "timing_scope": {
+    "normal_head_includes": [
+      "four synchronous inputs_set/run/outputs_get/copy/release steps",
+      "FP32 recurrence and final original activation",
+      "Python dispatch and tiny-array copies"
+    ],
+    "normal_head_excludes": [
+      "context initialization",
+      "file writes and reference comparisons",
+      "SHA calculations",
+      "context destruction"
+    ],
+    "profile_is_separate_not_performance_benchmark": true,
+    "CPU_and_NPU_runs_are_noncontrolled_single_input_observations": true
+  },
+  "limitations": [
+    "SDK DMA is SDK-reported allocation, not whole-process RSS or whole-pipeline RAM.",
+    "CPU I/O, two internal reshapes, and CPU FP32 recurrence/activation are explicit; this is not an all-NPU head.",
+    "Later delta comparisons use different NPU/CPU recurrent conditioning; they are not same-input kernel-error measurements.",
+    "Only one original raw-camera-token input was exercised on the NPU, repeatedly.",
+    "No physical-camera, 20Hz tracking, three-second map, GT accuracy or endurance acceptance follows from this isolated head."
+  ]
+}

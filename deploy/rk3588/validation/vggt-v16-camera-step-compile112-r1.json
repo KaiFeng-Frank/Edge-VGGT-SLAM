@@ -1,0 +1,67 @@
+{
+  "status": "compiled_not_runtime_validated",
+  "model_inference_executed": false,
+  "production_changed": false,
+  "realtime_validated": false,
+  "input": {
+    "path": "/dev/shm/vggt-v16-camera-step-export112-r1/camera-step.onnx",
+    "sha256": "f89fb0e66f43a3d3b94a76ec0124d4f521fa1ce9a6c93efab5e362d3a614eb9f"
+  },
+  "script_sha256": "a40bf09e53ef9b378db4781be18f9e53f824afcc809c9009e0a65f4f0f91b4e5",
+  "machine": "x86_64",
+  "python": "3.11.14 | packaged by conda-forge | (main, Jan 26 2026, 23:48:32) [GCC 14.3.0]",
+  "configuration": {
+    "target_platform": "rk3588",
+    "float_dtype": "float16",
+    "optimization_level": 3,
+    "do_quantization": false
+  },
+  "operations": [
+    {
+      "name": "config",
+      "code": 0,
+      "seconds": 7.077399641275406e-05
+    },
+    {
+      "name": "load_onnx",
+      "code": 0,
+      "seconds": 3.54501912323758
+    },
+    {
+      "name": "build",
+      "code": 0,
+      "seconds": 15.118978595361114
+    },
+    {
+      "name": "export_rknn",
+      "code": 0,
+      "seconds": 0.07463876903057098
+    }
+  ],
+  "versions": {
+    "rknn-toolkit2": "2.3.2",
+    "torch": "2.4.0+cpu",
+    "numpy": "1.26.4",
+    "onnx": "1.16.2",
+    "onnxruntime": "1.20.1",
+    "protobuf": "4.25.4"
+  },
+  "output": {
+    "path": "/dev/shm/vggt-v16-camera-step-compile-r1/block.rknn",
+    "size": 434452453,
+    "sha256": "0821683fe1f9526c52777b0ef1ba45ba4c744375f9fd731f0f3d2068e4355af9"
+  },
+  "released": true,
+  "peak_rss_mib": 4853.93359375,
+  "kind": "original_shared_CameraHead_step_RKNN_host_compilation",
+  "wrapper_sha256": "1fd295bc2b42bdbf51fddb5a277b93a77d72b6131868763412e0d588ce427690",
+  "frozen_compiler_sha256": "a40bf09e53ef9b378db4781be18f9e53f824afcc809c9009e0a65f4f0f91b4e5",
+  "export_receipt_sha256": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
+  "exporter_script_sha256": "b26efe9c6cd62a2b7977e6e9c096cf0bd9bbf63076a063b9a332ef59565af258",
+  "trunk_blocks_per_step": 4,
+  "required_outer_iterations": 4,
+  "original_parameter_tensors_per_graph": 68,
+  "host_model_inference_executed": false,
+  "packed_weight_sharing_runtime_verified": false,
+  "wrapper_and_frozen_compiler_unchanged": true
+}
