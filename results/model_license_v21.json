@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-11",
+  "scope": "License/source metadata review; no model inference, checkpoint payload download, board operations or deployment.",
+  "conclusion": {
+    "root_code_license": "BSD-2-Clause",
+    "root_license_unchanged": true,
+    "original_checkpoint_license": "CC-BY-NC-4.0",
+    "bsd_grants_model_commercial_rights": false,
+    "original_weights_relicensed_by_current_meta_code_license": false,
+    "pinned_spark_code_license": "CC-BY-NC-4.0",
+    "compiled_weight_artifacts_are_not_relicensed_by_this_project": true,
+    "checkpoints_or_weight_bearing_compiled_models_redistributed": false,
+    "licenses_for_commercial_or_later_checkpoints_applied_to_original": false
+  },
+  "model_identity": {
+    "id": "facebook/VGGT-1B",
+    "revision": "860abec7937da0a4c03c41d3c269c366e82abdf9",
+    "revision_date": "2025-03-17T12:18:15Z",
+    "filename": "model.pt",
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "official_model_git_pointer_blob": "3eb19931ec6650af15800cedaa5c89493b1b9759",
+    "upload_revision": "d88e637d32a505f4a64de03f8588547b7f7d3ba6",
+    "upload_date": "2025-03-14T21:45:34Z",
+    "upload_and_current_lfs_identity_equal": true,
+    "model_card_license_value": "cc-by-nc-4.0",
+    "model_card_license_line": 5,
+    "standalone_license_file_at_current_revision": null,
+    "historical_upload_card_contains_explicit_license": false,
+    "historical_evidence_boundary": "The upload tree proves the same weight payload, not an explicit license declaration in that older card. Current model-card licensing and Meta original-checkpoint notice are separate evidence."
+  },
+  "code_license_history": {
+    "legacy_meta_commit": "40eb1c5cf31ad0e6f63c9a9ba97aa5e7a872c86b",
+    "legacy_license": "CC-BY-NC-4.0",
+    "relicense_commit": "a1179fe98aea9bca4fa1cb618f49ab2fa9dd8f88",
+    "relicense_date": "2025-07-29T19:07:37Z",
+    "current_meta_commit": "a288dd0f14786c93483e45524328726ab7b1b4ce",
+    "current_license": "VGGT License v1 with Acceptable Use Policy",
+    "pinned_spark_commit": "6e6e16107b88e8e76c751826af10d4295d87ecd2",
+    "pinned_spark_license_matches_legacy_meta_license_bytes": true,
+    "automatic_relicense_of_pinned_fork_assumed": false
+  },
+  "commercial_checkpoint_comparison": {
+    "id": "facebook/VGGT-1B-Commercial",
+    "used": false,
+    "observed_revision": "ebb29a532abe92960eeb6903a5530f16990ef4ab",
+    "url": "https://huggingface.co/facebook/VGGT-1B-Commercial",
+    "model_card_license_name": "vggt-aup-license",
+    "model_card_license_url": "https://huggingface.co/facebook/VGGT-1B-Commercial/blob/main/LICENSE",
+    "gated": "manual",
+    "license_text_downloaded": false,
+    "scope": "Separate release and terms; no commercial rights for the original VGGT-1B SHA are inferred from it."
+  },
+  "compiled_artifact_scope": {
+    "source_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "interpretation": "Weight material in local ONNX/RKNN exports retains the original licensing conditions; using a BSD wrapper or technical format conversion does not remove non-commercial conditions.",
+    "legal_source": "https://creativecommons.org/licenses/by-nc/4.0/legalcode.en",
+    "relevant_sections": [
+      "2(a)(1)",
+      "2(a)(4)",
+      "3(a)"
+    ],
+    "technical_modification_equals_adapted_material_assumed": false,
+    "rockchip_sdk_terms_independent": true
+  },
+  "sources": [
+    {
+      "id": "original_model_card",
+      "url": "https://huggingface.co/facebook/VGGT-1B/raw/860abec7937da0a4c03c41d3c269c366e82abdf9/README.md",
+      "revision": "860abec7937da0a4c03c41d3c269c366e82abdf9",
+      "bytes": 2060,
+      "sha256": "d666ecaba89db88cb66bf06db6daddfdc2400e13f2a39e39c84e888b27fbc615",
+      "one_based_lines": [
+        5
+      ]
+    },
+    {
+      "id": "original_current_tree",
+      "url": "https://huggingface.co/api/models/facebook/VGGT-1B/tree/860abec7937da0a4c03c41d3c269c366e82abdf9?recursive=false&expand=false",
+      "revision": "860abec7937da0a4c03c41d3c269c366e82abdf9",
+      "bytes": 893,
+      "sha256": "092cf40708579e5944965773e7bc002667a8290c8146880880b314c6c03083ea",
+      "one_based_lines": null
+    },
+    {
+      "id": "original_upload_tree",
+      "url": "https://huggingface.co/api/models/facebook/VGGT-1B/tree/d88e637d32a505f4a64de03f8588547b7f7d3ba6?recursive=false&expand=false",
+      "revision": "d88e637d32a505f4a64de03f8588547b7f7d3ba6",
+      "bytes": 892,
+      "sha256": "3485a1cc3ce0ed22f1078a6a55d061030157c888eef4e893639d539b1ca911d0",
+      "one_based_lines": null
+    },
+    {
+      "id": "original_upload_card",
+      "url": "https://huggingface.co/facebook/VGGT-1B/raw/d88e637d32a505f4a64de03f8588547b7f7d3ba6/README.md",
+      "revision": "d88e637d32a505f4a64de03f8588547b7f7d3ba6",
+      "bytes": 320,
+      "sha256": "45bc25cecc3b749773abd8d41fd811581d5325e32a3ab4c1232a74bfad6d5bb8",
+      "one_based_lines": null
+    },
+    {
+      "id": "meta_current_readme",
+      "url": "https://raw.githubusercontent.com/facebookresearch/vggt/a288dd0f14786c93483e45524328726ab7b1b4ce/README.md",
+      "revision": "a288dd0f14786c93483e45524328726ab7b1b4ce",
+      "bytes": 14404,
+      "sha256": "56426b9aea25174ccbc4c2c37a3a22107fd8b5ac9dc5a8bf008e7457402ed3bd",
+      "one_based_lines": [
+        36,
+        280,
+        281,
+        283
+      ]
+    },
+    {
+      "id": "meta_current_code_license",
+      "url": "https://raw.githubusercontent.com/facebookresearch/vggt/a288dd0f14786c93483e45524328726ab7b1b4ce/LICENSE.txt",
+      "revision": "a288dd0f14786c93483e45524328726ab7b1b4ce",
+      "bytes": 10722,
+      "sha256": "b94e46746792d1adfa0ebdbccada5d4576d244ae230be9de8a46b5868fff001b",
+      "one_based_lines": [
+        1,
+        3,
+        17,
+        25,
+        30,
+        36
+      ]
+    },
+    {
+      "id": "meta_legacy_code_license",
+      "url": "https://raw.githubusercontent.com/facebookresearch/vggt/40eb1c5cf31ad0e6f63c9a9ba97aa5e7a872c86b/LICENSE.txt",
+      "revision": "40eb1c5cf31ad0e6f63c9a9ba97aa5e7a872c86b",
+      "bytes": 19332,
+      "sha256": "1d8ca66080a2701508a70be4ddad4be28c509bcc3397a682fb8edf767fdd7a00",
+      "one_based_lines": [
+        1
+      ]
+    },
+    {
+      "id": "spark_pinned_code_license",
+      "url": "https://raw.githubusercontent.com/MIT-SPARK/VGGT_SPARK/6e6e16107b88e8e76c751826af10d4295d87ecd2/LICENSE.txt",
+      "revision": "6e6e16107b88e8e76c751826af10d4295d87ecd2",
+      "bytes": 19332,
+      "sha256": "1d8ca66080a2701508a70be4ddad4be28c509bcc3397a682fb8edf767fdd7a00",
+      "one_based_lines": [
+        1
+      ]
+    },
+    {
+      "id": "slam_pinned_code_license",
+      "url": "https://raw.githubusercontent.com/MIT-SPARK/VGGT-SLAM/35327ac28b7d193df9ccc39ba6346052bb6f1207/LICENSE",
+      "revision": "35327ac28b7d193df9ccc39ba6346052bb6f1207",
+      "bytes": 1298,
+      "sha256": "dc493d7ac51f587fd71184315999c792ead523bf46da0f0cbf3e26a577b1a580",
+      "one_based_lines": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "commercial_model_metadata",
+      "url": "https://huggingface.co/api/models/facebook/VGGT-1B-Commercial",
+      "revision": "ebb29a532abe92960eeb6903a5530f16990ef4ab",
+      "bytes": 1791,
+      "sha256": "fa8ad3b4ec9af8e1c64388fdaca944bd9be3f794e2f2cd4871db857b194a9f3f",
+      "one_based_lines": null
+    },
+    {
+      "id": "meta_code_license_history",
+      "url": "https://api.github.com/repos/facebookresearch/vggt/commits?path=LICENSE.txt&per_page=10",
+      "revision": null,
+      "bytes": 6167,
+      "sha256": "41c849cec1118c9490c204aaef784d7eaf509b69ab531c9c1b71910540d1afda",
+      "one_based_lines": null
+    }
+  ],
+  "verification": {
+    "official_current_and_upload_tree_match_project_size_sha": true,
+    "pinned_card_explicit_noncommercial_tag": true,
+    "root_license_byte_equal_to_pinned_upstream": true,
+    "weight_bearing_binary_extension_scan": {
+      "suffixes": [
+        ".a",
+        ".onnx",
+        ".pt",
+        ".pth",
+        ".rknn",
+        ".safetensors",
+        ".so"
+      ],
+      "found_paths": []
+    },
+    "commercial_raw_license_http_status": 401,
+    "commercial_license_full_text_independently_verified": false,
+    "readme_or_production_sources_modified_by_this_review": false
+  }
+}

@@ -1,0 +1,683 @@
+{
+  "kind": "original_VGGT_execution_contract_regression",
+  "status": "passed_original_FP32_execution_regression",
+  "original_weights": true,
+  "inference_on_board_only": true,
+  "host_inference_executed": false,
+  "ORB_used": false,
+  "npu_used": false,
+  "GT_used": false,
+  "real_time_validated": false,
+  "accuracy_validated": false,
+  "predefined_gate": "bitwise_original_FP32_exact",
+  "image_size": 112,
+  "full_model_forward_count": 4,
+  "completed_call_endpoints": [
+    "direct_normal",
+    "adapter_normal",
+    "direct_loop",
+    "adapter_loop"
+  ],
+  "checkpoint_hash_before_load_warms_filesystem_cache": true,
+  "source_hashes": {
+    "vggt_slam/runtime.py": "baf65a5afcfa98584e25b1ef85d7cae31507a7da2b4cc03f97d2015776796e8c",
+    "vggt_slam/image_rectification.py": "e8c8472ac4dc3b84c132f20afd35be4dbeb3c23a9491ae1299ae5b1938e7ffdd",
+    "third_party/vggt/vggt/models/vggt.py": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+    "third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+    "third_party/vggt/vggt/heads/camera_head.py": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+    "third_party/vggt/vggt/heads/dpt_head.py": "72e9ed26196113eb71e26b641b4262606b5aacc797accafc6c975f5db0d2ace2",
+    "third_party/vggt/vggt/layers/vision_transformer.py": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+    "third_party/vggt/vggt/layers/block.py": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+    "third_party/vggt/vggt/layers/attention.py": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+    "third_party/vggt/vggt/utils/load_fn.py": "b0fe762f65497dca9a22069a3e4a37fd3508398c55383a8c1cb85c403fb3e9dd",
+    "third_party/vggt/vggt/utils/pose_enc.py": "845fc3a46cb851bebf0720b8fc2b9f34334ae8e11f1982376ba59f90ff18f22b",
+    "vggt_slam/model_execution.py": "819c7af4fc7c4da0db0b94b85d5600319b95eda328dbe064d2684fc10462d5d8",
+    "vggt_slam/solver.py": "a38123d4924fd31016dc625811fa58339179fa03380eb9250f90f90f3fca6b3b",
+    "vggt_slam/edge_mapping.py": "c889a193da92cc74671d31ee9a70352cff089ae70fff9174ea526add2261e134",
+    "vggt_slam/submap.py": "fddccafee4e9f32452ce044b80669bd48f5fe5f331a980986a6091e7fce92e63",
+    "vggt_slam/map.py": "2d7b374101248519d921e16e272063ff6f7e001c7af0073a7a7c13c14ac79143",
+    "vggt_slam/graph.py": "dda8fb7c947c3c39baa7d190e2942cd4b9f26fe1557d7605fdc8651f27a5ab48",
+    "vggt_slam/scale_solver.py": "dc36b11d4d9953222a3fc2f3aef274acc9e9cc6dc61cb22d86b1e6721d9bd691",
+    "vggt_slam/timestamp_replay.py": "14b168028a6f7722f4bea036285b4f9cd8119fed59230b7e3e07c4b7af07addc"
+  },
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "reference": {
+    "receipt_sha256": "62f0a00fe460f64293e8aaea06f8c53b10bc4c89b1ebad85dbe302ad2f9e9c71",
+    "prediction_sha256": "14b32fa070f452285c5113be5494610f01e42afa178900de7dc8707930cb356c",
+    "frame_ids": [
+      1305031102.175304,
+      1305031102.443271
+    ],
+    "kind": "fixed_r11_original_VGGT_quality_only_pairs"
+  },
+  "calibration_sha256": "0043286979ae6abc29385eeba1abd441f0299fe25325301332a28d4a438a51db",
+  "runtime": {
+    "python": "3.11.17 (main, Oct  9 2026, 15:20:12) [Clang 22.1.3 ]",
+    "torch": "2.3.1",
+    "numpy": "1.26.4",
+    "opencv": "4.10.0",
+    "cpus": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "threads": 4,
+    "opencv_threads": 1,
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "4",
+      "OMP_WAIT_POLICY": "PASSIVE",
+      "GOMP_SPINCOUNT": "0",
+      "MPLBACKEND": "Agg"
+    }
+  },
+  "rectification": {
+    "K": [
+      [
+        517.3,
+        0.0,
+        318.6
+      ],
+      [
+        0.0,
+        516.5,
+        255.3
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "distortion": [
+      0.2624,
+      -0.9531,
+      -0.0054,
+      0.0026,
+      1.1633
+    ],
+    "image_hw": [
+      480,
+      640
+    ],
+    "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera",
+    "output_K": [
+      [
+        517.3,
+        0.0,
+        318.6
+      ],
+      [
+        0.0,
+        516.5,
+        255.3
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "output_distortion": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "R": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "crop": null,
+    "method": "opencv_initUndistortRectifyMap_remap",
+    "map_type": "CV_32FC1",
+    "interpolation": "INTER_LINEAR",
+    "border_mode": "BORDER_CONSTANT",
+    "border_value": [
+      0,
+      0,
+      0
+    ],
+    "map_bytes": 2457600,
+    "calibration_sha256": "29b6ca7e7a19570f0821fbb28b729d8ff8a73f239ff74efa31525f293a92cbaa",
+    "calibration_hash_basis": "normalized_json_utf8_sort_keys_compact"
+  },
+  "input_tensor": {
+    "shape": [
+      2,
+      3,
+      84,
+      112
+    ],
+    "dtype": "float32",
+    "finite": true,
+    "bytes": 225792,
+    "tensor_sha256": "f68fe0c78c95c2207d5678cfcba747cd98ccfd126eb9be147753a3e98b5e680d"
+  },
+  "preprocessing_seconds": 0.9339141350064892,
+  "model_load_seconds": 1.4200956849963404,
+  "import_seconds": 1.2873179210000671,
+  "forwards": [
+    {
+      "request": "normal",
+      "compute_similarity": false,
+      "frame_ids": [
+        1305031102.175304,
+        1305031102.443271
+      ],
+      "direct_original_model_seconds": 4.720035140999244,
+      "adapter_execution_including_validation_seconds": 4.577975085005164,
+      "adapter_endpoint": "Solver.run_predictions(prepared_images)",
+      "comparisons": {
+        "extrinsic": {
+          "array_equal": true,
+          "bitwise_equal": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "predefined_gate": "bitwise_original_FP32_exact"
+        },
+        "intrinsic": {
+          "array_equal": true,
+          "bitwise_equal": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "predefined_gate": "bitwise_original_FP32_exact"
+        },
+        "depth": {
+          "array_equal": true,
+          "bitwise_equal": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "predefined_gate": "bitwise_original_FP32_exact"
+        },
+        "depth_conf": {
+          "array_equal": true,
+          "bitwise_equal": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "predefined_gate": "bitwise_original_FP32_exact"
+        }
+      },
+      "extras": {
+        "pose_enc": {
+          "array_equal": true,
+          "bitwise_equal": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "predefined_gate": "bitwise_original_FP32_exact"
+        },
+        "target_tokens": {
+          "array_equal": true,
+          "bitwise_equal": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "predefined_gate": "bitwise_original_FP32_exact"
+        }
+      },
+      "image_match_ratio": null,
+      "artifact": {
+        "file": "normal-predictions.npz",
+        "sha256": "aa5823c58ee0ef7825d24f51f28c47a6cb519dd610f5c8456e03fe288167a4ce"
+      }
+    },
+    {
+      "request": "loop",
+      "compute_similarity": true,
+      "frame_ids": [
+        1305031102.175304,
+        1305031102.443271
+      ],
+      "direct_original_model_seconds": 4.635239549010294,
+      "adapter_execution_including_validation_seconds": 5.112040930995136,
+      "adapter_endpoint": "execute(compute_similarity=True)",
+      "comparisons": {
+        "extrinsic": {
+          "array_equal": true,
+          "bitwise_equal": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "predefined_gate": "bitwise_original_FP32_exact"
+        },
+        "intrinsic": {
+          "array_equal": true,
+          "bitwise_equal": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "predefined_gate": "bitwise_original_FP32_exact"
+        },
+        "depth": {
+          "array_equal": true,
+          "bitwise_equal": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "predefined_gate": "bitwise_original_FP32_exact"
+        },
+        "depth_conf": {
+          "array_equal": true,
+          "bitwise_equal": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "predefined_gate": "bitwise_original_FP32_exact"
+        }
+      },
+      "extras": {
+        "pose_enc": {
+          "array_equal": true,
+          "bitwise_equal": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "predefined_gate": "bitwise_original_FP32_exact"
+        },
+        "target_tokens": {
+          "array_equal": true,
+          "bitwise_equal": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "predefined_gate": "bitwise_original_FP32_exact"
+        }
+      },
+      "image_match_ratio": 1.0088657140731812,
+      "artifact": {
+        "file": "loop-predictions.npz",
+        "sha256": "aa5823c58ee0ef7825d24f51f28c47a6cb519dd610f5c8456e03fe288167a4ce"
+      }
+    }
+  ],
+  "direct_artifacts": {
+    "normal": {
+      "file": "direct-normal.npz",
+      "sha256": "a76a66566e2ef5d176d0f145ed24d1842c8c627b1343ed00bef5a8ece9bef83c"
+    },
+    "loop": {
+      "file": "direct-loop.npz",
+      "sha256": "a76a66566e2ef5d176d0f145ed24d1842c8c627b1343ed00bef5a8ece9bef83c"
+    }
+  },
+  "direct_normal_vs_saved_original": {
+    "extrinsic": {
+      "array_equal": true,
+      "bitwise_equal": true,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "predefined_gate": "bitwise_original_FP32_exact"
+    },
+    "intrinsic": {
+      "array_equal": true,
+      "bitwise_equal": true,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "predefined_gate": "bitwise_original_FP32_exact"
+    },
+    "depth": {
+      "array_equal": true,
+      "bitwise_equal": true,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "predefined_gate": "bitwise_original_FP32_exact"
+    },
+    "depth_conf": {
+      "array_equal": true,
+      "bitwise_equal": true,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "predefined_gate": "bitwise_original_FP32_exact"
+    }
+  },
+  "first_graph": {
+    "direct": {
+      "nodes": 2,
+      "factors": 2,
+      "submaps": 1,
+      "loops": 0,
+      "graph_error": 2.63889460079757e-28,
+      "frame_ids": [
+        1305031102.175304,
+        1305031102.443271
+      ],
+      "homographies": [
+        [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        [
+          [
+            0.9999339325119151,
+            0.005131628909843747,
+            -0.010287932292251636,
+            -0.0018822836914556167
+          ],
+          [
+            -0.005336212841040245,
+            0.9997865772824999,
+            -0.01995804360443803,
+            0.021564807712308048
+          ],
+          [
+            0.010183325036099452,
+            0.020011623498589367,
+            0.9997478602285369,
+            -0.003630886199205761
+          ],
+          [
+            3.7480708011099346e-18,
+            5.21809430936053e-16,
+            -1.7931960539533988e-16,
+            1.0000000037217551
+          ]
+        ]
+      ]
+    },
+    "adapter": {
+      "nodes": 2,
+      "factors": 2,
+      "submaps": 1,
+      "loops": 0,
+      "graph_error": 2.63889460079757e-28,
+      "frame_ids": [
+        1305031102.175304,
+        1305031102.443271
+      ],
+      "homographies": [
+        [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        [
+          [
+            0.9999339325119151,
+            0.005131628909843747,
+            -0.010287932292251636,
+            -0.0018822836914556167
+          ],
+          [
+            -0.005336212841040245,
+            0.9997865772824999,
+            -0.01995804360443803,
+            0.021564807712308048
+          ],
+          [
+            0.010183325036099452,
+            0.020011623498589367,
+            0.9997478602285369,
+            -0.003630886199205761
+          ],
+          [
+            3.7480708011099346e-18,
+            5.21809430936053e-16,
+            -1.7931960539533988e-16,
+            1.0000000037217551
+          ]
+        ]
+      ]
+    },
+    "H_allclose_atol": 1e-12,
+    "H_allclose_rtol": 0,
+    "seconds": 0.007371584011707455,
+    "additional_model_forwards": 0,
+    "overlap_scale_or_true_loop_graph_validated": false
+  },
+  "source_and_inputs_unchanged": true,
+  "loop_graph_accepted": false,
+  "similarity_request_not_natural_revisit_claim": true,
+  "cpu_affinity_restored": true,
+  "total_seconds": 28.21615175199986,
+  "peak_process_RSS_MiB": 4973.9765625,
+  "project": "Edge-VGGT-SLAM",
+  "experiment_name": "vggt-v21-model-execution-r1",
+  "raw_receipt_sha256": "6ad4f75c58072086c8f7a70a1d696cbf255b3ce5dba5bcb90aac8c3e27e7d7df",
+  "helper": "deploy/rk3588/validation/check-v21-model-execution-board.py",
+  "helper_sha256": "09d82afc3caf6225119ebd0c2d7b607a7fc90c9f2c2e02f455ced730c7daac9b",
+  "model_architecture_changed": false,
+  "source_frames": [
+    {
+      "file": "1305031102.175304.png",
+      "frame_id": 1305031102.175304,
+      "timestamp": 1305031102.175304,
+      "sha256": "331c3fd7a3d5eefb19e3da2026625aa221ca1991f5ae30ff96060e2e3e45e368"
+    },
+    {
+      "file": "1305031102.443271.png",
+      "frame_id": 1305031102.443271,
+      "timestamp": 1305031102.443271,
+      "sha256": "49deecb97bbb0ef1b8d14212b10d5cdb9a2ce7b4c852ad4838bc8e2a872d82df"
+    }
+  ],
+  "actual_solver_submap": {
+    "frame_ids": [
+      1305031102.175304,
+      1305031102.443271
+    ],
+    "image_names": [
+      "1305031102.175304.png",
+      "1305031102.443271.png"
+    ],
+    "submap_id": 0,
+    "last_non_loop_frame_index": 1,
+    "stored_images": {
+      "shape": [
+        2,
+        3,
+        84,
+        112
+      ],
+      "dtype": "float32",
+      "finite": true,
+      "bytes": 225792,
+      "tensor_sha256": "f68fe0c78c95c2207d5678cfcba747cd98ccfd126eb9be147753a3e98b5e680d"
+    },
+    "shares_prepared_storage": true
+  },
+  "saved_array_audit": {
+    "status": "passed",
+    "actual_saved_arrays_compared": true,
+    "model_runtime_imported": false,
+    "input_raw_sha256": "f68fe0c78c95c2207d5678cfcba747cd98ccfd126eb9be147753a3e98b5e680d",
+    "canonical_comparisons": [
+      {
+        "request": "normal",
+        "field": "extrinsic",
+        "shape": [
+          2,
+          3,
+          4
+        ],
+        "raw_sha256": "410f0ccf75c1f4ff60d2c66e9e461fd89f0df6f525e76343fcaa6b22bee06581",
+        "bitwise_equal": true
+      },
+      {
+        "request": "normal",
+        "field": "intrinsic",
+        "shape": [
+          2,
+          3,
+          3
+        ],
+        "raw_sha256": "496aa03b5ce69bd731fb300c2274dad2fb3ae95573cc84fc6b03c0e907606b06",
+        "bitwise_equal": true
+      },
+      {
+        "request": "normal",
+        "field": "depth",
+        "shape": [
+          2,
+          84,
+          112,
+          1
+        ],
+        "raw_sha256": "e3e29f1aa5b99f415491846d32cbd297809018b0c0b82ef920130fb61384e6c6",
+        "bitwise_equal": true
+      },
+      {
+        "request": "normal",
+        "field": "depth_conf",
+        "shape": [
+          2,
+          84,
+          112
+        ],
+        "raw_sha256": "9d2606e8aaa025c0e245cc357a348fd03126a2a81f2f13bb7f93b6aa12cd8f98",
+        "bitwise_equal": true
+      },
+      {
+        "request": "loop",
+        "field": "extrinsic",
+        "shape": [
+          2,
+          3,
+          4
+        ],
+        "raw_sha256": "410f0ccf75c1f4ff60d2c66e9e461fd89f0df6f525e76343fcaa6b22bee06581",
+        "bitwise_equal": true
+      },
+      {
+        "request": "loop",
+        "field": "intrinsic",
+        "shape": [
+          2,
+          3,
+          3
+        ],
+        "raw_sha256": "496aa03b5ce69bd731fb300c2274dad2fb3ae95573cc84fc6b03c0e907606b06",
+        "bitwise_equal": true
+      },
+      {
+        "request": "loop",
+        "field": "depth",
+        "shape": [
+          2,
+          84,
+          112,
+          1
+        ],
+        "raw_sha256": "e3e29f1aa5b99f415491846d32cbd297809018b0c0b82ef920130fb61384e6c6",
+        "bitwise_equal": true
+      },
+      {
+        "request": "loop",
+        "field": "depth_conf",
+        "shape": [
+          2,
+          84,
+          112
+        ],
+        "raw_sha256": "9d2606e8aaa025c0e245cc357a348fd03126a2a81f2f13bb7f93b6aa12cd8f98",
+        "bitwise_equal": true
+      }
+    ],
+    "first_graph_receipts_equal": true
+  },
+  "raw_files": {
+    "direct-loop.npz": {
+      "bytes": 151978,
+      "sha256": "a76a66566e2ef5d176d0f145ed24d1842c8c627b1343ed00bef5a8ece9bef83c"
+    },
+    "direct-normal.npz": {
+      "bytes": 151978,
+      "sha256": "a76a66566e2ef5d176d0f145ed24d1842c8c627b1343ed00bef5a8ece9bef83c"
+    },
+    "input.npy": {
+      "bytes": 225920,
+      "sha256": "8c051d41b59de0f6da2d82dbbb2626db2c43fa6661dff616f9d5e2921363edc9"
+    },
+    "loop-predictions.npz": {
+      "bytes": 303788,
+      "sha256": "aa5823c58ee0ef7825d24f51f28c47a6cb519dd610f5c8456e03fe288167a4ce"
+    },
+    "normal-predictions.npz": {
+      "bytes": 303788,
+      "sha256": "aa5823c58ee0ef7825d24f51f28c47a6cb519dd610f5c8456e03fe288167a4ce"
+    },
+    "regression.json": {
+      "bytes": 15875,
+      "sha256": "6ad4f75c58072086c8f7a70a1d696cbf255b3ce5dba5bcb90aac8c3e27e7d7df"
+    }
+  },
+  "limits": [
+    "One original two-image 84x112 CPU FP32 batch; no NPU execution in this regression.",
+    "Normal adapter call used actual Solver.run_predictions and its retained Submap. Loop adapter call used execute(compute_similarity=True).",
+    "Similarity request is not a natural revisitation, SALAD retrieval or accepted loop-graph experiment.",
+    "The two first-submap graphs reuse the already computed normal predictions; no additional model forwards.",
+    "Four short sequential calls have different timing scopes and do not demonstrate speedup, sustained rate or input-to-pose P95.",
+    "First-submap identity does not validate later overlap scale, full trajectory/map quality or 30-minute endurance.",
+    "Peak process RSS excludes whole-board OS/device memory and does not establish 8GB deployment."
+  ]
+}

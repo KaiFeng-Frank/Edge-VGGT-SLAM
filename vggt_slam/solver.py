@@ -9,8 +9,6 @@ from termcolor import colored
 from scipy.linalg import rq
 
 from vggt.utils.geometry import closed_form_inverse_se3, unproject_depth_map_to_point_map
-from vggt.utils.pose_enc import pose_encoding_to_extri_intri
-from vggt.utils.load_fn import load_and_preprocess_images
 
 from vggt_slam.slam_utils import compute_image_embeddings, Accumulator
 from vggt_slam.loop_closure import ImageRetrieval
@@ -20,6 +18,10 @@ from vggt_slam.submap import Submap
 from vggt_slam.graph import PoseGraph
 from vggt_slam.scale_solver import estimate_scale_pairwise
 from vggt_slam.runtime import resolve_device, validate_image_size
+from vggt_slam.model_execution import (
+    as_executor, execute, get_auxiliary_device, prepare_rgb_images,
+    require_compute_similarity,
+)
 
 DEBUG = False
 
@@ -323,27 +325,20 @@ class Solver:
     def run_predictions(self, image_names, model, max_loops, clip_model, clip_preprocess, *, prepared_images=None):
         if max_loops not in (0, 1):
             raise ValueError("VGGT-SLAM2 supports max_loops=0 or 1 only")
+        executor = as_executor(model)
+        use_loop_closures = max_loops > 0 and self.max_loops > 0
+        # Reject a missing capability before preprocessing, retrieval, model
+        # execution, or construction of a new working submap.
+        if use_loop_closures:
+            require_compute_similarity(executor)
         if prepared_images is not None:
             if clip_model is not None or clip_preprocess is not None:
                 raise ValueError("Prepared image tensors cannot be mixed with path-based CLIP preprocessing")
-            if (not isinstance(prepared_images, torch.Tensor) or prepared_images.ndim != 4
-                    or prepared_images.shape[0] != len(image_names) or prepared_images.shape[1] != 3
-                    or prepared_images.device.type != "cpu"
-                    or prepared_images.dtype != torch.float32 or prepared_images.shape[0] < 1
-                    or min(prepared_images.shape[-2:]) < 14
-                    or prepared_images.shape[-1] != self.image_size
-                    or prepared_images.shape[-2] > self.image_size
-                    or any(n % 14 for n in prepared_images.shape[-2:])
-                    or not torch.isfinite(prepared_images).all()
-                    or prepared_images.min() < 0 or prepared_images.max() > 1):
-                raise ValueError("Prepared images must be finite float32 NCHW RGB in [0,1], matching the image names and patch grid")
-        model_parameter = next(model.parameters())
-        device = model_parameter.device
+        device = get_auxiliary_device(executor)
         self.device = device
         t1 = time.time()
         with self.vggt_timer:
-            images = (load_and_preprocess_images(image_names, image_size=self.image_size)
-                      if prepared_images is None else prepared_images).to(device)
+            images = prepare_rgb_images(image_names, self.image_size, prepared_images=prepared_images)
         print(f"Loaded and preprocessed {len(image_names)} images in {time.time() - t1:.2f} seconds")
         print(f"Preprocessed images shape: {images.shape}")
 
@@ -356,10 +351,11 @@ class Solver:
         print(f"Creating new submap with id {new_pcd_num}")
         t1 = time.time()
         new_submap = Submap(new_pcd_num)
-        new_submap.add_all_frames(images)
+        # Legacy submap/SALAD image storage remains CPU Torch, sharing the
+        # prepared pixels. Model executors receive only the NumPy request.
+        new_submap.add_all_frames(torch.from_numpy(images))
         new_submap.set_frame_ids(image_names)
         new_submap.set_last_non_loop_frame_index(images.shape[0] - 1)
-        use_loop_closures = max_loops > 0 and self.max_loops > 0
         if use_loop_closures:
             if self.image_retrieval is None:
                 self.image_retrieval = ImageRetrieval(
@@ -376,11 +372,10 @@ class Solver:
         self.current_working_submap = new_submap
         print(f"Created new submap in {time.time() - t1:.2f} seconds")
 
-        with torch.no_grad():
-            t1 = time.time()
-            with self.vggt_timer:
-                predictions = model(images)
-            print(f"VGGT model inference took {time.time() - t1:.2f} seconds")
+        t1 = time.time()
+        with self.vggt_timer:
+            predictions = execute(executor, images)
+        print(f"VGGT model inference took {time.time() - t1:.2f} seconds")
 
         # Check for loop closures and add retrieval vectors from new submap to the database
         predictions_lc = None
@@ -392,11 +387,13 @@ class Solver:
         if len(detected_loops) > 0:
             print(colored("detected_loops", "yellow"), detected_loops)
             retrieved_frames = self.map.get_frames_from_loops(detected_loops)
-            with torch.no_grad():
-                lc_frames = torch.stack((new_submap.get_frame_at_index(detected_loops[0].query_submap_frame), retrieved_frames[0]), axis=0)
-                predictions_lc = model(lc_frames, compute_similarity=True)
-                loop_closure_frame_names = [new_submap.get_img_names_at_index(detected_loops[0].query_submap_frame), 
-                self.map.get_submap(detected_loops[0].detected_submap_id).get_img_names_at_index(detected_loops[0].detected_submap_frame)]
+            lc_frames = torch.stack((new_submap.get_frame_at_index(detected_loops[0].query_submap_frame),
+                                     retrieved_frames[0].detach().cpu()), axis=0)
+            # Loop order is query then retrieved. Source IDs need not increase
+            # and no frame-name/timestamp float32 conversion occurs here.
+            predictions_lc = execute(executor, lc_frames.numpy(), compute_similarity=True)
+            loop_closure_frame_names = [new_submap.get_img_names_at_index(detected_loops[0].query_submap_frame),
+            self.map.get_submap(detected_loops[0].detected_submap_id).get_img_names_at_index(detected_loops[0].detected_submap_frame)]
 
             # Visualize loop closure frames
             if DEBUG:
@@ -409,11 +406,6 @@ class Solver:
                 plt.title("Loop Closure Frames. Left: Query Frame, Right: Retrieved Frame")
                 plt.show()
 
-        print("Converting pose encoding to extrinsic and intrinsic matrices...")
-        extrinsic, intrinsic = pose_encoding_to_extri_intri(predictions["pose_enc"], images.shape[-2:])
-        predictions["extrinsic"] = extrinsic
-        predictions["intrinsic"] = intrinsic
-
         predictions["detected_loops"] = detected_loops
         # Keep retrieval evidence even when the two-frame similarity gate
         # rejects a candidate. These records do not affect loop selection.
@@ -424,8 +416,6 @@ class Solver:
         if predictions_lc is not None:
             image_match_ratio = predictions_lc["image_match_ratio"]
             predictions["loop_match_ratio"] = float(image_match_ratio)
-            if not np.isfinite(predictions["loop_match_ratio"]):
-                raise RuntimeError("VGGT returned a non-finite loop image match ratio")
             if image_match_ratio < 0.95:
                 print(colored("Loop closure image match ratio too low, skipping loop closure", "red"))
                 predictions_lc = None # We set to None to ignore the loop closure
@@ -433,17 +423,11 @@ class Solver:
                 predictions["loop_rejection_reason"] = "match_ratio_below_threshold"
             else:
                 self.graph.increment_loop_closure()
-                extrinsic_lc, intrinsic_lc = pose_encoding_to_extri_intri(predictions_lc["pose_enc"], retrieved_frames[0].shape[-2:])
-                predictions["extrinsic_lc"] = extrinsic_lc
-                predictions["intrinsic_lc"] = intrinsic_lc
+                predictions["extrinsic_lc"] = predictions_lc["extrinsic"]
+                predictions["intrinsic_lc"] = predictions_lc["intrinsic"]
                 predictions["depth_lc"] = predictions_lc["depth"]
                 predictions["depth_conf_lc"] = predictions_lc["depth_conf"]
 
-            
-        for key in predictions.keys():
-            if isinstance(predictions[key], torch.Tensor) and key != "target_tokens":
-                predictions[key] = predictions[key].float().cpu().numpy().squeeze(0)  # remove batch dimension and convert to numpy
-    
         if predictions_lc is not None:
             predictions["frames_lc"] = lc_frames[0:2,...]
             print(loop_closure_frame_names)

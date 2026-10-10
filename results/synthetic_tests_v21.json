@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "passed": 219,
+  "skipped": 0,
+  "seconds": 2.58,
+  "scope": "host synthetic protocol, geometry and execution-boundary regression only; no original weights, dataset frames or hardware inference",
+  "requirements": [
+    "numpy",
+    "pytest",
+    "torch",
+    "opencv-python",
+    "Pillow"
+  ],
+  "test_source_sha256": {
+    "tests/test_model_execution.py": "28f2b3fe5c18f11ca39759db536f8fb1367a2d714e77f2e5a6e6a113c1ce3117",
+    "tests/test_solver_execution.py": "4f6426d8c17c5a53cfaa0e4adb861222fffd367cd6229a1a7050d6935df35d75",
+    "tests/test_rectified_mapping.py": "279ec71b966cc03a40ab5b6c9208ce58170da6f2f808fbe267dba52d66e98f75",
+    "tests/test_v21_model_execution_regression.py": "0e9daea0c1db94cc72cb619c1120d605e714c636c43a22284d16e7963cbc1553",
+    "tests/test_runtime_loading.py": "37421cd46ff1174691fe43981398851fcfeb215be2c31db1b13fe51678857256",
+    "tests/test_legacy_entrypoints.py": "cb20ffdba690f1365d127825a393bd6ff9fb475b9d54de844c19fa24908bb3c7",
+    "tests/test_tracking_geometry.py": "c99aa7cd5d0ed9c1db92117ca22e57a1749e28d8001e383f464be358f0f7f4b4",
+    "tests/test_image_rectification.py": "a17d182e9314d71f70a6e09b4b327a5cf54c985c8d154c81d7e11cbdab20d05d"
+  },
+  "implementation_source_sha256": {
+    "vggt_slam/model_execution.py": "819c7af4fc7c4da0db0b94b85d5600319b95eda328dbe064d2684fc10462d5d8",
+    "vggt_slam/solver.py": "a38123d4924fd31016dc625811fa58339179fa03380eb9250f90f90f3fca6b3b",
+    "deploy/rk3588/validation/check-v21-model-execution-board.py": "09d82afc3caf6225119ebd0c2d7b607a7fc90c9f2c2e02f455ced730c7daac9b"
+  },
+  "runs": [
+    {
+      "passed": 219,
+      "skipped": 0,
+      "seconds": 2.58,
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm PYTHONPATH=. python -B -m pytest -q -p no:cacheprovider tests/test_model_execution.py tests/test_solver_execution.py tests/test_rectified_mapping.py tests/test_v21_model_execution_regression.py tests/test_runtime_loading.py tests/test_legacy_entrypoints.py tests/test_tracking_geometry.py tests/test_image_rectification.py"
+    }
+  ],
+  "command_is_portable_equivalent": true,
+  "original_stdout": "........................................................................ [ 32%]\n........................................................................ [ 65%]\n........................................................................ [ 98%]\n...                                                                      [100%]\n219 passed in 2.58s\n",
+  "raw_log_sha256": "1f370ad0f0a1f8c4032f30542a13b1f3b9423bd8d495c556d4e8a224695105b7",
+  "checks": [
+    "NumPy executor without Torch parameters or pose codec",
+    "prepared RGB storage, original source IDs, query/retrieved order",
+    "canonical output shape/dtype/finiteness and error propagation",
+    "loop capability fails before preprocessing/retrieval/submap creation",
+    "original .95 gate including valid original ratio greater than one",
+    "board-only helper source/reference identities and exact comparison gate",
+    "legacy entrypoint, calibration and projective geometry regressions"
+  ]
+}

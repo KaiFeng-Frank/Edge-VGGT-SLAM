@@ -1,10 +1,26 @@
-# VGGT-SLAM 2 on RK3588S
+# Edge-VGGT-SLAM
 
-An experimental RK3588S port of [MIT-SPARK/VGGT-SLAM](https://github.com/MIT-SPARK/VGGT-SLAM), focused on accelerating the original network while retaining the original VGGT-1B weights and SL4 mapping backend. The optional LK/PnP/triangulation frontend is a custom architecture experiment, separate from the original VGGT-SLAM 2 frontend; it does not use ORB. All measured model inference runs on the board. Host tools export and compile graphs or inspect saved arrays.
+**NPU-Accelerated Visual SLAM on Embedded Devices — experimental, first target: RK3588S.**
+
+An embedded execution project based on [MIT-SPARK/VGGT-SLAM](https://github.com/MIT-SPARK/VGGT-SLAM), focused on accelerating the original network while retaining the original VGGT-1B weights and SL4 mapping backend. RK3588S is the only board tested so far. Current NPU execution covers selected subnetworks; a complete all-NPU model and support for other vendors are not validated. All measured model inference runs on the board. Host tools export and compile graphs or inspect saved arrays.
+
+**License scope:** the repository's BSD-2-Clause code license does **not** license the external model weights. The pinned original VGGT-1B checkpoint is **CC-BY-NC-4.0**, with a non-commercial restriction. Compiling it to RKNN does not grant commercial-use rights. See [model licenses](MODEL_LICENSES.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+
+The optional LK/PnP/triangulation frontend is a historical custom architecture experiment, separate from the original VGGT-SLAM 2 frontend; it does not use ORB. It is not the current route for claiming original-network real-time performance.
 
 In the pinned upstream implementation, LK selects keyframes for VGGT inference ([main.py](https://github.com/MIT-SPARK/VGGT-SLAM/blob/35327ac28b7d193df9ccc39ba6346052bb6f1207/main.py), [frame_overlap.py](https://github.com/MIT-SPARK/VGGT-SLAM/blob/35327ac28b7d193df9ccc39ba6346052bb6f1207/vggt_slam/frame_overlap.py)). The continuous LK/PnP poses added here are not original-model outputs. Their publication rate is neither the original network's inference rate nor evidence that the original architecture meets the real-time target.
 
 **Status: sustained accurate 20 Hz tracking, 2–5-second map updates, 30-minute endurance, physical-camera latency and 8 GB operation have not passed validation.** The continuous RGB replay below is a custom-frontend diagnostic, not original-architecture acceptance or a completed real-time SLAM system. The current hybrid mapper uses CPU/XNNPACK for most of VGGT and RKNN for the original four-iteration CameraHead. It is not an all-NPU implementation.
+
+## Model execution and SLAM backend (v21)
+
+`ModelExecutor` separates hardware-specific inference from submap construction and SL4 optimization. It receives the already-preprocessed CPU RGB batch and returns canonical camera matrices, depth and confidence. The original `TorchVGGTExecutor` owns device transfer, the model call and pose decoding; `Solver` uses this interface for both normal prediction and loop verification. Another NPU can implement the same contract without exposing Torch parameters. Unsupported requests and device errors must fail explicitly.
+
+The [execution contract](ARCHITECTURE.md) defines frame order, image geometry, output ownership and loop capabilities. It preserves the original model and 0.95 loop decision threshold. SALAD and Submap image storage still use Torch, and a full RKNN executor or a second-vendor backend has not been implemented. Existing measured NPU subnetworks remain separate experimental paths.
+
+On RK3588S, four original FP32 forwards compared direct and adapter calls for normal and similarity requests on the same rectified TUM pair. All four canonical output arrays match **bitwise** in both comparisons; normal predictions also match the saved original reference. The normal adapter call goes through the actual `Solver.run_predictions` entrypoint, preserving source IDs and stored pixels. Its first SL4 graph matches the direct reference: two nodes, two factors and identical homographies. The original similarity ratio is **1.008865714**, demonstrating why it must not be clamped to a probability. This was a similarity request, not a natural revisitation or accepted loop-graph test. Calls still took approximately **4.6–5.1 seconds** at actual 84×112 input; this refactor demonstrates compatibility, not acceleration or real-time acceptance. [Board regression and saved-array checks](results/model_execution_v21.json).
+
+The [v21 synthetic receipt](results/synthetic_tests_v21.json) records **219 passed, zero skipped** across execution, loop-contract, calibration, geometry and legacy-entrypoint checks. The board regression helper is `deploy/rk3588/validation/check-v21-model-execution-board.py`; its `--help` lists the required frozen-source and reference-capture hashes. Historical v20 source pins remain tied to their original revision; use that revision for its optional source-hash check, or the portable evidence sidecar for scalar recomputation.
 
 ## Measured baseline
 

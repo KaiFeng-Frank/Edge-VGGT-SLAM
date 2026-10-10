@@ -45,6 +45,7 @@ def test_mapper_bridge_releases_streams_after_preprocessing_failure(monkeypatch)
 def prepared_solver():
     """Execute the real method with synthetic model/graph services only."""
     torch = pytest.importorskip('torch')
+    from vggt_slam import model_execution as execution
     import time
     path = Path(__file__).resolve().parents[1] / 'vggt_slam/solver.py'
     parsed = ast.parse(path.read_text())
@@ -68,9 +69,13 @@ def prepared_solver():
     class Model:
         def parameters(self):
             yield torch.zeros(1)
-        def __call__(self, images):
+        def __call__(self, images, compute_similarity=False):
             state.inferred.append(images)
-            return {'pose_enc': torch.zeros((1, len(images), 9))}
+            n, _, h, w = images.shape
+            return {'pose_enc': torch.zeros((1, n, 9)),
+                    'depth': (images[:, 0] + 1)[None, ..., None],
+                    'depth_conf': torch.ones((1, n, h, w)),
+                    'image_match_ratio': .96 if compute_similarity else None}
     class Retrieval:
         def get_all_submap_embeddings(self, submap):
             state.retrieval.append(submap.frames)
@@ -82,8 +87,15 @@ def prepared_solver():
         return torch.eye(4)[None, None, :3].repeat(1, n, 1, 1), torch.eye(3)[None, None].repeat(1, n, 1, 1)
     def forbidden_read(*args, **kwargs):
         pytest.fail('Prepared images must not reread original files')
-    ns = dict(torch=torch, np=np, time=time, Submap=Submap, load_and_preprocess_images=forbidden_read,
-              pose_encoding_to_extri_intri=convert, DEBUG=False)
+    def adapt(model):
+        if hasattr(model, 'capabilities'):
+            return execution.as_executor(model)
+        return execution.TorchVGGTExecutor(model, pose_decoder=convert)
+    ns = dict(torch=torch, np=np, time=time, Submap=Submap, DEBUG=False,
+              as_executor=adapt, execute=execution.execute,
+              prepare_rgb_images=execution.prepare_rgb_images,
+              get_auxiliary_device=execution.get_auxiliary_device,
+              require_compute_similarity=execution.require_compute_similarity)
     exec(compile(ast.Module(body=[method], type_ignores=[]), str(path), 'exec'), ns)
     self = SimpleNamespace(image_size=14, max_loops=1, image_retrieval=Retrieval(),
                            map=SimpleNamespace(get_largest_key=lambda: None),
@@ -97,7 +109,13 @@ def test_prepared_pixels_keep_original_ids_and_feed_model_and_retrieval(prepared
     images = torch.linspace(0, 1, 2*3*14*14).reshape(2, 3, 14, 14)
     names = ['/synthetic/101.25.png', '/synthetic/103.50.png']
     result = run(owner, names, model, 1, None, None, prepared_images=images)
-    assert state.inferred[0] is images and state.retrieval[0] is images
+    # The execution boundary changes the Python container, not its prepared
+    # CPU pixel storage or ordering. SALAD storage shares those same pixels.
+    assert state.inferred[0].data_ptr() == images.data_ptr()
+    assert state.retrieval[0].data_ptr() == images.data_ptr()
+    assert np.shares_memory(result['images'], images.numpy())
+    np.testing.assert_array_equal(result['images'], images.numpy())
+    np.testing.assert_array_equal(result['depth'][..., 0], images.numpy()[:, 0] + 1)
     assert owner.current_working_submap.frame_ids == [101.25, 103.50]
     assert state.names == [names] and result['detected_loops'] == []
 

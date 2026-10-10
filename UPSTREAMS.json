@@ -4,7 +4,10 @@
     "url": "https://github.com/MIT-SPARK/VGGT-SLAM",
     "commit": "35327ac28b7d193df9ccc39ba6346052bb6f1207",
     "license": "BSD-2-Clause",
-    "copyright": "Copyright (c) 2025, MIT-SPARK"
+    "copyright": "Copyright (c) 2025, MIT-SPARK",
+    "license_scope": "VGGT-SLAM source code; does not license external source, pretrained weights or compiled models containing those weights.",
+    "license_url": "https://github.com/MIT-SPARK/VGGT-SLAM/blob/35327ac28b7d193df9ccc39ba6346052bb6f1207/LICENSE",
+    "license_sha256": "dc493d7ac51f587fd71184315999c792ead523bf46da0f0cbf3e26a577b1a580"
   },
   "vggt": {
     "url": "https://github.com/MIT-SPARK/VGGT_SPARK",
@@ -13,7 +16,10 @@
     "license": "CC-BY-NC-4.0",
     "license_file": "LICENSE.txt",
     "patch": "deploy/rk3588/vggt-spark.patch",
-    "patch_sha256": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864"
+    "patch_sha256": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864",
+    "license_url": "https://github.com/MIT-SPARK/VGGT_SPARK/blob/6e6e16107b88e8e76c751826af10d4295d87ecd2/LICENSE.txt",
+    "license_sha256": "1d8ca66080a2701508a70be4ddad4be28c509bcc3397a682fb8edf767fdd7a00",
+    "license_scope": "Pinned fork source and published patch; no automatic substitution of a newer Meta code license."
   },
   "optional_loop_closure": [
     {
@@ -36,7 +42,19 @@
     "filename": "model.pt",
     "size": 5026874952,
     "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
-    "redistributed": false
+    "redistributed": false,
+    "revision": "860abec7937da0a4c03c41d3c269c366e82abdf9",
+    "upload_revision": "d88e637d32a505f4a64de03f8588547b7f7d3ba6",
+    "license": "CC-BY-NC-4.0",
+    "license_source": "https://huggingface.co/facebook/VGGT-1B/blob/860abec7937da0a4c03c41d3c269c366e82abdf9/README.md",
+    "license_source_file": "README.md, YAML front matter line 5",
+    "license_source_sha256": "d666ecaba89db88cb66bf06db6daddfdc2400e13f2a39e39c84e888b27fbc615",
+    "standalone_license_file_at_revision": null,
+    "official_tree_url": "https://huggingface.co/api/models/facebook/VGGT-1B/tree/860abec7937da0a4c03c41d3c269c366e82abdf9?recursive=false&expand=false",
+    "official_lfs_oid_matches_sha256": true,
+    "commercial_use_authorized_by_this_repository": false,
+    "meta_original_checkpoint_notice": "https://github.com/facebookresearch/vggt/blob/a288dd0f14786c93483e45524328726ab7b1b4ce/README.md#updates",
+    "license_checked_on": "2026-10-11"
   },
   "external_sdk": {
     "url": "https://github.com/airockchip/rknn-toolkit2",
@@ -45,5 +63,34 @@
     "runtime_redistributed": false
   },
   "submodules_in_root": false,
-  "vendors_redistributed": false
+  "vendors_redistributed": false,
+  "meta_vggt_code_license_comparison": {
+    "url": "https://github.com/facebookresearch/vggt",
+    "observed_commit": "a288dd0f14786c93483e45524328726ab7b1b4ce",
+    "license": "VGGT License v1 with Acceptable Use Policy, July 29 2025",
+    "license_url": "https://github.com/facebookresearch/vggt/blob/a288dd0f14786c93483e45524328726ab7b1b4ce/LICENSE.txt",
+    "license_sha256": "b94e46746792d1adfa0ebdbccada5d4576d244ae230be9de8a46b5868fff001b",
+    "license_change_commit": "a1179fe98aea9bca4fa1cb618f49ab2fa9dd8f88",
+    "role": "Comparison only; the deployed source pin is vggt above. Meta explicitly excludes the original checkpoint from the commercial checkpoint release."
+  },
+  "commercial_checkpoint_comparison": {
+    "id": "facebook/VGGT-1B-Commercial",
+    "used": false,
+    "observed_revision": "ebb29a532abe92960eeb6903a5530f16990ef4ab",
+    "url": "https://huggingface.co/facebook/VGGT-1B-Commercial",
+    "model_card_license_name": "vggt-aup-license",
+    "model_card_license_url": "https://huggingface.co/facebook/VGGT-1B-Commercial/blob/main/LICENSE",
+    "gated": "manual",
+    "license_text_downloaded": false,
+    "scope": "Separate release and terms; no commercial rights for the original VGGT-1B SHA are inferred from it."
+  },
+  "generated_model_artifacts": {
+    "formats": [
+      "ONNX",
+      "RKNN"
+    ],
+    "redistributed": false,
+    "license_scope": "Original checkpoint terms remain applicable to encoded weight material; compilation or a BSD wrapper does not grant commercial rights. SDK terms are independent.",
+    "license_provenance": "results/model_license_v21.json"
+  }
 }
