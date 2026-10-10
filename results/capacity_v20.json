@@ -1,0 +1,651 @@
+{
+  "kind": "static_original_VGGT_capacity_audit",
+  "script_sha256": "dcdf861fe6502b1fc1355541293dbb1bac2defad61b524c42479aec2ebb6a25b",
+  "scope": "Original weights and original 24+24+24 topology, camera+depth outputs; no ORB, no alternative frontend.",
+  "execution": {
+    "stdlib_scalar_arithmetic_and_saved_receipts_only": true,
+    "model_run": false,
+    "host_image_decode": false,
+    "ORT_run": false,
+    "board_operation": false,
+    "production_modified": false
+  },
+  "counting": {
+    "one_MAC_arithmetic_FLOP": 2,
+    "omitted": [
+      "bias/addition",
+      "layernorm/QKnorm",
+      "softmax",
+      "GELU",
+      "RoPE",
+      "interpolation",
+      "memory movement",
+      "graph optimization",
+      "loop retrieval and additional loop model forwards"
+    ],
+    "counts_are_architecture_MAC_budget_not_measured_execution_FLOPs": true,
+    "padded_conv2d_dense_MAC_convention": true
+  },
+  "topology": {
+    "DINO_blocks": 24,
+    "frame_blocks": 24,
+    "global_blocks": 24,
+    "embedding": 1024,
+    "heads": 16,
+    "MLP_expansion": 4,
+    "patch_size": 14,
+    "special_tokens_per_image": 5,
+    "camera_embedding": 2048,
+    "camera_blocks": 4,
+    "camera_iterations": 4,
+    "retained_aggregator_layers": [
+      4,
+      11,
+      17,
+      23
+    ],
+    "retention_does_not_remove_any_transformer_call": true
+  },
+  "parameters_by_component": {
+    "DINO_encoder": 304372736,
+    "frame_and_global_48_blocks": 604729344,
+    "aggregator_camera_and_register_tokens": 10240,
+    "camera_head": 216174610,
+    "depth_head": 32654562
+  },
+  "parameter_count": 1157941492,
+  "primary_case_index": 0,
+  "workloads": [
+    {
+      "image_hw": [
+        252,
+        336
+      ],
+      "sequence_images": 2,
+      "patches_per_image": 432,
+      "tokens_per_image": 437,
+      "global_tokens": 874,
+      "MAC_by_stage": {
+        "DINO_patch_convolution": 520224768,
+        "DINO_24_blocks": 282712178688,
+        "frame_24_blocks": 282712178688,
+        "global_24_blocks": 301485195264,
+        "camera_16_trunk_calls_and_4_branches": 1728536576,
+        "depth_DPT_head": 94047657984
+      },
+      "DPT_MAC_components_per_image": {
+        "four_projects": 2491416576,
+        "three_resize_convolutions": 1925185536,
+        "four_scratch_convolutions": 7389315072,
+        "four_feature_fusion_blocks": 23937417216,
+        "output_convolutions": 11280494592
+      },
+      "backbone_MAC": 866909552640,
+      "counted_model_MAC": 963205971968,
+      "counted_model_arithmetic_FLOP": 1926411943936,
+      "amortized_MAC_per_input_image": 481602985984.0,
+      "backbone_attention_core_MAC": 75092066304,
+      "backbone_attention_core_fraction": 0.08662041625371655,
+      "backbone_MLP_MAC": 527878324224,
+      "backbone_MLP_fraction": 0.6089197224975224,
+      "backbone_compute_only_free_attention_speedup_ceiling": 1.0948350694444444,
+      "counted_model_compute_only_free_attention_speedup_ceiling": 1.0845522920259392,
+      "fresh_images_per_overlap_update": 1,
+      "20_batch_updates_per_second_required_arithmetic_TFLOP_per_second": 38.52823887872,
+      "20_new_poses_per_second_minimum_batch_rate": 20.0,
+      "20_new_poses_per_second_required_arithmetic_TFLOP_per_second": 38.52823887872,
+      "hypothetical_skipping_only_dense_head_counted_MAC": 869158313984,
+      "hypothetical_skipping_only_dense_head_MAC_reduction_fraction": 0.09764023554779672,
+      "optimistic_assumed_6e12_arithmetic_ops_per_second": {
+        "assumed_seconds_per_forward": 0.32106865732266665,
+        "assumed_max_pair_updates_per_second": 3.114598629273934,
+        "rigorous_hardware_lower_bound": false
+      },
+      "current_retained_4_FP32_aggregator_outputs_bytes": 28639232,
+      "one_FP32_MLP_hidden_activation_bytes": 14319616,
+      "materialized_global_FP32_attention_probabilities_bytes": 48888064,
+      "attention_probability_materialization_is_unavoidable": false,
+      "exact_overlap_DINO_one_image_cache_counted_MAC_saved": 141616201728,
+      "online_freshness_note": "S=2 overlap+fresh contributes one new capture per update; dividing cost by two is amortized image cost, not two new online poses. S>2 can batch more fresh images but incurs batch-wait latency."
+    },
+    {
+      "image_hw": [
+        84,
+        112
+      ],
+      "sequence_images": 2,
+      "patches_per_image": 48,
+      "tokens_per_image": 53,
+      "global_tokens": 106,
+      "MAC_by_stage": {
+        "DINO_patch_convolution": 57802752,
+        "DINO_24_blocks": 32287064064,
+        "frame_24_blocks": 32287064064,
+        "global_24_blocks": 32563200000,
+        "camera_16_trunk_calls_and_4_branches": 1728536576,
+        "depth_DPT_head": 10449739776
+      },
+      "DPT_MAC_components_per_image": {
+        "four_projects": 276824064,
+        "three_resize_convolutions": 213909504,
+        "four_scratch_convolutions": 821035008,
+        "four_feature_fusion_blocks": 2659713024,
+        "output_convolutions": 1253388288
+      },
+      "backbone_MAC": 97137328128,
+      "counted_model_MAC": 109373407232,
+      "counted_model_arithmetic_FLOP": 218746814464,
+      "amortized_MAC_per_input_image": 54686703616.0,
+      "backbone_attention_core_MAC": 1104543744,
+      "backbone_attention_core_fraction": 0.01137095043981978,
+      "backbone_MLP_MAC": 64021856256,
+      "backbone_MLP_fraction": 0.6590860330401201,
+      "backbone_compute_only_free_attention_speedup_ceiling": 1.0115017361111112,
+      "counted_model_compute_only_free_attention_speedup_ceiling": 1.0102018595967106,
+      "fresh_images_per_overlap_update": 1,
+      "20_batch_updates_per_second_required_arithmetic_TFLOP_per_second": 4.37493628928,
+      "20_new_poses_per_second_minimum_batch_rate": 20.0,
+      "20_new_poses_per_second_required_arithmetic_TFLOP_per_second": 4.37493628928,
+      "hypothetical_skipping_only_dense_head_counted_MAC": 98923667456,
+      "hypothetical_skipping_only_dense_head_MAC_reduction_fraction": 0.09554186927572153,
+      "optimistic_assumed_6e12_arithmetic_ops_per_second": {
+        "assumed_seconds_per_forward": 0.036457802410666665,
+        "assumed_max_pair_updates_per_second": 27.42897086159599,
+        "rigorous_hardware_lower_bound": false
+      },
+      "current_retained_4_FP32_aggregator_outputs_bytes": 3473408,
+      "one_FP32_MLP_hidden_activation_bytes": 1736704,
+      "materialized_global_FP32_attention_probabilities_bytes": 719104,
+      "attention_probability_materialization_is_unavoidable": false,
+      "exact_overlap_DINO_one_image_cache_counted_MAC_saved": 16172433408,
+      "online_freshness_note": "S=2 overlap+fresh contributes one new capture per update; dividing cost by two is amortized image cost, not two new online poses. S>2 can batch more fresh images but incurs batch-wait latency."
+    },
+    {
+      "image_hw": [
+        168,
+        224
+      ],
+      "sequence_images": 2,
+      "patches_per_image": 192,
+      "tokens_per_image": 197,
+      "global_tokens": 394,
+      "MAC_by_stage": {
+        "DINO_patch_convolution": 231211008,
+        "DINO_24_blocks": 122799095808,
+        "frame_24_blocks": 122799095808,
+        "global_24_blocks": 126614175744,
+        "camera_16_trunk_calls_and_4_branches": 1728536576,
+        "depth_DPT_head": 41798959104
+      },
+      "DPT_MAC_components_per_image": {
+        "four_projects": 1107296256,
+        "three_resize_convolutions": 855638016,
+        "four_scratch_convolutions": 3284140032,
+        "four_feature_fusion_blocks": 10638852096,
+        "output_convolutions": 5013553152
+      },
+      "backbone_MAC": 372212367360,
+      "counted_model_MAC": 415971074048,
+      "counted_model_arithmetic_FLOP": 831942148096,
+      "amortized_MAC_per_input_image": 207985537024.0,
+      "backbone_attention_core_MAC": 15260319744,
+      "backbone_attention_core_fraction": 0.040998959417273675,
+      "backbone_MLP_MAC": 237968031744,
+      "backbone_MLP_fraction": 0.6393340270551509,
+      "backbone_compute_only_free_attention_speedup_ceiling": 1.0427517361111112,
+      "counted_model_compute_only_free_attention_speedup_ceiling": 1.038083129988627,
+      "fresh_images_per_overlap_update": 1,
+      "20_batch_updates_per_second_required_arithmetic_TFLOP_per_second": 16.63884296192,
+      "20_new_poses_per_second_minimum_batch_rate": 20.0,
+      "20_new_poses_per_second_required_arithmetic_TFLOP_per_second": 16.63884296192,
+      "hypothetical_skipping_only_dense_head_counted_MAC": 374172114944,
+      "hypothetical_skipping_only_dense_head_MAC_reduction_fraction": 0.10048525417220888,
+      "optimistic_assumed_6e12_arithmetic_ops_per_second": {
+        "assumed_seconds_per_forward": 0.13865702468266666,
+        "assumed_max_pair_updates_per_second": 7.212039940195029,
+        "rigorous_hardware_lower_bound": false
+      },
+      "current_retained_4_FP32_aggregator_outputs_bytes": 12910592,
+      "one_FP32_MLP_hidden_activation_bytes": 6455296,
+      "materialized_global_FP32_attention_probabilities_bytes": 9935104,
+      "attention_probability_materialization_is_unavoidable": false,
+      "exact_overlap_DINO_one_image_cache_counted_MAC_saved": 61515153408,
+      "online_freshness_note": "S=2 overlap+fresh contributes one new capture per update; dividing cost by two is amortized image cost, not two new online poses. S>2 can batch more fresh images but incurs batch-wait latency."
+    },
+    {
+      "image_hw": [
+        294,
+        518
+      ],
+      "sequence_images": 2,
+      "patches_per_image": 777,
+      "tokens_per_image": 782,
+      "global_tokens": 1564,
+      "MAC_by_stage": {
+        "DINO_patch_convolution": 935682048,
+        "DINO_24_blocks": 532427440128,
+        "frame_24_blocks": 532427440128,
+        "global_24_blocks": 592542695424,
+        "camera_16_trunk_calls_and_4_branches": 1728536576,
+        "depth_DPT_head": 169537958400
+      },
+      "DPT_MAC_components_per_image": {
+        "four_projects": 4481089536,
+        "three_resize_convolutions": 3601858560,
+        "four_scratch_convolutions": 13325303808,
+        "four_feature_fusion_blocks": 43071504384,
+        "output_convolutions": 20289222912
+      },
+      "backbone_MAC": 1657397575680,
+      "counted_model_MAC": 1829599752704,
+      "counted_model_arithmetic_FLOP": 3659199505408,
+      "amortized_MAC_per_input_image": 914799876352.0,
+      "backbone_attention_core_MAC": 240461021184,
+      "backbone_attention_core_fraction": 0.1450834879406308,
+      "backbone_MLP_MAC": 944624369664,
+      "backbone_MLP_fraction": 0.5699443413729128,
+      "backbone_compute_only_free_attention_speedup_ceiling": 1.1697048611111112,
+      "counted_model_compute_only_free_attention_speedup_ceiling": 1.1513153108753449,
+      "fresh_images_per_overlap_update": 1,
+      "20_batch_updates_per_second_required_arithmetic_TFLOP_per_second": 73.18399010816,
+      "20_new_poses_per_second_minimum_batch_rate": 20.0,
+      "20_new_poses_per_second_required_arithmetic_TFLOP_per_second": 73.18399010816,
+      "hypothetical_skipping_only_dense_head_counted_MAC": 1660061794304,
+      "hypothetical_skipping_only_dense_head_MAC_reduction_fraction": 0.0926639600543434,
+      "optimistic_assumed_6e12_arithmetic_ops_per_second": {
+        "assumed_seconds_per_forward": 0.6098665842346667,
+        "assumed_max_pair_updates_per_second": 1.6397028888784246,
+        "rigorous_hardware_lower_bound": false
+      },
+      "current_retained_4_FP32_aggregator_outputs_bytes": 51249152,
+      "one_FP32_MLP_hidden_activation_bytes": 25624576,
+      "materialized_global_FP32_attention_probabilities_bytes": 156550144,
+      "attention_probability_materialization_is_unavoidable": false,
+      "exact_overlap_DINO_one_image_cache_counted_MAC_saved": 266681561088,
+      "online_freshness_note": "S=2 overlap+fresh contributes one new capture per update; dividing cost by two is amortized image cost, not two new online poses. S>2 can batch more fresh images but incurs batch-wait latency."
+    },
+    {
+      "image_hw": [
+        294,
+        518
+      ],
+      "sequence_images": 3,
+      "patches_per_image": 777,
+      "tokens_per_image": 782,
+      "global_tokens": 2346,
+      "MAC_by_stage": {
+        "DINO_patch_convolution": 1403523072,
+        "DINO_24_blocks": 798641160192,
+        "frame_24_blocks": 798641160192,
+        "global_24_blocks": 978986926080,
+        "camera_16_trunk_calls_and_4_branches": 2593001472,
+        "depth_DPT_head": 254306937600
+      },
+      "DPT_MAC_components_per_image": {
+        "four_projects": 4481089536,
+        "three_resize_convolutions": 3601858560,
+        "four_scratch_convolutions": 13325303808,
+        "four_feature_fusion_blocks": 43071504384,
+        "output_convolutions": 20289222912
+      },
+      "backbone_MAC": 2576269246464,
+      "counted_model_MAC": 2834572708608,
+      "counted_model_arithmetic_FLOP": 5669145417216,
+      "amortized_MAC_per_input_image": 944857569536.0,
+      "backbone_attention_core_MAC": 450864414720,
+      "backbone_attention_core_fraction": 0.17500671381255034,
+      "backbone_MLP_MAC": 1416936554496,
+      "backbone_MLP_fraction": 0.5499955241249664,
+      "backbone_compute_only_free_attention_speedup_ceiling": 1.2121310763888888,
+      "counted_model_compute_only_free_attention_speedup_ceiling": 1.189144122993593,
+      "fresh_images_per_overlap_update": 2,
+      "20_batch_updates_per_second_required_arithmetic_TFLOP_per_second": 113.38290834432,
+      "20_new_poses_per_second_minimum_batch_rate": 10.0,
+      "20_new_poses_per_second_required_arithmetic_TFLOP_per_second": 56.69145417216,
+      "hypothetical_skipping_only_dense_head_counted_MAC": 2580265771008,
+      "hypothetical_skipping_only_dense_head_MAC_reduction_fraction": 0.08971614551559162,
+      "optimistic_assumed_6e12_arithmetic_ops_per_second": {
+        "assumed_seconds_per_forward": 0.944857569536,
+        "assumed_max_pair_updates_per_second": 1.0583605743785058,
+        "rigorous_hardware_lower_bound": false
+      },
+      "current_retained_4_FP32_aggregator_outputs_bytes": 76873728,
+      "one_FP32_MLP_hidden_activation_bytes": 38436864,
+      "materialized_global_FP32_attention_probabilities_bytes": 352237824,
+      "attention_probability_materialization_is_unavoidable": false,
+      "exact_overlap_DINO_one_image_cache_counted_MAC_saved": 266681561088,
+      "online_freshness_note": "S=2 overlap+fresh contributes one new capture per update; dividing cost by two is amortized image cost, not two new online poses. S>2 can batch more fresh images but incurs batch-wait latency."
+    },
+    {
+      "image_hw": [
+        392,
+        518
+      ],
+      "sequence_images": 2,
+      "patches_per_image": 1036,
+      "tokens_per_image": 1041,
+      "global_tokens": 2082,
+      "MAC_by_stage": {
+        "DINO_patch_convolution": 1247576064,
+        "DINO_24_blocks": 735273123840,
+        "frame_24_blocks": 735273123840,
+        "global_24_blocks": 841803300864,
+        "camera_16_trunk_calls_and_4_branches": 1728536576,
+        "depth_DPT_head": 225721882624
+      },
+      "DPT_MAC_components_per_image": {
+        "four_projects": 5974786048,
+        "three_resize_convolutions": 4682940416,
+        "four_scratch_convolutions": 17737187328,
+        "four_feature_fusion_blocks": 57413730304,
+        "output_convolutions": 27052297216
+      },
+      "backbone_MAC": 2312349548544,
+      "counted_model_MAC": 2541047543808,
+      "counted_model_arithmetic_FLOP": 5082095087616,
+      "amortized_MAC_per_input_image": 1270523771904.0,
+      "backbone_attention_core_MAC": 426120708096,
+      "backbone_attention_core_fraction": 0.18428040361125864,
+      "backbone_MLP_MAC": 1257485893632,
+      "backbone_MLP_fraction": 0.5438130642591609,
+      "backbone_compute_only_free_attention_speedup_ceiling": 1.2259114583333333,
+      "counted_model_compute_only_free_attention_speedup_ceiling": 1.2014824819944867,
+      "fresh_images_per_overlap_update": 1,
+      "20_batch_updates_per_second_required_arithmetic_TFLOP_per_second": 101.64190175232,
+      "20_new_poses_per_second_minimum_batch_rate": 20.0,
+      "20_new_poses_per_second_required_arithmetic_TFLOP_per_second": 101.64190175232,
+      "hypothetical_skipping_only_dense_head_counted_MAC": 2315325661184,
+      "hypothetical_skipping_only_dense_head_MAC_reduction_fraction": 0.08883024765673389,
+      "optimistic_assumed_6e12_arithmetic_ops_per_second": {
+        "assumed_seconds_per_forward": 0.847015847936,
+        "assumed_max_pair_updates_per_second": 1.1806154541698248,
+        "rigorous_hardware_lower_bound": false
+      },
+      "current_retained_4_FP32_aggregator_outputs_bytes": 68222976,
+      "one_FP32_MLP_hidden_activation_bytes": 34111488,
+      "materialized_global_FP32_attention_probabilities_bytes": 277422336,
+      "attention_probability_materialization_is_unavoidable": false,
+      "exact_overlap_DINO_one_image_cache_counted_MAC_saved": 368260349952,
+      "online_freshness_note": "S=2 overlap+fresh contributes one new capture per update; dividing cost by two is amortized image cost, not two new online poses. S>2 can batch more fresh images but incurs batch-wait latency."
+    }
+  ],
+  "memory": {
+    "FP32_pruned_model_parameter_bytes": 4631765968,
+    "FP32_pruned_model_parameter_GiB": 4.313668206334114,
+    "hypothetical_all_FP16_parameter_bytes": 2315882984,
+    "hypothetical_all_FP16_parameters_supported_or_validated": false,
+    "default_CPU_has_no_optional_Linear_FP16_copies": true,
+    "observed_optional_RKNN_Linear_FP16_copy_bytes": 1811939328,
+    "observed_optional_RKNN_Linear_FP16_copy_GiB": 1.6875,
+    "observed_optional_RKNN_Linear_parameter_payload_plus_FP16_copy_bytes": 6443705296,
+    "observed_optional_RKNN_Linear_parameter_payload_plus_FP16_copy_GiB": 6.001168206334114,
+    "optional_RKNN_Linear_generous_8GiB_budget_remaining_before_activations_SDK_OS_maps_bytes": 2146229296,
+    "payload_not_a_universal_minimum_resident_memory": "Mmap pages can be evicted. The 6.001 GiB payload describes the observed optional RKNN per-Linear backend experiment, not default CPU main.py. Avoiding FP32 residency trades page faults/reloads; a new validated block-storage layout could remove duplication.",
+    "not_included": [
+      "allocator workspace",
+      "SDK internal buffers",
+      "ONNX/RKNN model contexts",
+      "temporary activations",
+      "dense retained maps",
+      "retrieval model",
+      "operating system"
+    ],
+    "graph_retention_source": "GraphMap retains every Submap; no eviction in add_submap. Submap keeps FP32 RGB tensors, FP32 XYZ, RGB8 colors and one aliased FP32 confidence array: at least 31 payload bytes per retained pixel. Export adds separate FP64 transform temporaries.",
+    "minimum_map_payload_30min_at_2_to_5_seconds_per_S2_update": [
+      {
+        "image_hw": [
+          252,
+          336
+        ],
+        "update_interval_seconds": 2,
+        "updates": 900,
+        "retained_image_records_including_overlap": 1800,
+        "minimum_bytes": 4724697600,
+        "minimum_GiB": 4.400217533111572
+      },
+      {
+        "image_hw": [
+          252,
+          336
+        ],
+        "update_interval_seconds": 5,
+        "updates": 360,
+        "retained_image_records_including_overlap": 720,
+        "minimum_bytes": 1889879040,
+        "minimum_GiB": 1.760087013244629
+      },
+      {
+        "image_hw": [
+          392,
+          518
+        ],
+        "update_interval_seconds": 2,
+        "updates": 900,
+        "retained_image_records_including_overlap": 1800,
+        "minimum_bytes": 11330524800,
+        "minimum_GiB": 10.55237352848053
+      },
+      {
+        "image_hw": [
+          392,
+          518
+        ],
+        "update_interval_seconds": 5,
+        "updates": 360,
+        "retained_image_records_including_overlap": 720,
+        "minimum_bytes": 4532209920,
+        "minimum_GiB": 4.220949411392212
+      }
+    ],
+    "map_payload_budget_excludes_confidence_export_filter_savings": "Confidence filters exported points, not stored dense Submap arrays. This estimate assumes distinct storage per update and does not count optional shared overlap frame storage twice; removing each overlap FP32 RGB duplicate would save 12 bytes for that record, not its new batch-specific XYZ/conf/colors."
+  },
+  "hardware_planning": {
+    "official_url": "https://www.rock-chips.com/a/cn/news/rockchip/2022/0303/1544.html",
+    "official_claim": "6 TOPS NPU; INT4/INT8/INT16/FP16 mixed support",
+    "6TOPS_precision_unspecified": true,
+    "assumed_NPU_arithmetic_ops_per_second": 6000000000000.0,
+    "conversion_to_FP16_TFLOPs_is_not_verified": true,
+    "time_division_is_optimistic_planning_not_rigorous_lower_bound": true,
+    "CPU_GPU_heterogeneous_throughput_not_estimated": true,
+    "absolute_impossibility_claim": false
+  },
+  "source_pins": {
+    "third_party/vggt/vggt/models/vggt.py": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+    "third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+    "third_party/vggt/vggt/layers/vision_transformer.py": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+    "third_party/vggt/vggt/layers/block.py": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+    "third_party/vggt/vggt/layers/attention.py": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+    "third_party/vggt/vggt/layers/mlp.py": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa",
+    "third_party/vggt/vggt/heads/camera_head.py": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+    "third_party/vggt/vggt/heads/dpt_head.py": "72e9ed26196113eb71e26b641b4262606b5aacc797accafc6c975f5db0d2ace2",
+    "third_party/vggt/vggt/utils/geometry.py": "3e14a94b5c947685c8b332984e7d115d4ef3e9b060137efd07df79ece8ccb7ce",
+    "vggt_slam/runtime.py": "baf65a5afcfa98584e25b1ef85d7cae31507a7da2b4cc03f97d2015776796e8c",
+    "vggt_slam/solver.py": "21f124be7eeb0cb1519ee29985b2ece4a71a4fd3699152fb3f9fc0f2bd187816",
+    "vggt_slam/submap.py": "fddccafee4e9f32452ce044b80669bd48f5fe5f331a980986a6091e7fce92e63",
+    "vggt_slam/map.py": "2d7b374101248519d921e16e272063ff6f7e001c7af0073a7a7c13c14ac79143",
+    "vggt_slam/rknn_linear.py": "69056a2cb44ba69a2d311265b71ff919e4758fcaa150834a0b0cfe85dbcaef7d"
+  },
+  "local_source_SHA_check_performed": true,
+  "portable_evidence": {
+    "file": "evidence.json",
+    "sha256": "752f3b79598258118d7b59ff8cff3d7ae28614325bc0a7a360a40386f167c104",
+    "private_raw_receipts_required": false
+  },
+  "self_checks": {
+    "parameter_sum_equals_recorded_structure": true,
+    "MAC_decomposition_equals_closed_form_all_six_cases": true,
+    "336_DPT_dense_convolution_count": true
+  },
+  "priority_next_steps": [
+    "Validate complete-block/device-resident execution across successive original layers and real tokens; eliminate per-Linear weight uploads, synchronization and layout copies. MLP is the largest MAC share. Enforce original pose/K/depth numerical and quality gates across the entire model, not one block.",
+    "Measure CPU attention-only offload integration end-to-end on exactly the same pair with actual transfers. V19 saved standalone operands and overhead do not represent live block integration, and strict FP32 conformance failed.",
+    "Remove FP32/FP16 duplicate weight residency only after functional and error validation; bound dense map retention/compaction and retrieval growth before 30 minutes. Bounded capture queues do not bound maps or model workspaces.",
+    "Exact overlap DINO reuse can save only the per-image independent encoder for unchanged input/model state. Later bidirectional global-attention token caches are not generally valid after fresh images arrive. Any more aggressive layer/token/window reduction changes original computation and requires explicit quality evaluation."
+  ],
+  "evidence": {
+    "recorded_model_structure_receipt": {
+      "file": "deploy/rk3588/validation/model-structure.json",
+      "sha256": "044e4d6fe841078442f5e3a843c16921dd0eea3da5888829ffcad05453f139b4",
+      "parameters": 1157941492
+    },
+    "original_518_S3_mixed_linear_profile": {
+      "file": "deploy/rk3588/validation/orb-v9-profile518-board.json",
+      "sha256": "853a7934c7be63ef32f2c22d08a7c56915ef48f41d2f055800f9145b2262dfc8",
+      "historical_filename_is_not_an_active_ORB_dependency": true,
+      "model_only_profile_used": true,
+      "input_shape": [
+        3,
+        3,
+        294,
+        518
+      ],
+      "forward_seconds": 109.06413408400113,
+      "measured_peak_process_RSS_MiB": 8174.5859375,
+      "disjoint_inclusive_groups_seconds": {
+        "patch_embed": 24.520111589001317,
+        "frame_blocks": 25.06592547602486,
+        "global_blocks": 41.19852559699939,
+        "camera_head": 1.6356455399945844,
+        "depth_head": 16.543126744996698
+      },
+      "attention_groups_including_QKV_and_projection_seconds": 50.96983890800038,
+      "attention_groups_after_subtracting_linear_seconds": 43.12681195700861,
+      "zero_entire_attention_group_optimistic_remaining_seconds": 58.09429517600074,
+      "zero_entire_attention_group_optimistic_speedup": 1.877363926244112,
+      "zero_non_linear_attention_remainder_optimistic_remaining_seconds": 65.93732212699251,
+      "zero_non_linear_attention_remainder_optimistic_speedup": 1.6540576803217484,
+      "attention_remainder_includes_norm_rope_and_layout_not_only_SDPA": true,
+      "counter_delta": {
+        "linear_calls": 288,
+        "npu_calls": 864,
+        "npu_run_attempts": 864,
+        "npu_run_seconds": 22.705284282943467,
+        "linear_seconds": 33.53899418997025,
+        "context_creates": 8,
+        "context_evictions": 0,
+        "weight_upload_bytes": 3623878656,
+        "input_rows": 675648,
+        "padded_rows": 61632,
+        "npu_errors": 0
+      },
+      "FP16_host_weight_copy_bytes": 1811939328,
+      "claim_scope": "One historical original-model S3 forward; Amdahl counterfactual holds all other stages fixed. Not a proof about a wholly redesigned heterogeneous implementation."
+    },
+    "rows_comparison_receipt": {
+      "file": "deploy/rk3588/validation/orb-v10-rows-comparison.json",
+      "sha256": "0fb3bddcab8ed5340e051ed82e14b2e30ca1f7534b4917b2e0a1c1094790efd1"
+    },
+    "original_336_S2_CPU_profile": {
+      "receipt_basename": "profile.json",
+      "sha256": "6c3d2cb51af75410188c062e83a26eae4d4c5d69c632a6eeae95993eba004820",
+      "unhooked_forward_seconds": 34.06903659000818,
+      "hooked_forward_seconds": 50.83266894100234,
+      "hooked_stage_groups_seconds": {
+        "dino_encoder": 12.288254735001829,
+        "frame_blocks": 14.29726256201684,
+        "global_blocks": 15.924267683978542,
+        "camera_head": 2.172835010002018,
+        "depth_head": 6.095448071006103
+      },
+      "hooked_stage_times_not_added_to_unhooked_forward": true,
+      "not_attention_core_profile": true
+    },
+    "v17_standalone_first_aggregator_block": {
+      "frame": {
+        "audit": "vggt-v17-frame336-audit.json",
+        "sha256": "c63e45872a609a346031622dbc3a7ffcb268f59412e4cc8544d61d5a72a1ad12",
+        "shape": [
+          2,
+          437,
+          1024
+        ],
+        "warm_IO_mean_seconds": 0.1836260323325405,
+        "versus_original_CPU": {
+          "max_abs": 0.07985031604766846,
+          "rmse": 0.0003360016006724206,
+          "relative_l2": 0.0018379443282975274,
+          "cosine": 0.9999983202006913,
+          "satisfies_FP32_export_gate": false,
+          "outside_FP32_export_gate_elements": 460155
+        }
+      },
+      "global": {
+        "audit": "vggt-v17-global336-audit.json",
+        "sha256": "9bf92b37e51bfa67f7964d0cbb079bfaeb9aa08d942749727dfbc64c3a575a5e",
+        "shape": [
+          1,
+          874,
+          1024
+        ],
+        "warm_IO_mean_seconds": 0.18713865767252477,
+        "versus_original_CPU": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs": 0.016917884349822998,
+          "rmse": 0.0006600863463390846,
+          "relative_l2": 0.004358558443088841,
+          "cosine": 0.9999905028975544,
+          "strict_FP32_allclose": false,
+          "outside_FP32_tolerance_elements": 474600,
+          "total_elements": 894976
+        }
+      },
+      "full_network_execution_validated": false,
+      "precision_accumulation_over_72_blocks_validated": false
+    },
+    "v19_standalone_post_RoPE_global0_attention": {
+      "audit": "vggt-v19-attention-public-audit.json",
+      "sha256": "49058180f901e33e08dba87ff7bb78f759c9861927f4c9c3c6484e985019c3e5",
+      "shape": [
+        1,
+        16,
+        874,
+        64
+      ],
+      "complete_key_count": 874,
+      "ORT_full_equals_ordered_head_concat_bitwise": true,
+      "R2_all_outputs_zero_layout_failure": true,
+      "R2_times_not_valid_acceleration": true,
+      "R3_status": "nonzero_and_partition_equivalent_for_this_capture_but_strict_FP32_gate_failed",
+      "R3_NPU_head_shards_equal_unsharded_bitwise": true,
+      "R3_short_term_timing": {
+        "baseline": {
+          "first_ms": 136.14222200703807,
+          "subsequent_ms": [
+            123.58042900450528,
+            123.36334600695409,
+            123.46747099945787
+          ],
+          "subsequent_mean_ms": 123.47041533697241
+        },
+        "parallel": {
+          "first_ms": 74.41088299674448,
+          "subsequent_ms": [
+            66.60604799981229,
+            73.88459099456668,
+            81.07717499660794
+          ],
+          "subsequent_mean_ms": 73.85593799699564
+        }
+      },
+      "R3_error": {
+        "max_abs": 0.021137475967407227,
+        "rmse": 0.00016736224597594887,
+        "relative_l2": 0.0010905245127787134,
+        "strict_FP32_gate_passed": false,
+        "outside_tolerance": 332056
+      },
+      "R3_strict_FP32_failed_outputs": 16,
+      "full_block_integration_or_full_model_speedup_validated": false,
+      "cannot_apply_this_one_attention_speed_ratio_to_all_72_blocks": true
+    }
+  },
+  "limits": [
+    "No real-time or quality claim from static MAC counts.",
+    "A 6 TOPS marketing figure is not an established FP16 sustained roofline.",
+    "20Hz means new input poses; repeating overlap or old poses does not meet it.",
+    "P95 latency needs an actual streaming measurement, not inverse throughput.",
+    "Original SL4 map association is projective and does not automatically imply metric SE3 accuracy.",
+    "The static count includes dense prediction every forward as current VGGT.forward does; asynchronous/sparse dense updates require a separate faithful output-frequency design."
+  ]
+}

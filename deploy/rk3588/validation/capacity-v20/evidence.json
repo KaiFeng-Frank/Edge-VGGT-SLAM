@@ -1,0 +1,178 @@
+{
+  "kind": "sanitized_static_capacity_evidence",
+  "source_pins": {
+    "third_party/vggt/vggt/models/vggt.py": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+    "third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+    "third_party/vggt/vggt/layers/vision_transformer.py": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+    "third_party/vggt/vggt/layers/block.py": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+    "third_party/vggt/vggt/layers/attention.py": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+    "third_party/vggt/vggt/layers/mlp.py": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa",
+    "third_party/vggt/vggt/heads/camera_head.py": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+    "third_party/vggt/vggt/heads/dpt_head.py": "72e9ed26196113eb71e26b641b4262606b5aacc797accafc6c975f5db0d2ace2",
+    "third_party/vggt/vggt/utils/geometry.py": "3e14a94b5c947685c8b332984e7d115d4ef3e9b060137efd07df79ece8ccb7ce",
+    "vggt_slam/runtime.py": "baf65a5afcfa98584e25b1ef85d7cae31507a7da2b4cc03f97d2015776796e8c",
+    "vggt_slam/solver.py": "21f124be7eeb0cb1519ee29985b2ece4a71a4fd3699152fb3f9fc0f2bd187816",
+    "vggt_slam/submap.py": "fddccafee4e9f32452ce044b80669bd48f5fe5f331a980986a6091e7fce92e63",
+    "vggt_slam/map.py": "2d7b374101248519d921e16e272063ff6f7e001c7af0073a7a7c13c14ac79143",
+    "vggt_slam/rknn_linear.py": "69056a2cb44ba69a2d311265b71ff919e4758fcaa150834a0b0cfe85dbcaef7d"
+  },
+  "evidence": {
+    "recorded_model_structure_receipt": {
+      "file": "deploy/rk3588/validation/model-structure.json",
+      "sha256": "044e4d6fe841078442f5e3a843c16921dd0eea3da5888829ffcad05453f139b4",
+      "parameters": 1157941492
+    },
+    "original_518_S3_mixed_linear_profile": {
+      "file": "deploy/rk3588/validation/orb-v9-profile518-board.json",
+      "sha256": "853a7934c7be63ef32f2c22d08a7c56915ef48f41d2f055800f9145b2262dfc8",
+      "historical_filename_is_not_an_active_ORB_dependency": true,
+      "model_only_profile_used": true,
+      "input_shape": [
+        3,
+        3,
+        294,
+        518
+      ],
+      "forward_seconds": 109.06413408400113,
+      "measured_peak_process_RSS_MiB": 8174.5859375,
+      "disjoint_inclusive_groups_seconds": {
+        "patch_embed": 24.520111589001317,
+        "frame_blocks": 25.06592547602486,
+        "global_blocks": 41.19852559699939,
+        "camera_head": 1.6356455399945844,
+        "depth_head": 16.543126744996698
+      },
+      "attention_groups_including_QKV_and_projection_seconds": 50.96983890800038,
+      "attention_groups_after_subtracting_linear_seconds": 43.12681195700861,
+      "zero_entire_attention_group_optimistic_remaining_seconds": 58.09429517600074,
+      "zero_entire_attention_group_optimistic_speedup": 1.877363926244112,
+      "zero_non_linear_attention_remainder_optimistic_remaining_seconds": 65.93732212699251,
+      "zero_non_linear_attention_remainder_optimistic_speedup": 1.6540576803217484,
+      "attention_remainder_includes_norm_rope_and_layout_not_only_SDPA": true,
+      "counter_delta": {
+        "linear_calls": 288,
+        "npu_calls": 864,
+        "npu_run_attempts": 864,
+        "npu_run_seconds": 22.705284282943467,
+        "linear_seconds": 33.53899418997025,
+        "context_creates": 8,
+        "context_evictions": 0,
+        "weight_upload_bytes": 3623878656,
+        "input_rows": 675648,
+        "padded_rows": 61632,
+        "npu_errors": 0
+      },
+      "FP16_host_weight_copy_bytes": 1811939328,
+      "claim_scope": "One historical original-model S3 forward; Amdahl counterfactual holds all other stages fixed. Not a proof about a wholly redesigned heterogeneous implementation."
+    },
+    "rows_comparison_receipt": {
+      "file": "deploy/rk3588/validation/orb-v10-rows-comparison.json",
+      "sha256": "0fb3bddcab8ed5340e051ed82e14b2e30ca1f7534b4917b2e0a1c1094790efd1"
+    },
+    "original_336_S2_CPU_profile": {
+      "receipt_basename": "profile.json",
+      "sha256": "6c3d2cb51af75410188c062e83a26eae4d4c5d69c632a6eeae95993eba004820",
+      "unhooked_forward_seconds": 34.06903659000818,
+      "hooked_forward_seconds": 50.83266894100234,
+      "hooked_stage_groups_seconds": {
+        "dino_encoder": 12.288254735001829,
+        "frame_blocks": 14.29726256201684,
+        "global_blocks": 15.924267683978542,
+        "camera_head": 2.172835010002018,
+        "depth_head": 6.095448071006103
+      },
+      "hooked_stage_times_not_added_to_unhooked_forward": true,
+      "not_attention_core_profile": true
+    },
+    "v17_standalone_first_aggregator_block": {
+      "frame": {
+        "audit": "vggt-v17-frame336-audit.json",
+        "sha256": "c63e45872a609a346031622dbc3a7ffcb268f59412e4cc8544d61d5a72a1ad12",
+        "shape": [
+          2,
+          437,
+          1024
+        ],
+        "warm_IO_mean_seconds": 0.1836260323325405,
+        "versus_original_CPU": {
+          "max_abs": 0.07985031604766846,
+          "rmse": 0.0003360016006724206,
+          "relative_l2": 0.0018379443282975274,
+          "cosine": 0.9999983202006913,
+          "satisfies_FP32_export_gate": false,
+          "outside_FP32_export_gate_elements": 460155
+        }
+      },
+      "global": {
+        "audit": "vggt-v17-global336-audit.json",
+        "sha256": "9bf92b37e51bfa67f7964d0cbb079bfaeb9aa08d942749727dfbc64c3a575a5e",
+        "shape": [
+          1,
+          874,
+          1024
+        ],
+        "warm_IO_mean_seconds": 0.18713865767252477,
+        "versus_original_CPU": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs": 0.016917884349822998,
+          "rmse": 0.0006600863463390846,
+          "relative_l2": 0.004358558443088841,
+          "cosine": 0.9999905028975544,
+          "strict_FP32_allclose": false,
+          "outside_FP32_tolerance_elements": 474600,
+          "total_elements": 894976
+        }
+      },
+      "full_network_execution_validated": false,
+      "precision_accumulation_over_72_blocks_validated": false
+    },
+    "v19_standalone_post_RoPE_global0_attention": {
+      "audit": "vggt-v19-attention-public-audit.json",
+      "sha256": "49058180f901e33e08dba87ff7bb78f759c9861927f4c9c3c6484e985019c3e5",
+      "shape": [
+        1,
+        16,
+        874,
+        64
+      ],
+      "complete_key_count": 874,
+      "ORT_full_equals_ordered_head_concat_bitwise": true,
+      "R2_all_outputs_zero_layout_failure": true,
+      "R2_times_not_valid_acceleration": true,
+      "R3_status": "nonzero_and_partition_equivalent_for_this_capture_but_strict_FP32_gate_failed",
+      "R3_NPU_head_shards_equal_unsharded_bitwise": true,
+      "R3_short_term_timing": {
+        "baseline": {
+          "first_ms": 136.14222200703807,
+          "subsequent_ms": [
+            123.58042900450528,
+            123.36334600695409,
+            123.46747099945787
+          ],
+          "subsequent_mean_ms": 123.47041533697241
+        },
+        "parallel": {
+          "first_ms": 74.41088299674448,
+          "subsequent_ms": [
+            66.60604799981229,
+            73.88459099456668,
+            81.07717499660794
+          ],
+          "subsequent_mean_ms": 73.85593799699564
+        }
+      },
+      "R3_error": {
+        "max_abs": 0.021137475967407227,
+        "rmse": 0.00016736224597594887,
+        "relative_l2": 0.0010905245127787134,
+        "strict_FP32_gate_passed": false,
+        "outside_tolerance": 332056
+      },
+      "R3_strict_FP32_failed_outputs": 16,
+      "full_block_integration_or_full_model_speedup_validated": false,
+      "cannot_apply_this_one_attention_speed_ratio_to_all_72_blocks": true
+    }
+  },
+  "scope": "Selected saved numeric fields and source/receipt hashes only; original receipts and production source not modified."
+}

@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "passed": 123,
+  "skipped": 0,
+  "new_v20_cases": 15,
+  "distinct_parametrized_cases": 123,
+  "seconds": 1.22,
+  "scope": "host synthetic protocol/lifecycle only; no original weights, images, model, ORT or real NPU execution",
+  "requirements": [
+    "numpy",
+    "pytest",
+    "torch",
+    "onnx"
+  ],
+  "test_source_sha256": {
+    "tests/test_v20_aggregator_attention_runtime.py": "020f0e40aee28a57d49d32d52b66376721350f9c99298068d69986fc6ce6be35",
+    "tests/test_v19_attention_runtime_r3.py": "c393065ee754c8d20737962e7545e70119c1da8e6adc0981c6e996bd07b88f50",
+    "tests/test_v19_attention_runtime_r2.py": "2d1fb155c3d66efb5ec141152c0cdb0f41a1dcae9b9d06a77672293a9a4e0fd8",
+    "tests/test_v19_attention_runtime.py": "cc6212323cd5c4c3d264751c9c3aae7b19fc04da6def5b7c0322c2f371d3055b",
+    "tests/test_v19_attention.py": "8906a483e0ee77cad8bf55de7d82d01bfbce1a29c961e28c71907a7acb87f261"
+  },
+  "run_helper_source_sha256": {
+    "deploy/rk3588/validation/run-v20-aggregator-attention-board.py": "d2f08f123bb3d4c1aa9ac8007b8212ee3582f7aee8945463c1d032cc27ecb379",
+    "tests/test_v20_aggregator_attention_runtime.py": "020f0e40aee28a57d49d32d52b66376721350f9c99298068d69986fc6ce6be35"
+  },
+  "test_file_case_counts": {
+    "tests/test_v20_aggregator_attention_runtime.py": 15,
+    "tests/test_v19_attention_runtime_r3.py": 15,
+    "tests/test_v19_attention_runtime_r2.py": 23,
+    "tests/test_v19_attention_runtime.py": 44,
+    "tests/test_v19_attention.py": 26
+  },
+  "runs": [
+    {
+      "passed": 123,
+      "skipped": 0,
+      "seconds": 1.22,
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -B -m pytest -q -p no:cacheprovider tests/test_v20_aggregator_attention_runtime.py tests/test_v19_attention_runtime_r3.py tests/test_v19_attention_runtime_r2.py tests/test_v19_attention_runtime.py tests/test_v19_attention.py"
+    }
+  ],
+  "command_is_portable_equivalent": true,
+  "original_stdout": "........................................................................ [ 58%]\n...................................................                      [100%]\n123 passed in 1.22s\n",
+  "original_raw_log_file_created": false,
+  "verified": [
+    "four CPU/hybrid AB/BA pairs",
+    "live noncontiguous QKV conversion and original head restoration",
+    "3 persistent contexts, 12 synthetic calls; all release/destroy",
+    "native call failure joins workers and restores original CPU callable without fallback",
+    "fd1/fd2 logs capture E RKNN despite API success; partial redirection restores both streams",
+    "exact block/profile/input/weight/source-pair association",
+    "frozen R3 SHA guard and hardware guard before output sideeffects"
+  ],
+  "limits": [
+    "Synthetic SDK behavior does not prove hardware execution or model quality.",
+    "Separate actual board evidence is in hybrid_block_v20.json."
+  ]
+}

@@ -1,0 +1,790 @@
+{
+  "schema": 1,
+  "research_date": "2026-10-11",
+  "scope": {
+    "target": "RK3588S: new observations at 20 Hz and VGGT maps every 2-5 seconds",
+    "traditional_pose_frontend_allowed": false,
+    "primary_sources_only": true,
+    "pretrained_model_inference_performed": false,
+    "board_operations_performed": false,
+    "checkpoint_downloaded": false,
+    "production_modified": false,
+    "target_performance_validated_by_this_research": false
+  },
+  "decision": {
+    "preserve_original_algorithm": "Reuse the already verified exact overlap-frame DINO patch-token cache. It saves only repeated image encoding; every new image and the frame/global/camera/depth computation remain.",
+    "next_approximation_research_candidate": "Co-Me direct MLP merging on one captured original-weight block, before considering attention changes or whole-model deployment.",
+    "approval_boundary": "Original checkpoint compatibility is not algorithmic equivalence. Token merging and causal streaming change semantics; this report authorizes neither a production model change nor a new realtime claim.",
+    "current_short_submap_fastest_route_excluded": "FastVGGT retains full QKV and full MLP work. Attention QK/AV accounts for 8.66% of the static 72-block backbone MAC budget for S=2; this is not a measured global-block runtime fraction. No official two-image speed result was found."
+  },
+  "candidates": [
+    {
+      "name": "Co-Me",
+      "priority": 1,
+      "official_repository": "https://github.com/co-me-tokens/CoMe",
+      "observed_repository_commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "paper": "https://arxiv.org/html/2511.14751v2",
+      "code_license": {
+        "name": "CC BY-NC 4.0",
+        "source": "https://raw.githubusercontent.com/co-me-tokens/CoMe/main/LICENSE"
+      },
+      "original_checkpoint_binding": {
+        "url": "https://huggingface.co/facebook/VGGT-1B/resolve/main/model.pt",
+        "source": "https://raw.githubusercontent.com/co-me-tokens/CoMe/main/src/thirdparty/vggt/__init__.py",
+        "validation_in_official_loader": "Reject all missing parameters and unexpected parameters other than removed track_head parameters.",
+        "weight_values_verified_in_this_research": false,
+        "base_architecture": "Original 1024-channel ViT-L/14 register-token DINO encoder; 24 encoder blocks, 24 frame blocks, 24 global blocks. No smaller backbone."
+      },
+      "released_predictor": {
+        "metadata_api": "https://api.github.com/repos/co-me-tokens/CoMe/contents/output/confidence_distill/vggt/20260324_172742/step_02000/checkpoint.pth?ref=main",
+        "bytes": 831722,
+        "git_blob_sha": "19c8a02c8700c8964064ec0b7d479ed686430dda",
+        "path": "output/confidence_distill/vggt/20260324_172742/step_02000/checkpoint.pth",
+        "metadata_fetch_only": true,
+        "architecture": "Linear 1024-to-128, one 128-channel single-head transformer block, two reflect-padded 3x3 convolutions to confidence.",
+        "source": "https://raw.githubusercontent.com/co-me-tokens/CoMe/main/src/accelerate/common/confidence_predictor.py",
+        "training": "The predictor was trained; the VGGT base remains frozen. Released predictor removes the need for new predictor training in an experiment."
+      },
+      "compute_reduction": {
+        "configuration": "https://raw.githubusercontent.com/co-me-tokens/CoMe/main/config/model/co_me_fused_vggt_3x3.yaml",
+        "source": "https://raw.githubusercontent.com/co-me-tokens/CoMe/main/src/accelerate/vggt/direct.py",
+        "encoder_layer_index": 14,
+        "unreduced_dino_blocks": 15,
+        "reduced_dino_blocks": 9,
+        "reduced_frame_blocks": 24,
+        "reduced_global_blocks": 24,
+        "mlp_reduced": true,
+        "direct_semantics": "Merge normalized tokens before QKV/attention, split afterward; independently merge normalized tokens before the original MLP and split its output. Original residual paths remain.",
+        "fused_semantics_source": "https://raw.githubusercontent.com/co-me-tokens/CoMe/main/src/accelerate/vggt/fused.py",
+        "fused_semantics": "Compact whole blocks, then expand retained outputs. Averaged RoPE positions are converted to integers; attention uses token-multiplicity correction. This is approximate, even with unchanged VGGT weights."
+      },
+      "rk3588_constraints": {
+        "official_runtime": "CUDA/CUTLASS and jagged FlashAttention, with CUDA extension imports. The naive merger contains portable tensor math but its current module import is not a standalone CPU path.",
+        "source": "https://raw.githubusercontent.com/co-me-tokens/CoMe/main/src/accelerate/token_merger/co_me_2d.py",
+        "group_grid": "Official 3x3 grouping requires both patch-grid dimensions divisible by 3. Our 336 18x24 grid works; 518 28x37 and 112 6x8 do not directly fit that configuration.",
+        "mask_dependency": "Predictor attention sees all views; its strict-below-median mask is batch dependent and variable-length. Do not reuse the previous complete DINO-tail cache across new view sets under Co-Me.",
+        "possible_exact_cache_boundary": "The first 15 image-independent DINO blocks precede the context-dependent mask and can remain an exact reuse boundary, subject to identical input/model/backend guards.",
+        "static_rknn_route": "CPU computes a frozen mask and gather/scatter map; a fixed compact-row MLP is the first tractable RKNN graph. Full jagged attention and its multiplicity bias are separate unvalidated work.",
+        "rk3588_ram_or_latency_measured": false
+      },
+      "official_performance_limits": {
+        "source": "https://arxiv.org/html/2511.14751v2",
+        "gpu": "NVIDIA H100 80GB",
+        "example_32_view_dtu_ms": {
+          "optimized_vggt_star": 1266,
+          "co_me": 788
+        },
+        "single_view_nyu_ms": {
+          "optimized_vggt_star": 56.1,
+          "co_me": 61.5
+        },
+        "full_dense_map_accuracy_proven": false,
+        "quality_caveat": "Depth/point-cloud evaluation masks merged regions for all compared methods; these results do not establish whole-image map quality.",
+        "edge_caveat": "The edge demonstration is MapAnything on CUDA Jetson Thor, not VGGT on Rockchip. It does not establish 20 Hz VGGT pose output."
+      }
+    },
+    {
+      "name": "FastVGGT",
+      "priority": 2,
+      "recommendation": "Do not prioritize for the present two-view submap workload.",
+      "official_repository": "https://github.com/mystorm16/FastVGGT",
+      "paper": "https://arxiv.org/html/2509.02560v2",
+      "code_license": {
+        "name": "Custom Meta VGGT license v1, July 29 2025",
+        "source": "https://raw.githubusercontent.com/mystorm16/FastVGGT/main/LICENSE.txt"
+      },
+      "checkpoint": "https://huggingface.co/facebook/VGGT_tracker_fixed",
+      "checkpoint_caveat": "The official recommended tracker-fixed checkpoint is not the currently validated VGGT-1B checkpoint. Base dimensions remain compatible, but this research did not load or compare weights.",
+      "no_new_training_required": true,
+      "architecture": "Still ViT-L/14 register DINO with 1024-channel, 24 frame/24 global blocks.",
+      "semantics_source": "https://raw.githubusercontent.com/mystorm16/FastVGGT/main/vggt/layers/attention.py",
+      "semantics": "Full QKV and RoPE precede merging; attention and output projection use fewer tokens; unmerge occurs before the full MLP. Approximate attention, not a reduced full block.",
+      "mlp_source": "https://raw.githubusercontent.com/mystorm16/FastVGGT/main/vggt/layers/block.py",
+      "official_speed": {
+        "gpu": "NVIDIA A800 80GB",
+        "scannet1000_seconds": {
+          "vggt_star": 724.6,
+          "fast_vggt": 180.7
+        },
+        "scannet100_seconds": {
+          "vggt_star": 9.1,
+          "fast_vggt": 5.4
+        },
+        "two_view_result_found": false,
+        "rk3588_result_found": false
+      },
+      "rknn_obstacles": "Matching/gather/scatter scheduling and variable token counts; CUDA FlashAttention cannot be assumed deployable. Large-sequence GPU speedups do not establish short-submap board speedups."
+    },
+    {
+      "name": "StreamVGGT / InfiniteVGGT",
+      "priority": 3,
+      "recommendation": "A bounded causal research fork only if changing the model and inference semantics is explicitly accepted; not the current original-checkpoint acceleration route.",
+      "official_repositories": [
+        "https://github.com/wzzheng/StreamVGGT",
+        "https://github.com/AutoLab-SAI-SJTU/InfiniteVGGT"
+      ],
+      "papers": [
+        "https://arxiv.org/html/2507.11539v2",
+        "https://arxiv.org/html/2601.02281v1"
+      ],
+      "checkpoint": "https://huggingface.co/lch01/StreamVGGT",
+      "licenses": {
+        "stream_code": "CC BY-NC-SA 4.0",
+        "infinite_code": "Apache 2.0",
+        "stream_hf_weights_card": "CC BY-NC 4.0"
+      },
+      "base_architecture": "Still ViT-L/14 register DINO, 1024 channels, 24 frame/24 global blocks; every new image retains its image encoder computation.",
+      "original_checkpoint_compatible": false,
+      "semantics": "StreamVGGT uses trained causal/distilled weights. InfiniteVGGT reuses these weights and adds bounded KV memory without retraining. Its training-free claim is about memory extension, not conversion of original VGGT weights into a causal model.",
+      "cache_source": "https://raw.githubusercontent.com/AutoLab-SAI-SJTU/InfiniteVGGT/main/src/streamvggt/models/aggregator.py",
+      "bounds": "Infinite applies per-layer bounded KV retention. Stream's default history grows, but its newer paper also describes a bounded window; do not characterize every Stream variant as unbounded.",
+      "official_performance": {
+        "infinite_gpu": "A100",
+        "infinite_cosine_seconds_per_frame": 0.168,
+        "infinite_peak_gpu_gb": 14.49,
+        "stream_40_frame_gpu_gb": 6.6,
+        "stream_40_frame_history_ms": 216
+      },
+      "integration_risks": "Static bounded cache/index design, causal attention export, and original SL4 overlap/loop retrieval interfaces require explicit adapters. A causal pose or TUM output cannot be blindly treated as the original projective graph gauge.",
+      "rk3588_realtime_proven": false
+    }
+  ],
+  "existing_exact_route": {
+    "artifact": "results/patch_cache_v19.json",
+    "capture_receipt_sha256": "69e998d2163ca978ef9c76a64dbd6400935818538994a064a5e93389bc140859",
+    "module_sha256": "cd86bcb580cbf55ca92b6b98b203bb6e789bf35adfa47644103efd6be592e6f9",
+    "measured_scope": "Three overlapping two-image 336 batches: pose, depth and confidence bitwise equal; six frame inputs, two hits, four misses. No claim of controlled speedup or general equality for changed inputs/backends.",
+    "limits": "Only the previous batch's final DINO patch tokens are cached. The same image can change first/other camera-token roles, so its first frame block is not a valid cross-role exact cache. Later global-attention outputs depend on the new view set.",
+    "official_memory_fix": "https://raw.githubusercontent.com/facebookresearch/vggt/main/vggt/models/aggregator.py",
+    "local_memory_fix_status": "Retained-layer filtering already exists locally. Moving concat inside that filter avoids temporary allocations but does not remove transformer-layer computation; do not call it a new 2-3x inference-speed route."
+  },
+  "next_small_experiment": {
+    "name": "One original-weight MLP with Co-Me direct mean-merge/split",
+    "status": "Proposal only; not implemented or executed on real tensors.",
+    "prerequisite_capture": "Root captures same-batch DINO block14 features, the chosen block's norm2 input, original MLP/output and exact source/weight hashes on the board.",
+    "portable_reference": "Reimplement only the official mean/group/reverse-index arithmetic with CPU tensor operations; preserve special tokens, original FC weights/bias, exact GELU, LayerScale and residual. Validate synthetic grouping/index contracts before real-board comparison; do not install a large CUDA dependency stack.",
+    "configuration": "Start with the existing 336 18x24 grid and official 3x3 grouping. Use the released predictor or explicitly label a confidence-mask substitute. Freeze the actual mask for this single diagnostic; do not choose it using heldout accuracy or GT.",
+    "token_budget_example": "For two views, 432 patch + 5 special tokens each gives 874 rows. If exactly 48 of the 96 patch groups merge, 490 rows remain; strict quantile ties can change this count. This arithmetic is not a measured speedup.",
+    "required_comparisons": [
+      "CPU direct mean-merge/MLP/split agrees with independently implemented official index/group semantics on small synthetic tensors.",
+      "Real board: original MLP versus compact original-weight MLP, explicit special/merged/nonmerged output errors, all-region coverage, gather/split cost and total operator time.",
+      "A fixed compact-row RKNN MLP must show actual SDK execution/operator target, no fallback, original-weight binding and end-to-end IO timing.",
+      "Only after the isolated diagnostic: unchanged dense-output interface, all-pixel depth/confidence/pose comparisons and original SL4 overlap/loop regression."
+    ],
+    "forbidden_claims": [
+      "Exact VGGT inference",
+      "Whole-image quality retained from masked paper tables",
+      "20 Hz tracking",
+      "2-5 second complete mapping",
+      "Entirely NPU execution from a single MLP result"
+    ]
+  },
+  "synthetic_dependency_check_actually_run": {
+    "implementation": "NumPy float64, seed20; 9x4 tokens; FC1 4-to-8, exact erf GELU, FC2 8-to-4; all weights/bias random in that order.",
+    "heterogeneous_tokens_max_abs_difference": 13.685009099084024,
+    "identical_tokens_max_abs_difference": 4.440892098500626e-16,
+    "conclusion": "Mean-merge -> exact MLP -> replicate split changes heterogeneous-token outputs despite retaining the original weights. This proves a semantic boundary, not real-model quality or speed."
+  },
+  "official_repository_commits": {
+    "co_me": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+    "fast_vggt": "6526e275a29572653a034762bb3c6c9ce280ff55",
+    "infinite_vggt": "7f9a5a26c2e2f9603151d1dcc61fd402ef3f6a27",
+    "stream_vggt": "05682bcb05683c4c71522e9cb618fc8ca349063c"
+  },
+  "primary_source_bindings": [
+    {
+      "repository": "co-me-tokens/CoMe",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "path": "src/thirdparty/vggt/__init__.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/thirdparty/vggt/__init__.py",
+      "sha256": "fc30d9e5bb00e9deca722b9519cc0a41d30019bcbf20b9705aebadefb7c134a8",
+      "bytes": 798,
+      "lines": 23,
+      "claim_locator_lines": {
+        "URL =": [
+          6
+        ],
+        "unexpected_non_track": [
+          11,
+          12,
+          15
+        ],
+        "incompatible.missing_keys": [
+          18,
+          21
+        ]
+      }
+    },
+    {
+      "repository": "co-me-tokens/CoMe",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "path": "src/accelerate/vggt/direct.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/vggt/direct.py",
+      "sha256": "70d46598daa04e89ebe5d54ddd39614d57e1eda1938d1c03eaa1c62eb5956f05",
+      "bytes": 9396,
+      "lines": 194,
+      "claim_locator_lines": {
+        "accelerated_encode_blks": [
+          28,
+          126,
+          170
+        ],
+        "accelerated_frames_blks": [
+          29,
+          134,
+          174
+        ],
+        "accelerated_global_blks": [
+          30,
+          141,
+          178
+        ],
+        "replace_vggt_block_mlp_inference": [
+          150,
+          172,
+          176,
+          180
+        ],
+        "original_forward(merged_x.tokens)": [
+          163
+        ],
+        "not responsible": [
+          188
+        ]
+      }
+    },
+    {
+      "repository": "co-me-tokens/CoMe",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "path": "src/accelerate/vggt/fused.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/vggt/fused.py",
+      "sha256": "11ca9bd74a445301e3ac24bb5b89f431263d000b9d45c848f9c840b0ab770d69",
+      "bytes": 9655,
+      "lines": 189,
+      "claim_locator_lines": {
+        "accelerated_encode_blks": [
+          29,
+          78
+        ],
+        "accelerated_frames_blks": [
+          30,
+          90
+        ],
+        "accelerated_global_blks": [
+          31,
+          93
+        ]
+      }
+    },
+    {
+      "repository": "co-me-tokens/CoMe",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "path": "config/model/co_me_fused_vggt_3x3.yaml",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/config/model/co_me_fused_vggt_3x3.yaml",
+      "sha256": "883f0c05649149ccf89026d84d5fbbadbd60deba21014a4fbd2a989ba14dabab",
+      "bytes": 501,
+      "lines": 18,
+      "claim_locator_lines": {
+        "group_h": [
+          6
+        ],
+        "group_w": [
+          7
+        ],
+        "threshold": [
+          8
+        ],
+        "ckpt_path": [
+          9
+        ],
+        "encoder_layer": [
+          14
+        ]
+      }
+    },
+    {
+      "repository": "co-me-tokens/CoMe",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "path": "src/accelerate/common/confidence_predictor.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/common/confidence_predictor.py",
+      "sha256": "cadde9b423499aa9d49ca72ed185625c2346d60a875501481a1aa9d396d32e73",
+      "bytes": 3185,
+      "lines": 75,
+      "claim_locator_lines": {
+        "class GlobalAttentionConfidence": [
+          32
+        ],
+        "nn.Linear": [
+          36
+        ],
+        "num_heads": [
+          37
+        ],
+        "nn.Conv2d": [
+          14,
+          39,
+          41
+        ]
+      }
+    },
+    {
+      "repository": "co-me-tokens/CoMe",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "path": "src/accelerate/token_merger/co_me_2d.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/token_merger/co_me_2d.py",
+      "sha256": "5f3ad3dc44fb1b9d6afb427b3005f0d98fdddd33ce601c4db13aa57f05665d9c",
+      "bytes": 14232,
+      "lines": 352,
+      "claim_locator_lines": {
+        "naive_func_token_merge_2d": [
+          77,
+          185,
+          337
+        ],
+        "torch.quantile": [
+          292
+        ],
+        "block_means": [
+          291,
+          293,
+          295
+        ]
+      }
+    },
+    {
+      "repository": "co-me-tokens/CoMe",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "path": "src/accelerate/token_merger/co_me.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/token_merger/co_me.py",
+      "sha256": "03c0797e80230ca032bd9b43ed5bafbd5dfce4da16ef64ecf31ba27d5aae5d2a",
+      "bytes": 10509,
+      "lines": 254,
+      "claim_locator_lines": {
+        "import": [
+          5,
+          6,
+          7,
+          9,
+          10,
+          11,
+          13,
+          14,
+          15,
+          16,
+          18
+        ],
+        "split": [
+          2,
+          95,
+          98,
+          99,
+          225,
+          232,
+          238,
+          241,
+          242
+        ]
+      }
+    },
+    {
+      "repository": "co-me-tokens/CoMe",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "path": "src/thirdparty/vggt/models/aggregator.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/thirdparty/vggt/models/aggregator.py",
+      "sha256": "445cf684e8393d8626048b830dfec8e6230fffa38737fa0c9e01eb7aa9e3c98d",
+      "bytes": 13154,
+      "lines": 335,
+      "claim_locator_lines": {
+        "embed_dim": [
+          34,
+          55,
+          75,
+          84,
+          101,
+          128,
+          129,
+          156,
+          164
+        ],
+        "depth": [
+          35,
+          56,
+          94,
+          111,
+          115,
+          120,
+          121,
+          122,
+          124
+        ],
+        "num_heads": [
+          36,
+          57,
+          85,
+          102
+        ],
+        "mlp_ratio": [
+          37,
+          58,
+          86,
+          103
+        ],
+        "dinov2_vitl14_reg": [
+          43,
+          64,
+          167
+        ]
+      }
+    },
+    {
+      "repository": "co-me-tokens/CoMe",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/README.md",
+      "sha256": "37f194e051a85c139e550e7b32f7c8956c683fdf801766ed270e513463b438a7",
+      "bytes": 7100,
+      "lines": 172,
+      "claim_locator_lines": {
+        "CUDA": [
+          23,
+          32,
+          33,
+          34,
+          35,
+          47,
+          66,
+          76,
+          86,
+          88,
+          96,
+          97,
+          103,
+          104,
+          112
+        ],
+        "H100": [
+          144
+        ],
+        "Thor": [
+          34,
+          66,
+          165
+        ],
+        "CVPR": [
+          17
+        ]
+      }
+    },
+    {
+      "repository": "co-me-tokens/CoMe",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/LICENSE",
+      "sha256": "43a372304b1da21ff143b9dd10424d93dc193073aecd5984a6b3872416dc7acd",
+      "bytes": 19753,
+      "lines": 407,
+      "claim_locator_lines": {
+        "Attribution-NonCommercial": [
+          1,
+          57,
+          62
+        ],
+        "4.0": [
+          1,
+          57,
+          62
+        ]
+      }
+    },
+    {
+      "repository": "mystorm16/FastVGGT",
+      "commit": "6526e275a29572653a034762bb3c6c9ce280ff55",
+      "path": "vggt/layers/attention.py",
+      "url": "https://raw.githubusercontent.com/mystorm16/FastVGGT/6526e275a29572653a034762bb3c6c9ce280ff55/vggt/layers/attention.py",
+      "sha256": "c6696b63c8d8cbd78451457ca376ce9a5a047e6502de979cc82de9f2a107ef52",
+      "bytes": 9217,
+      "lines": 258,
+      "claim_locator_lines": {
+        "self.qkv(x)": [
+          68,
+          240
+        ],
+        "rope": [
+          38,
+          60,
+          75,
+          76,
+          77,
+          232,
+          233,
+          244,
+          245,
+          246
+        ],
+        "scaled_dot_product_attention": [
+          211
+        ],
+        "self.proj": [
+          58,
+          59,
+          220,
+          221,
+          256,
+          257
+        ]
+      }
+    },
+    {
+      "repository": "mystorm16/FastVGGT",
+      "commit": "6526e275a29572653a034762bb3c6c9ce280ff55",
+      "path": "vggt/layers/block.py",
+      "url": "https://raw.githubusercontent.com/mystorm16/FastVGGT/6526e275a29572653a034762bb3c6c9ce280ff55/vggt/layers/block.py",
+      "sha256": "82d2b7860e099e86609539c22fcd3daa5a12142a4a74308da654e2b56cf6350f",
+      "bytes": 9158,
+      "lines": 274,
+      "claim_locator_lines": {
+        "self.mlp": [
+          70,
+          92,
+          234,
+          259
+        ],
+        "self.attn": [
+          50,
+          86,
+          226,
+          231,
+          256
+        ]
+      }
+    },
+    {
+      "repository": "mystorm16/FastVGGT",
+      "commit": "6526e275a29572653a034762bb3c6c9ce280ff55",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/mystorm16/FastVGGT/6526e275a29572653a034762bb3c6c9ce280ff55/README.md",
+      "sha256": "a7decd7596eab8cd16629a21e0cb976dc31f7a59cc4990a2de8bac1a92c8e3ac",
+      "bytes": 6079,
+      "lines": 180,
+      "claim_locator_lines": {
+        "tracker_fixed": [
+          54,
+          70
+        ],
+        "1000": [
+          138,
+          143
+        ],
+        "training": [
+          2,
+          33,
+          172
+        ]
+      }
+    },
+    {
+      "repository": "mystorm16/FastVGGT",
+      "commit": "6526e275a29572653a034762bb3c6c9ce280ff55",
+      "path": "LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/mystorm16/FastVGGT/6526e275a29572653a034762bb3c6c9ce280ff55/LICENSE.txt",
+      "sha256": "b94e46746792d1adfa0ebdbccada5d4576d244ae230be9de8a46b5868fff001b",
+      "bytes": 10722,
+      "lines": 115,
+      "claim_locator_lines": {
+        "July": [
+          3
+        ],
+        "VGGT": [
+          1
+        ],
+        "License": [
+          1,
+          14,
+          22,
+          25,
+          49,
+          82
+        ]
+      }
+    },
+    {
+      "repository": "AutoLab-SAI-SJTU/InfiniteVGGT",
+      "commit": "7f9a5a26c2e2f9603151d1dcc61fd402ef3f6a27",
+      "path": "src/streamvggt/models/aggregator.py",
+      "url": "https://raw.githubusercontent.com/AutoLab-SAI-SJTU/InfiniteVGGT/7f9a5a26c2e2f9603151d1dcc61fd402ef3f6a27/src/streamvggt/models/aggregator.py",
+      "sha256": "00d46193ca90aaeae2e68b550d2f7c8093cece774e46b8f8deb20c89a7dcdd0d",
+      "bytes": 16367,
+      "lines": 422,
+      "claim_locator_lines": {
+        "embed_dim": [
+          33,
+          54,
+          72,
+          81,
+          98,
+          125,
+          126,
+          158,
+          166
+        ],
+        "depth": [
+          34,
+          55,
+          91,
+          108,
+          112,
+          117,
+          118,
+          119,
+          121,
+          145
+        ],
+        "num_heads": [
+          35,
+          56,
+          82,
+          99
+        ],
+        "mlp_ratio": [
+          36,
+          57,
+          83,
+          100
+        ],
+        "dinov2_vitl14_reg": [
+          42,
+          63,
+          169
+        ],
+        "budget": [
+          195,
+          262,
+          280,
+          341,
+          372,
+          386,
+          392,
+          393,
+          394,
+          396
+        ]
+      }
+    },
+    {
+      "repository": "AutoLab-SAI-SJTU/InfiniteVGGT",
+      "commit": "7f9a5a26c2e2f9603151d1dcc61fd402ef3f6a27",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/AutoLab-SAI-SJTU/InfiniteVGGT/7f9a5a26c2e2f9603151d1dcc61fd402ef3f6a27/README.md",
+      "sha256": "30555bc5708a05b60cf2ff81c109c836ec05985c357c26abab457651f073e2f9",
+      "bytes": 5973,
+      "lines": 164,
+      "claim_locator_lines": {
+        "StreamVGGT": [
+          86,
+          148
+        ],
+        "training": [
+          53
+        ],
+        "cache": [
+          97,
+          98
+        ]
+      }
+    },
+    {
+      "repository": "AutoLab-SAI-SJTU/InfiniteVGGT",
+      "commit": "7f9a5a26c2e2f9603151d1dcc61fd402ef3f6a27",
+      "path": "LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/AutoLab-SAI-SJTU/InfiniteVGGT/7f9a5a26c2e2f9603151d1dcc61fd402ef3f6a27/LICENSE.txt",
+      "sha256": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1",
+      "bytes": 11356,
+      "lines": 201,
+      "claim_locator_lines": {
+        "Apache": [
+          1,
+          3,
+          178,
+          180,
+          191,
+          195
+        ],
+        "2.0": [
+          2,
+          191,
+          195
+        ]
+      }
+    },
+    {
+      "repository": "wzzheng/StreamVGGT",
+      "commit": "05682bcb05683c4c71522e9cb618fc8ca349063c",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/wzzheng/StreamVGGT/05682bcb05683c4c71522e9cb618fc8ca349063c/README.md",
+      "sha256": "176d4190b3e77d30ca25ecbf85d0a7522e3fed4b781a32cc26884b4c81f63144",
+      "bytes": 7734,
+      "lines": 198,
+      "claim_locator_lines": {
+        "checkpoint": [
+          18,
+          56,
+          59,
+          90
+        ],
+        "VGGT": [
+          5,
+          14,
+          18,
+          20,
+          22,
+          28,
+          39,
+          41,
+          42,
+          46,
+          47,
+          57,
+          59,
+          87,
+          109,
+          110,
+          116,
+          125,
+          160,
+          168,
+          174,
+          183,
+          192
+        ],
+        "causal": [
+          14,
+          29
+        ]
+      }
+    },
+    {
+      "repository": "wzzheng/StreamVGGT",
+      "commit": "05682bcb05683c4c71522e9cb618fc8ca349063c",
+      "path": "LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/wzzheng/StreamVGGT/05682bcb05683c4c71522e9cb618fc8ca349063c/LICENSE.txt",
+      "sha256": "e0eb0aae5e2658b11ad65864bca446e7ed1d59a461ff02395b9e637bf41052e4",
+      "bytes": 20983,
+      "lines": 442,
+      "claim_locator_lines": {
+        "Attribution-NonCommercial-ShareAlike": [
+          3,
+          5,
+          61,
+          66
+        ],
+        "4.0": [
+          3,
+          5,
+          61,
+          66
+        ]
+      }
+    }
+  ],
+  "source_binding_scope": "Architecture, algorithm and license claims are bound to immutable author repository commits and byte hashes below; benchmark claims retain explicit versioned author-paper URLs and hardware labels. Line numbers are one-based. Source/checkpoint metadata were fetched, not checkpoint payloads."
+}
