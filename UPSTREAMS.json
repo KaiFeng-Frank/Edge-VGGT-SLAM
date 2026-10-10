@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "root": {
+    "url": "https://github.com/MIT-SPARK/VGGT-SLAM",
+    "commit": "35327ac28b7d193df9ccc39ba6346052bb6f1207",
+    "license": "BSD-2-Clause",
+    "copyright": "Copyright (c) 2025, MIT-SPARK"
+  },
+  "vggt": {
+    "url": "https://github.com/MIT-SPARK/VGGT_SPARK",
+    "commit": "6e6e16107b88e8e76c751826af10d4295d87ecd2",
+    "destination": "third_party/vggt",
+    "license": "CC-BY-NC-4.0",
+    "license_file": "LICENSE.txt",
+    "patch": "deploy/rk3588/vggt-spark.patch",
+    "patch_sha256": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864"
+  },
+  "optional_loop_closure": [
+    {
+      "url": "https://github.com/serizba/salad",
+      "commit": "33ca9c0ca1e10cbb21efc0d6a5fcb6d45688e42d",
+      "destination": "third_party/salad",
+      "license": "GPL-3.0",
+      "license_file": "LICENSE"
+    },
+    {
+      "url": "https://github.com/facebookresearch/dinov2",
+      "commit": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+      "destination": "third_party/dinov2",
+      "license": "Apache-2.0",
+      "license_file": "LICENSE"
+    }
+  ],
+  "model": {
+    "url": "https://huggingface.co/facebook/VGGT-1B",
+    "filename": "model.pt",
+    "size": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "redistributed": false
+  },
+  "external_sdk": {
+    "url": "https://github.com/airockchip/rknn-toolkit2",
+    "tested_version": "2.3.2",
+    "headers_redistributed": false,
+    "runtime_redistributed": false
+  },
+  "submodules_in_root": false,
+  "vendors_redistributed": false
+}

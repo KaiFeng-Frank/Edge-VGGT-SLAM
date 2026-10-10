@@ -1,0 +1,636 @@
+{
+  "schema_version": 1,
+  "scope": "Curated observations from completed board receipts; no acceptance inferred",
+  "not_validated": [
+    "20Hz_full_source_valid_pose_rate",
+    "3s_map_updates",
+    "physical_camera_latency",
+    "full_network_NPU",
+    "full_network_accuracy",
+    "30minute_endurance",
+    "8GB_operation"
+  ],
+  "cpu_full_vggt": {
+    "configuration": "originalweights;2officeimages;CPUFP32;4A76threads;no_graph_or_inputloading",
+    "requested_image_size": 112,
+    "actual_tensor_height_width": [
+      56,
+      112
+    ],
+    "unhooked_forward_seconds": 3.8305818009976065,
+    "separate_hooked_camera_head_seconds": 1.2496652089976124
+  },
+  "small_dino_npu": {
+    "input_shape": [
+      1,
+      37,
+      1024
+    ],
+    "original_weight_subnetwork_only": true,
+    "normal_receipt_sha256": "204e0d7faa86c4a0dd465e30055d30e89baad34a604a79099cd55c7b42799ca1",
+    "profile_receipt_sha256": "a9987691ee18a51b1ae90b47efd3be0453282a12dae4e7f003f2d738a72082c8",
+    "normal_actual_sdk_calls": 4,
+    "separate_profile_actual_sdk_calls": 4,
+    "normal_io_seconds": [
+      0.005842958998982795,
+      0.005491500996868126,
+      0.0054203339968807995,
+      0.0055545010036439635
+    ],
+    "warm_three_mean_io_seconds": 0.005488778665797629,
+    "io_interval": "inputs_set + blocking run + blocking outputs_get + owned copy + release",
+    "error_vs_pytorch_fp32": {
+      "finite": true,
+      "array_equal": false,
+      "max_abs_error": 0.09303092956542969,
+      "rmse": 0.002259043326811787,
+      "relative_l2": 0.012253276794863939,
+      "cosine_similarity": 0.9999278570316066,
+      "relative_l2_defined": true,
+      "cosine_defined": true,
+      "output_raw_sha256": "471374dd24ba577d190c3dca63a58c7c68e625a2cb712f5f46dc74a9353ff7de"
+    },
+    "all_calls_output_released": true,
+    "both_contexts_destroyed": true,
+    "actual_sdk_profile": [
+      {
+        "raw_text_sha256": "3c81748af43214c5e7c2a945c9dedbc9a80eccaefde96578562aae1884a25e37",
+        "operators": [
+          {
+            "id": 1,
+            "op_type": "InputOperator",
+            "dtype": "FLOAT16",
+            "target": "CPU"
+          },
+          {
+            "id": 2,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 3,
+            "op_type": "Transpose",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 4,
+            "op_type": "exNorm",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 5,
+            "op_type": "Conv",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 6,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 7,
+            "op_type": "Split",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 8,
+            "op_type": "exSDPAttention",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 9,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 10,
+            "op_type": "ConvAdd",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 11,
+            "op_type": "exNorm",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 12,
+            "op_type": "ConvExGelu",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 13,
+            "op_type": "ConvAdd",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 14,
+            "op_type": "Transpose",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 15,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 16,
+            "op_type": "OutputOperator",
+            "dtype": "FLOAT16",
+            "target": "CPU"
+          }
+        ]
+      },
+      {
+        "raw_text_sha256": "5c1a142f34d61602cdf7d1b3ca8e78bffec4344f8fdf965bb2ffb36ea7443260",
+        "operators": [
+          {
+            "id": 1,
+            "op_type": "InputOperator",
+            "dtype": "FLOAT16",
+            "target": "CPU"
+          },
+          {
+            "id": 2,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 3,
+            "op_type": "Transpose",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 4,
+            "op_type": "exNorm",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 5,
+            "op_type": "Conv",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 6,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 7,
+            "op_type": "Split",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 8,
+            "op_type": "exSDPAttention",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 9,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 10,
+            "op_type": "ConvAdd",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 11,
+            "op_type": "exNorm",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 12,
+            "op_type": "ConvExGelu",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 13,
+            "op_type": "ConvAdd",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 14,
+            "op_type": "Transpose",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 15,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 16,
+            "op_type": "OutputOperator",
+            "dtype": "FLOAT16",
+            "target": "CPU"
+          }
+        ]
+      },
+      {
+        "raw_text_sha256": "aed0f200d8b162a772712d9783407d06d321c552d6ab795672cc66c2ad0f832f",
+        "operators": [
+          {
+            "id": 1,
+            "op_type": "InputOperator",
+            "dtype": "FLOAT16",
+            "target": "CPU"
+          },
+          {
+            "id": 2,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 3,
+            "op_type": "Transpose",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 4,
+            "op_type": "exNorm",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 5,
+            "op_type": "Conv",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 6,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 7,
+            "op_type": "Split",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 8,
+            "op_type": "exSDPAttention",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 9,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 10,
+            "op_type": "ConvAdd",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 11,
+            "op_type": "exNorm",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 12,
+            "op_type": "ConvExGelu",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 13,
+            "op_type": "ConvAdd",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 14,
+            "op_type": "Transpose",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 15,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 16,
+            "op_type": "OutputOperator",
+            "dtype": "FLOAT16",
+            "target": "CPU"
+          }
+        ]
+      },
+      {
+        "raw_text_sha256": "b44e2f137aa775ab1611af790c60888459514500729709890ab7441bd29dcbfc",
+        "operators": [
+          {
+            "id": 1,
+            "op_type": "InputOperator",
+            "dtype": "FLOAT16",
+            "target": "CPU"
+          },
+          {
+            "id": 2,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 3,
+            "op_type": "Transpose",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 4,
+            "op_type": "exNorm",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 5,
+            "op_type": "Conv",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 6,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 7,
+            "op_type": "Split",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 8,
+            "op_type": "exSDPAttention",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 9,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 10,
+            "op_type": "ConvAdd",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 11,
+            "op_type": "exNorm",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 12,
+            "op_type": "ConvExGelu",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 13,
+            "op_type": "ConvAdd",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 14,
+            "op_type": "Transpose",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 15,
+            "op_type": "Reshape",
+            "dtype": "FLOAT16",
+            "target": "NPU"
+          },
+          {
+            "id": 16,
+            "op_type": "OutputOperator",
+            "dtype": "FLOAT16",
+            "target": "CPU"
+          }
+        ]
+      }
+    ]
+  },
+  "tum_replays": [
+    {
+      "receipt_sha256": "523e80741b4fffc67132dae40c2b574f2bdf730a1003e5e0f415e7aab58fea78",
+      "backend": "cpu",
+      "npu_used": false,
+      "status": "completed_experiment",
+      "real_time_validated": false,
+      "image_size": 112,
+      "threads": 3,
+      "mapper_cpus": [
+        4,
+        5,
+        6
+      ],
+      "memory_guard_mib": 6500.0,
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 798,
+        "delivered": 761,
+        "overwritten": 37,
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "pose_timing": {
+        "delivered_observations": 761,
+        "fresh_valid_poses": 251,
+        "valid_fraction_of_original_frames": 0.31453634085213034,
+        "valid_fraction_of_delivered_frames": 0.32982917214191854,
+        "replay_duration_seconds": 26.572059119476762,
+        "valid_pose_publications_per_full_second": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          19,
+          29,
+          31,
+          27,
+          28,
+          25,
+          21,
+          21,
+          31
+        ],
+        "minimum_full_second_pose_count": 0,
+        "first_valid_seconds_after_start": 17.337647201005893,
+        "valid_pose_latency_p50_ms": 63.44593872199766,
+        "valid_pose_latency_p95_ms": 90.19206339871744,
+        "valid_pose_latency_max_ms": 104.1786744754063,
+        "maximum_valid_pose_publication_gap_seconds": 0.14711172299575992,
+        "latency_origin": "scheduled_RGB_replay_arrival_before_decode",
+        "latency_end": "pose_JSONL_write_and_flush_return",
+        "physical_camera_latency_validated": false,
+        "startup_and_losses_included_in_per_second_counts": true
+      },
+      "map_task_seconds": [
+        7.342423988004157,
+        7.3405682379961945,
+        7.228705018002074,
+        7.883347375005542
+      ],
+      "map_newest_frame_ages_seconds": [
+        7.388831527336151,
+        7.385479058015335,
+        7.276957115645928,
+        7.942261339259858
+      ],
+      "mapper_exitcode": 0,
+      "cleanup_errors": []
+    },
+    {
+      "receipt_sha256": "d28dbde8e019676f3bf5416541e29b97480e0415818a97f4ed633437e49fa184",
+      "backend": "xnnpack-f16",
+      "npu_used": false,
+      "status": "completed_experiment",
+      "real_time_validated": false,
+      "image_size": 112,
+      "threads": 3,
+      "mapper_cpus": [
+        4,
+        5,
+        6
+      ],
+      "memory_guard_mib": 8500.0,
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 798,
+        "delivered": 745,
+        "overwritten": 53,
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "pose_timing": {
+        "delivered_observations": 745,
+        "fresh_valid_poses": 397,
+        "valid_fraction_of_original_frames": 0.4974937343358396,
+        "valid_fraction_of_delivered_frames": 0.5328859060402684,
+        "replay_duration_seconds": 26.572059088459355,
+        "valid_pose_publications_per_full_second": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          15,
+          31,
+          30,
+          22,
+          22,
+          30,
+          27,
+          28,
+          23,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          17,
+          29,
+          30,
+          30,
+          24,
+          22
+        ],
+        "minimum_full_second_pose_count": 0,
+        "first_valid_seconds_after_start": 5.490259842998057,
+        "valid_pose_latency_p50_ms": 59.71315366332419,
+        "valid_pose_latency_p95_ms": 90.55221464514034,
+        "valid_pose_latency_max_ms": 107.25265276414575,
+        "maximum_valid_pose_publication_gap_seconds": 6.269127129999106,
+        "latency_origin": "scheduled_RGB_replay_arrival_before_decode",
+        "latency_end": "pose_JSONL_write_and_flush_return",
+        "physical_camera_latency_validated": false,
+        "startup_and_losses_included_in_per_second_counts": true
+      },
+      "map_task_seconds": [
+        4.041291781002656,
+        3.8484530950008775,
+        5.135813016000611,
+        5.340385412004252,
+        5.632206107999082,
+        5.926334720999876
+      ],
+      "map_newest_frame_ages_seconds": [
+        4.084974517347291,
+        3.893347967619775,
+        5.206302453356329,
+        5.436537947927718,
+        5.680860567081254,
+        5.996397378963593
+      ],
+      "mapper_exitcode": 0,
+      "cleanup_errors": []
+    }
+  ]
+}

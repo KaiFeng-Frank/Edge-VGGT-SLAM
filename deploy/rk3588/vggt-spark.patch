@@ -1,0 +1,134 @@
+diff --git a/vggt/layers/vision_transformer.py b/vggt/layers/vision_transformer.py
+index deda8fd..0e51637 100644
+--- a/vggt/layers/vision_transformer.py
++++ b/vggt/layers/vision_transformer.py
+@@ -116,7 +116,8 @@ class DinoVisionTransformer(nn.Module):
+         if drop_path_uniform is True:
+             dpr = [drop_path_rate] * depth
+         else:
+-            dpr = [x.item() for x in torch.linspace(0, drop_path_rate, depth)]  # stochastic depth decay rule
++            # These are constructor constants, including under meta-device loading.
++            dpr = [x.item() for x in torch.linspace(0, drop_path_rate, depth, device="cpu")]
+ 
+         if ffn_layer == "mlp":
+             logger.info("using MLP layer as FFN")
+diff --git a/vggt/models/aggregator.py b/vggt/models/aggregator.py
+index ea67ef5..99c65c5 100644
+--- a/vggt/models/aggregator.py
++++ b/vggt/models/aggregator.py
+@@ -438,6 +438,7 @@ class Aggregator(nn.Module):
+             self.register_buffer(name, torch.FloatTensor(value).view(1, 1, 3, 1, 1), persistent=False)
+ 
+         self.use_reentrant = False # hardcoded to False
++        self.retained_layer_indices = None
+ 
+     def __build_patch_embed__(
+         self,
+@@ -587,7 +588,11 @@ class Aggregator(nn.Module):
+             for i in range(len(frame_intermediates)):
+                 # concat frame and global intermediates, [B x S x P x 2C]
+                 concat_inter = torch.cat([frame_intermediates[i], global_intermediates[i]], dim=-1)
+-                output_list.append(concat_inter)
++                layer_index = len(output_list)
++                if self.retained_layer_indices is None or layer_index in self.retained_layer_indices:
++                    output_list.append(concat_inter)
++                else:
++                    output_list.append(None)
+ 
+         if viz_attention:
+             self.viz.show()
+diff --git a/vggt/models/vggt.py b/vggt/models/vggt.py
+index 670e091..831fb5c 100644
+--- a/vggt/models/vggt.py
++++ b/vggt/models/vggt.py
+@@ -6,6 +6,7 @@
+ 
+ import torch
+ import torch.nn as nn
++from contextlib import nullcontext
+ from huggingface_hub import PyTorchModelHubMixin  # used for model hub
+ 
+ from vggt.models.aggregator import Aggregator
+@@ -25,6 +26,7 @@ class VGGT(nn.Module, PyTorchModelHubMixin):
+         self.point_head = DPTHead(dim_in=2 * embed_dim, output_dim=4, activation="inv_log", conf_activation="expp1") if enable_point else None
+         self.depth_head = DPTHead(dim_in=2 * embed_dim, output_dim=2, activation="exp", conf_activation="expp1") if enable_depth else None
+         self.track_head = TrackHead(dim_in=2 * embed_dim, patch_size=patch_size) if enable_track else None
++        self.depth_frames_chunk_size = 8
+ 
+     def forward(self, images: torch.Tensor, query_points: torch.Tensor = None, compute_similarity=False):
+         """
+@@ -57,12 +59,12 @@ class VGGT(nn.Module, PyTorchModelHubMixin):
+             
+         if query_points is not None and len(query_points.shape) == 2:
+             query_points = query_points.unsqueeze(0)
+-        images = images.to(torch.bfloat16)
++        images = images.to(dtype=next(self.parameters()).dtype)
+         aggregated_tokens_list, patch_start_idx, target_tokens, image_match_ratio = self.aggregator(images, compute_similarity)
+ 
+         predictions = {}
+ 
+-        with torch.cuda.amp.autocast(enabled=False):
++        with nullcontext():
+             if self.camera_head is not None:
+                 pose_enc_list = self.camera_head(aggregated_tokens_list)
+                 predictions["pose_enc"] = pose_enc_list[-1]  # pose encoding of the last iteration
+@@ -70,7 +72,8 @@ class VGGT(nn.Module, PyTorchModelHubMixin):
+                 
+             if self.depth_head is not None:
+                 depth, depth_conf = self.depth_head(
+-                    aggregated_tokens_list, images=images, patch_start_idx=patch_start_idx
++                    aggregated_tokens_list, images=images, patch_start_idx=patch_start_idx,
++                    frames_chunk_size=self.depth_frames_chunk_size,
+                 )
+                 predictions["depth"] = depth
+                 predictions["depth_conf"] = depth_conf
+diff --git a/vggt/utils/load_fn.py b/vggt/utils/load_fn.py
+index cc34976..7801be3 100644
+--- a/vggt/utils/load_fn.py
++++ b/vggt/utils/load_fn.py
+@@ -94,7 +94,7 @@ def load_and_preprocess_images_square(image_path_list, target_size=1024):
+     return images, original_coords
+ 
+ 
+-def load_and_preprocess_images(image_path_list, mode="crop"):
++def load_and_preprocess_images(image_path_list, mode="crop", image_size=518):
+     """
+     A quick start function to load and preprocess images for model input.
+     This assumes the images should have the same shape for easier batching, but our model can also work well with different shapes.
+@@ -132,7 +132,9 @@ def load_and_preprocess_images(image_path_list, mode="crop"):
+     images = []
+     shapes = set()
+     to_tensor = TF.ToTensor()
+-    target_size = 518
++    target_size = int(image_size)
++    if target_size < 14 or target_size % 14:
++        raise ValueError("image_size must be a positive multiple of 14")
+ 
+     # First process all images and collect their shapes
+     for image_path in image_path_list:
+@@ -155,15 +157,15 @@ def load_and_preprocess_images(image_path_list, mode="crop"):
+             # Make the largest dimension 518px while maintaining aspect ratio
+             if width >= height:
+                 new_width = target_size
+-                new_height = round(height * (new_width / width) / 14) * 14  # Make divisible by 14
++                new_height = max(14, round(height * (new_width / width) / 14) * 14)  # Make divisible by 14
+             else:
+                 new_height = target_size
+-                new_width = round(width * (new_height / height) / 14) * 14  # Make divisible by 14
++                new_width = max(14, round(width * (new_height / height) / 14) * 14)  # Make divisible by 14
+         else:  # mode == "crop"
+             # Original behavior: set width to 518px
+             new_width = target_size
+             # Calculate height maintaining aspect ratio, divisible by 14
+-            new_height = round(height * (new_width / width) / 14) * 14
++            new_height = max(14, round(height * (new_width / width) / 14) * 14)
+ 
+         # Resize with new dimensions (width, height)
+         img = img.resize((new_width, new_height), Image.Resampling.BICUBIC)
+@@ -228,4 +230,4 @@ def load_and_preprocess_images(image_path_list, mode="crop"):
+         if images.dim() == 3:
+             images = images.unsqueeze(0)
+ 
+-    return images
+\ No newline at end of file
++    return images
