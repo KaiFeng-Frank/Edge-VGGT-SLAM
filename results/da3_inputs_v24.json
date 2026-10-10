@@ -1,0 +1,130 @@
+{
+  "kind": "v24_same_rectified_original_VGGT_RGB_FP32_inputs",
+  "reference_sha256": "8a5b9e8a7f94757fa906fbcc1b2d37ae3d4751076d69e966dd626a15a6c63598",
+  "preprocessing": "original VGGT prepare_rectified_images size336, CPU FP32 RGB[0,1]; apply official DA3 NORMALIZE once; no geometric resize",
+  "pairs": [
+    {
+      "pair_index": 0,
+      "revision": 1,
+      "frame_ids": [
+        1305031102.175304,
+        1305031102.443271
+      ],
+      "images": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v22-come-fullmodel-r1/input-pair-0.npy",
+      "sha256": "e99ce059d0d6ad7bb5d213cf2218d1420fec5c63adae6fd7d3e18e188b9c7ac3",
+      "bytes": 2032256,
+      "source_images": [
+        {
+          "path": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031102.175304.png",
+          "frame_id": 1305031102.175304,
+          "timestamp": 1305031102.175304,
+          "sha256": "331c3fd7a3d5eefb19e3da2026625aa221ca1991f5ae30ff96060e2e3e45e368",
+          "schedule_token": {
+            "path": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031102.175304.png",
+            "frame_id": 1305031102.175304,
+            "timestamp": 1305031102.175304,
+            "captured_monotonic": 61142.97688102722,
+            "sequence": 0
+          },
+          "samefile_validated": true
+        },
+        {
+          "path": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031102.443271.png",
+          "frame_id": 1305031102.443271,
+          "timestamp": 1305031102.443271,
+          "sha256": "49deecb97bbb0ef1b8d14212b10d5cdb9a2ce7b4c852ad4838bc8e2a872d82df",
+          "schedule_token": {
+            "path": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031102.443271.png",
+            "frame_id": 1305031102.443271,
+            "timestamp": 1305031102.443271,
+            "captured_monotonic": 61143.244848012924,
+            "sequence": 8
+          },
+          "samefile_validated": true
+        }
+      ]
+    },
+    {
+      "pair_index": 1,
+      "revision": 2,
+      "frame_ids": [
+        1305031102.443271,
+        1305031106.475345
+      ],
+      "images": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v22-come-fullmodel-r1/input-pair-1.npy",
+      "sha256": "5381c4879f905ed6b0fdf477a5469c21a8915fae8546a94f82505b00b9b3ac7c",
+      "bytes": 2032256,
+      "source_images": [
+        {
+          "path": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031102.443271.png",
+          "frame_id": 1305031102.443271,
+          "timestamp": 1305031102.443271,
+          "sha256": "49deecb97bbb0ef1b8d14212b10d5cdb9a2ce7b4c852ad4838bc8e2a872d82df",
+          "schedule_token": {
+            "path": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031102.443271.png",
+            "frame_id": 1305031102.443271,
+            "timestamp": 1305031102.443271,
+            "captured_monotonic": 61143.244848012924,
+            "sequence": 8
+          },
+          "samefile_validated": true
+        },
+        {
+          "path": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031106.475345.png",
+          "frame_id": 1305031106.475345,
+          "timestamp": 1305031106.475345,
+          "sha256": "c5e2ba56d4d22c709a03e73d493935d78df404ba4e7e1bfab57ed14a99db7544",
+          "schedule_token": {
+            "path": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031106.475345.png",
+            "frame_id": 1305031106.475345,
+            "timestamp": 1305031106.475345,
+            "captured_monotonic": 61147.27692198753,
+            "sequence": 129
+          },
+          "samefile_validated": true
+        }
+      ]
+    },
+    {
+      "pair_index": 2,
+      "revision": 3,
+      "frame_ids": [
+        1305031106.475345,
+        1305031110.111325
+      ],
+      "images": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v22-come-fullmodel-r1/input-pair-2.npy",
+      "sha256": "b36bf4bb157eca1789295e2b1db80af13aed372f0e699625fe2d202eb1ac4c3c",
+      "bytes": 2032256,
+      "source_images": [
+        {
+          "path": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031106.475345.png",
+          "frame_id": 1305031106.475345,
+          "timestamp": 1305031106.475345,
+          "sha256": "c5e2ba56d4d22c709a03e73d493935d78df404ba4e7e1bfab57ed14a99db7544",
+          "schedule_token": {
+            "path": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031106.475345.png",
+            "frame_id": 1305031106.475345,
+            "timestamp": 1305031106.475345,
+            "captured_monotonic": 61147.27692198753,
+            "sequence": 129
+          },
+          "samefile_validated": true
+        },
+        {
+          "path": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031110.111325.png",
+          "frame_id": 1305031110.111325,
+          "timestamp": 1305031110.111325,
+          "sha256": "9f2a4a185c9ed64d7805806d9e8937b7933b946656e5c119063c75c0cfe0eca1",
+          "schedule_token": {
+            "path": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031110.111325.png",
+            "frame_id": 1305031110.111325,
+            "timestamp": 1305031110.111325,
+            "captured_monotonic": 61150.912902116776,
+            "sequence": 238
+          },
+          "samefile_validated": true
+        }
+      ]
+    }
+  ]
+}

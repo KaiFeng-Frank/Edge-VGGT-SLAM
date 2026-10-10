@@ -2,47 +2,71 @@
   "upstream_commit": "35327ac28b7d193df9ccc39ba6346052bb6f1207",
   "synthetic_validation": {
     "status": "passed",
-    "passed": 81,
-    "skipped": 0,
+    "passed": 115,
     "failed": 0,
-    "errors": 0,
-    "elapsed_seconds": 1.3106160829775035,
-    "scope": "Tiny/random synthetic exporter and runtime-contract tests only; no real checkpoint/model inference on host",
-    "inference_on_host_with_real_weights": false,
-    "runs": [
-      {
-        "tests": [
-          "tests/test_v23_mlp_export.py",
-          "tests/test_v23_mlp_export_r2.py",
-          "tests/test_v23_mlp_runtime.py"
-        ],
-        "passed": 81,
-        "skipped": 0,
-        "failed": 0,
-        "errors": 0
-      }
-    ],
+    "skipped": 0,
+    "host_synthetic_only": true,
+    "host_real_model_forward": false,
+    "external_official_source_manifest_sha256": "729c5be1786aee50ab06d24474cf16476c6ca2e50ca6ce18f1885eaf99981e4d",
+    "source_package_env": "EDGE_DA3_SOURCE_PACKAGE",
     "test_source_sha256": {
-      "tests/test_v23_mlp_export.py": "870284afff1e467ccb80b498a855e39c20e148ccad8aa8e7264794a3a2f344e1",
-      "tests/test_v23_mlp_export_r2.py": "c347efe491e8910de4601e94c3d4ebeea4913cc28b88a31f5ceb6ac0f6774432",
-      "tests/test_v23_mlp_runtime.py": "468525e3803da21cbc749550a85860c2b695d0b5087671e90cef52ed5f83e0e3"
+      "tests/test_da3_probe_synthetic.py": "74fb8d7541f76b8bc35f60c967a4515616560634d9b899ef158cfac0e3312895",
+      "tests/test_v24_da3_export.py": "944c20b4c5939dbc160e4a1dcf56b0c73c24bed209e2fbd10344ffd1f47d4711",
+      "tests/test_v24_da3_export_r2.py": "48a33b544b3e838cda27e2e739eb8a237004e011d25b7327d5c23b9f7847abb5",
+      "tests/test_v24_da3_review.py": "f24d95e2f59360f753e307b186c17ba7a9d6e747e91a822c233471ac28423d0d",
+      "tests/test_v24_da3_export_r3.py": "282f889c05fecf0dcaaa0258b36c3eb7662c914ac48406591e47eacbc61953a9",
+      "tests/test_v24_da3_compile.py": "735b0e41f485bef332990cb3296d93bf7ff05d26a975b274a4d2c5415f8e3154",
+      "tests/test_v24_da3_compile_r2.py": "0613532e6598b8d937013669b860c28ed4810063b80b4f57d5944fc2622ed6b5",
+      "tests/test_v24_da3_runtime_r2.py": "99d994a1db125a65a6e5d16c00a43167ee5dc470eaf2ea5e3379463087a493f5",
+      "tests/test_v24_da3_runtime_r3.py": "68524eadef85558f83c3ddaed059d106e400325f357725ae6f2069135d1cc7df"
     },
     "implementation_source_sha256": {
-      "deploy/rk3588/validation/export-v23-mlp.py": "56476c724cde537fd35466be0b41d300592821be59f2a840519be6c117c5146e",
-      "deploy/rk3588/validation/export-v23-mlp-r2.py": "31602681e0c6ee5650baf66784764124926b8666ca75e4529bda71f98d54585a",
-      "deploy/rk3588/validation/run-v23-mlp-board.py": "a3ea513431ae14a9fca6c3b5cd9073b847c3b1908a0e132e5d497e5810a34fd4",
-      "deploy/rk3588/validation/run-v23-mlp-board-r2.py": "b328df00e0178b91a82c06dc840920159c88a35d0d1d8500126fb786ae90b331"
+      "deploy/rk3588/validation/da3_probe_common.py": "3c54586b77af2b8f07d32f886f19dbaee2a57b0d587be84513f8e5bea54cb4d4",
+      "deploy/rk3588/validation/run-da3-small-board.py": "4dadf88521324ca4583c8f11cfa2779d3ad547133f3f0d9e43e9761e4f62df6b",
+      "deploy/rk3588/validation/export-v24-da3-board.py": "4e503b58f4072d5bc819abbe35e24b06535f6d4fab842b34f418684288d13b13",
+      "deploy/rk3588/validation/export-v24-da3-board-r2.py": "a4cc8bf99dfea17e054c9838c55daeaa6b8cf6c686c245bc78af5166dfe79c60",
+      "deploy/rk3588/validation/compare-v24-da3-pairs.py": "abda4254aa37165146fe66675f582f99788e731c6fffcae1ca1151f07dfe5e90",
+      "deploy/rk3588/validation/run-v24-da3-rknn-board.py": "9f058e12141bacdc19a50aed1e17c5cf9e24db5c7edcca5b5d100a29c2b66af9",
+      "deploy/rk3588/validation/export-v24-da3-board-r3.py": "dbff9f1a2562e65f3584795636c0820959334ea838a1fde45cce47fcdc50bd2f",
+      "deploy/rk3588/validation/compile-v24-da3-rknn.py": "e9c66360e2de65f173682650ee8536e321acbc0698f895172d69a15cddb44a91",
+      "deploy/rk3588/validation/compile-v24-da3-rknn-r2.py": "2ad1069c8d5563051120a2080bc3f79499df81d94911edb316d83b61b994f0d6",
+      "deploy/rk3588/validation/run-v24-da3-rknn-board-r2.py": "88c665db7bab7355a36ef5a9422cbc648ea34a7cd258d3df358cc8702cbb9cf3",
+      "deploy/rk3588/validation/run-v24-da3-rknn-board-r3.py": "455770d23192dc9218c31ee352c0fc609d08408d80e3aa1b291c94ae6d83b9c1"
     },
-    "artifacts": {
-      "stdout.log": {
-        "bytes": 179,
-        "sha256": "aa06187cc43dd70e2805ecbd1c2f39397d797626bddca0e1a64b1c5d6b6f7263"
+    "runs": [
+      {
+        "passed": 52,
+        "skipped": 0,
+        "log_sha256": "4f78ee528ad4698b7a4f042ea93bc71998f5dba9d4fc89bb2d31ebc7fbd65533",
+        "output": "....................................................                     [100%]\n52 passed in 1.29s\n",
+        "label": "DA3 loader, R1/R2 exporters and numerical/SDK review"
       },
-      "junit.xml": {
-        "bytes": 9987,
-        "sha256": "864e271bb5399c67cb34f0143f5d0222113e876d1adbe84467ae6b525b4d2f27"
+      {
+        "label": "R3 fixed official DPT position encoding",
+        "passed": 12,
+        "skipped": 0,
+        "output": "............                                                             [100%]\n12 passed in 0.90s\n"
+      },
+      {
+        "label": "single-rule compiler error handling with fake SDK",
+        "passed": 9,
+        "skipped": 0,
+        "output": ".........                                                                [100%]\n9 passed in 0.02s\n"
+      },
+      {
+        "label": "two-rule compiler config with fake SDK",
+        "passed": 6,
+        "skipped": 0,
+        "output": "......                                                                   [100%]\n6 passed in 0.02s\n"
+      },
+      {
+        "label": "pinned one/two-rule runtime config and lifecycle guards",
+        "passed": 36,
+        "skipped": 0,
+        "output": "....................................                                     [100%]\n36 passed in 0.06s\n"
       }
-    }
+    ],
+    "description": "Host synthetic tests only. Official source functions use synthetic tensors; no host image/checkpoint inference. Separate test runs retain frozen source hashes."
   },
   "manifest_scope": "all publication files except SOURCE_SNAPSHOT.json itself and .git metadata",
   "files": {
@@ -50,10 +74,10 @@
     "ARCHITECTURE.md": "edfb9b6490f56286fc214a9b90cc49a7f3296c429fe795bde719a346301a7de4",
     "LICENSE": "dc493d7ac51f587fd71184315999c792ead523bf46da0f0cbf3e26a577b1a580",
     "MEASUREMENTS.json": "115583486c6975838e18ba0c8b90bbd2a9e281a11f37ee596dd068908276cd7c",
-    "MODEL_LICENSES.md": "d3c84754b52a0334d1b11fa3b34f8022dc2068db4c8de144eb94307700762015",
-    "README.md": "2d2669dbf2b54423e23ecef83d23a7a976db303d0a32b7f0263d26ab53d478dc",
+    "MODEL_LICENSES.md": "2857cfa8785f2f125adb55c805cdddc101c71778d81c76ca5f11db87d5d4cf1e",
+    "README.md": "d9bccbf8c2d0fce7c8b42af2eb3303eaa1fdaa0e37a3608676c5e5af8d49974b",
     "README_UPSTREAM.md": "3cc8069121fabc2b5e13e0997e2e927fac558fa3d8032b2599dbadc486672454",
-    "THIRD_PARTY_NOTICES.md": "682746cb62a0830e5e6a809d55fe3565fe6b209d2fe902d0eb8125dddff40ee3",
+    "THIRD_PARTY_NOTICES.md": "2e52a99a1836f9c91d9b436faa568060085ecc41a8a3aa6dd754bebb19670f49",
     "UPSTREAMS.json": "3bf0d19b84c79e9abba1811eb80537735685d37fb2579ddc386d9cbc7ad5a6e2",
     "assets/office_loop_figure.png": "5d20d0acb81d3fb38e14235499ba67a22441cfe835e899f3e224a99e514c28e9",
     "assets/vggt_slam_demo.gif": "dc2ed38e8efb7183425a131b6cb01924607301912ec094a7d6284b865ef3d831",
@@ -72,6 +96,8 @@
     "deploy/rk3588/validation/audit-v22-come-fullmodel-scenes.py": "7181e6cf6d1f934682c5838b42ebedf26260fcf642a7df04b31103e19c053789",
     "deploy/rk3588/validation/audit-v22-come-mlp.py": "dcc12bbe01c7e4f4232c2ad7245c4b4e212ad3a83ca3bb72947833c7b1e9224c",
     "deploy/rk3588/validation/audit-v23-mlp.py": "238ab0117eada9db899ca0cc6e99fe79c751477038df1bd962988dfa9da59e89",
+    "deploy/rk3588/validation/audit-v24-da3-export.py": "04c33390ee1838afd851df21fbc9a716f2562a17945ccf39f14ddc9177c403e7",
+    "deploy/rk3588/validation/audit-v24-da3-rknn.py": "5cec66e0aa99fb4997f02e668411ac37590cac47c05bb02b36e32ed75a7cba4c",
     "deploy/rk3588/validation/capacity-v20/calculate_capacity.py": "dcdf861fe6502b1fc1355541293dbb1bac2defad61b524c42479aec2ebb6a25b",
     "deploy/rk3588/validation/capacity-v20/evidence.json": "752f3b79598258118d7b59ff8cff3d7ae28614325bc0a7a360a40386f167c104",
     "deploy/rk3588/validation/capture-v12-dino-block-board.py": "0485a463ef851f2f41230c5af95a9df41cb6e8536a4dd52c19ace1f683214d7b",
@@ -94,9 +120,13 @@
     "deploy/rk3588/validation/compare-v16-resolution-pairs.py": "527f4efb0467e1fa0f859e6327e74f72651270480816a5503283536fbe7e2ee7",
     "deploy/rk3588/validation/compare-v17-resolution-pairs.py": "0f740d3a35c472745eccb3f674b411209a2cef6fcd56ba66e44e6274e224979b",
     "deploy/rk3588/validation/compare-v22-come-fullmodel.py": "a69878edb518a24d89b066f086c055c63bf4860143e414a3fb273d571fef9bf8",
+    "deploy/rk3588/validation/compare-v24-da3-pairs.py": "abda4254aa37165146fe66675f582f99788e731c6fffcae1ca1151f07dfe5e90",
     "deploy/rk3588/validation/compile-v12-rknn-block.py": "a40bf09e53ef9b378db4781be18f9e53f824afcc809c9009e0a65f4f0f91b4e5",
     "deploy/rk3588/validation/compile-v15-camera.py": "77b4272a4d50c2c2ab22f1d77ffeb9aab924070157aeab3cca747c608a398348",
     "deploy/rk3588/validation/compile-v16-camera-step.py": "1fd295bc2b42bdbf51fddb5a277b93a77d72b6131868763412e0d588ce427690",
+    "deploy/rk3588/validation/compile-v24-da3-rknn-r2.py": "2ad1069c8d5563051120a2080bc3f79499df81d94911edb316d83b61b994f0d6",
+    "deploy/rk3588/validation/compile-v24-da3-rknn.py": "e9c66360e2de65f173682650ee8536e321acbc0698f895172d69a15cddb44a91",
+    "deploy/rk3588/validation/da3_probe_common.py": "3c54586b77af2b8f07d32f886f19dbaee2a57b0d587be84513f8e5bea54cb4d4",
     "deploy/rk3588/validation/export-v12-dino-block-gelu.py": "59f5ea1be93812571947f7afb71ea9d908057cf277c3cbc2cfb9bbaaf10e5a78",
     "deploy/rk3588/validation/export-v12-dino-block.py": "2759fce1551b2a64da140a7be0b16c9d233241e0bb427b4d52c58d2243d6bf07",
     "deploy/rk3588/validation/export-v14-small-dino.py": "e6389143bc24be4096cb69c2d7092c6437a780bf4a59df70e76b45c696a335fa",
@@ -109,10 +139,14 @@
     "deploy/rk3588/validation/export-v19-attention.py": "7e5523916fbf36b78d6834c40cd6856155edc4ce3052f6a4dde8181a1806131b",
     "deploy/rk3588/validation/export-v23-mlp-r2.py": "31602681e0c6ee5650baf66784764124926b8666ca75e4529bda71f98d54585a",
     "deploy/rk3588/validation/export-v23-mlp.py": "56476c724cde537fd35466be0b41d300592821be59f2a840519be6c117c5146e",
+    "deploy/rk3588/validation/export-v24-da3-board-r2.py": "a4cc8bf99dfea17e054c9838c55daeaa6b8cf6c686c245bc78af5166dfe79c60",
+    "deploy/rk3588/validation/export-v24-da3-board-r3.py": "dbff9f1a2562e65f3584795636c0820959334ea838a1fde45cce47fcdc50bd2f",
+    "deploy/rk3588/validation/export-v24-da3-board.py": "4e503b58f4072d5bc819abbe35e24b06535f6d4fab842b34f418684288d13b13",
     "deploy/rk3588/validation/probe-v19-patch-cache-board.py": "ba179154ef65d691dec977029b492e6094cf68ef57399a4f6bc403abbbcd12fb",
     "deploy/rk3588/validation/probe-v22-come-mlp-board.py": "936fce80b7d91fdc10f1e05f4baba54d5a4954c5e7eda33a79e32c848172707f",
     "deploy/rk3588/validation/profile-v14-small-vggt-board.py": "ec69e48e2cb5a953d8e134934af7ebf1f45a88dfa0ec5b2cf5967bb4027e8d22",
     "deploy/rk3588/validation/profile-v17-rectified-board.py": "518088ae41c39a4b824b3ee7a6b7a2a9f86a16e3f77b9cec168b082e2b8f7279",
+    "deploy/rk3588/validation/run-da3-small-board.py": "4dadf88521324ca4583c8f11cfa2779d3ad547133f3f0d9e43e9761e4f62df6b",
     "deploy/rk3588/validation/run-v12-rknn-block-board.py": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608",
     "deploy/rk3588/validation/run-v14-small-rknn-board.py": "5143ad898bbdc92a38886bbb4a61cb3874e19766502e6d20b46cd443ddd11cb4",
     "deploy/rk3588/validation/run-v15-camera-board.py": "e973f7e2e88e6f144f86874bb840eeb7dd1eec57a01354793f98bed40073fcc2",
@@ -126,12 +160,16 @@
     "deploy/rk3588/validation/run-v22-come-fullmodel-board.py": "47cffa63bfd33ec6fecc66fe62093aa1119882a9bf13ae6cf4691f46f62af3bc",
     "deploy/rk3588/validation/run-v23-mlp-board-r2.py": "b328df00e0178b91a82c06dc840920159c88a35d0d1d8500126fb786ae90b331",
     "deploy/rk3588/validation/run-v23-mlp-board.py": "a3ea513431ae14a9fca6c3b5cd9073b847c3b1908a0e132e5d497e5810a34fd4",
+    "deploy/rk3588/validation/run-v24-da3-rknn-board-r2.py": "88c665db7bab7355a36ef5a9422cbc648ea34a7cd258d3df358cc8702cbb9cf3",
+    "deploy/rk3588/validation/run-v24-da3-rknn-board-r3.py": "455770d23192dc9218c31ee352c0fc609d08408d80e3aa1b291c94ae6d83b9c1",
+    "deploy/rk3588/validation/run-v24-da3-rknn-board.py": "9f058e12141bacdc19a50aed1e17c5cf9e24db5c7edcca5b5d100a29c2b66af9",
     "deploy/rk3588/validation/v22_come_fullmodel.py": "67c6c720ee2b1a7b698f9b7e0d8a5599115f6b06e638659fdcba5c2008db8716",
     "deploy/rk3588/validation/v22_token_merge.py": "7acb792a94a5e4cb55bed25674e1e30ecf8692296e6e7fa4d7e98bb9da26bf5d",
     "deploy/rk3588/validation/vggt-v15-camera-capture112.json": "1c3234cfa65914a6f41634432153fa8ebb6dcf9c8d3eb3215f0955fc0ed000f1",
     "deploy/rk3588/validation/vggt-v16-camera-step-compile112-r1.json": "c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a",
     "deploy/rk3588/validation/vggt-v16-camera-step-export112-r1.json": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
     "deploy/rk3588/vggt-spark.patch": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864",
+    "docs/ENGINEERING_NOTES.md": "7c62c269d28d5b5429e9d45c900f3a643315417f43200c01722d72393c474664",
     "evals/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "evals/eval_tum.sh": "c01f407abcb9f99bbbdf2348d772d0746fcf5d84b5029c4a3271905e346b050b",
     "evals/process_logs_tum.py": "9a78265063ad670136d6f4d6b5773d0e362f07b64f41f26ea2c941e973f59c3a",
@@ -152,6 +190,11 @@
     "results/come_fullmodel_v22.json": "31a6393bd1dcf919b21bb611f8a8a0a860451d3bb1de78231d0d8fd109998d34",
     "results/come_mlp_v22.json": "1c189f948f3789dd45561ebc83af99734e6c0d92377558d78202f2aa012f8df4",
     "results/come_sources_v22.json": "22e6923ab9d11ac3fd3d51aa08beb2f601fc50e79842fd70526036d319b67977",
+    "results/da3_cpu_v24.json": "c1af332755e38e12cc308f4b76ae6e49f7cddf3622882bbc24c2894fc130e69c",
+    "results/da3_export_v24.json": "8b6469d45558d264910c1709d10c110f163dd20a7e07eeb36eae24fe9a245ed4",
+    "results/da3_inputs_v24.json": "3a104c1f30cf3ed97294852a1d8cabccaf4c8a38d2b8297086eb1503c79a65a2",
+    "results/da3_rknn_v24.json": "6145e2860f195c994eab5dada85338c3de566f5a2151fd0f002aa1375b71b46e",
+    "results/da3_sources_v24.json": "729c5be1786aee50ab06d24474cf16476c6ca2e50ca6ce18f1885eaf99981e4d",
     "results/fov_source_audit_v17.json": "c0d104f2830ba13fe4bfbfe1517e2075e919bb4b2570039a2074f1e4770b546f",
     "results/frame_axis_comparison_v19.json": "dff5d04ac2abf4c50162614867831e213bac73bcc4032edf45bc0af125d115ca",
     "results/frame_block_v17.json": "c63e45872a609a346031622dbc3a7ffcb268f59412e4cc8544d61d5a72a1ad12",
@@ -179,6 +222,7 @@
     "results/synthetic_tests_v21.json": "6243e0cec47c11da023e5177cf8e2bf37c378fe89f9356dd64a11dd6a325dab8",
     "results/synthetic_tests_v22.json": "bebc3a09094f06fd9f944ea8f52f251aa7ac1bc967a9a065cc9eebf1ba9c404d",
     "results/synthetic_tests_v23.json": "7a94248f16711a3bd8231c451a52fd4975792acfccef7b57275e7ec0941663b9",
+    "results/synthetic_tests_v24.json": "685db464f6e2f0b6c5a50712ed2e2861d7b10c2b87dd7efe63912271779aa14d",
     "results/trajectory_v15.json": "5322bd84232b33727109ced8b88d25252f57c1a5fb768ca94021b89e7d53380f",
     "results/trajectory_v15.md": "eefeb76e78df6d114b85d1860d13fcba5852844af2b25fcc60ba7a1a2ebe0b3c",
     "results/trajectory_v16.json": "d502728fbf88bbc6bb065cd8bf3b02b0602caa6427e03623e97de8cdc0e32215",
@@ -201,6 +245,7 @@
     "tests/test_aggregator_onnx_board_check.py": "7448469e72d5ea330ca124da6139ddc55eb41a2ecbdfbdd74e8e087d8c9a8a92",
     "tests/test_cameras.py": "51118b35dbfcc8551ae8826396f75a2dfbd223b788a4985c615a496bdd1cb1e7",
     "tests/test_continuous_tracking.py": "1e79f58794a356568bf1f642aa4ead9b9837c746d52dfbaa22f1085323bea207",
+    "tests/test_da3_probe_synthetic.py": "74fb8d7541f76b8bc35f60c967a4515616560634d9b899ef158cfac0e3312895",
     "tests/test_edge_runtime.py": "3fdf725e34a64639ac00a0bf6469dded03472574a4466c1ba1f340a49b8bdfa9",
     "tests/test_edge_trajectory_evaluation.py": "687ed297557188f460a9ade1c07bdaa3866462ce40236d2da2dfdae2410b58e1",
     "tests/test_fast_tracking.py": "51296b9b16a0d397e56b15f8ea08b155c675f1acdd4d24fb299b1046cd820bcf",
@@ -246,6 +291,14 @@
     "tests/test_v23_mlp_export.py": "870284afff1e467ccb80b498a855e39c20e148ccad8aa8e7264794a3a2f344e1",
     "tests/test_v23_mlp_export_r2.py": "c347efe491e8910de4601e94c3d4ebeea4913cc28b88a31f5ceb6ac0f6774432",
     "tests/test_v23_mlp_runtime.py": "468525e3803da21cbc749550a85860c2b695d0b5087671e90cef52ed5f83e0e3",
+    "tests/test_v24_da3_compile.py": "735b0e41f485bef332990cb3296d93bf7ff05d26a975b274a4d2c5415f8e3154",
+    "tests/test_v24_da3_compile_r2.py": "0613532e6598b8d937013669b860c28ed4810063b80b4f57d5944fc2622ed6b5",
+    "tests/test_v24_da3_export.py": "944c20b4c5939dbc160e4a1dcf56b0c73c24bed209e2fbd10344ffd1f47d4711",
+    "tests/test_v24_da3_export_r2.py": "48a33b544b3e838cda27e2e739eb8a237004e011d25b7327d5c23b9f7847abb5",
+    "tests/test_v24_da3_export_r3.py": "282f889c05fecf0dcaaa0258b36c3eb7662c914ac48406591e47eacbc61953a9",
+    "tests/test_v24_da3_review.py": "f24d95e2f59360f753e307b186c17ba7a9d6e747e91a822c233471ac28423d0d",
+    "tests/test_v24_da3_runtime_r2.py": "99d994a1db125a65a6e5d16c00a43167ee5dc470eaf2ea5e3379463087a493f5",
+    "tests/test_v24_da3_runtime_r3.py": "68524eadef85558f83c3ddaed059d106e400325f357725ae6f2069135d1cc7df",
     "tests/test_xnnpack_linear.py": "6891c7841e316470e8a536c0e8777e799da7fa03ab6984a822398b81980afeb4",
     "tests/test_xnnpack_native.py": "c9f00ea3981c3bf595edfa6aec7d48f503fb7247c12777389ef2564ac9bda1d9",
     "vggt_slam/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",

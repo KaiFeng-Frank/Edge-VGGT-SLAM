@@ -1,0 +1,409 @@
+{
+  "schema": "da3_pinned_import_closure_v24.1",
+  "repo": "ByteDance-Seed/Depth-Anything-3",
+  "commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+  "roots": [
+    "LICENSE",
+    "README.md",
+    "pyproject.toml",
+    "src/depth_anything_3/cfg.py",
+    "src/depth_anything_3/configs/da3-small.yaml",
+    "src/depth_anything_3/model/da3.py",
+    "src/depth_anything_3/model/cam_dec.py",
+    "src/depth_anything_3/model/cam_enc.py",
+    "src/depth_anything_3/model/dinov2/dinov2.py",
+    "src/depth_anything_3/model/dualdpt.py",
+    "src/depth_anything_3/utils/io/input_processor.py"
+  ],
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 11355,
+      "git_blob_sha1": "a2fa36578f5094f56f4b0ec57e70eb30aced4519",
+      "sha256": "78446e29c48900cda82620a8df183cca61f0a595e05a49d0401a5fd604dd1870",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/LICENSE"
+    },
+    {
+      "path": "README.md",
+      "bytes": 18759,
+      "git_blob_sha1": "9ef877b6ddf6d86ed58566183e79ac74ec00284c",
+      "sha256": "91679cf6df290b6af439c85f29a2440ce10353a1063ae4f599e9c734ec3096a8",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/README.md"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 2039,
+      "git_blob_sha1": "6a11c7ae0e2978de8a726d3ac9e6668db0c5248a",
+      "sha256": "3e178d62b8ca674ee4685a5c2a89ab8363e204b9af24d7313bdb8e3c03926544",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/pyproject.toml"
+    },
+    {
+      "path": "src/depth_anything_3/cfg.py",
+      "bytes": 5037,
+      "git_blob_sha1": "4607ff8c0983b67e6ccd2d80b78a163c4e487250",
+      "sha256": "655a018ab35ad715454fdbca047354591287b6b86c10c91b8c0a920df0153014",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/cfg.py"
+    },
+    {
+      "path": "src/depth_anything_3/configs/da3-small.yaml",
+      "bytes": 774,
+      "git_blob_sha1": "10887437697fc9f2614c03add73fe9858b309d91",
+      "sha256": "94f69159d682b897dd95ca6d2787148159782c2bcd3112a87e6fab037d7744ed",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/configs/da3-small.yaml"
+    },
+    {
+      "path": "src/depth_anything_3/model/cam_dec.py",
+      "bytes": 1713,
+      "git_blob_sha1": "3353b403683bf556b3823081863573dc7f5f719e",
+      "sha256": "f7bc81d846b786e314c03eaaf809126505fa0c82eb5177b95eadbfad5beefd63",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/cam_dec.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/cam_enc.py",
+      "bytes": 2538,
+      "git_blob_sha1": "bf28e701442fa73d89e54b409800908c138a93d8",
+      "sha256": "3831baa5d661d9693222d209f5908279a350c7711d03c0daf50f7d1aac9b59a2",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/cam_enc.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/da3.py",
+      "bytes": 17641,
+      "git_blob_sha1": "f9e5bd683a8a697647da30e4d93a0ead03e9545d",
+      "sha256": "c7d5f88962e05c021cf7dab505840c8892e5e9d6880fb2901d20f4120ca173b3",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/da3.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/dinov2.py",
+      "bytes": 1824,
+      "git_blob_sha1": "ee0d88bdd6d33edda6c0fb237ee0c77ffc3f6034",
+      "sha256": "5d8e603113731365b3f46a3df4d159ad58f8723ec011440bf1961a4cbe101ca2",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/dinov2.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dualdpt.py",
+      "bytes": 19576,
+      "git_blob_sha1": "229e1a990472de96f003a4a2d75fdf4ca94b0a3a",
+      "sha256": "6ef19b3cb46847830b615e4f8e30621708a3a63500a9fc4cbdee28962bd4bd06",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dualdpt.py"
+    },
+    {
+      "path": "src/depth_anything_3/utils/io/input_processor.py",
+      "bytes": 18924,
+      "git_blob_sha1": "fa60194123c22c84a0cdeb577cbf10e2704278bb",
+      "sha256": "cdebb6021f5f1001d3aa56261c224a80b9d8431efedfb040537c58a5509410c1",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/utils/io/input_processor.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/__init__.py",
+      "bytes": 755,
+      "git_blob_sha1": "57a2a45132eeae8d58a11a26036c54feef9cfe16",
+      "sha256": "e6fd99e59aec06a5f8a19255d11e7ecd9fa6482bdacad0e3e1a8fe2991cd64b6",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/__init__.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/vision_transformer.py",
+      "bytes": 17574,
+      "git_blob_sha1": "f0f8e23ad21d8c5a60626955d38d740f98bb5c48",
+      "sha256": "c28650e5db0b578745f5a41336709d54d08f952bc08cf1bd2009e2b765111221",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/vision_transformer.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dpt.py",
+      "bytes": 17438,
+      "git_blob_sha1": "337a8a964a7f96fae997c8b12e3ae13e99dbaa58",
+      "sha256": "d4f70e867cb31fd26e807746b63fe21517e5385464acee0096a3021ec928576c",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dpt.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/utils/attention.py",
+      "bytes": 3811,
+      "git_blob_sha1": "49c07a8c5e5c65fc8e0700aab9ae660552dba610",
+      "sha256": "8e8a3dd3aca75ce403bc1a2f7a0b2086cc516b221fcc394b888ebc5ddc9a8a33",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/utils/attention.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/utils/block.py",
+      "bytes": 2756,
+      "git_blob_sha1": "993fb4c0bdc02bd0976a6471adf1a15452d0f5c0",
+      "sha256": "b0ec438942816169a5215a3678b4bff72b3783472e35942337b4a1142555c57b",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/utils/block.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/utils/head_utils.py",
+      "bytes": 8107,
+      "git_blob_sha1": "c1209582bc6e9b1658a0358df03f5ea79fe61daf",
+      "sha256": "efed71ecd3b742d5969d1a938bbf34c9923d202dfd5232f204641c4674f0bd6b",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/utils/head_utils.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/utils/transform.py",
+      "bytes": 6549,
+      "git_blob_sha1": "8d732b093e5ad1578bc0ba5eb0e31b1b69b766ed",
+      "sha256": "98d5c499f40e6e3e63cdaf0e269b8eeeb998ed125bcd63da41e2dec9ad32b8b9",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/utils/transform.py"
+    },
+    {
+      "path": "src/depth_anything_3/utils/alignment.py",
+      "bytes": 4907,
+      "git_blob_sha1": "ceb8983fbb85fd8cad51fdd82b794aa3a114df78",
+      "sha256": "7a18fe1c050e42970c7e243adb073ca695e24d197f671d74d16655760a827a88",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/utils/alignment.py"
+    },
+    {
+      "path": "src/depth_anything_3/utils/geometry.py",
+      "bytes": 16998,
+      "git_blob_sha1": "41a42190d637ef25db3599cc90f9a4f40be3b8d7",
+      "sha256": "3d67391f2eeed57ee5d07387947dea7a5d99fc0ce0a63c6890485183c851c29b",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/utils/geometry.py"
+    },
+    {
+      "path": "src/depth_anything_3/utils/logger.py",
+      "bytes": 2513,
+      "git_blob_sha1": "0eb4f60696a085001cf4866ccfe1654170702a2d",
+      "sha256": "03ea0032564443ae6df63aa88ab9e4e63b5933ed10463acee607d0bea5836910",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/utils/logger.py"
+    },
+    {
+      "path": "src/depth_anything_3/utils/parallel_utils.py",
+      "bytes": 4288,
+      "git_blob_sha1": "9ff108e95d205097f9f2012ab87ad9e265d58d8d",
+      "sha256": "e691c31ab459e31e5e98231d67ef519199576b9425efd07273b7e137592514b6",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/utils/parallel_utils.py"
+    },
+    {
+      "path": "src/depth_anything_3/utils/ray_utils.py",
+      "bytes": 20115,
+      "git_blob_sha1": "6244dc40089a7bfda7889ddc153d48c44f717da7",
+      "sha256": "d27adc973a03dec912d39f7b7bfa0328c3fd8eabe9f07a43b1bf04ed326f8563",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/utils/ray_utils.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/layers/__init__.py",
+      "bytes": 644,
+      "git_blob_sha1": "97dfba90c12b2ffc5f0f1f823b6384c9b4cd6fa2",
+      "sha256": "321a97ffc00375d6d48569cbc851a38e7d2dc8bbdbfcffbee722c6c27783acda",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/layers/__init__.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/reference_view_selector.py",
+      "bytes": 7858,
+      "git_blob_sha1": "f406f5ff2e0dad5ce2d12f3a1d3919773fc21e66",
+      "sha256": "5e1238298a0053e76eab1f2cfd207ae8b0f30fb441c24c915320efed349301e3",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/reference_view_selector.py"
+    },
+    {
+      "path": "src/depth_anything_3/utils/constants.py",
+      "bytes": 9486,
+      "git_blob_sha1": "25c330ee00820f44df05aa624f0aa4763afe1164",
+      "sha256": "631d18da0159ef6f4a30be446b733b60cbc10f7b867ef61fabeddf89ab380612",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/utils/constants.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/layers/block.py",
+      "bytes": 5010,
+      "git_blob_sha1": "731519b68b16c8936b765dd1620fbb9c81087f96",
+      "sha256": "88924cf5cd9fb18b17a8329e4c9910528205c302d8be40be29ad74e97ae7a3b8",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/layers/block.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/layers/layer_scale.py",
+      "bytes": 1000,
+      "git_blob_sha1": "898ee12d8b4b65d30d8c041588a8277a8f13d4f2",
+      "sha256": "23aba2710d7d425b5abd50c006edef9c9224360d6499171b6c1ec18ef73c0b00",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/layers/layer_scale.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/layers/mlp.py",
+      "bytes": 1271,
+      "git_blob_sha1": "78ad0d8897ddb77e95d2e188a579f6e1d21e3fb5",
+      "sha256": "4f17c26120d04e4e4368b07a2396a977044b00d1dcbf1bbd1a9d3447be1aa6cf",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/layers/mlp.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/layers/patch_embed.py",
+      "bytes": 2903,
+      "git_blob_sha1": "64bf6be8994fe52b2fdf1753fdb9f7a691e14980",
+      "sha256": "72f14d7b3daf3f545ba93c085b0a90f3b63efcf1a14f8d694dc77763c0607528",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/layers/patch_embed.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/layers/rope.py",
+      "bytes": 7793,
+      "git_blob_sha1": "f75ba37c160cd806a32576e2a1704b3352dec7af",
+      "sha256": "dcd09808cf03ceae7abfdcbe6805ee36990412b5308b09a86c4b51a040cff38b",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/layers/rope.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/layers/swiglu_ffn.py",
+      "bytes": 1858,
+      "git_blob_sha1": "c8f58e5b265f74c82a4c40adc3ee33a965e503cf",
+      "sha256": "f0e0bab6e9e835b81c53bd69616af43d254a91af4b119923160b7df1602b1562",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/layers/swiglu_ffn.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/layers/attention.py",
+      "bytes": 3264,
+      "git_blob_sha1": "096b9d41ddc95b9c4652597b18f53aee31a573b6",
+      "sha256": "d9db2bd66c612df689ec19aa2b60138c4185e38c8cfaaef48fc17f39a5b17c81",
+      "source": "previous_pinned_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/layers/attention.py"
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/layers/drop_path.py",
+      "bytes": 1146,
+      "git_blob_sha1": "1c2cc94e969711f1eb9f62093b79a0139b9bfb1e",
+      "sha256": "80b5cc50297f3049d313c5659c1244901407bdac80cf424c5d7ed64ae79cd141",
+      "source": "new_official_download",
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/layers/drop_path.py"
+    }
+  ],
+  "import_edges": {
+    "src/depth_anything_3/cfg.py": [],
+    "src/depth_anything_3/model/cam_dec.py": [],
+    "src/depth_anything_3/model/cam_enc.py": [
+      "src/depth_anything_3/model/__init__.py",
+      "src/depth_anything_3/model/utils/attention.py",
+      "src/depth_anything_3/model/utils/block.py",
+      "src/depth_anything_3/model/utils/transform.py",
+      "src/depth_anything_3/utils/geometry.py"
+    ],
+    "src/depth_anything_3/model/da3.py": [
+      "src/depth_anything_3/cfg.py",
+      "src/depth_anything_3/model/__init__.py",
+      "src/depth_anything_3/model/utils/transform.py",
+      "src/depth_anything_3/utils/alignment.py",
+      "src/depth_anything_3/utils/geometry.py",
+      "src/depth_anything_3/utils/ray_utils.py"
+    ],
+    "src/depth_anything_3/model/dinov2/dinov2.py": [
+      "src/depth_anything_3/model/__init__.py",
+      "src/depth_anything_3/model/dinov2/vision_transformer.py"
+    ],
+    "src/depth_anything_3/model/dualdpt.py": [
+      "src/depth_anything_3/model/__init__.py",
+      "src/depth_anything_3/model/dpt.py",
+      "src/depth_anything_3/model/utils/head_utils.py"
+    ],
+    "src/depth_anything_3/utils/io/input_processor.py": [
+      "src/depth_anything_3/utils/logger.py",
+      "src/depth_anything_3/utils/parallel_utils.py"
+    ],
+    "src/depth_anything_3/model/__init__.py": [
+      "src/depth_anything_3/model/__init__.py",
+      "src/depth_anything_3/model/da3.py"
+    ],
+    "src/depth_anything_3/model/dinov2/vision_transformer.py": [
+      "src/depth_anything_3/model/__init__.py",
+      "src/depth_anything_3/model/dinov2/layers/__init__.py",
+      "src/depth_anything_3/model/reference_view_selector.py",
+      "src/depth_anything_3/utils/constants.py",
+      "src/depth_anything_3/utils/logger.py"
+    ],
+    "src/depth_anything_3/model/dpt.py": [
+      "src/depth_anything_3/model/__init__.py",
+      "src/depth_anything_3/model/utils/head_utils.py"
+    ],
+    "src/depth_anything_3/model/utils/attention.py": [],
+    "src/depth_anything_3/model/utils/block.py": [
+      "src/depth_anything_3/model/__init__.py",
+      "src/depth_anything_3/model/utils/attention.py"
+    ],
+    "src/depth_anything_3/model/utils/head_utils.py": [],
+    "src/depth_anything_3/model/utils/transform.py": [],
+    "src/depth_anything_3/utils/alignment.py": [],
+    "src/depth_anything_3/utils/geometry.py": [],
+    "src/depth_anything_3/utils/logger.py": [],
+    "src/depth_anything_3/utils/parallel_utils.py": [],
+    "src/depth_anything_3/utils/ray_utils.py": [
+      "src/depth_anything_3/utils/geometry.py"
+    ],
+    "src/depth_anything_3/model/dinov2/layers/__init__.py": [
+      "src/depth_anything_3/model/__init__.py",
+      "src/depth_anything_3/model/dinov2/layers/__init__.py",
+      "src/depth_anything_3/model/dinov2/layers/block.py",
+      "src/depth_anything_3/model/dinov2/layers/layer_scale.py",
+      "src/depth_anything_3/model/dinov2/layers/mlp.py",
+      "src/depth_anything_3/model/dinov2/layers/patch_embed.py",
+      "src/depth_anything_3/model/dinov2/layers/rope.py",
+      "src/depth_anything_3/model/dinov2/layers/swiglu_ffn.py"
+    ],
+    "src/depth_anything_3/model/reference_view_selector.py": [],
+    "src/depth_anything_3/utils/constants.py": [],
+    "src/depth_anything_3/model/dinov2/layers/block.py": [
+      "src/depth_anything_3/model/__init__.py",
+      "src/depth_anything_3/model/dinov2/layers/__init__.py",
+      "src/depth_anything_3/model/dinov2/layers/attention.py",
+      "src/depth_anything_3/model/dinov2/layers/drop_path.py",
+      "src/depth_anything_3/model/dinov2/layers/layer_scale.py",
+      "src/depth_anything_3/model/dinov2/layers/mlp.py"
+    ],
+    "src/depth_anything_3/model/dinov2/layers/layer_scale.py": [],
+    "src/depth_anything_3/model/dinov2/layers/mlp.py": [],
+    "src/depth_anything_3/model/dinov2/layers/patch_embed.py": [],
+    "src/depth_anything_3/model/dinov2/layers/rope.py": [],
+    "src/depth_anything_3/model/dinov2/layers/swiglu_ffn.py": [],
+    "src/depth_anything_3/model/dinov2/layers/attention.py": [],
+    "src/depth_anything_3/model/dinov2/layers/drop_path.py": []
+  },
+  "external_import_roots": [
+    "PIL",
+    "__future__",
+    "addict",
+    "asyncio",
+    "cv2",
+    "einops",
+    "functools",
+    "imageio",
+    "importlib",
+    "logging",
+    "math",
+    "multiprocessing",
+    "numpy",
+    "omegaconf",
+    "os",
+    "pathlib",
+    "sys",
+    "threading",
+    "torch",
+    "torchvision",
+    "tqdm",
+    "types",
+    "typing",
+    "xformers"
+  ],
+  "official_files_modified": false,
+  "host_model_inference": false,
+  "board_jobs": false
+}
