@@ -1,0 +1,1180 @@
+{
+  "kind": "fixed_original_VGGT_CPU_reference_capture",
+  "status": "captured_only",
+  "model_batch_frames": 2,
+  "paper_batch_frames": 32,
+  "reproduces_paper_evaluation": false,
+  "inference_on_board_only": true,
+  "frontend_replay_run": false,
+  "real_time_validated": false,
+  "full_dataset_accuracy_validated": false,
+  "notes": [
+    "Six original image pairs selected before this experiment from the recorded r11 map schedule.",
+    "No new custom frontend replay was performed.",
+    "No full trajectory, real-time or map-quality acceptance follows from these captures."
+  ],
+  "captures": [
+    {
+      "status": "completed_fixed_input_diagnostic",
+      "script_sha256": "de972f9b543a00de659e63f9a5c07955e3c8a39799face353cb8f561aa814d2f",
+      "image_size": 112,
+      "source_hashes": {
+        "vggt_slam/runtime.py": "baf65a5afcfa98584e25b1ef85d7cae31507a7da2b4cc03f97d2015776796e8c",
+        "vggt_slam/image_rectification.py": "e8c8472ac4dc3b84c132f20afd35be4dbeb3c23a9491ae1299ae5b1938e7ffdd",
+        "vggt_slam/edge_mapping.py": "c889a193da92cc74671d31ee9a70352cff089ae70fff9174ea526add2261e134",
+        "vggt_slam/timestamp_replay.py": "14b168028a6f7722f4bea036285b4f9cd8119fed59230b7e3e07c4b7af07addc",
+        "third_party/vggt/vggt/models/vggt.py": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+        "third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+        "third_party/vggt/vggt/heads/camera_head.py": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+        "third_party/vggt/vggt/heads/dpt_head.py": "72e9ed26196113eb71e26b641b4262606b5aacc797accafc6c975f5db0d2ace2",
+        "third_party/vggt/vggt/layers/vision_transformer.py": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+        "third_party/vggt/vggt/layers/block.py": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+        "third_party/vggt/vggt/layers/attention.py": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+        "third_party/vggt/vggt/utils/load_fn.py": "b0fe762f65497dca9a22069a3e4a37fd3508398c55383a8c1cb85c403fb3e9dd",
+        "third_party/vggt/vggt/utils/pose_enc.py": "845fc3a46cb851bebf0720b8fc2b9f34334ae8e11f1982376ba59f90ff18f22b"
+      },
+      "base_capture_script_sha256": "3706712dd3a7451fcbce98e079d4018989eca6f64eb98704a81b8f4a9acc03cb",
+      "capture_protocol_sha256": {
+        "capture-v17-resolution-pairs-board.py": "3706712dd3a7451fcbce98e079d4018989eca6f64eb98704a81b8f4a9acc03cb",
+        "capture-v16-resolution-pairs-board.py": "64adbcbe7f6e013aa738b8bed57d21ef8fde10c4b63bd7c647e9fa2137a79d7c"
+      },
+      "pairs": [
+        {
+          "revision": 1,
+          "frame_ids": [
+            1305031102.175304,
+            1305031102.443271
+          ],
+          "file": "predictions_0001.npz",
+          "bytes": 152298,
+          "sha256": "14b32fa070f452285c5113be5494610f01e42afa178900de7dc8707930cb356c",
+          "input_tensor": {
+            "shape": [
+              2,
+              3,
+              84,
+              112
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 225792,
+            "tensor_sha256": "f68fe0c78c95c2207d5678cfcba747cd98ccfd126eb9be147753a3e98b5e680d"
+          },
+          "arrays": {
+            "depth": {
+              "shape": [
+                1,
+                2,
+                84,
+                112,
+                1
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 75264,
+              "tensor_sha256": "e3e29f1aa5b99f415491846d32cbd297809018b0c0b82ef920130fb61384e6c6"
+            },
+            "depth_conf": {
+              "shape": [
+                1,
+                2,
+                84,
+                112
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 75264,
+              "tensor_sha256": "9d2606e8aaa025c0e245cc357a348fd03126a2a81f2f13bb7f93b6aa12cd8f98"
+            },
+            "intrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "496aa03b5ce69bd731fb300c2274dad2fb3ae95573cc84fc6b03c0e907606b06"
+            },
+            "extrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 96,
+              "tensor_sha256": "410f0ccf75c1f4ff60d2c66e9e461fd89f0df6f525e76343fcaa6b22bee06581"
+            },
+            "pose_enc": {
+              "shape": [
+                1,
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "351324c37b990f700e7bb4bcac698b5b0aa3c65d04feeab4f823836f214bd8dd"
+            }
+          },
+          "tensor_preparation_seconds": 0.7014525709964801,
+          "model_inference_seconds": 4.762621686997591,
+          "conversion_validation_seconds": 0.0016111669974634424,
+          "save_seconds": 0.0010050830023828894,
+          "first_forward": true,
+          "peak_rss_mib": 4866.078125
+        },
+        {
+          "revision": 2,
+          "frame_ids": [
+            1305031102.443271,
+            1305031107.211358
+          ],
+          "file": "predictions_0002.npz",
+          "bytes": 152298,
+          "sha256": "d43d1a6bd6336912a500feb4ec4fbe153d6209ee1caf1f4cbdca2c3f7c732a1b",
+          "input_tensor": {
+            "shape": [
+              2,
+              3,
+              84,
+              112
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 225792,
+            "tensor_sha256": "f321e400c0432a56d6f49d81405ed67d3567f7dd3fd936369730499c64ee05d2"
+          },
+          "arrays": {
+            "depth": {
+              "shape": [
+                1,
+                2,
+                84,
+                112,
+                1
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 75264,
+              "tensor_sha256": "52424ff764ca7f94475c2c4d309798ede4ab599dfd6ee1b2a329b002793b0604"
+            },
+            "depth_conf": {
+              "shape": [
+                1,
+                2,
+                84,
+                112
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 75264,
+              "tensor_sha256": "c94454c9e540afb1c67972ab901eed115b0a21d31ccf56a6cc915882bb0e13b9"
+            },
+            "intrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "8d771d43419835bf433d7660f31a4ef202529a80491e2b63e4fd138523267f92"
+            },
+            "extrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 96,
+              "tensor_sha256": "de8083e0361924e5461ce3d4235f459628ee1f0fba2f661abc1e412ed5221c90"
+            },
+            "pose_enc": {
+              "shape": [
+                1,
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "7ef13962a3d18461c8196ea06c7ab736a1ffcdf461ece89933b64cb797f648ac"
+            }
+          },
+          "tensor_preparation_seconds": 0.13466863799840212,
+          "model_inference_seconds": 4.7191698489914415,
+          "conversion_validation_seconds": 0.0014522090059472248,
+          "save_seconds": 0.0009397499961778522,
+          "first_forward": false,
+          "peak_rss_mib": 4882.359375
+        },
+        {
+          "revision": 3,
+          "frame_ids": [
+            1305031107.211358,
+            1305031111.811406
+          ],
+          "file": "predictions_0003.npz",
+          "bytes": 152298,
+          "sha256": "bcf2e044d6e345439bff412db77530042529b8bc0b94e87c85d026d27b8c30f6",
+          "input_tensor": {
+            "shape": [
+              2,
+              3,
+              84,
+              112
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 225792,
+            "tensor_sha256": "9ddfcc143ddeb5169516123d79c0d40e0411b3d4d8557753ae61aec60b57c7ba"
+          },
+          "arrays": {
+            "depth": {
+              "shape": [
+                1,
+                2,
+                84,
+                112,
+                1
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 75264,
+              "tensor_sha256": "aaa6ef01b0cb23b34a0b233ee3f20838927fe3a27cb6583a5c3be92e44fe3adf"
+            },
+            "depth_conf": {
+              "shape": [
+                1,
+                2,
+                84,
+                112
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 75264,
+              "tensor_sha256": "d812e8df479168e715d4caf98155dd099327906e8cc92b2b3f1f09e7410b772b"
+            },
+            "intrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "ec3d964a4f403dae737a6a628539d7094878d900116f6da005bb9a367aa2e943"
+            },
+            "extrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 96,
+              "tensor_sha256": "3555cd70375414b6498a915e86e1195687bee045600f523cf3b1d159e9a106e9"
+            },
+            "pose_enc": {
+              "shape": [
+                1,
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "7b72488c93316755f912d6e0c8ed4745c3ec32861680509676f5329d0262d20e"
+            }
+          },
+          "tensor_preparation_seconds": 0.1338788049906725,
+          "model_inference_seconds": 5.028719463996822,
+          "conversion_validation_seconds": 0.0014192499947967008,
+          "save_seconds": 0.0008682919869897887,
+          "first_forward": false,
+          "peak_rss_mib": 4882.359375
+        },
+        {
+          "revision": 4,
+          "frame_ids": [
+            1305031111.811406,
+            1305031116.511205
+          ],
+          "file": "predictions_0004.npz",
+          "bytes": 152298,
+          "sha256": "4f9da1ec47348d1242c6401f0c11214f0f1c1e2595fdbbe2bee020fc5b1bcc79",
+          "input_tensor": {
+            "shape": [
+              2,
+              3,
+              84,
+              112
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 225792,
+            "tensor_sha256": "125d11d19f63e4d4148e7dec35e0b6d123bbabaf51e7e4c7d0eb79fe979ff6cf"
+          },
+          "arrays": {
+            "depth": {
+              "shape": [
+                1,
+                2,
+                84,
+                112,
+                1
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 75264,
+              "tensor_sha256": "ab83457856e8f6c285a70e9f64aa2a43e6d65ec0b2df6f475282f9525b1f6ea8"
+            },
+            "depth_conf": {
+              "shape": [
+                1,
+                2,
+                84,
+                112
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 75264,
+              "tensor_sha256": "84ff5f999c6b71962f74176c337dcc0b7c1195a075cf9ddb79457c9d14eff581"
+            },
+            "intrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "108294ff4940c22fc30acf3c5d0be3eea76b601b16d13bd3c0ece9f35a850c37"
+            },
+            "extrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 96,
+              "tensor_sha256": "2aa95a89399722bc5487b8087c056c9bc6e69977404d0ab81a7a22ca129a1337"
+            },
+            "pose_enc": {
+              "shape": [
+                1,
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "c888db535da8251afaa18775badea388ba17574eb6864be42f3c89ff8cc66e68"
+            }
+          },
+          "tensor_preparation_seconds": 0.1320593880082015,
+          "model_inference_seconds": 5.525482472003205,
+          "conversion_validation_seconds": 0.0016447079979116097,
+          "save_seconds": 0.0009890410001389682,
+          "first_forward": false,
+          "peak_rss_mib": 4882.359375
+        },
+        {
+          "revision": 5,
+          "frame_ids": [
+            1305031116.511205,
+            1305031121.947288
+          ],
+          "file": "predictions_0005.npz",
+          "bytes": 152298,
+          "sha256": "095031f5e6335014bca398a9a4f6bc2fca1f69f55fe4886007ba8ee8ffbb53f3",
+          "input_tensor": {
+            "shape": [
+              2,
+              3,
+              84,
+              112
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 225792,
+            "tensor_sha256": "11ec49edd70fcfa1bd721378ec1e6c187fe097834315e3a4437073b5ef9c402b"
+          },
+          "arrays": {
+            "depth": {
+              "shape": [
+                1,
+                2,
+                84,
+                112,
+                1
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 75264,
+              "tensor_sha256": "4765766fb70d425dba721796187f9098e5e3f144ca4bb29489bd84657bd025ea"
+            },
+            "depth_conf": {
+              "shape": [
+                1,
+                2,
+                84,
+                112
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 75264,
+              "tensor_sha256": "0a5befb90eab4f2e39bd99d4c125e02e4f40b63578a8b69ff147c26469e76206"
+            },
+            "intrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "d0a2a69bb29a4a01f23c2ee5a5bd439e18aa1bc92126d8487ba24307718820a0"
+            },
+            "extrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 96,
+              "tensor_sha256": "6db50a0fcfdfd5aa5e7760bc45a592455634f08cca0f1db05f03b5a0b4ff4f26"
+            },
+            "pose_enc": {
+              "shape": [
+                1,
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "e93500e9d1f0f17fd29d97de0ea4f18eb53ecb0d20962a91ff6b1fef16d76621"
+            }
+          },
+          "tensor_preparation_seconds": 0.1349378470040392,
+          "model_inference_seconds": 5.957536889996845,
+          "conversion_validation_seconds": 0.001502376006101258,
+          "save_seconds": 0.0009578339959261939,
+          "first_forward": false,
+          "peak_rss_mib": 4882.9921875
+        },
+        {
+          "revision": 6,
+          "frame_ids": [
+            1305031121.947288,
+            1305031127.87938
+          ],
+          "file": "predictions_0006.npz",
+          "bytes": 152298,
+          "sha256": "bf5744f95a324792d497d699a1c21329a764039a10dffa69d6ba77b9452ef853",
+          "input_tensor": {
+            "shape": [
+              2,
+              3,
+              84,
+              112
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 225792,
+            "tensor_sha256": "29e83b81c0d2e6d9bcc352d27c5c9bb700ff74154f9886bcc5c1a9a117bdb711"
+          },
+          "arrays": {
+            "depth": {
+              "shape": [
+                1,
+                2,
+                84,
+                112,
+                1
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 75264,
+              "tensor_sha256": "be72cbfa6eefc137882b767bebf06dda70038bd12ce32834afaf32100aa95d0b"
+            },
+            "depth_conf": {
+              "shape": [
+                1,
+                2,
+                84,
+                112
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 75264,
+              "tensor_sha256": "22835ee5a0ce8cd2a4c38174b5497f2697aa908268ebb04bea2d1ae22c2932df"
+            },
+            "intrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "7576d9589ee9b1bf6efa540ca740a4b8dc66e6f2e620d0ab79dc1418e5446e78"
+            },
+            "extrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 96,
+              "tensor_sha256": "4ab4c16c275104802e4d48432b3572493d190b1d982c133a4f503d73a5a1e473"
+            },
+            "pose_enc": {
+              "shape": [
+                1,
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "df90922d0e00ee2b633633ba5297ee6d9132ef222c3bcd6596fdd2a63cb816b6"
+            }
+          },
+          "tensor_preparation_seconds": 0.14125476400658954,
+          "model_inference_seconds": 6.370160348000354,
+          "conversion_validation_seconds": 0.0016365420015063137,
+          "save_seconds": 0.0009245830005966127,
+          "first_forward": false,
+          "peak_rss_mib": 4884.97265625
+        }
+      ],
+      "preprocessing_provenance": {
+        "source": "vggt_slam/edge_mapping.py",
+        "function": "prepare_rectified_images",
+        "sha256": "0353b56642d35e0f9f9752419287b0c111e3926357f5e09b6d5738f768f474df",
+        "hash_method": "ast_get_source_segment_utf8_sha256",
+        "original_v16_function_unchanged": true
+      },
+      "quality_inputs_unchanged": true,
+      "precision": "float32",
+      "checkpoint": {
+        "bytes": 5026874952,
+        "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+      },
+      "capture_receipt_sha256": "62f0a00fe460f64293e8aaea06f8c53b10bc4c89b1ebad85dbe302ad2f9e9c71"
+    },
+    {
+      "status": "completed_fixed_input_diagnostic",
+      "script_sha256": "de972f9b543a00de659e63f9a5c07955e3c8a39799face353cb8f561aa814d2f",
+      "image_size": 518,
+      "source_hashes": {
+        "vggt_slam/runtime.py": "baf65a5afcfa98584e25b1ef85d7cae31507a7da2b4cc03f97d2015776796e8c",
+        "vggt_slam/image_rectification.py": "e8c8472ac4dc3b84c132f20afd35be4dbeb3c23a9491ae1299ae5b1938e7ffdd",
+        "vggt_slam/edge_mapping.py": "c889a193da92cc74671d31ee9a70352cff089ae70fff9174ea526add2261e134",
+        "vggt_slam/timestamp_replay.py": "14b168028a6f7722f4bea036285b4f9cd8119fed59230b7e3e07c4b7af07addc",
+        "third_party/vggt/vggt/models/vggt.py": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+        "third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+        "third_party/vggt/vggt/heads/camera_head.py": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+        "third_party/vggt/vggt/heads/dpt_head.py": "72e9ed26196113eb71e26b641b4262606b5aacc797accafc6c975f5db0d2ace2",
+        "third_party/vggt/vggt/layers/vision_transformer.py": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+        "third_party/vggt/vggt/layers/block.py": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+        "third_party/vggt/vggt/layers/attention.py": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+        "third_party/vggt/vggt/utils/load_fn.py": "b0fe762f65497dca9a22069a3e4a37fd3508398c55383a8c1cb85c403fb3e9dd",
+        "third_party/vggt/vggt/utils/pose_enc.py": "845fc3a46cb851bebf0720b8fc2b9f34334ae8e11f1982376ba59f90ff18f22b"
+      },
+      "base_capture_script_sha256": "3706712dd3a7451fcbce98e079d4018989eca6f64eb98704a81b8f4a9acc03cb",
+      "capture_protocol_sha256": {
+        "capture-v17-resolution-pairs-board.py": "3706712dd3a7451fcbce98e079d4018989eca6f64eb98704a81b8f4a9acc03cb",
+        "capture-v16-resolution-pairs-board.py": "64adbcbe7f6e013aa738b8bed57d21ef8fde10c4b63bd7c647e9fa2137a79d7c"
+      },
+      "pairs": [
+        {
+          "revision": 1,
+          "frame_ids": [
+            1305031102.175304,
+            1305031102.443271
+          ],
+          "file": "predictions_0001.npz",
+          "bytes": 3250666,
+          "sha256": "b04a43e5f2f64dc5e0985eb6961325b4f913cc4db5a2642a8ec68abec7b9c72e",
+          "input_tensor": {
+            "shape": [
+              2,
+              3,
+              392,
+              518
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 4873344,
+            "tensor_sha256": "ce746a4b9c088f5947511e57ffe258b74ae143ab43423e469b922f30c6ad6809"
+          },
+          "arrays": {
+            "depth": {
+              "shape": [
+                1,
+                2,
+                392,
+                518,
+                1
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 1624448,
+              "tensor_sha256": "abd50525ca1f3ed9d8371dbd86b35ac11644558b7b0ece2e148ce09a21c17c6b"
+            },
+            "depth_conf": {
+              "shape": [
+                1,
+                2,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 1624448,
+              "tensor_sha256": "5a50567a0675a85524c704e3190d6da9def7d9745969d33725d49b90d1ac39ea"
+            },
+            "intrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "caaafa0e89eb6588a6b284e8d065dbea4c6bb207a5e445b0dde4cd50592e7fad"
+            },
+            "extrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 96,
+              "tensor_sha256": "bfa5c29c13cc1a1cf39230418118458bfe37fe7e89f34532473a19751281be0a"
+            },
+            "pose_enc": {
+              "shape": [
+                1,
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "2beb5edcbad97bcc0ecc86fef63f5823706023d263a3e987a624178a1f4bb27b"
+            }
+          },
+          "tensor_preparation_seconds": 0.7195181139977649,
+          "model_inference_seconds": 155.68308072599757,
+          "conversion_validation_seconds": 0.008806876008748077,
+          "save_seconds": 0.005572875990765169,
+          "first_forward": true,
+          "peak_rss_mib": 6590.84765625
+        },
+        {
+          "revision": 2,
+          "frame_ids": [
+            1305031102.443271,
+            1305031107.211358
+          ],
+          "file": "predictions_0002.npz",
+          "bytes": 3250666,
+          "sha256": "1dba936d3b3819455e99b9aa7b591856fc2c4328f88ee4cd04596dc6bcdff5cc",
+          "input_tensor": {
+            "shape": [
+              2,
+              3,
+              392,
+              518
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 4873344,
+            "tensor_sha256": "58ca8fe265e6d4a74bf563aa8deba1c47343111c9623ef6be8d33f21bb17ae80"
+          },
+          "arrays": {
+            "depth": {
+              "shape": [
+                1,
+                2,
+                392,
+                518,
+                1
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 1624448,
+              "tensor_sha256": "9962c4f2ea890154519319f488231740ff16519b51b78f75d81c2bbf827d0fb7"
+            },
+            "depth_conf": {
+              "shape": [
+                1,
+                2,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 1624448,
+              "tensor_sha256": "268344bf9d9f152a840b07dbead7f87cc465f23db3e090b56b7652afee0c47de"
+            },
+            "intrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "4ee0ddf67531ce47b24dbea124ee72c03b3ebfbc7327a4c1dc4da2829e0778d7"
+            },
+            "extrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 96,
+              "tensor_sha256": "21bf8d6caa815eb5c0bf8634117e73718a1270c1eae824d92be0740da1930425"
+            },
+            "pose_enc": {
+              "shape": [
+                1,
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "d2f4c9d2c687ee9e444183c7181efc0c581435c7beca3bf536228be204bbc4ca"
+            }
+          },
+          "tensor_preparation_seconds": 0.14923534799891058,
+          "model_inference_seconds": 186.28293946699705,
+          "conversion_validation_seconds": 0.008709458998055197,
+          "save_seconds": 0.005587459003436379,
+          "first_forward": false,
+          "peak_rss_mib": 6593.890625
+        },
+        {
+          "revision": 3,
+          "frame_ids": [
+            1305031107.211358,
+            1305031111.811406
+          ],
+          "file": "predictions_0003.npz",
+          "bytes": 3250666,
+          "sha256": "6a91416b4fda48e025d6004cef71a39b4b157a86900de499b654c1f0b62b0d64",
+          "input_tensor": {
+            "shape": [
+              2,
+              3,
+              392,
+              518
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 4873344,
+            "tensor_sha256": "18919f6edd9bcf0fd7cd4f5e5655dbed16b20853a8a7e30bb2181432487c13a3"
+          },
+          "arrays": {
+            "depth": {
+              "shape": [
+                1,
+                2,
+                392,
+                518,
+                1
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 1624448,
+              "tensor_sha256": "e209efe6e6dd1bc0a9d9d511eb22521c4f45412b0309dce0aaddd097a924c2e6"
+            },
+            "depth_conf": {
+              "shape": [
+                1,
+                2,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 1624448,
+              "tensor_sha256": "b5d5eb9927c6058226ac7d0017ef6b61f840ba2350fb7df2ad22d72682bbf826"
+            },
+            "intrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "6fc68f753742b93d8035bfeb4cfdd34c0bc394aa7d8b4e8ae239051807aad013"
+            },
+            "extrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 96,
+              "tensor_sha256": "ffa9b7ccff3fd6aec08e2d3ea3b3f89802895cb4265edb1951e9a5a7b6fa7f84"
+            },
+            "pose_enc": {
+              "shape": [
+                1,
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "41e8e158cb2f6e4309f060281246f5584f544edfa99a3802e86eefd297c833ef"
+            }
+          },
+          "tensor_preparation_seconds": 0.1534645149949938,
+          "model_inference_seconds": 190.419901715999,
+          "conversion_validation_seconds": 0.00825270899804309,
+          "save_seconds": 0.005482459004269913,
+          "first_forward": false,
+          "peak_rss_mib": 6602.23046875
+        },
+        {
+          "revision": 4,
+          "frame_ids": [
+            1305031111.811406,
+            1305031116.511205
+          ],
+          "file": "predictions_0004.npz",
+          "bytes": 3250666,
+          "sha256": "c36cc63ffc750dd0078791cb1831f8aa4b0bd89510463e0f35a02a94ee3617d1",
+          "input_tensor": {
+            "shape": [
+              2,
+              3,
+              392,
+              518
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 4873344,
+            "tensor_sha256": "4bea51813d53a4441b21edba828706285d34fcc1ae11d22635b4fa69288450dd"
+          },
+          "arrays": {
+            "depth": {
+              "shape": [
+                1,
+                2,
+                392,
+                518,
+                1
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 1624448,
+              "tensor_sha256": "3adc4f59037cff605f298ecdd2df90ccd9370a0b1ae2c3785255031b36868a00"
+            },
+            "depth_conf": {
+              "shape": [
+                1,
+                2,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 1624448,
+              "tensor_sha256": "d93d22f875f7ca2e0f9ac72e7e78fddab75fe09d9321256dd549a7791dedbddd"
+            },
+            "intrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "e3b952fcf1ca97490c68617975fc9185e29f62dfd951c326f9d91c15187867e3"
+            },
+            "extrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 96,
+              "tensor_sha256": "c5763e6ca954e583bd729967678be49ed072fa4119de6ab928d30ae5e866a9fc"
+            },
+            "pose_enc": {
+              "shape": [
+                1,
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "41673b62ea9c77dacb5b1ab15f5c87c6308c79cefd0cb55465dbb49708b9e005"
+            }
+          },
+          "tensor_preparation_seconds": 0.14504322300490458,
+          "model_inference_seconds": 190.336889875005,
+          "conversion_validation_seconds": 0.00915775098837912,
+          "save_seconds": 0.006019999986165203,
+          "first_forward": false,
+          "peak_rss_mib": 6610.8203125
+        },
+        {
+          "revision": 5,
+          "frame_ids": [
+            1305031116.511205,
+            1305031121.947288
+          ],
+          "file": "predictions_0005.npz",
+          "bytes": 3250666,
+          "sha256": "bcbfe71f81a3fbd774abf2201d16a42775da63db5d2d4a01af3cda953ffe9445",
+          "input_tensor": {
+            "shape": [
+              2,
+              3,
+              392,
+              518
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 4873344,
+            "tensor_sha256": "4f86a9cfbbe4a3821a446701978214490074828208af9a442cfa0409f18598ec"
+          },
+          "arrays": {
+            "depth": {
+              "shape": [
+                1,
+                2,
+                392,
+                518,
+                1
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 1624448,
+              "tensor_sha256": "e24321379d307df633f06d14872f9d495732ac93b70efd23ecfa7d2f5c091fdc"
+            },
+            "depth_conf": {
+              "shape": [
+                1,
+                2,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 1624448,
+              "tensor_sha256": "253e0188cf9055d00f41a683a090df07f98a6e6dbe6bbecaa4838ed3f3bcff58"
+            },
+            "intrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "723b8c298baf8f3a2b72b73575d394c0a2fa3b6cf98a466e2f5a51ac1fca9405"
+            },
+            "extrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 96,
+              "tensor_sha256": "070d01c08a509105f389521e4a94e8129bc64a73fd8911aa13b2ae62b092d780"
+            },
+            "pose_enc": {
+              "shape": [
+                1,
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "c9f7e44aab072117f119c4aaead8cbddf5a0246acea9a21789a71dc3dc431500"
+            }
+          },
+          "tensor_preparation_seconds": 0.14852893199713435,
+          "model_inference_seconds": 192.2087462710042,
+          "conversion_validation_seconds": 0.00820283399662003,
+          "save_seconds": 0.005311834000167437,
+          "first_forward": false,
+          "peak_rss_mib": 6618.9453125
+        },
+        {
+          "revision": 6,
+          "frame_ids": [
+            1305031121.947288,
+            1305031127.87938
+          ],
+          "file": "predictions_0006.npz",
+          "bytes": 3250666,
+          "sha256": "bf32e889a8fcf3a52f43ffcf854b46c0f2a16fcfafc15575c3c6fc3e25ca6750",
+          "input_tensor": {
+            "shape": [
+              2,
+              3,
+              392,
+              518
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "bytes": 4873344,
+            "tensor_sha256": "f6f3dbc7cb3a6a00da8cbb40b09b5cd1df291d1fdb7fd81c6031b8c465ea99bb"
+          },
+          "arrays": {
+            "depth": {
+              "shape": [
+                1,
+                2,
+                392,
+                518,
+                1
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 1624448,
+              "tensor_sha256": "cfc01ba6b811d93c7fdfbca920f4b53b703b81a6126e9445593574165cc47bc9"
+            },
+            "depth_conf": {
+              "shape": [
+                1,
+                2,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 1624448,
+              "tensor_sha256": "152a596cfce315324fa27830a2d4f6020a0f928665b77191abd1e9ea0017885e"
+            },
+            "intrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "7970c980e3207df93519fec1dcd6bf3ffba620ceb10f6c6a2f9716f73dfe6bc7"
+            },
+            "extrinsic": {
+              "shape": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 96,
+              "tensor_sha256": "bd87f3dad466eae368a987e3a94f804f6cc666bd48c467770524767113f1276b"
+            },
+            "pose_enc": {
+              "shape": [
+                1,
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "bytes": 72,
+              "tensor_sha256": "ceac0f69bc2f3e519ef0423faa6bcc40c507e8cbfb35bf2600273858ff154c9b"
+            }
+          },
+          "tensor_preparation_seconds": 0.15291238999634515,
+          "model_inference_seconds": 191.68318542699853,
+          "conversion_validation_seconds": 0.008405833999859169,
+          "save_seconds": 0.0056352920073550195,
+          "first_forward": false,
+          "peak_rss_mib": 6618.9453125
+        }
+      ],
+      "preprocessing_provenance": {
+        "source": "vggt_slam/edge_mapping.py",
+        "function": "prepare_rectified_images",
+        "sha256": "0353b56642d35e0f9f9752419287b0c111e3926357f5e09b6d5738f768f474df",
+        "hash_method": "ast_get_source_segment_utf8_sha256",
+        "original_v16_function_unchanged": true
+      },
+      "quality_inputs_unchanged": true,
+      "precision": "float32",
+      "checkpoint": {
+        "bytes": 5026874952,
+        "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+      },
+      "capture_receipt_sha256": "11b49adfb0ab684eb349cd28dda6de5a189d0d029b60d69c1740c47f4e3c3d36"
+    }
+  ]
+}

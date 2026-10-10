@@ -1,8 +1,10 @@
 # VGGT-SLAM 2 on RK3588S
 
-An experimental RK3588S port of [MIT-SPARK/VGGT-SLAM](https://github.com/MIT-SPARK/VGGT-SLAM), retaining the original VGGT-1B weights and SL4 mapping backend. The current frontend uses LK, PnP and triangulation; it does not use ORB. All measured model inference runs on the board. Host tools export and compile graphs or inspect saved arrays.
+An experimental RK3588S port of [MIT-SPARK/VGGT-SLAM](https://github.com/MIT-SPARK/VGGT-SLAM), focused on accelerating the original network while retaining the original VGGT-1B weights and SL4 mapping backend. The optional LK/PnP/triangulation frontend is a custom architecture experiment, separate from the original VGGT-SLAM 2 frontend; it does not use ORB. All measured model inference runs on the board. Host tools export and compile graphs or inspect saved arrays.
 
-**Status: sustained accurate 20 Hz tracking, 2–5-second map updates, 30-minute endurance, physical-camera latency and 8 GB operation have not passed validation.** The continuous RGB replay is an experimental diagnostic, not a completed real-time SLAM system. The current hybrid mapper uses CPU/XNNPACK for most of VGGT and RKNN for the original four-iteration CameraHead. It is not an all-NPU implementation.
+In the pinned upstream implementation, LK selects keyframes for VGGT inference ([main.py](https://github.com/MIT-SPARK/VGGT-SLAM/blob/35327ac28b7d193df9ccc39ba6346052bb6f1207/main.py), [frame_overlap.py](https://github.com/MIT-SPARK/VGGT-SLAM/blob/35327ac28b7d193df9ccc39ba6346052bb6f1207/vggt_slam/frame_overlap.py)). The continuous LK/PnP poses added here are not original-model outputs. Their publication rate is neither the original network's inference rate nor evidence that the original architecture meets the real-time target.
+
+**Status: sustained accurate 20 Hz tracking, 2–5-second map updates, 30-minute endurance, physical-camera latency and 8 GB operation have not passed validation.** The continuous RGB replay below is a custom-frontend diagnostic, not original-architecture acceptance or a completed real-time SLAM system. The current hybrid mapper uses CPU/XNNPACK for most of VGGT and RKNN for the original four-iteration CameraHead. It is not an all-NPU implementation.
 
 ## Measured baseline
 
@@ -14,11 +16,11 @@ An original-weight DINO block with input `[1,37,1024]` executed using RKNN 2.3.2
 
 The **complete original CameraHead** also ran separately through RKNN, retaining all four refinement iterations and 16 trunk-block calls. Its first complete I/O call took 185.979 ms and the next three averaged 203.646 ms; three FP32 CPU reference calls averaged 1.254 s. Actual SDK profiles show 207 internal NPU operators and one final CPU Reshape, plus CPU input/output. Relative L2 error against FP32 is 0.7669%; normalized quaternion differences are 0.778° and 0.869° for the two frames. The strict elementwise comparison does not pass. SDK DMA allocation is 3,424,231,424 bytes. That unrolled variant was not integrated into the replay mapper; the shared-step version described below now runs inside the mapper. [Timing, numerical error and provenance](results/camera_head_v15.json) are published separately from the whole-pipeline results.
 
-The full model and the continuous tracker still require further work. Dataset timestamps, startup, lost frames, latest-slot replacement and EOF work must remain visible in the results; high input rate alone is not a valid-pose rate.
+The full model and the separate custom continuous tracker still require further work. Dataset timestamps, startup, lost frames, latest-slot replacement and EOF work must remain visible in the results; high input rate alone is not a valid-pose rate.
 
-## Continuous replay results
+## Historical custom-frontend replay experiments
 
-The 26.572-second TUM RGB sequence has now run end to end on the board. These are complete-run results, including startup and losses:
+The custom LK/PnP/triangulation frontend has run with the VGGT mapper on the 26.572-second TUM RGB sequence. This adds continuous pose estimation to the upstream architecture. The following complete-run results retain startup and losses, but their pose counts and latency do not measure original VGGT-SLAM 2 throughput or establish its real-time acceptance:
 
 | Run | New valid poses / 798 RGB frames | First valid pose | Successful-pose latency P95 | Map update time |
 | --- | ---: | ---: | ---: | ---: |
@@ -38,9 +40,9 @@ Depth geometry was already 5.09–7.58 seconds old when the frontend applied it,
 
 Ground-truth diagnostics show substantial remaining geometric error. On the 256 identical one-second endpoint pairs available in both runs, rotation RPE RMS is 11.367° for r4 and 3.635° for r5; translation-direction median error is 55.35° and 6.19° on the 253 pairs with sufficient ground-truth translation. This is a local relative-pose diagnostic: initialization, selected map anchors and depth geometry differ between runs. It does not establish metric ATE, global continuity or accuracy within 10–20% of the full-resolution baseline. [Evaluation results](results/trajectory_v15.json) retain coverage, association rules and input hashes.
 
-## Shared rectification and integrated NPU CameraHead (v16)
+## NPU CameraHead integration and custom-frontend replay (v16)
 
-Capture and VGGT now receive the same calibrated, rectified RGB pixels. Rectification preserves the original K and image extent, with identity rotation and no crop. Capture decode/remap runs after the original scheduled arrival and is included in pose latency. The mapper retains original VGGT preprocessing through a lossless in-memory PNG bridge. Both processes verify identical calibration metadata. Projective association is restored; a general SL4 transform still does not define a metric global SE3 pose.
+In this custom-frontend experiment, capture and VGGT receive the same calibrated, rectified RGB pixels. These replay changes are not part of the original frontend; the original-weight NPU CameraHead measurements are reported separately below. Rectification preserves the original K and image extent, with identity rotation and no crop. Capture decode/remap runs after the original scheduled arrival and is included in pose latency. The mapper retains original VGGT preprocessing through a lossless in-memory PNG bridge. Both processes verify identical calibration metadata. Projective association is restored; a general SL4 transform still does not define a metric global SE3 pose.
 
 The capture source keeps one decoded frame and selects the latest already-due source image before decoding when it falls behind. It records skipped-before-decode and overwritten-after-decode separately. Original timestamps remain unchanged. This removed the multi-second backlog observed in r6.
 
@@ -53,7 +55,7 @@ The capture source keeps one decoded frame and selects the latest already-due so
 | r10, same allocation, 300 features | 511 | 6.92 s | 103.65 ms | 4.63–6.05 s |
 | r11, same allocation, 240 features | 567 | 6.55 s | 93.94 ms | 4.59–5.90 s |
 
-In r11, complete publication windows from second 7 through second 25 contain **22–31 new-observation poses each**. The first six complete seconds contain zero poses; second 6 contains 14. All 798 original images were decoded, 36 were overwritten in the latest slot, and 762 reached tracking. The 567 valid poses have model/global **projective** associations; rigid global poses remain unavailable. Six map jobs executed 24 actual RKNN calls. EOF depth adoption does not count as a fresh pose. These are results for one 26.572-second sequence, not sustained 20 Hz acceptance, physical-camera testing, or a completed SLAM accuracy result. [Complete coverage, timing and memory samples](results/rectification_v16.json), [independent replay audit](results/replay_review_v16.json) and [trajectory diagnostics](results/trajectory_v16.json) include the slower and failed-target configurations. Temperature and scheduling differed across runs, so these are not controlled causal speedup measurements.
+In r11, complete publication windows from second 7 through second 25 contain **22–31 new-observation poses each** from the custom LK/PnP frontend, not from continuous VGGT inference or the original VGGT-SLAM 2 architecture. The first six complete seconds contain zero poses; second 6 contains 14. All 798 original images were decoded, 36 were overwritten in the latest slot, and 762 reached tracking. The 567 valid poses have model/global **projective** associations; rigid global poses remain unavailable. Six map jobs executed 24 actual RKNN calls. EOF depth adoption does not count as a fresh pose. These are results for one 26.572-second sequence, not sustained 20 Hz acceptance, physical-camera testing, or a completed SLAM accuracy result. [Complete coverage, timing and memory samples](results/rectification_v16.json), [independent replay audit](results/replay_review_v16.json) and [trajectory diagnostics](results/trajectory_v16.json) include the slower and failed-target configurations. Temperature and scheduling differed across runs, so these are not controlled causal speedup measurements.
 
 The shared CameraHead graph retains all original weights and all four refinement iterations, executing the same context four times with CPU FP32 recurrence. RKNN file size is 434,452,453 bytes; SDK DMA is 869,425,152 bytes, down from 3,424,231,424 for the unrolled graph. The isolated complete head averages 212.707 ms over its last three calls; relative L2 versus the original CPU reference is 0.7873%. Actual profiles show 57 internal NPU operators and two CPU Reshapes per step, plus CPU I/O. [Operator, recurrence and provenance audit](results/camera_step_v16.json).
 
@@ -64,6 +66,20 @@ The production module verifies all 69 original CPU parameter tensors against the
 The first three exact r7 mapping pairs were also run through the original CPU FP32 model at 112 and 518, using the same source images, rectification and weights. Actual tensors are 84×112 and 392×518. Rotation error against TUM ground truth is **5.33–5.85° at 112 versus 0.95–1.09° at 518**; translation-direction error is 9.59–94.21° versus 0.61–2.39°. Even after one positive depth scale per two-frame pair, depth differences remain 18.73–20.38% relative L2. This is a three-pair diagnostic, not a full trajectory or depth-ground-truth evaluation, but it shows that 112 cannot currently support the planned accuracy claim. Original 518 forward times were 142–193 s per pair. [Exact paired-resolution evidence](results/resolution_comparison_v16.json).
 
 No loop closure, 30-minute endurance or 8 GB acceptance is established. Mapper peak RSS in these hybrid runs is about 7.0 GiB, with SDK DMA reported separately; RSS and DMA must not simply be added as if disjoint. Sparse Linux memory/temperature samples are observations, not a simultaneous peak-memory or thermal qualification.
+
+## Higher-resolution diagnostics (v17)
+
+The same three original TUM pairs now have CPU FP32 results at 224 and 336 as well as 112 and 518. At 336 (actual 252×336), forward time is **35.06–57.02 s** and rotation errors are **2.204°, 0.463°, 2.611°**, versus **1.038°, 1.093°, 0.946°** at 518. A single positive scale per two-frame pair reduces depth differences from 518 to **8.03–8.79% relative L2**. These are paired model-output diagnostics, not full trajectory or ground-truth map accuracy. [224 results](results/resolution_224_v17.json), [336 results](results/resolution_336_v17.json).
+
+An independent source/array audit found no H/W or focal resize error in the reviewed path. Across the 24 saved camera outputs, intrinsic reconstruction from the original FOV encoding agrees to a maximum relative difference of 9.13e-8. At 336 the predicted original-pixel focal length remains 1.37–1.58 times the known calibration; the narrow FOV is already present in the original network output. Changing the focal conversion by an arbitrary resolution factor is therefore unsupported. The specific cause of this resolution sensitivity is not established. [Source and FOV evidence](results/fov_source_audit_v17.json).
+
+A board-only 336 stage capture recorded all 24 DINO, 24 frame-attention and 24 global-attention calls. Its uninstrumented forward took 34.07 s; the subsequent instrumented forward took 50.83 s, including hooks/copies and a different thermal state. The latter contains 12.25 s of DINO blocks, 14.30 s of frame blocks, 15.92 s of global blocks and 6.10 s of depth-head work. These nested timings cannot be summed indiscriminately or treated as a controlled speedup comparison. Capturing the first blocks did not change the complete pose/depth/confidence outputs. [Actual shapes, source hashes and thermal samples](results/profile_336_v17.json).
+
+New isolated aggregator exporters retain all 18 original parameters, four normalization operations and the captured 2D RoPE tables. The first ONNX representation encountered an RKNN Split/Concat fusion error; R2 uses an equivalent fixed Gather/sign representation. For the global block, R3 only normalizes two rank-four Gather axes from -1 to 3 to avoid a compiler transpose-optimization failure. It preserves all parameters and other nodes.
+
+Both first-block exports passed the board CPU ONNX Runtime check against the saved original FP32 outputs, with predefined `rtol=1e-4, atol=1e-5`. Each compiled RKNN graph then completed four normal SDK calls and four separately instrumented calls on the board. The last three normal complete I/O calls averaged **183.626 ms for frame0** (`[2,437,1024]`) and **187.139 ms for global0** (`[1,874,1024]`). Relative L2 errors against original FP32 are **0.183794% and 0.435856%**. These FP16 outputs do not pass the strict FP32 elementwise gate. These are isolated first blocks, not a chained aggregator or full network; accumulated pose/depth error, sustained performance and whole-system real-time operation remain unvalidated. [Frame-block audit](results/frame_block_v17.json), [global-block audit](results/global_block_v17.json).
+
+Original CPU FP32 VGGT reference predictions have been captured at 112 and 518 for all six fixed input pairs recorded in r11, using the same source images, rectification and original weights. These are offline model-output quality references, not a completed trajectory or map-quality evaluation. Two-frame model batches do not reproduce the paper's 32-frame benchmark. [Capture provenance](results/quality_pairs_capture_v18.json).
 
 ## Lightweight tests
 
@@ -77,7 +93,7 @@ PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -p no:cacheprovider \
   tests/test_rectified_mapping.py
 ```
 
-Torch enables the additional synthetic RKNN lifecycle/contract tests. The public snapshot's complete focused test command and result are recorded in [the test receipt](results/synthetic_tests_v16.json). Synthetic SDK calls never establish hardware execution. No host real-image tracking or model inference is used in these checks.
+Torch enables the additional synthetic RKNN lifecycle/contract tests. The public snapshot's complete focused test command and result are recorded in [the test receipt](results/synthetic_tests_v17.json). Synthetic SDK calls never establish hardware execution. No host real-image tracking or model inference is used in these checks.
 
 ## Setup and external dependencies
 
@@ -97,9 +113,9 @@ Loop closure is optional and is disabled in the minimal replay command. Enabling
 
 The SDK, `librknnrt.so`, RKNN compiler wheel and Rockchip headers are not included. Obtain the licensed [official RKNN SDK](https://github.com/airockchip/rknn-toolkit2) yourself. The tested runtime/ABI is 2.3.2; users must provide matching `rknn_api.h` and `rknn_matmul_api.h` under the filenames expected by each diagnostic. Header hashes are checked before hardware calls. XNNPACK ABI tests also need the matching external XNNPACK/pthreadpool headers. A fresh public clone therefore does not contain all hardware-test prerequisites.
 
-## Timestamped RGB replay
+## Reproducing the custom-frontend timestamped RGB experiment
 
-Obtain the official [TUM RGB-D freiburg1/xyz sequence](https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download) and use its original `rgb.txt`. It contains 798 RGB images over 26.572059 seconds, about 29.994 Hz. Replay uses original intervals; it is software-simulated capture, not a physical camera test. Sensor depth and ground truth are not inputs to the tracker.
+This section reproduces the optional custom LK/PnP/triangulation frontend through `scripts/run_edge.py`, not the original VGGT-SLAM 2 frontend. Its per-observation pose rate does not establish original-network throughput or real-time acceptance. Obtain the official [TUM RGB-D freiburg1/xyz sequence](https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download) and use its original `rgb.txt`. It contains 798 RGB images over 26.572059 seconds, about 29.994 Hz. Replay uses original intervals; it is software-simulated capture, not a physical camera test. Sensor depth and ground truth are not inputs to the tracker.
 
 Run on the RK3588S from the repository root, in the prepared environment. Use an output directory that does not exist:
 

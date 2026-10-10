@@ -1,0 +1,741 @@
+{
+  "kind": "v17_read_only_FOV_dimension_source_and_saved_array_audit",
+  "status": "passed",
+  "auditor_sha256": "cce48bf2df89a247859d8a633752617b7591c81a6470aacd1f14f612ebe1f4c3",
+  "comparison_dependency_sha256": "0f740d3a35c472745eccb3f674b411209a2cef6fcd56ba66e44e6274e224979b",
+  "image_decode_executed": false,
+  "model_executed": false,
+  "tracking_executed": false,
+  "board_operations_executed": false,
+  "raw_inputs_modified": false,
+  "reviewed_path_scaling_bug_identified": false,
+  "training_distribution_cause_validated": false,
+  "complete_dataset_accuracy_validated": false,
+  "conclusion": "Saved CameraHead vertical FOV differs before conversion; no H/W or focal scaling bug identified in the reviewed path",
+  "limitations": "Only the three fixed pairs; the exact cause inside learned features is not established; no ATE/RPE acceptance or focal rescaling correction is inferred",
+  "source_contracts": {
+    "hashes": {
+      "vggt_slam/runtime.py": "baf65a5afcfa98584e25b1ef85d7cae31507a7da2b4cc03f97d2015776796e8c",
+      "third_party/vggt/vggt/utils/load_fn.py": "b0fe762f65497dca9a22069a3e4a37fd3508398c55383a8c1cb85c403fb3e9dd",
+      "third_party/vggt/vggt/utils/pose_enc.py": "845fc3a46cb851bebf0720b8fc2b9f34334ae8e11f1982376ba59f90ff18f22b",
+      "third_party/vggt/vggt/heads/camera_head.py": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+      "third_party/vggt/vggt/heads/head_act.py": "428bdb087f457b809a66e22d7d01147c1cb4dab43bb0d98bc61c7f05d8383a1e",
+      "third_party/vggt/vggt/layers/vision_transformer.py": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+      "third_party/vggt/vggt/layers/patch_embed.py": "c2543ec293951d081db662b2125027625f6e632971630facaa7f911c2377d335",
+      "third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+      "third_party/vggt/vggt/models/vggt.py": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+      "third_party/vggt/vggt/layers/rope.py": "c56b073724f4d56cc531e381835a2c3dc348f192aefd9e855e3e59ab3c7d6641"
+    },
+    "codec": {
+      "height_width_order": "H,W",
+      "pose_encoding_vertical_index": 7,
+      "pose_encoding_horizontal_index": 8,
+      "angle_unit": "radians",
+      "fy": "(H/2)/tan(fov_h/2)",
+      "fx": "(W/2)/tan(fov_w/2)",
+      "principal_point_assumption": "cx=W/2; cy=H/2, rather than externally calibrated offsets",
+      "FOV_definition": "center-symmetric codec surrogate from focal; off-center edge angles need not equal this",
+      "no_additional_trained_resolution_factor": true
+    },
+    "capture_conversion": {
+      "capture-v16-resolution-pairs-board.py": {
+        "source_sha256": "64adbcbe7f6e013aa738b8bed57d21ef8fde10c4b63bd7c647e9fa2137a79d7c",
+        "conversion_dimensions": "images.shape[-2:]"
+      },
+      "capture-v17-resolution-pairs-board.py": {
+        "source_sha256": "3706712dd3a7451fcbce98e079d4018989eca6f64eb98704a81b8f4a9acc03cb",
+        "conversion_dimensions": "images.shape[-2:]"
+      }
+    },
+    "vendor_commit": "6e6e16107b88e8e76c751826af10d4295d87ecd2",
+    "whole_files_byte_equal_to_vendor_HEAD": {
+      "pose_enc": true,
+      "camera_head": true,
+      "head_act": true,
+      "patch_embed": true,
+      "rope": true
+    },
+    "DINO_position_functions_byte_equal_to_vendor_HEAD": true,
+    "positional_base_grid_implied_by_preserved_518_constructor": [
+      37,
+      37
+    ],
+    "DINO_dimension_names": "w is input tensor H; h is input tensor W; interpolation follows the same order",
+    "camera_head_has_explicit_image_size_argument": false,
+    "camera_head_prediction": "last-layer camera token; iterative 9D pose/FOV prediction with positive ReLU FOV",
+    "preprocessing": "Pillow resize(new_width,new_height), independent y rounding to 14, no crop for these landscape pairs",
+    "source_reviews": [
+      {
+        "path": "third_party/vggt/vggt/utils/pose_enc.py",
+        "line": 114
+      },
+      {
+        "path": "third_party/vggt/vggt/utils/load_fn.py",
+        "line": 158
+      },
+      {
+        "path": "third_party/vggt/vggt/layers/vision_transformer.py",
+        "line": 181
+      },
+      {
+        "path": "third_party/vggt/vggt/heads/camera_head.py",
+        "line": 75
+      },
+      {
+        "path": "vggt_slam/runtime.py",
+        "line": 85
+      },
+      {
+        "path": "third_party/vggt/vggt/models/aggregator.py",
+        "line": 505
+      }
+    ]
+  },
+  "resolutions": [
+    {
+      "image_size": 112,
+      "capture_input_hashes": {
+        "capture.json": "76f39338bf634363ed6fa4a889147b4d2383feb6a4cf0ec8f16098c1b3530cfc",
+        "predictions_0001.npz": "14b32fa070f452285c5113be5494610f01e42afa178900de7dc8707930cb356c",
+        "predictions_0002.npz": "563ec12a5c5e09f8500253e78b35e6e0b1daa4f2d6611eb2a520c3e51b95b177",
+        "predictions_0003.npz": "2419e6d30508330586e47c349a47a901b1518177203b272f5561ba2feddc5dd7"
+      },
+      "pairs": [
+        {
+          "revision": 1,
+          "frame_ids": [
+            1305031102.175304,
+            1305031102.443271
+          ],
+          "input_hw": [
+            84,
+            112
+          ],
+          "predicted_vertical_FOV_degrees": [
+            13.14561003417009,
+            12.481736991186006
+          ],
+          "predicted_horizontal_FOV_degrees": [
+            62.333146478804274,
+            59.09300718938778
+          ],
+          "original_pixel_fy": [
+            2082.9178292410716,
+            2194.656459263393
+          ],
+          "fy_ratio_to_supplied_K": [
+            4.0327547516768085,
+            4.249092854333772
+          ],
+          "principal_point_delta_to_supplied_K_pixels": [
+            [
+              3.75714285714281,
+              -12.94285714285715
+            ],
+            [
+              3.75714285714281,
+              -12.94285714285715
+            ]
+          ],
+          "independent_codec_max_relative_error": 4.4948012408039935e-08,
+          "actual_height_rounding_relative_to_isotropic": 0.0,
+          "raw_fy_cancellation": "(Hraw/Hmodel)*(Hmodel/2)/tan(fov_h/2) = Hraw/[2*tan(fov_h/2)]",
+          "half_pixel_translation_affects_focal_diagonal": false
+        },
+        {
+          "revision": 2,
+          "frame_ids": [
+            1305031102.443271,
+            1305031106.475345
+          ],
+          "input_hw": [
+            84,
+            112
+          ],
+          "predicted_vertical_FOV_degrees": [
+            14.324603991525487,
+            15.537469710748624
+          ],
+          "predicted_horizontal_FOV_degrees": [
+            66.53447779954917,
+            70.38779732170356
+          ],
+          "original_pixel_fy": [
+            1909.9007742745537,
+            1759.181431361607
+          ],
+          "fy_ratio_to_supplied_K": [
+            3.697774974394102,
+            3.4059659852112434
+          ],
+          "principal_point_delta_to_supplied_K_pixels": [
+            [
+              3.75714285714281,
+              -12.94285714285715
+            ],
+            [
+              3.75714285714281,
+              -12.94285714285715
+            ]
+          ],
+          "independent_codec_max_relative_error": 3.796151884661317e-08,
+          "actual_height_rounding_relative_to_isotropic": 0.0,
+          "raw_fy_cancellation": "(Hraw/Hmodel)*(Hmodel/2)/tan(fov_h/2) = Hraw/[2*tan(fov_h/2)]",
+          "half_pixel_translation_affects_focal_diagonal": false
+        },
+        {
+          "revision": 3,
+          "frame_ids": [
+            1305031106.475345,
+            1305031110.111325
+          ],
+          "input_hw": [
+            84,
+            112
+          ],
+          "predicted_vertical_FOV_degrees": [
+            14.529204015660511,
+            12.17481646441596
+          ],
+          "predicted_horizontal_FOV_degrees": [
+            67.97949994111374,
+            59.45732947971626
+          ],
+          "original_pixel_fy": [
+            1882.7212960379466,
+            2250.416957310268
+          ],
+          "fy_ratio_to_supplied_K": [
+            3.645152557672694,
+            4.357051224221236
+          ],
+          "principal_point_delta_to_supplied_K_pixels": [
+            [
+              3.75714285714281,
+              -12.94285714285715
+            ],
+            [
+              3.75714285714281,
+              -12.94285714285715
+            ]
+          ],
+          "independent_codec_max_relative_error": 6.917648991208177e-08,
+          "actual_height_rounding_relative_to_isotropic": 0.0,
+          "raw_fy_cancellation": "(Hraw/Hmodel)*(Hmodel/2)/tan(fov_h/2) = Hraw/[2*tan(fov_h/2)]",
+          "half_pixel_translation_affects_focal_diagonal": false
+        }
+      ],
+      "supplied_rectified_K": [
+        [
+          517.3,
+          0.0,
+          318.6
+        ],
+        [
+          0.0,
+          516.5,
+          255.3
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_codec_vertical_FOV_degrees": 49.8453841384339,
+      "expected_codec_horizontal_FOV_degrees": 63.481584984458735,
+      "fy_ratio_range": [
+        3.4059659852112434,
+        4.357051224221236
+      ],
+      "predicted_vertical_FOV_range_degrees": [
+        12.17481646441596,
+        15.537469710748624
+      ]
+    },
+    {
+      "image_size": 224,
+      "capture_input_hashes": {
+        "capture.json": "05b2d923bcbe20e9e24ec45da6b558137262ef995bc7d8a44286b350868eb087",
+        "predictions_0001.npz": "0172b9c883a65d0f83c6b6013a6033063874daee1b35676bad3b30ebfbc075d0",
+        "predictions_0002.npz": "ef36129546cf6fb7737b9596f11ed6e57ef599e87bfaa6e70fa2c2926a2ba3f8",
+        "predictions_0003.npz": "111828e964a8af36cff1f6e56dc86fc359a9e09d849acdace296ce4e4b223a63"
+      },
+      "pairs": [
+        {
+          "revision": 1,
+          "frame_ids": [
+            1305031102.175304,
+            1305031102.443271
+          ],
+          "input_hw": [
+            168,
+            224
+          ],
+          "predicted_vertical_FOV_degrees": [
+            23.904629028932664,
+            22.38989285405706
+          ],
+          "predicted_horizontal_FOV_degrees": [
+            74.14136876121908,
+            70.31097818410842
+          ],
+          "original_pixel_fy": [
+            1133.7501743861608,
+            1212.6499720982142
+          ],
+          "fy_ratio_to_supplied_K": [
+            2.195063261154232,
+            2.347821824004287
+          ],
+          "principal_point_delta_to_supplied_K_pixels": [
+            [
+              2.328571428571422,
+              -14.371428571428595
+            ],
+            [
+              2.328571428571422,
+              -14.371428571428595
+            ]
+          ],
+          "independent_codec_max_relative_error": 4.731549155679522e-08,
+          "actual_height_rounding_relative_to_isotropic": 0.0,
+          "raw_fy_cancellation": "(Hraw/Hmodel)*(Hmodel/2)/tan(fov_h/2) = Hraw/[2*tan(fov_h/2)]",
+          "half_pixel_translation_affects_focal_diagonal": false
+        },
+        {
+          "revision": 2,
+          "frame_ids": [
+            1305031102.443271,
+            1305031106.475345
+          ],
+          "input_hw": [
+            168,
+            224
+          ],
+          "predicted_vertical_FOV_degrees": [
+            18.182428023437502,
+            22.34011102029142
+          ],
+          "predicted_horizontal_FOV_degrees": [
+            59.56531477049416,
+            69.81936848840758
+          ],
+          "original_pixel_fy": [
+            1499.8427036830358,
+            1215.4221888950892
+          ],
+          "fy_ratio_to_supplied_K": [
+            2.9038580903834186,
+            2.3531891362925252
+          ],
+          "principal_point_delta_to_supplied_K_pixels": [
+            [
+              2.328571428571422,
+              -14.371428571428595
+            ],
+            [
+              2.328571428571422,
+              -14.371428571428595
+            ]
+          ],
+          "independent_codec_max_relative_error": 9.129006576150696e-08,
+          "actual_height_rounding_relative_to_isotropic": 0.0,
+          "raw_fy_cancellation": "(Hraw/Hmodel)*(Hmodel/2)/tan(fov_h/2) = Hraw/[2*tan(fov_h/2)]",
+          "half_pixel_translation_affects_focal_diagonal": false
+        },
+        {
+          "revision": 3,
+          "frame_ids": [
+            1305031106.475345,
+            1305031110.111325
+          ],
+          "input_hw": [
+            168,
+            224
+          ],
+          "predicted_vertical_FOV_degrees": [
+            22.82116978127188,
+            17.39171922133993
+          ],
+          "predicted_horizontal_FOV_degrees": [
+            69.99229521781396,
+            56.50558468271979
+          ],
+          "original_pixel_fy": [
+            1189.1334751674108,
+            1569.1653878348216
+          ],
+          "fy_ratio_to_supplied_K": [
+            2.3022913362389366,
+            3.0380743230103033
+          ],
+          "principal_point_delta_to_supplied_K_pixels": [
+            [
+              2.328571428571422,
+              -14.371428571428595
+            ],
+            [
+              2.328571428571422,
+              -14.371428571428595
+            ]
+          ],
+          "independent_codec_max_relative_error": 4.3658180994790815e-08,
+          "actual_height_rounding_relative_to_isotropic": 0.0,
+          "raw_fy_cancellation": "(Hraw/Hmodel)*(Hmodel/2)/tan(fov_h/2) = Hraw/[2*tan(fov_h/2)]",
+          "half_pixel_translation_affects_focal_diagonal": false
+        }
+      ],
+      "supplied_rectified_K": [
+        [
+          517.3,
+          0.0,
+          318.6
+        ],
+        [
+          0.0,
+          516.5,
+          255.3
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_codec_vertical_FOV_degrees": 49.8453841384339,
+      "expected_codec_horizontal_FOV_degrees": 63.481584984458735,
+      "fy_ratio_range": [
+        2.195063261154232,
+        3.0380743230103033
+      ],
+      "predicted_vertical_FOV_range_degrees": [
+        17.39171922133993,
+        23.904629028932664
+      ]
+    },
+    {
+      "image_size": 336,
+      "capture_input_hashes": {
+        "capture.json": "8a5b9e8a7f94757fa906fbcc1b2d37ae3d4751076d69e966dd626a15a6c63598",
+        "predictions_0001.npz": "460384bcdbbb4372dd63816492112426ed3229247749ef90c102a6fd7ac943af",
+        "predictions_0002.npz": "14574ec23401ae476c43935ba69b37cffecd462e88d8098fe23ee67b1f1dcbfe",
+        "predictions_0003.npz": "cb438fa27a20eb3a1dff416d44714fb6e28014796903e92d42ca0c9167e810f3"
+      },
+      "pairs": [
+        {
+          "revision": 1,
+          "frame_ids": [
+            1305031102.175304,
+            1305031102.443271
+          ],
+          "input_hw": [
+            252,
+            336
+          ],
+          "predicted_vertical_FOV_degrees": [
+            36.06085115710691,
+            35.1802724334576
+          ],
+          "predicted_horizontal_FOV_degrees": [
+            70.15516107857292,
+            68.77064075267631
+          ],
+          "original_pixel_fy": [
+            737.3116048177083,
+            757.0280529203868
+          ],
+          "fy_ratio_to_supplied_K": [
+            1.4275152077787188,
+            1.4656883890036532
+          ],
+          "principal_point_delta_to_supplied_K_pixels": [
+            [
+              1.8523809523809405,
+              -14.847619047619048
+            ],
+            [
+              1.8523809523809405,
+              -14.847619047619048
+            ]
+          ],
+          "independent_codec_max_relative_error": 4.472010611664707e-08,
+          "actual_height_rounding_relative_to_isotropic": 0.0,
+          "raw_fy_cancellation": "(Hraw/Hmodel)*(Hmodel/2)/tan(fov_h/2) = Hraw/[2*tan(fov_h/2)]",
+          "half_pixel_translation_affects_focal_diagonal": false
+        },
+        {
+          "revision": 2,
+          "frame_ids": [
+            1305031102.443271,
+            1305031106.475345
+          ],
+          "input_hw": [
+            252,
+            336
+          ],
+          "predicted_vertical_FOV_degrees": [
+            34.708084380661695,
+            37.429498123372404
+          ],
+          "predicted_horizontal_FOV_degrees": [
+            67.92932537147082,
+            72.24035636047529
+          ],
+          "original_pixel_fy": [
+            767.9992094494047,
+            708.4488351004464
+          ],
+          "fy_ratio_to_supplied_K": [
+            1.4869297375593509,
+            1.371633756244814
+          ],
+          "principal_point_delta_to_supplied_K_pixels": [
+            [
+              1.8523809523809405,
+              -14.847619047619048
+            ],
+            [
+              1.8523809523809405,
+              -14.847619047619048
+            ]
+          ],
+          "independent_codec_max_relative_error": 7.816187437271466e-08,
+          "actual_height_rounding_relative_to_isotropic": 0.0,
+          "raw_fy_cancellation": "(Hraw/Hmodel)*(Hmodel/2)/tan(fov_h/2) = Hraw/[2*tan(fov_h/2)]",
+          "half_pixel_translation_affects_focal_diagonal": false
+        },
+        {
+          "revision": 3,
+          "frame_ids": [
+            1305031106.475345,
+            1305031110.111325
+          ],
+          "input_hw": [
+            252,
+            336
+          ],
+          "predicted_vertical_FOV_degrees": [
+            36.714558317285075,
+            32.81386801814206
+          ],
+          "predicted_horizontal_FOV_degrees": [
+            70.98520664764789,
+            64.82110435568396
+          ],
+          "original_pixel_fy": [
+            723.2667178199405,
+            815.0858561197916
+          ],
+          "fy_ratio_to_supplied_K": [
+            1.4003227837752963,
+            1.5780945907449984
+          ],
+          "principal_point_delta_to_supplied_K_pixels": [
+            [
+              1.8523809523809405,
+              -14.847619047619048
+            ],
+            [
+              1.8523809523809405,
+              -14.847619047619048
+            ]
+          ],
+          "independent_codec_max_relative_error": 6.347865498663374e-08,
+          "actual_height_rounding_relative_to_isotropic": 0.0,
+          "raw_fy_cancellation": "(Hraw/Hmodel)*(Hmodel/2)/tan(fov_h/2) = Hraw/[2*tan(fov_h/2)]",
+          "half_pixel_translation_affects_focal_diagonal": false
+        }
+      ],
+      "supplied_rectified_K": [
+        [
+          517.3,
+          0.0,
+          318.6
+        ],
+        [
+          0.0,
+          516.5,
+          255.3
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_codec_vertical_FOV_degrees": 49.8453841384339,
+      "expected_codec_horizontal_FOV_degrees": 63.481584984458735,
+      "fy_ratio_range": [
+        1.371633756244814,
+        1.5780945907449984
+      ],
+      "predicted_vertical_FOV_range_degrees": [
+        32.81386801814206,
+        37.429498123372404
+      ]
+    },
+    {
+      "image_size": 518,
+      "capture_input_hashes": {
+        "capture.json": "81ce7e6b5005c60db97b129b2849e65f614b75dd978015849309bea82810c438",
+        "predictions_0001.npz": "b04a43e5f2f64dc5e0985eb6961325b4f913cc4db5a2642a8ec68abec7b9c72e",
+        "predictions_0002.npz": "cc4940cdd42511c6ab40be3b3d69db4935889fa71ebea773f173efc9d5b2cc90",
+        "predictions_0003.npz": "3cbfe6229caf8bd8b5d2ad73cb7612872a28142f9397d0159d38c72d72b33c5a"
+      },
+      "pairs": [
+        {
+          "revision": 1,
+          "frame_ids": [
+            1305031102.175304,
+            1305031102.443271
+          ],
+          "input_hw": [
+            392,
+            518
+          ],
+          "predicted_vertical_FOV_degrees": [
+            48.005178619112556,
+            48.498611975321786
+          ],
+          "predicted_horizontal_FOV_degrees": [
+            61.04643446182226,
+            61.631419673666336
+          ],
+          "original_pixel_fy": [
+            538.9832414899554,
+            532.7974903340242
+          ],
+          "fy_ratio_to_supplied_K": [
+            1.043529993204173,
+            1.0315537082943353
+          ],
+          "principal_point_delta_to_supplied_K_pixels": [
+            [
+              1.5177606177605867,
+              -15.187755102040825
+            ],
+            [
+              1.5177606177605867,
+              -15.187755102040825
+            ]
+          ],
+          "independent_codec_max_relative_error": 5.536056878992894e-08,
+          "actual_height_rounding_relative_to_isotropic": 0.009009009009008917,
+          "raw_fy_cancellation": "(Hraw/Hmodel)*(Hmodel/2)/tan(fov_h/2) = Hraw/[2*tan(fov_h/2)]",
+          "half_pixel_translation_affects_focal_diagonal": false
+        },
+        {
+          "revision": 2,
+          "frame_ids": [
+            1305031102.443271,
+            1305031106.475345
+          ],
+          "input_hw": [
+            392,
+            518
+          ],
+          "predicted_vertical_FOV_degrees": [
+            51.25586372060756,
+            51.88911104912695
+          ],
+          "predicted_horizontal_FOV_degrees": [
+            64.92695862744081,
+            65.61544169577809
+          ],
+          "original_pixel_fy": [
+            500.29260752152425,
+            493.2838907047194
+          ],
+          "fy_ratio_to_supplied_K": [
+            0.9686207309226026,
+            0.9550510952656717
+          ],
+          "principal_point_delta_to_supplied_K_pixels": [
+            [
+              1.5177606177605867,
+              -15.187755102040825
+            ],
+            [
+              1.5177606177605867,
+              -15.187755102040825
+            ]
+          ],
+          "independent_codec_max_relative_error": 4.1297003143345675e-08,
+          "actual_height_rounding_relative_to_isotropic": 0.009009009009008917,
+          "raw_fy_cancellation": "(Hraw/Hmodel)*(Hmodel/2)/tan(fov_h/2) = Hraw/[2*tan(fov_h/2)]",
+          "half_pixel_translation_affects_focal_diagonal": false
+        },
+        {
+          "revision": 3,
+          "frame_ids": [
+            1305031106.475345,
+            1305031110.111325
+          ],
+          "input_hw": [
+            392,
+            518
+          ],
+          "predicted_vertical_FOV_degrees": [
+            50.389758167809504,
+            49.04016059913918
+          ],
+          "predicted_horizontal_FOV_degrees": [
+            63.527582640099425,
+            61.88889048461914
+          ],
+          "original_pixel_fy": [
+            510.1443170041454,
+            526.1432133888712
+          ],
+          "fy_ratio_to_supplied_K": [
+            0.9876947086237085,
+            1.0186703066580276
+          ],
+          "principal_point_delta_to_supplied_K_pixels": [
+            [
+              1.5177606177605867,
+              -15.187755102040825
+            ],
+            [
+              1.5177606177605867,
+              -15.187755102040825
+            ]
+          ],
+          "independent_codec_max_relative_error": 4.599673637112714e-08,
+          "actual_height_rounding_relative_to_isotropic": 0.009009009009008917,
+          "raw_fy_cancellation": "(Hraw/Hmodel)*(Hmodel/2)/tan(fov_h/2) = Hraw/[2*tan(fov_h/2)]",
+          "half_pixel_translation_affects_focal_diagonal": false
+        }
+      ],
+      "supplied_rectified_K": [
+        [
+          517.3,
+          0.0,
+          318.6
+        ],
+        [
+          0.0,
+          516.5,
+          255.3
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "expected_codec_vertical_FOV_degrees": 49.8453841384339,
+      "expected_codec_horizontal_FOV_degrees": 63.481584984458735,
+      "fy_ratio_range": [
+        0.9550510952656717,
+        1.043529993204173
+      ],
+      "predicted_vertical_FOV_range_degrees": [
+        48.005178619112556,
+        51.88911104912695
+      ]
+    }
+  ],
+  "maximum_independent_intrinsic_codec_relative_error": 9.129006576150696e-08
+}

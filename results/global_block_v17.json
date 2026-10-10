@@ -1,0 +1,559 @@
+{
+  "kind": "independent_saved_artifact_audit_original_VGGT_global0_R3",
+  "status": "passed",
+  "checks": {
+    "count": 193,
+    "failures": [],
+    "schema_revalidation": {
+      "original_CPU_capture": {
+        "unhooked_outputs": {
+          "pose_enc": true,
+          "depth": true,
+          "depth_conf": true
+        },
+        "hooked_outputs_array_equal": {
+          "pose_enc": true,
+          "depth": true,
+          "depth_conf": true
+        }
+      },
+      "SDK_runtime_frame_ids": {
+        "normal": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "profile": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "frame_id_semantics": "Frozen execute_call checks SDK run ID equals returned output ID. IDs need not equal call_index or increase; each actual returned ID is zero. The saved receipt records only the matched runtime ID."
+    }
+  },
+  "identity": {
+    "block": "global0",
+    "shape": [
+      1,
+      874,
+      1024
+    ],
+    "S": 2,
+    "tokens_per_frame": 437,
+    "special_tokens_per_frame": 5,
+    "image_size": 336,
+    "profile_sha256": "6c3d2cb51af75410188c062e83a26eae4d4c5d69c632a6eeae95993eba004820",
+    "exporter_sha256": "6724aba806806ec36d8ba097f0c2076f3703e106f23c83d4272ae2e3a3fc2874",
+    "export_sha256": "f851432a0dd8e9c2d66b4dfee2a76dfb674836bfb710a2ccbea09972f5e3f33d",
+    "onnx_sha256": "f67c2210f6a53a7ff88865e4607c6d1760cf23c221941339c204c7414cda2778",
+    "compile_sha256": "ac86341dfde8cc3e8af20c5de0970a87a93f292a1280aeb512c657a0605aa29a",
+    "model_sha256": "ba201c49ba4849e5e4812142bfc92c3dda98ec3fda5566e2a80040389c0375a9",
+    "model_bytes": 27411252,
+    "checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "checkpoint_scope": "Recorded original board capture identity; checkpoint not re-read by this saved-array audit",
+    "architecture": {
+      "num_heads": 16,
+      "head_dim": 64,
+      "norm1_eps": 1e-05,
+      "norm2_eps": 1e-05,
+      "q_norm_eps": 1e-05,
+      "k_norm_eps": 1e-05,
+      "gelu_approximate": "none",
+      "rope_frequency": 100,
+      "rope_scaling_factor": 1.0
+    },
+    "source_pins": {
+      "third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+      "third_party/vggt/vggt/layers/block.py": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+      "third_party/vggt/vggt/layers/attention.py": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+      "third_party/vggt/vggt/layers/rope.py": "c56b073724f4d56cc531e381835a2c3dc348f192aefd9e855e3e59ab3c7d6641",
+      "third_party/vggt/vggt/layers/mlp.py": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa",
+      "third_party/vggt/vggt/layers/layer_scale.py": "83586eaa81ef11828b1001f3dd85747ba362df23ddb57c8454b2eba279f5a558"
+    },
+    "input_raw_sha256": "e037b38143f8ff81a623bf23c08bc613f036d90d1cbea1fd584d26d3eca665f4",
+    "original_CPU_reference_raw_sha256": "590d51b0cef7b14765b958d08951dd663133edbbe326a78636442b26022dab72",
+    "captured_position_raw_sha256": "3387fc89d04b96637c9497fd2b4394c8d0ececf22867c74d358734fbc4e674fb",
+    "captured_rope_cos_sha256": "e17376c04e3564709bac6eecb47903d184fe878e4bbfb5b08c08a3da636f85d3",
+    "captured_rope_sin_sha256": "61f874ecbf45874b0cb96a94cd30adde0dc0707b7cf931cd3b9777b0de05980e",
+    "capture_artifacts": {
+      "tensors": {
+        "file": "global0-tensors.npz",
+        "bytes": 7181434,
+        "sha256": "7c54a83d2b1861c4b5836dced1f6787016abfda8749d9f1528068c4d2048a62b"
+      },
+      "weights": {
+        "file": "global0-weights.npz",
+        "bytes": 50398790,
+        "sha256": "56a4592f4b97ab98dc24cdad5b61c460347dd15464ae7f07b48f8eaf60fbb7ae"
+      }
+    },
+    "selected_images": [
+      {
+        "file": "1305031102.175304.png",
+        "sha256": "331c3fd7a3d5eefb19e3da2026625aa221ca1991f5ae30ff96060e2e3e45e368"
+      },
+      {
+        "file": "1305031102.443271.png",
+        "sha256": "49deecb97bbb0ef1b8d14212b10d5cdb9a2ce7b4c852ad4838bc8e2a872d82df"
+      }
+    ]
+  },
+  "raw_receipts": {
+    "capture": {
+      "file": "vggt-v17-profile336-r1/profile.json",
+      "sha256": "6c3d2cb51af75410188c062e83a26eae4d4c5d69c632a6eeae95993eba004820"
+    },
+    "export": {
+      "file": "vggt-v17-global336-export-r3/export.json",
+      "sha256": "f851432a0dd8e9c2d66b4dfee2a76dfb674836bfb710a2ccbea09972f5e3f33d"
+    },
+    "compile": {
+      "file": "vggt-v17-global336-compile-r3/compile.json",
+      "sha256": "ac86341dfde8cc3e8af20c5de0970a87a93f292a1280aeb512c657a0605aa29a"
+    },
+    "ORT": {
+      "file": "vggt-v17-global336-ort-r3/check.json",
+      "sha256": "1929248412b695bffc5e12d89efdca478413c94a80b3ed68b31354df00fbfa87"
+    },
+    "normal": {
+      "file": "vggt-v17-global336-npu-normal-r1/run.json",
+      "sha256": "1dfc1d5c0d3a15a62f2bcac8905a4f099f9c384775a7e323b051d6ed6e9b1d01"
+    },
+    "normal_driver": {
+      "file": "vggt-v17-global336-npu-normal-r1/driver.json",
+      "sha256": "ca901b823d4bc00ff40c015484492eba6fc0ede13a2e8402c1dbce187ecdb1f3"
+    },
+    "profile": {
+      "file": "vggt-v17-global336-npu-profile-r1/run.json",
+      "sha256": "860f0dbf5bebf24f8a34223c4d0b684068e3f284909fb9d34b1d6a663af134d0"
+    },
+    "profile_driver": {
+      "file": "vggt-v17-global336-npu-profile-r1/driver.json",
+      "sha256": "91efe11ae4521ff969287775d75c2a3c68fd34fe5e06043ddac8568fe702eca6"
+    },
+    "R3_axis_only_structural": {
+      "file": "vggt-v17-global336-export-r3/axis-review.json",
+      "sha256": "b9e17681db36223f3063aa70d358d9fb8c273dd8992eb44b8e0ec6a162444ba3"
+    }
+  },
+  "numerical": {
+    "ORT": {
+      "metrics_all_four_saved_outputs_identical": true,
+      "strict_FP32_gate_all_runs": true,
+      "versus_original_CPU_reference": {
+        "finite": true,
+        "array_equal": false,
+        "max_abs": 6.556510925292969e-06,
+        "rmse": 6.358398932746062e-08,
+        "relative_l2": 4.198458808692173e-07,
+        "cosine": 0.9999999999999041,
+        "strict_FP32_allclose": true,
+        "outside_FP32_tolerance_elements": 0,
+        "total_elements": 894976
+      },
+      "saved_outputs": [
+        {
+          "file": "actual_00.npy",
+          "sha256": "5dc5f281b4280d3e3782423f8ad86ebbe1f7a4754c3732ae17343d350a54995d",
+          "raw_sha256": "d32d3e2f9b87dff2bf31790c935766e1d0a8b2f9de705977c416103b86622e89"
+        },
+        {
+          "file": "actual_01.npy",
+          "sha256": "5dc5f281b4280d3e3782423f8ad86ebbe1f7a4754c3732ae17343d350a54995d",
+          "raw_sha256": "d32d3e2f9b87dff2bf31790c935766e1d0a8b2f9de705977c416103b86622e89"
+        },
+        {
+          "file": "actual_02.npy",
+          "sha256": "5dc5f281b4280d3e3782423f8ad86ebbe1f7a4754c3732ae17343d350a54995d",
+          "raw_sha256": "d32d3e2f9b87dff2bf31790c935766e1d0a8b2f9de705977c416103b86622e89"
+        },
+        {
+          "file": "actual_03.npy",
+          "sha256": "5dc5f281b4280d3e3782423f8ad86ebbe1f7a4754c3732ae17343d350a54995d",
+          "raw_sha256": "d32d3e2f9b87dff2bf31790c935766e1d0a8b2f9de705977c416103b86622e89"
+        }
+      ]
+    },
+    "normal": {
+      "metrics_all_four_saved_outputs_identical": true,
+      "strict_FP32_gate_all_runs": false,
+      "versus_original_CPU_reference": {
+        "finite": true,
+        "array_equal": false,
+        "max_abs": 0.016917884349822998,
+        "rmse": 0.0006600863463390846,
+        "relative_l2": 0.004358558443088841,
+        "cosine": 0.9999905028975544,
+        "strict_FP32_allclose": false,
+        "outside_FP32_tolerance_elements": 474600,
+        "total_elements": 894976
+      },
+      "saved_outputs": [
+        {
+          "file": "actual_00.npy",
+          "sha256": "368ad9e7e60949a4518c8095650fbab23a624b4a6d86a4aace1b11c0de2e1093",
+          "raw_sha256": "2710ba0194748469c49b30cd8cb33b4e43952ddbbd1d482460e905127fdfde3c"
+        },
+        {
+          "file": "actual_01.npy",
+          "sha256": "368ad9e7e60949a4518c8095650fbab23a624b4a6d86a4aace1b11c0de2e1093",
+          "raw_sha256": "2710ba0194748469c49b30cd8cb33b4e43952ddbbd1d482460e905127fdfde3c"
+        },
+        {
+          "file": "actual_02.npy",
+          "sha256": "368ad9e7e60949a4518c8095650fbab23a624b4a6d86a4aace1b11c0de2e1093",
+          "raw_sha256": "2710ba0194748469c49b30cd8cb33b4e43952ddbbd1d482460e905127fdfde3c"
+        },
+        {
+          "file": "actual_03.npy",
+          "sha256": "368ad9e7e60949a4518c8095650fbab23a624b4a6d86a4aace1b11c0de2e1093",
+          "raw_sha256": "2710ba0194748469c49b30cd8cb33b4e43952ddbbd1d482460e905127fdfde3c"
+        }
+      ]
+    },
+    "profile": {
+      "metrics_all_four_saved_outputs_identical": true,
+      "strict_FP32_gate_all_runs": false,
+      "versus_original_CPU_reference": {
+        "finite": true,
+        "array_equal": false,
+        "max_abs": 0.016917884349822998,
+        "rmse": 0.0006600863463390846,
+        "relative_l2": 0.004358558443088841,
+        "cosine": 0.9999905028975544,
+        "strict_FP32_allclose": false,
+        "outside_FP32_tolerance_elements": 474600,
+        "total_elements": 894976
+      },
+      "saved_outputs": [
+        {
+          "file": "actual_00.npy",
+          "sha256": "368ad9e7e60949a4518c8095650fbab23a624b4a6d86a4aace1b11c0de2e1093",
+          "raw_sha256": "2710ba0194748469c49b30cd8cb33b4e43952ddbbd1d482460e905127fdfde3c"
+        },
+        {
+          "file": "actual_01.npy",
+          "sha256": "368ad9e7e60949a4518c8095650fbab23a624b4a6d86a4aace1b11c0de2e1093",
+          "raw_sha256": "2710ba0194748469c49b30cd8cb33b4e43952ddbbd1d482460e905127fdfde3c"
+        },
+        {
+          "file": "actual_02.npy",
+          "sha256": "368ad9e7e60949a4518c8095650fbab23a624b4a6d86a4aace1b11c0de2e1093",
+          "raw_sha256": "2710ba0194748469c49b30cd8cb33b4e43952ddbbd1d482460e905127fdfde3c"
+        },
+        {
+          "file": "actual_03.npy",
+          "sha256": "368ad9e7e60949a4518c8095650fbab23a624b4a6d86a4aace1b11c0de2e1093",
+          "raw_sha256": "2710ba0194748469c49b30cd8cb33b4e43952ddbbd1d482460e905127fdfde3c"
+        }
+      ]
+    }
+  },
+  "numerical_policy": {
+    "strict_FP32_tolerance": {
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "ORT_graph_equivalence_passed": true,
+    "NPU_strict_FP32_equivalence_passed": false,
+    "NPU_finite_calls_completed": true,
+    "NPU_output_quality_acceptance": false,
+    "normal_profile_arrays_bitwise_equal": true
+  },
+  "timing": {
+    "ORT": {
+      "scope": "session.run only; excludes session creation/load/comparison/output I/O",
+      "cold_seconds": 0.48174179799389094,
+      "warm_seconds": [
+        0.4922730080143083,
+        0.4775800060015172,
+        0.4786090069974307
+      ],
+      "warm_mean_seconds": 0.4828206736710854,
+      "session_creation_seconds": 0.1105387610004982
+    },
+    "normal": {
+      "io_scope": "inputs_set + blocking run + blocking outputs_get + owned copy + release",
+      "excluded": [
+        "init",
+        "queries",
+        "error metrics",
+        "hashing",
+        "saving actual NPY files"
+      ],
+      "cold_seconds": 0.17923585198877845,
+      "warm": {
+        "values": [
+          0.18776947700825986,
+          0.18870531101129018,
+          0.18494118499802426
+        ],
+        "mean": 0.18713865767252477,
+        "median": 0.18776947700825986,
+        "min": 0.18494118499802426,
+        "max": 0.18870531101129018
+      },
+      "calls": [
+        {
+          "call_index": 0,
+          "input_set_seconds": 0.01063854299718514,
+          "run_api_seconds": 0.15997097399667837,
+          "outputs_get_seconds": 0.005304542995872907,
+          "output_copy_seconds": 0.003278917007264681,
+          "outputs_release_seconds": 1.77919864654541e-05,
+          "io_total_seconds": 0.17923585198877845,
+          "sdk_run_duration_us": 159942
+        },
+        {
+          "call_index": 1,
+          "input_set_seconds": 0.010059792009997182,
+          "run_api_seconds": 0.16139939198910724,
+          "outputs_get_seconds": 0.010852334002265707,
+          "output_copy_seconds": 0.005390000005718321,
+          "outputs_release_seconds": 2.8875001589767635e-05,
+          "io_total_seconds": 0.18776947700825986,
+          "sdk_run_duration_us": 161343
+        },
+        {
+          "call_index": 2,
+          "input_set_seconds": 0.010668376009562053,
+          "run_api_seconds": 0.1617418079986237,
+          "outputs_get_seconds": 0.010861667993594892,
+          "output_copy_seconds": 0.0053701670112786815,
+          "outputs_release_seconds": 2.7125002816319466e-05,
+          "io_total_seconds": 0.18870531101129018,
+          "sdk_run_duration_us": 161694
+        },
+        {
+          "call_index": 3,
+          "input_set_seconds": 0.010663751003448851,
+          "run_api_seconds": 0.1622998499951791,
+          "outputs_get_seconds": 0.010856125998543575,
+          "output_copy_seconds": 0.0010730409994721413,
+          "outputs_release_seconds": 2.012499317061156e-05,
+          "io_total_seconds": 0.18494118499802426,
+          "sdk_run_duration_us": 162246
+        }
+      ]
+    },
+    "profile": {
+      "diagnostic_only": true,
+      "cold_seconds": 0.18409289400733542,
+      "warm": {
+        "values": [
+          0.1903311859932728,
+          0.19217818600009196,
+          0.1869001020095311
+        ],
+        "mean": 0.18980315800096528,
+        "median": 0.1903311859932728,
+        "min": 0.1869001020095311,
+        "max": 0.19217818600009196
+      }
+    }
+  },
+  "operator_coverage": {
+    "all_four_tables_reviewed": true,
+    "profile_calls": [
+      {
+        "call_index": 0,
+        "raw_text_sha256": "3c476d531834ee232f10df40bcfcba27fa1e9f5a6a96def2556aec1e25493dc0",
+        "raw_text_bytes": 8835,
+        "row_count": 24,
+        "internal_NPU_count": 22,
+        "CPU_boundary_count": 2,
+        "GPU_count": 0,
+        "operator_elapsed_us": 160953,
+        "NPU_operator_us": 160845,
+        "CPU_boundary_us": 108,
+        "op_counts": {
+          "InputOperator": 1,
+          "Reshape": 4,
+          "Transpose": 2,
+          "exNorm": 4,
+          "Conv": 1,
+          "Split": 1,
+          "Mul": 4,
+          "ConvAdd": 4,
+          "exSDPAttention": 1,
+          "ConvExGelu": 1,
+          "OutputOperator": 1
+        }
+      },
+      {
+        "call_index": 1,
+        "raw_text_sha256": "753db87f06a19cdd4cc11fa8f52e511f38e5a622209ee3033fe8e2975647f1c6",
+        "raw_text_bytes": 8835,
+        "row_count": 24,
+        "internal_NPU_count": 22,
+        "CPU_boundary_count": 2,
+        "GPU_count": 0,
+        "operator_elapsed_us": 161706,
+        "NPU_operator_us": 161508,
+        "CPU_boundary_us": 198,
+        "op_counts": {
+          "InputOperator": 1,
+          "Reshape": 4,
+          "Transpose": 2,
+          "exNorm": 4,
+          "Conv": 1,
+          "Split": 1,
+          "Mul": 4,
+          "ConvAdd": 4,
+          "exSDPAttention": 1,
+          "ConvExGelu": 1,
+          "OutputOperator": 1
+        }
+      },
+      {
+        "call_index": 2,
+        "raw_text_sha256": "52ab9e04004f4ce664d03d03ee2793e813baf8664f6a1c28118554072c6d1906",
+        "raw_text_bytes": 8835,
+        "row_count": 24,
+        "internal_NPU_count": 22,
+        "CPU_boundary_count": 2,
+        "GPU_count": 0,
+        "operator_elapsed_us": 162883,
+        "NPU_operator_us": 162681,
+        "CPU_boundary_us": 202,
+        "op_counts": {
+          "InputOperator": 1,
+          "Reshape": 4,
+          "Transpose": 2,
+          "exNorm": 4,
+          "Conv": 1,
+          "Split": 1,
+          "Mul": 4,
+          "ConvAdd": 4,
+          "exSDPAttention": 1,
+          "ConvExGelu": 1,
+          "OutputOperator": 1
+        }
+      },
+      {
+        "call_index": 3,
+        "raw_text_sha256": "f6321471e77b22ba10ca1be51a78088810ca24111a19f9b82345cee519182cab",
+        "raw_text_bytes": 8835,
+        "row_count": 24,
+        "internal_NPU_count": 22,
+        "CPU_boundary_count": 2,
+        "GPU_count": 0,
+        "operator_elapsed_us": 162480,
+        "NPU_operator_us": 162279,
+        "CPU_boundary_us": 201,
+        "op_counts": {
+          "InputOperator": 1,
+          "Reshape": 4,
+          "Transpose": 2,
+          "exNorm": 4,
+          "Conv": 1,
+          "Split": 1,
+          "Mul": 4,
+          "ConvAdd": 4,
+          "exSDPAttention": 1,
+          "ConvExGelu": 1,
+          "OutputOperator": 1
+        }
+      }
+    ],
+    "all_observed_internal_operators_target_NPU": true,
+    "all_operators_including_IO_on_NPU": false,
+    "CPU_only_boundary_ops": [
+      "InputOperator",
+      "OutputOperator"
+    ],
+    "source": "All four actual RKNN_QUERY_PERF_DETAIL tables, SHA/byte count independently checked"
+  },
+  "memory": {
+    "normal": {
+      "sdk_bytes": {
+        "total_weight_size": 25450560,
+        "total_internal_size": 26910720,
+        "total_dma_allocated_size": 81952768,
+        "total_sram_size": 0,
+        "free_sram_size": 0
+      },
+      "before_sdk": {
+        "VmHWM_MiB": 100.72265625,
+        "VmRSS_MiB": 94.75390625
+      },
+      "final": {
+        "VmHWM_MiB": 195.015625,
+        "VmRSS_MiB": 107.59765625
+      }
+    },
+    "profile": {
+      "sdk_bytes": {
+        "total_weight_size": 25450560,
+        "total_internal_size": 26910720,
+        "total_dma_allocated_size": 81952768,
+        "total_sram_size": 0,
+        "free_sram_size": 0
+      },
+      "before_sdk": {
+        "VmHWM_MiB": 100.71484375,
+        "VmRSS_MiB": 94.75390625
+      },
+      "final": {
+        "VmHWM_MiB": 195.01171875,
+        "VmRSS_MiB": 107.59765625
+      }
+    },
+    "ORT": {
+      "peak_rss_mib": 394.14453125
+    }
+  },
+  "lifecycle": {
+    "ORT_session_released": true,
+    "ORT_sources_unchanged": true,
+    "SDK": {
+      "normal": {
+        "actual_run_api_calls": 4,
+        "successful_synchronous_calls": 4,
+        "owned_saved_output_count": 4,
+        "output_buffers_released": 4,
+        "context_destroyed": true,
+        "source_and_input_hashes_unchanged": true,
+        "cleanup_errors": []
+      },
+      "profile": {
+        "actual_run_api_calls": 4,
+        "successful_synchronous_calls": 4,
+        "owned_saved_output_count": 4,
+        "output_buffers_released": 4,
+        "context_destroyed": true,
+        "source_and_input_hashes_unchanged": true,
+        "cleanup_errors": []
+      }
+    },
+    "sdk_version": "2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+    "driver_version": "0.7.2",
+    "runtime_binary_sha256": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+    "runtime_binary_scope": "Original board guard and unchanged before/after record; no host substitute library used",
+    "cpu_affinity": [
+      6,
+      7
+    ],
+    "threads": 2,
+    "core_mask": 7
+  },
+  "scope_limitations": [
+    "Only saved NumPy arrays and receipts were read; no host model/image/ORT execution and no board task",
+    "One fixed original global block, 18 original FP32 parameter tensors, static captured S2 positions and RoPE tables; no architecture, token count or weight substitution",
+    "Four calls on one input do not establish statistical speed, long-run stability, full-network accumulated error, SLAM accuracy, 20Hz tracking or 2\u20135s mapping",
+    "CPU ORT timing is session.run; normal RKNN timing includes synchronous input upload, run, output conversion, owned copy and release; different scopes are not a controlled PyTorch speedup experiment",
+    "Profile flag8 changes cost; profile timing is separate from the normal benchmark",
+    "Strict FP32 comparison fails for NPU outputs; successful finite SDK calls and all internal target=NPU are not a quality pass",
+    "SDK context destruction and all output-buffer releases are recorded; post-destroy device allocation size was not queried",
+    "Checkpoint and runtime binary provenance were guarded on board; auditor independently rehashed all available local graph/capture/model/source artifacts, not unavailable board-only binaries"
+  ],
+  "whole_model_quality_validated": false,
+  "real_time_validated": false,
+  "production_changed": false,
+  "ORB_used": false,
+  "host_model_executed": false,
+  "host_ORT_executed": false
+}
