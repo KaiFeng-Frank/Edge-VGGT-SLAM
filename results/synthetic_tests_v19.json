@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "passed": 392,
+  "skipped": 0,
+  "seconds": 3.03,
+  "scope": "Focused v19 cache, original graph layout, operand capture/export, and v17/v19 SDK/ORT contract tests; synthetic data only. No actual host model or real-image inference. Hardware runs have separate receipts. Additional board ORT and initial SDK layout-guard tests are recorded as a separate run; successful synthetic calls do not predict native tensor layout.",
+  "requirements": [
+    "numpy",
+    "pytest",
+    "torch",
+    "onnx"
+  ],
+  "test_source_sha256": {
+    "tests/test_v19_patch_cache_probe.py": "fdb3bad80b5d234c9ac93ad1e8c7b7ca28d40ab03ead7fdfa6a8702fdfe76abe",
+    "tests/test_patch_cache.py": "b4f4f8a0c6759b4e1b8ce0375fe9f2e089dd3a7e58fea2d93458bf67e66f3a70",
+    "tests/test_v19_aggregator_mlp2d_export.py": "df45a50c9d5b62bbd4b92b26c194f42383426b99b61c4b9ec5853c3080246e98",
+    "tests/test_v19_attention.py": "8906a483e0ee77cad8bf55de7d82d01bfbce1a29c961e28c71907a7acb87f261",
+    "tests/test_aggregator_onnx_board_check.py": "7448469e72d5ea330ca124da6139ddc55eb41a2ecbdfbdd74e8e087d8c9a8a92",
+    "tests/test_v17_aggregator_runtime.py": "ceff1fe52e605d5572fe78cbf8e58e494d4b47393cd2be300737ada2efb55fe7",
+    "tests/test_v19_attention_onnx_check.py": "251299c7ac9fe0c14cc5832a6c71e78d548842d23d5b36840ddba71ade352cac",
+    "tests/test_v19_attention_runtime.py": "cc6212323cd5c4c3d264751c9c3aae7b19fc04da6def5b7c0322c2f371d3055b",
+    "tests/test_v19_attention_runtime_r2.py": "2d1fb155c3d66efb5ec141152c0cdb0f41a1dcae9b9d06a77672293a9a4e0fd8",
+    "tests/test_v19_attention_runtime_r3.py": "c393065ee754c8d20737962e7545e70119c1da8e6adc0981c6e996bd07b88f50"
+  },
+  "runs": [
+    {
+      "passed": 206,
+      "skipped": 0,
+      "seconds": 1.98,
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -B -m pytest -q -p no:cacheprovider tests/test_v19_patch_cache_probe.py tests/test_patch_cache.py tests/test_v19_aggregator_mlp2d_export.py tests/test_v19_attention.py tests/test_aggregator_onnx_board_check.py tests/test_v17_aggregator_runtime.py",
+      "test_source_sha256": {
+        "tests/test_v19_patch_cache_probe.py": "fdb3bad80b5d234c9ac93ad1e8c7b7ca28d40ab03ead7fdfa6a8702fdfe76abe",
+        "tests/test_patch_cache.py": "b4f4f8a0c6759b4e1b8ce0375fe9f2e089dd3a7e58fea2d93458bf67e66f3a70",
+        "tests/test_v19_aggregator_mlp2d_export.py": "df45a50c9d5b62bbd4b92b26c194f42383426b99b61c4b9ec5853c3080246e98",
+        "tests/test_v19_attention.py": "8906a483e0ee77cad8bf55de7d82d01bfbce1a29c961e28c71907a7acb87f261",
+        "tests/test_aggregator_onnx_board_check.py": "7448469e72d5ea330ca124da6139ddc55eb41a2ecbdfbdd74e8e087d8c9a8a92",
+        "tests/test_v17_aggregator_runtime.py": "ceff1fe52e605d5572fe78cbf8e58e494d4b47393cd2be300737ada2efb55fe7",
+        "tests/test_v19_attention_onnx_check.py": "251299c7ac9fe0c14cc5832a6c71e78d548842d23d5b36840ddba71ade352cac",
+        "tests/test_v19_attention_runtime.py": "cc6212323cd5c4c3d264751c9c3aae7b19fc04da6def5b7c0322c2f371d3055b"
+      }
+    },
+    {
+      "passed": 55,
+      "skipped": 0,
+      "seconds": 0.28,
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -B -m pytest -q -p no:cacheprovider tests/test_v19_attention_onnx_check.py tests/test_v19_attention_runtime.py",
+      "test_source_sha256": {
+        "tests/test_v19_attention_onnx_check.py": "251299c7ac9fe0c14cc5832a6c71e78d548842d23d5b36840ddba71ade352cac",
+        "tests/test_v19_attention_runtime.py": "cc6212323cd5c4c3d264751c9c3aae7b19fc04da6def5b7c0322c2f371d3055b"
+      }
+    },
+    {
+      "passed": 23,
+      "skipped": 0,
+      "seconds": 0.16,
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -B -m pytest -q -p no:cacheprovider tests/test_v19_attention_runtime_r2.py",
+      "test_source_sha256": {
+        "tests/test_v19_attention_runtime_r2.py": "2d1fb155c3d66efb5ec141152c0cdb0f41a1dcae9b9d06a77672293a9a4e0fd8"
+      }
+    },
+    {
+      "passed": 108,
+      "skipped": 0,
+      "seconds": 0.61,
+      "new_cases": 15,
+      "repeated_previous_cases": 93,
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm python -B -m pytest -q -p no:cacheprovider tests/test_v19_attention_runtime_r3.py tests/test_v19_attention_runtime_r2.py tests/test_v19_attention_runtime.py tests/test_v19_attention.py",
+      "environment_note": "Pinned Python 3.11 compiler environment with NumPy 1.26.4; invoked from the public checkout. Only small synthetic operands and fake SDK were executed.",
+      "agent_receipt_sha256": "727238754691f56b96ef2d4033e976d267f5b868b7a668eb14a6f2f09666515f",
+      "test_source_sha256": {
+        "tests/test_v19_attention_runtime_r3.py": "c393065ee754c8d20737962e7545e70119c1da8e6adc0981c6e996bd07b88f50",
+        "tests/test_v19_attention_runtime_r2.py": "2d1fb155c3d66efb5ec141152c0cdb0f41a1dcae9b9d06a77672293a9a4e0fd8",
+        "tests/test_v19_attention_runtime.py": "cc6212323cd5c4c3d264751c9c3aae7b19fc04da6def5b7c0322c2f371d3055b",
+        "tests/test_v19_attention.py": "8906a483e0ee77cad8bf55de7d82d01bfbce1a29c961e28c71907a7acb87f261"
+      }
+    }
+  ],
+  "distinct_test_cases": 299,
+  "counting": "passed counts 392 successful test executions across four focused runs; 93 repeat earlier cases during the R3 regression check, giving 299 distinct parametrized cases."
+}

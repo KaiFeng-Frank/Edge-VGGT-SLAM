@@ -2,12 +2,22 @@
 import copy
 import importlib.util
 from pathlib import Path
+import sys
 import pytest
 
 PATH = Path(__file__).resolve().parents[1] / 'deploy/rk3588/validation/run-v17-aggregator-rknn-board.py'
 spec = importlib.util.spec_from_file_location('agg_runtime_v17', PATH)
 m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
+
+
+@pytest.fixture(params=['run-v17-aggregator-rknn-board.py', 'run-v19-aggregator-rknn-board.py'], autouse=True)
+def runtime_version(request, monkeypatch):
+    path = PATH.with_name(request.param)
+    runtime_spec = importlib.util.spec_from_file_location('tested_aggregator_runtime', path)
+    runtime = importlib.util.module_from_spec(runtime_spec)
+    runtime_spec.loader.exec_module(runtime)
+    monkeypatch.setattr(sys.modules[__name__], 'm', runtime)
 
 
 def valid_compile():

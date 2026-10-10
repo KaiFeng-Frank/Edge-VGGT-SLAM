@@ -1,0 +1,1317 @@
+{
+  "kind": "V19_original_VGGT_global0_attention_independent_saved_result_audit",
+  "status": "R3_nonzero_and_matches_unsharded_NPU_output_but_strict_FP32_gate_failed",
+  "audit_scope": "Host readonly SHA/FP32 array analysis only; no host Torch/ORT/model/image processing or board operations",
+  "provenance": {
+    "capture_receipt_sha256": "5c086efcbf8d131d043473a2c172720c08be7907d2d95d61074cec44f242ed0d",
+    "export_receipt_sha256": "5079c15a71fe52003e963728d78da2219c57513a4c008830f541ab2478bc8a0b",
+    "ORT_receipt_sha256": "296fac94a10bad195b5223b1850bebc0107b4d84cbc0a82d54149d77efee9141",
+    "checker_sha256": "69b92ae7a72ae33ceba2dbf095844d570e4bb51c00a31445973bf576409b25cd",
+    "exporter_sha256": "7e5523916fbf36b78d6834c40cd6856155edc4ce3052f6a4dde8181a1806131b",
+    "checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "original_source_pins": {
+      "third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+      "third_party/vggt/vggt/layers/block.py": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+      "third_party/vggt/vggt/layers/attention.py": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+      "third_party/vggt/vggt/layers/rope.py": "c56b073724f4d56cc531e381835a2c3dc348f192aefd9e855e3e59ab3c7d6641",
+      "third_party/vggt/vggt/layers/mlp.py": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa",
+      "third_party/vggt/vggt/layers/layer_scale.py": "83586eaa81ef11828b1001f3dd85747ba362df23ddb57c8454b2eba279f5a558"
+    }
+  },
+  "original_shape": [
+    1,
+    16,
+    874,
+    64
+  ],
+  "head_shards": [
+    6,
+    5,
+    5
+  ],
+  "complete_key_count": 874,
+  "attention_scale": 0.125,
+  "mask": null,
+  "ort": {
+    "calls_per_graph": 1,
+    "total_calls": 4,
+    "provider": "CPUExecutionProvider",
+    "gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "all_outputs_independently_hashed_and_compared": true,
+    "graphs": [
+      {
+        "name": "baseline",
+        "shape": [
+          1,
+          16,
+          874,
+          64
+        ],
+        "actual_file_sha256": "1f8af36eebf836234fbb488d96fc7a5951c5868c7bf7389e4bda09db4b96b33f",
+        "actual_raw_sha256": "7bb1d3294213d5b02e74194dfb23cfcd974efda4169bc28e7434fce927cf73ca",
+        "versus_original_CPU_SDPA": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs": 3.5762786865234375e-06,
+          "rmse": 3.8066707713442486e-08,
+          "relative_l2": 2.4804087469199737e-07,
+          "passed": true,
+          "outside_tolerance": 0,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "name": "shard-00",
+        "shape": [
+          1,
+          6,
+          874,
+          64
+        ],
+        "actual_file_sha256": "70e5572546d09515f8764a79c08a828ef4472847bca8f2015f699eae29271da9",
+        "actual_raw_sha256": "27c1b87be0fd4c739657d7761550b25bf3763d67a83ac50fbca5fcd75a995c1c",
+        "versus_original_CPU_SDPA": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs": 5.364418029785156e-07,
+          "rmse": 2.6493093158974374e-08,
+          "relative_l2": 2.4142195881371915e-07,
+          "passed": true,
+          "outside_tolerance": 0,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "name": "shard-01",
+        "shape": [
+          1,
+          5,
+          874,
+          64
+        ],
+        "actual_file_sha256": "d78a549d36e4f020e8d1d64caa68f495cff29f2983031cdabf1f9c5a04e814a0",
+        "actual_raw_sha256": "33e55e36f093bfca4dde9b67685c9862ca5845174b00ee1c37cb06054736e4ba",
+        "versus_original_CPU_SDPA": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs": 4.76837158203125e-07,
+          "rmse": 3.8204964064291004e-08,
+          "relative_l2": 2.2915153697264645e-07,
+          "passed": true,
+          "outside_tolerance": 0,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "name": "shard-02",
+        "shape": [
+          1,
+          5,
+          874,
+          64
+        ],
+        "actual_file_sha256": "e1472ac8e6e3816f5e988275fb5019ca41fcc9ce9c911c2a0ce3d5a34a97dc59",
+        "actual_raw_sha256": "da8b12000374028332dcfedbc9ebc9a071c3bdfcc3f84f967d77822640c7351a",
+        "versus_original_CPU_SDPA": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs": 3.5762786865234375e-06,
+          "rmse": 4.83234673253093e-08,
+          "relative_l2": 2.655229957906234e-07,
+          "passed": true,
+          "outside_tolerance": 0,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      }
+    ],
+    "concatenation_matches_saved_output": true,
+    "concat_equals_baseline_bitwise": true,
+    "combined_versus_original_CPU_SDPA": {
+      "finite": true,
+      "array_equal": false,
+      "max_abs": 3.5762786865234375e-06,
+      "rmse": 3.8066707713442486e-08,
+      "relative_l2": 2.4804087469199737e-07,
+      "passed": true,
+      "outside_tolerance": 0,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "session_references_released_recorded": true,
+    "affinity_restored_recorded": true,
+    "sources_and_inputs_unchanged_recorded_and_rehashed": true,
+    "repeatability_validated": false,
+    "performance_benchmark": false
+  },
+  "checks": {
+    "saved_result_consistency_passed": 1588,
+    "saved_result_consistency_failed": 0,
+    "NPU_numerical_gate_failed_outputs": 16,
+    "R3_NPU_numerical_gate_failed_outputs": 16
+  },
+  "limits": [
+    "Single fixed captured original global0 attention input; no full block/model/SLAM speed or quality validation.",
+    "FP32 CPU ORT matched original SDPA; all NPU R2 outputs were zero and failed numerical validation.",
+    "96.794 ms versus 41.983 ms are elapsed times of incorrect outputs, not valid acceleration.",
+    "Profile tables verify NPU targets and selected core workloads; CPU operators are input/output boundaries.",
+    "No host model/ORT/real-image processing or board operation was performed by this audit.",
+    "Raw SDK profiles and lifecycle statuses are retained in hashed receipts; the board runtime library binary was not rehashed on this host.",
+    "R2 logs identify unsupported NCHW input normalization; the zero-output failure is not evidence of an FP16 approximation error.",
+    "R3 removes logged NCHW input errors and matches the unsharded NPU output, but fails the predeclared original FP32 tolerance; this is not full-model quality acceptance."
+  ],
+  "host_model_OR_ORT_inference_executed": false,
+  "production_changed": false,
+  "ORB_used": false,
+  "whole_model_quality_validated": false,
+  "realtime_validated": false,
+  "npu_R2": {
+    "status": "completed_SDK_but_numerically_failed_zero_output",
+    "runtime_helper_R2_sha256": "bcf1f45d10891e7df81e878f26e2e5ad0ff5eabf726a306e177dbc1ca205509d",
+    "runtime_helper_R1_sha256": "277d7f22154ac2c187710a121aee94ead1d416c920c2d9fa023e71f257472ebc",
+    "groups": [
+      {
+        "mode": "baseline",
+        "phase": "normal",
+        "receipt_sha256": "891bf7b2c5d2c100d6314317665bca273906928d34e8b5da8bcfe4ee1025a62b",
+        "SDK_run_calls": 4,
+        "actual_output_files": [
+          {
+            "file": "actual_00.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          },
+          {
+            "file": "actual_01.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          },
+          {
+            "file": "actual_02.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          },
+          {
+            "file": "actual_03.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          }
+        ],
+        "all_four_actual_outputs_are_zero": true,
+        "actual_raw_sha256": "3b8c9b31851c4ad7b21362ac042b31d94517900cf272fba3f2d704aa92007f69",
+        "independent_error_each_round": {
+          "max_abs": 2.8802623748779297,
+          "rmse": 0.15346949473836166,
+          "relative_l2": 1.0,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance": 894612
+        },
+        "strict_gate_failed_rounds": 4,
+        "contexts": [
+          {
+            "name": "baseline",
+            "head_range": [
+              0,
+              16
+            ],
+            "core_mask": 7,
+            "model_sha256": "c9c32d4dd68dd3e607c76cab3c93ada2ba7f78563478245cd74741fde87e3f8c",
+            "compile_receipt_sha256": "ce8c93ab9e6be6540805a5acc88574a1de131e00e33a32a275df4c4d79e67aa6",
+            "onnx_sha256": "d5838d620f08ad7281c5ff7a6d97beea773b54c3061f381bef74479ec14e5763",
+            "total_internal_bytes": 24087232,
+            "total_dma_allocated_bytes": 26750976,
+            "destroy_return_code": 0
+          }
+        ],
+        "workers_joined_recorded": true,
+        "output_releases": 4,
+        "contexts_destroyed": 1,
+        "cleanup_errors": [],
+        "local_source_artifact_hashes_rechecked": 25,
+        "native_library_hash_before_after_recorded": true,
+        "peak_process_VmHWM_MiB": 127.125,
+        "final_process_VmRSS_MiB": 89.1953125
+      },
+      {
+        "mode": "baseline",
+        "phase": "profile",
+        "receipt_sha256": "595794f413b32f896b1465f0cf5a83439751ecbaba78b6f8871029f421bfec60",
+        "SDK_run_calls": 4,
+        "actual_output_files": [
+          {
+            "file": "actual_00.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          },
+          {
+            "file": "actual_01.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          },
+          {
+            "file": "actual_02.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          },
+          {
+            "file": "actual_03.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          }
+        ],
+        "all_four_actual_outputs_are_zero": true,
+        "actual_raw_sha256": "3b8c9b31851c4ad7b21362ac042b31d94517900cf272fba3f2d704aa92007f69",
+        "independent_error_each_round": {
+          "max_abs": 2.8802623748779297,
+          "rmse": 0.15346949473836166,
+          "relative_l2": 1.0,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance": 894612
+        },
+        "strict_gate_failed_rounds": 4,
+        "contexts": [
+          {
+            "name": "baseline",
+            "head_range": [
+              0,
+              16
+            ],
+            "core_mask": 7,
+            "model_sha256": "c9c32d4dd68dd3e607c76cab3c93ada2ba7f78563478245cd74741fde87e3f8c",
+            "compile_receipt_sha256": "ce8c93ab9e6be6540805a5acc88574a1de131e00e33a32a275df4c4d79e67aa6",
+            "onnx_sha256": "d5838d620f08ad7281c5ff7a6d97beea773b54c3061f381bef74479ec14e5763",
+            "total_internal_bytes": 24087232,
+            "total_dma_allocated_bytes": 26750976,
+            "destroy_return_code": 0
+          }
+        ],
+        "workers_joined_recorded": true,
+        "output_releases": 4,
+        "contexts_destroyed": 1,
+        "cleanup_errors": [],
+        "local_source_artifact_hashes_rechecked": 25,
+        "native_library_hash_before_after_recorded": true,
+        "peak_process_VmHWM_MiB": 127.13671875,
+        "final_process_VmRSS_MiB": 89.203125
+      },
+      {
+        "mode": "parallel",
+        "phase": "normal",
+        "receipt_sha256": "a1a5350d832e3484fc443e982569162ea821fa63fbba3a9320abfef579f65b24",
+        "SDK_run_calls": 12,
+        "actual_output_files": [
+          {
+            "file": "actual_00.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          },
+          {
+            "file": "actual_01.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          },
+          {
+            "file": "actual_02.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          },
+          {
+            "file": "actual_03.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          }
+        ],
+        "all_four_actual_outputs_are_zero": true,
+        "actual_raw_sha256": "3b8c9b31851c4ad7b21362ac042b31d94517900cf272fba3f2d704aa92007f69",
+        "independent_error_each_round": {
+          "max_abs": 2.8802623748779297,
+          "rmse": 0.15346949473836166,
+          "relative_l2": 1.0,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance": 894612
+        },
+        "strict_gate_failed_rounds": 4,
+        "contexts": [
+          {
+            "name": "shard-00",
+            "head_range": [
+              0,
+              6
+            ],
+            "core_mask": 1,
+            "model_sha256": "b46d64c2e66413a2bc3c5b014dabc544bad0873d457252b3ef628aca50897d5f",
+            "compile_receipt_sha256": "4be925b7119a0b75f8d75a0c32a195d1155d130091ca80330b70e8cc6d77d610",
+            "onnx_sha256": "df3a87aa5400cabad532a798d14f9b701f0b02b5c5a6c39b8d11d9a5f8a35db8",
+            "total_internal_bytes": 16659136,
+            "total_dma_allocated_bytes": 18857984,
+            "destroy_return_code": 0
+          },
+          {
+            "name": "shard-01",
+            "head_range": [
+              6,
+              11
+            ],
+            "core_mask": 2,
+            "model_sha256": "07cd0159eac0ac7758a6c254ad22d072207b0f1f32d5fc1cca7362224ff37dcc",
+            "compile_receipt_sha256": "e9c1ed7477d1546bcbbeca70f10c6c4d99966cc7ef7b9e645ff47d5a8e16b46d",
+            "onnx_sha256": "cb19820ed89dd2fa167e8e9d672e6d94eb803bc5de6d806676d5bf1502b05f1f",
+            "total_internal_bytes": 16659136,
+            "total_dma_allocated_bytes": 18812928,
+            "destroy_return_code": 0
+          },
+          {
+            "name": "shard-02",
+            "head_range": [
+              11,
+              16
+            ],
+            "core_mask": 4,
+            "model_sha256": "07cd0159eac0ac7758a6c254ad22d072207b0f1f32d5fc1cca7362224ff37dcc",
+            "compile_receipt_sha256": "e9c1ed7477d1546bcbbeca70f10c6c4d99966cc7ef7b9e645ff47d5a8e16b46d",
+            "onnx_sha256": "cb19820ed89dd2fa167e8e9d672e6d94eb803bc5de6d806676d5bf1502b05f1f",
+            "total_internal_bytes": 16659136,
+            "total_dma_allocated_bytes": 18812928,
+            "destroy_return_code": 0
+          }
+        ],
+        "workers_joined_recorded": true,
+        "output_releases": 12,
+        "contexts_destroyed": 3,
+        "cleanup_errors": [],
+        "local_source_artifact_hashes_rechecked": 37,
+        "native_library_hash_before_after_recorded": true,
+        "peak_process_VmHWM_MiB": 168.96875,
+        "final_process_VmRSS_MiB": 97.7109375
+      },
+      {
+        "mode": "parallel",
+        "phase": "profile",
+        "receipt_sha256": "98896ae56198ccaf5880264612bc7898ee6f9e4bb9e3adb269957a52a741f86e",
+        "SDK_run_calls": 12,
+        "actual_output_files": [
+          {
+            "file": "actual_00.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          },
+          {
+            "file": "actual_01.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          },
+          {
+            "file": "actual_02.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          },
+          {
+            "file": "actual_03.npy",
+            "file_sha256": "779c47046fce17a33daf704b2e90772a14c4bb06c89efa3d12c22cada2685afb"
+          }
+        ],
+        "all_four_actual_outputs_are_zero": true,
+        "actual_raw_sha256": "3b8c9b31851c4ad7b21362ac042b31d94517900cf272fba3f2d704aa92007f69",
+        "independent_error_each_round": {
+          "max_abs": 2.8802623748779297,
+          "rmse": 0.15346949473836166,
+          "relative_l2": 1.0,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance": 894612
+        },
+        "strict_gate_failed_rounds": 4,
+        "contexts": [
+          {
+            "name": "shard-00",
+            "head_range": [
+              0,
+              6
+            ],
+            "core_mask": 1,
+            "model_sha256": "b46d64c2e66413a2bc3c5b014dabc544bad0873d457252b3ef628aca50897d5f",
+            "compile_receipt_sha256": "4be925b7119a0b75f8d75a0c32a195d1155d130091ca80330b70e8cc6d77d610",
+            "onnx_sha256": "df3a87aa5400cabad532a798d14f9b701f0b02b5c5a6c39b8d11d9a5f8a35db8",
+            "total_internal_bytes": 16659136,
+            "total_dma_allocated_bytes": 18857984,
+            "destroy_return_code": 0
+          },
+          {
+            "name": "shard-01",
+            "head_range": [
+              6,
+              11
+            ],
+            "core_mask": 2,
+            "model_sha256": "07cd0159eac0ac7758a6c254ad22d072207b0f1f32d5fc1cca7362224ff37dcc",
+            "compile_receipt_sha256": "e9c1ed7477d1546bcbbeca70f10c6c4d99966cc7ef7b9e645ff47d5a8e16b46d",
+            "onnx_sha256": "cb19820ed89dd2fa167e8e9d672e6d94eb803bc5de6d806676d5bf1502b05f1f",
+            "total_internal_bytes": 16659136,
+            "total_dma_allocated_bytes": 18812928,
+            "destroy_return_code": 0
+          },
+          {
+            "name": "shard-02",
+            "head_range": [
+              11,
+              16
+            ],
+            "core_mask": 4,
+            "model_sha256": "07cd0159eac0ac7758a6c254ad22d072207b0f1f32d5fc1cca7362224ff37dcc",
+            "compile_receipt_sha256": "e9c1ed7477d1546bcbbeca70f10c6c4d99966cc7ef7b9e645ff47d5a8e16b46d",
+            "onnx_sha256": "cb19820ed89dd2fa167e8e9d672e6d94eb803bc5de6d806676d5bf1502b05f1f",
+            "total_internal_bytes": 16659136,
+            "total_dma_allocated_bytes": 18812928,
+            "destroy_return_code": 0
+          }
+        ],
+        "workers_joined_recorded": true,
+        "output_releases": 12,
+        "contexts_destroyed": 3,
+        "cleanup_errors": [],
+        "local_source_artifact_hashes_rechecked": 37,
+        "native_library_hash_before_after_recorded": true,
+        "peak_process_VmHWM_MiB": 165.11328125,
+        "final_process_VmRSS_MiB": 93.7578125
+      }
+    ],
+    "normal_timing_of_incorrect_zero_output": {
+      "baseline": {
+        "first_ms": 109.23967701091897,
+        "subsequent_ms": [
+          98.33909299049992,
+          95.90317698894069,
+          96.13963500305545
+        ],
+        "subsequent_mean_ms": 96.79396832749869
+      },
+      "parallel": {
+        "first_ms": 52.91796301025897,
+        "subsequent_ms": [
+          43.199920997722074,
+          41.172420998918824,
+          41.577087991754524
+        ],
+        "subsequent_mean_ms": 41.98314332946514
+      }
+    },
+    "observed_incorrect_output_elapsed_ratio_baseline_over_parallel": 2.3055436218270375,
+    "valid_acceleration_demonstrated": false,
+    "strict_original_FP32_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "all_16_actual_outputs_zero": true,
+    "failed_strict_gate_actuals": 16,
+    "relative_l2_vs_original_CPU_SDPA": 1.0,
+    "baseline_parallel_and_normal_profile_zero_outputs_identical": true,
+    "internal_operator_targets_verified_from_all_profiles": true,
+    "profile_call_count": 16,
+    "profile_calls": [
+      {
+        "round": 0,
+        "context": "baseline",
+        "core_mask": 7,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 77331,
+        "internal_total_microseconds": 89840,
+        "raw_profile_sha256": "e69280c1df0d1e5d46a95c9a24020f5ad895e7ec2b375bb124e9b711628149a9"
+      },
+      {
+        "round": 1,
+        "context": "baseline",
+        "core_mask": 7,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 77305,
+        "internal_total_microseconds": 89904,
+        "raw_profile_sha256": "ace48696e60524240255894e20a8e79e4bc2bcd42db8af2ea2671b23ca1e1032"
+      },
+      {
+        "round": 2,
+        "context": "baseline",
+        "core_mask": 7,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 77241,
+        "internal_total_microseconds": 89682,
+        "raw_profile_sha256": "88fa0552c7a5d61e8566e3bf5e0c0716f8cc051901f98a60009cba4bdb969fcb"
+      },
+      {
+        "round": 3,
+        "context": "baseline",
+        "core_mask": 7,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 77255,
+        "internal_total_microseconds": 89704,
+        "raw_profile_sha256": "b2bed0e7ebad74ebb3b4975401e763396ad12d74ca7b58ea3e7afc55b5b0f8e1"
+      },
+      {
+        "round": 0,
+        "context": "shard-00",
+        "core_mask": 1,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 30550,
+        "internal_total_microseconds": 37039,
+        "raw_profile_sha256": "3b50594a80a26c20b6409cff8ed4d59357ebbf85fba4d505b93415e9e0e015e6"
+      },
+      {
+        "round": 0,
+        "context": "shard-01",
+        "core_mask": 2,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/100.0%/0.0%",
+        "attention_microseconds": 26637,
+        "internal_total_microseconds": 33415,
+        "raw_profile_sha256": "7bda778944a421ae234e952767f4d43bfd67e162948061dcbef2a501765d91ac"
+      },
+      {
+        "round": 0,
+        "context": "shard-02",
+        "core_mask": 4,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/0.0%/100.0%",
+        "attention_microseconds": 26777,
+        "internal_total_microseconds": 34813,
+        "raw_profile_sha256": "9bb4377b325eeb07bd24829f66e41c15f5e00756017fd90e473c59b410a3b603"
+      },
+      {
+        "round": 1,
+        "context": "shard-00",
+        "core_mask": 1,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 30169,
+        "internal_total_microseconds": 36619,
+        "raw_profile_sha256": "29d64590d36354ff110b6310b8bdf290776e5032a914563d4e98772814f12c69"
+      },
+      {
+        "round": 1,
+        "context": "shard-01",
+        "core_mask": 2,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/100.0%/0.0%",
+        "attention_microseconds": 26617,
+        "internal_total_microseconds": 33426,
+        "raw_profile_sha256": "f565ad1be6f0bee41ee0bcd6bfa4a6193980644dc2a17ed44d2ee188f99f9254"
+      },
+      {
+        "round": 1,
+        "context": "shard-02",
+        "core_mask": 4,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/0.0%/100.0%",
+        "attention_microseconds": 26718,
+        "internal_total_microseconds": 34759,
+        "raw_profile_sha256": "f4bd7ce2b0cec6d0fa3cac9878cfe41c65c6888a89b56f028bed5f49a0fc2630"
+      },
+      {
+        "round": 2,
+        "context": "shard-00",
+        "core_mask": 1,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 30179,
+        "internal_total_microseconds": 36681,
+        "raw_profile_sha256": "bd09ddfb40c119a9201ade32cc7fb25384c03fa6d39f04fda5ac26a8f6feacb6"
+      },
+      {
+        "round": 2,
+        "context": "shard-01",
+        "core_mask": 2,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/100.0%/0.0%",
+        "attention_microseconds": 26704,
+        "internal_total_microseconds": 33528,
+        "raw_profile_sha256": "934246fa92ae7ea20a7a1cc9f46377012ae8992d787a2297acab8b1192a6e43a"
+      },
+      {
+        "round": 2,
+        "context": "shard-02",
+        "core_mask": 4,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/0.0%/100.0%",
+        "attention_microseconds": 26850,
+        "internal_total_microseconds": 33754,
+        "raw_profile_sha256": "4f61ff0e70d2b89aee5d23d529feb71ee95e4eec53fd058c11d1e0911c236ee7"
+      },
+      {
+        "round": 3,
+        "context": "shard-00",
+        "core_mask": 1,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 30206,
+        "internal_total_microseconds": 36737,
+        "raw_profile_sha256": "140150df705f0e80354eb56fa1863e7120cad79f95557bfffad754d00ce486dc"
+      },
+      {
+        "round": 3,
+        "context": "shard-01",
+        "core_mask": 2,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/100.0%/0.0%",
+        "attention_microseconds": 26684,
+        "internal_total_microseconds": 33567,
+        "raw_profile_sha256": "be59fd10bef1633432f2eed41baac1f0471b03ed3fe0fd1abbb0b2a2f17a2b08"
+      },
+      {
+        "round": 3,
+        "context": "shard-02",
+        "core_mask": 4,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/0.0%/100.0%",
+        "attention_microseconds": 26973,
+        "internal_total_microseconds": 33999,
+        "raw_profile_sha256": "ef4d6001b6f8bf64e165eb099a0f7ca96f1b1e152bafc3adee9d27892f662217"
+      }
+    ],
+    "SDK_run_and_output_release_count_all_groups": 32,
+    "contexts_destroyed_all_groups": 8,
+    "native_library_sha256": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+    "native_library_independently_rehashed_on_host": false,
+    "actual_layout": {
+      "SDK_native_inputs": "NHWC [1,874,64,E], FP16 identity-affine",
+      "user_inputs": "FP32 C-order NCHW [1,E,874,64], API fmt=0, pass_through=0; SDK conversion requested",
+      "SDK_output": "NCHW [1,E,874,64], want_float=1",
+      "correct_output_values_verified": false
+    },
+    "kernel_temporal_overlap_independently_proved": false,
+    "R1_initial_guard_failure": {
+      "run_calls": 0,
+      "clean_guard_failure": true,
+      "reason": "SDK native NHWC shape differed from the declared logical NCHW buffer shape",
+      "R2_change": "Use documented NCHW user buffer with SDK conversion; successful API calls still produced zero outputs."
+    },
+    "SDK_input_failure": {
+      "failure_class": "runtime_input_layout_normalization_error",
+      "SDK_message": "Meet unsupported src layout for normalize: NCHW, only support NHWC src layout!",
+      "C_API_return_did_not_expose_logged_normalization_error": true,
+      "observed_actual_output": "all zero",
+      "interpret_as_FP16_arithmetic_precision_error": false,
+      "logs": [
+        {
+          "mode": "baseline",
+          "phase": "normal",
+          "log_sha256": "b95708a087d63d750ad2127035ceaa25a942586390c90a4357241317af5df26f",
+          "unsupported_NCHW_normalization_messages": 12,
+          "normalize_error_minus1_messages": 12,
+          "failed_input_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "mode": "baseline",
+          "phase": "profile",
+          "log_sha256": "cb60f99ed64251b3583d28280eb915da5518017cbcf479d4369da6a1b9266d84",
+          "unsupported_NCHW_normalization_messages": 12,
+          "normalize_error_minus1_messages": 12,
+          "failed_input_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "mode": "parallel",
+          "phase": "normal",
+          "log_sha256": "0c6af183ebdcf1137a53e57b80a399bfe72038666a627a20a48757a2f1cdcfe7",
+          "unsupported_NCHW_normalization_messages": 36,
+          "normalize_error_minus1_messages": 36,
+          "failed_input_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "mode": "parallel",
+          "phase": "profile",
+          "log_sha256": "c5f3108d6211721b5020390d25a88ab5fbc1c9d42361a101c49235e193d15261",
+          "unsupported_NCHW_normalization_messages": 36,
+          "normalize_error_minus1_messages": 36,
+          "failed_input_indices": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    }
+  },
+  "npu_R3": {
+    "status": "nonzero_and_partition_equivalent_for_this_capture_but_strict_FP32_gate_failed",
+    "runtime_helper_R3_sha256": "be4185ef2ea137bf67b1ed52898b3298ab8626274b67fe33cfdca4b6030f0a1e",
+    "runtime_helper_R2_sha256": "bcf1f45d10891e7df81e878f26e2e5ad0ff5eabf726a306e177dbc1ca205509d",
+    "runtime_helper_R1_sha256": "277d7f22154ac2c187710a121aee94ead1d416c920c2d9fa023e71f257472ebc",
+    "groups": [
+      {
+        "mode": "baseline",
+        "phase": "normal",
+        "receipt_sha256": "82a8c53c95def664d1ba95a3c05333ee6f8f28b64bc048aa2514c5a132eee130",
+        "SDK_run_calls": 4,
+        "actual_output_files": [
+          {
+            "file": "actual_00.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          },
+          {
+            "file": "actual_01.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          },
+          {
+            "file": "actual_02.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          },
+          {
+            "file": "actual_03.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          }
+        ],
+        "all_four_actual_outputs_are_nonzero": true,
+        "actual_raw_sha256": "86890b4947cc4edc675fff4e9cadeb49ac9e25bbf089e7aea0565473b2cae403",
+        "independent_error_each_round": {
+          "max_abs": 0.021137475967407227,
+          "rmse": 0.00016736224597594887,
+          "relative_l2": 0.0010905245127787134,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance": 332056
+        },
+        "strict_gate_failed_rounds": 4,
+        "contexts": [
+          {
+            "name": "baseline",
+            "head_range": [
+              0,
+              16
+            ],
+            "core_mask": 7,
+            "model_sha256": "c9c32d4dd68dd3e607c76cab3c93ada2ba7f78563478245cd74741fde87e3f8c",
+            "compile_receipt_sha256": "ce8c93ab9e6be6540805a5acc88574a1de131e00e33a32a275df4c4d79e67aa6",
+            "onnx_sha256": "d5838d620f08ad7281c5ff7a6d97beea773b54c3061f381bef74479ec14e5763",
+            "total_internal_bytes": 24087232,
+            "total_dma_allocated_bytes": 26750976,
+            "destroy_return_code": 0
+          }
+        ],
+        "workers_joined_recorded": true,
+        "output_releases": 4,
+        "contexts_destroyed": 1,
+        "cleanup_errors": [],
+        "local_source_artifact_hashes_rechecked": 26,
+        "native_library_hash_before_after_recorded": true,
+        "peak_process_VmHWM_MiB": 127.44140625,
+        "final_process_VmRSS_MiB": 96.32421875
+      },
+      {
+        "mode": "baseline",
+        "phase": "profile",
+        "receipt_sha256": "315163dad819a0b505a7b497f8dcb59216c0b24e850dc2e93acaee49db3b9118",
+        "SDK_run_calls": 4,
+        "actual_output_files": [
+          {
+            "file": "actual_00.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          },
+          {
+            "file": "actual_01.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          },
+          {
+            "file": "actual_02.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          },
+          {
+            "file": "actual_03.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          }
+        ],
+        "all_four_actual_outputs_are_nonzero": true,
+        "actual_raw_sha256": "86890b4947cc4edc675fff4e9cadeb49ac9e25bbf089e7aea0565473b2cae403",
+        "independent_error_each_round": {
+          "max_abs": 0.021137475967407227,
+          "rmse": 0.00016736224597594887,
+          "relative_l2": 0.0010905245127787134,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance": 332056
+        },
+        "strict_gate_failed_rounds": 4,
+        "contexts": [
+          {
+            "name": "baseline",
+            "head_range": [
+              0,
+              16
+            ],
+            "core_mask": 7,
+            "model_sha256": "c9c32d4dd68dd3e607c76cab3c93ada2ba7f78563478245cd74741fde87e3f8c",
+            "compile_receipt_sha256": "ce8c93ab9e6be6540805a5acc88574a1de131e00e33a32a275df4c4d79e67aa6",
+            "onnx_sha256": "d5838d620f08ad7281c5ff7a6d97beea773b54c3061f381bef74479ec14e5763",
+            "total_internal_bytes": 24087232,
+            "total_dma_allocated_bytes": 26750976,
+            "destroy_return_code": 0
+          }
+        ],
+        "workers_joined_recorded": true,
+        "output_releases": 4,
+        "contexts_destroyed": 1,
+        "cleanup_errors": [],
+        "local_source_artifact_hashes_rechecked": 26,
+        "native_library_hash_before_after_recorded": true,
+        "peak_process_VmHWM_MiB": 127.4453125,
+        "final_process_VmRSS_MiB": 96.32421875
+      },
+      {
+        "mode": "parallel",
+        "phase": "normal",
+        "receipt_sha256": "af6a8f8c1f00d53003ed6afc97214a994133608b7a92f283fd233b2714485f94",
+        "SDK_run_calls": 12,
+        "actual_output_files": [
+          {
+            "file": "actual_00.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          },
+          {
+            "file": "actual_01.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          },
+          {
+            "file": "actual_02.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          },
+          {
+            "file": "actual_03.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          }
+        ],
+        "all_four_actual_outputs_are_nonzero": true,
+        "actual_raw_sha256": "86890b4947cc4edc675fff4e9cadeb49ac9e25bbf089e7aea0565473b2cae403",
+        "independent_error_each_round": {
+          "max_abs": 0.021137475967407227,
+          "rmse": 0.00016736224597594887,
+          "relative_l2": 0.0010905245127787134,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance": 332056
+        },
+        "strict_gate_failed_rounds": 4,
+        "contexts": [
+          {
+            "name": "shard-00",
+            "head_range": [
+              0,
+              6
+            ],
+            "core_mask": 1,
+            "model_sha256": "b46d64c2e66413a2bc3c5b014dabc544bad0873d457252b3ef628aca50897d5f",
+            "compile_receipt_sha256": "4be925b7119a0b75f8d75a0c32a195d1155d130091ca80330b70e8cc6d77d610",
+            "onnx_sha256": "df3a87aa5400cabad532a798d14f9b701f0b02b5c5a6c39b8d11d9a5f8a35db8",
+            "total_internal_bytes": 16659136,
+            "total_dma_allocated_bytes": 18857984,
+            "destroy_return_code": 0
+          },
+          {
+            "name": "shard-01",
+            "head_range": [
+              6,
+              11
+            ],
+            "core_mask": 2,
+            "model_sha256": "07cd0159eac0ac7758a6c254ad22d072207b0f1f32d5fc1cca7362224ff37dcc",
+            "compile_receipt_sha256": "e9c1ed7477d1546bcbbeca70f10c6c4d99966cc7ef7b9e645ff47d5a8e16b46d",
+            "onnx_sha256": "cb19820ed89dd2fa167e8e9d672e6d94eb803bc5de6d806676d5bf1502b05f1f",
+            "total_internal_bytes": 16659136,
+            "total_dma_allocated_bytes": 18812928,
+            "destroy_return_code": 0
+          },
+          {
+            "name": "shard-02",
+            "head_range": [
+              11,
+              16
+            ],
+            "core_mask": 4,
+            "model_sha256": "07cd0159eac0ac7758a6c254ad22d072207b0f1f32d5fc1cca7362224ff37dcc",
+            "compile_receipt_sha256": "e9c1ed7477d1546bcbbeca70f10c6c4d99966cc7ef7b9e645ff47d5a8e16b46d",
+            "onnx_sha256": "cb19820ed89dd2fa167e8e9d672e6d94eb803bc5de6d806676d5bf1502b05f1f",
+            "total_internal_bytes": 16659136,
+            "total_dma_allocated_bytes": 18812928,
+            "destroy_return_code": 0
+          }
+        ],
+        "workers_joined_recorded": true,
+        "output_releases": 12,
+        "contexts_destroyed": 3,
+        "cleanup_errors": [],
+        "local_source_artifact_hashes_rechecked": 38,
+        "native_library_hash_before_after_recorded": true,
+        "peak_process_VmHWM_MiB": 182.36328125,
+        "final_process_VmRSS_MiB": 111.01171875
+      },
+      {
+        "mode": "parallel",
+        "phase": "profile",
+        "receipt_sha256": "7560e1d14bb626bfcfe3b3a86432bf1e62ba1b3cfd51da59b0d33c31b4f40229",
+        "SDK_run_calls": 12,
+        "actual_output_files": [
+          {
+            "file": "actual_00.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          },
+          {
+            "file": "actual_01.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          },
+          {
+            "file": "actual_02.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          },
+          {
+            "file": "actual_03.npy",
+            "file_sha256": "9a6be14f8146d6431bbc33d01ff9f766b9ce092277c0ebffea9e6a1cf0e83471"
+          }
+        ],
+        "all_four_actual_outputs_are_nonzero": true,
+        "actual_raw_sha256": "86890b4947cc4edc675fff4e9cadeb49ac9e25bbf089e7aea0565473b2cae403",
+        "independent_error_each_round": {
+          "max_abs": 0.021137475967407227,
+          "rmse": 0.00016736224597594887,
+          "relative_l2": 0.0010905245127787134,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance": 332056
+        },
+        "strict_gate_failed_rounds": 4,
+        "contexts": [
+          {
+            "name": "shard-00",
+            "head_range": [
+              0,
+              6
+            ],
+            "core_mask": 1,
+            "model_sha256": "b46d64c2e66413a2bc3c5b014dabc544bad0873d457252b3ef628aca50897d5f",
+            "compile_receipt_sha256": "4be925b7119a0b75f8d75a0c32a195d1155d130091ca80330b70e8cc6d77d610",
+            "onnx_sha256": "df3a87aa5400cabad532a798d14f9b701f0b02b5c5a6c39b8d11d9a5f8a35db8",
+            "total_internal_bytes": 16659136,
+            "total_dma_allocated_bytes": 18857984,
+            "destroy_return_code": 0
+          },
+          {
+            "name": "shard-01",
+            "head_range": [
+              6,
+              11
+            ],
+            "core_mask": 2,
+            "model_sha256": "07cd0159eac0ac7758a6c254ad22d072207b0f1f32d5fc1cca7362224ff37dcc",
+            "compile_receipt_sha256": "e9c1ed7477d1546bcbbeca70f10c6c4d99966cc7ef7b9e645ff47d5a8e16b46d",
+            "onnx_sha256": "cb19820ed89dd2fa167e8e9d672e6d94eb803bc5de6d806676d5bf1502b05f1f",
+            "total_internal_bytes": 16659136,
+            "total_dma_allocated_bytes": 18812928,
+            "destroy_return_code": 0
+          },
+          {
+            "name": "shard-02",
+            "head_range": [
+              11,
+              16
+            ],
+            "core_mask": 4,
+            "model_sha256": "07cd0159eac0ac7758a6c254ad22d072207b0f1f32d5fc1cca7362224ff37dcc",
+            "compile_receipt_sha256": "e9c1ed7477d1546bcbbeca70f10c6c4d99966cc7ef7b9e645ff47d5a8e16b46d",
+            "onnx_sha256": "cb19820ed89dd2fa167e8e9d672e6d94eb803bc5de6d806676d5bf1502b05f1f",
+            "total_internal_bytes": 16659136,
+            "total_dma_allocated_bytes": 18812928,
+            "destroy_return_code": 0
+          }
+        ],
+        "workers_joined_recorded": true,
+        "output_releases": 12,
+        "contexts_destroyed": 3,
+        "cleanup_errors": [],
+        "local_source_artifact_hashes_rechecked": 38,
+        "native_library_hash_before_after_recorded": true,
+        "peak_process_VmHWM_MiB": 180.5625,
+        "final_process_VmRSS_MiB": 110.66796875
+      }
+    ],
+    "logs": [
+      {
+        "mode": "baseline",
+        "phase": "normal",
+        "log_sha256": "50603b81e07754b6ce97b6bc11b6e980d322990a5fa148998dc2e17ee6541702",
+        "RKNN_error_messages": 0
+      },
+      {
+        "mode": "baseline",
+        "phase": "profile",
+        "log_sha256": "ee69b51df70dadf1d66de2cc05dbf5fb645b3bc0f853e45e6d7b3c5164625286",
+        "RKNN_error_messages": 0
+      },
+      {
+        "mode": "parallel",
+        "phase": "normal",
+        "log_sha256": "c1bf158baf7b12f19dfdeebc228555f7381ac9939559cf7fdce8863bd188cfb9",
+        "RKNN_error_messages": 0
+      },
+      {
+        "mode": "parallel",
+        "phase": "profile",
+        "log_sha256": "dee766f76338ae68dd72481e0f805beaee82fbd14d281146f5fb700b003265bc",
+        "RKNN_error_messages": 0
+      }
+    ],
+    "original_input_and_head_identity_preserved": true,
+    "all_16_actual_output_raw_sha256": "86890b4947cc4edc675fff4e9cadeb49ac9e25bbf089e7aea0565473b2cae403",
+    "baseline_parallel_normal_profile_outputs_bitwise_equal": true,
+    "independent_error_each_round": {
+      "max_abs": 0.021137475967407227,
+      "rmse": 0.00016736224597594887,
+      "relative_l2": 0.0010905245127787134,
+      "strict_FP32_gate_passed": false,
+      "outside_tolerance": 332056
+    },
+    "strict_original_FP32_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "strict_gate_failed_outputs": 16,
+    "quality_target_validated": false,
+    "short_term_attention_subgraph_timing": {
+      "baseline": {
+        "first_ms": 136.14222200703807,
+        "subsequent_ms": [
+          123.58042900450528,
+          123.36334600695409,
+          123.46747099945787
+        ],
+        "subsequent_mean_ms": 123.47041533697241
+      },
+      "parallel": {
+        "first_ms": 74.41088299674448,
+        "subsequent_ms": [
+          66.60604799981229,
+          73.88459099456668,
+          81.07717499660794
+        ],
+        "subsequent_mean_ms": 73.85593799699564
+      }
+    },
+    "elapsed_ratio_baseline_over_parallel": 1.6717737081884334,
+    "timing_endpoint": "FP32 original NCHW packing + explicit NHWC packing + worker submit/join + synchronous SDK input/run/output/copy/release + ordered head concatenation",
+    "timing_excludes": [
+      "context init",
+      "hashes",
+      "error comparisons",
+      "actual output file writes",
+      "SDK performance query/detail collection"
+    ],
+    "timing_scope_limit": "One fixed original global0 attention input, one first plus three subsequent rounds; not full block/model throughput or a sustained benchmark.",
+    "internal_operator_targets_verified_from_all_16_profiles": true,
+    "profile_call_count": 16,
+    "profile_calls": [
+      {
+        "round": 0,
+        "context": "baseline",
+        "core_mask": 7,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 77157,
+        "internal_total_microseconds": 89494,
+        "raw_profile_sha256": "0d30fa9cc2d34e9f23112b5da9b391aff8f34778c51346992f99a52b9c49523e"
+      },
+      {
+        "round": 1,
+        "context": "baseline",
+        "core_mask": 7,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 77163,
+        "internal_total_microseconds": 89435,
+        "raw_profile_sha256": "1f9e42eb848177a0ca5834ba2e57cef10cefcd95a2b843a45c62a94b1051c28c"
+      },
+      {
+        "round": 2,
+        "context": "baseline",
+        "core_mask": 7,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 77415,
+        "internal_total_microseconds": 89934,
+        "raw_profile_sha256": "56c5f480a47bce2f086892db65828222d9c5dc87a43352d1e54f9bfd9b4fb8e4"
+      },
+      {
+        "round": 3,
+        "context": "baseline",
+        "core_mask": 7,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 77205,
+        "internal_total_microseconds": 89636,
+        "raw_profile_sha256": "0bf46ae5b26cf7a9c761e248585712ded8cc540d4e2ce4ee6737983957f95b31"
+      },
+      {
+        "round": 0,
+        "context": "shard-00",
+        "core_mask": 1,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 29981,
+        "internal_total_microseconds": 36537,
+        "raw_profile_sha256": "6a1a537c5e076233946cab0dadcf4751bdfe91fe6a0faaf45920a8c18562cf7c"
+      },
+      {
+        "round": 0,
+        "context": "shard-01",
+        "core_mask": 2,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/100.0%/0.0%",
+        "attention_microseconds": 26523,
+        "internal_total_microseconds": 33376,
+        "raw_profile_sha256": "d98c79a413dcca8d9ca88fa448852b375f90aea24f2c26e46e91089de13a4ef5"
+      },
+      {
+        "round": 0,
+        "context": "shard-02",
+        "core_mask": 4,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/0.0%/100.0%",
+        "attention_microseconds": 26645,
+        "internal_total_microseconds": 33445,
+        "raw_profile_sha256": "128bf509f72a8b3c1be27fcaf5b67612618607bab6324e2d452bd5bc212417a3"
+      },
+      {
+        "round": 1,
+        "context": "shard-00",
+        "core_mask": 1,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 30442,
+        "internal_total_microseconds": 36876,
+        "raw_profile_sha256": "30251a538b058a9792fd1fd5cf49317cda116379260f9169d83b3fca679d715a"
+      },
+      {
+        "round": 1,
+        "context": "shard-01",
+        "core_mask": 2,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/100.0%/0.0%",
+        "attention_microseconds": 26615,
+        "internal_total_microseconds": 33235,
+        "raw_profile_sha256": "09c523fc6ea6ab6132cbc2b6745bd535015faac0c62751d5a6b0216ac8722358"
+      },
+      {
+        "round": 1,
+        "context": "shard-02",
+        "core_mask": 4,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/0.0%/100.0%",
+        "attention_microseconds": 26902,
+        "internal_total_microseconds": 33742,
+        "raw_profile_sha256": "33f78b7a38fb76b33b644bf7dee69c1e4a68cf97df0954dc9b4209d7c83f41ad"
+      },
+      {
+        "round": 2,
+        "context": "shard-00",
+        "core_mask": 1,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 29997,
+        "internal_total_microseconds": 36698,
+        "raw_profile_sha256": "e5a4ed0bd3ef2c1a3e9d4ca946f95d275377ea9fe09345471055839d894d00f9"
+      },
+      {
+        "round": 2,
+        "context": "shard-01",
+        "core_mask": 2,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/100.0%/0.0%",
+        "attention_microseconds": 26594,
+        "internal_total_microseconds": 32966,
+        "raw_profile_sha256": "b80e1ffc9faebf6fa6a8f8c8c0712603484895d4991cc52ef3cde9e0685917ba"
+      },
+      {
+        "round": 2,
+        "context": "shard-02",
+        "core_mask": 4,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/0.0%/100.0%",
+        "attention_microseconds": 26888,
+        "internal_total_microseconds": 33642,
+        "raw_profile_sha256": "b0be55a84c25af64c4de3b1f8ca371a7c04e095ccb52b14e82db5324a22a8216"
+      },
+      {
+        "round": 3,
+        "context": "shard-00",
+        "core_mask": 1,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "100.0%/0.0%/0.0%",
+        "attention_microseconds": 29903,
+        "internal_total_microseconds": 36155,
+        "raw_profile_sha256": "81aaaac1d2e3fc572fcafbc0d5d0185eb53143ea224087cfbcd8c01bdda40484"
+      },
+      {
+        "round": 3,
+        "context": "shard-01",
+        "core_mask": 2,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/100.0%/0.0%",
+        "attention_microseconds": 26583,
+        "internal_total_microseconds": 33486,
+        "raw_profile_sha256": "e0a5b8fb252ad16848fef26570e3cb87b17cec765353314c66ced098642d9e49"
+      },
+      {
+        "round": 3,
+        "context": "shard-02",
+        "core_mask": 4,
+        "internal_NPU_operators": 5,
+        "CPU_boundary_operators": 4,
+        "attention_workload": "0.0%/0.0%/100.0%",
+        "attention_microseconds": 26605,
+        "internal_total_microseconds": 33318,
+        "raw_profile_sha256": "f67511008d1e0fe54534e2ad0ecebad179dfdec3cd3d923c31c077adb8b0b8d2"
+      }
+    ],
+    "CPU_math_fallback_in_profile": false,
+    "CPU_input_output_boundaries_per_call": 4,
+    "SDK_run_and_output_release_count_all_groups": 32,
+    "contexts_destroyed_all_groups": 8,
+    "workers_joined_recorded_all_groups": true,
+    "native_library_sha256": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+    "native_library_independently_rehashed_on_host": false,
+    "actual_layout": {
+      "SDK_native_inputs": "NHWC [1,874,64,E], FP16 identity-affine",
+      "user_inputs": "Original FP32 NCHW slices explicitly transpose(0,2,3,1) to C-order NHWC, fmt=1, pass_through=0",
+      "SDK_output": "NCHW [1,E,874,64], want_float=1"
+    },
+    "kernel_temporal_overlap_independently_proved": false,
+    "production_changed": false,
+    "whole_model_quality_validated": false,
+    "realtime_validated": false
+  }
+}

@@ -13,9 +13,9 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 
 
-@pytest.fixture
-def checker():
-    path = ROOT / 'deploy/rk3588/validation/check-v17-aggregator-onnx-board.py'
+@pytest.fixture(params=['check-v17-aggregator-onnx-board.py', 'check-v19-aggregator-onnx-board.py'])
+def checker(request):
+    path = ROOT / 'deploy/rk3588/validation' / request.param
     spec = importlib.util.spec_from_file_location('aggregator_ort_check_synthetic', path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

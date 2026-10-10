@@ -1,0 +1,493 @@
+{
+  "schema_version": 1,
+  "status": "saved_receipts_and_arrays_verified",
+  "experiment": "Original VGGT global block 0, fixed two-view 336-resolution captured input",
+  "input_shape": [
+    1,
+    874,
+    1024
+  ],
+  "original_parameter_count": 18,
+  "scope": {
+    "host_model_inference": false,
+    "board_jobs_started_by_auditor": false,
+    "fixed_saved_arrays_only": true,
+    "full_model_acceleration_validated": false,
+    "trajectory_or_map_accuracy_validated": false,
+    "real_time_validated": false
+  },
+  "artifact_hashes": {
+    "v19_mlp2d_normal/run.json": "b4202a6fa5991a08820ee8fbcb7a7dd586bc5f9e89d89f2cddddc3211441f10f",
+    "v19_mlp2d_normal/driver.json": "fddbd185aa7f7605e2c380cc7519c932ef616bcec41c11d9ee006df5644e3e2f",
+    "v19_mlp2d_profile/run.json": "5b9dbb3bb29da98ff4120b696939a730d46c7e600086b013d0e9d5b609feee19",
+    "v19_mlp2d_profile/driver.json": "a01d64421f0de2bcc777996075e0a570f8802efa54d876cb011198f6355025ff",
+    "v17_r3_normal/run.json": "1dfc1d5c0d3a15a62f2bcac8905a4f099f9c384775a7e323b051d6ed6e9b1d01",
+    "v17_r3_normal/driver.json": "ca901b823d4bc00ff40c015484492eba6fc0ede13a2e8402c1dbce187ecdb1f3",
+    "v17_r3_profile/run.json": "860f0dbf5bebf24f8a34223c4d0b684068e3f284909fb9d34b1d6a663af134d0",
+    "v17_r3_profile/driver.json": "91efe11ae4521ff969287775d75c2a3c68fd34fe5e06043ddac8568fe702eca6",
+    "v19_ORT/check.json": "1496f99aa3e16c2e65aeddf15f9133f1a559a33548933ec3d4d98e6204f38bd0",
+    "run-v19-aggregator-rknn-board.py": "f4b53a1fe0f54baaf9da2eb3b8a78a17326cbe3c208451bb265302ff789b8f3e",
+    "check-v19-aggregator-onnx-board.py": "ff45ac45e085d3e67b51eb55b8931c775ae274463b638fc20217cc7b4e4eb345",
+    "export-v19-aggregator-mlp2d.py": "1bb8cf707f77b219f7c2130cf2e5784fe683e2a8c060f6efcd02f2c808f1d91b",
+    "export-v17-aggregator-block-r3.py": "6724aba806806ec36d8ba097f0c2076f3703e106f23c83d4272ae2e3a3fc2874"
+  },
+  "v19_graph": {
+    "onnx_sha256": "37ce770ca065f6c1b8a0113d0b61cc1d70d1bd5b1708bc5f84feddb219845b50",
+    "RKNN_sha256": "6037ff37cb40a03aec5ce161c6de07756fdae3b6108e9274dc9936be87f777d8",
+    "original_R3_graph_sha256": "f67c2210f6a53a7ff88865e4607c6d1760cf23c221941339c204c7414cda2778",
+    "original_initializers_byte_identical": true,
+    "attention_and_exact_GELU_unchanged": true
+  },
+  "runtime": {
+    "hardware": "RK3588S",
+    "SDK": "2.3.2",
+    "driver": "0.7.2",
+    "NPU_core_mask": 7,
+    "host_CPU_affinity": [
+      6,
+      7
+    ],
+    "threads": 2,
+    "io_interval": "FP32 inputs_set, synchronous run, FP32 outputs_get, owned copy, outputs_release",
+    "io_excludes": [
+      "initialization",
+      "queries",
+      "comparison",
+      "hashing",
+      "npy output writes"
+    ],
+    "profile_flag8_times_are_not_normal_benchmark": true
+  },
+  "groups": {
+    "v19_mlp2d_normal": {
+      "actual_calls": 4,
+      "init_flags": 0,
+      "io_seconds": [
+        0.181912893007393,
+        0.18803130999731366,
+        0.18896651899558492,
+        0.18672226899070665
+      ],
+      "first_io_ms": 181.912893007393,
+      "last_three_io_mean_ms": 187.9066993278684,
+      "last_three_run_api_mean_ms": 162.80401666396452,
+      "error_vs_original_CPU": {
+        "array_equal": false,
+        "max_abs_error": 0.016917884349822998,
+        "rmse": 0.0006600863463390846,
+        "relative_l2": 0.004358558443088841
+      },
+      "output_file_sha256": "368ad9e7e60949a4518c8095650fbab23a624b4a6d86a4aace1b11c0de2e1093",
+      "output_raw_sha256": "2710ba0194748469c49b30cd8cb33b4e43952ddbbd1d482460e905127fdfde3c",
+      "all_four_outputs_equal": true,
+      "context_destroyed": true,
+      "output_release_count": 4,
+      "cleanup_errors": [],
+      "recorded_source_hashes_before_after_equal": true,
+      "SDK_allocation_while_context_alive_bytes": {
+        "total_weight_size": 25450560,
+        "total_internal_size": 28704768,
+        "total_dma_allocated_size": 83746816,
+        "total_sram_size": 0,
+        "free_sram_size": 0
+      },
+      "actual_profile": []
+    },
+    "v19_mlp2d_profile": {
+      "actual_calls": 4,
+      "init_flags": 8,
+      "io_seconds": [
+        0.18386868499510456,
+        0.19260414499149192,
+        0.1922061439981917,
+        0.1884809359908104
+      ],
+      "first_io_ms": 183.86868499510456,
+      "last_three_io_mean_ms": 191.097074993498,
+      "last_three_run_api_mean_ms": 166.29560033228094,
+      "error_vs_original_CPU": {
+        "array_equal": false,
+        "max_abs_error": 0.016917884349822998,
+        "rmse": 0.0006600863463390846,
+        "relative_l2": 0.004358558443088841
+      },
+      "output_file_sha256": "368ad9e7e60949a4518c8095650fbab23a624b4a6d86a4aace1b11c0de2e1093",
+      "output_raw_sha256": "2710ba0194748469c49b30cd8cb33b4e43952ddbbd1d482460e905127fdfde3c",
+      "all_four_outputs_equal": true,
+      "context_destroyed": true,
+      "output_release_count": 4,
+      "cleanup_errors": [],
+      "recorded_source_hashes_before_after_equal": true,
+      "SDK_allocation_while_context_alive_bytes": {
+        "total_weight_size": 25450560,
+        "total_internal_size": 28704768,
+        "total_dma_allocated_size": 83746816,
+        "total_sram_size": 0,
+        "free_sram_size": 0
+      },
+      "actual_profile": [
+        {
+          "call_index": 0,
+          "raw_sha256": "898a8d8cdc201a1c03dd95bf58176dce105e3b9bd932d6040d76791572720789",
+          "NPU_rows": 22,
+          "CPU_rows": 2,
+          "CPU_operators": [
+            "InputOperator",
+            "OutputOperator"
+          ],
+          "table_total_us": 160847,
+          "NPU_rows_total_us": 160746,
+          "CPU_IO_rows_total_us": 101,
+          "key_operators": [
+            {
+              "op": "exSDPAttention",
+              "time_us": 77125,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvExGelu",
+              "time_us": 21191,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvAdd",
+              "time_us": 27089,
+              "workload_percent": "34.4%/32.8%/32.8%"
+            }
+          ]
+        },
+        {
+          "call_index": 1,
+          "raw_sha256": "f1af9f8aa8d8df9f04e4403f3f60633915d1ccf29ad7e3a10fc1e2b1b5e9e196",
+          "NPU_rows": 22,
+          "CPU_rows": 2,
+          "CPU_operators": [
+            "InputOperator",
+            "OutputOperator"
+          ],
+          "table_total_us": 164041,
+          "NPU_rows_total_us": 163841,
+          "CPU_IO_rows_total_us": 200,
+          "key_operators": [
+            {
+              "op": "exSDPAttention",
+              "time_us": 77357,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvExGelu",
+              "time_us": 21328,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvAdd",
+              "time_us": 27153,
+              "workload_percent": "34.4%/32.8%/32.8%"
+            }
+          ]
+        },
+        {
+          "call_index": 2,
+          "raw_sha256": "4766240b4ab31832b0276523faa9a2e154ea924d087cdd13f729a4287082883a",
+          "NPU_rows": 22,
+          "CPU_rows": 2,
+          "CPU_operators": [
+            "InputOperator",
+            "OutputOperator"
+          ],
+          "table_total_us": 163435,
+          "NPU_rows_total_us": 163235,
+          "CPU_IO_rows_total_us": 200,
+          "key_operators": [
+            {
+              "op": "exSDPAttention",
+              "time_us": 77298,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvExGelu",
+              "time_us": 21311,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvAdd",
+              "time_us": 27129,
+              "workload_percent": "34.4%/32.8%/32.8%"
+            }
+          ]
+        },
+        {
+          "call_index": 3,
+          "raw_sha256": "dec5ccd75cad8b1f116637aab15b427739b11b2ced8ca1567f20ac3e7b2f1530",
+          "NPU_rows": 22,
+          "CPU_rows": 2,
+          "CPU_operators": [
+            "InputOperator",
+            "OutputOperator"
+          ],
+          "table_total_us": 163889,
+          "NPU_rows_total_us": 163699,
+          "CPU_IO_rows_total_us": 190,
+          "key_operators": [
+            {
+              "op": "exSDPAttention",
+              "time_us": 77377,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvExGelu",
+              "time_us": 21333,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvAdd",
+              "time_us": 26959,
+              "workload_percent": "34.4%/32.8%/32.8%"
+            }
+          ]
+        }
+      ]
+    },
+    "v17_r3_normal": {
+      "actual_calls": 4,
+      "init_flags": 0,
+      "io_seconds": [
+        0.17923585198877845,
+        0.18776947700825986,
+        0.18870531101129018,
+        0.18494118499802426
+      ],
+      "first_io_ms": 179.23585198877845,
+      "last_three_io_mean_ms": 187.13865767252477,
+      "last_three_run_api_mean_ms": 161.81368332763668,
+      "error_vs_original_CPU": {
+        "array_equal": false,
+        "max_abs_error": 0.016917884349822998,
+        "rmse": 0.0006600863463390846,
+        "relative_l2": 0.004358558443088841
+      },
+      "output_file_sha256": "368ad9e7e60949a4518c8095650fbab23a624b4a6d86a4aace1b11c0de2e1093",
+      "output_raw_sha256": "2710ba0194748469c49b30cd8cb33b4e43952ddbbd1d482460e905127fdfde3c",
+      "all_four_outputs_equal": true,
+      "context_destroyed": true,
+      "output_release_count": 4,
+      "cleanup_errors": [],
+      "recorded_source_hashes_before_after_equal": true,
+      "SDK_allocation_while_context_alive_bytes": {
+        "total_weight_size": 25450560,
+        "total_internal_size": 26910720,
+        "total_dma_allocated_size": 81952768,
+        "total_sram_size": 0,
+        "free_sram_size": 0
+      },
+      "actual_profile": []
+    },
+    "v17_r3_profile": {
+      "actual_calls": 4,
+      "init_flags": 8,
+      "io_seconds": [
+        0.18409289400733542,
+        0.1903311859932728,
+        0.19217818600009196,
+        0.1869001020095311
+      ],
+      "first_io_ms": 184.09289400733542,
+      "last_three_io_mean_ms": 189.80315800096528,
+      "last_three_run_api_mean_ms": 164.67358599766158,
+      "error_vs_original_CPU": {
+        "array_equal": false,
+        "max_abs_error": 0.016917884349822998,
+        "rmse": 0.0006600863463390846,
+        "relative_l2": 0.004358558443088841
+      },
+      "output_file_sha256": "368ad9e7e60949a4518c8095650fbab23a624b4a6d86a4aace1b11c0de2e1093",
+      "output_raw_sha256": "2710ba0194748469c49b30cd8cb33b4e43952ddbbd1d482460e905127fdfde3c",
+      "all_four_outputs_equal": true,
+      "context_destroyed": true,
+      "output_release_count": 4,
+      "cleanup_errors": [],
+      "recorded_source_hashes_before_after_equal": true,
+      "SDK_allocation_while_context_alive_bytes": {
+        "total_weight_size": 25450560,
+        "total_internal_size": 26910720,
+        "total_dma_allocated_size": 81952768,
+        "total_sram_size": 0,
+        "free_sram_size": 0
+      },
+      "actual_profile": [
+        {
+          "call_index": 0,
+          "raw_sha256": "3c476d531834ee232f10df40bcfcba27fa1e9f5a6a96def2556aec1e25493dc0",
+          "NPU_rows": 22,
+          "CPU_rows": 2,
+          "CPU_operators": [
+            "InputOperator",
+            "OutputOperator"
+          ],
+          "table_total_us": 160953,
+          "NPU_rows_total_us": 160845,
+          "CPU_IO_rows_total_us": 108,
+          "key_operators": [
+            {
+              "op": "exSDPAttention",
+              "time_us": 77117,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvExGelu",
+              "time_us": 21368,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvAdd",
+              "time_us": 26989,
+              "workload_percent": "34.4%/32.8%/32.8%"
+            }
+          ]
+        },
+        {
+          "call_index": 1,
+          "raw_sha256": "753db87f06a19cdd4cc11fa8f52e511f38e5a622209ee3033fe8e2975647f1c6",
+          "NPU_rows": 22,
+          "CPU_rows": 2,
+          "CPU_operators": [
+            "InputOperator",
+            "OutputOperator"
+          ],
+          "table_total_us": 161706,
+          "NPU_rows_total_us": 161508,
+          "CPU_IO_rows_total_us": 198,
+          "key_operators": [
+            {
+              "op": "exSDPAttention",
+              "time_us": 77324,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvExGelu",
+              "time_us": 21362,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvAdd",
+              "time_us": 27058,
+              "workload_percent": "34.4%/32.8%/32.8%"
+            }
+          ]
+        },
+        {
+          "call_index": 2,
+          "raw_sha256": "52ab9e04004f4ce664d03d03ee2793e813baf8664f6a1c28118554072c6d1906",
+          "NPU_rows": 22,
+          "CPU_rows": 2,
+          "CPU_operators": [
+            "InputOperator",
+            "OutputOperator"
+          ],
+          "table_total_us": 162883,
+          "NPU_rows_total_us": 162681,
+          "CPU_IO_rows_total_us": 202,
+          "key_operators": [
+            {
+              "op": "exSDPAttention",
+              "time_us": 77163,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvExGelu",
+              "time_us": 21175,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvAdd",
+              "time_us": 27041,
+              "workload_percent": "34.4%/32.8%/32.8%"
+            }
+          ]
+        },
+        {
+          "call_index": 3,
+          "raw_sha256": "f6321471e77b22ba10ca1be51a78088810ca24111a19f9b82345cee519182cab",
+          "NPU_rows": 22,
+          "CPU_rows": 2,
+          "CPU_operators": [
+            "InputOperator",
+            "OutputOperator"
+          ],
+          "table_total_us": 162480,
+          "NPU_rows_total_us": 162279,
+          "CPU_IO_rows_total_us": 201,
+          "key_operators": [
+            {
+              "op": "exSDPAttention",
+              "time_us": 77272,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvExGelu",
+              "time_us": 21305,
+              "workload_percent": "100.0%/0.0%/0.0%"
+            },
+            {
+              "op": "ConvAdd",
+              "time_us": 27073,
+              "workload_percent": "34.4%/32.8%/32.8%"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "cross_version_outputs": {
+    "new_count": 8,
+    "baseline_count": 8,
+    "pairwise_comparisons": 64,
+    "all_bitwise_equal": true,
+    "max_absolute_difference": 0
+  },
+  "profile_verification": {
+    "profile_calls_checked": 8,
+    "rows_per_call": 24,
+    "internal_NPU_rows_per_call": 22,
+    "CPU_rows_per_call": 2,
+    "CPU_operators": [
+      "InputOperator",
+      "OutputOperator"
+    ],
+    "all_profile_operator_types_dtypes_shapes_targets_cycles_RW_equal": true,
+    "MLP_kernel_types": [
+      "ConvExGelu",
+      "ConvAdd"
+    ],
+    "note": "Rows include zero-time fused/layout entries; Target is taken from actual SDK profiles, not compiler inference."
+  },
+  "ORT_numerical_check": {
+    "actual_calls": 4,
+    "CPU_provider_only": true,
+    "fixed_rtol": 0.0001,
+    "fixed_atol": 1e-05,
+    "all_four_within_fixed_tolerance": true,
+    "recomputed_error": {
+      "array_equal": false,
+      "max_abs_error": 6.556510925292969e-06,
+      "rmse": 6.345186603794902e-08,
+      "relative_l2": 4.1897346912759697e-07
+    },
+    "all_four_error_metrics_equal": true,
+    "session_released": true
+  },
+  "wrapper_review": {
+    "allowed_exporters": [
+      "export-v17-aggregator-block.py",
+      "export-v17-aggregator-block-r2.py",
+      "export-v17-aggregator-block-r3.py",
+      "export-v19-aggregator-mlp2d.py"
+    ],
+    "measured_source_SHA_verified": true,
+    "explicit_capture_export_compile_model_SHA_chain_verified": true,
+    "pinned_private_runtime_ABI": true,
+    "no_arbitrary_exporter_filename": true,
+    "limitation": "Exporter SHA is explicit invocation input rather than an immutable filename-to-hash registry; the reviewed recorded invocation binds the frozen source."
+  },
+  "conclusion": "The 2D Gemm rewrite retained bitwise-identical NPU outputs on this input. The same ConvExGelu/ConvAdd plan remains; no acceleration benefit is established. Separate runs are not a controlled thermal/statistical benchmark. No whole-model benefit is claimed."
+}

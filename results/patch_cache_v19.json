@@ -1,0 +1,406 @@
+{
+  "kind": "original_VGGT_exact_image_DINO_tail_cache_diagnostic",
+  "status": "completed_cache_diagnostic",
+  "script_sha256": "ba179154ef65d691dec977029b492e6094cf68ef57399a4f6bc403abbbcd12fb",
+  "helper_sha256": {
+    "capture-v17-resolution-pairs-board.py": "3706712dd3a7451fcbce98e079d4018989eca6f64eb98704a81b8f4a9acc03cb",
+    "profile-v14-small-vggt-board.py": "ec69e48e2cb5a953d8e134934af7ebf1f45a88dfa0ec5b2cf5967bb4027e8d22"
+  },
+  "cache_sha256": "cd86bcb580cbf55ca92b6b98b203bb6e789bf35adfa47644103efd6be592e6f9",
+  "reference_sha256": "8a5b9e8a7f94757fa906fbcc1b2d37ae3d4751076d69e966dd626a15a6c63598",
+  "source_hashes": {
+    "vggt_slam/runtime.py": "baf65a5afcfa98584e25b1ef85d7cae31507a7da2b4cc03f97d2015776796e8c",
+    "vggt_slam/image_rectification.py": "e8c8472ac4dc3b84c132f20afd35be4dbeb3c23a9491ae1299ae5b1938e7ffdd",
+    "vggt_slam/edge_mapping.py": "c889a193da92cc74671d31ee9a70352cff089ae70fff9174ea526add2261e134",
+    "vggt_slam/timestamp_replay.py": "14b168028a6f7722f4bea036285b4f9cd8119fed59230b7e3e07c4b7af07addc",
+    "third_party/vggt/vggt/models/vggt.py": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+    "third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+    "third_party/vggt/vggt/heads/camera_head.py": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+    "third_party/vggt/vggt/heads/dpt_head.py": "72e9ed26196113eb71e26b641b4262606b5aacc797accafc6c975f5db0d2ace2",
+    "third_party/vggt/vggt/layers/vision_transformer.py": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+    "third_party/vggt/vggt/layers/block.py": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+    "third_party/vggt/vggt/layers/attention.py": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+    "third_party/vggt/vggt/utils/load_fn.py": "b0fe762f65497dca9a22069a3e4a37fd3508398c55383a8c1cb85c403fb3e9dd",
+    "third_party/vggt/vggt/utils/pose_enc.py": "845fc3a46cb851bebf0720b8fc2b9f34334ae8e11f1982376ba59f90ff18f22b"
+  },
+  "runtime": {
+    "torch": "2.3.1",
+    "numpy": "1.26.4",
+    "cpu_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "threads": 4,
+    "interop_threads": 1
+  },
+  "image_size": 336,
+  "timing_scope": "model(images) including cache guards, hashing, assembly; excludes decode, load, comparison and save",
+  "timing_limit": "Saved reference and cached runs have different thermal/runtime states; not a controlled speedup experiment",
+  "all_outputs_array_equal": true,
+  "all_outputs_within_tolerance": true,
+  "input_and_source_hashes_unchanged": true,
+  "capture_receipt_sha256": "69e998d2163ca978ef9c76a64dbd6400935818538994a064a5e93389bc140859",
+  "pairs": [
+    {
+      "revision": 1,
+      "frame_ids": [
+        1305031102.175304,
+        1305031102.443271
+      ],
+      "model_seconds": 35.1124189030088,
+      "saved_reference_model_seconds": 35.0561925219954,
+      "comparisons": {
+        "pose_enc": {
+          "array_equal": true,
+          "allclose": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "outside_tolerance_elements": 0
+        },
+        "depth": {
+          "array_equal": true,
+          "allclose": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "outside_tolerance_elements": 0
+        },
+        "depth_conf": {
+          "array_equal": true,
+          "allclose": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "outside_tolerance_elements": 0
+        }
+      },
+      "sha256": "97a7e8c8b7469fa51b0d0d2b8c063c1e7f810ae4beb650c6e6360794c7d4636f",
+      "input_tensor": {
+        "shape": [
+          2,
+          3,
+          252,
+          336
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "bytes": 2032128,
+        "tensor_sha256": "0e4dc9ca05c8c1ac93104ba3f4c1d8661d17bbc13fd7a833327e3697cafa6b6e"
+      },
+      "platform_before": {
+        "monotonic": 81584.271732506,
+        "temperatures_mC": {
+          "soc-thermal": 56384,
+          "bigcore0-thermal": 58230,
+          "bigcore1-thermal": 58230,
+          "littlecore-thermal": 57307,
+          "center-thermal": 56384,
+          "gpu-thermal": 54538,
+          "npu-thermal": 54538
+        },
+        "CPU_frequency_kHz": {
+          "policy0": 1800000,
+          "policy4": 2352000,
+          "policy6": 1608000
+        },
+        "NPU_frequency_hz": 300000000,
+        "VmHWM_MiB": 329.296875,
+        "VmRSS_MiB": 329.296875
+      },
+      "platform_after": {
+        "monotonic": 81619.401058161,
+        "temperatures_mC": {
+          "soc-thermal": 83153,
+          "bigcore0-thermal": 85000,
+          "bigcore1-thermal": 85000,
+          "littlecore-thermal": 83153,
+          "center-thermal": 81307,
+          "gpu-thermal": 79461,
+          "npu-thermal": 80384
+        },
+        "CPU_frequency_kHz": {
+          "policy0": 1608000,
+          "policy4": 2016000,
+          "policy6": 2208000
+        },
+        "NPU_frequency_hz": 300000000,
+        "VmHWM_MiB": 5511.28125,
+        "VmRSS_MiB": 4844.6015625
+      }
+    },
+    {
+      "revision": 2,
+      "frame_ids": [
+        1305031102.443271,
+        1305031106.475345
+      ],
+      "model_seconds": 45.239984628991806,
+      "saved_reference_model_seconds": 53.51223050199769,
+      "comparisons": {
+        "pose_enc": {
+          "array_equal": true,
+          "allclose": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "outside_tolerance_elements": 0
+        },
+        "depth": {
+          "array_equal": true,
+          "allclose": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "outside_tolerance_elements": 0
+        },
+        "depth_conf": {
+          "array_equal": true,
+          "allclose": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "outside_tolerance_elements": 0
+        }
+      },
+      "sha256": "9253a6656e9fd9c339e7931e06eab6d2d5e448c53e43f349ea6d8a8bc23bfbc8",
+      "input_tensor": {
+        "shape": [
+          2,
+          3,
+          252,
+          336
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "bytes": 2032128,
+        "tensor_sha256": "61c8ea61f03a67907d24ac4fbe4f6e1690ed367d0d7e58e8f9b93bddb9207c2a"
+      },
+      "platform_before": {
+        "monotonic": 81619.549914051,
+        "temperatures_mC": {
+          "soc-thermal": 81307,
+          "bigcore0-thermal": 82230,
+          "bigcore1-thermal": 82230,
+          "littlecore-thermal": 81307,
+          "center-thermal": 79461,
+          "gpu-thermal": 78538,
+          "npu-thermal": 79461
+        },
+        "CPU_frequency_kHz": {
+          "policy0": 1608000,
+          "policy4": 408000,
+          "policy6": 2208000
+        },
+        "NPU_frequency_hz": 300000000,
+        "VmHWM_MiB": 5511.28125,
+        "VmRSS_MiB": 4844.6015625
+      },
+      "platform_after": {
+        "monotonic": 81664.807121015,
+        "temperatures_mC": {
+          "soc-thermal": 83153,
+          "bigcore0-thermal": 85888,
+          "bigcore1-thermal": 85888,
+          "littlecore-thermal": 84076,
+          "center-thermal": 83153,
+          "gpu-thermal": 80384,
+          "npu-thermal": 81307
+        },
+        "CPU_frequency_kHz": {
+          "policy0": 1608000,
+          "policy4": 2208000,
+          "policy6": 1008000
+        },
+        "NPU_frequency_hz": 300000000,
+        "VmHWM_MiB": 5557.01171875,
+        "VmRSS_MiB": 4900.46484375
+      }
+    },
+    {
+      "revision": 3,
+      "frame_ids": [
+        1305031106.475345,
+        1305031110.111325
+      ],
+      "model_seconds": 49.98234902200056,
+      "saved_reference_model_seconds": 57.01582377000159,
+      "comparisons": {
+        "pose_enc": {
+          "array_equal": true,
+          "allclose": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "outside_tolerance_elements": 0
+        },
+        "depth": {
+          "array_equal": true,
+          "allclose": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "outside_tolerance_elements": 0
+        },
+        "depth_conf": {
+          "array_equal": true,
+          "allclose": true,
+          "max_abs": 0.0,
+          "rmse": 0.0,
+          "relative_l2": 0.0,
+          "outside_tolerance_elements": 0
+        }
+      },
+      "sha256": "33780f07acbf548fe8c297e599db85f90b1a8dc103386401c7d0b2da7c329b61",
+      "input_tensor": {
+        "shape": [
+          2,
+          3,
+          252,
+          336
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "bytes": 2032128,
+        "tensor_sha256": "a4033cf7dbbefc67cf6b071748544eac53c011904c69e55951f960cf71af4a6c"
+      },
+      "platform_before": {
+        "monotonic": 81664.958657613,
+        "temperatures_mC": {
+          "soc-thermal": 82230,
+          "bigcore0-thermal": 84076,
+          "bigcore1-thermal": 84076,
+          "littlecore-thermal": 83153,
+          "center-thermal": 81307,
+          "gpu-thermal": 80384,
+          "npu-thermal": 81307
+        },
+        "CPU_frequency_kHz": {
+          "policy0": 1608000,
+          "policy4": 2208000,
+          "policy6": 1416000
+        },
+        "NPU_frequency_hz": 300000000,
+        "VmHWM_MiB": 5557.01171875,
+        "VmRSS_MiB": 4900.46484375
+      },
+      "platform_after": {
+        "monotonic": 81714.956667387,
+        "temperatures_mC": {
+          "soc-thermal": 83153,
+          "bigcore0-thermal": 85000,
+          "bigcore1-thermal": 85000,
+          "littlecore-thermal": 84076,
+          "center-thermal": 83153,
+          "gpu-thermal": 81307,
+          "npu-thermal": 81307
+        },
+        "CPU_frequency_kHz": {
+          "policy0": 1608000,
+          "policy4": 1416000,
+          "policy6": 2208000
+        },
+        "NPU_frequency_hz": 300000000,
+        "VmHWM_MiB": 5557.01171875,
+        "VmRSS_MiB": 4845.62109375
+      }
+    }
+  ],
+  "cache_before_close": {
+    "requests": 3,
+    "input_frames": 6,
+    "hit_frames": 2,
+    "miss_frames": 4,
+    "computed_frames": 4,
+    "loop_bypass_calls": 0,
+    "loop_bypass_frames": 0,
+    "loop_computed_frames": 0,
+    "original_dino_calls": 3,
+    "completed_original_dino_calls": 3,
+    "errors": 0,
+    "invalidations": 0,
+    "peak_cache_bytes": 1769472,
+    "lock_wait_seconds": 2.27490090765059e-05,
+    "guard_seconds": 0.3395898659946397,
+    "hash_seconds": 0.004602499000611715,
+    "lookup_seconds": 4.8124988097697496e-05,
+    "original_dino_seconds": 20.257210242998553,
+    "loop_original_dino_seconds": 0.0,
+    "assembly_seconds": 0.0015560409956378862,
+    "tail_clone_seconds": 0.0009715420019347221,
+    "cache_forward_seconds": 20.280618247008533,
+    "aggregator_seconds": 107.31975399199291,
+    "enabled": true,
+    "cache_entries": 1,
+    "cache_bytes": 1769472,
+    "max_bytes": 8388608,
+    "tail_content_key": {
+      "shape": [
+        3,
+        252,
+        336
+      ],
+      "dtype": "torch.float32",
+      "normalized_content_sha256": "05bfa71c35f3914975711c922b29da770612cac8d0ad5c165bca306e25b5ca26"
+    },
+    "closed": false,
+    "restored": false,
+    "last_error": null,
+    "restore_errors": [],
+    "policy": "previous_main_batch_last_frame_only",
+    "loop_policy": "original_DINO_no_main_cache_read_or_write",
+    "cached_payload": "cloned_x_norm_patchtokens_CPU_FP32_only",
+    "model_lifecycle": "fixed_backend_modules_parameters_buffers_versions_storage",
+    "arbitrary_batch_bit_equality_validated": false,
+    "accuracy_validated": false,
+    "real_time_validated": false
+  },
+  "cache_after_close": {
+    "requests": 3,
+    "input_frames": 6,
+    "hit_frames": 2,
+    "miss_frames": 4,
+    "computed_frames": 4,
+    "loop_bypass_calls": 0,
+    "loop_bypass_frames": 0,
+    "loop_computed_frames": 0,
+    "original_dino_calls": 3,
+    "completed_original_dino_calls": 3,
+    "errors": 0,
+    "invalidations": 0,
+    "peak_cache_bytes": 1769472,
+    "lock_wait_seconds": 2.27490090765059e-05,
+    "guard_seconds": 0.3395898659946397,
+    "hash_seconds": 0.004602499000611715,
+    "lookup_seconds": 4.8124988097697496e-05,
+    "original_dino_seconds": 20.257210242998553,
+    "loop_original_dino_seconds": 0.0,
+    "assembly_seconds": 0.0015560409956378862,
+    "tail_clone_seconds": 0.0009715420019347221,
+    "cache_forward_seconds": 20.280618247008533,
+    "aggregator_seconds": 107.31975399199291,
+    "enabled": false,
+    "cache_entries": 0,
+    "cache_bytes": 0,
+    "max_bytes": 8388608,
+    "tail_content_key": null,
+    "closed": true,
+    "restored": true,
+    "last_error": null,
+    "restore_errors": [],
+    "policy": "previous_main_batch_last_frame_only",
+    "loop_policy": "original_DINO_no_main_cache_read_or_write",
+    "cached_payload": "cloned_x_norm_patchtokens_CPU_FP32_only",
+    "model_lifecycle": "fixed_backend_modules_parameters_buffers_versions_storage",
+    "arbitrary_batch_bit_equality_validated": false,
+    "accuracy_validated": false,
+    "real_time_validated": false
+  },
+  "independent_saved_array_comparison": "pose_enc/depth/depth_conf/frame_ids bitwise equal to all three original FP32 references",
+  "inference_on_board_only": true,
+  "traditional_pose_frontend_used": false,
+  "whole_trajectory_accuracy_validated": false,
+  "real_time_validated": false
+}

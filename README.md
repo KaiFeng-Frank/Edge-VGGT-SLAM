@@ -81,6 +81,20 @@ Both first-block exports passed the board CPU ONNX Runtime check against the sav
 
 Original CPU FP32 VGGT reference predictions have been captured at 112 and 518 for all six fixed input pairs recorded in r11, using the same source images, rectification and original weights. These are offline model-output quality references, not a completed trajectory or map-quality evaluation. Two-frame model batches do not reproduce the paper's 32-frame benchmark. [Capture provenance](results/quality_pairs_capture_v18.json).
 
+## Original-model cache and layout experiments (v19)
+
+The existing exact-image DINO cache was tested on the same three overlapping, rectified TUM pairs at 336 (actual 252×336). Six image inputs required four image feature computations and produced two cache hits. All three complete pose/depth/confidence outputs were **bitwise equal** to their saved CPU FP32 references. The one-entry feature cache peaked at 1,769,472 bytes and released its contents on close. Full forwards still took **35.11, 45.24 and 49.98 seconds**. Different thermal/runtime states prevent treating comparison with the earlier runs as a controlled speedup. This board-only diagnostic does not establish online integration or real-time performance. [Cache evidence](results/patch_cache_v19.json).
+
+Spelling the two frame-block Gather axes as positive indices produced the same eight NPU outputs as the prior export. Its three warm complete-I/O calls averaged **183.415 ms**, compared with the earlier **183.626 ms**; actual profiles retained 32 internal NPU operators and two CPU I/O operators. This experiment found no confirmed improvement. [Frame-axis comparison](results/frame_axis_comparison_v19.json).
+
+Reshaping the global-block MLP to two-dimensional Gemm also passed the original FP32 board ORT gate, but compiled back to the same NPU kernels. Its eight saved NPU outputs were bitwise equal to the previous export. Three warm complete-I/O calls averaged **187.907 ms**, versus **187.139 ms** previously; internal memory increased by 1,752 KiB. This candidate has no measured benefit and is not integrated into the mapper. [MLP layout comparison](results/mlp_layout_v19.json).
+
+Original post-normalization/RoPE attention operands were captured without changing the CPU block outputs. The global attention has 16 independent heads and 874 complete key tokens. Splitting only the heads into 6/5/5 preserves the attention equation; the full graph and concatenated shards produced bitwise-equal board CPU ORT outputs and passed the original SDPA FP32 gate. [Operand-capture evidence](results/attention_capture_v19.json).
+
+The R3 standalone attention probe explicitly packs FP32 inputs into the SDK's NHWC layout. Four normal and four separate profile rounds per mode produced **16 bitwise-equal NPU outputs** across the full-head and three-context variants. Relative L2 error against original CPU FP32 is **0.109052%**, with maximum absolute error **0.0211375**; **332,056 of 894,976 elements fail** the original `rtol=1e-4, atol=1e-5` gate. The last three normal rounds averaged **123.470 ms** for the full-head graph and **73.856 ms** for the 6/5/5-head variant. These times include both the initial NCHW preparation and explicit NHWC copies, SDK input/run/output-copy/release, worker submission/joining and head concatenation. They are short fixed-input measurements of one attention operation; they establish neither whole-block/full-network speed nor sustained throughput or pose/map accuracy. [Numerical results, actual SDK profiles and timing scope](results/attention_v19.json).
+
+The earlier R2 transport attempt returned API success despite SDK log errors rejecting NCHW input normalization, and every output was zero. Its 96.8/42.0-ms durations are **invalid as acceleration evidence**. The failed receipts and error-log hashes are retained in the attention audit; R3 fixes the actual buffer layout rather than changing the numerical tolerance.
+
 ## Lightweight tests
 
 With NumPy, OpenCV and pytest installed, the geometry, queue and calibration tests need no weights or hardware:
@@ -93,7 +107,7 @@ PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -p no:cacheprovider \
   tests/test_rectified_mapping.py
 ```
 
-Torch enables the additional synthetic RKNN lifecycle/contract tests. The public snapshot's complete focused test command and result are recorded in [the test receipt](results/synthetic_tests_v17.json). Synthetic SDK calls never establish hardware execution. No host real-image tracking or model inference is used in these checks.
+Torch enables the additional synthetic RKNN lifecycle/contract tests. The [v19 test receipt](results/synthetic_tests_v19.json) records the focused cache, graph and runtime checks for this revision; the [v17 receipt](results/synthetic_tests_v17.json) retains the earlier suite at its recorded source hashes. Synthetic SDK calls never establish hardware execution. No host real-image tracking or model inference is used in these checks.
 
 ## Setup and external dependencies
 
@@ -154,6 +168,8 @@ It associates actual timestamps within 20 ms without interpolation and computes 
 For the complete CameraHead experiment, use `capture-v15-camera-board.py`, `export-v15-camera-board.py`, `check-v15-camera-onnx-board.py`, `compile-v15-camera.py` and `run-v15-camera-board.py`. Here capture, ONNX export with tracing, numerical checks and actual inference all run on the board; only RKNN compilation runs on the host. The exported ONNX shares 69 original weight tensors, but the compiled model is 1.711 GB. Do not infer its runtime memory use from ONNX weight sharing.
 
 Captures use the official checkpoint and real image. Export preserves original block weights and exact GELU; CPU PyTorch references are produced on the board. Execute normal timing separately from `--collect-perf-detail`, then inspect actual SDK operator targets. Compilation success or a core-mask request does not prove NPU execution. Numerical error and complete input/run/output-copy/release time must accompany every hardware result. No model, ONNX, RKNN, captured tensor or SDK binary is committed.
+
+The v19 attention diagnostic is `capture-v19-attention-board.py` → `export-v19-attention.py` → `check-v19-attention-onnx-board.py` → `compile-v12-rknn-block.py` → **`run-v19-attention-board-r3.py`**. Export and compilation run on the host; actual CPU ORT and NPU calls run on the board. Compile the full graph, the six-head graph and one five-head graph; the last compiled model is shared by two separate runtime contexts. Use `--mode baseline` with one model/compile-receipt/SHA entry, or `--mode parallel` with three ordered entries (six-head, five-head, five-head). The R3 entrypoint needs the frozen R1/R2 helpers alongside it. R1/R2 alone retain failed layout experiments. Run each normal/profile case in a new directory, check the saved numerical errors and SDK stderr as well as API return codes, and never treat an ADB transport exit code as proof that the board diagnostic passed.
 
 The frozen capture drivers also pin their original image and source hashes. For their exact experiment, obtain `office_loop.zip` from the upstream repository separately. Its numbered JPEG files have no original acquisition timestamps; they cannot establish camera input rate. The capture's fixed board layout can be recreated outside this repository at `/mnt/vggt-data/vggt-slam2`.
 
