@@ -48,6 +48,8 @@ def arguments():
                    help="Measured-observation stride for delayed depth replay; live frames remain unchanged")
     p.add_argument("--tracking-width", type=int, default=480)
     p.add_argument("--tracking-features", type=int, default=800)
+    p.add_argument("--local-calibration", type=Path,
+                   help="Diagnostic frontend K/distortion JSON; nonzero distortion disables global map association")
     p.add_argument("--max-loops", type=int, choices=[0, 1], default=0)
     p.add_argument("--salad-checkpoint", type=str)
     p.add_argument("--save-predictions", action="store_true")
@@ -144,6 +146,8 @@ def run(a):
     shutdown_sent = False
     future = None
     candidate_meta = None
+    candidate_started = None
+    candidate_rounds = 0
     pending_geometry = None
     latest = overlap = first = None
     last_submit = float("-inf")
@@ -165,12 +169,24 @@ def run(a):
         os.sched_setaffinity(0, a.frontend_cpus)
         import cv2
         import numpy as np
-        from vggt_slam.continuous_tracking import ContinuousDepthTracker, build_depth_candidate
+        from vggt_slam.continuous_tracking import (
+            ContinuousDepthTracker, build_depth_candidate, advance_depth_candidate)
         from vggt_slam.tracking_geometry import associate_pose
         cv2.setNumThreads(1)
+        calibration = None
+        if getattr(a, "local_calibration", None) is not None:
+            calibration = json.loads(a.local_calibration.read_text())
+            if (set(calibration) != {"K", "distortion", "image_hw", "source"}
+                    or len(calibration["image_hw"]) != 2
+                    or any(type(v) is not int or v <= 0 for v in calibration["image_hw"])):
+                raise ValueError("Calibration needs K, distortion, positive image_hw and source")
+            stats["local_frontend_calibration"] = calibration
+            stats["calibration_scope"] = "frontend_only; VGGT/SL4 receives original RGB and estimates its own intrinsics"
         tracker = ContinuousDepthTracker(max_width=a.tracking_width, max_features=a.tracking_features,
                                          history_frames=a.history_frames, history_seconds=a.history_seconds,
-                                         replay_stride=a.replay_stride)
+                                         replay_stride=a.replay_stride,
+                                         intrinsic_raw=calibration["K"] if calibration else None,
+                                         distortion=calibration["distortion"] if calibration else None)
         executor = ThreadPoolExecutor(max_workers=1, initializer=os.sched_setaffinity,
                                       initargs=(0, a.candidate_cpus), thread_name_prefix="depth-replay")
         poses = (a.output / "tracking.jsonl").open("w")
@@ -219,15 +235,29 @@ def run(a):
                                         age_seconds=packet["newest_frame_age_seconds"]))
             if future is not None and future.done():
                 candidate = future.result()
-                applied = tracker.apply_depth_candidate(candidate)
-                applied.update(kind="depth_adoption", graph_node_id=candidate_meta["graph_node_id"],
-                               revision=candidate_meta["revision"], completed_monotonic=time.monotonic(),
-                               anchor_age_seconds=time.monotonic()-candidate_meta["anchor"]["captured_monotonic"],
-                               after_source_eof=source.done)
-                if applied["adopted"]:
-                    active_node = candidate_meta["graph_node_id"]
-                write_row(events, applied)
-                future = candidate_meta = None
+                gap = tracker.state["sequence"]-candidate["last_sequence"]
+                if candidate["available"] and gap > 3:
+                    if candidate_rounds < 8 and time.monotonic()-candidate_started <= a.history_seconds:
+                        snapshot = tracker.snapshot_candidate_catchup(candidate)
+                        future = executor.submit(advance_depth_candidate, candidate, snapshot)
+                        candidate_rounds += 1
+                        write_row(events, dict(kind="depth_background_catchup", round=candidate_rounds,
+                                               anchor=candidate_meta["anchor"], pending_observations=gap,
+                                               snapshot_available=snapshot["available"], reason=snapshot["reason"],
+                                               submitted_monotonic=time.monotonic()))
+                        candidate = None
+                    else:
+                        candidate = dict(candidate, available=False, reason="background_catchup_budget_exhausted")
+                if candidate is not None:
+                    applied = tracker.apply_depth_candidate(candidate)
+                    applied.update(kind="depth_adoption", graph_node_id=candidate_meta["graph_node_id"],
+                                   revision=candidate_meta["revision"], completed_monotonic=time.monotonic(),
+                                   anchor_age_seconds=time.monotonic()-candidate_meta["anchor"]["captured_monotonic"],
+                                   background_rounds=candidate_rounds, after_source_eof=source.done)
+                    if applied["adopted"]:
+                        active_node = candidate_meta["graph_node_id"]
+                    write_row(events, applied)
+                    future = candidate_meta = None
             if pending_geometry is not None and future is None:
                 packet, pending_geometry = pending_geometry, None
                 try:
@@ -242,8 +272,12 @@ def run(a):
                                              model_image_size=packet["model_image_size"])
                     candidate_meta = dict(anchor=packet["anchor"], graph_node_id=packet["graph_node_id"],
                                           revision=packet["revision"])
+                    candidate_started = time.monotonic()
+                    candidate_rounds = 0
             item = source.read()
             if item is not None:
+                if calibration is not None and list(item["frame"].shape[:2]) != calibration["image_hw"]:
+                    raise ValueError("RGB dimensions differ from the supplied calibration")
                 begin = time.monotonic()
                 result = tracker.process(item["frame"], item["frame_id"], item["captured_monotonic"])
                 result.update(timestamp=item["timestamp"], graph_node_id=active_node,

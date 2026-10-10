@@ -4,7 +4,8 @@ import cv2
 import numpy as np
 import pytest
 
-from vggt_slam.continuous_tracking import ContinuousDepthTracker, build_depth_candidate, _LocalMap
+from vggt_slam.continuous_tracking import (ContinuousDepthTracker, build_depth_candidate,
+                                          advance_depth_candidate, _LocalMap)
 from vggt_slam.fast_tracking import model_pixel_affine
 
 
@@ -243,6 +244,154 @@ def test_strided_catchup_checks_latest_and_does_not_reuse_earlier_success(monkey
 def test_replay_stride_requires_positive_integer(stride):
     with pytest.raises(ValueError, match="replay_stride"):
         tracker(replay_stride=stride)
+
+
+def test_background_advance_uses_detached_history_then_applies_only_latest_gap(monkeypatch):
+    scene = Scene(monkeypatch)
+    frontend = tracker(replay_stride=3)
+    observe(frontend, scene, 0)
+    initial = build_depth_candidate(frontend.snapshot_depth_history(0, 10.), **scene.depth(0))
+    for index in range(1, 10):
+        observe(frontend, scene, index)
+    snapshot = frontend.snapshot_candidate_catchup(initial)
+    assert snapshot["available"] and snapshot["last_sequence"] == 0 and snapshot["target_sequence"] == 9
+    assert not snapshot["records"][0]["uv"].flags.writeable
+    assert [record["sequence"] for record in snapshot["records"]] == list(range(1, 10))
+    for index in (10, 11):  # Source/owner progress while the worker holds the old value snapshot.
+        observe(frontend, scene, index)
+    original_step = _LocalMap.step
+    calls = []
+
+    def checked_step(local_map, record):
+        calls.append(record["sequence"])
+        return original_step(local_map, record)
+
+    monkeypatch.setattr(_LocalMap, "step", checked_step)
+    advanced = advance_depth_candidate(initial, snapshot)
+    assert calls == [3, 6, 9]
+    assert advanced["available"] and advanced["last_sequence"] == 9
+    assert advanced["last_frame_id"] == 9 and advanced["last_captured_monotonic"] == 10.45
+    assert advanced["background_catchup_rounds"] == 1
+    assert advanced["background_catchup_available_observations"] == 9
+    assert advanced["background_catchup_observations"] == advanced["background_catchup_valid_poses"] == 3
+    assert advanced["background_catchup_skipped_observations"] == 6
+    assert initial["last_sequence"] == initial["_local_map"].last_sequence == 0
+    assert advanced["_local_map"] is not initial["_local_map"]
+    assert frontend.state["anchor_frame_id"] is None and frontend.metrics()["fresh_valid_poses"] == 0
+    calls.clear()
+    adopted = frontend.apply_depth_candidate(advanced)
+    assert adopted["adopted"] and calls == [11] and adopted["catchup_available_observations"] == 2
+    assert not adopted["emits_fresh_pose"] and frontend.metrics()["fresh_valid_poses"] == 0
+    assert frontend.metrics()["historical_replay_poses"] == 4
+    current = observe(frontend, scene, 12)
+    assert current["pose_valid"] and calls == [11, 12]
+    np.testing.assert_allclose(current["T_current_from_anchor"], scene.pose(12), atol=3e-3)
+    assert frontend.metrics()["fresh_valid_poses"] == 1
+
+
+def test_multiple_background_rounds_accumulate_real_history_only(monkeypatch):
+    scene = Scene(monkeypatch)
+    frontend = tracker(replay_stride=3)
+    observe(frontend, scene, 0)
+    candidate = build_depth_candidate(frontend.snapshot_depth_history(0, 10.), **scene.depth(0))
+    for index in range(1, 5):
+        observe(frontend, scene, index)
+    candidate = advance_depth_candidate(candidate, frontend.snapshot_candidate_catchup(candidate))
+    assert candidate["last_sequence"] == 4
+    for index in range(5, 10):
+        observe(frontend, scene, index)
+    candidate = advance_depth_candidate(candidate, frontend.snapshot_candidate_catchup(candidate))
+    assert candidate["last_sequence"] == 9 and candidate["background_catchup_rounds"] == 2
+    assert candidate["background_catchup_available_observations"] == 9
+    assert candidate["background_catchup_observations"] == 4  # Frames 3, 4, 7, 9.
+    assert frontend.apply_depth_candidate(candidate)["adopted"]
+    assert frontend.metrics()["historical_replay_poses"] == 4
+    assert frontend.metrics()["fresh_valid_poses"] == 0
+
+
+def test_background_final_quality_failure_keeps_previous_gauge(monkeypatch):
+    scene = Scene(monkeypatch)
+    frontend = tracker(replay_stride=3)
+    observe(frontend, scene, 0)
+    frontend.attach_depth(0, 10., **scene.depth(0))
+    observe(frontend, scene, 1)
+    candidate = build_depth_candidate(frontend.snapshot_depth_history(1, 10.05), **scene.depth(1))
+    for index in range(2, 5):
+        observe(frontend, scene, index)
+    monkeypatch.setattr(cv2, "calcOpticalFlowPyrLK", lambda a, b, p, unused, **kwargs:
+                        (p.copy(), np.zeros((len(p), 1), np.uint8), None))
+    observe(frontend, scene, 5)
+    advanced = advance_depth_candidate(candidate, frontend.snapshot_candidate_catchup(candidate))
+    assert not advanced["available"] and advanced["reason"] == "insufficient_landmarks"
+    assert advanced["last_frame_id"] == 5 and advanced["last_sequence"] == 5
+    assert "_local_map" not in advanced
+    assert advanced["background_catchup_valid_poses"] == 1  # Frame 4 cannot substitute for lost frame 5.
+    rejected = frontend.apply_depth_candidate(advanced)
+    assert not rejected["adopted"] and not rejected["emits_fresh_pose"]
+    assert frontend.state["anchor_frame_id"] == 0 and frontend.state["gauge_id"] == 0
+    assert candidate["last_sequence"] == 1 and candidate["available"]
+
+
+def test_background_missing_history_returns_unavailable_without_fabricated_endpoint(monkeypatch):
+    scene = Scene(monkeypatch)
+    frontend = tracker()
+    observe(frontend, scene, 0)
+    candidate = build_depth_candidate(frontend.snapshot_depth_history(0, 10.), **scene.depth(0))
+    for index in range(1, 30):
+        observe(frontend, scene, index)
+    snapshot = frontend.snapshot_candidate_catchup(candidate)
+    assert not snapshot["available"] and snapshot["reason"] == "candidate_catchup_history_expired"
+    advanced = advance_depth_candidate(candidate, snapshot)
+    assert not advanced["available"] and advanced["last_sequence"] == 0
+    assert advanced["advance_target_sequence"] == 29 and "_local_map" not in advanced
+    assert not frontend.apply_depth_candidate(advanced)["adopted"]
+    assert frontend.state["anchor_frame_id"] is None
+
+
+def test_candidate_capture_age_bounds_repeated_advances_and_final_short_gap(monkeypatch):
+    scene = Scene(monkeypatch)
+    frontend = tracker(history_seconds=.25, replay_stride=3)
+    observe(frontend, scene, 0)
+    candidate = build_depth_candidate(frontend.snapshot_depth_history(0, 10.), **scene.depth(0))
+    for index in range(1, 6):
+        observe(frontend, scene, index)
+    candidate = advance_depth_candidate(candidate, frontend.snapshot_candidate_catchup(candidate))
+    assert candidate["available"] and candidate["last_sequence"] == 5
+    observe(frontend, scene, 6)
+    snapshot = frontend.snapshot_candidate_catchup(candidate)
+    assert not snapshot["available"] and snapshot["reason"] == "candidate_anchor_age_exceeded"
+    assert snapshot["candidate_observation_age_seconds"] == pytest.approx(.3)
+    assert snapshot["maximum_candidate_age_seconds"] == .25
+    advanced = advance_depth_candidate(candidate, snapshot)
+    assert not advanced["available"] and "_local_map" not in advanced
+    assert not frontend.apply_depth_candidate(candidate)["adopted"]  # Gap is just one observation.
+    assert frontend.state["anchor_frame_id"] is None and frontend.metrics()["fresh_valid_poses"] == 0
+
+
+@pytest.mark.parametrize("mutation", ["owner", "base_identity", "config", "missing", "duplicate", "endpoint"])
+def test_background_snapshot_rejects_wrong_owner_base_or_observation_coverage(monkeypatch, mutation):
+    scene = Scene(monkeypatch)
+    frontend = tracker()
+    observe(frontend, scene, 0)
+    candidate = build_depth_candidate(frontend.snapshot_depth_history(0, 10.), **scene.depth(0))
+    observe(frontend, scene, 1)
+    snapshot = frontend.snapshot_candidate_catchup(candidate)
+    if mutation == "owner":
+        snapshot["owner_token"] = "another owner"
+    elif mutation == "base_identity":
+        snapshot["last_frame_id"] = 99
+    elif mutation == "config":
+        snapshot["config"]["replay_stride"] = 3
+    elif mutation == "missing":
+        snapshot["records"] = []
+    elif mutation == "duplicate":
+        snapshot["records"] *= 2
+    else:
+        snapshot["target_captured_monotonic"] += .01
+    with pytest.raises(ValueError):
+        advance_depth_candidate(candidate, snapshot)
+    assert candidate["last_sequence"] == 0 and candidate["available"]
+    assert frontend.metrics()["fresh_valid_poses"] == 0
 
 
 def test_same_observation_depth_refresh_changes_gauge_and_units_explicitly(monkeypatch):

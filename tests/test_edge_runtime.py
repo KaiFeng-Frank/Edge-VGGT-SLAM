@@ -195,6 +195,7 @@ class RunnerService:
         self.rows = [dict(timestamp=1000. + i * .2, path=f"original-{i}.png") for i in range(8)]
         self.results = queue.Queue(1)
         self.batch_jobs, self.snapshots, self.applies, self.executors = [], [], [], []
+        self.background_advances = []
         self.joins = 0
         self.source_closed = False
         service = self
@@ -307,6 +308,10 @@ class RunnerService:
                 self.observations = []
                 self.active = False
 
+            @property
+            def state(self):
+                return dict(sequence=len(self.observations) - 1)
+
             def process(self, frame, frame_id, captured):
                 self.observations.append((frame_id, captured))
                 return dict(frame_id=frame_id, captured_monotonic=captured, pose_valid=self.active,
@@ -320,14 +325,20 @@ class RunnerService:
                 service.snapshots.append(snapshot)
                 return snapshot
 
+            def snapshot_candidate_catchup(self, candidate):
+                assert candidate["last_sequence"] <= self.state["sequence"]
+                return dict(available=True, reason=None, anchor=candidate["snapshot"]["anchor"],
+                            last_sequence=candidate["last_sequence"], target_sequence=self.state["sequence"],
+                            observations=list(self.observations))
+
             def apply_depth_candidate(self, candidate):
-                catchup = len(self.observations) - len(candidate["snapshot"]["observations"])
+                catchup = self.state["sequence"] - candidate["last_sequence"] if candidate["available"] else 0
                 service.applies.append(catchup)
-                adopted = mode != "candidate_rejected"
+                adopted = candidate["available"]
                 if adopted:
                     self.active = True
                 return dict(adopted=adopted, catchup_observations=catchup,
-                            historical_replay=True, emits_fresh_pose=False)
+                            reason=candidate["reason"], historical_replay=True, emits_fresh_pose=False)
 
             def metrics(self):
                 return dict(observations=len(self.observations))
@@ -335,6 +346,9 @@ class RunnerService:
         class Future:
             def __init__(self, fn, args, kwargs):
                 self.polls = 0
+                self.threshold = (5 if fn is build and mode in ("background_advance", "background_budget",
+                                                               "advance_failure")
+                                  else 1 if fn is advance_candidate else 3)
                 try:
                     self.value, self.error = fn(*args, **kwargs), None
                 except Exception as exc:
@@ -342,7 +356,7 @@ class RunnerService:
 
             def done(self):
                 self.polls += 1
-                return self.polls >= 3
+                return self.polls >= self.threshold
 
             def result(self):
                 if self.error:
@@ -356,7 +370,7 @@ class RunnerService:
                 service.executors.append(self)
 
             def submit(self, fn, *args, **kwargs):
-                assert not self.futures or self.futures[-1].polls >= 3
+                assert not self.futures or self.futures[-1].polls >= self.futures[-1].threshold
                 future = Future(fn, args, kwargs)
                 self.futures.append(future)
                 return future
@@ -368,7 +382,17 @@ class RunnerService:
         def build(snapshot, **kwargs):
             if mode == "candidate_failure":
                 raise RuntimeError("synthetic depth worker failure")
-            return dict(snapshot=snapshot)
+            return dict(snapshot=snapshot, last_sequence=len(snapshot["observations"]) - 1,
+                        available=mode != "candidate_rejected",
+                        reason="synthetic quality rejection" if mode == "candidate_rejected" else None)
+
+        def advance_candidate(candidate, snapshot):
+            if mode == "advance_failure":
+                raise RuntimeError("synthetic advance worker failure")
+            assert snapshot["anchor"] == candidate["snapshot"]["anchor"]
+            service.background_advances.append(dict(base=candidate["last_sequence"],
+                                                    target=snapshot["target_sequence"]))
+            return dict(candidate, snapshot=snapshot, last_sequence=snapshot["target_sequence"])
 
         monkeypatch.setattr(edge, "time", SimpleNamespace(monotonic=self.now, sleep=lambda d: self.advance(d)))
         monkeypatch.setattr(edge.mp, "get_context", lambda method: Context())
@@ -379,12 +403,15 @@ class RunnerService:
         monkeypatch.setattr(mapping, "platform_sample", lambda: {"peak_rss_mib": 1.})
         monkeypatch.setattr(tracking, "ContinuousDepthTracker", Tracker)
         monkeypatch.setattr(tracking, "build_depth_candidate", build)
+        monkeypatch.setattr(tracking, "advance_depth_candidate", advance_candidate)
         self.args = SimpleNamespace(rgb_index=tmp_path / "rgb.txt", checkpoint=tmp_path / "model.pt",
             output=tmp_path / "run", max_frames=None, image_size=14, threads=2, mapper_cpus=(4, 5),
             backend="cpu", max_loops=0, salad_checkpoint=None, max_submaps=10,
             mapper_memory_limit_mib=100., save_predictions=False, frontend_cpus=(6, 7),
             candidate_cpus=(2, 3), capture_cpus=(0, 1), tracking_width=320, tracking_features=400,
             history_frames=30, history_seconds=10., bootstrap_gap=.1, map_period=.01, replay_stride=3)
+        if mode == "background_budget":
+            self.args.history_seconds = .2
 
     def now(self):
         self.clock += .01
@@ -421,7 +448,7 @@ def test_edge_main_preserves_exact_batch_identity_and_replays_pending_candidate(
 
 
 @pytest.mark.parametrize("mode", ["startup_failure", "early_stopped", "mapper_failure", "source_failure",
-                                 "candidate_failure", "cleanup_failure", "exit_failure"])
+                                 "candidate_failure", "advance_failure", "cleanup_failure", "exit_failure"])
 def test_edge_failures_cannot_report_success_and_cleanup_is_bounded(edge, monkeypatch, tmp_path, mode):
     service = RunnerService(edge, monkeypatch, tmp_path, mode)
     with pytest.raises(RuntimeError):
@@ -440,6 +467,38 @@ def test_rejected_candidate_never_creates_a_fresh_pose(edge, monkeypatch, tmp_pa
     assert metrics["status"] == "completed_experiment"
     assert metrics["pose_timing"]["fresh_valid_poses"] == 0
     assert service.applies and service.source_closed
+
+
+def test_coordinator_advances_large_gap_before_owner_adoption(edge, monkeypatch, tmp_path):
+    service = RunnerService(edge, monkeypatch, tmp_path, "background_advance")
+    metrics = edge.run(service.args)
+    assert metrics["status"] == "completed_experiment"
+    assert service.background_advances and service.background_advances[0] == dict(base=1, target=6)
+    assert all(gap <= 3 for gap in service.applies)
+    events = [json.loads(line) for line in (service.args.output / "events.jsonl").read_text().splitlines()]
+    advance = next(event for event in events if event["kind"] == "depth_background_catchup")
+    adopted = next(event for event in events if event["kind"] == "depth_adoption")
+    assert advance["pending_observations"] == 5 and advance["round"] == 1
+    assert adopted["adopted"] and adopted["background_rounds"] == 1
+    assert advance["anchor"]["frame_id"] == service.rows[1]["timestamp"]
+    assert advance["submitted_monotonic"] < adopted["completed_monotonic"]
+    assert metrics["source"]["delivered"] == len(service.rows)
+    assert service.source_closed and all(executor.closed for executor in service.executors)
+
+
+def test_coordinator_budget_exhaustion_rejects_without_owner_replay_or_hidden_retry(edge, monkeypatch, tmp_path):
+    service = RunnerService(edge, monkeypatch, tmp_path, "background_budget")
+    metrics = edge.run(service.args)
+    assert metrics["status"] == "completed_experiment" and not service.background_advances
+    events = [json.loads(line) for line in (service.args.output / "events.jsonl").read_text().splitlines()]
+    rejected = next(event for event in events if event["kind"] == "depth_adoption")
+    assert not rejected["adopted"] and rejected["reason"] == "background_catchup_budget_exhausted"
+    assert rejected["background_rounds"] == 0
+    assert not rejected["emits_fresh_pose"] and rejected["catchup_observations"] == 0
+    assert not any(event["kind"] == "depth_background_catchup" for event in events)
+    assert metrics["source"]["delivered"] == len(service.rows)
+    assert metrics["pose_timing"]["fresh_valid_poses"] == 0
+    assert service.source_closed and all(executor.closed for executor in service.executors)
 
 
 @pytest.mark.parametrize("close_failure", [False, True])

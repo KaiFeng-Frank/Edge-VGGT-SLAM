@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "experiment": "original_VGGT_CameraHead_RK3588S_v15",
+  "status": "subnetwork_measured; complete_pipeline_not_integrated",
+  "scope": {
+    "checkpoint": "facebook/VGGT-1B",
+    "original_weights_retained": true,
+    "iterations": 4,
+    "trunk_block_calls_per_forward": 16,
+    "input": "saved camera tokens from original CPU aggregator",
+    "input_shape": [
+      1,
+      2,
+      2048
+    ],
+    "output_shape": [
+      1,
+      2,
+      9
+    ],
+    "pose_encoding": "absT_quaR_FoV",
+    "source_requested_image_size": 112,
+    "source_actual_image_hw": [
+      56,
+      112
+    ],
+    "same_two_frame_input_repeated": true,
+    "whole_VGGT_NPU_inference": false,
+    "integrated_into_tracking_mapping_pipeline": false,
+    "sustained_20Hz_validated": false,
+    "map_update_target_validated": false,
+    "accuracy_against_ground_truth_validated": false,
+    "physical_camera_latency_validated": false,
+    "whole_board_8GB_operation_validated": false,
+    "ORB_used": false
+  },
+  "environment": {
+    "soc": "RK3588S",
+    "board_RAM_GB": 16,
+    "runtime_version": "RKNN 2.3.2",
+    "driver_version": "0.7.2",
+    "requested_core_mask": 7,
+    "compile_target": "rk3588",
+    "compile_float_dtype": "float16",
+    "integer_quantization": false,
+    "CPU_reference_threads": 4,
+    "CPU_reference_cores": "A76 cores 4-7"
+  },
+  "normal_timing": {
+    "unit": "milliseconds",
+    "actual_synchronous_SDK_calls": 4,
+    "profile_collection_enabled": false,
+    "call_ms": [
+      185.97893600235693,
+      202.90785399993183,
+      200.61768700543325,
+      207.41177099989727
+    ],
+    "first_call_ms": 185.97893600235693,
+    "last_three_mean_ms": 203.6457706684208,
+    "all_four_mean_ms": 199.22906200190482,
+    "initialization_ms": 1793.6198050010717,
+    "includes": [
+      "SDK input submission",
+      "synchronous rknn_run",
+      "output acquisition",
+      "owned output copy",
+      "output release",
+      "small wrapper bookkeeping"
+    ],
+    "excludes": [
+      "model loading and initialization",
+      "file saving",
+      "reference comparison"
+    ],
+    "CPU_reference_call_ms": [
+      1260.3778350021457,
+      1250.201875998755,
+      1251.400916997227
+    ],
+    "CPU_reference_mean_ms": 1253.9935426660425,
+    "CPU_reference_scope": "original FP32 complete CameraHead with small trunk hooks; excludes backbone and loading",
+    "controlled_speedup_percentage_established": false,
+    "sustained_throughput_established": false
+  },
+  "actual_operator_profile": {
+    "separate_synchronous_SDK_calls": 4,
+    "profile_init_flag": 8,
+    "operators_per_call": 210,
+    "internal_NPU_operators_per_call": 207,
+    "internal_CPU_operators_per_call": [
+      {
+        "type": "Reshape",
+        "id": 209
+      }
+    ],
+    "CPU_IO_operators_per_call": [
+      {
+        "type": "InputOperator",
+        "id": 1
+      },
+      {
+        "type": "OutputOperator",
+        "id": 210
+      }
+    ],
+    "all_internal_operators_on_NPU": false,
+    "CPU_only_IO": false,
+    "attention_operators_on_NPU_per_call": 16,
+    "evidence": "actual SDK profile targets for each of four executed calls; not compiler assignments alone",
+    "hardware_utilization_independently_measured": false,
+    "profile_text_sha256": [
+      "f5f02961d91283366e35b992130bed3bfb3d909929accca3a45417aa579d266d",
+      "7fa7434104d5e978f20f8fb4a7b5a4857bd0d6fa4a3a5239d40010117de5b486",
+      "6bacdc44fd90ff73e3f67e57a953d5827947b99d1e3b5f8b63248da28646d89a",
+      "0f3f073bdfd8285217342cf21cd69f4b8a6dcbe5f7ed3739ece29d9e779c3a21"
+    ]
+  },
+  "memory": {
+    "original_unique_FP32_weight_bytes": 864698440,
+    "shared_ONNX_initializers": 69,
+    "ONNX_file_bytes": 864972423,
+    "RKNN_file_bytes": 1711514807,
+    "SDK_reported_bytes": {
+      "total_weight_size": 1704609600,
+      "total_internal_size": 430272,
+      "total_dma_allocated_size": 3424231424,
+      "total_sram_size": 0,
+      "free_sram_size": 0
+    },
+    "SDK_DMA_decimal_GB": 3.424231424,
+    "scope": "SDK allocation query for this subnetwork; not whole-board RSS",
+    "packing_duplication_mechanism_independently_verified": false
+  },
+  "error_against_original_FP32_CameraHead": {
+    "array_equal": false,
+    "finite": true,
+    "max_abs_error": 0.006503763608634472,
+    "rmse": 0.003567200915830776,
+    "relative_l2": 0.007669214851523948,
+    "strict_elementwise_rtol1e4_atol1e5": false,
+    "relative_l2_percent": 0.7669214851523948,
+    "comparison_is_ground_truth_accuracy": false,
+    "all_eight_saved_NPU_outputs_elementwise_identical": true,
+    "component_errors": {
+      "encoding": "absT_quaR_FoV",
+      "quaternion_order": "XYZW_scalar_last",
+      "extrinsic_convention": "camera_from_world; OpenCV x-right,y-down,z-forward",
+      "FoV_order": "height_then_width; radians",
+      "image_size_hw": [
+        56,
+        112
+      ],
+      "translation_units": "unvalidated_model_units_not_metres",
+      "comparison_target": "original_FP32_subnetwork_output_not_GT",
+      "frames": [
+        {
+          "frame_index": 0,
+          "translation_error_xyz_model_units": [
+            -0.0002262764610350132,
+            -0.005743108224123716,
+            0.0002950206398963928
+          ],
+          "translation_error_l2_model_units": 0.00575513077946808,
+          "camera_center_error_l2_model_units": 0.005735032423097532,
+          "normalized_quaternion_rotation_error_degrees": 0.7784221410902615,
+          "reference_quaternion_norm": 0.9627160139505101,
+          "NPU_quaternion_norm": 0.9611702634193751,
+          "FoV_hw_error_radians": [
+            -0.0046338289976119995,
+            -0.0018776655197143555
+          ],
+          "FoV_hw_absolute_error_degrees": [
+            0.2654988445485044,
+            0.10758230961687085
+          ],
+          "CPU_fx_fy_pixels": [
+            104.14238552217218,
+            264.34836941162587
+          ],
+          "NPU_fx_fy_pixels": [
+            104.3771958820919,
+            270.32637841732065
+          ],
+          "focal_fx_fy_relative_errors": [
+            0.002254705024686884,
+            0.02261413232470606
+          ]
+        },
+        {
+          "frame_index": 1,
+          "translation_error_xyz_model_units": [
+            0.00015476159751415253,
+            -0.0058113932609558105,
+            -0.0001638599205762148
+          ],
+          "translation_error_l2_model_units": 0.005815762448649273,
+          "camera_center_error_l2_model_units": 0.005805361050035173,
+          "normalized_quaternion_rotation_error_degrees": 0.8689081237830493,
+          "reference_quaternion_norm": 0.9651835219604191,
+          "NPU_quaternion_norm": 0.9635591605155696,
+          "FoV_hw_error_radians": [
+            -0.005554035305976868,
+            -0.0022492408752441406
+          ],
+          "FoV_hw_absolute_error_degrees": [
+            0.3182227822991253,
+            0.12887200925980058
+          ],
+          "CPU_fx_fy_pixels": [
+            104.27900371426601,
+            259.8745638278237
+          ],
+          "NPU_fx_fy_pixels": [
+            104.56095244154326,
+            266.82964601062787
+          ],
+          "focal_fx_fy_relative_errors": [
+            0.0027037919162501652,
+            0.026763227921806805
+          ]
+        }
+      ],
+      "pair_motion_second_from_first": {
+        "formula": "E_second @ inverse(E_first)",
+        "rotation_error_degrees": 0.160284099298854,
+        "translation_error_l2_model_units": 0.0005918331108965101
+      }
+    }
+  },
+  "ONNX_export_validation": {
+    "executed_on_board_with_CPU_ORT": true,
+    "original_and_fixed_perturbed_inputs_checked": 2,
+    "runs": [
+      {
+        "input_index": 0,
+        "comparison": {
+          "array_equal": false,
+          "finite": true,
+          "max_abs_error": 2.980232238769531e-07,
+          "rmse": 1.0555278786648509e-07,
+          "relative_l2": 2.2693058995721743e-07,
+          "strict_elementwise_rtol1e4_atol1e5": true
+        }
+      },
+      {
+        "input_index": 1,
+        "comparison": {
+          "array_equal": false,
+          "finite": true,
+          "max_abs_error": 5.364418029785156e-07,
+          "rmse": 2.5365303512096906e-07,
+          "relative_l2": 5.451263286064075e-07,
+          "strict_elementwise_rtol1e4_atol1e5": true
+        }
+      }
+    ],
+    "strict_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "array_equal_to_FP32_CPU": false,
+    "sampled_input_dependence": true,
+    "arbitrary_input_dependence_proven": false
+  },
+  "cleanup": {
+    "normal_and_profile_outputs_released": true,
+    "normal_and_profile_contexts_destroyed": true,
+    "affinity_restored": true,
+    "eight_actual_SDK_run_calls": true
+  },
+  "provenance": {
+    "checkpoint_record": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "checkpoint_reread_by_independent_host_review": false,
+    "ONNX_sha256": "2e4f5213ea2d7dea1ba87854abd7c3603b353c57ef76472b8b549fc236711fcd",
+    "RKNN_sha256": "398b2d7508066ca509b8848327be9ec1051465f56e1f5dc6b2cfd5dcfb00583f",
+    "saved_CPU_reference_file_sha256": "bfdd32c1c7a2f4e734e164f38ad96fe913d81bfebf96f6223045cf4f94d2df38",
+    "saved_NPU_output_file_sha256": "781fed92ecee0406f0bd8da00f13b4d25a66f9a196287173bf96ec56e7cadadc",
+    "receipt_sha256": {
+      "capture_receipt_sha256": "1c3234cfa65914a6f41634432153fa8ebb6dcf9c8d3eb3215f0955fc0ed000f1",
+      "export_receipt_sha256": "d96bbff0a7271fecc9e88b7640a378da09e1e4e2113c77b50be42bff5e52f1d7",
+      "compile_receipt_sha256": "f8097e14da6e8385aa4f6f1bfdaed97b41dfa9f014b5f6b9a4062616f65e3c5b",
+      "normal_receipt_sha256": "ce1093654a1d77acb29e5e116121ada46fcae96c29368056057f5ab4858e5175",
+      "profile_receipt_sha256": "f711b10875a59480244464760b079c58b47b2c7850ea1e41fe8cf0eed437b814",
+      "ORT_receipt_sha256": "f60886f403c86609d475a49cf9c86ad39281c555ba93518386da5dfb15dfd9ac"
+    },
+    "independent_review_sha256": "c239bfcf2bb67d68d82bbd56d6bef79b5e7cc358fa52b1c009eea79a4bbcc8ab",
+    "independent_review_checks_passed": 1001,
+    "independent_review_checks_failed": 0,
+    "independent_review_method": "stream fileSHA plus NumPy algebra on saved arrays, no Torch/ORT/RKNN/model imports",
+    "public_program_sha256": {
+      "deploy/rk3588/validation/capture-v15-camera-board.py": "d50c217354b2f48f50626ff1ea2c98671d5611743ae0e97bed1c04b2991341a0",
+      "deploy/rk3588/validation/export-v15-camera-board.py": "3f97e96e6e9f7beaf5a5de56569774aa79fa17eb7e30664e54cdbbfec224a033",
+      "deploy/rk3588/validation/compile-v15-camera.py": "77b4272a4d50c2c2ab22f1d77ffeb9aab924070157aeab3cca747c608a398348",
+      "deploy/rk3588/validation/run-v15-camera-board.py": "e973f7e2e88e6f144f86874bb840eeb7dd1eec57a01354793f98bed40073fcc2",
+      "deploy/rk3588/validation/check-v15-camera-onnx-board.py": "3d7740cac2d94b17dafa2ed822944ad09062c3441c2a1acc214a649b268c0c0b"
+    }
+  },
+  "limitations": [
+    "The measured head starts from saved CPU-produced camera tokens; the backbone, depth head, tracking and SL4 mapping are excluded.",
+    "207 internal NPU operators plus a CPU final Reshape means this complete head is not an all-internal-NPU implementation.",
+    "Eight runs reuse one two-frame input; they are not eight new online pose publications.",
+    "Errors are relative to original FP32 subnetwork output, not sensor ground truth or SLAM trajectory accuracy.",
+    "The fixed elementwise rtol=1e-4, atol=1e-5 gate fails for RKNN and passes for the two ORT checks.",
+    "Packed RKNN size and SDK DMA cost are large; no whole-model simultaneous-memory or 8GB-board acceptance is established.",
+    "Different precisions and timing boundaries in one short session do not establish a controlled speedup percentage.",
+    "SDK headers, libraries, model weights, compiled models, image data and captured tensors are external and are not included in this summary."
+  ]
+}

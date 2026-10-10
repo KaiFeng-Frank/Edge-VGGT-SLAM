@@ -434,6 +434,371 @@
       "mapper_peak_rss_mib": 7155.1640625,
       "frontend_peak_rss_mib": 67.63671875,
       "raw_metrics_sha256": "d28dbde8e019676f3bf5416541e29b97480e0415818a97f4ed633437e49fa184"
+    },
+    "xnn112-r4": {
+      "status": "completed_experiment",
+      "ORB_used": false,
+      "npu_used": false,
+      "model_backbone": "original_VGGT",
+      "pose_timing": {
+        "delivered_observations": 698,
+        "fresh_valid_poses": 532,
+        "valid_fraction_of_original_frames": 0.6666666666666666,
+        "valid_fraction_of_delivered_frames": 0.7621776504297995,
+        "replay_duration_seconds": 26.572059271631588,
+        "valid_pose_publications_per_full_second": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          12,
+          31,
+          28,
+          17,
+          26,
+          30,
+          24,
+          18,
+          29,
+          30,
+          23,
+          24,
+          28,
+          29,
+          30,
+          22,
+          15,
+          21,
+          30,
+          25,
+          20
+        ],
+        "minimum_full_second_pose_count": 0,
+        "first_valid_seconds_after_start": 5.59217206199537,
+        "valid_pose_latency_p50_ms": 64.78115369463922,
+        "valid_pose_latency_p95_ms": 101.35171322908717,
+        "valid_pose_latency_max_ms": 115.62677874462679,
+        "maximum_valid_pose_publication_gap_seconds": 0.07790329999988899,
+        "latency_origin": "scheduled_RGB_replay_arrival_before_decode",
+        "latency_end": "pose_JSONL_write_and_flush_return",
+        "physical_camera_latency_validated": false,
+        "startup_and_losses_included_in_per_second_counts": true
+      },
+      "map_updates": 7,
+      "mapper_exitcode": 0,
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 798,
+        "delivered": 698,
+        "overwritten": 100,
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "tracker": {
+        "observations": 698,
+        "fresh_valid_poses": 532,
+        "lost_observations": 0,
+        "waiting_observations": 166,
+        "features_detected": 9448,
+        "triangulated_landmarks": 7541,
+        "adopted_depth_seeds": 7,
+        "rejected_depth_seeds": 0,
+        "historical_replay_poses": 297,
+        "maximum_history_frames": 282,
+        "maximum_landmarks": 379,
+        "frame_id": 1305031128.747363,
+        "sequence": 697,
+        "gauge_id": 6,
+        "raw_hw": [
+          480,
+          640
+        ],
+        "tracking_hw": [
+          240,
+          320
+        ],
+        "retained_gray_frames": 1,
+        "tracked_features": 400,
+        "history_frames": 250,
+        "retained_history_seconds": 9.968086004257202,
+        "oldest_history_frame_id": 1305031118.779277,
+        "landmarks": 379,
+        "local_keyframes": 6,
+        "anchor_frame_id": 1305031126.779379,
+        "frontend": "continuous_shi_tomasi_lk_depth_pnp",
+        "replay_stride": 3,
+        "camera_intrinsic_source": "vggt_estimated",
+        "distortion_compensated": false,
+        "metric_scale_validated": false,
+        "accuracy_validated": false,
+        "real_time_validated": false
+      },
+      "map_timing": [
+        {
+          "revision": 1,
+          "processing_seconds": 3.87619268099661,
+          "age_seconds": 3.9170096931702574
+        },
+        {
+          "revision": 2,
+          "processing_seconds": 3.5145437280007172,
+          "age_seconds": 3.560128483826702
+        },
+        {
+          "revision": 3,
+          "processing_seconds": 3.6013775699975668,
+          "age_seconds": 3.6547814424848184
+        },
+        {
+          "revision": 4,
+          "processing_seconds": 3.792083548003575,
+          "age_seconds": 3.842702995192667
+        },
+        {
+          "revision": 5,
+          "processing_seconds": 5.253607860999182,
+          "age_seconds": 5.304534065406187
+        },
+        {
+          "revision": 6,
+          "processing_seconds": 4.02650890500081,
+          "age_seconds": 4.126881232572487
+        },
+        {
+          "revision": 7,
+          "processing_seconds": 4.837570777999645,
+          "age_seconds": 4.9117708108897205
+        }
+      ],
+      "mapper": {
+        "image_size": 112,
+        "threads": 3,
+        "cpus": [
+          4,
+          5,
+          6
+        ],
+        "backend": "xnnpack-f16",
+        "max_loops": 0,
+        "max_submaps": 1024,
+        "memory_limit_mib": 8500.0,
+        "save_predictions": true
+      },
+      "mapper_peak_rss_mib": 7137.55859375,
+      "frontend_peak_rss_mib": 67.0859375,
+      "raw_metrics_sha256": "5b50722bcbef50b6a7f4818dd194c5e6dbf3b7470375c54d2658e8caff4d78ad",
+      "source_archive_sha256": "2b14817ff405d02150fd57dfa4e30d863a6b19cec0f761d2eaedb823a3c6dda0",
+      "source_sha256": {
+        "scripts/run_edge.py": "d42747fc683af8deb579fa1e0faabc5c876a9cd8cde29c53c9aee74cd02f59db",
+        "vggt_slam/continuous_tracking.py": "fd1daf5db78ab922616a9005107bd87ce0f0932e6ae8ad07fcede3f6a5425c52",
+        "vggt_slam/edge_mapping.py": "26af9f5a8a4f8ec590e7b1fb2b8bab8bf2c7fd414ee0153d4f77edb539ee07a5",
+        "vggt_slam/timestamp_replay.py": "f90e5466241a71ae460378529f4e6bf84d0c7ddc6d988baf769f28866340aa18"
+      },
+      "historical_background_continuation": {
+        "maximum_rounds": 8,
+        "wall_budget_seconds": 10,
+        "owner_maximum_remaining_observations": 3
+      }
+    },
+    "xnn112-calibrated-r5": {
+      "status": "completed_experiment",
+      "ORB_used": false,
+      "npu_used": false,
+      "model_backbone": "original_VGGT",
+      "pose_timing": {
+        "delivered_observations": 739,
+        "fresh_valid_poses": 576,
+        "valid_fraction_of_original_frames": 0.7218045112781954,
+        "valid_fraction_of_delivered_frames": 0.7794316644113667,
+        "replay_duration_seconds": 26.572059144564264,
+        "valid_pose_publications_per_full_second": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          30,
+          28,
+          21,
+          25,
+          31,
+          27,
+          23,
+          30,
+          30,
+          30,
+          27,
+          20,
+          24,
+          31,
+          29,
+          27,
+          22,
+          27,
+          28,
+          31
+        ],
+        "minimum_full_second_pose_count": 0,
+        "first_valid_seconds_after_start": 5.494252219003101,
+        "valid_pose_latency_p50_ms": 56.493795516871614,
+        "valid_pose_latency_p95_ms": 89.82577575625328,
+        "valid_pose_latency_max_ms": 106.30054127977928,
+        "maximum_valid_pose_publication_gap_seconds": 0.06294196499948157,
+        "latency_origin": "scheduled_RGB_replay_arrival_before_decode",
+        "latency_end": "pose_JSONL_write_and_flush_return",
+        "physical_camera_latency_validated": false,
+        "startup_and_losses_included_in_per_second_counts": true
+      },
+      "map_updates": 6,
+      "mapper_exitcode": 0,
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 798,
+        "delivered": 739,
+        "overwritten": 59,
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "tracker": {
+        "observations": 739,
+        "fresh_valid_poses": 576,
+        "lost_observations": 0,
+        "waiting_observations": 163,
+        "features_detected": 9566,
+        "triangulated_landmarks": 9545,
+        "adopted_depth_seeds": 6,
+        "rejected_depth_seeds": 0,
+        "historical_replay_poses": 307,
+        "maximum_history_frames": 286,
+        "maximum_landmarks": 397,
+        "frame_id": 1305031128.747363,
+        "sequence": 738,
+        "gauge_id": 5,
+        "raw_hw": [
+          480,
+          640
+        ],
+        "tracking_hw": [
+          240,
+          320
+        ],
+        "retained_gray_frames": 1,
+        "tracked_features": 400,
+        "history_frames": 266,
+        "retained_history_seconds": 9.968086004257202,
+        "oldest_history_frame_id": 1305031118.779277,
+        "landmarks": 382,
+        "local_keyframes": 6,
+        "anchor_frame_id": 1305031123.851444,
+        "frontend": "continuous_shi_tomasi_lk_depth_pnp",
+        "replay_stride": 3,
+        "camera_intrinsic_source": "explicit_external",
+        "distortion_compensated": true,
+        "metric_scale_validated": false,
+        "accuracy_validated": false,
+        "real_time_validated": false
+      },
+      "map_timing": [
+        {
+          "revision": 1,
+          "processing_seconds": 3.8433273440023186,
+          "age_seconds": 3.8907451922495966
+        },
+        {
+          "revision": 2,
+          "processing_seconds": 3.593136527997558,
+          "age_seconds": 3.641668177493557
+        },
+        {
+          "revision": 3,
+          "processing_seconds": 3.8148131749985623,
+          "age_seconds": 3.8797862698556855
+        },
+        {
+          "revision": 4,
+          "processing_seconds": 5.003408003001823,
+          "age_seconds": 5.054987652169075
+        },
+        {
+          "revision": 5,
+          "processing_seconds": 4.954542163999577,
+          "age_seconds": 5.0016669560354785
+        },
+        {
+          "revision": 6,
+          "processing_seconds": 5.105417512997519,
+          "age_seconds": 5.174920346988074
+        }
+      ],
+      "mapper": {
+        "image_size": 112,
+        "threads": 3,
+        "cpus": [
+          4,
+          5,
+          6
+        ],
+        "backend": "xnnpack-f16",
+        "max_loops": 0,
+        "max_submaps": 1024,
+        "memory_limit_mib": 8500.0,
+        "save_predictions": true
+      },
+      "mapper_peak_rss_mib": 7155.0859375,
+      "frontend_peak_rss_mib": 66.8671875,
+      "raw_metrics_sha256": "46a2146cd3799ae51b36d18e12af745bd79da5a522447dffb9a348fae6464fe6",
+      "source_archive_sha256": "2b14817ff405d02150fd57dfa4e30d863a6b19cec0f761d2eaedb823a3c6dda0",
+      "source_sha256": {
+        "scripts/run_edge.py": "d42747fc683af8deb579fa1e0faabc5c876a9cd8cde29c53c9aee74cd02f59db",
+        "vggt_slam/continuous_tracking.py": "fd1daf5db78ab922616a9005107bd87ce0f0932e6ae8ad07fcede3f6a5425c52",
+        "vggt_slam/edge_mapping.py": "26af9f5a8a4f8ec590e7b1fb2b8bab8bf2c7fd414ee0153d4f77edb539ee07a5",
+        "vggt_slam/timestamp_replay.py": "f90e5466241a71ae460378529f4e6bf84d0c7ddc6d988baf769f28866340aa18"
+      },
+      "historical_background_continuation": {
+        "maximum_rounds": 8,
+        "wall_budget_seconds": 10,
+        "owner_maximum_remaining_observations": 3
+      },
+      "local_frontend_calibration": {
+        "K": [
+          [
+            517.3,
+            0.0,
+            318.6
+          ],
+          [
+            0.0,
+            516.5,
+            255.3
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "distortion": [
+          0.2624,
+          -0.9531,
+          -0.0054,
+          0.0026,
+          1.1633
+        ],
+        "image_hw": [
+          480,
+          640
+        ],
+        "source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats#calibration_of_the_color_camera"
+      },
+      "calibration_scope": "frontend_only; VGGT/SL4 receives original RGB and estimates its own intrinsics",
+      "global_association_available": false,
+      "global_association_reason": "Nonzero distortion cannot be represented by a single projective bridge to the unchanged raw-RGB mapper."
     }
   }
 }

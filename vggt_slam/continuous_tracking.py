@@ -76,6 +76,21 @@ def _replay_subset(records, stride):
     return selected
 
 
+def _candidate_geometry(candidate, owner_token, config):
+    if candidate.get("owner_token") != owner_token:
+        raise ValueError("Depth candidate belongs to a different tracker")
+    geometry = candidate.get("_local_map")
+    if (not isinstance(geometry, _LocalMap) or geometry.config != config
+            or geometry.anchor_frame_id != candidate["anchor_frame_id"]
+            or geometry.anchor_captured != candidate["anchor_captured_monotonic"]
+            or geometry.last_sequence != candidate["last_sequence"]
+            or geometry.last_frame_id != candidate["last_frame_id"]
+            or geometry.last_captured != candidate["last_captured_monotonic"]
+            or not np.array_equal(geometry.K, candidate["K_tracking"])):
+        raise ValueError("Depth candidate identity/geometry does not match its measured history")
+    return geometry
+
+
 def _missing(reason, matched=0):
     return dict(pose_valid=False, reason=reason, T_current_from_anchor=None,
                 matched_points=int(matched), inliers=0, inlier_ratio=0.,
@@ -310,6 +325,9 @@ def build_depth_candidate(history_snapshot, *, depth, confidence, K_model,
                      replay_stride=config["replay_stride"],
                      replay_available_observations=len(records) - 1,
                      replay_skipped_observations=0,
+                     background_catchup_rounds=0, background_catchup_observations=0,
+                     background_catchup_valid_poses=0, background_catchup_available_observations=0,
+                     background_catchup_skipped_observations=0, background_catchup_seconds=0.,
                      retained_depth_points=len(ids), model_hw=model_hw,
                      model_from_raw=A, tracking_from_raw=B, K_tracking=K,
                      K_model_tracking=estimated_K, depth_sampling="nearest_pixel_center",
@@ -336,6 +354,64 @@ def build_depth_candidate(history_snapshot, *, depth, confidence, K_model,
                                                  - candidate["replay_observations"])
     candidate["replay_seconds"] = time.perf_counter() - started
     return candidate
+
+
+def advance_depth_candidate(candidate, history_snapshot):
+    """Advance a detached candidate using copied real tracks in a worker.
+
+    This never accesses the owner or source and never emits historical poses.
+    The input candidate is retained unchanged. Missing/expired history or a
+    failed final PnP returns unavailable, with no fallback geometry to adopt.
+    """
+    started = time.perf_counter()
+    geometry = _candidate_geometry(candidate, history_snapshot["owner_token"], history_snapshot["config"])
+    for name in ("anchor_frame_id", "anchor_captured_monotonic", "last_sequence",
+                 "last_frame_id", "last_captured_monotonic"):
+        if history_snapshot[name] != candidate[name]:
+            raise ValueError("Catchup snapshot does not match the candidate's exact source identity")
+    result = {key: value.copy() if isinstance(value, np.ndarray) else value
+              for key, value in candidate.items() if key != "_local_map"}
+    result.update(available=False, candidate_observation_age_seconds=history_snapshot["candidate_observation_age_seconds"],
+                  maximum_candidate_age_seconds=history_snapshot["maximum_candidate_age_seconds"],
+                  advance_target_sequence=history_snapshot["target_sequence"],
+                  historical_replay=True, emits_fresh_pose=False)
+    if not history_snapshot["available"]:
+        result["reason"] = history_snapshot["reason"]
+    else:
+        records = history_snapshot["records"]
+        expected = candidate["last_sequence"]
+        for record in records:
+            expected += 1
+            if record["sequence"] != expected:
+                raise ValueError("Catchup snapshot must cover consecutive measured observations")
+        last = records[-1] if records else dict(sequence=candidate["last_sequence"],
+                                                frame_id=candidate["last_frame_id"],
+                                                captured_monotonic=candidate["last_captured_monotonic"])
+        if (last["sequence"] != history_snapshot["target_sequence"]
+                or last["frame_id"] != history_snapshot["target_frame_id"]
+                or last["captured_monotonic"] != history_snapshot["target_captured_monotonic"]):
+            raise ValueError("Catchup snapshot endpoint differs from the exact newest observation")
+        local_map = copy.deepcopy(geometry)
+        selected = _replay_subset(records, history_snapshot["config"]["replay_stride"])
+        valid = 0
+        for record in selected:
+            valid += int(local_map.step(record)["pose_valid"])
+        result.update(last_sequence=local_map.last_sequence, last_frame_id=local_map.last_frame_id,
+                      last_captured_monotonic=local_map.last_captured,
+                      background_catchup_rounds=result["background_catchup_rounds"] + 1,
+                      background_catchup_available_observations=result["background_catchup_available_observations"] + len(records),
+                      background_catchup_observations=result["background_catchup_observations"] + len(selected),
+                      background_catchup_valid_poses=result["background_catchup_valid_poses"] + valid,
+                      background_catchup_skipped_observations=result["background_catchup_skipped_observations"] + len(records) - len(selected))
+        result["available"] = (local_map.last_sequence == local_map.anchor_sequence
+                               or local_map.last_result["pose_valid"])
+        result["reason"] = None if result["available"] else local_map.last_result["reason"]
+        if result["available"]:
+            result["_local_map"] = local_map
+    elapsed = time.perf_counter() - started
+    result["advance_seconds"] = elapsed
+    result["background_catchup_seconds"] += elapsed
+    return result
 
 
 class ContinuousDepthTracker:
@@ -539,6 +615,35 @@ class ContinuousDepthTracker:
                     distortion=self.distortion.copy() if self.distortion is not None else None,
                     records=[_copy_record(record, readonly=True) for record in list(self._history)[index:]])
 
+    def snapshot_candidate_catchup(self, candidate):
+        """Owner-only value copy; candidate age is measured from real captures.
+
+        The upper layer additionally limits wall time/rounds. The historical
+        capture span may not exceed history_seconds, even if repeated worker
+        advances keep the candidate close to the latest observation.
+        """
+        _candidate_geometry(candidate, self._owner_token, self.config)
+        last_sequence = candidate["last_sequence"]
+        if last_sequence > self._sequence:
+            raise ValueError("Depth candidate refers to a future observation")
+        age = self._captured - candidate["anchor_captured_monotonic"]
+        snapshot = dict(owner_token=self._owner_token, config=dict(self.config), available=True, reason=None,
+                        **{key: candidate[key] for key in ("anchor_frame_id", "anchor_captured_monotonic",
+                           "last_sequence", "last_frame_id", "last_captured_monotonic")},
+                        target_sequence=self._sequence, target_frame_id=self._frame_id,
+                        target_captured_monotonic=self._captured, candidate_observation_age_seconds=age,
+                        maximum_candidate_age_seconds=self.config["history_seconds"], records=[])
+        records = [record for record in self._history if record["sequence"] > last_sequence]
+        if self._map is not None and candidate["anchor_frame_id"] <= self._map.anchor_frame_id:
+            snapshot.update(available=False, reason="anchor_not_newer_than_active_seed")
+        elif age > self.config["history_seconds"]:
+            snapshot.update(available=False, reason="candidate_anchor_age_exceeded")
+        elif self._sequence > last_sequence and (not records or records[0]["sequence"] != last_sequence + 1):
+            snapshot.update(available=False, reason="candidate_catchup_history_expired")
+        else:
+            snapshot["records"] = [_copy_record(record, readonly=True) for record in records]
+        return snapshot
+
     def apply_depth_candidate(self, candidate):
         """Catch up a detached seed, then swap gauges without emitting old poses."""
         started = time.perf_counter()
@@ -553,26 +658,14 @@ class ContinuousDepthTracker:
             self._counts["rejected_depth_seeds"] += 1
             info["apply_seconds"] = time.perf_counter() - started
             return info
-        geometry = candidate.get("_local_map")
-        if (not isinstance(geometry, _LocalMap) or geometry.config != self.config
-                or geometry.anchor_frame_id != candidate["anchor_frame_id"]
-                or geometry.anchor_captured != candidate["anchor_captured_monotonic"]
-                or geometry.last_sequence != candidate["last_sequence"]
-                or geometry.last_frame_id != candidate["last_frame_id"]
-                or geometry.last_captured != candidate["last_captured_monotonic"]
-                or not np.array_equal(geometry.K, candidate["K_tracking"])):
-            raise ValueError("Depth candidate identity/geometry does not match its measured history")
-        last_sequence = candidate["last_sequence"]
-        if last_sequence > self._sequence:
-            raise ValueError("Depth candidate refers to a future observation")
-        if self._map is not None and candidate["anchor_frame_id"] <= self._map.anchor_frame_id:
-            info.update(reason="anchor_not_newer_than_active_seed", apply_seconds=time.perf_counter() - started)
-            self._counts["rejected_depth_seeds"] += 1
-            return info
-        records = [record for record in self._history if record["sequence"] > last_sequence]
+        geometry = _candidate_geometry(candidate, self._owner_token, self.config)
+        snapshot = self.snapshot_candidate_catchup(candidate)
+        records = snapshot["records"]
         info["catchup_available_observations"] = len(records)
-        if self._sequence > last_sequence and (not records or records[0]["sequence"] != last_sequence + 1):
-            info.update(reason="candidate_catchup_history_expired", apply_seconds=time.perf_counter() - started)
+        info["candidate_observation_age_seconds"] = snapshot["candidate_observation_age_seconds"]
+        info["maximum_candidate_age_seconds"] = snapshot["maximum_candidate_age_seconds"]
+        if not snapshot["available"]:
+            info.update(reason=snapshot["reason"], apply_seconds=time.perf_counter() - started)
             self._counts["rejected_depth_seeds"] += 1
             return info
         local_map = copy.deepcopy(geometry)
@@ -588,7 +681,9 @@ class ContinuousDepthTracker:
         self._map = local_map
         self._gauge_id += 1
         self._counts["adopted_depth_seeds"] += 1
-        self._counts["historical_replay_poses"] += info["replay_valid_poses"] + info["catchup_valid_poses"]
+        self._counts["historical_replay_poses"] += (info["replay_valid_poses"]
+                                                  + info["background_catchup_valid_poses"]
+                                                  + info["catchup_valid_poses"])
         self._counts["maximum_landmarks"] = max(self._counts["maximum_landmarks"], len(local_map.landmarks))
         info.update(adopted=True, reason=None, gauge_id=self._gauge_id,
                     apply_seconds=time.perf_counter() - started)
