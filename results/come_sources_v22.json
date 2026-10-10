@@ -1,0 +1,509 @@
+{
+  "schema": 1,
+  "research_date": "2026-10-11",
+  "scope": {
+    "primary_sources_only": true,
+    "checkpoint_metadata_read_only": true,
+    "host_real_input_inference": false,
+    "host_checkpoint_forward": false,
+    "board_operations": false,
+    "production_model_modified": false,
+    "actual_checkpoint_redistributed": false,
+    "algorithm_exactness_claim": false,
+    "RK3588_speed_or_quality_validated": false
+  },
+  "repository": {
+    "url": "https://github.com/co-me-tokens/CoMe",
+    "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+    "git_tree_sha": "58c4136881afe547b79d9b5653838ca0a5876a2a",
+    "official_commit": {
+      "url": "https://api.github.com/repos/co-me-tokens/CoMe/git/commits/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "ac7240552f49d5ce86f101846de8819b86069c6873b1a469c3a407b5697e313f"
+    },
+    "official_tree": {
+      "url": "https://api.github.com/repos/co-me-tokens/CoMe/git/trees/58c4136881afe547b79d9b5653838ca0a5876a2a?recursive=1",
+      "sha256": "61e9213e2df0c6e709a1046ecbdaa3dbb41429f8f541f245cb691a1df2a8b113",
+      "truncated": false
+    },
+    "downloaded_verified_source_and_checkpoint_files": 26,
+    "downloaded_verified_source_and_checkpoint_bytes": 972016,
+    "all_downloaded_blobs_match_official_pinned_tree": true
+  },
+  "predictor": {
+    "official_path": "output/confidence_distill/vggt/20260324_172742/step_02000/checkpoint.pth",
+    "official_url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/output/confidence_distill/vggt/20260324_172742/step_02000/checkpoint.pth",
+    "git_blob_sha1": "19c8a02c8700c8964064ec0b7d479ed686430dda",
+    "sha256": "95b0a004544c96da5c4e55748e8cf4837608627a6414563af06cb3ee25acd29f",
+    "downloaded_file_bytes": 831722,
+    "actual_BF16_tensor_storage_bytes": 824834,
+    "fp32_expanded_tensor_bytes": 1649668,
+    "parameter_numel": 412417,
+    "tensor_count": 18,
+    "state_dtype": "bfloat16",
+    "state_root_type": "OrderedDict",
+    "weights_only_load": true,
+    "state_keys_shapes": [
+      {
+        "key": "proj1.weight",
+        "shape": [
+          128,
+          1024
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 131072
+      },
+      {
+        "key": "proj1.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 128
+      },
+      {
+        "key": "block.norm1.weight",
+        "shape": [
+          128
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 128
+      },
+      {
+        "key": "block.norm1.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 128
+      },
+      {
+        "key": "block.attn.qkv.weight",
+        "shape": [
+          384,
+          128
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 49152
+      },
+      {
+        "key": "block.attn.qkv.bias",
+        "shape": [
+          384
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 384
+      },
+      {
+        "key": "block.attn.proj.weight",
+        "shape": [
+          128,
+          128
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 16384
+      },
+      {
+        "key": "block.attn.proj.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 128
+      },
+      {
+        "key": "block.norm2.weight",
+        "shape": [
+          128
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 128
+      },
+      {
+        "key": "block.norm2.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 128
+      },
+      {
+        "key": "block.mlp.fc1.weight",
+        "shape": [
+          256,
+          128
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 32768
+      },
+      {
+        "key": "block.mlp.fc1.bias",
+        "shape": [
+          256
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 256
+      },
+      {
+        "key": "block.mlp.fc2.weight",
+        "shape": [
+          128,
+          256
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 32768
+      },
+      {
+        "key": "block.mlp.fc2.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 128
+      },
+      {
+        "key": "proj2.0.weight",
+        "shape": [
+          128,
+          128,
+          3,
+          3
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 147456
+      },
+      {
+        "key": "proj2.0.bias",
+        "shape": [
+          128
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 128
+      },
+      {
+        "key": "proj2.2.weight",
+        "shape": [
+          1,
+          128,
+          3,
+          3
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 1152
+      },
+      {
+        "key": "proj2.2.bias",
+        "shape": [
+          1
+        ],
+        "dtype": "torch.bfloat16",
+        "numel": 1
+      }
+    ],
+    "configuration": {
+      "inject_block_idx": 14,
+      "predictor_dims": [
+        1024,
+        128,
+        1
+      ],
+      "predictor_active": "expp1",
+      "predictor_num_register": 0,
+      "loss_function": "pairwise-rank",
+      "train_dtype": "torch.bfloat16",
+      "infer_size": [
+        518,
+        518
+      ]
+    },
+    "architecture": {
+      "projection": "Linear(1024,128,bias=True)",
+      "attention_heads": 1,
+      "head_dim": 128,
+      "attention_scaling": "1/sqrt(128)",
+      "pre_norm_epsilon": 1e-05,
+      "pre_norm_affine_bias": true,
+      "qkv_bias": true,
+      "attention_projection_bias": true,
+      "qk_norm": false,
+      "rope": false,
+      "layer_scale": "Identity; init_values=None",
+      "dropout": 0.0,
+      "drop_path": 0.0,
+      "mlp": "Linear(128,256,bias=True) -> exact GELU(approximate=none) -> Linear(256,128,bias=True)",
+      "convolutions": "Conv2d(128,128,3,stride=1,padding=1,padding_mode=reflect,bias=True) -> exact GELU -> Conv2d(128,1,3,stride=1,padding=1,padding_mode=reflect,bias=True)",
+      "final_activation": "exp(logits)+1",
+      "predictor_register_tokens": 0,
+      "official_inference_dtype": "bfloat16",
+      "normalization_default_source": "https://raw.githubusercontent.com/pytorch/pytorch/v2.3.1/torch/nn/modules/normalization.py"
+    },
+    "equations": [
+      "F = DINO.blocks[14](...); F is raw post-block, not final DINO norm output",
+      "X = F[:,5:,:].permute(0,2,1).reshape(B,S,1024,Hpatch,Wpatch)",
+      "U = Linear1024to128(X.permute(0,1,3,4,2).bfloat16().reshape(B,S*Hpatch*Wpatch,1024))",
+      "A = U + AttnProj(SDPA(QKV(LayerNorm_eps1e-5(U)), single_head_128))",
+      "Z = A + FC2(GELU_exact(FC1(LayerNorm_eps1e-5(A))))",
+      "L = Conv128to1(GELU_exact(Conv128to128(Z.reshape(B*S,Hpatch,Wpatch,128).permute(0,3,1,2))))",
+      "confidence = (exp(L)+1).permute(0,2,3,1).flatten(1,2).squeeze(-1)"
+    ],
+    "precision_boundary": "Loading BF16 values into a float32 predictor changes arithmetic and can change strict-quantile ties/masks; it is a separate diagnostic, not the official BF16 path."
+  },
+  "feature_capture": {
+    "block_index_zero_based": 14,
+    "blocks_completed": 15,
+    "hook": "forward hook on model.aggregator.patch_embed.blocks[14]",
+    "hook_reference": "https://github.com/co-me-tokens/CoMe/blob/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/vggt/direct.py#L27-L67",
+    "input_RGB_normalization_before_DINO": {
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "special_tokens_removed": 5,
+    "special_order": "one DINO CLS followed by four DINO register tokens",
+    "special_tokens_enter_predictor": false,
+    "DINO_final_norm_applied_to_predictor_feature": false,
+    "additional_feature_norm_before_projection": false,
+    "patch_layout": "row-major Hpatch,Wpatch; DINO batch flattens B,S in that order",
+    "existing_336_pair": {
+      "B": 1,
+      "S": 2,
+      "model_image_hw": [
+        252,
+        336
+      ],
+      "patch_hw": [
+        18,
+        24
+      ],
+      "raw_DINO_block14_output": [
+        2,
+        437,
+        1024
+      ],
+      "predictor_feature_BSCHW": [
+        1,
+        2,
+        1024,
+        18,
+        24
+      ],
+      "predictor_flat_tokens": [
+        1,
+        864,
+        1024
+      ]
+    },
+    "mask_context_scope": "One context is built per model call and reused within that call. Predictor attention and ranking median see all views in each B scene, making masks batch/view-set dependent."
+  },
+  "mask": {
+    "mode": "pairwise-rank",
+    "group_hw": [
+      3,
+      3
+    ],
+    "group_size": 9,
+    "threshold_quantile": 0.5,
+    "confidence_input_dtype": "bfloat16 in the official path",
+    "block_means_dtype": "bfloat16 after mean reduction of BF16 confidence",
+    "quantile_input_dtype": "block_means.float()",
+    "quantile_scope": "each B independently across S * (Hpatch/3) * (Wpatch/3) groups",
+    "quantile_interpolation": "PyTorch default linear",
+    "selected_groups": "block_means < quantile; strict comparison, not <=, not topk",
+    "ties": "No forced 50% quota. All equal confidence produces no merged groups. BF16 rounding may create additional ties.",
+    "group_order": "group row then group column; inside each group row then column",
+    "divisibility_required": "Hpatch%3==0 and Wpatch%3==0",
+    "336_pair_group_shape": [
+      2,
+      6,
+      8
+    ],
+    "rows_equation_336_pair": "874 - 8 * count(mask_true)",
+    "example_only_48_merged_groups_compact_rows": 490,
+    "reference": "https://github.com/co-me-tokens/CoMe/blob/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/token_merger/co_me_2d.py#L253-L301"
+  },
+  "direct_MLP_merge_split": {
+    "branch_input": "original block.norm2 output, after original attention and residual1",
+    "scope": "only selected block.mlp.forward for the first isolated diagnostic; no attention or residual change",
+    "tokens_shape_before_merge": "[B,S,5+Hpatch*Wpatch,C]; global [B,S*(5+Hpatch*Wpatch),C] is reshaped without reordering views",
+    "leading_special_tokens": "Each view retains five individual special rows, even in a global block. Only the patch portion is grouped.",
+    "compact_flat_order": "B then S/view then five specials then group-row/group-column then individual within-group rows for unmerged groups",
+    "merge": "True group -> mean of nine normalized token rows; False group -> all nine token rows",
+    "compact_shape": "[1,total_compact_rows,C]",
+    "original_MLP": "original FC1 weight/bias -> exact GELU -> original FC2 weight/bias, same branch dtype; no new trainable parameters",
+    "split": "compact.squeeze(0).index_select(0,rev_id).reshape(B,S,N,C); every merged original position gathers its group output",
+    "token_multiplicity": "weight=9 for a merged patch group, 1 otherwise. It is for attention bias correction, not an extra multiplier in the MLP branch.",
+    "outside_wrapping": "original ls2, full per-token residual, camera/register/global tokens and other branches remain as original",
+    "equation": "output = residual1 + ls2(SPLIT(MLP(MERGE(norm2(residual1)))))",
+    "restoration_is_not_inverse": "Gather repeats the mean-token MLP result; discarded per-token differences are not reconstructed. Original weights do not make this algorithm exact.",
+    "official_reference_merge": "https://github.com/co-me-tokens/CoMe/blob/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/token_merger/co_me_2d.py#L77-L169",
+    "official_reference_split": "https://github.com/co-me-tokens/CoMe/blob/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/token_merger/co_me.py#L242-L254",
+    "official_reference_wrapper": "https://github.com/co-me-tokens/CoMe/blob/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/vggt/direct.py#L150-L180",
+    "quality_scope": "Official direct code emits an infer_mask over merged regions. An isolated port must still compare special, unmerged and merged rows; masked paper results do not prove all-pixel quality."
+  },
+  "cache_boundary": {
+    "first_15_DINO_blocks": "Image independent before predictor; existing exact content/model/backend guards still required.",
+    "remaining_9_DINO_blocks": "Official acceleration begins at blocks15..23 after context creation. With merge masks, their outputs depend on the view set.",
+    "aggregator_frame_global": "The official direct path also wraps all24 frame/all24 global blocks. The current proposal intentionally isolates one MLP, not the complete official method.",
+    "previous_complete_DINO_tail_cache_reusable_under_CoMe": false
+  },
+  "license_provenance": {
+    "CoMe_repository_license": "CC-BY-NC-4.0",
+    "source": "https://github.com/co-me-tokens/CoMe/blob/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/LICENSE",
+    "license_sha256": "43a372304b1da21ff143b9dd10424d93dc193073aecd5984a6b3872416dc7acd",
+    "checkpoint_is_regular_git_blob_in_same_pinned_tree": true,
+    "checkpoint_directory_files": [
+      "checkpoint.pth",
+      "config.json"
+    ],
+    "separate_predictor_license_or_model_card_found_in_pinned_release_directory": false,
+    "not_a_commercial_permission_claim": true,
+    "Meta_VGGT_license_is_independent": "The base VGGT-1B and CoMe predictor are separate external weights/releases. Neither this wrapper nor unchanged original weights turns CoMe-derived code/predictor into BSD-licensed material.",
+    "public_redistribution": "Metadata, hashes and CoMe-derived research helper attribution only. No CoMe checkpoint or official source/vendor bulk is bundled.",
+    "repository_root_license_is_the_only_observed_predictor_release_license": true
+  },
+  "source_bindings": [
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/LICENSE",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "43a372304b1da21ff143b9dd10424d93dc193073aecd5984a6b3872416dc7acd",
+      "git_blob_sha1": "03cd03ac061a2e6d41e7125b525401f69fd1649b",
+      "bytes": 19753,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    },
+    {
+      "path": "config/model/co_me_direct_vggt_3x3.yaml",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/config/model/co_me_direct_vggt_3x3.yaml",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "b9986288937bdc223d2a951dfb0de5caf976420a750dc426fad24f4dabc591cc",
+      "git_blob_sha1": "983b3dbea44f2649b3bf91d1480bf00cc05d19d6",
+      "bytes": 503,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    },
+    {
+      "path": "output/confidence_distill/vggt/20260324_172742/step_02000/config.json",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/output/confidence_distill/vggt/20260324_172742/step_02000/config.json",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "abc5f286e0f50e3e75026d5902e2d43a5b2d34d35919bb43c002df1c5631808a",
+      "git_blob_sha1": "04f02785fb3fd06affa688bcc5ca1aea2ffca53b",
+      "bytes": 795,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    },
+    {
+      "path": "output/confidence_distill/vggt/20260324_172742/step_02000/checkpoint.pth",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/output/confidence_distill/vggt/20260324_172742/step_02000/checkpoint.pth",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "95b0a004544c96da5c4e55748e8cf4837608627a6414563af06cb3ee25acd29f",
+      "git_blob_sha1": "19c8a02c8700c8964064ec0b7d479ed686430dda",
+      "bytes": 831722,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    },
+    {
+      "path": "src/accelerate/common/confidence_predictor.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/common/confidence_predictor.py",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "cadde9b423499aa9d49ca72ed185625c2346d60a875501481a1aa9d396d32e73",
+      "git_blob_sha1": "6ad3d48517bc8b6e3b33f922174274d42e20dcc8",
+      "bytes": 3185,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    },
+    {
+      "path": "src/accelerate/token_merger/co_me_2d.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/token_merger/co_me_2d.py",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "5f3ad3dc44fb1b9d6afb427b3005f0d98fdddd33ce601c4db13aa57f05665d9c",
+      "git_blob_sha1": "2dbdd5f005d609972be707c596eb7d940dd913fa",
+      "bytes": 14232,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    },
+    {
+      "path": "src/accelerate/token_merger/co_me.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/token_merger/co_me.py",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "03c0797e80230ca032bd9b43ed5bafbd5dfce4da16ef64ecf31ba27d5aae5d2a",
+      "git_blob_sha1": "496c08b3e711ba6fb917660ab335467caa8bd915",
+      "bytes": 10509,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    },
+    {
+      "path": "src/accelerate/vggt/direct.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/accelerate/vggt/direct.py",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "70d46598daa04e89ebe5d54ddd39614d57e1eda1938d1c03eaa1c62eb5956f05",
+      "git_blob_sha1": "6b8f84141efca5ebc57beee20a5061f56ee945ba",
+      "bytes": 9396,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    },
+    {
+      "path": "src/thirdparty/vggt/layers/block.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/thirdparty/vggt/layers/block.py",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "52d597a78a582ffe1e15f88a09ef300a854881b64373318edd2e6c5a60b809fc",
+      "git_blob_sha1": "9c21530654252cf7344ac3b3469b2b70c9df0ae1",
+      "bytes": 9201,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    },
+    {
+      "path": "src/thirdparty/vggt/layers/attention.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/thirdparty/vggt/layers/attention.py",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "004c21ea82ef5aef55304a9050b417631bdcc2e629aed18e7bd52291c9eaff5a",
+      "git_blob_sha1": "7628363bf39683490aab56b27f76822d1e90d984",
+      "bytes": 2620,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    },
+    {
+      "path": "src/thirdparty/vggt/layers/mlp.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/thirdparty/vggt/layers/mlp.py",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa",
+      "git_blob_sha1": "bbf9432aae9258612caeae910a7bde17999e328e",
+      "bytes": 1269,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    },
+    {
+      "path": "src/thirdparty/vggt/layers/vision_transformer.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/thirdparty/vggt/layers/vision_transformer.py",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "daa0094635c5e61e21afe33cc1da3369ab5dc415fac635cd5c539e2819f41954",
+      "git_blob_sha1": "9eadfe1ff25b6d60deb0f04ca200c8fe7fdffa51",
+      "bytes": 15081,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    },
+    {
+      "path": "src/thirdparty/vggt/models/aggregator.py",
+      "url": "https://raw.githubusercontent.com/co-me-tokens/CoMe/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/src/thirdparty/vggt/models/aggregator.py",
+      "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+      "sha256": "445cf684e8393d8626048b830dfec8e6230fffa38737fa0c9e01eb7aa9e3c98d",
+      "git_blob_sha1": "4cb4d9e4dc52c54dfd0d47979bdb8981e3d70761",
+      "bytes": 13154,
+      "http_status": 200,
+      "matches_pinned_official_git_tree": true
+    }
+  ],
+  "limitations": [
+    "Only source/metadata were examined; no checkpoint forward or real-image execution was performed on the host.",
+    "The official module import graph includes CUDA/NVTX/extensions; a portable subset must avoid these imports while preserving equations and attribution.",
+    "Mask prediction, grouping, gathers and scatter/split overhead must be measured on the board; compact MLP arithmetic alone is not whole-model speed.",
+    "The released confidence predictor is trained; use of its checkpoint does not mean the entire experiment is training-free in provenance.",
+    "No production replacement, board performance, all-NPU execution, or 20Hz/2-5s mapping acceptance is established by this report."
+  ]
+}

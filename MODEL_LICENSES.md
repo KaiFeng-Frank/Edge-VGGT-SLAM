@@ -25,6 +25,12 @@ Meta changed its code license on 2025-07-29. The [current code license](https://
 
 The deployed implementation is the pinned [VGGT_SPARK fork and its CC BY-NC 4.0 license](https://github.com/MIT-SPARK/VGGT_SPARK/blob/6e6e16107b88e8e76c751826af10d4295d87ecd2/LICENSE.txt). The published patch modifies that implementation. This publication does not replace that pinned license with the current Meta code license or BSD.
 
+## Optional Co-Me confidence predictor research
+
+The Co-Me authors release a separate confidence predictor at [commit `5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833`](https://github.com/co-me-tokens/CoMe/tree/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833), under a repository whose [root license](https://github.com/co-me-tokens/CoMe/blob/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/LICENSE) is **CC BY-NC 4.0**. The inspected [predictor directory](https://github.com/co-me-tokens/CoMe/tree/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/output/confidence_distill/vggt/20260324_172742/step_02000) contains `checkpoint.pth` and `config.json`; no separate predictor license or model card was found there. This is not evidence of an additional commercial-use grant.
+
+The predictor file is 831,722 bytes, Git blob `19c8a02c8700c8964064ec0b7d479ed686430dda`, SHA256 `95b0a004544c96da5c4e55748e8cf4837608627a6414563af06cb3ee25acd29f`. Its 18 BF16 tensors contain 412,417 parameters (824,834 tensor-storage bytes). Only source/weight metadata and the attributed research adaptation are published here; the checkpoint is not redistributed. Co-Me-derived helper code retains its CC BY-NC scope. The predictor and Meta's original VGGT-1B are distinct external releases, even though the research preserves VGGT base weights. See [Co-Me provenance](results/come_sources_v22.json). Token merging remains an approximation experiment, not a license change or a production model substitution.
+
 ## ONNX/RKNN exports and redistribution
 
 The export scripts and result metadata are published; pretrained checkpoints and weight-bearing ONNX/RKNN binaries are **not**. Locally compiled models encode parameters from the identified checkpoint. Compilation, FP16 conversion or use of a BSD-licensed wrapper does not supply a new commercial license for those parameters. This remains true whether a particular format conversion is a technical modification or adapted material: CC BY-NC §2(a)(4) permits technical format changes without lifting §2(a)(1)'s non-commercial condition. Rockchip SDK/runtime terms also apply independently.

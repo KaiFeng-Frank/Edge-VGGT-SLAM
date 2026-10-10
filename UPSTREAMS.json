@@ -92,5 +92,31 @@
     "redistributed": false,
     "license_scope": "Original checkpoint terms remain applicable to encoded weight material; compilation or a BSD wrapper does not grant commercial rights. SDK terms are independent.",
     "license_provenance": "results/model_license_v21.json"
+  },
+  "optional_come_research": {
+    "url": "https://github.com/co-me-tokens/CoMe",
+    "commit": "5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833",
+    "license": "CC-BY-NC-4.0",
+    "license_url": "https://github.com/co-me-tokens/CoMe/blob/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/LICENSE",
+    "scope": "Optional original-weight MLP merge/split approximation research; no default executor imports it.",
+    "predictor": {
+      "path": "output/confidence_distill/vggt/20260324_172742/step_02000/checkpoint.pth",
+      "bytes": 831722,
+      "sha256": "95b0a004544c96da5c4e55748e8cf4837608627a6414563af06cb3ee25acd29f",
+      "git_blob": "19c8a02c8700c8964064ec0b7d479ed686430dda",
+      "parameters": 412417,
+      "dtype": "bfloat16",
+      "tensor_storage_bytes": 824834,
+      "redistributed": false,
+      "separate_model_card_or_weight_license_in_predictor_directory": false,
+      "commercial_rights_inferred": false
+    },
+    "provenance": "results/come_sources_v22.json",
+    "source_bulk_redistributed": false,
+    "complete_upstream_CoMe_port": false,
+    "adaptations": [
+      "deploy/rk3588/validation/v22_token_merge.py",
+      "deploy/rk3588/validation/v22_come_fullmodel.py"
+    ]
   }
 }
