@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "passed": 81,
+  "skipped": 0,
+  "failed": 0,
+  "errors": 0,
+  "elapsed_seconds": 1.3106160829775035,
+  "scope": "Tiny/random synthetic exporter and runtime-contract tests only; no real checkpoint/model inference on host",
+  "inference_on_host_with_real_weights": false,
+  "runs": [
+    {
+      "tests": [
+        "tests/test_v23_mlp_export.py",
+        "tests/test_v23_mlp_export_r2.py",
+        "tests/test_v23_mlp_runtime.py"
+      ],
+      "passed": 81,
+      "skipped": 0,
+      "failed": 0,
+      "errors": 0
+    }
+  ],
+  "test_source_sha256": {
+    "tests/test_v23_mlp_export.py": "870284afff1e467ccb80b498a855e39c20e148ccad8aa8e7264794a3a2f344e1",
+    "tests/test_v23_mlp_export_r2.py": "c347efe491e8910de4601e94c3d4ebeea4913cc28b88a31f5ceb6ac0f6774432",
+    "tests/test_v23_mlp_runtime.py": "468525e3803da21cbc749550a85860c2b695d0b5087671e90cef52ed5f83e0e3"
+  },
+  "implementation_source_sha256": {
+    "deploy/rk3588/validation/export-v23-mlp.py": "56476c724cde537fd35466be0b41d300592821be59f2a840519be6c117c5146e",
+    "deploy/rk3588/validation/export-v23-mlp-r2.py": "31602681e0c6ee5650baf66784764124926b8666ca75e4529bda71f98d54585a",
+    "deploy/rk3588/validation/run-v23-mlp-board.py": "a3ea513431ae14a9fca6c3b5cd9073b847c3b1908a0e132e5d497e5810a34fd4",
+    "deploy/rk3588/validation/run-v23-mlp-board-r2.py": "b328df00e0178b91a82c06dc840920159c88a35d0d1d8500126fb786ae90b331"
+  },
+  "artifacts": {
+    "stdout.log": {
+      "bytes": 179,
+      "sha256": "aa06187cc43dd70e2805ecbd1c2f39397d797626bddca0e1a64b1c5d6b6f7263"
+    },
+    "junit.xml": {
+      "bytes": 9987,
+      "sha256": "864e271bb5399c67cb34f0143f5d0222113e876d1adbe84467ae6b525b4d2f27"
+    }
+  }
+}

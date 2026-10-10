@@ -1,53 +1,48 @@
 {
   "upstream_commit": "35327ac28b7d193df9ccc39ba6346052bb6f1207",
   "synthetic_validation": {
-    "kind": "v22_synthetic_contract_and_lifecycle_validation",
     "status": "passed",
-    "passed": 200,
+    "passed": 81,
+    "skipped": 0,
     "failed": 0,
     "errors": 0,
-    "skipped": 0,
-    "execution": "host synthetic/tiny-random modules and saved fake fixtures only; no original weights, real image/model inference or hardware",
-    "test_source_sha256": {
-      "tests/test_v22_come_capture.py": "8ff1d720e5ef5de220f3f8842d0c1d8a5533e7c6998e97edea37c00dcd18bee7",
-      "tests/test_v22_token_merge.py": "85276456a5f4975519a4d8b77cef8e1866309752d9dae9330bd829f9fbdf3285",
-      "tests/test_v22_come_mlp_probe.py": "7331b397be51e1d0da3495a5e244ff899c96f166c0f714a45214ce058f070f47",
-      "tests/test_v22_come_fullmodel.py": "1be7bb84d77792145931942b16f2178a52b2dd62f2187ce04e6f3996df31aae6",
-      "tests/test_v22_come_fullmodel_board.py": "62d441fa1eccda848cac94b4df2f36dc360213d50c58940f080e22cb871f1054",
-      "tests/test_v22_fullmodel_comparison.py": "fd00181bd0edb3f4e86294f87de7a819a6aaa121370b71430fdb1a265d620d31",
-      "tests/test_model_execution.py": "28f2b3fe5c18f11ca39759db536f8fb1367a2d714e77f2e5a6e6a113c1ce3117",
-      "tests/test_solver_execution.py": "4f6426d8c17c5a53cfaa0e4adb861222fffd367cd6229a1a7050d6935df35d75"
-    },
-    "implementation_source_sha256": {
-      "deploy/rk3588/validation/capture-v22-come-mlp-board.py": "59c1b346bdda45fe1130eab0f869f47732755cc95761c16c43d3c0346805bc14",
-      "deploy/rk3588/validation/v22_token_merge.py": "7acb792a94a5e4cb55bed25674e1e30ecf8692296e6e7fa4d7e98bb9da26bf5d",
-      "deploy/rk3588/validation/probe-v22-come-mlp-board.py": "936fce80b7d91fdc10f1e05f4baba54d5a4954c5e7eda33a79e32c848172707f",
-      "deploy/rk3588/validation/v22_come_fullmodel.py": "67c6c720ee2b1a7b698f9b7e0d8a5599115f6b06e638659fdcba5c2008db8716",
-      "deploy/rk3588/validation/run-v22-come-fullmodel-board.py": "47cffa63bfd33ec6fecc66fe62093aa1119882a9bf13ae6cf4691f46f62af3bc",
-      "deploy/rk3588/validation/compare-v22-come-fullmodel.py": "a69878edb518a24d89b066f086c055c63bf4860143e414a3fb273d571fef9bf8",
-      "deploy/rk3588/validation/audit-v22-come-mlp.py": "dcc12bbe01c7e4f4232c2ad7245c4b4e212ad3a83ca3bb72947833c7b1e9224c",
-      "vggt_slam/model_execution.py": "819c7af4fc7c4da0db0b94b85d5600319b95eda328dbe064d2684fc10462d5d8",
-      "vggt_slam/solver.py": "a38123d4924fd31016dc625811fa58339179fa03380eb9250f90f90f3fca6b3b"
-    },
+    "elapsed_seconds": 1.3106160829775035,
+    "scope": "Tiny/random synthetic exporter and runtime-contract tests only; no real checkpoint/model inference on host",
+    "inference_on_host_with_real_weights": false,
     "runs": [
       {
-        "passed": 200,
-        "files": [
-          "tests/test_v22_come_capture.py",
-          "tests/test_v22_token_merge.py",
-          "tests/test_v22_come_mlp_probe.py",
-          "tests/test_v22_come_fullmodel.py",
-          "tests/test_v22_come_fullmodel_board.py",
-          "tests/test_v22_fullmodel_comparison.py",
-          "tests/test_model_execution.py",
-          "tests/test_solver_execution.py"
+        "tests": [
+          "tests/test_v23_mlp_export.py",
+          "tests/test_v23_mlp_export_r2.py",
+          "tests/test_v23_mlp_runtime.py"
         ],
-        "pytest_log_sha256": "a29a6c659e284839b6d16f4b8fc2f323747a1556461737000c817e295ce61ba8",
-        "junit_xml_sha256": "c243979d48a671bd5a4e4020278001bd7b0eb8ed2d354f13abee6c56ec53a6e1"
+        "passed": 81,
+        "skipped": 0,
+        "failed": 0,
+        "errors": 0
       }
     ],
-    "raw_receipts_not_accuracy_or_NPU_evidence": true,
-    "additional_read_only_actual_array_validation": "results/come_mlp_v22.json and results/come_fullmodel_v22.json"
+    "test_source_sha256": {
+      "tests/test_v23_mlp_export.py": "870284afff1e467ccb80b498a855e39c20e148ccad8aa8e7264794a3a2f344e1",
+      "tests/test_v23_mlp_export_r2.py": "c347efe491e8910de4601e94c3d4ebeea4913cc28b88a31f5ceb6ac0f6774432",
+      "tests/test_v23_mlp_runtime.py": "468525e3803da21cbc749550a85860c2b695d0b5087671e90cef52ed5f83e0e3"
+    },
+    "implementation_source_sha256": {
+      "deploy/rk3588/validation/export-v23-mlp.py": "56476c724cde537fd35466be0b41d300592821be59f2a840519be6c117c5146e",
+      "deploy/rk3588/validation/export-v23-mlp-r2.py": "31602681e0c6ee5650baf66784764124926b8666ca75e4529bda71f98d54585a",
+      "deploy/rk3588/validation/run-v23-mlp-board.py": "a3ea513431ae14a9fca6c3b5cd9073b847c3b1908a0e132e5d497e5810a34fd4",
+      "deploy/rk3588/validation/run-v23-mlp-board-r2.py": "b328df00e0178b91a82c06dc840920159c88a35d0d1d8500126fb786ae90b331"
+    },
+    "artifacts": {
+      "stdout.log": {
+        "bytes": 179,
+        "sha256": "aa06187cc43dd70e2805ecbd1c2f39397d797626bddca0e1a64b1c5d6b6f7263"
+      },
+      "junit.xml": {
+        "bytes": 9987,
+        "sha256": "864e271bb5399c67cb34f0143f5d0222113e876d1adbe84467ae6b525b4d2f27"
+      }
+    }
   },
   "manifest_scope": "all publication files except SOURCE_SNAPSHOT.json itself and .git metadata",
   "files": {
@@ -55,8 +50,8 @@
     "ARCHITECTURE.md": "edfb9b6490f56286fc214a9b90cc49a7f3296c429fe795bde719a346301a7de4",
     "LICENSE": "dc493d7ac51f587fd71184315999c792ead523bf46da0f0cbf3e26a577b1a580",
     "MEASUREMENTS.json": "115583486c6975838e18ba0c8b90bbd2a9e281a11f37ee596dd068908276cd7c",
-    "MODEL_LICENSES.md": "c67b9f9f6f12610c70e8500bbe710d1be45a26ed3302f397592e252f8db5838b",
-    "README.md": "76b60edb8e663643f9b8086ab69aa46cbd41813a2e93cf4dea2c92c55867cc8c",
+    "MODEL_LICENSES.md": "d3c84754b52a0334d1b11fa3b34f8022dc2068db4c8de144eb94307700762015",
+    "README.md": "2d2669dbf2b54423e23ecef83d23a7a976db303d0a32b7f0263d26ab53d478dc",
     "README_UPSTREAM.md": "3cc8069121fabc2b5e13e0997e2e927fac558fa3d8032b2599dbadc486672454",
     "THIRD_PARTY_NOTICES.md": "682746cb62a0830e5e6a809d55fe3565fe6b209d2fe902d0eb8125dddff40ee3",
     "UPSTREAMS.json": "3bf0d19b84c79e9abba1811eb80537735685d37fb2579ddc386d9cbc7ad5a6e2",
@@ -76,6 +71,7 @@
     "deploy/rk3588/validation/audit-v20-hybrid.py": "01d0c023a3f4795cdc5f5e0ede2a05e4eafcc57d31d183ead2adf9ee1d92f2ee",
     "deploy/rk3588/validation/audit-v22-come-fullmodel-scenes.py": "7181e6cf6d1f934682c5838b42ebedf26260fcf642a7df04b31103e19c053789",
     "deploy/rk3588/validation/audit-v22-come-mlp.py": "dcc12bbe01c7e4f4232c2ad7245c4b4e212ad3a83ca3bb72947833c7b1e9224c",
+    "deploy/rk3588/validation/audit-v23-mlp.py": "238ab0117eada9db899ca0cc6e99fe79c751477038df1bd962988dfa9da59e89",
     "deploy/rk3588/validation/capacity-v20/calculate_capacity.py": "dcdf861fe6502b1fc1355541293dbb1bac2defad61b524c42479aec2ebb6a25b",
     "deploy/rk3588/validation/capacity-v20/evidence.json": "752f3b79598258118d7b59ff8cff3d7ae28614325bc0a7a360a40386f167c104",
     "deploy/rk3588/validation/capture-v12-dino-block-board.py": "0485a463ef851f2f41230c5af95a9df41cb6e8536a4dd52c19ace1f683214d7b",
@@ -111,6 +107,8 @@
     "deploy/rk3588/validation/export-v17-aggregator-block.py": "13bd46a6b6ee6e4700ddb3742059c1ba80c0d517b874c3cc2c56028220618ff8",
     "deploy/rk3588/validation/export-v19-aggregator-mlp2d.py": "1bb8cf707f77b219f7c2130cf2e5784fe683e2a8c060f6efcd02f2c808f1d91b",
     "deploy/rk3588/validation/export-v19-attention.py": "7e5523916fbf36b78d6834c40cd6856155edc4ce3052f6a4dde8181a1806131b",
+    "deploy/rk3588/validation/export-v23-mlp-r2.py": "31602681e0c6ee5650baf66784764124926b8666ca75e4529bda71f98d54585a",
+    "deploy/rk3588/validation/export-v23-mlp.py": "56476c724cde537fd35466be0b41d300592821be59f2a840519be6c117c5146e",
     "deploy/rk3588/validation/probe-v19-patch-cache-board.py": "ba179154ef65d691dec977029b492e6094cf68ef57399a4f6bc403abbbcd12fb",
     "deploy/rk3588/validation/probe-v22-come-mlp-board.py": "936fce80b7d91fdc10f1e05f4baba54d5a4954c5e7eda33a79e32c848172707f",
     "deploy/rk3588/validation/profile-v14-small-vggt-board.py": "ec69e48e2cb5a953d8e134934af7ebf1f45a88dfa0ec5b2cf5967bb4027e8d22",
@@ -126,6 +124,8 @@
     "deploy/rk3588/validation/run-v19-attention-board.py": "277d7f22154ac2c187710a121aee94ead1d416c920c2d9fa023e71f257472ebc",
     "deploy/rk3588/validation/run-v20-aggregator-attention-board.py": "d2f08f123bb3d4c1aa9ac8007b8212ee3582f7aee8945463c1d032cc27ecb379",
     "deploy/rk3588/validation/run-v22-come-fullmodel-board.py": "47cffa63bfd33ec6fecc66fe62093aa1119882a9bf13ae6cf4691f46f62af3bc",
+    "deploy/rk3588/validation/run-v23-mlp-board-r2.py": "b328df00e0178b91a82c06dc840920159c88a35d0d1d8500126fb786ae90b331",
+    "deploy/rk3588/validation/run-v23-mlp-board.py": "a3ea513431ae14a9fca6c3b5cd9073b847c3b1908a0e132e5d497e5810a34fd4",
     "deploy/rk3588/validation/v22_come_fullmodel.py": "67c6c720ee2b1a7b698f9b7e0d8a5599115f6b06e638659fdcba5c2008db8716",
     "deploy/rk3588/validation/v22_token_merge.py": "7acb792a94a5e4cb55bed25674e1e30ecf8692296e6e7fa4d7e98bb9da26bf5d",
     "deploy/rk3588/validation/vggt-v15-camera-capture112.json": "1c3234cfa65914a6f41634432153fa8ebb6dcf9c8d3eb3215f0955fc0ed000f1",
@@ -139,9 +139,11 @@
     "main_realtime.py": "354bc27b3e7502bfba2643ac6e750ec64a0184aab26e37a804f4ac842315144a",
     "requirements.txt": "19527fb57122aee8bd3f737b183ee8f14f10f26a996a1e417b824c26668737db",
     "results/acceleration_research_v20.json": "881f2183a41c2685f55781b30f6d255f1df1769a1147912d985d2ea1e54490e1",
+    "results/acceleration_research_v23.json": "bac18a0232b0bd5f8dece5ee70e405875567711c4150f422d9d494f6b1f41c00",
     "results/attention_capture_v19.json": "4c982f712e9ec9b6ce91813af2af14d16bc22d264fb95a3dd90838e7a9538706",
     "results/attention_v19.json": "49058180f901e33e08dba87ff7bb78f759c9861927f4c9c3c6484e985019c3e5",
     "results/background_continuation_v15.md": "d4d06c6945b326d5bca5dc8bd24eb0c6e25028f2039daa1a8d9c70b985d8f17b",
+    "results/camera_bottleneck_v23.json": "5193f3da463fe3f97ef98f8cb2052d0c14180647cb8c64f9d040f484e7bc0297",
     "results/camera_head_v15.json": "c85825759d3449db216b3cd74af9b4ca218a0216ae35c1b60b7476de1d5e6dca",
     "results/camera_head_v15.md": "69ff2a2de0d2705c5ee04b479342814d77fdf247adb9a518a6856006404f0537",
     "results/camera_step_v16.json": "cdf9ec63d2b5f889267d6d08cce365d9d07889c59aad1e73af436d96ac32e8e6",
@@ -156,6 +158,7 @@
     "results/global_block_v17.json": "9bf92b37e51bfa67f7964d0cbb079bfaeb9aa08d942749727dfbc64c3a575a5e",
     "results/hybrid_block_v20.json": "8f0befaa26e3f775824d58455691302a301878d324aff94e27392ea1a796fc57",
     "results/hybrid_pairs_v16.json": "d4909c8f19c8cd494b3b4b47829f143500b2f33bb426242040a94b57158cbcc7",
+    "results/mlp_execution_v23.json": "2be59db0fb061bd4fac76f6b596ad3f419d56170c2e911a0332e27ec85e6c1ec",
     "results/mlp_layout_v19.json": "4a3d5b144730d9a01cc66fb5ce575d40eb309ae559fd9fbd8ee54ab5d2f0cb7d",
     "results/model_execution_v21.json": "6c9feea0f44dc37d9750826830b893791b36cb67fa89076ae25d8232005c2600",
     "results/model_license_v21.json": "6a3077f9dd0610b1a0aeaf3fc90302ea05fc061b214487de8d1d7eb107c9f975",
@@ -175,6 +178,7 @@
     "results/synthetic_tests_v20.json": "a342dfc47e3114bb67b47b25ba591cc3dc52d6965fd2f7b8f775b4b6d4816ba4",
     "results/synthetic_tests_v21.json": "6243e0cec47c11da023e5177cf8e2bf37c378fe89f9356dd64a11dd6a325dab8",
     "results/synthetic_tests_v22.json": "bebc3a09094f06fd9f944ea8f52f251aa7ac1bc967a9a065cc9eebf1ba9c404d",
+    "results/synthetic_tests_v23.json": "7a94248f16711a3bd8231c451a52fd4975792acfccef7b57275e7ec0941663b9",
     "results/trajectory_v15.json": "5322bd84232b33727109ced8b88d25252f57c1a5fb768ca94021b89e7d53380f",
     "results/trajectory_v15.md": "eefeb76e78df6d114b85d1860d13fcba5852844af2b25fcc60ba7a1a2ebe0b3c",
     "results/trajectory_v16.json": "d502728fbf88bbc6bb065cd8bf3b02b0602caa6427e03623e97de8cdc0e32215",
@@ -239,6 +243,9 @@
     "tests/test_v22_come_mlp_probe.py": "7331b397be51e1d0da3495a5e244ff899c96f166c0f714a45214ce058f070f47",
     "tests/test_v22_fullmodel_comparison.py": "fd00181bd0edb3f4e86294f87de7a819a6aaa121370b71430fdb1a265d620d31",
     "tests/test_v22_token_merge.py": "85276456a5f4975519a4d8b77cef8e1866309752d9dae9330bd829f9fbdf3285",
+    "tests/test_v23_mlp_export.py": "870284afff1e467ccb80b498a855e39c20e148ccad8aa8e7264794a3a2f344e1",
+    "tests/test_v23_mlp_export_r2.py": "c347efe491e8910de4601e94c3d4ebeea4913cc28b88a31f5ceb6ac0f6774432",
+    "tests/test_v23_mlp_runtime.py": "468525e3803da21cbc749550a85860c2b695d0b5087671e90cef52ed5f83e0e3",
     "tests/test_xnnpack_linear.py": "6891c7841e316470e8a536c0e8777e799da7fa03ab6984a822398b81980afeb4",
     "tests/test_xnnpack_native.py": "c9f00ea3981c3bf595edfa6aec7d48f503fb7247c12777389ef2564ac9bda1d9",
     "vggt_slam/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",

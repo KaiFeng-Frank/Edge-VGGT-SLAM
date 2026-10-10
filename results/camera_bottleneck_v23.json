@@ -1,0 +1,223 @@
+{
+  "kind": "independent_saved_CameraHead_profile_and_SDK_fusion_research",
+  "scope": "Original camera head two views, four dependent iterations; no new inference or board jobs",
+  "inference_executed": false,
+  "production_changed": false,
+  "script_sha256": "737f5d066ff823cababf3b760653fb3ffe20db2e6744800c25f187cd1cb8d963",
+  "evidence": [
+    {
+      "file": "vggt-v16-camera-step-npu112-normal-r1/receipt.json",
+      "sha256": "cd8520c9cbc359a18c5c1087754adeda05e6edb3ab43c5113f7d6475c5a1dd4f"
+    },
+    {
+      "file": "vggt-v16-camera-step-npu112-profile-r1/receipt.json",
+      "sha256": "f215453be83b7524fc56f48bdb5c25014295805514d41abffeaf6454343099bf"
+    },
+    {
+      "file": "vggt-v15-camera-npu112-normal-r1/receipt.json",
+      "sha256": "ce1093654a1d77acb29e5e116121ada46fcae96c29368056057f5ab4858e5175"
+    },
+    {
+      "file": "sdk-config-evidence.json",
+      "sha256": "d4adc7851c611aae77d2861ce07c953cd0f1fbde229a438b656b1e4e3fb6dcd0"
+    },
+    {
+      "file": "v13_exact_Erf_compile_receipt",
+      "sha256": "fa2fcb04a0f96745cd8dab39d8c5c698082b0229e4850dcf5b0054a4ccc9bcc5"
+    },
+    {
+      "file": "v13_exact_Erf_compile_log",
+      "sha256": "7ba1d21558ba0f54469a88889b8c117132122c80e9dbcc68de80c0bf0b7aeecf"
+    }
+  ],
+  "profile": {
+    "heads": 4,
+    "steps": 16,
+    "operators_per_step": 62,
+    "NPU_operators_per_step": 57,
+    "CPU_operators_per_step": 5,
+    "mean_summed_profile_ms_per_step": 49.169375,
+    "categories": {
+      "trunk_FC1": {
+        "mean_per_step_ms": 20.66075,
+        "mean_four_steps_profile_sum_ms": 82.643,
+        "share_of_summed_profile_time_percent": 42.019549770563486,
+        "observed_workloads": [
+          "100.0%/0.0%/0.0%"
+        ],
+        "operator_types": [
+          "ConvExGelu"
+        ]
+      },
+      "trunk_FC2": {
+        "mean_per_step_ms": 7.985625,
+        "mean_four_steps_profile_sum_ms": 31.9425,
+        "share_of_summed_profile_time_percent": 16.241054518183322,
+        "observed_workloads": [
+          "33.5%/33.5%/33.0%"
+        ],
+        "operator_types": [
+          "ConvAdd"
+        ]
+      },
+      "trunk_QKV": {
+        "mean_per_step_ms": 6.082,
+        "mean_four_steps_profile_sum_ms": 24.328,
+        "share_of_summed_profile_time_percent": 12.36948812141704,
+        "observed_workloads": [
+          "33.3%/33.3%/33.3%"
+        ],
+        "operator_types": [
+          "Conv"
+        ]
+      },
+      "trunk_projection": {
+        "mean_per_step_ms": 2.8624375,
+        "mean_four_steps_profile_sum_ms": 11.44975,
+        "share_of_summed_profile_time_percent": 5.821586099070814,
+        "observed_workloads": [
+          "33.5%/33.5%/33.0%"
+        ],
+        "operator_types": [
+          "ConvAdd"
+        ]
+      },
+      "attention": {
+        "mean_per_step_ms": 2.478375,
+        "mean_four_steps_profile_sum_ms": 9.9135,
+        "share_of_summed_profile_time_percent": 5.040485058026465,
+        "observed_workloads": [
+          "100.0%/0.0%/0.0%"
+        ],
+        "operator_types": [
+          "exSDPAttention"
+        ]
+      },
+      "norm": {
+        "mean_per_step_ms": 2.9956875,
+        "mean_four_steps_profile_sum_ms": 11.98275,
+        "share_of_summed_profile_time_percent": 6.092588120145924,
+        "observed_workloads": [
+          "100.0%/0.0%/0.0%"
+        ],
+        "operator_types": [
+          "exNorm"
+        ]
+      },
+      "pose_modulation": {
+        "mean_per_step_ms": 1.4718125,
+        "mean_four_steps_profile_sum_ms": 5.88725,
+        "share_of_summed_profile_time_percent": 2.9933520611152775,
+        "observed_workloads": [
+          "33.3%/33.3%/33.3%"
+        ],
+        "operator_types": [
+          "Conv"
+        ]
+      },
+      "other": {
+        "mean_per_step_ms": 4.6326875,
+        "mean_four_steps_profile_sum_ms": 18.53075,
+        "share_of_summed_profile_time_percent": 9.421896251477673,
+        "observed_workloads": [
+          "0.0%/0.0%/0.0%",
+          "100.0%/0.0%/0.0%",
+          "33.5%/33.2%/33.2%"
+        ],
+        "operator_types": [
+          "Add",
+          "Conv",
+          "ConvExGelu",
+          "ConvExSwish",
+          "InputOperator",
+          "Mul",
+          "OutputOperator",
+          "Reshape",
+          "Split",
+          "Transpose"
+        ]
+      }
+    },
+    "profile_times_are_separate_from_normal_benchmark": true,
+    "RW_and_cycle_fields_are_SDK_estimates_not_measured_DDR_bandwidth": true
+  },
+  "normal": {
+    "warm_head_count": 3,
+    "warm_head_ms": 212.70703566551674,
+    "warm_four_run_api_ms": 209.03709066866818,
+    "warm_CPU_recurrence_activation_ms": 0.44858332694275305,
+    "warm_step_non_run_IO_ms": 0.5283054154764008,
+    "step_DMA_bytes": 869425152,
+    "unrolled_DMA_bytes": 3424231424,
+    "DMA_is_not_process_RSS_or_a_universal_memory_lower_bound": true
+  },
+  "executable_exact_formula_diagnostic": {
+    "config": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "disable_rules": [
+        "replace_torch_gelu",
+        "replace_torch_gelu3"
+      ]
+    },
+    "build": {
+      "do_quantization": false
+    },
+    "registered_patterns": {
+      "replace_torch_gelu": [
+        "Div",
+        "Erf",
+        "Add",
+        "Mul",
+        "Mul"
+      ],
+      "replace_torch_gelu3": [
+        "Mul",
+        "Div",
+        "Erf",
+        "Add",
+        "Mul"
+      ]
+    },
+    "historical_compiler_evidence": "Independent FC1 Conv on NPU; exact Erf on CPU",
+    "whole_graph_all_NPU": false,
+    "camera_head_compile_or_runtime_experiment_not_yet_performed": true
+  },
+  "unsupported_parameter": {
+    "name": "conv_eltwise_activation_fuse",
+    "config_2_3_2_actually_rejected": true,
+    "direct_registered_conv_gelu_disable_rule_found": false
+  },
+  "strict_graph_candidates": [
+    {
+      "name": "expose FC1 preactivation as another graph output",
+      "main_output_formula_unchanged": true,
+      "compiler_fusion_barrier_not_guaranteed": true,
+      "camera_four_preactivation_outputs_FP32_bytes_per_step": 262144,
+      "acceptance": "Compile and confirm actual Conv/exGelu placement and multi-core workload before timing"
+    },
+    {
+      "name": "hidden-channel shards of FC1/exact GELU/FC2",
+      "identity": "Sum disjoint FC2 column contributions, then add FC2 bias once",
+      "independent_hidden_branches_not_temporal_iterations": true,
+      "real_arithmetic_equivalent": true,
+      "changed_floating_point_reduction": true,
+      "requires": "Same full input, complete disjoint hidden coverage, persistent contexts, board ORT gate then NPU/profile/log audit"
+    }
+  ],
+  "dependency_constraints": {
+    "conditioning": "Previous unactivated pose prediction; not previous activated pose",
+    "four_temporal_iterations_may_not_run_concurrently": true,
+    "raw_token_normalization_hoist_possible_but_not_primary_bottleneck": true
+  },
+  "limitations": [
+    "Single fixed CameraHead input; no sensor sequence or pose/SLAM accuracy result.",
+    "Normal and profile calls are separate; their subtraction is a planning illustration, not a measured speedup.",
+    "No supported direct ConvExGelu unfusion config was verified.",
+    "Exact Erf diagnostic may use CPU; it cannot be credited as all-NPU execution.",
+    "No entire-model 20 Hz or P95 target follows from these operator measurements."
+  ],
+  "primary_official_disable_rules_usage": "https://github.com/airockchip/rknn-llm/blob/main/examples/multimodal_model_demo/export/export_vision_rknn.py",
+  "primary_official_SDK_API_file": "Installed official rknn-toolkit2 2.3.2 rknn/api/rknn.py and fuse_rules binary registries"
+}

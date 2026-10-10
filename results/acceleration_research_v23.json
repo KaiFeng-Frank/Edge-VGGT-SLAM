@@ -1,0 +1,711 @@
+{
+  "schema": "vggt_rk3588s_acceleration_research_v23.1",
+  "researched_utc": "2026-10-10T22:33:43.230165+00:00",
+  "scope": {
+    "research_only": true,
+    "production_replaced": false,
+    "board_jobs": 0,
+    "host_model_inference": false,
+    "full_checkpoint_downloads": 0,
+    "public_repository_modified": false,
+    "target": "20Hz learned new-observation pose + 2-5s mapping, all RK3588S; no ORB/traditional localization frontend"
+  },
+  "verification": {
+    "downloaded_source_git_blob_and_sha256_checks": 42,
+    "DA3_safetensors_metadata_only_count_shape_dtype_contiguous_offsets_checked": true,
+    "primary_source_index": {
+      "file": "source_downloads.json",
+      "sha256": "4c58217f401cdf8ab9d712e1ed2b8bf4bc7aad84eaf54aa067666b057319ddef"
+    },
+    "DA3_header_audit": {
+      "file": "DA3-SMALL-HF/header-audit.json",
+      "sha256": "9a81ac8825a104322b2d6f2c11c91cc9c0ed34e2f04450ea500d3c2cea45b1be"
+    }
+  },
+  "candidates": [
+    {
+      "name": "DA3-SMALL",
+      "priority": "most concrete small complete pretrained depth+pose alternative; research candidate, not authorized production replacement",
+      "code": {
+        "repo": "ByteDance-Seed/Depth-Anything-3",
+        "commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+        "declared_license": "Apache-2.0"
+      },
+      "checkpoint": {
+        "model_id": "depth-anything/DA3-SMALL",
+        "revision": "e08cab65ca0ec38e7826075418411ab90cab4da3",
+        "file": "model.safetensors",
+        "expected_full_file_bytes": 137248940,
+        "expected_full_file_sha256_from_official_LFS_oid": "364492e38a3a06d221ac75da7f6621ada3f2361cd24fde11ba79091e9f40efcf",
+        "whole_file_sha256_independently_measured": false,
+        "declared_model_card_license": "Apache-2.0",
+        "separate_LICENSE_file_in_model_tree": false,
+        "download_url": "https://huggingface.co/depth-anything/DA3-SMALL/resolve/e08cab65ca0ec38e7826075418411ab90cab4da3/model.safetensors",
+        "verification_after_authorized_download": "Require exact file size 137248940 and SHA256 364492e38a3a06d221ac75da7f6621ada3f2361cd24fde11ba79091e9f40efcf, then safetensors state/config strict matching; do not use mutable main revision.",
+        "header_only": {
+          "model_id": "depth-anything/DA3-SMALL",
+          "revision": "e08cab65ca0ec38e7826075418411ab90cab4da3",
+          "metadata_only": true,
+          "full_weights_downloaded": false,
+          "header_bytes": 51080,
+          "header_sha256": "d972b7732d0e3e80555a6a83e6ac2583ea61b027be94db87c82f12ff7fdb117a",
+          "tensor_count": 437,
+          "parameter_numel": 34299463,
+          "dtype": "F32",
+          "tensor_payload_bytes": 137197852,
+          "expected_full_file_size_bytes": 137248940,
+          "expected_full_file_sha256": "364492e38a3a06d221ac75da7f6621ada3f2361cd24fde11ba79091e9f40efcf",
+          "parameter_groups": {
+            "model.backbone": 22059008,
+            "model.cam_dec": 1188105,
+            "model.cam_enc": 7178496,
+            "model.head": 3873854
+          },
+          "range_contract": "HTTP206 exact Content-Range; only first8bytes+JSONheader downloaded"
+        }
+      },
+      "completeness": {
+        "parameter_groups": {
+          "model.backbone": 22059008,
+          "model.cam_dec": 1188105,
+          "model.cam_enc": 7178496,
+          "model.head": 3873854
+        },
+        "has_pretrained_depth_confidence_and_camera_decoder_weights": true,
+        "tensor_keys": 437,
+        "actual_parameters": 34299463,
+        "stored_dtype": "FP32",
+        "payload_bytes": 137197852,
+        "model_card_parameters_claim": "0.08B",
+        "card_count_matches_download_header": false,
+        "parameter_count_basis": "independent safetensors header arithmetic; HF API independently lists the same 34299463 F32 parameters",
+        "default_unconditioned_unused_camera_encoder_parameters": 7178496
+      },
+      "architecture": {
+        "backbone": "single DINOv2 ViT-S",
+        "blocks": 12,
+        "embedding_dim": 384,
+        "heads": 6,
+        "head_dim": 64,
+        "mlp_ratio": 4,
+        "patch": 14,
+        "special_tokens_per_view": 1,
+        "register_tokens": 0,
+        "local_block_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          8,
+          10
+        ],
+        "global_block_indices": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "feature_layers": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "feature_channels": 768,
+        "camera_decoder": "two 768->768 ReLU layers plus translation/quaternion/FOV heads, single pass; no original VGGT four-iteration CameraHead",
+        "depth_head": "DualDPT with depth+confidence and ray auxiliary branches",
+        "original_VGGT_checkpoint_compatible": false,
+        "same_original_VGGT_computation": false,
+        "bidirectional_batch_attention": true,
+        "causal_streaming_state_available": false
+      },
+      "cost": {
+        "author_full_MAC_count_available": false,
+        "derived_backbone_only_MAC": {
+          "status": "static calculation, not measured runtime or total model FLOPs",
+          "shape": [
+            1,
+            2,
+            3,
+            252,
+            336
+          ],
+          "patch_tokens_per_view": 432,
+          "sequence_tokens_per_view": 433,
+          "QKV_projection_and_MLP_formula": "12 blocks * 12 * S * n * D^2",
+          "linear_MAC": 18388353024,
+          "attention_formula": "8 local blocks * 2*S*n^2*D + 4 global blocks * 2*(S*n)^2*D",
+          "QK_AV_MAC": 4607729664,
+          "sum_MAC": 22996082688,
+          "excluded": [
+            "patch embedding",
+            "DualDPT",
+            "camera head",
+            "norm",
+            "RoPE",
+            "softmax",
+            "activation",
+            "resize",
+            "IO"
+          ]
+        },
+        "FP32_tensor_storage_bytes": 137197852,
+        "hypothetical_FP16_parameter_storage_bytes": 68598926,
+        "runtime_RAM_DMA_activation_workspace_measured": false
+      },
+      "author_speed": {
+        "paper": "https://arxiv.org/html/2511.10647v1",
+        "section": "Table 8",
+        "reported_FPS": 160.5,
+        "hardware": "NVIDIA A100 80GB",
+        "scene_images": 32,
+        "image_hw": [
+          336,
+          504
+        ],
+        "semantics": "average throughput per image in a 32-image scene; not single-fresh-frame latency, RK3588S, or a SLAM pipeline"
+      },
+      "quality_warning": {
+        "paper": "https://arxiv.org/html/2511.10647v1",
+        "section": "Tables 2-3",
+        "examples": {
+          "7Scenes_AUC3": {
+            "VGGT": 23.9,
+            "DA3_SMALL": 14.0
+          },
+          "ScanNet++_AUC3": {
+            "VGGT": 62.6,
+            "DA3_SMALL": 10.9
+          },
+          "ScanNet++_pose_free_reconstruction_F1": {
+            "VGGT": 66.4,
+            "DA3_SMALL": 32.3
+          }
+        },
+        "original_518_quality_loss_le_10_to_20_percent_established": false
+      },
+      "CPU_board_feasibility": {
+        "status": "source inspection only, not imported or executed on ARM",
+        "official_public_entry": "depth_anything_3.api.DepthAnything3.from_pretrained(...).inference(images); core DepthAnything3Net.forward(x, extrinsics=None, intrinsics=None, infer_gs=False, use_ray_pose=False)",
+        "core_operators": [
+          "Linear/MatMul",
+          "LayerNorm including QK norm",
+          "SDPA/Softmax",
+          "RoPE",
+          "exact GELU",
+          "Conv2d/ConvTranspose2d",
+          "interpolate",
+          "Exp",
+          "camera quaternion/FOV decoding"
+        ],
+        "mandatory_custom_CUDA_kernel_in_inspected_unconditioned_core": false,
+        "installation_obstacles": [
+          "pyproject declares xformers, open3d, pycolmap and export/server packages even for simple inference",
+          "Gaussian splatting is optional gsplat CUDA and is outside the needed depth+pose path",
+          "high-level API chooses autocast dtype via torch.cuda.is_bf16_supported(), so use explicit CPU FP32 core baseline rather than assuming its CPU fallback is FP32",
+          "uninspected transitive import compatibility must be checked before promising ARM support"
+        ],
+        "minimal_core_dependencies_to_verify": [
+          "PyTorch CPU",
+          "NumPy<2",
+          "einops",
+          "addict",
+          "omegaconf",
+          "safetensors",
+          "Hugging Face hub/Pillow/OpenCV if using official loading/preprocessing"
+        ],
+        "RKNN_static_conversion_compilation_profile_and_accuracy_done": false
+      },
+      "SLAM_interface_limits": [
+        "Normalize official w2c output, predicted pixel K, z-depth/confidence and exact image transforms into the execution contract; do not reuse VGGT pose codec blindly.",
+        "Per-batch gauge and overlap/projective backend remain to be tested; different model weights and training are explicit.",
+        "No verified VGGT compute_similarity target-token/retrieval cosine-ratio interface; declare unsupported/disable loops during isolated prediction diagnostics, never synthesize ratio 1.0.",
+        "Official da3_streaming is chunked long-sequence processing, not a ready learned causal 20Hz pose frontend."
+      ]
+    },
+    {
+      "name": "QuantVGGT",
+      "priority": "original-base-weight PTQ research; not a ready RKNN engine",
+      "code": {
+        "repo": "wlfeng0509/QuantVGGT",
+        "commit": "e6e0ca8859fb5cbc7683eec6c9b4773a1a3360ed",
+        "declared_license": "Apache-2.0"
+      },
+      "checkpoint": {
+        "model_id": "wlfeng/QuantVGGT",
+        "revision": "831f53a9351aa2b857069d56f37523febd0e0218",
+        "model_card_declared_license": "MIT",
+        "base_VGGT_weight_license_independent": true,
+        "base_file_expected_by_code": "model_tracker_fixed_e20.pt",
+        "our_pinned_original_VGGT_file_binding_verified": false,
+        "released_files": [
+          {
+            "path": "a44_quant_model_tracker_fixed_e20.pt_sym/qs_frame_parameters_total.pth",
+            "expected_full_file_bytes": 1915247930,
+            "expected_sha256_from_LFS_oid": "44b74f7f0826e6fa53d4f4a67f73a04c01b9ae4b5320792e6c5a23908e8d96f7",
+            "full_file_downloaded": false,
+            "url": "https://huggingface.co/wlfeng/QuantVGGT/resolve/831f53a9351aa2b857069d56f37523febd0e0218/a44_quant_model_tracker_fixed_e20.pt_sym/qs_frame_parameters_total.pth"
+          },
+          {
+            "path": "a44_quant_model_tracker_fixed_e20.pt_sym/qs_global_parameters_total.pth",
+            "expected_full_file_bytes": 1915248510,
+            "expected_sha256_from_LFS_oid": "7da7f224230fd28711c0c8b844157b60485ff8bb3caead1642085bae3807659a",
+            "full_file_downloaded": false,
+            "url": "https://huggingface.co/wlfeng/QuantVGGT/resolve/831f53a9351aa2b857069d56f37523febd0e0218/a44_quant_model_tracker_fixed_e20.pt_sym/qs_global_parameters_total.pth"
+          }
+        ],
+        "released_parameter_files_total_bytes": 3830496440,
+        "metadata_only": true,
+        "large_files_downloaded": false,
+        "file_contents_or_packed_format_inspected": false
+      },
+      "model_semantics": {
+        "base_architecture_retained": true,
+        "MAC_reduction_from_low_bits": false,
+        "numerically_bitwise_original": false,
+        "method": "post-training calibrated rotation/channel smoothing/clipping and W4A4 quantization",
+        "released_parameters_applied_to": [
+          "aggregator.frame_blocks",
+          "aggregator.global_blocks"
+        ],
+        "explicitly_excluded": [
+          "all DINO patch-encoder blocks",
+          "camera_head",
+          "depth_head",
+          "point_head",
+          "track_head"
+        ]
+      },
+      "implementation": {
+        "AWQ_extension_required_in_inspected_QuantVGGT_source": false,
+        "do_not_confuse_with_QVGGT": true,
+        "hardcoded_CUDA_initialization": "random_hadamard_matrix(..., \"cuda\")",
+        "published_eval_path": "FP32 Hadamard matmul/channel scaling -> per-token fake activation quantize/dequantize -> floating self.linear; reparameterized floating weights",
+        "ready_packed_RKNN_INT4_runtime": false,
+        "paper_speed_backend": "CUTLASS INT matrix multiplication on PyTorch/CUDA",
+        "per_token_activation_scale_dynamic": true,
+        "weight_scale": "per-output-channel",
+        "RKNN_direct_auto_conversion_compatible": false
+      },
+      "author_speed": {
+        "paper": "https://arxiv.org/html/2509.21302v4",
+        "section": "Efficiency Analysis / Figure 6",
+        "reported_speedup": 2.5,
+        "reported_memory_reduction": 3.7,
+        "hardware": "NVIDIA RTX4090 24GB",
+        "CUDA": "12.4",
+        "scene_frames": 20,
+        "no_RK3588S_result": true
+      },
+      "deployment_blockers": [
+        "CUDA initialization must be ported without changing saved transform/quantization semantics.",
+        "Per-token activation scales, Hadamard/clip/round/nibble packing and per-channel output dequantization are not an automatic RKNN compiler lowering.",
+        "DINO and prediction heads remain original full precision, including expensive original CameraHead.",
+        "Released .pth parameters total 3.83GB; no proof here that they are a compact deployable four-bit whole-model package.",
+        "Original base weight identity and license must be verified separately from the parameter model-card MIT label."
+      ]
+    }
+  ],
+  "RK3588_INT4_primary_constraint": {
+    "sdk_repo_commit": "59a913d172e7f5ff03c9076e2ec7b1b1288ffd08",
+    "supports_int4_matrix_API_in_release_notes": true,
+    "documented_mode": "RKNN_INT4_MM_INT4_TO_INT16",
+    "automatic_W4A16_model_quantization_v2_3_platform": "RK3576, not advertised RK3588",
+    "A_C_quantization_metadata": "per-layer only (AC_quant_type=0), unlike QuantVGGT per-token activation scaling",
+    "warning": "INT4 enum/API does not demonstrate the connected board driver or a correct/fast QuantVGGT execution. Verify native pack/alignment, signed nibble rules and int16 accumulation overflow; time host preprocessing and dequantization too.",
+    "actual_INT4_run_done": false
+  },
+  "excluded_ready_to_deploy": [
+    {
+      "name": "Distill3R",
+      "repo": "TheFourthKaramazov/Distill3R",
+      "commit": "31f3b4e712e3dafcd5f9f1b9264dea312ba3d8d3",
+      "parameters_claim": 72000000,
+      "reason": "official README explicitly says no pretrained Distill3R checkpoints distributed; training required",
+      "URL": "https://github.com/TheFourthKaramazov/Distill3R/blob/31f3b4e712e3dafcd5f9f1b9264dea312ba3d8d3/README.md"
+    },
+    {
+      "name": "QVGGT",
+      "repo": "DDsacu/QVGGT",
+      "commit": "80ee41adc9eb5cbb5984feb5cbbddefdd572f9f0",
+      "reason": "no verified official checkpoint download URL or license; AWQ custom CUDA implementation is distinct from QuantVGGT"
+    }
+  ],
+  "decision": {
+    "verified_RK3588S_20Hz_solution_found": false,
+    "production_replacement_authorized_by_this_research": false,
+    "best_small_pretrained_candidate": "DA3-SMALL",
+    "next_small_alternative_experiment": "If model-change experiment is authorized, verify exact 137MB DA3 checkpoint and CPU-FP32 core/import/codec on ARM, then fixed S2 depth+pose graph conversion and actual SDK operator profile + full IO time + same-source original518 quality; CPU reference is not NPU success. No traditional frontend.",
+    "original_checkpoint_route": "QuantVGGT suggests an isolated signed INT4 MatMul/one-MLP experiment with exact CPU integer/dequant reference, all preprocessing costs, driver/profile proof and original-weight/calibration identity. It does not by itself demonstrate a complete <=50ms learned pose path."
+  },
+  "primary_sources": [
+    {
+      "path": "LICENSE",
+      "repo": "ByteDance-Seed/Depth-Anything-3",
+      "commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+      "git_blob_sha1": "a2fa36578f5094f56f4b0ec57e70eb30aced4519",
+      "sha256": "78446e29c48900cda82620a8df183cca61f0a595e05a49d0401a5fd604dd1870",
+      "bytes": 11355,
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/LICENSE",
+      "claim_lines": {
+        "Apache License": [
+          1,
+          178,
+          180,
+          191
+        ]
+      }
+    },
+    {
+      "path": "src/depth_anything_3/configs/da3-small.yaml",
+      "repo": "ByteDance-Seed/Depth-Anything-3",
+      "commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+      "git_blob_sha1": "10887437697fc9f2614c03add73fe9858b309d91",
+      "sha256": "94f69159d682b897dd95ca6d2787148159782c2bcd3112a87e6fab037d7744ed",
+      "bytes": 774,
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/configs/da3-small.yaml",
+      "claim_lines": {
+        "name: vits": [
+          12
+        ],
+        "out_layers:": [
+          13
+        ],
+        "alt_start: 4": [
+          14
+        ],
+        "dim_in:": [
+          25,
+          45
+        ]
+      }
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/vision_transformer.py",
+      "repo": "ByteDance-Seed/Depth-Anything-3",
+      "commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+      "git_blob_sha1": "f0f8e23ad21d8c5a60626955d38d740f98bb5c48",
+      "sha256": "c28650e5db0b578745f5a41336709d54d08f952bc08cf1bd2009e2b765111221",
+      "bytes": 17574,
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/vision_transformer.py",
+      "claim_lines": {
+        "def vit_small": [
+          401
+        ],
+        "embed_dim=384": [
+          404
+        ],
+        "i >= self.alt_start and i % 2 == 1": [
+          333
+        ],
+        "self.process_attention(": [
+          334,
+          338
+        ],
+        "num_register_tokens=0": [
+          104,
+          401,
+          415,
+          429,
+          443
+        ]
+      }
+    },
+    {
+      "path": "src/depth_anything_3/model/dinov2/layers/attention.py",
+      "repo": "ByteDance-Seed/Depth-Anything-3",
+      "commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+      "git_blob_sha1": "096b9d41ddc95b9c4652597b18f53aee31a573b6",
+      "sha256": "d9db2bd66c612df689ec19aa2b60138c4185e38c8cfaaef48fc17f39a5b17c81",
+      "bytes": 3264,
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/dinov2/layers/attention.py",
+      "claim_lines": {
+        "scaled_dot_product_attention": [
+          29,
+          60
+        ],
+        "self.q_norm": [
+          40,
+          55
+        ],
+        "self.rope(q, pos)": [
+          57
+        ]
+      }
+    },
+    {
+      "path": "src/depth_anything_3/model/cam_dec.py",
+      "repo": "ByteDance-Seed/Depth-Anything-3",
+      "commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+      "git_blob_sha1": "3353b403683bf556b3823081863573dc7f5f719e",
+      "sha256": "f7bc81d846b786e314c03eaaf809126505fa0c82eb5177b95eadbfad5beefd63",
+      "bytes": 1713,
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/cam_dec.py",
+      "claim_lines": {
+        "class CameraDec": [
+          19
+        ],
+        "nn.Linear(output_dim, output_dim)": [
+          24,
+          26
+        ],
+        "self.fc_t": [
+          29,
+          37
+        ],
+        "self.fc_qvec": [
+          30,
+          39
+        ],
+        "self.fc_fov": [
+          31,
+          40
+        ]
+      }
+    },
+    {
+      "path": "src/depth_anything_3/model/da3.py",
+      "repo": "ByteDance-Seed/Depth-Anything-3",
+      "commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+      "git_blob_sha1": "f9e5bd683a8a697647da30e4d93a0ead03e9545d",
+      "sha256": "c7d5f88962e05c021cf7dab505840c8892e5e9d6880fb2901d20f4120ca173b3",
+      "bytes": 17641,
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/da3.py",
+      "claim_lines": {
+        "if extrinsics is not None:": [
+          126
+        ],
+        "if use_ray_pose:": [
+          141
+        ],
+        "pose_enc = self.cam_dec": [
+          216
+        ],
+        "affine_inverse(c2w)": [
+          225
+        ]
+      }
+    },
+    {
+      "path": "src/depth_anything_3/api.py",
+      "repo": "ByteDance-Seed/Depth-Anything-3",
+      "commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+      "git_blob_sha1": "d0f18aad68c6ded86a27952576064cca2aec59d4",
+      "sha256": "042ae8f6bfd1e5610100a585ebb00f8cbc3320f9aa9e03a07530fd4deda8d2d8",
+      "bytes": 17986,
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/api.py",
+      "claim_lines": {
+        "def forward(": [
+          100
+        ],
+        "def inference(": [
+          133
+        ],
+        "torch.cuda.is_bf16_supported()": [
+          126
+        ],
+        "torch.autocast(device_type=image.device.type": [
+          128
+        ]
+      }
+    },
+    {
+      "path": "pyproject.toml",
+      "repo": "ByteDance-Seed/Depth-Anything-3",
+      "commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+      "git_blob_sha1": "6a11c7ae0e2978de8a726d3ac9e6668db0c5248a",
+      "sha256": "3e178d62b8ca674ee4685a5c2a89ab8363e204b9af24d7313bdb8e3c03926544",
+      "bytes": 2039,
+      "url": "https://raw.githubusercontent.com/ByteDance-Seed/Depth-Anything-3/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/pyproject.toml",
+      "claim_lines": {
+        "torch>=2": [
+          17
+        ],
+        "xformers": [
+          24
+        ],
+        "gsplat": [
+          46,
+          89
+        ]
+      }
+    },
+    {
+      "path": "LICENSE",
+      "repo": "wlfeng0509/QuantVGGT",
+      "commit": "e6e0ca8859fb5cbc7683eec6c9b4773a1a3360ed",
+      "git_blob_sha1": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357,
+      "url": "https://raw.githubusercontent.com/wlfeng0509/QuantVGGT/e6e0ca8859fb5cbc7683eec6c9b4773a1a3360ed/LICENSE",
+      "claim_lines": {
+        "Apache License": [
+          1,
+          178,
+          180,
+          191
+        ]
+      }
+    },
+    {
+      "path": "README.md",
+      "repo": "wlfeng0509/QuantVGGT",
+      "commit": "e6e0ca8859fb5cbc7683eec6c9b4773a1a3360ed",
+      "git_blob_sha1": "6e6e9a355858e56a006d67459b34727fac9674c8",
+      "sha256": "610784971897e50844cf9064b54f69f750ca7bc563b5ca273c52641c429245ed",
+      "bytes": 7749,
+      "url": "https://raw.githubusercontent.com/wlfeng0509/QuantVGGT/e6e0ca8859fb5cbc7683eec6c9b4773a1a3360ed/README.md",
+      "claim_lines": {
+        "[2026.02.09]": [
+          43
+        ],
+        "model_tracker_fixed_e20.pt": [
+          93,
+          117,
+          141,
+          172
+        ]
+      }
+    },
+    {
+      "repo": "wlfeng0509/QuantVGGT",
+      "commit": "e6e0ca8859fb5cbc7683eec6c9b4773a1a3360ed",
+      "path": "evaluation/quarot/utils.py",
+      "git_blob_sha1": "5a8d4ea954a5f73f54208f84bb25b46aee8d5a1a",
+      "sha256": "714ac5853fd8a9facca434cfbc6773722166f4f6dbda5dd05b96f3a30457e834",
+      "bytes": 11315,
+      "url": "https://raw.githubusercontent.com/wlfeng0509/QuantVGGT/e6e0ca8859fb5cbc7683eec6c9b4773a1a3360ed/evaluation/quarot/utils.py",
+      "claim_lines": {
+        "def load_qs_parameters": [
+          13
+        ],
+        "def set_ignore_quantize": [
+          47
+        ],
+        "model.aggregator.patch_embed.blocks": [
+          52
+        ],
+        "model.camera_head": [
+          53
+        ],
+        "model.depth_head": [
+          55
+        ]
+      }
+    },
+    {
+      "path": "evaluation/quarot/quarot_linear.py",
+      "repo": "wlfeng0509/QuantVGGT",
+      "commit": "e6e0ca8859fb5cbc7683eec6c9b4773a1a3360ed",
+      "git_blob_sha1": "f0c43fe640d3be9f691af59178f8da280c6e3256",
+      "sha256": "0ff15491790107e83f2a77f2902823fd4a8b67cb1e83dad82a0b740b8f102529",
+      "bytes": 5845,
+      "url": "https://raw.githubusercontent.com/wlfeng0509/QuantVGGT/e6e0ca8859fb5cbc7683eec6c9b4773a1a3360ed/evaluation/quarot/quarot_linear.py",
+      "claim_lines": {
+        "random_hadamard_matrix(self.linear.weight.shape[1], \"cuda\")": [
+          47
+        ],
+        "def _eval_forward": [
+          110
+        ],
+        "self.linear(hidden_states)": [
+          117
+        ],
+        "def reparameterize": [
+          129
+        ]
+      }
+    },
+    {
+      "path": "evaluation/quarot/quant_utils.py",
+      "repo": "wlfeng0509/QuantVGGT",
+      "commit": "e6e0ca8859fb5cbc7683eec6c9b4773a1a3360ed",
+      "git_blob_sha1": "81b356f658c281205596b13634a2bc05db561a40",
+      "sha256": "57db49734f0c971f2dab973627c81f500c7593c92cb19f41e5acb80bad882476",
+      "bytes": 9253,
+      "url": "https://raw.githubusercontent.com/wlfeng0509/QuantVGGT/e6e0ca8859fb5cbc7683eec6c9b4773a1a3360ed/evaluation/quarot/quant_utils.py",
+      "claim_lines": {
+        "per-token quantization": [
+          43
+        ],
+        "def sym_quant_dequant": [
+          25
+        ],
+        "def fake_quant": [
+          71
+        ]
+      }
+    },
+    {
+      "path": "CHANGELOG.md",
+      "repo": "airockchip/rknn-toolkit2",
+      "commit": "59a913d172e7f5ff03c9076e2ec7b1b1288ffd08",
+      "git_blob_sha1": "a78135dabc88cd84ec93e0cbc4f73fd25a59acd7",
+      "sha256": "2833a7e28619ed104c434a5a430f11c2f794f5a33a623959ca1d845e0589e0d6",
+      "bytes": 5396,
+      "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/CHANGELOG.md",
+      "claim_lines": {
+        "W4A16": [
+          21
+        ],
+        "RK3588 adding int4": [
+          77
+        ]
+      }
+    },
+    {
+      "repo": "airockchip/rknn-toolkit2",
+      "path": "rknpu2/runtime/Linux/librknn_api/include/rknn_matmul_api.h",
+      "commit": "59a913d172e7f5ff03c9076e2ec7b1b1288ffd08",
+      "git_blob_sha1": "7a321b32cf652582f52be51c533b7fbae7db953b",
+      "sha256": "aaadd9a7118de30a06b222996b6731db77095d00f5931a7a98c83a67f14a4d42",
+      "bytes": 18598,
+      "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknpu2/runtime/Linux/librknn_api/include/rknn_matmul_api.h",
+      "claim_lines": {
+        "RKNN_INT4_MM_INT4_TO_INT16": [
+          59,
+          80,
+          81
+        ],
+        "AC_quant_type": [
+          181
+        ],
+        "int4 type must be aligned with": [
+          152,
+          156,
+          238,
+          242
+        ]
+      }
+    },
+    {
+      "model_id": "depth-anything/DA3-SMALL",
+      "revision": "e08cab65ca0ec38e7826075418411ab90cab4da3",
+      "path": "README.md",
+      "bytes": 4694,
+      "sha256": "0a711be055e4eb5293e31586e3176c09ce12eb2e79593f6b96a41f7fe5b415d0",
+      "git_blob_sha1": "efbcb8b72e26241e56330cd76d6df4ca475f897f",
+      "url": "https://huggingface.co/depth-anything/DA3-SMALL/blob/e08cab65ca0ec38e7826075418411ab90cab4da3/README.md"
+    },
+    {
+      "model_id": "depth-anything/DA3-SMALL",
+      "revision": "e08cab65ca0ec38e7826075418411ab90cab4da3",
+      "path": "config.json",
+      "bytes": 1202,
+      "sha256": "a486e29e82b7ab4a7d4cefc1ea4526cfe2ae438a572c8ca98917cfbcde7447d2",
+      "git_blob_sha1": "d2fb247e43e97657fa2b8c7613848f567e8ee556",
+      "url": "https://huggingface.co/depth-anything/DA3-SMALL/blob/e08cab65ca0ec38e7826075418411ab90cab4da3/config.json"
+    },
+    {
+      "model_id": "wlfeng/QuantVGGT",
+      "revision": "831f53a9351aa2b857069d56f37523febd0e0218",
+      "path": "README.md",
+      "bytes": 2396,
+      "sha256": "a7b88639025b7ec34fcf9e815bfb9edfb1b982a781f7b3a95cc3b20c5d19c5d9",
+      "git_blob_sha1": "8516802ccddc66824c23dec56ac1de094e6bc54b",
+      "url": "https://huggingface.co/wlfeng/QuantVGGT/blob/831f53a9351aa2b857069d56f37523febd0e0218/README.md"
+    }
+  ]
+}

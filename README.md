@@ -149,6 +149,23 @@ Forward timing includes BF16 prediction, fresh plan construction, merge and spli
 
 **The MLP-only approximation is not adopted as the default.** It still takes tens of seconds, changes pose/depth predictions and has not passed the complete accuracy, online latency or endurance targets. Reproduction uses `run-v22-come-fullmodel-board.py`; saved-output and scene auditors are `compare-v22-come-fullmodel.py` and `audit-v22-come-fullmodel-scenes.py` under `deploy/rk3588/validation/`. `--help` lists the required arguments; frozen pins are recorded in the source and result receipts.
 
+## Original MLP execution and compression research (v23)
+
+The original global block's MLP now has a standalone compiled execution probe. It retains all 4,096 hidden channels and all 874 normalized input rows; no token merging is used. A full graph is compared with three independent hidden-channel slices on NPU cores 0/1/2. The partial graphs omit FC2 bias; the CPU sums their owned FP32 outputs, adds that bias once, and applies the original LayerScale and per-token residual. Contexts and their constant weights persist across calls. Both graph representations pass the board CPU ONNX check against the saved original MLP over all 894,976 elements (`rtol=1e-4, atol=1e-5`).
+
+| Representation | Full graph, mean ms | Three slices, mean ms | Full / sliced MLP relative L2 vs original FP32 |
+| --- | ---: | ---: | ---: |
+| R1 Gemm, internal CPU Transpose and Erf | 312.686 | 140.663 | 0.04324% / 0.03973% |
+| R2 rank-three MatMul/Add, NPU ConvExGelu | 71.538 | 81.065 | 1.29281% / 1.29268% |
+
+Each mean uses four calls in an interleaved ABBAABBA schedule, after one warmup per variant. Times include input preparation, SDK transfers, worker synchronization, FP32 reduction/cropping and original LayerScale/residual; model initialization, error analysis and file writes are excluded. Separate actual SDK profiles confirm that R1 has internal CPU work, while R2 has six internal NPU operators and CPU I/O. CPU reduction and residual work remain outside the compiled graphs. This is a short, fixed-input experiment with read-only thermal/frequency samples, not sustained throughput or latency percentiles.
+
+**Hidden-channel splitting is not adopted:** it gives no net timing benefit for R2 in this run, and none of the FP16 variants passes the strict FP32 elementwise gate. R2's reconstructed block error is 0.43515% relative L2 for the full graph and 0.43513% for the slices; whole-network pose/depth accuracy remains untested. SDK DMA is 61,460,480 bytes for the full context and 72,450,048 bytes across the three slice contexts. All four coexist during the comparison (133,910,528 reported bytes); this does not establish the memory needed for all model layers. [Measurements, operator profiles, failed first ORT setup and independent checks](results/mlp_execution_v23.json). The export/run/audit helpers are under `deploy/rk3588/validation/`; [81 synthetic tests passed, zero skipped](results/synthetic_tests_v23.json).
+
+The [CameraHead bottleneck audit](results/camera_bottleneck_v23.json) finds that its FC1 ConvExGelu operations account for 42.02% of profiled operator time and execute on one core. The tested SDK does not accept a direct `conv_eltwise_activation_fuse` configuration switch. Disabling GELU recognition instead retains CPU Erf; it is not an established all-NPU fix.
+
+[New primary-source research](results/acceleration_research_v23.json) identifies DA3-SMALL as a complete pretrained depth/pose alternative worth a separate experiment. Its inspected safetensors header contains 34,299,463 FP32 parameters and describes a 137,248,940-byte file; the model card's “0.08B” does not match that file. Only metadata was downloaded, and no replacement model was run or installed. Its code and this specific model card separately declare Apache-2.0; it is a different model, not a license or weight update to VGGT. QuantVGGT's released reference path quantizes the aggregator, leaves the DINO backbone and output heads unchanged, and requires additional work to implement its dynamic scales and low-bit operations on RK3588. Neither candidate establishes 20 Hz or the required accuracy. The production model and execution interface remain unchanged.
+
 ## Lightweight tests
 
 With NumPy, OpenCV and pytest installed, the geometry, queue and calibration tests need no weights or hardware:
