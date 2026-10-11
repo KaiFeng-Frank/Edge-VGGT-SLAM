@@ -1,0 +1,1287 @@
+{
+  "schema": "v33_final_read_only_publication_review",
+  "status": "passed_no_current_blockers",
+  "reviewed_file_sha256": {
+    "README.md": "3d7b2e57125bbcf1db91d6fb477aca504b7e19ec4de72c1488ef2f326ff6bc2c",
+    "THIRD_PARTY_NOTICES.md": "3be3d743e898f939a64c3d22c5f7fb847b6035441e450e5db142e24875f4309f",
+    "docs/ENGINEERING_NOTES.md": "fdb9d1eca100da0bb24339fedf34dbd2fb91888b7344d0ff2a1e4cf95711651c",
+    "deploy/rk3588/validation/dpvo_source_frame/LICENSE-DPVO": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
+    "deploy/rk3588/validation/dpvo_source_frame/README.md": "b0b0287eeb1052fbec386f19d1768d5c61014a4ca4dd98f3374ab770a8681872",
+    "deploy/rk3588/validation/dpvo_source_frame/audit-v33-source-frame-export.py": "c3cc443bee247bb7d3f8adbdb6ce153119ddf9a41a1a6316d2c1e149dfc1236d",
+    "deploy/rk3588/validation/dpvo_source_frame/audit-v33-source-frame-rknn.py": "30238c99ac6aaa874963f065fd6cf931ecf6e80d600f52c73adf3877f455adf1",
+    "deploy/rk3588/validation/dpvo_source_frame/compile-v33-source-frame-update.py": "9485c57075161e932841cf05ac9c0226e349fe66bebea462b45ec69d1d0b16df",
+    "deploy/rk3588/validation/dpvo_source_frame/export-v33-source-frame-board.py": "1bb1df7dc4e61e6f3d60fcd1170b267c478fd9600de1f0481ec1a73a42fa1b73",
+    "deploy/rk3588/validation/dpvo_source_frame/query-v33-source-frame-board.py": "e047ab89eb5c088795fab3112cc6596ffd15ee6d8d716837c7605b072feb67ce",
+    "deploy/rk3588/validation/dpvo_source_frame/run-v33-source-frame-rknn-board-r2.py": "813ab6f78663fc58474f7c624590b5dc0e341a2522c4279128e99d7427bb7115",
+    "deploy/rk3588/validation/dpvo_source_frame/run-v33-source-frame-rknn-board.py": "95f2ffcdfd858d3873e39348829865c5d25b5e18b61a0da37376bcb8b26193ff",
+    "deploy/rk3588/validation/dpvo_source_frame/source_frame_plan.py": "04e240c2c35bd1359dbe5649fb038490a0a7ff99654d8d112ad7c83acc87ac2e",
+    "deploy/rk3588/validation/dpvo_source_frame/source_frame_update.py": "cf1adb2224750cd0659139689f4b8a5a8107f2e733e8d1c6f86ea009c86a1bb2",
+    "deploy/rk3588/validation/dpvo_source_frame/v33_rknn_source_frame.py": "322021ade54fb9035b7ce80652ec90169938a417fd2192528d28a805a83ed25e",
+    "deploy/rk3588/validation/dpvo_source_frame/v33_rknn_source_frame_padded.py": "a5af6d39b2d19471255fc86aa42c9aa9b0247e428715c23ffd4ba79b184ad865",
+    "deploy/rk3588/validation/dpvo_sparse_context/LICENSE-DPVO": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
+    "deploy/rk3588/validation/dpvo_sparse_context/README.md": "fa0f1379d1a4c9d900f6ae15670da51ca3cdce87182b34b826027a4030121710",
+    "deploy/rk3588/validation/dpvo_sparse_context/audit-v33-dpvo-sparse-context.py": "036fd209ca0f29f7f1a05cbfc337ab09611ca0de915cc8bc8990b76606763bd2",
+    "deploy/rk3588/validation/dpvo_sparse_context/calculate-v33-fast-config-budget.py": "706fc6e39fd365b83e2c30761f03adb0fc728bbdb2c54ae23b6b076a7abf9ab5",
+    "deploy/rk3588/validation/dpvo_sparse_context/rewrite-v33-dpvo-sparse-context.py": "39004857559e27e3f9271ab413fc4498365370eac8862c56b16ba44b93f109ec",
+    "deploy/rk3588/validation/dpvo_sparse_context/run-v33-dpvo-sparse-context-ort-board.py": "b184dcc440771730cce13f9e7a72c065b619f469cab5b754a43a89c6bb0314cd",
+    "tests/test_v33_fast_budget.py": "7471a61e815417b85ee3d7a84714596561290cbd8618ba4e6a1646dd9a293d09",
+    "tests/test_v33_source_frame_driver.py": "2fee9b4340acd6620ebefc3d9000bc830041e661221f6a041363c303843f1497",
+    "tests/test_v33_source_frame_driver_r2.py": "fad211efa1301ef6161c678f1d1e3d56b77b024c3f1751a46d2ef451c36d9f7d",
+    "tests/test_v33_source_frame_export_audit.py": "6fe8e407dddabc6d11f49739722521ed14b34a1af9d2511360c5e397f6370b3e",
+    "tests/test_v33_source_frame_padded.py": "d4ef8be3fbc91393cc9ef2863f7b614bd083d74a3185f2f8c7b57378407df1d3",
+    "tests/test_v33_source_frame_rknn_audit.py": "dea9bfdac7bc93ab38c63c801ebaa81b5e74aef325e346405011cea6c52e1523",
+    "tests/test_v33_source_frame_sdk.py": "ce47e854e3cc1980bdae1d2fa2a14456ac39d727de312bd17bc4fb2eafa06b70",
+    "tests/test_v33_source_frame_update.py": "4763d8e022a0d378f9e406507ed098339b37a920b1cbf47272bd2513f9ac8cb2",
+    "tests/test_v33_sparse_context.py": "7554c3875100ff2c7283d0389522b25e19671ebcbaf6a8d6f2313cf8348de562",
+    "tests/test_v33_sparse_context_audit.py": "6f8bac73fed7175b6e8707e13044c692647905e5f07d68fc65d57f3a2b6c05d9",
+    "tests/test_v33_sparse_context_ort.py": "19dc93fd9abd93185da2639ccaa3b2cc614d79a8d5e92f1508a15df03cd2dfde",
+    "results/dpvo_source_frame_v33.json": "e9a8adb9c3859c3d9d98dc385dcad2609308a878f79d66abcf37420698f77806",
+    "results/dpvo_sparse_context_v33.json": "f75cec95c5ab6beb59c45b06a7aef85a336f4b45a6143e748b27aff51103c6a0",
+    "results/dpvo_fast_budget_v33.json": "52e37df1ec76c2ab717d8c5a1bdf4c3809eb2449e6db74114d88b5f67a8ef0a8",
+    "results/synthetic_tests_v33.json": "bf2953b00d4bbb3d7ef9b310ff7222a6c2b61b49da558cd09b1d04c606138c02"
+  },
+  "reviewed_file_count": 37,
+  "reviewed_scope": {
+    "docs_and_notices": 3,
+    "helper_directory_files": 19,
+    "test_files": 11,
+    "result_files": 4,
+    "SOURCE_SNAPSHOT_included": false
+  },
+  "embedded_receipts": [
+    {
+      "published_field": "results/dpvo_source_frame_v33.json/evidence/board_CPU_export",
+      "raw_file": "vggt-v33-source-frame-export-r1/manifest.json",
+      "sha256": "3f45c586bcdfdd47cd81724fb4008e8dcac975d86257a1ec58b3fca97767ba13",
+      "bytes": 139137,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_source_frame_v33.json/evidence/host_compile",
+      "raw_file": "vggt-v33-source-frame-compile-r1/compile.json",
+      "sha256": "864d5d3e538e2efc58c3de6724c2eeb2abc4a05e13b39fced44e90ff9221a0f7",
+      "bytes": 9881,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_source_frame_v33.json/evidence/SDK_startup_failure_r1",
+      "raw_file": "vggt-v33-source-frame-normal-r1/run.json",
+      "sha256": "9f3151b8b96a64952f9d9cd21238a21b216b0e17a68a4aad092b48a686520f83",
+      "bytes": 14290,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_source_frame_v33.json/evidence/SDK_attributes_no_inference",
+      "raw_file": "vggt-v33-source-frame-attrs-r1/query.json",
+      "sha256": "7811d03cb60ad733e927884cffab788e0809966865146660ba9f86a2545ab356",
+      "bytes": 4341,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_source_frame_v33.json/evidence/ordinary_RKNN_r2",
+      "raw_file": "vggt-v33-source-frame-normal-r2/run.json",
+      "sha256": "35aa83d54c20779cf6f8c98fecb89fbfacd15b6e6de1f53f2e6f8c33eca02103",
+      "bytes": 69868,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_source_frame_v33.json/evidence/profile_RKNN_r2",
+      "raw_file": "vggt-v33-source-frame-profile-r2/run.json",
+      "sha256": "51901db44fe4cf82886375a109af76a6c88eeff60cea9705a8ae49cc0c6b516a",
+      "bytes": 82996,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_source_frame_v33.json/evidence/independent_export_audit",
+      "raw_file": "vggt-v33-dpvo-update/export-independent-review-r1.json",
+      "sha256": "813d9774c2964c1fff58e335a36f9e0a33bde4f40afaea75bb08ef8271a913fd",
+      "bytes": 15720,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_source_frame_v33.json/evidence/independent_RKNN_audit",
+      "raw_file": "vggt-v33-dpvo-update/rknn-independent-review-r1.json",
+      "sha256": "fa90fc9cc4bc45b0f89bf06189123d88815a7ac90050299403a18db5a24198a2",
+      "bytes": 30252,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_source_frame_v33.json/evidence/vggt-v33-source-frame-export-r1_platform",
+      "raw_file": "vggt-v33-source-frame-export-r1/platform_samples.json",
+      "sha256": "cc62d887c6cc1adb3cd10be9d4eaee4d6fbc4e99aaa85a45540788dcf3c6b99b",
+      "bytes": 1718,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_source_frame_v33.json/evidence/vggt-v33-source-frame-normal-r1_platform",
+      "raw_file": "vggt-v33-source-frame-normal-r1/platform_samples.json",
+      "sha256": "6859d92ef97e044e9aa8812cc27b816cf277bcbddf5ccad064134110ac75e0c9",
+      "bytes": 1720,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_source_frame_v33.json/evidence/vggt-v33-source-frame-normal-r2_platform",
+      "raw_file": "vggt-v33-source-frame-normal-r2/platform_samples.json",
+      "sha256": "baf451ec5d56b95dbc5eb8233f02d79b4050e8785f18af7e70db430fccb2eff0",
+      "bytes": 1720,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_source_frame_v33.json/evidence/vggt-v33-source-frame-profile-r2_platform",
+      "raw_file": "vggt-v33-source-frame-profile-r2/platform_samples.json",
+      "sha256": "fb2d718efa694e82a50808571e603d7cdd19934a836fa5a478e5a28b7ee659b3",
+      "bytes": 1720,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_sparse_context_v33.json/evidence/original_recipe",
+      "raw_file": "original-sparse-r1/rewrite.json",
+      "sha256": "368ec845f14655bf71e2fc9d80d435197c5ab6b8dd807c7c9af92ef9e33d13e0",
+      "bytes": 5557,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_sparse_context_v33.json/evidence/spatial_recipe",
+      "raw_file": "spatial-sparse-r1/rewrite.json",
+      "sha256": "005667f44cf98447d2b622882d7d40cbcce8a545985ddf2104eaa62740273ce2",
+      "bytes": 5611,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_sparse_context_v33.json/evidence/board_CPU_ORT",
+      "raw_file": "vggt-v33-sparse-context-ort-r1/ort.json",
+      "sha256": "24aef39822c86ae60e1cb6306d2d2966fa8a440320c4363f18c5db938ac4e168",
+      "bytes": 62402,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_sparse_context_v33.json/evidence/platform",
+      "raw_file": "vggt-v33-sparse-context-ort-r1/platform_samples.json",
+      "sha256": "b0ff3f9e0a197bd88991c1da02ff7d36d544f31a45478fd72f47da354fa1ecf4",
+      "bytes": 1720,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_sparse_context_v33.json/evidence/initial_independent_audit_r1",
+      "raw_file": "vggt-v33-dpvo-encoder/sparse-independent-review-r1.json",
+      "sha256": "be53b61ea2e4aabfdaf80473696bd25f9f7cf6d030809a78da4d492bfeff7832",
+      "bytes": 19636,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_sparse_context_v33.json/evidence/independent_audit",
+      "raw_file": "vggt-v33-dpvo-encoder/sparse-independent-review-r2.json",
+      "sha256": "f58eebc9668ee90f2a4bf30737f7d9c81c6992fe45d1d3757da1da796b41aae6",
+      "bytes": 19636,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/dpvo_fast_budget_v33.json/evidence",
+      "raw_file": "vggt-v33-dpvo-encoder/FAST-config-edge-budget.json",
+      "sha256": "a755ca9e5fb80518e3926ae94458b1c469219281dce5f586c16cf2576ee55d58",
+      "bytes": 87180,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/synthetic_tests_v33.json/batches/0",
+      "raw_file": "vggt-v33-dpvo-update/public-tests-r1.json",
+      "sha256": "f7e5f0184d6cddcfaf658b6d987298a470192d17771576429479a9d210e14dce",
+      "bytes": 3739,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/synthetic_tests_v33.json/batches/1",
+      "raw_file": "vggt-v33-dpvo-update/public-auditor-tests-r1.json",
+      "sha256": "2d124cef443eb6f5e89412b56d2235e949844dbe8e42a22e635460fcdd8abb55",
+      "bytes": 1363,
+      "exact_after_only_host_home_redaction": true
+    },
+    {
+      "published_field": "results/synthetic_tests_v33.json/batches/2",
+      "raw_file": "vggt-v33-dpvo-encoder/public-tests-r1.json",
+      "sha256": "b9f045641f7eae1e77477b4516e721d0ff424b6703e64ca280ea50e84d0d3ff9",
+      "bytes": 2238,
+      "exact_after_only_host_home_redaction": true
+    }
+  ],
+  "embedded_raw_receipts_verified": 22,
+  "redaction": "Exact recursive replacement of <host-home> with <host-home> only, including keys; raw SHA and byte counts bind original unredacted files.",
+  "source_copies": {
+    "verified_public_paths": [
+      "deploy/rk3588/validation/dpvo_source_frame/LICENSE-DPVO",
+      "deploy/rk3588/validation/dpvo_source_frame/README.md",
+      "deploy/rk3588/validation/dpvo_source_frame/audit-v33-source-frame-export.py",
+      "deploy/rk3588/validation/dpvo_source_frame/audit-v33-source-frame-rknn.py",
+      "deploy/rk3588/validation/dpvo_source_frame/compile-v33-source-frame-update.py",
+      "deploy/rk3588/validation/dpvo_source_frame/export-v33-source-frame-board.py",
+      "deploy/rk3588/validation/dpvo_source_frame/query-v33-source-frame-board.py",
+      "deploy/rk3588/validation/dpvo_source_frame/run-v33-source-frame-rknn-board-r2.py",
+      "deploy/rk3588/validation/dpvo_source_frame/run-v33-source-frame-rknn-board.py",
+      "deploy/rk3588/validation/dpvo_source_frame/source_frame_plan.py",
+      "deploy/rk3588/validation/dpvo_source_frame/source_frame_update.py",
+      "deploy/rk3588/validation/dpvo_source_frame/v33_rknn_source_frame.py",
+      "deploy/rk3588/validation/dpvo_source_frame/v33_rknn_source_frame_padded.py",
+      "deploy/rk3588/validation/dpvo_sparse_context/LICENSE-DPVO",
+      "deploy/rk3588/validation/dpvo_sparse_context/audit-v33-dpvo-sparse-context.py",
+      "deploy/rk3588/validation/dpvo_sparse_context/calculate-v33-fast-config-budget.py",
+      "deploy/rk3588/validation/dpvo_sparse_context/rewrite-v33-dpvo-sparse-context.py",
+      "deploy/rk3588/validation/dpvo_sparse_context/run-v33-dpvo-sparse-context-ort-board.py",
+      "tests/test_v33_fast_budget.py",
+      "tests/test_v33_source_frame_driver.py",
+      "tests/test_v33_source_frame_driver_r2.py",
+      "tests/test_v33_source_frame_export_audit.py",
+      "tests/test_v33_source_frame_padded.py",
+      "tests/test_v33_source_frame_rknn_audit.py",
+      "tests/test_v33_source_frame_sdk.py",
+      "tests/test_v33_source_frame_update.py",
+      "tests/test_v33_sparse_context.py",
+      "tests/test_v33_sparse_context_audit.py",
+      "tests/test_v33_sparse_context_ort.py"
+    ],
+    "frozen_implementation_byte_identity": true,
+    "original_test_hashes_preserved": true,
+    "source_frame_README_incremental_link_update_bound": true
+  },
+  "synthetic_tests": {
+    "passed": 217,
+    "failed": 0,
+    "skipped": 0,
+    "batches": [
+      130,
+      13,
+      74
+    ],
+    "test_files": 11,
+    "disjoint_batches": true,
+    "source_hashes_verified": true,
+    "tests_reexecuted_for_this_review": false
+  },
+  "sparse_audit_versions": {
+    "historical_r1": {
+      "auditor_sha256": "5256c30ff802a5f7e9b38f73802eed118742fcc27e367c46cf8516bd9efe0586",
+      "checks": 1270
+    },
+    "published_final_r2": {
+      "auditor_sha256": "036fd209ca0f29f7f1a05cbfc337ab09611ca0de915cc8bc8990b76606763bd2",
+      "checks": 1278
+    },
+    "both_original_receipts_retained": true
+  },
+  "documentation_review": {
+    "CPU_component_pass_and_RKNN_FP32_rejection_distinguished": true,
+    "strict_rtol": 0.0001,
+    "strict_atol": 1e-05,
+    "startup_failure_before_any_SDK_run_retained": true,
+    "normal_calls": 6,
+    "separate_profile_calls": 2,
+    "warm_samples_per_state": 2,
+    "warm_mean_seconds": [
+      0.0682917365047615,
+      0.08710296699428
+    ],
+    "profile_internal_NPU_CPU_IO": [
+      59,
+      5,
+      6
+    ],
+    "single_source_960_edges_not_full_23520_graph": true,
+    "FAST_budget_conditional_not_measured_speed": true,
+    "sparse_suffix_CPU_bitwise_not_NPU_or_VO_acceptance": true,
+    "current_dense_imap_snapshot_limit_explicit": true,
+    "no_twenty_Hz_or_trajectory_or_8GB_acceptance_claim": true,
+    "original_VGGT_default_unchanged": true
+  },
+  "relative_links_checked": [
+    {
+      "file": "README.md",
+      "target": "MODEL_LICENSES.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "THIRD_PARTY_NOTICES.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/ENGINEERING_NOTES.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "deploy/rk3588/validation/dpvo_source_frame/README.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/ENGINEERING_NOTES.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_fast_budget_v33.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_sparse_context_v33.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "deploy/rk3588/validation/dpvo_encoder_opt/README.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/ENGINEERING_NOTES.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "deploy/rk3588/validation/dpvo_dynamic_update/README.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/ENGINEERING_NOTES.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_stream_v30.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_trajectory_v30.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "deploy/rk3588/validation/dpvo_stream/README.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v30.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "ARCHITECTURE.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/model_execution_v21.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v21.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "MEASUREMENTS.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/camera_head_v15.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/tum_fr1_xyz_v15.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/background_continuation_v15.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/trajectory_v15.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/rectification_v16.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/replay_review_v16.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/trajectory_v16.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/camera_step_v16.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/hybrid_pairs_v16.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/resolution_comparison_v16.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/resolution_224_v17.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/resolution_336_v17.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/fov_source_audit_v17.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/profile_336_v17.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/frame_block_v17.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/global_block_v17.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/quality_pairs_capture_v18.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/patch_cache_v19.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/frame_axis_comparison_v19.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/mlp_layout_v19.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/attention_capture_v19.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/attention_v19.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/hybrid_block_v20.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/capacity_v20.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/acceleration_research_v20.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/come_sources_v22.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/come_mlp_v22.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v22.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/come_fullmodel_v22.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/mlp_execution_v23.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v23.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/camera_bottleneck_v23.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/acceleration_research_v23.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/da3_cpu_v24.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/da3_export_v24.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/da3_rknn_v24.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v24.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/da3_layout_v25.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/da3_budget_v25.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v25.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/ENGINEERING_NOTES.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/acceleration_research_v25.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v20.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v19.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v17.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/camera_step_v16.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_sources_v26.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_encoders_v26.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_motion_v26.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/ENGINEERING_NOTES.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v26.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_native_corr_v27.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "deploy/rk3588/validation/dpvo_native/README.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_norm_rewrite_v27.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/ENGINEERING_NOTES.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v27.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_update_cpu_v28.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_update_rknn_v28.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_feedback_v28.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/ENGINEERING_NOTES.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v28.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "deploy/rk3588/validation/dpvo_geometry/README.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_update_cpu_v29.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_geometry_v29.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_feedback_v29.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/dpvo_update_rknn_v29.json",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/ENGINEERING_NOTES.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "results/synthetic_tests_v29.json",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "MODEL_LICENSES.md",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "results/da3_sources_v24.json",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "MODEL_LICENSES.md",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/dpvo_cpu_ops.py",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "MODEL_LICENSES.md",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "results/dpvo_sources_v26.json",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/dpvo_native/README.md",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/dpvo_native/LICENSE",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/dpvo_update_export.py",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/dpvo_geometry/README.md",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/dpvo_geometry/LICENSE",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "results/dpvo_feedback_v28.json",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/dpvo_stream/README.md",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/dpvo_stream/LICENSE",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/v22_token_merge.py",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/v22_come_fullmodel.py",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "results/come_sources_v22.json",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "UPSTREAMS.json",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "results/model_license_v21.json",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/dpvo_dynamic_update/README.md",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/dpvo_encoder_opt/README.md",
+      "exists": true
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.md",
+      "target": "deploy/rk3588/validation/dpvo_source_frame/README.md",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/da3_cpu_v24.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/da3_probe_common.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/da3_sources_v24.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/da3_export_v24.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/export-v24-da3-board-r2.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/export-v24-da3-board-r3.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/da3_export_v24.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/da3_export_v24.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/audit-v24-da3-export.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/da3_cpu_v24.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/da3_export_v24.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../ARCHITECTURE.md",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/model_execution_v21.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../MODEL_LICENSES.md",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../THIRD_PARTY_NOTICES.md",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/model_license_v21.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/da3_rknn_v24.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/da3_cpu_v24.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/da3_layout_v25.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/synthetic_tests_v25.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/da3_budget_v25.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/da3_layout_v25.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_sources_v26.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_encoders_v26.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_motion_v26.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_motion_v26.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_encoders_v26.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_native_corr_v27.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/dpvo_native/dpvo_corr.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_norm_rewrite_v27.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_native_corr_v27.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_cpu_v28.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/dpvo_update_export.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_rknn_v28.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/v28_rknn_inputs.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_cpu_v28.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_feedback_v28.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_rknn_v28.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/diagnose-v28-dpvo-update-rknn-board.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_feedback_v28.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/dpvo_geometry/dpvo_cpu_geometry.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_feedback_v28.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/dpvo_geometry/audit-v28-dpvo-feedback.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_cpu_v29.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_geometry_v29.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_rknn_v29.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_rknn_v29.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_cpu_v29.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_rknn_v29.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_feedback_v29.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_stream_v30.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/dpvo_stream/README.md",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_native_corr_v27.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_stream_v30.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_stream_v30.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_trajectory_v30.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/dpvo_stream/startup-r1/run-v30-dpvo-stream-board.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_stream_v30.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_stream_v30.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_dynamic_update_v31.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-update-export-board.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/dpvo_dynamic_update/v31_update_topology.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_dynamic_update_v31.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_dynamic_update_v31.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_cpu_v29.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_dynamic_update_v31.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../deploy/rk3588/validation/dpvo_dynamic_update/run-v31-large-update-board.py",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_encoders_v26.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_norm_rewrite_v27.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_encoder_layout_v32.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_encoders_v26.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_rknn_v29.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_plan_v32.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_stream_v30.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_dynamic_update_v31.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_update_plan_v32.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_source_frame_v33.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_source_frame_v33.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_fast_budget_v33.json",
+      "exists": true
+    },
+    {
+      "file": "docs/ENGINEERING_NOTES.md",
+      "target": "../results/dpvo_sparse_context_v33.json",
+      "exists": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_source_frame/README.md",
+      "target": "LICENSE-DPVO",
+      "exists": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_source_frame/README.md",
+      "target": "../../../../results/dpvo_source_frame_v33.json",
+      "exists": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_sparse_context/README.md",
+      "target": "../../../../results/dpvo_sources_v26.json",
+      "exists": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_sparse_context/README.md",
+      "target": "../../../../results/dpvo_encoders_v26.json",
+      "exists": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_sparse_context/README.md",
+      "target": "../../../../results/dpvo_norm_rewrite_v27.json",
+      "exists": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_sparse_context/README.md",
+      "target": "LICENSE-DPVO",
+      "exists": true
+    }
+  ],
+  "license_and_payload_review": {
+    "adjacent_DPVO_MIT_notices_identical": true,
+    "source_license_not_extended_to_checkpoint_or_SDK": true,
+    "all_new_payload_files_text": true,
+    "no_weights_graphs_raw_arrays_SDK_headers_or_binaries_in_new_payload": true,
+    "common_secret_signatures_not_found": true,
+    "published_tests_and_results_no_unredacted_host_home": true
+  },
+  "execution_scope": "Read-only publication/source/hash/JSON/AST/Markdown-link checks only. No test rerun, model forward, ORT/SDK execution, compilation, board action or public mutation.",
+  "limitations": [
+    "Board-only external source paths and unavailable native resources are provenance declarations here, not independently rehashed on the board.",
+    "This publication review checks saved receipts and claims; it does not re-run their full numerical auditors or repeat real inference.",
+    "The root will regenerate SOURCE_SNAPSHOT after this review."
+  ],
+  "blockers": [],
+  "created_utc": "2026-10-11T05:40:35.138778+00:00"
+}

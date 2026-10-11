@@ -1,0 +1,2701 @@
+{
+  "kind": "v33_DPVO_original_FAST_configuration_static_budget",
+  "status": "static_conditional_budget_not_runtime_validated",
+  "original_VGGT_default_unchanged": true,
+  "candidate_accepted": false,
+  "real_model_executed": false,
+  "complete_VO_executed": false,
+  "realtime_validated": false,
+  "scope": "Original FAST overlay source and conditional graph recurrence budget. All candidate frames admitted, no geometry-keyframe deletions; does not claim actual observed graph or trajectory. Same encoder, learned weights and original Update arithmetic.",
+  "evidence": {
+    "file": "vggt-v33-dpvo-encoder/FAST-config-edge-budget.json",
+    "raw_sha256": "a755ca9e5fb80518e3926ae94458b1c469219281dce5f586c16cf2576ee55d58",
+    "raw_bytes": 87180,
+    "host_home_redacted": true,
+    "data": {
+      "schema": "v33_DPVO_original_FAST_static_edge_and_compute_budget",
+      "status": "static_budget_not_runtime_or_accuracy_validation",
+      "calculator_sha256": "706fc6e39fd365b83e2c30761f03adb0fc728bbdb2c54ae23b6b076a7abf9ab5",
+      "official_commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+      "source_manifest_sha256": "ce2ecaf96b086f69ef4d90a2e07e7b81afe8ae094656eb41260182000a69e375",
+      "source_pins": {
+        "dpvo/config.py": "f70eaf98ef32a7ea5a675de571373e32d0a6d1354bea9d13c6a779eb68f50bec",
+        "config/default.yaml": "0351abfbc60d9ec93bf402857130497b2f063f8ce0e8fd6e87cc55c73273594a",
+        "config/fast.yaml": "24c82450151ce6e8431dfbf9dcc501a7a2747955a30a59f745bdc03bd84ce4c3",
+        "dpvo/dpvo.py": "7efcb45689c2da8d18e2c69774e221799c9f8472e99531955f55dcb145626fd7",
+        "dpvo/net.py": "1aee33d54f0b1cc1f3f842b60790ff1299ef9c1e20bca6467ce7114dca802acc",
+        "dpvo/blocks.py": "9c9e2848da524829374e56bb1b14a891e9e2c19bc683af8e958e8982ba33d661",
+        "dpvo/extractor.py": "f5cbcbe14c42e44bcec6e827a3429ebe93979a439ba9b9ef70d4f4baa3454a2b",
+        "LICENSE": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a"
+      },
+      "source_hashes_after": {
+        "dpvo/config.py": "f70eaf98ef32a7ea5a675de571373e32d0a6d1354bea9d13c6a779eb68f50bec",
+        "config/default.yaml": "0351abfbc60d9ec93bf402857130497b2f063f8ce0e8fd6e87cc55c73273594a",
+        "config/fast.yaml": "24c82450151ce6e8431dfbf9dcc501a7a2747955a30a59f745bdc03bd84ce4c3",
+        "dpvo/dpvo.py": "7efcb45689c2da8d18e2c69774e221799c9f8472e99531955f55dcb145626fd7",
+        "dpvo/net.py": "1aee33d54f0b1cc1f3f842b60790ff1299ef9c1e20bca6467ce7114dca802acc",
+        "dpvo/blocks.py": "9c9e2848da524829374e56bb1b14a891e9e2c19bc683af8e958e8982ba33d661",
+        "dpvo/extractor.py": "f5cbcbe14c42e44bcec6e827a3429ebe93979a439ba9b9ef70d4f4baa3454a2b",
+        "LICENSE": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a"
+      },
+      "source_configs_are_alternatives_not_default_plus_fast_overlay": true,
+      "lifecycle_semantics": {
+        "motion_probe_quantile_threshold": 2.0,
+        "KEYFRAME_THRESH": 15.0,
+        "first7_admitted_without_graph_Update": true,
+        "eighth_admitted": "12 Updates, each 2 BA iterations",
+        "later_admitted": "1 Update before geometry-dependent keyframe deletion and source-age pruning",
+        "edge_order": "old patches→new target then new patches→window targets including self",
+        "source_pruning_condition": "patch_source_slot < retained_n - REMOVAL_WINDOW",
+        "motion_skips_predictions_and_EOF_reconstruction_are_not_fresh_poses": true
+      },
+      "MAC_convention": {
+        "MAC": "one multiplication plus accumulation; 2 FP arithmetic ops for a conventional FLOP count",
+        "linear_formula": "E*2699520+(Gkk+Gij)*147456",
+        "original_Linear_layers": 21,
+        "not_total_FLOPs_or_hardware_latency_bound": true,
+        "excluded": "bias/LayerNorm/softmax/group gather/reduction/activations/correlation/BA/IO/topology"
+      },
+      "configurations": {
+        "default": {
+          "effective_config": {
+            "BUFFER_SIZE": 4096,
+            "CENTROID_SEL_STRAT": "RANDOM",
+            "PATCHES_PER_FRAME": 96,
+            "REMOVAL_WINDOW": 22,
+            "OPTIMIZATION_WINDOW": 10,
+            "PATCH_LIFETIME": 13,
+            "KEYFRAME_INDEX": 4,
+            "KEYFRAME_THRESH": 15.0,
+            "MOTION_MODEL": "DAMPED_LINEAR",
+            "MOTION_DAMPING": 0.5,
+            "MIXED_PRECISION": true,
+            "LOOP_CLOSURE": false,
+            "BACKEND_THRESH": 64.0,
+            "MAX_EDGE_AGE": 1000,
+            "GLOBAL_OPT_FREQ": 15,
+            "CLASSIC_LOOP_CLOSURE": false,
+            "LOOP_CLOSE_WINDOW_SIZE": 3,
+            "LOOP_RETR_THRESH": 0.04
+          },
+          "assumptions": {
+            "admitted_frames": 64,
+            "all_observations_admitted": true,
+            "keyframe_deletion": false,
+            "loop_closure": false,
+            "motion_probe_or_flow_not_evaluated": true,
+            "actual_graph_can_be_smaller_and_have_different_groups": true
+          },
+          "initialization": {
+            "frame_pairs_Gij": 64,
+            "patch_groups_Gkk": 768,
+            "edges_E": 6144,
+            "Update_linear_MACs": 16708534272,
+            "admitted_frames": 8,
+            "graph_Update_calls": 12,
+            "BA_iterations": 24,
+            "total_Update_linear_MACs": 200502411264
+          },
+          "steady_no_deletion_envelope": {
+            "before_Update": {
+              "frame_pairs_Gij": 497,
+              "patch_groups_Gkk": 2208,
+              "edges_E": 47712,
+              "Update_linear_MACs": 129198366720
+            },
+            "after_source_age_pruning": {
+              "frame_pairs_Gij": 472,
+              "patch_groups_Gkk": 2112,
+              "edges_E": 45312,
+              "Update_linear_MACs": 122701676544
+            },
+            "closed_form_post_pairs": "R*(2*L-1)-L*(L-1)/2",
+            "closed_form_pre_pairs": "post_pairs+(2*L-1)",
+            "per_admitted_frame_graph_Update_calls": 1,
+            "BA_iterations": 2,
+            "FP32_net_ctx_corr_input_bytes": 314899200,
+            "input_bytes_are_not_total_RSS_or_padded_topology_memory": true,
+            "fresh20Hz_Update_linear_MACs_per_second": 2583967334400,
+            "fresh20Hz_Update_linear_FP_ops_per_second_using2perMAC": 5167934668800
+          },
+          "termination": {
+            "separate_offline_Update_calls": 12,
+            "BA_iterations": 24,
+            "fresh_pose_count": 0
+          },
+          "simulation_rows": [
+            {
+              "admitted_frames": 1,
+              "new_forward_edges": 0,
+              "new_backward_edges_including_self": 96,
+              "before_Update": {
+                "frame_pairs_Gij": 1,
+                "patch_groups_Gkk": 96,
+                "edges_E": 96,
+                "Update_linear_MACs": 273457152
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 1,
+                "patch_groups_Gkk": 96,
+                "edges_E": 96,
+                "Update_linear_MACs": 273457152
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 2,
+              "new_forward_edges": 96,
+              "new_backward_edges_including_self": 192,
+              "before_Update": {
+                "frame_pairs_Gij": 4,
+                "patch_groups_Gkk": 192,
+                "edges_E": 384,
+                "Update_linear_MACs": 1065517056
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 4,
+                "patch_groups_Gkk": 192,
+                "edges_E": 384,
+                "Update_linear_MACs": 1065517056
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 3,
+              "new_forward_edges": 192,
+              "new_backward_edges_including_self": 288,
+              "before_Update": {
+                "frame_pairs_Gij": 9,
+                "patch_groups_Gkk": 288,
+                "edges_E": 864,
+                "Update_linear_MACs": 2376179712
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 9,
+                "patch_groups_Gkk": 288,
+                "edges_E": 864,
+                "Update_linear_MACs": 2376179712
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 4,
+              "new_forward_edges": 288,
+              "new_backward_edges_including_self": 384,
+              "before_Update": {
+                "frame_pairs_Gij": 16,
+                "patch_groups_Gkk": 384,
+                "edges_E": 1536,
+                "Update_linear_MACs": 4205445120
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 16,
+                "patch_groups_Gkk": 384,
+                "edges_E": 1536,
+                "Update_linear_MACs": 4205445120
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 5,
+              "new_forward_edges": 384,
+              "new_backward_edges_including_self": 480,
+              "before_Update": {
+                "frame_pairs_Gij": 25,
+                "patch_groups_Gkk": 480,
+                "edges_E": 2400,
+                "Update_linear_MACs": 6553313280
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 25,
+                "patch_groups_Gkk": 480,
+                "edges_E": 2400,
+                "Update_linear_MACs": 6553313280
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 6,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 576,
+              "before_Update": {
+                "frame_pairs_Gij": 36,
+                "patch_groups_Gkk": 576,
+                "edges_E": 3456,
+                "Update_linear_MACs": 9419784192
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 36,
+                "patch_groups_Gkk": 576,
+                "edges_E": 3456,
+                "Update_linear_MACs": 9419784192
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 7,
+              "new_forward_edges": 576,
+              "new_backward_edges_including_self": 672,
+              "before_Update": {
+                "frame_pairs_Gij": 49,
+                "patch_groups_Gkk": 672,
+                "edges_E": 4704,
+                "Update_linear_MACs": 12804857856
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 49,
+                "patch_groups_Gkk": 672,
+                "edges_E": 4704,
+                "Update_linear_MACs": 12804857856
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 8,
+              "new_forward_edges": 672,
+              "new_backward_edges_including_self": 768,
+              "before_Update": {
+                "frame_pairs_Gij": 64,
+                "patch_groups_Gkk": 768,
+                "edges_E": 6144,
+                "Update_linear_MACs": 16708534272
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 64,
+                "patch_groups_Gkk": 768,
+                "edges_E": 6144,
+                "Update_linear_MACs": 16708534272
+              },
+              "graph_Update_calls": 12,
+              "BA_iterations": 24
+            },
+            {
+              "admitted_frames": 9,
+              "new_forward_edges": 768,
+              "new_backward_edges_including_self": 864,
+              "before_Update": {
+                "frame_pairs_Gij": 81,
+                "patch_groups_Gkk": 864,
+                "edges_E": 7776,
+                "Update_linear_MACs": 21130813440
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 81,
+                "patch_groups_Gkk": 864,
+                "edges_E": 7776,
+                "Update_linear_MACs": 21130813440
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 10,
+              "new_forward_edges": 864,
+              "new_backward_edges_including_self": 960,
+              "before_Update": {
+                "frame_pairs_Gij": 100,
+                "patch_groups_Gkk": 960,
+                "edges_E": 9600,
+                "Update_linear_MACs": 26071695360
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 100,
+                "patch_groups_Gkk": 960,
+                "edges_E": 9600,
+                "Update_linear_MACs": 26071695360
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 11,
+              "new_forward_edges": 960,
+              "new_backward_edges_including_self": 1056,
+              "before_Update": {
+                "frame_pairs_Gij": 121,
+                "patch_groups_Gkk": 1056,
+                "edges_E": 11616,
+                "Update_linear_MACs": 31531180032
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 121,
+                "patch_groups_Gkk": 1056,
+                "edges_E": 11616,
+                "Update_linear_MACs": 31531180032
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 12,
+              "new_forward_edges": 1056,
+              "new_backward_edges_including_self": 1152,
+              "before_Update": {
+                "frame_pairs_Gij": 144,
+                "patch_groups_Gkk": 1152,
+                "edges_E": 13824,
+                "Update_linear_MACs": 37509267456
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 144,
+                "patch_groups_Gkk": 1152,
+                "edges_E": 13824,
+                "Update_linear_MACs": 37509267456
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 13,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 169,
+                "patch_groups_Gkk": 1248,
+                "edges_E": 16224,
+                "Update_linear_MACs": 44005957632
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 169,
+                "patch_groups_Gkk": 1248,
+                "edges_E": 16224,
+                "Update_linear_MACs": 44005957632
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 14,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 194,
+                "patch_groups_Gkk": 1344,
+                "edges_E": 18624,
+                "Update_linear_MACs": 50502647808
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 194,
+                "patch_groups_Gkk": 1344,
+                "edges_E": 18624,
+                "Update_linear_MACs": 50502647808
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 15,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 219,
+                "patch_groups_Gkk": 1440,
+                "edges_E": 21024,
+                "Update_linear_MACs": 56999337984
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 219,
+                "patch_groups_Gkk": 1440,
+                "edges_E": 21024,
+                "Update_linear_MACs": 56999337984
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 16,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 244,
+                "patch_groups_Gkk": 1536,
+                "edges_E": 23424,
+                "Update_linear_MACs": 63496028160
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 244,
+                "patch_groups_Gkk": 1536,
+                "edges_E": 23424,
+                "Update_linear_MACs": 63496028160
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 17,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 269,
+                "patch_groups_Gkk": 1632,
+                "edges_E": 25824,
+                "Update_linear_MACs": 69992718336
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 269,
+                "patch_groups_Gkk": 1632,
+                "edges_E": 25824,
+                "Update_linear_MACs": 69992718336
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 18,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 294,
+                "patch_groups_Gkk": 1728,
+                "edges_E": 28224,
+                "Update_linear_MACs": 76489408512
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 294,
+                "patch_groups_Gkk": 1728,
+                "edges_E": 28224,
+                "Update_linear_MACs": 76489408512
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 19,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 319,
+                "patch_groups_Gkk": 1824,
+                "edges_E": 30624,
+                "Update_linear_MACs": 82986098688
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 319,
+                "patch_groups_Gkk": 1824,
+                "edges_E": 30624,
+                "Update_linear_MACs": 82986098688
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 20,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 344,
+                "patch_groups_Gkk": 1920,
+                "edges_E": 33024,
+                "Update_linear_MACs": 89482788864
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 344,
+                "patch_groups_Gkk": 1920,
+                "edges_E": 33024,
+                "Update_linear_MACs": 89482788864
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 21,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 369,
+                "patch_groups_Gkk": 2016,
+                "edges_E": 35424,
+                "Update_linear_MACs": 95979479040
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 369,
+                "patch_groups_Gkk": 2016,
+                "edges_E": 35424,
+                "Update_linear_MACs": 95979479040
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 22,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 394,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 37824,
+                "Update_linear_MACs": 102476169216
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 394,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 37824,
+                "Update_linear_MACs": 102476169216
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 23,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 419,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 40224,
+                "Update_linear_MACs": 108972859392
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 406,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 38976,
+                "Update_linear_MACs": 105587785728
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 24,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 431,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 41376,
+                "Update_linear_MACs": 112084475904
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 417,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 40032,
+                "Update_linear_MACs": 108440100864
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 25,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 442,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 42432,
+                "Update_linear_MACs": 114936791040
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 427,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 40992,
+                "Update_linear_MACs": 111033114624
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 26,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 452,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 43392,
+                "Update_linear_MACs": 117529804800
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 436,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 41856,
+                "Update_linear_MACs": 113366827008
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 27,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 461,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 44256,
+                "Update_linear_MACs": 119863517184
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 444,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 42624,
+                "Update_linear_MACs": 115441238016
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 28,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 469,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 45024,
+                "Update_linear_MACs": 121937928192
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 451,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 43296,
+                "Update_linear_MACs": 117256347648
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 29,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 476,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 45696,
+                "Update_linear_MACs": 123753037824
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 457,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 43872,
+                "Update_linear_MACs": 118812155904
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 30,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 482,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 46272,
+                "Update_linear_MACs": 125308846080
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 462,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 44352,
+                "Update_linear_MACs": 120108662784
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 31,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 487,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 46752,
+                "Update_linear_MACs": 126605352960
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 466,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 44736,
+                "Update_linear_MACs": 121145868288
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 32,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 491,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47136,
+                "Update_linear_MACs": 127642558464
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 469,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45024,
+                "Update_linear_MACs": 121923772416
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 33,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 494,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47424,
+                "Update_linear_MACs": 128420462592
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 471,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45216,
+                "Update_linear_MACs": 122442375168
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 34,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 496,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47616,
+                "Update_linear_MACs": 128939065344
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 35,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 36,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 37,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 38,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 39,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 40,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 41,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 42,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 43,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 44,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 45,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 46,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 47,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 48,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 49,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 50,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 51,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 52,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 53,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 54,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 55,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 56,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 57,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 58,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 59,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 60,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 61,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 62,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 63,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 64,
+              "new_forward_edges": 1152,
+              "new_backward_edges_including_self": 1248,
+              "before_Update": {
+                "frame_pairs_Gij": 497,
+                "patch_groups_Gkk": 2208,
+                "edges_E": 47712,
+                "Update_linear_MACs": 129198366720
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 472,
+                "patch_groups_Gkk": 2112,
+                "edges_E": 45312,
+                "Update_linear_MACs": 122701676544
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            }
+          ]
+        },
+        "fast": {
+          "effective_config": {
+            "BUFFER_SIZE": 4096,
+            "CENTROID_SEL_STRAT": "RANDOM",
+            "PATCHES_PER_FRAME": 48,
+            "REMOVAL_WINDOW": 16,
+            "OPTIMIZATION_WINDOW": 7,
+            "PATCH_LIFETIME": 11,
+            "KEYFRAME_INDEX": 4,
+            "KEYFRAME_THRESH": 15.0,
+            "MOTION_MODEL": "DAMPED_LINEAR",
+            "MOTION_DAMPING": 0.5,
+            "MIXED_PRECISION": true,
+            "LOOP_CLOSURE": false,
+            "BACKEND_THRESH": 64.0,
+            "MAX_EDGE_AGE": 1000,
+            "GLOBAL_OPT_FREQ": 15,
+            "CLASSIC_LOOP_CLOSURE": false,
+            "LOOP_CLOSE_WINDOW_SIZE": 3,
+            "LOOP_RETR_THRESH": 0.04
+          },
+          "assumptions": {
+            "admitted_frames": 64,
+            "all_observations_admitted": true,
+            "keyframe_deletion": false,
+            "loop_closure": false,
+            "motion_probe_or_flow_not_evaluated": true,
+            "actual_graph_can_be_smaller_and_have_different_groups": true
+          },
+          "initialization": {
+            "frame_pairs_Gij": 64,
+            "patch_groups_Gkk": 384,
+            "edges_E": 3072,
+            "Update_linear_MACs": 8358985728,
+            "admitted_frames": 8,
+            "graph_Update_calls": 12,
+            "BA_iterations": 24,
+            "total_Update_linear_MACs": 100307828736
+          },
+          "steady_no_deletion_envelope": {
+            "before_Update": {
+              "frame_pairs_Gij": 302,
+              "patch_groups_Gkk": 816,
+              "edges_E": 14496,
+              "Update_linear_MACs": 39297097728
+            },
+            "after_source_age_pruning": {
+              "frame_pairs_Gij": 281,
+              "patch_groups_Gkk": 768,
+              "edges_E": 13488,
+              "Update_linear_MACs": 36565807104
+            },
+            "closed_form_post_pairs": "R*(2*L-1)-L*(L-1)/2",
+            "closed_form_pre_pairs": "post_pairs+(2*L-1)",
+            "per_admitted_frame_graph_Update_calls": 1,
+            "BA_iterations": 2,
+            "FP32_net_ctx_corr_input_bytes": 95673600,
+            "input_bytes_are_not_total_RSS_or_padded_topology_memory": true,
+            "fresh20Hz_Update_linear_MACs_per_second": 785941954560,
+            "fresh20Hz_Update_linear_FP_ops_per_second_using2perMAC": 1571883909120
+          },
+          "termination": {
+            "separate_offline_Update_calls": 12,
+            "BA_iterations": 24,
+            "fresh_pose_count": 0
+          },
+          "simulation_rows": [
+            {
+              "admitted_frames": 1,
+              "new_forward_edges": 0,
+              "new_backward_edges_including_self": 48,
+              "before_Update": {
+                "frame_pairs_Gij": 1,
+                "patch_groups_Gkk": 48,
+                "edges_E": 48,
+                "Update_linear_MACs": 136802304
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 1,
+                "patch_groups_Gkk": 48,
+                "edges_E": 48,
+                "Update_linear_MACs": 136802304
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 2,
+              "new_forward_edges": 48,
+              "new_backward_edges_including_self": 96,
+              "before_Update": {
+                "frame_pairs_Gij": 4,
+                "patch_groups_Gkk": 96,
+                "edges_E": 192,
+                "Update_linear_MACs": 533053440
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 4,
+                "patch_groups_Gkk": 96,
+                "edges_E": 192,
+                "Update_linear_MACs": 533053440
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 3,
+              "new_forward_edges": 96,
+              "new_backward_edges_including_self": 144,
+              "before_Update": {
+                "frame_pairs_Gij": 9,
+                "patch_groups_Gkk": 144,
+                "edges_E": 432,
+                "Update_linear_MACs": 1188753408
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 9,
+                "patch_groups_Gkk": 144,
+                "edges_E": 432,
+                "Update_linear_MACs": 1188753408
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 4,
+              "new_forward_edges": 144,
+              "new_backward_edges_including_self": 192,
+              "before_Update": {
+                "frame_pairs_Gij": 16,
+                "patch_groups_Gkk": 192,
+                "edges_E": 768,
+                "Update_linear_MACs": 2103902208
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 16,
+                "patch_groups_Gkk": 192,
+                "edges_E": 768,
+                "Update_linear_MACs": 2103902208
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 5,
+              "new_forward_edges": 192,
+              "new_backward_edges_including_self": 240,
+              "before_Update": {
+                "frame_pairs_Gij": 25,
+                "patch_groups_Gkk": 240,
+                "edges_E": 1200,
+                "Update_linear_MACs": 3278499840
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 25,
+                "patch_groups_Gkk": 240,
+                "edges_E": 1200,
+                "Update_linear_MACs": 3278499840
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 6,
+              "new_forward_edges": 240,
+              "new_backward_edges_including_self": 288,
+              "before_Update": {
+                "frame_pairs_Gij": 36,
+                "patch_groups_Gkk": 288,
+                "edges_E": 1728,
+                "Update_linear_MACs": 4712546304
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 36,
+                "patch_groups_Gkk": 288,
+                "edges_E": 1728,
+                "Update_linear_MACs": 4712546304
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 7,
+              "new_forward_edges": 288,
+              "new_backward_edges_including_self": 336,
+              "before_Update": {
+                "frame_pairs_Gij": 49,
+                "patch_groups_Gkk": 336,
+                "edges_E": 2352,
+                "Update_linear_MACs": 6406041600
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 49,
+                "patch_groups_Gkk": 336,
+                "edges_E": 2352,
+                "Update_linear_MACs": 6406041600
+              },
+              "graph_Update_calls": 0,
+              "BA_iterations": 0
+            },
+            {
+              "admitted_frames": 8,
+              "new_forward_edges": 336,
+              "new_backward_edges_including_self": 384,
+              "before_Update": {
+                "frame_pairs_Gij": 64,
+                "patch_groups_Gkk": 384,
+                "edges_E": 3072,
+                "Update_linear_MACs": 8358985728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 64,
+                "patch_groups_Gkk": 384,
+                "edges_E": 3072,
+                "Update_linear_MACs": 8358985728
+              },
+              "graph_Update_calls": 12,
+              "BA_iterations": 24
+            },
+            {
+              "admitted_frames": 9,
+              "new_forward_edges": 384,
+              "new_backward_edges_including_self": 432,
+              "before_Update": {
+                "frame_pairs_Gij": 81,
+                "patch_groups_Gkk": 432,
+                "edges_E": 3888,
+                "Update_linear_MACs": 10571378688
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 81,
+                "patch_groups_Gkk": 432,
+                "edges_E": 3888,
+                "Update_linear_MACs": 10571378688
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 10,
+              "new_forward_edges": 432,
+              "new_backward_edges_including_self": 480,
+              "before_Update": {
+                "frame_pairs_Gij": 100,
+                "patch_groups_Gkk": 480,
+                "edges_E": 4800,
+                "Update_linear_MACs": 13043220480
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 100,
+                "patch_groups_Gkk": 480,
+                "edges_E": 4800,
+                "Update_linear_MACs": 13043220480
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 11,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 121,
+                "patch_groups_Gkk": 528,
+                "edges_E": 5808,
+                "Update_linear_MACs": 15774511104
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 121,
+                "patch_groups_Gkk": 528,
+                "edges_E": 5808,
+                "Update_linear_MACs": 15774511104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 12,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 142,
+                "patch_groups_Gkk": 576,
+                "edges_E": 6816,
+                "Update_linear_MACs": 18505801728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 142,
+                "patch_groups_Gkk": 576,
+                "edges_E": 6816,
+                "Update_linear_MACs": 18505801728
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 13,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 163,
+                "patch_groups_Gkk": 624,
+                "edges_E": 7824,
+                "Update_linear_MACs": 21237092352
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 163,
+                "patch_groups_Gkk": 624,
+                "edges_E": 7824,
+                "Update_linear_MACs": 21237092352
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 14,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 184,
+                "patch_groups_Gkk": 672,
+                "edges_E": 8832,
+                "Update_linear_MACs": 23968382976
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 184,
+                "patch_groups_Gkk": 672,
+                "edges_E": 8832,
+                "Update_linear_MACs": 23968382976
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 15,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 205,
+                "patch_groups_Gkk": 720,
+                "edges_E": 9840,
+                "Update_linear_MACs": 26699673600
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 205,
+                "patch_groups_Gkk": 720,
+                "edges_E": 9840,
+                "Update_linear_MACs": 26699673600
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 16,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 226,
+                "patch_groups_Gkk": 768,
+                "edges_E": 10848,
+                "Update_linear_MACs": 29430964224
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 226,
+                "patch_groups_Gkk": 768,
+                "edges_E": 10848,
+                "Update_linear_MACs": 29430964224
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 17,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 247,
+                "patch_groups_Gkk": 816,
+                "edges_E": 11856,
+                "Update_linear_MACs": 32162254848
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 236,
+                "patch_groups_Gkk": 768,
+                "edges_E": 11328,
+                "Update_linear_MACs": 30728208384
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 18,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 257,
+                "patch_groups_Gkk": 816,
+                "edges_E": 12336,
+                "Update_linear_MACs": 33459499008
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 245,
+                "patch_groups_Gkk": 768,
+                "edges_E": 11760,
+                "Update_linear_MACs": 31895728128
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 19,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 266,
+                "patch_groups_Gkk": 816,
+                "edges_E": 12768,
+                "Update_linear_MACs": 34627018752
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 253,
+                "patch_groups_Gkk": 768,
+                "edges_E": 12144,
+                "Update_linear_MACs": 32933523456
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 20,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 274,
+                "patch_groups_Gkk": 816,
+                "edges_E": 13152,
+                "Update_linear_MACs": 35664814080
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 260,
+                "patch_groups_Gkk": 768,
+                "edges_E": 12480,
+                "Update_linear_MACs": 33841594368
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 21,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 816,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36572884992
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 266,
+                "patch_groups_Gkk": 768,
+                "edges_E": 12768,
+                "Update_linear_MACs": 34619940864
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 22,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 287,
+                "patch_groups_Gkk": 816,
+                "edges_E": 13776,
+                "Update_linear_MACs": 37351231488
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 271,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13008,
+                "Update_linear_MACs": 35268562944
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 23,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 292,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14016,
+                "Update_linear_MACs": 37999853568
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 275,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13200,
+                "Update_linear_MACs": 35787460608
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 24,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 296,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14208,
+                "Update_linear_MACs": 38518751232
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 278,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13344,
+                "Update_linear_MACs": 36176633856
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 25,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 299,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14352,
+                "Update_linear_MACs": 38907924480
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 280,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13440,
+                "Update_linear_MACs": 36436082688
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 26,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 301,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14448,
+                "Update_linear_MACs": 39167373312
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 27,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 28,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 29,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 30,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 31,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 32,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 33,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 34,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 35,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 36,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 37,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 38,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 39,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 40,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 41,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 42,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 43,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 44,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 45,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 46,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 47,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 48,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 49,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 50,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 51,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 52,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 53,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 54,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 55,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 56,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 57,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 58,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 59,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 60,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 61,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 62,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 63,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            },
+            {
+              "admitted_frames": 64,
+              "new_forward_edges": 480,
+              "new_backward_edges_including_self": 528,
+              "before_Update": {
+                "frame_pairs_Gij": 302,
+                "patch_groups_Gkk": 816,
+                "edges_E": 14496,
+                "Update_linear_MACs": 39297097728
+              },
+              "after_source_age_pruning": {
+                "frame_pairs_Gij": 281,
+                "patch_groups_Gkk": 768,
+                "edges_E": 13488,
+                "Update_linear_MACs": 36565807104
+              },
+              "graph_Update_calls": 1,
+              "BA_iterations": 2
+            }
+          ]
+        }
+      },
+      "original_encoder": {
+        "input_hw": [
+          464,
+          608
+        ],
+        "each_branch_prefix": {
+          "stem7x7_3to32": 331763712,
+          "layer1_four3x3_32to32": 2599944192,
+          "layer2_stride2_3x3_32to64": 324993024,
+          "layer2_three3x3_64to64": 1949958144,
+          "layer2_stride2_shortcut1x1_32to64": 36110336
+        },
+        "fnet_conv_MACs": 5387210752,
+        "inet_conv_MACs": 5676093440,
+        "total_conv_MACs": 11063304192,
+        "unchanged_by_M_or_FAST_or_sparse_context_gather": true,
+        "excluded": "InstanceNorm/ReLU/bias/residual/normalization/pyramid/copy/sampling/correlation/BA"
+      },
+      "static_FAST_over_default_ratios": {
+        "steady_Update_edges": 0.3038229376257545,
+        "steady_Update_linear_MACs": 0.3041609482042839,
+        "encoder_conv_MACs": 1.0
+      },
+      "known_arithmetic_cross_checks": {
+        "E96_Gkk96_Gij1_MACs": 273457152,
+        "E864_Gkk288_Gij9_MACs": 2376179712
+      },
+      "20Hz_planning": {
+        "fresh_pose_period_ms": 50,
+        "separate_end_to_end_P95_target_ms": 100,
+        "encoder_measured_evidence_sha256": "0b642f4fd6db963cc81643ad6cb9a8bb182c34ce7b9f8f9f7604e70d5401ae3b",
+        "encoder_normal_receipt_sha256": "2e71afe310413149c519f21062414c09e97115118ebf362905ecf5f3c5c2fc67",
+        "measured_rejected_encoder_components": {
+          "original": {
+            "warm_samples_seconds": [
+              0.4267005430010613,
+              0.412959833003697
+            ],
+            "warm_mean_ms": 419.83018800237915,
+            "warm_mean_divided_by_50ms": 8.396603760047583
+          },
+          "spatial": {
+            "warm_samples_seconds": [
+              0.1988355200010119,
+              0.21522135499981232
+            ],
+            "warm_mean_ms": 207.0284375004121,
+            "warm_mean_divided_by_50ms": 4.140568750008242
+          }
+        },
+        "warm_samples_each": 2,
+        "thermal_controlled": false,
+        "strict_FP32_encoder_gate_passed": false,
+        "FAST_configuration_has_not_been_board_executed_here": true,
+        "FAST48_sampling_does_not_reduce_dense_encoder_work": true,
+        "encoder_sparse_context_changes_transfer_only_before_actual_compiler_optimization": true,
+        "dense_fmap_remains_required_for_correlation": true,
+        "serial_current_evidence_supports_stable20Hz": false,
+        "claim": "FAST materially reduces graph work but does not establish 20Hz. The existing rejected encoder diagnostic alone averages207ms (spatial) /420ms (original). New sampling/placement/IO timings and complete fresh-frame Update+corr+BA/quality remain unmeasured; this is not a proof of hardware impossibility.",
+        "original_encoder_plus_FAST_Update_20Hz_conv_and_linear_MACs_per_second": 1007208038400,
+        "no6TOPS_to_FP16_TFLOPS_conversion": true,
+        "no_original_VGGT_realtime_claim": true
+      },
+      "source_license": "MIT; neural weight license independent",
+      "default_or_model_modified": false,
+      "model_forward": false,
+      "actual_ORT": false,
+      "board_job": false
+    }
+  }
+}

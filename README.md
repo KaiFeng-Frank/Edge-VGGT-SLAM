@@ -14,6 +14,14 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
 
+## Source-frame Update investigation (v33)
+
+A dependency-preserving DPVO Update block now passes the original CPU FP32 gate on two real saved states on RK3588S. Its RKNN build completes ordinary inference with finite outputs and valid confidence, but **fails that FP32 gate and remains unadopted**. Two warm calls per state average **68.292 / 87.103 ms**, including complete SDK I/O. Each call covers only one 960-edge source block; this is neither a full 23,520-edge update nor a real-time trajectory result.
+
+Separate profiles identify 59 internal NPU operators, five internal CPU operators and six CPU I/O operators. A startup adapter error exposed the difference between internal padded storage and converted output bytes; the fix keeps actual buffer-length and ownership checks. [Source, failed startup and board evidence](deploy/rk3588/validation/dpvo_source_frame/README.md), [engineering records 44–47](docs/ENGINEERING_NOTES.md) and the [conditional original FAST workload budget](results/dpvo_fast_budget_v33.json) preserve these limits. Original weights and the default VGGT mapper remain unchanged.
+
+A separate encoder suffix now returns 96 sampled contexts instead of the dense imap, reducing logical FP32 output from 36,110,336 to 9,175,040 bytes. Six board CPU comparisons preserve the parent outputs bitwise. The full encoder still computes the dense feature map, and the spatial parent's historical numerical rejection remains. [Evidence](results/dpvo_sparse_context_v33.json) establishes this output contract only; the new suffix has no NPU or full-pipeline performance result yet.
+
 ## Encoder layout investigation (v32)
 
 An explicit diagnostic of the already FP32-rejected DPVO spatial InstanceNorm rewrite reduced same-input RKNN encoder warm calls from **419.830 ms to 207.028 ms** on RK3588S. This short AB/BA/AB comparison has two warm samples per method. **Both graphs still fail the original strict FP32 gate; the candidate is not adopted and no trajectory was run.** The default VGGT mapper remains unchanged.
