@@ -1,0 +1,764 @@
+{
+  "schema": "original_VGGT_pair_precision_v49",
+  "status": "completed_component_diagnostic_numerically_rejected_not_adopted",
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "production_model_execution_changed": false,
+  "actual_model_inference_and_calibration_location": "RK3588S only",
+  "scope": "Original complete frame0 -> global0 pair; original 36 parameter tensors; requested 336, actual RGB [2,3,252,336]",
+  "original_checkpoint": {
+    "path": "/mnt/vggt-data/vggt-slam2/weights/model.pt",
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "full_SHA_checked_before_loading": true,
+    "SHA_seconds": 4.563542541000061,
+    "hash_warms_filesystem_cache": true,
+    "stat_unchanged_after_capture": true
+  },
+  "references": {
+    "previous_original_pair": "results/original_pair_v48.json",
+    "reproduction": "deploy/rk3588/validation/original_precision/README.md"
+  },
+  "raw_receipt_sha256": {
+    "capture-r1/capture.json": "bf39dfa65526a4135cbd2d7ee8b927ce2c4a40da75aebf64652ed2cd87a7e7fc",
+    "ptq-r1/compile.json": "6c88b6271496ccdb6b8ff9db4e638fe47e69ca0c7374e90353ea51220a17e88a",
+    "heldout-ort-r1/check.json": "818ca23f2b1e5986d57d2046dfa734e067faac623a0c0eaf539c21ebbf961f3c",
+    "normal-r1/run.json": "05ac1187d9bda3893d43f2d9c834d3b4de51f97d8c455496daa0c5a6f803e591",
+    "profile-r1/run.json": "98b550f62eeadba951834ac71bff83d320faf1dcccd179c2320cdfa2fc4b8623",
+    "toolchain-install-r1/install.json": "6166bf51861e08397893722e754ba834979ec3b8daab7947385d1b60c25cd79d",
+    "toolchain-install-r1/imports.json": "40a8626a079e629d819f5d6dd5ee83c293c7479b309a97a9679ebe7421a01d7e"
+  },
+  "data": {
+    "dataset": "TUM rgbd_dataset_freiburg1_xyz",
+    "calibration_pair_count": 8,
+    "evaluation_pair_count": 2,
+    "images_per_pair": 2,
+    "all_20_images_disjoint": true,
+    "legacy_indices_0_and_8_excluded": true,
+    "same_sequence_only": true,
+    "input_shape": [
+      2,
+      437,
+      1024
+    ],
+    "output_shape": [
+      1,
+      874,
+      1024
+    ],
+    "position_shape": [
+      2,
+      437,
+      2
+    ],
+    "original_prefix_only": true,
+    "full_original_DINO_block_count": 24,
+    "source_plan_sha256": "61b14e0e0033a49059bf52c7dd9cbeaae8bd4393423b2bce827cc451f22caf37"
+  },
+  "ptq": {
+    "configuration": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "quantized_dtype": "w8a8",
+      "quantized_algorithm": "normal",
+      "quantized_method": "channel",
+      "do_quantization": true
+    },
+    "build_options": {
+      "do_quantization": true,
+      "auto_hybrid": false
+    },
+    "input_transform": {
+      "mean_values": null,
+      "std_values": null,
+      "quant_img_RGB2BGR": false,
+      "transpose": false,
+      "extra_batch_dimension": false
+    },
+    "operations": [
+      {
+        "name": "config",
+        "code": 0,
+        "status": "completed",
+        "seconds": 0.000116667
+      },
+      {
+        "name": "load_onnx",
+        "code": 0,
+        "status": "completed",
+        "seconds": 0.488847383
+      },
+      {
+        "name": "build",
+        "code": 0,
+        "status": "completed",
+        "seconds": 71.035972429
+      },
+      {
+        "name": "export_rknn",
+        "code": 0,
+        "status": "completed",
+        "seconds": 0.026487711
+      }
+    ],
+    "artifact_sha256": "005c803d5fa6b4fa7664e583a6c8c188554c676172d955528f2617525fae18fa",
+    "artifact_bytes": 29931726,
+    "nonquant_artifact_bytes": 55280948,
+    "size_reduction_percent": 45.855259211546084,
+    "compiler_peak_RSS_MiB": 1557.859375
+  },
+  "new_heldout_ORT_gate": {
+    "status": "numerical_rejected",
+    "gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "strict_FP32_gate_passed": false,
+      "tolerance_widened": false
+    },
+    "calls": [
+      {
+        "sample_id": "evaluation_00",
+        "image_indices": [
+          80,
+          88
+        ],
+        "input_sha256": "dff5be55154baa3e366ea02cf2adc922553e2f029c9fd7678fa3a3dfe676e31e",
+        "reference_sha256": "087b32548aa12ca31864f0916150ec522a6892df47fce507a463070f5325e9e5",
+        "output_sha256": "3248234ca963d39bcea2c46885e4b8e0bce4135386e8641892537763e36a33c3",
+        "elements": 894976,
+        "session_run_seconds": 0.906016049,
+        "max_abs_error": 1.71661376953125e-05,
+        "rmse": 1.8142952249828682e-07,
+        "relative_l2": 1.1905582283188922e-06,
+        "max_tolerance_ratio": 1.0319307851996928,
+        "outside_tolerance_elements": 1,
+        "strict_FP32_gate_passed": false
+      },
+      {
+        "sample_id": "evaluation_01",
+        "image_indices": [
+          480,
+          488
+        ],
+        "input_sha256": "19c82827c3819406fa27c06dd68b6a1776d21a8fbe5afac1309aa325a361a3e0",
+        "reference_sha256": "41bbb1a55e334a19510ab5c5556915cef2d4f50bf9cdf58324f28e8feee7e6be",
+        "output_sha256": "58ee52e19f630a8c05be02b4fe319ff14600a3f97e0fb28a0d309d638ab67f89",
+        "elements": 894976,
+        "session_run_seconds": 0.928395218,
+        "max_abs_error": 1.7881393432617188e-05,
+        "rmse": 1.7356819216580296e-07,
+        "relative_l2": 1.1537599155295242e-06,
+        "max_tolerance_ratio": 0.9072285377808844,
+        "outside_tolerance_elements": 0,
+        "strict_FP32_gate_passed": true
+      }
+    ],
+    "comparison_reference": "same-capture original Torch FP32 final global0 output",
+    "gate_unchanged": true
+  },
+  "normal_actual_SDK_calls": 16,
+  "separate_profile_actual_SDK_calls": 16,
+  "normal_IO_scope": "FP32 inputs_set + synchronous run + want_float outputs_get + owned FP32 copy + release",
+  "normal_timing_excludes": [
+    "init",
+    "queries",
+    "input/reference checks and hashes",
+    "error metrics",
+    "repeat comparison",
+    "NPY/JSON saves",
+    "source hashes",
+    "thermal/memory snapshots"
+  ],
+  "normal_summaries": {
+    "normal_benchmark": true,
+    "samples": {
+      "evaluation_00": {
+        "nonquant_fp16": {
+          "first_for_sample_io_seconds": 0.338214534,
+          "first_for_sample_is_first_in_context": true,
+          "subsequent_call_count": 3,
+          "subsequent_io_seconds": [
+            0.340507992,
+            0.333409825,
+            0.3412532
+          ],
+          "subsequent_io_mean_seconds": 0.338390339,
+          "all_outputs_byte_equal_to_first_for_sample": true,
+          "strict_original_FP32_gate_passed": false,
+          "original_FP32_first_comparison": {
+            "finite": true,
+            "array_equal": false,
+            "max_abs_error": 0.029067248106002808,
+            "rmse": 0.0006785234261265018,
+            "relative_l2": 0.004452536924299118,
+            "cosine_similarity": 0.9999900886571405,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_FP32_gate_passed": false,
+            "outside_tolerance_elements": 523092,
+            "max_tolerance_ratio": 1530.1742103345014,
+            "output_raw_sha256": "40085921c72ea991c362ab11fc3000e6a1b748d07cec9526cdc14b57b0a049b9"
+          }
+        },
+        "ptq_w8a8": {
+          "first_for_sample_io_seconds": 0.254914817,
+          "first_for_sample_is_first_in_context": true,
+          "subsequent_call_count": 3,
+          "subsequent_io_seconds": [
+            0.255644151,
+            0.262332776,
+            0.252773817
+          ],
+          "subsequent_io_mean_seconds": 0.25691691466666666,
+          "all_outputs_byte_equal_to_first_for_sample": true,
+          "strict_original_FP32_gate_passed": false,
+          "original_FP32_first_comparison": {
+            "finite": true,
+            "array_equal": false,
+            "max_abs_error": 0.4803646504878998,
+            "rmse": 0.015714722542454394,
+            "relative_l2": 0.1031215425750176,
+            "cosine_similarity": 0.9947130277127303,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_FP32_gate_passed": false,
+            "outside_tolerance_elements": 894068,
+            "max_tolerance_ratio": 23489.866927670206,
+            "output_raw_sha256": "d2038f22bae1490c023738cf20a26422938730115e0d51ac245acd51036b3071"
+          }
+        }
+      },
+      "evaluation_01": {
+        "nonquant_fp16": {
+          "first_for_sample_io_seconds": 0.335405867,
+          "first_for_sample_is_first_in_context": false,
+          "subsequent_call_count": 3,
+          "subsequent_io_seconds": [
+            0.336271201,
+            0.336924992,
+            0.334146867
+          ],
+          "subsequent_io_mean_seconds": 0.33578102,
+          "all_outputs_byte_equal_to_first_for_sample": true,
+          "strict_original_FP32_gate_passed": false,
+          "original_FP32_first_comparison": {
+            "finite": true,
+            "array_equal": false,
+            "max_abs_error": 0.031044453382492065,
+            "rmse": 0.0007488078362289887,
+            "relative_l2": 0.004977550639287766,
+            "cosine_similarity": 0.9999876119276547,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_FP32_gate_passed": false,
+            "outside_tolerance_elements": 527279,
+            "max_tolerance_ratio": 2177.3342729272986,
+            "output_raw_sha256": "ea7869b35a8dabfcd6e94012ce63564ba9b0600506fa8d59cc84f15ce43746c2"
+          }
+        },
+        "ptq_w8a8": {
+          "first_for_sample_io_seconds": 0.253422983,
+          "first_for_sample_is_first_in_context": false,
+          "subsequent_call_count": 3,
+          "subsequent_io_seconds": [
+            0.255205359,
+            0.252433609,
+            0.255451859
+          ],
+          "subsequent_io_mean_seconds": 0.254363609,
+          "all_outputs_byte_equal_to_first_for_sample": true,
+          "strict_original_FP32_gate_passed": false,
+          "original_FP32_first_comparison": {
+            "finite": true,
+            "array_equal": false,
+            "max_abs_error": 0.5473082363605499,
+            "rmse": 0.015865771934567,
+            "relative_l2": 0.10546455233891512,
+            "cosine_similarity": 0.994468014277494,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_FP32_gate_passed": false,
+            "outside_tolerance_elements": 894170,
+            "max_tolerance_ratio": 21038.44451378298,
+            "output_raw_sha256": "55e43502e1051054a560da9e99b96021518998f5742b93da7f61affc4e700ff4"
+          }
+        }
+      }
+    },
+    "implementations": {
+      "nonquant_fp16": {
+        "mean_denominator": 6,
+        "included_sdk_call_indices": [
+          3,
+          4,
+          7,
+          10,
+          13,
+          14
+        ],
+        "two_input_subsequent_io_mean_seconds": 0.33708567949999996,
+        "strict_original_FP32_gate_passed": false
+      },
+      "ptq_w8a8": {
+        "mean_denominator": 6,
+        "included_sdk_call_indices": [
+          2,
+          5,
+          6,
+          11,
+          12,
+          15
+        ],
+        "two_input_subsequent_io_mean_seconds": 0.2556402618333333,
+        "strict_original_FP32_gate_passed": false
+      }
+    },
+    "PTQ_IO_difference": {
+      "denominator_implementation": "nonquant_fp16",
+      "nonquant_minus_PTQ_seconds": 0.08144541766666663,
+      "nonquant_minus_PTQ_percent_of_nonquant": 24.161636824048657,
+      "component_only": true,
+      "fresh_observation_pose_rate": false
+    }
+  },
+  "normal_process_peak_RSS_MiB": 250.50390625,
+  "memory_scope": "two SDK contexts plus NumPy diagnostics",
+  "normal_cleanup": {
+    "errors": [],
+    "affinity_restored": true,
+    "environment_restored": true,
+    "source_and_inputs_unchanged": true
+  },
+  "strict_original_FP32_gate": {
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "both_NPU_implementations_passed": false
+  },
+  "limitations": [
+    "Two fixed heldout inputs from one short sequence, not full VGGT or SLAM trajectory validation.",
+    "Repeated saved component inputs are not fresh observations or valid pose rate.",
+    "Normal complete SDK IO and separate instrumented operator clocks are different scopes.",
+    "Tensor error is not ATE/RPE. No gate was relaxed; no quantized candidate was adopted.",
+    "Short measurements on a 16 GB board do not validate 8 GB operation, cooling or 30 minute stability.",
+    "No extra learned model, layer omission or traditional pose frontend. Loop closure remains unsupported."
+  ],
+  "whole_model_quality_validated": false,
+  "real_time_validated": false,
+  "end_to_end_P95_validated": false,
+  "bounded_queues_30_minutes_validated": false,
+  "operation_within_8GB_validated": false,
+  "weights_arrays_exports_SDK_binaries_published": false,
+  "sampled_platform_observations": {
+    "normal": {
+      "thermal_degrees_C_min_max": {
+        "soc-thermal": [
+          51.769,
+          53.615
+        ],
+        "bigcore0-thermal": [
+          52.692,
+          54.538
+        ],
+        "bigcore1-thermal": [
+          52.692,
+          54.538
+        ],
+        "littlecore-thermal": [
+          52.692,
+          54.538
+        ],
+        "center-thermal": [
+          52.692,
+          54.538
+        ],
+        "gpu-thermal": [
+          50.846,
+          53.615
+        ],
+        "npu-thermal": [
+          51.769,
+          53.615
+        ]
+      },
+      "observed_CPU_frequency_kHz": {
+        "6": [
+          1200000,
+          1416000,
+          1608000,
+          1800000,
+          2016000,
+          2352000
+        ],
+        "7": [
+          1200000,
+          1416000,
+          1608000,
+          1800000,
+          2016000,
+          2352000
+        ]
+      },
+      "continuously_sampled": false,
+      "frequencies_or_cooling_controlled": false,
+      "causal_thermal_claim": false,
+      "process_peak_RSS_MiB": 250.50390625
+    },
+    "profile": {
+      "thermal_degrees_C_min_max": {
+        "soc-thermal": [
+          51.769,
+          53.615
+        ],
+        "bigcore0-thermal": [
+          51.769,
+          54.538
+        ],
+        "bigcore1-thermal": [
+          51.769,
+          54.538
+        ],
+        "littlecore-thermal": [
+          51.769,
+          53.615
+        ],
+        "center-thermal": [
+          51.769,
+          54.538
+        ],
+        "gpu-thermal": [
+          50.846,
+          52.692
+        ],
+        "npu-thermal": [
+          50.846,
+          52.692
+        ]
+      },
+      "observed_CPU_frequency_kHz": {
+        "6": [
+          1200000,
+          1416000,
+          1608000,
+          1800000,
+          2016000,
+          2208000,
+          2352000
+        ],
+        "7": [
+          1200000,
+          1416000,
+          1608000,
+          1800000,
+          2016000,
+          2208000,
+          2352000
+        ]
+      },
+      "continuously_sampled": false,
+      "frequencies_or_cooling_controlled": false,
+      "causal_thermal_claim": false,
+      "process_peak_RSS_MiB": 250.4921875
+    }
+  },
+  "separate_profile_operator_observations": {
+    "all_16_tables_audited": true,
+    "rows_per_table": 54,
+    "normal_profile_outputs_bitwise_equal_for_all_16_corresponding_calls": true,
+    "implementations": {
+      "nonquant_fp16": {
+        "operator_rows_per_call": 54,
+        "internal_rows_per_call": 52,
+        "internal_target_counts": {
+          "NPU": 52
+        },
+        "boundary_target_counts": {
+          "CPU": 2
+        },
+        "internal_data_type_token_counts": {
+          "FLOAT16": 52
+        },
+        "all_listed_internal_targets_NPU": true,
+        "all_listed_internal_data_type_tokens_INT8": false,
+        "whole_original_model_INT8_or_NPU_proven": false,
+        "all_eight_operator_mean_microseconds": 320593.875,
+        "six_repeat_operator_mean_microseconds": 321541.5,
+        "original_subregions": {
+          "frame0": {
+            "MLP": {
+              "operator_ids": [
+                30,
+                31
+              ],
+              "data_type_tokens": {
+                "FLOAT16": 2
+              },
+              "targets": {
+                "NPU": 2
+              },
+              "mean_all_eight_microseconds": 50089.375
+            },
+            "SDPA": {
+              "operator_ids": [
+                26
+              ],
+              "data_type_tokens": {
+                "FLOAT16": 1
+              },
+              "targets": {
+                "NPU": 1
+              },
+              "mean_all_eight_microseconds": 40988.375
+            },
+            "reshape_transpose": {
+              "operator_ids": [
+                6,
+                9,
+                14,
+                15,
+                17,
+                22,
+                23,
+                24,
+                25,
+                27
+              ],
+              "data_type_tokens": {
+                "FLOAT16": 10
+              },
+              "targets": {
+                "NPU": 10
+              },
+              "mean_all_eight_microseconds": 28728.375
+            }
+          },
+          "global0": {
+            "MLP": {
+              "operator_ids": [
+                50,
+                51
+              ],
+              "data_type_tokens": {
+                "FLOAT16": 2
+              },
+              "targets": {
+                "NPU": 2
+              },
+              "mean_all_eight_microseconds": 48877.25
+            },
+            "SDPA": {
+              "operator_ids": [
+                46
+              ],
+              "data_type_tokens": {
+                "FLOAT16": 1
+              },
+              "targets": {
+                "NPU": 1
+              },
+              "mean_all_eight_microseconds": 78020
+            },
+            "reshape_transpose": {
+              "operator_ids": [
+                32,
+                33,
+                36,
+                47
+              ],
+              "data_type_tokens": {
+                "FLOAT16": 4
+              },
+              "targets": {
+                "NPU": 4
+              },
+              "mean_all_eight_microseconds": 1854.375
+            }
+          }
+        },
+        "internal_CPU_operators": []
+      },
+      "ptq_w8a8": {
+        "operator_rows_per_call": 54,
+        "internal_rows_per_call": 52,
+        "internal_target_counts": {
+          "NPU": 51,
+          "CPU": 1
+        },
+        "boundary_target_counts": {
+          "CPU": 2
+        },
+        "internal_data_type_token_counts": {
+          "INT8": 52
+        },
+        "all_listed_internal_targets_NPU": false,
+        "all_listed_internal_data_type_tokens_INT8": true,
+        "whole_original_model_INT8_or_NPU_proven": false,
+        "all_eight_operator_mean_microseconds": 249288.25,
+        "six_repeat_operator_mean_microseconds": 248855.16666666666,
+        "original_subregions": {
+          "frame0": {
+            "MLP": {
+              "operator_ids": [
+                30,
+                31
+              ],
+              "data_type_tokens": {
+                "INT8": 2
+              },
+              "targets": {
+                "NPU": 2
+              },
+              "mean_all_eight_microseconds": 16053.375
+            },
+            "SDPA": {
+              "operator_ids": [
+                26
+              ],
+              "data_type_tokens": {
+                "INT8": 1
+              },
+              "targets": {
+                "NPU": 1
+              },
+              "mean_all_eight_microseconds": 45215.25
+            },
+            "reshape_transpose": {
+              "operator_ids": [
+                6,
+                9,
+                14,
+                15,
+                17,
+                22,
+                23,
+                24,
+                25,
+                27
+              ],
+              "data_type_tokens": {
+                "INT8": 10
+              },
+              "targets": {
+                "NPU": 9,
+                "CPU": 1
+              },
+              "mean_all_eight_microseconds": 17861.125
+            }
+          },
+          "global0": {
+            "MLP": {
+              "operator_ids": [
+                50,
+                51
+              ],
+              "data_type_tokens": {
+                "INT8": 2
+              },
+              "targets": {
+                "NPU": 2
+              },
+              "mean_all_eight_microseconds": 16089.5
+            },
+            "SDPA": {
+              "operator_ids": [
+                46
+              ],
+              "data_type_tokens": {
+                "INT8": 1
+              },
+              "targets": {
+                "NPU": 1
+              },
+              "mean_all_eight_microseconds": 87572.375
+            },
+            "reshape_transpose": {
+              "operator_ids": [
+                32,
+                33,
+                36,
+                47
+              ],
+              "data_type_tokens": {
+                "INT8": 4
+              },
+              "targets": {
+                "NPU": 4
+              },
+              "mean_all_eight_microseconds": 1235.75
+            }
+          }
+        },
+        "internal_CPU_operators": [
+          {
+            "id": 25,
+            "op": "Reshape",
+            "name": "Reshape:frame0/value_tp_rs",
+            "data_type_token": "INT8",
+            "target": "CPU",
+            "mean_all_eight_microseconds": 2292.75,
+            "mean_six_repeat_microseconds": 2233.6666666666665
+          }
+        ]
+      }
+    },
+    "measured_operator_difference": {
+      "scope": "eight profile calls per implementation, operator-clock means only",
+      "combined_MLP": {
+        "nonquant_mean_ms": 98.966625,
+        "PTQ_mean_ms": 32.142875,
+        "PTQ_reduction_percent_of_nonquant": 67.52150030376401
+      },
+      "combined_SDPA": {
+        "nonquant_mean_ms": 119.008375,
+        "PTQ_mean_ms": 132.787625,
+        "PTQ_increase_percent_of_nonquant": 11.578386815213635
+      },
+      "interpretation": "PTQ improves MLP substantially while both frame/global SDPA slow down; datatype label alone does not predict speed"
+    },
+    "scope": "Separate profiling contexts; operator means include all eight profile calls per implementation unless field explicitly labels six repeat calls; never added to normal SDK IO"
+  },
+  "public_independent_saved_data_audits": {
+    "public-capture-audit-r1.json": {
+      "path": "deploy/rk3588/validation/original_precision/audit/public-capture-audit-r1.json",
+      "sha256": "c20935706573cc856f47ba5d687b39a0b85ecb84d8802f4f19807f9f8c980a93"
+    },
+    "public-ptq-compile-audit-r1.json": {
+      "path": "deploy/rk3588/validation/original_precision/audit/public-ptq-compile-audit-r1.json",
+      "sha256": "f939b04b5444a47f38582b23ffc4cb8586fd7ff76d90a7c1bad54c4049d067f7"
+    },
+    "public-heldout-ort-audit-r1.json": {
+      "path": "deploy/rk3588/validation/original_precision/audit/public-heldout-ort-audit-r1.json",
+      "sha256": "16a1711b77d9a74a2f62c9ed718fbd09dba90088574119a95dd7fd24282eb5ee"
+    },
+    "public-normal-audit-r1.json": {
+      "path": "deploy/rk3588/validation/original_precision/audit/public-normal-audit-r1.json",
+      "sha256": "c786423fd30463b14670a8702aaf659bba25cca41f38ccc41d9368758753616e"
+    },
+    "public-profile-numeric-audit-r1.json": {
+      "path": "deploy/rk3588/validation/original_precision/audit/public-profile-numeric-audit-r1.json",
+      "sha256": "e53e23af995d8967def9684170a1265480e4c4a8b45a212b910a414fef53ce6f"
+    },
+    "public-profile-operators-audit-r1.json": {
+      "path": "deploy/rk3588/validation/original_precision/audit/public-profile-operators-audit-r1.json",
+      "sha256": "29b2ad86ff89babc151d2ce56d461c13b53798b96f385af2d41af1f2a8139899"
+    }
+  },
+  "preserved_infrastructure_failure": {
+    "stage": "first new heldout ORT launcher staging",
+    "log_sha256": "42f886b277317c656746e1032f34974b5c483b0feeecbb66c4d283a523f17852",
+    "actual_ORT_run_in_failed_attempt": false,
+    "reason": "Pushing a directory into an existing ADB destination nested its basename; the newly added launcher was not at the expected top-level path.",
+    "resolution": "Explicitly pushed the six new files to the intended destination, retained old freezes, inspected the actual subsequent JSON status rather than ADB exit code.",
+    "failed_log_published": false
+  },
+  "public_portable_generated_checks": {
+    "total": 140,
+    "capture": 15,
+    "PTQ": 38,
+    "heldout_ORT": 6,
+    "SDK_runtime": 81,
+    "actual_model_or_SDK_run": false,
+    "receipt": "deploy/rk3588/validation/original_precision/audit/public-portability-checks-r1.json",
+    "sha256": "1d51b9b655ebcbef5458d9f29c77941e4df1cc517e8c5ff91df8e24da7848cdb"
+  }
+}

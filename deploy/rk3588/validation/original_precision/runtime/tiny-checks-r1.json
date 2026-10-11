@@ -1,0 +1,27 @@
+{
+  "schema": "v49_original_pair_precision_tiny_checks",
+  "status": "passed",
+  "actual_model_OR_ORТ_OR_SDK_OR_compiler_executed": false,
+  "actual_board_access": false,
+  "generated_FP32_elements_per_fake_call": 24,
+  "passed_tests": 81,
+  "command": [
+    "/home/frank/miniconda3/bin/python3",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "/dev/shm/edge-vggt-v49/runtime/test_v49_original_pair_precision.py"
+  ],
+  "returncode": 0,
+  "stdout": "........................................................................ [ 88%]\n.........                                                                [100%]\n81 passed in 0.16s\n",
+  "source_hashes": {
+    "v49_quantized_pair_runtime_contracts.py": "44c0a6a1dcca66ee09b2f15bb0e2f0ddc7b7eb3f6cb44fdc3b576e9f75463bc2",
+    "run-v49-original-pair-precision-board.py": "33fc5deb749c8b3ceaa47271e389f5fbbfc2dba6db93aa19887b2fc41e0e7882",
+    "test_v49_original_pair_precision.py": "c54f2753b254a4e97da8c750f19343a8b7ef872b0e173003f2bb1f0f4248336d",
+    "README.md": "830cfc7815a2ad9387593a1375a651f4bbac6c3c6d15adf17559d05a58181f85"
+  },
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:28:48) [GCC 14.3.0]"
+}

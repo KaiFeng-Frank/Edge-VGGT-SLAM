@@ -1,0 +1,341 @@
+{
+  "schema": "v49_public_original_pair_normal_SDK_saved_output_audit",
+  "status": "component_comparison_complete_original_FP32_gate_rejected_not_adopted",
+  "run_receipt_sha256": "05ac1187d9bda3893d43f2d9c834d3b4de51f97d8c455496daa0c5a6f803e591",
+  "private_independent_audit_sha256": "f6d865347e00625b644ad264bc6bb2d33607b4bd08360a456c968ff9dda9e7d6",
+  "independent_audit_source_sha256": "9fae6d7eb55c733ad4dcbe5fc1de248f0cc666ad7b0ec90a3fc97de004ec7c1b",
+  "board_runner_source_sha256": "33fc5deb749c8b3ceaa47271e389f5fbbfc2dba6db93aa19887b2fc41e0e7882",
+  "board_contracts_source_sha256": "44c0a6a1dcca66ee09b2f15bb0e2f0ddc7b7eb3f6cb44fdc3b576e9f75463bc2",
+  "capture_manifest_sha256": "bf39dfa65526a4135cbd2d7ee8b927ce2c4a40da75aebf64652ed2cd87a7e7fc",
+  "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "original_pair_export_sha256": "149450ffc675ce59950c6f89cf84adb41e388cd050eeb731b6d09a6fe16e9fe1",
+  "original_pair_graph_sha256": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+  "ptq_compile_receipt_sha256": "6c88b6271496ccdb6b8ff9db4e638fe47e69ca0c7374e90353ea51220a17e88a",
+  "ptq_artifact_sha256": "005c803d5fa6b4fa7664e583a6c8c188554c676172d955528f2617525fae18fa",
+  "nonquant_compile_receipt_sha256": "5084e00143c4ab5fce94ceae81247c11939ddb7783d80d1b937bffcbdc0bcfb9",
+  "nonquant_artifact_sha256": "5ba3440634a51ae56fdc46eb1c07bf5847a30640a7c2603d322b44af585d037b",
+  "actual_original_model_only": true,
+  "candidate_accepted": false,
+  "production_change_by_experiment": false,
+  "normal_benchmark": true,
+  "profiling_enabled": false,
+  "same_two_heldout_inputs_repeated": true,
+  "timing_protocol": {
+    "contexts_live_together": true,
+    "AB_BA_rounds_per_input": 4,
+    "input_order_reverses_initial_implementation_order": true,
+    "actual_calls": 16,
+    "unmeasured_warmup_calls": 0,
+    "subsequent_mean_denominator_per_implementation": 6,
+    "first_call_of_each_heldout_input_excluded_from_mean": true,
+    "interval": "FP32 inputs_set -> synchronous run -> want_float outputs_get -> owned FP32 copy -> outputs_release",
+    "excludes": [
+      "init",
+      "queries",
+      "input/reference checks and hashes",
+      "error metrics",
+      "repeat comparison",
+      "NPY/JSON saves",
+      "source hashes",
+      "thermal/memory snapshots"
+    ],
+    "percentiles_or_fresh_observation_rate_established": false
+  },
+  "logical_descriptors": {
+    "nonquant_fp16": {
+      "input": {
+        "direction": "input",
+        "logical_shape": [
+          2,
+          437,
+          1024
+        ],
+        "logical_dtype": "FP16",
+        "logical_bytes": 1789952,
+        "quantization_type": 2,
+        "zero_point": 0,
+        "scale": 1.0,
+        "API_FP32_bytes": 3579904,
+        "SDK_boundary_conversion_included_in_quality_error": true,
+        "native_stride_memory_used_by_audit": false,
+        "all_internal_ops_INT8_or_NPU_proven": false
+      },
+      "output": {
+        "direction": "output",
+        "logical_shape": [
+          1,
+          874,
+          1024
+        ],
+        "logical_dtype": "FP16",
+        "logical_bytes": 1789952,
+        "quantization_type": 2,
+        "zero_point": 0,
+        "scale": 1.0,
+        "API_FP32_bytes": 3579904,
+        "SDK_boundary_conversion_included_in_quality_error": true,
+        "native_stride_memory_used_by_audit": false,
+        "all_internal_ops_INT8_or_NPU_proven": false
+      }
+    },
+    "ptq_w8a8": {
+      "input": {
+        "direction": "input",
+        "logical_shape": [
+          2,
+          437,
+          1024
+        ],
+        "logical_dtype": "INT8",
+        "logical_bytes": 894976,
+        "quantization_type": 2,
+        "zero_point": 57,
+        "scale": 0.04107800871133804,
+        "API_FP32_bytes": 3579904,
+        "SDK_boundary_conversion_included_in_quality_error": true,
+        "native_stride_memory_used_by_audit": false,
+        "all_internal_ops_INT8_or_NPU_proven": false
+      },
+      "output": {
+        "direction": "output",
+        "logical_shape": [
+          1,
+          874,
+          1024
+        ],
+        "logical_dtype": "INT8",
+        "logical_bytes": 894976,
+        "quantization_type": 2,
+        "zero_point": 5,
+        "scale": 0.022254416719079018,
+        "API_FP32_bytes": 3579904,
+        "SDK_boundary_conversion_included_in_quality_error": true,
+        "native_stride_memory_used_by_audit": false,
+        "all_internal_ops_INT8_or_NPU_proven": false
+      }
+    }
+  },
+  "API_conversion": {
+    "input_dtype": "FP32",
+    "input_pass_through": 0,
+    "output_want_float": 1,
+    "API_input_bytes": 3579904,
+    "API_output_bytes": 3579904,
+    "manual_quantization_or_dequantization": false,
+    "quantization_boundary_error_is_in_original_reference_comparison": true
+  },
+  "SDK_queried_model_memory_bytes": {
+    "nonquant_fp16": {
+      "total_weight_size": 51562240,
+      "total_internal_size": 30694528,
+      "total_dma_allocated_size": 141762560,
+      "total_sram_size": 0,
+      "free_sram_size": 0
+    },
+    "ptq_w8a8": {
+      "total_weight_size": 26354944,
+      "total_internal_size": 13645824,
+      "total_dma_allocated_size": 74178560,
+      "total_sram_size": 0,
+      "free_sram_size": 0
+    }
+  },
+  "memory_scope": "SDK component query for one original frame0/global0 context; not full-model or 8 GB application acceptance",
+  "original_FP32_reference": "same heldout original Torch global0 final output; FP16 comparator is not the reference",
+  "fixed_strict_original_FP32_rtol": 0.0001,
+  "fixed_strict_original_FP32_atol": 1e-05,
+  "independently_recomputed_numerical_and_IO_summaries": {
+    "nonquant_fp16": {
+      "subsequent_measured_call_denominator": 6,
+      "included_sdk_call_indices": [
+        3,
+        4,
+        7,
+        10,
+        13,
+        14
+      ],
+      "mean_io_seconds": 0.33708567949999996,
+      "all_saved_outputs_pass_fixed_original_FP32_gate": false,
+      "per_input_first_metrics": {
+        "evaluation_00": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs_error": 0.029067248106002808,
+          "rmse": 0.0006785234261265016,
+          "relative_l2": 0.004452536924301593,
+          "cosine_similarity": 0.9999900886571917,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance_elements": 523092,
+          "max_tolerance_ratio": 1530.1742103345014,
+          "output_raw_sha256": "40085921c72ea991c362ab11fc3000e6a1b748d07cec9526cdc14b57b0a049b9"
+        },
+        "evaluation_01": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs_error": 0.031044453382492065,
+          "rmse": 0.0007488078362289888,
+          "relative_l2": 0.004977550639290561,
+          "cosine_similarity": 0.99998761192771,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance_elements": 527279,
+          "max_tolerance_ratio": 2177.3342729272986,
+          "output_raw_sha256": "ea7869b35a8dabfcd6e94012ce63564ba9b0600506fa8d59cc84f15ce43746c2"
+        }
+      }
+    },
+    "ptq_w8a8": {
+      "subsequent_measured_call_denominator": 6,
+      "included_sdk_call_indices": [
+        2,
+        5,
+        6,
+        11,
+        12,
+        15
+      ],
+      "mean_io_seconds": 0.2556402618333333,
+      "all_saved_outputs_pass_fixed_original_FP32_gate": false,
+      "per_input_first_metrics": {
+        "evaluation_00": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs_error": 0.4803646504878998,
+          "rmse": 0.015714722542454398,
+          "relative_l2": 0.1031215425749902,
+          "cosine_similarity": 0.9947130277123736,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance_elements": 894068,
+          "max_tolerance_ratio": 23489.866927670206,
+          "output_raw_sha256": "d2038f22bae1490c023738cf20a26422938730115e0d51ac245acd51036b3071"
+        },
+        "evaluation_01": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs_error": 0.5473082363605499,
+          "rmse": 0.015865771934566997,
+          "relative_l2": 0.10546455233888795,
+          "cosine_similarity": 0.9944680142770865,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance_elements": 894170,
+          "max_tolerance_ratio": 21038.44451378298,
+          "output_raw_sha256": "55e43502e1051054a560da9e99b96021518998f5742b93da7f61affc4e700ff4"
+        }
+      }
+    }
+  },
+  "subsequent_mean_sdk_stages_seconds": {
+    "nonquant_fp16": {
+      "input_set_seconds": 0.009246528666666667,
+      "run_api_seconds": 0.3141288718333333,
+      "outputs_get_seconds": 0.010960688666666668,
+      "output_validation_and_copy_seconds": 0.00270025,
+      "pre_release_bookkeeping_seconds": 2.4014e-05,
+      "outputs_release_seconds": 2.5326333333333332e-05
+    },
+    "ptq_w8a8": {
+      "input_set_seconds": 0.007919445333333332,
+      "run_api_seconds": 0.2419235035,
+      "outputs_get_seconds": 0.002990944666666667,
+      "output_validation_and_copy_seconds": 0.0027569308333333336,
+      "pre_release_bookkeeping_seconds": 2.3625e-05,
+      "outputs_release_seconds": 2.58125e-05
+    }
+  },
+  "PTQ_component_IO_difference": {
+    "nonquant_minus_PTQ_seconds": 0.08144541766666663,
+    "nonquant_minus_PTQ_percent_of_nonquant": 24.161636824048657,
+    "component_only": true,
+    "fresh_observation_pose_rate": false
+  },
+  "independent_saved_data_audit": {
+    "passed": true,
+    "SDK_output_NPYs_physically_read": 16,
+    "heldout_input_reference_NPYs_physically_read": 4,
+    "fixed_original_metrics_recomputed_for_every_output": true,
+    "all_file_and_raw_SHA_verified": true,
+    "all_six_IO_stage_sums_equal_monotonic_intervals": true,
+    "AB_BA_schedule_and_sample_context_first_call_identity_checked": true,
+    "SDK_copy_before_release_and_no_alias_receipt_checked": true,
+    "all_read_file_bytes_unchanged": true,
+    "actual_model_ORT_SDK_calibration_compilation_or_image_decode_by_audit": false
+  },
+  "board_cleanup": {
+    "source_and_inputs_unchanged": true,
+    "affinity_restored": true,
+    "environment_restored": true,
+    "cleanup_errors": []
+  },
+  "all_contexts_destroyed": true,
+  "full_model_run": false,
+  "whole_model_quality_validated": false,
+  "real_time_validated": false,
+  "arrays_weights_or_SDK_binaries_in_this_receipt": false,
+  "limits": [
+    "The additional original FP32 CPU ORT heldout check is numerical_rejected: evaluation_00 has one of 894976 elements above the unchanged tolerance (max ratio 1.0319307852), while evaluation_01 passes. It is not combined into a passed gate or used to change the Torch reference.",
+    "Both precision implementations fail the unchanged original FP32 gate on both heldout inputs; neither candidate is adopted.",
+    "w8a8 build and logical INT8 boundary do not establish all internal operators INT8 or NPU.",
+    "SDK conversion cost and error are included; boundary and internal approximation errors are not isolated.",
+    "Normal IO timings are component-only, on saved repeated inputs, with six subsequent measured calls per implementation.",
+    "Two heldout pairs from one sequence do not prove full-model precision or SLAM quality.",
+    "20 Hz fresh pose / P95 <= 100 ms, dense cadence, 30-minute stability and 8 GB complete application acceptance remain unvalidated."
+  ],
+  "saved_input_boundary_endpoint_observation": {
+    "method": "Read saved FP32 input and compare only to declared INT8 logical affine grid endpoints; no SDK conversion or model execution simulated.",
+    "descriptor_input_grid_endpoints": [
+      -7.599431611597538,
+      2.875460609793663
+    ],
+    "SDK_actual_conversion_rounding_or_clipping_policy_proven": false,
+    "quality_error_attributed_to_boundary_alone": false,
+    "samples": [
+      {
+        "sample_id": "evaluation_00",
+        "original_input_min": -7.509110450744629,
+        "original_input_max": 3.012089729309082,
+        "elements_outside_descriptor_grid_endpoints": 7,
+        "elements": 894976,
+        "saved_input_raw_sha256": "c0b1b3514f888e348247b1945da9fd46af602b25541efb4a1b1df57487ded844"
+      },
+      {
+        "sample_id": "evaluation_01",
+        "original_input_min": -7.480223178863525,
+        "original_input_max": 2.91062068939209,
+        "elements_outside_descriptor_grid_endpoints": 1,
+        "elements": 894976,
+        "saved_input_raw_sha256": "8a3f0fc0792b9d412b9efceecf48a77f456b88033e0cd31fb50b86d3ba307a44"
+      }
+    ]
+  },
+  "new_heldout_original_FP32_ORT_gate": {
+    "actual_receipt_sha256": "818ca23f2b1e5986d57d2046dfa734e067faac623a0c0eaf539c21ebbf961f3c",
+    "public_saved_data_audit_sha256": "16a1711b77d9a74a2f62c9ed718fbd09dba90088574119a95dd7fd24282eb5ee",
+    "overall_status": "numerical_rejected",
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "evaluation_00": {
+      "strict_gate_passed": false,
+      "outside_tolerance_elements": 1,
+      "elements": 894976,
+      "max_tolerance_ratio": 1.0319307851996928,
+      "relative_l2": 1.1905582283188107e-06
+    },
+    "evaluation_01": {
+      "strict_gate_passed": true,
+      "outside_tolerance_elements": 0,
+      "elements": 894976,
+      "max_tolerance_ratio": 0.9072285377808844,
+      "relative_l2": 1.15375991552944e-06
+    },
+    "gate_relaxed_or_combined_as_passed": false,
+    "SDK_comparison_reference_still_original_Torch_FP32_not_ORT": true
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "v49_original_VGGT_heldout_ORT_source_freeze",
+  "status": "prepared_not_ORT_executed",
+  "compile_source_freeze_sha256": "2f923cc4d8101030a5451ee53b29af63a4e909a04183dcf12a6d9f51197e228b",
+  "compile_source_freeze_unchanged": true,
+  "host_real_model_ORT_SDK_compile_calibration_executed": false,
+  "candidate_accepted": false,
+  "frozen_pair_graph_sha256": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+  "capture_contracts_sha256": "6ce1f87f1683e8082a4d567718acb853101e5ee6bbaeef1ced02993a8e3133c8",
+  "capture_manifest_sha256": "bf39dfa65526a4135cbd2d7ee8b927ce2c4a40da75aebf64652ed2cd87a7e7fc",
+  "quant_contracts_sha256": "47237b1a1e1614822c75180efd15be3e5c708b610f587f698fe9b37fcf1bc649",
+  "fixed_actual_session_run_count": 2,
+  "calibration_samples_inferred": false,
+  "rtol": 0.0001,
+  "atol": 1e-05,
+  "tiny_generated_checks_passed": 6,
+  "files": {
+    "check-v49-heldout-pair-onnx-board.py": {
+      "bytes": 16717,
+      "sha256": "4d5c8bdfaca8922164b4367e4c6281e98683e4fec7d682408aa419f806abd9e7"
+    },
+    "test_v49_heldout_ort.py": {
+      "bytes": 6122,
+      "sha256": "ff69d176a6682654b2f0c6d6386336c417ba087dc81d8bb9bea5d628f5af451e"
+    },
+    "run-heldout-ort-board.sh": {
+      "bytes": 1406,
+      "sha256": "66390c63c5fd1fea2f2daae8c5000537aa116202f96e356a11c89cfb64e69a35"
+    },
+    "HELDOUT_ORT.md": {
+      "bytes": 2470,
+      "sha256": "739d16b9d4762d4950cb12ab80ed5203bf3a55e9c5f4d2920765d35519267f9c"
+    },
+    "heldout-tiny-checks-r1.json": {
+      "bytes": 662,
+      "sha256": "92417c90618342fd1c9c654db4ca388bd3f58f219446defac13239a68cc748e8"
+    }
+  }
+}

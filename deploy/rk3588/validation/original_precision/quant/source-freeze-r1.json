@@ -1,0 +1,55 @@
+{
+  "schema": "v49_original_VGGT_pair_PTQ_source_freeze",
+  "status": "prepared_not_compiler_executed",
+  "host_real_model_ORT_SDK_compile_calibration_executed": false,
+  "candidate_accepted": false,
+  "frozen_pair_export_sha256": "149450ffc675ce59950c6f89cf84adb41e388cd050eeb731b6d09a6fe16e9fe1",
+  "frozen_pair_graph_sha256": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+  "frozen_pair_contracts_sha256": "4ec6c0e827ab9669c942b589d2c504f0c9de306f76f4f4be0799af14ae322cd7",
+  "capture_contracts_sha256": "6ce1f87f1683e8082a4d567718acb853101e5ee6bbaeef1ced02993a8e3133c8",
+  "capture_script_sha256": "7a2279927a65e3740da933c1192c335d15f4f1803440ed84a27a2aebc8f02613",
+  "actual_board_capture_receipt_sha256": "bf39dfa65526a4135cbd2d7ee8b927ce2c4a40da75aebf64652ed2cd87a7e7fc",
+  "passed_board_ORT_receipt_sha256": "f93e1939be9628b7e28df8f91cf06d28002f0b3871a0d0a46adca1780ffa5fc0",
+  "calibration_pair_count": 8,
+  "heldout_pair_count": 2,
+  "configuration": {
+    "target_platform": "rk3588",
+    "float_dtype": "float16",
+    "optimization_level": 3,
+    "quantized_dtype": "w8a8",
+    "quantized_algorithm": "normal",
+    "quantized_method": "channel",
+    "do_quantization": true
+  },
+  "tiny_generated_checks_passed": 38,
+  "files": {
+    "compile-v49-pair-ptq-board.py": {
+      "bytes": 14332,
+      "sha256": "09c6e33be328f6f0c74265c3bdb2fa2c281569ffb76bbbd61db9cf509f81da24"
+    },
+    "v49_quant_contracts.py": {
+      "bytes": 11450,
+      "sha256": "47237b1a1e1614822c75180efd15be3e5c708b610f587f698fe9b37fcf1bc649"
+    },
+    "test_v49_pair_ptq.py": {
+      "bytes": 13128,
+      "sha256": "2240f7e006882bd0fdc2344637ad710f5b6bef8f83bdda4386a7c8fd5ae6c508"
+    },
+    "SDK_API_RESEARCH.md": {
+      "bytes": 2996,
+      "sha256": "8711b34d9a4cd3c616f6ce40c354630e89f8e0219940074e383c222e267be435"
+    },
+    "README.md": {
+      "bytes": 4721,
+      "sha256": "110a263d8a17de0e04b8d34a267179441f24aac347331d5774a69245d3b0dd8f"
+    },
+    "run-ptq-board.sh": {
+      "bytes": 1548,
+      "sha256": "59e73cdede510ca4f88fa948c25fbb1a6d8ede5d6b831504b79e8af66d3e7237"
+    },
+    "tiny-checks-r1.json": {
+      "bytes": 709,
+      "sha256": "f491500ab7b42c33f45330f8a1a1305e09c3fab40def092fd26bf42089908b55"
+    }
+  }
+}

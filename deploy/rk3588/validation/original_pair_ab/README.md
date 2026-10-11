@@ -1,6 +1,6 @@
 # 原 VGGT frame0 → global0 同进程 A/B 探针
 
-本目录是新的板端测试源码，尚未执行实际 A/B。它只运行原 VGGT 的完整 frame0、global0，比较相同原捕获输入的两种执行路径；原权重、位置、参数和计算没有替换。所有实际 SDK 调用由主代理在 RK3588S 串行执行。
+本目录的板端 A/B 已完成，结果见 [实际测量](RESULT.md)。它只运行原 VGGT 的完整 frame0、global0，比较相同原捕获输入的两种执行路径；原权重、位置、参数和计算没有替换。所有实际 SDK 调用由主代理在 RK3588S 串行执行。
 
 - `separate`：实际 NPU frame0 输出复制到自有 FP32 内存，在原 token 顺序下 view 为 `[1,874,1024]`，直接输入 NPU global0。没有 CPU 参考重置。每次保存完整 frame0 和最终 global0 输出，并绑定桥接数据 SHA。
 - `fused`：相同原 frame0 输入进入完整配对图，保存完整最终输出。

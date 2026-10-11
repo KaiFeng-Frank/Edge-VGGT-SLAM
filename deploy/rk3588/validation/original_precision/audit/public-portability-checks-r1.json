@@ -1,0 +1,284 @@
+{
+  "schema": "v49_public_layout_original_precision_portability_checks",
+  "status": "passed",
+  "checked_subtree": "deploy/rk3588/validation/original_precision",
+  "frozen_source_modified_by_checker": false,
+  "actual_board_access_or_model_ORT_SDK_calibration_compilation_executed": false,
+  "generated_or_fake_checks_only": true,
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:28:48) [GCC 14.3.0]",
+  "checks": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B capture/check_capture_contracts.py --output <new-selfcheck-receipt.json>",
+      "cwd": "deploy/rk3588/validation/original_precision",
+      "returncode": 0,
+      "passed": 15,
+      "selfcheck_receipt_sha256": "808e4ea3d6d4bed4dea134a1c601da1de287ff58571ffbb21dc2a52744195024"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest quant/test_v49_pair_ptq.py quant/test_v49_heldout_ort.py runtime/test_v49_original_pair_precision.py -q -p no:cacheprovider",
+      "cwd": "deploy/rk3588/validation/original_precision",
+      "returncode": 0,
+      "stdout_summary": "125 passed in 0.32s",
+      "passed_by_suite": {
+        "quant": 38,
+        "heldout_ORT_fake": 6,
+        "runtime_fake": 81
+      }
+    }
+  ],
+  "total_generated_or_fake_checks_passed": 140,
+  "python_AST_parse_files": 15,
+  "shell_syntax_checks": [
+    {
+      "file": "runtime/run-precision-board.sh",
+      "returncode": 0
+    },
+    {
+      "file": "quant/run-heldout-ort-board.sh",
+      "returncode": 0
+    },
+    {
+      "file": "quant/run-ptq-board.sh",
+      "returncode": 0
+    }
+  ],
+  "local_markdown_links_checked": 62,
+  "broken_local_markdown_links": [],
+  "shared_frozen_helpers": [
+    {
+      "from": "runtime",
+      "relative_path": "../../original_pair/v47_pair_contracts.py",
+      "sha256": "4ec6c0e827ab9669c942b589d2c504f0c9de306f76f4f4be0799af14ae322cd7"
+    },
+    {
+      "from": "runtime",
+      "relative_path": "../../run-v12-rknn-block-board.py",
+      "sha256": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608"
+    }
+  ],
+  "source_freezes": [
+    {
+      "manifest": "capture/source-freeze-r1.json",
+      "sha256": "fe1bd10b3986c9a0c2d965f8f0fa59fcfa58883cc892450bc7c43c90ad40f4f2",
+      "files_verified": [
+        {
+          "path": "capture/capture-v49-pair-prefix-board.py",
+          "bytes": 28379,
+          "sha256": "7a2279927a65e3740da933c1192c335d15f4f1803440ed84a27a2aebc8f02613"
+        },
+        {
+          "path": "capture/v49_capture_contracts.py",
+          "bytes": 18199,
+          "sha256": "6ce1f87f1683e8082a4d567718acb853101e5ee6bbaeef1ced02993a8e3133c8"
+        },
+        {
+          "path": "capture/check_capture_contracts.py",
+          "bytes": 17594,
+          "sha256": "edf0bd7b1ed80095bdefba50e117b0117e7a44cc0fb2772effe4cef3eb404c39"
+        },
+        {
+          "path": "capture/original-vggt-source-pins.json",
+          "bytes": 4220,
+          "sha256": "ff50f23b7fd1e728a2757ae9796f03263b8392e1328f53fc6b82fe5e2c37d283"
+        },
+        {
+          "path": "capture/image-plan.json",
+          "bytes": 9088,
+          "sha256": "61b14e0e0033a49059bf52c7dd9cbeaae8bd4393423b2bce827cc451f22caf37"
+        },
+        {
+          "path": "capture/selfchecks-r1.json",
+          "bytes": 2234,
+          "sha256": "808e4ea3d6d4bed4dea134a1c601da1de287ff58571ffbb21dc2a52744195024"
+        }
+      ]
+    },
+    {
+      "manifest": "quant/source-freeze-r1.json",
+      "sha256": "2f923cc4d8101030a5451ee53b29af63a4e909a04183dcf12a6d9f51197e228b",
+      "files_verified": [
+        {
+          "path": "quant/compile-v49-pair-ptq-board.py",
+          "bytes": 14332,
+          "sha256": "09c6e33be328f6f0c74265c3bdb2fa2c281569ffb76bbbd61db9cf509f81da24"
+        },
+        {
+          "path": "quant/v49_quant_contracts.py",
+          "bytes": 11450,
+          "sha256": "47237b1a1e1614822c75180efd15be3e5c708b610f587f698fe9b37fcf1bc649"
+        },
+        {
+          "path": "quant/test_v49_pair_ptq.py",
+          "bytes": 13128,
+          "sha256": "2240f7e006882bd0fdc2344637ad710f5b6bef8f83bdda4386a7c8fd5ae6c508"
+        },
+        {
+          "path": "quant/SDK_API_RESEARCH.md",
+          "bytes": 2996,
+          "sha256": "8711b34d9a4cd3c616f6ce40c354630e89f8e0219940074e383c222e267be435"
+        },
+        {
+          "path": "quant/README.md",
+          "bytes": 4721,
+          "sha256": "110a263d8a17de0e04b8d34a267179441f24aac347331d5774a69245d3b0dd8f"
+        },
+        {
+          "path": "quant/run-ptq-board.sh",
+          "bytes": 1548,
+          "sha256": "59e73cdede510ca4f88fa948c25fbb1a6d8ede5d6b831504b79e8af66d3e7237"
+        },
+        {
+          "path": "quant/tiny-checks-r1.json",
+          "bytes": 709,
+          "sha256": "f491500ab7b42c33f45330f8a1a1305e09c3fab40def092fd26bf42089908b55"
+        }
+      ]
+    },
+    {
+      "manifest": "quant/heldout-source-freeze-r1.json",
+      "sha256": "ce521420f0f2279838311643e8203aed983975924b10b3347574e0f2823c5e49",
+      "files_verified": [
+        {
+          "path": "quant/check-v49-heldout-pair-onnx-board.py",
+          "bytes": 16717,
+          "sha256": "4d5c8bdfaca8922164b4367e4c6281e98683e4fec7d682408aa419f806abd9e7"
+        },
+        {
+          "path": "quant/test_v49_heldout_ort.py",
+          "bytes": 6122,
+          "sha256": "ff69d176a6682654b2f0c6d6386336c417ba087dc81d8bb9bea5d628f5af451e"
+        },
+        {
+          "path": "quant/run-heldout-ort-board.sh",
+          "bytes": 1406,
+          "sha256": "66390c63c5fd1fea2f2daae8c5000537aa116202f96e356a11c89cfb64e69a35"
+        },
+        {
+          "path": "quant/HELDOUT_ORT.md",
+          "bytes": 2470,
+          "sha256": "739d16b9d4762d4950cb12ab80ed5203bf3a55e9c5f4d2920765d35519267f9c"
+        },
+        {
+          "path": "quant/heldout-tiny-checks-r1.json",
+          "bytes": 662,
+          "sha256": "92417c90618342fd1c9c654db4ca388bd3f58f219446defac13239a68cc748e8"
+        }
+      ]
+    },
+    {
+      "manifest": "runtime/source-freeze-r1.json",
+      "sha256": "97ccbb79621d9827aee0156aee32bf8c0d075f42a8ffa3c7452b8ebe741947c5",
+      "files_verified": [
+        {
+          "path": "runtime/v49_quantized_pair_runtime_contracts.py",
+          "bytes": 16647,
+          "sha256": "44c0a6a1dcca66ee09b2f15bb0e2f0ddc7b7eb3f6cb44fdc3b576e9f75463bc2"
+        },
+        {
+          "path": "runtime/run-v49-original-pair-precision-board.py",
+          "bytes": 32446,
+          "sha256": "33fc5deb749c8b3ceaa47271e389f5fbbfc2dba6db93aa19887b2fc41e0e7882"
+        },
+        {
+          "path": "runtime/test_v49_original_pair_precision.py",
+          "bytes": 21238,
+          "sha256": "c54f2753b254a4e97da8c750f19343a8b7ef872b0e173003f2bb1f0f4248336d"
+        },
+        {
+          "path": "runtime/README.md",
+          "bytes": 6021,
+          "sha256": "830cfc7815a2ad9387593a1375a651f4bbac6c3c6d15adf17559d05a58181f85"
+        },
+        {
+          "path": "runtime/tiny-checks-r1.json",
+          "bytes": 1221,
+          "sha256": "5459d58d7bf309557f560e9227ddf30825662dcb0b3509c9061f895aec115ca2"
+        }
+      ]
+    },
+    {
+      "manifest": "capture/source-freeze-audit-r1.json",
+      "sha256": "e81cd37f910bf59c667e7a66c691f6f932bacc64fda2826bb9cd2c9c1d095160",
+      "files_verified": [
+        {
+          "path": "capture/audit_saved_capture.py",
+          "bytes": 14660,
+          "sha256": "7d0debcb818ca2e01cb8a3e9f4122262f82ecf44969e85175f246666c617d97d"
+        },
+        {
+          "path": "capture/README.md",
+          "bytes": 4730,
+          "sha256": "d030415978d97fd6a9fc78cff7193b9ff051b14d4c6370fbf35c9e75dd57833b"
+        }
+      ]
+    },
+    {
+      "manifest": "root-launchers-freeze-r1.json",
+      "sha256": "260d37db7d1e074d378b20537708d3188e17cd122599f84afbc71567caaf35dc",
+      "files_verified": [
+        {
+          "path": "runtime/run-precision-board.sh",
+          "bytes": 2071,
+          "sha256": "5e16a404e1c65664826b3b31f3df6c876eae8f21c52edccedd65cff131ffda79"
+        },
+        {
+          "path": "capture/prepare-plan-board.py",
+          "bytes": 1514,
+          "sha256": "8b326043a9f1337081606b7b491fa0ca0e71eb5b239c55c995744b1147006297"
+        }
+      ]
+    }
+  ],
+  "blocking_issues": [],
+  "resolved_source_path_issue": {
+    "original_location": "audit/source-freeze-audit-r1.json",
+    "root_action": "Moved identical frozen bytes into capture/source-freeze-audit-r1.json; its relative auditor and README entries now resolve and match SHA/bytes.",
+    "resolved": true,
+    "current_manifest_sha256": "e81cd37f910bf59c667e7a66c691f6f932bacc64fda2826bb9cd2c9c1d095160"
+  },
+  "root_document_boundaries_checked": {
+    "files": [
+      {
+        "file": "README.md",
+        "sha256": "aa38add85ac131c7775fcf661b8a6459911c6d21e6d2a25dfabbc662866e5799"
+      },
+      {
+        "file": "docs/ENGINEERING_NOTES.md",
+        "sha256": "e96f1cc197b06f33b09f11a41d8a959e690d12e5c8782387e1f591dd23b21b1b"
+      },
+      {
+        "file": "results/original_precision_v49.json",
+        "sha256": "6d007ced359db91c89d20d9b67ceb39d53daddf7719379b7255f33783da1f2bd"
+      },
+      {
+        "file": "deploy/rk3588/validation/original_precision/README.md",
+        "sha256": "0f2833a8f09a9d42f211326f7cf20c417d08ad6567871c37d4b35d33f1482cd1"
+      }
+    ],
+    "original_model_only": true,
+    "FP32_rejections_and_heldout_one_element_failure_retained": true,
+    "normal_and_profile_counts_and_scopes_separate": true,
+    "six_repeat_denominator_per_implementation_verified": true,
+    "tensor_error_not_claimed_as_trajectory_error": true,
+    "full_model_realtime_8GB_and_30minute_acceptance_not_claimed": true,
+    "numerical_error_cause_not_established": true
+  },
+  "restrictions": {
+    "only_original_VGGT_supported": true,
+    "original_DINO_is_part_of_original_VGGT": true,
+    "alternate_model_name_or_frontend_scan_matches": [],
+    "checkpoint_export_array_SDK_binary_files_in_checked_subtree": [],
+    "scope_scan_file_count": 45
+  },
+  "external_reproduction_dependencies": [
+    "Original VGGT source is intentionally external; pinned clone/patch instructions are in deploy/rk3588/README.md.",
+    "Licensed SDK header/runtime are intentionally external; deploy/rk3588/README.md states that a fresh clone lacks them.",
+    "Board /mnt/vggt-data paths and private graph/capture artifacts are frozen experiment staging paths; no weights/arrays/binaries are distributed.",
+    "Toolchain wheel paths are recorded experiment storage paths; toolchain/README.md explicitly requires preparing legal dependencies and staging before execution."
+  ],
+  "limitations": [
+    "Existing generated checks and source/static path validation do not validate real hardware, calibration, complete VGGT/SLAM, numerical candidate acceptance or realtime behavior.",
+    "External HTTP links were inspected as existing documented source URLs; this check did not perform a network fetch.",
+    "No unchanged test suite was rerun after the root relocated the manifest and added documentation/launcher files; those additions received static SHA/path/syntax checks."
+  ]
+}

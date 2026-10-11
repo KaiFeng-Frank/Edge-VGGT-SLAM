@@ -1,0 +1,149 @@
+{
+  "schema": "v49_original_VGGT_PTQ_compile_public_audit",
+  "status": "actual_board_compile_audited_diagnostic_not_adopted",
+  "scope": "Complete original frame0/global0 pair only; same original 36 parameter tensors before compilation",
+  "model_family": "original_pretrained_VGGT_only",
+  "candidate_accepted": false,
+  "actual_compilation_platform": "RK3588S ARM64 CPython3.11.17 isolated toolchain",
+  "compile_receipt_sha256": "6c88b6271496ccdb6b8ff9db4e638fe47e69ca0c7374e90353ea51220a17e88a",
+  "independent_private_audit_sha256": "8362d1e3fc702c733a451aebb87f78c733e076da57152c254fb2b1ebdb5136b7",
+  "actual_log_sha256": "ebe4c3c5403188135bb138fae8a6723ac34703cda29a557543120450e6b5b015",
+  "original_graph_sha256": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+  "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "capture_manifest_sha256": "bf39dfa65526a4135cbd2d7ee8b927ce2c4a40da75aebf64652ed2cd87a7e7fc",
+  "compiler_source_sha256": "09c6e33be328f6f0c74265c3bdb2fa2c281569ffb76bbbd61db9cf509f81da24",
+  "contracts_source_sha256": "47237b1a1e1614822c75180efd15be3e5c708b610f587f698fe9b37fcf1bc649",
+  "toolchain_versions": {
+    "rknn-toolkit2": "2.3.2",
+    "torch": "2.2.0",
+    "numpy": "1.26.4",
+    "onnx": "1.16.1",
+    "onnxruntime": "1.16.0",
+    "protobuf": "3.20.3"
+  },
+  "configuration": {
+    "target_platform": "rk3588",
+    "float_dtype": "float16",
+    "optimization_level": 3,
+    "quantized_dtype": "w8a8",
+    "quantized_algorithm": "normal",
+    "quantized_method": "channel",
+    "do_quantization": true
+  },
+  "input_transform": {
+    "mean_values": null,
+    "std_values": null,
+    "quant_img_RGB2BGR": false,
+    "transpose": false,
+    "extra_batch_dimension": false
+  },
+  "build_options": {
+    "do_quantization": true,
+    "auto_hybrid": false
+  },
+  "calibration_inputs": {
+    "count": 8,
+    "shape": [
+      2,
+      437,
+      1024
+    ],
+    "dtype": "float32",
+    "dataset_sha256": "0593e7306d501cf7afc7b6476aadbb409620e05c55b935ef0e9e63ea7cd8bf24",
+    "new_disjoint_heldout_pairs": 2,
+    "heldout_references_excluded": true,
+    "old_evaluation_pair_excluded": true
+  },
+  "operations": [
+    {
+      "name": "config",
+      "code": 0,
+      "status": "completed",
+      "seconds": 0.000116667
+    },
+    {
+      "name": "load_onnx",
+      "code": 0,
+      "status": "completed",
+      "seconds": 0.488847383
+    },
+    {
+      "name": "build",
+      "code": 0,
+      "status": "completed",
+      "seconds": 71.035972429
+    },
+    {
+      "name": "export_rknn",
+      "code": 0,
+      "status": "completed",
+      "seconds": 0.026487711
+    }
+  ],
+  "cleanup": {
+    "released": true,
+    "release_code": null,
+    "source_and_inputs_unchanged": true,
+    "cwd_restored": true,
+    "environment_restored": true,
+    "cleanup_errors": []
+  },
+  "compiled_artifact_metadata_only": {
+    "sha256": "005c803d5fa6b4fa7664e583a6c8c188554c676172d955528f2617525fae18fa",
+    "bytes": 29931726,
+    "binary_published": false,
+    "nonquant_pair_bytes": 55280948,
+    "size_reduction_percent": 45.855259211546084
+  },
+  "compiler_final_operator_table_summary": {
+    "rows": 54,
+    "all_operator_IO_DataType_tokens": {
+      "INT8": 54
+    },
+    "boundary_CPU_rows": 2,
+    "internal_target_counts": {
+      "NPU": 51,
+      "CPU": 1
+    },
+    "internal_CPU_operators": [
+      {
+        "id": 24,
+        "op": "Reshape",
+        "data_type_token": "INT8",
+        "target": "CPU",
+        "input_and_output_shapes_text": "(2,16,64,437),(4)                        (32,64,1,437)",
+        "DDR_NPU_total_cycles": [
+          0,
+          0,
+          0
+        ],
+        "RW_KB": 874,
+        "name": "Reshape:frame0/value_tp_rs"
+      }
+    ]
+  },
+  "compiled_weight_and_constant_dtype_counts": {
+    "INT64": 14,
+    "FLOAT16": 8,
+    "FLOAT": 8,
+    "INT8": 18,
+    "INT32": 9
+  },
+  "mixed_normalization_storage": {
+    "Norm_weight": "FLOAT16 token;2 allocated bytes per logical element",
+    "Norm_bias": "FLOAT token;4 allocated bytes per logical element"
+  },
+  "warnings": {
+    "early_Transpose_CPU_fallback_warning_count": 4,
+    "final_CPU_placement_is_not_equal_to_warning_count": true
+  },
+  "whole_original_model_quality_validated": false,
+  "real_time_validated": false,
+  "limits": [
+    "Compilation validates neither accuracy nor runtime placement; subsequent normal/profile evidence is separate",
+    "INT8 operator IO tokens coexist with floating Norm constants; do not claim all arithmetic is INT8",
+    "Model-size reduction covers this two-block candidate; not full checkpoint or whole-SLAM memory",
+    "Only original VGGT is used; original model weight license remains distinct from repository code license",
+    "No checkpoint, model arrays, compiled model or SDK binary is published"
+  ]
+}

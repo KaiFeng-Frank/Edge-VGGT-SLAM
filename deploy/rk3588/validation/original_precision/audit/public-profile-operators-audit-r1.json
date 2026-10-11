@@ -1,0 +1,323 @@
+{
+  "schema": "v49_original_VGGT_profile_public_audit",
+  "status": "actual_saved_operator_tables_audited_diagnostic_not_adopted",
+  "model_family": "original_pretrained_VGGT_only",
+  "scope": "original frame0/global0 pair on two saved heldout inputs",
+  "candidate_accepted": false,
+  "strict_original_FP32_gate": {
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "both_RKNN_implementations_passed": false
+  },
+  "profile_receipt_sha256": "98b550f62eeadba951834ac71bff83d320faf1dcccd179c2320cdfa2fc4b8623",
+  "normal_receipt_sha256": "05ac1187d9bda3893d43f2d9c834d3b4de51f97d8c455496daa0c5a6f803e591",
+  "compile_receipt_sha256": "6c88b6271496ccdb6b8ff9db4e638fe47e69ca0c7374e90353ea51220a17e88a",
+  "independent_private_operator_audit_sha256": "f66a22c838c12d725d8663ef45d9e7b5da07dcb842708f2c38874aadabbe9c58",
+  "independent_private_profile_array_audit_sha256": "2cf915c1ca8d26563d5d176536737aa67674f23376a6ed0532a70ecf7f052d86",
+  "parser_source_sha256": "061b15948907ab1b1317c1c25315e7683f26b191b04345558cf670eff20b111e",
+  "actual_calls": {
+    "profile_SDK_calls": 16,
+    "normal_SDK_calls_separate_process": 16,
+    "calls_per_input_per_implementation": 4,
+    "inputs": 2,
+    "unmeasured_warmup_calls": 0,
+    "profile_init_flags": 8,
+    "normal_init_flags": 0,
+    "cores_mask": 7,
+    "CPU_affinity": [
+      6,
+      7
+    ],
+    "same_context_first_call_count_per_mode": 2,
+    "first_of_second_input_is_not_cold_context": true,
+    "contexts_live_together": 2
+  },
+  "parser_checks": {
+    "tables": 16,
+    "rows_per_table": 54,
+    "every_numeric_row_parsed": true,
+    "raw_detail_SHA_and_bytes_checked": true,
+    "contiguous_operator_IDs_checked": true,
+    "exact_sum_operator_microseconds_checked": true,
+    "within_implementation_operator_identity_and_placement_repeat": true
+  },
+  "actual_profile_outputs": {
+    "full_saved_arrays_checked": 16,
+    "all_raw_equal_to_same_input_normal_outputs": true,
+    "arrays_published": false
+  },
+  "implementations": {
+    "nonquant_fp16": {
+      "operator_rows_per_call": 54,
+      "internal_rows_per_call": 52,
+      "internal_target_counts": {
+        "NPU": 52
+      },
+      "boundary_target_counts": {
+        "CPU": 2
+      },
+      "internal_data_type_token_counts": {
+        "FLOAT16": 52
+      },
+      "all_listed_internal_targets_NPU": true,
+      "all_listed_internal_data_type_tokens_INT8": false,
+      "whole_original_model_INT8_or_NPU_proven": false,
+      "all_eight_operator_mean_microseconds": 320593.875,
+      "six_repeat_operator_mean_microseconds": 321541.5,
+      "original_subregions": {
+        "frame0": {
+          "MLP": {
+            "operator_ids": [
+              30,
+              31
+            ],
+            "data_type_tokens": {
+              "FLOAT16": 2
+            },
+            "targets": {
+              "NPU": 2
+            },
+            "mean_all_eight_microseconds": 50089.375
+          },
+          "SDPA": {
+            "operator_ids": [
+              26
+            ],
+            "data_type_tokens": {
+              "FLOAT16": 1
+            },
+            "targets": {
+              "NPU": 1
+            },
+            "mean_all_eight_microseconds": 40988.375
+          },
+          "reshape_transpose": {
+            "operator_ids": [
+              6,
+              9,
+              14,
+              15,
+              17,
+              22,
+              23,
+              24,
+              25,
+              27
+            ],
+            "data_type_tokens": {
+              "FLOAT16": 10
+            },
+            "targets": {
+              "NPU": 10
+            },
+            "mean_all_eight_microseconds": 28728.375
+          }
+        },
+        "global0": {
+          "MLP": {
+            "operator_ids": [
+              50,
+              51
+            ],
+            "data_type_tokens": {
+              "FLOAT16": 2
+            },
+            "targets": {
+              "NPU": 2
+            },
+            "mean_all_eight_microseconds": 48877.25
+          },
+          "SDPA": {
+            "operator_ids": [
+              46
+            ],
+            "data_type_tokens": {
+              "FLOAT16": 1
+            },
+            "targets": {
+              "NPU": 1
+            },
+            "mean_all_eight_microseconds": 78020
+          },
+          "reshape_transpose": {
+            "operator_ids": [
+              32,
+              33,
+              36,
+              47
+            ],
+            "data_type_tokens": {
+              "FLOAT16": 4
+            },
+            "targets": {
+              "NPU": 4
+            },
+            "mean_all_eight_microseconds": 1854.375
+          }
+        }
+      },
+      "internal_CPU_operators": []
+    },
+    "ptq_w8a8": {
+      "operator_rows_per_call": 54,
+      "internal_rows_per_call": 52,
+      "internal_target_counts": {
+        "NPU": 51,
+        "CPU": 1
+      },
+      "boundary_target_counts": {
+        "CPU": 2
+      },
+      "internal_data_type_token_counts": {
+        "INT8": 52
+      },
+      "all_listed_internal_targets_NPU": false,
+      "all_listed_internal_data_type_tokens_INT8": true,
+      "whole_original_model_INT8_or_NPU_proven": false,
+      "all_eight_operator_mean_microseconds": 249288.25,
+      "six_repeat_operator_mean_microseconds": 248855.16666666666,
+      "original_subregions": {
+        "frame0": {
+          "MLP": {
+            "operator_ids": [
+              30,
+              31
+            ],
+            "data_type_tokens": {
+              "INT8": 2
+            },
+            "targets": {
+              "NPU": 2
+            },
+            "mean_all_eight_microseconds": 16053.375
+          },
+          "SDPA": {
+            "operator_ids": [
+              26
+            ],
+            "data_type_tokens": {
+              "INT8": 1
+            },
+            "targets": {
+              "NPU": 1
+            },
+            "mean_all_eight_microseconds": 45215.25
+          },
+          "reshape_transpose": {
+            "operator_ids": [
+              6,
+              9,
+              14,
+              15,
+              17,
+              22,
+              23,
+              24,
+              25,
+              27
+            ],
+            "data_type_tokens": {
+              "INT8": 10
+            },
+            "targets": {
+              "NPU": 9,
+              "CPU": 1
+            },
+            "mean_all_eight_microseconds": 17861.125
+          }
+        },
+        "global0": {
+          "MLP": {
+            "operator_ids": [
+              50,
+              51
+            ],
+            "data_type_tokens": {
+              "INT8": 2
+            },
+            "targets": {
+              "NPU": 2
+            },
+            "mean_all_eight_microseconds": 16089.5
+          },
+          "SDPA": {
+            "operator_ids": [
+              46
+            ],
+            "data_type_tokens": {
+              "INT8": 1
+            },
+            "targets": {
+              "NPU": 1
+            },
+            "mean_all_eight_microseconds": 87572.375
+          },
+          "reshape_transpose": {
+            "operator_ids": [
+              32,
+              33,
+              36,
+              47
+            ],
+            "data_type_tokens": {
+              "INT8": 4
+            },
+            "targets": {
+              "NPU": 4
+            },
+            "mean_all_eight_microseconds": 1235.75
+          }
+        }
+      },
+      "internal_CPU_operators": [
+        {
+          "id": 25,
+          "op": "Reshape",
+          "name": "Reshape:frame0/value_tp_rs",
+          "data_type_token": "INT8",
+          "target": "CPU",
+          "mean_all_eight_microseconds": 2292.75,
+          "mean_six_repeat_microseconds": 2233.6666666666665
+        }
+      ]
+    }
+  },
+  "separate_normal_SDK_IO": {
+    "nonquant_fp16": {
+      "repeat_call_count": 6,
+      "repeat_mean_seconds": 0.3370856795,
+      "strict_original_FP32_gate_passed": false
+    },
+    "ptq_w8a8": {
+      "repeat_call_count": 6,
+      "repeat_mean_seconds": 0.2556402618333333,
+      "strict_original_FP32_gate_passed": false
+    }
+  },
+  "whole_original_model_quality_validated": false,
+  "real_time_validated": false,
+  "limits": [
+    "Profile operator clocks are from fresh profiling contexts; do not add them to normal SDK IO clocks",
+    "Profile DataType tokens describe SDK rows; they do not prove every internal arithmetic instruction precision",
+    "The PTQ internal CPU reshape is a tensor-layout operation, not an added pose frontend",
+    "Norm constants include FLOAT/FLOAT16 even while PTQ operator IO tags say INT8",
+    "Same input repeated, uncontrolled system clocks/cooling, two heldout pairs and sixteen calls do not validate camera/fresh-pose20Hz orP95",
+    "Both RKNN implementations fail the fixed original FP32 gate and remain unadopted",
+    "New heldout CPU ORT is separately numerical_rejected: evaluation00 has1/894976 element just above tolerance; evaluation01 passes",
+    "No raw operator text, model arrays, checkpoint, compiled model or SDK binary is included"
+  ],
+  "measured_operator_difference": {
+    "scope": "eight profile calls per implementation, operator-clock means only",
+    "combined_MLP": {
+      "nonquant_mean_ms": 98.966625,
+      "PTQ_mean_ms": 32.142875,
+      "PTQ_reduction_percent_of_nonquant": 67.52150030376401
+    },
+    "combined_SDPA": {
+      "nonquant_mean_ms": 119.008375,
+      "PTQ_mean_ms": 132.787625,
+      "PTQ_increase_percent_of_nonquant": 11.578386815213635
+    },
+    "interpretation": "PTQ improves MLP substantially while both frame/global SDPA slow down; datatype label alone does not predict speed"
+  }
+}

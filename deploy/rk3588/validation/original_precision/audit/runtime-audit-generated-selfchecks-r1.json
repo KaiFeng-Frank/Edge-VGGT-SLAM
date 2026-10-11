@@ -1,0 +1,82 @@
+{
+  "schema": "v49_generated_saved_runtime_audit_smoke_checks",
+  "passed": true,
+  "checks": [
+    {
+      "check": "input_valid_type_0",
+      "passed": true
+    },
+    {
+      "check": "input_invalid_size_type_0",
+      "passed": true
+    },
+    {
+      "check": "input_valid_type_1",
+      "passed": true
+    },
+    {
+      "check": "input_invalid_size_type_1",
+      "passed": true
+    },
+    {
+      "check": "input_valid_type_2",
+      "passed": true
+    },
+    {
+      "check": "input_invalid_size_type_2",
+      "passed": true
+    },
+    {
+      "check": "input_valid_type_3",
+      "passed": true
+    },
+    {
+      "check": "input_invalid_size_type_3",
+      "passed": true
+    },
+    {
+      "check": "output_valid_type_0",
+      "passed": true
+    },
+    {
+      "check": "output_invalid_size_type_0",
+      "passed": true
+    },
+    {
+      "check": "output_valid_type_1",
+      "passed": true
+    },
+    {
+      "check": "output_invalid_size_type_1",
+      "passed": true
+    },
+    {
+      "check": "output_valid_type_2",
+      "passed": true
+    },
+    {
+      "check": "output_invalid_size_type_2",
+      "passed": true
+    },
+    {
+      "check": "output_valid_type_3",
+      "passed": true
+    },
+    {
+      "check": "output_invalid_size_type_3",
+      "passed": true
+    },
+    {
+      "check": "six_stage_IO_equals_actual_monotonic_interval",
+      "passed": true
+    },
+    {
+      "check": "wrong_timing_sum_is_rejected",
+      "passed": true
+    }
+  ],
+  "check_count": 18,
+  "audit_source_sha256": "9fae6d7eb55c733ad4dcbe5fc1de248f0cc666ad7b0ec90a3fc97de004ec7c1b",
+  "actual_model_ORT_SDK_calibration_compilation_or_image_decode": false,
+  "generated_descriptor_and_receipt_dicts_only": true
+}

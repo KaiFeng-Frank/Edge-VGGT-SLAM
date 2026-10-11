@@ -1,0 +1,15 @@
+{
+  "schema": "v49_original_VGGT_pair_PTQ_tiny_checks",
+  "status": "passed",
+  "checks_passed": 38,
+  "checks_failed": 0,
+  "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest test_v49_pair_ptq.py -q -p no:cacheprovider",
+  "exit_code": 0,
+  "output": "38 passed in 0.17s",
+  "launcher_bash_syntax_exit_code": 0,
+  "generated_floating_elements_per_sample": 24,
+  "real_model_ORT_SDK_compiler_calibration_executed": false,
+  "test_source_sha256": "2240f7e006882bd0fdc2344637ad710f5b6bef8f83bdda4386a7c8fd5ae6c508",
+  "compiler_source_sha256": "09c6e33be328f6f0c74265c3bdb2fa2c281569ffb76bbbd61db9cf509f81da24",
+  "contracts_sha256": "47237b1a1e1614822c75180efd15be3e5c708b610f587f698fe9b37fcf1bc649"
+}

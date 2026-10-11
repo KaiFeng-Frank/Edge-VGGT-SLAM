@@ -1,0 +1,50 @@
+{
+  "schema": "v49_original_pair_precision_source_freeze",
+  "status": "source_and_tiny_checks_frozen_no_actual_SDK",
+  "source_files": {
+    "v49_quantized_pair_runtime_contracts.py": {
+      "bytes": 16647,
+      "sha256": "44c0a6a1dcca66ee09b2f15bb0e2f0ddc7b7eb3f6cb44fdc3b576e9f75463bc2"
+    },
+    "run-v49-original-pair-precision-board.py": {
+      "bytes": 32446,
+      "sha256": "33fc5deb749c8b3ceaa47271e389f5fbbfc2dba6db93aa19887b2fc41e0e7882"
+    },
+    "test_v49_original_pair_precision.py": {
+      "bytes": 21238,
+      "sha256": "c54f2753b254a4e97da8c750f19343a8b7ef872b0e173003f2bb1f0f4248336d"
+    },
+    "README.md": {
+      "bytes": 6021,
+      "sha256": "830cfc7815a2ad9387593a1375a651f4bbac6c3c6d15adf17559d05a58181f85"
+    },
+    "tiny-checks-r1.json": {
+      "bytes": 1221,
+      "sha256": "5459d58d7bf309557f560e9227ddf30825662dcb0b3509c9061f895aec115ca2"
+    }
+  },
+  "private_raw_arrays_or_weight_binaries_published": false,
+  "actual_model_inference_OR_calibration_OR_SDK_executed_by_this_agent": false,
+  "candidate_accepted": false,
+  "fixed_original_FP32_gate": {
+    "rtol": 0.0001,
+    "atol": 1e-05
+  },
+  "planned_board_execution": {
+    "evaluation_samples": 2,
+    "calls_per_implementation_per_sample": 4,
+    "implementations": [
+      "nonquant_fp16",
+      "ptq_w8a8"
+    ],
+    "total_SDK_calls": 16,
+    "unmeasured_warmup_calls": 0,
+    "profile_requires_fresh_process_contexts_and_output_directory": true
+  },
+  "source_contracts_dependencies": {
+    "capture_loader_sha256": "6ce1f87f1683e8082a4d567718acb853101e5ee6bbaeef1ced02993a8e3133c8",
+    "capture_script_sha256": "7a2279927a65e3740da933c1192c335d15f4f1803440ed84a27a2aebc8f02613",
+    "runtime_helper_sha256": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608"
+  },
+  "public_copy_contract": "runtime sources unchanged; capture and quant sibling directories; validation typed SDK helper two parent levels above runtime"
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "v49_original_precision_slim_operator_publication",
+  "status": "curated_from_actual_saved_evidence",
+  "source_files": {
+    "public-ptq-compile-audit-r1.json": {
+      "bytes": 4837,
+      "sha256": "f939b04b5444a47f38582b23ffc4cb8586fd7ff76d90a7c1bad54c4049d067f7"
+    },
+    "public-profile-operators-audit-r1.json": {
+      "bytes": 9596,
+      "sha256": "29b2ad86ff89babc151d2ce56d461c13b53798b96f385af2d41af1f2a8139899"
+    },
+    "audit_v49_pair_compile_saved.py": {
+      "bytes": 13118,
+      "sha256": "90e9a46ec9c28f414adbf5f6e5dfe574f4c32e2c47c6f3999ac3a70301b49b01"
+    },
+    "audit_v49_pair_profile_saved.py": {
+      "bytes": 12089,
+      "sha256": "061b15948907ab1b1317c1c25315e7683f26b191b04345558cf670eff20b111e"
+    }
+  },
+  "portable_compile_parser_saved_check_sha256": "2ffbd7c1bc49695331919bb92d37973b336ddbbed63eda0999cb05336872fa43",
+  "portable_compile_matches_previous_full_private_tables": true,
+  "full_raw_parse_and_weight_tables_remain_private": true,
+  "private_array_or_weight_or_SDK_binary_included": false,
+  "actual_new_model_OR_ORT_OR_SDK_OR_calibration_executed_by_curator": false,
+  "candidate_accepted": false,
+  "CLI_examples": {
+    "compile": "python -B audit_v49_pair_compile_saved.py --compile-dir COMPILE_DIR --compile-sha256 COMPILE_SHA --capture-dir CAPTURE_DIR --capture-sha256 CAPTURE_SHA --toolchain-preflight IMPORTS_JSON --toolchain-preflight-sha256 IMPORTS_SHA --compiler-log BUILD_LOG --compiler-log-sha256 BUILD_LOG_SHA --verbose-log SDK_LOG --verbose-log-sha256 SDK_LOG_SHA --output NEW_PRIVATE_COMPILE_AUDIT_JSON",
+    "profile": "python -B audit_v49_pair_profile_saved.py --profile-dir PROFILE_DIR --profile-sha256 PROFILE_SHA --normal-dir NORMAL_DIR --normal-sha256 NORMAL_SHA --output NEW_PRIVATE_PROFILE_AUDIT_JSON"
+  },
+  "parser_requirements": [
+    "Python 3.10+; compile parser additionally uses frozen sibling pure capture/runtime contracts and NumPy to read private saved arrays",
+    "Compilation parser sibling defaults are ../runtime/v49_quantized_pair_runtime_contracts.py and ../capture/v49_capture_contracts.py; --runtime-contracts/--capture-contracts allow explicit locations, same exact SHA checks",
+    "CLI SHA values must come from independently pinned receipts; stdout hashes calculated from arbitrary untrusted files are not evidence",
+    "Output paths must not exist; complete parser outputs stay private, slim JSON summaries are the public evidence",
+    "Scripts only read saved artifacts; no board connection, toolchain or inference is executed"
+  ]
+}

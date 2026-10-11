@@ -1,0 +1,15 @@
+{
+  "schema": "v49_original_VGGT_heldout_ORT_tiny_checks",
+  "status": "passed",
+  "checks_passed": 6,
+  "checks_failed": 0,
+  "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest test_v49_heldout_ort.py -q -p no:cacheprovider",
+  "exit_code": 0,
+  "output": "6 passed in 0.09s",
+  "launcher_bash_syntax_exit_code": 0,
+  "generated_floating_elements_per_input": 24,
+  "real_ORT_model_SDK_calibration_compile_executed": false,
+  "compile_source_freeze_unchanged": true,
+  "test_source_sha256": "ff69d176a6682654b2f0c6d6386336c417ba087dc81d8bb9bea5d628f5af451e",
+  "runner_source_sha256": "4d5c8bdfaca8922164b4367e4c6281e98683e4fec7d682408aa419f806abd9e7"
+}

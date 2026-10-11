@@ -1,0 +1,76 @@
+{
+  "schema": "v49_toolchain_import_only_ABI_preflight",
+  "status": "imports_passed_no_model_execution",
+  "script_sha256": "994bc6bbb095f690ecfe5a3cca491aa37444b1f86a449bd9e7bbc501302c13ca",
+  "prefix": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1",
+  "machine": "aarch64",
+  "model_loaded": false,
+  "model_forward_executed": false,
+  "RKNN_object_created": false,
+  "ORT_session_created": false,
+  "modules": {
+    "torch": {
+      "path": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/lib/python3.11/site-packages/torch/__init__.py",
+      "sha256": "684e686bef4e6b503bbb90afd86b16ec443489603584a5d8a9e2b36968143a8c",
+      "version": "2.2.0",
+      "seconds": 1.2582250430132262
+    },
+    "numpy": {
+      "path": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/lib/python3.11/site-packages/numpy/__init__.py",
+      "sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e",
+      "version": "1.26.4",
+      "seconds": 0.00013825000496581197
+    },
+    "onnx": {
+      "path": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/lib/python3.11/site-packages/onnx/__init__.py",
+      "sha256": "060023687d50e0cb418edc3b72cebe88413fc6b1c3a52cff7e559f56a4154030",
+      "version": "1.16.1",
+      "seconds": 0.03940650401636958
+    },
+    "onnxoptimizer": {
+      "path": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/lib/python3.11/site-packages/onnxoptimizer/__init__.py",
+      "sha256": "f7134bb583f36a226a28a6cf3f32391309d1d07b4bb35e635107f49c83e3c38e",
+      "version": "0.3.8",
+      "seconds": 0.001288583007408306
+    },
+    "onnxruntime": {
+      "path": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/lib/python3.11/site-packages/onnxruntime/__init__.py",
+      "sha256": "c6c155f6da6e049c365e17f70da34c4e70f10c3367ba3a677e649f36fa1254fa",
+      "version": "1.16.0",
+      "seconds": 0.02271587698487565
+    },
+    "cv2": {
+      "path": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/lib/python3.11/site-packages/cv2/__init__.py",
+      "sha256": "936bd94c5a5debf0212fc751af79d3a163652f3e850259df2159db6aa3ed8ad8",
+      "version": "4.10.0",
+      "seconds": 0.03967337901121937
+    },
+    "scipy": {
+      "path": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/lib/python3.11/site-packages/scipy/__init__.py",
+      "sha256": "5df3106bce68233cec43e84208135d8f18fb6e07d2770fbc157fce32bab28c50",
+      "version": "1.11.4",
+      "seconds": 0.007776709011523053
+    },
+    "fast_histogram": {
+      "path": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/lib/python3.11/site-packages/fast_histogram/__init__.py",
+      "sha256": "5af95a006ec5a65072f4392e64a9d8274c14b33a7c4d8a4da70e3ad5912b300d",
+      "version": "0.14",
+      "seconds": 0.0007912919973023236
+    },
+    "rknn.api": {
+      "path": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/lib/python3.11/site-packages/rknn/api/__init__.py",
+      "sha256": "342e98ee0825c9a3951c3eaedc5c5e033c279ef61abb24b6543e4af9db75564d",
+      "version": "None",
+      "seconds": 0.07886025699554011
+    }
+  },
+  "versions": {
+    "torch": "2.2.0",
+    "numpy": "1.26.4",
+    "onnx": "1.16.1",
+    "onnxoptimizer": "0.3.8",
+    "onnxruntime": "1.16.0",
+    "rknn-toolkit2": "2.3.2",
+    "protobuf": "3.20.3"
+  }
+}

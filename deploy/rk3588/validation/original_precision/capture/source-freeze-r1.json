@@ -1,0 +1,37 @@
+{
+  "schema": "v49_original_VGGT_prefix_capture_source_freeze",
+  "source_and_generated_checks_only": true,
+  "actual_model_or_board_inference_performed_by_author": false,
+  "actual_calibration_or_compilation_performed_by_author": false,
+  "files": {
+    "capture-v49-pair-prefix-board.py": {
+      "sha256": "7a2279927a65e3740da933c1192c335d15f4f1803440ed84a27a2aebc8f02613",
+      "bytes": 28379
+    },
+    "v49_capture_contracts.py": {
+      "sha256": "6ce1f87f1683e8082a4d567718acb853101e5ee6bbaeef1ced02993a8e3133c8",
+      "bytes": 18199
+    },
+    "check_capture_contracts.py": {
+      "sha256": "edf0bd7b1ed80095bdefba50e117b0117e7a44cc0fb2772effe4cef3eb404c39",
+      "bytes": 17594
+    },
+    "original-vggt-source-pins.json": {
+      "sha256": "ff50f23b7fd1e728a2757ae9796f03263b8392e1328f53fc6b82fe5e2c37d283",
+      "bytes": 4220
+    },
+    "image-plan.json": {
+      "sha256": "61b14e0e0033a49059bf52c7dd9cbeaae8bd4393423b2bce827cc451f22caf37",
+      "bytes": 9088
+    },
+    "selfchecks-r1.json": {
+      "sha256": "808e4ea3d6d4bed4dea134a1c601da1de287ff58571ffbb21dc2a52744195024",
+      "bytes": 2234
+    }
+  },
+  "original_pair_export_sha256": "149450ffc675ce59950c6f89cf84adb41e388cd050eeb731b6d09a6fe16e9fe1",
+  "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "execution_owner": "root serial board run; all actual prefix inference on RK3588S",
+  "generated_selfchecks_passed": true,
+  "generated_selfchecks_count": 15
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "v49_generated_prefix_capture_selfchecks",
+  "passed": true,
+  "tests_run": 15,
+  "checks": [
+    {
+      "test": "test_artifact_paths_cannot_escape_or_contain_whitespace",
+      "passed": true
+    },
+    {
+      "test": "test_calibration_stops_before_frame_body_and_copies_owned_input",
+      "passed": true
+    },
+    {
+      "test": "test_constructor_failure_removes_partially_installed_hooks",
+      "passed": true
+    },
+    {
+      "test": "test_evaluation_exact_frame_global_bridge_and_downstream_stop",
+      "passed": true
+    },
+    {
+      "test": "test_existing_hooks_and_malformed_positions_are_rejected",
+      "passed": true
+    },
+    {
+      "test": "test_foreign_sentinel_is_not_swallowed",
+      "passed": true
+    },
+    {
+      "test": "test_global_input_and_positions_must_match_frame_view",
+      "passed": true
+    },
+    {
+      "test": "test_host_execution_guard_precedes_actual_inference_imports",
+      "passed": true
+    },
+    {
+      "test": "test_later_block_and_head_tripwires_precede_body",
+      "passed": true
+    },
+    {
+      "test": "test_normal_return_without_stop_is_rejected",
+      "passed": true
+    },
+    {
+      "test": "test_raw_timestamp_precision_and_source_index_matching",
+      "passed": true
+    },
+    {
+      "test": "test_reversed_roles_split_reuse_and_legacy_images_are_rejected",
+      "passed": true
+    },
+    {
+      "test": "test_saved_array_shape_raw_hash_finite_and_owned_copy",
+      "passed": true
+    },
+    {
+      "test": "test_source_and_plan_freeze",
+      "passed": true
+    },
+    {
+      "test": "test_unexpected_error_is_not_swallowed_and_hooks_are_removed",
+      "passed": true
+    }
+  ],
+  "actual_model_or_board_inference": false,
+  "actual_calibration_or_compilation": false,
+  "real_image_decoding": false,
+  "generated_hook_dispatch_only": true,
+  "numpy": "2.4.4",
+  "capture_script_sha256": "7a2279927a65e3740da933c1192c335d15f4f1803440ed84a27a2aebc8f02613",
+  "contracts_sha256": "6ce1f87f1683e8082a4d567718acb853101e5ee6bbaeef1ced02993a8e3133c8",
+  "check_script_sha256": "edf0bd7b1ed80095bdefba50e117b0117e7a44cc0fb2772effe4cef3eb404c39",
+  "image_plan_sha256": "61b14e0e0033a49059bf52c7dd9cbeaae8bd4393423b2bce827cc451f22caf37"
+}

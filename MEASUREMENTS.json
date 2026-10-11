@@ -458,5 +458,18 @@
         ]
       }
     ]
+  },
+  "original_pair_precision_v49": {
+    "record": "results/original_precision_v49.json",
+    "scope": "Original frame0 -> global0 only, two fixed heldout inputs",
+    "normal_fp16_io_mean_seconds": 0.3370856795,
+    "normal_ptq_io_mean_seconds": 0.2556402618333333,
+    "ptq_tensor_relative_l2": [
+      0.1031215425750176,
+      0.10546455233891512
+    ],
+    "strict_original_FP32_gate_passed": false,
+    "candidate_accepted": false,
+    "real_time_validated": false
   }
 }

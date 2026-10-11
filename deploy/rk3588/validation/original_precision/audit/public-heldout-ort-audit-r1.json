@@ -1,0 +1,81 @@
+{
+  "schema": "v49_public_original_pair_heldout_ORT_receipt",
+  "status": "numerical_rejected",
+  "raw_board_receipt_sha256": "818ca23f2b1e5986d57d2046dfa734e067faac623a0c0eaf539c21ebbf961f3c",
+  "independent_saved_data_audit_sha256": "c81509a31844e4bc07f231bc0079430668a60dd0265e30641418a3c3fc37203a",
+  "runner_sha256": "4d5c8bdfaca8922164b4367e4c6281e98683e4fec7d682408aa419f806abd9e7",
+  "capture_manifest_sha256": "bf39dfa65526a4135cbd2d7ee8b927ce2c4a40da75aebf64652ed2cd87a7e7fc",
+  "pair_graph_sha256": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+  "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "runtime": "RK3588S ARM64 CPU ORT 1.16.0, affinity 6/7, intra/inter threads 2/1",
+  "scope": "Unchanged original frame0/global0 pair only; one real heldout input per call",
+  "reference": "Same-input captured original Torch FP32 frame0/global0 output",
+  "input_shape": [
+    2,
+    437,
+    1024
+  ],
+  "output_shape": [
+    1,
+    874,
+    1024
+  ],
+  "successful_session_run_count": 2,
+  "warmup_session_run_count": 0,
+  "gate": {
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "strict_FP32_gate_passed": false,
+    "tolerance_widened": false
+  },
+  "calls": [
+    {
+      "sample_id": "evaluation_00",
+      "image_indices": [
+        80,
+        88
+      ],
+      "input_sha256": "dff5be55154baa3e366ea02cf2adc922553e2f029c9fd7678fa3a3dfe676e31e",
+      "reference_sha256": "087b32548aa12ca31864f0916150ec522a6892df47fce507a463070f5325e9e5",
+      "output_sha256": "3248234ca963d39bcea2c46885e4b8e0bce4135386e8641892537763e36a33c3",
+      "elements": 894976,
+      "session_run_seconds": 0.906016049,
+      "max_abs_error": 1.71661376953125e-05,
+      "rmse": 1.8142952249828682e-07,
+      "relative_l2": 1.1905582283188922e-06,
+      "max_tolerance_ratio": 1.0319307851996928,
+      "outside_tolerance_elements": 1,
+      "strict_FP32_gate_passed": false
+    },
+    {
+      "sample_id": "evaluation_01",
+      "image_indices": [
+        480,
+        488
+      ],
+      "input_sha256": "19c82827c3819406fa27c06dd68b6a1776d21a8fbe5afac1309aa325a361a3e0",
+      "reference_sha256": "41bbb1a55e334a19510ab5c5556915cef2d4f50bf9cdf58324f28e8feee7e6be",
+      "output_sha256": "58ee52e19f630a8c05be02b4fe319ff14600a3f97e0fb28a0d309d638ab67f89",
+      "elements": 894976,
+      "session_run_seconds": 0.928395218,
+      "max_abs_error": 1.7881393432617188e-05,
+      "rmse": 1.7356819216580296e-07,
+      "relative_l2": 1.1537599155295242e-06,
+      "max_tolerance_ratio": 0.9072285377808844,
+      "outside_tolerance_elements": 0,
+      "strict_FP32_gate_passed": true
+    }
+  ],
+  "source_input_output_hashes_verified": true,
+  "board_cleanup_environment_affinity_restoration_verified": true,
+  "calibration_samples_inferred": false,
+  "candidate_accepted": false,
+  "full_model_or_SLAM_quality_validated": false,
+  "real_time_validated": false,
+  "limitations": [
+    "CPU ORT numerical gate rejects evaluation_00 by one element; evaluation_01 passes. The aggregate result remains rejected.",
+    "Both measurements are component session.run timings; they exclude load, init, copy/save/hash, comparison and cleanup.",
+    "Subsequent NPU runs remain diagnostic against the original Torch FP32 references; this check does not establish their equivalence.",
+    "No specific numerical-error cause is established. Private arrays, graph, weights and SDK binaries are not published."
+  ]
+}

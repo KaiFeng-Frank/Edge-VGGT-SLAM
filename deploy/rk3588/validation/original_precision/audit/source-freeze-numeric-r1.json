@@ -1,0 +1,43 @@
+{
+  "schema": "v49_saved_numeric_audit_source_and_public_receipt_freeze",
+  "audits_only_saved_arrays_json_text_and_source_SHA": true,
+  "actual_model_ORT_SDK_calibration_compilation_or_image_decode_by_auditors": false,
+  "files": {
+    "audit_saved_pair_runtime.py": {
+      "sha256": "9fae6d7eb55c733ad4dcbe5fc1de248f0cc666ad7b0ec90a3fc97de004ec7c1b",
+      "bytes": 20529
+    },
+    "audit_saved_pair_profile_numeric.py": {
+      "sha256": "428c3a53aab968db2a655374df1133a2e3023e1b91607f265768e0bb6a095cd6",
+      "bytes": 18726
+    },
+    "NUMERIC_AUDIT_USAGE.md": {
+      "sha256": "c66758100e09aadd5593ec28461be16b137a982a430f1413b5d8e88c6cb1a48e",
+      "bytes": 2727
+    },
+    "NORMAL_RESULT.md": {
+      "sha256": "1949b988b9a58773672253dd9d85c92250795914620eca3af5f154a457e18281",
+      "bytes": 3482
+    },
+    "public-normal-audit-r1.json": {
+      "sha256": "c786423fd30463b14670a8702aaf659bba25cca41f38ccc41d9368758753616e",
+      "bytes": 13556
+    },
+    "public-profile-numeric-audit-r1.json": {
+      "sha256": "e53e23af995d8967def9684170a1265480e4c4a8b45a212b910a414fef53ce6f",
+      "bytes": 3807
+    },
+    "runtime-audit-generated-selfchecks-r1.json": {
+      "sha256": "7210f617908d11cb717a06647c6e1d097afa0215719bbfd83cf49f69fa6db143",
+      "bytes": 1722
+    }
+  },
+  "normal_private_audit_sha256": "f6d865347e00625b644ad264bc6bb2d33607b4bd08360a456c968ff9dda9e7d6",
+  "profile_private_audit_sha256": "8f47a08e8467fbb68dea9100aa971a920840c67470902f896a98037d3eb2497a",
+  "standalone_normal_profile_private_audit_sha256": "499dcc9a8ed2b1f50d418c1b684562982fa00955118777f5ce0316c067199828",
+  "profile_vs_normal_calls_bitwise_equal": 16,
+  "unmodified_original_runtime_auditor_sha256": "9fae6d7eb55c733ad4dcbe5fc1de248f0cc666ad7b0ec90a3fc97de004ec7c1b",
+  "SDK_original_FP32_acceptance": false,
+  "whole_model_or_realtime_acceptance": false,
+  "portability": "Standalone profile auditor uses only stdlib+NumPy and explicit private-data/source dirs. Single-cohort auditor additionally requires frozen sibling capture contracts/auditor; both bind the v49 original identities and shapes."
+}

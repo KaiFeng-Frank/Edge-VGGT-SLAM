@@ -1,0 +1,340 @@
+{
+  "schema": "v49_public_original_prefix_capture_and_saved_data_audit",
+  "status": "captured_on_board_and_independently_saved_data_audited",
+  "capture_manifest_sha256": "bf39dfa65526a4135cbd2d7ee8b927ce2c4a40da75aebf64652ed2cd87a7e7fc",
+  "saved_data_audit_sha256": "9ee2bae8d0348aa83bca969eac020d0e179ab9c038419d09990f25412e378d30",
+  "audit_script_sha256": "7d0debcb818ca2e01cb8a3e9f4122262f82ecf44969e85175f246666c617d97d",
+  "capture_script_sha256": "7a2279927a65e3740da933c1192c335d15f4f1803440ed84a27a2aebc8f02613",
+  "capture_contracts_sha256": "6ce1f87f1683e8082a4d567718acb853101e5ee6bbaeef1ced02993a8e3133c8",
+  "image_plan_sha256": "61b14e0e0033a49059bf52c7dd9cbeaae8bd4393423b2bce827cc451f22caf37",
+  "original_model_source_pins_sha256": "ff50f23b7fd1e728a2757ae9796f03263b8392e1328f53fc6b82fe5e2c37d283",
+  "original_pair": {
+    "export_sha256": "149450ffc675ce59950c6f89cf84adb41e388cd050eeb731b6d09a6fe16e9fe1",
+    "onnx_sha256": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+    "original_input_raw_sha256": "85fbd0dc87e6576f1c54304f1fc7077b2625f01ff458baa931a10e0ce5d1d9f9",
+    "original_positions_raw_sha256": "3387fc89d04b96637c9497fd2b4394c8d0ececf22867c74d358734fbc4e674fb"
+  },
+  "checkpoint": {
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "bytes": 5026874952,
+    "full_SHA_checked_before_loading": true,
+    "stat_unchanged_after_capture": true,
+    "hash_warms_filesystem_cache": true,
+    "SHA_seconds": 4.563542541000061
+  },
+  "runtime": {
+    "torch": "2.3.1",
+    "numpy": "1.26.4",
+    "opencv": "4.10.0",
+    "threads": 4,
+    "interop_threads": 1,
+    "cpus": [
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "original_model_only": true,
+  "requested_image_size": 336,
+  "actual_RGB_shape": [
+    2,
+    3,
+    252,
+    336
+  ],
+  "prefix_scope": {
+    "calibration": {
+      "pairs": 8,
+      "original_DINO_blocks_completed_per_pair": 24,
+      "frame0_body_completed": false,
+      "global0_body_completed": false,
+      "stop": "before_original_frame0"
+    },
+    "evaluation": {
+      "pairs": 2,
+      "original_DINO_blocks_completed_per_pair": 24,
+      "frame0_body_completed": true,
+      "global0_body_completed": true,
+      "remaining_blocks_or_heads_completed": false,
+      "stop": "after_original_global0"
+    }
+  },
+  "actual_board_capture_seconds_including_checkpoint_hash_load": 142.997901285009,
+  "actual_model_load_seconds": 1.6645205419918057,
+  "process_peak_RSS_MiB": 1725.6953125,
+  "saved_data_audit": {
+    "passed": true,
+    "capture_arrays_physically_read": 24,
+    "frozen_reference_arrays_physically_read": 2,
+    "original_source_files_physically_SHA_checked": 41,
+    "runtime_source_files_physically_SHA_checked": 3,
+    "original_pair_parameter_metadata_bound": 36,
+    "new_images": 20,
+    "split_counts": {
+      "calibration": 8,
+      "evaluation": 2
+    },
+    "image_indices_timestamps_PNG_SHA_disjoint": true,
+    "input_raw_SHA_unique_and_split_disjoint": true,
+    "legacy_evaluation_images_0_8_excluded": true,
+    "special_roles_bitwise_equal_to_frozen_original_input": true,
+    "RoPE_bitwise_equal_to_frozen_original_positions_and_18x24_yx_formula": true,
+    "new_patch_feature_hashes": {
+      "calibration": 16,
+      "evaluation": 4
+    },
+    "patch_feature_hash_overlap_between_splits": 0,
+    "all_read_file_bytes_unchanged": true,
+    "host_model_ORT_SDK_calibration_compilation_or_real_image_decode": false,
+    "host_checkpoint_or_source_PNG_rehash": false
+  },
+  "capture_integrity": {
+    "source_and_inputs_unchanged": true,
+    "parameter_state_unchanged": true,
+    "CPU_affinity_restored": true,
+    "environment_restored": true,
+    "cleanup_errors": []
+  },
+  "timing_observation": {
+    "calibration_prefix_seconds_range": [
+      7.268239564000396,
+      15.944001310010208
+    ],
+    "calibration_prefix_seconds_median": 12.44052274999558,
+    "evaluation_prefix_seconds_range": [
+      17.041202128020814,
+      18.222086372988997
+    ],
+    "calibration_order_first_to_last_ratio": 2.1936537960279785,
+    "temperature_sample_scope": "one post-prefix sample per pair; CPU frequency/scheduler/continuous thermal traces not recorded",
+    "thermal_or_other_causal_attribution_proven": false
+  },
+  "full_model_forward_completed": false,
+  "whole_model_quality_validated": false,
+  "real_time_validated": false,
+  "production_changed_by_capture": false,
+  "arrays_weights_exports_or_SDK_binaries_in_this_receipt": false,
+  "limits": [
+    "Complete original DINO prefixes, with only the first original frame/global pair for heldout reference; no full original-model execution measured here.",
+    "Two heldout pairs from one short real sequence; this is not full-model numerical acceptance or SLAM trajectory/ATE/RPE evidence.",
+    "Prefix timings include copying hooks and tensor checks and are not input-to-pose latency.",
+    "Increasing calibration-prefix duration and high post-prefix temperatures are observations; sampling does not establish thermal throttling or another cause.",
+    "Checkpoint/source PNG physical hashes were verified by the frozen board capture; independent host audit did not read those board files.",
+    "RSS is the capture process high-water mark, not a complete-model or 8 GB application acceptance result.",
+    "20 Hz fresh-observation pose rate, P95 <= 100 ms, dense cadence, 30-minute stability, and full SLAM quality remain unvalidated."
+  ],
+  "samples": [
+    {
+      "sample_id": "calibration_00",
+      "split": "calibration",
+      "image_indices": [
+        32,
+        40
+      ],
+      "original_timestamp_strings": [
+        "1305031103.243216",
+        "1305031103.511333"
+      ],
+      "prefix_seconds_including_copy_hooks_and_validation": 7.268239564000396,
+      "total_sample_seconds_including_preprocessing_save": 8.024236722994829,
+      "bigcore0_after_C": 86.777,
+      "bigcore1_after_C": 86.777,
+      "peak_process_RSS_MiB_after": 1673.23828125,
+      "input_raw_sha256": "348760ef7bd3686944af5ac7a2fb19026e999298046419ca3780b4903ff04e7a"
+    },
+    {
+      "sample_id": "calibration_01",
+      "split": "calibration",
+      "image_indices": [
+        132,
+        140
+      ],
+      "original_timestamp_strings": [
+        "1305031106.575282",
+        "1305031106.843416"
+      ],
+      "prefix_seconds_including_copy_hooks_and_validation": 8.39316805198905,
+      "total_sample_seconds_including_preprocessing_save": 8.579837069992209,
+      "bigcore0_after_C": 87.666,
+      "bigcore1_after_C": 88.555,
+      "peak_process_RSS_MiB_after": 1704.34765625,
+      "input_raw_sha256": "44698f19a0ab76a4d137458c6ecdd5ba9c6160649f52cb40697be56ba8535a44"
+    },
+    {
+      "sample_id": "calibration_02",
+      "split": "calibration",
+      "image_indices": [
+        232,
+        240
+      ],
+      "original_timestamp_strings": [
+        "1305031109.911265",
+        "1305031110.175641"
+      ],
+      "prefix_seconds_including_copy_hooks_and_validation": 10.706912492983975,
+      "total_sample_seconds_including_preprocessing_save": 10.891953885991825,
+      "bigcore0_after_C": 85.888,
+      "bigcore1_after_C": 85.888,
+      "peak_process_RSS_MiB_after": 1704.34765625,
+      "input_raw_sha256": "ab494f9d4bc9c28ae7ec753a6baf6429b70698477303e9b1f8fddba202438f7d"
+    },
+    {
+      "sample_id": "calibration_03",
+      "split": "calibration",
+      "image_indices": [
+        332,
+        340
+      ],
+      "original_timestamp_strings": [
+        "1305031113.243227",
+        "1305031113.511523"
+      ],
+      "prefix_seconds_including_copy_hooks_and_validation": 11.989714455005014,
+      "total_sample_seconds_including_preprocessing_save": 12.182927390997065,
+      "bigcore0_after_C": 86.777,
+      "bigcore1_after_C": 86.777,
+      "peak_process_RSS_MiB_after": 1704.34765625,
+      "input_raw_sha256": "6cbf394ffc8c8519ad0108e19d88e37c970f9fbb1d16ebe35c35bd8f527551f3"
+    },
+    {
+      "sample_id": "calibration_04",
+      "split": "calibration",
+      "image_indices": [
+        432,
+        440
+      ],
+      "original_timestamp_strings": [
+        "1305031116.579313",
+        "1305031116.846089"
+      ],
+      "prefix_seconds_including_copy_hooks_and_validation": 12.891331044986146,
+      "total_sample_seconds_including_preprocessing_save": 13.07417193899164,
+      "bigcore0_after_C": 85.888,
+      "bigcore1_after_C": 85.888,
+      "peak_process_RSS_MiB_after": 1704.5703125,
+      "input_raw_sha256": "705fbcc9f3bcdd46bf6cb59ccac4b727151ea1a0546ead9b9d2640b509e7d4a2"
+    },
+    {
+      "sample_id": "calibration_05",
+      "split": "calibration",
+      "image_indices": [
+        532,
+        540
+      ],
+      "original_timestamp_strings": [
+        "1305031119.911401",
+        "1305031120.179246"
+      ],
+      "prefix_seconds_including_copy_hooks_and_validation": 14.514731542003574,
+      "total_sample_seconds_including_preprocessing_save": 14.70741335299681,
+      "bigcore0_after_C": 85.888,
+      "bigcore1_after_C": 85.888,
+      "peak_process_RSS_MiB_after": 1710.96875,
+      "input_raw_sha256": "31d7f72dfd79dbbd3cc486bc4d9f47c4bd8d4b8443273331a62da85ab78f8bd5"
+    },
+    {
+      "sample_id": "calibration_06",
+      "split": "calibration",
+      "image_indices": [
+        632,
+        640
+      ],
+      "original_timestamp_strings": [
+        "1305031123.250618",
+        "1305031123.511360"
+      ],
+      "prefix_seconds_including_copy_hooks_and_validation": 15.681550909008365,
+      "total_sample_seconds_including_preprocessing_save": 15.867867594002746,
+      "bigcore0_after_C": 85.888,
+      "bigcore1_after_C": 86.777,
+      "peak_process_RSS_MiB_after": 1710.96875,
+      "input_raw_sha256": "402ed4176b49dca58919fb315f33507675d572920f8856989f8aaa2b9df3ac69"
+    },
+    {
+      "sample_id": "calibration_07",
+      "split": "calibration",
+      "image_indices": [
+        732,
+        740
+      ],
+      "original_timestamp_strings": [
+        "1305031126.579454",
+        "1305031126.847343"
+      ],
+      "prefix_seconds_including_copy_hooks_and_validation": 15.944001310010208,
+      "total_sample_seconds_including_preprocessing_save": 16.135069620999275,
+      "bigcore0_after_C": 86.777,
+      "bigcore1_after_C": 86.777,
+      "peak_process_RSS_MiB_after": 1710.96875,
+      "input_raw_sha256": "3a2f44eab30577b5c340c6bce73c753c425120d15ba9a13b2c5eac1d4dd79db1"
+    },
+    {
+      "sample_id": "evaluation_00",
+      "split": "evaluation",
+      "image_indices": [
+        80,
+        88
+      ],
+      "original_timestamp_strings": [
+        "1305031104.843258",
+        "1305031105.111299"
+      ],
+      "prefix_seconds_including_copy_hooks_and_validation": 18.222086372988997,
+      "total_sample_seconds_including_preprocessing_save": 18.43721785201342,
+      "bigcore0_after_C": 85.888,
+      "bigcore1_after_C": 85.888,
+      "peak_process_RSS_MiB_after": 1710.96875,
+      "input_raw_sha256": "c0b1b3514f888e348247b1945da9fd46af602b25541efb4a1b1df57487ded844",
+      "original_frame_reference_raw_sha256": "596321138504f412d6011932091c70e7a99cd8c8ef4cd4946f19ef00b53535fb",
+      "original_global_output_raw_sha256": "2a76b7164a3193fef451d0d4f6be0817604caa017bd2a173ea420cae789c2fa2"
+    },
+    {
+      "sample_id": "evaluation_01",
+      "split": "evaluation",
+      "image_indices": [
+        480,
+        488
+      ],
+      "original_timestamp_strings": [
+        "1305031118.179323",
+        "1305031118.445692"
+      ],
+      "prefix_seconds_including_copy_hooks_and_validation": 17.041202128020814,
+      "total_sample_seconds_including_preprocessing_save": 17.257914109999547,
+      "bigcore0_after_C": 85.888,
+      "bigcore1_after_C": 85.888,
+      "peak_process_RSS_MiB_after": 1725.6953125,
+      "input_raw_sha256": "8a3f0fc0792b9d412b9efceecf48a77f456b88033e0cd31fb50b86d3ba307a44",
+      "original_frame_reference_raw_sha256": "579ee7365db35a53f0cecc02fe71a44e34bec22a14c67f1448e149bbd43a5c11",
+      "original_global_output_raw_sha256": "a61dd00a80b0436991a9430ab6ebb9b53ca076549f85cf5258af8ce801004ff9"
+    }
+  ],
+  "saved_array_shapes_and_dtypes": {
+    "input_and_frame_reference": {
+      "shape": [
+        2,
+        437,
+        1024
+      ],
+      "dtype": "float32"
+    },
+    "positions": {
+      "shape": [
+        2,
+        437,
+        2
+      ],
+      "dtype": "int64"
+    },
+    "global_output": {
+      "shape": [
+        1,
+        874,
+        1024
+      ],
+      "dtype": "float32"
+    }
+  },
+  "saved_NPY_file_and_raw_SHA_ledger": "Every file and raw SHA is preserved in the SHA-pinned private capture manifest and independent saved-data audit; this public receipt carries summary identities only."
+}
