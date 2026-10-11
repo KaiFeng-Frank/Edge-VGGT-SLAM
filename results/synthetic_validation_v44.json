@@ -1,0 +1,80 @@
+{
+  "schema": "v44_public_checks_aggregate",
+  "status": "passed",
+  "unique_test_files": 8,
+  "tests_passed": 90,
+  "additional_unittest_subtests_passed": 5,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+  "model_execution": false,
+  "SDK_execution": false,
+  "board_jobs": 0,
+  "runs": {
+    "public-tests-r1.json": {
+      "sha256": "d5e398eba2bbcc1cf4495f2f50dfc9da6ad64195fa9bbe9fcd09e67dc60e2160",
+      "record": {
+        "schema": "v44_public_generated_fake_saved_contract_tests",
+        "status": "passed",
+        "command": [
+          "/home/frank/miniconda3/envs/ctvggt/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "/dev/shm/edge-vggt-v44/public-snapshot/deploy/rk3588/validation/dpvo_online_replay/test_v44_native_online.py",
+          "/dev/shm/edge-vggt-v44/public-snapshot/deploy/rk3588/validation/dpvo_online_replay/test_v44_saved_evaluation.py",
+          "/dev/shm/edge-vggt-v44/public-snapshot/deploy/rk3588/validation/dpvo_half_keyframe/test_v44_half_keyframe.py",
+          "/dev/shm/edge-vggt-v44/public-snapshot/deploy/rk3588/validation/dpvo_half_keyframe/test_v44_half_keyframe_evaluation.py",
+          "/dev/shm/edge-vggt-v44/public-snapshot/deploy/rk3588/validation/dpvo_cache_closed_flag/test_v44_closed_cache_harness.py",
+          "/dev/shm/edge-vggt-v44/public-snapshot/deploy/rk3588/validation/dpvo_cache_closed_flag/test_v44_closed_cache_saved_audit.py",
+          "/dev/shm/edge-vggt-v44/public-snapshot/deploy/rk3588/validation/dpvo_cache_closed_flag/test_v44_closed_flag_cache.py",
+          "--basetemp=/dev/shm/edge-vggt-v44/output/pytest-public-r1"
+        ],
+        "returncode": 0,
+        "stdout": ".................................................................   [100%]\n65 passed, 5 subtests passed in 0.24s\n",
+        "stderr": "",
+        "model_execution": false,
+        "SDK_execution": false,
+        "board_jobs": 0,
+        "tests": {
+          "deploy/rk3588/validation/dpvo_online_replay/test_v44_native_online.py": "c13001619bf8d768025207d75dfaf4e919394dd672d8782da5103b2f4a896054",
+          "deploy/rk3588/validation/dpvo_online_replay/test_v44_saved_evaluation.py": "06e89636c7e34339696a2c27dcf1b109889dd8c9242843cb3010390d7974dd69",
+          "deploy/rk3588/validation/dpvo_half_keyframe/test_v44_half_keyframe.py": "35d45b11fbfb5d8dbc66230df60f67b884795bca35be875f38dfd0567ff99804",
+          "deploy/rk3588/validation/dpvo_half_keyframe/test_v44_half_keyframe_evaluation.py": "f3fdce681fd84cbef11baf5aac951a3beb4a1aa7090de4c4e627c323aa8b110e",
+          "deploy/rk3588/validation/dpvo_cache_closed_flag/test_v44_closed_cache_harness.py": "0664b61ccb2789e78f5b655a42ed0ea034e3497f6f688661af4730186d7558f7",
+          "deploy/rk3588/validation/dpvo_cache_closed_flag/test_v44_closed_cache_saved_audit.py": "160e99e5bf9014370e341cda55fb597642d515cd0e11402653cc2a180fa40b1e",
+          "deploy/rk3588/validation/dpvo_cache_closed_flag/test_v44_closed_flag_cache.py": "5a080b9bda4d79ecc5e803ddaf9af7fd2551b302bcbe3fb2c4313c848e69afec"
+        }
+      }
+    },
+    "public-record-tests-r1.json": {
+      "sha256": "682d020981a21796f6e433e9608dc3374e95fc9ccd0a28b3c5df1852ac38287d",
+      "record": {
+        "schema": "v44_public_generated_fake_saved_contract_tests",
+        "status": "passed",
+        "command": [
+          "/home/frank/miniconda3/envs/ctvggt/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "/dev/shm/edge-vggt-v44/public-snapshot/tests/test_v44_native_online_records.py",
+          "--basetemp=/dev/shm/edge-vggt-v44/output/pytest-public-records-r1"
+        ],
+        "returncode": 0,
+        "stdout": ".........................                                                [100%]\n25 passed in 0.06s\n",
+        "stderr": "",
+        "model_execution": false,
+        "SDK_execution": false,
+        "board_jobs": 0,
+        "tests": {
+          "tests/test_v44_native_online_records.py": "d9b4cc6970683f1b5d465fe565d1e03a5cb1a5ee6c5466cf17d2fd7dde25d047"
+        }
+      }
+    }
+  }
+}

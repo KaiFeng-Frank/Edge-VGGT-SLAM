@@ -1,0 +1,97 @@
+--- frozen-v41-cached-cpu-board.py
++++ run-v44-half-keyframe-cpu-board.py
+@@ -1,16 +1,19 @@
+ #!/usr/bin/env python3
+-"""Board-only v41 replay: exact cached undistortion, original CPU DPVO.
+-
+-DPVO lifecycle and math attribution: Princeton Vision & Learning Lab, MIT.
+-Uses frozen v34 provenance helpers, v30 lifecycle and v36 frame correlation.
+-The new policy changes workload, not weights. It is not the VGGT default.
++"""Board-only v44 CPU half replay: single-variable keyframe15->7.5.
++
++Exact cached undistortion, original FP32 DPVO weights and frozen v30 lifecycle.
++Derived from SHA-pinned v41 cached CPU driver; only runtime policy parameter
++keyframe_threshold changes. Motion probe2, M16/L4/R8/O4, math and EOF stay fixed.
++DPVO attribution: Princeton Vision & Learning Lab, MIT. Research, not adopted.
+ """
+ import argparse, hashlib, importlib.util, json, os, resource, sys, time, traceback
+ from pathlib import Path
+ import numpy as np
+ 
+ BASE=Path('/mnt/vggt-data/vggt-slam2/experiments')
+-POLICY='cc6a31f89bdcff0b43c0d51266ad62c48d0e297346845a98d42bad5c8874ef4a'
++POLICY='5c5797880d1ffa92318819eb595b819c31fbbe016bbc88afbc8dcb704534cbdd'
++BASELINE_POLICY='cc6a31f89bdcff0b43c0d51266ad62c48d0e297346845a98d42bad5c8874ef4a'
++BASELINE_DRIVER='18ad8f7bc3cc48790d2329b35372fd77473942c698cd3e7e291298194e498c2d'
+ PARENT='0f62c1df8ea68f88ec13b71b54f1f7b0b070736b7058ebd85fac013c2694b526'
+ CACHE='9743962325ba1c4ada689769eaf800a617ba1f46f4602062a6dab3b23b5bdf48'
+ LIBRARY='23ffa5b4b3e9251b8a41e149da2610c9db5818fe5fe148ab18f8b45b41486582'
+@@ -28,6 +31,25 @@
+ def module(path,name):
+     spec=importlib.util.spec_from_file_location(name,path)
+     m=importlib.util.module_from_spec(spec);sys.modules[name]=m;spec.loader.exec_module(m);return m
++
++
++POLICY_METADATA_OVERRIDES = {('schema',): 'v44_DPVO_half_keyframe7p5_single_variable_predeclared_policy', ('preset',): 'half_M16_L4_R8_O4_KF2_threshold7p5', ('lifecycle', 'keyframe_flow_pair_slots'): 'n-3 <-> n-1 (KEYFRAME_INDEX2), remove slot n-2 iff original bidirectional mean feature-grid flow<7.5', ('mathematical_scope', 'feature_pixel_thresholds_unscaled'): False, ('mathematical_scope', 'threshold_scale_effect'): 'Only keyframe threshold is rescaled15->7.5 for image resize0.5. Motion probe2 and original fastBA feature-pixel gates remain unchanged, so their equivalent full-resolution pixel range remains doubled. The fixed3x3 patch and radius3 correlation support also widen by2. This is a changed research policy, not original FAST numerical or trajectory equivalence.', ('mathematical_scope', 'additional_preset_runs_planned'): True}
++TRIAL_DECLARATION = {'schema': 'v44_single_variable_keyframe_threshold_trial', 'parent_policy_sha256': 'cc6a31f89bdcff0b43c0d51266ad62c48d0e297346845a98d42bad5c8874ef4a', 'parent_cached_CPU_driver_sha256': '18ad8f7bc3cc48790d2329b35372fd77473942c698cd3e7e291298194e498c2d', 'parent_cached_CPU_run_sha256': 'c1f0a4636601fb1cd702ca57018af5fd937ecdbb9e722b0293428810bf66d05d', 'runtime_parameter_changes': [{'path': 'stream_config.keyframe_threshold', 'before': 15.0, 'after': 7.5, 'unit': 'CNN feature-grid pixels (image pixels divided by original RES4 once)'}], 'motion_probe_threshold_feature_pixels_unchanged': 2.0, 'threshold_selected_from_projection_units_not_GT': True, 'expected_first_keyframe_decision_divergence_at_baseline_state': {'observation_id': 54, 'saved_mean_bidirectional_flow': 8.138959407806396}, 'common_fresh_and_all_192_source_coverage_required': True, 'quality_10_percent_and_20_percent_limits_unchanged': True, 'candidate_accepted': False, 'realtime_validated': False, 'trajectory_accuracy_validated': False}
++
++def validate_single_variable_policy(candidate, baseline):
++    """Require the pinned base policy plus the one declared runtime change."""
++    require(baseline['stream_config']['keyframe_threshold'] == 15.0,
++            'Baseline keyframe threshold must be15')
++    expected = json.loads(json.dumps(baseline))
++    expected['stream_config']['keyframe_threshold'] = 7.5
++    for parts, value in POLICY_METADATA_OVERRIDES.items():
++        target = expected
++        for part in parts[:-1]:
++            target = target[part]
++        target[parts[-1]] = value
++    expected['research_trial'] = TRIAL_DECLARATION
++    require(candidate == expected, 'Candidate differs beyond declared single-variable policy')
++    return json.loads(json.dumps(TRIAL_DECLARATION))
+ 
+ def main():
+     p=argparse.ArgumentParser(description=__doc__)
+@@ -35,12 +57,14 @@
+         p.add_argument('--'+key,type=Path,required=True)
+     p.add_argument('--capture-update-states',action='store_true')
+     p.add_argument('--undistort-helper',type=Path,required=True)
++    p.add_argument('--baseline-driver',type=Path,required=True)
++    p.add_argument('--baseline-policy',type=Path,required=True)
+     a=p.parse_args()
+     require(sha(a.parent_driver)==PARENT,'Frozen v34 helper source differs')
+     parent=module(a.parent_driver,'_v39_parent');parent.require_board()
+     out=a.output_dir.resolve();require(out.is_relative_to(BASE),'Isolated board output required');out.mkdir(exist_ok=False)
+     begin=time.monotonic();affinity=os.sched_getaffinity(0);pins={};encoder=correlator=stream=neural=undistorter=None;weights_before=None
+-    report=dict(schema='v41_cached_undistort_original_Torch_CPU_research_replay',status='failed',script_sha256=sha(__file__),candidate_accepted=False,realtime_validated=False,original_VGGT_default_unchanged=True,different_model_from_VGGT=True,actual_inference_on_RK3588S=True,ORB_used=False,added_LK_PnP_frontend=False,NPU_used=False,GT_or_sensor_depth_input=False,unpaced_file_replay=True,physical_camera=False,frames_requested=192,frames_completed=0,seed=20261011,frames=[],update_calls=[],BA_calls=[],update_captures=[],cleanup_errors=[],diagnostic_capture_enabled=a.capture_update_states)
++    report=dict(schema='v44_half_keyframe7p5_original_Torch_CPU_research_replay',status='failed',script_sha256=sha(__file__),candidate_accepted=False,realtime_validated=False,original_VGGT_default_unchanged=True,different_model_from_VGGT=True,actual_inference_on_RK3588S=True,ORB_used=False,added_LK_PnP_frontend=False,NPU_used=False,GT_or_sensor_depth_input=False,unpaced_file_replay=True,physical_camera=False,frames_requested=192,frames_completed=0,seed=20261011,frames=[],update_calls=[],BA_calls=[],update_captures=[],cleanup_errors=[],diagnostic_capture_enabled=a.capture_update_states)
+     def pin(path,digest):
+         path=Path(path).resolve();require(sha(path)==digest,'Source/artifact SHA differs: '+str(path));pins[str(path)]=digest;return path
+     def save(name,arrays):
+@@ -50,13 +74,16 @@
+         value=stream.snapshot();arrays={k:v for k,v in value.items() if isinstance(v,np.ndarray)}
+         return dict(metadata=parent.plain({k:v for k,v in value.items() if k not in arrays}),artifact=save(name,arrays))
+     try:
+-        for path,digest in ((Path(__file__),report['script_sha256']),(a.parent_driver,PARENT),(a.policy,POLICY),(a.geometry,parent.GEOMETRY),(a.stream_module,parent.STREAM_MODULE_SHA256),(a.encoder_module,parent.ENCODER_MODULE_SHA256),(a.frame_cache_helper,CACHE),(a.library,LIBRARY),(a.build_receipt,BUILD)):
++        for path,digest in ((Path(__file__),report['script_sha256']),(a.parent_driver,PARENT),(a.baseline_driver,BASELINE_DRIVER),(a.baseline_policy,BASELINE_POLICY),(a.policy,POLICY),(a.geometry,parent.GEOMETRY),(a.stream_module,parent.STREAM_MODULE_SHA256),(a.encoder_module,parent.ENCODER_MODULE_SHA256),(a.frame_cache_helper,CACHE),(a.library,LIBRARY),(a.build_receipt,BUILD)):
+             pin(path,digest)
+         pin(a.torch_encoder,sha(a.torch_encoder))
+         pin(a.undistort_helper,'6ae53bd252de2333bf105e0f5f98c842dd2cc79244f8f1acf9572809bd627c63')
+         pin(a.undistort_helper.with_name('fixed_undistort_cache.py'),'14c7331fcb9bc84e13fa8d9b38f0a0575b529729b08dd539915f3714a632972c')
+         report['original_replay_source_sha256']='562008c8650404d78c4974eed0bcfab347f7db6ff0671ac8b4e7f05fa6c92ba2'
+         policy=json.loads(a.policy.read_text());report['policy_sha256']=POLICY;report['policy']=policy
++        report['research_trial']=validate_single_variable_policy(policy,json.loads(a.baseline_policy.read_text()))
++        report['cached_CPU_parent_source_sha256']=BASELINE_DRIVER
++        report['baseline_policy_sha256']=BASELINE_POLICY
+         build=json.loads(a.build_receipt.read_text());require(build['status']=='compiled_and_synthetic_smoke_passed' and build['output']['sha256']==LIBRARY,'Native build differs')
+         for name,digest in parent.PINS.items(): pin(a.source_dir/name,digest)
+         manifest=json.loads((a.source_dir/'manifest.json').read_text())
+@@ -150,7 +177,7 @@
+         report['active_stage']='termination_offline';start=time.monotonic();terminated=stream.terminate()
+         report.update(termination_seconds=time.monotonic()-start,termination=parent.plain(terminated),stream_metrics=parent.plain(stream.metrics()),final_snapshot=snapshot('final-state.npz'),random_generator_after=parent.meta(generator.get_state().numpy()),random_depth_draw_calls=rng.calls)
+         report.pop('active_frame',None);report.pop('active_stage',None)
+-        report.update(status='completed_unpaced_half_Torch_CPU_research_not_realtime',timing_scope='Serial unpaced file replay. Admission before imread; publication after JSON event serialization and flush. Includes first-frame map construction, cached undistort/crop/resize, encoder, patch sampling, full graph correlation/Update/BA, first3 crop identity checks and optional full Update captures. Model/source loading outside replay; progress I/O inside replay denominator. EOF separate offline. No physical-capture or paced queue claim.')
++        report.update(status='completed_unpaced_half_keyframe7p5_Torch_CPU_research_not_realtime',timing_scope='Serial unpaced file replay. Admission before imread; publication after JSON event serialization and flush. Includes first-frame map construction, cached undistort/crop/resize, encoder, patch sampling, full graph correlation/Update/BA, first3 crop identity checks and optional full Update captures. Model/source loading outside replay; progress I/O inside replay denominator. EOF separate offline. No physical-capture or paced queue claim.')
+         if not report['snapshot_before_termination']['metadata']['initialized']: report['status']='completed_unpaced_initialization_incomplete_no_fresh_pose'
+     except Exception as e: report.update(status='failed',error=repr(e),traceback=traceback.format_exc())
+     finally:

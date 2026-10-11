@@ -1,0 +1,335 @@
+{
+  "schema": "v44_half_quality_source_saved_investigation",
+  "status": "source_units_and_actual_saved_trial_review_not_adoption",
+  "original_commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+  "source_sha256_verified": {
+    "original/dpvo.py": "7efcb45689c2da8d18e2c69774e221799c9f8472e99531955f55dcb145626fd7",
+    "original/projective_ops.py": "ef20f322a118b0790bff975cce3120ad31e867c8b088a9f408c3328c0fb664c1",
+    "original/net.py": "1aee33d54f0b1cc1f3f842b60790ff1299ef9c1e20bca6467ce7114dca802acc",
+    "original/extractor.py": "f5cbcbe14c42e44bcec6e827a3429ebe93979a439ba9b9ef70d4f4baa3454a2b",
+    "original/config/fast.yaml": "24c82450151ce6e8431dfbf9dcc501a7a2747955a30a59f745bdc03bd84ce4c3",
+    "frozen/dpvo_stream.py": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde",
+    "frozen/geometry.py": "c893f12d188baced438504cfc592a8900e18e40ef8223af0a7e944e4484b0c3b"
+  },
+  "same_ordered_192_original_source_rows_all_four_runs": true,
+  "canonical_sorted_key_source_rows_sha256": "f9133a62a3c79abc098938226b85faea1e0cbb8d088f7d4579a4347683267b67",
+  "source_rows_SHA_note": "Whole manifest SHAs differ between full/half schema declarations; actual192 source image/timestamp/bytes/SHA rows are exactly equal.",
+  "units": {
+    "original_RES": 4,
+    "patch_xy": "CNN feature-grid coordinates from original grid/patchify",
+    "inverse_depth_channel": 2,
+    "pose": "SE3 world-to-camera translation+unit xyzw quaternion, not image pixels",
+    "intrinsics_division": "Image K divided by original RES4 exactly once inside frozen _append",
+    "keyframe_flow": "Mean beta0.5 weighted full-motion and translation-only projected feature-grid XY Euclidean displacement, then average both source/target directions; original ignores validity mask here",
+    "motion_probe": "Median0.5 of learned Update delta.norm; delta is added to projected feature-grid patch center before BA. Its unit is feature pixels but learned responses need not scale exactly after image resizing.",
+    "corresponding_ray_resize_map": "K_half focal=.5*K_full; feature cx/cy_half=.5*cx/cy_full-.25/4; corresponding patch x/y follow the same map. With same rays, depth, SE3 and original projection gates, pixel differences and geometric flow scale by.5; principal-point offset cancels.",
+    "keyframe_scale_action": "15*.5=7.5, same corresponding original-image flow range; this does not restore original FAST patch sampling/support/windows/neural numerical equivalence",
+    "unscaled_motion_effect": "Motion2 remains8 processed-image pixels, equivalent16 original crop pixels at half resolution versus8 at full resolution."
+  },
+  "saved_runs": {
+    "full_FAST_CPU": {
+      "run_sha256": "a0f18920b156f9f819630b591fa71af25f5e869a9a160ccd5c7d4b471218162e",
+      "actual_schema": "v34_DPVO_original_FAST_fresh_frame_CPU_replay",
+      "actual_status": "completed_unpaced_original_FAST_CPU_VO_research_not_realtime",
+      "input_manifest_sha256": "347eea360fac46f215e980fc05a7589342b0b9fbbbc84f70f98a0a3e5629b49f",
+      "complete_source_rows": 192,
+      "fresh_count": 179,
+      "fresh_source_coverage": 0.9322916666666666,
+      "first_fresh_source_index": 13,
+      "first_fresh_sensor_seconds_since_source0": 0.4359290599822998,
+      "initial_admitted_source_indices": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        9,
+        11,
+        13
+      ],
+      "initial_motion_rejected_count": 6,
+      "initial_rejected_saved_probe_in_1_to_2": 5,
+      "initial_rejected_saved_probe_below_1": 1,
+      "keyframe_checks": 178,
+      "keyframes_removed": 169,
+      "saved_keyframe_mean_flow_summary": {
+        "min": 1.9894102811813354,
+        "median": 8.301797151565552,
+        "max": 17.198402404785156
+      },
+      "saved_keyframe_flow_bins": {
+        "below7p5": 79,
+        "7p5_to_below15": 90,
+        "at_least15": 9
+      },
+      "replay_elapsed_seconds": 348.5562273139949,
+      "fresh_over_unpaced_input_active_elapsed_Hz": 0.5135469860326118,
+      "weights_unchanged_reported": true,
+      "sources_unchanged_reported": true,
+      "cleanup_errors": []
+    },
+    "original_half_Torch_CPU": {
+      "run_sha256": "dd9f37524b999c1e586182a92c226481fcfc7f4da851d5e88d62d82be1029ecd",
+      "actual_schema": "v39_DPVO_half_original_Torch_CPU_research_replay",
+      "actual_status": "completed_unpaced_half_Torch_CPU_research_not_realtime",
+      "input_manifest_sha256": "ad2c7eadef84cb4ecc550e2b4dc0f27611cb116bcefaf7eb697620646bf4bb10",
+      "complete_source_rows": 192,
+      "fresh_count": 158,
+      "fresh_source_coverage": 0.8229166666666666,
+      "first_fresh_source_index": 34,
+      "first_fresh_sensor_seconds_since_source0": 1.1359059810638428,
+      "initial_admitted_source_indices": [
+        0,
+        4,
+        9,
+        16,
+        20,
+        29,
+        32,
+        34
+      ],
+      "initial_motion_rejected_count": 27,
+      "initial_rejected_saved_probe_in_1_to_2": 20,
+      "initial_rejected_saved_probe_below_1": 7,
+      "keyframe_checks": 157,
+      "keyframes_removed": 155,
+      "saved_keyframe_mean_flow_summary": {
+        "min": 0.6864711046218872,
+        "median": 5.761993646621704,
+        "max": 16.901710510253906
+      },
+      "saved_keyframe_flow_bins": {
+        "below7p5": 93,
+        "7p5_to_below15": 62,
+        "at_least15": 2
+      },
+      "replay_elapsed_seconds": 92.87427595598274,
+      "fresh_over_unpaced_input_active_elapsed_Hz": 1.7012245680912037,
+      "weights_unchanged_reported": true,
+      "sources_unchanged_reported": true,
+      "cleanup_errors": []
+    },
+    "cached_half_Torch_CPU": {
+      "run_sha256": "c1f0a4636601fb1cd702ca57018af5fd937ecdbb9e722b0293428810bf66d05d",
+      "actual_schema": "v41_cached_undistort_original_Torch_CPU_research_replay",
+      "actual_status": "completed_unpaced_half_Torch_CPU_research_not_realtime",
+      "input_manifest_sha256": "ad2c7eadef84cb4ecc550e2b4dc0f27611cb116bcefaf7eb697620646bf4bb10",
+      "complete_source_rows": 192,
+      "fresh_count": 158,
+      "fresh_source_coverage": 0.8229166666666666,
+      "first_fresh_source_index": 34,
+      "first_fresh_sensor_seconds_since_source0": 1.1359059810638428,
+      "initial_admitted_source_indices": [
+        0,
+        4,
+        9,
+        16,
+        20,
+        29,
+        32,
+        34
+      ],
+      "initial_motion_rejected_count": 27,
+      "initial_rejected_saved_probe_in_1_to_2": 20,
+      "initial_rejected_saved_probe_below_1": 7,
+      "keyframe_checks": 157,
+      "keyframes_removed": 155,
+      "saved_keyframe_mean_flow_summary": {
+        "min": 0.6864711046218872,
+        "median": 5.761993646621704,
+        "max": 16.901710510253906
+      },
+      "saved_keyframe_flow_bins": {
+        "below7p5": 93,
+        "7p5_to_below15": 62,
+        "at_least15": 2
+      },
+      "replay_elapsed_seconds": 107.04335300499224,
+      "fresh_over_unpaced_input_active_elapsed_Hz": 1.476037470468916,
+      "weights_unchanged_reported": true,
+      "sources_unchanged_reported": true,
+      "cleanup_errors": []
+    },
+    "keyframe7p5_half_Torch_CPU": {
+      "run_sha256": "c27bc877bf09210b2c75ce40dd3b354a63e660e018299bd769e3b24819043234",
+      "actual_schema": "v44_half_keyframe7p5_original_Torch_CPU_research_replay",
+      "actual_status": "completed_unpaced_half_keyframe7p5_Torch_CPU_research_not_realtime",
+      "input_manifest_sha256": "ad2c7eadef84cb4ecc550e2b4dc0f27611cb116bcefaf7eb697620646bf4bb10",
+      "complete_source_rows": 192,
+      "fresh_count": 158,
+      "fresh_source_coverage": 0.8229166666666666,
+      "first_fresh_source_index": 34,
+      "first_fresh_sensor_seconds_since_source0": 1.1359059810638428,
+      "initial_admitted_source_indices": [
+        0,
+        4,
+        9,
+        16,
+        20,
+        29,
+        32,
+        34
+      ],
+      "initial_motion_rejected_count": 27,
+      "initial_rejected_saved_probe_in_1_to_2": 20,
+      "initial_rejected_saved_probe_below_1": 7,
+      "keyframe_checks": 157,
+      "keyframes_removed": 148,
+      "saved_keyframe_mean_flow_summary": {
+        "min": 0.6015364229679108,
+        "median": 3.9141191244125366,
+        "max": 8.481805324554443
+      },
+      "saved_keyframe_flow_bins": {
+        "below7p5": 148,
+        "7p5_to_below15": 9,
+        "at_least15": 0
+      },
+      "replay_elapsed_seconds": 114.15748726201127,
+      "fresh_over_unpaced_input_active_elapsed_Hz": 1.3840528885973336,
+      "weights_unchanged_reported": true,
+      "sources_unchanged_reported": true,
+      "cleanup_errors": []
+    }
+  },
+  "baseline_saved_state_counterfactual": {
+    "source": "cached_half_Torch_CPU actual state, not a simulated feedback trajectory",
+    "keyframe_checks_in_7p5_to_below15": 62,
+    "first_affected_observation": 54,
+    "first_flow": 8.138959407806396,
+    "limitation": "After first retained/deleted-frame decision changes, subsequent poses/graphs/flows must come from a real replay.62 is not the predicted candidate retained-frame count."
+  },
+  "startup_evidence": {
+    "half_firstfresh34_vs_full13_observed": true,
+    "half_rejected27_includes20_saved_probe_in_1_to_2": true,
+    "not_causal_resolution_or_threshold_isolation": "Full vs half also differs M48->16, L11->4/R16->8/O7->4/KFindex4->2, image information and fixed patch/correlation physical support, sampled centers and later shared RNG consumption. Stored probes compare to path-dependent last admitted frames; do not replay old probe numbers as a hypothetical new path."
+  },
+  "actual_single_variable_trial": {
+    "runtime_parameter_changes": [
+      {
+        "path": "stream_config.keyframe_threshold",
+        "before": 15.0,
+        "after": 7.5
+      }
+    ],
+    "motion_probe_threshold_stays2": true,
+    "all_other_runtime_policy_fields_and_frozen_math_sources_unchanged": true,
+    "evaluator_file": "actual-keyframe7p5-evaluation-r1.json",
+    "evaluator_receipt_sha256": "0604a024ac9398b71aaee7f94f9c27bed2bb4cce09c1b130e91c7f43091a5278",
+    "trial_isolation": {
+      "expected_prefix_source_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53
+      ],
+      "prefix_0_through_53_nonclock_exact_match": true,
+      "first_nonclock_frame_difference": 54,
+      "first_keyframe_deletion_decision_difference": 54,
+      "expected_observation54_flow_and_deletion_change_verified": true,
+      "observation54_published_pose_same_before_keyframe_delete": true,
+      "observation54_half_baseline_keyframe": {
+        "mean_bidirectional_flow": 8.138959407806396,
+        "removed_observation_id": 53
+      },
+      "observation54_candidate_keyframe": {
+        "mean_bidirectional_flow": 8.138959407806396,
+        "removed_observation_id": null
+      },
+      "trial_isolation_verified": true,
+      "ignored_fields": "Only dictionary keys ending _seconds or _monotonic; sensor timestamps and all numerical diagnostics retained",
+      "source_state_scope": "Saved JSON only; no feature/weight/native/model rerun"
+    },
+    "common_fresh_and_RPE_counts": {
+      "fresh": 158,
+      "RPE_pairs": 128,
+      "all_source_fixed_endpoint_pairs": 162
+    },
+    "primary_common_fresh_RMSE_ratios": {
+      "half_CPU_baseline": {
+        "ATE_sim3_aligned_meters": 0.8701601452957359,
+        "RPE_rotation_degrees": 0.9511443327434511,
+        "RPE_translation_GT_scale_meters": 0.9059342422456282
+      },
+      "full_FAST_CPU_baseline": {
+        "ATE_sim3_aligned_meters": 1.541454573465833,
+        "RPE_rotation_degrees": 1.6099486268683614,
+        "RPE_translation_GT_scale_meters": 1.5743311856422673
+      }
+    },
+    "primary10_and20percent_target_vs_fullFAST_failed": true,
+    "direction_is_extra_diagnostic_not_new_gate": true,
+    "partial_quality_improvement_is_not_adoption": true
+  },
+  "next_minimum_independent_trial_proposal": {
+    "variable": "Only initial motion threshold2->1, using a separately pinned minimal frozen-stream clone; original half keyframe15 kept for isolation against the original half baseline. Do not combine both changes in one unmeasured trial.",
+    "reason": "Feature-pixel threshold has doubled full-image displacement range and startup27 rejects vs6;20 observed rejected half probes lie in[1,2). The real keyframe-only trial left startup34 and coverage158 unchanged.",
+    "required_validation": "New original-weight CPU replay; check real admitted identities/firstfresh/coverage and fixed endpoints, primaryATE/rotationRPE/translationRPE10/20percent ratios against original half and fullFAST. Keep M16/L4R8O4, shared x/y/depth RNG order, geometric/BA gates, original weights, failure/close and EOF boundaries. Do not predict admission indices from old stored probes.",
+    "not_prepared_or_executed_in_this_review": true
+  },
+  "scope": {
+    "GT_used_only_in_terminal_saved_trajectory_evaluation": true,
+    "GT_parameter_selection": false,
+    "original_VGGT_default_unchanged": true,
+    "candidate_accepted": false,
+    "realtime_validated": false,
+    "ORB_used": false,
+    "added_LK_PnP_frontend": false,
+    "model_forward_calls_in_review": 0,
+    "ORT_calls_in_review": 0,
+    "SDK_calls_in_review": 0,
+    "BA_calls_in_review": 0,
+    "board_jobs_in_review": 0,
+    "cleanup_weights_sources_are_saved_metadata_not_rerun": true
+  }
+}

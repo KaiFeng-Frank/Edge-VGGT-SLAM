@@ -1,4 +1,5 @@
 # M16 完整在线 Update 的诊断 callback
+Latest integration: [v44 native FP16 complete replay](V44.md), with independent full-state parity and unchanged quality rejection.
 
 后续九模型目录、已完成的 EOF 回放与来源合同见 [v42](V42.md)；本页保留 v41 八模型接口及其原失败边界。
 

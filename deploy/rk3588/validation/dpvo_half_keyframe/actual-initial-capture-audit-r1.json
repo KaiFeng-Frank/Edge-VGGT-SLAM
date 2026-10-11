@@ -1,0 +1,327 @@
+{
+  "schema": "v44_saved_initial_original_Torch_capture_array_review",
+  "status": "saved_only_verified_not_inference_or_adoption",
+  "run_sha256": "c27bc877bf09210b2c75ce40dd3b354a63e660e018299bd769e3b24819043234",
+  "half_CPU_baseline_run_sha256": "c1f0a4636601fb1cd702ca57018af5fd937ecdbb9e722b0293428810bf66d05d",
+  "observation_id": 34,
+  "artifacts": {
+    "candidate": {
+      "input": {
+        "file": "update-034-input.npz",
+        "bytes": 4664742,
+        "sha256": "44ae6f5ffd0b4123811b5b00168861093de7eec5ba952177d3068fdd0d678f79",
+        "arrays": {
+          "net": {
+            "shape": [
+              1,
+              704,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1081344,
+            "tensor_sha256": "58cdfddc94f4e1e728423476756514be49868538ddd9bc7c33c15467e2dd2be1"
+          },
+          "inp": {
+            "shape": [
+              1,
+              704,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1081344,
+            "tensor_sha256": "d6631935ac28c4ed9d5fbf66307b7f2102c076e74512436c25cc5f3cebf75a32"
+          },
+          "corr": {
+            "shape": [
+              1,
+              704,
+              882
+            ],
+            "dtype": "float32",
+            "bytes": 2483712,
+            "tensor_sha256": "64fd57619037d5a1e746e4021f7e056c913bec9f1909b00c882007b0d3de4341"
+          },
+          "ii": {
+            "shape": [
+              704
+            ],
+            "dtype": "int64",
+            "bytes": 5632,
+            "tensor_sha256": "ae0d8bdaeed9787cef617ed795d3bfebf4d8a8c4c4fcca4d8634be638eb13b37"
+          },
+          "jj": {
+            "shape": [
+              704
+            ],
+            "dtype": "int64",
+            "bytes": 5632,
+            "tensor_sha256": "444af316c4e37ea4c476cbab9842c78855e87a30e1cf4c1b627022a45cc84f82"
+          },
+          "kk": {
+            "shape": [
+              704
+            ],
+            "dtype": "int64",
+            "bytes": 5632,
+            "tensor_sha256": "98c7810b713a03c6a7f78a81a0ec66e20e881e87555b6c24b88a74570fbd36a7"
+          }
+        }
+      },
+      "gold": {
+        "file": "update-034-gold.npz",
+        "bytes": 1093354,
+        "sha256": "79d3e45e891badb152dc8309300b3e9915f650460f2c9e469af9fc9cee4bce8a",
+        "arrays": {
+          "net": {
+            "shape": [
+              1,
+              704,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1081344,
+            "tensor_sha256": "febf56c074f5fe7166b043b1cb5c956b7f4669e94c1c7f981a838aa0c3bc91a8"
+          },
+          "delta": {
+            "shape": [
+              1,
+              704,
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 5632,
+            "tensor_sha256": "52545f8239a6189c89a479ea27574173a91fe65b5edbeb73df426f5fc10916c9"
+          },
+          "weight": {
+            "shape": [
+              1,
+              704,
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 5632,
+            "tensor_sha256": "6d5e83e49db1489dbef212b3efa87889a07284987cf14822234fd53dd7117b2c"
+          }
+        }
+      }
+    },
+    "half_CPU_baseline": {
+      "input": {
+        "file": "update-034-input.npz",
+        "bytes": 4664742,
+        "sha256": "44ae6f5ffd0b4123811b5b00168861093de7eec5ba952177d3068fdd0d678f79",
+        "arrays": {
+          "net": {
+            "shape": [
+              1,
+              704,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1081344,
+            "tensor_sha256": "58cdfddc94f4e1e728423476756514be49868538ddd9bc7c33c15467e2dd2be1"
+          },
+          "inp": {
+            "shape": [
+              1,
+              704,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1081344,
+            "tensor_sha256": "d6631935ac28c4ed9d5fbf66307b7f2102c076e74512436c25cc5f3cebf75a32"
+          },
+          "corr": {
+            "shape": [
+              1,
+              704,
+              882
+            ],
+            "dtype": "float32",
+            "bytes": 2483712,
+            "tensor_sha256": "64fd57619037d5a1e746e4021f7e056c913bec9f1909b00c882007b0d3de4341"
+          },
+          "ii": {
+            "shape": [
+              704
+            ],
+            "dtype": "int64",
+            "bytes": 5632,
+            "tensor_sha256": "ae0d8bdaeed9787cef617ed795d3bfebf4d8a8c4c4fcca4d8634be638eb13b37"
+          },
+          "jj": {
+            "shape": [
+              704
+            ],
+            "dtype": "int64",
+            "bytes": 5632,
+            "tensor_sha256": "444af316c4e37ea4c476cbab9842c78855e87a30e1cf4c1b627022a45cc84f82"
+          },
+          "kk": {
+            "shape": [
+              704
+            ],
+            "dtype": "int64",
+            "bytes": 5632,
+            "tensor_sha256": "98c7810b713a03c6a7f78a81a0ec66e20e881e87555b6c24b88a74570fbd36a7"
+          }
+        }
+      },
+      "gold": {
+        "file": "update-034-gold.npz",
+        "bytes": 1093354,
+        "sha256": "79d3e45e891badb152dc8309300b3e9915f650460f2c9e469af9fc9cee4bce8a",
+        "arrays": {
+          "net": {
+            "shape": [
+              1,
+              704,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1081344,
+            "tensor_sha256": "febf56c074f5fe7166b043b1cb5c956b7f4669e94c1c7f981a838aa0c3bc91a8"
+          },
+          "delta": {
+            "shape": [
+              1,
+              704,
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 5632,
+            "tensor_sha256": "52545f8239a6189c89a479ea27574173a91fe65b5edbeb73df426f5fc10916c9"
+          },
+          "weight": {
+            "shape": [
+              1,
+              704,
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 5632,
+            "tensor_sha256": "6d5e83e49db1489dbef212b3efa87889a07284987cf14822234fd53dd7117b2c"
+          }
+        }
+      }
+    }
+  },
+  "array_checks": [
+    {
+      "role": "input",
+      "name": "net",
+      "shape": [
+        1,
+        704,
+        384
+      ],
+      "dtype": "float32",
+      "bytes": 1081344,
+      "raw_sha256": "58cdfddc94f4e1e728423476756514be49868538ddd9bc7c33c15467e2dd2be1",
+      "bitwise_equal_to_half_CPU_baseline": true
+    },
+    {
+      "role": "input",
+      "name": "inp",
+      "shape": [
+        1,
+        704,
+        384
+      ],
+      "dtype": "float32",
+      "bytes": 1081344,
+      "raw_sha256": "d6631935ac28c4ed9d5fbf66307b7f2102c076e74512436c25cc5f3cebf75a32",
+      "bitwise_equal_to_half_CPU_baseline": true
+    },
+    {
+      "role": "input",
+      "name": "corr",
+      "shape": [
+        1,
+        704,
+        882
+      ],
+      "dtype": "float32",
+      "bytes": 2483712,
+      "raw_sha256": "64fd57619037d5a1e746e4021f7e056c913bec9f1909b00c882007b0d3de4341",
+      "bitwise_equal_to_half_CPU_baseline": true
+    },
+    {
+      "role": "input",
+      "name": "ii",
+      "shape": [
+        704
+      ],
+      "dtype": "int64",
+      "bytes": 5632,
+      "raw_sha256": "ae0d8bdaeed9787cef617ed795d3bfebf4d8a8c4c4fcca4d8634be638eb13b37",
+      "bitwise_equal_to_half_CPU_baseline": true
+    },
+    {
+      "role": "input",
+      "name": "jj",
+      "shape": [
+        704
+      ],
+      "dtype": "int64",
+      "bytes": 5632,
+      "raw_sha256": "444af316c4e37ea4c476cbab9842c78855e87a30e1cf4c1b627022a45cc84f82",
+      "bitwise_equal_to_half_CPU_baseline": true
+    },
+    {
+      "role": "input",
+      "name": "kk",
+      "shape": [
+        704
+      ],
+      "dtype": "int64",
+      "bytes": 5632,
+      "raw_sha256": "98c7810b713a03c6a7f78a81a0ec66e20e881e87555b6c24b88a74570fbd36a7",
+      "bitwise_equal_to_half_CPU_baseline": true
+    },
+    {
+      "role": "gold",
+      "name": "net",
+      "shape": [
+        1,
+        704,
+        384
+      ],
+      "dtype": "float32",
+      "bytes": 1081344,
+      "raw_sha256": "febf56c074f5fe7166b043b1cb5c956b7f4669e94c1c7f981a838aa0c3bc91a8",
+      "bitwise_equal_to_half_CPU_baseline": true
+    },
+    {
+      "role": "gold",
+      "name": "delta",
+      "shape": [
+        1,
+        704,
+        2
+      ],
+      "dtype": "float32",
+      "bytes": 5632,
+      "raw_sha256": "52545f8239a6189c89a479ea27574173a91fe65b5edbeb73df426f5fc10916c9",
+      "bitwise_equal_to_half_CPU_baseline": true
+    },
+    {
+      "role": "gold",
+      "name": "weight",
+      "shape": [
+        1,
+        704,
+        2
+      ],
+      "dtype": "float32",
+      "bytes": 5632,
+      "raw_sha256": "6d5e83e49db1489dbef212b3efa87889a07284987cf14822234fd53dd7117b2c",
+      "bitwise_equal_to_half_CPU_baseline": true
+    }
+  ],
+  "checked_arrays": 9,
+  "scope": "Actual saved descriptors/NPZ reread: finite/shape/dtype/bytes/rawSHA; both independent CPU Torch executions. Only first complete initialization capture, before threshold decision diverges. Later recurrent captures are not compared to old gold. No model/SDK/BA rerun or gate relaxation.",
+  "model_forward_calls": 0,
+  "SDK_calls": 0,
+  "BA_calls": 0
+}
