@@ -1,0 +1,121 @@
+{
+  "schema": "v39_publication_content_review",
+  "status": "passed",
+  "changed_text_files_checked": 26,
+  "local_markdown_links_checked": 231,
+  "checks": [
+    "UTF8 text only allowlist",
+    "Python AST/JSON parsing/shell syntax",
+    "relative Markdown file links",
+    "private key and common credential token patterns",
+    "no model/NPZ/SDK/data binaries in staged files"
+  ],
+  "files": {
+    "README.md": {
+      "sha256": "d458f4bed7813d0a692010f478e720af4674e6bee20f576c1d2a8ab47dd00f21",
+      "bytes": 87813
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/LICENSE": {
+      "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
+      "bytes": 1088
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/README.md": {
+      "sha256": "34e2162eac5a7a26632671d1cdea37a2f3c4bcac2f96286385acaaeeee01c716",
+      "bytes": 6615
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/audit-saved-v39.py": {
+      "sha256": "e10ae41d7f990f1e1a2733698542a3c1cd613a985fc4e1c37c9d0a493f952001",
+      "bytes": 4730
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/audit-v39-half-sdk.py": {
+      "sha256": "92c0f15bc7574bcf2d4ed53ce5d80fca887c503715bb538d0f679a9db997637a",
+      "bytes": 16933
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/board-source-freeze-r1.json": {
+      "sha256": "f6436ecc2121d4bf428927eedae8598ac560a70f6b16c5fad6bf6d8cc0c88e0f",
+      "bytes": 576
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/check-policy-tiny.py": {
+      "sha256": "dfac3ef72674b6314bc9f370be7cc27a311814c45578bcb5365e9be087fe4781",
+      "bytes": 5624
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/compile-v39-half-int8-board.py": {
+      "sha256": "fe8411d7bc75efc6a2ab565faa74f70d233f3feb6d243af9369a8c02ce7cc1c1",
+      "bytes": 18193
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/evaluate-v39-workload.py": {
+      "sha256": "56905a1c1906c7730b841e58f22b0460140875fc2bc616464452e907360baf4f",
+      "bytes": 14479
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/export-v39-m16-grouped-update-board.py": {
+      "sha256": "0dc3d9e49645cd3e472fa344434bca0aa9360b62d6d37fc3e4d71fefa67d0842",
+      "bytes": 28986
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/launch-board.sh": {
+      "sha256": "5d0012d4186604374df55a861f87dc06b532397f95557c8ba97f8f9b6fc10e77",
+      "bytes": 1634
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/policy.json": {
+      "sha256": "cc6a31f89bdcff0b43c0d51266ad62c48d0e297346845a98d42bad5c8874ef4a",
+      "bytes": 14560
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/rewrite-v39-dpvo-half-encoder.py": {
+      "sha256": "63a45d4b20510261cc18f9392d114b4a99aeb8cedea962321a1e398499f8a091",
+      "bytes": 12920
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/run-v39-half-encoder-board.py": {
+      "sha256": "01e4e81c71216a491b2d03200201a0e55dc3fcfc06bc94c3075d638ff8949e4f",
+      "bytes": 21603
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/run-v39-half-int8-board.py": {
+      "sha256": "8850b1c10572ecc5e8255b1c5c195bf2a8aceb467cc7250c0ef41f1bb2932bb6",
+      "bytes": 25093
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/run-v39-half-torch-board.py": {
+      "sha256": "562008c8650404d78c4974eed0bcfab347f7db6ff0671ac8b4e7f05fa6c92ba2",
+      "bytes": 16896
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/source-freeze.json": {
+      "sha256": "ba36414d95099f3dc8216a2a4bb837f51b1109992aaf731b12d8760cd211eeed",
+      "bytes": 443
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/test_v39_half_encoder.py": {
+      "sha256": "6fdee25b20385fe33dd870872b42b3f90c967dbde7173afd7d64943faa8e7f09",
+      "bytes": 8983
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/test_v39_half_ptq.py": {
+      "sha256": "747f0ba917b2ba93aae11792cdc479b2e521422cd7524b1e8c2179ffa0865b03",
+      "bytes": 6779
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/test_v39_half_sdk.py": {
+      "sha256": "639935bf69034549a69b0df036285d2344ef424321a027b17adaa4adc9bf531e",
+      "bytes": 8393
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/test_v39_m16_grouped_export.py": {
+      "sha256": "7960276fa1d59a80bdac4fe2f2443d71b99fb3fb2d1d331f53d7b36432ce801a",
+      "bytes": 8059
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/test_v39_workload_evaluation.py": {
+      "sha256": "40b4ef6df7b62dab915b5fab0dda684ff64ebc5d5c99152c874334021e83408e",
+      "bytes": 4319
+    },
+    "deploy/rk3588/validation/dpvo_half_workload/v39_torch_encoder.py": {
+      "sha256": "517ed0746c82b8236cf591a1bef02cf12dfde56fcd1a16c9870f17921697c580",
+      "bytes": 3111
+    },
+    "docs/ENGINEERING_NOTES.md": {
+      "sha256": "b1d11f1db46982ca6cae4e1ecfe6aba20d79359a8258356860b3741cc7f39e2f",
+      "bytes": 122170
+    },
+    "results/dpvo_half_workload_v39.json": {
+      "sha256": "5fd9f077df41bff3b0448959d3838806ff2b345347caa9363e9173fd44ad7af6",
+      "bytes": 3790038
+    },
+    "results/synthetic_tests_v39.json": {
+      "sha256": "2d5e78ded369b5dd82832c12019cbb4f46de75edcfbe62fd95614139d62f0ee8",
+      "bytes": 2905
+    }
+  },
+  "candidate_accepted": false,
+  "realtime_validated": false
+}

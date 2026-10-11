@@ -1,0 +1,65 @@
+{
+  "schema": "v39_public_synthetic_tests",
+  "scope": "tiny generated graphs, poses and fake toolkit only; no actual model, ORT, SDK or board execution",
+  "stages": [
+    {
+      "tests": [
+        "test_v39_half_encoder.py",
+        "test_v39_workload_evaluation.py"
+      ],
+      "passed": 27,
+      "failed": 0,
+      "seconds": 0.86,
+      "required_environment": {
+        "EDGE_DPVO_EVALUATOR_HELPER": "deploy/rk3588/validation/dpvo_fast/evaluate-v34-fast-trajectory.py"
+      }
+    },
+    {
+      "tests": [
+        "test_v39_half_ptq.py"
+      ],
+      "passed": 10,
+      "failed": 0,
+      "seconds": 0.12
+    },
+    {
+      "tests": [
+        "test_v39_half_sdk.py"
+      ],
+      "passed": 11,
+      "failed": 0,
+      "seconds": 0.05
+    },
+    {
+      "tests": [
+        "test_v39_m16_grouped_export.py"
+      ],
+      "passed": 23,
+      "failed": 0,
+      "seconds": 0.1,
+      "required_environment": {
+        "V39_GROUPED_SOURCE_DIR": "deploy/rk3588/validation/dpvo_grouped_update"
+      }
+    }
+  ],
+  "setup_correction": "First evaluation test attempt omitted required helper-path environment; 26 passed/1 setup failure. The documented configured run above passed27. No implementation failure was hidden.",
+  "source_sha256": {
+    "audit-v39-half-sdk.py": "92c0f15bc7574bcf2d4ed53ce5d80fca887c503715bb538d0f679a9db997637a",
+    "test_v39_m16_grouped_export.py": "7960276fa1d59a80bdac4fe2f2443d71b99fb3fb2d1d331f53d7b36432ce801a",
+    "export-v39-m16-grouped-update-board.py": "0dc3d9e49645cd3e472fa344434bca0aa9360b62d6d37fc3e4d71fefa67d0842",
+    "run-v39-half-int8-board.py": "8850b1c10572ecc5e8255b1c5c195bf2a8aceb467cc7250c0ef41f1bb2932bb6",
+    "test_v39_half_sdk.py": "639935bf69034549a69b0df036285d2344ef424321a027b17adaa4adc9bf531e",
+    "test_v39_half_ptq.py": "747f0ba917b2ba93aae11792cdc479b2e521422cd7524b1e8c2179ffa0865b03",
+    "compile-v39-half-int8-board.py": "fe8411d7bc75efc6a2ab565faa74f70d233f3feb6d243af9369a8c02ce7cc1c1",
+    "audit-saved-v39.py": "e10ae41d7f990f1e1a2733698542a3c1cd613a985fc4e1c37c9d0a493f952001",
+    "check-policy-tiny.py": "dfac3ef72674b6314bc9f370be7cc27a311814c45578bcb5365e9be087fe4781",
+    "test_v39_workload_evaluation.py": "40b4ef6df7b62dab915b5fab0dda684ff64ebc5d5c99152c874334021e83408e",
+    "test_v39_half_encoder.py": "6fdee25b20385fe33dd870872b42b3f90c967dbde7173afd7d64943faa8e7f09",
+    "run-v39-half-encoder-board.py": "01e4e81c71216a491b2d03200201a0e55dc3fcfc06bc94c3075d638ff8949e4f",
+    "rewrite-v39-dpvo-half-encoder.py": "63a45d4b20510261cc18f9392d114b4a99aeb8cedea962321a1e398499f8a091",
+    "evaluate-v39-workload.py": "56905a1c1906c7730b841e58f22b0460140875fc2bc616464452e907360baf4f",
+    "v39_torch_encoder.py": "517ed0746c82b8236cf591a1bef02cf12dfde56fcd1a16c9870f17921697c580",
+    "run-v39-half-torch-board.py": "562008c8650404d78c4974eed0bcfab347f7db6ff0671ac8b4e7f05fa6c92ba2"
+  },
+  "passed_total": 71
+}

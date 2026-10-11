@@ -14,13 +14,19 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
 
+## Workload reduction and measured quality cost (v39)
+
+A predeclared optional DPVO experiment uses half-resolution input and 16 patches, with the original weights and lifecycle. Its instrumented 192-frame CPU replay on RK3588S produced **158 fresh poses in 92.874 s (1.701 Hz)**, with software admission-to-publication **P95 668.453 ms**. On 158 common fresh observations, ATE increased from **1.113 to 1.971 cm (+77.15%)** relative to original FAST CPU; RPE also regressed. **This configuration fails the quality target and remains unadopted.** It is not an original-VGGT, camera or real-time acceptance result.
+
+The smaller complete Update captures have 704/800/800 actual edges. At the new image size, original and reciprocal CPU ONNX encoders both pass the fixed tensor gate against newly generated original Torch references; historical full-resolution rejection remains recorded. [Source and measured limits](deploy/rk3588/validation/dpvo_half_workload/README.md), [board replay, common-population evaluation and encoder evidence](results/dpvo_half_workload_v39.json), [engineering records 66–68](docs/ENGINEERING_NOTES.md). The new quantized half encoder measures **22.024 ms** warm complete SDK calls but fails its original FP32 gate. The three smaller complete Update graphs pass grouped Torch/CPU ORT checks; NPU execution of their eight new shapes is still pending.
+
 ## Small-denominator rewrite and full grouped RKNN graphs (v38)
 
 An optional DPVO encoder rewrite moves ten full-tensor CPU divisions into small-denominator CPU reciprocals followed by NPU multiplication. The new INT8 encoder measures **81.012 ms** warm complete SDK calls; actual profiles reduce the ten CPU Div rows to **0.141–0.180 ms** in total. The earlier spatial INT8 component measured 905.223 ms in a separate uncontrolled run. **Original FP32 precision still fails; the candidate is not adopted.** [Source and staged validation](deploy/rk3588/validation/dpvo_encoder_reciprocal/README.md), [actual CPU/PTQ/SDK evidence](results/dpvo_reciprocal_encoder_v38.json).
 
 All three complete saved M48 Update graphs now execute through 14 actual RKNN shapes. Their warm full-call means are **203.866 / 608.959 / 1,004.553 ms**, with original FP32 rejection retained. Cache peaks are about 336 MB DMA and 130 MB model buffers; all contexts and buffers close cleanly. Separately, prepacking typed inputs as FP16 regresses a same-context B8 experiment from **156.889 to 205.686 ms**, despite identical outputs. [Full-graph contract](deploy/rk3588/validation/dpvo_grouped_update/V38.md), [evidence](results/dpvo_grouped_full_v38.json), [input-transport regression](results/dpvo_fp16_input_transport_v38.json).
 
-The latest complete fresh-pose replay remains **0.665 Hz**; these fixed component runs do not establish a new pose rate, trajectory accuracy, camera latency, map update rate or endurance. [Engineering records 63–65](docs/ENGINEERING_NOTES.md) preserve the causes, measurements and acceptance limits. Default VGGT, the no-ORB research path and separate model-weight licensing remain unchanged.
+At the v38 stage, the latest complete fresh-pose replay was **0.665 Hz**; these fixed component runs do not establish a new pose rate, trajectory accuracy, camera latency, map update rate or endurance. [Engineering records 63–65](docs/ENGINEERING_NOTES.md) preserve the causes, measurements and acceptance limits. Default VGGT, the no-ORB research path and separate model-weight licensing remain unchanged.
 
 ## Quantized layout regressions and complete grouped Update (v37)
 
@@ -28,7 +34,7 @@ The original sparse INT8 encoder now has actual board deployment evidence: **429
 
 Three complete M48 Update states ran grouped Torch/ORT on RK3588S, preserving all 50 original parameters. A few delta elements fail the fixed FP32 tolerance despite relative L2 around 1e-6. The actual **B8/D8/M48 initial graph** also ran RKNN: warm complete SDK calls average **174.289 ms**, still numerically rejected; at the v37 stage, the later two larger graphs had not run RKNN. Subsequent full-graph measurements are reported in v38 above. [Sources, exact scope and evidence](deploy/rk3588/validation/dpvo_grouped_update/V37.md).
 
-The most recent complete fresh-pose replay remains **0.665 Hz** from v36. No new full trajectory, camera or endurance claim is made. [Engineering records 59–62](docs/ENGINEERING_NOTES.md) preserve the layout bottleneck, full-group precision rejection, list-identity guard and quantized Div fallback.
+At the v37 stage, the most recent complete fresh-pose replay was **0.665 Hz** from v36. No new full trajectory, camera or endurance claim is made. [Engineering records 59–62](docs/ENGINEERING_NOTES.md) preserve the layout bottleneck, full-group precision rejection, list-identity guard and quantized Div fallback.
 
 ## Per-frame cache, board PTQ and complete Update capture (v36)
 
