@@ -1,0 +1,31 @@
+{
+  "schema": "v45_horizontal_dot4_source_freeze",
+  "status": "frozen_source_candidate_not_compiled_or_executed",
+  "candidate_accepted": false,
+  "actual_neural_native_or_board_execution": false,
+  "build_script_sha256": "aea69d5e614efeb7b80ab309c04dc821379b6eb96c048be7bc590a5d63e0472f",
+  "source_sha256": {
+    "dpvo_frame_corr_dot4.cpp": "8e174eb55e0b114a89b6d61aef9e56e32312633d0b0be44d3ffbca9df67c15e9",
+    "dpvo_frame_corr.h": "55a39130998285aaf50d0e2f5b03660f5ad19f629907cea3ef850f552eb10e76",
+    "dpvo_frame_corr.py": "9743962325ba1c4ada689769eaf800a617ba1f46f4602062a6dab3b23b5bdf48",
+    "dpvo_corr.cpp": "3cf0c9cf79754fff996efc03c2ca2b162733f10b2b9aa580dee263e5df5b9990",
+    "dpvo_corr.h": "1866c747265b401f8d29d896e5f634ac104f238704e5fe443aa683a7395ab932",
+    "LICENSE": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a"
+  },
+  "parent_source_sha256": {
+    "dpvo_corr.cpp": "3cf0c9cf79754fff996efc03c2ca2b162733f10b2b9aa580dee263e5df5b9990",
+    "dpvo_corr.h": "1866c747265b401f8d29d896e5f634ac104f238704e5fe443aa683a7395ab932"
+  },
+  "v36_parent_frame_cpp_sha256": "a04ab5a4b86cfd189ef194893b9b07c06742e21141056cc94a120b42c9d2899d",
+  "helper_unchanged": true,
+  "ABI_unchanged": true,
+  "generated_tests": {
+    "file": "test_v45_dot4_math.py",
+    "sha256": "a0cca9d1fa9bb6858ec0be9c57368641503f5ae2ed94243430f783bbdb58cfc5",
+    "passed": 14,
+    "failed": 0,
+    "scope": "NumPy generated expression and source checks only; C++ not compiled or executed"
+  },
+  "scope": "Only valid four-horizontal-target raw dot expressions changed. All preparation/ownership/guards/bilinear/scalar fallback unchanged.",
+  "runtime_numerical_validation_required": true
+}

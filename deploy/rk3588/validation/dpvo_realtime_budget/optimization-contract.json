@@ -1,0 +1,175 @@
+{
+  "schema": "v45_original_math_correlation_optimization_contract",
+  "status": "board_component_AB_completed_online_not_integrated",
+  "candidate_accepted": false,
+  "default_VGGT_unchanged": true,
+  "scope": "Original DPVO weights research, complete correlation outputs/no edge dropping; all actual compilation/native calls by root on RK3588S",
+  "evidence": {
+    "steady_review_r1_sha256": "01b99a93578c3bb4910d5323f92d6d88f20b3c18a9777995e883cec22780be16",
+    "steady_review_r2_sha256": "3712b7c9a33e9b8db6c73f6cffffd97d38c9094a73d980b50466a853ed9b1934",
+    "actual_AB_run_sha256": "d5ee830cc74553223871c67ed97f07988a77630c095ea06a553b09209c58a773",
+    "actual_build_sha256": "bf74468f6f365204c0ed7e23a8bd7d2f95c9d1316de4c78f21c68aa01e353e2e"
+  },
+  "source_pins": {
+    "frozen_v36_cpp": "a04ab5a4b86cfd189ef194893b9b07c06742e21141056cc94a120b42c9d2899d",
+    "frozen_v27_cpp": "3cf0c9cf79754fff996efc03c2ca2b162733f10b2b9aa580dee263e5df5b9990",
+    "frozen_v36_python": "9743962325ba1c4ada689769eaf800a617ba1f46f4602062a6dab3b23b5bdf48",
+    "candidate_cpp": "8e174eb55e0b114a89b6d61aef9e56e32312633d0b0be44d3ffbca9df67c15e9"
+  },
+  "hot_path": {
+    "parent_cpp": "dpvo_frame_corr.cpp:85-92",
+    "parent_dot": "dpvo_corr.cpp:78-94",
+    "layout": "owned NHWC per-frame target and per-patch-point channel vector",
+    "channels": 128,
+    "existing_cache_avoids_historical_repacking": true,
+    "original": "Each raw8x8 position separately calls one4-lane accumulator dot.",
+    "candidate": "Four wholly valid horizontal targets use4 independent accumulators; each channel group loads patch once,4 target vectors,4 separate mul/add. Original per-output order and lane/tail reduction retained.",
+    "boundary": "Unchanged original dot/positive zero for partially valid groups; unchanged finite checks/FP32 bilinear and output order.",
+    "static_patch_vector_loads_per_four_valid_targets": {
+      "original_per_channel_group": 4,
+      "candidate_per_channel_group": 1
+    },
+    "static_load_reduction_is_not_measured_bandwidth_gain": true
+  },
+  "constraints": {
+    "FMA": false,
+    "reassociated_reduction": false,
+    "feature_precision_changed": false,
+    "pooling_changed": false,
+    "output_layout_changed": false,
+    "ABI_changed": false,
+    "cache_locks_ownership_guards_changed": false,
+    "threads_changed": false,
+    "compiler_flags": [
+      "-O3",
+      "-fno-fast-math",
+      "-ffp-contract=off"
+    ]
+  },
+  "validation": {
+    "generated_math_tests": 14,
+    "generated_AB_source_tests": 3,
+    "board_compiled_library_sha256": "bd324375294722faeaf02b71645082e9b11e46f64bbdedee7eb52e185d0bb9cc",
+    "actual_AB_calls": 32,
+    "saved_first_outputs": 8,
+    "saved_graphs": 4,
+    "saved_CPU_references": 4,
+    "all_call_bitwise_is_reported_with_repeats_raw_metadata": true,
+    "independent_saved_array_audit_owner": "arm_dependencies",
+    "full_resolution_M96_only": true,
+    "half_M16_or_online_validated": false
+  },
+  "Update_alternative": {
+    "profile_source_sha256": "19ff3cef882fa64c9d2c4b1d07eeccfd6a9df88f874db709c512fe5fc692020c",
+    "existing_nonquantized_models": true,
+    "actual_profile_counts_by_shape": {
+      "B2_D4_M16": {
+        "internal_target_counts": {
+          "NPU": 48,
+          "CPU": 3
+        },
+        "CPU_IO_rows": 6,
+        "internal_CPU_ops": [
+          "Exp",
+          "Min",
+          "Exp"
+        ]
+      },
+      "B2_D5_M16": {
+        "internal_target_counts": {
+          "NPU": 48,
+          "CPU": 3
+        },
+        "CPU_IO_rows": 6,
+        "internal_CPU_ops": [
+          "Exp",
+          "Min",
+          "Exp"
+        ]
+      },
+      "B2_D6_M16": {
+        "internal_target_counts": {
+          "NPU": 48,
+          "CPU": 3
+        },
+        "CPU_IO_rows": 6,
+        "internal_CPU_ops": [
+          "Exp",
+          "Min",
+          "Exp"
+        ]
+      },
+      "B2_D7_M16": {
+        "internal_target_counts": {
+          "NPU": 48,
+          "CPU": 3
+        },
+        "CPU_IO_rows": 6,
+        "internal_CPU_ops": [
+          "Exp",
+          "Min",
+          "Exp"
+        ]
+      },
+      "B3_D6_M16": {
+        "internal_target_counts": {
+          "NPU": 48,
+          "CPU": 3
+        },
+        "CPU_IO_rows": 6,
+        "internal_CPU_ops": [
+          "Exp",
+          "Min",
+          "Exp"
+        ]
+      },
+      "B1_D5_M16": {
+        "internal_target_counts": {
+          "NPU": 48,
+          "CPU": 3
+        },
+        "CPU_IO_rows": 6,
+        "internal_CPU_ops": [
+          "Exp",
+          "Min",
+          "Exp"
+        ]
+      },
+      "B5_D6_M16": {
+        "internal_target_counts": {
+          "NPU": 48,
+          "CPU": 3
+        },
+        "CPU_IO_rows": 6,
+        "internal_CPU_ops": [
+          "Exp",
+          "Min",
+          "Exp"
+        ]
+      },
+      "B1_D7_M16": {
+        "internal_target_counts": {
+          "NPU": 48,
+          "CPU": 3
+        },
+        "CPU_IO_rows": 6,
+        "internal_CPU_ops": [
+          "Exp",
+          "Min",
+          "Exp"
+        ]
+      }
+    },
+    "board_PTQ_tooling_available_from_prior_encoder_experiments": true,
+    "Update_representative_calibration_not_built_this_turn": true,
+    "reason_not_first_choice": "PTQ changes arithmetic/precision and needs shape-specific recurrent-input calibration and new gates; equivalent dot scheduling targets a measured ~48ms kernel without changing neural numerics.",
+    "no_Update_PTQ_speed_or_quality_prediction": true
+  },
+  "budget_scope": "Current serial replay with unchanged other phases; arithmetic removal is not a measured future pipeline result or a universal lower bound.",
+  "limitations": [
+    "Different online replays are not controlled AB.",
+    "Each component AB case/method has only3 warm samples; not sustained performance.",
+    "Original SDK FP32/half-resolution quality rejection remain.",
+    "No20Hz/fresh-camera/map/30minute acceptance."
+  ]
+}

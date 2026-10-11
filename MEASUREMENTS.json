@@ -632,5 +632,95 @@
       "mapper_exitcode": 0,
       "cleanup_errors": []
     }
-  ]
+  ],
+  "dpvo_closed_cache_online_v45": {
+    "fresh_count": 158,
+    "fresh_Hz": 3.0060148794236663,
+    "fresh_P95_publication_ms": 338.11220453935675,
+    "replay_elapsed_seconds": 52.561283405986615,
+    "EOF": {
+      "offline_updates": 12,
+      "offline_BA_steps": 24,
+      "seconds": 2.4210334100062028,
+      "counted_as_fresh": false,
+      "old_EOF_was_failed": false,
+      "compared_to_old_EOF": true
+    },
+    "peak_process_RSS_mib": 515.5859375,
+    "actual_array_pairs_compared": 55,
+    "nonclock_frame_results_compared": 192,
+    "evidence": "results/dpvo_closed_online_v45.json",
+    "unpaced_replay": true,
+    "controlled_speedup": false,
+    "realtime_validated": false
+  },
+  "dpvo_half_motion1_cpu_v45": {
+    "first_fresh_source_index": 11,
+    "fresh_source_count": 181,
+    "observations": 192,
+    "fixed_endpoint_pairs": 151,
+    "total_planned_pairs": 162,
+    "fresh_Hz": 1.5153640156776895,
+    "fresh_P95_publication_ms": 780.7800360023975,
+    "common_primary_ratios": {
+      "half_CPU_baseline": {
+        "ATE_sim3_aligned_meters": 1.0722141835160186,
+        "RPE_rotation_degrees": 0.785795010440361,
+        "RPE_translation_GT_scale_meters": 1.1316012296733997
+      },
+      "full_FAST_CPU_baseline": {
+        "ATE_sim3_aligned_meters": 2.1992256766323712,
+        "RPE_rotation_degrees": 1.3072958328668693,
+        "RPE_translation_GT_scale_meters": 2.0547866873636833
+      }
+    },
+    "baseline_keyframe_threshold": 15,
+    "candidate_accepted": false,
+    "evidence": "results/dpvo_half_motion_v45.json"
+  },
+  "dpvo_corr_dot4_v45": {
+    "actual_run_sha256": "d5ee830cc74553223871c67ed97f07988a77630c095ea06a553b09209c58a773",
+    "status": "completed_dot4_AB_bitwise_not_adopted",
+    "full_resolution_saved_features": true,
+    "new_online_trajectory": false,
+    "all_FP32_gates_passed": true,
+    "A_B_bitwise_equal": true,
+    "calls": 32,
+    "warm_samples_per_method_per_case": 3,
+    "cases": [
+      {
+        "name": "first_two_frames",
+        "edges": 96,
+        "warm_mean_seconds": {
+          "A": 0.0024233609923006347,
+          "B": 0.00220820833540832
+        }
+      },
+      {
+        "name": "grow_three_frames",
+        "edges": 864,
+        "warm_mean_seconds": {
+          "A": 0.029643489329221968,
+          "B": 0.0204391270041621
+        }
+      },
+      {
+        "name": "reorder_slots",
+        "edges": 864,
+        "warm_mean_seconds": {
+          "A": 0.04285572667140514,
+          "B": 0.033375961667237185
+        }
+      },
+      {
+        "name": "delete_middle",
+        "edges": 384,
+        "warm_mean_seconds": {
+          "A": 0.024622433333812904,
+          "B": 0.01923750200270054
+        }
+      }
+    ],
+    "evidence": "results/dpvo_realtime_budget_v45.json"
+  }
 }

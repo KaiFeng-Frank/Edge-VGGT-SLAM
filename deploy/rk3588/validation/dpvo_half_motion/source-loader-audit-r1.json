@@ -1,0 +1,64 @@
+{
+  "schema": "v45_motion1_source_delta_and_loader_guard_review",
+  "status": "static_verified_candidate_not_model_or_trajectory_acceptance",
+  "source_pins": {
+    "baseline_driver": "18ad8f7bc3cc48790d2329b35372fd77473942c698cd3e7e291298194e498c2d",
+    "candidate_driver": "3b0a5b809cab8277e1275bb0b3d4bacd99c14622e9b4091d980286276457543a",
+    "baseline_stream": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde",
+    "candidate_stream": "bcc7cea80c758b49c2abef1a4bd961ff130a0144fe2d0f7e5db76009754ca8ce",
+    "baseline_policy": "cc6a31f89bdcff0b43c0d51266ad62c48d0e297346845a98d42bad5c8874ef4a",
+    "candidate_policy": "ca0f1632f73765c913cd707c03df54d45b03d136f45e33b6cc034ac85cb2e7b4"
+  },
+  "candidate_stream_exact_two_line_delta": true,
+  "complete_stream_AST_equal_after_reversing_two_literals": true,
+  "driver_main_byte_identical_after_removing_declared_parser_approval_pin_metadata_schema_changes": true,
+  "original_sha_require_module_function_ASTs_unchanged": true,
+  "loader_dependencies": {
+    "frozen_v34_helper": "Only module(), require_board(), source/weight/artifact constants, load_fast_config(), meta/plain/TorchDepthRNG are reused; its main() is not called.",
+    "original_stream_guard": "Parent original STREAM_MODULE_SHA256 is checked unchanged; baseline source is pinned. Only candidate pin in cloned driver is replaced with the fixed approved candidate SHA.",
+    "explicit_approval": "CLI --approved-stream-sha256 must equal fixed APPROVED_STREAM. It cannot approve arbitrary sources. Both baseline and candidate raw SHA plus exact two-line source transform are required before neural modules load.",
+    "upstream_guard": "Candidate verify_sources() and its original six SOURCE_PINS are byte-identical; all original source manifest/94weight checks continue. No parent monkeypatch/import override.",
+    "runtime_policy": "Entire StreamConfig equals SHA-cc6a original half (KF15 M16 L4R8O4); only hardcoded initial-motion rejection threshold is changed. Image/K/shared RNG/math/failure/ownership/close/EOF code is unchanged."
+  },
+  "observed_original_half_first_probe": {
+    "source_index": 1,
+    "motion_probe_feature_pixels": 1.0345186591148376,
+    "original_admitted": false,
+    "candidate_first_admission_divergence_expected_source_index": 1,
+    "prediction_scope": "Only first decision at the same pre-branch state; subsequent probe/admission/trajectory path requires actual replay. Old post-branch inputs/gold are not reused."
+  },
+  "planned_evaluation": {
+    "actual_candidate_schema": "v45_half_motion1_original_Torch_CPU_research_replay",
+    "required_completed_status": "completed_unpaced_half_motion1_Torch_CPU_research_not_realtime",
+    "comparators": [
+      "frozen original cached half_CPU KF15/motion2",
+      "frozen full_FAST CPU"
+    ],
+    "same192source_rows_common_fresh_fixed_all_source_endpoints": true,
+    "primary_metrics": [
+      "ATE_sim3_aligned_meters",
+      "RPE_rotation_degrees",
+      "RPE_translation_GT_scale_meters"
+    ],
+    "primary_loss_gates_unchanged": [
+      0.1,
+      0.2
+    ],
+    "direction_metric_is_additional_diagnostic": true,
+    "coverage_individually_reported": true,
+    "GT_parameter_selection": false,
+    "actual_trial_not_executed_by_this_review": true
+  },
+  "execution_in_this_review": {
+    "model_forward_calls": 0,
+    "ORT_calls": 0,
+    "SDK_calls": 0,
+    "native_calls": 0,
+    "BA_calls": 0,
+    "board_jobs": 0,
+    "real_images_decoded": 0
+  },
+  "candidate_accepted": false,
+  "realtime_validated": false,
+  "original_VGGT_default_unchanged": true
+}

@@ -1,0 +1,354 @@
+{
+  "schema": "v45_DPVO_half_motion1_single_variable_predeclared_policy",
+  "status": "predeclared_research_configuration_not_executed_not_adopted",
+  "preset": "half_M16_L4_R8_O4_KF2_keyframe15_motion1",
+  "candidate_accepted": false,
+  "realtime_validated": false,
+  "trajectory_accuracy_validated": false,
+  "original_VGGT_default_unchanged": true,
+  "different_model_from_VGGT": true,
+  "original_DPVO_checkpoint_sha256": "30d02dc2b88a321cf99aad8e4ea1152a44d791b5b65bf95ad036922819c0ff12",
+  "original_DPVO_weights_unchanged_required": true,
+  "no_ORB_LK_PnP": true,
+  "original_commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+  "stream_config": {
+    "patches_per_frame": 16,
+    "patch_lifetime": 4,
+    "removal_window": 8,
+    "optimization_window": 4,
+    "keyframe_index": 2,
+    "keyframe_threshold": 15.0,
+    "motion_model": "DAMPED_LINEAR",
+    "motion_damping": 0.5,
+    "capacity": 64,
+    "observation_capacity": 4096,
+    "max_active_edges": 98304,
+    "max_inactive_edges": 393216,
+    "loop_closure": false,
+    "classic_loop_closure": false
+  },
+  "original_FAST_configuration_equivalence_claimed": false,
+  "preprocessing": {
+    "source_shape_HWC": [
+      480,
+      640,
+      3
+    ],
+    "source_dtype": "uint8",
+    "source_color": "BGR",
+    "undistort": "cv2.undistort at original 640x480 using original K/D; no resize before undistort",
+    "original_intrinsics_fx_fy_cx_cy": [
+      517.3,
+      516.5,
+      318.6,
+      255.3
+    ],
+    "original_distortion_k1_k2_p1_p2_k3": [
+      0.2624,
+      -0.9531,
+      -0.0054,
+      0.0026,
+      1.1633
+    ],
+    "crop_y_start_stop_x_start_stop": [
+      8,
+      472,
+      16,
+      624
+    ],
+    "crop_expression": "undistorted_bgr[8:-8,16:-16]",
+    "cropped_shape_HWC": [
+      464,
+      608,
+      3
+    ],
+    "cropped_intrinsics_fx_fy_cx_cy": [
+      517.3,
+      516.5,
+      302.6,
+      247.3
+    ],
+    "resize": "cv2.resize(cropped_bgr,(304,232),interpolation=cv2.INTER_AREA)",
+    "resized_shape_HWC": [
+      232,
+      304,
+      3
+    ],
+    "resized_dtype": "uint8",
+    "resized_color": "BGR",
+    "resize_scale_xy": [
+      0.5,
+      0.5
+    ],
+    "pixel_center_map": "u_new=(u_crop+0.5)*0.5-0.5; v_new=(v_crop+0.5)*0.5-0.5",
+    "A_resize": [
+      [
+        0.5,
+        0,
+        -0.25
+      ],
+      [
+        0,
+        0.5,
+        -0.25
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "intrinsics_fx_fy_cx_cy": [
+      258.65,
+      258.25,
+      151.05,
+      123.4
+    ],
+    "intrinsics_storage_dtype": "float32",
+    "normalization": "NCHW contiguous FP32 BGR; 2*(image/255)-0.5 exactly once, no RGB reorder",
+    "normalization_operation_order": [
+      "uint8 HWC -> FP32 NCHW",
+      "divide FP32 by255",
+      "multiply FP32 by2",
+      "subtract FP32 0.5"
+    ],
+    "network_input_shape": [
+      1,
+      3,
+      232,
+      304
+    ],
+    "feature_shape_fmap": [
+      1,
+      128,
+      58,
+      76
+    ],
+    "feature_shape_imap_dense": [
+      1,
+      384,
+      58,
+      76
+    ],
+    "sparse_context_shape": [
+      1,
+      16,
+      384
+    ],
+    "feature_coordinate_intrinsics": "Only original RES=4 division after halfpixel image K; no second halfpixel transform at CNN feature-grid boundary",
+    "feature_intrinsics_fx_fy_cx_cy": [
+      64.6625,
+      64.5625,
+      37.7625,
+      30.85
+    ],
+    "sparse_context_linear_index": "y*76+x",
+    "pyramid_levels": [
+      1,
+      4
+    ],
+    "pooled_level4_HW": [
+      14,
+      19
+    ],
+    "pyramid_semantics": "Original floor avg_pool2d(kernel4,stride4), last two of58 feature rows excluded from pooled level only; do not pad or resize to15 rows",
+    "new_size_reference_required": true,
+    "old_full_resolution_outputs_are_new_size_gold": false
+  },
+  "rng": {
+    "seed": 20261011,
+    "generator": "One persistent Torch CPU generator shared by original-order x/y/depth draws",
+    "per_source_observation_draw_order": [
+      "x randint(low1,high75,shape[1,16])",
+      "y randint(low1,high57,shape[1,16])",
+      "FP32 uniform[0,1) inverse depth shape[16]"
+    ],
+    "draw_on_initial_motion_reject": true,
+    "draw_depth_before_initialized_median_overwrite": true,
+    "initialized_depth": "Original lower median over patch depths of latest three retained frames",
+    "reuse_M48_centers_or_old_generator_state": false,
+    "CUDA_RNG_byte_equivalence_claimed": false
+  },
+  "lifecycle": {
+    "initialization_admitted_frames": 8,
+    "initialization_Update_calls": 12,
+    "BA_iterations_per_Update": 2,
+    "initialization_frame_pairs": 44,
+    "initialization_edges": 704,
+    "initialization_graph": "All original append-generated L4 banded edges; not8x8 dense and no extra edge cropping",
+    "initialization_wait_and_motion_skip_have_no_fresh_pose": true,
+    "motion_probe_threshold_feature_pixels": 1.0,
+    "keyframe_flow_pair_slots": "n-3 <-> n-1 (KEYFRAME_INDEX2), remove slot n-2 iff original bidirectional mean flow<15",
+    "inactive_source_age_rule": "Original source slot kk//M < retained_n - removal_window after keyframe deletion",
+    "inactive_safety_rule": "R8>=L4+KEYFRAME_INDEX2",
+    "minimum_removal_window_for_frozen_core": 8,
+    "minimum_removal_window_reason": "The first8 admitted frames run12 Updates without age pruning; source0 remains through the first post-initialization Update at n9. Frozen _step rejects ii<n-R-1, requiring R>=8 before pruning begins.",
+    "rejected_settings": "R6 fails at n8 before the first initialization Update; R7 fails at n9 before age pruning, even with a legitimate L4 banded graph.",
+    "postinitialization_Update_calls_per_admitted_frame": 1,
+    "BA_optimized_pose_interval": "t0=max(n-4,1),t1=n; original BA2steps/damping1e-4/leftSE3/inverse-depth arithmetic and gates unchanged",
+    "termination_offline_Update_calls": 12,
+    "termination_counted_as_fresh": false,
+    "capacity": "Original research capacity64 with spare-slot guard, explicit failclosed; no invented eviction"
+  },
+  "mathematical_scope": {
+    "complete_Update_dependency_preserved": true,
+    "Update_neural_input_dims": [
+      384,
+      384,
+      882
+    ],
+    "Update_partition_rule": "Execute the full active graph; a future source-frame batch is allowed only with complete target\u00d7all16patch groups, ordered-neighbor c1->c2 and both original SoftAgg reductions; inverse-permute/scatter to original E order before atomic commit",
+    "patch_shape": [
+      16,
+      3,
+      3,
+      3
+    ],
+    "gmap_shape": [
+      16,
+      128,
+      3,
+      3
+    ],
+    "context_shape": [
+      16,
+      384
+    ],
+    "corr_radius": 3,
+    "corr_levels": [
+      1,
+      4
+    ],
+    "feature_pixel_thresholds_unscaled": false,
+    "threshold_scale_effect": "Only initial motion rejection threshold is rescaled2->1 for image resize0.5. Keyframe15 and original fastBA feature-pixel gates remain unchanged, so their equivalent full-resolution pixel range remains doubled. The fixed3x3 patch and radius3 correlation support also widen by2. This is a changed research policy, not original FAST numerical or trajectory equivalence.",
+    "GT_input": false,
+    "GT_parameter_selection": false,
+    "additional_preset_runs_planned": true,
+    "dense_depth_dense_map_or_upsampled_map_claimed": false,
+    "outputs": "Fresh per-source SE3 world-to-camera pose; sparse patch inverse depths only; no dense depth/SL4 global-map claim"
+  },
+  "execution_comparison": {
+    "same_preset_required_for_CPU_and_NPU": true,
+    "CPU_reference": "Original DPVO FP32 neural weights at232x304, original full Update, same RNG/stream/native-frame-cache/vectorBA.",
+    "NPU_candidate": "New size-bound encoder receipt with original parameter identity; actual SDK/profile/owned-copy/close; original Torch Update+same CPU corr/BA unless separately declared.",
+    "NPU_strict_FP32_gate": "rtol1e-4/atol1e-5 fixed per element, shape/finite/weight domain separately; reject label retained even if explicit trajectory diagnostic continues",
+    "no_silent_CPU_fallback": true,
+    "not_all_NPU_pipeline": true,
+    "comparison_scope": "Low-size CPU vs NPU exact same input/config/RNG order; independent GT metrics per executed trajectory, not assumed bitwise after recurrent deviations.",
+    "same_process_interleave_or_thermal_control_required_for_causal_speedup_claim": true
+  },
+  "source_schedule": {
+    "dataset": "TUM RGB-D freiburg1_xyz",
+    "first_contiguous_RGB_frames": 192,
+    "stride": 1,
+    "original_sensor_timestamps_retained": true,
+    "skip_same_image_duplicates_as_new_observations": true,
+    "predeclare_manifest_SHA_before_model_execution": true,
+    "no_inference_GT_or_sensor_depth": true
+  },
+  "evaluation": {
+    "source_baseline": "Frozen full-resolution original-FAST CPU v34 replay, same first192 source IDs/timestamps; separate historical timing, not a controlled speed comparison.",
+    "own_and_common_fresh_populations": true,
+    "common_fresh_selection": "Intersection of true fresh source IDs before reading GT/errors; report each individual coverage and common coverage to avoid success-only comparison",
+    "fixed_RPE_endpoint_plan": "Plan1second endpoints on all192 sensor timestamps before any success filtering; nearest endpoint tolerance20ms",
+    "GT_association": "Saved-only nearest GT<=20ms, one-to-one in source order, as frozen evaluator",
+    "alignment": "One positive Sim3 center alignment per run/population for monocular scale; no per-segment/GT-assisted runtime alignment",
+    "fresh_vs_EOF": "Separate fresh emitted pose population from12offline termination Updates and deleted/motion-skipped reconstruction",
+    "report": [
+      "all source rows including init/motion reject/failure",
+      "fresh coverage and counts",
+      "initialization time and source index",
+      "end-to-end per-source decode+undistort+crop+resize+normalize+encoder+sampling+corr+Update+BA+serialization/flush timing",
+      "time for sourceadmission until actual fresh publication",
+      "Update/BA/corr/encoder stage timings and degrees/edges",
+      "processing mean/p95/p99/max and interpublication gaps",
+      "fresh rate over entire input-active elapsed time including initialization",
+      "GT ATE/RPE rotation/translation with individual and common endpoint coverage",
+      "failures and EOF costs",
+      "source/weights/RNG beforeafter and cachecleanup"
+    ],
+    "timing_boundary": "Initial serial unpaced file replay may report processing throughput/software-admission latency only;20Hz physical-camera or paced-queue-age acceptance needs a separate paced latest-source test. Source loading/hash/model init, first8startup, reportI/O and EOF must be disclosed separately, not silently dropped.",
+    "target_not_yet_validated": "20fresh poses/s and<=100ms capture-to-publication latency; no frequency inferred from component warm time or retained/reconstructed rows.",
+    "quality_ratio_scope": "ATE/RPE loss vs original fullresFAST CPU at common fresh endpoints is DPVO workload quality, not original VGGT518 accuracy or dense-map quality."
+  },
+  "source_sha256": {
+    "official/evaluate_tum.py": "2548c77758885daa7c527cd7584aceb343442beefdc18ebdd07a1c6fc15fd1e6",
+    "official/config/fast.yaml": "24c82450151ce6e8431dfbf9dcc501a7a2747955a30a59f745bdc03bd84ce4c3",
+    "official/dpvo/config.py": "f70eaf98ef32a7ea5a675de571373e32d0a6d1354bea9d13c6a779eb68f50bec",
+    "official/dpvo/net.py": "1aee33d54f0b1cc1f3f842b60790ff1299ef9c1e20bca6467ce7114dca802acc",
+    "official/dpvo/dpvo.py": "7efcb45689c2da8d18e2c69774e221799c9f8472e99531955f55dcb145626fd7",
+    "official/dpvo/extractor.py": "f5cbcbe14c42e44bcec6e827a3429ebe93979a439ba9b9ef70d4f4baa3454a2b",
+    "official/dpvo/projective_ops.py": "ef20f322a118b0790bff975cce3120ad31e867c8b088a9f408c3328c0fb664c1",
+    "dpvo_stream/dpvo_stream.py": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde",
+    "dpvo_stream/v30_frame_encoder.py": "fc6fc662613a720cfb779a360a63906a593a96ff08addecb9d01cfd8767ca7a8",
+    "dpvo_fast/run-v34-dpvo-fast-board.py": "0f62c1df8ea68f88ec13b71b54f1f7b0b070736b7058ebd85fac013c2694b526",
+    "dpvo_fast/evaluate-v34-fast-trajectory.py": "09b7a090a8dffa2401693d61baff9fbf73ddf368deceadf2f3631137b81d55d8",
+    "dpvo_frame_cache/run-v36-fast-frame-cache-board.py": "bf34cbb2e4396f18e8160a9eab1dae2f482b3f0fda0cba8c5942e7ede0e85c7e",
+    "dpvo_frame_cache/dpvo_frame_corr.py": "9743962325ba1c4ada689769eaf800a617ba1f46f4602062a6dab3b23b5bdf48",
+    "dpvo_frame_cache/dpvo_frame_corr.cpp": "a04ab5a4b86cfd189ef194893b9b07c06742e21141056cc94a120b42c9d2899d",
+    "dpvo_geometry/dpvo_cpu_geometry_vectorized.py": "c893f12d188baced438504cfc592a8900e18e40ef8223af0a7e944e4484b0c3b"
+  },
+  "source_hashes_after": {
+    "official/evaluate_tum.py": "2548c77758885daa7c527cd7584aceb343442beefdc18ebdd07a1c6fc15fd1e6",
+    "official/config/fast.yaml": "24c82450151ce6e8431dfbf9dcc501a7a2747955a30a59f745bdc03bd84ce4c3",
+    "official/dpvo/config.py": "f70eaf98ef32a7ea5a675de571373e32d0a6d1354bea9d13c6a779eb68f50bec",
+    "official/dpvo/net.py": "1aee33d54f0b1cc1f3f842b60790ff1299ef9c1e20bca6467ce7114dca802acc",
+    "official/dpvo/dpvo.py": "7efcb45689c2da8d18e2c69774e221799c9f8472e99531955f55dcb145626fd7",
+    "official/dpvo/extractor.py": "f5cbcbe14c42e44bcec6e827a3429ebe93979a439ba9b9ef70d4f4baa3454a2b",
+    "official/dpvo/projective_ops.py": "ef20f322a118b0790bff975cce3120ad31e867c8b088a9f408c3328c0fb664c1",
+    "dpvo_stream/dpvo_stream.py": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde",
+    "dpvo_stream/v30_frame_encoder.py": "fc6fc662613a720cfb779a360a63906a593a96ff08addecb9d01cfd8767ca7a8",
+    "dpvo_fast/run-v34-dpvo-fast-board.py": "0f62c1df8ea68f88ec13b71b54f1f7b0b070736b7058ebd85fac013c2694b526",
+    "dpvo_fast/evaluate-v34-fast-trajectory.py": "09b7a090a8dffa2401693d61baff9fbf73ddf368deceadf2f3631137b81d55d8",
+    "dpvo_frame_cache/run-v36-fast-frame-cache-board.py": "bf34cbb2e4396f18e8160a9eab1dae2f482b3f0fda0cba8c5942e7ede0e85c7e",
+    "dpvo_frame_cache/dpvo_frame_corr.py": "9743962325ba1c4ada689769eaf800a617ba1f46f4602062a6dab3b23b5bdf48",
+    "dpvo_frame_cache/dpvo_frame_corr.cpp": "a04ab5a4b86cfd189ef194893b9b07c06742e21141056cc94a120b42c9d2899d",
+    "dpvo_geometry/dpvo_cpu_geometry_vectorized.py": "c893f12d188baced438504cfc592a8900e18e40ef8223af0a7e944e4484b0c3b"
+  },
+  "execution_in_this_policy_preparation": {
+    "model_forward_calls": 0,
+    "ORT_calls": 0,
+    "SDK_calls": 0,
+    "BA_calls": 0,
+    "native_feature_calls": 0,
+    "board_jobs": 0,
+    "real_images_decoded": 0
+  },
+  "image_size_hw": [
+    232,
+    304
+  ],
+  "intrinsics": [
+    258.65,
+    258.25,
+    151.05,
+    123.4
+  ],
+  "research_trial": {
+    "schema": "v45_single_variable_initial_motion_threshold_trial",
+    "parent_policy_sha256": "cc6a31f89bdcff0b43c0d51266ad62c48d0e297346845a98d42bad5c8874ef4a",
+    "parent_cached_CPU_driver_sha256": "18ad8f7bc3cc48790d2329b35372fd77473942c698cd3e7e291298194e498c2d",
+    "parent_cached_CPU_run_sha256": "c1f0a4636601fb1cd702ca57018af5fd937ecdbb9e722b0293428810bf66d05d",
+    "baseline_stream_sha256": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde",
+    "approved_candidate_stream_sha256": "bcc7cea80c758b49c2abef1a4bd961ff130a0144fe2d0f7e5db76009754ca8ce",
+    "runtime_parameter_changes": [
+      {
+        "path": "DPVOStream.process_encoded.initial_motion_rejection_threshold",
+        "before": 2.0,
+        "after": 1.0,
+        "unit": "CNN feature-grid pixels (image pixels divided by original RES4 once)"
+      }
+    ],
+    "stream_config_identical_to_original_half_policy": true,
+    "keyframe_threshold_feature_pixels_unchanged": 15.0,
+    "candidate_stream_source_delta": "Exactly if probe<2.0 -> probe<1.0 and reason initial_motion_below_2 -> initial_motion_below_1; all other bytes unchanged.",
+    "threshold_selected_from_feature_pixel_units_not_GT": true,
+    "learned_delta_exact_resolution_scaling_claimed": false,
+    "old_feedback_inputs_or_gold_reused_after_admission_change": false,
+    "common_fresh_and_all_192_source_coverage_required": true,
+    "quality_10_percent_and_20_percent_limits_unchanged": true,
+    "candidate_accepted": false,
+    "realtime_validated": false,
+    "trajectory_accuracy_validated": false
+  }
+}

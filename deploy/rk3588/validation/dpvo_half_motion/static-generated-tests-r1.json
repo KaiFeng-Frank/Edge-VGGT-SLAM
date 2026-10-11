@@ -1,0 +1,35 @@
+{
+  "schema": "v45_half_motion_static_generated_tests",
+  "status": "passed",
+  "source_sha256": {
+    "run-v45-half-motion-cpu-board.py": "3b0a5b809cab8277e1275bb0b3d4bacd99c14622e9b4091d980286276457543a",
+    "dpvo_stream_motion1.py": "bcc7cea80c758b49c2abef1a4bd961ff130a0144fe2d0f7e5db76009754ca8ce",
+    "evaluate-v45-half-motion.py": "b414dd484781ae4c45b5d42ce3b0f6919f731020dfeb20ad02d7be1a3997869d",
+    "test_v45_half_motion.py": "c5ca93e923aa554ed2994e8423cdc8953444799ed0751cd092ca10e1cdc0a32d",
+    "test_v45_half_motion_evaluation.py": "ddba7e904ffedc3b3f6c400575f623a55e1587caf63a955ccedfd54b22bbc997"
+  },
+  "policy_sha256": "ca0f1632f73765c913cd707c03df54d45b03d136f45e33b6cc034ac85cb2e7b4",
+  "source_loader_audit_sha256": "cf8132dc777e8a866e7902861228b456344ae0e4e48043f7daeca94a04ad3944",
+  "static_compile_python_files": 5,
+  "CLI_help_driver_and_evaluator": true,
+  "tiny_generated_tests": {
+    "two_line_source_isolation_and_actual_lifecycle_fake_probe_bounds_RNG_failure": {
+      "passed": 5,
+      "reported_seconds": 0.019
+    },
+    "saved_schema_first_admission_divergence_fixed_three_primary_gates": {
+      "passed": 5,
+      "reported_seconds": 0.036
+    }
+  },
+  "tests_only_generated_arrays_or_JSON": true,
+  "numpy_version": "2.4.4",
+  "Python_version": "3.13.11",
+  "model_forward_calls": 0,
+  "ORT_calls": 0,
+  "SDK_calls": 0,
+  "native_calls": 0,
+  "BA_calls": 0,
+  "board_jobs": 0,
+  "real_images_decoded": 0
+}

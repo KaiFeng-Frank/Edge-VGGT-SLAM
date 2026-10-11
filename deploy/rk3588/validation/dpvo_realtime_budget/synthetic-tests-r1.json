@@ -1,0 +1,26 @@
+{
+  "schema": "v45_generated_source_math_tests",
+  "status": "passed",
+  "actual_model_native_or_board_execution": false,
+  "passed": 25,
+  "failed": 0,
+  "skipped": 0,
+  "groups": [
+    {
+      "file": "test_v45_saved_performance.py",
+      "sha256": "de1f4878c0a216193a86bfbaabb98616e30f239152bef63502af6322d5d6965b",
+      "passed": 8
+    },
+    {
+      "file": "test_v45_dot4_math.py",
+      "sha256": "a0cca9d1fa9bb6858ec0be9c57368641503f5ae2ed94243430f783bbdb58cfc5",
+      "passed": 14
+    },
+    {
+      "file": "test_v45_dot4_ab_source.py",
+      "sha256": "b6e159685275f8146b218cedac009f5840fe324ec69d7f49a0e17b5ee7e82ee7",
+      "passed": 3
+    }
+  ],
+  "scope": "Generated NumPy/timing records, code checks and host refusal. Root actual board evidence is separate."
+}

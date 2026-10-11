@@ -1,0 +1,558 @@
+{
+  "schema": "v45_motion1_saved_capture_source_RNG_audit",
+  "status": "passed_saved_only",
+  "audit_source_sha256": "d725f989a10c10474fa958bc7b776eb4ef9b22b023c41f5d10e2ff23ef004bf6",
+  "run_sha256": "c6a3ef8a5a063fc8dfa1319841ea782f38c9cc1822ce7058aa312cec4665f7e3",
+  "evaluation_sha256": "6f3009ce17ca920d3669d61748bdeacc95049c92bd9c766514d2a38a5cb8078b",
+  "half_baseline_run_sha256": "c1f0a4636601fb1cd702ca57018af5fd937ecdbb9e722b0293428810bf66d05d",
+  "full_baseline_run_sha256": "a0f18920b156f9f819630b591fa71af25f5e869a9a160ccd5c7d4b471218162e",
+  "candidate_driver_sha256": "3b0a5b809cab8277e1275bb0b3d4bacd99c14622e9b4091d980286276457543a",
+  "original_cached_driver_sha256": "18ad8f7bc3cc48790d2329b35372fd77473942c698cd3e7e291298194e498c2d",
+  "actual_run_schema": "v45_half_motion1_original_Torch_CPU_research_replay",
+  "actual_run_status": "completed_unpaced_half_motion1_Torch_CPU_research_not_realtime",
+  "same_original_192_source_rows": true,
+  "first_fresh_source_index": 11,
+  "first_admitted_source_indices": [
+    0,
+    1,
+    2,
+    3,
+    5,
+    8,
+    9,
+    11
+  ],
+  "initialization_rejected_source_indices": [
+    4,
+    6,
+    7,
+    10
+  ],
+  "source_result_first_divergence": {
+    "expected_prefix_source_indices": [
+      0
+    ],
+    "source0_nonclock_exact_match": true,
+    "first_nonclock_frame_difference": 1,
+    "first_admission_decision_difference": 1,
+    "observation1_same_original_motion_probe": true,
+    "observation1_expected_threshold_admission_change_verified": true,
+    "observation1_baseline_motion_probe": 1.0345186591148376,
+    "observation1_candidate_motion_probe": 1.0345186591148376,
+    "observation1_baseline_admitted": false,
+    "observation1_candidate_admitted": true,
+    "trial_isolation_verified": true,
+    "ignored_fields": "Only dictionary keys ending _seconds or _monotonic; sensor timestamps and numerical diagnostics retained",
+    "old_gold_or_capture_comparison_after_admission_divergence": false,
+    "source_state_scope": "Saved JSON only; subsequent admissions/graphs/poses come from the actual new feedback path, never replayed old probes or gold"
+  },
+  "random_generator_before": {
+    "shape": [
+      5056
+    ],
+    "dtype": "uint8",
+    "bytes": 5056,
+    "tensor_sha256": "6c55a796f5b24316dc71bac2876cfd9d1924b9de63663bcd778fd5ea1f364b62"
+  },
+  "random_generator_after": {
+    "shape": [
+      5056
+    ],
+    "dtype": "uint8",
+    "bytes": 5056,
+    "tensor_sha256": "63c7fff8e7d1149ca77a55e9539e76ae81210d264f437b148ad7cf3f7abe00e6"
+  },
+  "random_depth_draw_calls": 192,
+  "half_terminal_RNG_metadata_equal": true,
+  "raw_RNG_state_array_reread": false,
+  "original94_weight_metadata_stable": true,
+  "sources_stable_in_saved_metadata": true,
+  "cleanup_errors": [],
+  "all_contexts_closed_in_saved_metadata": true,
+  "reread_NPZ_files": 6,
+  "reread_arrays": 27,
+  "captures": [
+    {
+      "frame_index": 11,
+      "update_index": 11,
+      "edges": 704,
+      "same_call_original_Torch_reported": true,
+      "entire_active_graph_reported": true,
+      "callback_stage": "stream",
+      "source_slots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "source_degrees": [
+        4,
+        5,
+        6,
+        7,
+        7,
+        6,
+        5,
+        4
+      ],
+      "input": {
+        "file": "update-011-input.npz",
+        "bytes": 4664742,
+        "sha256": "81bbb771527a3de6b49d88b3ee8da7f29c353d1e80e24f24b7c488a6d24f8b7e",
+        "arrays": {
+          "net": {
+            "shape": [
+              1,
+              704,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1081344,
+            "tensor_sha256": "58cdfddc94f4e1e728423476756514be49868538ddd9bc7c33c15467e2dd2be1",
+            "finite": true,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "inp": {
+            "shape": [
+              1,
+              704,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1081344,
+            "tensor_sha256": "ee1f4bc929895d20d8b8c79256508a3322d8c85236cdf42f6658fba38f9c4154",
+            "finite": true,
+            "min": -2.960238456726074,
+            "max": 2.5847582817077637
+          },
+          "corr": {
+            "shape": [
+              1,
+              704,
+              882
+            ],
+            "dtype": "float32",
+            "bytes": 2483712,
+            "tensor_sha256": "a56a3227aac997ed577a6f3231c18d3664b88d2f3369e3f3833ac9675161997f",
+            "finite": true,
+            "min": -3.254505157470703,
+            "max": 13.765219688415527
+          },
+          "ii": {
+            "shape": [
+              704
+            ],
+            "dtype": "int64",
+            "bytes": 5632,
+            "tensor_sha256": "ae0d8bdaeed9787cef617ed795d3bfebf4d8a8c4c4fcca4d8634be638eb13b37",
+            "finite": true,
+            "min": 0.0,
+            "max": 7.0
+          },
+          "jj": {
+            "shape": [
+              704
+            ],
+            "dtype": "int64",
+            "bytes": 5632,
+            "tensor_sha256": "444af316c4e37ea4c476cbab9842c78855e87a30e1cf4c1b627022a45cc84f82",
+            "finite": true,
+            "min": 0.0,
+            "max": 7.0
+          },
+          "kk": {
+            "shape": [
+              704
+            ],
+            "dtype": "int64",
+            "bytes": 5632,
+            "tensor_sha256": "98c7810b713a03c6a7f78a81a0ec66e20e881e87555b6c24b88a74570fbd36a7",
+            "finite": true,
+            "min": 0.0,
+            "max": 127.0
+          }
+        }
+      },
+      "gold": {
+        "file": "update-011-gold.npz",
+        "bytes": 1093354,
+        "sha256": "a0d8cd37a369d1763176be41b2de69a1874d3eb8aa86e684e9f9f237c4e6a447",
+        "arrays": {
+          "net": {
+            "shape": [
+              1,
+              704,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1081344,
+            "tensor_sha256": "61697cff2d255de1fc4a4896478da920100217fe244d2fd1934c6b0e27ef49e0",
+            "finite": true,
+            "min": -8.620288848876953,
+            "max": 5.766811847686768
+          },
+          "delta": {
+            "shape": [
+              1,
+              704,
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 5632,
+            "tensor_sha256": "63afce5f6e89337ceb6628bd41ebffcd4b8b0a13c952fe966605b2bfe0fb39f9",
+            "finite": true,
+            "min": -6.708125114440918,
+            "max": 8.936150550842285
+          },
+          "weight": {
+            "shape": [
+              1,
+              704,
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 5632,
+            "tensor_sha256": "74e4d516ada895437d4addd9df6d24a8c1ce1a8f22d0e7d57735e771098fb157",
+            "finite": true,
+            "min": 1.6545761809538817e-06,
+            "max": 0.9842782616615295
+          }
+        }
+      },
+      "original_callback_AST_identical": true,
+      "old_gold_comparison": false
+    },
+    {
+      "frame_index": 127,
+      "update_index": 138,
+      "edges": 800,
+      "same_call_original_Torch_reported": true,
+      "entire_active_graph_reported": true,
+      "callback_stage": "stream",
+      "source_slots": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "source_degrees": [
+        6,
+        7,
+        6,
+        6,
+        6,
+        6,
+        5,
+        4,
+        4
+      ],
+      "input": {
+        "file": "update-127-input.npz",
+        "bytes": 5300646,
+        "sha256": "79e169043654be8e7b93482aed5c688c66d0320442f1478e6fde44e679bd59d8",
+        "arrays": {
+          "net": {
+            "shape": [
+              1,
+              800,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1228800,
+            "tensor_sha256": "9b81522575ddaf6a19114961c0425851cbb62d35674c605c91b3aceea9df40e3",
+            "finite": true,
+            "min": -14.205774307250977,
+            "max": 11.660886764526367
+          },
+          "inp": {
+            "shape": [
+              1,
+              800,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1228800,
+            "tensor_sha256": "0c95c571d6e4142832c4f409eab7021743acb0fe1d4ba6523d72470521e8505d",
+            "finite": true,
+            "min": -2.960238456726074,
+            "max": 2.5847582817077637
+          },
+          "corr": {
+            "shape": [
+              1,
+              800,
+              882
+            ],
+            "dtype": "float32",
+            "bytes": 2822400,
+            "tensor_sha256": "7aea4182f25f728bdcdc298d5521766dc6967b0a1c4ace8651f3dcaf3794c587",
+            "finite": true,
+            "min": -2.9405078887939453,
+            "max": 13.33497428894043
+          },
+          "ii": {
+            "shape": [
+              800
+            ],
+            "dtype": "int64",
+            "bytes": 6400,
+            "tensor_sha256": "6f369d61bc1f782600e9a4da7be5947fc9dc4b448d58a756664205a330d34c25",
+            "finite": true,
+            "min": 2.0,
+            "max": 10.0
+          },
+          "jj": {
+            "shape": [
+              800
+            ],
+            "dtype": "int64",
+            "bytes": 6400,
+            "tensor_sha256": "d3bfc08d854fc1052cb9cd9b6e4c2f5572dc76b4ff5a3d5e38cfcbf6efd9ab5f",
+            "finite": true,
+            "min": 0.0,
+            "max": 10.0
+          },
+          "kk": {
+            "shape": [
+              800
+            ],
+            "dtype": "int64",
+            "bytes": 6400,
+            "tensor_sha256": "c8960e6e846540b8c6be1712b37019ebe5217e4eef2439a324c5e35984c543f1",
+            "finite": true,
+            "min": 32.0,
+            "max": 175.0
+          }
+        }
+      },
+      "gold": {
+        "file": "update-127-gold.npz",
+        "bytes": 1242346,
+        "sha256": "1f2b5d0d8afca124d4f437cdffb04be02979a06cd82132d209465937062d7d28",
+        "arrays": {
+          "net": {
+            "shape": [
+              1,
+              800,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1228800,
+            "tensor_sha256": "fd01297c800dde00e7ad6e1938fddf84050096e25c04fb03b06a9049b38c6d96",
+            "finite": true,
+            "min": -15.013586044311523,
+            "max": 11.183902740478516
+          },
+          "delta": {
+            "shape": [
+              1,
+              800,
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 6400,
+            "tensor_sha256": "9332115db711e7a917e76249e50c703b459bad13e07a56417357dd8fb46fb824",
+            "finite": true,
+            "min": -12.541718482971191,
+            "max": 31.79364776611328
+          },
+          "weight": {
+            "shape": [
+              1,
+              800,
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 6400,
+            "tensor_sha256": "90fb095d66ab23a6f5348809c56b424c6a89eaa0ad78b3e79a118f3b2c388bc3",
+            "finite": true,
+            "min": 8.766086523337435e-08,
+            "max": 0.9999896287918091
+          }
+        }
+      },
+      "original_callback_AST_identical": true,
+      "old_gold_comparison": false
+    },
+    {
+      "frame_index": 191,
+      "update_index": 202,
+      "edges": 784,
+      "same_call_original_Torch_reported": true,
+      "entire_active_graph_reported": true,
+      "callback_stage": "stream",
+      "source_slots": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source_degrees": [
+        7,
+        6,
+        6,
+        6,
+        5,
+        6,
+        5,
+        4,
+        4
+      ],
+      "input": {
+        "file": "update-191-input.npz",
+        "bytes": 5194662,
+        "sha256": "9e8a74037c2580b335a975f0a9b988c9307b7f9c18748772bff3d2afef701290",
+        "arrays": {
+          "net": {
+            "shape": [
+              1,
+              784,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1204224,
+            "tensor_sha256": "0ea698127e4a87b783cb4d2d1d16c522f9ca6a8128b764b77837e58881c38077",
+            "finite": true,
+            "min": -14.216350555419922,
+            "max": 10.969308853149414
+          },
+          "inp": {
+            "shape": [
+              1,
+              784,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1204224,
+            "tensor_sha256": "01836855d9b037ee19e979850dc412d0221cb855688ac74832bb236a99638b86",
+            "finite": true,
+            "min": -2.960238456726074,
+            "max": 2.5847582817077637
+          },
+          "corr": {
+            "shape": [
+              1,
+              784,
+              882
+            ],
+            "dtype": "float32",
+            "bytes": 2765952,
+            "tensor_sha256": "4aba6955508e91dfef1f694d7bbf04d372ec8b92feae14e2ebb5a7ede5d37bfd",
+            "finite": true,
+            "min": -3.046165704727173,
+            "max": 13.33497428894043
+          },
+          "ii": {
+            "shape": [
+              784
+            ],
+            "dtype": "int64",
+            "bytes": 6272,
+            "tensor_sha256": "3e3768f87cb218cc16a132d36f318afbdfe43b5f5d0ea7858bf87054b533e9a7",
+            "finite": true,
+            "min": 3.0,
+            "max": 11.0
+          },
+          "jj": {
+            "shape": [
+              784
+            ],
+            "dtype": "int64",
+            "bytes": 6272,
+            "tensor_sha256": "ce3695748d7fd4db874cc6ad521f728d6cde4ed54454feb20232c774e3882eca",
+            "finite": true,
+            "min": 0.0,
+            "max": 11.0
+          },
+          "kk": {
+            "shape": [
+              784
+            ],
+            "dtype": "int64",
+            "bytes": 6272,
+            "tensor_sha256": "8095790883748635a34db3da6e99e165b268edbfb011615f9ea46dca03396eca",
+            "finite": true,
+            "min": 48.0,
+            "max": 191.0
+          }
+        }
+      },
+      "gold": {
+        "file": "update-191-gold.npz",
+        "bytes": 1217514,
+        "sha256": "a367123f4242e5f54df8785803fb31bbc1e9c1c9536817d26c0cb5f542fe905e",
+        "arrays": {
+          "net": {
+            "shape": [
+              1,
+              784,
+              384
+            ],
+            "dtype": "float32",
+            "bytes": 1204224,
+            "tensor_sha256": "26e8462d7360eb0db1d07b7e56a8d33bd02af716a688bd8e65eb2df5a857af26",
+            "finite": true,
+            "min": -15.772077560424805,
+            "max": 10.963409423828125
+          },
+          "delta": {
+            "shape": [
+              1,
+              784,
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 6272,
+            "tensor_sha256": "66015e88f080e29310897f044fff5d83ee87cd7b7c0f6e653cf2ca97e6a45edc",
+            "finite": true,
+            "min": -15.981590270996094,
+            "max": 9.914169311523438
+          },
+          "weight": {
+            "shape": [
+              1,
+              784,
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 6272,
+            "tensor_sha256": "66f9dbbc63a55a3ea3958c73b0bb94bb60d037cd6258d01f1f50c54f035a4b78",
+            "finite": true,
+            "min": 6.41103037324342e-09,
+            "max": 0.9999932050704956
+          }
+        }
+      },
+      "original_callback_AST_identical": true,
+      "old_gold_comparison": false
+    }
+  ],
+  "capture_semantics": "Each gold is the output of its own actual original Torch callback on this new motion1 path. Observation11 is the first full initialization callback, not old observation34 gold or the last of its12 initialization Updates.",
+  "limits": [
+    "Array bytes/SHA, shape, dtype, finite/domain and same-call descriptors were reread. Original Torch callback source AST matches the frozen parent.",
+    "No teacher equivalence, old capture comparison, model rerun, or trajectory acceptance inferred from captures.",
+    "Source/weight/RNG/close facts are saved metadata; raw RNG state or live SDK/context was not reconstructed."
+  ],
+  "model_forward_calls": 0,
+  "ORT_calls": 0,
+  "SDK_calls": 0,
+  "native_calls": 0,
+  "BA_calls": 0,
+  "images_read": 0,
+  "board_jobs": 0
+}

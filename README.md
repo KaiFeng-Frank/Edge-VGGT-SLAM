@@ -14,6 +14,16 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
 
+## Closed-cache replay, initialization coverage and runtime budget (v45)
+
+The optional DPVO research path completes the closed-flag cache integration on RK3588S: **192 observations, 158 fresh poses, 3.006 Hz and fresh software P95 338.112 ms**. All 192 non-clock results and 55 saved-array pairs match v44 bitwise; completed EOF and resource cleanup are preserved. This is unpaced dataset replay, with unchanged trajectory errors and the original FP32 rejection. [Source and reproduction](deploy/rk3588/validation/dpvo_online_replay/V45.md), [saved evidence](results/dpvo_closed_online_v45.json).
+
+A separate original-Torch CPU trial changes only the half-resolution initialization motion threshold 2→1, retaining keyframe threshold 15. It publishes **181/192 fresh poses**, starting at observation 11 instead of 34, but greater coverage does not guarantee better accuracy. Against the original half workload on common observations, ATE rises 7.22%, rotation RPE falls 21.42%, and translation RPE rises 13.16%; comparison with full-resolution FAST still fails both 10% and 20% quality limits. [Isolated source, full coverage and quality evidence](deploy/rk3588/validation/dpvo_half_motion/README.md).
+
+A board-built NEON correlation candidate shares each patch load across four independent target dots while preserving each output's original sum order. Four saved full-resolution graph cases pass the original CPU tolerance and match the previous native outputs bitwise across 32 calls. This component is not yet integrated into the half-resolution online replay. [Kernel source and measured scope](deploy/rk3588/validation/dpvo_corr_dot4/README.md).
+
+[Engineering records 86–89](docs/ENGINEERING_NOTES.md) preserve the causes, reproducible fixes and remaining runtime budget. Nested SDK and callback clocks are reported separately; their sums must not be mistaken for additional wall time. The published additions pass [83 generated/fake checks](results/synthetic_validation_v45.json). Default VGGT and model-weight license boundaries remain unchanged. The real-time, mapping, physical-camera, endurance and 8 GB targets remain unvalidated.
+
 ## Native recurrent replay and isolated engineering fixes (v44)
 
 The optional DPVO research path now completes the 192-observation native-input replay with **fresh-pose throughput of 2.921 Hz (158/54.094 s)**, with fresh software admission-to-publication **P95 366.794 ms** and peak process RSS **515.508 MiB** on the 16 GB RK3588S. All 192 non-clock results and 55 saved-array pairs, including final state and completed EOF, match v43 bitwise. This remains unpaced file replay, with unchanged trajectory error and historical FP32 rejection. [Replay source and evidence](deploy/rk3588/validation/dpvo_online_replay/V44.md).

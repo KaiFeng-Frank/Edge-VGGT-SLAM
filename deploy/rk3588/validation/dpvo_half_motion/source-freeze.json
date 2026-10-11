@@ -1,0 +1,81 @@
+{
+  "schema": "v45_half_motion_public_source_and_saved_receipt_freeze",
+  "status": "frozen_actual_CPU_trial_failed_fullFAST_quality_target_not_adopted",
+  "files": {
+    "run-v45-half-motion-cpu-board.py": {
+      "bytes": 24525,
+      "sha256": "3b0a5b809cab8277e1275bb0b3d4bacd99c14622e9b4091d980286276457543a"
+    },
+    "dpvo_stream_motion1.py": {
+      "bytes": 30279,
+      "sha256": "bcc7cea80c758b49c2abef1a4bd961ff130a0144fe2d0f7e5db76009754ca8ce"
+    },
+    "evaluate-v45-half-motion.py": {
+      "bytes": 21444,
+      "sha256": "b414dd484781ae4c45b5d42ce3b0f6919f731020dfeb20ad02d7be1a3997869d"
+    },
+    "audit-v45-motion-saved.py": {
+      "bytes": 10625,
+      "sha256": "d725f989a10c10474fa958bc7b776eb4ef9b22b023c41f5d10e2ff23ef004bf6"
+    },
+    "test_v45_half_motion.py": {
+      "bytes": 6202,
+      "sha256": "c5ca93e923aa554ed2994e8423cdc8953444799ed0751cd092ca10e1cdc0a32d"
+    },
+    "test_v45_half_motion_evaluation.py": {
+      "bytes": 3751,
+      "sha256": "ddba7e904ffedc3b3f6c400575f623a55e1587caf63a955ccedfd54b22bbc997"
+    },
+    "policy-motion1.json": {
+      "bytes": 16258,
+      "sha256": "ca0f1632f73765c913cd707c03df54d45b03d136f45e33b6cc034ac85cb2e7b4"
+    },
+    "README.md": {
+      "bytes": 10027,
+      "sha256": "721fe58b22f5902ce46199175b5f1dc8ff9992a6801090ef2f89b693c46c19e5"
+    },
+    "LICENSE": {
+      "bytes": 1088,
+      "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a"
+    },
+    "candidate-driver.diff": {
+      "bytes": 13529,
+      "sha256": "26443311986a96e3388a1d36b08067c7b3bb0939bf7ae2c3462cad53cd9d8a73"
+    },
+    "candidate-stream.diff": {
+      "bytes": 1164,
+      "sha256": "6fdc6e5a393d0402783aeb72b8eaac58d70a12de707cb11ee4438f629ef648c3"
+    },
+    "source-loader-audit-r1.json": {
+      "bytes": 3586,
+      "sha256": "cf8132dc777e8a866e7902861228b456344ae0e4e48043f7daeca94a04ad3944"
+    },
+    "static-generated-tests-r1.json": {
+      "bytes": 1450,
+      "sha256": "9a14507f5197c12905ebf395530697bcc42a6343ba7e80c10a6c527fd88c62dd"
+    },
+    "actual-motion1-evaluation-r1.json": {
+      "bytes": 172978,
+      "sha256": "6f3009ce17ca920d3669d61748bdeacc95049c92bd9c766514d2a38a5cb8078b"
+    },
+    "actual-motion1-saved-evidence-r1.json": {
+      "bytes": 16370,
+      "sha256": "69213fb31cdf2cd9a3513010c795080f9aeb0b1bb29b0e6502d506e5d56859e7"
+    }
+  },
+  "actual_candidate_run_sha256": "c6a3ef8a5a063fc8dfa1319841ea782f38c9cc1822ce7058aa312cec4665f7e3",
+  "frozen_parent_cached_CPU_driver_sha256": "18ad8f7bc3cc48790d2329b35372fd77473942c698cd3e7e291298194e498c2d",
+  "frozen_parent_policy_sha256": "cc6a31f89bdcff0b43c0d51266ad62c48d0e297346845a98d42bad5c8874ef4a",
+  "frozen_original_stream_sha256": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde",
+  "frozen_v39_evaluator_sha256": "56905a1c1906c7730b841e58f22b0460140875fc2bc616464452e907360baf4f",
+  "frozen_v34_math_sha256": "09b7a090a8dffa2401693d61baff9fbf73ddf368deceadf2f3631137b81d55d8",
+  "original_weights_checkpoint_sha256": "30d02dc2b88a321cf99aad8e4ea1152a44d791b5b65bf95ad036922819c0ff12",
+  "actual_run_schema": "v45_half_motion1_original_Torch_CPU_research_replay",
+  "actual_run_status": "completed_unpaced_half_motion1_Torch_CPU_research_not_realtime",
+  "root_performed_board_model_execution": true,
+  "agent_model_OR_SDK_OR_BA_execution": false,
+  "candidate_accepted": false,
+  "realtime_validated": false,
+  "published_checkpoint_OR_model_OR_NPZ_OR_library": false,
+  "license": "MIT; DPVO attribution Princeton Vision & Learning Lab"
+}
