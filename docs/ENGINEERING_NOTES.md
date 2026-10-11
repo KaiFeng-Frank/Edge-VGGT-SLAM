@@ -191,3 +191,55 @@
 - **性能与状态：** 四轮共 **1.169 s**，Update 占 **56.6%**、两步 BA 占 **31.6%**、相关性占 **7.2%**。计时包含重投影、包装/输出拷贝及诊断，排除此前 CNN 捕获、一次加载/缓存准备和文件写入；没有控制温度/频率。下一步对 Update 及 BA 分别优化后，仍须重测整个步骤。缓存关闭后为零，原源码、输入和 94 个权重张量未变。
 - **验证边界：** 各轮学习目标与权重会变化，以上残差不能串成统一损失曲线，更不能等同 GT 精度。初始化为 identity/unit-depth，并非官方八帧初始化；尚无新帧准入、关键帧删除、回环、在线轨迹或实时验收。峰值 RSS **341.164 MiB** 仅属本次进程，排除了另一次 CNN 捕获。
 - **链接：** [四轮真实反馈、独审和性能分解](../results/dpvo_feedback_v28.json)、[保存数组审计器](../deploy/rk3588/validation/dpvo_geometry/audit-v28-dpvo-feedback.py)。
+
+## 25. 误差门槛通过，仍须检查置信权重的值域
+
+**现象与证据：** 原 Update 的板端 CPU ORT 输出通过 rtol=1e-4 / atol=1e-5，但 Sigmoid 权重最小为 −1.1920928955078125e-7。它在绝对误差容限内，却违反 BA 的非负权重约束，不能裁零后继续使用。
+
+**办法与验证：** 仅将末端 Sigmoid 表示为 exp(min(x,0))/(1+exp(-abs(x)))。对有限输入，它数学等价且两个指数的自变量均非正；原权重、其余节点及 I/O 不变，未增加 output clipping。四种真实图/状态的 16 次板端 CPU ORT 比较均通过原门槛和权重值域，最小权重 1.5825583066231275e-9。
+
+**边界与状态：** 这是已测 CPU ORT 样本上的修正，不是 RKNN 数值验收、反馈 rollout 或轨迹证明。依据：[Update CPU 对照](../results/dpvo_update_cpu_v29.json)，实际收据 SHA 98b5e47b8558cc4440945e882729940464366e0fd27c2905599de6b0358dc485；改写器 rewrite-v29-weight-sigmoid.py。
+
+## 26. BA 批量化须保留自连接、重复索引和累加顺序
+
+**问题与办法：** 高级索引 += 不能保证重复索引全部累加；ii==jj 的边须先合并 Ji+Jj 再计算二次项，否则丢交叉项。新版按原边顺序分块构造 Jacobian，以 np.add.at 累加重复槽位，保持 active mask、权重约束、Schur damping、左乘 SE3、逆深度约束及失败不提交语义。
+
+**验证：** 四个真实冻结状态，旧/新各首调用和三次交错 warm 调用；另八次仪器化 BA 暴露两步系统，不纳入普通计时。八份保存结果的 224 个张量逐字节相同，六个末端输出也与 v28 实际反馈一致；独立 saved-array 审计 3,381 项通过，主机未重跑 BA。
+
+**性能边界：** 两步 BA warm 均值由 72.309–72.569 ms 降至 13.981–14.058 ms，组件比值 5.158–5.172×。四核 affinity、OPENBLAS_NUM_THREADS=1；同进程交错、未控温，计时不含 CNN、相关性、Update、新帧或完整反馈，不能折算为 VO/20 Hz。依据：[BA 对照](../results/dpvo_geometry_v29.json)，板收据 SHA c870b31ad5b5ed96e8f178b92f3b7badb710b023eb31a845f934868e0b5fa2b4，独审 SHA b8b2c0d69fd1e47e4d660ce488d0b6a1160b2068dcc383f8a01fa4523da89d69。
+
+## 27. 输出 tap 会改变融合，不能直接定位原图首个故障
+
+**证据：** Update 诊断图的声明输出中，最早暴露的非有限张量是 /Exp_output_0；此前暴露的 /Where_output_0 和 /ReduceMax_output_0 已有显著数值偏差。这只是该仪器化图的观测顺序。
+
+**办法与边界：** 同时保留原图和带 tap 图的编译/运行收据，记录逐张量 finite/NaN/Inf 及 CPU 对照，正常计时与 profile 分列。tap 可阻止融合或改变调度，不能据此断言原图对应内部 kernel 是首个故障或唯一根因；诊断图末端全 finite 也不等于数值正确。
+
+**状态：** 原因未确认，候选未验收。依据：[RKNN 诊断](../results/dpvo_update_rknn_v29.json)，tap 独审 SHA 12a567e4225271e9507b52309c8d6cf5fa6f0c9add42ae8da1b6d28d83d910b0。
+
+## 28. 去掉 −inf 常量，不等于消除了数值故障
+
+**假设与办法：** 分组 ReduceMax 用 −inf 填充无效槽。固定拓扑确保真实成员在前、非空组首槽是真实成员时，用首个真实 logit 填充其 padding 不改变最大值。空组防护、mask、分母及学习权重保留，不改成任意大负数近似。
+
+**验证与结论：** 16 个 CPU ORT 状态保持原逐元素门槛，但 Sigmoid 负权重仍在；实际 E864 RKNN 仍出现 NaN/Inf、未数值验收。有限常量只是受拓扑及有限 logit 约束约束的等价改写，失败证据不支持“−inf 是唯一根因”。编译完成、target 映射及 SDK 返回成功不能代替输出检查。
+
+**依据：** rewrite-v29-dpvo-group-max.py 与 [失败收据](../results/dpvo_update_rknn_v29.json)。CPU SHA 7b3cbb0f5d4a17787f535bc6a4e1e60858b03a6f72545ba00d131ea25f2bb974；RKNN SHA 5cc604e09c959c620ee2dca114199091bc64401f5d9bb3fdb17df04ded052e8c。
+
+## 29. Where 的乘加改写必须先证明两侧都有限
+
+**新实验：** 在有限 padding 候选上，将六个 Where(c,x,y) 表示为 float(c)*x+(1-float(c))*y，保留原权重及其余节点，不改变选择约束或误差门槛。
+
+**前提与风险：** mask 须为精确二值，运行时两侧均有限。0*Inf 或 0*NaN 会污染输出，检查图内常量有限不足以证明运行时中间张量安全；不能把带 −inf 的原图直接照搬为乘加。
+
+**状态：** 此候选已完成 11 次正常 SDK 调用和另一次 profile，输出均 finite 且权重值域通过，但原 FP32 比较仍拒绝，不能因消除 NaN/Inf 提前采用。CPU 对照也仍有原 Sigmoid 的负权重问题。乘加改写没有因此取得数值验收、可用于 BA 或性能结论；完整审计由对应结果收据保存。 实际 profile 仍有 100 个内部 NPU 算子、24 个内部 CPU 算子及 16 个 CPU I/O，不能称为全 NPU。
+
+**依据：** rewrite-v29-finite-where.py、[CPU 对照](../results/dpvo_update_cpu_v29.json)、[RKNN 对照](../results/dpvo_update_rknn_v29.json)。当前 CPU SHA 11a7d78d77e59ed89f3076f9bdfa78313b1cbed1b468ef7d3fcabee7a357012a；SDK SHA 9dd4ff2d8a5dfbf247632007d79b838b768c0abb6004f6eab68d2ac2f511a367。
+
+## 30. 同当前状态的一步神经对照，不是独立的黄金轨迹
+
+**办法与证据：** 将已验收的稳定 Sigmoid CPU ORT Update 接回真实反馈：当前 pose/depth 重投影→native correlation→保留 net 的 ORT Update→target=center+delta→两步 vectorized BA，循环四轮。每轮另用原 Torch Update 消费同一当前 corr 与 ORT 的 recurrent net，核原固定 FP32 门槛和权重值域。实际四轮、八步 BA 全部完成，清理无错误。
+
+**边界：** 原 Torch 是相同当前输入的一步参考，不是从初始化独立运行的黄金 recurrent trajectory。pose/逆深度变化、残差降低及该门槛通过，均不能替代 GT、独立轨迹或在线 VO 验证。
+
+**计时：** 固定三个已捕获视图的四轮反馈合计 438.817 ms，均值 109.704 ms；分项 Update 228.592 ms、BA 59.238 ms、correlation 95.842 ms。独立 Torch 对照、加载、准备、hash/保存另列，实际整个研究 driver 4.076 s。历史 v28 四轮 1.169 s 未作同期受控 AB，不宣称公平整体加速比；还不含 CNN、新帧或官方八帧初始化，不是 20 Hz。
+
+**状态与依据：** 固定图 CPU ORT 反馈研究通过，完整 VO/轨迹/实时未验证。[反馈收据](../results/dpvo_feedback_v29.json)，实际原始收据 SHA 00b10efa4ce0cda15325dfcc73f9983f214c4ccda6d46519bf63b0810f7c4d8e。

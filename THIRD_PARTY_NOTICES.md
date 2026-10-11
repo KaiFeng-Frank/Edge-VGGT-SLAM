@@ -20,6 +20,8 @@ The v27 [native correlation helper](deploy/rk3588/validation/dpvo_native/README.
 
 The v28 [Update export adapter](deploy/rk3588/validation/dpvo_update_export.py) retains the full DPVO MIT notice. The separate [CPU geometry and feedback research](deploy/rk3588/validation/dpvo_geometry/README.md) preserves the same pinned DPVO attribution with its own adjacent [MIT license](deploy/rk3588/validation/dpvo_geometry/LICENSE). Its online equations were checked against the source hashes in [v28 feedback evidence](results/dpvo_feedback_v28.json); neither this adaptation nor successful compilation establishes a license for the external DPVO checkpoint.
 
+The v29 vectorized assembler, fixed-graph ORT feedback driver and independent geometry auditors remain in that MIT-attributed geometry directory. The graph-expression experiments preserve external pretrained parameters; source publication does not redistribute or relicense those parameters.
+
 Package download manifests identify upstream distribution artifacts; a manifest does not grant a different license to those packages.
 
 ## Co-Me research subset
