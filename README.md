@@ -26,6 +26,20 @@ Use a new output directory. Default image size is 112; `--no-patch-cache` disabl
 
 The first full timestamp replay served **7 new pose/map updates from 798 input frames**, at **0.195 Hz** over 35.900 s including the EOF drain. Complete software-arrival-to-published-pose **P95 was 8.160 s**; 790 frames were skipped or overwritten. Peak process RSS was 4,977.2 MiB on the 16 GB board. These measurements include decoding, queuing, original model execution, SL4 and pose/map publication. They do **not** meet the real-time target. Resolution quality, trajectory accuracy, 30-minute operation and 8 GB deployment remain unvalidated. [Measured record](results/original_timestamp_replay_v52.json).
 
+An experimental complete-model path now executes **all 48 original aggregator blocks and all four original CameraHead refinements through RKNN**. Original DINO, dense depth and SL4 remain on CPU. On 17 identical TUM frames, 16 complete overlapping pairs per branch measured:
+
+| Complete original-model configuration | Mean service time | Sim3-aligned ATE RMSE |
+| --- | ---: | ---: |
+| CPU FP32 | 7.458 s | 0.17719 m |
+| RKNN aggregator, CPU heads | 5.366 s | 0.17857 m |
+| RKNN aggregator and CameraHead | 3.609 s | 0.17808 m |
+
+These are sequential branch observations, not an interleaved thermal comparison. Service timing excludes paced input queues and file publication. The last branch's ATE changed by +0.50% on this short sparse segment; this does not validate overall trajectory quality. All strict FP32 tensor comparisons still fail, and the FP16 candidate is not accepted as numerically equivalent.
+
+The separate 798-frame timestamp replay with RKNN aggregator and CameraHead delivered **10 fresh updates at 0.312 Hz, P95 4.878 s** with four A76 threads. Two threads delivered 9 updates at 0.267 Hz, P95 6.239 s, so four remains the default. These results still miss realtime. Peak process RSS was about 6.64 GiB on the 16 GB board; SDK allocation metrics are reported separately and do not establish 8 GB operation. [Complete measurements and limits](results/original_full_npu_v53.json).
+
+After privately producing the pinned original artifacts, add `--rknn-manifest PATH/compiled.json --rknn-manifest-sha256 SHA256 --rknn-camera-head` to the replay command. `--model-threads 2` selects CPUs 6–7; the default four uses CPUs 4–7. These settings affect only the process. [Build and reproduction instructions](deploy/rk3588/validation/original_full_aggregator/README.md).
+
 ## Original-model evidence
 
 The current original-only runtime is deployed on RK3588S. Its 168 relevant generated checks and four actual original-model forwards pass; the fixed 112-scale TUM pair and first SL4 graph preserve the original outputs. A separate 518-scale diagnostic covers three overlapping submaps: all five prediction arrays and saved graph arrays match bitwise with the DINO tail cache on/off, reducing DINO computation from six image occurrences to four. Complete forwards still took **134–195 seconds**. These are numerical regression results, not real-time acceptance. [Current evidence and limits](results/original_only_v47.json).

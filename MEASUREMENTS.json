@@ -490,5 +490,15 @@
     "candidate_accepted": false,
     "strict_FP32_component_gate_passed": false,
     "real_time_or_full_model_quality_validated": false
+  },
+  "complete_original_npu_v53": {
+    "record": "results/original_full_npu_v53.json",
+    "original_aggregator_blocks": 48,
+    "original_camera_refinements": 4,
+    "CPU_DINO_and_depth_remain": true,
+    "fresh_pose_hz": 0.31249352504631916,
+    "input_to_pose_P95_seconds": 4.877521481654547,
+    "quality_accepted": false,
+    "real_time_validated": false
   }
 }

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""RK3588S original VGGT FP32 + SL4, latest-frame TUM timestamp replay."""
+"""RK3588S original VGGT + SL4, latest-frame TUM timestamp replay."""
 import argparse
 import json
 import os
 from pathlib import Path
 import platform
+import re
 import resource
 import sys
 import time
@@ -20,8 +21,21 @@ def main():
     p.add_argument('--checkpoint', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--image-size', type=int, default=112)
+    p.add_argument('--model-threads', type=int, choices=(2, 4), default=4)
     p.add_argument('--no-patch-cache', action='store_true')
+    p.add_argument('--rknn-manifest', type=Path)
+    p.add_argument('--rknn-manifest-sha256')
+    p.add_argument('--rknn-camera-head', action='store_true')
     args = p.parse_args()
+    if args.rknn_camera_head and args.rknn_manifest is None:
+        p.error('--rknn-camera-head requires --rknn-manifest')
+    if (args.rknn_manifest is None) != (args.rknn_manifest_sha256 is None):
+        p.error('--rknn-manifest and --rknn-manifest-sha256 must be supplied together')
+    if args.rknn_manifest is not None:
+        if not re.fullmatch('[0-9a-f]{64}', args.rknn_manifest_sha256):
+            p.error('--rknn-manifest-sha256 must be a lowercase SHA256 hex digest')
+        if args.image_size != 112:
+            p.error('The fixed original RKNN aggregator manifest requires --image-size 112')
     compatible = next((x.read_bytes().replace(b'\0', b',').decode(errors='replace')
                        for x in (Path('/proc/device-tree/compatible'),
                                  Path('/sys/firmware/devicetree/base/compatible')) if x.is_file()), '')
@@ -30,21 +44,28 @@ def main():
     if args.image_size < 14 or args.image_size % 14:
         p.error('--image-size must be a positive multiple of 14')
     args.output.mkdir(parents=True, exist_ok=False)
-    report = dict(status='running', model='original_VGGT', precision='CPU_FP32', max_loops=0,
+    report = dict(status='running', model='original_VGGT',
+                  precision=('NPU_FP16_aggregator_camera_CPU_FP32_DINO_depth' if args.rknn_camera_head else
+                             'NPU_FP16_aggregator_CPU_FP32_DINO_heads' if args.rknn_manifest is not None else 'CPU_FP32'),
+                  max_loops=0, candidate_accepted=False, trajectory_quality_validated=False,
+                  rknn_manifest=(str(args.rknn_manifest.resolve()) if args.rknn_manifest is not None else None),
+                  rknn_manifest_sha256=args.rknn_manifest_sha256,
+                  rknn_camera_head=args.rknn_camera_head,
+                  model_threads=args.model_threads,
                   image_size=args.image_size, patch_cache=not args.no_patch_cache, board=compatible,
                   rgb_index=str(args.rgb_index.resolve()), checkpoint=str(args.checkpoint.resolve()),
                   fresh_pose_count=0, updates=[], cleanup_errors=[], decoder_cpu_affinity=[0],
                   real_time_validated=False, short_replay_not_30min=True,
                   latency_scope='original software arrival through decode, queue, full model, SL4, dense chunk and poses/map atomic replacements',
                   physical_sensor_latency_validated=False)
-    replay = cache = None
+    replay = cache = camera_rknn = rknn = None
     hooks = []
     affinity = os.sched_getaffinity(0)
     setup = time.monotonic()
     try:
-        cpus = {4, 5, 6, 7}
+        cpus = {6, 7} if args.model_threads == 2 else {4, 5, 6, 7}
         if not (cpus | {0}) <= affinity:
-            raise RuntimeError('Decoder CPU0 or four A76 cores 4,5,6,7 are unavailable')
+            raise RuntimeError(f'Decoder CPU0 or selected model CPUs {sorted(cpus)} are unavailable')
         os.sched_setaffinity(0, cpus)
         sys.path[:0] = [str(BASE / 'src'), str(BASE / 'src/third_party/vggt')]
         import cv2
@@ -55,7 +76,7 @@ def main():
         from vggt_slam.timestamp_replay import read_rgb_index, TimestampReplay
         from vggt_slam.edge_mapping import atomic_json, platform_sample
         cv2.setNumThreads(1)
-        torch.set_num_threads(4)
+        torch.set_num_threads(args.model_threads)
         torch.set_num_interop_threads(1)
         rows = read_rgb_index(args.rgb_index)
         model = load_model(args.checkpoint, device='cpu', image_size=args.image_size,
@@ -66,6 +87,13 @@ def main():
         def after_forward(module, inputs, output):
             forward_clock['seconds'] = time.monotonic() - forward_clock['begin']
         hooks = [model.register_forward_pre_hook(before_forward), model.register_forward_hook(after_forward)]
+        if args.rknn_manifest is not None:
+            from vggt_slam.rknn_aggregator_blocks import install_rknn_aggregator_blocks
+            rknn = install_rknn_aggregator_blocks(model, args.rknn_manifest, args.rknn_manifest_sha256,
+                                                 source_root=BASE / 'src')
+        if args.rknn_camera_head:
+            from vggt_slam.rknn_camera_head import install_rknn_camera_head
+            camera_rknn = install_rknn_camera_head(model)
         if not args.no_patch_cache:
             from vggt_slam.patch_cache import install_patch_cache
             cache = install_patch_cache(model)
@@ -154,7 +182,8 @@ def main():
     except BaseException as exc:
         report.update(status='failed', error=f'{type(exc).__name__}: {exc}', traceback=traceback.format_exc())
     finally:
-        for handle in (replay, cache):
+        # Stop arrivals, then restore the cache, camera head and aggregator.
+        for handle in (replay, cache, camera_rknn, rknn):
             if handle is not None:
                 try:
                     handle.close()
@@ -166,6 +195,10 @@ def main():
             report['source'] = replay.metrics()
         if cache is not None:
             report['cache'] = cache.metrics()
+        if camera_rknn is not None:
+            report['camera_rknn'] = camera_rknn.metrics()
+        if rknn is not None:
+            report['rknn'] = rknn.metrics()
         try:
             os.sched_setaffinity(0, affinity)
         except OSError as exc:
