@@ -16,6 +16,8 @@ Third-party repositories, checkpoints, headers, compiled libraries and data are 
 
 - Optional DPVO component research: [princeton-vl/DPVO](https://github.com/princeton-vl/DPVO/tree/0ac95b656d1fda91c271d2a106460d19ad966fc7), [MIT](https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/LICENSE), Copyright (c) 2022 Princeton Vision & Learning Lab. The adapted [CPU operator helper](deploy/rk3588/validation/dpvo_cpu_ops.py) retains the full MIT notice. The neural loader executes verified original class bodies from an external checkout; the checkout, checkpoint and compiled artifacts are excluded. The code license and separately unverified weight license are distinguished in [MODEL_LICENSES.md](MODEL_LICENSES.md) and [v26 provenance](results/dpvo_sources_v26.json).
 
+The v27 [native correlation helper](deploy/rk3588/validation/dpvo_native/README.md) also adapts DPVO's forward arithmetic and retains its [MIT notice](deploy/rk3588/validation/dpvo_native/LICENSE). Its C ABI header is project source, not a Rockchip SDK header. The independent NumPy oracle documents the pinned source contract. No DPVO checkpoint, external checkout, native shared library or toolchain package is included.
+
 Package download manifests identify upstream distribution artifacts; a manifest does not grant a different license to those packages.
 
 ## Co-Me research subset

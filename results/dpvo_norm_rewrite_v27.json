@@ -1,0 +1,2010 @@
+{
+  "kind": "v27_DPVO_InstanceNorm_expression_rewrite_rejected_by_original_FP32_gate",
+  "status": "board_ORT_gate_failed_candidate_not_compiled",
+  "actual_inference_on_RK3588S": true,
+  "original_VGGT_default_unchanged": true,
+  "host_real_model_inference": false,
+  "ORB_used": false,
+  "candidate_RKNN_compiled": false,
+  "candidate_NPU_profiled": false,
+  "realtime_validated": false,
+  "gate": {
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "changed": false
+  },
+  "frames": [
+    {
+      "frame_id": "1305031102.175304",
+      "forward_seconds": 0.3226300319947768,
+      "versus_original_CPU": {
+        "fmap": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "failed_elements": 4,
+          "gate_passed": false,
+          "max_abs": 1.2621283531188965e-05,
+          "relative_l2": 8.537959071294555e-06,
+          "bitwise_equal": false
+        },
+        "imap": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "failed_elements": 0,
+          "gate_passed": true,
+          "max_abs": 7.092952728271484e-06,
+          "relative_l2": 1.124416156484979e-06,
+          "bitwise_equal": false
+        }
+      },
+      "versus_original_ORT": {
+        "fmap": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "failed_elements": 10,
+          "gate_passed": false,
+          "max_abs": 1.5139579772949219e-05,
+          "relative_l2": 9.295162175110385e-06,
+          "bitwise_equal": false
+        },
+        "imap": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "failed_elements": 0,
+          "gate_passed": true,
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "bitwise_equal": true
+        }
+      }
+    },
+    {
+      "frame_id": "1305031102.211214",
+      "forward_seconds": 0.31056407300638966,
+      "versus_original_CPU": {
+        "fmap": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "failed_elements": 5,
+          "gate_passed": false,
+          "max_abs": 1.2606382369995117e-05,
+          "relative_l2": 9.453385781218191e-06,
+          "bitwise_equal": false
+        },
+        "imap": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "failed_elements": 0,
+          "gate_passed": true,
+          "max_abs": 8.165836334228516e-06,
+          "relative_l2": 1.2705948864571024e-06,
+          "bitwise_equal": false
+        }
+      },
+      "versus_original_ORT": {
+        "fmap": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "failed_elements": 2,
+          "gate_passed": false,
+          "max_abs": 1.208484172821045e-05,
+          "relative_l2": 9.618025249326386e-06,
+          "bitwise_equal": false
+        },
+        "imap": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "failed_elements": 0,
+          "gate_passed": true,
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "bitwise_equal": true
+        }
+      }
+    },
+    {
+      "frame_id": "1305031102.243211",
+      "forward_seconds": 0.298956904996885,
+      "versus_original_CPU": {
+        "fmap": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "failed_elements": 53,
+          "gate_passed": false,
+          "max_abs": 1.71661376953125e-05,
+          "relative_l2": 9.914613323455706e-06,
+          "bitwise_equal": false
+        },
+        "imap": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "failed_elements": 0,
+          "gate_passed": true,
+          "max_abs": 8.165836334228516e-06,
+          "relative_l2": 1.2283278538264823e-06,
+          "bitwise_equal": false
+        }
+      },
+      "versus_original_ORT": {
+        "fmap": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "failed_elements": 69,
+          "gate_passed": false,
+          "max_abs": 1.77919864654541e-05,
+          "relative_l2": 1.098172864128038e-05,
+          "bitwise_equal": false
+        },
+        "imap": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "failed_elements": 0,
+          "gate_passed": true,
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "bitwise_equal": true
+        }
+      }
+    }
+  ],
+  "interpretation": "Spatial population-statistics semantics, original epsilon, affine values and unchanged model parameters do not guarantee identical floating-point reduction/rounding. Small feature error is not a trajectory-quality result. The gate remains unchanged and no candidate NPU benefit is claimed.",
+  "evidence": {
+    "static_rewrite": {
+      "file": "encoders-spatial-norm-r1/rewrite.json",
+      "raw_sha256": "66eb8d135165f7538c97733d0c83198fa5a674e0cd2bdf64eb190c24819c5109",
+      "raw_bytes": 24408,
+      "host_home_redacted": false,
+      "data": {
+        "kind": "v27_dpvo_encoder_instance_norm_spatial_rewrite",
+        "version": 1,
+        "status": "rewritten_and_statically_checked_not_runtime_validated",
+        "script_sha256": "671ceca472d104cedc318b380cd6dfaeb8852e4207383bf533fd4c98d0937f11",
+        "input": {
+          "file": "/dev/shm/vggt-v26-dpvo-encoders-export-r1/encoders.onnx",
+          "bytes": 1544608,
+          "sha256": "527fc2493de700a21aee958d7fda4d5ee421f4eb0c92296e81409df289f56a82"
+        },
+        "output": {
+          "file": "encoders.onnx",
+          "bytes": 1554634,
+          "sha256": "c3c4048c6d8792b09f0d6cbec8228f99d59c60d7503456eea2e369d7b8dbd826"
+        },
+        "source": {
+          "extractor_sha256": "f5cbcbe14c42e44bcec6e827a3429ebe93979a439ba9b9ef70d4f4baa3454a2b",
+          "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+          "license": "MIT"
+        },
+        "input_contract": {
+          "name": "normalized_bgr",
+          "shape": [
+            1,
+            3,
+            464,
+            608
+          ],
+          "dtype": "float32"
+        },
+        "output_contracts": [
+          {
+            "name": "fmap",
+            "shape": [
+              1,
+              128,
+              116,
+              152
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "imap",
+            "shape": [
+              1,
+              384,
+              116,
+              152
+            ],
+            "dtype": "float32"
+          }
+        ],
+        "opset": [
+          {
+            "domain": "",
+            "version": 17
+          }
+        ],
+        "ir_version": 8,
+        "node_counts": {
+          "original": 101,
+          "candidate": 201
+        },
+        "op_counts": {
+          "original": {
+            "Add": 8,
+            "Constant": 27,
+            "Conv": 22,
+            "Div": 2,
+            "Gather": 2,
+            "InstanceNormalization": 10,
+            "Relu": 26,
+            "Reshape": 3,
+            "Unsqueeze": 1
+          },
+          "candidate": {
+            "Add": 28,
+            "Constant": 27,
+            "Conv": 22,
+            "Div": 12,
+            "Gather": 2,
+            "GlobalAveragePool": 20,
+            "Mul": 20,
+            "Relu": 26,
+            "Reshape": 23,
+            "Sqrt": 10,
+            "Sub": 10,
+            "Unsqueeze": 1
+          }
+        },
+        "preservation": {
+          "original_initializers_byte_exact": true,
+          "non_instance_norm_nodes_byte_exact": true,
+          "input_output_protobuf_byte_exact": true,
+          "model_header_byte_exact": true,
+          "original_initializer_count": 44,
+          "preserved_non_instance_norm_nodes": 91,
+          "added_nonlearned_constants": 20,
+          "original_weights_or_output_divide_by_four_changed": false
+        },
+        "rewrites": [
+          {
+            "original_node": "/original/fnet/norm1/InstanceNormalization",
+            "original_node_sha256": "25ecc1524f2fee852116fac9100c24e7dd555e930188cb7269991765f0895744",
+            "input": "/original/fnet/conv1/Conv_output_0",
+            "output": "/original/fnet/norm1/InstanceNormalization_output_0",
+            "shape": [
+              1,
+              32,
+              232,
+              304
+            ],
+            "statistical_axes": [
+              2,
+              3
+            ],
+            "variance": "population_mean_of_centered_squares",
+            "epsilon": 9.999999747378752e-06,
+            "epsilon_fp32": {
+              "shape": [],
+              "dtype": "float32",
+              "bytes": 4,
+              "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c"
+            },
+            "scale": {
+              "name": "/original/fnet/norm1/Constant_output_0",
+              "shape": [
+                32
+              ],
+              "dtype": "float32",
+              "bytes": 128,
+              "sha256": "b638277a8690e175a9137feff1e43c067f9faf4e2f600caf468fb05b0403b717"
+            },
+            "bias": {
+              "name": "/original/fnet/norm1/Constant_1_output_0",
+              "shape": [
+                32
+              ],
+              "dtype": "float32",
+              "bytes": 128,
+              "sha256": "38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca"
+            },
+            "scale_all_one": true,
+            "bias_all_zero": true,
+            "new_nodes": [
+              "v27_in_000/node_00_GlobalAveragePool",
+              "v27_in_000/node_01_Sub",
+              "v27_in_000/node_02_Mul",
+              "v27_in_000/node_03_GlobalAveragePool",
+              "v27_in_000/node_04_Add",
+              "v27_in_000/node_05_Sqrt",
+              "v27_in_000/node_06_Div",
+              "v27_in_000/node_07_Reshape",
+              "v27_in_000/node_08_Reshape",
+              "v27_in_000/node_09_Mul",
+              "v27_in_000/node_10_Add"
+            ],
+            "new_ops": [
+              "GlobalAveragePool",
+              "Sub",
+              "Mul",
+              "GlobalAveragePool",
+              "Add",
+              "Sqrt",
+              "Div",
+              "Reshape",
+              "Reshape",
+              "Mul",
+              "Add"
+            ],
+            "new_constants": [
+              "v27_in_000/epsilon",
+              "v27_in_000/affine_shape"
+            ]
+          },
+          {
+            "original_node": "/original/fnet/layer1/layer1.0/norm1/InstanceNormalization",
+            "original_node_sha256": "f526c01fbbe1a3a8409a775f5a3b9a5b0c517b4364de98b253bec5ef832024b6",
+            "input": "/original/fnet/layer1/layer1.0/conv1/Conv_output_0",
+            "output": "/original/fnet/layer1/layer1.0/norm1/InstanceNormalization_output_0",
+            "shape": [
+              1,
+              32,
+              232,
+              304
+            ],
+            "statistical_axes": [
+              2,
+              3
+            ],
+            "variance": "population_mean_of_centered_squares",
+            "epsilon": 9.999999747378752e-06,
+            "epsilon_fp32": {
+              "shape": [],
+              "dtype": "float32",
+              "bytes": 4,
+              "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c"
+            },
+            "scale": {
+              "name": "/original/fnet/layer1/layer1.0/norm1/Constant_output_0",
+              "shape": [
+                32
+              ],
+              "dtype": "float32",
+              "bytes": 128,
+              "sha256": "b638277a8690e175a9137feff1e43c067f9faf4e2f600caf468fb05b0403b717"
+            },
+            "bias": {
+              "name": "/original/fnet/layer1/layer1.0/norm1/Constant_1_output_0",
+              "shape": [
+                32
+              ],
+              "dtype": "float32",
+              "bytes": 128,
+              "sha256": "38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca"
+            },
+            "scale_all_one": true,
+            "bias_all_zero": true,
+            "new_nodes": [
+              "v27_in_001/node_00_GlobalAveragePool",
+              "v27_in_001/node_01_Sub",
+              "v27_in_001/node_02_Mul",
+              "v27_in_001/node_03_GlobalAveragePool",
+              "v27_in_001/node_04_Add",
+              "v27_in_001/node_05_Sqrt",
+              "v27_in_001/node_06_Div",
+              "v27_in_001/node_07_Reshape",
+              "v27_in_001/node_08_Reshape",
+              "v27_in_001/node_09_Mul",
+              "v27_in_001/node_10_Add"
+            ],
+            "new_ops": [
+              "GlobalAveragePool",
+              "Sub",
+              "Mul",
+              "GlobalAveragePool",
+              "Add",
+              "Sqrt",
+              "Div",
+              "Reshape",
+              "Reshape",
+              "Mul",
+              "Add"
+            ],
+            "new_constants": [
+              "v27_in_001/epsilon",
+              "v27_in_001/affine_shape"
+            ]
+          },
+          {
+            "original_node": "/original/fnet/layer1/layer1.0/norm2/InstanceNormalization",
+            "original_node_sha256": "b9a26252649df99427aba22806c09c454382be6d18618b690c448c417eba2465",
+            "input": "/original/fnet/layer1/layer1.0/conv2/Conv_output_0",
+            "output": "/original/fnet/layer1/layer1.0/norm2/InstanceNormalization_output_0",
+            "shape": [
+              1,
+              32,
+              232,
+              304
+            ],
+            "statistical_axes": [
+              2,
+              3
+            ],
+            "variance": "population_mean_of_centered_squares",
+            "epsilon": 9.999999747378752e-06,
+            "epsilon_fp32": {
+              "shape": [],
+              "dtype": "float32",
+              "bytes": 4,
+              "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c"
+            },
+            "scale": {
+              "name": "/original/fnet/layer1/layer1.0/norm2/Constant_output_0",
+              "shape": [
+                32
+              ],
+              "dtype": "float32",
+              "bytes": 128,
+              "sha256": "b638277a8690e175a9137feff1e43c067f9faf4e2f600caf468fb05b0403b717"
+            },
+            "bias": {
+              "name": "/original/fnet/layer1/layer1.0/norm2/Constant_1_output_0",
+              "shape": [
+                32
+              ],
+              "dtype": "float32",
+              "bytes": 128,
+              "sha256": "38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca"
+            },
+            "scale_all_one": true,
+            "bias_all_zero": true,
+            "new_nodes": [
+              "v27_in_002/node_00_GlobalAveragePool",
+              "v27_in_002/node_01_Sub",
+              "v27_in_002/node_02_Mul",
+              "v27_in_002/node_03_GlobalAveragePool",
+              "v27_in_002/node_04_Add",
+              "v27_in_002/node_05_Sqrt",
+              "v27_in_002/node_06_Div",
+              "v27_in_002/node_07_Reshape",
+              "v27_in_002/node_08_Reshape",
+              "v27_in_002/node_09_Mul",
+              "v27_in_002/node_10_Add"
+            ],
+            "new_ops": [
+              "GlobalAveragePool",
+              "Sub",
+              "Mul",
+              "GlobalAveragePool",
+              "Add",
+              "Sqrt",
+              "Div",
+              "Reshape",
+              "Reshape",
+              "Mul",
+              "Add"
+            ],
+            "new_constants": [
+              "v27_in_002/epsilon",
+              "v27_in_002/affine_shape"
+            ]
+          },
+          {
+            "original_node": "/original/fnet/layer1/layer1.1/norm1/InstanceNormalization",
+            "original_node_sha256": "4c38ec69412d971300bed85d2de62e5b3b8b37231419a22dd35f137e3d62a87e",
+            "input": "/original/fnet/layer1/layer1.1/conv1/Conv_output_0",
+            "output": "/original/fnet/layer1/layer1.1/norm1/InstanceNormalization_output_0",
+            "shape": [
+              1,
+              32,
+              232,
+              304
+            ],
+            "statistical_axes": [
+              2,
+              3
+            ],
+            "variance": "population_mean_of_centered_squares",
+            "epsilon": 9.999999747378752e-06,
+            "epsilon_fp32": {
+              "shape": [],
+              "dtype": "float32",
+              "bytes": 4,
+              "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c"
+            },
+            "scale": {
+              "name": "/original/fnet/layer1/layer1.1/norm1/Constant_output_0",
+              "shape": [
+                32
+              ],
+              "dtype": "float32",
+              "bytes": 128,
+              "sha256": "b638277a8690e175a9137feff1e43c067f9faf4e2f600caf468fb05b0403b717"
+            },
+            "bias": {
+              "name": "/original/fnet/layer1/layer1.1/norm1/Constant_1_output_0",
+              "shape": [
+                32
+              ],
+              "dtype": "float32",
+              "bytes": 128,
+              "sha256": "38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca"
+            },
+            "scale_all_one": true,
+            "bias_all_zero": true,
+            "new_nodes": [
+              "v27_in_003/node_00_GlobalAveragePool",
+              "v27_in_003/node_01_Sub",
+              "v27_in_003/node_02_Mul",
+              "v27_in_003/node_03_GlobalAveragePool",
+              "v27_in_003/node_04_Add",
+              "v27_in_003/node_05_Sqrt",
+              "v27_in_003/node_06_Div",
+              "v27_in_003/node_07_Reshape",
+              "v27_in_003/node_08_Reshape",
+              "v27_in_003/node_09_Mul",
+              "v27_in_003/node_10_Add"
+            ],
+            "new_ops": [
+              "GlobalAveragePool",
+              "Sub",
+              "Mul",
+              "GlobalAveragePool",
+              "Add",
+              "Sqrt",
+              "Div",
+              "Reshape",
+              "Reshape",
+              "Mul",
+              "Add"
+            ],
+            "new_constants": [
+              "v27_in_003/epsilon",
+              "v27_in_003/affine_shape"
+            ]
+          },
+          {
+            "original_node": "/original/fnet/layer1/layer1.1/norm2/InstanceNormalization",
+            "original_node_sha256": "ef87a9eeb23535eaab0e674ec5677d2daf71b3ee8c85880e68cd68bda7aa80ad",
+            "input": "/original/fnet/layer1/layer1.1/conv2/Conv_output_0",
+            "output": "/original/fnet/layer1/layer1.1/norm2/InstanceNormalization_output_0",
+            "shape": [
+              1,
+              32,
+              232,
+              304
+            ],
+            "statistical_axes": [
+              2,
+              3
+            ],
+            "variance": "population_mean_of_centered_squares",
+            "epsilon": 9.999999747378752e-06,
+            "epsilon_fp32": {
+              "shape": [],
+              "dtype": "float32",
+              "bytes": 4,
+              "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c"
+            },
+            "scale": {
+              "name": "/original/fnet/layer1/layer1.1/norm2/Constant_output_0",
+              "shape": [
+                32
+              ],
+              "dtype": "float32",
+              "bytes": 128,
+              "sha256": "b638277a8690e175a9137feff1e43c067f9faf4e2f600caf468fb05b0403b717"
+            },
+            "bias": {
+              "name": "/original/fnet/layer1/layer1.1/norm2/Constant_1_output_0",
+              "shape": [
+                32
+              ],
+              "dtype": "float32",
+              "bytes": 128,
+              "sha256": "38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca"
+            },
+            "scale_all_one": true,
+            "bias_all_zero": true,
+            "new_nodes": [
+              "v27_in_004/node_00_GlobalAveragePool",
+              "v27_in_004/node_01_Sub",
+              "v27_in_004/node_02_Mul",
+              "v27_in_004/node_03_GlobalAveragePool",
+              "v27_in_004/node_04_Add",
+              "v27_in_004/node_05_Sqrt",
+              "v27_in_004/node_06_Div",
+              "v27_in_004/node_07_Reshape",
+              "v27_in_004/node_08_Reshape",
+              "v27_in_004/node_09_Mul",
+              "v27_in_004/node_10_Add"
+            ],
+            "new_ops": [
+              "GlobalAveragePool",
+              "Sub",
+              "Mul",
+              "GlobalAveragePool",
+              "Add",
+              "Sqrt",
+              "Div",
+              "Reshape",
+              "Reshape",
+              "Mul",
+              "Add"
+            ],
+            "new_constants": [
+              "v27_in_004/epsilon",
+              "v27_in_004/affine_shape"
+            ]
+          },
+          {
+            "original_node": "/original/fnet/layer2/layer2.0/norm1/InstanceNormalization",
+            "original_node_sha256": "d680738ea968e00e79bcd97df7d2a5c466c0ce99e0a02331492df3c1baa0f0b4",
+            "input": "/original/fnet/layer2/layer2.0/conv1/Conv_output_0",
+            "output": "/original/fnet/layer2/layer2.0/norm1/InstanceNormalization_output_0",
+            "shape": [
+              1,
+              64,
+              116,
+              152
+            ],
+            "statistical_axes": [
+              2,
+              3
+            ],
+            "variance": "population_mean_of_centered_squares",
+            "epsilon": 9.999999747378752e-06,
+            "epsilon_fp32": {
+              "shape": [],
+              "dtype": "float32",
+              "bytes": 4,
+              "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c"
+            },
+            "scale": {
+              "name": "/original/fnet/layer2/layer2.0/norm1/Constant_output_0",
+              "shape": [
+                64
+              ],
+              "dtype": "float32",
+              "bytes": 256,
+              "sha256": "2f20cd03c9cd392a406c56232b0ff93a15f6d6d7da79086bfa14f55d4a4031b0"
+            },
+            "bias": {
+              "name": "/original/fnet/layer2/layer2.0/norm1/Constant_1_output_0",
+              "shape": [
+                64
+              ],
+              "dtype": "float32",
+              "bytes": 256,
+              "sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1"
+            },
+            "scale_all_one": true,
+            "bias_all_zero": true,
+            "new_nodes": [
+              "v27_in_005/node_00_GlobalAveragePool",
+              "v27_in_005/node_01_Sub",
+              "v27_in_005/node_02_Mul",
+              "v27_in_005/node_03_GlobalAveragePool",
+              "v27_in_005/node_04_Add",
+              "v27_in_005/node_05_Sqrt",
+              "v27_in_005/node_06_Div",
+              "v27_in_005/node_07_Reshape",
+              "v27_in_005/node_08_Reshape",
+              "v27_in_005/node_09_Mul",
+              "v27_in_005/node_10_Add"
+            ],
+            "new_ops": [
+              "GlobalAveragePool",
+              "Sub",
+              "Mul",
+              "GlobalAveragePool",
+              "Add",
+              "Sqrt",
+              "Div",
+              "Reshape",
+              "Reshape",
+              "Mul",
+              "Add"
+            ],
+            "new_constants": [
+              "v27_in_005/epsilon",
+              "v27_in_005/affine_shape"
+            ]
+          },
+          {
+            "original_node": "/original/fnet/layer2/layer2.0/norm2/InstanceNormalization",
+            "original_node_sha256": "d519c0403cb2863b2be41efae9df639b7c241ceac4d78b656dd374caf833201b",
+            "input": "/original/fnet/layer2/layer2.0/conv2/Conv_output_0",
+            "output": "/original/fnet/layer2/layer2.0/norm2/InstanceNormalization_output_0",
+            "shape": [
+              1,
+              64,
+              116,
+              152
+            ],
+            "statistical_axes": [
+              2,
+              3
+            ],
+            "variance": "population_mean_of_centered_squares",
+            "epsilon": 9.999999747378752e-06,
+            "epsilon_fp32": {
+              "shape": [],
+              "dtype": "float32",
+              "bytes": 4,
+              "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c"
+            },
+            "scale": {
+              "name": "/original/fnet/layer2/layer2.0/norm2/Constant_output_0",
+              "shape": [
+                64
+              ],
+              "dtype": "float32",
+              "bytes": 256,
+              "sha256": "2f20cd03c9cd392a406c56232b0ff93a15f6d6d7da79086bfa14f55d4a4031b0"
+            },
+            "bias": {
+              "name": "/original/fnet/layer2/layer2.0/norm2/Constant_1_output_0",
+              "shape": [
+                64
+              ],
+              "dtype": "float32",
+              "bytes": 256,
+              "sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1"
+            },
+            "scale_all_one": true,
+            "bias_all_zero": true,
+            "new_nodes": [
+              "v27_in_006/node_00_GlobalAveragePool",
+              "v27_in_006/node_01_Sub",
+              "v27_in_006/node_02_Mul",
+              "v27_in_006/node_03_GlobalAveragePool",
+              "v27_in_006/node_04_Add",
+              "v27_in_006/node_05_Sqrt",
+              "v27_in_006/node_06_Div",
+              "v27_in_006/node_07_Reshape",
+              "v27_in_006/node_08_Reshape",
+              "v27_in_006/node_09_Mul",
+              "v27_in_006/node_10_Add"
+            ],
+            "new_ops": [
+              "GlobalAveragePool",
+              "Sub",
+              "Mul",
+              "GlobalAveragePool",
+              "Add",
+              "Sqrt",
+              "Div",
+              "Reshape",
+              "Reshape",
+              "Mul",
+              "Add"
+            ],
+            "new_constants": [
+              "v27_in_006/epsilon",
+              "v27_in_006/affine_shape"
+            ]
+          },
+          {
+            "original_node": "/original/fnet/layer2/layer2.0/downsample/norm3/InstanceNormalization",
+            "original_node_sha256": "9865e355d32c489e7951afa53856c4bc1d45c1258f1f105f81f777deea5d8376",
+            "input": "/original/fnet/layer2/layer2.0/downsample/downsample.0/Conv_output_0",
+            "output": "/original/fnet/layer2/layer2.0/downsample/norm3/InstanceNormalization_output_0",
+            "shape": [
+              1,
+              64,
+              116,
+              152
+            ],
+            "statistical_axes": [
+              2,
+              3
+            ],
+            "variance": "population_mean_of_centered_squares",
+            "epsilon": 9.999999747378752e-06,
+            "epsilon_fp32": {
+              "shape": [],
+              "dtype": "float32",
+              "bytes": 4,
+              "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c"
+            },
+            "scale": {
+              "name": "/original/fnet/layer2/layer2.0/downsample/norm3/Constant_output_0",
+              "shape": [
+                64
+              ],
+              "dtype": "float32",
+              "bytes": 256,
+              "sha256": "2f20cd03c9cd392a406c56232b0ff93a15f6d6d7da79086bfa14f55d4a4031b0"
+            },
+            "bias": {
+              "name": "/original/fnet/layer2/layer2.0/downsample/norm3/Constant_1_output_0",
+              "shape": [
+                64
+              ],
+              "dtype": "float32",
+              "bytes": 256,
+              "sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1"
+            },
+            "scale_all_one": true,
+            "bias_all_zero": true,
+            "new_nodes": [
+              "v27_in_007/node_00_GlobalAveragePool",
+              "v27_in_007/node_01_Sub",
+              "v27_in_007/node_02_Mul",
+              "v27_in_007/node_03_GlobalAveragePool",
+              "v27_in_007/node_04_Add",
+              "v27_in_007/node_05_Sqrt",
+              "v27_in_007/node_06_Div",
+              "v27_in_007/node_07_Reshape",
+              "v27_in_007/node_08_Reshape",
+              "v27_in_007/node_09_Mul",
+              "v27_in_007/node_10_Add"
+            ],
+            "new_ops": [
+              "GlobalAveragePool",
+              "Sub",
+              "Mul",
+              "GlobalAveragePool",
+              "Add",
+              "Sqrt",
+              "Div",
+              "Reshape",
+              "Reshape",
+              "Mul",
+              "Add"
+            ],
+            "new_constants": [
+              "v27_in_007/epsilon",
+              "v27_in_007/affine_shape"
+            ]
+          },
+          {
+            "original_node": "/original/fnet/layer2/layer2.1/norm1/InstanceNormalization",
+            "original_node_sha256": "0648a02e160fc50db1b37842f4647ded9a695f1481f883830a650376cedc5d59",
+            "input": "/original/fnet/layer2/layer2.1/conv1/Conv_output_0",
+            "output": "/original/fnet/layer2/layer2.1/norm1/InstanceNormalization_output_0",
+            "shape": [
+              1,
+              64,
+              116,
+              152
+            ],
+            "statistical_axes": [
+              2,
+              3
+            ],
+            "variance": "population_mean_of_centered_squares",
+            "epsilon": 9.999999747378752e-06,
+            "epsilon_fp32": {
+              "shape": [],
+              "dtype": "float32",
+              "bytes": 4,
+              "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c"
+            },
+            "scale": {
+              "name": "/original/fnet/layer2/layer2.1/norm1/Constant_output_0",
+              "shape": [
+                64
+              ],
+              "dtype": "float32",
+              "bytes": 256,
+              "sha256": "2f20cd03c9cd392a406c56232b0ff93a15f6d6d7da79086bfa14f55d4a4031b0"
+            },
+            "bias": {
+              "name": "/original/fnet/layer2/layer2.1/norm1/Constant_1_output_0",
+              "shape": [
+                64
+              ],
+              "dtype": "float32",
+              "bytes": 256,
+              "sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1"
+            },
+            "scale_all_one": true,
+            "bias_all_zero": true,
+            "new_nodes": [
+              "v27_in_008/node_00_GlobalAveragePool",
+              "v27_in_008/node_01_Sub",
+              "v27_in_008/node_02_Mul",
+              "v27_in_008/node_03_GlobalAveragePool",
+              "v27_in_008/node_04_Add",
+              "v27_in_008/node_05_Sqrt",
+              "v27_in_008/node_06_Div",
+              "v27_in_008/node_07_Reshape",
+              "v27_in_008/node_08_Reshape",
+              "v27_in_008/node_09_Mul",
+              "v27_in_008/node_10_Add"
+            ],
+            "new_ops": [
+              "GlobalAveragePool",
+              "Sub",
+              "Mul",
+              "GlobalAveragePool",
+              "Add",
+              "Sqrt",
+              "Div",
+              "Reshape",
+              "Reshape",
+              "Mul",
+              "Add"
+            ],
+            "new_constants": [
+              "v27_in_008/epsilon",
+              "v27_in_008/affine_shape"
+            ]
+          },
+          {
+            "original_node": "/original/fnet/layer2/layer2.1/norm2/InstanceNormalization",
+            "original_node_sha256": "c7e4dcc65aade3b998d20982210e766b27ee2891bd8c215fe94e1426ba1078f8",
+            "input": "/original/fnet/layer2/layer2.1/conv2/Conv_output_0",
+            "output": "/original/fnet/layer2/layer2.1/norm2/InstanceNormalization_output_0",
+            "shape": [
+              1,
+              64,
+              116,
+              152
+            ],
+            "statistical_axes": [
+              2,
+              3
+            ],
+            "variance": "population_mean_of_centered_squares",
+            "epsilon": 9.999999747378752e-06,
+            "epsilon_fp32": {
+              "shape": [],
+              "dtype": "float32",
+              "bytes": 4,
+              "sha256": "e6540c5b3269d9a6e3646dd482c2a7fe6b58e101e80007556892bb770099a68c"
+            },
+            "scale": {
+              "name": "/original/fnet/layer2/layer2.1/norm2/Constant_output_0",
+              "shape": [
+                64
+              ],
+              "dtype": "float32",
+              "bytes": 256,
+              "sha256": "2f20cd03c9cd392a406c56232b0ff93a15f6d6d7da79086bfa14f55d4a4031b0"
+            },
+            "bias": {
+              "name": "/original/fnet/layer2/layer2.1/norm2/Constant_1_output_0",
+              "shape": [
+                64
+              ],
+              "dtype": "float32",
+              "bytes": 256,
+              "sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1"
+            },
+            "scale_all_one": true,
+            "bias_all_zero": true,
+            "new_nodes": [
+              "v27_in_009/node_00_GlobalAveragePool",
+              "v27_in_009/node_01_Sub",
+              "v27_in_009/node_02_Mul",
+              "v27_in_009/node_03_GlobalAveragePool",
+              "v27_in_009/node_04_Add",
+              "v27_in_009/node_05_Sqrt",
+              "v27_in_009/node_06_Div",
+              "v27_in_009/node_07_Reshape",
+              "v27_in_009/node_08_Reshape",
+              "v27_in_009/node_09_Mul",
+              "v27_in_009/node_10_Add"
+            ],
+            "new_ops": [
+              "GlobalAveragePool",
+              "Sub",
+              "Mul",
+              "GlobalAveragePool",
+              "Add",
+              "Sqrt",
+              "Div",
+              "Reshape",
+              "Reshape",
+              "Mul",
+              "Add"
+            ],
+            "new_constants": [
+              "v27_in_009/epsilon",
+              "v27_in_009/affine_shape"
+            ]
+          }
+        ],
+        "formula": "gamma * ((x - GAP_HW(x)) / sqrt(GAP_HW((x - GAP_HW(x))^2) + original_epsilon)) + beta",
+        "FP32_gate": {
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "status": "pending_board_ORT"
+        },
+        "sources_unchanged_after": true,
+        "external_data_used": false,
+        "host_original_graph_executed": false,
+        "board_executed": false,
+        "RKNN_compiled": false,
+        "limitations": [
+          "Equivalent real-number arithmetic does not guarantee FP32 bitwise identity.",
+          "No measured speed, precision, or operator placement claim follows from this static rewrite.",
+          "RKNN may recognize the explicit statistics and fuse them again; inspect the actual compiler log/profile."
+        ]
+      }
+    },
+    "board_ORT": {
+      "file": "vggt-v27-dpvo-norm-ort-r1/ort.json",
+      "raw_sha256": "a517f822a2e4afd01aff87df303183a3dc5850313134548891dc13c1e36b896b",
+      "raw_bytes": 13530,
+      "host_home_redacted": false,
+      "data": {
+        "schema": "v27_DPVO_InstanceNorm_rewrite_board_ORT",
+        "status": "failed",
+        "script_sha256": "f2ce1b906a58343925007ad4f3429f690ede07f5f230b4e2c2d7b743aa9e91cf",
+        "actual_board_execution": true,
+        "production_changed": false,
+        "ORB_used": false,
+        "valid_pose_output": false,
+        "complete_VO": false,
+        "realtime_validated": false,
+        "calls": [
+          {
+            "frame_index": 0,
+            "frame_id": "1305031102.175304",
+            "forward_seconds": 0.3226300319947768,
+            "versus_original_CPU": {
+              "fmap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 4,
+                "gate_passed": false,
+                "max_abs": 1.2621283531188965e-05,
+                "relative_l2": 8.537959071294555e-06,
+                "bitwise_equal": false
+              },
+              "imap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 0,
+                "gate_passed": true,
+                "max_abs": 7.092952728271484e-06,
+                "relative_l2": 1.124416156484979e-06,
+                "bitwise_equal": false
+              }
+            },
+            "versus_original_ORT": {
+              "fmap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 10,
+                "gate_passed": false,
+                "max_abs": 1.5139579772949219e-05,
+                "relative_l2": 9.295162175110385e-06,
+                "bitwise_equal": false
+              },
+              "imap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 0,
+                "gate_passed": true,
+                "max_abs": 0.0,
+                "relative_l2": 0.0,
+                "bitwise_equal": true
+              }
+            },
+            "arrays": {
+              "fmap": {
+                "shape": [
+                  1,
+                  1,
+                  128,
+                  116,
+                  152
+                ],
+                "dtype": "float32",
+                "bytes": 9027584,
+                "tensor_sha256": "279d948c4cf66afd68e5adba2710d8567e9d8c1de61a9811860b748b7ef8390c"
+              },
+              "imap": {
+                "shape": [
+                  1,
+                  1,
+                  384,
+                  116,
+                  152
+                ],
+                "dtype": "float32",
+                "bytes": 27082752,
+                "tensor_sha256": "0cf1ffdd7891ad12f43b75666787c577e5d459b634aa83503423254c11f62e0a"
+              }
+            },
+            "artifact": {
+              "file": "frame-0.npz",
+              "bytes": 36110838,
+              "sha256": "c3c5361538084dbcc71572e7d898b1e35aa3feab8385ffb55f1d3786503c4eaa"
+            }
+          },
+          {
+            "frame_index": 1,
+            "frame_id": "1305031102.211214",
+            "forward_seconds": 0.31056407300638966,
+            "versus_original_CPU": {
+              "fmap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 5,
+                "gate_passed": false,
+                "max_abs": 1.2606382369995117e-05,
+                "relative_l2": 9.453385781218191e-06,
+                "bitwise_equal": false
+              },
+              "imap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 0,
+                "gate_passed": true,
+                "max_abs": 8.165836334228516e-06,
+                "relative_l2": 1.2705948864571024e-06,
+                "bitwise_equal": false
+              }
+            },
+            "versus_original_ORT": {
+              "fmap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 2,
+                "gate_passed": false,
+                "max_abs": 1.208484172821045e-05,
+                "relative_l2": 9.618025249326386e-06,
+                "bitwise_equal": false
+              },
+              "imap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 0,
+                "gate_passed": true,
+                "max_abs": 0.0,
+                "relative_l2": 0.0,
+                "bitwise_equal": true
+              }
+            },
+            "arrays": {
+              "fmap": {
+                "shape": [
+                  1,
+                  1,
+                  128,
+                  116,
+                  152
+                ],
+                "dtype": "float32",
+                "bytes": 9027584,
+                "tensor_sha256": "5281328699913abd08957386fcaf71f38dd44d7e3d53944d9941a6eeacb4b4d0"
+              },
+              "imap": {
+                "shape": [
+                  1,
+                  1,
+                  384,
+                  116,
+                  152
+                ],
+                "dtype": "float32",
+                "bytes": 27082752,
+                "tensor_sha256": "41f92765d017f00b661941249009d53b31558dd53a6e75a60385e03451e01fe0"
+              }
+            },
+            "artifact": {
+              "file": "frame-1.npz",
+              "bytes": 36110838,
+              "sha256": "3eea2c9a2ccb13dab8ca5ed2e029cddb42e344f421920239bc2ec484a678f889"
+            }
+          },
+          {
+            "frame_index": 2,
+            "frame_id": "1305031102.243211",
+            "forward_seconds": 0.298956904996885,
+            "versus_original_CPU": {
+              "fmap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 53,
+                "gate_passed": false,
+                "max_abs": 1.71661376953125e-05,
+                "relative_l2": 9.914613323455706e-06,
+                "bitwise_equal": false
+              },
+              "imap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 0,
+                "gate_passed": true,
+                "max_abs": 8.165836334228516e-06,
+                "relative_l2": 1.2283278538264823e-06,
+                "bitwise_equal": false
+              }
+            },
+            "versus_original_ORT": {
+              "fmap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 69,
+                "gate_passed": false,
+                "max_abs": 1.77919864654541e-05,
+                "relative_l2": 1.098172864128038e-05,
+                "bitwise_equal": false
+              },
+              "imap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 0,
+                "gate_passed": true,
+                "max_abs": 0.0,
+                "relative_l2": 0.0,
+                "bitwise_equal": true
+              }
+            },
+            "arrays": {
+              "fmap": {
+                "shape": [
+                  1,
+                  1,
+                  128,
+                  116,
+                  152
+                ],
+                "dtype": "float32",
+                "bytes": 9027584,
+                "tensor_sha256": "b3acff7360bade483066b0412832d9ff4bc89a3fa8dd80e3b9f28aab964b39e6"
+              },
+              "imap": {
+                "shape": [
+                  1,
+                  1,
+                  384,
+                  116,
+                  152
+                ],
+                "dtype": "float32",
+                "bytes": 27082752,
+                "tensor_sha256": "96310e9928a6402ea145190a7b00eed0485034f1b4eb0596ff017db5d5ed2612"
+              }
+            },
+            "artifact": {
+              "file": "frame-2.npz",
+              "bytes": 36110838,
+              "sha256": "8560a38396c8c407d46daf56456b0d8080e55b66d41303f4d62f6f7b11239cd0"
+            }
+          }
+        ],
+        "cleanup_errors": [],
+        "init_seconds": 0.015803084999788553,
+        "providers": [
+          "CPUExecutionProvider"
+        ],
+        "ORT_version": "1.20.1",
+        "numpy_version": "1.26.4",
+        "graph_optimization": "ORT_DISABLE_ALL",
+        "cpu_affinity": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "intra_threads": 4,
+        "inter_threads": 1,
+        "capture_sha256": "e0563efb962edb90684480be114b88bc2c7825015f3b13a163f6f47f06360088",
+        "export_sha256": "45fa589fa3a25a9722dc0832f5d14ffcec662e70d1dff135b86be641eeeba4b2",
+        "old_ort_sha256": "153da765b1145d7bb74bc635c1982ae74c652dac28cf99be56cb40534c44b667",
+        "rewrite_sha256": "66eb8d135165f7538c97733d0c83198fa5a674e0cd2bdf64eb190c24819c5109",
+        "onnx": {
+          "file": "encoders.onnx",
+          "bytes": 1554634,
+          "sha256": "c3c4048c6d8792b09f0d6cbec8228f99d59c60d7503456eea2e369d7b8dbd826"
+        },
+        "exact_FP32_gate_passed": false,
+        "error": "ValueError('Original FP32 gate failed; do not compile as validated')",
+        "traceback": "Traceback (most recent call last):\n  File \"/mnt/vggt-data/vggt-slam2/experiments/vggt-v27-dpvo-opt/run-v27-dpvo-norm-ort-board.py\", line 69, in main\n    require(report['exact_FP32_gate_passed'],'Original FP32 gate failed; do not compile as validated')\n  File \"/mnt/vggt-data/vggt-slam2/experiments/vggt-v27-dpvo-opt/run-v27-dpvo-norm-ort-board.py\", line 10, in require\n    if not ok:raise ValueError(msg)\n              ^^^^^^^^^^^^^^^^^^^^^\nValueError: Original FP32 gate failed; do not compile as validated\n",
+        "source_hashes_after": {
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v27-dpvo-opt/run-v27-dpvo-norm-ort-board.py": "f2ce1b906a58343925007ad4f3429f690ede07f5f230b4e2c2d7b743aa9e91cf",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/capture.json": "e0563efb962edb90684480be114b88bc2c7825015f3b13a163f6f47f06360088",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-export-r1/export.json": "45fa589fa3a25a9722dc0832f5d14ffcec662e70d1dff135b86be641eeeba4b2",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-ort-r1/ort.json": "153da765b1145d7bb74bc635c1982ae74c652dac28cf99be56cb40534c44b667",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v27-dpvo-opt/encoders-spatial-norm-r1/rewrite.json": "66eb8d135165f7538c97733d0c83198fa5a674e0cd2bdf64eb190c24819c5109",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v27-dpvo-opt/rewrite-v27-dpvo-instance-norm.py": "671ceca472d104cedc318b380cd6dfaeb8852e4207383bf533fd4c98d0937f11",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-export-r1/encoders.onnx": "527fc2493de700a21aee958d7fda4d5ee421f4eb0c92296e81409df289f56a82",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v27-dpvo-opt/encoders-spatial-norm-r1/encoders.onnx": "c3c4048c6d8792b09f0d6cbec8228f99d59c60d7503456eea2e369d7b8dbd826",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/input-0.npy": "1cc1e147ffe4ea6838d91e5fadea6227df2a0073204a4e98b8881e28507a05db",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/call-00-frame-0.npz": "8ad9bf5871960e25ca4e87fc8c1675a2bbc4f51dd71f7d294ae13d3d734fb71d",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-ort-r1/frame-0.npz": "0bf071376b5a77c01a157cded8c0a455f2f1d0f0c7d4c06b11f1e730d0517304",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/input-1.npy": "ebd59f9c49daef20fe60ab9f0d4d343f4194508971b1b9f632c24416e33f35b4",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/call-04-frame-1.npz": "b90e9b6a0e4c0446bdcc659bd1c93eb06ff85d38332129ae9e221bdc5c84e40a",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-ort-r1/frame-1.npz": "c5282f444dfc7d0cd9d96ef3d1d018d62ad517415e051e9bdaf7b3364aec61f6",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/input-2.npy": "e636547297beedeadbb29f7dc8c0c14e15904b8f7f4d9457b51b81e0efe769c1",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/call-05-frame-2.npz": "43785747b25c5037c43042fd66f3b1073a33fa7a06b1a65c5777ce0a25afc16d",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-ort-r1/frame-2.npz": "b2ae3fbdff3b968f3061681a6ab2b30dd422866a78016b01c13093cb4afbf692"
+        },
+        "sources_and_inputs_unchanged": true,
+        "affinity_restored": true,
+        "source_pins": {
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v27-dpvo-opt/run-v27-dpvo-norm-ort-board.py": "f2ce1b906a58343925007ad4f3429f690ede07f5f230b4e2c2d7b743aa9e91cf",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/capture.json": "e0563efb962edb90684480be114b88bc2c7825015f3b13a163f6f47f06360088",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-export-r1/export.json": "45fa589fa3a25a9722dc0832f5d14ffcec662e70d1dff135b86be641eeeba4b2",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-ort-r1/ort.json": "153da765b1145d7bb74bc635c1982ae74c652dac28cf99be56cb40534c44b667",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v27-dpvo-opt/encoders-spatial-norm-r1/rewrite.json": "66eb8d135165f7538c97733d0c83198fa5a674e0cd2bdf64eb190c24819c5109",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v27-dpvo-opt/rewrite-v27-dpvo-instance-norm.py": "671ceca472d104cedc318b380cd6dfaeb8852e4207383bf533fd4c98d0937f11",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-export-r1/encoders.onnx": "527fc2493de700a21aee958d7fda4d5ee421f4eb0c92296e81409df289f56a82",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v27-dpvo-opt/encoders-spatial-norm-r1/encoders.onnx": "c3c4048c6d8792b09f0d6cbec8228f99d59c60d7503456eea2e369d7b8dbd826",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/input-0.npy": "1cc1e147ffe4ea6838d91e5fadea6227df2a0073204a4e98b8881e28507a05db",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/call-00-frame-0.npz": "8ad9bf5871960e25ca4e87fc8c1675a2bbc4f51dd71f7d294ae13d3d734fb71d",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-ort-r1/frame-0.npz": "0bf071376b5a77c01a157cded8c0a455f2f1d0f0c7d4c06b11f1e730d0517304",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/input-1.npy": "ebd59f9c49daef20fe60ab9f0d4d343f4194508971b1b9f632c24416e33f35b4",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/call-04-frame-1.npz": "b90e9b6a0e4c0446bdcc659bd1c93eb06ff85d38332129ae9e221bdc5c84e40a",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-ort-r1/frame-1.npz": "c5282f444dfc7d0cd9d96ef3d1d018d62ad517415e051e9bdaf7b3364aec61f6",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/input-2.npy": "e636547297beedeadbb29f7dc8c0c14e15904b8f7f4d9457b51b81e0efe769c1",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-capture-r1/call-05-frame-2.npz": "43785747b25c5037c43042fd66f3b1073a33fa7a06b1a65c5777ce0a25afc16d",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v26-dpvo-encoders-ort-r1/frame-2.npz": "b2ae3fbdff3b968f3061681a6ab2b30dd422866a78016b01c13093cb4afbf692"
+        },
+        "peak_rss_mib": 727.01171875
+      },
+      "platform_samples": {
+        "file": "vggt-v27-dpvo-norm-ort-r1/platform_samples.json",
+        "raw_sha256": "9e2f610c0d030e3093f486cf5f182cb592bc07914cb9397829d2684bf04be1fe",
+        "raw_bytes": 1733,
+        "host_home_redacted": false,
+        "data": {
+          "scope": "Read-only before/after observations; no clocks/governors/cooling modified",
+          "before": {
+            "monotonic": 100558.102052435,
+            "sysfs": {
+              "/sys/class/thermal/thermal_zone2/temp": "51769",
+              "/sys/class/thermal/thermal_zone0/temp": "51769",
+              "/sys/class/thermal/thermal_zone5/temp": "50846",
+              "/sys/class/thermal/thermal_zone3/temp": "51769",
+              "/sys/class/thermal/thermal_zone1/temp": "51769",
+              "/sys/class/thermal/thermal_zone6/temp": "51769",
+              "/sys/class/thermal/thermal_zone4/temp": "51769",
+              "/sys/devices/system/cpu/cpufreq/policy6/scaling_cur_freq": "408000",
+              "/sys/devices/system/cpu/cpufreq/policy4/scaling_cur_freq": "1416000",
+              "/sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq": "1200000",
+              "/sys/class/devfreq/fdab0000.npu/cur_freq": "300000000",
+              "/sys/class/devfreq/fb000000.gpu/cur_freq": "300000000"
+            }
+          },
+          "after": {
+            "monotonic": 100562.16231326,
+            "sysfs": {
+              "/sys/class/thermal/thermal_zone2/temp": "61000",
+              "/sys/class/thermal/thermal_zone0/temp": "60076",
+              "/sys/class/thermal/thermal_zone5/temp": "59153",
+              "/sys/class/thermal/thermal_zone3/temp": "61000",
+              "/sys/class/thermal/thermal_zone1/temp": "61000",
+              "/sys/class/thermal/thermal_zone6/temp": "59153",
+              "/sys/class/thermal/thermal_zone4/temp": "61000",
+              "/sys/devices/system/cpu/cpufreq/policy6/scaling_cur_freq": "1416000",
+              "/sys/devices/system/cpu/cpufreq/policy4/scaling_cur_freq": "408000",
+              "/sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq": "1200000",
+              "/sys/class/devfreq/fdab0000.npu/cur_freq": "300000000",
+              "/sys/class/devfreq/fb000000.gpu/cur_freq": "300000000"
+            }
+          }
+        }
+      },
+      "combined_log": {
+        "bytes": 346,
+        "sha256": "235c0ae1be6f153f570f33697fd86446a0e3f9b89a74860d0026459491651d28"
+      }
+    },
+    "synthetic_rewrite_checks": {
+      "file": "vggt-v27-dpvo-opt/norm-rewrite-synthetic-checks.json",
+      "raw_sha256": "93c33dafcad12fc45220285cf7992716e3b7c1dfe758e7e29abd457e8cdf569f",
+      "raw_bytes": 4269,
+      "host_home_redacted": true,
+      "data": {
+        "kind": "v27_instance_norm_rewrite_synthetic_checks",
+        "status": "passed_algebra_and_guards_real_graph_gate_pending",
+        "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=/dev/shm/vggt-v12-toolchain/site OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 TMPDIR=/dev/shm/vggt-v27-dpvo-opt <host-home>/miniconda3/envs/ctvggt/bin/python -B -m pytest -q -p no:cacheprovider --basetemp=/dev/shm/v27-norm-tests-r2 /dev/shm/vggt-v27-dpvo-opt/test_v27_instance_norm_rewrite.py",
+        "pytest": {
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "seconds": 0.09
+        },
+        "versions": {
+          "python": "3.11.14",
+          "numpy": "1.26.4",
+          "onnx": "1.16.2",
+          "onnxruntime": "1.20.1",
+          "pytest": "9.0.2"
+        },
+        "source_pins": {
+          "rewrite-v27-dpvo-instance-norm.py": "671ceca472d104cedc318b380cd6dfaeb8852e4207383bf533fd4c98d0937f11",
+          "test_v27_instance_norm_rewrite.py": "6db7a37e2d2072bb4d9ec9e68daeb08d7b09c1d05d909c70fddf8bcdc07937b9",
+          "encoders.onnx": "c3c4048c6d8792b09f0d6cbec8228f99d59c60d7503456eea2e369d7b8dbd826",
+          "rewrite.json": "66eb8d135165f7538c97733d0c83198fa5a674e0cd2bdf64eb190c24819c5109"
+        },
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "tiny_synthetic_cases": [
+          {
+            "case": "random",
+            "shape": [
+              2,
+              3,
+              5,
+              7
+            ],
+            "input_raw_sha256": "3d0f6a076e43c1ea3e466fc8b208f0721098c8ee3571c81ddc35ea7dbeb1ac49",
+            "original_vs_rewritten": {
+              "gate_passed": true,
+              "failed_elements": 0,
+              "elements": 210,
+              "max_abs": 4.76837158203125e-07
+            },
+            "rewritten_vs_population_oracle": {
+              "gate_passed": true,
+              "max_abs": 3.4577476659691797e-07
+            }
+          },
+          {
+            "case": "constant_per_instance_channel",
+            "shape": [
+              2,
+              3,
+              5,
+              7
+            ],
+            "input_raw_sha256": "18f14c5a52021c5fa28ca9c31a764cb6478068bd7de33c6479ae26f83eacc5c6",
+            "original_vs_rewritten": {
+              "gate_passed": false,
+              "failed_elements": 70,
+              "elements": 210,
+              "max_abs": 4.883110523223877e-05
+            },
+            "rewritten_vs_population_oracle": {
+              "gate_passed": true,
+              "max_abs": 0.0
+            }
+          },
+          {
+            "case": "small_variance",
+            "shape": [
+              2,
+              3,
+              5,
+              7
+            ],
+            "input_raw_sha256": "ff0bb79a4e64f30a1ea27111e0dbb5756266b6dd7da6519de26b7b54ecb2822c",
+            "original_vs_rewritten": {
+              "gate_passed": true,
+              "failed_elements": 0,
+              "elements": 210,
+              "max_abs": 5.066394805908203e-07
+            },
+            "rewritten_vs_population_oracle": {
+              "gate_passed": true,
+              "max_abs": 2.55912906144129e-07
+            }
+          },
+          {
+            "case": "affine_zero_scale",
+            "shape": [
+              2,
+              3,
+              5,
+              7
+            ],
+            "input_raw_sha256": "3d0f6a076e43c1ea3e466fc8b208f0721098c8ee3571c81ddc35ea7dbeb1ac49",
+            "original_vs_rewritten": {
+              "gate_passed": true,
+              "failed_elements": 0,
+              "elements": 210,
+              "max_abs": 3.5762786865234375e-07
+            },
+            "rewritten_vs_population_oracle": {
+              "gate_passed": true,
+              "max_abs": 3.233221885778903e-07
+            }
+          },
+          {
+            "case": "hw_singleton",
+            "shape": [
+              2,
+              3,
+              1,
+              1
+            ],
+            "input_raw_sha256": "cd47b5a53042c357f87402e2be62b0377dba2aa9c0f36ca7bd5fc0982e42a365",
+            "original_vs_rewritten": {
+              "gate_passed": true,
+              "failed_elements": 0,
+              "elements": 6,
+              "max_abs": 1.2218952178955078e-05
+            },
+            "rewritten_vs_population_oracle": {
+              "gate_passed": true,
+              "max_abs": 0.0
+            }
+          }
+        ],
+        "initial_development_test": {
+          "passed": 16,
+          "failed": 1,
+          "reason": "Demanding FP32 kernel equivalence for spatial constants with nonzero affine exposed cancellation rounding in the original ORT InstanceNormalization."
+        },
+        "constant_case_handling": "The final constant test requires the unchanged population-variance oracle and exact beta; its original-kernel gate failure is disclosed here. The board original-encoder gate is still unchanged and mandatory.",
+        "actual_encoder_graph_forward_executed": false,
+        "real_weights_loaded_for_inference": false,
+        "board_jobs_started": false
+      }
+    },
+    "original_SDK_rule_evidence": {
+      "file": "vggt-v27-dpvo-opt/sdk-instance-norm-rule-evidence.json",
+      "raw_sha256": "e86d15516461cac5c54585a871938ffcf25585b98f0cd3a086086fc577b62e73",
+      "raw_bytes": 6548,
+      "host_home_redacted": false,
+      "data": {
+        "kind": "v27_local_RKNN_2_3_2_instance_norm_rule_evidence",
+        "scope": "Read-only actual baseline compiler log and static strings in the installed official SDK binary; no candidate compilation.",
+        "baseline_compile_log": {
+          "sha256": "1220b1f9acb6861472aa2f25857801499b3a423da13b051b7d12c400c47310e3",
+          "observed_count": 10,
+          "entries": [
+            {
+              "line": 24,
+              "text": "D     convert_in_to_exnorm: remove node = ['/original/fnet/norm1/InstanceNormalization'], add node = ['/original/fnet/conv1/Conv_output_0_tp', '/original/fnet/conv1/Conv_output_0_tp_rs', '/original/fnet/norm1/InstanceNormalization#1', '/original/fnet/norm1/InstanceNormalization#1_rs', '/original/fnet/norm1/InstanceNormalization#1_rs_tp']"
+            },
+            {
+              "line": 25,
+              "text": "D     convert_in_to_exnorm: remove node = ['/original/fnet/layer1/layer1.0/norm1/InstanceNormalization'], add node = ['/original/fnet/layer1/layer1.0/conv1/Conv_output_0_tp', '/original/fnet/layer1/layer1.0/conv1/Conv_output_0_tp_rs', '/original/fnet/layer1/layer1.0/norm1/InstanceNormalization#1', '/original/fnet/layer1/layer1.0/norm1/InstanceNormalization#1_rs', '/original/fnet/layer1/layer1.0/norm1/InstanceNormalization#1_rs_tp']"
+            },
+            {
+              "line": 26,
+              "text": "D     convert_in_to_exnorm: remove node = ['/original/fnet/layer1/layer1.0/norm2/InstanceNormalization'], add node = ['/original/fnet/layer1/layer1.0/conv2/Conv_output_0_tp', '/original/fnet/layer1/layer1.0/conv2/Conv_output_0_tp_rs', '/original/fnet/layer1/layer1.0/norm2/InstanceNormalization#1', '/original/fnet/layer1/layer1.0/norm2/InstanceNormalization#1_rs', '/original/fnet/layer1/layer1.0/norm2/InstanceNormalization#1_rs_tp']"
+            },
+            {
+              "line": 27,
+              "text": "D     convert_in_to_exnorm: remove node = ['/original/fnet/layer1/layer1.1/norm1/InstanceNormalization'], add node = ['/original/fnet/layer1/layer1.1/conv1/Conv_output_0_tp', '/original/fnet/layer1/layer1.1/conv1/Conv_output_0_tp_rs', '/original/fnet/layer1/layer1.1/norm1/InstanceNormalization#1', '/original/fnet/layer1/layer1.1/norm1/InstanceNormalization#1_rs', '/original/fnet/layer1/layer1.1/norm1/InstanceNormalization#1_rs_tp']"
+            },
+            {
+              "line": 28,
+              "text": "D     convert_in_to_exnorm: remove node = ['/original/fnet/layer1/layer1.1/norm2/InstanceNormalization'], add node = ['/original/fnet/layer1/layer1.1/conv2/Conv_output_0_tp', '/original/fnet/layer1/layer1.1/conv2/Conv_output_0_tp_rs', '/original/fnet/layer1/layer1.1/norm2/InstanceNormalization#1', '/original/fnet/layer1/layer1.1/norm2/InstanceNormalization#1_rs', '/original/fnet/layer1/layer1.1/norm2/InstanceNormalization#1_rs_tp']"
+            },
+            {
+              "line": 29,
+              "text": "D     convert_in_to_exnorm: remove node = ['/original/fnet/layer2/layer2.0/norm1/InstanceNormalization'], add node = ['/original/fnet/layer2/layer2.0/conv1/Conv_output_0_tp', '/original/fnet/layer2/layer2.0/conv1/Conv_output_0_tp_rs', '/original/fnet/layer2/layer2.0/norm1/InstanceNormalization#1', '/original/fnet/layer2/layer2.0/norm1/InstanceNormalization#1_rs', '/original/fnet/layer2/layer2.0/norm1/InstanceNormalization#1_rs_tp']"
+            },
+            {
+              "line": 30,
+              "text": "D     convert_in_to_exnorm: remove node = ['/original/fnet/layer2/layer2.0/norm2/InstanceNormalization'], add node = ['/original/fnet/layer2/layer2.0/conv2/Conv_output_0_tp', '/original/fnet/layer2/layer2.0/conv2/Conv_output_0_tp_rs', '/original/fnet/layer2/layer2.0/norm2/InstanceNormalization#1', '/original/fnet/layer2/layer2.0/norm2/InstanceNormalization#1_rs', '/original/fnet/layer2/layer2.0/norm2/InstanceNormalization#1_rs_tp']"
+            },
+            {
+              "line": 31,
+              "text": "D     convert_in_to_exnorm: remove node = ['/original/fnet/layer2/layer2.0/downsample/norm3/InstanceNormalization'], add node = ['/original/fnet/layer2/layer2.0/downsample/downsample.0/Conv_output_0_tp', '/original/fnet/layer2/layer2.0/downsample/downsample.0/Conv_output_0_tp_rs', '/original/fnet/layer2/layer2.0/downsample/norm3/InstanceNormalization#1', '/original/fnet/layer2/layer2.0/downsample/norm3/InstanceNormalization#1_rs', '/original/fnet/layer2/layer2.0/downsample/norm3/InstanceNormalization#1_rs_tp']"
+            },
+            {
+              "line": 32,
+              "text": "D     convert_in_to_exnorm: remove node = ['/original/fnet/layer2/layer2.1/norm1/InstanceNormalization'], add node = ['/original/fnet/layer2/layer2.1/conv1/Conv_output_0_tp', '/original/fnet/layer2/layer2.1/conv1/Conv_output_0_tp_rs', '/original/fnet/layer2/layer2.1/norm1/InstanceNormalization#1', '/original/fnet/layer2/layer2.1/norm1/InstanceNormalization#1_rs', '/original/fnet/layer2/layer2.1/norm1/InstanceNormalization#1_rs_tp']"
+            },
+            {
+              "line": 33,
+              "text": "D     convert_in_to_exnorm: remove node = ['/original/fnet/layer2/layer2.1/norm2/InstanceNormalization'], add node = ['/original/fnet/layer2/layer2.1/conv2/Conv_output_0_tp', '/original/fnet/layer2/layer2.1/conv2/Conv_output_0_tp_rs', '/original/fnet/layer2/layer2.1/norm2/InstanceNormalization#1', '/original/fnet/layer2/layer2.1/norm2/InstanceNormalization#1_rs', '/original/fnet/layer2/layer2.1/norm2/InstanceNormalization#1_rs_tp']"
+            }
+          ]
+        },
+        "SDK_norm_rules_binary": {
+          "sha256": "02e5db30adc0865944b6bc6c7beb014c26ee8ae9d8c48c41788e022b776723e9",
+          "observed_symbol_strings": [
+            "convert_in_to_exnorm",
+            "replace_mean_variance_norm",
+            "replace_tf_mean_variance_norm",
+            "replace_tf_mean_variance_norm2",
+            "replace_torch_layernorm",
+            "fuse_norm"
+          ]
+        },
+        "demonstrated": "The actual v26 compiler applied convert_in_to_exnorm to all ten InstanceNormalization nodes and generated transpose/reshape nodes.",
+        "candidate_rewrite": "GAP_HW centered population variance expression in fixed NCHW, retaining original eps/affine.",
+        "potential_refusion": "The SDK binary contains mean-variance normalization recognizer names. This does not prove the GAP-based candidate matches any particular pattern.",
+        "next_required_checks": [
+          "Board CPU ORT against unchanged v26 references at rtol=1e-4, atol=1e-5.",
+          "Inspect actual candidate compiler log for refusion before concluding that transpose nodes disappeared.",
+          "Inspect actual runtime placement and precision independently of successful compilation."
+        ],
+        "compiler_configuration_changed": false,
+        "disable_rules_proposed_without_observed_candidate_match": [],
+        "host_actual_graph_inference": false,
+        "board_jobs_started": false
+      }
+    },
+    "independent_saved_array_review": {
+      "file": "vggt-v27-dpvo-opt/norm-independent-review-r1.json",
+      "raw_sha256": "a7051b32ca7efe1063254a71867cd4d9b41864fe6b3d639181b7c9e340e9a927",
+      "raw_bytes": 12480,
+      "host_home_redacted": false,
+      "data": {
+        "kind": "v27_DPVO_norm_rewrite_independent_saved_array_audit",
+        "status": "passed",
+        "audit_script_sha256": "7522914047361a49d2fe6b94fe7e0016007f2bf414533d40cedcab2c3404288e",
+        "checks": 168,
+        "audit_failures": 0,
+        "receipt_sha256": {
+          "capture": "e0563efb962edb90684480be114b88bc2c7825015f3b13a163f6f47f06360088",
+          "export": "45fa589fa3a25a9722dc0832f5d14ffcec662e70d1dff135b86be641eeeba4b2",
+          "original_ORT": "153da765b1145d7bb74bc635c1982ae74c652dac28cf99be56cb40534c44b667",
+          "rewrite": "66eb8d135165f7538c97733d0c83198fa5a674e0cd2bdf64eb190c24819c5109",
+          "rewritten_board_ORT": "a517f822a2e4afd01aff87df303183a3dc5850313134548891dc13c1e36b896b"
+        },
+        "parent_graph_sha256": "527fc2493de700a21aee958d7fda4d5ee421f4eb0c92296e81409df289f56a82",
+        "candidate_graph_sha256": "c3c4048c6d8792b09f0d6cbec8228f99d59c60d7503456eea2e369d7b8dbd826",
+        "candidate_original_FP32_gate_passed": false,
+        "eligible_for_validated_compilation": false,
+        "validation_rejection": "Candidate failed the original FP32 gate; do not treat it as validated for compilation",
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "thresholds_relaxed": false,
+        "all_arrays_finite_and_nonzero": true,
+        "all_local_artifact_SHAs_and_raw_metadata_verified": true,
+        "original_CPU_ORT_gate_independently_reproduced": true,
+        "unmodified_imap_vs_original_ORT_bitwise_equal_all_three_frames": true,
+        "total_errors": {
+          "versus_original_CPU": {
+            "fmap": {
+              "failed_elements": 62,
+              "element_count": 6770688
+            },
+            "imap": {
+              "failed_elements": 0,
+              "element_count": 20312064
+            }
+          },
+          "versus_original_ORT": {
+            "fmap": {
+              "failed_elements": 81,
+              "element_count": 6770688
+            },
+            "imap": {
+              "failed_elements": 0,
+              "element_count": 20312064
+            }
+          }
+        },
+        "frames": [
+          {
+            "frame_index": 0,
+            "frame_id": "1305031102.175304",
+            "input_array": {
+              "shape": [
+                1,
+                1,
+                3,
+                464,
+                608
+              ],
+              "dtype": "float32",
+              "bytes": 3385344,
+              "tensor_sha256": "ad62beab35fc1c813431d02b6c7d3d9323c38c0226684aa67be4c96bf6204761"
+            },
+            "source_image_sha256": "331c3fd7a3d5eefb19e3da2026625aa221ca1991f5ae30ff96060e2e3e45e368",
+            "artifact": {
+              "file": "frame-0.npz",
+              "bytes": 36110838,
+              "sha256": "c3c5361538084dbcc71572e7d898b1e35aa3feab8385ffb55f1d3786503c4eaa"
+            },
+            "actual_arrays": {
+              "fmap": {
+                "shape": [
+                  1,
+                  1,
+                  128,
+                  116,
+                  152
+                ],
+                "dtype": "float32",
+                "bytes": 9027584,
+                "tensor_sha256": "279d948c4cf66afd68e5adba2710d8567e9d8c1de61a9811860b748b7ef8390c"
+              },
+              "imap": {
+                "shape": [
+                  1,
+                  1,
+                  384,
+                  116,
+                  152
+                ],
+                "dtype": "float32",
+                "bytes": 27082752,
+                "tensor_sha256": "0cf1ffdd7891ad12f43b75666787c577e5d459b634aa83503423254c11f62e0a"
+              }
+            },
+            "versus_original_CPU": {
+              "fmap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 4,
+                "element_count": 2256896,
+                "gate_passed": false,
+                "max_abs": 1.2621283531188965e-05,
+                "rms": 1.7157957909846897e-06,
+                "relative_l2": 8.53795907129539e-06,
+                "maximum_tolerance_ratio": 1.190456477387512,
+                "failed_reference_abs_range": [
+                  5.552064521907596e-06,
+                  0.012184645980596542
+                ],
+                "bitwise_equal": false
+              },
+              "imap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 0,
+                "element_count": 6770688,
+                "gate_passed": true,
+                "max_abs": 7.092952728271484e-06,
+                "rms": 3.3977319530892046e-07,
+                "relative_l2": 1.124416156485127e-06,
+                "maximum_tolerance_ratio": 0.42171525504613605,
+                "failed_reference_abs_range": null,
+                "bitwise_equal": false
+              }
+            },
+            "versus_original_ORT": {
+              "fmap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 10,
+                "element_count": 2256896,
+                "gate_passed": false,
+                "max_abs": 1.5139579772949219e-05,
+                "rms": 1.867964020583674e-06,
+                "relative_l2": 9.29516217511149e-06,
+                "maximum_tolerance_ratio": 1.1490697336434779,
+                "failed_reference_abs_range": [
+                  5.193985998630524e-06,
+                  0.03244840353727341
+                ],
+                "bitwise_equal": false
+              },
+              "imap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 0,
+                "element_count": 6770688,
+                "gate_passed": true,
+                "max_abs": 0.0,
+                "rms": 0.0,
+                "relative_l2": 0.0,
+                "maximum_tolerance_ratio": 0.0,
+                "failed_reference_abs_range": null,
+                "bitwise_equal": true
+              }
+            },
+            "reported_board_ORT_forward_seconds": 0.3226300319947768
+          },
+          {
+            "frame_index": 1,
+            "frame_id": "1305031102.211214",
+            "input_array": {
+              "shape": [
+                1,
+                1,
+                3,
+                464,
+                608
+              ],
+              "dtype": "float32",
+              "bytes": 3385344,
+              "tensor_sha256": "d727a65bbabfad459ed18556677760b74bbf9b3127bd0ca473aefd146bb76f91"
+            },
+            "source_image_sha256": "cd3f24c9902586ae22d303092d12c208e024b30130147c198fcd3b01a29f5682",
+            "artifact": {
+              "file": "frame-1.npz",
+              "bytes": 36110838,
+              "sha256": "3eea2c9a2ccb13dab8ca5ed2e029cddb42e344f421920239bc2ec484a678f889"
+            },
+            "actual_arrays": {
+              "fmap": {
+                "shape": [
+                  1,
+                  1,
+                  128,
+                  116,
+                  152
+                ],
+                "dtype": "float32",
+                "bytes": 9027584,
+                "tensor_sha256": "5281328699913abd08957386fcaf71f38dd44d7e3d53944d9941a6eeacb4b4d0"
+              },
+              "imap": {
+                "shape": [
+                  1,
+                  1,
+                  384,
+                  116,
+                  152
+                ],
+                "dtype": "float32",
+                "bytes": 27082752,
+                "tensor_sha256": "41f92765d017f00b661941249009d53b31558dd53a6e75a60385e03451e01fe0"
+              }
+            },
+            "versus_original_CPU": {
+              "fmap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 5,
+                "element_count": 2256896,
+                "gate_passed": false,
+                "max_abs": 1.2606382369995117e-05,
+                "rms": 1.894357072320333e-06,
+                "relative_l2": 9.453385781219093e-06,
+                "maximum_tolerance_ratio": 1.1095098842629947,
+                "failed_reference_abs_range": [
+                  0.0011027713771909475,
+                  0.01431182213127613
+                ],
+                "bitwise_equal": false
+              },
+              "imap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 0,
+                "element_count": 6770688,
+                "gate_passed": true,
+                "max_abs": 8.165836334228516e-06,
+                "rms": 3.6476891324337864e-07,
+                "relative_l2": 1.2705948864572953e-06,
+                "maximum_tolerance_ratio": 0.5441264289353768,
+                "failed_reference_abs_range": null,
+                "bitwise_equal": false
+              }
+            },
+            "versus_original_ORT": {
+              "fmap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 2,
+                "element_count": 2256896,
+                "gate_passed": false,
+                "max_abs": 1.208484172821045e-05,
+                "rms": 1.927349177711825e-06,
+                "relative_l2": 9.618025249327363e-06,
+                "maximum_tolerance_ratio": 1.0208287909430551,
+                "failed_reference_abs_range": [
+                  0.0011033080518245697,
+                  0.010493068024516106
+                ],
+                "bitwise_equal": false
+              },
+              "imap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 0,
+                "element_count": 6770688,
+                "gate_passed": true,
+                "max_abs": 0.0,
+                "rms": 0.0,
+                "relative_l2": 0.0,
+                "maximum_tolerance_ratio": 0.0,
+                "failed_reference_abs_range": null,
+                "bitwise_equal": true
+              }
+            },
+            "reported_board_ORT_forward_seconds": 0.31056407300638966
+          },
+          {
+            "frame_index": 2,
+            "frame_id": "1305031102.243211",
+            "input_array": {
+              "shape": [
+                1,
+                1,
+                3,
+                464,
+                608
+              ],
+              "dtype": "float32",
+              "bytes": 3385344,
+              "tensor_sha256": "50815b5867cbe048f3e64d2a96a7652f2d4a25e31850ea9e79d2d5df20e3ffae"
+            },
+            "source_image_sha256": "9d216b19fe8a35079327da61bbe77615d81529cc1a493abae717abb05bdb8469",
+            "artifact": {
+              "file": "frame-2.npz",
+              "bytes": 36110838,
+              "sha256": "8560a38396c8c407d46daf56456b0d8080e55b66d41303f4d62f6f7b11239cd0"
+            },
+            "actual_arrays": {
+              "fmap": {
+                "shape": [
+                  1,
+                  1,
+                  128,
+                  116,
+                  152
+                ],
+                "dtype": "float32",
+                "bytes": 9027584,
+                "tensor_sha256": "b3acff7360bade483066b0412832d9ff4bc89a3fa8dd80e3b9f28aab964b39e6"
+              },
+              "imap": {
+                "shape": [
+                  1,
+                  1,
+                  384,
+                  116,
+                  152
+                ],
+                "dtype": "float32",
+                "bytes": 27082752,
+                "tensor_sha256": "96310e9928a6402ea145190a7b00eed0485034f1b4eb0596ff017db5d5ed2612"
+              }
+            },
+            "versus_original_CPU": {
+              "fmap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 53,
+                "element_count": 2256896,
+                "gate_passed": false,
+                "max_abs": 1.71661376953125e-05,
+                "rms": 1.987423497834255e-06,
+                "relative_l2": 9.914613323456862e-06,
+                "maximum_tolerance_ratio": 1.3441750587483383,
+                "failed_reference_abs_range": [
+                  0.0004516981716733426,
+                  0.03937359154224396
+                ],
+                "bitwise_equal": false
+              },
+              "imap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 0,
+                "element_count": 6770688,
+                "gate_passed": true,
+                "max_abs": 8.165836334228516e-06,
+                "rms": 3.597941716401769e-07,
+                "relative_l2": 1.2283278538266596e-06,
+                "maximum_tolerance_ratio": 0.476833091830479,
+                "failed_reference_abs_range": null,
+                "bitwise_equal": false
+              }
+            },
+            "versus_original_ORT": {
+              "fmap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 69,
+                "element_count": 2256896,
+                "gate_passed": false,
+                "max_abs": 1.77919864654541e-05,
+                "rms": 2.201330993454704e-06,
+                "relative_l2": 1.0981728641281367e-05,
+                "maximum_tolerance_ratio": 1.6932363359350628,
+                "failed_reference_abs_range": [
+                  0.00020323880016803741,
+                  0.0376521535217762
+                ],
+                "bitwise_equal": false
+              },
+              "imap": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 0,
+                "element_count": 6770688,
+                "gate_passed": true,
+                "max_abs": 0.0,
+                "rms": 0.0,
+                "relative_l2": 0.0,
+                "maximum_tolerance_ratio": 0.0,
+                "failed_reference_abs_range": null,
+                "bitwise_equal": true
+              }
+            },
+            "reported_board_ORT_forward_seconds": 0.298956904996885
+          }
+        ],
+        "board_cleanup": {
+          "cleanup_errors": [],
+          "affinity_restored": true
+        },
+        "scope": {
+          "saved_arrays_only": true,
+          "host_model_or_ORT_execution": false,
+          "image_decoding": false,
+          "board_jobs_started": false,
+          "candidate_compilation_performed": false
+        },
+        "limitations": [
+          "Audit passed means saved evidence is consistent, not that the candidate passed its numerical gate.",
+          "Original board source rechecks are recorded evidence; board-only paths and runtime libraries were not rehashed on the host.",
+          "Small output errors do not waive the unchanged elementwise gate.",
+          "No staged normalization activations were captured; output differences alone do not identify an individual kernel's rounding contribution.",
+          "Encoder-only fixed inputs do not establish VO accuracy, speed, or operator placement."
+        ]
+      }
+    }
+  }
+}
