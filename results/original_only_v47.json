@@ -1,0 +1,2108 @@
+{
+  "schema": "v47_original_VGGT_only_runtime_and_board_validation",
+  "status": "original_only_deployed_and_board_regression_passed",
+  "original_checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "allowed_model": "original VGGT in VGGT-SLAM2",
+  "loop_closure_supported": false,
+  "max_loops": 0,
+  "additional_model_paths_removed": true,
+  "additional_pose_frontend_removed": true,
+  "code_and_weight_licenses_separate": true,
+  "real_time_validated": false,
+  "full_NPU_model_validated": false,
+  "physical_camera_validated": false,
+  "validation": {
+    "runtime_contract_generated_checks": {
+      "passed": 103,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 1.31,
+      "stdout": {
+        "file": "targeted-tests-r1.stdout.txt",
+        "bytes": 180,
+        "sha256": "1eb4d9cde4c0d625ce97a6c9556d3bc3a9378ed84025d0e50ea68f1db6b9dfd7"
+      }
+    },
+    "original_MLP_capture_loader_generated_checks": {
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 0.11
+    },
+    "existing_board_regression_helper_generated_checks": {
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 0.09
+    },
+    "source_checks": {
+      "Solver_add_edge_original_SL4_body_unchanged": true,
+      "Solver_add_points_only_early_loop_rejection_added": true,
+      "vggt_slam/slam_utils.py_all_retained_functions_unchanged": true,
+      "vggt_slam/viewer.py_all_retained_functions_unchanged": true,
+      "Torch_original_prediction_math_unchanged_after_device_attribute_rename": true,
+      "eleven_changed_files_parse": true,
+      "vggt_slam/graph.py_parent_bytes_unchanged": true,
+      "vggt_slam/scale_solver.py_parent_bytes_unchanged": true,
+      "vggt_slam/runtime.py_parent_bytes_unchanged": true,
+      "vggt_slam/frame_overlap.py_parent_bytes_unchanged": true,
+      "vggt_slam/patch_cache.py_parent_bytes_unchanged": true,
+      "frozen_board_run-v47-vggt-cache-slam-board.py_unchanged": true,
+      "frozen_board_v47_cache_suspension.py_unchanged": true,
+      "actual_scoped_stdout_103_passed_no_skip": true
+    },
+    "tested_source_sha256": {
+      "main.py": "a2c72dc06d318cbbdb71a42fa1ac82b743f2c079945461d638e2b572a098890b",
+      "main_realtime.py": "ad4f61f12fc527249803dc2756b01eb0d5b6caf0d65d9851c4b61e08dd6fa12f",
+      "vggt_slam/solver.py": "33b5b4d816cd08f0cb9857f89c9e3fc770ad0c2ab3c9dc938864f00cefe86905",
+      "vggt_slam/slam_utils.py": "aeba669bcb263f24e6bd93e5a176bc028e2022770499bd5ea1c3eeeebbbd5008",
+      "vggt_slam/model_execution.py": "dc5365fd3e823385261b45be2b4b00085c9fb30afbc40825c6c55af0b0253e87",
+      "vggt_slam/viewer.py": "49c77ebd3b8faf58b579528a900b129fae676fe8f72e02a151dc53f0b7d3b397",
+      "vggt_slam/edge_mapping.py": "73de3126ef20ea4a7bea8a44954ae8d0f88c77f1a77536cd60bf772038d06818",
+      "tests/test_solver_execution.py": "ca3670c9a5777523f71dc118b89f3e6b186683849f39550c0e80bb3ba1f94612",
+      "tests/test_model_execution.py": "2d106a21e4ffb5064f9c016491bedba63125c514713cf19c76b03c1ac6fb6872",
+      "tests/test_rectified_mapping.py": "941c9adebf3e30af46295ff037b21ea47eda400aa348fc4e7afcada38a34dd26",
+      "tests/test_legacy_entrypoints.py": "4ae948aa390abf420761d9cf2cb56053dd5d9a620f6a204c40d69fe42dc8d00d"
+    },
+    "unchanged_source_sha256": {
+      "vggt_slam/graph.py": "dda8fb7c947c3c39baa7d190e2942cd4b9f26fe1557d7605fdc8651f27a5ab48",
+      "vggt_slam/scale_solver.py": "dc36b11d4d9953222a3fc2f3aef274acc9e9cc6dc61cb22d86b1e6721d9bd691",
+      "vggt_slam/runtime.py": "baf65a5afcfa98584e25b1ef85d7cae31507a7da2b4cc03f97d2015776796e8c",
+      "vggt_slam/frame_overlap.py": "bbb78f549a34b58eaf27556e6dda703468cc0518de4b936f7f886882d151afb8",
+      "vggt_slam/patch_cache.py": "cd86bcb580cbf55ca92b6b98b203bb6e789bf35adfa47644103efd6be592e6f9"
+    }
+  },
+  "active_board_deployment": {
+    "status": "verified_original_only_active_deployment",
+    "verified_file_count": 178,
+    "source_archive_sha256": "df06d3729709948f75f82f0d19b29806e1d2be0767f9bcd7583fe7e4ddca3cdd",
+    "active_checkpoint_files": [
+      "model.pt"
+    ],
+    "runtime_source_matches_public_tests": true,
+    "raw_receipt_sha256": "cf50ddd76cd93b85b2a23d5c976eefb383a08d6624e9fe4942da3aa218c5d6b5",
+    "previous_source_and_inactive_weights_preserved_outside_active_paths": true
+  },
+  "new_runtime_board_regression": {
+    "status": "passed_original_FP32_execution_regression",
+    "raw_receipt_sha256": "5cdfc390f2c3db64519d7f0d2538344beb7a528a9ec0e28cfb4361f0b6f5adf7",
+    "script": "deploy/rk3588/validation/check-v21-model-execution-board.py",
+    "script_sha256": "09d82afc3caf6225119ebd0c2d7b607a7fc90c9f2c2e02f455ced730c7daac9b",
+    "actual_tensor_shape": [
+      2,
+      3,
+      84,
+      112
+    ],
+    "image_size": 112,
+    "source_ids": [
+      1305031102.175304,
+      1305031102.443271
+    ],
+    "original_checkpoint_full_sha_checked_before_loading": true,
+    "full_model_forward_count": 4,
+    "forward_plan": [
+      "direct_normal",
+      "adapter_normal",
+      "direct_loop",
+      "adapter_loop"
+    ],
+    "direct_normal_vs_saved_original": {
+      "extrinsic": {
+        "array_equal": true,
+        "bitwise_equal": true,
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "relative_l2": 0.0,
+        "predefined_gate": "bitwise_original_FP32_exact"
+      },
+      "intrinsic": {
+        "array_equal": true,
+        "bitwise_equal": true,
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "relative_l2": 0.0,
+        "predefined_gate": "bitwise_original_FP32_exact"
+      },
+      "depth": {
+        "array_equal": true,
+        "bitwise_equal": true,
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "relative_l2": 0.0,
+        "predefined_gate": "bitwise_original_FP32_exact"
+      },
+      "depth_conf": {
+        "array_equal": true,
+        "bitwise_equal": true,
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "relative_l2": 0.0,
+        "predefined_gate": "bitwise_original_FP32_exact"
+      }
+    },
+    "all_original_direct_adapter_outputs_bitwise_equal": true,
+    "first_graph": {
+      "direct": {
+        "nodes": 2,
+        "factors": 2,
+        "submaps": 1,
+        "loops": 0,
+        "graph_error": 2.63889460079757e-28,
+        "frame_ids": [
+          1305031102.175304,
+          1305031102.443271
+        ]
+      },
+      "adapter": {
+        "nodes": 2,
+        "factors": 2,
+        "submaps": 1,
+        "loops": 0,
+        "graph_error": 2.63889460079757e-28,
+        "frame_ids": [
+          1305031102.175304,
+          1305031102.443271
+        ]
+      },
+      "H_allclose_atol": 1e-12,
+      "H_allclose_rtol": 0,
+      "seconds": 0.0077618350042030215,
+      "additional_model_forwards": 0,
+      "overlap_scale_or_true_loop_graph_validated": false
+    },
+    "graph_homographies_bitwise_equal": true,
+    "source_and_inputs_unchanged": true,
+    "CPU_affinity_restored": true,
+    "seconds_including_setup_and_hashing": 33.601710375980474,
+    "peak_process_RSS_MiB": 4982.09765625,
+    "scope": "Fixed real TUM pair with original rectification at 112. Original-model similarity diagnostics do not load a retrieval model or validate natural loops."
+  },
+  "original518_cache_diagnostic": {
+    "status": "completed_fixed_submap_cache_diagnostic",
+    "raw_receipt_sha256": "d5d70215f5b16f37c16dfdd58625289b75f2b2c137779ca121699935c2f799dd",
+    "frozen_script_sha256": "a68ef93f3ef8dc087314e3e92b880cad10f694495898bc4843e84ed116ef15f0",
+    "plan_sha256": "16b97deef5c75a73e33da60fc4a2867691d754e029d0e94652ae45134c3d1a1c",
+    "source_revision": "pre-cleanup 704e491e5d47d0110ab05b82f1f0df39aefb6d5c; only original checkpoint executed, loops disabled",
+    "original_parameters_unchanged": true,
+    "parameter_count": 1157941492,
+    "parameter_manifest_sha256": "a7cf81b7961fbf13b21b7cdff4b5eb15bda205429300af1f2f5023c506968bb3",
+    "actual_input_shape": [
+      2,
+      3,
+      392,
+      518
+    ],
+    "preprocessing": "original VGGT load_and_preprocess_images(image_size=518), no rectification",
+    "source_indices": [
+      0,
+      8,
+      129,
+      238
+    ],
+    "unique_source_frames": 4,
+    "occurrences_per_method": 6,
+    "independent_solver_graphs": true,
+    "pair_order": [
+      [
+        "A",
+        "B"
+      ],
+      [
+        "B",
+        "A"
+      ],
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "canonical_predictions_all_bitwise_equal": true,
+    "graph_snapshots_all_bitwise_equal": true,
+    "predeclared_tolerance": {
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "predeclared": true
+    },
+    "comparisons": [
+      {
+        "revision": 1,
+        "prepared_pixels_bitwise_equal": true,
+        "predictions": {
+          "extrinsic": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "intrinsic": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "depth": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "depth_conf": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "pose_enc": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          }
+        },
+        "graph": {
+          "node_ids": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "homographies": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "inverse_homographies": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "local_world_to_camera": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "K_4x4": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "calibrated_projective_cameras": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "decomposed_camera_to_world": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          }
+        },
+        "teacher": "same-pair original cache-off A, no historical gold"
+      },
+      {
+        "revision": 2,
+        "prepared_pixels_bitwise_equal": true,
+        "predictions": {
+          "extrinsic": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "intrinsic": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "depth": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "depth_conf": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "pose_enc": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          }
+        },
+        "graph": {
+          "node_ids": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "homographies": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "inverse_homographies": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "local_world_to_camera": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "K_4x4": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "calibrated_projective_cameras": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "decomposed_camera_to_world": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          }
+        },
+        "teacher": "same-pair original cache-off A, no historical gold"
+      },
+      {
+        "revision": 3,
+        "prepared_pixels_bitwise_equal": true,
+        "predictions": {
+          "extrinsic": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "intrinsic": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "depth": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "depth_conf": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "pose_enc": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          }
+        },
+        "graph": {
+          "node_ids": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "homographies": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "inverse_homographies": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "local_world_to_camera": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "K_4x4": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "calibrated_projective_cameras": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "decomposed_camera_to_world": {
+            "bitwise_equal": true,
+            "array_equal": true,
+            "strict_gate_passed": true,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          }
+        },
+        "teacher": "same-pair original cache-off A, no historical gold"
+      }
+    ],
+    "calls": [
+      {
+        "method": "A",
+        "revision": 1,
+        "timing": {
+          "preprocess_seconds": 0.04977437999332324,
+          "run_predictions_seconds": 134.32298824598547,
+          "add_points_seconds": 0.06976463200408034,
+          "graph_optimize_seconds": 0.031211961002554744,
+          "prediction_ready_stage_sum_seconds": 134.3727626259788,
+          "map_ready_stage_sum_seconds": 134.47373921898543,
+          "observed_prediction_ready_wall_seconds": 134.37659570999676,
+          "observed_map_ready_wall_seconds": 134.48074417799944,
+          "diagnostic_input_hash_seconds": 0.003829875000519678,
+          "diagnostic_canonical_copy_hash_seconds": 0.003168083989294246,
+          "scope": "Stage sums exclude diagnostic prepared hash/canonical copies; observed walls include them. Post-forward guards, array comparison, graph snapshots, NPZ save are outside both clocks."
+        },
+        "graph": {
+          "nodes": 2,
+          "factors": 2,
+          "submaps": 1,
+          "loops": 0,
+          "final_error": 1.1226414246731398e-27,
+          "submap_ids": [
+            0
+          ],
+          "source_frame_ids": [
+            [
+              1305031102.175304,
+              1305031102.443271
+            ]
+          ],
+          "geometry": "Original Solver SL4 projective gauge; decomposition is not metric SE3 validation"
+        },
+        "platform_before": {
+          "monotonic": 158291.7561857,
+          "temperatures_mC": {
+            "soc-thermal": 58230,
+            "bigcore0-thermal": 59153,
+            "bigcore1-thermal": 59153,
+            "littlecore-thermal": 58230,
+            "center-thermal": 57307,
+            "gpu-thermal": 56384,
+            "npu-thermal": 56384
+          },
+          "CPU_frequency_kHz": {
+            "policy0": 1800000,
+            "policy4": 2352000,
+            "policy6": 408000
+          },
+          "peak_rss_mib": 4846.51953125
+        },
+        "platform_after": {
+          "monotonic": 158426.380060768,
+          "temperatures_mC": {
+            "soc-thermal": 82230,
+            "bigcore0-thermal": 83153,
+            "bigcore1-thermal": 83153,
+            "littlecore-thermal": 82230,
+            "center-thermal": 81307,
+            "gpu-thermal": 79461,
+            "npu-thermal": 80384
+          },
+          "CPU_frequency_kHz": {
+            "policy0": 1608000,
+            "policy4": 2208000,
+            "policy6": 408000
+          },
+          "peak_rss_mib": 6741.3984375
+        },
+        "input_artifact": {
+          "file": "A-revision-01-input.npz",
+          "bytes": 4873610,
+          "sha256": "7efc544eab3b89198adaf8314ac6cceef0c0b2d26e6d5cd5c282775b32254a70",
+          "arrays": {
+            "images": {
+              "shape": [
+                2,
+                3,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "bytes": 4873344,
+              "finite": true,
+              "tensor_sha256": "b5ef516a8e2a9bbbd0a8074605e6737d4fadf8a80194ec7fce7020adc450f388"
+            }
+          }
+        },
+        "prediction_artifact": {
+          "file": "A-revision-01-prediction.npz",
+          "bytes": 3250400,
+          "sha256": "dcd3b6ce7b5487c5b46553543ccd14aa577b48333cdd8669d279ff3972947733",
+          "arrays": {
+            "extrinsic": {
+              "shape": [
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "bytes": 96,
+              "finite": true,
+              "tensor_sha256": "48914618232b5ad57cde3491b7147e928733786e196e1dd1f0008ff4b6d11933"
+            },
+            "intrinsic": {
+              "shape": [
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "bytes": 72,
+              "finite": true,
+              "tensor_sha256": "0069626fdc707b1f739fe4c27dbd449e2ec5c2c27cd67c747c344efefd670e8e"
+            },
+            "depth": {
+              "shape": [
+                2,
+                392,
+                518,
+                1
+              ],
+              "dtype": "float32",
+              "bytes": 1624448,
+              "finite": true,
+              "tensor_sha256": "aa2a904d7aa3d09d869a4f0e149ab492bcffd93494c7b18b2e90efe7754d81f6"
+            },
+            "depth_conf": {
+              "shape": [
+                2,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "bytes": 1624448,
+              "finite": true,
+              "tensor_sha256": "3860c92833a40878addbad806fedc7eebbfc33a121f2d1aa5ac2507da1a3aad1"
+            },
+            "pose_enc": {
+              "shape": [
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "bytes": 72,
+              "finite": true,
+              "tensor_sha256": "256590334276933de66823b2f117b46308310ae03d461d818f41b0c42752f146"
+            }
+          }
+        },
+        "graph_artifact": {
+          "file": "A-revision-01-graph.npz",
+          "bytes": 3440,
+          "sha256": "dc7801b26c5c68b79b8b9aff6193aeab3a440d1c0304abbcba3b487438905a2b",
+          "arrays": {
+            "node_ids": {
+              "shape": [
+                2
+              ],
+              "dtype": "int64",
+              "bytes": 16,
+              "finite": true,
+              "tensor_sha256": "9d34149fbd1fe777eb238799054c8cbfbce372255f219f8740838def9bfd02db"
+            },
+            "homographies": {
+              "shape": [
+                2,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 256,
+              "finite": true,
+              "tensor_sha256": "1f9d423639698565d858b2362864aa9b1e6c3bce1078995324faf7f1cb2b6089"
+            },
+            "inverse_homographies": {
+              "shape": [
+                2,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 256,
+              "finite": true,
+              "tensor_sha256": "35065d40f54ef7299d0e4ae21f7da3fb893e5a707920053304e0231cd40952d5"
+            },
+            "local_world_to_camera": {
+              "shape": [
+                2,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 256,
+              "finite": true,
+              "tensor_sha256": "592212d319fe598376f7a24f3f822f4312dbe78b88ce4e08331adb7b6571a44d"
+            },
+            "K_4x4": {
+              "shape": [
+                2,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 256,
+              "finite": true,
+              "tensor_sha256": "a2b3fe171950972bd9b60668194929eef5b42b087ea506b4c77644a1c59c3d60"
+            },
+            "calibrated_projective_cameras": {
+              "shape": [
+                2,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 256,
+              "finite": true,
+              "tensor_sha256": "e2fb4a615d40e5acab4d6f2378861b25e966a7ac8efd51b626426e1e982a7d20"
+            },
+            "decomposed_camera_to_world": {
+              "shape": [
+                2,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 256,
+              "finite": true,
+              "tensor_sha256": "f7195cb76c44636149dd94e738fa6ec744b510850e523774324232a085033883"
+            }
+          }
+        },
+        "cache_counter_delta": null
+      },
+      {
+        "method": "B",
+        "revision": 1,
+        "timing": {
+          "preprocess_seconds": 0.04909129600855522,
+          "run_predictions_seconds": 174.83919694297947,
+          "add_points_seconds": 0.049971255008131266,
+          "graph_optimize_seconds": 0.0005454169877339154,
+          "prediction_ready_stage_sum_seconds": 174.88828823898803,
+          "map_ready_stage_sum_seconds": 174.9388049109839,
+          "observed_prediction_ready_wall_seconds": 174.8927813640039,
+          "observed_map_ready_wall_seconds": 174.9464629110007,
+          "diagnostic_input_hash_seconds": 0.004490791994612664,
+          "diagnostic_canonical_copy_hash_seconds": 0.003162542008794844,
+          "scope": "Stage sums exclude diagnostic prepared hash/canonical copies; observed walls include them. Post-forward guards, array comparison, graph snapshots, NPZ save are outside both clocks."
+        },
+        "graph": {
+          "nodes": 2,
+          "factors": 2,
+          "submaps": 1,
+          "loops": 0,
+          "final_error": 1.1226414246731398e-27,
+          "submap_ids": [
+            0
+          ],
+          "source_frame_ids": [
+            [
+              1305031102.175304,
+              1305031102.443271
+            ]
+          ],
+          "geometry": "Original Solver SL4 projective gauge; decomposition is not metric SE3 validation"
+        },
+        "platform_before": {
+          "monotonic": 158426.422488064,
+          "temperatures_mC": {
+            "soc-thermal": 82230,
+            "bigcore0-thermal": 83153,
+            "bigcore1-thermal": 83153,
+            "littlecore-thermal": 82230,
+            "center-thermal": 81307,
+            "gpu-thermal": 79461,
+            "npu-thermal": 80384
+          },
+          "CPU_frequency_kHz": {
+            "policy0": 1416000,
+            "policy4": 1800000,
+            "policy6": 408000
+          },
+          "peak_rss_mib": 6741.3984375
+        },
+        "platform_after": {
+          "monotonic": 158601.384997019,
+          "temperatures_mC": {
+            "soc-thermal": 83153,
+            "bigcore0-thermal": 85888,
+            "bigcore1-thermal": 85000,
+            "littlecore-thermal": 84076,
+            "center-thermal": 83153,
+            "gpu-thermal": 81307,
+            "npu-thermal": 82230
+          },
+          "CPU_frequency_kHz": {
+            "policy0": 1608000,
+            "policy4": 2208000,
+            "policy6": 408000
+          },
+          "peak_rss_mib": 6741.3984375
+        },
+        "input_artifact": {
+          "file": "B-revision-01-input.npz",
+          "bytes": 4873610,
+          "sha256": "7efc544eab3b89198adaf8314ac6cceef0c0b2d26e6d5cd5c282775b32254a70",
+          "arrays": {
+            "images": {
+              "shape": [
+                2,
+                3,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "bytes": 4873344,
+              "finite": true,
+              "tensor_sha256": "b5ef516a8e2a9bbbd0a8074605e6737d4fadf8a80194ec7fce7020adc450f388"
+            }
+          }
+        },
+        "prediction_artifact": {
+          "file": "B-revision-01-prediction.npz",
+          "bytes": 3250400,
+          "sha256": "dcd3b6ce7b5487c5b46553543ccd14aa577b48333cdd8669d279ff3972947733",
+          "arrays": {
+            "extrinsic": {
+              "shape": [
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "bytes": 96,
+              "finite": true,
+              "tensor_sha256": "48914618232b5ad57cde3491b7147e928733786e196e1dd1f0008ff4b6d11933"
+            },
+            "intrinsic": {
+              "shape": [
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "bytes": 72,
+              "finite": true,
+              "tensor_sha256": "0069626fdc707b1f739fe4c27dbd449e2ec5c2c27cd67c747c344efefd670e8e"
+            },
+            "depth": {
+              "shape": [
+                2,
+                392,
+                518,
+                1
+              ],
+              "dtype": "float32",
+              "bytes": 1624448,
+              "finite": true,
+              "tensor_sha256": "aa2a904d7aa3d09d869a4f0e149ab492bcffd93494c7b18b2e90efe7754d81f6"
+            },
+            "depth_conf": {
+              "shape": [
+                2,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "bytes": 1624448,
+              "finite": true,
+              "tensor_sha256": "3860c92833a40878addbad806fedc7eebbfc33a121f2d1aa5ac2507da1a3aad1"
+            },
+            "pose_enc": {
+              "shape": [
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "bytes": 72,
+              "finite": true,
+              "tensor_sha256": "256590334276933de66823b2f117b46308310ae03d461d818f41b0c42752f146"
+            }
+          }
+        },
+        "graph_artifact": {
+          "file": "B-revision-01-graph.npz",
+          "bytes": 3440,
+          "sha256": "dc7801b26c5c68b79b8b9aff6193aeab3a440d1c0304abbcba3b487438905a2b",
+          "arrays": {
+            "node_ids": {
+              "shape": [
+                2
+              ],
+              "dtype": "int64",
+              "bytes": 16,
+              "finite": true,
+              "tensor_sha256": "9d34149fbd1fe777eb238799054c8cbfbce372255f219f8740838def9bfd02db"
+            },
+            "homographies": {
+              "shape": [
+                2,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 256,
+              "finite": true,
+              "tensor_sha256": "1f9d423639698565d858b2362864aa9b1e6c3bce1078995324faf7f1cb2b6089"
+            },
+            "inverse_homographies": {
+              "shape": [
+                2,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 256,
+              "finite": true,
+              "tensor_sha256": "35065d40f54ef7299d0e4ae21f7da3fb893e5a707920053304e0231cd40952d5"
+            },
+            "local_world_to_camera": {
+              "shape": [
+                2,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 256,
+              "finite": true,
+              "tensor_sha256": "592212d319fe598376f7a24f3f822f4312dbe78b88ce4e08331adb7b6571a44d"
+            },
+            "K_4x4": {
+              "shape": [
+                2,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 256,
+              "finite": true,
+              "tensor_sha256": "a2b3fe171950972bd9b60668194929eef5b42b087ea506b4c77644a1c59c3d60"
+            },
+            "calibrated_projective_cameras": {
+              "shape": [
+                2,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 256,
+              "finite": true,
+              "tensor_sha256": "e2fb4a615d40e5acab4d6f2378861b25e966a7ac8efd51b626426e1e982a7d20"
+            },
+            "decomposed_camera_to_world": {
+              "shape": [
+                2,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 256,
+              "finite": true,
+              "tensor_sha256": "f7195cb76c44636149dd94e738fa6ec744b510850e523774324232a085033883"
+            }
+          }
+        },
+        "cache_counter_delta": {
+          "requests": 1,
+          "input_frames": 2,
+          "hit_frames": 0,
+          "computed_frames": 2,
+          "original_dino_calls": 1,
+          "loop_bypass_calls": 0
+        }
+      },
+      {
+        "method": "B",
+        "revision": 2,
+        "timing": {
+          "preprocess_seconds": 0.03886925400001928,
+          "run_predictions_seconds": 163.52127013899735,
+          "add_points_seconds": 0.06508942297659814,
+          "graph_optimize_seconds": 0.0015303750114981085,
+          "prediction_ready_stage_sum_seconds": 163.56013939299737,
+          "map_ready_stage_sum_seconds": 163.62675919098547,
+          "observed_prediction_ready_wall_seconds": 163.56426676700357,
+          "observed_map_ready_wall_seconds": 163.63609302500845,
+          "diagnostic_input_hash_seconds": 0.004124750004848465,
+          "diagnostic_canonical_copy_hash_seconds": 0.005202959000598639,
+          "scope": "Stage sums exclude diagnostic prepared hash/canonical copies; observed walls include them. Post-forward guards, array comparison, graph snapshots, NPZ save are outside both clocks."
+        },
+        "graph": {
+          "nodes": 4,
+          "factors": 4,
+          "submaps": 2,
+          "loops": 0,
+          "final_error": 4.065654452606201e-27,
+          "submap_ids": [
+            0,
+            2
+          ],
+          "source_frame_ids": [
+            [
+              1305031102.175304,
+              1305031102.443271
+            ],
+            [
+              1305031102.443271,
+              1305031106.475345
+            ]
+          ],
+          "geometry": "Original Solver SL4 projective gauge; decomposition is not metric SE3 validation"
+        },
+        "platform_before": {
+          "monotonic": 158601.43175819,
+          "temperatures_mC": {
+            "soc-thermal": 84076,
+            "bigcore0-thermal": 85888,
+            "bigcore1-thermal": 86777,
+            "littlecore-thermal": 84076,
+            "center-thermal": 83153,
+            "gpu-thermal": 81307,
+            "npu-thermal": 82230
+          },
+          "CPU_frequency_kHz": {
+            "policy0": 1608000,
+            "policy4": 2208000,
+            "policy6": 408000
+          },
+          "peak_rss_mib": 6741.3984375
+        },
+        "platform_after": {
+          "monotonic": 158765.083432925,
+          "temperatures_mC": {
+            "soc-thermal": 84076,
+            "bigcore0-thermal": 85000,
+            "bigcore1-thermal": 85000,
+            "littlecore-thermal": 84076,
+            "center-thermal": 83153,
+            "gpu-thermal": 81307,
+            "npu-thermal": 82230
+          },
+          "CPU_frequency_kHz": {
+            "policy0": 1608000,
+            "policy4": 2208000,
+            "policy6": 816000
+          },
+          "peak_rss_mib": 6741.3984375
+        },
+        "input_artifact": {
+          "file": "B-revision-02-input.npz",
+          "bytes": 4873610,
+          "sha256": "873adadc0cce0d5ef864ac47bd5746df1fbef2590d90ef3f6521fa2de109f650",
+          "arrays": {
+            "images": {
+              "shape": [
+                2,
+                3,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "bytes": 4873344,
+              "finite": true,
+              "tensor_sha256": "8c53f80123bb015da13ff2585e00e17642a73e76710d2a7e22113f52e0e5e0de"
+            }
+          }
+        },
+        "prediction_artifact": {
+          "file": "B-revision-02-prediction.npz",
+          "bytes": 3250400,
+          "sha256": "6f3d96cc643f66d93ae77b4f084cec947b22f727468eaedd260b38424ddef768",
+          "arrays": {
+            "extrinsic": {
+              "shape": [
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "bytes": 96,
+              "finite": true,
+              "tensor_sha256": "940c0b5b44b0c8cd20d0544e6dea3f565512091a66273d2ef4369f632df69157"
+            },
+            "intrinsic": {
+              "shape": [
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "bytes": 72,
+              "finite": true,
+              "tensor_sha256": "4072487ae63fc0a0cc4008f7674a83cf3a104334febfd0811771988adb0872ae"
+            },
+            "depth": {
+              "shape": [
+                2,
+                392,
+                518,
+                1
+              ],
+              "dtype": "float32",
+              "bytes": 1624448,
+              "finite": true,
+              "tensor_sha256": "d6ed66803500ac70a76223f0bc2f3d7cf9c4b953deb6b23644a986e431cfe41b"
+            },
+            "depth_conf": {
+              "shape": [
+                2,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "bytes": 1624448,
+              "finite": true,
+              "tensor_sha256": "a58994a5a1b7b46199abf247ab314a3c5d653c180423550b35c1ac2b8c524991"
+            },
+            "pose_enc": {
+              "shape": [
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "bytes": 72,
+              "finite": true,
+              "tensor_sha256": "e7ec83c4b7071eb9d470b8ef09959eec453c9dcc07edd67b378b27305f408ad5"
+            }
+          }
+        },
+        "graph_artifact": {
+          "file": "B-revision-02-graph.npz",
+          "bytes": 4992,
+          "sha256": "1ae30858e15b40f27b2a6a077889e6cf217b3b5d5f27b0a7e7faaa7e383f0799",
+          "arrays": {
+            "node_ids": {
+              "shape": [
+                4
+              ],
+              "dtype": "int64",
+              "bytes": 32,
+              "finite": true,
+              "tensor_sha256": "a1e03200f1f82ad2c1cec8795c271aaecf98f5aa2d151d2229ec5fa0c177cf77"
+            },
+            "homographies": {
+              "shape": [
+                4,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 512,
+              "finite": true,
+              "tensor_sha256": "3c242299d5a39d36016384bcb9c3eabc21013815dc560a62e799cde1284d576c"
+            },
+            "inverse_homographies": {
+              "shape": [
+                4,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 512,
+              "finite": true,
+              "tensor_sha256": "0d123b7b58ffcaddadcb912d952b2ff4b82b001c7e4409bae3f07bd5c5d26d5a"
+            },
+            "local_world_to_camera": {
+              "shape": [
+                4,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 512,
+              "finite": true,
+              "tensor_sha256": "674b97c965579ed1381d6b8eaaad7cd41fd0e64f421da07500c0634a9d792bc2"
+            },
+            "K_4x4": {
+              "shape": [
+                4,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 512,
+              "finite": true,
+              "tensor_sha256": "4c195dbe556741a17632a5020445b307f3eab243364cef11727da03658c1337b"
+            },
+            "calibrated_projective_cameras": {
+              "shape": [
+                4,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 512,
+              "finite": true,
+              "tensor_sha256": "9a0ab04e9023e950721d915ad24c970ab3681baf1ab99393d4d05e4a6e88e02d"
+            },
+            "decomposed_camera_to_world": {
+              "shape": [
+                4,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 512,
+              "finite": true,
+              "tensor_sha256": "9a7b7fbe2bee32523c512981b231a2c7f7433a7fd887d9719a458f9583105f30"
+            }
+          }
+        },
+        "cache_counter_delta": {
+          "requests": 1,
+          "input_frames": 2,
+          "hit_frames": 1,
+          "computed_frames": 1,
+          "original_dino_calls": 1,
+          "loop_bypass_calls": 0
+        }
+      },
+      {
+        "method": "A",
+        "revision": 2,
+        "timing": {
+          "preprocess_seconds": 0.03998108798987232,
+          "run_predictions_seconds": 193.9471896539908,
+          "add_points_seconds": 0.06583559000864625,
+          "graph_optimize_seconds": 0.0014927500160411,
+          "prediction_ready_stage_sum_seconds": 193.98717074198066,
+          "map_ready_stage_sum_seconds": 194.05449908200535,
+          "observed_prediction_ready_wall_seconds": 193.9912884910009,
+          "observed_map_ready_wall_seconds": 194.0623550400196,
+          "diagnostic_input_hash_seconds": 0.004114249983103946,
+          "diagnostic_canonical_copy_hash_seconds": 0.0037352920044213533,
+          "scope": "Stage sums exclude diagnostic prepared hash/canonical copies; observed walls include them. Post-forward guards, array comparison, graph snapshots, NPZ save are outside both clocks."
+        },
+        "graph": {
+          "nodes": 4,
+          "factors": 4,
+          "submaps": 2,
+          "loops": 0,
+          "final_error": 4.065654452606201e-27,
+          "submap_ids": [
+            0,
+            2
+          ],
+          "source_frame_ids": [
+            [
+              1305031102.175304,
+              1305031102.443271
+            ],
+            [
+              1305031102.443271,
+              1305031106.475345
+            ]
+          ],
+          "geometry": "Original Solver SL4 projective gauge; decomposition is not metric SE3 validation"
+        },
+        "platform_before": {
+          "monotonic": 158765.116373761,
+          "temperatures_mC": {
+            "soc-thermal": 83153,
+            "bigcore0-thermal": 85000,
+            "bigcore1-thermal": 85888,
+            "littlecore-thermal": 84076,
+            "center-thermal": 83153,
+            "gpu-thermal": 81307,
+            "npu-thermal": 82230
+          },
+          "CPU_frequency_kHz": {
+            "policy0": 1608000,
+            "policy4": 2208000,
+            "policy6": 408000
+          },
+          "peak_rss_mib": 6741.3984375
+        },
+        "platform_after": {
+          "monotonic": 158959.313467732,
+          "temperatures_mC": {
+            "soc-thermal": 83153,
+            "bigcore0-thermal": 84076,
+            "bigcore1-thermal": 84076,
+            "littlecore-thermal": 83153,
+            "center-thermal": 82230,
+            "gpu-thermal": 81307,
+            "npu-thermal": 81307
+          },
+          "CPU_frequency_kHz": {
+            "policy0": 1608000,
+            "policy4": 408000,
+            "policy6": 2208000
+          },
+          "peak_rss_mib": 6741.3984375
+        },
+        "input_artifact": {
+          "file": "A-revision-02-input.npz",
+          "bytes": 4873610,
+          "sha256": "873adadc0cce0d5ef864ac47bd5746df1fbef2590d90ef3f6521fa2de109f650",
+          "arrays": {
+            "images": {
+              "shape": [
+                2,
+                3,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "bytes": 4873344,
+              "finite": true,
+              "tensor_sha256": "8c53f80123bb015da13ff2585e00e17642a73e76710d2a7e22113f52e0e5e0de"
+            }
+          }
+        },
+        "prediction_artifact": {
+          "file": "A-revision-02-prediction.npz",
+          "bytes": 3250400,
+          "sha256": "6f3d96cc643f66d93ae77b4f084cec947b22f727468eaedd260b38424ddef768",
+          "arrays": {
+            "extrinsic": {
+              "shape": [
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "bytes": 96,
+              "finite": true,
+              "tensor_sha256": "940c0b5b44b0c8cd20d0544e6dea3f565512091a66273d2ef4369f632df69157"
+            },
+            "intrinsic": {
+              "shape": [
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "bytes": 72,
+              "finite": true,
+              "tensor_sha256": "4072487ae63fc0a0cc4008f7674a83cf3a104334febfd0811771988adb0872ae"
+            },
+            "depth": {
+              "shape": [
+                2,
+                392,
+                518,
+                1
+              ],
+              "dtype": "float32",
+              "bytes": 1624448,
+              "finite": true,
+              "tensor_sha256": "d6ed66803500ac70a76223f0bc2f3d7cf9c4b953deb6b23644a986e431cfe41b"
+            },
+            "depth_conf": {
+              "shape": [
+                2,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "bytes": 1624448,
+              "finite": true,
+              "tensor_sha256": "a58994a5a1b7b46199abf247ab314a3c5d653c180423550b35c1ac2b8c524991"
+            },
+            "pose_enc": {
+              "shape": [
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "bytes": 72,
+              "finite": true,
+              "tensor_sha256": "e7ec83c4b7071eb9d470b8ef09959eec453c9dcc07edd67b378b27305f408ad5"
+            }
+          }
+        },
+        "graph_artifact": {
+          "file": "A-revision-02-graph.npz",
+          "bytes": 4992,
+          "sha256": "1ae30858e15b40f27b2a6a077889e6cf217b3b5d5f27b0a7e7faaa7e383f0799",
+          "arrays": {
+            "node_ids": {
+              "shape": [
+                4
+              ],
+              "dtype": "int64",
+              "bytes": 32,
+              "finite": true,
+              "tensor_sha256": "a1e03200f1f82ad2c1cec8795c271aaecf98f5aa2d151d2229ec5fa0c177cf77"
+            },
+            "homographies": {
+              "shape": [
+                4,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 512,
+              "finite": true,
+              "tensor_sha256": "3c242299d5a39d36016384bcb9c3eabc21013815dc560a62e799cde1284d576c"
+            },
+            "inverse_homographies": {
+              "shape": [
+                4,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 512,
+              "finite": true,
+              "tensor_sha256": "0d123b7b58ffcaddadcb912d952b2ff4b82b001c7e4409bae3f07bd5c5d26d5a"
+            },
+            "local_world_to_camera": {
+              "shape": [
+                4,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 512,
+              "finite": true,
+              "tensor_sha256": "674b97c965579ed1381d6b8eaaad7cd41fd0e64f421da07500c0634a9d792bc2"
+            },
+            "K_4x4": {
+              "shape": [
+                4,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 512,
+              "finite": true,
+              "tensor_sha256": "4c195dbe556741a17632a5020445b307f3eab243364cef11727da03658c1337b"
+            },
+            "calibrated_projective_cameras": {
+              "shape": [
+                4,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 512,
+              "finite": true,
+              "tensor_sha256": "9a0ab04e9023e950721d915ad24c970ab3681baf1ab99393d4d05e4a6e88e02d"
+            },
+            "decomposed_camera_to_world": {
+              "shape": [
+                4,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 512,
+              "finite": true,
+              "tensor_sha256": "9a7b7fbe2bee32523c512981b231a2c7f7433a7fd887d9719a458f9583105f30"
+            }
+          }
+        },
+        "cache_counter_delta": null
+      },
+      {
+        "method": "A",
+        "revision": 3,
+        "timing": {
+          "preprocess_seconds": 0.036867837014142424,
+          "run_predictions_seconds": 195.02885247097583,
+          "add_points_seconds": 0.06591159000527114,
+          "graph_optimize_seconds": 0.0021288749994710088,
+          "prediction_ready_stage_sum_seconds": 195.06572030798998,
+          "map_ready_stage_sum_seconds": 195.13376077299472,
+          "observed_prediction_ready_wall_seconds": 195.06975901700207,
+          "observed_map_ready_wall_seconds": 195.1412977320142,
+          "diagnostic_input_hash_seconds": 0.004035792022477835,
+          "diagnostic_canonical_copy_hash_seconds": 0.0034959170152433217,
+          "scope": "Stage sums exclude diagnostic prepared hash/canonical copies; observed walls include them. Post-forward guards, array comparison, graph snapshots, NPZ save are outside both clocks."
+        },
+        "graph": {
+          "nodes": 6,
+          "factors": 6,
+          "submaps": 3,
+          "loops": 0,
+          "final_error": 6.3889979585929915e-27,
+          "submap_ids": [
+            0,
+            2,
+            4
+          ],
+          "source_frame_ids": [
+            [
+              1305031102.175304,
+              1305031102.443271
+            ],
+            [
+              1305031102.443271,
+              1305031106.475345
+            ],
+            [
+              1305031106.475345,
+              1305031110.111325
+            ]
+          ],
+          "geometry": "Original Solver SL4 projective gauge; decomposition is not metric SE3 validation"
+        },
+        "platform_before": {
+          "monotonic": 158959.360512112,
+          "temperatures_mC": {
+            "soc-thermal": 83153,
+            "bigcore0-thermal": 85000,
+            "bigcore1-thermal": 85000,
+            "littlecore-thermal": 84076,
+            "center-thermal": 82230,
+            "gpu-thermal": 81307,
+            "npu-thermal": 81307
+          },
+          "CPU_frequency_kHz": {
+            "policy0": 1608000,
+            "policy4": 408000,
+            "policy6": 2208000
+          },
+          "peak_rss_mib": 6741.3984375
+        },
+        "platform_after": {
+          "monotonic": 159154.635602607,
+          "temperatures_mC": {
+            "soc-thermal": 83153,
+            "bigcore0-thermal": 85888,
+            "bigcore1-thermal": 85888,
+            "littlecore-thermal": 84076,
+            "center-thermal": 83153,
+            "gpu-thermal": 81307,
+            "npu-thermal": 82230
+          },
+          "CPU_frequency_kHz": {
+            "policy0": 1608000,
+            "policy4": 408000,
+            "policy6": 2208000
+          },
+          "peak_rss_mib": 6755.07421875
+        },
+        "input_artifact": {
+          "file": "A-revision-03-input.npz",
+          "bytes": 4873610,
+          "sha256": "6edde73f60d3adc9a431350450e6f1bc57a7e132eadbc888316c090770b16e20",
+          "arrays": {
+            "images": {
+              "shape": [
+                2,
+                3,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "bytes": 4873344,
+              "finite": true,
+              "tensor_sha256": "ff30cc160a56f7b5c9407072a3cfd99aa17f4dbf077f3c852a1b576f90c21021"
+            }
+          }
+        },
+        "prediction_artifact": {
+          "file": "A-revision-03-prediction.npz",
+          "bytes": 3250400,
+          "sha256": "92316d2c9a38a7d6e70ec9aec6bb643cbe395dea926e19f84ec9f842831ff972",
+          "arrays": {
+            "extrinsic": {
+              "shape": [
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "bytes": 96,
+              "finite": true,
+              "tensor_sha256": "97cc786b00200219446cf4d62aacd357a5b05f0ec653da300540d50e10952110"
+            },
+            "intrinsic": {
+              "shape": [
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "bytes": 72,
+              "finite": true,
+              "tensor_sha256": "03dabd2d9cbe28c1e70e9a3789134e6999068887cc4a74fa3ddd67f13dbcb1c6"
+            },
+            "depth": {
+              "shape": [
+                2,
+                392,
+                518,
+                1
+              ],
+              "dtype": "float32",
+              "bytes": 1624448,
+              "finite": true,
+              "tensor_sha256": "443f957704c074a2c034d3c57f123c6d24187051a8e29254d275151989cc9d23"
+            },
+            "depth_conf": {
+              "shape": [
+                2,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "bytes": 1624448,
+              "finite": true,
+              "tensor_sha256": "839945473e94133dfb10364a01237efc84b79ed7b2506e9af64ddf88cf374bb2"
+            },
+            "pose_enc": {
+              "shape": [
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "bytes": 72,
+              "finite": true,
+              "tensor_sha256": "1de65f74bdb47e5930398b6aa1d941421827fd7cf36db279e9ddabc29cf18739"
+            }
+          }
+        },
+        "graph_artifact": {
+          "file": "A-revision-03-graph.npz",
+          "bytes": 6544,
+          "sha256": "f1c7ab8e3fb2fead7d62f26bc0342a92e5212d830bcce5f20dc67bbcfffab597",
+          "arrays": {
+            "node_ids": {
+              "shape": [
+                6
+              ],
+              "dtype": "int64",
+              "bytes": 48,
+              "finite": true,
+              "tensor_sha256": "f190072c5052f4f440d4a607c25f5bced487c420806c9aab4ca5b0653e72da61"
+            },
+            "homographies": {
+              "shape": [
+                6,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 768,
+              "finite": true,
+              "tensor_sha256": "6f1ba8739ba6f38d6a4abc73b8ece7470b8cb259afe0e1a539af835263164e90"
+            },
+            "inverse_homographies": {
+              "shape": [
+                6,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 768,
+              "finite": true,
+              "tensor_sha256": "8217b2778f6d8b569fd4ca42484c29f1e6702b976547ae83ab877d192d74e179"
+            },
+            "local_world_to_camera": {
+              "shape": [
+                6,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 768,
+              "finite": true,
+              "tensor_sha256": "d624fa17dad4bd772ce2b91b9f510c6a3351a963afd8f644135fdf05b1ab4fe9"
+            },
+            "K_4x4": {
+              "shape": [
+                6,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 768,
+              "finite": true,
+              "tensor_sha256": "c5194c4e9158a1c0bc20af71cf55596374a327bd92a06dbdb0090aa522043b52"
+            },
+            "calibrated_projective_cameras": {
+              "shape": [
+                6,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 768,
+              "finite": true,
+              "tensor_sha256": "27fec8eda19d66ec06b3811fc4d8f87747f877ad5b9e5473853b13a98b8e255d"
+            },
+            "decomposed_camera_to_world": {
+              "shape": [
+                6,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 768,
+              "finite": true,
+              "tensor_sha256": "fd0774e8c7abaa420080bffe501942849dad51b161666b6c0fb006bc5d90d355"
+            }
+          }
+        },
+        "cache_counter_delta": null
+      },
+      {
+        "method": "B",
+        "revision": 3,
+        "timing": {
+          "preprocess_seconds": 0.03762675402686,
+          "run_predictions_seconds": 164.03482356501627,
+          "add_points_seconds": 0.07031238201307133,
+          "graph_optimize_seconds": 0.0022003339836373925,
+          "prediction_ready_stage_sum_seconds": 164.07245031904313,
+          "map_ready_stage_sum_seconds": 164.14496303503984,
+          "observed_prediction_ready_wall_seconds": 164.0764966099814,
+          "observed_map_ready_wall_seconds": 164.15217245099484,
+          "diagnostic_input_hash_seconds": 0.004042209009639919,
+          "diagnostic_canonical_copy_hash_seconds": 0.0031610840233042836,
+          "scope": "Stage sums exclude diagnostic prepared hash/canonical copies; observed walls include them. Post-forward guards, array comparison, graph snapshots, NPZ save are outside both clocks."
+        },
+        "graph": {
+          "nodes": 6,
+          "factors": 6,
+          "submaps": 3,
+          "loops": 0,
+          "final_error": 6.3889979585929915e-27,
+          "submap_ids": [
+            0,
+            2,
+            4
+          ],
+          "source_frame_ids": [
+            [
+              1305031102.175304,
+              1305031102.443271
+            ],
+            [
+              1305031102.443271,
+              1305031106.475345
+            ],
+            [
+              1305031106.475345,
+              1305031110.111325
+            ]
+          ],
+          "geometry": "Original Solver SL4 projective gauge; decomposition is not metric SE3 validation"
+        },
+        "platform_before": {
+          "monotonic": 159154.668735944,
+          "temperatures_mC": {
+            "soc-thermal": 83153,
+            "bigcore0-thermal": 85888,
+            "bigcore1-thermal": 85888,
+            "littlecore-thermal": 84076,
+            "center-thermal": 83153,
+            "gpu-thermal": 81307,
+            "npu-thermal": 82230
+          },
+          "CPU_frequency_kHz": {
+            "policy0": 1608000,
+            "policy4": 408000,
+            "policy6": 2208000
+          },
+          "peak_rss_mib": 6755.07421875
+        },
+        "platform_after": {
+          "monotonic": 159318.836120856,
+          "temperatures_mC": {
+            "soc-thermal": 83153,
+            "bigcore0-thermal": 85000,
+            "bigcore1-thermal": 85000,
+            "littlecore-thermal": 84076,
+            "center-thermal": 83153,
+            "gpu-thermal": 81307,
+            "npu-thermal": 82230
+          },
+          "CPU_frequency_kHz": {
+            "policy0": 1608000,
+            "policy4": 2208000,
+            "policy6": 408000
+          },
+          "peak_rss_mib": 6755.07421875
+        },
+        "input_artifact": {
+          "file": "B-revision-03-input.npz",
+          "bytes": 4873610,
+          "sha256": "6edde73f60d3adc9a431350450e6f1bc57a7e132eadbc888316c090770b16e20",
+          "arrays": {
+            "images": {
+              "shape": [
+                2,
+                3,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "bytes": 4873344,
+              "finite": true,
+              "tensor_sha256": "ff30cc160a56f7b5c9407072a3cfd99aa17f4dbf077f3c852a1b576f90c21021"
+            }
+          }
+        },
+        "prediction_artifact": {
+          "file": "B-revision-03-prediction.npz",
+          "bytes": 3250400,
+          "sha256": "92316d2c9a38a7d6e70ec9aec6bb643cbe395dea926e19f84ec9f842831ff972",
+          "arrays": {
+            "extrinsic": {
+              "shape": [
+                2,
+                3,
+                4
+              ],
+              "dtype": "float32",
+              "bytes": 96,
+              "finite": true,
+              "tensor_sha256": "97cc786b00200219446cf4d62aacd357a5b05f0ec653da300540d50e10952110"
+            },
+            "intrinsic": {
+              "shape": [
+                2,
+                3,
+                3
+              ],
+              "dtype": "float32",
+              "bytes": 72,
+              "finite": true,
+              "tensor_sha256": "03dabd2d9cbe28c1e70e9a3789134e6999068887cc4a74fa3ddd67f13dbcb1c6"
+            },
+            "depth": {
+              "shape": [
+                2,
+                392,
+                518,
+                1
+              ],
+              "dtype": "float32",
+              "bytes": 1624448,
+              "finite": true,
+              "tensor_sha256": "443f957704c074a2c034d3c57f123c6d24187051a8e29254d275151989cc9d23"
+            },
+            "depth_conf": {
+              "shape": [
+                2,
+                392,
+                518
+              ],
+              "dtype": "float32",
+              "bytes": 1624448,
+              "finite": true,
+              "tensor_sha256": "839945473e94133dfb10364a01237efc84b79ed7b2506e9af64ddf88cf374bb2"
+            },
+            "pose_enc": {
+              "shape": [
+                2,
+                9
+              ],
+              "dtype": "float32",
+              "bytes": 72,
+              "finite": true,
+              "tensor_sha256": "1de65f74bdb47e5930398b6aa1d941421827fd7cf36db279e9ddabc29cf18739"
+            }
+          }
+        },
+        "graph_artifact": {
+          "file": "B-revision-03-graph.npz",
+          "bytes": 6544,
+          "sha256": "f1c7ab8e3fb2fead7d62f26bc0342a92e5212d830bcce5f20dc67bbcfffab597",
+          "arrays": {
+            "node_ids": {
+              "shape": [
+                6
+              ],
+              "dtype": "int64",
+              "bytes": 48,
+              "finite": true,
+              "tensor_sha256": "f190072c5052f4f440d4a607c25f5bced487c420806c9aab4ca5b0653e72da61"
+            },
+            "homographies": {
+              "shape": [
+                6,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 768,
+              "finite": true,
+              "tensor_sha256": "6f1ba8739ba6f38d6a4abc73b8ece7470b8cb259afe0e1a539af835263164e90"
+            },
+            "inverse_homographies": {
+              "shape": [
+                6,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 768,
+              "finite": true,
+              "tensor_sha256": "8217b2778f6d8b569fd4ca42484c29f1e6702b976547ae83ab877d192d74e179"
+            },
+            "local_world_to_camera": {
+              "shape": [
+                6,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 768,
+              "finite": true,
+              "tensor_sha256": "d624fa17dad4bd772ce2b91b9f510c6a3351a963afd8f644135fdf05b1ab4fe9"
+            },
+            "K_4x4": {
+              "shape": [
+                6,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 768,
+              "finite": true,
+              "tensor_sha256": "c5194c4e9158a1c0bc20af71cf55596374a327bd92a06dbdb0090aa522043b52"
+            },
+            "calibrated_projective_cameras": {
+              "shape": [
+                6,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 768,
+              "finite": true,
+              "tensor_sha256": "27fec8eda19d66ec06b3811fc4d8f87747f877ad5b9e5473853b13a98b8e255d"
+            },
+            "decomposed_camera_to_world": {
+              "shape": [
+                6,
+                4,
+                4
+              ],
+              "dtype": "float64",
+              "bytes": 768,
+              "finite": true,
+              "tensor_sha256": "fd0774e8c7abaa420080bffe501942849dad51b161666b6c0fb006bc5d90d355"
+            }
+          }
+        },
+        "cache_counter_delta": {
+          "requests": 1,
+          "input_frames": 2,
+          "hit_frames": 1,
+          "computed_frames": 1,
+          "original_dino_calls": 1,
+          "loop_bypass_calls": 0
+        }
+      }
+    ],
+    "DINO_input_frames": 6,
+    "DINO_computed_frames": 4,
+    "DINO_cache_hit_frames": 2,
+    "tail_cache_bytes": 4243456,
+    "cache_closed_and_forwards_restored": true,
+    "sources_and_inputs_unchanged": true,
+    "CPU_affinity_restored": true,
+    "peak_process_RSS_MiB": 6755.07421875,
+    "total_seconds_including_hash_load_diagnostics": 1070.417671343981,
+    "limitations": [
+      "Four selected source images, not a paced or full-coverage replay.",
+      "Reference and cache calls are sequential, with changing temperatures/frequencies; no causal speedup estimate.",
+      "A 13.5 MB source archive was transferred by ADB near the final call; these timings are not an isolated benchmark.",
+      "Observed ready wall includes diagnostic hashing/copies but excludes later captures/saves and suspension guards; not capture-to-pose latency.",
+      "Peak RSS was observed on a 16 GB board; it does not validate an 8 GB deployment or long-lived map.",
+      "No accuracy, map-cadence, queue, 30-minute or physical-camera acceptance."
+    ],
+    "independent_saved_array_audit": {
+      "status": "passed_saved_audit",
+      "run_sha256": "d5d70215f5b16f37c16dfdd58625289b75f2b2c137779ca121699935c2f799dd",
+      "auditor_sha256": "38aed2532ae312588f7029a6b999c875c775dee232a2befa77be01dd8b615d8c",
+      "contract_sha256": "1974624945b1283e04057522cb0720235bef2ee6df05ee538d233789b0a92728",
+      "files_checked": 18,
+      "arrays_checked": 78,
+      "original_five_outputs_bitwise_equal": true,
+      "all_graph_arrays_bitwise_equal": true,
+      "all_numeric_gates_passed": true,
+      "latest_source_nodes": [
+        {
+          "source_identity": [
+            0,
+            1305031102.175304,
+            1305031102.175304,
+            "331c3fd7a3d5eefb19e3da2026625aa221ca1991f5ae30ff96060e2e3e45e368"
+          ],
+          "node_id": 0,
+          "revision": 1,
+          "source_index": 0,
+          "timestamp": 1305031102.175304
+        },
+        {
+          "source_identity": [
+            8,
+            1305031102.443271,
+            1305031102.443271,
+            "49deecb97bbb0ef1b8d14212b10d5cdb9a2ce7b4c852ad4838bc8e2a872d82df"
+          ],
+          "node_id": 2,
+          "revision": 2,
+          "source_index": 8,
+          "timestamp": 1305031102.443271
+        },
+        {
+          "source_identity": [
+            129,
+            1305031106.475345,
+            1305031106.475345,
+            "c5e2ba56d4d22c709a03e73d493935d78df404ba4e7e1bfab57ed14a99db7544"
+          ],
+          "node_id": 4,
+          "revision": 3,
+          "source_index": 129,
+          "timestamp": 1305031106.475345
+        },
+        {
+          "source_identity": [
+            238,
+            1305031110.111325,
+            1305031110.111325,
+            "9f2a4a185c9ed64d7805806d9e8937b7933b946656e5c119063c75c0cfe0eca1"
+          ],
+          "node_id": 5,
+          "revision": 3,
+          "source_index": 238,
+          "timestamp": 1305031110.111325
+        }
+      ],
+      "occurrences_per_method": 6,
+      "unique_source_observations": 4,
+      "cache_hits_by_revision": [
+        0,
+        1,
+        1
+      ],
+      "cache_computed_frames": 4,
+      "real_model_SL4_SDK_executions_by_auditor": 0,
+      "real_time_validated": false,
+      "trajectory_quality_validated": false,
+      "causal_speedup_claimed": false,
+      "limitations": [
+        "Three fixed source-selected pairs, not consecutive raw frames or a paced replay; no full coverage or GT quality gate.",
+        "Five FP32 canonical outputs and saved FP64 graph matrices compare cache-on with the same-pair cache-off original model; no historical gold used.",
+        "Observed ready walls include diagnostic input hash and owned canonical copy/hash. Post-forward guards, graph snapshot/NPZ save and comparison remain outside these walls.",
+        "Tail tokens are not saved: ownership/identity/hash/unchanged statistics are checked as suspension metadata only.",
+        "Original parameter/source/checkpoint/SL4 binding and cleanup facts are verified as before-after metadata, without a board rehash or model reload.",
+        "SL4 projective graph/decomposed camera-to-world serialization is not independently optimized, decomposed or declared a metric SE3 trajectory.",
+        "Short AB/BA/AB is thermally uncontrolled; root reports one 13 MB source-archive ADB transfer lasting 1.348 s during the last B call. No timing ratio is claimed as causal cache speedup.",
+        "The experiment uses its frozen pre-cleanup source closure; it is not a regression of the later public core cleanup.",
+        "No 20 Hz/P95 100 ms/30-minute stability/8 GB or physical-camera acceptance."
+      ],
+      "raw_audit_sha256": "31879055b258d8ff82b91844bd336eec647f9f843f10ab3786f984a6e22b10a8",
+      "source_and_parameter_boundary": "Auditor verifies saved metadata and manifest digests; board runner itself hashed sources and original weights before/after."
+    }
+  }
+}

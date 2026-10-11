@@ -1,50 +1,20 @@
-# Model and source-code license provenance
+# Original VGGT source and checkpoint provenance
 
-The retained [LICENSE](LICENSE) is BSD-2-Clause for VGGT-SLAM source code, with the original MIT-SPARK copyright. It is **not a commercial-use authorization for VGGT weights or for compiled models containing them**. External components keep their own licenses.
+The root [LICENSE](LICENSE) is BSD-2-Clause for VGGT-SLAM source code and retains the original MIT-SPARK copyright. It does not grant commercial-use rights to original VGGT weights or compiled models containing them. External components retain their own terms.
 
-## Original weights used in these experiments
+The sole checkpoint used by the current runtime is Meta's original [facebook/VGGT-1B](https://huggingface.co/facebook/VGGT-1B):
 
-The experiments use [Meta's original facebook/VGGT-1B](https://huggingface.co/facebook/VGGT-1B), not a commercial or later-generation checkpoint:
-
-| Field | Value |
+| Field | Pinned value |
 | --- | --- |
-| Inspected model revision | `860abec7937da0a4c03c41d3c269c366e82abdf9` |
+| Model revision inspected | `860abec7937da0a4c03c41d3c269c366e82abdf9` |
 | Weight file | `model.pt` |
 | Bytes | `5026874952` |
-| SHA256 / official LFS object ID | `d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0` |
-| Model-card license | **CC-BY-NC-4.0** |
-| License-source check | 2026-10-11 |
+| SHA256 and official LFS object ID | `d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0` |
+| Pinned model-card license | CC-BY-NC-4.0 |
+| License-source check date | 2026-10-11 |
 
-The [pinned model card](https://huggingface.co/facebook/VGGT-1B/blob/860abec7937da0a4c03c41d3c269c366e82abdf9/README.md) declares `license: cc-by-nc-4.0`. The [official tree metadata](https://huggingface.co/api/models/facebook/VGGT-1B/tree/860abec7937da0a4c03c41d3c269c366e82abdf9?recursive=false&expand=false) binds that revision to the exact size and SHA above. The same weight object already exists at the [2025-03-14 upload revision](https://huggingface.co/api/models/facebook/VGGT-1B/tree/d88e637d32a505f4a64de03f8588547b7f7d3ba6?recursive=false&expand=false). That historical tree proves file identity; its older model card does not itself declare a license. At the inspected current revision, the model repository has no separate `LICENSE` file; the license declaration is in its model card.
+The [pinned model card](https://huggingface.co/facebook/VGGT-1B/blob/860abec7937da0a4c03c41d3c269c366e82abdf9/README.md) declares `license: cc-by-nc-4.0`. Its source SHA256 is `d666ecaba89db88cb66bf06db6daddfdc2400e13f2a39e39c84e888b27fbc615`. The [official tree metadata](https://huggingface.co/api/models/facebook/VGGT-1B/tree/860abec7937da0a4c03c41d3c269c366e82abdf9?recursive=false&expand=false) identifies file size and LFS SHA. That pinned model tree has no separate `LICENSE` file; the declaration is in the model card. [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/legalcode.en) retains its non-commercial and attribution conditions.
 
-[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/legalcode.en) limits its reproduction/sharing and adapted-material grants to non-commercial purposes (§2(a)(1)); attribution and modification notices apply when sharing (§3). The repository's BSD license does not remove these conditions.
+The deployed source is the [VGGT_SPARK fork](https://github.com/MIT-SPARK/VGGT_SPARK/tree/6e6e16107b88e8e76c751826af10d4295d87ecd2), commit `6e6e16107b88e8e76c751826af10d4295d87ecd2`, with its [CC BY-NC 4.0 license](https://github.com/MIT-SPARK/VGGT_SPARK/blob/6e6e16107b88e8e76c751826af10d4295d87ecd2/LICENSE.txt), SHA256 `1d8ca66080a2701508a70be4ddad4be28c509bcc3397a682fb8edf767fdd7a00`. The portable patch modifies that pinned implementation; repository BSD terms do not relicense it.
 
-## Code and commercial checkpoints are separate
-
-Meta changed its code license on 2025-07-29. The [current code license](https://github.com/facebookresearch/vggt/blob/a288dd0f14786c93483e45524328726ab7b1b4ce/LICENSE.txt) is the custom VGGT License with an Acceptable Use Policy. Meta's [release notice](https://github.com/facebookresearch/vggt/blob/a288dd0f14786c93483e45524328726ab7b1b4ce/README.md#updates) expressly distinguishes the original non-commercial weights from [VGGT-1B-Commercial](https://huggingface.co/facebook/VGGT-1B-Commercial). The latter is a separate gated release with its own terms; it is not used or validated here. Its terms, or terms for later VGGT variants, must not be applied to the original SHA above by assuming that the model names are interchangeable.
-
-The deployed implementation is the pinned [VGGT_SPARK fork and its CC BY-NC 4.0 license](https://github.com/MIT-SPARK/VGGT_SPARK/blob/6e6e16107b88e8e76c751826af10d4295d87ecd2/LICENSE.txt). The published patch modifies that implementation. This publication does not replace that pinned license with the current Meta code license or BSD.
-
-## Optional Co-Me confidence predictor research
-
-The Co-Me authors release a separate confidence predictor at [commit `5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833`](https://github.com/co-me-tokens/CoMe/tree/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833), under a repository whose [root license](https://github.com/co-me-tokens/CoMe/blob/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/LICENSE) is **CC BY-NC 4.0**. The inspected [predictor directory](https://github.com/co-me-tokens/CoMe/tree/5c7cfbc14da37f5dbb991e3a6f9e2c4a5efb8833/output/confidence_distill/vggt/20260324_172742/step_02000) contains `checkpoint.pth` and `config.json`; no separate predictor license or model card was found there. This is not evidence of an additional commercial-use grant.
-
-The predictor file is 831,722 bytes, Git blob `19c8a02c8700c8964064ec0b7d479ed686430dda`, SHA256 `95b0a004544c96da5c4e55748e8cf4837608627a6414563af06cb3ee25acd29f`. Its 18 BF16 tensors contain 412,417 parameters (824,834 tensor-storage bytes). Only source/weight metadata and the attributed research adaptation are published here; the checkpoint is not redistributed. Co-Me-derived helper code retains its CC BY-NC scope. The predictor and Meta's original VGGT-1B are distinct external releases, even though the research preserves VGGT base weights. See [Co-Me provenance](results/come_sources_v22.json). Token merging remains an approximation experiment, not a license change or a production model substitution.
-
-## Separate DA3-SMALL research model
-
-The v23 source review also examines [DA3-SMALL at revision `e08cab65ca0ec38e7826075418411ab90cab4da3`](https://huggingface.co/depth-anything/DA3-SMALL/tree/e08cab65ca0ec38e7826075418411ab90cab4da3). Its model card declares Apache-2.0 independently of the [Depth-Anything-3 source license](https://github.com/ByteDance-Seed/Depth-Anything-3/blob/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/LICENSE). This review downloaded configuration and safetensors header metadata only, not the full checkpoint; it did not replace or execute the deployed model. The declaration belongs to that distinct model release and does not change the original VGGT checkpoint's license. Exact revisions, source hashes and the distinction between expected and independently measured weight hashes appear in [the research receipt](results/acceleration_research_v23.json).
-
-The v24 isolated board experiment subsequently downloaded the complete `model.safetensors`: **137,248,940 bytes**, independently measured SHA256 **`364492e38a3a06d221ac75da7f6621ada3f2361cd24fde11ba79091e9f40efcf`**, matching the pinned official LFS object. The [pinned model card](https://huggingface.co/depth-anything/DA3-SMALL/blob/e08cab65ca0ec38e7826075418411ab90cab4da3/README.md) declares `apache-2.0`; that model tree has no separate license file. The code is independently bound to its Apache-2.0 license by the [34-file source manifest](results/da3_sources_v24.json). These are separate code and weight provenance records. The experiment keeps DA3 outside the production VGGT executor; its model, source checkout and weight-bearing exports are external dependencies, not included in this repository.
-
-## Separate DPVO component research
-
-The v26 experiment uses the original [princeton-vl/DPVO code](https://github.com/princeton-vl/DPVO/tree/0ac95b656d1fda91c271d2a106460d19ad966fc7), whose [MIT license](https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/LICENSE) bears the 2022 Princeton Vision & Learning Lab copyright. The adapted CPU correlation/grouping helper retains that notice. The strict loader uses an external verified checkout; the original source tree is not bundled.
-
-The official pinned download script points to `models.zip`. The complete downloaded archive is 13,100,005 bytes, SHA256 `89f43de2c92676ddcf7f49e8ae3f8940b7af73f549a7a5b8308850b67de78479`; its sole checkpoint `dpvo.pth` is 14,167,743 bytes, SHA256 `30d02dc2b88a321cf99aad8e4ea1152a44d791b5b65bf95ad036922819c0ff12`. Archive and nested checkpoint CRCs were checked. No separate weight license or model card was found in that archive. **An independent checkpoint license has not been verified; the code's MIT license is not presented as a separately verified commercial grant for these weights or their compiled exports.** Only source helpers and [provenance/measurement metadata](results/dpvo_sources_v26.json) are published. Neither the ZIP/checkpoint nor weight-bearing ONNX/RKNN is redistributed. This separate research does not replace VGGT or alter its license.
-
-## ONNX/RKNN exports and redistribution
-
-The export scripts and result metadata are published; pretrained checkpoints and weight-bearing ONNX/RKNN binaries are **not**. Locally compiled models encode parameters from the identified checkpoint. Compilation, FP16 conversion or use of a BSD-licensed wrapper does not supply a new commercial license for those parameters. This remains true whether a particular format conversion is a technical modification or adapted material: CC BY-NC §2(a)(4) permits technical format changes without lifting §2(a)(1)'s non-commercial condition. Rockchip SDK/runtime terms also apply independently.
-
-Machine-readable source hashes, revision evidence and this distinction are recorded in [UPSTREAMS.json](UPSTREAMS.json) and [results/model_license_v21.json](results/model_license_v21.json).
+Checkpoints and weight-bearing ONNX/RKNN files are not redistributed. Their encoded parameters retain the original checkpoint's terms. Exporting, compiling, converting precision or calling through a BSD-licensed wrapper grants no additional rights. Rockchip SDK/runtime terms apply independently. This document describes the fixed source and checkpoint actually used; it offers no alternative checkpoint or license comparison. [Full pins](UPSTREAMS.json), [third-party attribution](THIRD_PARTY_NOTICES.md).

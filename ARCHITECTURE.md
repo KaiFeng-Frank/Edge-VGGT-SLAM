@@ -1,59 +1,35 @@
-# Edge-VGGT-SLAM execution boundary
+# Original VGGT execution boundary
 
-The first tested hardware target is RK3588S. The project separates model execution from submap construction and SL4 optimization so another accelerator can implement the same prediction contract. An interface is not evidence that a second NPU, a complete RKNN model, or real-time SLAM already works.
+The implementation separates original VGGT execution from submap construction and SL4 optimization. Hardware implementations may provide the same model contract; this separation does not authorize a different learned model or pose source. [Project constraints](AGENTS.md).
 
 ```mermaid
 flowchart LR
-    A[Frames and original preprocessing] --> B[CPU RGB image batch]
-    B --> C[ModelExecutor]
-    C --> D[Camera matrices, depth, confidence]
-    D --> E[Solver: submaps and loop decisions]
-    E --> F[SL4 graph optimization]
-    T[TorchVGGTExecutor] --> C
-    N[Future vendor executor] -. same contract .-> C
+    A[Source images and original preprocessing] --> B[FP32 RGB image batch]
+    B --> C[Original VGGT: DINO, frame and global attention]
+    C --> D[Original CameraHead and DPT]
+    D --> E[Original pose codec, depth and confidence]
+    E --> F[Solver submaps and original constraints]
+    F --> G[SL4 graph optimization]
 ```
 
-**Current model scope (2026-10-12):** only the original VGGT model is permitted. The execution boundary supports other accelerator implementations of that model, not replacement pose/depth models. DPVO/DA3 research is stopped; its records below are historical and are not implementation alternatives. [Project constraints](AGENTS.md).
+## Execution contract
 
-## Model execution
+`ModelExecutor` receives already-preprocessed, C-contiguous CPU FP32 RGB arrays `[S,3,H,W]` in `[0,1]`. Frame order and original pixel geometry remain unchanged. Source indices and timestamps are separate metadata, without FP32 conversion. The original loader defaults to 518 pixels wide, with height rounded to the 14-pixel patch grid and its original crop/padding rules.
 
-`vggt_slam/model_execution.py` defines the boundary using NumPy and standard-library types. A backend implements `predict` and declares its execution capabilities. It does not need to inherit `torch.nn.Module` or expose `parameters()`.
+Canonical results are finite CPU FP32 arrays: OpenCV world-to-camera extrinsics `[S,3,4]`, intrinsics `[S,3,3]` in pixels, depth `[S,H,W,1]` and confidence `[S,H,W]`. Original pose encodings `[S,9]` may also be preserved. `TorchVGGTExecutor` uses the original VGGT call and original pose decoder. Caller pixels are read-only; result storage must survive until consumers finish. Any future SDK adapter must copy retained outputs before releasing SDK buffers and propagate device failures explicitly.
 
-The request is a C-contiguous CPU float32 RGB array with shape `[S, 3, H, W]`, values in `[0, 1]`, and the original VGGT 14-pixel patch grid. It has already been decoded, rectified when configured, and resized by the input path. An executor must treat these pixels as read-only and preserve image order and geometry. It must not decode the original filenames again or silently change crop, calibration, token resolution or model weights.
+The original VGGT similarity request remains a model capability where implemented. It is not a retrieval system. Additional-model retrieval/semantic implementations have been removed; Solver supports only `max_loops=0`. Enabling loops or passing legacy auxiliary-model arguments must be rejected before preprocessing, state construction or inference. **Natural loop closure is currently unavailable and has not been replaced or validated.**
 
-The synchronous result contains these CPU float32 arrays:
+## State and geometry
 
-| Field | Shape | Meaning |
-|---|---|---|
-| `extrinsic` | `[S, 3, 4]` | World-to-camera matrices in the model batch's coordinate frame |
-| `intrinsic` | `[S, 3, 3]` | Camera calibration in the preprocessed image's pixel coordinates |
-| `depth` | `[S, H, W, 1]` | Camera-axis Z-depth in the original model's scale, not ray distance or inverse depth |
-| `depth_conf` | `[S, H, W]` | Original depth confidence, not assumed to be a probability |
+Solver retains submap images, local camera matrices, dense points and confidence, then adds original consecutive-submap constraints and optimizes the SL4 graph. Changing execution backend cannot change those equations or state ownership. No additional traditional pose frontend, interpolated pose or reused output supplies fresh poses.
 
-The common boundary checks frame count, shapes, dtype and finite values. It does not convert a projective SL4 map into metric SE3, align predictions to ground truth, rescale depth, or claim that another model is geometrically interchangeable with VGGT. Frame IDs and input timing remain the caller's responsibility; repeating an old prediction is not a fresh observation.
+The model's local world-to-camera matrices and the graph's optimized projective homographies are different objects. `get_projection_matrix()` returns the inverse graph homography. Submap camera export additionally applies intrinsics, normalizes the projective matrix and uses original camera decomposition. Export keeps the latest pose for an overlap timestamp; duplicate graph nodes are not separate fresh observations. A projective SL4 world is not automatically a metric SE3 world.
 
-Returned arrays must remain valid after an SDK output buffer is released and during subsequent inference calls. A native adapter owns its packing, device transfers, synchronization and any necessary output copies. Errors propagate; the common interface does not silently switch to CPU. A vendor adapter must also reject unsupported image sizes, batch sizes and request kinds explicitly. Persistent device contexts and their lifetime remain the adapter owner's responsibility.
+The optional exact tail cache retains only the previous main batch's cloned DINO patch tokens. Content, shape, dtype and fixed-model/backend guards determine reuse. Each new pair still recomputes camera/register-token roles, frame/global attention, CameraHead and DPT. Cache/reference comparisons need independent Solver/map/graph owners and owned same-call captures. Global-attention outputs cannot be reused merely because one source image overlaps.
 
-`TorchVGGTExecutor` adapts the existing original model. It owns Torch device selection, no-gradient execution, the original pose-encoding conversion, removal of the original singleton batch dimension, and conversion to CPU arrays. Legacy callers can still pass their existing model to `Solver.run_predictions`; adaptation occurs at that boundary. This preserves the existing loading and optional subnetwork acceleration paths without presenting them as a complete NPU model.
+## Validation status
 
-## SLAM backend
+Original CPU execution and individual NPU operators have measured evidence. A complete accepted RKNN VGGT backend, sustained 20 Hz, complete-latency P95, trajectory-quality preservation, bounded long-run memory and 30-minute operation remain unvalidated. Canonical FP32 comparisons, double-precision graph comparisons, literal bit equality and timing each have separate meanings. No component measurement is promoted to whole-system acceptance. [Measurements](MEASUREMENTS.json), [engineering notes](docs/ENGINEERING_NOTES.md).
 
-`Solver` consumes decoded camera matrices and dense predictions. It handles submap identity, overlap, scale association, loop decisions, map storage and the existing SL4 graph. Normal predictions and loop-verification predictions use the same execution interface.
-
-Loop verification requires an explicit similarity capability. The request contains the actual stored query image followed by the retrieved image, and asks for `compute_similarity=True`. The result must include a finite `image_match_ratio`; the existing 0.95 decision threshold remains unchanged. Unsupported loop verification fails explicitly. A future NPU backend cannot quietly disable loop closure or substitute a retrieval score for this model comparison.
-
-Submap image storage and SALAD retrieval still use their existing Torch-based interfaces. This change isolates model execution; it does not claim that the entire SLAM dependency stack is Torch-free. Prepared input pixels, frame IDs and query/retrieved ordering must survive both paths unchanged. Submap storage shares the prepared RGB memory: a caller must keep those pixels immutable until that submap is released, not merely until inference returns. A capture-ring buffer must be copied into stable storage before it is retained as a submap.
-
-## Implementation status
-
-The original Torch model adapter is the reference implementation. RK3588S acceleration currently consists of separately measured subnetworks and an optional hybrid mapper. There is no registered all-NPU executor or validated second-vendor backend. Implementing another adapter requires numerical comparisons against the original model, actual device execution evidence, transfer-inclusive timing, resource cleanup, and the same SLAM geometry and loop checks.
-
-The [v21 board regression](results/model_execution_v21.json) exercises the real Solver entrypoint with original FP32 inference and compares the canonical outputs and first SL4 graph to the direct call. A separate original similarity request checks the same adapter path's numerical behavior. This small fixed-pair regression establishes the tested interface's compatibility; it does not establish full trajectory accuracy, natural loop closure or speed improvement. [Synthetic contract and compatibility tests](results/synthetic_tests_v21.json) cover additional rejection and ordering cases without dataset/model inference on the host.
-
-The project name describes this execution boundary and embedded deployment direction. It does not change the outstanding acceptance targets: fresh-observation tracking rate, input-to-pose P95 latency, dense-map cadence, endurance, bounded memory and trajectory/map quality remain separately measurable requirements.
-
-The stopped historical v28 DPVO research had a separate lower-level boundary: graph management supplies explicit integer neighbor/group indices and masks to the learned Update executor; the geometry side consumes pixel corrections and nonnegative weights. It does not implement `ModelExecutor.predict`, whose dense VGGT camera/depth contract is different. The fixed-capacity CPU ORT export and mixed-type RKNN binding are research helpers; the current ORT weight-domain violation and RKNN nonfinite outputs prevent their acceptance in the feedback backend. The measured fixed-graph geometry loop uses the original Torch Update. See [Update evidence](results/dpvo_update_cpu_v28.json) and [feedback scope](results/dpvo_feedback_v28.json).
-
-## License boundary
-
-The repository's BSD-2-Clause code license does not grant rights to external model weights, vendor SDKs or third-party implementations. Loading weights through a generic executor, compiling them to RKNN or changing the project name does not remove their applicable terms. See [model licenses](MODEL_LICENSES.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+The [repository license](LICENSE) covers repository source. The [original checkpoint and pinned implementation terms](MODEL_LICENSES.md) remain independent and apply to weight-bearing compiled models as well.

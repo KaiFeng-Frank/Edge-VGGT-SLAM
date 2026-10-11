@@ -5,8 +5,6 @@ import matplotlib
 import scipy
 import time
 from PIL import Image
-from torchvision import transforms as TF
-import torch
 
 
 def slice_with_overlap(lst, n, k):
@@ -82,35 +80,7 @@ def decompose_camera(P, no_inverse=False):
     
     return K, R, t, scale
 
-def compute_image_embeddings(model, preprocess, image_paths, batch_size=64, device="cuda"):
-    all_embs = []
 
-    # Load all images into memory (PIL -> tensor)
-    imgs = []
-    for p in image_paths:
-        img = Image.open(p).convert("RGB")
-        imgs.append(preprocess(img))
-
-    # Stack into a single tensor
-    imgs = torch.stack(imgs).to(device)
-
-    # Loop over batches
-    with torch.no_grad():
-        for i in range(0, len(imgs), batch_size):
-            batch = imgs[i : i + batch_size]
-            emb = model.encode_image(batch)
-            emb = emb / emb.norm(dim=-1, keepdim=True)
-            all_embs.append(emb.cpu())
-
-    # Combine into one (N, D) array
-    return torch.cat(all_embs, dim=0).numpy()
-
-def compute_text_embeddings(clip_model, tokenizer, text, device="cuda"):
-    with torch.no_grad():
-        text_tokens = tokenizer([text]).to(device)
-        text_emb = clip_model.encode_text(text_tokens)
-        text_emb = text_emb / text_emb.norm(dim=-1, keepdim=True)
-        return text_emb.cpu().numpy()
 
 def cosine_similarity(a, b):
     """

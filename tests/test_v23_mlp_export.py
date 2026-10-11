@@ -146,7 +146,7 @@ def tiny_capture(exporter, state, tmp_path, monkeypatch):
     values = {'norm2': np.arange(28, dtype=np.float32).reshape(1, 7, 4),
               'mlp_output': np.ones((1, 7, 4), dtype=np.float32)}
     np.savez(tmp_path / 'activations.npz', **values)
-    capture = dict(kind='original_VGGT_CoMe_MLP_stage_capture',
+    capture = dict(kind='original_VGGT_MLP_stage_capture',
         status='captured_original_FP32_stages_bitwise_bound', script_sha256=exporter.CAPTURE_SCRIPT_SHA,
         original_weights=True, architecture_changed=False, npu_used=False, ORB_used=False,
         GT_used=False, host_inference_executed=False, inference_on_board_only=True,

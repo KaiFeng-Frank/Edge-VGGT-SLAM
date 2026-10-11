@@ -1,14 +1,15 @@
 # Project constraints
 
-These constraints record the user's current requirements, confirmed on 2026-10-12.
+These constraints record the user's requirements, confirmed on 2026-10-12.
 
-- Work on VGGT-SLAM2 with its original VGGT model. Do not replace it with DPVO, DA3, another backbone, or another learned pose/depth model. Stop alternative-model research and experiments. Existing alternative-model files and measurements are historical archives, not candidate implementation paths or VGGT acceptance evidence.
-- Do not add an ORB or LK/PnP pose frontend. Original upstream keyframe selection is distinct from publishing poses estimated by a new traditional frontend.
-- Improve execution of the original model: operator implementations, memory/layout, validated reuse of unchanged computations and CPU/NPU partitioning. Preserve the original checkpoint provenance and compare numerical outputs. A shared execution API permits other hardware, not a different model.
-- All real model inference, tracing/export validation and calibration must run on RK3588S. Host source inspection, static graph work, non-calibrating compilation, saved-data audits and small synthetic checks are allowed.
-- Use real dataset replay for now; physical camera experiments are deferred. Keep all inference on the board. Do not change system-wide clocks, governors, cooling, drivers or network configuration without authorization.
-- Measure fresh-observation pose rate and complete input-to-pose latency. Do not count interpolation, repeated predictions, offline reconstruction or a different model toward VGGT's real-time target. Track map cadence, bounded queues, 30-minute stability, quality and 8 GB suitability separately.
-- Record valuable engineering issues with their evidence, reproduction conditions, failed attempts and validation limits. Public GitHub publication of results is authorized. Do not publish checkpoints, captured model arrays, SDK binaries or credentials.
-- Keep repository code, model weights and third-party licenses separate. The BSD-2-Clause repository license does not grant commercial rights to the original VGGT weights.
+- Use VGGT-SLAM2 with its original pretrained VGGT model only. The current tree must contain no other learned model, auxiliary checkpoint, alternative-model experiment, reproduction option or documentation entry. VGGT's own internal DINO modules remain part of the original model. Historical records remain in git history and private experiment storage.
+- Add no traditional pose frontend. Preserve the original model, pose codec, submap equations and SL4 graph. Original upstream keyframe selection is distinct from adding a separate pose estimator.
+- Additional-model retrieval and semantic implementations are removed. Loop closure has no replacement; support `max_loops=0` and reject unsupported loops or legacy auxiliary-model arguments before any loading or inference.
+- Improve original-model operators, memory/layout, proven unchanged computation reuse and CPU/NPU partitioning. Keep original checkpoint provenance and compare original numerical outputs on identical inputs. Do not substitute a different model, omit layers or change token computation to claim equivalent execution.
+- Run all actual inference, tracing/export validation and calibration on RK3588S. Host source inspection, static graph work, non-calibrating compilation, saved-data audits and small generated checks are allowed.
+- Use real dataset replay for now; physical-camera tests are deferred. Do not change system-wide clocks, governors, cooling, drivers or network configuration without authorization.
+- Measure at least 20 Hz fresh-observation pose rate and complete input-to-pose P95 at most 100 ms against the original model. Repeated predictions, interpolation, offline reconstruction and component-only timings do not count. Assess trajectory quality, map cadence, bounded queues, 30-minute stability and 8 GB operation separately. These goals are not yet achieved.
+- Record valuable engineering evidence, failed attempts, reproduction conditions and limits. Public GitHub publication is authorized. Publish no checkpoints, captured model arrays, weight-bearing exports, SDK binaries or credentials. Do not delete private raw research records or rewrite git history during scope cleanup.
+- Retain attribution for all code still used. Repository code, pinned original-model source, checkpoint and third-party dependencies have separate licenses. BSD-2-Clause does not grant commercial rights to the original weights.
 
-For historical evidence and current scope, see [README](README.md), [architecture](ARCHITECTURE.md) and [engineering notes](docs/ENGINEERING_NOTES.md).
+See [README](README.md), [architecture](ARCHITECTURE.md), [engineering notes](docs/ENGINEERING_NOTES.md) and [model provenance](MODEL_LICENSES.md).

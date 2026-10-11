@@ -81,8 +81,10 @@ def load_capture(directory, expected_capture_sha=CAPTURE_SHA):
     require_sha(receipt, expected_capture_sha)
     capture = json.loads(receipt.read_text())
     architecture = capture.get('architecture', {})
-    if (capture.get('kind') != 'original_VGGT_CoMe_MLP_stage_capture'
-            or capture.get('status') != 'captured_original_FP32_stages_bitwise_bound'
+    # The exact receipt SHA above binds every metadata field. Model identity is
+    # checked through the original checkpoint, architecture and tensor pins;
+    # a historical experiment label is not a model identity.
+    if (capture.get('status') != 'captured_original_FP32_stages_bitwise_bound'
             or capture.get('script_sha256') != CAPTURE_SCRIPT_SHA
             or capture.get('original_weights') is not True
             or capture.get('architecture_changed') is not False

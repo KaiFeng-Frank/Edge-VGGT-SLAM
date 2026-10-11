@@ -39,13 +39,14 @@ def legacy_entrypoint(monkeypatch):
                 self.map = SimpleNamespace(get_num_submaps=lambda: self.submaps)
                 self.graph = SimpleNamespace(optimize=self.optimize, get_num_loops=lambda: 0)
                 self.flow_tracker = SimpleNamespace(compute_disparity=self.disparity)
-                self.vggt_timer = self.loop_closure_timer = self.clip_timer = Accumulator()
+                self.vggt_timer = self.loop_closure_timer = Accumulator()
 
             def disparity(self, image, threshold, visualize=False):
                 state.flow_display.append(visualize)
                 return next(decisions) if decisions is not None else True
 
-            def run_predictions(self, batch, *args):
+            def run_predictions(self, batch, *args, **kwargs):
+                assert kwargs.get("max_loops", 0) == 0
                 assert all(Path(path).exists() for path in batch)
                 state.batches.append(list(batch))
                 if worker_failure:
@@ -132,13 +133,30 @@ def legacy_entrypoint(monkeypatch):
 
 
 @pytest.mark.parametrize("filename", ["main.py", "main_realtime.py"])
-def test_legacy_cli_rejects_unsupported_loop_count(legacy_entrypoint, filename):
+@pytest.mark.parametrize("loop_count", ["1", "2", "-1"])
+def test_legacy_cli_rejects_unsupported_loop_count(legacy_entrypoint, filename, loop_count):
     module, _ = legacy_entrypoint(filename)
     with pytest.raises(SystemExit) as exc:
-        module.parser.parse_args(["--max_loops", "2"])
+        module.parser.parse_args(["--max_loops", loop_count])
     assert exc.value.code == 2
     assert module.parser.parse_args(["--max_loops", "0"]).max_loops == 0
-    assert module.parser.parse_args(["--max_loops", "1"]).max_loops == 1
+    assert module.parser.parse_args([]).max_loops == 0
+
+
+@pytest.mark.parametrize("filename", ["main.py", "main_realtime.py"])
+@pytest.mark.parametrize("arguments", [["--max_loops", "1"], ["--auxiliary-model", "unused"], ["--run_os"]])
+def test_removed_options_reject_before_model_graph_camera_or_output_directory(
+        legacy_entrypoint, monkeypatch, tmp_path, filename, arguments):
+    module, state = legacy_entrypoint(filename)
+    output = tmp_path / "uncreated-output"
+    if filename == "main_realtime.py":
+        arguments = arguments + ["--keyframe_folder", str(output)]
+    monkeypatch.setattr(sys, "argv", [filename] + arguments)
+    with pytest.raises(SystemExit) as exc:
+        module.main()
+    assert exc.value.code == 2
+    assert state.model_loads == state.solver_inits == 0
+    assert state.camera_kwargs is None and not output.exists()
 
 
 def test_empty_offline_input_fails_before_allocating_models(legacy_entrypoint, monkeypatch, tmp_path):

@@ -69,7 +69,7 @@ def main():
                   script_sha256=sha(__file__), calibration_sha256=sha(a.calibration),
                   source_sha256={name:sha(ROOT/name) for name in [
                       'vggt_slam/image_rectification.py', 'vggt_slam/edge_mapping.py',
-                      'vggt_slam/solver.py', 'scripts/run_edge.py',
+                      'vggt_slam/solver.py',
                       'third_party/vggt/vggt/utils/load_fn.py']})
     a.output.parent.mkdir(parents=True, exist_ok=True)
     with a.output.open('x') as f:

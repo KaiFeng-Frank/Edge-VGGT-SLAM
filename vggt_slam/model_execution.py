@@ -15,7 +15,7 @@ is projective, not a claim of metric SE3 or a shared gauge between batches.
 Executors own their output storage, which must remain stable until the caller
 finishes using it. An SDK adapter must copy outputs before releasing SDK
 buffers. Validation does not copy all large arrays. Optional target_tokens
-are opaque model diagnostics, not retrieval descriptors. This module provides
+are opaque original-model diagnostics. This module provides
 the original Torch adapter; it does not claim a complete RKNN model backend.
 """
 
@@ -107,7 +107,7 @@ def _capabilities(executor):
 def require_compute_similarity(executor):
     if not _capabilities(executor).supports_compute_similarity:
         raise UnsupportedExecutionError(
-            f"Executor {_capabilities(executor).name!r} does not support compute_similarity; disable loop closures"
+            f"Executor {_capabilities(executor).name!r} does not support compute_similarity; this original-model diagnostic is unavailable"
         )
 
 
@@ -119,8 +119,8 @@ def _ratio(value):
         raise ValueError("Loop image_match_ratio must be a finite numeric scalar")
     result = float(array.reshape(-1)[0])
     # This is the original two-means similarity ratio, not a probability.
-    # Real accepted loops can exceed one; only the Solver's original .95
-    # lower gate decides whether a finite ratio accepts a candidate.
+    # The original two-means diagnostic can exceed one. The current Solver
+    # does not implement loop retrieval or accept it as a loop constraint.
     if not np.isfinite(result):
         raise ValueError("Loop image_match_ratio must be a finite numeric scalar")
     return result
@@ -167,10 +167,10 @@ def as_executor(model_or_executor):
     return TorchVGGTExecutor(model_or_executor)
 
 
-def get_auxiliary_device(executor):
-    """Device for legacy SALAD/CLIP only; it is not an NPU device contract."""
+def get_execution_device(executor):
+    """Original model input device; no auxiliary model is constructed."""
     _capabilities(executor)
-    return getattr(executor, "auxiliary_device", "cpu")
+    return getattr(executor, "device", "cpu")
 
 
 def execute(executor, images, *, compute_similarity=False):
@@ -205,7 +205,7 @@ class TorchVGGTExecutor:
             device = next(iter(model.parameters())).device
         except StopIteration:
             device = "cpu"
-        self.auxiliary_device = device
+        self.device = device
         call = getattr(model, "forward", None) or model.__call__
         try:
             supports_similarity = "compute_similarity" in inspect.signature(call).parameters
@@ -233,7 +233,7 @@ class TorchVGGTExecutor:
         else:
             decoder = self._pose_decoder
         count = len(images)
-        tensor = torch.from_numpy(images).to(self.auxiliary_device)
+        tensor = torch.from_numpy(images).to(self.device)
         with torch.no_grad():
             raw = (self.model(tensor, compute_similarity=True) if compute_similarity
                    else self.model(tensor))

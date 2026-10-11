@@ -1,6 +1,6 @@
 # RK3588S 离线依赖
 
-目标为 Ubuntu 22.04 / aarch64、独立 CPython 3.11.17、glibc 2.35。`requirements-board.txt` 固定 126 个包；PyTorch 2.3.1 / torchvision 0.18.1 使用 ARM64 CPU wheel，Viser 固定 0.2.23，GTSAM develop 包含 SL4。Open3D 0.20.0 的 wheel 要求 glibc 2.35。此清单不包含可选的 SAM、PE 或 RealSense 功能。
+目标为 Ubuntu 22.04 / aarch64、独立 CPython 3.11.17、glibc 2.35。`requirements-board.txt` 固定历史验证过的 126 个环境包；PyTorch 2.3.1 / torchvision 0.18.1 使用 ARM64 CPU wheel，Viser 固定 0.2.23，GTSAM develop 包含 SL4。Open3D 0.20.0 的 wheel 要求 glibc 2.35。环境包清单不含模型权重；当前部署只允许原 VGGT，部分历史环境工具并非当前运行必需。
 
 在仓库根目录执行，所有下载和临时文件均写入指定的、有足够空间的目录。
 以下示例重新准备并验证安装包：

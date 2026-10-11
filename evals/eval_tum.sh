@@ -1,9 +1,14 @@
 #!/bin/bash
+set -euo pipefail
 
-abs_dir="/home/<user>/Documents"
+if [[ "$(uname -m)" != aarch64 ]] || ! tr '\0' '\n' < /proc/device-tree/compatible | grep -q rk3588; then
+    echo 'Actual VGGT evaluation must run on the RK3588S board.' >&2
+    exit 1
+fi
 submap_size=${1:-16} # Default to 16 if not provided
-dataset_path="${abs_dir%/}/MASt3R-SLAM/datasets/tum/"
-gt_path="${abs_dir%/}/MASt3R-SLAM/datasets/tum/"
+dataset_path="${VGGT_TUM_ROOT:-/mnt/vggt-data/vggt-slam2/datasets}/"
+gt_path="$dataset_path"
+checkpoint="${VGGT_CHECKPOINT:-/mnt/vggt-data/vggt-slam2/weights/model.pt}"
 log_path="$(pwd)/logs/tum_results_w${submap_size}.txt"
 
 mkdir -p "$(pwd)/logs"
@@ -37,7 +42,7 @@ for run in $(seq 1 $n); do
     for dataset in "${datasets[@]}"; do
         echo "Running main.py on $dataset (Run $run)"
         dataset_name="${dataset_path}${dataset}/rgb"
-        python main.py --image_folder "$dataset_name" --max_loops 1 --min_disparity 50 --conf_threshold 25 --lc_thres 0.95 --submap_size "$submap_size" --log_results --skip_dense_log --log_path "$(pwd)/logs/${dataset}_run${run}_w${submap_size}.txt"
+        python main.py --image_folder "$dataset_name" --max_loops 0 --device cpu --offline --checkpoint "$checkpoint" --min_disparity 50 --conf_threshold 25 --submap_size "$submap_size" --log_results --skip_dense_log --log_path "$(pwd)/logs/${dataset}_run${run}_w${submap_size}.txt"
     done
 
     for dataset in "${datasets[@]}"; do
@@ -47,7 +52,10 @@ for run in $(seq 1 $n); do
 
         ape_result=$(evo_ape tum "$gt_file" "$est_path" -as)
         rmse=$(echo "$ape_result" | grep "rmse" | head -1 | sed -E 's/.*rmse[^0-9]*([0-9.]+).*/\1/')
-        rmse=${rmse:-0}
+        if [[ -z "$rmse" ]]; then
+            echo "Evaluation returned no RMSE for $dataset" >&2
+            exit 1
+        fi
 
         echo "$run,$dataset,$rmse" >> "$log_path"
 

@@ -10,8 +10,7 @@ from scipy.linalg import rq
 
 from vggt.utils.geometry import closed_form_inverse_se3, unproject_depth_map_to_point_map
 
-from vggt_slam.slam_utils import compute_image_embeddings, Accumulator
-from vggt_slam.loop_closure import ImageRetrieval
+from vggt_slam.slam_utils import Accumulator
 from vggt_slam.frame_overlap import FrameTracker
 from vggt_slam.map import GraphMap
 from vggt_slam.submap import Submap
@@ -19,8 +18,7 @@ from vggt_slam.graph import PoseGraph
 from vggt_slam.scale_solver import estimate_scale_pairwise
 from vggt_slam.runtime import resolve_device, validate_image_size
 from vggt_slam.model_execution import (
-    as_executor, execute, get_auxiliary_device, prepare_rgb_images,
-    require_compute_similarity,
+    as_executor, execute, get_execution_device, prepare_rgb_images,
 )
 
 DEBUG = False
@@ -39,25 +37,26 @@ def debug_visualize(pcd1_points, pcd2_points):
 class Solver:
     def __init__(self,
         init_conf_threshold: float,  # represents percentage (e.g., 50 means filter lowest 50%)
-        lc_thres: float = 0.80,
         vis_voxel_size: float = None,
         vis_imgs: bool = False,
         device="auto",
         image_size: int = 518,
-        max_loops: int = 1,
-        salad_checkpoint=None,
+        max_loops: int = 0,
         offline: bool = False,
-        enable_viewer: bool = True):
+        enable_viewer: bool = True,
+        **unsupported_options):
+
+        if type(max_loops) is not int or max_loops != 0:
+            raise ValueError("Only max_loops=0 is supported; model-based retrieval is removed")
+        if any(value is not None for value in unsupported_options.values()):
+            raise ValueError("Auxiliary model/configuration inputs are unsupported")
 
         self.init_conf_threshold = init_conf_threshold
         self.vis_voxel_size = vis_voxel_size
         self.vis_imgs = vis_imgs
         self.device = resolve_device(device)
         self.image_size = validate_image_size(image_size)
-        if max_loops not in (0, 1):
-            raise ValueError("VGGT-SLAM2 supports max_loops=0 or 1 only")
         self.max_loops = max_loops
-        self.salad_checkpoint = salad_checkpoint
         self.offline = offline
 
         self.viewer = None
@@ -72,12 +71,10 @@ class Solver:
         self.image_retrieval = None
         self.current_working_submap = None
 
-        self.lc_thres = lc_thres
 
         self.temp_count = 0
         self.vggt_timer = Accumulator()
         self.loop_closure_timer = Accumulator()
-        self.clip_timer = Accumulator()
 
     def set_point_cloud(self, points_in_world_frame, points_colors, name, point_size):
         if self.viewer is None:
@@ -235,6 +232,9 @@ class Solver:
                 "intrinsic": (S, 3, 3),
             }
         """
+        if pred_dict.get("detected_loops", []):
+            raise ValueError("Loop insertion is not implemented by the original-only execution path")
+
         # Unpack prediction dict
         t1 = time.time()
         images = pred_dict["images"]  # (S, 3, H, W)
@@ -322,115 +322,47 @@ class Solver:
         pixel_coords = torch.stack((y_coords, x_coords), dim=1)
         return pixel_coords
 
-    def run_predictions(self, image_names, model, max_loops, clip_model, clip_preprocess, *, prepared_images=None):
-        if max_loops not in (0, 1):
-            raise ValueError("VGGT-SLAM2 supports max_loops=0 or 1 only")
+    def run_predictions(self, image_names, model, max_loops=0, auxiliary_model=None,
+                        auxiliary_preprocess=None, *, prepared_images=None, **unsupported_options):
+        """Execute only original VGGT, preserving prepared pixels and SL4 inputs.
+
+        Legacy positional auxiliary slots may only be None. Loop retrieval and
+        additional learned models have no implementation in this active path.
+        Reject requests before preprocessing, model dispatch or graph state.
+        """
+        if type(max_loops) is not int or max_loops != 0 or self.max_loops != 0:
+            raise ValueError("Only max_loops=0 is supported; model-based retrieval is removed")
+        if (auxiliary_model is not None or auxiliary_preprocess is not None
+                or any(value is not None for value in unsupported_options.values())):
+            raise ValueError("Auxiliary model/configuration inputs are unsupported")
         executor = as_executor(model)
-        use_loop_closures = max_loops > 0 and self.max_loops > 0
-        # Reject a missing capability before preprocessing, retrieval, model
-        # execution, or construction of a new working submap.
-        if use_loop_closures:
-            require_compute_similarity(executor)
-        if prepared_images is not None:
-            if clip_model is not None or clip_preprocess is not None:
-                raise ValueError("Prepared image tensors cannot be mixed with path-based CLIP preprocessing")
-        device = get_auxiliary_device(executor)
-        self.device = device
+        self.device = get_execution_device(executor)
         t1 = time.time()
         with self.vggt_timer:
             images = prepare_rgb_images(image_names, self.image_size, prepared_images=prepared_images)
         print(f"Loaded and preprocessed {len(image_names)} images in {time.time() - t1:.2f} seconds")
         print(f"Preprocessed images shape: {images.shape}")
 
-        # First submap so set new pcd num to 0
         if self.map.get_largest_key() is None:
             new_pcd_num = 0
         else:
             new_pcd_num = self.map.get_largest_key() + self.map.get_latest_submap().get_last_non_loop_frame_index() + 1
 
         print(f"Creating new submap with id {new_pcd_num}")
-        t1 = time.time()
         new_submap = Submap(new_pcd_num)
-        # Legacy submap/SALAD image storage remains CPU Torch, sharing the
-        # prepared pixels. Model executors receive only the NumPy request.
+        # Stable CPU pixel storage is retained for the submap lifetime.
         new_submap.add_all_frames(torch.from_numpy(images))
         new_submap.set_frame_ids(image_names)
         new_submap.set_last_non_loop_frame_index(images.shape[0] - 1)
-        if use_loop_closures:
-            if self.image_retrieval is None:
-                self.image_retrieval = ImageRetrieval(
-                    device=device, checkpoint=self.salad_checkpoint, offline=self.offline,
-                )
-            new_submap.set_all_retrieval_vectors(self.image_retrieval.get_all_submap_embeddings(new_submap))
         new_submap.set_img_names(image_names)
-
-        with self.clip_timer:
-            if clip_model is not None and clip_preprocess is not None:
-                image_embs = compute_image_embeddings(clip_model, clip_preprocess, image_names, device=device)
-                new_submap.set_all_semantic_vectors(image_embs)
-
         self.current_working_submap = new_submap
-        print(f"Created new submap in {time.time() - t1:.2f} seconds")
 
         t1 = time.time()
         with self.vggt_timer:
             predictions = execute(executor, images)
         print(f"VGGT model inference took {time.time() - t1:.2f} seconds")
-
-        # Check for loop closures and add retrieval vectors from new submap to the database
-        predictions_lc = None
-        detected_loops = []
-        with self.loop_closure_timer:
-            if use_loop_closures:
-                detected_loops = self.image_retrieval.find_loop_closures(self.map, new_submap, max_loop_closures=max_loops, max_similarity_thres=self.lc_thres)
-        loop_closure_frame_names = []
-        if len(detected_loops) > 0:
-            print(colored("detected_loops", "yellow"), detected_loops)
-            retrieved_frames = self.map.get_frames_from_loops(detected_loops)
-            lc_frames = torch.stack((new_submap.get_frame_at_index(detected_loops[0].query_submap_frame),
-                                     retrieved_frames[0].detach().cpu()), axis=0)
-            # Loop order is query then retrieved. Source IDs need not increase
-            # and no frame-name/timestamp float32 conversion occurs here.
-            predictions_lc = execute(executor, lc_frames.numpy(), compute_similarity=True)
-            loop_closure_frame_names = [new_submap.get_img_names_at_index(detected_loops[0].query_submap_frame),
-            self.map.get_submap(detected_loops[0].detected_submap_id).get_img_names_at_index(detected_loops[0].detected_submap_frame)]
-
-            # Visualize loop closure frames
-            if DEBUG:
-                imgs = lc_frames.permute(0, 2, 3, 1).cpu().numpy()  # shape -> (2, H, W, C)
-                fig, axes = plt.subplots(1, 2, figsize=(10, 5))
-                for i in range(2):
-                    axes[i].imshow(imgs[i])
-                    axes[i].axis('off')
-                plt.tight_layout()
-                plt.title("Loop Closure Frames. Left: Query Frame, Right: Retrieved Frame")
-                plt.show()
-
-        predictions["detected_loops"] = detected_loops
-        # Keep retrieval evidence even when the two-frame similarity gate
-        # rejects a candidate. These records do not affect loop selection.
-        predictions["loop_candidate_matches"] = list(detected_loops)
+        predictions["detected_loops"] = []
+        predictions["loop_candidate_matches"] = []
         predictions["loop_match_ratio"] = None
         predictions["loop_rejection_reason"] = None
-        
-        if predictions_lc is not None:
-            image_match_ratio = predictions_lc["image_match_ratio"]
-            predictions["loop_match_ratio"] = float(image_match_ratio)
-            if image_match_ratio < 0.95:
-                print(colored("Loop closure image match ratio too low, skipping loop closure", "red"))
-                predictions_lc = None # We set to None to ignore the loop closure
-                predictions["detected_loops"] = []
-                predictions["loop_rejection_reason"] = "match_ratio_below_threshold"
-            else:
-                self.graph.increment_loop_closure()
-                predictions["extrinsic_lc"] = predictions_lc["extrinsic"]
-                predictions["intrinsic_lc"] = predictions_lc["intrinsic"]
-                predictions["depth_lc"] = predictions_lc["depth"]
-                predictions["depth_conf_lc"] = predictions_lc["depth_conf"]
-
-        if predictions_lc is not None:
-            predictions["frames_lc"] = lc_frames[0:2,...]
-            print(loop_closure_frame_names)
-            predictions["frames_lc_names"] = loop_closure_frame_names
-
         return predictions

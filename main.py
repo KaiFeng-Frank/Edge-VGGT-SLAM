@@ -5,7 +5,6 @@ import argparse
 
 import numpy as np
 import torch
-from torchvision.transforms.functional import to_pil_image
 from tqdm.auto import tqdm
 import cv2
 import matplotlib.pyplot as plt
@@ -21,23 +20,20 @@ parser.add_argument("--image_folder", type=str, default="examples/kitchen/images
 parser.add_argument("--vis_map", action="store_true", help="Visualize point cloud in viser as it is being build, otherwise only show the final map")
 parser.add_argument("--vis_imgs", action="store_true", help="Show camera images in the viser frustums. By default only the frustums are shown (faster visualization)")
 parser.add_argument("--vis_voxel_size", type=float, default=None, help="Voxel size for downsampling the point cloud in the viewer (e.g. 0.05 for 5 cm). Default: no downsampling")
-parser.add_argument("--run_os", action="store_true", help="Enable open-set semantic search with Perception Encoder CLIP and SAM3")
-parser.add_argument("--vis_flow", action="store_true", help="Visualize optical flow from RAFT for keyframe selection")
+parser.add_argument("--vis_flow", action="store_true", help="Visualize original keyframe-selection optical flow")
 parser.add_argument("--headless", action="store_true", help="Disable local optical-flow windows")
 parser.add_argument("--log_results", action="store_true", help="save txt file with results")
 parser.add_argument("--skip_dense_log", action="store_true", help="by default, logging poses and logs dense point clouds. If this flag is set, dense logging is skipped")
 parser.add_argument("--log_path", type=str, default="poses.txt", help="Path to save the log file")
 parser.add_argument("--submap_size", type=int, default=16, help="Number of new frames per submap, does not include overlapping frames or loop closure frames")
 parser.add_argument("--overlapping_window_size", type=int, default=1, choices=[1], help="Number of overlapping frames; only 1 is supported")
-parser.add_argument("--max_loops", type=int, default=1, choices=[0, 1], help="Maximum loop closures per submap; 0 disables them")
+parser.add_argument("--max_loops", type=int, default=0, choices=[0], help="Only 0 is supported; no model-based retrieval")
 parser.add_argument("--min_disparity", type=float, default=50, help="Minimum disparity to generate a new keyframe")
 parser.add_argument("--conf_threshold", type=float, default=25.0, help="Initial percentage of low-confidence points to filter out")
-parser.add_argument("--lc_thres", type=float, default=0.95, help="Threshold for image retrieval. Range: [0, 1.0]. Higher = more loop closures")
 parser.add_argument("--checkpoint", default=None, help="Local VGGT-1B checkpoint")
 parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"])
 parser.add_argument("--image_size", type=int, default=518, help="Multiple of 14; changing this requires accuracy validation")
 parser.add_argument("--offline", action="store_true", help="Never download model weights")
-parser.add_argument("--salad_checkpoint", default=None, help="Local SALAD checkpoint when loops are enabled")
 parser.add_argument("--threads", type=int, default=4, help="PyTorch CPU threads")
 
 
@@ -69,35 +65,17 @@ def main():
 
     solver = Solver(
         init_conf_threshold=args.conf_threshold,
-        lc_thres=args.lc_thres,
         vis_voxel_size=args.vis_voxel_size,
         vis_imgs=args.vis_imgs,
         device=device,
         image_size=args.image_size,
         max_loops=args.max_loops,
-        salad_checkpoint=args.salad_checkpoint,
         offline=args.offline,
     )
 
     print("Initializing and loading VGGT model...")
 
 
-    if args.run_os:
-        from sam3.model_builder import build_sam3_image_model
-        from sam3.model.sam3_image_processor import Sam3Processor
-        import core.vision_encoder.pe as pe
-        import core.vision_encoder.transforms as transforms
-
-        sam3_model = build_sam3_image_model()
-        processor = Sam3Processor(sam3_model, confidence_threshold=0.50)
-
-        clip_model = pe.CLIP.from_config("PE-Core-L14-336", pretrained=True)  # Downloads from HF
-        clip_model = clip_model.cuda()
-        clip_tokenizer = transforms.get_text_tokenizer(clip_model.context_length)
-        clip_preprocess = transforms.get_image_transform(clip_model.image_size)
-    else:
-        clip_model, clip_preprocess = None, None
-        clip_tokenizer = None
 
     model = load_model(
         checkpoint=args.checkpoint, device=device, image_size=args.image_size,
@@ -138,7 +116,7 @@ def main():
             count += 1
             print(image_names_subset)
             t1 = time.time()
-            predictions = solver.run_predictions(image_names_subset, model, args.max_loops, clip_model, clip_preprocess)
+            predictions = solver.run_predictions(image_names_subset, model, max_loops=args.max_loops)
             print("Solver total time", time.time()-t1)
             print(count, "submaps processed")
 
@@ -169,7 +147,6 @@ def main():
     print("Average loop closure time per frame:", solver.loop_closure_timer.total_time / image_count)
     print("Average keyframe selection time per frame:", keyframe_time.total_time / image_count)
     print("Average backend time per frame:", backend_time.total_time / image_count)
-    print("Average semantic time per frame:", solver.clip_timer.total_time / image_count)
     print("Average total time per frame:", total_time / image_count)
     print("Average FPS:", 1 / average_fps)
         
@@ -177,55 +154,6 @@ def main():
     print("Total number of loop closures in map", solver.graph.get_num_loops())
 
 
-    if args.run_os:
-        # Register the viser object-query panel so the user can search for
-        # objects in the viewer in addition to the terminal prompt below.
-        import threading
-        data_lock = threading.Lock()
-        solver.viewer.add_object_query_gui(solver, clip_model, clip_tokenizer, processor, data_lock)
-
-        while True:
-            # Prompt user for text input
-            query = input("\nEnter text query or q to quit: ").strip()
-            if len(query) == 0:
-                print("Empty query. Exiting.")
-                return
-            
-            if query == "q":
-                print("Exiting.")
-                return
-            
-            text_emb = utils.compute_text_embeddings(clip_model, clip_tokenizer, query)
-            overall_best_score, overall_best_submap_id, overall_best_frame_index = solver.map.retrieve_best_semantic_frame(text_emb)
-
-            found_submap = solver.map.get_submap(overall_best_submap_id)
-
-            # Display image
-            best_img = found_submap.get_frame_at_index(overall_best_frame_index)
-            print("Score:", overall_best_score)
-            with torch.no_grad():
-                # convert torch image to PIL
-                best_img = to_pil_image(best_img)
-                inference_state = processor.set_image(best_img)
-                output = processor.set_text_prompt(state=inference_state, prompt=query)
-                masks, boxes, scores = output["masks"], output["boxes"], output["scores"]
-                print(f"Found {masks.shape[0]} masks from SAM3 for the prompt '{query}'")
-                print("Scores:", scores.cpu().numpy())
-
-
-            masked_img = utils.overlay_masks(best_img, masks)
-            masked_img.show()
-
-            for i in range(masks.shape[0]):
-                mask = masks[i].cpu().numpy()
-                obb_center, obb_extent, obb_rotation = utils.compute_obb_from_points(found_submap.get_points_in_mask(overall_best_frame_index, mask, solver.graph))
-                solver.viewer.visualize_obb(
-                    center=obb_center,
-                    extent=obb_extent,
-                    rotation=obb_rotation,
-                    color=(255, 0, 0),
-                    line_width=8.0,
-                )
 
     if not args.vis_map:
         # just show the map after all submaps have been processed

@@ -64,6 +64,17 @@ def platform_sample():
     return result
 
 
+def validate_mapping_config(config):
+    """Reject auxiliary options before importing/loading a model or graph."""
+    allowed = {"cpus", "threads", "checkpoint", "image_size", "camera_rknn", "backend",
+               "max_loops", "output", "max_submaps", "memory_limit_mib", "save_predictions",
+               "rectification_calibration"}
+    if type(config.get("max_loops", 0)) is not int or config.get("max_loops", 0) != 0:
+        raise ValueError("Only max_loops=0 is supported")
+    if any(value is not None for key, value in config.items() if key not in allowed):
+        raise ValueError("Unsupported mapping configuration; only original VGGT is permitted")
+
+
 def mapping_worker(config, jobs, results):
     """Only this process may access or optimize the graph or the neural model.
 
@@ -75,6 +86,7 @@ def mapping_worker(config, jobs, results):
     camera_handle = None
     terminal = None
     try:
+        validate_mapping_config(config)
         if config["cpus"] is not None:
             os.sched_setaffinity(0, config["cpus"])
         import cv2
@@ -93,8 +105,6 @@ def mapping_worker(config, jobs, results):
         model = load_model(config["checkpoint"], device="cpu", image_size=config["image_size"],
                            prune_unused_heads=True, offline=True)
         if config.get("camera_rknn") is not None:
-            if config["max_loops"]:
-                raise ValueError("RKNN camera currently requires fixed two-frame mapping without loop candidates")
             from vggt_slam.rknn_camera import install_rknn_camera
             # Release the original CPU CameraHead before packing remaining
             # Linear weights; the NPU context owns its shared FP16 weights.
@@ -104,7 +114,7 @@ def mapping_worker(config, jobs, results):
             handle = install_xnnpack_linear(model, threads=config["threads"], dtype="float16",
                                            scope="all", cpu_affinity=config["cpus"])
         solver = Solver(init_conf_threshold=25., device="cpu", image_size=config["image_size"],
-                        max_loops=config["max_loops"], salad_checkpoint=config["salad_checkpoint"],
+                        max_loops=0,
                         offline=True, enable_viewer=False)
         output = Path(config["output"])
         chunks = output / "map_chunks"
@@ -127,10 +137,10 @@ def mapping_worker(config, jobs, results):
             batch = job["batch"]
             paths = [x["path"] for x in batch]
             if rectifier is None:
-                prediction = solver.run_predictions(paths, model, config["max_loops"], None, None)
+                prediction = solver.run_predictions(paths, model, max_loops=config["max_loops"])
             else:
                 images = prepare_rectified_images(paths, rectifier, config["image_size"])
-                prediction = solver.run_predictions(paths, model, config["max_loops"], None, None,
+                prediction = solver.run_predictions(paths, model, max_loops=config["max_loops"],
                                                     prepared_images=images)
                 del images
             predicted = time.monotonic()
@@ -147,7 +157,7 @@ def mapping_worker(config, jobs, results):
             if list(submap.frame_ids) != [x["frame_id"] for x in batch]:
                 raise RuntimeError("Mapper input identities differ from inserted submap")
             # New local chunks are immutable. An atomic graph manifest updates
-            # every chunk's world placement after loop closure without rewriting
+            # every chunk's world placement after SL4 optimization without rewriting
             # the complete accumulated point cloud at every revision.
             for node, current in sorted(solver.map.submaps.items()):
                 if node not in saved:

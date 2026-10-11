@@ -53,7 +53,7 @@ def test_numpy_executor_needs_no_torch_parameters_or_pose_codec(monkeypatch):
     assert out['images'] is pixels
     assert out['depth'] is backend.last['depth']  # no unconditional large copy
     assert out['image_match_ratio'] is None
-    assert execution.get_auxiliary_device(backend) == 'cpu'
+    assert execution.get_execution_device(backend) == 'cpu'
 
 
 def test_owned_result_remains_stable_after_a_subsequent_call():
