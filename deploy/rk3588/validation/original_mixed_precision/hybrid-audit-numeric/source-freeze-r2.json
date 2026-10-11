@@ -1,0 +1,62 @@
+{
+  "schema": "v50_original_pair_hybrid_saved_numeric_audit_source_freeze_r2",
+  "status": "saved_audit_integrity_passed_component_rejected_not_adopted",
+  "public_files": [
+    {
+      "file": "audit_saved_hybrid_pair_r2.py",
+      "bytes": 22681,
+      "sha256": "790720e6ee0f47a826c3a6ce83caa02f2ae75ba122cfe10d3a545899dcec64f4"
+    },
+    {
+      "file": "check_saved_hybrid_audit_r2.py",
+      "bytes": 6998,
+      "sha256": "a19d5b616cc415a9d47f93a5258798c6e5a69460008c21c3ae63619e099d009d"
+    },
+    {
+      "file": "evidence-pins-r2.json",
+      "bytes": 1014,
+      "sha256": "20eb0345d966d390a1131677d25c9d691e2a3b7f3864dc6ced9c191bb3c451d9"
+    },
+    {
+      "file": "generated-checks-r2.json",
+      "bytes": 1905,
+      "sha256": "d97742fb6c392c343b229ca6df6f142d01ceeb710f707921754d252eaa97e583"
+    },
+    {
+      "file": "public-saved-hybrid-audit-r2.json",
+      "bytes": 14420,
+      "sha256": "12981eee8d45030f84d9cc77624676b52b7314cb7e2fb76b4b256bfe559f5bea"
+    },
+    {
+      "file": "README_R2.md",
+      "bytes": 4765,
+      "sha256": "1a3635a7e3c45703632c3e68bc6d790c007d698ddc9ffe89a69afc8baa7c831e"
+    }
+  ],
+  "required_pure_source_dependencies": [
+    {
+      "file": "../flash-audit-numeric/audit_saved_flash_pair.py",
+      "sha256": "d2ccb21f2a77a4e4671d410cffd754052618dae65fb790e32e50f64d9ef642af"
+    },
+    {
+      "file": "../hybrid/v50_hybrid_step2_r2_contracts.py",
+      "sha256": "4d599517db9cbc438c1b095bb97c0dd74ea923cc6eaf613a8d32cd594b9a9101"
+    },
+    {
+      "file": "../hybrid/v50_hybrid_step2_contracts.py",
+      "sha256": "d92103b618fd186605269d151f4cd480429b26570aa5b466c5f0f90ca01075df"
+    }
+  ],
+  "original_prepared_sources_unchanged": true,
+  "generated_check_count": 12,
+  "saved_output_NPY_files_audited": 32,
+  "fixed_component_gate": {
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "reference": "same-input original saved Torch FP32 output"
+  },
+  "bindings_sha256": "20eb0345d966d390a1131677d25c9d691e2a3b7f3864dc6ced9c191bb3c451d9",
+  "candidate_accepted": false,
+  "actual_model_ORT_SDK_compiler_calibration_or_board_execution_by_auditor": false,
+  "private_arrays_checkpoint_exports_SDK_binaries_or_private_paths_in_public_allowlist": false
+}

@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "scope": "AST and host-before-load rejection; actual SDK ownership/call implementation unchanged v49",
+  "runtime_source_sha256": "10b553b7c2a005310c6b6d00a5f6442668e6597b9f1a0d7ee119f88fd349e9a6",
+  "source_review_fixes": [
+    "Final platform sampling failure cannot skip process restoration or receipt",
+    "Six-repeat denominator uses explicit exception"
+  ],
+  "actual_model_OR_SDK_executed": false
+}

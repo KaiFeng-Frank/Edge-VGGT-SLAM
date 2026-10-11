@@ -1,0 +1,39 @@
+{
+  "schema": "v50_original_static_layout_public_allowlist",
+  "status": "frozen_sources_and_concise_original_provenance",
+  "files": {
+    "public-original-layout-audit-r1.json": {
+      "bytes": 4219,
+      "sha256": "95dd66db2194e3a3c90fb6b854bad94d3ebab231117c074c50f73222b15094c2"
+    },
+    "audit_v50_original_pair_layout.py": {
+      "bytes": 17413,
+      "sha256": "9bfc9debcfb5bcf43cf20eb5c86cc444efb9882db21887656513211acf9f196d"
+    },
+    "v50_original_mlp_scope_contracts.py": {
+      "bytes": 5558,
+      "sha256": "105e6cfdf912f3e5a6c97eefc2265c4a7c141c97cff5b50632ebab6f7399e52a"
+    },
+    "test_v50_original_mlp_scope.py": {
+      "bytes": 2475,
+      "sha256": "e90077259f5cdde2c8a5a1edf823e5bdebd1fbdc052289c6121dd579ef56f4d8"
+    },
+    "generated-scope-checks-r1.json": {
+      "bytes": 445,
+      "sha256": "5716add4cab4fe94464fd942427afa9856ba90ed325852727b847e8a6f33a8a7"
+    }
+  },
+  "private_excluded": [
+    "mapping-r1.json",
+    "minimal-scope-r1.json",
+    "catalog-scope-review-r1.json",
+    "raw graphs or initializer arrays",
+    "SDK model/data intermediates",
+    "captured input/output arrays",
+    "raw compiled/profile tables"
+  ],
+  "raw_model_weights_or_captured_tensor_values_public": false,
+  "candidate_accepted": false,
+  "CLI": "python -B audit_v50_original_pair_layout.py --graph GRAPH --export EXPORT --protobuf-source PURE_PROTO_SOURCE --SDK-api-source SDK_PYTHON_WRAPPER --compile-audit SAVED_V49_COMPILE_AUDIT --profile-audit SAVED_V49_PROFILE_AUDIT --compiler-log V49_MAIN_LOG --output NEW_PRIVATE_MAPPING_JSON",
+  "generated_checks_CLI": "python -B test_v50_original_mlp_scope.py"
+}

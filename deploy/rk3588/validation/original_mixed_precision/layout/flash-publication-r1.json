@@ -1,0 +1,21 @@
+{
+  "schema": "v50_flash_slim_operator_publication",
+  "status": "frozen_source_and_public_saved_summary",
+  "files": {
+    "public-flash-operators-audit-r1.json": {
+      "bytes": 5336,
+      "sha256": "9a2b60a9387fa625004bffd8aa7465f17d213ae998e37a5e0cc39a8387f4dd54"
+    },
+    "audit_v50_flash_saved.py": {
+      "bytes": 16945,
+      "sha256": "3fe40548a12eba6b5d2820e05602a7eaf2e190b0ae2050ae40f9936fad0ab704"
+    },
+    "v50_original_mlp_scope_contracts.py": {
+      "bytes": 5558,
+      "sha256": "105e6cfdf912f3e5a6c97eefc2265c4a7c141c97cff5b50632ebab6f7399e52a"
+    }
+  },
+  "raw_tables_and_arrays_binary_private": true,
+  "candidate_accepted": false,
+  "CLI": "python -B audit_v50_flash_saved.py --compile-dir COMPILE --compile-sha256 COMPILE_SHA --compiler-log MAIN_LOG --compiler-log-sha256 LOG_SHA --normal-dir NORMAL --normal-sha256 NORMAL_SHA --profile-dir PROFILE --profile-sha256 PROFILE_SHA --profile-parser PREVIOUS_PUBLIC_V49_PROFILE_PARSER --output NEW_PRIVATE_JSON"
+}

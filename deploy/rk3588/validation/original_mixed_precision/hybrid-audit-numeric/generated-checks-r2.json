@@ -1,0 +1,59 @@
+{
+  "schema": "v50_hybrid_saved_audit_generated_checks",
+  "passed": true,
+  "checks": [
+    {
+      "check": "R2_source_basename_binding_rejects_path_escape_and_whitespace",
+      "passed": true
+    },
+    {
+      "check": "ordinary_hybrid_schedule_reverses_each_round_and_second_input",
+      "passed": true
+    },
+    {
+      "check": "six_call_means_use_three_repeats_per_input_and_exclude_each_first",
+      "passed": true
+    },
+    {
+      "check": "duplicate_and_missing_hybrid_call_cannot_keep_mean_denominator",
+      "passed": true
+    },
+    {
+      "check": "different_ordinary_and_hybrid_outputs_are_allowed_if_each_role_is_repeatable",
+      "passed": true
+    },
+    {
+      "check": "one_different_profile_hybrid_repeat_rejects_same_role_equality",
+      "passed": true
+    },
+    {
+      "check": "actual_FP16_identity_INT8_and_UINT8_boundaries_are_distinguished",
+      "passed": true
+    },
+    {
+      "check": "invalid_affine_scale_byte_width_and_nonidentity_floating_metadata_reject",
+      "passed": true
+    },
+    {
+      "check": "FP16_membership_detects_finite_FP32_value_between_half_grid_points",
+      "passed": true
+    },
+    {
+      "check": "INT8_output_membership_allows_FP32_product_and_FP16_rounded_scale_product_hypotheses",
+      "passed": true
+    },
+    {
+      "check": "offgrid_distance_matches_brute_search_over_all_256_affine_levels",
+      "passed": true
+    },
+    {
+      "check": "generated_checks_import_no_model_ORT_or_SDK_modules",
+      "passed": true
+    }
+  ],
+  "check_count": 12,
+  "auditor_source_sha256": "790720e6ee0f47a826c3a6ce83caa02f2ae75ba122cfe10d3a545899dcec64f4",
+  "check_source_sha256": "a19d5b616cc415a9d47f93a5258798c6e5a69460008c21c3ae63619e099d009d",
+  "pure_saved_helper_sha256": "d2ccb21f2a77a4e4671d410cffd754052618dae65fb790e32e50f64d9ef642af",
+  "real_saved_arrays_or_actual_model_ORT_SDK_calibration_or_board_used": false
+}

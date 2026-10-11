@@ -1,0 +1,140 @@
+{
+  "schema": "v50_original_VGGT_pair_static_layout_public_audit",
+  "status": "original_source_preserved_precision_scope_not_proven",
+  "source_sha256": "9bfc9debcfb5bcf43cf20eb5c86cc444efb9882db21887656513211acf9f196d",
+  "scope_contracts_sha256": "105e6cfdf912f3e5a6c97eefc2265c4a7c141c97cff5b50632ebab6f7399e52a",
+  "private_complete_mapping_sha256": "3a05eb0021c96271ac7c675060c77a0a23c179061b27ebb3e4421949831d9174",
+  "original_graph_sha256": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+  "original_export_sha256": "149450ffc675ce59950c6f89cf84adb41e388cd050eeb731b6d09a6fe16e9fe1",
+  "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "whole_graph_bytes": 101700877,
+  "all_source_nodes_weights_and_layers_preserved_by_whole_file_pin": true,
+  "node_count": 87,
+  "initializer_count": 63,
+  "original_learned_parameter_count": 36,
+  "original_learned_parameters_rechecked_after_reversing_export_weight_transposes": 36,
+  "all_original_source_nodes_reachable_from_final_output": true,
+  "original_MLP_node_count_per_block": 9,
+  "original_MLP_sequence": [
+    "MatMul",
+    "Add",
+    "Div",
+    "Erf",
+    "Add",
+    "Mul",
+    "Mul",
+    "MatMul",
+    "Add"
+  ],
+  "MLP_regions": {
+    "frame0": {
+      "original_node_indices": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "activation_input": "frame0/norm2",
+      "activation_output": "frame0/mlp.fc2",
+      "input_shape": [
+        2,
+        437,
+        1024
+      ],
+      "output_shape": [
+        2,
+        437,
+        1024
+      ],
+      "hidden_shape": [
+        2,
+        437,
+        4096
+      ],
+      "learned_tensors_per_MLP": 4,
+      "unchanged_exact_GELU_constants_per_MLP": 3,
+      "external_consumer": "frame0/ls2"
+    },
+    "global0": {
+      "original_node_indices": [
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "activation_input": "global0/norm2",
+      "activation_output": "global0/mlp.fc2",
+      "input_shape": [
+        1,
+        874,
+        1024
+      ],
+      "output_shape": [
+        1,
+        874,
+        1024
+      ],
+      "hidden_shape": [
+        1,
+        874,
+        4096
+      ],
+      "learned_tensors_per_MLP": 4,
+      "unchanged_exact_GELU_constants_per_MLP": 3,
+      "external_consumer": "global0/ls2"
+    }
+  },
+  "outside_original_MLP": [
+    "norm2",
+    "LayerScale ls2",
+    "residual sum",
+    "attention",
+    "RoPE",
+    "frame-to-global C-order view"
+  ],
+  "actual_v49_fusion_evidence": {
+    "compile_audit_sha256": "8362d1e3fc702c733a451aebb87f78c733e076da57152c254fb2b1ebdb5136b7",
+    "profile_audit_sha256": "f66a22c838c12d725d8663ef45d9e7b5da07dcb842708f2c38874aadabbe9c58",
+    "FC1_compiler_operator_ids": [
+      29,
+      49
+    ],
+    "FC1_operator": "ConvExGelu",
+    "FC2_compiler_operator_ids": [
+      30,
+      50
+    ],
+    "FC2_operator": "ConvAdd",
+    "FC2_LayerScale_fold_records": 2,
+    "FC2_residual_input_records": 2,
+    "MLP_named_profile_time_includes_fused_non_MLP_semantics": true,
+    "INT8_operator_IO_tag_does_not_prove_all_internal_arithmetic_INT8": true,
+    "CPU_reshape_frame0_value_tp_rs_is_attention_layout_outside_MLP": true
+  },
+  "precision_scope_label": "MLP-focused precision allocation diagnostic",
+  "exact_original_MLP_only_precision_proven": false,
+  "rtol": 0.0001,
+  "atol": 1e-05,
+  "original_Torch_FP32_reference_is_sole_numerical_reference": true,
+  "historical_FP32_rejections_retained": true,
+  "candidate_accepted": false,
+  "real_time_validated": false,
+  "whole_model_quality_validated": false,
+  "actual_model_ORT_SDK_compiler_calibration_executed_by_auditor": false,
+  "board_access_by_auditor": false,
+  "limitations": [
+    "Source preservation is not proof of compiler fusion arithmetic or numerical equivalence.",
+    "All original MLP nodes are retained; precision requests require actual generated tensor names and later compiled/profile evidence.",
+    "Private graph, learned tensors, captured arrays, quantization ranges and raw operator tables are excluded from this public summary."
+  ]
+}

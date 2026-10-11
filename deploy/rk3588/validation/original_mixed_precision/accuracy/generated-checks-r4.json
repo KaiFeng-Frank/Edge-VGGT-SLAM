@@ -1,0 +1,92 @@
+{
+  "schema": "v50_generated_representation_resolution_math_checks",
+  "passed": true,
+  "checks": [
+    {
+      "check": "all_finite_FP16_numeric_values_return_themselves",
+      "passed": true,
+      "generated_cases": 63487
+    },
+    {
+      "check": "every_adjacent_FP16_interval_midpoint_and_FP32_neighbors_match_full_enumerated_oracle",
+      "passed": true,
+      "generated_cases": 190458
+    },
+    {
+      "check": "signed_zero_subnormals_normal_boundary_ties_extremes_and_finite_endpoints",
+      "passed": true,
+      "generated_cases": 17
+    },
+    {
+      "check": "finite_reference_can_be_impossible_under_fixed_gate_even_with_nearest_FP16",
+      "passed": true,
+      "generated_cases": 1
+    },
+    {
+      "check": "absolute_tolerance_uses_original_magnitude_and_handles_near_zero",
+      "passed": true,
+      "generated_cases": 3
+    },
+    {
+      "check": "finite_FP32_reference_magnitude_is_used_even_when_candidate_magnitude_would_relax_gate",
+      "passed": true,
+      "generated_cases": 1
+    },
+    {
+      "check": "finite_INT8_lattice_full_search_oracle_0.03125_FP32_scale_FP32_product",
+      "passed": true,
+      "generated_cases": 5
+    },
+    {
+      "check": "finite_INT8_lattice_full_search_oracle_0.03125_FP32_scale_FP16_rounded_product",
+      "passed": true,
+      "generated_cases": 5
+    },
+    {
+      "check": "finite_INT8_lattice_full_search_oracle_0.03125_FP16_rounded_scale_FP32_product",
+      "passed": true,
+      "generated_cases": 5
+    },
+    {
+      "check": "finite_INT8_lattice_full_search_oracle_0.03125_FP16_rounded_scale_FP16_rounded_product",
+      "passed": true,
+      "generated_cases": 5
+    },
+    {
+      "check": "finite_INT8_lattice_full_search_oracle_0.022345000877976418_FP32_scale_FP32_product",
+      "passed": true,
+      "generated_cases": 5
+    },
+    {
+      "check": "finite_INT8_lattice_full_search_oracle_0.022345000877976418_FP32_scale_FP16_rounded_product",
+      "passed": true,
+      "generated_cases": 5
+    },
+    {
+      "check": "finite_INT8_lattice_full_search_oracle_0.022345000877976418_FP16_rounded_scale_FP32_product",
+      "passed": true,
+      "generated_cases": 5
+    },
+    {
+      "check": "finite_INT8_lattice_full_search_oracle_0.022345000877976418_FP16_rounded_scale_FP16_rounded_product",
+      "passed": true,
+      "generated_cases": 5
+    },
+    {
+      "check": "nonfinite_references_rejected",
+      "passed": true,
+      "generated_cases": 2
+    },
+    {
+      "check": "no_actual_model_ORT_or_SDK_modules_imported",
+      "passed": true,
+      "generated_cases": 1
+    }
+  ],
+  "check_count": 16,
+  "analysis_source_sha256": "1c1628a7efa50b5d4c1ebd9baf7f0b35a15efe1ab335eb7bd263b00398da5f3d",
+  "check_source_sha256": "55c08fc9b82ee41c674a37fb120e8ca717cac3bbc76d8a9249bb16a5dc011060",
+  "numpy": "2.4.4",
+  "actual_model_SDK_ORT_calibration_or_real_saved_arrays_used": false,
+  "finite_FP16_numeric_levels_in_independent_oracle": 63487
+}

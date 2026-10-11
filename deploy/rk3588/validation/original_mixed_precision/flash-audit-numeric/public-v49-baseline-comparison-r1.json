@@ -1,0 +1,41 @@
+{
+  "schema": "v50_saved_ordinary_vs_v49_nonquant_FP16_first_output_comparison",
+  "source_sha256": "45afe11757d19a51bd4e1e4561bb2195f202a09dc64ca6259a2aadb72f7dc868",
+  "saved_data_helper_sha256": "d2ccb21f2a77a4e4671d410cffd754052618dae65fb790e32e50f64d9ef642af",
+  "v49_normal_run_sha256": "05ac1187d9bda3893d43f2d9c834d3b4de51f97d8c455496daa0c5a6f803e591",
+  "v50_normal_run_sha256": "20cfcdc923c3634d505604bc59c44efac4d971a3db51999b700c1100e12ddc55",
+  "saved_outputs_read_and_checked": 4,
+  "comparisons": [
+    {
+      "sample_id": "evaluation_00",
+      "v49_role": "nonquant_fp16",
+      "v50_role": "ordinary",
+      "round_index": 0,
+      "same_original_input_raw_sha256": "c0b1b3514f888e348247b1945da9fd46af602b25541efb4a1b1df57487ded844",
+      "bitwise_equal": true,
+      "v49_output_raw_sha256": "40085921c72ea991c362ab11fc3000e6a1b748d07cec9526cdc14b57b0a049b9",
+      "v50_output_raw_sha256": "40085921c72ea991c362ab11fc3000e6a1b748d07cec9526cdc14b57b0a049b9",
+      "max_abs_difference": 0.0
+    },
+    {
+      "sample_id": "evaluation_01",
+      "v49_role": "nonquant_fp16",
+      "v50_role": "ordinary",
+      "round_index": 0,
+      "same_original_input_raw_sha256": "8a3f0fc0792b9d412b9efceecf48a77f456b88033e0cd31fb50b86d3ba307a44",
+      "bitwise_equal": true,
+      "v49_output_raw_sha256": "ea7869b35a8dabfcd6e94012ce63564ba9b0600506fa8d59cc84f15ce43746c2",
+      "v50_output_raw_sha256": "ea7869b35a8dabfcd6e94012ce63564ba9b0600506fa8d59cc84f15ce43746c2",
+      "max_abs_difference": 0.0
+    }
+  ],
+  "all_first_outputs_bitwise_equal": true,
+  "all_read_files_unchanged": true,
+  "actual_model_ORT_SDK_calibration_or_board_execution": false,
+  "weights_arrays_exports_or_binaries_published": false,
+  "limits": [
+    "First saved output per same heldout input only; full repeat audit remains the separate Flash and v49 numeric receipts.",
+    "Output equality after recompilation does not prove internal operator equivalence or trajectory quality.",
+    "No cross-process timing speedup inference or strict original FP32 gate relaxation."
+  ]
+}

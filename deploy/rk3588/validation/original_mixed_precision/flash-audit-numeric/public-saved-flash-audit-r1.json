@@ -1,0 +1,392 @@
+{
+  "schema": "v50_original_pair_flash_saved_numeric_timing_audit",
+  "audit_integrity_passed": true,
+  "auditor_sha256": "d2ccb21f2a77a4e4671d410cffd754052618dae65fb790e32e50f64d9ef642af",
+  "numpy": "2.4.4",
+  "normal_run_sha256": "20cfcdc923c3634d505604bc59c44efac4d971a3db51999b700c1100e12ddc55",
+  "profile_run_sha256": "a4760f445d4d69790c67b09364e3408db0f9fdd7d8d493923aff524c2fe2ee1b",
+  "original_capture_sha256": "bf39dfa65526a4135cbd2d7ee8b927ce2c4a40da75aebf64652ed2cd87a7e7fc",
+  "actual_compile_receipt_sha256_bound_via_runs": "d19b34f90ee1c7d41724fd36fb4ba808a880863f57ce58f053cc292d7e705d34",
+  "original_graph_sha256": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+  "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "source_files_independently_SHA_checked": 4,
+  "saved_output_NPY_files_read_and_checked": 32,
+  "saved_original_input_reference_NPY_files_checked": 4,
+  "profile_text_file_SHA_and_bytes_checked": 16,
+  "profile_operator_texts_parsed_by_this_auditor": false,
+  "normal_profile_corresponding_bitwise_equal_calls": 16,
+  "ordinary_flash_bitwise_equal_pairs_across_both_cohorts": 16,
+  "within_role_repeat_bitwise_equal_comparisons_across_both_cohorts": 24,
+  "same_input_outputs_across_both_cohorts": [
+    {
+      "sample_id": "evaluation_00",
+      "saved_outputs_compared": 16,
+      "all_outputs_bitwise_equal": true,
+      "shared_raw_sha256": "40085921c72ea991c362ab11fc3000e6a1b748d07cec9526cdc14b57b0a049b9",
+      "original_FP32_comparison": {
+        "finite": true,
+        "array_equal": false,
+        "max_abs_error": 0.029067248106002808,
+        "rmse": 0.0006785234261265016,
+        "relative_l2": 0.004452536924301593,
+        "cosine_similarity": 0.9999900886571917,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "strict_FP32_gate_passed": false,
+        "outside_tolerance_elements": 523092,
+        "max_tolerance_ratio": 1530.1742103345014,
+        "output_raw_sha256": "40085921c72ea991c362ab11fc3000e6a1b748d07cec9526cdc14b57b0a049b9"
+      }
+    },
+    {
+      "sample_id": "evaluation_01",
+      "saved_outputs_compared": 16,
+      "all_outputs_bitwise_equal": true,
+      "shared_raw_sha256": "ea7869b35a8dabfcd6e94012ce63564ba9b0600506fa8d59cc84f15ce43746c2",
+      "original_FP32_comparison": {
+        "finite": true,
+        "array_equal": false,
+        "max_abs_error": 0.031044453382492065,
+        "rmse": 0.0007488078362289888,
+        "relative_l2": 0.004977550639290561,
+        "cosine_similarity": 0.99998761192771,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "strict_FP32_gate_passed": false,
+        "outside_tolerance_elements": 527279,
+        "max_tolerance_ratio": 2177.3342729272986,
+        "output_raw_sha256": "ea7869b35a8dabfcd6e94012ce63564ba9b0600506fa8d59cc84f15ce43746c2"
+      }
+    }
+  ],
+  "normal_IO_summaries": {
+    "ordinary": {
+      "mean_denominator": 6,
+      "included_sdk_call_indices": [
+        3,
+        4,
+        7,
+        10,
+        13,
+        14
+      ],
+      "subsequent_IO_mean_seconds": 0.33682933266666665,
+      "subsequent_IO_min_seconds": 0.333625409,
+      "subsequent_IO_max_seconds": 0.339488367,
+      "aggregation": "ordered left-to-right float addition, then division by exactly six",
+      "first_for_each_input_excluded_even_if_context_already_warm": true,
+      "strict_original_FP32_gate_passed": false,
+      "first_call_IO_seconds_by_input": {
+        "evaluation_00": 0.338094075,
+        "evaluation_01": 0.351059744
+      },
+      "subsequent_stage_mean_seconds": {
+        "input_set_seconds": 0.008700806333333333,
+        "run_api_seconds": 0.3135366845,
+        "outputs_get_seconds": 0.010993403833333333,
+        "output_validation_and_copy_seconds": 0.003550167,
+        "pre_release_bookkeeping_seconds": 2.2701333333333336e-05,
+        "outputs_release_seconds": 2.5569666666666667e-05
+      }
+    },
+    "flash": {
+      "mean_denominator": 6,
+      "included_sdk_call_indices": [
+        2,
+        5,
+        6,
+        11,
+        12,
+        15
+      ],
+      "subsequent_IO_mean_seconds": 0.33696277700000005,
+      "subsequent_IO_min_seconds": 0.334329075,
+      "subsequent_IO_max_seconds": 0.339847201,
+      "aggregation": "ordered left-to-right float addition, then division by exactly six",
+      "first_for_each_input_excluded_even_if_context_already_warm": true,
+      "strict_original_FP32_gate_passed": false,
+      "first_call_IO_seconds_by_input": {
+        "evaluation_00": 0.335688658,
+        "evaluation_01": 0.333485076
+      },
+      "subsequent_stage_mean_seconds": {
+        "input_set_seconds": 0.008973514666666666,
+        "run_api_seconds": 0.3133487125,
+        "outputs_get_seconds": 0.011034528333333333,
+        "output_validation_and_copy_seconds": 0.0035571671666666665,
+        "pre_release_bookkeeping_seconds": 2.265283333333333e-05,
+        "outputs_release_seconds": 2.62015e-05
+      }
+    }
+  },
+  "profile_IO_summaries": {
+    "ordinary": {
+      "mean_denominator": 6,
+      "included_sdk_call_indices": [
+        3,
+        4,
+        7,
+        10,
+        13,
+        14
+      ],
+      "subsequent_IO_mean_seconds": 0.3506255285,
+      "subsequent_IO_min_seconds": 0.347447368,
+      "subsequent_IO_max_seconds": 0.355930036,
+      "aggregation": "ordered left-to-right float addition, then division by exactly six",
+      "first_for_each_input_excluded_even_if_context_already_warm": true,
+      "strict_original_FP32_gate_passed": false,
+      "first_call_IO_seconds_by_input": {
+        "evaluation_00": 0.352877119,
+        "evaluation_01": 0.35136541
+      },
+      "subsequent_stage_mean_seconds": {
+        "input_set_seconds": 0.009932903833333335,
+        "run_api_seconds": 0.32627860216666665,
+        "outputs_get_seconds": 0.010886265000000001,
+        "output_validation_and_copy_seconds": 0.003477201666666667,
+        "pre_release_bookkeeping_seconds": 2.488916666666667e-05,
+        "outputs_release_seconds": 2.5666666666666666e-05
+      }
+    },
+    "flash": {
+      "mean_denominator": 6,
+      "included_sdk_call_indices": [
+        2,
+        5,
+        6,
+        11,
+        12,
+        15
+      ],
+      "subsequent_IO_mean_seconds": 0.3494538403333333,
+      "subsequent_IO_min_seconds": 0.346147035,
+      "subsequent_IO_max_seconds": 0.352300993,
+      "aggregation": "ordered left-to-right float addition, then division by exactly six",
+      "first_for_each_input_excluded_even_if_context_already_warm": true,
+      "strict_original_FP32_gate_passed": false,
+      "first_call_IO_seconds_by_input": {
+        "evaluation_00": 0.349186118,
+        "evaluation_01": 0.346310202
+      },
+      "subsequent_stage_mean_seconds": {
+        "input_set_seconds": 0.009939514833333333,
+        "run_api_seconds": 0.3249931645,
+        "outputs_get_seconds": 0.011045855166666667,
+        "output_validation_and_copy_seconds": 0.0034270838333333334,
+        "pre_release_bookkeeping_seconds": 2.3527833333333335e-05,
+        "outputs_release_seconds": 2.4694166666666665e-05
+      }
+    }
+  },
+  "normal_flash_minus_ordinary_mean_seconds": 0.000133444333333399,
+  "normal_flash_mean_reduction_fraction": -0.00039617788711251674,
+  "fixed_component_gate": {
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "reference": "same-input original saved Torch FP32 output"
+  },
+  "normal_and_profile_exact_call_order": [
+    {
+      "sdk_call_index": 0,
+      "sample_id": "evaluation_00",
+      "role": "ordinary",
+      "round_index": 0
+    },
+    {
+      "sdk_call_index": 1,
+      "sample_id": "evaluation_00",
+      "role": "flash",
+      "round_index": 0
+    },
+    {
+      "sdk_call_index": 2,
+      "sample_id": "evaluation_00",
+      "role": "flash",
+      "round_index": 1
+    },
+    {
+      "sdk_call_index": 3,
+      "sample_id": "evaluation_00",
+      "role": "ordinary",
+      "round_index": 1
+    },
+    {
+      "sdk_call_index": 4,
+      "sample_id": "evaluation_00",
+      "role": "ordinary",
+      "round_index": 2
+    },
+    {
+      "sdk_call_index": 5,
+      "sample_id": "evaluation_00",
+      "role": "flash",
+      "round_index": 2
+    },
+    {
+      "sdk_call_index": 6,
+      "sample_id": "evaluation_00",
+      "role": "flash",
+      "round_index": 3
+    },
+    {
+      "sdk_call_index": 7,
+      "sample_id": "evaluation_00",
+      "role": "ordinary",
+      "round_index": 3
+    },
+    {
+      "sdk_call_index": 8,
+      "sample_id": "evaluation_01",
+      "role": "flash",
+      "round_index": 0
+    },
+    {
+      "sdk_call_index": 9,
+      "sample_id": "evaluation_01",
+      "role": "ordinary",
+      "round_index": 0
+    },
+    {
+      "sdk_call_index": 10,
+      "sample_id": "evaluation_01",
+      "role": "ordinary",
+      "round_index": 1
+    },
+    {
+      "sdk_call_index": 11,
+      "sample_id": "evaluation_01",
+      "role": "flash",
+      "round_index": 1
+    },
+    {
+      "sdk_call_index": 12,
+      "sample_id": "evaluation_01",
+      "role": "flash",
+      "round_index": 2
+    },
+    {
+      "sdk_call_index": 13,
+      "sample_id": "evaluation_01",
+      "role": "ordinary",
+      "round_index": 2
+    },
+    {
+      "sdk_call_index": 14,
+      "sample_id": "evaluation_01",
+      "role": "ordinary",
+      "round_index": 3
+    },
+    {
+      "sdk_call_index": 15,
+      "sample_id": "evaluation_01",
+      "role": "flash",
+      "round_index": 3
+    }
+  ],
+  "logical_descriptors": {
+    "ordinary": {
+      "input": {
+        "index": 0,
+        "name": "input",
+        "shape": [
+          2,
+          437,
+          1024
+        ],
+        "n_elems": 894976,
+        "size": 1789952,
+        "format": 3,
+        "type": 1,
+        "quantization_type": 2,
+        "fractional_length": 0,
+        "zero_point": 0,
+        "pass_through": 0,
+        "scale": 1.0,
+        "w_stride": 0,
+        "h_stride": 0,
+        "size_with_stride": 1789952
+      },
+      "output": {
+        "index": 0,
+        "name": "output",
+        "shape": [
+          1,
+          874,
+          1024
+        ],
+        "n_elems": 894976,
+        "size": 1789952,
+        "format": 3,
+        "type": 1,
+        "quantization_type": 2,
+        "fractional_length": 0,
+        "zero_point": 0,
+        "pass_through": 0,
+        "scale": 1.0,
+        "w_stride": 0,
+        "h_stride": 0,
+        "size_with_stride": 1789952
+      }
+    },
+    "flash": {
+      "input": {
+        "index": 0,
+        "name": "input",
+        "shape": [
+          2,
+          437,
+          1024
+        ],
+        "n_elems": 894976,
+        "size": 1789952,
+        "format": 3,
+        "type": 1,
+        "quantization_type": 2,
+        "fractional_length": 0,
+        "zero_point": 0,
+        "pass_through": 0,
+        "scale": 1.0,
+        "w_stride": 0,
+        "h_stride": 0,
+        "size_with_stride": 1789952
+      },
+      "output": {
+        "index": 0,
+        "name": "output",
+        "shape": [
+          1,
+          874,
+          1024
+        ],
+        "n_elems": 894976,
+        "size": 1789952,
+        "format": 3,
+        "type": 1,
+        "quantization_type": 2,
+        "fractional_length": 0,
+        "zero_point": 0,
+        "pass_through": 0,
+        "scale": 1.0,
+        "w_stride": 0,
+        "h_stride": 0,
+        "size_with_stride": 1789952
+      }
+    }
+  },
+  "all_saved_read_files_unchanged": true,
+  "declared_affinity_environment_source_hashes_and_cleanup_checks_passed": true,
+  "candidate_accepted": false,
+  "full_model_ATE_RPE_or_fresh_pose_rate_or_P95_validated": false,
+  "actual_model_ORT_SDK_compiler_calibration_or_board_execution_by_auditor": false,
+  "no_raw_arrays_weights_or_SDK_binaries_published": true,
+  "timing_scope": "SDK input set through synchronous run, outputs get, owned copy and release; excludes initialization, hashes, error metrics, snapshots, file saves and profile-table query",
+  "limits": [
+    "Two calibration-excluded evaluation inputs were reused for development; no new blind trajectory test.",
+    "All outputs still fail the unchanged original FP32 component gate; exact equality between variants is not reference equivalence.",
+    "Six normal subsequent calls per role only; small repeated-input diagnostic, not a statistically established speed change or full SLAM latency.",
+    "Profile calls use separately initialized contexts and are not pooled into normal performance means.",
+    "Operator/Flash execution claims require the separate operator audit; this saved-array audit proves no internal cause.",
+    "Original complete frame0/global0 pair only; no 20 Hz fresh-pose, P95 100 ms, ATE/RPE or full-model claim."
+  ]
+}

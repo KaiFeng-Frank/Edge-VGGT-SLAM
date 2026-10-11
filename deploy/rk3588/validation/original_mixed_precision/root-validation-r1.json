@@ -1,0 +1,25 @@
+{
+  "schema": "v50_root_source_and_saved_evidence_validation",
+  "status": "checks_passed_diagnostic_candidates_rejected",
+  "generated_checks_passed": {
+    "FP16_INT8_representation_math": 16,
+    "Flash_saved_auditor_contracts": 12,
+    "original_MLP_scope_edit_contracts": 4,
+    "hybrid_step1_fake_API": 8,
+    "hybrid_step2_r1_contracts": 5,
+    "hybrid_step2_r2_contracts": 3,
+    "hybrid_saved_auditor_r2": 12,
+    "hybrid_saved_operator_parser": 4
+  },
+  "generated_checks_count": 64,
+  "actual_host_model_OR_SDK_execution": false,
+  "operator_saved_audit_reproduced_SHA": "e83b9ab3cd765a868b63f72e0e31bc7b0ffdf51e8b5d971a1438e4be5e4fc639",
+  "hybrid_step2_r1_actual_board_result": "SDK_selector_rejection_no_export",
+  "hybrid_step2_r2": "compiled_and_32_board_calls_completed_numeric_saved_audit_passed",
+  "real_time_validated": false,
+  "hybrid_operator_public_receipt_reproduced_SHA": "7c5fe0fb2f5b874f3dc917f90b27016126fa3b9e1a6a779d33d27470498bf5af",
+  "production_model_execution_changed": false,
+  "candidate_accepted": false,
+  "model_scope": "original pretrained VGGT only; no added model or traditional pose frontend",
+  "validation_limits": "Generated checks validate diagnostics, not full-model accuracy, trajectory quality, throughput or deployment capacity."
+}

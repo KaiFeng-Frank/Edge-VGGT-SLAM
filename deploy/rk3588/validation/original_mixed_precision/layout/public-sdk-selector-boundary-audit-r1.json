@@ -1,0 +1,105 @@
+{
+  "schema": "v50_original_sdk_tensor_selector_boundary_public_audit",
+  "status": "failed_r1_retained_65_static_real_outputs_bound_for_diagnostic_r2",
+  "source_sha256": "c3df332b0f068f2be3900cf920237705dfc2b8edb1d00f586599fb9c8e58c39a",
+  "private_detailed_saved_audit_sha256": "c4445e366f7f2bf54dcca3a9e404b40699819a374d41b8a68731f4e009025a25",
+  "pure_protobuf_source_sha256": "eec80d60778be4d49524475b95fb05e5d1f917d67d815785a075dceeb29c1f53",
+  "original_graph_sha256": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+  "original_export_sha256": "149450ffc675ce59950c6f89cf84adb41e388cd050eeb731b6d09a6fe16e9fe1",
+  "actual_step1_receipt_sha256": "7c2a101be488dded5086c6b418480f459bc14a62f9269991c1d88a6892ec8133",
+  "actual_generated_original_model_sha256": "f1c9f2c6cdbd739f7afbfa49c22355f3eb02604b85931561a1a6d95ef7b2c0a9",
+  "actual_raw_cfg_sha256": "cf93106589a3d33f5b6e1beabb16f8063ace2ee35fd2f85bbddf875396249632",
+  "actual_failed_step2_r1_receipt_sha256": "7f4f1ee288e4314cd4bfea979bc8eb564e9b3b0f0d036665dd4dd55efe8c5a44",
+  "actual_r1_failure": "Invalid operands name input in custom_quantize_layers",
+  "actual_r1_exported_model_exists": false,
+  "r1_failure_retained": true,
+  "generated_model_producer": "rk",
+  "generated_node_count": 62,
+  "generated_initializer_count": 56,
+  "legacy_initializer_as_graph_input_count": 56,
+  "true_public_graph_input_count": 1,
+  "true_public_graph_output_count": 1,
+  "calibration_catalog_count": 95,
+  "real_internal_node_output_count": 65,
+  "catalog_initializer_count": 24,
+  "public_IO_catalog_count": 2,
+  "absent_SDPA_catalog_subkey_count": 4,
+  "bounded_r2_requested_scope": {
+    "actual_internal_node_outputs_only": true,
+    "selector_count": 65,
+    "INT8_count": 4,
+    "FP16_count": 61,
+    "INT8_alias_direct_producer_provenance": {
+      "frame0/gelu_tp-rs": {
+        "node_index": 31,
+        "node_name": "frame0/gelu_2gelu",
+        "operator": "exGelu",
+        "inputs": [
+          "frame0/mlp.fc1.matmul_mm_tp_sw"
+        ]
+      },
+      "frame0/mlp.fc1.matmul_mm_tp_sw": {
+        "node_index": 30,
+        "node_name": "frame0/mlp.fc1.matmul#2",
+        "operator": "Conv",
+        "inputs": [
+          "frame0/norm2#1",
+          "frame0/mlp.fc1.weight_transposed",
+          "frame0/mlp.fc1.bias"
+        ]
+      },
+      "global0/gelu_tp-rs": {
+        "node_index": 56,
+        "node_name": "global0/gelu_2gelu",
+        "operator": "exGelu",
+        "inputs": [
+          "global0/mlp.fc1.matmul_mm_tp_sw"
+        ]
+      },
+      "global0/mlp.fc1.matmul_mm_tp_sw": {
+        "node_index": 55,
+        "node_name": "global0/mlp.fc1.matmul#2",
+        "operator": "Conv",
+        "inputs": [
+          "global0/norm2#1",
+          "global0/mlp.fc1.weight_transposed",
+          "global0/mlp.fc1.bias"
+        ]
+      }
+    },
+    "exclude_public_IO": [
+      "input",
+      "output"
+    ],
+    "excluded_initializer_selector_count": 24,
+    "excluded_catalog_only_SDPA_names": [
+      "frame0/attention_values_2sdpa_q_matmul",
+      "frame0/attention_values_2sdpa_q_softmax",
+      "global0/attention_values_2sdpa_q_matmul",
+      "global0/attention_values_2sdpa_q_softmax"
+    ]
+  },
+  "generated_quantize_parameters_suffix_preserved_bytes": 33709,
+  "generated_quantize_parameters_suffix_sha256": "09272223433593681fb69b0afd5c942fdd87dcbb1192dae1e982c08f08358e79",
+  "static_node_membership_is_not_SDK_precision_acceptance": true,
+  "excluded_constants_or_attention_internal_math_FP16_proven": false,
+  "complete_original_MLP_INT8_requested": false,
+  "exact_original_MLP_only_precision_proven": false,
+  "scope_label": "MLP-focused precision allocation diagnostic",
+  "rtol": 0.0001,
+  "atol": 1e-05,
+  "original_Torch_FP32_reference_is_sole_numerical_reference": true,
+  "historical_FP32_rejections_retained": true,
+  "candidate_accepted": false,
+  "whole_model_quality_validated": false,
+  "real_time_validated": false,
+  "actual_model_OR_SDK_OR_ORT_OR_compiler_OR_calibration_executed_by_auditor": false,
+  "board_access_by_auditor": false,
+  "limits": [
+    "R1 proved that presence in quantize_parameters does not imply a valid custom precision selector.",
+    "Static protobuf parsing proves the existing internal output names, not compiler dtype allocation or original FP32 accuracy.",
+    "Some SDK graph inputs are learned parameters/constants; public IO is graph inputs minus initializers.",
+    "R2 excludes generated SDPA pseudo-intermediates and initializer selectors, preserving their original calibration ranges; no universal outside-MLP FP16 claim is made.",
+    "The original frozen graph/checkpoint are retained, with no other model, graph surgery or real-time claim."
+  ]
+}

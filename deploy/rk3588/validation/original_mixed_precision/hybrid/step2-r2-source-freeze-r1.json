@@ -1,0 +1,104 @@
+{
+  "schema": "v50_original_VGGT_hybrid_step2_r2_source_freeze",
+  "status": "frozen_source_and_one_bounded_static_output_policy",
+  "files": [
+    {
+      "file": "compile-v50-hybrid-step2-r2-board.py",
+      "bytes": 13351,
+      "sha256": "3ca43c492c6ee00a2cb20d7d22e9cdd9d27f570e892ea6e56881cea7b121a224"
+    },
+    {
+      "file": "v50_hybrid_step2_r2_contracts.py",
+      "bytes": 13559,
+      "sha256": "4d599517db9cbc438c1b095bb97c0dd74ea923cc6eaf613a8d32cd594b9a9101"
+    },
+    {
+      "file": "test_v50_hybrid_step2_r2.py",
+      "bytes": 5858,
+      "sha256": "d55bdea5b00df570635ff622de5e239c381ed09df8295238cbb98ca98cac5372"
+    },
+    {
+      "file": "run-v50-hybrid-step2-r2-board.sh",
+      "bytes": 686,
+      "sha256": "84eccdaddb094f7318dc406ba582711a0afcd6e936f4489cfe1bc77bfb92845c"
+    },
+    {
+      "file": "STEP2_R2_OPERAND_SCOPE.md",
+      "bytes": 2121,
+      "sha256": "0f9b2327ab33061a1528617cc789d4ec86177bbabc248de8568004888c19f58b"
+    },
+    {
+      "file": "step2-r2-tiny-checks-r1.json",
+      "bytes": 589,
+      "sha256": "d5bb06faa15d7cf4707f6e5f4c87b445770fe2f527be78f743f05bf62fe51610"
+    }
+  ],
+  "reused_r1_contracts": {
+    "file": "v50_hybrid_step2_contracts.py",
+    "bytes": 22393,
+    "sha256": "d92103b618fd186605269d151f4cd480429b26570aa5b466c5f0f90ca01075df"
+  },
+  "reused_API_helper": {
+    "file": "v50_hybrid_api.py",
+    "bytes": 2717,
+    "sha256": "9781b778c999ccadb43ee612a88c973e982dcd9f3977b15e526ddcdff3899b3d"
+  },
+  "reused_tiny_fixture_source": {
+    "file": "test_v50_hybrid_step2.py",
+    "bytes": 10370,
+    "sha256": "df1786d9662bba13ba19cae68fd8a4d3c12228918ac1078f42589dd585511bb9"
+  },
+  "step1_source_freeze_sha256": "dbd5e981f8beedf4fbdb40384876985f71b1a2cc0fb5d93d0c2050e22b5be609",
+  "r1_source_freeze_sha256": "59fb6134539af314409d5b0db65d7185f525d8782f793034e156afbcb433289b",
+  "failed_r1_receipt_sha256": "7f4f1ee288e4314cd4bfea979bc8eb564e9b3b0f0d036665dd4dd55efe8c5a44",
+  "failed_r1_rejection_retained": true,
+  "selector_scope_proof_sha256": "c4445e366f7f2bf54dcca3a9e404b40699819a374d41b8a68731f4e009025a25",
+  "receipt_schema": "v50_original_VGGT_pair_board_hybrid_step2_compile",
+  "receipt_revision": "r2_actual_internal_node_output_selectors",
+  "success_status": "compiled_not_runtime_validated",
+  "runtime_gate_signature": "(row, expected_script_sha, expected_contracts_sha, expected_policy_sha, expected_step1_sha, expected_model_sha)",
+  "step1_receipt_sha256": "7c2a101be488dded5086c6b418480f459bc14a62f9269991c1d88a6892ec8133",
+  "precision_policy_sha256": "d250f505c7ed4c4764d13ccf1e5b79b9b412a68266cb9f795ef51be8b4db3935",
+  "private_approved_configuration": {
+    "file": "pair.internal-fc1-gelu.quantization.cfg",
+    "bytes": 36081,
+    "sha256": "02b58ad85931626157b9373eb5fb8fa562dfd9201e9fbb9964101ed05334117e"
+  },
+  "approved_integer_selectors": [
+    "frame0/mlp.fc1.matmul_mm_tp_sw",
+    "frame0/gelu_tp-rs",
+    "global0/mlp.fc1.matmul_mm_tp_sw",
+    "global0/gelu_tp-rs"
+  ],
+  "requested_internal_node_output_count": 65,
+  "FP16_internal_output_request_count": 61,
+  "excluded_initializer_count": 24,
+  "excluded_public_IO_count": 2,
+  "excluded_absent_SDPA_estimate_count": 4,
+  "raw_generated_artifacts": {
+    "model": {
+      "file": "pair.model",
+      "bytes": 102164257,
+      "sha256": "f1c9f2c6cdbd739f7afbfa49c22355f3eb02604b85931561a1a6d95ef7b2c0a9"
+    },
+    "data": {
+      "file": "pair.data",
+      "bytes": 1949723,
+      "sha256": "6c339d408cb531c9ab72cace8514a4fa2281b88152b1d79062855753405c39fd"
+    },
+    "configuration": {
+      "file": "pair.quantization.cfg",
+      "bytes": 33736,
+      "sha256": "cf93106589a3d33f5b6e1beabb16f8063ace2ee35fd2f85bbddf875396249632"
+    }
+  },
+  "untouched_quantize_parameters_suffix": {
+    "bytes": 33709,
+    "sha256": "09272223433593681fb69b0afd5c942fdd87dcbb1192dae1e982c08f08358e79"
+  },
+  "SDK_acceptance_not_inferred_from_static_membership": true,
+  "external_IO_initializer_and_hidden_attention_precision_unproven": true,
+  "candidate_accepted": false,
+  "private_config_model_arrays_or_SDK_source_redistributed": false,
+  "actual_SDK_model_ORT_or_calibration_execution_by_this_agent": false
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "v50_original_VGGT_hybrid_step2_source_freeze",
+  "status": "frozen_source_and_reviewed_diagnostic_policy_only",
+  "files": [
+    {
+      "file": "compile-v50-hybrid-step2-board.py",
+      "bytes": 12856,
+      "sha256": "ebedcab7df5347162ce5c696d8c13095bd3fda0b15c7da5351d4e8b2dfd44cd0"
+    },
+    {
+      "file": "v50_hybrid_step2_contracts.py",
+      "bytes": 22393,
+      "sha256": "d92103b618fd186605269d151f4cd480429b26570aa5b466c5f0f90ca01075df"
+    },
+    {
+      "file": "test_v50_hybrid_step2.py",
+      "bytes": 10370,
+      "sha256": "df1786d9662bba13ba19cae68fd8a4d3c12228918ac1078f42589dd585511bb9"
+    },
+    {
+      "file": "run-v50-hybrid-step2-board.sh",
+      "bytes": 683,
+      "sha256": "39c4b47648c14d16fe65dba62b4baa57837396c681b34ce6cc6c4916a7ef94e0"
+    },
+    {
+      "file": "STEP2_INTEGRITY_POLICY.md",
+      "bytes": 4013,
+      "sha256": "755ad9fb61d3399a35353fc3bc8630a4270daa4c4d9799bf33d2b943231de65f"
+    },
+    {
+      "file": "step2-tiny-checks-r1.json",
+      "bytes": 833,
+      "sha256": "9825f4fbc8236aff2b4e6cd81ba8cbc85c623a7d3fb9f68877fbf51bfb5aed33"
+    }
+  ],
+  "reused_helper": {
+    "file": "v50_hybrid_api.py",
+    "bytes": 2717,
+    "sha256": "9781b778c999ccadb43ee612a88c973e982dcd9f3977b15e526ddcdff3899b3d"
+  },
+  "step1_source_freeze_sha256": "dbd5e981f8beedf4fbdb40384876985f71b1a2cc0fb5d93d0c2050e22b5be609",
+  "independent_catalog_scope_review_sha256": "c01de4520cbdef85422fd52907d0b8e4519bdddb09cb13198451e9750ca3548a",
+  "layout_contracts_sha256": "105e6cfdf912f3e5a6c97eefc2265c4a7c141c97cff5b50632ebab6f7399e52a",
+  "receipt_schema": "v50_original_VGGT_pair_board_hybrid_step2_compile",
+  "receipt_success_status": "compiled_not_runtime_validated",
+  "check_step2_compile_signature": "(row, expected_script_sha, expected_contracts_sha, expected_policy_sha, expected_step1_sha, expected_model_sha)",
+  "step1_receipt_sha256": "7c2a101be488dded5086c6b418480f459bc14a62f9269991c1d88a6892ec8133",
+  "precision_policy_sha256": "6eb6c909e2aeac6bdaafce680b4f39c33447f1dfbbc2cd3714be43055c9d9ad8",
+  "private_approved_configuration": {
+    "file": "pair.mlp-focused.quantization.cfg",
+    "bytes": 37244,
+    "sha256": "18593e0cf4d05354cbb71f7bc48075542e9083d6fb060e5041d340f8d329dab9"
+  },
+  "approved_integer_selectors": [
+    "frame0/mlp.fc1.matmul_mm_tp_sw",
+    "frame0/gelu_tp-rs",
+    "global0/mlp.fc1.matmul_mm_tp_sw",
+    "global0/gelu_tp-rs"
+  ],
+  "protected_selector_count": 91,
+  "raw_generated_artifacts": {
+    "model": {
+      "file": "pair.model",
+      "bytes": 102164257,
+      "sha256": "f1c9f2c6cdbd739f7afbfa49c22355f3eb02604b85931561a1a6d95ef7b2c0a9"
+    },
+    "data": {
+      "file": "pair.data",
+      "bytes": 1949723,
+      "sha256": "6c339d408cb531c9ab72cace8514a4fa2281b88152b1d79062855753405c39fd"
+    },
+    "configuration": {
+      "file": "pair.quantization.cfg",
+      "bytes": 33736,
+      "sha256": "cf93106589a3d33f5b6e1beabb16f8063ace2ee35fd2f85bbddf875396249632"
+    }
+  },
+  "untouched_quantize_parameters_suffix": {
+    "bytes": 33709,
+    "sha256": "09272223433593681fb69b0afd5c942fdd87dcbb1192dae1e982c08f08358e79"
+  },
+  "precision_policy_approved_scope": "frozen engineering diagnostic configuration only",
+  "candidate_accepted": false,
+  "actual_SDK_model_or_calibration_execution_by_this_agent": false,
+  "SDK_or_private_configuration_redistributed": false
+}

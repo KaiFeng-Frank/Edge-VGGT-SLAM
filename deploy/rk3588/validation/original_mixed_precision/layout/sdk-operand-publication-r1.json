@@ -1,0 +1,31 @@
+{
+  "schema": "v50_static_generated_operand_boundary_publication",
+  "status": "frozen_sources_and_public_boundary_evidence",
+  "files": {
+    "audit_v50_hybrid_operand_catalog.py": {
+      "sha256": "c3df332b0f068f2be3900cf920237705dfc2b8edb1d00f586599fb9c8e58c39a",
+      "bytes": 11153
+    },
+    "v50_original_mlp_scope_contracts.py": {
+      "sha256": "105e6cfdf912f3e5a6c97eefc2265c4a7c141c97cff5b50632ebab6f7399e52a",
+      "bytes": 5558
+    },
+    "public-sdk-selector-boundary-audit-r1.json": {
+      "sha256": "9236677e5762d5aaeee3b216e0026f586b67a7bcb4ca8c058fd1ea21e65d71d9",
+      "bytes": 4705
+    }
+  },
+  "private_excluded": [
+    "sdk-operand-scope-audit-r1.json",
+    "pair.model",
+    "pair.data",
+    "pair.quantization.cfg",
+    "pair.mlp-focused.quantization.cfg",
+    "SDK raw operator logs",
+    "input/output or initializer arrays"
+  ],
+  "actual_saved_readonly_parser_validation_passed": true,
+  "actual_parser_inference_OR_SDK_OR_compiler_OR_calibration_called": false,
+  "candidate_accepted": false,
+  "CLI": "python -B audit_v50_hybrid_operand_catalog.py --model ACTUAL_ORIGINAL_PAIR_MODEL --cfg RAW_CFG --protobuf-source PURE_PROTO_SOURCE --step1 STEP1_RECEIPT --failed-step2 FAILED_R1_RECEIPT --output NEW_PRIVATE_AUDIT_JSON"
+}

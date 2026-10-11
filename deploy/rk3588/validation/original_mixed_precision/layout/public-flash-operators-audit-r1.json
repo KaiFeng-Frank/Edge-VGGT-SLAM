@@ -1,0 +1,117 @@
+{
+  "schema": "v50_public_original_pair_flash_operator_saved_audit",
+  "status": "actual_saved_compile_and_profile_complete_no_observed_graph_level_flash_change_diagnostic_not_adopted",
+  "actual_original_model_only": true,
+  "candidate_accepted": false,
+  "scope": "Same complete original frame0/global0 pair, two reused heldout evaluation inputs",
+  "actual_compile_receipt_sha256": "d19b34f90ee1c7d41724fd36fb4ba808a880863f57ce58f053cc292d7e705d34",
+  "actual_main_compile_log_sha256": "be8c61773750d2c89bf391ba32bff939170cc3c43fae72d22462054769e8ab73",
+  "actual_normal_receipt_sha256": "20cfcdc923c3634d505604bc59c44efac4d971a3db51999b700c1100e12ddc55",
+  "actual_profile_receipt_sha256": "a4760f445d4d69790c67b09364e3408db0f9fdd7d8d493923aff524c2fe2ee1b",
+  "independent_private_operator_audit_sha256": "e83b9ab3cd765a868b63f72e0e31bc7b0ffdf51e8b5d971a1438e4be5e4fc639",
+  "independent_audit_source_sha256": "3fe40548a12eba6b5d2820e05602a7eaf2e190b0ae2050ae40f9936fad0ab704",
+  "reused_validated_profile_parser_sha256": "061b15948907ab1b1317c1c25315e7683f26b191b04345558cf670eff20b111e",
+  "actual_runtime_source_sha256": "10b553b7c2a005310c6b6d00a5f6442668e6597b9f1a0d7ee119f88fd349e9a6",
+  "source_and_saved_evidence_unchanged": true,
+  "compile_summary": {
+    "model_bytes_each": 55280948,
+    "different_binary_byte_count": 1332,
+    "same_final_operator_records": true,
+    "same_final_operator_identity_shape_dtype_placement": true,
+    "C_compiler_flag_values_observed": [
+      0,
+      1
+    ],
+    "internal_target_counts_per_variant": {
+      "ordinary": {
+        "NPU": 52
+      },
+      "flash": {
+        "NPU": 52
+      }
+    },
+    "internal_dtype_tokens_per_variant": {
+      "ordinary": {
+        "FLOAT16": 52
+      },
+      "flash": {
+        "FLOAT16": 52
+      }
+    },
+    "byte_differences_prove_changed_math_or_flash_kernel": false,
+    "entire_compiled_binary_noop_proven": false
+  },
+  "profile_checks": {
+    "tables": 16,
+    "rows_per_table": 54,
+    "numeric_operator_rows": 864,
+    "every_raw_detail_SHA_bytes_ID_and_exact_operator_time_sum_checked": true,
+    "every_table_matches_own_actual_compilation_identity_shape_dtype_placement": true,
+    "operator_identity_shape_dtype_placement_same_off_on": true,
+    "internal_NPU_FLOAT16_rows_per_call": 52,
+    "boundary_CPU_rows_per_call": 2,
+    "new_flash_named_operator_observed": false
+  },
+  "calls": {
+    "normal_SDK_calls": 16,
+    "profile_SDK_calls_independent_process": 16,
+    "contexts_per_mode": 2,
+    "AB_BA_rounds_per_sample": 4,
+    "samples": 2,
+    "unmeasured_warmup_calls": 0,
+    "normal_init_flags": 0,
+    "profile_init_flags": 8,
+    "six_repeat_denominator_per_role_in_normal": 6,
+    "eight_profile_denominator_per_role": 8
+  },
+  "normal_IO": {
+    "ordinary_seconds": 0.33682933266666665,
+    "flash_seconds": 0.33696277700000005,
+    "flash_minus_ordinary_seconds": 0.000133444333333399,
+    "flash_minus_ordinary_percent_of_ordinary": 0.03961778871125167,
+    "normal_IO_improvement_observed": false,
+    "interval": "FP32 inputs_set -> synchronous run -> want_float outputs_get -> owned FP32 copy -> outputs_release"
+  },
+  "profile_operator_clocks_separate_from_normal": {
+    "ordinary": {
+      "all_eight_total_operator_microseconds": 320184.125,
+      "six_repeat_total_operator_microseconds": 321038,
+      "all_eight_frame_SDPA_microseconds": 40973.5,
+      "all_eight_global_SDPA_microseconds": 77877.25
+    },
+    "flash": {
+      "all_eight_total_operator_microseconds": 319962.125,
+      "six_repeat_total_operator_microseconds": 319832,
+      "all_eight_frame_SDPA_microseconds": 40978.375,
+      "all_eight_global_SDPA_microseconds": 77911.5
+    }
+  },
+  "accuracy": {
+    "fixed_rtol": 0.0001,
+    "fixed_atol": 1e-05,
+    "original_Torch_FP32_sole_reference": true,
+    "both_variants_strict_original_FP32_gate_passed": false,
+    "accuracy_summary_vs_all_recorded_calls_checked": true,
+    "historical_heldout_ORT_single_element_rejection_retained": true
+  },
+  "SDK_ownership": {
+    "own_FP32_copy_before_release": true,
+    "release_destroy_and_process_affinity_environment_cleanup_checked": true,
+    "saved_output_file_SHA_bytes_checked": 32,
+    "profile_declared_raw_SHA_matches_same_input_normal": true,
+    "full_array_numerical_reaudit_is_separate": true
+  },
+  "conclusion": "No graph-level operator, shape, dtype or placement change, and no normal SDK IO benefit was observed for this RK3588S original pair.",
+  "low_level_flash_kernel_enabled_proven": false,
+  "entire_binary_noop_proven": false,
+  "actual_model_ORT_SDK_compiler_calibration_executed_by_auditor": false,
+  "board_access_by_auditor": false,
+  "limits": [
+    "Binary artifacts differ in 1332 bytes despite equal sizes; unchanged operator listings do not prove the entire binary is a no-op",
+    "Operator IO tags do not expose every internal arithmetic instruction or low-level kernel selection",
+    "Profile mean and SDK IO mean have separate clocks, processes and denominators; do not mix them",
+    "Only two reused inputs/eight calls per variant are observed; no fresh-pose real-time, whole SLAM, trajectory or stability result",
+    "Raw arrays, weight graphs, compiler model/data and SDK binaries remain private"
+  ],
+  "license_scope": "Repository code, original checkpoint and SDK permissions are separate"
+}

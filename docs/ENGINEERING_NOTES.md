@@ -107,3 +107,48 @@
 - **触发：** 向已存在的板端目录再次 `adb push` 整个源码目录，会嵌套一个 basename。新增 heldout ORT launcher 因此未处于预期顶层，首次启动失败；该次没有执行 ORT，也没有输出实验目录。
 - **处理：** 按明确目标逐文件推送六份新增源码，保留原冻结文件和失败日志；修正后的实验另从实际 `check.json` 读取结果。
 - **检查边界：** 本机 ADB shell 调用可能在远端命令失败时仍报告退出码 0。源码存在、SHA 匹配、实际调用次数和最终 JSON 状态都须核对。后续 `numerical_rejected` 是真实数值失败，不能与前一次 launcher 未执行混为一谈。
+
+
+## 102. FP16 可表示精度与原 FP32 组件门槛是不同问题
+
+- **证据：** 仅读取两份已保存的原 FP32 输出，逐元素选择最近有限 FP16 值，并用全部 63,487 个不同有限值独立核对。即使每个元素都选取最优表示，两组仍分别有 272,497 / 272,573 个元素不能通过固定 `rtol=1e-4, atol=1e-5`；最近表示的相对 L2 下界约为 0.02072%。16 项生成数值检查通过。
+- **INT8 边界：** v49 两份实际 PTQ 输出的所有元素都落在实测 FP32-scale INT8 输出格点。该格点相对原输出的最小相对 L2 为 4.219% / 4.269%，低于实际 10.312% / 10.546%。原输入每组 864 个 patch token 都在原 channel 555 有一个绝对值大于 4 的元素；这是保存数组分布，不是内部误差归因或新的校准规则。
+- **处理：** 保留全部严格组件拒绝，不改门槛。区分表示本身的下界、实际计算误差和完整轨迹误差。原模型混合精度仍可作为诊断，但最终需独立测量 ATE/RPE、失败率与地图质量；组件相对 L2 不能转换为轨迹误差百分比。
+- **边界：** 证明只涉及这些保存的参考张量和指定输出表示，不证明硬件不可能达到性能目标，也不证明任何轨迹验收通过。
+- **复现：** [数值证明与纯 NumPy 检查](../deploy/rk3588/validation/original_mixed_precision/accuracy/RESOLUTION_NOTE.md)。
+
+## 103. SDK 接受 Flash Attention 开关不证明目标芯片获得加速
+
+- **官方范围：** RKNN Toolkit2 2.3.2 的 [CHANGELOG](https://raw.githubusercontent.com/airockchip/rknn-toolkit2/v2.3.2/CHANGELOG.md) 中，2.1.0 的 Flash Attention 条目明确列出 RK3562/RK3576；后续条目未补充 RK3588 支持声明。因此 RK3588S 上只能做受控实测，不能按选项名称承诺支持。
+- **实验：** 同一板端隔离工具链、原始完整 frame0/global0 ONNX，两次非量化配置仅切换 `enable_flash_attention`。均编译成功，产物同为 55,280,948 B，但有 1,332 个字节不同；不能仅凭文件大小认定编译无作用，也不能未经解析把差异称为元数据。
+- **普通调用：** 两个 context 同进程常驻，每份原输入各四轮 AB/BA。每个实现六次复测完整 SDK IO 平均为 336.829 / 336.963 ms，本次未观察到收益；两者均保留原 FP32 严格门槛拒绝。profile 使用另一个进程和新 context，其算子时钟独立报告。
+- **边界：** 两份输入已被用于开发对照，虽与校准集互斥，也不再作为新的盲测。原完整模型、位姿速率、轨迹精度与长期运行均未由此实验验证。
+
+## 104. MLP profile 分组包含融合算子，不能等同于原始 MLP 单独耗时
+
+- **静态对应：** 原图中每个 MLP 有九个节点，四个 MLP MatMul 共占该 pair 常规 MatMul 预算的 60.24%；此比例不是耗时比例。原 norm2、LayerScale 和 residual 位于 MLP 外。
+- **实际编译：** v49 的 fc2 编译算子折叠了 LayerScale，并以 ConvAdd 消费 residual。第 96/100 条的 MLP profile 分组应解释为融合后的 MLP/LayerScale/residual 算子组，不能用于声称九个原始 MLP 节点独立节省了相应时间。
+- **处理：** 混合精度配置须针对 SDK 实际 tensor catalog，并核对原图到编译算子的对应、接口 dtype 和真实放置。保持原图与原权重来源，保留 SDK 生成的校准参数；只改变明确记录的精度分配。 [原图来源与融合范围收据](../deploy/rk3588/validation/original_mixed_precision/layout/public-original-layout-audit-r1.json)。
+
+
+## 105. SDK 校准 catalog 不等同于可编辑的混合精度 selector 集合
+
+- **实际失败：** 从板端 step1 生成的配置读取 95 个 catalog keys，保留全部校准参数，只为四个 FC1/GELU 输出请求 INT8、其余请求 FP16。实际 step2 在 `input` 处报 `Invalid operands name`，未执行 export，也未产生 NPU 候选。
+- **完整性：** 失败调用后 SDK release、原始文件 SHA、cwd/environment 恢复均通过，失败收据保留。此前的生成配置检查证明文本/参数编辑范围正确，不证明 SDK 会接受每个 selector。
+- **处理：** 通过静态解析 SDK 自己生成的中间图核对实际内部 operand；外部 API input/output 的表示必须由最终 SDK query 验证，不能把 calibration catalog 成员身份直接当成可编辑性证据。实际中间图含 62 个节点、56 个 initializer；95 个 catalog keys 可分为 65 个内部节点输出、24 个 initializer、2 个外部 I/O 和 4 个未出现在图中的 SDPA 估计项。重试限定四个明确 FC1/GELU 输出为 INT8、其余 61 个实际内部输出为 FP16，排除项的原量化参数保持不变。该修订版在板端编译成功，生成 48,050,420 B 产物，step2 API 用时 12.836 s；实际接口精度、算子放置和运行误差另行检查。
+
+## 106. 跨 Python 版本复核计时均值须保持累加语义
+
+- **触发：** 主机 CPython 3.13 的 `sum()` 与板端 CPython 3.11 的顺序浮点累加，在六次 SDK IO 均值上出现约 5.55e-17 s 差异；直接逐值核对收据曾因此拒绝。
+- **处理：** 保存数据审查使用明确的逐项 `+=`，复现板端的相同调用顺序与六次分母。各阶段覆盖关系仍在整数纳秒上核对，profile 的整数微秒另算；没有放宽原 FP32 输出的数值门槛。
+
+
+## 107. FC1/GELU 混合精度有局部耗时收益，但仍未通过原参考检查
+
+- **实际运行：** 修订后的原图产物在板端完成 16 次普通 SDK 调用与另一个新进程的 16 次 profile 调用。每份输入各四轮 AB/BA，普通六次复测均值为 336.673 ms（浮点）和 319.928 ms（混合），本次局部下降 4.974%。完整 SDK IO 包含输入提交、run/get、自有复制与释放。
+- **精度：** SDK 查询的混合候选逻辑输入/输出确为浮点；但两份原 Torch FP32 参考下，相对 L2 仍为 6.672% / 7.908%，对应浮点候选为 0.445% / 0.498%。保留全部严格组件失败，候选未采用；边界浮点不足以保证内部量化误差很小。
+- **边界：** 四处输出的精度请求不代表全部 MLP 都以 INT8 运算。该短测只覆盖原 frame0/global0，两个输入均已用于开发，不能当作全新盲测、完整模型位姿精度、实时吞吐或长期稳定性结果。ATE/RPE 与地图质量仍需完整原模型链路测量。
+- **证据：** [编译失败、修订与板端对照](../results/original_mixed_precision_v50.json)。
+- **实际放置：** 最终表含 58 个算子，其中 56 个内部算子全部位于 NPU。两个 FC1/GELU 融合算子为 INT8，FC1 权重为 INT8、bias 标签为 INT32；FC2 权重为 FLOAT16、bias 为 FLOAT，FC2 的 GELU 与 residual 输入保持 FLOAT16。新增四处转换的独立 profile 均值合计 9.407 ms。算子标签不证明内部累加算术精度。
+- **日志边界：** SDK stdout 的一条 INT64 reshape 常量记录被成功状态 JSON 打断。审查仅在内存移去精确 SHA 绑定的 168 B 插入，恢复该行；原始日志保持不变，全部编译行与 16 份运行表逐项核对。
+- **复现：** [实际算子收据](../deploy/rk3588/validation/original_mixed_precision/layout/public-hybrid-operators-audit-r1.json)、[便携解析器与冻结清单](../deploy/rk3588/validation/original_mixed_precision/layout/hybrid-operators-publication-r1.json)。

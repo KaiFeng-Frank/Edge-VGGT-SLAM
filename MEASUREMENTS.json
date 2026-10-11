@@ -471,5 +471,24 @@
     "strict_original_FP32_gate_passed": false,
     "candidate_accepted": false,
     "real_time_validated": false
+  },
+  "original_precision_diagnostics_v50": {
+    "record": "results/original_mixed_precision_v50.json",
+    "scope": "Original complete frame0/global0 pair, actual images [2,3,252,336]; two development inputs",
+    "flash_flag_normal_IO_ms": {
+      "off": 336.82933266666663,
+      "on": 336.9627770000001
+    },
+    "hybrid_normal_IO_ms": {
+      "ordinary": 336.6731588333334,
+      "four_FC1_GELU_requests": 319.9276223333333
+    },
+    "hybrid_tensor_relative_L2": [
+      0.06671734794942213,
+      0.07908106805304167
+    ],
+    "candidate_accepted": false,
+    "strict_FP32_component_gate_passed": false,
+    "real_time_or_full_model_quality_validated": false
   }
 }

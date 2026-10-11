@@ -1,0 +1,48 @@
+{
+  "schema": "v50_original_pair_hybrid_operator_audit_publication",
+  "status": "frozen_saved_actual_audit",
+  "allowlist": [
+    {
+      "file": "audit_v50_hybrid_saved.py",
+      "bytes": 32122,
+      "sha256": "b1cea208d907e6c644959efc756fbcea586e7ba41968b732c72e9c1a4bc71168"
+    },
+    {
+      "file": "public-hybrid-operators-audit-r1.json",
+      "bytes": 14730,
+      "sha256": "7c5fe0fb2f5b874f3dc917f90b27016126fa3b9e1a6a779d33d27470498bf5af"
+    },
+    {
+      "file": "hybrid-saved-parser-checks-r1.json",
+      "bytes": 398,
+      "sha256": "dedd89303da67317da6df057e34b0d54e159c90d41d9286cdb4f6fa09f345171"
+    }
+  ],
+  "private_report_sha256": "3134bed76841e6bde9d3f344ed0581f61be6db8f09007ee4465e99d0bbbb0a02",
+  "publish_private_report_or_models_arrays_raw_tables": false,
+  "actual_executor_or_board_access_by_auditor": false,
+  "candidate_accepted": false,
+  "dependencies": {
+    "pure_step2_contracts": {
+      "file": "v50_hybrid_step2_r2_contracts.py",
+      "sha256": "4d599517db9cbc438c1b095bb97c0dd74ea923cc6eaf613a8d32cd594b9a9101",
+      "frozen_r1_sibling_required": true
+    },
+    "existing_saved_profile_parser": {
+      "file": "audit_v49_pair_profile_saved.py",
+      "sha256": "061b15948907ab1b1317c1c25315e7683f26b191b04345558cf670eff20b111e"
+    },
+    "static_public_layout_receipt": {
+      "file": "public-original-layout-audit-r1.json",
+      "sha256": "95dd66db2194e3a3c90fb6b854bad94d3ebab231117c074c50f73222b15094c2"
+    }
+  },
+  "CLI": "python -B audit_v50_hybrid_saved.py --compile-dir HYBRID_COMPILE --ordinary-compile-dir ORDINARY_COMPILE --compiler-log HYBRID_LOG --ordinary-compiler-log ORDINARY_LOG --normal-dir NORMAL --profile-dir PROFILE --capture-manifest ORIGINAL_CAPTURE_JSON --step2-contracts PURE_R2_CONTRACTS --profile-parser SAVED_PROFILE_PARSER --original-graph ORIGINAL_PAIR_ONNX --layout-audit PUBLIC_LAYOUT_RECEIPT --output NEW_PRIVATE_JSON --public-output NEW_PUBLIC_JSON",
+  "tiny_CLI": "python -B audit_v50_hybrid_saved.py --tiny-checks",
+  "limits": [
+    "The normal SDK IO and profile operator clocks are separate ranges; no addition",
+    "The original FP32 gate remains rejected; no adoption",
+    "The ordinary compiler log is used only for operators; its interrupted weight table is not audited here",
+    "The hybrid log repair is restricted to one exact SHA-bound successful-status insertion; the original log remains untouched"
+  ]
+}

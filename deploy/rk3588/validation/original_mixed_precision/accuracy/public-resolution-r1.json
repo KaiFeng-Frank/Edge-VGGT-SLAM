@@ -1,0 +1,687 @@
+{
+  "schema": "v50_original_pair_saved_representation_resolution_public_summary",
+  "analysis_source_sha256": "1c1628a7efa50b5d4c1ebd9baf7f0b35a15efe1ab335eb7bd263b00398da5f3d",
+  "generated_check_source_sha256": "55c08fc9b82ee41c674a37fb120e8ca717cac3bbc76d8a9249bb16a5dc011060",
+  "private_full_saved_resolution_receipt_sha256": "3e3e6518c5a95acf4d5e4eb97cebf513837208c0b7f11058a3995883ceb50d1e",
+  "generated_checks_receipt_sha256": "eaafe61968cfde5bbd70c21f4196188424e16340649a5dd8b51ea223e29c62fc",
+  "capture_manifest_sha256": "bf39dfa65526a4135cbd2d7ee8b927ce2c4a40da75aebf64652ed2cd87a7e7fc",
+  "normal_run_sha256": "05ac1187d9bda3893d43f2d9c834d3b4de51f97d8c455496daa0c5a6f803e591",
+  "pair_export_sha256": "149450ffc675ce59950c6f89cf84adb41e388cd050eeb731b6d09a6fe16e9fe1",
+  "only_original_VGGT": true,
+  "scope": {
+    "input_shape": [
+      2,
+      437,
+      1024
+    ],
+    "output_shape": [
+      1,
+      874,
+      1024
+    ],
+    "requested_image_size": 336,
+    "actual_image_shape": [
+      252,
+      336
+    ],
+    "calibration_saved_input_count": 8,
+    "evaluation_saved_input_count": 2,
+    "original_FP32_heldout_output_count": 2,
+    "actual_saved_NPU_outputs_analyzed": "round zero only, two heldout inputs x nonquant FP16 and PTQ",
+    "prefix": "original frame0 followed by original global0; no other model or SLAM quality evaluation"
+  },
+  "unchanged_strict_component_gate": {
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "tolerance": "atol + rtol * abs(original saved FP32 reference)",
+    "candidate_magnitude_or_floor_adjustment_used": false,
+    "v49_candidates_still_rejected": true
+  },
+  "generated_math_checks": {
+    "passed": true,
+    "check_count": 16,
+    "finite_FP16_numeric_values_in_independent_oracle": 63487,
+    "all_adjacent_midpoint_and_FP32_neighbor_cases": 190458,
+    "real_saved_arrays_used": false
+  },
+  "SDK_logical_INT8_descriptors": {
+    "input": {
+      "index": 0,
+      "name": "input",
+      "shape": [
+        2,
+        437,
+        1024
+      ],
+      "n_elems": 894976,
+      "size": 894976,
+      "format": 3,
+      "type": 2,
+      "quantization_type": 2,
+      "fractional_length": 0,
+      "zero_point": 57,
+      "pass_through": 0,
+      "scale": 0.04107800871133804,
+      "w_stride": 0,
+      "h_stride": 0,
+      "size_with_stride": 894976
+    },
+    "output": {
+      "index": 0,
+      "name": "output",
+      "shape": [
+        1,
+        874,
+        1024
+      ],
+      "n_elems": 894976,
+      "size": 894976,
+      "format": 3,
+      "type": 2,
+      "quantization_type": 2,
+      "fractional_length": 0,
+      "zero_point": 5,
+      "pass_through": 0,
+      "scale": 0.022254416719079018,
+      "w_stride": 0,
+      "h_stride": 0,
+      "size_with_stride": 894976
+    }
+  },
+  "input_magnitude_summary": {
+    "whole_input_min": -7.588715553283691,
+    "whole_input_max": 3.012089729309082,
+    "median_abs_range": [
+      0.09659136459231377,
+      0.10122058168053627
+    ],
+    "p99_abs_range": [
+      0.6177832633256912,
+      0.6327712088823318
+    ],
+    "special_5_original_tokens_distribution": {
+      "elements": 10240,
+      "min": -0.1805805265903473,
+      "max": 0.10133377462625504,
+      "mean": -0.0003924617971061715,
+      "std": 0.019980897989364595,
+      "RMS": 0.019984751955518035,
+      "zeros": 0,
+      "absolute_quantiles": {
+        "0.5": 0.012006194330751896,
+        "0.9": 0.03141581937670709,
+        "0.99": 0.059693656116724295,
+        "0.999": 0.0917175177186728,
+        "0.9999": 0.15956829250454893,
+        "1": 0.1805805265903473
+      },
+      "abs_gt_counts": {
+        "1": 0,
+        "2": 0,
+        "4": 0,
+        "8": 0
+      }
+    },
+    "same_large_patch_channel_distribution_in_all_10_pairs": {
+      "scope": "Original DINO patch tokens only; threshold |x| > 4 is descriptive and fixed before reading values.",
+      "large_elements": 864,
+      "channels_with_large_elements": 1,
+      "tokens_with_any_large_element": 864,
+      "maximum_large_elements_in_one_patch_token": 1,
+      "channel_counts": [
+        {
+          "channel_index": 555,
+          "large_elements": 864
+        }
+      ]
+    }
+  },
+  "heldout_input_statistics": [
+    {
+      "sample_id": "evaluation_00",
+      "original_distribution": {
+        "elements": 894976,
+        "min": -7.509110450744629,
+        "max": 3.012089729309082,
+        "mean": 0.02197318669958984,
+        "std": 0.2993929120389205,
+        "RMS": 0.30019816240756675,
+        "zeros": 0,
+        "absolute_quantiles": {
+          "0.5": 0.10050274431705475,
+          "0.9": 0.28879350423812866,
+          "0.99": 0.6327712088823318,
+          "0.999": 2.7514261126518944,
+          "0.9999": 7.19099579215069,
+          "1": 7.509110450744629
+        },
+        "abs_gt_counts": {
+          "1": 4337,
+          "2": 1773,
+          "4": 864,
+          "8": 0
+        }
+      },
+      "nearest_FP16_grid_floor": {
+        "elements": 894976,
+        "max_abs_error": 0.0019497871398925781,
+        "RMSE": 5.5674286785255045e-05,
+        "relative_L2": 0.00018545845297236768,
+        "outside_reference_tolerance_elements": 306183,
+        "max_reference_tolerance_ratio": 4.378405818261453,
+        "strict_original_gate_passed": false
+      },
+      "conditional_nearest_FP32_scale_INT8_grid_floor": {
+        "elements": 894976,
+        "max_abs_error": 0.1366291046142578,
+        "RMSE": 0.011861527225780762,
+        "relative_L2": 0.0395123245613897,
+        "outside_reference_tolerance_elements": 893903,
+        "max_reference_tolerance_ratio": 1703.8769766240036,
+        "strict_original_gate_passed": false
+      },
+      "original_elements_outside_INT8_input_grid_endpoints": 7
+    },
+    {
+      "sample_id": "evaluation_01",
+      "original_distribution": {
+        "elements": 894976,
+        "min": -7.480223178863525,
+        "max": 2.91062068939209,
+        "mean": 0.021963720704567966,
+        "std": 0.29869710000264954,
+        "RMS": 0.2995035268192698,
+        "zeros": 0,
+        "absolute_quantiles": {
+          "0.5": 0.10089189931750298,
+          "0.9": 0.2864280194044113,
+          "0.99": 0.6245430409908295,
+          "0.999": 2.6166774392128342,
+          "0.9999": 7.218425017595498,
+          "1": 7.480223178863525
+        },
+        "abs_gt_counts": {
+          "1": 4369,
+          "2": 1631,
+          "4": 864,
+          "8": 0
+        }
+      },
+      "nearest_FP16_grid_floor": {
+        "elements": 894976,
+        "max_abs_error": 0.0019512176513671875,
+        "RMSE": 5.5718146888738766e-05,
+        "relative_L2": 0.00018603502763545347,
+        "outside_reference_tolerance_elements": 306478,
+        "max_reference_tolerance_ratio": 4.562813572231593,
+        "strict_original_gate_passed": false
+      },
+      "conditional_nearest_FP32_scale_INT8_grid_floor": {
+        "elements": 894976,
+        "max_abs_error": 0.035160064697265625,
+        "RMSE": 0.011853839542308803,
+        "relative_L2": 0.0395782970177229,
+        "outside_reference_tolerance_elements": 893921,
+        "max_reference_tolerance_ratio": 1703.9274353610972,
+        "strict_original_gate_passed": false
+      },
+      "original_elements_outside_INT8_input_grid_endpoints": 1
+    }
+  ],
+  "heldout_output_statistics": [
+    {
+      "sample_id": "evaluation_00",
+      "original_FP32_distribution": {
+        "elements": 894976,
+        "min": -2.919208526611328,
+        "max": 2.6476693153381348,
+        "mean": 0.025168363279821127,
+        "std": 0.1502975589779832,
+        "RMS": 0.1523902974107124,
+        "zeros": 0,
+        "absolute_quantiles": {
+          "0.5": 0.08490360528230667,
+          "0.9": 0.2206520065665245,
+          "0.99": 0.4518974721431732,
+          "0.999": 1.15185188055039,
+          "0.9999": 2.116687809825184,
+          "1": 2.919208526611328
+        },
+        "abs_gt_counts": {
+          "1": 1202,
+          "2": 127,
+          "4": 0,
+          "8": 0
+        }
+      },
+      "actual_saved_call_scope": {
+        "round_index": 0,
+        "roles": [
+          "nonquant_fp16",
+          "ptq_w8a8"
+        ]
+      },
+      "actual_nonquant_FP16_error": {
+        "elements": 894976,
+        "max_abs_error": 0.029067248106002808,
+        "RMSE": 0.0006785234261265016,
+        "relative_L2": 0.004452536924301593,
+        "outside_reference_tolerance_elements": 523092,
+        "max_reference_tolerance_ratio": 1530.1742103345014,
+        "strict_original_gate_passed": false
+      },
+      "actual_PTQ_error": {
+        "elements": 894976,
+        "max_abs_error": 0.4803646504878998,
+        "RMSE": 0.015714722542454398,
+        "relative_L2": 0.1031215425749902,
+        "outside_reference_tolerance_elements": 894068,
+        "max_reference_tolerance_ratio": 23489.866927670206,
+        "strict_original_gate_passed": false
+      },
+      "nearest_finite_FP16_output_floor": {
+        "elements": 894976,
+        "max_abs_error": 0.0009737014770507812,
+        "RMSE": 3.1578448003616675e-05,
+        "relative_L2": 0.00020722085684043496,
+        "outside_reference_tolerance_elements": 272497,
+        "max_reference_tolerance_ratio": 4.548771131810333,
+        "strict_original_gate_passed": false
+      },
+      "FP16_adjacent_neighbor_minimality_certified_for_each_element": true,
+      "FP16_full_finite_value_enumeration_independently_agrees_for_each_element": true,
+      "FP16_output_floor_by_original_magnitude": [
+        {
+          "abs_reference_lower_inclusive": 0,
+          "abs_reference_upper_exclusive": 0.001,
+          "elements": 6011,
+          "nearest_representation_outside_reference_tolerance_elements": 0
+        },
+        {
+          "abs_reference_lower_inclusive": 0.001,
+          "abs_reference_upper_exclusive": 0.01,
+          "elements": 53275,
+          "nearest_representation_outside_reference_tolerance_elements": 0
+        },
+        {
+          "abs_reference_lower_inclusive": 0.01,
+          "abs_reference_upper_exclusive": 0.1,
+          "elements": 451469,
+          "nearest_representation_outside_reference_tolerance_elements": 76163
+        },
+        {
+          "abs_reference_lower_inclusive": 0.1,
+          "abs_reference_upper_exclusive": 0.5,
+          "elements": 377160,
+          "nearest_representation_outside_reference_tolerance_elements": 191392
+        },
+        {
+          "abs_reference_lower_inclusive": 0.5,
+          "abs_reference_upper_exclusive": 1,
+          "elements": 5859,
+          "nearest_representation_outside_reference_tolerance_elements": 4089
+        },
+        {
+          "abs_reference_lower_inclusive": 1,
+          "abs_reference_upper_exclusive": 2,
+          "elements": 1075,
+          "nearest_representation_outside_reference_tolerance_elements": 761
+        },
+        {
+          "abs_reference_lower_inclusive": 2,
+          "abs_reference_upper_exclusive": 4,
+          "elements": 127,
+          "nearest_representation_outside_reference_tolerance_elements": 92
+        },
+        {
+          "abs_reference_lower_inclusive": 4,
+          "abs_reference_upper_exclusive": null,
+          "elements": 0,
+          "nearest_representation_outside_reference_tolerance_elements": 0
+        }
+      ],
+      "actual_nonquant_values_exactly_FP16_representable": true,
+      "INT8_output_grid_hypotheses": {
+        "FP32_scale_FP32_product": {
+          "finite_grid_endpoints": [
+            -2.9598374366760254,
+            2.715038776397705
+          ],
+          "original_reference_elements_outside_grid_endpoints": 0,
+          "nearest_representation_floor_against_original": {
+            "elements": 894976,
+            "max_abs_error": 0.011127188801765442,
+            "RMSE": 0.006429214381859782,
+            "relative_L2": 0.042189132058270795,
+            "outside_reference_tolerance_elements": 893274,
+            "max_reference_tolerance_ratio": 1001.2956942242688,
+            "strict_original_gate_passed": false
+          },
+          "observed_PTQ_output_membership": {
+            "elements": 894976,
+            "exact_value_members": 894976,
+            "max_distance_to_lattice": 0.0,
+            "all_values_on_lattice": true
+          }
+        },
+        "FP32_scale_FP16_rounded_product": {
+          "finite_grid_endpoints": [
+            -2.958984375,
+            2.71484375
+          ],
+          "original_reference_elements_outside_grid_endpoints": 0,
+          "nearest_representation_floor_against_original": {
+            "elements": 894976,
+            "max_abs_error": 0.011370182037353516,
+            "RMSE": 0.006428802533380435,
+            "relative_L2": 0.042186429468366156,
+            "outside_reference_tolerance_elements": 893251,
+            "max_reference_tolerance_ratio": 1001.0106903661137,
+            "strict_original_gate_passed": false
+          },
+          "observed_PTQ_output_membership": {
+            "elements": 894976,
+            "exact_value_members": 101569,
+            "max_distance_to_lattice": 0.0009443759918212891,
+            "all_values_on_lattice": false
+          }
+        },
+        "FP16_rounded_scale_FP32_product": {
+          "finite_grid_endpoints": [
+            -2.958892822265625,
+            2.71417236328125
+          ],
+          "original_reference_elements_outside_grid_endpoints": 0,
+          "nearest_representation_floor_against_original": {
+            "elements": 894976,
+            "max_abs_error": 0.011123642325401306,
+            "RMSE": 0.00642708797984184,
+            "relative_L2": 0.042175178400760634,
+            "outside_reference_tolerance_elements": 893291,
+            "max_reference_tolerance_ratio": 1001.0106903661137,
+            "strict_original_gate_passed": false
+          },
+          "observed_PTQ_output_membership": {
+            "elements": 894976,
+            "exact_value_members": 101569,
+            "max_distance_to_lattice": 0.0009303092956542969,
+            "all_values_on_lattice": false
+          }
+        },
+        "FP16_rounded_scale_FP16_rounded_product": {
+          "finite_grid_endpoints": [
+            -2.958984375,
+            2.71484375
+          ],
+          "original_reference_elements_outside_grid_endpoints": 0,
+          "nearest_representation_floor_against_original": {
+            "elements": 894976,
+            "max_abs_error": 0.011701345443725586,
+            "RMSE": 0.006427631922412179,
+            "relative_L2": 0.04217874780497849,
+            "outside_reference_tolerance_elements": 893293,
+            "max_reference_tolerance_ratio": 1001.0106903661137,
+            "strict_original_gate_passed": false
+          },
+          "observed_PTQ_output_membership": {
+            "elements": 894976,
+            "exact_value_members": 101569,
+            "max_distance_to_lattice": 0.001791238784790039,
+            "all_values_on_lattice": false
+          }
+        }
+      }
+    },
+    {
+      "sample_id": "evaluation_01",
+      "original_FP32_distribution": {
+        "elements": 894976,
+        "min": -3.0220301151275635,
+        "max": 2.7291042804718018,
+        "mean": 0.02484093245604869,
+        "std": 0.1483719047148105,
+        "RMS": 0.15043701018694425,
+        "zeros": 0,
+        "absolute_quantiles": {
+          "0.5": 0.084975965321064,
+          "0.9": 0.21957936137914658,
+          "0.99": 0.44504861533641815,
+          "0.999": 1.0929902076721234,
+          "0.9999": 2.029654410481921,
+          "1": 3.0220301151275635
+        },
+        "abs_gt_counts": {
+          "1": 1093,
+          "2": 101,
+          "4": 0,
+          "8": 0
+        }
+      },
+      "actual_saved_call_scope": {
+        "round_index": 0,
+        "roles": [
+          "nonquant_fp16",
+          "ptq_w8a8"
+        ]
+      },
+      "actual_nonquant_FP16_error": {
+        "elements": 894976,
+        "max_abs_error": 0.031044453382492065,
+        "RMSE": 0.0007488078362289888,
+        "relative_L2": 0.004977550639290561,
+        "outside_reference_tolerance_elements": 527279,
+        "max_reference_tolerance_ratio": 2177.3342729272986,
+        "strict_original_gate_passed": false
+      },
+      "actual_PTQ_error": {
+        "elements": 894976,
+        "max_abs_error": 0.5473082363605499,
+        "RMSE": 0.015865771934566997,
+        "relative_L2": 0.10546455233888795,
+        "outside_reference_tolerance_elements": 894170,
+        "max_reference_tolerance_ratio": 21038.44451378298,
+        "strict_original_gate_passed": false
+      },
+      "nearest_finite_FP16_output_floor": {
+        "elements": 894976,
+        "max_abs_error": 0.0009655952453613281,
+        "RMSE": 3.116327157272321e-05,
+        "relative_L2": 0.00020715162800694642,
+        "outside_reference_tolerance_elements": 272573,
+        "max_reference_tolerance_ratio": 4.492838577212017,
+        "strict_original_gate_passed": false
+      },
+      "FP16_adjacent_neighbor_minimality_certified_for_each_element": true,
+      "FP16_full_finite_value_enumeration_independently_agrees_for_each_element": true,
+      "FP16_output_floor_by_original_magnitude": [
+        {
+          "abs_reference_lower_inclusive": 0,
+          "abs_reference_upper_exclusive": 0.001,
+          "elements": 6140,
+          "nearest_representation_outside_reference_tolerance_elements": 0
+        },
+        {
+          "abs_reference_lower_inclusive": 0.001,
+          "abs_reference_upper_exclusive": 0.01,
+          "elements": 53518,
+          "nearest_representation_outside_reference_tolerance_elements": 0
+        },
+        {
+          "abs_reference_lower_inclusive": 0.01,
+          "abs_reference_upper_exclusive": 0.1,
+          "elements": 450569,
+          "nearest_representation_outside_reference_tolerance_elements": 76133
+        },
+        {
+          "abs_reference_lower_inclusive": 0.1,
+          "abs_reference_upper_exclusive": 0.5,
+          "elements": 377874,
+          "nearest_representation_outside_reference_tolerance_elements": 191681
+        },
+        {
+          "abs_reference_lower_inclusive": 0.5,
+          "abs_reference_upper_exclusive": 1,
+          "elements": 5782,
+          "nearest_representation_outside_reference_tolerance_elements": 3989
+        },
+        {
+          "abs_reference_lower_inclusive": 1,
+          "abs_reference_upper_exclusive": 2,
+          "elements": 992,
+          "nearest_representation_outside_reference_tolerance_elements": 700
+        },
+        {
+          "abs_reference_lower_inclusive": 2,
+          "abs_reference_upper_exclusive": 4,
+          "elements": 101,
+          "nearest_representation_outside_reference_tolerance_elements": 70
+        },
+        {
+          "abs_reference_lower_inclusive": 4,
+          "abs_reference_upper_exclusive": null,
+          "elements": 0,
+          "nearest_representation_outside_reference_tolerance_elements": 0
+        }
+      ],
+      "actual_nonquant_values_exactly_FP16_representable": true,
+      "INT8_output_grid_hypotheses": {
+        "FP32_scale_FP32_product": {
+          "finite_grid_endpoints": [
+            -2.9598374366760254,
+            2.715038776397705
+          ],
+          "original_reference_elements_outside_grid_endpoints": 3,
+          "nearest_representation_floor_against_original": {
+            "elements": 894976,
+            "max_abs_error": 0.062192678451538086,
+            "RMSE": 0.00642199338766372,
+            "relative_L2": 0.042688919300398205,
+            "outside_reference_tolerance_elements": 893391,
+            "max_reference_tolerance_ratio": 1001.2953171472062,
+            "strict_original_gate_passed": false
+          },
+          "observed_PTQ_output_membership": {
+            "elements": 894976,
+            "exact_value_members": 894976,
+            "max_distance_to_lattice": 0.0,
+            "all_values_on_lattice": true
+          }
+        },
+        "FP32_scale_FP16_rounded_product": {
+          "finite_grid_endpoints": [
+            -2.958984375,
+            2.71484375
+          ],
+          "original_reference_elements_outside_grid_endpoints": 3,
+          "nearest_representation_floor_against_original": {
+            "elements": 894976,
+            "max_abs_error": 0.06304574012756348,
+            "RMSE": 0.006421559277407401,
+            "relative_L2": 0.04268603363911194,
+            "outside_reference_tolerance_elements": 893390,
+            "max_reference_tolerance_ratio": 1001.0006311991418,
+            "strict_original_gate_passed": false
+          },
+          "observed_PTQ_output_membership": {
+            "elements": 894976,
+            "exact_value_members": 101805,
+            "max_distance_to_lattice": 0.0009443759918212891,
+            "all_values_on_lattice": false
+          }
+        },
+        "FP16_rounded_scale_FP32_product": {
+          "finite_grid_endpoints": [
+            -2.958892822265625,
+            2.71417236328125
+          ],
+          "original_reference_elements_outside_grid_endpoints": 3,
+          "nearest_representation_floor_against_original": {
+            "elements": 894976,
+            "max_abs_error": 0.06313729286193848,
+            "RMSE": 0.006419915009305872,
+            "relative_L2": 0.04267510369508097,
+            "outside_reference_tolerance_elements": 893349,
+            "max_reference_tolerance_ratio": 1001.0006311991418,
+            "strict_original_gate_passed": false
+          },
+          "observed_PTQ_output_membership": {
+            "elements": 894976,
+            "exact_value_members": 101805,
+            "max_distance_to_lattice": 0.0009446144104003906,
+            "all_values_on_lattice": false
+          }
+        },
+        "FP16_rounded_scale_FP16_rounded_product": {
+          "finite_grid_endpoints": [
+            -2.958984375,
+            2.71484375
+          ],
+          "original_reference_elements_outside_grid_endpoints": 3,
+          "nearest_representation_floor_against_original": {
+            "elements": 894976,
+            "max_abs_error": 0.06304574012756348,
+            "RMSE": 0.006420495934338446,
+            "relative_L2": 0.04267896527829013,
+            "outside_reference_tolerance_elements": 893344,
+            "max_reference_tolerance_ratio": 1001.0006311991418,
+            "strict_original_gate_passed": false
+          },
+          "observed_PTQ_output_membership": {
+            "elements": 894976,
+            "exact_value_members": 101805,
+            "max_distance_to_lattice": 0.001791238784790039,
+            "all_values_on_lattice": false
+          }
+        }
+      }
+    }
+  ],
+  "static_original_MLP_scope": {
+    "four_original_MLP_weight_initializers": [
+      "frame0/mlp.fc1.weight_transposed",
+      "frame0/mlp.fc2.weight_transposed",
+      "global0/mlp.fc1.weight_transposed",
+      "global0/mlp.fc2.weight_transposed"
+    ],
+    "selected_original_FP32_weight_bytes": 67108864,
+    "all_original_pair_FP32_parameter_bytes": 100788224,
+    "selected_weight_fraction_of_original_parameter_bytes": 0.6658403267429338,
+    "pair_MLP_MatMul_FLOP": 29326573568,
+    "pair_all_linear_MatMul_FLOP": 43989860352,
+    "pair_attention_QK_and_AV_MatMul_FLOP": 4693254144,
+    "MLP_fraction_of_linear_MatMul_FLOP": 0.6666666666666666,
+    "MLP_fraction_of_counted_all_MatMul_FLOP": 0.6023972350908156,
+    "FLOP_definition": "one multiply plus one add = 2; no norm, softmax, RoPE, GELU or memory/SDK costs counted",
+    "source": "SHA-pinned original pair export original parameter shapes and B1/S2/P437/C1024",
+    "measured_runtime_fraction_or_supported_hybrid_configuration": false
+  },
+  "interpretation": {
+    "floor_scope": "Each SHA-pinned saved tensor and the explicitly defined finite representation grid only.",
+    "nearest_FP16_proof": "Rounded center plus predecessor/successor; every result is no farther than either adjacent finite value, hence globally nearest on the ordered finite FP16 lattice.",
+    "reference_tolerance": "atol + rtol*abs(original FP32 reference), calculated in float64 from exact saved FP32 values.",
+    "FP16_boundary_MLP_only": "Useful only as a controlled diagnostic of lower approximation error and measured operator behavior. FP16 output representation alone cannot pass the unchanged component gate on these two references.",
+    "internal_error_causal_attribution": false,
+    "quality_gate_distinction": "Strict component equivalence is separate from full original-model SLAM ATE/RPE +10\u201320% acceptance; no trajectory inference or quality measurement occurs here.",
+    "hardware_impossibility_or_20Hz_or_trajectory_claim": false,
+    "MLP_intermediate_distributions_observed": false
+  },
+  "limits": {
+    "no_raw_arrays_or_checkpoints_or_weight_values_or_SDK_binaries_published": true,
+    "all_read_saved_files_SHA_checked_and_unchanged": true,
+    "actual_model_ORT_SDK_calibration_compilation_or_board_execution_by_this_analysis": false,
+    "manual_quantized_array_fed_to_runtime": false,
+    "new_calibration_scales_fit": false,
+    "SDK_rounding_behavior_inferred_from_input_floor": false,
+    "internal_error_causally_attributed": false,
+    "MLP_intermediate_distributions_observed": false,
+    "FP16_boundary_MLP_only_hybrid_run_or_accepted": false,
+    "full_model_ATE_RPE_measured": false,
+    "hardware_impossibility_claim": false,
+    "fresh_pose_20Hz_or_P95_100ms_achieved": false
+  },
+  "full_SLAM_user_quality_acceptance": {
+    "criterion": "ATE/RPE degradation at most 10-20% relative to original-model reference; separately measured",
+    "strict_component_gate_replaced_or_relaxed": false,
+    "quality_pass_inferred_from_component_relative_L2": false
+  }
+}

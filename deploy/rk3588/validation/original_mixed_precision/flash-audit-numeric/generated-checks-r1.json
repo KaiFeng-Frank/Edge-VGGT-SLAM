@@ -1,0 +1,59 @@
+{
+  "schema": "v50_saved_flash_audit_generated_checks",
+  "passed": true,
+  "check_count": 12,
+  "checks": [
+    {
+      "check": "two_input_AB_BA_schedule_reverses_second_input_and_each_round",
+      "passed": true
+    },
+    {
+      "check": "six_call_means_exclude_both_per_input_first_calls_with_explicit_indices",
+      "passed": true
+    },
+    {
+      "check": "missing_and_duplicate_repeat_cannot_keep_a_six_call_denominator",
+      "passed": true
+    },
+    {
+      "check": "nonfinite_IO_time_rejected",
+      "passed": true
+    },
+    {
+      "check": "ordered_addition_matches_board_float_order_without_host_sum_assumption",
+      "passed": true
+    },
+    {
+      "check": "integer_nanosecond_stage_sum_includes_input_copy_and_release",
+      "passed": true
+    },
+    {
+      "check": "run_only_time_or_missing_release_time_cannot_match_complete_IO_interval",
+      "passed": true
+    },
+    {
+      "check": "unreleased_or_aliasing_output_storage_rejected",
+      "passed": true
+    },
+    {
+      "check": "strict_gate_uses_original_reference_magnitude_even_if_candidate_magnitude_would_pass",
+      "passed": true
+    },
+    {
+      "check": "zero_reference_handles_undefined_norm_and_nonfinite_output_rejects",
+      "passed": true
+    },
+    {
+      "check": "bitwise_check_distinguishes_signed_zero_when_array_equal_does_not",
+      "passed": true
+    },
+    {
+      "check": "no_model_ORT_or_SDK_modules_imported",
+      "passed": true
+    }
+  ],
+  "auditor_source_sha256": "d2ccb21f2a77a4e4671d410cffd754052618dae65fb790e32e50f64d9ef642af",
+  "check_source_sha256": "ebec6a61ca58e780d0c32947d7bf349bb0f5d9e2b2da81d49b5908cb9bf4315b",
+  "numpy": "2.4.4",
+  "real_saved_arrays_or_actual_model_ORT_SDK_calibration_or_board_used": false
+}

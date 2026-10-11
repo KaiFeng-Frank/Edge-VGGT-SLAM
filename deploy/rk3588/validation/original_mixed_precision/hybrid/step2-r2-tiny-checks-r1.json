@@ -1,0 +1,18 @@
+{
+  "schema": "v50_original_hybrid_step2_r2_tiny_generated_checks",
+  "status": "passed",
+  "test_count": 3,
+  "commands": [
+    "python3 -B test_v50_hybrid_step2_r2.py",
+    "bash -n run-v50-hybrid-step2-r2-board.sh"
+  ],
+  "shell_syntax_passed": true,
+  "python_AST_files": 3,
+  "saved_step1_failed_r1_and_r2_policy_audit_passed": true,
+  "exact_65_static_proof_matches_contract": true,
+  "old_step1_and_r1_freezes_unchanged": true,
+  "actual_SDK_import": false,
+  "actual_model_execution": false,
+  "actual_calibration": false,
+  "compile_mock_is_synthetic_not_actual_evidence": true
+}

@@ -1,0 +1,656 @@
+{
+  "schema": "original_VGGT_v50_precision_compiler_diagnostics",
+  "status": "diagnostic_results_not_adopted",
+  "sole_model": "original VGGT pretrained checkpoint",
+  "original_checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "file": "model.pt"
+  },
+  "original_pair_graph_sha256": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+  "original_pair_export_sha256": "149450ffc675ce59950c6f89cf84adb41e388cd050eeb731b6d09a6fe16e9fe1",
+  "full_model_run": false,
+  "real_time_validated": false,
+  "whole_model_quality_validated": false,
+  "candidate_accepted": false,
+  "strict_gate": {
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "unchanged": true
+  },
+  "flash": {
+    "compile_receipt_sha256": "d19b34f90ee1c7d41724fd36fb4ba808a880863f57ce58f053cc292d7e705d34",
+    "compiler_source_sha256": "709544077448718fe866e8e288810ac43110fb2afc98bd3a39cde5d6d3a965b0",
+    "versions": {
+      "rknn-toolkit2": "2.3.2",
+      "torch": "2.2.0",
+      "numpy": "1.26.4",
+      "onnx": "1.16.1",
+      "onnxruntime": "1.16.0",
+      "protobuf": "3.20.3"
+    },
+    "configuration_difference_only": "enable_flash_attention",
+    "variants": {
+      "ordinary": {
+        "configuration": {
+          "target_platform": "rk3588",
+          "float_dtype": "float16",
+          "optimization_level": 3,
+          "mean_values": null,
+          "std_values": null,
+          "quant_img_RGB2BGR": false,
+          "model_pruning": false,
+          "remove_reshape": false,
+          "quantize_weight": false,
+          "enable_flash_attention": false
+        },
+        "build_options": {
+          "do_quantization": false,
+          "dataset": null,
+          "auto_hybrid": false
+        },
+        "operations": [
+          {
+            "name": "config",
+            "status": "completed",
+            "code": 0,
+            "seconds": 0.00013475
+          },
+          {
+            "name": "load_onnx",
+            "status": "completed",
+            "code": 0,
+            "seconds": 0.503960967
+          },
+          {
+            "name": "build",
+            "status": "completed",
+            "code": 0,
+            "seconds": 42.799366092
+          },
+          {
+            "name": "export_rknn",
+            "status": "completed",
+            "code": 0,
+            "seconds": 0.045929922
+          }
+        ],
+        "output": {
+          "file": "ordinary/pair.rknn",
+          "bytes": 55280948,
+          "sha256": "da0b26174ea54657d8352fb3b02acfbf4dc6ab5690f5855229e3516dbce83976"
+        },
+        "released": true
+      },
+      "flash": {
+        "configuration": {
+          "target_platform": "rk3588",
+          "float_dtype": "float16",
+          "optimization_level": 3,
+          "mean_values": null,
+          "std_values": null,
+          "quant_img_RGB2BGR": false,
+          "model_pruning": false,
+          "remove_reshape": false,
+          "quantize_weight": false,
+          "enable_flash_attention": true
+        },
+        "build_options": {
+          "do_quantization": false,
+          "dataset": null,
+          "auto_hybrid": false
+        },
+        "operations": [
+          {
+            "name": "config",
+            "status": "completed",
+            "code": 0,
+            "seconds": 0.000102667
+          },
+          {
+            "name": "load_onnx",
+            "status": "completed",
+            "code": 0,
+            "seconds": 0.226146689
+          },
+          {
+            "name": "build",
+            "status": "completed",
+            "code": 0,
+            "seconds": 42.652058953
+          },
+          {
+            "name": "export_rknn",
+            "status": "completed",
+            "code": 0,
+            "seconds": 0.046909921
+          }
+        ],
+        "output": {
+          "file": "flash/pair.rknn",
+          "bytes": 55280948,
+          "sha256": "54fc0706e82438374367be8823d21becbcfe99102c5fd911f9417c9b1438f953"
+        },
+        "released": true
+      }
+    },
+    "binary_byte_difference_count": 1332,
+    "normal_receipt_sha256": "20cfcdc923c3634d505604bc59c44efac4d971a3db51999b700c1100e12ddc55",
+    "profile_receipt_sha256": "a4760f445d4d69790c67b09364e3408db0f9fdd7d8d493923aff524c2fe2ee1b",
+    "normal_calls": 16,
+    "profile_calls": 16,
+    "normal_mean_denominator_per_role": 6,
+    "normal_IO_mean_seconds": {
+      "ordinary": 0.33682933266666665,
+      "flash": 0.33696277700000005
+    },
+    "normal_improvement_observed": false,
+    "all_original_FP32_strict_checks_failed": true,
+    "scope": "original first frame/global pair; reused development inputs; normal and profile clocks separate",
+    "all_32_saved_outputs_verified": true,
+    "all_repeats_and_normal_profile_byte_equal_per_input": true,
+    "ordinary_and_flash_byte_equal_per_input": true,
+    "v49_nonquant_first_outputs_byte_equal": true,
+    "compiled_operator_tables_equal": true,
+    "internal_NPU_operators_per_variant": 52,
+    "internal_CPU_operators_per_variant": 0,
+    "visible_internal_precision": "FLOAT16",
+    "runtime_operator_rows_checked": 864
+  },
+  "hybrid_step1": {
+    "receipt_sha256": "7c2a101be488dded5086c6b418480f459bc14a62f9269991c1d88a6892ec8133",
+    "script_sha256": "fe7ff44126c1fa7fee7c4ef01c30d6c11781cf6e9604522c503595753d955086",
+    "status": "hybrid_intermediates_generated_not_precision_approved",
+    "configuration": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "quantized_dtype": "w8a8",
+      "quantized_algorithm": "normal",
+      "quantized_method": "channel"
+    },
+    "operations": [
+      {
+        "name": "config",
+        "status": "completed",
+        "code": 0,
+        "seconds": 0.0001155
+      },
+      {
+        "name": "load_onnx",
+        "status": "completed",
+        "code": 0,
+        "seconds": 0.494990758
+      },
+      {
+        "name": "hybrid_quantization_step1",
+        "status": "completed",
+        "code": 0,
+        "seconds": 144.756077628
+      }
+    ],
+    "calibration_pairs": 8,
+    "calibration_on_RK3588S_only": true,
+    "generated_artifacts": {
+      "model": {
+        "file": "pair.model",
+        "bytes": 102164257,
+        "sha256": "f1c9f2c6cdbd739f7afbfa49c22355f3eb02604b85931561a1a6d95ef7b2c0a9"
+      },
+      "data": {
+        "file": "pair.data",
+        "bytes": 1949723,
+        "sha256": "6c339d408cb531c9ab72cace8514a4fa2281b88152b1d79062855753405c39fd"
+      },
+      "configuration": {
+        "file": "pair.quantization.cfg",
+        "bytes": 33736,
+        "sha256": "cf93106589a3d33f5b6e1beabb16f8063ace2ee35fd2f85bbddf875396249632"
+      }
+    },
+    "total_seconds": 148.026484081,
+    "peak_compiler_RSS_MiB": 3528.6640625,
+    "source_and_inputs_unchanged": true,
+    "generated_artifacts_unchanged": true,
+    "released": true,
+    "cleanup_errors": [],
+    "whole_model_memory_measured": false
+  },
+  "limits": [
+    "Original complete first frame/global pair only; other original blocks and heads excluded",
+    "Two calibration-disjoint inputs now reused for development; not new blind trajectory evaluation",
+    "Representation bounds and component relative L2 do not establish ATE/RPE or hardware impossibility",
+    "No checkpoint, captured array, weight-bearing export or SDK binary is published",
+    "Production model execution unchanged; no compliant loop retrieval implementation"
+  ],
+  "independent_saved_evidence": {
+    "deploy/rk3588/validation/original_mixed_precision/accuracy/public-resolution-r1.json": "3abf94cf5fb4e5933bde627137cdde6ffe8a8f4e6138af16e0d22061e6dc458f",
+    "deploy/rk3588/validation/original_mixed_precision/accuracy/source-freeze-r2.json": "ada2c2edfb371fd1874a8245ad1e3c6c394f22942de6e6fafd1248c89da8f0c7",
+    "deploy/rk3588/validation/original_mixed_precision/layout/public-flash-operators-audit-r1.json": "9a2b60a9387fa625004bffd8aa7465f17d213ae998e37a5e0cc39a8387f4dd54",
+    "deploy/rk3588/validation/original_mixed_precision/layout/flash-publication-r1.json": "9d674f90385d8196c0a51eb47f3f7236461506e63767c3fcdb74524e523f5bcb",
+    "deploy/rk3588/validation/original_mixed_precision/flash-audit-numeric/public-saved-flash-audit-r1.json": "02a86688b4f31e8b1289ac4db76a07a60c031949af78dec666a779eb1c699cad",
+    "deploy/rk3588/validation/original_mixed_precision/flash-audit-numeric/public-v49-baseline-comparison-r1.json": "f75fb4aca2940280e6ddafc0fea37397bb65af5649f546acf95f101d11aa5134",
+    "deploy/rk3588/validation/original_mixed_precision/flash-audit-numeric/source-freeze-r1.json": "943747779f3d5474874a72f9e626a382e5fcca5ca16d0f658b26a245d8cfeea2",
+    "deploy/rk3588/validation/original_mixed_precision/layout/public-original-layout-audit-r1.json": "95dd66db2194e3a3c90fb6b854bad94d3ebab231117c074c50f73222b15094c2",
+    "deploy/rk3588/validation/original_mixed_precision/layout/layout-publication-r1.json": "397aeec6731bae37b749bb98140aa36fc586bed4ff67b77967dbd2af95f85373",
+    "deploy/rk3588/validation/original_mixed_precision/layout/public-sdk-selector-boundary-audit-r1.json": "9236677e5762d5aaeee3b216e0026f586b67a7bcb4ca8c058fd1ea21e65d71d9",
+    "deploy/rk3588/validation/original_mixed_precision/layout/sdk-operand-publication-r1.json": "eacf31c67e9d222ad355b034c42b6f55d399c338d98963b619598f791a9cbb6c",
+    "deploy/rk3588/validation/original_mixed_precision/hybrid-audit-numeric/public-saved-hybrid-audit-r2.json": "12981eee8d45030f84d9cc77624676b52b7314cb7e2fb76b4b256bfe559f5bea",
+    "deploy/rk3588/validation/original_mixed_precision/hybrid-audit-numeric/source-freeze-r2.json": "ce444322fe325650f8efc6a879b159e99d4aaa295bc863e88435c5794b2eb724",
+    "deploy/rk3588/validation/original_mixed_precision/layout/public-hybrid-operators-audit-r1.json": "7c5fe0fb2f5b874f3dc917f90b27016126fa3b9e1a6a779d33d27470498bf5af",
+    "deploy/rk3588/validation/original_mixed_precision/layout/hybrid-operators-publication-r1.json": "f251ae68c447d99563f770802e96779841f9c7d4654a3fb6f54d533294f92121"
+  },
+  "hybrid_step2_attempt_r1": {
+    "status": "failed",
+    "script_sha256": "ebedcab7df5347162ce5c696d8c13095bd3fda0b15c7da5351d4e8b2dfd44cd0",
+    "contracts_sha256": "d92103b618fd186605269d151f4cd480429b26570aa5b466c5f0f90ca01075df",
+    "precision_policy_sha256": "6eb6c909e2aeac6bdaafce680b4f39c33447f1dfbbc2cd3714be43055c9d9ad8",
+    "operations": [
+      {
+        "name": "hybrid_quantization_step2",
+        "status": "failed",
+        "code": null,
+        "seconds": 2.800478031
+      }
+    ],
+    "released": true,
+    "source_and_inputs_unchanged": true,
+    "cwd_restored": true,
+    "environment_restored": true,
+    "cleanup_errors": [],
+    "total_seconds": 6.556189284,
+    "peak_rss_mib": 870.37890625,
+    "receipt_sha256": "7f4f1ee288e4314cd4bfea979bc8eb564e9b3b0f0d036665dd4dd55efe8c5a44",
+    "SDK_error": "Invalid operands name 'input' in custom_quantize_layers!",
+    "exported_model": false,
+    "NPU_inference_executed": false
+  },
+  "hybrid_requested_policy_r1": {
+    "policy_sha256": "6eb6c909e2aeac6bdaafce680b4f39c33447f1dfbbc2cd3714be43055c9d9ad8",
+    "approved_cfg_sha256": "18593e0cf4d05354cbb71f7bc48075542e9083d6fb060e5041d340f8d329dab9",
+    "scope": "four actual fc1/GELU output selectors INT8; all other catalog selectors FP16",
+    "INT8_selectors": [
+      "frame0/mlp.fc1.matmul_mm_tp_sw",
+      "frame0/gelu_tp-rs",
+      "global0/mlp.fc1.matmul_mm_tp_sw",
+      "global0/gelu_tp-rs"
+    ],
+    "FP16_selector_count": 91,
+    "catalog_selector_count": 95,
+    "entire_fc2_LayerScale_residual_group_requested_floating": true,
+    "actual_precision_proven_by_configuration_only": false,
+    "raw_quantize_parameters_suffix_bytes_preserved": 33709,
+    "raw_quantize_parameters_suffix_sha256": "09272223433593681fb69b0afd5c942fdd87dcbb1192dae1e982c08f08358e79",
+    "calibration_ranges_public": false
+  },
+  "hybrid_requested_policy_r2": {
+    "policy_sha256": "d250f505c7ed4c4764d13ccf1e5b79b9b412a68266cb9f795ef51be8b4db3935",
+    "approved_cfg_sha256": "02b58ad85931626157b9373eb5fb8fa562dfd9201e9fbb9964101ed05334117e",
+    "actual_internal_output_selectors": 65,
+    "INT8_requests": 4,
+    "FP16_requests": 61,
+    "original_graph_and_calibration_parameters_preserved": true,
+    "excluded_initializer_IO_hidden_attention_arithmetic_unproven": true,
+    "scope": "same four FC1/GELU outputs; valid internal node outputs only",
+    "failed_r1_rejection_preserved": true,
+    "compiler_source_sha256": "3ca43c492c6ee00a2cb20d7d22e9cdd9d27f570e892ea6e56881cea7b121a224"
+  },
+  "hybrid_step2_attempt_r2": {
+    "status": "compiled_not_runtime_validated",
+    "revision": "r2_actual_internal_node_output_selectors",
+    "script_sha256": "3ca43c492c6ee00a2cb20d7d22e9cdd9d27f570e892ea6e56881cea7b121a224",
+    "contracts_sha256": "4d599517db9cbc438c1b095bb97c0dd74ea923cc6eaf613a8d32cd594b9a9101",
+    "precision_policy_sha256": "d250f505c7ed4c4764d13ccf1e5b79b9b412a68266cb9f795ef51be8b4db3935",
+    "failed_r1_receipt_sha256": "7f4f1ee288e4314cd4bfea979bc8eb564e9b3b0f0d036665dd4dd55efe8c5a44",
+    "failed_r1_rejection_retained": true,
+    "output": {
+      "file": "pair.rknn",
+      "bytes": 48050420,
+      "sha256": "a502ceb2ae936550d56efe94c4fa4ff385b6d4530a0eaa62ac7ba0d57830b16d"
+    },
+    "operations": [
+      {
+        "name": "hybrid_quantization_step2",
+        "status": "completed",
+        "code": 0,
+        "seconds": 12.835829832
+      },
+      {
+        "name": "export_rknn",
+        "status": "completed",
+        "code": 0,
+        "seconds": 0.042503421
+      }
+    ],
+    "released": true,
+    "output_unchanged": true,
+    "source_and_inputs_unchanged": true,
+    "cwd_restored": true,
+    "environment_restored": true,
+    "cleanup_errors": [],
+    "total_seconds": 16.651993381,
+    "peak_rss_mib": 909.1015625,
+    "receipt_sha256": "60e046c89442a5e0fc2cb5b793cf7184d48ec38810a2e46ba9215ae549bfd50c",
+    "full_model_memory_measured": false
+  },
+  "hybrid_runtime": {
+    "normal_receipt_sha256": "6532b30b12ee714d5ea37ea58d0c71ff2168d4a40c9b96b7eb71ee8dea6eb199",
+    "profile_receipt_sha256": "caefb4cdd49ee22beaa3e49c2d9ea253f0f34b03b8dabcc69774bb3c2f7d07ba",
+    "runtime_source_sha256": "8138d93dc642e50ba1df1466e8a505deb1fbe12b64199d3959ae008c4e6e52e9",
+    "normal_calls": 16,
+    "profile_calls": 16,
+    "mean_denominator_per_role": 6,
+    "normal_IO_mean_seconds": {
+      "ordinary": 0.3366731588333334,
+      "hybrid": 0.31992762233333333
+    },
+    "normal_IO_decrease_percent": 4.973825819090543,
+    "actual_logical_IO_floating": true,
+    "original_FP32_comparisons_first_call": [
+      {
+        "sample_id": "evaluation_00",
+        "role": "ordinary",
+        "original_FP32_comparison": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs_error": 0.029067248106002808,
+          "rmse": 0.0006785234261265018,
+          "relative_l2": 0.004452536924299118,
+          "cosine_similarity": 0.9999900886571405,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance_elements": 523092,
+          "max_tolerance_ratio": 1530.1742103345014,
+          "output_raw_sha256": "40085921c72ea991c362ab11fc3000e6a1b748d07cec9526cdc14b57b0a049b9"
+        }
+      },
+      {
+        "sample_id": "evaluation_00",
+        "role": "hybrid",
+        "original_FP32_comparison": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs_error": 0.5725860297679901,
+          "rmse": 0.010167076496466159,
+          "relative_l2": 0.06671734794942213,
+          "cosine_similarity": 0.9978591746618115,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance_elements": 576966,
+          "max_tolerance_ratio": 36288.98802698298,
+          "output_raw_sha256": "3446243b4a20b93312f819a22c5c99cf864502aff145f5c434121cbac9984305"
+        }
+      },
+      {
+        "sample_id": "evaluation_01",
+        "role": "hybrid",
+        "original_FP32_comparison": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs_error": 0.7195722460746765,
+          "rmse": 0.01189671944028819,
+          "relative_l2": 0.07908106805304167,
+          "cosine_similarity": 0.9970131292089323,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance_elements": 580558,
+          "max_tolerance_ratio": 31244.48547661154,
+          "output_raw_sha256": "52f99b786f84368d69d756ec295a95715622b59477a02563afd71b8df39af227"
+        }
+      },
+      {
+        "sample_id": "evaluation_01",
+        "role": "ordinary",
+        "original_FP32_comparison": {
+          "finite": true,
+          "array_equal": false,
+          "max_abs_error": 0.031044453382492065,
+          "rmse": 0.0007488078362289887,
+          "relative_l2": 0.004977550639287766,
+          "cosine_similarity": 0.9999876119276547,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "strict_FP32_gate_passed": false,
+          "outside_tolerance_elements": 527279,
+          "max_tolerance_ratio": 2177.3342729272986,
+          "output_raw_sha256": "ea7869b35a8dabfcd6e94012ce63564ba9b0600506fa8d59cc84f15ce43746c2"
+        }
+      }
+    ],
+    "strict_gate_passed": false,
+    "candidate_accepted": false,
+    "profile_clocks_used_for_normal_means": false,
+    "actual_descriptors": {
+      "ordinary": {
+        "input_attr": {
+          "index": 0,
+          "name": "input",
+          "shape": [
+            2,
+            437,
+            1024
+          ],
+          "n_elems": 894976,
+          "size": 1789952,
+          "format": 3,
+          "type": 1,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 0,
+          "pass_through": 0,
+          "scale": 1.0,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 1789952
+        },
+        "output_attr": {
+          "index": 0,
+          "name": "output",
+          "shape": [
+            1,
+            874,
+            1024
+          ],
+          "n_elems": 894976,
+          "size": 1789952,
+          "format": 3,
+          "type": 1,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 0,
+          "pass_through": 0,
+          "scale": 1.0,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 1789952
+        }
+      },
+      "hybrid": {
+        "input_attr": {
+          "index": 0,
+          "name": "input",
+          "shape": [
+            2,
+            437,
+            1024
+          ],
+          "n_elems": 894976,
+          "size": 1789952,
+          "format": 3,
+          "type": 1,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 0,
+          "pass_through": 0,
+          "scale": 1.0,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 1789952
+        },
+        "output_attr": {
+          "index": 0,
+          "name": "output",
+          "shape": [
+            1,
+            874,
+            1024
+          ],
+          "n_elems": 894976,
+          "size": 1789952,
+          "format": 3,
+          "type": 1,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 0,
+          "pass_through": 0,
+          "scale": 1.0,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 1789952
+        }
+      }
+    },
+    "all_32_output_arrays_independently_verified": true,
+    "same_role_input_repeats_and_normal_profile_byte_equal": true,
+    "all_outputs_exactly_FP16_representable": true,
+    "actual_operator_evidence": {
+      "compile_summary": {
+        "final_operator_count": 58,
+        "native_allocation_rows": 101,
+        "constant_allocation_rows": 56,
+        "all_existing_54_operator_types_names_shapes_targets_retained": true,
+        "existing_operator_dtype_changes": [
+          {
+            "name": "Conv:frame0/mlp.fc1.matmul#2",
+            "from": "FLOAT16",
+            "to": "INT8"
+          },
+          {
+            "name": "Conv:global0/mlp.fc1.matmul#2",
+            "from": "FLOAT16",
+            "to": "INT8"
+          }
+        ],
+        "added_conversion_operator_count": 4,
+        "internal_target_counts": {
+          "NPU": 56
+        },
+        "internal_dtype_labels": {
+          "FLOAT16": 52,
+          "INT8": 4
+        },
+        "constant_dtype_labels": {
+          "INT64": 14,
+          "FLOAT16": 24,
+          "FLOAT": 14,
+          "INT8": 2,
+          "INT32": 2
+        },
+        "native_dtype_labels": {
+          "FLOAT16": 97,
+          "INT8": 4
+        },
+        "known_logger_interleave_repair": {
+          "removed_only_known_stdout_status_insertion": true,
+          "original_log_sha256": "42dd647d6b5f544b0849a7768a4b5f932f9b17bfa63b7080272c4108ba20eb16",
+          "inserted_text_sha256": "3131b54fcff6b51618d22549d503013944f4cf2164c6527548b16669ac4ae865",
+          "inserted_text_bytes": 168,
+          "insertion_byte_offset": 63336,
+          "repaired_log_sha256": "dafacd6ec015b94dd41e81dac0ee7ae1cf38d782d27b90316f2f5929983976be",
+          "restored_constant_row": "48 Reshape global0/attention_heads_flatten_rs_i1_sw INT64 (4)",
+          "raw_evidence_modified": false
+        },
+        "weights_table_precision_equals_all_arithmetic_precision": false
+      },
+      "final_MLP_constant_labels": {
+        "frame0": {
+          "mlp.fc1.weight_transposed": {
+            "data_type_token": "INT8",
+            "shape": [
+              4096,
+              1024,
+              1,
+              1
+            ],
+            "logical_elements": 4194304,
+            "allocation_bytes": 4194304
+          },
+          "mlp.fc1.bias": {
+            "data_type_token": "INT32",
+            "shape": [
+              4096
+            ],
+            "logical_elements": 4096,
+            "allocation_bytes": 32768
+          },
+          "mlp.fc2.weight_transposed": {
+            "data_type_token": "FLOAT16",
+            "shape": [
+              1024,
+              4096,
+              1,
+              1
+            ],
+            "logical_elements": 4194304,
+            "allocation_bytes": 8388608
+          },
+          "mlp.fc2.bias": {
+            "data_type_token": "FLOAT",
+            "shape": [
+              1024
+            ],
+            "logical_elements": 1024,
+            "allocation_bytes": 4096
+          }
+        },
+        "global0": {
+          "mlp.fc1.weight_transposed": {
+            "data_type_token": "INT8",
+            "shape": [
+              4096,
+              1024,
+              1,
+              1
+            ],
+            "logical_elements": 4194304,
+            "allocation_bytes": 4194304
+          },
+          "mlp.fc1.bias": {
+            "data_type_token": "INT32",
+            "shape": [
+              4096
+            ],
+            "logical_elements": 4096,
+            "allocation_bytes": 32768
+          },
+          "mlp.fc2.weight_transposed": {
+            "data_type_token": "FLOAT16",
+            "shape": [
+              1024,
+              4096,
+              1,
+              1
+            ],
+            "logical_elements": 4194304,
+            "allocation_bytes": 8388608
+          },
+          "mlp.fc2.bias": {
+            "data_type_token": "FLOAT",
+            "shape": [
+              1024
+            ],
+            "logical_elements": 1024,
+            "allocation_bytes": 4096
+          }
+        }
+      },
+      "FC2_GELU_and_residual_native_inputs_FLOAT16": true,
+      "conversion_mean_all_eight_microseconds": 9406.75,
+      "all_profile_rows_match_final_compiler_identity_shape_dtype_target": true,
+      "all_profile_microseconds_sum_exactly_to_each_sdk_TOTAL": true
+    }
+  }
+}

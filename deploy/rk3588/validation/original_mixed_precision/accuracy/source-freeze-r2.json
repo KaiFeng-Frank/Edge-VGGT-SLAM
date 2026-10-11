@@ -1,0 +1,43 @@
+{
+  "schema": "v50_saved_representation_accuracy_source_and_receipt_freeze",
+  "only_original_VGGT": true,
+  "files": {
+    "analyze_saved_resolution.py": {
+      "sha256": "1c1628a7efa50b5d4c1ebd9baf7f0b35a15efe1ab335eb7bd263b00398da5f3d",
+      "bytes": 17438,
+      "publishable": true
+    },
+    "check_resolution_math.py": {
+      "sha256": "55c08fc9b82ee41c674a37fb120e8ca717cac3bbc76d8a9249bb16a5dc011060",
+      "bytes": 5791,
+      "publishable": true
+    },
+    "generated-checks-r4.json": {
+      "sha256": "eaafe61968cfde5bbd70c21f4196188424e16340649a5dd8b51ea223e29c62fc",
+      "bytes": 2952,
+      "publishable": true
+    },
+    "saved-resolution-r3.json": {
+      "sha256": "3e3e6518c5a95acf4d5e4eb97cebf513837208c0b7f11058a3995883ceb50d1e",
+      "bytes": 55125,
+      "publishable": false
+    },
+    "public-resolution-r1.json": {
+      "sha256": "3abf94cf5fb4e5933bde627137cdde6ffe8a8f4e6138af16e0d22061e6dc458f",
+      "bytes": 25459,
+      "publishable": true
+    },
+    "RESOLUTION_NOTE.md": {
+      "sha256": "bf160a4854cd2514c807df3030590f2d40ecf379b5c28fe03305b9cbec3ed993",
+      "bytes": 5861,
+      "publishable": true
+    }
+  },
+  "private_saved_data_manifest_pins": {
+    "capture": "bf39dfa65526a4135cbd2d7ee8b927ce2c4a40da75aebf64652ed2cd87a7e7fc",
+    "normal": "05ac1187d9bda3893d43f2d9c834d3b4de51f97d8c455496daa0c5a6f803e591",
+    "pair_export": "149450ffc675ce59950c6f89cf84adb41e388cd050eeb731b6d09a6fe16e9fe1"
+  },
+  "boundary": "Source, generated checks, note and slim summary are publishable; original saved arrays, model weights, weight-bearing graph, SDK binaries and private full receipt remain private.",
+  "actual_model_SDK_ORT_calibration_or_board_execution": false
+}

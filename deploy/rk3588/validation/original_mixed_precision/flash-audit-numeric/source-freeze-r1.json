@@ -1,0 +1,48 @@
+{
+  "schema": "v50_flash_saved_numeric_timing_audit_source_freeze",
+  "files": {
+    "audit_saved_flash_pair.py": {
+      "sha256": "d2ccb21f2a77a4e4671d410cffd754052618dae65fb790e32e50f64d9ef642af",
+      "bytes": 21835,
+      "publishable": true
+    },
+    "check_saved_flash_audit.py": {
+      "sha256": "ebec6a61ca58e780d0c32947d7bf349bb0f5d9e2b2da81d49b5908cb9bf4315b",
+      "bytes": 6490,
+      "publishable": true
+    },
+    "generated-checks-r1.json": {
+      "sha256": "3036f518ad007b69e1bb5ae735bba638a5fbaa4153b064b8a25fad0d46885a29",
+      "bytes": 1757,
+      "publishable": true
+    },
+    "public-saved-flash-audit-r1.json": {
+      "sha256": "02a86688b4f31e8b1289ac4db76a07a60c031949af78dec666a779eb1c699cad",
+      "bytes": 12613,
+      "publishable": true
+    },
+    "compare_saved_v49_baseline.py": {
+      "sha256": "45afe11757d19a51bd4e1e4561bb2195f202a09dc64ca6259a2aadb72f7dc868",
+      "bytes": 4756,
+      "publishable": true
+    },
+    "public-v49-baseline-comparison-r1.json": {
+      "sha256": "f75fb4aca2940280e6ddafc0fea37397bb65af5649f546acf95f101d11aa5134",
+      "bytes": 2074,
+      "publishable": true
+    },
+    "README.md": {
+      "sha256": "501071d60789e404c236801328eadb15d2f4e17109367aa4f7f6cc87e9ea5959",
+      "bytes": 4574,
+      "publishable": true
+    }
+  },
+  "only_original_VGGT": true,
+  "normal_run_sha256": "20cfcdc923c3634d505604bc59c44efac4d971a3db51999b700c1100e12ddc55",
+  "profile_run_sha256": "a4760f445d4d69790c67b09364e3408db0f9fdd7d8d493923aff524c2fe2ee1b",
+  "v49_original_capture_sha256": "bf39dfa65526a4135cbd2d7ee8b927ce2c4a40da75aebf64652ed2cd87a7e7fc",
+  "raw_saved_arrays_or_weights_or_exports_or_SDK_binaries_included": false,
+  "actual_model_ORT_SDK_compiler_calibration_or_board_execution": false,
+  "candidate_accepted": false,
+  "portability": "NumPy + stdlib; explicit private source/data directory CLI arguments; three scripts colocated with pinned comparator/helper SHA."
+}

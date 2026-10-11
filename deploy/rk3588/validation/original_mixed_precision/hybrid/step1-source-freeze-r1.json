@@ -1,0 +1,72 @@
+{
+  "schema": "v50_original_VGGT_hybrid_step1_source_freeze",
+  "status": "frozen_source_only",
+  "approval": "root approved exact routine step1 schema/config; step2 precision policy remains unapproved",
+  "receipt_schema": "v50_original_VGGT_pair_board_hybrid_step1",
+  "success_status": "hybrid_intermediates_generated_not_precision_approved",
+  "files": [
+    {
+      "file": "prepare-v50-hybrid-step1-board.py",
+      "bytes": 12058,
+      "sha256": "fe7ff44126c1fa7fee7c4ef01c30d6c11781cf6e9604522c503595753d955086"
+    },
+    {
+      "file": "v50_hybrid_api.py",
+      "bytes": 2717,
+      "sha256": "9781b778c999ccadb43ee612a88c973e982dcd9f3977b15e526ddcdff3899b3d"
+    },
+    {
+      "file": "test_v50_hybrid_api.py",
+      "bytes": 9364,
+      "sha256": "7be28568d29cc8fbdfffee8dc7e33c881475425225323fe4c4d8111a283af7e6"
+    },
+    {
+      "file": "run-v50-hybrid-step1-board.sh",
+      "bytes": 683,
+      "sha256": "2ba1e278299ba251ccad4b4f24a20874049c773aaee5e50059623eb4befe76a2"
+    },
+    {
+      "file": "SDK_API_PLAN.md",
+      "bytes": 5555,
+      "sha256": "b99725d0ac46751fc654145559f5a298d7764aa8f0268704f2dbda6f82305fb9"
+    },
+    {
+      "file": "README.md",
+      "bytes": 2424,
+      "sha256": "0a34bab927772d1ec9d20d3220f979887a015e57a8c728ad915620753e93158a"
+    },
+    {
+      "file": "tiny-checks-r1.json",
+      "bytes": 738,
+      "sha256": "10961d1f7744c6fd70e3da4fd1a8d2111cdff13058fff73910ad8eb77327ab32"
+    }
+  ],
+  "reused_frozen_contracts": {
+    "pair": "4ec6c0e827ab9669c942b589d2c504f0c9de306f76f4f4be0799af14ae322cd7",
+    "capture": "6ce1f87f1683e8082a4d567718acb853101e5ee6bbaeef1ced02993a8e3133c8",
+    "quant": "47237b1a1e1614822c75180efd15be3e5c708b610f587f698fe9b37fcf1bc649"
+  },
+  "original_graph_sha256": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+  "capture_manifest_sha256": "bf39dfa65526a4135cbd2d7ee8b927ce2c4a40da75aebf64652ed2cd87a7e7fc",
+  "actual_SDK_API_source_sha256": "63e4506fb851214e79f933f9de0d27dab04ecf93f6f46959c07c5787433fd05e",
+  "configuration": {
+    "target_platform": "rk3588",
+    "float_dtype": "float16",
+    "optimization_level": 3,
+    "quantized_dtype": "w8a8",
+    "quantized_algorithm": "normal",
+    "quantized_method": "channel"
+  },
+  "step1_options": {
+    "rknn_batch_size": null,
+    "proposal": false,
+    "proposal_dataset_size": 1,
+    "custom_hybrid": null
+  },
+  "calibration_sample_count": 8,
+  "evaluation_excluded": true,
+  "precision_policy_approved": false,
+  "candidate_accepted": false,
+  "actual_SDK_or_model_execution_by_this_agent": false,
+  "SDK_source_redistributed": false
+}

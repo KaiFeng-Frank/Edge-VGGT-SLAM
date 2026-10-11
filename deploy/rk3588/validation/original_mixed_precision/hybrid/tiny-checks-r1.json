@@ -1,0 +1,24 @@
+{
+  "schema": "v50_original_hybrid_tiny_fake_checks",
+  "status": "passed",
+  "test_count": 8,
+  "shell_syntax_passed": true,
+  "python_AST_files": 3,
+  "commands": [
+    "python3 -B test_v50_hybrid_api.py",
+    "bash -n run-v50-hybrid-step1-board.sh"
+  ],
+  "actual_SDK_import": false,
+  "actual_model_execution": false,
+  "actual_calibration": false,
+  "scope": [
+    "exact fixed API kwargs/order",
+    "host guard before SDK calls",
+    "nonzero/bool errors and release handling",
+    "supported None return",
+    "step2 approval/byte-identity guard with generated cfg",
+    "generated intermediate identity/exclusive output",
+    "ambiguity/empty/mismatched-stem/symlink rejection",
+    "frozen helper SHA and lazy SDK import"
+  ]
+}

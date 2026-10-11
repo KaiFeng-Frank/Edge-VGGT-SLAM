@@ -1,0 +1,23 @@
+{
+  "schema": "v50_original_hybrid_step2_tiny_fake_checks",
+  "status": "passed",
+  "test_count": 5,
+  "commands": [
+    "python3 -B test_v50_hybrid_step2.py",
+    "bash -n run-v50-hybrid-step2-board.sh"
+  ],
+  "shell_syntax_passed": true,
+  "python_AST_files": 3,
+  "saved_step1_and_policy_byte_audit_passed": true,
+  "actual_SDK_import": false,
+  "actual_model_execution": false,
+  "actual_calibration": false,
+  "compile_mock_is_synthetic_not_actual_evidence": true,
+  "scope": [
+    "custom-block-only byte preserving surgery and semantic unchanged ranges",
+    "duplicate/alias/merge/nonfinite/unsafe YAML and JSON rejection",
+    "pure compile gate rejects provenance/cleanup/output/fusion overclaims",
+    "failed fake step2 stops export and releases",
+    "host main gate precedes SDK and frozen contracts SHA matches"
+  ]
+}
