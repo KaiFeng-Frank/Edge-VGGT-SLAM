@@ -1,0 +1,2877 @@
+{
+  "kind": "v35_board_only_RKNN_PTQ_dependency_preparation",
+  "status": "prepared_not_installed_or_calibrated",
+  "candidate_accepted": false,
+  "production_changed": false,
+  "original_VGGT_default_unchanged": true,
+  "actual_new_toolchain_installed": false,
+  "actual_calibration_executed": false,
+  "host_calibration_executed": false,
+  "INT8_model_compiled": false,
+  "realtime_validated": false,
+  "scope": "Official pinned ARM64 CPython3.11 Toolkit2.3.2 requirements and PyPI file metadata; native onnxoptimizer source inspection, new isolated board preflight/PTQ helper preparation. No toolkit or dependency binary redistributed.",
+  "findings": {
+    "ARM_torch_max": "2.2.0",
+    "existing_board_torch": "2.3.1",
+    "isolated_venv_required": true,
+    "onnxoptimizer": "0.3.8",
+    "onnxoptimizer_aarch64_wheel_available_in_inspected_sources": false,
+    "native_source_build_pending": true,
+    "quantization_calibration_is_neural_execution": true
+  },
+  "limits": "Package metadata resolution and tiny/fake tests do not establish installation or SDK execution. SDK full archive SHA256 still awaits download; git blob and metadata identity are pinned. Calibration image/index provenance and representative disjoint data selection, mixed FP32/INT64 handling and runtime accuracy remain unverified.",
+  "evidence": {
+    "dependency_plan": {
+      "file": "encoder/arm64-dependency-plan.json",
+      "raw_sha256": "a32e1a00c8bdbf74241de3de236cdaef050567b26b9d591a7f57c65ab247e2b4",
+      "raw_bytes": 79204,
+      "private_host_paths_redacted": true,
+      "data": {
+        "schema": "v35_ARM64_RKNN_2_3_2_dependency_plan",
+        "status": "metadata_resolved_native_optimizer_build_pending",
+        "installed_or_executed": false,
+        "target": {
+          "implementation": "CPython",
+          "python": "3.11",
+          "machine": "aarch64",
+          "OS": "Linux",
+          "minimum_selected_wheel_glibc": "2.24",
+          "isolation": "new venv, include-system-site-packages=false"
+        },
+        "toolkit": {
+          "name": "rknn-toolkit2",
+          "version": "2.3.2",
+          "toolkit_commit": "c7d6ffcf",
+          "file": "rknn_toolkit2-2.3.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+          "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknn-toolkit2/packages/arm64/rknn_toolkit2-2.3.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+          "bytes": 37740634,
+          "git_blob_sha1": "0313b8181d121207f12c5a745427d817f18aeeee",
+          "full_archive_sha256": null,
+          "full_archive_sha256_note": "Not published in fetched official tree; root must compute after download and verify Git blob SHA1",
+          "metadata_sha256": "735a39fb104b21d941afdcbc8ff4b0cb16dab42f87e61eb7618c596e904229c6"
+        },
+        "packages": [
+          {
+            "filename": "torch-2.2.0-cp311-cp311-manylinux2014_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/4f/a7/098bdc65e141b29f571989c4561cbc7fe7c78c9a12dbe61cba540ca1d5ef/torch-2.2.0-cp311-cp311-manylinux2014_aarch64.whl",
+            "size": 86610755,
+            "packagetype": "bdist_wheel",
+            "name": "torch",
+            "version": "2.2.0",
+            "sha256": "9328e3c1ce628a281d2707526b4d1080eae7c4afab4f81cea75bde1f9441dc78",
+            "pypi_metadata_file": "pypi/torch-2.2.0.json",
+            "pypi_metadata_sha256": "0e676cb39d56a3e67ccbd4827328ca698e35be69cbc1f32dcfddd61c1303932f",
+            "requires_python": ">=3.8.0",
+            "requires_dist": [
+              "filelock",
+              "typing-extensions >=4.8.0",
+              "sympy",
+              "networkx",
+              "jinja2",
+              "fsspec",
+              "nvidia-cuda-nvrtc-cu12 ==12.1.105 ; platform_system == \"Linux\" and platform_machine == \"x86_64\"",
+              "nvidia-cuda-runtime-cu12 ==12.1.105 ; platform_system == \"Linux\" and platform_machine == \"x86_64\"",
+              "nvidia-cuda-cupti-cu12 ==12.1.105 ; platform_system == \"Linux\" and platform_machine == \"x86_64\"",
+              "nvidia-cudnn-cu12 ==8.9.2.26 ; platform_system == \"Linux\" and platform_machine == \"x86_64\"",
+              "nvidia-cublas-cu12 ==12.1.3.1 ; platform_system == \"Linux\" and platform_machine == \"x86_64\"",
+              "nvidia-cufft-cu12 ==11.0.2.54 ; platform_system == \"Linux\" and platform_machine == \"x86_64\"",
+              "nvidia-curand-cu12 ==10.3.2.106 ; platform_system == \"Linux\" and platform_machine == \"x86_64\"",
+              "nvidia-cusolver-cu12 ==11.4.5.107 ; platform_system == \"Linux\" and platform_machine == \"x86_64\"",
+              "nvidia-cusparse-cu12 ==12.1.0.106 ; platform_system == \"Linux\" and platform_machine == \"x86_64\"",
+              "nvidia-nccl-cu12 ==2.19.3 ; platform_system == \"Linux\" and platform_machine == \"x86_64\"",
+              "nvidia-nvtx-cu12 ==12.1.105 ; platform_system == \"Linux\" and platform_machine == \"x86_64\"",
+              "triton ==2.2.0 ; platform_system == \"Linux\" and platform_machine == \"x86_64\"",
+              "opt-einsum >=3.3 ; extra == 'opt-einsum'",
+              "optree >=0.9.1 ; extra == 'optree'"
+            ]
+          },
+          {
+            "filename": "numpy-1.26.4-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/79/ae/7e5b85136806f9dadf4878bf73cf223fe5c2636818ba3ab1c585d0403164/numpy-1.26.4-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "size": 14222994,
+            "packagetype": "bdist_wheel",
+            "name": "numpy",
+            "version": "1.26.4",
+            "sha256": "7ab55401287bfec946ced39700c053796e7cc0e3acbef09993a9ad2adba6ca6e",
+            "pypi_metadata_file": "pypi/numpy-1.26.4.json",
+            "pypi_metadata_sha256": "46ecc174b1cbb969c99c011b5702821e66903c077be6e394da237c504501505e",
+            "requires_python": ">=3.9",
+            "requires_dist": []
+          },
+          {
+            "filename": "onnx-1.16.1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/55/f8/fd7078f3c976209ff19e027eaabf1d1b0e35ffcdd48e37f9148767480bd1/onnx-1.16.1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "size": 15793779,
+            "packagetype": "bdist_wheel",
+            "name": "onnx",
+            "version": "1.16.1",
+            "sha256": "1521ea7cd3497ecaf57d3b5e72d637ca5ebca632122a0806a9df99bedbeecdf8",
+            "pypi_metadata_file": "pypi/onnx-1.16.1.json",
+            "pypi_metadata_sha256": "6f104a3e181be097316e93a7dea443c496ec84466a460ea89869509b4c1efa07",
+            "requires_python": ">=3.8",
+            "requires_dist": [
+              "numpy>=1.20",
+              "protobuf>=3.20.2",
+              "google-re2; extra == \"reference\"",
+              "Pillow; extra == \"reference\""
+            ]
+          },
+          {
+            "filename": "onnxruntime-1.16.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/d3/a1/a84c49d726a7d25876db5f9bd6c9c06e946365190463c118299aac55cda6/onnxruntime-1.16.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "size": 5577377,
+            "packagetype": "bdist_wheel",
+            "name": "onnxruntime",
+            "version": "1.16.0",
+            "sha256": "5fe2239d5821d5501eecccfe5c408485591b5d73eb76a61491a8f78179c2e65a",
+            "pypi_metadata_file": "pypi/onnxruntime-1.16.0.json",
+            "pypi_metadata_sha256": "bc7cdf969aa767f5062fa4fa7388010141a8ec639cf2284cec355dde45628834",
+            "requires_python": null,
+            "requires_dist": [
+              "coloredlogs",
+              "flatbuffers",
+              "numpy >=1.21.6",
+              "packaging",
+              "protobuf",
+              "sympy"
+            ]
+          },
+          {
+            "filename": "protobuf-3.20.3-py2.py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/8d/14/619e24a4c70df2901e1f4dbc50a6291eb63a759172558df326347dce1f0d/protobuf-3.20.3-py2.py3-none-any.whl",
+            "size": 162128,
+            "packagetype": "bdist_wheel",
+            "name": "protobuf",
+            "version": "3.20.3",
+            "sha256": "a7ca6d488aa8ff7f329d4c545b2dbad8ac31464f1d8b1c87ad1346717731e4db",
+            "pypi_metadata_file": "pypi/protobuf-3.20.3.json",
+            "pypi_metadata_sha256": "d8fc65f44dff57dad2673fd974b4748bdc301e42ded3716479c59a4508fa8de1",
+            "requires_python": ">=3.7",
+            "requires_dist": []
+          },
+          {
+            "filename": "onnxoptimizer-0.3.8.tar.gz",
+            "url": "https://files.pythonhosted.org/packages/a2/c2/8fcbecf89c52ca3beaccbed4aedb05eb9aa2bf232e18987942b3e1d3f227/onnxoptimizer-0.3.8.tar.gz",
+            "size": 18462997,
+            "packagetype": "sdist",
+            "name": "onnxoptimizer",
+            "version": "0.3.8",
+            "sha256": "158bf9fda2e33bfe8ba1484f295cf25447921822f840de90831f7007af1295d3",
+            "pypi_metadata_file": "pypi/onnxoptimizer-0.3.8.json",
+            "pypi_metadata_sha256": "f5fa83d0fbdc09bc6e570021d64d14a72ff905e1f63067b26a9e67562f5cd381",
+            "requires_python": "",
+            "requires_dist": [
+              "onnx",
+              "mypy (==0.600) ; extra == 'mypy'"
+            ]
+          },
+          {
+            "filename": "psutil-7.0.0-cp36-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/eb/a2/709e0fe2f093556c17fbafda93ac032257242cabcc7ff3369e2cb76a97aa/psutil-7.0.0-cp36-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "size": 279544,
+            "packagetype": "bdist_wheel",
+            "name": "psutil",
+            "version": "7.0.0",
+            "sha256": "a5f098451abc2828f7dc6b58d44b532b22f2088f4999a937557b603ce72b1993",
+            "pypi_metadata_file": "pypi/psutil-7.0.0.json",
+            "pypi_metadata_sha256": "d780bf82be2657e2dc296dc637d94e688f3f63bbb16280097f6da83e2679796e",
+            "requires_python": ">=3.6",
+            "requires_dist": [
+              "pytest; extra == \"dev\"",
+              "pytest-xdist; extra == \"dev\"",
+              "setuptools; extra == \"dev\"",
+              "abi3audit; extra == \"dev\"",
+              "black==24.10.0; extra == \"dev\"",
+              "check-manifest; extra == \"dev\"",
+              "coverage; extra == \"dev\"",
+              "packaging; extra == \"dev\"",
+              "pylint; extra == \"dev\"",
+              "pyperf; extra == \"dev\"",
+              "pypinfo; extra == \"dev\"",
+              "pytest-cov; extra == \"dev\"",
+              "requests; extra == \"dev\"",
+              "rstcheck; extra == \"dev\"",
+              "ruff; extra == \"dev\"",
+              "sphinx; extra == \"dev\"",
+              "sphinx_rtd_theme; extra == \"dev\"",
+              "toml-sort; extra == \"dev\"",
+              "twine; extra == \"dev\"",
+              "virtualenv; extra == \"dev\"",
+              "vulture; extra == \"dev\"",
+              "wheel; extra == \"dev\"",
+              "pytest; extra == \"test\"",
+              "pytest-xdist; extra == \"test\"",
+              "setuptools; extra == \"test\""
+            ]
+          },
+          {
+            "filename": "ruamel.yaml-0.18.6-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/73/67/8ece580cc363331d9a53055130f86b096bf16e38156e33b1d3014fffda6b/ruamel.yaml-0.18.6-py3-none-any.whl",
+            "size": 117761,
+            "packagetype": "bdist_wheel",
+            "name": "ruamel.yaml",
+            "version": "0.18.6",
+            "sha256": "57b53ba33def16c4f3d807c0ccbc00f8a6081827e81ba2491691b76882d0c636",
+            "pypi_metadata_file": "pypi/ruamel.yaml-0.18.6.json",
+            "pypi_metadata_sha256": "58b0420002c71bdd2a87c0f394c0ed2f8fb1be4864be5b9e10ac4cd25a55a458",
+            "requires_python": ">=3.7",
+            "requires_dist": [
+              "ruamel.yaml.clib >=0.2.7 ; platform_python_implementation==\"CPython\" and python_version<\"3.13\"",
+              "ryd ; extra == 'docs'",
+              "mercurial >5.7 ; extra == 'docs'",
+              "ruamel.yaml.jinja2 >=0.2 ; extra == 'jinja2'"
+            ]
+          },
+          {
+            "filename": "scipy-1.11.4-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/75/2e/a781862190d0e7e76afa74752ef363488a9a9d6ea86e46d5e5506cee8df6/scipy-1.11.4-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "size": 32882747,
+            "packagetype": "bdist_wheel",
+            "name": "scipy",
+            "version": "1.11.4",
+            "sha256": "00150c5eae7b610c32589dda259eacc7c4f1665aedf25d921907f4d08a951b1c",
+            "pypi_metadata_file": "pypi/scipy-1.11.4.json",
+            "pypi_metadata_sha256": "5139f38249a90de8b9ddedecf1a41acc690dfe02f644ee78abc25eb15db86a50",
+            "requires_python": ">=3.9",
+            "requires_dist": [
+              "numpy<1.28.0,>=1.21.6",
+              "pytest; extra == \"test\"",
+              "pytest-cov; extra == \"test\"",
+              "pytest-timeout; extra == \"test\"",
+              "pytest-xdist; extra == \"test\"",
+              "asv; extra == \"test\"",
+              "mpmath; extra == \"test\"",
+              "gmpy2; extra == \"test\"",
+              "threadpoolctl; extra == \"test\"",
+              "scikit-umfpack; extra == \"test\"",
+              "pooch; extra == \"test\"",
+              "sphinx!=4.1.0; extra == \"doc\"",
+              "pydata-sphinx-theme==0.9.0; extra == \"doc\"",
+              "sphinx-design>=0.2.0; extra == \"doc\"",
+              "matplotlib>2; extra == \"doc\"",
+              "numpydoc; extra == \"doc\"",
+              "jupytext; extra == \"doc\"",
+              "myst-nb; extra == \"doc\"",
+              "pooch; extra == \"doc\"",
+              "mypy; extra == \"dev\"",
+              "typing_extensions; extra == \"dev\"",
+              "types-psutil; extra == \"dev\"",
+              "pycodestyle; extra == \"dev\"",
+              "ruff; extra == \"dev\"",
+              "cython-lint>=0.12.2; extra == \"dev\"",
+              "rich-click; extra == \"dev\"",
+              "click; extra == \"dev\"",
+              "doit>=0.36.0; extra == \"dev\"",
+              "pydevtool; extra == \"dev\""
+            ]
+          },
+          {
+            "filename": "tqdm-4.66.4-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/18/eb/fdb7eb9e48b7b02554e1664afd3bd3f117f6b6d6c5881438a0b055554f9b/tqdm-4.66.4-py3-none-any.whl",
+            "size": 78275,
+            "packagetype": "bdist_wheel",
+            "name": "tqdm",
+            "version": "4.66.4",
+            "sha256": "b75ca56b413b030bc3f00af51fd2c1a1a5eac6a0c1cca83cbb37a5c52abce644",
+            "pypi_metadata_file": "pypi/tqdm-4.66.4.json",
+            "pypi_metadata_sha256": "3a6cbed641c7d10747a5800fab1d8e2207fbf02cec6cbe3e32ba12a93cda97ce",
+            "requires_python": ">=3.7",
+            "requires_dist": [
+              "colorama; platform_system == \"Windows\"",
+              "pytest>=6; extra == \"dev\"",
+              "pytest-cov; extra == \"dev\"",
+              "pytest-timeout; extra == \"dev\"",
+              "pytest-xdist; extra == \"dev\"",
+              "ipywidgets>=6; extra == \"notebook\"",
+              "slack-sdk; extra == \"slack\"",
+              "requests; extra == \"telegram\""
+            ]
+          },
+          {
+            "filename": "opencv_python-4.10.0.84-cp37-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/81/e4/7a987ebecfe5ceaf32db413b67ff18eb3092c598408862fff4d7cc3fd19b/opencv_python-4.10.0.84-cp37-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "size": 41746971,
+            "packagetype": "bdist_wheel",
+            "name": "opencv-python",
+            "version": "4.10.0.84",
+            "sha256": "09a332b50488e2dda866a6c5573ee192fe3583239fb26ff2f7f9ceb0bc119ea6",
+            "pypi_metadata_file": "pypi/opencv-python-4.10.0.84.json",
+            "pypi_metadata_sha256": "037eb46157d3fd9ec6a97f1e3151136d16f83d0ff1a33bc1d6308e7e6efca54f",
+            "requires_python": ">=3.6",
+            "requires_dist": [
+              "numpy>=1.13.3; python_version < \"3.7\"",
+              "numpy>=1.21.0; python_version <= \"3.9\" and platform_system == \"Darwin\" and platform_machine == \"arm64\"",
+              "numpy>=1.21.2; python_version >= \"3.10\"",
+              "numpy>=1.21.4; python_version >= \"3.10\" and platform_system == \"Darwin\"",
+              "numpy>=1.23.5; python_version >= \"3.11\"",
+              "numpy>=1.26.0; python_version >= \"3.12\"",
+              "numpy>=1.19.3; python_version >= \"3.6\" and platform_system == \"Linux\" and platform_machine == \"aarch64\"",
+              "numpy>=1.17.0; python_version >= \"3.7\"",
+              "numpy>=1.17.3; python_version >= \"3.8\"",
+              "numpy>=1.19.3; python_version >= \"3.9\""
+            ]
+          },
+          {
+            "filename": "fast_histogram-0.14-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/0f/f9/524b8a302862bdc7100a5e0662d3fa49500af20badcabaddeec474819b8d/fast_histogram-0.14-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "size": 55480,
+            "packagetype": "bdist_wheel",
+            "name": "fast-histogram",
+            "version": "0.14",
+            "sha256": "b425d93e4bf1b0cdc223b8fe91ca68aa53c314b8ec374027b9a215a41aa85658",
+            "pypi_metadata_file": "pypi/fast-histogram-0.14.json",
+            "pypi_metadata_sha256": "7c82d8c73dd8d1a88e0fdaa1beaa1de83a4f39f60d919921ce2354a8b2796c3d",
+            "requires_python": ">=3.9",
+            "requires_dist": [
+              "numpy",
+              "pytest; extra == \"test\"",
+              "hypothesis[numpy]; extra == \"test\""
+            ]
+          },
+          {
+            "filename": "pillow-10.4.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/73/d5/c4011a76f4207a3c151134cd22a1415741e42fa5ddecec7c0182887deb3d/pillow-10.4.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "size": 4340304,
+            "packagetype": "bdist_wheel",
+            "name": "Pillow",
+            "version": "10.4.0",
+            "sha256": "5dc6761a6efc781e6a1544206f22c80c3af4c8cf461206d46a1e6006e4429ff3",
+            "pypi_metadata_file": "pypi/Pillow-10.4.0.json",
+            "pypi_metadata_sha256": "4b1713c8b3b519e9ff3fe07a30b150791b243d523ef6fe6fe96bcc0f079fae98",
+            "requires_python": ">=3.8",
+            "requires_dist": [
+              "furo; extra == \"docs\"",
+              "olefile; extra == \"docs\"",
+              "sphinx>=7.3; extra == \"docs\"",
+              "sphinx-copybutton; extra == \"docs\"",
+              "sphinx-inline-tabs; extra == \"docs\"",
+              "sphinxext-opengraph; extra == \"docs\"",
+              "olefile; extra == \"fpx\"",
+              "olefile; extra == \"mic\"",
+              "check-manifest; extra == \"tests\"",
+              "coverage; extra == \"tests\"",
+              "defusedxml; extra == \"tests\"",
+              "markdown2; extra == \"tests\"",
+              "olefile; extra == \"tests\"",
+              "packaging; extra == \"tests\"",
+              "pyroma; extra == \"tests\"",
+              "pytest; extra == \"tests\"",
+              "pytest-cov; extra == \"tests\"",
+              "pytest-timeout; extra == \"tests\"",
+              "typing-extensions; python_version < \"3.10\" and extra == \"typing\"",
+              "defusedxml; extra == \"xmp\""
+            ]
+          },
+          {
+            "filename": "ruamel.yaml.clib-0.2.8-cp311-cp311-manylinux_2_24_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/7c/e4/0d19d65e340f93df1c47f323d95fa4b256bb28320290f5fddef90837853a/ruamel.yaml.clib-0.2.8-cp311-cp311-manylinux_2_24_aarch64.whl",
+            "size": 642643,
+            "packagetype": "bdist_wheel",
+            "name": "ruamel.yaml.clib",
+            "version": "0.2.8",
+            "sha256": "1707814f0d9791df063f8c19bb51b0d1278b8e9a2353abbb676c2f685dee6afe",
+            "pypi_metadata_file": "pypi/ruamel.yaml.clib-0.2.8.json",
+            "pypi_metadata_sha256": "b39087e46fd4342d10e91c016294503e935b381ec7197246ba7fee1aa72ce39b",
+            "requires_python": ">=3.6",
+            "requires_dist": []
+          },
+          {
+            "filename": "filelock-3.15.4-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/ae/f0/48285f0262fe47103a4a45972ed2f9b93e4c80b8fd609fa98da78b2a5706/filelock-3.15.4-py3-none-any.whl",
+            "size": 16159,
+            "packagetype": "bdist_wheel",
+            "name": "filelock",
+            "version": "3.15.4",
+            "sha256": "6ca1fffae96225dab4c6eaf1c4f4f28cd2568d3ec2a44e15a08520504de468e7",
+            "pypi_metadata_file": "pypi/filelock-3.15.4.json",
+            "pypi_metadata_sha256": "58e6cce9120d52864eb685826612d71ada6b80e949bc44f0834bd47ea94876b1",
+            "requires_python": ">=3.8",
+            "requires_dist": [
+              "furo>=2023.9.10; extra == \"docs\"",
+              "sphinx-autodoc-typehints!=1.23.4,>=1.25.2; extra == \"docs\"",
+              "sphinx>=7.2.6; extra == \"docs\"",
+              "covdefaults>=2.3; extra == \"testing\"",
+              "coverage>=7.3.2; extra == \"testing\"",
+              "diff-cover>=8.0.1; extra == \"testing\"",
+              "pytest-asyncio>=0.21; extra == \"testing\"",
+              "pytest-cov>=4.1; extra == \"testing\"",
+              "pytest-mock>=3.12; extra == \"testing\"",
+              "pytest-timeout>=2.2; extra == \"testing\"",
+              "pytest>=7.4.3; extra == \"testing\"",
+              "virtualenv>=20.26.2; extra == \"testing\"",
+              "typing-extensions>=4.8; python_version < \"3.11\" and extra == \"typing\""
+            ]
+          },
+          {
+            "filename": "typing_extensions-4.12.2-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/26/9f/ad63fc0248c5379346306f8668cda6e2e2e9c95e01216d2b8ffd9ff037d0/typing_extensions-4.12.2-py3-none-any.whl",
+            "size": 37438,
+            "packagetype": "bdist_wheel",
+            "name": "typing-extensions",
+            "version": "4.12.2",
+            "sha256": "04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d",
+            "pypi_metadata_file": "pypi/typing-extensions-4.12.2.json",
+            "pypi_metadata_sha256": "1bd5c3e6022118b65d1074b8e9877bd611a6a0cbe61f79ecb57822779caf219e",
+            "requires_python": ">=3.8",
+            "requires_dist": []
+          },
+          {
+            "filename": "sympy-1.12-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/d2/05/e6600db80270777c4a64238a98d442f0fd07cc8915be2a1c16da7f2b9e74/sympy-1.12-py3-none-any.whl",
+            "size": 5742435,
+            "packagetype": "bdist_wheel",
+            "name": "sympy",
+            "version": "1.12",
+            "sha256": "c3588cd4295d0c0f603d0f2ae780587e64e2efeedb3521e46b9bb1d08d184fa5",
+            "pypi_metadata_file": "pypi/sympy-1.12.json",
+            "pypi_metadata_sha256": "58d9a24b9fef9d05f6903e39aadd917bd267e7115bbb7073b3c9f6b07364bc8d",
+            "requires_python": ">=3.8",
+            "requires_dist": [
+              "mpmath (>=0.19)"
+            ]
+          },
+          {
+            "filename": "mpmath-1.3.0-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl",
+            "size": 536198,
+            "packagetype": "bdist_wheel",
+            "name": "mpmath",
+            "version": "1.3.0",
+            "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+            "pypi_metadata_file": "pypi/mpmath-1.3.0.json",
+            "pypi_metadata_sha256": "048f60767ea132af986fa4585c7db13d59a3aaf3e5632c3943c0c0401759b7c3",
+            "requires_python": "",
+            "requires_dist": [
+              "pytest (>=4.6) ; extra == 'develop'",
+              "pycodestyle ; extra == 'develop'",
+              "pytest-cov ; extra == 'develop'",
+              "codecov ; extra == 'develop'",
+              "wheel ; extra == 'develop'",
+              "sphinx ; extra == 'docs'",
+              "gmpy2 (>=2.1.0a4) ; (platform_python_implementation != \"PyPy\") and extra == 'gmpy'",
+              "pytest (>=4.6) ; extra == 'tests'"
+            ]
+          },
+          {
+            "filename": "networkx-3.3-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/38/e9/5f72929373e1a0e8d142a130f3f97e6ff920070f87f91c4e13e40e0fba5a/networkx-3.3-py3-none-any.whl",
+            "size": 1702396,
+            "packagetype": "bdist_wheel",
+            "name": "networkx",
+            "version": "3.3",
+            "sha256": "28575580c6ebdaf4505b22c6256a2b9de86b316dc63ba9e93abde3d78dfdbcf2",
+            "pypi_metadata_file": "pypi/networkx-3.3.json",
+            "pypi_metadata_sha256": "419fad1c31ca5ad410028517d2c5f802624653bf621c1eb019d64ca8a33d8cd8",
+            "requires_python": ">=3.10",
+            "requires_dist": [
+              "numpy>=1.23; extra == \"default\"",
+              "scipy!=1.11.0,!=1.11.1,>=1.9; extra == \"default\"",
+              "matplotlib>=3.6; extra == \"default\"",
+              "pandas>=1.4; extra == \"default\"",
+              "changelist==0.5; extra == \"developer\"",
+              "pre-commit>=3.2; extra == \"developer\"",
+              "mypy>=1.1; extra == \"developer\"",
+              "rtoml; extra == \"developer\"",
+              "sphinx>=7; extra == \"doc\"",
+              "pydata-sphinx-theme>=0.14; extra == \"doc\"",
+              "sphinx-gallery>=0.14; extra == \"doc\"",
+              "numpydoc>=1.7; extra == \"doc\"",
+              "pillow>=9.4; extra == \"doc\"",
+              "texext>=0.6.7; extra == \"doc\"",
+              "myst-nb>=1.0; extra == \"doc\"",
+              "lxml>=4.6; extra == \"extra\"",
+              "pygraphviz>=1.12; extra == \"extra\"",
+              "pydot>=2.0; extra == \"extra\"",
+              "sympy>=1.10; extra == \"extra\"",
+              "pytest>=7.2; extra == \"test\"",
+              "pytest-cov>=4.0; extra == \"test\""
+            ]
+          },
+          {
+            "filename": "jinja2-3.1.4-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/31/80/3a54838c3fb461f6fec263ebf3a3a41771bd05190238de3486aae8540c36/jinja2-3.1.4-py3-none-any.whl",
+            "size": 133271,
+            "packagetype": "bdist_wheel",
+            "name": "jinja2",
+            "version": "3.1.4",
+            "sha256": "bc5dd2abb727a5319567b7a813e6a2e7318c39f4f487cfe6c89c6f9c7d25197d",
+            "pypi_metadata_file": "pypi/jinja2-3.1.4.json",
+            "pypi_metadata_sha256": "21c0c34e27a9363fc2cf095fcd4fc7f1013e6b4694bd28ee25e7a4f3094585f7",
+            "requires_python": ">=3.7",
+            "requires_dist": [
+              "MarkupSafe>=2.0",
+              "Babel>=2.7; extra == \"i18n\""
+            ]
+          },
+          {
+            "filename": "MarkupSafe-2.1.5-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/1c/cf/35fe557e53709e93feb65575c93927942087e9b97213eabc3fe9d5b25a55/MarkupSafe-2.1.5-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "size": 29014,
+            "packagetype": "bdist_wheel",
+            "name": "MarkupSafe",
+            "version": "2.1.5",
+            "sha256": "6ec585f69cec0aa07d945b20805be741395e28ac1627333b1c5b0105962ffced",
+            "pypi_metadata_file": "pypi/MarkupSafe-2.1.5.json",
+            "pypi_metadata_sha256": "e04752b58db594b12ac60429e6a80da6d9eb38956808e2190e676784f0d4e3af",
+            "requires_python": ">=3.7",
+            "requires_dist": []
+          },
+          {
+            "filename": "fsspec-2024.6.1-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/5e/44/73bea497ac69bafde2ee4269292fa3b41f1198f4bb7bbaaabde30ad29d4a/fsspec-2024.6.1-py3-none-any.whl",
+            "size": 177561,
+            "packagetype": "bdist_wheel",
+            "name": "fsspec",
+            "version": "2024.6.1",
+            "sha256": "3cb443f8bcd2efb31295a5b9fdb02aee81d8452c80d28f97a6d0959e6cee101e",
+            "pypi_metadata_file": "pypi/fsspec-2024.6.1.json",
+            "pypi_metadata_sha256": "79906ea499f4e7c416b8969e54acccb861b0ecb543ecee4a0001e4c4cb7354ff",
+            "requires_python": ">=3.8",
+            "requires_dist": [
+              "adlfs; extra == \"abfs\"",
+              "adlfs; extra == \"adl\"",
+              "pyarrow>=1; extra == \"arrow\"",
+              "dask; extra == \"dask\"",
+              "distributed; extra == \"dask\"",
+              "pre-commit; extra == \"dev\"",
+              "ruff; extra == \"dev\"",
+              "numpydoc; extra == \"doc\"",
+              "sphinx; extra == \"doc\"",
+              "sphinx-design; extra == \"doc\"",
+              "sphinx-rtd-theme; extra == \"doc\"",
+              "yarl; extra == \"doc\"",
+              "dropbox; extra == \"dropbox\"",
+              "dropboxdrivefs; extra == \"dropbox\"",
+              "requests; extra == \"dropbox\"",
+              "adlfs; extra == \"full\"",
+              "aiohttp!=4.0.0a0,!=4.0.0a1; extra == \"full\"",
+              "dask; extra == \"full\"",
+              "distributed; extra == \"full\"",
+              "dropbox; extra == \"full\"",
+              "dropboxdrivefs; extra == \"full\"",
+              "fusepy; extra == \"full\"",
+              "gcsfs; extra == \"full\"",
+              "libarchive-c; extra == \"full\"",
+              "ocifs; extra == \"full\"",
+              "panel; extra == \"full\"",
+              "paramiko; extra == \"full\"",
+              "pyarrow>=1; extra == \"full\"",
+              "pygit2; extra == \"full\"",
+              "requests; extra == \"full\"",
+              "s3fs; extra == \"full\"",
+              "smbprotocol; extra == \"full\"",
+              "tqdm; extra == \"full\"",
+              "fusepy; extra == \"fuse\"",
+              "gcsfs; extra == \"gcs\"",
+              "pygit2; extra == \"git\"",
+              "requests; extra == \"github\"",
+              "gcsfs; extra == \"gs\"",
+              "panel; extra == \"gui\"",
+              "pyarrow>=1; extra == \"hdfs\"",
+              "aiohttp!=4.0.0a0,!=4.0.0a1; extra == \"http\"",
+              "libarchive-c; extra == \"libarchive\"",
+              "ocifs; extra == \"oci\"",
+              "s3fs; extra == \"s3\"",
+              "paramiko; extra == \"sftp\"",
+              "smbprotocol; extra == \"smb\"",
+              "paramiko; extra == \"ssh\"",
+              "aiohttp!=4.0.0a0,!=4.0.0a1; extra == \"test\"",
+              "numpy; extra == \"test\"",
+              "pytest; extra == \"test\"",
+              "pytest-asyncio!=0.22.0; extra == \"test\"",
+              "pytest-benchmark; extra == \"test\"",
+              "pytest-cov; extra == \"test\"",
+              "pytest-mock; extra == \"test\"",
+              "pytest-recording; extra == \"test\"",
+              "pytest-rerunfailures; extra == \"test\"",
+              "requests; extra == \"test\"",
+              "aiobotocore<3.0.0,>=2.5.4; extra == \"test-downstream\"",
+              "dask-expr; extra == \"test-downstream\"",
+              "dask[dataframe,test]; extra == \"test-downstream\"",
+              "moto[server]<5,>4; extra == \"test-downstream\"",
+              "pytest-timeout; extra == \"test-downstream\"",
+              "xarray; extra == \"test-downstream\"",
+              "adlfs; extra == \"test-full\"",
+              "aiohttp!=4.0.0a0,!=4.0.0a1; extra == \"test-full\"",
+              "cloudpickle; extra == \"test-full\"",
+              "dask; extra == \"test-full\"",
+              "distributed; extra == \"test-full\"",
+              "dropbox; extra == \"test-full\"",
+              "dropboxdrivefs; extra == \"test-full\"",
+              "fastparquet; extra == \"test-full\"",
+              "fusepy; extra == \"test-full\"",
+              "gcsfs; extra == \"test-full\"",
+              "jinja2; extra == \"test-full\"",
+              "kerchunk; extra == \"test-full\"",
+              "libarchive-c; extra == \"test-full\"",
+              "lz4; extra == \"test-full\"",
+              "notebook; extra == \"test-full\"",
+              "numpy; extra == \"test-full\"",
+              "ocifs; extra == \"test-full\"",
+              "pandas; extra == \"test-full\"",
+              "panel; extra == \"test-full\"",
+              "paramiko; extra == \"test-full\"",
+              "pyarrow; extra == \"test-full\"",
+              "pyarrow>=1; extra == \"test-full\"",
+              "pyftpdlib; extra == \"test-full\"",
+              "pygit2; extra == \"test-full\"",
+              "pytest; extra == \"test-full\"",
+              "pytest-asyncio!=0.22.0; extra == \"test-full\"",
+              "pytest-benchmark; extra == \"test-full\"",
+              "pytest-cov; extra == \"test-full\"",
+              "pytest-mock; extra == \"test-full\"",
+              "pytest-recording; extra == \"test-full\"",
+              "pytest-rerunfailures; extra == \"test-full\"",
+              "python-snappy; extra == \"test-full\"",
+              "requests; extra == \"test-full\"",
+              "smbprotocol; extra == \"test-full\"",
+              "tqdm; extra == \"test-full\"",
+              "urllib3; extra == \"test-full\"",
+              "zarr; extra == \"test-full\"",
+              "zstandard; extra == \"test-full\"",
+              "tqdm; extra == \"tqdm\""
+            ]
+          },
+          {
+            "filename": "coloredlogs-15.0.1-py2.py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/a7/06/3d6badcf13db419e25b07041d9c7b4a2c331d3f4e7134445ec5df57714cd/coloredlogs-15.0.1-py2.py3-none-any.whl",
+            "size": 46018,
+            "packagetype": "bdist_wheel",
+            "name": "coloredlogs",
+            "version": "15.0.1",
+            "sha256": "612ee75c546f53e92e70049c9dbfcc18c935a2b9a53b66085ce9ef6a6e5c0934",
+            "pypi_metadata_file": "pypi/coloredlogs-15.0.1.json",
+            "pypi_metadata_sha256": "41581ce0ba2ad1649286c28aba55cff4fd69d564c7c75c768033f641c0523e8d",
+            "requires_python": ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*",
+            "requires_dist": [
+              "humanfriendly (>=9.1)",
+              "capturer (>=2.4) ; extra == 'cron'"
+            ]
+          },
+          {
+            "filename": "humanfriendly-10.0-py2.py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/f0/0f/310fb31e39e2d734ccaa2c0fb981ee41f7bd5056ce9bc29b2248bd569169/humanfriendly-10.0-py2.py3-none-any.whl",
+            "size": 86794,
+            "packagetype": "bdist_wheel",
+            "name": "humanfriendly",
+            "version": "10.0",
+            "sha256": "1697e1a8a8f550fd43c2865cd84542fc175a61dcb779b6fee18cf6b6ccba1477",
+            "pypi_metadata_file": "pypi/humanfriendly-10.0.json",
+            "pypi_metadata_sha256": "338ec41f38a3e2a20fea12cae5f941594e5e7354848fc3192cfc53e2db50f38b",
+            "requires_python": ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*",
+            "requires_dist": [
+              "monotonic ; python_version == \"2.7\"",
+              "pyreadline ; sys_platform == \"win32\" and python_version<\"3.8\"",
+              "pyreadline3 ; sys_platform == \"win32\" and python_version>=\"3.8\""
+            ]
+          },
+          {
+            "filename": "flatbuffers-23.5.26-py2.py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/6f/12/d5c79ee252793ffe845d58a913197bfa02ae9a0b5c9bc3dc4b58d477b9e7/flatbuffers-23.5.26-py2.py3-none-any.whl",
+            "size": 26744,
+            "packagetype": "bdist_wheel",
+            "name": "flatbuffers",
+            "version": "23.5.26",
+            "sha256": "c0ff356da363087b915fde4b8b45bdda73432fc17cddb3c8157472eab1422ad1",
+            "pypi_metadata_file": "pypi/flatbuffers-23.5.26.json",
+            "pypi_metadata_sha256": "dbbfe5590860f123c50d1cda4104480aa96c20c62521810501fb58d428851b30",
+            "requires_python": "",
+            "requires_dist": []
+          },
+          {
+            "filename": "packaging-24.1-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/08/aa/cc0199a5f0ad350994d660967a8efb233fe0416e4639146c089643407ce6/packaging-24.1-py3-none-any.whl",
+            "size": 53985,
+            "packagetype": "bdist_wheel",
+            "name": "packaging",
+            "version": "24.1",
+            "sha256": "5b8f2217dbdbd2f7f384c41c628544e6d52f2d0f53c6d0c3ea61aa5d1d7ff124",
+            "pypi_metadata_file": "pypi/packaging-24.1.json",
+            "pypi_metadata_sha256": "a0b614135d5337ded43e29f886b160a8b9dee75e97a4ac68efdc1c7d3f8db25d",
+            "requires_python": ">=3.8",
+            "requires_dist": []
+          },
+          {
+            "filename": "setuptools-70.1.0-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/55/b3/b3a3415d2debd837106ed417f8681d8af63037fed367fa1b85dbfef081f1/setuptools-70.1.0-py3-none-any.whl",
+            "size": 882588,
+            "packagetype": "bdist_wheel",
+            "name": "setuptools",
+            "version": "70.1.0",
+            "sha256": "d9b8b771455a97c8a9f3ab3448ebe0b29b5e105f1228bba41028be116985a267",
+            "pypi_metadata_file": "pypi/setuptools-70.1.0.json",
+            "pypi_metadata_sha256": "a36daf6e617c44e2b93d55532fe9a5db32cfbe6eadbf28eb9bb8eb18b224776a",
+            "requires_python": ">=3.8",
+            "requires_dist": [
+              "sphinx>=3.5; extra == \"docs\"",
+              "jaraco.packaging>=9.3; extra == \"docs\"",
+              "rst.linker>=1.9; extra == \"docs\"",
+              "furo; extra == \"docs\"",
+              "sphinx-lint; extra == \"docs\"",
+              "jaraco.tidelift>=1.4; extra == \"docs\"",
+              "pygments-github-lexers==0.0.5; extra == \"docs\"",
+              "sphinx-favicon; extra == \"docs\"",
+              "sphinx-inline-tabs; extra == \"docs\"",
+              "sphinx-reredirects; extra == \"docs\"",
+              "sphinxcontrib-towncrier; extra == \"docs\"",
+              "sphinx-notfound-page<2,>=1; extra == \"docs\"",
+              "pyproject-hooks!=1.1; extra == \"docs\"",
+              "pytest!=8.1.1,>=6; extra == \"testing\"",
+              "pytest-checkdocs>=2.4; extra == \"testing\"",
+              "pytest-mypy; extra == \"testing\"",
+              "pytest-enabler>=2.2; extra == \"testing\"",
+              "virtualenv>=13.0.0; extra == \"testing\"",
+              "wheel; extra == \"testing\"",
+              "pip>=19.1; extra == \"testing\"",
+              "packaging>=23.2; extra == \"testing\"",
+              "jaraco.envs>=2.2; extra == \"testing\"",
+              "pytest-xdist>=3; extra == \"testing\"",
+              "jaraco.path>=3.2.0; extra == \"testing\"",
+              "build[virtualenv]>=1.0.3; extra == \"testing\"",
+              "filelock>=3.4.0; extra == \"testing\"",
+              "ini2toml[lite]>=0.14; extra == \"testing\"",
+              "tomli-w>=1.0.0; extra == \"testing\"",
+              "pytest-timeout; extra == \"testing\"",
+              "pytest-home>=0.5; extra == \"testing\"",
+              "mypy==1.10.0; extra == \"testing\"",
+              "tomli; extra == \"testing\"",
+              "importlib-metadata; extra == \"testing\"",
+              "pytest-subprocess; extra == \"testing\"",
+              "pyproject-hooks!=1.1; extra == \"testing\"",
+              "jaraco.test; extra == \"testing\"",
+              "pytest-cov; platform_python_implementation != \"PyPy\" and extra == \"testing\"",
+              "jaraco.develop>=7.21; (python_version >= \"3.9\" and sys_platform != \"cygwin\") and extra == \"testing\"",
+              "pytest-ruff>=0.3.2; sys_platform != \"cygwin\" and extra == \"testing\"",
+              "pytest-perf; sys_platform != \"cygwin\" and extra == \"testing\""
+            ]
+          },
+          {
+            "filename": "wheel-0.43.0-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/7d/cd/d7460c9a869b16c3dd4e1e403cce337df165368c71d6af229a74699622ce/wheel-0.43.0-py3-none-any.whl",
+            "size": 65775,
+            "packagetype": "bdist_wheel",
+            "name": "wheel",
+            "version": "0.43.0",
+            "sha256": "55c570405f142630c6b9f72fe09d9b67cf1477fcf543ae5b8dcb1f5b7377da81",
+            "pypi_metadata_file": "pypi/wheel-0.43.0.json",
+            "pypi_metadata_sha256": "384b6fbec09e017f12c6351d1f23497b9d95d3ca92f0db59859d9f3481f299c5",
+            "requires_python": ">=3.8",
+            "requires_dist": [
+              "pytest >= 6.0.0 ; extra == \"test\"",
+              "setuptools >= 65 ; extra == \"test\""
+            ]
+          },
+          {
+            "filename": "cmake-3.26.4-py2.py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/0d/41/85549e9645097cddc7279886eafeafc7462215f309133ea2eae4941f9c35/cmake-3.26.4-py2.py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+            "size": 23346463,
+            "packagetype": "bdist_wheel",
+            "name": "cmake",
+            "version": "3.26.4",
+            "sha256": "3175442985558d5415b97f264a6a1bb0af5ecfe10e3f7510257b1ea66bd33848",
+            "pypi_metadata_file": "pypi/cmake-3.26.4.json",
+            "pypi_metadata_sha256": "890a14348a1e73bfd026c51958e1a9df5884825c3f250e71644ba549e9100b9b",
+            "requires_python": "",
+            "requires_dist": [
+              "coverage (>=4.2) ; extra == 'test'",
+              "flake8 (>=3.0.4) ; extra == 'test'",
+              "path.py (>=11.5.0) ; extra == 'test'",
+              "pytest (>=3.0.3) ; extra == 'test'",
+              "pytest-cov (>=2.4.0) ; extra == 'test'",
+              "pytest-runner (>=2.9) ; extra == 'test'",
+              "pytest-virtualenv (>=1.7.0) ; extra == 'test'",
+              "scikit-build (>=0.10.0) ; extra == 'test'",
+              "setuptools (>=28.0.0) ; extra == 'test'",
+              "virtualenv (>=15.0.3) ; extra == 'test'",
+              "wheel ; extra == 'test'"
+            ]
+          },
+          {
+            "filename": "ninja-1.11.1.1-py2.py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+            "url": "https://files.pythonhosted.org/packages/01/c8/96424839fd127b4492229acf50763ed9940d864ca35d17d151934aef1f6f/ninja-1.11.1.1-py2.py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+            "size": 155643,
+            "packagetype": "bdist_wheel",
+            "name": "ninja",
+            "version": "1.11.1.1",
+            "sha256": "73b93c14046447c7c5cc892433d4fae65d6364bec6685411cb97a8bcf815f93a",
+            "pypi_metadata_file": "pypi/ninja-1.11.1.1.json",
+            "pypi_metadata_sha256": "ab16654235813140151951071eea423ee878436312126c07c9a249a438fb7621",
+            "requires_python": "",
+            "requires_dist": [
+              "codecov >=2.0.5 ; extra == 'test'",
+              "coverage >=4.2 ; extra == 'test'",
+              "flake8 >=3.0.4 ; extra == 'test'",
+              "pytest >=4.5.0 ; extra == 'test'",
+              "pytest-cov >=2.7.1 ; extra == 'test'",
+              "pytest-runner >=5.1 ; extra == 'test'",
+              "pytest-virtualenv >=1.7.0 ; extra == 'test'",
+              "virtualenv >=15.0.3 ; extra == 'test'"
+            ]
+          },
+          {
+            "filename": "pybind11-2.11.1-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/06/55/9f73c32dda93fa4f539fafa268f9504e83c489f460c380371d94296126cd/pybind11-2.11.1-py3-none-any.whl",
+            "size": 227746,
+            "packagetype": "bdist_wheel",
+            "name": "pybind11",
+            "version": "2.11.1",
+            "sha256": "33cdd02a6453380dd71cc70357ce388ad1ee8d32bd0e38fc22b273d050aa29b3",
+            "pypi_metadata_file": "pypi/pybind11-2.11.1.json",
+            "pypi_metadata_sha256": "ac5dc3c4612efa1dfe0aedd738cc6deee2fced0c4b2c954e4140cc0757f203f5",
+            "requires_python": ">=3.6",
+            "requires_dist": [
+              "pybind11-global (==2.11.1) ; extra == 'global'"
+            ]
+          },
+          {
+            "filename": "pytest_runner-6.0.1-py3-none-any.whl",
+            "url": "https://files.pythonhosted.org/packages/23/2b/73982c02d28538b6a1182c0a2faf764ca6a76a6dbe89a69288184051a67b/pytest_runner-6.0.1-py3-none-any.whl",
+            "size": 7186,
+            "packagetype": "bdist_wheel",
+            "name": "pytest-runner",
+            "version": "6.0.1",
+            "sha256": "ea326ed6f6613992746062362efab70212089a4209c08d67177b3df1c52cd9f2",
+            "pypi_metadata_file": "pypi/pytest-runner-6.0.1.json",
+            "pypi_metadata_sha256": "b3295de38579edf8c72be04a3303aa487f74e334b4e928c846e2b00edde368b8",
+            "requires_python": ">=3.7",
+            "requires_dist": [
+              "sphinx ; extra == 'docs'",
+              "jaraco.packaging >=9 ; extra == 'docs'",
+              "rst.linker >=1.9 ; extra == 'docs'",
+              "jaraco.tidelift >=1.4 ; extra == 'docs'",
+              "pytest >=6 ; extra == 'testing'",
+              "pytest-checkdocs >=2.4 ; extra == 'testing'",
+              "pytest-flake8 ; extra == 'testing'",
+              "pytest-cov ; extra == 'testing'",
+              "pytest-enabler >=1.0.1 ; extra == 'testing'",
+              "pytest-virtualenv ; extra == 'testing'",
+              "types-setuptools ; extra == 'testing'",
+              "pytest-black >=0.3.7 ; (platform_python_implementation != \"PyPy\") and extra == 'testing'",
+              "pytest-mypy >=0.9.1 ; (platform_python_implementation != \"PyPy\") and extra == 'testing'"
+            ]
+          }
+        ],
+        "dependency_checks": [
+          {
+            "parent": "torch",
+            "requirement": "filelock",
+            "selected": "3.15.4",
+            "satisfied": true
+          },
+          {
+            "parent": "torch",
+            "requirement": "typing-extensions >=4.8.0",
+            "selected": "4.12.2",
+            "satisfied": true
+          },
+          {
+            "parent": "torch",
+            "requirement": "sympy",
+            "selected": "1.12",
+            "satisfied": true
+          },
+          {
+            "parent": "torch",
+            "requirement": "networkx",
+            "selected": "3.3",
+            "satisfied": true
+          },
+          {
+            "parent": "torch",
+            "requirement": "jinja2",
+            "selected": "3.1.4",
+            "satisfied": true
+          },
+          {
+            "parent": "torch",
+            "requirement": "fsspec",
+            "selected": "2024.6.1",
+            "satisfied": true
+          },
+          {
+            "parent": "onnx",
+            "requirement": "numpy>=1.20",
+            "selected": "1.26.4",
+            "satisfied": true
+          },
+          {
+            "parent": "onnx",
+            "requirement": "protobuf>=3.20.2",
+            "selected": "3.20.3",
+            "satisfied": true
+          },
+          {
+            "parent": "onnxruntime",
+            "requirement": "coloredlogs",
+            "selected": "15.0.1",
+            "satisfied": true
+          },
+          {
+            "parent": "onnxruntime",
+            "requirement": "flatbuffers",
+            "selected": "23.5.26",
+            "satisfied": true
+          },
+          {
+            "parent": "onnxruntime",
+            "requirement": "numpy >=1.21.6",
+            "selected": "1.26.4",
+            "satisfied": true
+          },
+          {
+            "parent": "onnxruntime",
+            "requirement": "packaging",
+            "selected": "24.1",
+            "satisfied": true
+          },
+          {
+            "parent": "onnxruntime",
+            "requirement": "protobuf",
+            "selected": "3.20.3",
+            "satisfied": true
+          },
+          {
+            "parent": "onnxruntime",
+            "requirement": "sympy",
+            "selected": "1.12",
+            "satisfied": true
+          },
+          {
+            "parent": "onnxoptimizer",
+            "requirement": "onnx",
+            "selected": "1.16.1",
+            "satisfied": true
+          },
+          {
+            "parent": "ruamel.yaml",
+            "requirement": "ruamel.yaml.clib >=0.2.7 ; platform_python_implementation==\"CPython\" and python_version<\"3.13\"",
+            "selected": "0.2.8",
+            "satisfied": true
+          },
+          {
+            "parent": "scipy",
+            "requirement": "numpy<1.28.0,>=1.21.6",
+            "selected": "1.26.4",
+            "satisfied": true
+          },
+          {
+            "parent": "opencv-python",
+            "requirement": "numpy>=1.21.2; python_version >= \"3.10\"",
+            "selected": "1.26.4",
+            "satisfied": true
+          },
+          {
+            "parent": "opencv-python",
+            "requirement": "numpy>=1.23.5; python_version >= \"3.11\"",
+            "selected": "1.26.4",
+            "satisfied": true
+          },
+          {
+            "parent": "opencv-python",
+            "requirement": "numpy>=1.19.3; python_version >= \"3.6\" and platform_system == \"Linux\" and platform_machine == \"aarch64\"",
+            "selected": "1.26.4",
+            "satisfied": true
+          },
+          {
+            "parent": "opencv-python",
+            "requirement": "numpy>=1.17.0; python_version >= \"3.7\"",
+            "selected": "1.26.4",
+            "satisfied": true
+          },
+          {
+            "parent": "opencv-python",
+            "requirement": "numpy>=1.17.3; python_version >= \"3.8\"",
+            "selected": "1.26.4",
+            "satisfied": true
+          },
+          {
+            "parent": "opencv-python",
+            "requirement": "numpy>=1.19.3; python_version >= \"3.9\"",
+            "selected": "1.26.4",
+            "satisfied": true
+          },
+          {
+            "parent": "fast-histogram",
+            "requirement": "numpy",
+            "selected": "1.26.4",
+            "satisfied": true
+          },
+          {
+            "parent": "sympy",
+            "requirement": "mpmath (>=0.19)",
+            "selected": "1.3.0",
+            "satisfied": true
+          },
+          {
+            "parent": "jinja2",
+            "requirement": "MarkupSafe>=2.0",
+            "selected": "2.1.5",
+            "satisfied": true
+          },
+          {
+            "parent": "coloredlogs",
+            "requirement": "humanfriendly (>=9.1)",
+            "selected": "10.0",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "protobuf==3.20.3",
+            "selected": "3.20.3",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "psutil>=5.9.0",
+            "selected": "7.0.0",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "ruamel.yaml>=0.17.21",
+            "selected": "0.18.6",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "scipy>=1.9.3",
+            "selected": "1.11.4",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "tqdm>=4.64.1",
+            "selected": "4.66.4",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "opencv-python>=4.5.5.64",
+            "selected": "4.10.0.84",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "fast-histogram>=0.11",
+            "selected": "0.14",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "Pillow>=10.0.1",
+            "selected": "10.4.0",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "numpy<=1.26.4",
+            "selected": "1.26.4",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "onnx==1.16.1",
+            "selected": "1.16.1",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "onnxoptimizer==0.3.8",
+            "selected": "0.3.8",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "onnxruntime>=1.16.0",
+            "selected": "1.16.0",
+            "satisfied": true
+          },
+          {
+            "parent": "rknn-toolkit2",
+            "requirement": "torch<=2.2.0,>=1.13.1",
+            "selected": "2.2.0",
+            "satisfied": true
+          }
+        ],
+        "excluded_marker_dependencies": [
+          {
+            "parent": "torch",
+            "requirement": "nvidia-cuda-nvrtc-cu12 ==12.1.105 ; platform_system == \"Linux\" and platform_machine == \"x86_64\""
+          },
+          {
+            "parent": "torch",
+            "requirement": "nvidia-cuda-runtime-cu12 ==12.1.105 ; platform_system == \"Linux\" and platform_machine == \"x86_64\""
+          },
+          {
+            "parent": "torch",
+            "requirement": "nvidia-cuda-cupti-cu12 ==12.1.105 ; platform_system == \"Linux\" and platform_machine == \"x86_64\""
+          },
+          {
+            "parent": "torch",
+            "requirement": "nvidia-cudnn-cu12 ==8.9.2.26 ; platform_system == \"Linux\" and platform_machine == \"x86_64\""
+          },
+          {
+            "parent": "torch",
+            "requirement": "nvidia-cublas-cu12 ==12.1.3.1 ; platform_system == \"Linux\" and platform_machine == \"x86_64\""
+          },
+          {
+            "parent": "torch",
+            "requirement": "nvidia-cufft-cu12 ==11.0.2.54 ; platform_system == \"Linux\" and platform_machine == \"x86_64\""
+          },
+          {
+            "parent": "torch",
+            "requirement": "nvidia-curand-cu12 ==10.3.2.106 ; platform_system == \"Linux\" and platform_machine == \"x86_64\""
+          },
+          {
+            "parent": "torch",
+            "requirement": "nvidia-cusolver-cu12 ==11.4.5.107 ; platform_system == \"Linux\" and platform_machine == \"x86_64\""
+          },
+          {
+            "parent": "torch",
+            "requirement": "nvidia-cusparse-cu12 ==12.1.0.106 ; platform_system == \"Linux\" and platform_machine == \"x86_64\""
+          },
+          {
+            "parent": "torch",
+            "requirement": "nvidia-nccl-cu12 ==2.19.3 ; platform_system == \"Linux\" and platform_machine == \"x86_64\""
+          },
+          {
+            "parent": "torch",
+            "requirement": "nvidia-nvtx-cu12 ==12.1.105 ; platform_system == \"Linux\" and platform_machine == \"x86_64\""
+          },
+          {
+            "parent": "torch",
+            "requirement": "triton ==2.2.0 ; platform_system == \"Linux\" and platform_machine == \"x86_64\""
+          },
+          {
+            "parent": "torch",
+            "requirement": "opt-einsum >=3.3 ; extra == 'opt-einsum'"
+          },
+          {
+            "parent": "torch",
+            "requirement": "optree >=0.9.1 ; extra == 'optree'"
+          },
+          {
+            "parent": "onnx",
+            "requirement": "google-re2; extra == \"reference\""
+          },
+          {
+            "parent": "onnx",
+            "requirement": "Pillow; extra == \"reference\""
+          },
+          {
+            "parent": "onnxoptimizer",
+            "requirement": "mypy (==0.600) ; extra == 'mypy'"
+          },
+          {
+            "parent": "psutil",
+            "requirement": "pytest; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "pytest-xdist; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "setuptools; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "abi3audit; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "black==24.10.0; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "check-manifest; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "coverage; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "packaging; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "pylint; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "pyperf; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "pypinfo; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "pytest-cov; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "requests; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "rstcheck; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "ruff; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "sphinx; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "sphinx_rtd_theme; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "toml-sort; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "twine; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "virtualenv; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "vulture; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "wheel; extra == \"dev\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "pytest; extra == \"test\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "pytest-xdist; extra == \"test\""
+          },
+          {
+            "parent": "psutil",
+            "requirement": "setuptools; extra == \"test\""
+          },
+          {
+            "parent": "ruamel.yaml",
+            "requirement": "ryd ; extra == 'docs'"
+          },
+          {
+            "parent": "ruamel.yaml",
+            "requirement": "mercurial >5.7 ; extra == 'docs'"
+          },
+          {
+            "parent": "ruamel.yaml",
+            "requirement": "ruamel.yaml.jinja2 >=0.2 ; extra == 'jinja2'"
+          },
+          {
+            "parent": "scipy",
+            "requirement": "pytest; extra == \"test\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "pytest-cov; extra == \"test\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "pytest-timeout; extra == \"test\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "pytest-xdist; extra == \"test\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "asv; extra == \"test\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "mpmath; extra == \"test\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "gmpy2; extra == \"test\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "threadpoolctl; extra == \"test\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "scikit-umfpack; extra == \"test\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "pooch; extra == \"test\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "sphinx!=4.1.0; extra == \"doc\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "pydata-sphinx-theme==0.9.0; extra == \"doc\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "sphinx-design>=0.2.0; extra == \"doc\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "matplotlib>2; extra == \"doc\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "numpydoc; extra == \"doc\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "jupytext; extra == \"doc\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "myst-nb; extra == \"doc\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "pooch; extra == \"doc\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "mypy; extra == \"dev\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "typing_extensions; extra == \"dev\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "types-psutil; extra == \"dev\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "pycodestyle; extra == \"dev\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "ruff; extra == \"dev\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "cython-lint>=0.12.2; extra == \"dev\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "rich-click; extra == \"dev\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "click; extra == \"dev\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "doit>=0.36.0; extra == \"dev\""
+          },
+          {
+            "parent": "scipy",
+            "requirement": "pydevtool; extra == \"dev\""
+          },
+          {
+            "parent": "tqdm",
+            "requirement": "colorama; platform_system == \"Windows\""
+          },
+          {
+            "parent": "tqdm",
+            "requirement": "pytest>=6; extra == \"dev\""
+          },
+          {
+            "parent": "tqdm",
+            "requirement": "pytest-cov; extra == \"dev\""
+          },
+          {
+            "parent": "tqdm",
+            "requirement": "pytest-timeout; extra == \"dev\""
+          },
+          {
+            "parent": "tqdm",
+            "requirement": "pytest-xdist; extra == \"dev\""
+          },
+          {
+            "parent": "tqdm",
+            "requirement": "ipywidgets>=6; extra == \"notebook\""
+          },
+          {
+            "parent": "tqdm",
+            "requirement": "slack-sdk; extra == \"slack\""
+          },
+          {
+            "parent": "tqdm",
+            "requirement": "requests; extra == \"telegram\""
+          },
+          {
+            "parent": "opencv-python",
+            "requirement": "numpy>=1.13.3; python_version < \"3.7\""
+          },
+          {
+            "parent": "opencv-python",
+            "requirement": "numpy>=1.21.0; python_version <= \"3.9\" and platform_system == \"Darwin\" and platform_machine == \"arm64\""
+          },
+          {
+            "parent": "opencv-python",
+            "requirement": "numpy>=1.21.4; python_version >= \"3.10\" and platform_system == \"Darwin\""
+          },
+          {
+            "parent": "opencv-python",
+            "requirement": "numpy>=1.26.0; python_version >= \"3.12\""
+          },
+          {
+            "parent": "fast-histogram",
+            "requirement": "pytest; extra == \"test\""
+          },
+          {
+            "parent": "fast-histogram",
+            "requirement": "hypothesis[numpy]; extra == \"test\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "furo; extra == \"docs\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "olefile; extra == \"docs\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "sphinx>=7.3; extra == \"docs\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "sphinx-copybutton; extra == \"docs\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "sphinx-inline-tabs; extra == \"docs\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "sphinxext-opengraph; extra == \"docs\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "olefile; extra == \"fpx\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "olefile; extra == \"mic\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "check-manifest; extra == \"tests\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "coverage; extra == \"tests\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "defusedxml; extra == \"tests\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "markdown2; extra == \"tests\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "olefile; extra == \"tests\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "packaging; extra == \"tests\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "pyroma; extra == \"tests\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "pytest; extra == \"tests\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "pytest-cov; extra == \"tests\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "pytest-timeout; extra == \"tests\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "typing-extensions; python_version < \"3.10\" and extra == \"typing\""
+          },
+          {
+            "parent": "Pillow",
+            "requirement": "defusedxml; extra == \"xmp\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "furo>=2023.9.10; extra == \"docs\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "sphinx-autodoc-typehints!=1.23.4,>=1.25.2; extra == \"docs\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "sphinx>=7.2.6; extra == \"docs\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "covdefaults>=2.3; extra == \"testing\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "coverage>=7.3.2; extra == \"testing\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "diff-cover>=8.0.1; extra == \"testing\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "pytest-asyncio>=0.21; extra == \"testing\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "pytest-cov>=4.1; extra == \"testing\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "pytest-mock>=3.12; extra == \"testing\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "pytest-timeout>=2.2; extra == \"testing\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "pytest>=7.4.3; extra == \"testing\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "virtualenv>=20.26.2; extra == \"testing\""
+          },
+          {
+            "parent": "filelock",
+            "requirement": "typing-extensions>=4.8; python_version < \"3.11\" and extra == \"typing\""
+          },
+          {
+            "parent": "mpmath",
+            "requirement": "pytest (>=4.6) ; extra == 'develop'"
+          },
+          {
+            "parent": "mpmath",
+            "requirement": "pycodestyle ; extra == 'develop'"
+          },
+          {
+            "parent": "mpmath",
+            "requirement": "pytest-cov ; extra == 'develop'"
+          },
+          {
+            "parent": "mpmath",
+            "requirement": "codecov ; extra == 'develop'"
+          },
+          {
+            "parent": "mpmath",
+            "requirement": "wheel ; extra == 'develop'"
+          },
+          {
+            "parent": "mpmath",
+            "requirement": "sphinx ; extra == 'docs'"
+          },
+          {
+            "parent": "mpmath",
+            "requirement": "gmpy2 (>=2.1.0a4) ; (platform_python_implementation != \"PyPy\") and extra == 'gmpy'"
+          },
+          {
+            "parent": "mpmath",
+            "requirement": "pytest (>=4.6) ; extra == 'tests'"
+          },
+          {
+            "parent": "networkx",
+            "requirement": "numpy>=1.23; extra == \"default\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "scipy!=1.11.0,!=1.11.1,>=1.9; extra == \"default\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "matplotlib>=3.6; extra == \"default\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "pandas>=1.4; extra == \"default\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "changelist==0.5; extra == \"developer\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "pre-commit>=3.2; extra == \"developer\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "mypy>=1.1; extra == \"developer\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "rtoml; extra == \"developer\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "sphinx>=7; extra == \"doc\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "pydata-sphinx-theme>=0.14; extra == \"doc\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "sphinx-gallery>=0.14; extra == \"doc\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "numpydoc>=1.7; extra == \"doc\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "pillow>=9.4; extra == \"doc\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "texext>=0.6.7; extra == \"doc\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "myst-nb>=1.0; extra == \"doc\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "lxml>=4.6; extra == \"extra\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "pygraphviz>=1.12; extra == \"extra\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "pydot>=2.0; extra == \"extra\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "sympy>=1.10; extra == \"extra\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "pytest>=7.2; extra == \"test\""
+          },
+          {
+            "parent": "networkx",
+            "requirement": "pytest-cov>=4.0; extra == \"test\""
+          },
+          {
+            "parent": "jinja2",
+            "requirement": "Babel>=2.7; extra == \"i18n\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "adlfs; extra == \"abfs\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "adlfs; extra == \"adl\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pyarrow>=1; extra == \"arrow\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "dask; extra == \"dask\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "distributed; extra == \"dask\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pre-commit; extra == \"dev\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "ruff; extra == \"dev\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "numpydoc; extra == \"doc\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "sphinx; extra == \"doc\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "sphinx-design; extra == \"doc\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "sphinx-rtd-theme; extra == \"doc\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "yarl; extra == \"doc\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "dropbox; extra == \"dropbox\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "dropboxdrivefs; extra == \"dropbox\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "requests; extra == \"dropbox\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "adlfs; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "aiohttp!=4.0.0a0,!=4.0.0a1; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "dask; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "distributed; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "dropbox; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "dropboxdrivefs; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "fusepy; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "gcsfs; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "libarchive-c; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "ocifs; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "panel; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "paramiko; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pyarrow>=1; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pygit2; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "requests; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "s3fs; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "smbprotocol; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "tqdm; extra == \"full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "fusepy; extra == \"fuse\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "gcsfs; extra == \"gcs\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pygit2; extra == \"git\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "requests; extra == \"github\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "gcsfs; extra == \"gs\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "panel; extra == \"gui\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pyarrow>=1; extra == \"hdfs\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "aiohttp!=4.0.0a0,!=4.0.0a1; extra == \"http\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "libarchive-c; extra == \"libarchive\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "ocifs; extra == \"oci\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "s3fs; extra == \"s3\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "paramiko; extra == \"sftp\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "smbprotocol; extra == \"smb\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "paramiko; extra == \"ssh\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "aiohttp!=4.0.0a0,!=4.0.0a1; extra == \"test\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "numpy; extra == \"test\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest; extra == \"test\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-asyncio!=0.22.0; extra == \"test\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-benchmark; extra == \"test\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-cov; extra == \"test\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-mock; extra == \"test\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-recording; extra == \"test\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-rerunfailures; extra == \"test\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "requests; extra == \"test\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "aiobotocore<3.0.0,>=2.5.4; extra == \"test-downstream\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "dask-expr; extra == \"test-downstream\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "dask[dataframe,test]; extra == \"test-downstream\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "moto[server]<5,>4; extra == \"test-downstream\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-timeout; extra == \"test-downstream\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "xarray; extra == \"test-downstream\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "adlfs; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "aiohttp!=4.0.0a0,!=4.0.0a1; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "cloudpickle; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "dask; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "distributed; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "dropbox; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "dropboxdrivefs; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "fastparquet; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "fusepy; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "gcsfs; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "jinja2; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "kerchunk; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "libarchive-c; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "lz4; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "notebook; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "numpy; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "ocifs; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pandas; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "panel; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "paramiko; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pyarrow; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pyarrow>=1; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pyftpdlib; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pygit2; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-asyncio!=0.22.0; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-benchmark; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-cov; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-mock; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-recording; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "pytest-rerunfailures; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "python-snappy; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "requests; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "smbprotocol; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "tqdm; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "urllib3; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "zarr; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "zstandard; extra == \"test-full\""
+          },
+          {
+            "parent": "fsspec",
+            "requirement": "tqdm; extra == \"tqdm\""
+          },
+          {
+            "parent": "coloredlogs",
+            "requirement": "capturer (>=2.4) ; extra == 'cron'"
+          },
+          {
+            "parent": "humanfriendly",
+            "requirement": "monotonic ; python_version == \"2.7\""
+          },
+          {
+            "parent": "humanfriendly",
+            "requirement": "pyreadline ; sys_platform == \"win32\" and python_version<\"3.8\""
+          },
+          {
+            "parent": "humanfriendly",
+            "requirement": "pyreadline3 ; sys_platform == \"win32\" and python_version>=\"3.8\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "sphinx>=3.5; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "jaraco.packaging>=9.3; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "rst.linker>=1.9; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "furo; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "sphinx-lint; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "jaraco.tidelift>=1.4; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pygments-github-lexers==0.0.5; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "sphinx-favicon; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "sphinx-inline-tabs; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "sphinx-reredirects; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "sphinxcontrib-towncrier; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "sphinx-notfound-page<2,>=1; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pyproject-hooks!=1.1; extra == \"docs\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pytest!=8.1.1,>=6; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pytest-checkdocs>=2.4; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pytest-mypy; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pytest-enabler>=2.2; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "virtualenv>=13.0.0; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "wheel; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pip>=19.1; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "packaging>=23.2; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "jaraco.envs>=2.2; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pytest-xdist>=3; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "jaraco.path>=3.2.0; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "build[virtualenv]>=1.0.3; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "filelock>=3.4.0; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "ini2toml[lite]>=0.14; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "tomli-w>=1.0.0; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pytest-timeout; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pytest-home>=0.5; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "mypy==1.10.0; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "tomli; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "importlib-metadata; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pytest-subprocess; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pyproject-hooks!=1.1; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "jaraco.test; extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pytest-cov; platform_python_implementation != \"PyPy\" and extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "jaraco.develop>=7.21; (python_version >= \"3.9\" and sys_platform != \"cygwin\") and extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pytest-ruff>=0.3.2; sys_platform != \"cygwin\" and extra == \"testing\""
+          },
+          {
+            "parent": "setuptools",
+            "requirement": "pytest-perf; sys_platform != \"cygwin\" and extra == \"testing\""
+          },
+          {
+            "parent": "wheel",
+            "requirement": "pytest >= 6.0.0 ; extra == \"test\""
+          },
+          {
+            "parent": "wheel",
+            "requirement": "setuptools >= 65 ; extra == \"test\""
+          },
+          {
+            "parent": "cmake",
+            "requirement": "coverage (>=4.2) ; extra == 'test'"
+          },
+          {
+            "parent": "cmake",
+            "requirement": "flake8 (>=3.0.4) ; extra == 'test'"
+          },
+          {
+            "parent": "cmake",
+            "requirement": "path.py (>=11.5.0) ; extra == 'test'"
+          },
+          {
+            "parent": "cmake",
+            "requirement": "pytest (>=3.0.3) ; extra == 'test'"
+          },
+          {
+            "parent": "cmake",
+            "requirement": "pytest-cov (>=2.4.0) ; extra == 'test'"
+          },
+          {
+            "parent": "cmake",
+            "requirement": "pytest-runner (>=2.9) ; extra == 'test'"
+          },
+          {
+            "parent": "cmake",
+            "requirement": "pytest-virtualenv (>=1.7.0) ; extra == 'test'"
+          },
+          {
+            "parent": "cmake",
+            "requirement": "scikit-build (>=0.10.0) ; extra == 'test'"
+          },
+          {
+            "parent": "cmake",
+            "requirement": "setuptools (>=28.0.0) ; extra == 'test'"
+          },
+          {
+            "parent": "cmake",
+            "requirement": "virtualenv (>=15.0.3) ; extra == 'test'"
+          },
+          {
+            "parent": "cmake",
+            "requirement": "wheel ; extra == 'test'"
+          },
+          {
+            "parent": "ninja",
+            "requirement": "codecov >=2.0.5 ; extra == 'test'"
+          },
+          {
+            "parent": "ninja",
+            "requirement": "coverage >=4.2 ; extra == 'test'"
+          },
+          {
+            "parent": "ninja",
+            "requirement": "flake8 >=3.0.4 ; extra == 'test'"
+          },
+          {
+            "parent": "ninja",
+            "requirement": "pytest >=4.5.0 ; extra == 'test'"
+          },
+          {
+            "parent": "ninja",
+            "requirement": "pytest-cov >=2.7.1 ; extra == 'test'"
+          },
+          {
+            "parent": "ninja",
+            "requirement": "pytest-runner >=5.1 ; extra == 'test'"
+          },
+          {
+            "parent": "ninja",
+            "requirement": "pytest-virtualenv >=1.7.0 ; extra == 'test'"
+          },
+          {
+            "parent": "ninja",
+            "requirement": "virtualenv >=15.0.3 ; extra == 'test'"
+          },
+          {
+            "parent": "pybind11",
+            "requirement": "pybind11-global (==2.11.1) ; extra == 'global'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "sphinx ; extra == 'docs'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "jaraco.packaging >=9 ; extra == 'docs'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "rst.linker >=1.9 ; extra == 'docs'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "jaraco.tidelift >=1.4 ; extra == 'docs'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "pytest >=6 ; extra == 'testing'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "pytest-checkdocs >=2.4 ; extra == 'testing'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "pytest-flake8 ; extra == 'testing'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "pytest-cov ; extra == 'testing'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "pytest-enabler >=1.0.1 ; extra == 'testing'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "pytest-virtualenv ; extra == 'testing'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "types-setuptools ; extra == 'testing'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "pytest-black >=0.3.7 ; (platform_python_implementation != \"PyPy\") and extra == 'testing'"
+          },
+          {
+            "parent": "pytest-runner",
+            "requirement": "pytest-mypy >=0.9.1 ; (platform_python_implementation != \"PyPy\") and extra == 'testing'"
+          }
+        ],
+        "native_build_required": [
+          "onnxoptimizer==0.3.8"
+        ],
+        "native_build_tools_python": [
+          "setuptools==70.1.0",
+          "wheel==0.43.0",
+          "cmake==3.26.4",
+          "ninja==1.11.1.1",
+          "pybind11==2.11.1",
+          "pytest-runner==6.0.1"
+        ],
+        "native_build_external": [
+          "isolated GCC/G++11 sysroot",
+          "matching Python 3.11 headers"
+        ],
+        "size_plan": {
+          "python_wheels_bytes": 235784172,
+          "toolkit_wheel_bytes": 37740634,
+          "optimizer_sdist_bytes": 18462997
+        }
+      }
+    },
+    "official_source_pins": {
+      "file": "encoder/official-source-pins.json",
+      "raw_sha256": "106b1dbe9423a5494d6db150971b372f1aa0bdabc9d9df833cafc33ef2e03f79",
+      "raw_bytes": 5183,
+      "private_host_paths_redacted": true,
+      "data": {
+        "repo": "airockchip/rknn-toolkit2",
+        "tree_sha": "59a913d172e7f5ff03c9076e2ec7b1b1288ffd08",
+        "files": [
+          {
+            "path": "doc/02_Rockchip_RKNPU_User_Guide_RKNN_SDK_V2.3.2_EN.pdf",
+            "bytes": 8214260,
+            "sha256": "557a8fffcdda139e0c81a73a7464d6dd0b2a7a7efd9166eec20ca64dd2f5c49c",
+            "git_blob": "2a30d5bbc98a80b6b129724120178eb9c1f8f828",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/doc/02_Rockchip_RKNPU_User_Guide_RKNN_SDK_V2.3.2_EN.pdf"
+          },
+          {
+            "path": "doc/03_Rockchip_RKNPU_API_Reference_RKNN_Toolkit2_V2.3.2_EN.pdf",
+            "bytes": 207642,
+            "sha256": "83227bc0f417e4ab4734dc3b3be4ca62b8ec1a1a95a18ac75274bb817dfc1e3d",
+            "git_blob": "3d7c4708d477fcba5d42ce07b9781fec53eb8b1a",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/doc/03_Rockchip_RKNPU_API_Reference_RKNN_Toolkit2_V2.3.2_EN.pdf"
+          },
+          {
+            "path": "rknn-toolkit2/examples/functions/multi_input/README.md",
+            "bytes": 1128,
+            "sha256": "a7b97500a6d4e2b015f3800e786f890d5611ea1f6e04cdae0383941b8bfce300",
+            "git_blob": "963ae18a32465ae8e7f47656003c956fdff8f4f2",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknn-toolkit2/examples/functions/multi_input/README.md"
+          },
+          {
+            "path": "rknn-toolkit2/examples/functions/multi_input/test.py",
+            "bytes": 2243,
+            "sha256": "04bd52581918cc00d387ae988276f8474856757d9cdad3e7d52faef7bed678f8",
+            "git_blob": "213f75915a1c85325ed1524d4be2351144762ad7",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknn-toolkit2/examples/functions/multi_input/test.py"
+          },
+          {
+            "path": "rknn-toolkit2/examples/functions/multi_input/dataset.txt",
+            "bytes": 58,
+            "sha256": "c06af0f950a3fb3b81812c1b7fdf1b92c9a920c42e2baf68bdf484e4f1a8f3cc",
+            "git_blob": "3c075bb8435f15ca6afbf215f05d27614bd21ddf",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknn-toolkit2/examples/functions/multi_input/dataset.txt"
+          },
+          {
+            "path": "rknn-toolkit2/examples/pytorch/resnet18_qat/README.md",
+            "bytes": 1148,
+            "sha256": "7821aa292f15f840b878dd790ac37888755a9ac81f936b37cf0eda23aa20da59",
+            "git_blob": "fd564cd129ac56952b9c950203af60ea2c783301",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknn-toolkit2/examples/pytorch/resnet18_qat/README.md"
+          },
+          {
+            "path": "rknn-toolkit2/examples/pytorch/resnet18_qat/test.py",
+            "bytes": 3083,
+            "sha256": "4ecf49304053d34f1f72c8dafd1c97580d5442669dcd5c46671bff298be6b1da",
+            "git_blob": "17e75e3ea9b8c1218c6574fe809318cadd950c00",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknn-toolkit2/examples/pytorch/resnet18_qat/test.py"
+          },
+          {
+            "path": "rknn-toolkit2/examples/pytorch/resnet18_qat/model_config.yml",
+            "bytes": 604,
+            "sha256": "414af2645051487fd089d0466a2dc3d8f49cd48819b42097ad9608fd2f7bea5b",
+            "git_blob": "a6899360e5b07071acc686baa8a7a65a7e231d12",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknn-toolkit2/examples/pytorch/resnet18_qat/model_config.yml"
+          },
+          {
+            "path": "doc/RKNNToolKit2_OP_Support-2.3.2.md",
+            "bytes": 41421,
+            "sha256": "7d23d45271de939e24aca966c5fd0445268e279019c54c8073a6663c589a743a",
+            "git_blob": "3da41c11c16edfb2e3675a7d6c310c5690f0e0c5",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/doc/RKNNToolKit2_OP_Support-2.3.2.md"
+          },
+          {
+            "path": "doc/05_RKNN_Compiler_Support_Operator_List_V2.3.2.pdf",
+            "bytes": 3574207,
+            "sha256": "9dc20436fcbedb24d2701f66627b6f9945d7b55d23c878f424dfcd309d53d23e",
+            "git_blob": "a4ebb60edfec9f0384eedf5993432658be5b383e",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/doc/05_RKNN_Compiler_Support_Operator_List_V2.3.2.pdf"
+          },
+          {
+            "path": "doc/02_Rockchip_RKNPU_User_Guide_RKNN_SDK_V2.3.2_CN.pdf",
+            "bytes": 10699767,
+            "sha256": "e9117abbe0ce2afe37f90f0543a22f7fc39693c100fc2fcbdd0835af09183184",
+            "git_blob": "e353519349ff6537b6d7e9eb0f0dcf5364c64348",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/doc/02_Rockchip_RKNPU_User_Guide_RKNN_SDK_V2.3.2_CN.pdf"
+          },
+          {
+            "path": "rknn-toolkit2/packages/arm64/arm64_requirements_cp311.txt",
+            "bytes": 349,
+            "sha256": "2d81816e14d05b29e8f00f1a3e8734a96e62cf8a5b2fdad45e8880d75af2d86d",
+            "git_blob": "ef67315d3d6dd43231b100ca138f5534786f2387",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknn-toolkit2/packages/arm64/arm64_requirements_cp311.txt"
+          }
+        ]
+      }
+    },
+    "sdist_static_inspection": {
+      "file": "encoder/onnxoptimizer-sdist-source-review.json",
+      "raw_sha256": "feee815a283923233e23b30404d8dea3baeb46f4d01df56d6ee87c8cfd9a414c",
+      "raw_bytes": 2519,
+      "private_host_paths_redacted": true,
+      "data": {
+        "archive": {
+          "file": "onnxoptimizer-0.3.8.tar.gz",
+          "bytes": 18462997,
+          "sha256": "158bf9fda2e33bfe8ba1484f295cf25447921822f840de90831f7007af1295d3",
+          "url": "https://files.pythonhosted.org/packages/a2/c2/8fcbecf89c52ca3beaccbed4aedb05eb9aa2bf232e18987942b3e1d3f227/onnxoptimizer-0.3.8.tar.gz"
+        },
+        "members": 12237,
+        "regular_unpacked_bytes": 70506090,
+        "selected_files": [
+          {
+            "member": "onnxoptimizer-0.3.8/setup.py",
+            "bytes": 11952,
+            "sha256": "d3d28bb0bd54d110c00ec97fe4f28a5b4e6126d6a7af8d0e88d255efc673d467"
+          },
+          {
+            "member": "onnxoptimizer-0.3.8/CMakeLists.txt",
+            "bytes": 7373,
+            "sha256": "13821ca9a928d7073ef32c4982a2a093e8c6991dcce148cb61c41dfc67c41363"
+          },
+          {
+            "member": "onnxoptimizer-0.3.8/MANIFEST.in",
+            "bytes": 212,
+            "sha256": "fa84d7cc05d211cbc2f8fa2e3058607a5d31234aebccc64f5510cf4f704a9c37"
+          },
+          {
+            "member": "onnxoptimizer-0.3.8/third_party/onnx/CMakeLists.txt",
+            "bytes": 24655,
+            "sha256": "ba4c700f97714e9faa11fe7a5bdbf731892cff66900475ef74310a0ce266ccb0"
+          },
+          {
+            "member": "onnxoptimizer-0.3.8/third_party/onnx/third_party/pybind11/CMakeLists.txt",
+            "bytes": 10999,
+            "sha256": "37ce809b13755f6d6c7843c0dbd40bc598947881000c2bc132ab0e828cb58610"
+          },
+          {
+            "member": "onnxoptimizer-0.3.8/third_party/protobuf/cmake/CMakeLists.txt",
+            "bytes": 12519,
+            "sha256": "87bb90cf8f5ea55b5c7a25d0653cde8b41e2990c49f5181d3e0943d51be71f5a"
+          },
+          {
+            "member": "onnxoptimizer-0.3.8/third_party/onnx/VERSION_NUMBER",
+            "bytes": 7,
+            "sha256": "b4a9545a385e9701482be56a0efee678d467d9c586ec476f2c5986cfaa24e96c"
+          },
+          {
+            "member": "onnxoptimizer-0.3.8/VERSION_NUMBER",
+            "bytes": 6,
+            "sha256": "ad5adcac95aff5c3ad7deea82369f78901765729dbc12933056cad1483e27f39"
+          }
+        ],
+        "subtree_counts": {
+          "third_party": 12146,
+          "onnx": 8828,
+          "pybind11": 263,
+          "protobuf": 3318,
+          "googletest": 379
+        },
+        "native_build_executed": false,
+        "build_contract": {
+          "cmake_minimum": "3.22",
+          "language": "C/C++17",
+          "python_headers_required": true,
+          "bundled_protobuf": true,
+          "bundled_protoc_source": true,
+          "bundled_onnx_source": true,
+          "bundled_pybind11_source": true,
+          "separate_git_submodule_fetch_required": false,
+          "external_system_protobuf_default": false,
+          "setup_requires": [
+            "pytest-runner"
+          ],
+          "MAX_JOBS_default": "all cores; explicitly cap to 2",
+          "build_executed": false
+        }
+      }
+    },
+    "PTQ_preparation_review": {
+      "file": "encoder/int8-feasibility-review.json",
+      "raw_sha256": "6d160aebe36a65e7b8da7ed3eadc844da6c846052dc4dcc47ebd6ba896d0be79",
+      "raw_bytes": 10386,
+      "private_host_paths_redacted": true,
+      "data": {
+        "schema": "v35_board_only_PTQ_preparation_review",
+        "status": "preparation_only_no_installation_or_PTQ",
+        "execution": {
+          "host_real_neural_inference": false,
+          "board_job": false,
+          "actual_SDK_import_or_build": false,
+          "optimizer_native_build": false,
+          "actual_ARM_toolchain_installation": false,
+          "INT8_runtime": false,
+          "production_changed": false
+        },
+        "official_sources": {
+          "repo": "airockchip/rknn-toolkit2",
+          "tree_sha": "59a913d172e7f5ff03c9076e2ec7b1b1288ffd08",
+          "source_pin_file": "official-source-pins.json",
+          "source_pin_sha256": "106b1dbe9423a5494d6db150971b372f1aa0bdabc9d9df833cafc33ef2e03f79"
+        },
+        "host_calibration_blocker": {
+          "standard_x86_build_do_quantization_true": "prohibited_by_no_host_neural_inference_constraint",
+          "evidence": "Guide 6.2.3 describes real activation-range calibration and API 2.4 requires dataset. Installed quantizer/session references point to CPU inference.",
+          "kind": "Documentation and static SDK identifiers; calibration and runtime tracing not performed.",
+          "SDK_identifiers": [
+            {
+              "file": "rknn.py",
+              "bytes": 21779,
+              "sha256": "63e4506fb851214e79f933f9de0d27dab04ecf93f6f46959c07c5787433fd05e",
+              "identifiers_found": [
+                "dataset"
+              ],
+              "executed": false
+            },
+            {
+              "file": "quantizer.cpython-311-x86_64-linux-gnu.so",
+              "bytes": 905832,
+              "sha256": "67aae1f770a7427b9256553e7a7f17b8c63cf7ef3822003fa13f1ca9823307ae",
+              "identifiers_found": [
+                "Quantizer.run",
+                "Quantizer._get_layer_range",
+                "Session",
+                "input_feed",
+                "dataset"
+              ],
+              "executed": false
+            },
+            {
+              "file": "session.cpython-311-x86_64-linux-gnu.so",
+              "bytes": 288104,
+              "sha256": "c0da2f015fa8c53df4360adda66869887feca83dff6239db20fa085e477c4237",
+              "identifiers_found": [
+                "Session.run",
+                "Session.sess_build",
+                "onnxruntime",
+                "InferenceSession",
+                "CPUExecutionProvider"
+              ],
+              "executed": false
+            },
+            {
+              "file": "rknn_base.cpython-311-x86_64-linux-gnu.so",
+              "bytes": 2318536,
+              "sha256": "6dc8b00671481962315115a0ab61a005d6ba6cb7c8597a328f8458c272744ff8",
+              "identifiers_found": [
+                "Quantizer",
+                "dataset"
+              ],
+              "executed": false
+            },
+            {
+              "file": "load_checker.cpython-311-x86_64-linux-gnu.so",
+              "bytes": 412096,
+              "sha256": "22d5eb9ff9752973ddc40a051936e322d30962e7ed02dbfd9c0f411ff23eaa8a",
+              "identifiers_found": [
+                "Session"
+              ],
+              "executed": false
+            }
+          ],
+          "constant_folding_boundary": "Guide 10.6 Session.run trace demonstrates constant-subgraph execution, not by itself a whole-network PTQ trace.",
+          "selected_route": "Native ARM64 Toolkit in new board venv; real calibration CPU inference stays on RK3588.",
+          "guards": [
+            "Linux",
+            "aarch64",
+            "device-tree rockchip,rk3588 or rockchip,rk3588s"
+          ]
+        },
+        "dependency_contract": {
+          "plan_file": "arm64-dependency-plan.json",
+          "plan_sha256": "a32e1a00c8bdbf74241de3de236cdaef050567b26b9d591a7f57c65ab247e2b4",
+          "official_requirements": {
+            "path": "rknn-toolkit2/packages/arm64/arm64_requirements_cp311.txt",
+            "bytes": 349,
+            "sha256": "2d81816e14d05b29e8f00f1a3e8734a96e62cf8a5b2fdad45e8880d75af2d86d",
+            "git_blob": "ef67315d3d6dd43231b100ca138f5534786f2387",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknn-toolkit2/packages/arm64/arm64_requirements_cp311.txt"
+          },
+          "official_Torch_range": ">=1.13.1,<=2.2.0",
+          "existing_Torch_2_3_1_supported_by_ARM_requirements": false,
+          "new_versions": {
+            "torch": "2.2.0",
+            "numpy": "1.26.4",
+            "onnx": "1.16.1",
+            "onnxruntime": "1.16.0",
+            "protobuf": "3.20.3",
+            "onnxoptimizer": "0.3.8",
+            "cmake": "3.26.4",
+            "ninja": "1.11.1.1",
+            "pybind11": "2.11.1"
+          },
+          "packages": 32,
+          "satisfied_dependency_checks": 40,
+          "minimum_selected_wheel_glibc": "2.24",
+          "system_site_packages": false,
+          "toolkit": {
+            "name": "rknn-toolkit2",
+            "version": "2.3.2",
+            "toolkit_commit": "c7d6ffcf",
+            "file": "rknn_toolkit2-2.3.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknn-toolkit2/packages/arm64/rknn_toolkit2-2.3.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+            "bytes": 37740634,
+            "git_blob_sha1": "0313b8181d121207f12c5a745427d817f18aeeee",
+            "full_archive_sha256": null,
+            "full_archive_sha256_note": "Not published in fetched official tree; root must compute after download and verify Git blob SHA1",
+            "metadata_sha256": "735a39fb104b21d941afdcbc8ff4b0cb16dab42f87e61eb7618c596e904229c6"
+          },
+          "wheel_packages_bytes": 235784172,
+          "download_policy": "No full host wheel pool downloaded; board installer uses one transient package at a time or explicit offline wheelhouse.",
+          "shared_library_availability_and_native_build": "pending board validation"
+        },
+        "native_optimizer": {
+          "source_review_file": "onnxoptimizer-sdist-source-review.json",
+          "source_review_sha256": "feee815a283923233e23b30404d8dea3baeb46f4d01df56d6ee87c8cfd9a414c",
+          "matching_ARM64_0_3_8_wheel_found": false,
+          "source_archive": {
+            "file": "onnxoptimizer-0.3.8.tar.gz",
+            "bytes": 18462997,
+            "sha256": "158bf9fda2e33bfe8ba1484f295cf25447921822f840de90831f7007af1295d3",
+            "url": "https://files.pythonhosted.org/packages/a2/c2/8fcbecf89c52ca3beaccbed4aedb05eb9aa2bf232e18987942b3e1d3f227/onnxoptimizer-0.3.8.tar.gz"
+          },
+          "required": "CMake>=3.22, C/C++17, CPython3.11 headers, Ninja; MAX_JOBS=2.",
+          "complete_bundled_sources": [
+            "ONNX 1.13.0",
+            "protobuf and protoc",
+            "pybind11 2.9.2"
+          ],
+          "system_protoc_or_git_submodule_download_required_by_default": false,
+          "external_pybind11_3_11_choice": "2.11.1 through pybind11_DIR, no source edit",
+          "primary_pybind_reference": "https://pybind11.readthedocs.io/en/stable/changelog.html#version-2-10-0-jul-15-2022",
+          "v27_GCC_11_compiler_sha256": "2aafdb1e153fc490fbd510d352572eee55ecdd29dd95eca239b4460c1afe3a12",
+          "v27_actual_board_build_receipt_sha256": "34fbf049852b351e7df1097cc806fbf83e1e1035e18b01ca4e9e8ba39499cd18",
+          "v27_original_build_location": "board, not host cross compilation",
+          "build_success": "unverified"
+        },
+        "fixed_encoder": {
+          "method": "original sparse context only",
+          "onnx_sha256": "c52cecd383e60ba564dcb5100be6c7e975fa6ecc051ed89e2c09bff73bc071dc",
+          "parent_onnx_sha256": "527fc2493de700a21aee958d7fda4d5ee421f4eb0c92296e81409df289f56a82",
+          "accepted_CPU_suffix_receipt_sha256": "24aef39822c86ae60e1cb6306d2d2966fa8a440320c4363f18c5db938ac4e168",
+          "learned_parameters_in_float_graph_unchanged": true,
+          "spatial_parent_strict_rejection_retained": true,
+          "input0": {
+            "name": "normalized_bgr",
+            "dtype": "float32",
+            "shape": [
+              1,
+              3,
+              464,
+              608
+            ],
+            "normalization": "2*(BGR/255)-0.5 once before entrypoint"
+          },
+          "input1": {
+            "name": "patch_indices",
+            "dtype": "int64",
+            "shape": [
+              96
+            ],
+            "dynamic": true,
+            "index": "y*152+x",
+            "interior": "x=1..150,y=1..114",
+            "order_and_repeats_preserved": true
+          },
+          "dataset": "Each line image.npy indices.npy in graph order; source identities/hashes and preprocessing provenance are operator inputs.",
+          "calibration_arrays_or_dataset_created_in_this_task": false,
+          "mixed_FP32_INT64_PTQ_support": "pending actual board calibration; do not cast/freeze integer indices",
+          "range_checks_independently_prove_preprocessing": false,
+          "rng": "Original source-frame x draws, then y draws, then random depth; compiler generates no patch sampling.",
+          "config": {
+            "target_platform": "rk3588",
+            "float_dtype": "float16",
+            "optimization_level": 3,
+            "quantized_dtype": "w8a8",
+            "quantized_algorithm": "normal",
+            "quantized_method": "channel",
+            "do_quantization": true,
+            "auto_hybrid": false,
+            "mean_values": null,
+            "std_values": null,
+            "quant_img_RGB2BGR": false
+          }
+        },
+        "operator_boundaries": {
+          "reference_file": "doc/05_RKNN_Compiler_Support_Operator_List_V2.3.2.pdf",
+          "RK3588_documentation": "3.2.5 Conv and 3.2.36 Gather data allow INT8/FP16; 3.2.77 exNorm lists FP16 only.",
+          "observed_v34_FP16_indices": "SDK type8 INT64[96], fmt3 UNDEFINED",
+          "PTQ_indices_attrs_and_actual_INT8_FP16_CPU_placement": "not exercised",
+          "channel_quantization": "per-channel weights; activation ranges per-layer",
+          "whole_encoder_INT8_claim_allowed": false
+        },
+        "other_routes_not_selected": {
+          "build_false": "Uses imported prequantized parameters; plain FP32 build(False) is FP16 conversion.",
+          "documented_QDQ_supported": [
+            "QuantizeLinear",
+            "DequantizeLinear"
+          ],
+          "documented_unsupported": [
+            "QLinearConv",
+            "QLinearMatMul",
+            "DynamicQuantizeLinear"
+          ],
+          "host_prequantized_importer_no_real_forward_proven": false,
+          "QDQ_constructed": false,
+          "references": [
+            "Guide10.5",
+            "official resnet18_qat example",
+            "official ONNX operator support table"
+          ]
+        },
+        "future_validation": {
+          "unchanged_FP32_gate": {
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "INT8_result": "not_exercised"
+          },
+          "required_runtime": [
+            "actual input dtypes/quantization attributes",
+            "integer Gather choices/order",
+            "finite nonzero features",
+            "same-input CPU/FP16/INT8 complete SDK I/O",
+            "actual placement/core workload",
+            "memory and cleanup"
+          ],
+          "full_trajectory": "Keep timestamps, source, preprocessing/resolution/RNG, original Update and lifecycle. Separately report GT ATE/RPE/alignment, fresh coverage, end-to-end latency and RSS; disclose calibration/evaluation separation.",
+          "strict_rejection_can_be_relabelled_equivalent": false,
+          "20Hz_or_full_VO_validated": false
+        },
+        "synthetic_scope": "Injected platform metadata, synthetic NumPy arrays, tiny archives and fake RKNN only."
+      }
+    }
+  }
+}

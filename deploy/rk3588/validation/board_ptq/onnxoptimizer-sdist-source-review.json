@@ -1,0 +1,76 @@
+{
+  "archive": {
+    "file": "onnxoptimizer-0.3.8.tar.gz",
+    "bytes": 18462997,
+    "sha256": "158bf9fda2e33bfe8ba1484f295cf25447921822f840de90831f7007af1295d3",
+    "url": "https://files.pythonhosted.org/packages/a2/c2/8fcbecf89c52ca3beaccbed4aedb05eb9aa2bf232e18987942b3e1d3f227/onnxoptimizer-0.3.8.tar.gz"
+  },
+  "members": 12237,
+  "regular_unpacked_bytes": 70506090,
+  "selected_files": [
+    {
+      "member": "onnxoptimizer-0.3.8/setup.py",
+      "bytes": 11952,
+      "sha256": "d3d28bb0bd54d110c00ec97fe4f28a5b4e6126d6a7af8d0e88d255efc673d467"
+    },
+    {
+      "member": "onnxoptimizer-0.3.8/CMakeLists.txt",
+      "bytes": 7373,
+      "sha256": "13821ca9a928d7073ef32c4982a2a093e8c6991dcce148cb61c41dfc67c41363"
+    },
+    {
+      "member": "onnxoptimizer-0.3.8/MANIFEST.in",
+      "bytes": 212,
+      "sha256": "fa84d7cc05d211cbc2f8fa2e3058607a5d31234aebccc64f5510cf4f704a9c37"
+    },
+    {
+      "member": "onnxoptimizer-0.3.8/third_party/onnx/CMakeLists.txt",
+      "bytes": 24655,
+      "sha256": "ba4c700f97714e9faa11fe7a5bdbf731892cff66900475ef74310a0ce266ccb0"
+    },
+    {
+      "member": "onnxoptimizer-0.3.8/third_party/onnx/third_party/pybind11/CMakeLists.txt",
+      "bytes": 10999,
+      "sha256": "37ce809b13755f6d6c7843c0dbd40bc598947881000c2bc132ab0e828cb58610"
+    },
+    {
+      "member": "onnxoptimizer-0.3.8/third_party/protobuf/cmake/CMakeLists.txt",
+      "bytes": 12519,
+      "sha256": "87bb90cf8f5ea55b5c7a25d0653cde8b41e2990c49f5181d3e0943d51be71f5a"
+    },
+    {
+      "member": "onnxoptimizer-0.3.8/third_party/onnx/VERSION_NUMBER",
+      "bytes": 7,
+      "sha256": "b4a9545a385e9701482be56a0efee678d467d9c586ec476f2c5986cfaa24e96c"
+    },
+    {
+      "member": "onnxoptimizer-0.3.8/VERSION_NUMBER",
+      "bytes": 6,
+      "sha256": "ad5adcac95aff5c3ad7deea82369f78901765729dbc12933056cad1483e27f39"
+    }
+  ],
+  "subtree_counts": {
+    "third_party": 12146,
+    "onnx": 8828,
+    "pybind11": 263,
+    "protobuf": 3318,
+    "googletest": 379
+  },
+  "native_build_executed": false,
+  "build_contract": {
+    "cmake_minimum": "3.22",
+    "language": "C/C++17",
+    "python_headers_required": true,
+    "bundled_protobuf": true,
+    "bundled_protoc_source": true,
+    "bundled_onnx_source": true,
+    "bundled_pybind11_source": true,
+    "separate_git_submodule_fetch_required": false,
+    "external_system_protobuf_default": false,
+    "setup_requires": [
+      "pytest-runner"
+    ],
+    "MAX_JOBS_default": "all cores; explicitly cap to 2",
+    "build_executed": false
+  }
+}

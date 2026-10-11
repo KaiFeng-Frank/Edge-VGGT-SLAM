@@ -2,7 +2,7 @@
 
 **NPU-Accelerated Visual SLAM on Embedded Devices — experimental, first target: RK3588S.**
 
-An embedded execution project based on [MIT-SPARK/VGGT-SLAM](https://github.com/MIT-SPARK/VGGT-SLAM), focused on accelerating the original network while retaining the original VGGT-1B weights and SL4 mapping backend. RK3588S is the only board tested so far. Current NPU execution covers selected subnetworks; a complete all-NPU model and support for other vendors are not validated. All measured model inference runs on the board. Host tools export and compile graphs or inspect saved arrays.
+An embedded execution project based on [MIT-SPARK/VGGT-SLAM](https://github.com/MIT-SPARK/VGGT-SLAM), focused on accelerating the original network while retaining the original VGGT-1B weights and SL4 mapping backend. RK3588S is the only board tested so far. Current NPU execution covers selected subnetworks; a complete all-NPU model and support for other vendors are not validated. All measured model inference runs on the board. Current host work is limited to compilation without calibration, static inspection, saved-array audits and tiny synthetic tests; real neural export checks and calibration belong on the board.
 
 **License scope:** the repository's BSD-2-Clause code license does **not** license the external model weights. The pinned original VGGT-1B checkpoint is **CC-BY-NC-4.0**, with a non-commercial restriction. Compiling it to RKNN does not grant commercial-use rights. See [model licenses](MODEL_LICENSES.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
@@ -13,6 +13,16 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 **Status: sustained accurate 20 Hz tracking, 2–5-second map updates, 30-minute endurance, physical-camera latency and 8 GB operation have not passed validation.** The continuous RGB replay below is a custom-frontend diagnostic, not original-architecture acceptance or a completed real-time SLAM system. The current hybrid mapper uses CPU/XNNPACK for most of VGGT and RKNN for the original four-iteration CameraHead. It is not an all-NPU implementation.
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
+
+## End-to-end NPU encoder diagnostic and engineering records (v35)
+
+An isolated original DPVO FAST replay now uses the dense spatial RKNN encoder with the original Torch Update, native correlation and CPU geometry on RK3588S. The same 192 TUM images produced **179 fresh poses in 284.058 s (0.630 Hz)**, with fresh software processing mean **1.549 s**, P95 **2.380 s**, and **23.271 s** of separate EOF work. One encoder context served exactly 192 SDK calls; peak process RSS was **922.297 MiB** on the 16 GB board. No ORB or added LK/PnP frontend is used. [Source and evidence](deploy/rk3588/validation/dpvo_fast_rknn/README.md).
+
+On the same 179 common-fresh observations, a single evaluation-only Sim3 per run gives ATE RMSE of approximately **1.0714 cm for both runs**; exact values are retained in the receipts. This short unpaced comparison does not establish original-VGGT accuracy or real-time operation; temperatures and clocks were not controlled. **The encoder's original tensor-level FP32 rejection remains**, and this diagnostic does not adopt the candidate or replace default VGGT. [Timing, full trajectory populations, numerical gates and audit evidence](results/dpvo_fast_rknn_v35.json).
+
+A separate channel-first source-block Update preserves the CPU/ORT gate and produces two-state warm SDK means of **54.287 / 66.368 ms**. Actual RKNN profiles still contain six NPU Transpose operations and three internal CPU operations; the original FP32 gate fails. This is a D10/M96 component experiment, not the Update used by the full M48 replay. [Implementation and measured boundaries](deploy/rk3588/validation/dpvo_source_frame_channel_first/README.md).
+
+The [board-only INT8 preparation](deploy/rk3588/validation/board_ptq/README.md) records a separate deployment issue: quantization calibration itself executes the model, and the pinned ARM toolkit has different Torch requirements from the host toolkit. The isolated ARM dependency plan and guards are prepared; installation, calibration and INT8 execution have **not** been validated. [Preparation evidence](results/board_ptq_preparation_v35.json). [Engineering records 51–54](docs/ENGINEERING_NOTES.md) preserve these findings and their limits.
 
 ## FAST replay and SDK output investigation (v34)
 

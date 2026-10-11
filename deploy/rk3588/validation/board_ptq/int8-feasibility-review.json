@@ -1,0 +1,248 @@
+{
+  "schema": "v35_board_only_PTQ_preparation_review",
+  "status": "preparation_only_no_installation_or_PTQ",
+  "execution": {
+    "host_real_neural_inference": false,
+    "board_job": false,
+    "actual_SDK_import_or_build": false,
+    "optimizer_native_build": false,
+    "actual_ARM_toolchain_installation": false,
+    "INT8_runtime": false,
+    "production_changed": false
+  },
+  "official_sources": {
+    "repo": "airockchip/rknn-toolkit2",
+    "tree_sha": "59a913d172e7f5ff03c9076e2ec7b1b1288ffd08",
+    "source_pin_file": "official-source-pins.json",
+    "source_pin_sha256": "106b1dbe9423a5494d6db150971b372f1aa0bdabc9d9df833cafc33ef2e03f79"
+  },
+  "host_calibration_blocker": {
+    "standard_x86_build_do_quantization_true": "prohibited_by_no_host_neural_inference_constraint",
+    "evidence": "Guide 6.2.3 describes real activation-range calibration and API 2.4 requires dataset. Installed quantizer/session references point to CPU inference.",
+    "kind": "Documentation and static SDK identifiers; calibration and runtime tracing not performed.",
+    "SDK_identifiers": [
+      {
+        "file": "rknn.py",
+        "bytes": 21779,
+        "sha256": "63e4506fb851214e79f933f9de0d27dab04ecf93f6f46959c07c5787433fd05e",
+        "identifiers_found": [
+          "dataset"
+        ],
+        "executed": false
+      },
+      {
+        "file": "quantizer.cpython-311-x86_64-linux-gnu.so",
+        "bytes": 905832,
+        "sha256": "67aae1f770a7427b9256553e7a7f17b8c63cf7ef3822003fa13f1ca9823307ae",
+        "identifiers_found": [
+          "Quantizer.run",
+          "Quantizer._get_layer_range",
+          "Session",
+          "input_feed",
+          "dataset"
+        ],
+        "executed": false
+      },
+      {
+        "file": "session.cpython-311-x86_64-linux-gnu.so",
+        "bytes": 288104,
+        "sha256": "c0da2f015fa8c53df4360adda66869887feca83dff6239db20fa085e477c4237",
+        "identifiers_found": [
+          "Session.run",
+          "Session.sess_build",
+          "onnxruntime",
+          "InferenceSession",
+          "CPUExecutionProvider"
+        ],
+        "executed": false
+      },
+      {
+        "file": "rknn_base.cpython-311-x86_64-linux-gnu.so",
+        "bytes": 2318536,
+        "sha256": "6dc8b00671481962315115a0ab61a005d6ba6cb7c8597a328f8458c272744ff8",
+        "identifiers_found": [
+          "Quantizer",
+          "dataset"
+        ],
+        "executed": false
+      },
+      {
+        "file": "load_checker.cpython-311-x86_64-linux-gnu.so",
+        "bytes": 412096,
+        "sha256": "22d5eb9ff9752973ddc40a051936e322d30962e7ed02dbfd9c0f411ff23eaa8a",
+        "identifiers_found": [
+          "Session"
+        ],
+        "executed": false
+      }
+    ],
+    "constant_folding_boundary": "Guide 10.6 Session.run trace demonstrates constant-subgraph execution, not by itself a whole-network PTQ trace.",
+    "selected_route": "Native ARM64 Toolkit in new board venv; real calibration CPU inference stays on RK3588.",
+    "guards": [
+      "Linux",
+      "aarch64",
+      "device-tree rockchip,rk3588 or rockchip,rk3588s"
+    ]
+  },
+  "dependency_contract": {
+    "plan_file": "arm64-dependency-plan.json",
+    "plan_sha256": "a32e1a00c8bdbf74241de3de236cdaef050567b26b9d591a7f57c65ab247e2b4",
+    "official_requirements": {
+      "path": "rknn-toolkit2/packages/arm64/arm64_requirements_cp311.txt",
+      "bytes": 349,
+      "sha256": "2d81816e14d05b29e8f00f1a3e8734a96e62cf8a5b2fdad45e8880d75af2d86d",
+      "git_blob": "ef67315d3d6dd43231b100ca138f5534786f2387",
+      "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknn-toolkit2/packages/arm64/arm64_requirements_cp311.txt"
+    },
+    "official_Torch_range": ">=1.13.1,<=2.2.0",
+    "existing_Torch_2_3_1_supported_by_ARM_requirements": false,
+    "new_versions": {
+      "torch": "2.2.0",
+      "numpy": "1.26.4",
+      "onnx": "1.16.1",
+      "onnxruntime": "1.16.0",
+      "protobuf": "3.20.3",
+      "onnxoptimizer": "0.3.8",
+      "cmake": "3.26.4",
+      "ninja": "1.11.1.1",
+      "pybind11": "2.11.1"
+    },
+    "packages": 32,
+    "satisfied_dependency_checks": 40,
+    "minimum_selected_wheel_glibc": "2.24",
+    "system_site_packages": false,
+    "toolkit": {
+      "name": "rknn-toolkit2",
+      "version": "2.3.2",
+      "toolkit_commit": "c7d6ffcf",
+      "file": "rknn_toolkit2-2.3.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+      "url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/59a913d172e7f5ff03c9076e2ec7b1b1288ffd08/rknn-toolkit2/packages/arm64/rknn_toolkit2-2.3.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+      "bytes": 37740634,
+      "git_blob_sha1": "0313b8181d121207f12c5a745427d817f18aeeee",
+      "full_archive_sha256": null,
+      "full_archive_sha256_note": "Not published in fetched official tree; root must compute after download and verify Git blob SHA1",
+      "metadata_sha256": "735a39fb104b21d941afdcbc8ff4b0cb16dab42f87e61eb7618c596e904229c6"
+    },
+    "wheel_packages_bytes": 235784172,
+    "download_policy": "No full host wheel pool downloaded; board installer uses one transient package at a time or explicit offline wheelhouse.",
+    "shared_library_availability_and_native_build": "pending board validation"
+  },
+  "native_optimizer": {
+    "source_review_file": "onnxoptimizer-sdist-source-review.json",
+    "source_review_sha256": "feee815a283923233e23b30404d8dea3baeb46f4d01df56d6ee87c8cfd9a414c",
+    "matching_ARM64_0_3_8_wheel_found": false,
+    "source_archive": {
+      "file": "onnxoptimizer-0.3.8.tar.gz",
+      "bytes": 18462997,
+      "sha256": "158bf9fda2e33bfe8ba1484f295cf25447921822f840de90831f7007af1295d3",
+      "url": "https://files.pythonhosted.org/packages/a2/c2/8fcbecf89c52ca3beaccbed4aedb05eb9aa2bf232e18987942b3e1d3f227/onnxoptimizer-0.3.8.tar.gz"
+    },
+    "required": "CMake>=3.22, C/C++17, CPython3.11 headers, Ninja; MAX_JOBS=2.",
+    "complete_bundled_sources": [
+      "ONNX 1.13.0",
+      "protobuf and protoc",
+      "pybind11 2.9.2"
+    ],
+    "system_protoc_or_git_submodule_download_required_by_default": false,
+    "external_pybind11_3_11_choice": "2.11.1 through pybind11_DIR, no source edit",
+    "primary_pybind_reference": "https://pybind11.readthedocs.io/en/stable/changelog.html#version-2-10-0-jul-15-2022",
+    "v27_GCC_11_compiler_sha256": "2aafdb1e153fc490fbd510d352572eee55ecdd29dd95eca239b4460c1afe3a12",
+    "v27_actual_board_build_receipt_sha256": "34fbf049852b351e7df1097cc806fbf83e1e1035e18b01ca4e9e8ba39499cd18",
+    "v27_original_build_location": "board, not host cross compilation",
+    "build_success": "unverified"
+  },
+  "fixed_encoder": {
+    "method": "original sparse context only",
+    "onnx_sha256": "c52cecd383e60ba564dcb5100be6c7e975fa6ecc051ed89e2c09bff73bc071dc",
+    "parent_onnx_sha256": "527fc2493de700a21aee958d7fda4d5ee421f4eb0c92296e81409df289f56a82",
+    "accepted_CPU_suffix_receipt_sha256": "24aef39822c86ae60e1cb6306d2d2966fa8a440320c4363f18c5db938ac4e168",
+    "learned_parameters_in_float_graph_unchanged": true,
+    "spatial_parent_strict_rejection_retained": true,
+    "input0": {
+      "name": "normalized_bgr",
+      "dtype": "float32",
+      "shape": [
+        1,
+        3,
+        464,
+        608
+      ],
+      "normalization": "2*(BGR/255)-0.5 once before entrypoint"
+    },
+    "input1": {
+      "name": "patch_indices",
+      "dtype": "int64",
+      "shape": [
+        96
+      ],
+      "dynamic": true,
+      "index": "y*152+x",
+      "interior": "x=1..150,y=1..114",
+      "order_and_repeats_preserved": true
+    },
+    "dataset": "Each line image.npy indices.npy in graph order; source identities/hashes and preprocessing provenance are operator inputs.",
+    "calibration_arrays_or_dataset_created_in_this_task": false,
+    "mixed_FP32_INT64_PTQ_support": "pending actual board calibration; do not cast/freeze integer indices",
+    "range_checks_independently_prove_preprocessing": false,
+    "rng": "Original source-frame x draws, then y draws, then random depth; compiler generates no patch sampling.",
+    "config": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "quantized_dtype": "w8a8",
+      "quantized_algorithm": "normal",
+      "quantized_method": "channel",
+      "do_quantization": true,
+      "auto_hybrid": false,
+      "mean_values": null,
+      "std_values": null,
+      "quant_img_RGB2BGR": false
+    }
+  },
+  "operator_boundaries": {
+    "reference_file": "doc/05_RKNN_Compiler_Support_Operator_List_V2.3.2.pdf",
+    "RK3588_documentation": "3.2.5 Conv and 3.2.36 Gather data allow INT8/FP16; 3.2.77 exNorm lists FP16 only.",
+    "observed_v34_FP16_indices": "SDK type8 INT64[96], fmt3 UNDEFINED",
+    "PTQ_indices_attrs_and_actual_INT8_FP16_CPU_placement": "not exercised",
+    "channel_quantization": "per-channel weights; activation ranges per-layer",
+    "whole_encoder_INT8_claim_allowed": false
+  },
+  "other_routes_not_selected": {
+    "build_false": "Uses imported prequantized parameters; plain FP32 build(False) is FP16 conversion.",
+    "documented_QDQ_supported": [
+      "QuantizeLinear",
+      "DequantizeLinear"
+    ],
+    "documented_unsupported": [
+      "QLinearConv",
+      "QLinearMatMul",
+      "DynamicQuantizeLinear"
+    ],
+    "host_prequantized_importer_no_real_forward_proven": false,
+    "QDQ_constructed": false,
+    "references": [
+      "Guide10.5",
+      "official resnet18_qat example",
+      "official ONNX operator support table"
+    ]
+  },
+  "future_validation": {
+    "unchanged_FP32_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "INT8_result": "not_exercised"
+    },
+    "required_runtime": [
+      "actual input dtypes/quantization attributes",
+      "integer Gather choices/order",
+      "finite nonzero features",
+      "same-input CPU/FP16/INT8 complete SDK I/O",
+      "actual placement/core workload",
+      "memory and cleanup"
+    ],
+    "full_trajectory": "Keep timestamps, source, preprocessing/resolution/RNG, original Update and lifecycle. Separately report GT ATE/RPE/alignment, fresh coverage, end-to-end latency and RSS; disclose calibration/evaluation separation.",
+    "strict_rejection_can_be_relabelled_equivalent": false,
+    "20Hz_or_full_VO_validated": false
+  },
+  "synthetic_scope": "Injected platform metadata, synthetic NumPy arrays, tiny archives and fake RKNN only."
+}

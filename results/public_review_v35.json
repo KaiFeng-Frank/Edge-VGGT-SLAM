@@ -1,0 +1,814 @@
+{
+  "status": "passed_no_current_blockers",
+  "scope": "Three independent publication reviews; exact tested/reviewed source identity, local links, AST, prohibited assets and credential/path scans.",
+  "reviews": [
+    {
+      "file": "fast/publication-review-r1.json",
+      "raw_sha256": "f4cb5b5b3a5d5e76c75eb2e9b25b0a62bca98d2f99f2b870046437982dfb3d43",
+      "data": {
+        "schema": "v35_FAST_NPU_publication_independent_static_review",
+        "status": "passed_no_current_blockers",
+        "reviewed_file_sha256": {
+          "README.md": "75765ae22c1057043328fd22d970ec54ea14a4b5fa552c260c1d9beef93a8e0e",
+          "docs/ENGINEERING_NOTES.md": "41bcd734200ab4effe07a1606f99a827cf490d183a623ab92182b68f97825a5f",
+          "deploy/rk3588/validation/dpvo_fast_rknn/README.md": "593385fe90371fe2be95987a61d4e2a4bbe7170fe9ed37a4812da81327eb10d5",
+          "results/dpvo_fast_rknn_v35.json": "2a6a9d9c7a17127b330d76c758f670ddd734df28571a12afbd3144a33425bdc2",
+          "deploy/rk3588/validation/dpvo_fast_rknn/LICENSE": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
+          "deploy/rk3588/validation/dpvo_fast_rknn/analyze-v35-fast.py": "0e468fe3cb5e1f6f86e36fa0b0e8be69cd780b934f9372f9e1407d77564929ca",
+          "deploy/rk3588/validation/dpvo_fast_rknn/audit-v35-fast-encoder-arrays.py": "53f8d1df60ce6305f3e0df3a904dd8d50d756dc46b8d7767e61ff0f31f6cce7a",
+          "deploy/rk3588/validation/dpvo_fast_rknn/evaluate-v35-fast-rknn-trajectory.py": "4c1acd17195504a200218f9b089dd33dafa935c5c568203a1b18f7f15d2b36f9",
+          "deploy/rk3588/validation/dpvo_fast_rknn/run-v35-dpvo-fast-rknn-board.py": "84b8f02e14c0695c79d5c47319ff47ec4c7a8dcf53a3b38d905e03bc1efde6a8",
+          "deploy/rk3588/validation/dpvo_fast_rknn/v35_rknn_encoder.py": "f4c184ad0240069c33d82d3af797c71ae751fdf4c662f83caefc41c8739ef2ab",
+          "tests/test_v35_rknn_encoder.py": "0e4515e51fb8892d5f8e30918653ffb31247f273f85db174e8a2281a683702c8",
+          "tests/test_v35_fast_trajectory.py": "798ac529307d6848e46af4970593fe29eacfa262d76f2a51d3dcd2c7ab076668"
+        },
+        "checks": {
+          "count": 128,
+          "failed": 0
+        },
+        "checks_detail": [
+          {
+            "check": "Exactly the scoped eight evidence entries",
+            "passed": true
+          },
+          {
+            "check": "Original receipt digest board_run",
+            "passed": true
+          },
+          {
+            "check": "Original receipt byte count board_run",
+            "passed": true
+          },
+          {
+            "check": "Exact embedded values after only declared host/runtime prefix redaction board_run",
+            "passed": true
+          },
+          {
+            "check": "Redaction declaration board_run",
+            "passed": true
+          },
+          {
+            "check": "Original receipt digest input_manifest",
+            "passed": true
+          },
+          {
+            "check": "Original receipt byte count input_manifest",
+            "passed": true
+          },
+          {
+            "check": "Exact embedded values after only declared host/runtime prefix redaction input_manifest",
+            "passed": true
+          },
+          {
+            "check": "Redaction declaration input_manifest",
+            "passed": true
+          },
+          {
+            "check": "Original receipt digest platform",
+            "passed": true
+          },
+          {
+            "check": "Original receipt byte count platform",
+            "passed": true
+          },
+          {
+            "check": "Exact embedded values after only declared host/runtime prefix redaction platform",
+            "passed": true
+          },
+          {
+            "check": "Redaction declaration platform",
+            "passed": true
+          },
+          {
+            "check": "Original receipt digest CPU_FAST_saved_critical_path",
+            "passed": true
+          },
+          {
+            "check": "Original receipt byte count CPU_FAST_saved_critical_path",
+            "passed": true
+          },
+          {
+            "check": "Exact embedded values after only declared host/runtime prefix redaction CPU_FAST_saved_critical_path",
+            "passed": true
+          },
+          {
+            "check": "Redaction declaration CPU_FAST_saved_critical_path",
+            "passed": true
+          },
+          {
+            "check": "Original receipt digest encoder-arrays-independent-review-r1",
+            "passed": true
+          },
+          {
+            "check": "Original receipt byte count encoder-arrays-independent-review-r1",
+            "passed": true
+          },
+          {
+            "check": "Exact embedded values after only declared host/runtime prefix redaction encoder-arrays-independent-review-r1",
+            "passed": true
+          },
+          {
+            "check": "Redaction declaration encoder-arrays-independent-review-r1",
+            "passed": true
+          },
+          {
+            "check": "Original receipt digest saved-json-independent-review-r1",
+            "passed": true
+          },
+          {
+            "check": "Original receipt byte count saved-json-independent-review-r1",
+            "passed": true
+          },
+          {
+            "check": "Exact embedded values after only declared host/runtime prefix redaction saved-json-independent-review-r1",
+            "passed": true
+          },
+          {
+            "check": "Redaction declaration saved-json-independent-review-r1",
+            "passed": true
+          },
+          {
+            "check": "Original receipt digest float64_summary_reduction_review",
+            "passed": true
+          },
+          {
+            "check": "Original receipt byte count float64_summary_reduction_review",
+            "passed": true
+          },
+          {
+            "check": "Exact embedded values after only declared host/runtime prefix redaction float64_summary_reduction_review",
+            "passed": true
+          },
+          {
+            "check": "Redaction declaration float64_summary_reduction_review",
+            "passed": true
+          },
+          {
+            "check": "Original receipt digest saved_trajectory_comparison",
+            "passed": true
+          },
+          {
+            "check": "Original receipt byte count saved_trajectory_comparison",
+            "passed": true
+          },
+          {
+            "check": "Exact embedded values after only declared host/runtime prefix redaction saved_trajectory_comparison",
+            "passed": true
+          },
+          {
+            "check": "Redaction declaration saved_trajectory_comparison",
+            "passed": true
+          },
+          {
+            "check": "Published finding matches frozen evidence frames_completed",
+            "passed": true
+          },
+          {
+            "check": "Published finding matches frozen evidence fresh_poses",
+            "passed": true
+          },
+          {
+            "check": "Published finding matches frozen evidence replay_elapsed_seconds",
+            "passed": true
+          },
+          {
+            "check": "Published finding matches frozen evidence fresh_poses_per_replay_second",
+            "passed": true
+          },
+          {
+            "check": "Published finding matches frozen evidence fresh_software_processing_mean_seconds",
+            "passed": true
+          },
+          {
+            "check": "Published finding matches frozen evidence fresh_software_processing_P95_seconds",
+            "passed": true
+          },
+          {
+            "check": "Published finding matches frozen evidence EOF_seconds",
+            "passed": true
+          },
+          {
+            "check": "Published finding matches frozen evidence peak_process_RSS_MiB",
+            "passed": true
+          },
+          {
+            "check": "Published finding matches frozen evidence SDK_calls",
+            "passed": true
+          },
+          {
+            "check": "Published finding matches frozen evidence contexts",
+            "passed": true
+          },
+          {
+            "check": "Published finding matches frozen evidence metrics",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary candidate_accepted",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary realtime_validated",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary accuracy_vs_VGGT_validated",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary physical_camera",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary dense_mapping",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary loop_closure",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary thirty_minute_endurance",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary eight_GB_validated",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary encoder_historical_FP32_gate_passed",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary encoder_first_three_FP32_gate_passed",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary original_VGGT_default_unchanged",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary different_model_from_VGGT",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary original_DPVO_weights_unchanged",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary ORB_used",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary added_LK_PnP_frontend",
+            "passed": true
+          },
+          {
+            "check": "Published research/acceptance boundary host_real_model_inference",
+            "passed": true
+          },
+          {
+            "check": "Execution completion is separated from numerical acceptance",
+            "passed": true
+          },
+          {
+            "check": "Six numerical gate failures, successful saved-array evidence audit",
+            "passed": true
+          },
+          {
+            "check": "2014 evidence checks do not accept model candidate",
+            "passed": true
+          },
+          {
+            "check": "Same actual fresh population and endpoint denominator",
+            "passed": true
+          },
+          {
+            "check": "Root README measured claim/scope 179 fresh poses in 284.058 s (0.630 Hz)",
+            "passed": true
+          },
+          {
+            "check": "Root README measured claim/scope 1.549 s",
+            "passed": true
+          },
+          {
+            "check": "Root README measured claim/scope 2.380 s",
+            "passed": true
+          },
+          {
+            "check": "Root README measured claim/scope 23.271 s",
+            "passed": true
+          },
+          {
+            "check": "Root README measured claim/scope 922.297 MiB",
+            "passed": true
+          },
+          {
+            "check": "Root README measured claim/scope 1.0714 cm",
+            "passed": true
+          },
+          {
+            "check": "Root README measured claim/scope FP32 rejection remains",
+            "passed": true
+          },
+          {
+            "check": "Root README measured claim/scope does not adopt the candidate or replace default VGGT",
+            "passed": true
+          },
+          {
+            "check": "Package README measured claim/boundary 192 / 179",
+            "passed": true
+          },
+          {
+            "check": "Package README measured claim/boundary 284.058 s",
+            "passed": true
+          },
+          {
+            "check": "Package README measured claim/boundary 0.630 Hz",
+            "passed": true
+          },
+          {
+            "check": "Package README measured claim/boundary 1.549 s / 2.380 s",
+            "passed": true
+          },
+          {
+            "check": "Package README measured claim/boundary 1.0714 cm / 1.0714 cm",
+            "passed": true
+          },
+          {
+            "check": "Package README measured claim/boundary \u4e25\u683c FP32 \u62d2\u7edd",
+            "passed": true
+          },
+          {
+            "check": "Package README measured claim/boundary ../../../../results/dpvo_fast_rknn_v35.json",
+            "passed": true
+          },
+          {
+            "check": "Record52 scope 203.229 ms \u4e0d\u80fd\u5199\u6210 BA",
+            "passed": true
+          },
+          {
+            "check": "Record52 scope \u56fa\u5b9a trace \u7684\u53cd\u4e8b\u5b9e",
+            "passed": true
+          },
+          {
+            "check": "Record52 scope \u5386\u53f2 CPU trace",
+            "passed": true
+          },
+          {
+            "check": "Record52 scope \u672a\u6d4b\u9636\u6bb5",
+            "passed": true
+          },
+          {
+            "check": "Record53 corrected numerical/timing semantics \u516d\u4efd\u8f93\u51fa\u4ecd\u5168\u90e8\u672a\u901a\u8fc7\u539f FP32 \u6570\u503c\u95e8\u69db\uff0c\u4fdd\u5b58\u6570\u7ec4\u72ec\u5ba1\u786e\u8ba4",
+            "passed": true
+          },
+          {
+            "check": "Record53 corrected numerical/timing semantics \u9636\u6bb5\u5747\u503c\u4e4b\u548c",
+            "passed": true
+          },
+          {
+            "check": "Record53 corrected numerical/timing semantics \u9636\u6bb5 P95 \u4e0d\u80fd\u76f8\u52a0",
+            "passed": true
+          },
+          {
+            "check": "Record53 corrected numerical/timing semantics 13 \u6b21 motion probe",
+            "passed": true
+          },
+          {
+            "check": "Record53 corrected numerical/timing semantics 190 \u6b21\u5728\u7ebf Update",
+            "passed": true
+          },
+          {
+            "check": "Record53 corrected numerical/timing semantics 12 \u6b21 EOF Update",
+            "passed": true
+          },
+          {
+            "check": "Record53 corrected numerical/timing semantics 202 \u6b21 BA",
+            "passed": true
+          },
+          {
+            "check": "Record53 corrected numerical/timing semantics 149",
+            "passed": true
+          },
+          {
+            "check": "Record53 corrected numerical/timing semantics 162",
+            "passed": true
+          },
+          {
+            "check": "Record53 corrected numerical/timing semantics 2014 \u9879/0 \u5931\u8d25",
+            "passed": true
+          },
+          {
+            "check": "Record53 stage mean Update",
+            "passed": true
+          },
+          {
+            "check": "Record53 stage mean corr_outer",
+            "passed": true
+          },
+          {
+            "check": "Record53 stage mean encoder",
+            "passed": true
+          },
+          {
+            "check": "Record53 stage mean BA",
+            "passed": true
+          },
+          {
+            "check": "Record53 stage mean other_stream_seconds",
+            "passed": true
+          },
+          {
+            "check": "Record53 stage mean decode",
+            "passed": true
+          },
+          {
+            "check": "Stage means sum, not per-frame constants or summed P95",
+            "passed": true
+          },
+          {
+            "check": "Record53 ATE CPU_FAST",
+            "passed": true
+          },
+          {
+            "check": "Record53 rotation RPE CPU_FAST",
+            "passed": true
+          },
+          {
+            "check": "Record53 scaled translation RPE CPU_FAST",
+            "passed": true
+          },
+          {
+            "check": "Record53 ATE NPU_encoder_FAST",
+            "passed": true
+          },
+          {
+            "check": "Record53 rotation RPE NPU_encoder_FAST",
+            "passed": true
+          },
+          {
+            "check": "Record53 scaled translation RPE NPU_encoder_FAST",
+            "passed": true
+          },
+          {
+            "check": "Scoped repository link deploy/rk3588/validation/dpvo_fast_rknn/README.md",
+            "passed": true
+          },
+          {
+            "check": "Scoped repository link results/dpvo_fast_rknn_v35.json",
+            "passed": true
+          },
+          {
+            "check": "Scoped repository link deploy/rk3588/validation/dpvo_source_frame_channel_first/README.md",
+            "passed": true
+          },
+          {
+            "check": "Scoped repository link deploy/rk3588/validation/board_ptq/README.md",
+            "passed": true
+          },
+          {
+            "check": "Scoped repository link results/board_ptq_preparation_v35.json",
+            "passed": true
+          },
+          {
+            "check": "Scoped repository link docs/ENGINEERING_NOTES.md",
+            "passed": true
+          },
+          {
+            "check": "Scoped repository link ../results/dpvo_fast_v34.json",
+            "passed": true
+          },
+          {
+            "check": "Scoped repository link ../results/dpvo_fast_rknn_v35.json",
+            "passed": true
+          },
+          {
+            "check": "Scoped repository link ../results/dpvo_fast_rknn_v35.json",
+            "passed": true
+          },
+          {
+            "check": "Scoped repository link ../../../../results/dpvo_fast_rknn_v35.json",
+            "passed": true
+          },
+          {
+            "check": "Scoped repository link ../dpvo_fast/README.md",
+            "passed": true
+          },
+          {
+            "check": "Scoped repository link LICENSE",
+            "passed": true
+          },
+          {
+            "check": "Frozen public package/test bytes deploy/rk3588/validation/dpvo_fast_rknn/LICENSE",
+            "passed": true
+          },
+          {
+            "check": "Frozen public package/test bytes deploy/rk3588/validation/dpvo_fast_rknn/README.md",
+            "passed": true
+          },
+          {
+            "check": "Frozen public package/test bytes deploy/rk3588/validation/dpvo_fast_rknn/analyze-v35-fast.py",
+            "passed": true
+          },
+          {
+            "check": "Frozen public package/test bytes deploy/rk3588/validation/dpvo_fast_rknn/audit-v35-fast-encoder-arrays.py",
+            "passed": true
+          },
+          {
+            "check": "Frozen public package/test bytes deploy/rk3588/validation/dpvo_fast_rknn/evaluate-v35-fast-rknn-trajectory.py",
+            "passed": true
+          },
+          {
+            "check": "Frozen public package/test bytes deploy/rk3588/validation/dpvo_fast_rknn/run-v35-dpvo-fast-rknn-board.py",
+            "passed": true
+          },
+          {
+            "check": "Frozen public package/test bytes deploy/rk3588/validation/dpvo_fast_rknn/v35_rknn_encoder.py",
+            "passed": true
+          },
+          {
+            "check": "Frozen public package/test bytes tests/test_v35_rknn_encoder.py",
+            "passed": true
+          },
+          {
+            "check": "Frozen public package/test bytes tests/test_v35_fast_trajectory.py",
+            "passed": true
+          },
+          {
+            "check": "Public reviewed files unchanged through static check",
+            "passed": true
+          }
+        ],
+        "actual_receipt_sha256": {
+          "board_run": "4c09a78009d9b01278426e06312a6195c0c5c51562d9ffa3d1b3e9a839435167",
+          "input_manifest": "347eea360fac46f215e980fc05a7589342b0b9fbbbc84f70f98a0a3e5629b49f",
+          "platform": "1c56f0d9da42209a4793d910523a66338b10bbda56aed164dfa7bbbf714361b9",
+          "CPU_FAST_saved_critical_path": "65fe885e6eb082da866b11c6902ccc5ca91cdd57c36d76ee4d177fdf38fe1eee",
+          "encoder-arrays-independent-review-r1": "9ffbdab91d29fc53a5caf6d4e5d88dad793d1de18c56b210088dccae4529075f",
+          "saved-json-independent-review-r1": "56cf9536c22765106bd12e8a77944345719f4431f30b7188ac80cf2861c52298",
+          "float64_summary_reduction_review": "71ebb4c4e2054cb22a541fd2835b7ff065236a5a1de89310d3f02f446f84829e",
+          "saved_trajectory_comparison": "e15b7f7492facab5cfe2d86fbdb35530a1ef3c1dfdb98563dab0f8240dbcba16"
+        },
+        "publication_copy_review_sha256": "cd2681e447b59cf4b342cca4b6c29dec98a3ecba40f38664151951163694e729",
+        "scope": "Root README v35 introduction, engineering records52/53, FAST package README and corresponding published result/eight embedded evidence entries. Whole-file SHA binds reviewed sections; unrelated historical sections are not re-audited.",
+        "redaction_rule": "Only <host-home> -> <host-home> and <host-runtime> -> <host-runtime>, recursively in JSON strings/keys; exact semantic data retained.",
+        "reviewed_links": [
+          "deploy/rk3588/validation/board_ptq/README.md",
+          "deploy/rk3588/validation/dpvo_fast/README.md",
+          "deploy/rk3588/validation/dpvo_fast_rknn/LICENSE",
+          "deploy/rk3588/validation/dpvo_fast_rknn/README.md",
+          "deploy/rk3588/validation/dpvo_source_frame_channel_first/README.md",
+          "docs/ENGINEERING_NOTES.md",
+          "results/board_ptq_preparation_v35.json",
+          "results/dpvo_fast_rknn_v35.json",
+          "results/dpvo_fast_v34.json"
+        ],
+        "current_blockers": [],
+        "frozen_numeric_evidence_used": true,
+        "candidate_accepted": false,
+        "encoder_FP32_rejection_retained": true,
+        "tests_repeated": false,
+        "arrays_reloaded": false,
+        "evaluation_repeated": false,
+        "model_executed": false,
+        "SDK_executed": false,
+        "board_accessed": false,
+        "limitations": [
+          "Short unpaced DPVO prefix, not VGGT/default adoption, physical capture latency, endurance, dense mapping or20Hz acceptance.",
+          "Separate historical CPU and NPU runs do not control thermal/frequency state; whole replay difference is not isolated encoder speedup.",
+          "Private hardware/data artifacts are not redistributed; embedded receipt values and hashes are checked without reexecuting them."
+        ]
+      }
+    },
+    {
+      "file": "update/publication-review-r1.json",
+      "raw_sha256": "ff1495add13767b7d9fbcf961335fe480a137b679c89b9135e1148d0333e6cd8",
+      "data": {
+        "schema": "v35_channel_first_publication_readonly_review",
+        "status": "passed_no_current_blockers",
+        "scope": "README opening/v35 section, ENGINEERING_NOTES section51 and cross-topic scope wording only, CF package README, public CF result against two frozen audits and six raw metadata receipts; no reexecution of arrays or tests.",
+        "reviewed_file_sha256": {
+          "README.md": "75765ae22c1057043328fd22d970ec54ea14a4b5fa552c260c1d9beef93a8e0e",
+          "docs/ENGINEERING_NOTES.md": "41bcd734200ab4effe07a1606f99a827cf490d183a623ab92182b68f97825a5f",
+          "deploy/rk3588/validation/dpvo_source_frame_channel_first/README.md": "904a2589df83f8c745de13507a37fda10a979e12449fd6508cf85ce8687a44b7",
+          "results/dpvo_source_frame_channel_first_v35.json": "adccfdb227f84b69357456479cf1fb783d7bc5588c4d5b916f6ac9335c9db748"
+        },
+        "checks_passed": 43,
+        "checks": [
+          "board_CPU_export raw SHA/bytes match frozen receipt",
+          "board_CPU_export public data exact after disclosed host-runtime path anonymization",
+          "host_FP16_compile raw SHA/bytes match frozen receipt",
+          "host_FP16_compile public data exact after disclosed host-runtime path anonymization",
+          "ordinary_RKNN raw SHA/bytes match frozen receipt",
+          "ordinary_RKNN public data exact after disclosed host-runtime path anonymization",
+          "profile_RKNN raw SHA/bytes match frozen receipt",
+          "profile_RKNN public data exact after disclosed host-runtime path anonymization",
+          "normal_platform raw SHA/bytes match frozen receipt",
+          "normal_platform public data exact after disclosed host-runtime path anonymization",
+          "profile_platform raw SHA/bytes match frozen receipt",
+          "profile_platform public data exact after disclosed host-runtime path anonymization",
+          "export-independent-review-r1 raw SHA/bytes match frozen receipt",
+          "export-independent-review-r1 public data exact after disclosed host-runtime path anonymization",
+          "rknn-independent-review-r1 raw SHA/bytes match frozen receipt",
+          "rknn-independent-review-r1 public data exact after disclosed host-runtime path anonymization",
+          "CPU/ORT strict gate and 1421-check audit preserved",
+          "1668-check RKNN evidence audit preserves rejected fixed-gate candidate",
+          "Public top-level CPU/RKNN gate distinction matches audits",
+          "Public ordinary first/warm timings exact match raw run",
+          "Public 6 ordinary + 2 profile calls preserved",
+          "Raw normal/profile contexts closed and cleanup errors empty",
+          "Profile placement summary preserves 50 NPU + 3 internal CPU + 6 I/O and six Transposes",
+          "Profile placement summary preserves 50 NPU + 3 internal CPU + 6 I/O and six Transposes",
+          "Mixed placement / single source-block scope preserved",
+          "notes51 lifecycle counts explicitly distinguish releases/destroy",
+          "notes51 historical full graph gold and M48 non-integration limits explicit",
+          "Root README separates CF component and encoder trajectory experiment/default VGGT",
+          "Root heading remains bounded by experimental selected-subnetwork/non-realtime status",
+          "CF package README preserves not-adopted/source-block/historical-reference scope",
+          "Package MIT scope separates model/SDK assets",
+          "Public result false claims remain false",
+          "Frozen public source/license/README hash unchanged: source_frame_update_channel_first.py",
+          "Frozen public source/license/README hash unchanged: export-v35-source-frame-channel-first-board.py",
+          "Frozen public source/license/README hash unchanged: audit-v35-channel-first-export.py",
+          "Frozen public source/license/README hash unchanged: audit-v35-channel-first-rknn.py",
+          "Frozen public source/license/README hash unchanged: v35_rknn_source_frame_cf.py",
+          "Frozen public source/license/README hash unchanged: compile-v35-source-frame-channel-first.py",
+          "Frozen public source/license/README hash unchanged: run-v35-channel-first-rknn-board.py",
+          "Frozen public source/license/README hash unchanged: v33_rknn_source_frame_padded.py",
+          "Frozen public source/license/README hash unchanged: LICENSE",
+          "Frozen public source/license/README hash unchanged: README.md",
+          "Reviewed public files unchanged during review"
+        ],
+        "current_issues": [],
+        "resolved_wording_issue": "notes51 now explicitly says 8 releases and 2 context destroys; no numerical or implementation change.",
+        "public_evidence_binding": {
+          "board_CPU_export": {
+            "raw_sha256": "afed990fc5a07049f1ae73e4d81b60ab63d1accfc057277d80f28eb721b550db",
+            "raw_bytes": 187282,
+            "embedded_data_equal_after_path_anonymization": true
+          },
+          "host_FP16_compile": {
+            "raw_sha256": "462a209c5d2d5731ef934af9b4952e5e6d271ce16060dbb6207d388519fe4e49",
+            "raw_bytes": 12553,
+            "embedded_data_equal_after_path_anonymization": true
+          },
+          "ordinary_RKNN": {
+            "raw_sha256": "5cc1cc118b3c11554f0c06dbd9ccd3b867321192d6b78867babc87dfca247acd",
+            "raw_bytes": 73143,
+            "embedded_data_equal_after_path_anonymization": true
+          },
+          "profile_RKNN": {
+            "raw_sha256": "ccf926aeb95d09dbf10b0a7b6f444d3ea62d06f786f984d730557d49764c679f",
+            "raw_bytes": 80158,
+            "embedded_data_equal_after_path_anonymization": true
+          },
+          "normal_platform": {
+            "raw_sha256": "1f5eaccd519a71f8f832e7c5e4400fcf77892f3f2ebc98df0820f78d79967dca",
+            "raw_bytes": 1720,
+            "embedded_data_equal_after_path_anonymization": true
+          },
+          "profile_platform": {
+            "raw_sha256": "c39523853dd9e99bb1f388a7e656e41ad014ce0a922611d31222b3888fc1abb9",
+            "raw_bytes": 1720,
+            "embedded_data_equal_after_path_anonymization": true
+          },
+          "export-independent-review-r1": {
+            "raw_sha256": "9bfb5b81e0ffc179d4084ea8c63690404d467c660f9724d9a5f9647af53dec4c",
+            "raw_bytes": 34908,
+            "embedded_data_equal_after_path_anonymization": true
+          },
+          "rknn-independent-review-r1": {
+            "raw_sha256": "d9e9f7da5efab713616df6e4d6ab7cccc85fc1d73c5201ca2b7dab2eceb5acd8",
+            "raw_bytes": 58079,
+            "embedded_data_equal_after_path_anonymization": true
+          }
+        },
+        "local_links_verified": {
+          "README_opening_v35_section": 13,
+          "ENGINEERING_NOTES_51_to54": 6,
+          "CF_package_README": 1,
+          "broken_links": []
+        },
+        "limits": [
+          "CPU/ORT gate passed on two real frozen D10/M96 source blocks; RKNN gate rejected and candidate not adopted.",
+          "Normal means 54.287484/66.367944ms are complete synchronous component SDK calls, two warm samples per state, no same-process controlled parent/candidate AB.",
+          "Actual mixed profile 50 internal NPU + 3 internal CPU + 6 CPU I/O; ONNX zero Transpose does not mean SDK zero Transpose.",
+          "Historical E23520 original gold inherited; not a fresh fullgraph or M48 replay Update comparison.",
+          "Other notes52-54 numerical results are outside this component audit; reviewed only to prevent CF/fullreplay/INT8 claim conflation."
+        ],
+        "model_or_ORT_or_SDK_or_BA_execution_in_review": false,
+        "saved_arrays_recomputed_in_review": false,
+        "tests_rerun": false,
+        "public_files_modified": false
+      }
+    },
+    {
+      "file": "encoder/publication-review-r2.json",
+      "raw_sha256": "bb25b1755c8938f3ff6052b76511a0401934c604cc3b69a8de91af54cb72778b",
+      "data": {
+        "schema": "v35_board_PTQ_preparation_publication_review_r2",
+        "status": "passed_no_current_blockers",
+        "scope": "Only the new board_ptq preparation package/tests, README PTQ paragraph, engineering note54 and board_ptq_preparation_v35.json. No re-review of unrelated actual CF/FAST results.",
+        "reviewed_file_sha256": {
+          "README.md": "75765ae22c1057043328fd22d970ec54ea14a4b5fa552c260c1d9beef93a8e0e",
+          "docs/ENGINEERING_NOTES.md": "41bcd734200ab4effe07a1606f99a827cf490d183a623ab92182b68f97825a5f",
+          "results/board_ptq_preparation_v35.json": "98eaf13379cdc560f770492f508f162633910d96476940a27f3fb8ae15fdf3e3",
+          "deploy/rk3588/validation/board_ptq/preflight-v35-arm-toolchain.py": "50f625d2eba16a95020461fa3e38da363edd81519525967f0b47c274662d307e",
+          "deploy/rk3588/validation/board_ptq/install-v35-arm-toolchain-board.py": "e6bd1e22148cb38b7e27caed8b50dbb3ba1530228534afc679350bc5ae3c2113",
+          "deploy/rk3588/validation/board_ptq/compile-v35-dpvo-int8-board.py": "0f66e0ead40ab6eff546a47367ee93ec044b2b84e064eb8e9876352e0ca05fb0",
+          "deploy/rk3588/validation/board_ptq/arm64-dependency-plan.json": "a32e1a00c8bdbf74241de3de236cdaef050567b26b9d591a7f57c65ab247e2b4",
+          "deploy/rk3588/validation/board_ptq/arm64-downloads.json": "db93d832df03a1d136d28a4e8c373dd11081c483df56b5e215fe112207485a8b",
+          "deploy/rk3588/validation/board_ptq/arm64-python-wheels.txt": "f06993533ffc7769ca80fc65a2213a0374484dc27c7381b0b7b21f7bccd8efab",
+          "deploy/rk3588/validation/board_ptq/official-source-pins.json": "106b1dbe9423a5494d6db150971b372f1aa0bdabc9d9df833cafc33ef2e03f79",
+          "deploy/rk3588/validation/board_ptq/onnxoptimizer-sdist-source-review.json": "feee815a283923233e23b30404d8dea3baeb46f4d01df56d6ee87c8cfd9a414c",
+          "deploy/rk3588/validation/board_ptq/int8-feasibility-review.json": "6d160aebe36a65e7b8da7ed3eadc844da6c846052dc4dcc47ebd6ba896d0be79",
+          "deploy/rk3588/validation/board_ptq/README.md": "9047475acf7b5fb4b897b9a1bc3e22cf25d9e14df531cec6a2a6c56fc124d08f",
+          "tests/test_v35_board_ptq.py": "848f162bf364a35041765ec49444ed341fdca75fb8559afd3e79ff7f36d1ae99"
+        },
+        "raw_evidence_hash_size_checks": [
+          {
+            "evidence_key": "dependency_plan",
+            "raw_sha256": "a32e1a00c8bdbf74241de3de236cdaef050567b26b9d591a7f57c65ab247e2b4",
+            "raw_bytes": 79204
+          },
+          {
+            "evidence_key": "official_source_pins",
+            "raw_sha256": "106b1dbe9423a5494d6db150971b372f1aa0bdabc9d9df833cafc33ef2e03f79",
+            "raw_bytes": 5183
+          },
+          {
+            "evidence_key": "sdist_static_inspection",
+            "raw_sha256": "feee815a283923233e23b30404d8dea3baeb46f4d01df56d6ee87c8cfd9a414c",
+            "raw_bytes": 2519
+          },
+          {
+            "evidence_key": "PTQ_preparation_review",
+            "raw_sha256": "6d160aebe36a65e7b8da7ed3eadc844da6c846052dc4dcc47ebd6ba896d0be79",
+            "raw_bytes": 10386
+          }
+        ],
+        "source_copies": {
+          "files": 11,
+          "byte_identical_to_frozen_source": true,
+          "copy_review_sha256": "e2bb3dc9e0201a16662f6e0a4df198bd6eeaefec961f3953b5dc7357acde3a80"
+        },
+        "public_test_receipt_sha256": "93e092304b11eb2a0f719c72a637325076bf370a4d87e0d704a977975b07d4e4",
+        "public_tests": {
+          "passed": 30,
+          "failed": 0,
+          "skipped": 0,
+          "pytest_seconds": 0.05
+        },
+        "relevant_doc_links": [
+          {
+            "source": "README.md",
+            "link": "deploy/rk3588/validation/board_ptq/README.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "link": "results/board_ptq_preparation_v35.json",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "link": "docs/ENGINEERING_NOTES.md",
+            "exists": true
+          },
+          {
+            "source": "docs/ENGINEERING_NOTES.md",
+            "link": "../deploy/rk3588/validation/board_ptq/README.md",
+            "exists": true
+          },
+          {
+            "source": "docs/ENGINEERING_NOTES.md",
+            "link": "../results/board_ptq_preparation_v35.json",
+            "exists": true
+          }
+        ],
+        "findings": [],
+        "limits": [
+          "ARM dependencies have not been installed.",
+          "No real calibration, INT8 compile/runtime or trajectory inference performed.",
+          "SDK full wheel SHA256 awaits operator download; official Git blob and metadata pins retained.",
+          "SDK PTQ dtype handling and actual operator precision/placement untested."
+        ],
+        "root_files_modified": false,
+        "model_or_board_execution_in_review": false,
+        "parent_review_sha256": "77242c3040f47e94f693a65a637842dccebbd73a08075adde51b2bede83822d4",
+        "narrow_refresh": {
+          "note51_old": "\u5168\u90e8\u516b\u6b21 release \u548c context destroy \u6709\u8bb0\u5f55",
+          "note51_new": "8 \u6b21 release \u4e0e 2 \u4e2a context destroy \u5747\u6709\u8bb0\u5f55",
+          "reverse_replacement_restores_r1_notes_sha256": true,
+          "note54_unchanged": true,
+          "other_reviewed_files_unchanged": true,
+          "tests_or_arrays_repeated": false
+        }
+      }
+    }
+  ],
+  "final_scans_passed": true,
+  "synthetic_tests_passed": 91,
+  "real_model_execution_in_review": false
+}

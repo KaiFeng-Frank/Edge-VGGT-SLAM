@@ -429,3 +429,61 @@
 **实际结果：** 同一 192 张 TUM fr1_xyz 图像和时间戳完整回放，得到 **179 个 fresh 位姿**；总回放 **348.556 s**，fresh 吞吐 **0.514 Hz**，软件逐帧 fresh 平均 **1.919 s**、P95 **2.887 s**。原默认历史回放为 699.765 s、0.256 Hz、3.880 s、6.655 s。FAST 单独 EOF 优化 24.598 s，不能计入 fresh 数量；峰值进程 RSS 为 **1,070.461 MiB**。硬件为 16 GB 板，没有因此认证 8 GB 部署或 30 分钟稳定运行。
 
 **精度与评估：** 两次输入 manifest 字节相同，先按 fresh 标记取共同 179 个观测，再关联 GT，每条轨迹各在同一共同集合上只拟合一次正尺度 Sim3。ATE RMSE 为默认 **1.0853 cm**、FAST **1.0714 cm**；固定全源 1 秒计划 162 对中有共同有效 149 对，旋转 RPE RMSE **0.96867→0.96821°**，平移 RPE RMSE **1.66276→1.63046 cm**，方向误差中位数 **3.036→3.152°**。EOF 的 192 个重建位姿另评，不混入在线样本。它只覆盖约 6.37 秒的视频，没有原 CUDA/full VGGT 轨迹基线；GT 只用于事后评估，不用于选配置。这是完整短回放进展，仍不满足实时目标，没有增加 ORB/LK/PnP，也未改变默认 VGGT。[实现、身份和评估收据](../results/dpvo_fast_v34.json)。
+
+## 51. Channel-first 表达、物理数组布局和 NPU placement 要分别验证
+
+**问题：** v34 的 ONNX 没有 Transpose，实际 RKNN profile 却有十个 NPU Transpose。编译器内部的布局转换不能靠查看 ONNX 节点数量判断。
+
+**实现与对照：** 新实验将完整源块从 `[1,D,M,C]` 改为 `[1,C,D,M]`，用同一组原参数的 1×1 Conv 表达 Linear；LayerNorm 仍只对 C 轴计算原中心化方差，保留 epsilon/affine、c1→c2 顺序、边界 bias、D/M 两类 SoftAgg 和 stable weight。两份 D10/M96 状态的原块、父块、新块和板端 CPU ORT 共 84 项比较通过原 `rtol=1e-4, atol=1e-5`，保存数组独审通过 1,421 项检查。50 个 initializer 与原 kernel/bias/affine 的精确 reshape 一一对应；CF 与 canonical 副本逐字节反置换核等。
+
+**实际 SDK 结果：** 新图编译后完成六次普通调用、两次独立 profile。两组各两次 warm 完整 SDK 调用均值为 **54.287 / 66.368 ms**。每份 profile 为 **50 个内部 NPU、3 个内部 CPU（两个 Exp、一个 Min）、6 个 CPU I/O**，仍有 **6 个 NPU Transpose**，其 profile 行计时合计约 7.5 ms。输入查询得到 native NHWC，须把 CF 逻辑输入真正打包为 NHWC；输出按 CF 获取自有 FP32 副本，并在 release 前核验实际逻辑字节。SDK 独审通过 **1,668 项**，8 次 release 与 2 个 context destroy 均有记录；四个保存输出的 normal/profile 代表结果字节一致。
+
+**边界：** CPU 一致不能推导 NPU 一致：**本次 RKNN 仍拒绝原 FP32 门槛**，但输出有限、weight 在合法范围。内部 Transpose 比历史 profile 少，并不等于已证明同期受控加速；没有执行新旧图交错 AB。单次只覆盖 960 条源边，既不是完整 Update，也不是 M48 轨迹所用的 Update。完整 E=23,520 原 gold 为历史参考，本轮未重跑；默认 VGGT 未改，候选未采用。[源码、原始收据和两级独审](../results/dpvo_source_frame_channel_first_v35.json)。
+## 52. 完整 fresh 路径的计时必须区分外层、嵌套项和未测阶段
+
+**口径与分母：** 重新读取 v34 原 FAST 完整 192 帧 CPU 回放的保存 JSON，按实际 fresh 标记选取 179 帧，没有重新执行图像、模型、相关性或 BA。逐帧外层恒等式为 `processing=decode/去畸变/crop+encoder外层+stream`；将该帧的 Update 和 correlation 回调总量从 stream 中扣除，余项只称 **stream 其余工作**。首个 fresh 帧含 12 次初始化 Update，保留在分母内；去掉这一帧后的 178 帧均值为 1.9017 s，并没有改变结论。
+
+**实际路径：** 179 个 fresh 的软件处理均值 **1.9192 s**、P95 **2.8867 s**。下表均值是可相加的独立外层阶段；各项 P95 不能相加。
+
+| 独立阶段 | fresh 均值（ms） | fresh P95（ms） | 均值占比 |
+| --- | ---: | ---: | ---: |
+| Update 原回调 | 933.677 | 1541.285 | 48.65% |
+| encoder 外层 | 446.590 | 661.674 | 23.27% |
+| correlation 外层 | 314.206 | 466.069 | 16.37% |
+| stream 其余工作 | 203.229 | 281.480 | 10.59% |
+| decode/去畸变/crop | 21.494 | 23.156 | 1.12% |
+
+**嵌套边界：** Update 计时包含输入 finite 扫描、Torch view、原网络 forward、自有 NumPy 输出副本和 finite/weight 域检查，不是纯神经 kernel 时间。correlation 外层已包括 cache 关闭/重建、特征拼接、平均池化与布局准备、索引映射、native query 和外层 finite 检查；其中 cache prepare 均值 **102.682 ms**、native query **144.040 ms** 都是其子集，不能再次加到外层上。encoder 的逐 fresh ORT 分项没有保存，只有全部 192 帧累计 ORT **80.6144 s**、归一化 **0.4267 s**、采样 **2.6185 s**，不得把全源累计除以 179 冒充 fresh ORT 均值。stream 其余项含 BA、重投影、context gather、图状态复制、flow/删帧和检查；**旧收据没有独立 BA 时钟，203.229 ms 不能写成 BA 耗时**。
+
+**目标差距与优先级：** 与串行 20 Hz 的 50 ms 服务预算相比，当前 fresh 均值需要约 **38.38 倍**缩减；与 P95≤100 ms 相比约 **28.87 倍**。这两个预算不等于物理相机时延验收。保持这条保存 trace 的其他阶段成本不变，将 encoder 与 Update 同时置零仍有均值 **538.929 ms**，再将 correlation 置零仍为 **224.723 ms**。这是固定 trace 的反事实成本拆分，不能解释成硬件理论下界或实测优化结果。单独更换 encoder 不足以证明整机目标；下一步须同时保留 encoder 完整 I/O、全图 Update、cache/相关性以及独立 BA 的计时，不能只用某个组件耗时倒数作 fresh 吞吐。
+
+**源帧合同与限制：** 纯整数重放保存的准入/删除事件，六个 snapshot ii/jj/kk 原始数组 SHA 与归档 metadata 核等。M=48 的所有实际 Update 源块均完整覆盖目标×48 patch，观察目标 degree 为 **8–17**；最后在线 Update 前为 **10,128 边、17 源块**，删帧后的最终快照为 **9,744 active 边、16 源块**，另有 384 inactive 边。后续分块必须保留完整邻居及两类 SoftAgg 分组、c1→c2 顺序与原边序还原，所有源块成功后才整图提交和进入 BA。整数身份验证没有重建或验证 net/corr/context 数值；历史 D10/M96 的单块 SDK 时间不能当成 M48 全图速度或精度证明。
+
+**证据与边界：** [原 FAST 完整回放](../results/dpvo_fast_v34.json)。[保存计时与拓扑拆分](../results/dpvo_fast_rknn_v35.json)绑定原运行及分析源码的 SHA。历史运行不控温控频，arrival 是软件文件准入时刻，不是物理曝光或排队年龄；EOF 12 次离线 Update 与重建另列。DPVO 是另一模型的隔离研究，默认 VGGT 未变，没有 ORB/LK/PnP；本条只分析历史 CPU trace，NPU 回放见第 53 条；不声称 20 Hz、100 ms、整段轨迹或 30 分钟稳定性验收。
+## 53. 编码器 NPU 接入必须放回完整 FAST 关键路径评价
+
+**完整回放与门槛：** 在另一模型 DPVO 的原 FAST 配置下保持 M48/lifetime11/removal16/optimization7、原权重、CPU RNG 消费顺序、原 Update/相关性/BA，复用一个 v32 dense spatial RKNN 编码器 context 完成 192 帧，实际 SDK 调用 192 次；179 个 fresh 位姿、无清理错误。默认 VGGT 不变，没有 ORB、LK 或 PnP。该编码器历史严格 FP32 门槛已失败，本次前 3 帧完整 fmap/imap 的六份输出仍全部未通过原 FP32 数值门槛，保存数组独审确认该结果；未裁剪或放宽 `rtol=1e-4, atol=1e-5`，仅显式诊断参数允许继续，`candidate_accepted=false`。
+
+**整个路径：** 无节拍文件回放耗时 **284.058 s**，EOF 12 次离线 Update/重建另计 **23.271 s**，峰值 RSS **922.297 MiB**。完整 replay 的 fresh 吞吐为 **179/284.058=0.63015 Hz**，输入吞吐 **192/284.058=0.67592 Hz**；不能用某个组件或均值的倒数当整条 fresh 吞吐。fresh 软件处理均值 **1.54928 s**、P95 **2.37991 s**，历史全 CPU FAST 为 1.91920/2.88668 s；这不是同进程控温控频基准，更不是物理曝光到位姿的时延。
+
+| 本次可相加的独立阶段 | fresh 均值（ms） |
+| --- | ---: |
+| 原 Update 回调及输入/输出检查 | 819.311 |
+| correlation 外层 | 290.006 |
+| encoder 外层完整 I/O/检查/采样 | 234.491 |
+| 原 BA 透明计时 | 96.917 |
+| stream 其余工作 | 87.121 |
+| decode/去畸变/crop | 21.432 |
+
+上述阶段均值之和为 1549.278 ms；阶段 P95 不能相加。correlation 的 prepare 100.119 ms 和 query 124.008 ms 是嵌套子项，不能再加一次。215 次真实神经/相关性回调包含 **13 次 motion probe、190 次在线 Update、12 次 EOF Update**；motion probe 不调用 BA。202 次 BA 独立计时合计 **18.9325 s**，在线 17.3482 s、EOF 1.5842 s。新 BA 计时透明委托原调用；历史 CPU 收据没有该独立时钟，其 203.229 ms stream remainder 不能称为 BA 或与新 BA 做直接阶段回归。
+
+**轨迹与分母：** 完整输入 manifest 字节相同，原 94 项参数指纹、共享 CPU RNG 初末指纹及 192 次深度随机抽样一致。两次 replay 的实际 common-fresh 都是源观测 13..191 共 **179** 个；固定全源 1 秒计划 162 对中 **149** 对可评价，最近 GT≤20 ms。评价各用一次正 Sim3，绝不作为先验或配置选择。共同 fresh 的 ATE RMSE 为 **CPU 0.01071409 m / NPU 0.01071398 m**，旋转 RPE RMS **0.9682089° / 0.9682303°**，缩放后平移 RPE RMS **0.01630460 m / 0.01630476 m**。EOF 192 位姿及重建另列，不计 fresh。短前缀的近似轨迹不能撤销特征门槛拒绝，也不证明原 CUDA、VGGT、长轨迹精度或 30 分钟稳定性。
+
+**下一瓶颈与证据：** Update、相关性及其缓存准备仍占主要关键路径；单独完成 encoder 接入离 20 Hz/100 ms 目标仍远，不能自动采用。保存 JSON 独审 **2014 项/0 失败**，确认逐调用归属、嵌套计时、输入/源/RNG 指纹和清理；不重新执行图像、网络、SDK、ORT 或 BA。[完整运行、轨迹评价、各项审计与原始文件 SHA](../results/dpvo_fast_rknn_v35.json)。
+## 54. 量化构建含模型前向，ARM 工具链也不能照搬 x86 依赖
+
+**容易踩的坑：** `RKNN.build(do_quantization=True)` 看似只做转换，实际校准路径会执行模型。若约束为真实神经计算全部在 RK3588S 上，不能把这一步放到电脑后再声称板端全流程。非量化图编译与校准必须区分。
+
+**依赖证据：** 固定 RKNN Toolkit2 2.3.2 的 ARM64 CPython 3.11 requirements 要求 Torch `>=1.13.1, <=2.2.0`；已有板端 Torch 2.3.1 不在该范围，不能因为 x86 编译环境使用 2.4.0 成功就沿用。已按官方 wheel/PyPI 元数据整理隔离环境的 URL、版本、大小和 SHA。固定 `onnxoptimizer==0.3.8` 在检查的来源中没有所需 aarch64 wheel；官方 sdist 自带 ONNX、protobuf/protoc 和 pybind11 源码，但仍需本地构建。源码检查发现其内置 pybind11 为 2.9.2，准备使用独立 2.11.1 配合 CPython 3.11，不改原归档；CMake、Python.h 和项目已有 GCC/sysroot 也须核对。
+
+**处理与边界：** 准备脚本在实际安装/PTQ 入口先检查 Linux、aarch64 和 RK3588/S device tree；使用新 venv，不覆盖现有推理环境。下载与本地构建绑定文件身份，限制构建并发，保留失败产物；INT64 patch 索引不得为了通过校准改成 float。**本轮仅完成元数据、源码检查及合成/fake SDK 验证，未实际安装、量化或生成 INT8 模型。** 混合 FP32/INT64 校准输入是否被 SDK 正确保留、校准集是否代表场景、最终算子精度与轨迹性能仍待实测。SDK 完整 wheel 的 SHA256 也要在下载后补齐，当前只有固定 Git blob 与 metadata 身份。[准备源码与明确状态](../deploy/rk3588/validation/board_ptq/README.md)、[官方出处及依赖收据](../results/board_ptq_preparation_v35.json)。
