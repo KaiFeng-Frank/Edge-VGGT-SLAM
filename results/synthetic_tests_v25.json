@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "passed": 40,
+  "failed": 0,
+  "skipped": 0,
+  "host_synthetic_only": true,
+  "host_real_model_forward": false,
+  "test_source_sha256": {
+    "tests/test_v25_da3_runtime.py": "2b325a2a03fe4fab067be22336b275f62aad605c411d3f0512553d9ff221fdce",
+    "tests/test_v25_da3_audit.py": "21f7d5e4d6bbf374ff2f1631ddf395117e366cee2e0b5c1f69848f5fcdd86bcd"
+  },
+  "implementation_source_sha256": {
+    "deploy/rk3588/validation/compile-v25-da3-rknn.py": "971184fd75f77aad0261163176e8cbc5cd1d4525d561d69c3e2d322172c075ac",
+    "deploy/rk3588/validation/run-v25-da3-rknn-board.py": "de64bcd069b78f266bdfc48c8cbf75305937a1e23ffa20eb669fe323ec8dddc8",
+    "deploy/rk3588/validation/audit-v25-da3-rknn.py": "244e7ee7f7a02b6701a91d0305b79f4c4161e3b877f60c36c73a40bc50f47e91",
+    "deploy/rk3588/validation/audit-v24-da3-rknn.py": "5cec66e0aa99fb4997f02e668411ac37590cac47c05bb02b36e32ed75a7cba4c",
+    "deploy/rk3588/validation/run-v24-da3-rknn-board.py": "9f058e12141bacdc19a50aed1e17c5cf9e24db5c7edcca5b5d100a29c2b66af9",
+    "deploy/rk3588/validation/run-v24-da3-rknn-board-r2.py": "88c665db7bab7355a36ef5a9422cbc648ea34a7cd258d3df358cc8702cbb9cf3",
+    "deploy/rk3588/validation/run-v24-da3-rknn-board-r3.py": "455770d23192dc9218c31ee352c0fc609d08408d80e3aa1b291c94ae6d83b9c1"
+  },
+  "runs": [
+    {
+      "label": "Exact compiler/configuration lineage and unchanged SDK/codec/timing AST",
+      "passed": 18,
+      "skipped": 0,
+      "output": "..................                                                       [100%]\n18 passed in 0.10s\n",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -B -m pytest -q -p no:cacheprovider tests/test_v25_da3_runtime.py"
+    },
+    {
+      "label": "Saved-artifact auditor, timing/profile parser and portable frozen parent lookup",
+      "passed": 22,
+      "skipped": 0,
+      "output": "......................                                                   [100%]\n22 passed in 0.08s\n",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -B -m pytest -q -p no:cacheprovider tests/test_v25_da3_audit.py"
+    }
+  ],
+  "description": "Separate focused runs at frozen sources. These tests do not execute a real model or SDK. The independent saved-array audit is reported separately, not added to test count."
+}

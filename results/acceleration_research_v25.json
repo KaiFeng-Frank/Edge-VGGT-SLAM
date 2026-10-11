@@ -1,0 +1,3700 @@
+{
+  "file": "vggt-v25-research/research.json",
+  "raw_sha256": "696aac3d1889e0bad7f4a5c6978b04063e5b8f91b47f5205e45e526d582a0ccd",
+  "raw_bytes": 36524,
+  "host_home_redacted": false,
+  "data": {
+    "schema_version": 1,
+    "checked_utc": "2026-10-11T00:18:39.730624+00:00",
+    "purpose": "v25 RK3588S learned new-observation pose research; original VGGT default unchanged.",
+    "execution_scope": {
+      "primary_sources_only": true,
+      "complete_weights_downloaded": false,
+      "bounded_weight_container_metadata_ranges_only": true,
+      "host_model_constructed_or_forward_run": false,
+      "board_tasks_run": false,
+      "production_or_public_files_changed": false
+    },
+    "conclusion": "No candidate is verified to meet RK3588S 20 Hz and 2\u20135-second dense-map goals. Among the small learned-pose candidates compared here, DPVO has the smallest checkpoint-verified inference parameter count. Removing CUDA dependencies and measuring the dynamic operations are the immediate research gates; this is not a completed model port or a production replacement.",
+    "source_bindings": {
+      "dpvo_readme": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "README.md",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/README.md",
+        "git_blob_sha1": "278db416cbbbbb76049a20fb15587ac26c73d184",
+        "sha256": "9691b756f3964455eead997448f93e2e78f852ce076a8157024d1b45f1ca3282",
+        "lines": "31-55,101-128"
+      },
+      "dpvo_license": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "LICENSE",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/LICENSE",
+        "git_blob_sha1": "b567ea1f1def1d47479bbbaf0bc3bfb3a25a9417",
+        "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a"
+      },
+      "dpvo_cuda_build": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "setup.py",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/setup.py",
+        "git_blob_sha1": "86fe6caf7abef30dc527cf6de87615f49673a98a",
+        "sha256": "48c67bb89d46faae999ba98ac61fa6d965b0962365a0e5f3b74e4998cd02139e",
+        "lines": "1-38"
+      },
+      "dpvo_release_link": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "download_models_and_data.sh",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/download_models_and_data.sh",
+        "git_blob_sha1": "04131fd34fbfd549eb8609370f36a70da157daaa",
+        "sha256": "a75998bead90e57611c4c78da24e196e51cfe998ba98a6a7eb17f9effdd3ef89",
+        "lines": "1-5"
+      },
+      "dpvo_online": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "dpvo/dpvo.py",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/dpvo.py",
+        "git_blob_sha1": "b6f4c5992d176844297718a33b459117bc27f4b6",
+        "sha256": "7efcb45689c2da8d18e2c69774e221799c9f8472e99531955f55dcb145626fd7",
+        "lines": "90-112,166-198,240-255,328-475"
+      },
+      "dpvo_network": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "dpvo/net.py",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/net.py",
+        "git_blob_sha1": "96d9c1c18fa21db0b14fa724373f25d350b53301",
+        "sha256": "1aee33d54f0b1cc1f3f842b60790ff1299ef9c1e20bca6467ce7114dca802acc",
+        "lines": "19-181"
+      },
+      "dpvo_encoders": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "dpvo/extractor.py",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/extractor.py",
+        "git_blob_sha1": "119141ea07368269e8fa42772d9da3bed8d90629",
+        "sha256": "f5cbcbe14c42e44bcec6e827a3429ebe93979a439ba9b9ef70d4f4baa3454a2b",
+        "lines": "6-54,200-263"
+      },
+      "dpvo_aggregation": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "dpvo/blocks.py",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/blocks.py",
+        "git_blob_sha1": "9642de1088b29483b6fea355a04d7247f33b2330",
+        "sha256": "9c9e2848da524829374e56bb1b14a891e9e2c19bc683af8e958e8982ba33d661",
+        "lines": "15-48"
+      },
+      "dpvo_ba": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "dpvo/fastba/ba.py",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/ba.py",
+        "git_blob_sha1": "d3095229ce1864808e6028b5690295ab41791b99",
+        "sha256": "dc108d12199e8a2f97a0b391f4b24e266e711d49eb20f0298ef692c7724a2e6c",
+        "lines": "1-8"
+      },
+      "dpvo_default": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "config/default.yaml",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/config/default.yaml",
+        "git_blob_sha1": "677e7c29f9f9ded923c66d2359808007f8a9533f",
+        "sha256": "0351abfbc60d9ec93bf402857130497b2f063f8ce0e8fd6e87cc55c73273594a"
+      },
+      "dpvo_fast": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "config/fast.yaml",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/config/fast.yaml",
+        "git_blob_sha1": "17152701a7466bfedb3e42da10aae6f59ec95427",
+        "sha256": "24c82450151ce6e8431dfbf9dcc501a7a2747955a30a59f745bdc03bd84ce4c3"
+      },
+      "dpvo_config": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "dpvo/config.py",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/config.py",
+        "git_blob_sha1": "ec7c2f4eb2926d870d11f34bd40603e0480ede97",
+        "sha256": "f70eaf98ef32a7ea5a675de571373e32d0a6d1354bea9d13c6a779eb68f50bec"
+      },
+      "dpvo_camera_convention": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "dpvo/projective_ops.py",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/projective_ops.py",
+        "git_blob_sha1": "24ad43ae029f6a3a9fa6df2e79ab3a1fdfca069d",
+        "sha256": "ef20f322a118b0790bff975cce3120ad31e867c8b088a9f408c3328c0fb664c1",
+        "lines": "53-60,115-117"
+      },
+      "dpvo_tum": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "path": "evaluate_tum.py",
+        "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/evaluate_tum.py",
+        "git_blob_sha1": "f9f4c127830a979ecae299fb0a93ea7d4b287ede",
+        "sha256": "2548c77758885daa7c527cd7584aceb343442beefdc18ebdd07a1c6fc15fd1e6",
+        "lines": "28-48,91-94,118-152"
+      },
+      "tartan_readme": {
+        "repo": "castacks/tartanvo",
+        "commit": "ec2ecc38b590ff27b76cc7818cf198d6420dce4b",
+        "path": "README.md",
+        "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/README.md",
+        "git_blob_sha1": "401f82f0dd1077546ac8de93a35c64847dd8af56",
+        "sha256": "6806a53dc9b58134e75c4476703e7c59be2f7272c580b25dcb42f5c820937ade",
+        "lines": "39-60,84-103,195-216"
+      },
+      "tartan_license": {
+        "repo": "castacks/tartanvo",
+        "commit": "ec2ecc38b590ff27b76cc7818cf198d6420dce4b",
+        "path": "LICENSE",
+        "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/LICENSE",
+        "git_blob_sha1": "935ebb0ecd56a67013069dc85184c8812dac5b11",
+        "sha256": "0b8ade8355cb891984323e5422bbdea48991de43851e5e1a732bf8399c860975"
+      },
+      "tartan_online": {
+        "repo": "castacks/tartanvo",
+        "commit": "ec2ecc38b590ff27b76cc7818cf198d6420dce4b",
+        "path": "TartanVO.py",
+        "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/TartanVO.py",
+        "git_blob_sha1": "61ee4883a53e6518e525a549fc7e7f34c1c45a60",
+        "sha256": "9ca946513deb9c58dc56ebe5511aff1dafe4a00383bfd7a07103ffd10b6061d8",
+        "lines": "41-109"
+      },
+      "tartan_network": {
+        "repo": "castacks/tartanvo",
+        "commit": "ec2ecc38b590ff27b76cc7818cf198d6420dce4b",
+        "path": "Network/VONet.py",
+        "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/Network/VONet.py",
+        "git_blob_sha1": "85fe4ab7a55c67c53d71ff126a2131a30e55cbca",
+        "sha256": "f4b6fa58ecdd229fef3cadc370c89ad188df5ed9bf4da4804a782eac18df328b",
+        "lines": "33-54"
+      },
+      "tartan_pwc": {
+        "repo": "castacks/tartanvo",
+        "commit": "ec2ecc38b590ff27b76cc7818cf198d6420dce4b",
+        "path": "Network/PWC/PWCNet.py",
+        "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/Network/PWC/PWCNet.py",
+        "git_blob_sha1": "9ced464cff89acf44fc99aaeb6555835d8ec7801",
+        "sha256": "1cc08039ebd96390e9c84602fd47dbf22a4bd3945d509802c920204f5fe92df3",
+        "lines": "34-165,168-273"
+      },
+      "tartan_correlation": {
+        "repo": "castacks/tartanvo",
+        "commit": "ec2ecc38b590ff27b76cc7818cf198d6420dce4b",
+        "path": "Network/PWC/correlation.py",
+        "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/Network/PWC/correlation.py",
+        "git_blob_sha1": "7966a3560c9d99d9f85ccfd51168e2cb304cd6ad",
+        "sha256": "683325716add562ce33cc550edf220267c103032b3523e7a411448d02a70613f",
+        "lines": "274-325"
+      },
+      "tartan_pose": {
+        "repo": "castacks/tartanvo",
+        "commit": "ec2ecc38b590ff27b76cc7818cf198d6420dce4b",
+        "path": "Network/VOFlowNet.py",
+        "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/Network/VOFlowNet.py",
+        "git_blob_sha1": "ecf35a0259c98b362c49d412068b1957069137ce",
+        "sha256": "702592d5805d16a66a81ba60e8b7fa81ac9c3a40bf3ffabee42db457c8ad1acd",
+        "lines": "77-148"
+      },
+      "mono_readme": {
+        "repo": "nianticlabs/monodepth2",
+        "commit": "b017a8164fae339b0ce01f3a9e5048104d5abd0e",
+        "path": "README.md",
+        "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/README.md",
+        "git_blob_sha1": "164c657b89e664cfae9fb7757d22af660cc3f942",
+        "sha256": "0239b52ba16a9eee37085be0e36b34c1f47045bb08d9efeec6df580ed2daf6f6",
+        "lines": "15,55-77,224-257"
+      },
+      "mono_license": {
+        "repo": "nianticlabs/monodepth2",
+        "commit": "b017a8164fae339b0ce01f3a9e5048104d5abd0e",
+        "path": "LICENSE",
+        "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/LICENSE",
+        "git_blob_sha1": "31fadc86ef8f2528ef0b50e1a395d179c650746f",
+        "sha256": "e02c50ac489412782c230c9c3f59ce4368686b98a7c33b1c1198ae82cbe7379b"
+      },
+      "mono_pose_eval": {
+        "repo": "nianticlabs/monodepth2",
+        "commit": "b017a8164fae339b0ce01f3a9e5048104d5abd0e",
+        "path": "evaluate_pose.py",
+        "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/evaluate_pose.py",
+        "git_blob_sha1": "4b852a042ff908cb4785aaa9400c9e59a577b3de",
+        "sha256": "23a4fc565ad144de5925860fa429999fe76e834bbe1c756939ec805c469da8d5",
+        "lines": "31-45,70-111,121-139"
+      },
+      "mono_pose": {
+        "repo": "nianticlabs/monodepth2",
+        "commit": "b017a8164fae339b0ce01f3a9e5048104d5abd0e",
+        "path": "networks/pose_decoder.py",
+        "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/networks/pose_decoder.py",
+        "git_blob_sha1": "4b03b60ea839c366126a0adf94fda445c231143f",
+        "sha256": "e369613794a6e03d4ddb280d9530018c26581aae93eac583cec2771a55e992cf",
+        "lines": "17-54"
+      },
+      "mono_encoder": {
+        "repo": "nianticlabs/monodepth2",
+        "commit": "b017a8164fae339b0ce01f3a9e5048104d5abd0e",
+        "path": "networks/resnet_encoder.py",
+        "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/networks/resnet_encoder.py",
+        "git_blob_sha1": "9c94418d383e5c48acb64e946e54f607ea9c2861",
+        "sha256": "a4a60c66699e21c287c4f70af78b1f3be607642889edce5eddb391f7765c8d44"
+      },
+      "mono_depth": {
+        "repo": "nianticlabs/monodepth2",
+        "commit": "b017a8164fae339b0ce01f3a9e5048104d5abd0e",
+        "path": "networks/depth_decoder.py",
+        "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/networks/depth_decoder.py",
+        "git_blob_sha1": "498ec385d2a6b7322a55f190bd6ab76330b55da7",
+        "sha256": "1e894105362af006347250c527adcb969215391c9cd1221254ff808014bdff99"
+      },
+      "vggt_full_forward": {
+        "repo": "facebookresearch/vggt",
+        "commit": "a288dd0f14786c93483e45524328726ab7b1b4ce",
+        "path": "vggt/models/vggt.py",
+        "url": "https://github.com/facebookresearch/vggt/blob/a288dd0f14786c93483e45524328726ab7b1b4ce/vggt/models/vggt.py",
+        "git_blob_sha1": "686e6f9d3f9e37769c195258f429a66d927375c0",
+        "sha256": "dbc92d6214882161d9042b1bc60cc932a9fd6bb609fc913d14906328f7833607",
+        "lines": "61-88"
+      },
+      "vggt_track_head": {
+        "repo": "facebookresearch/vggt",
+        "commit": "a288dd0f14786c93483e45524328726ab7b1b4ce",
+        "path": "vggt/heads/track_head.py",
+        "url": "https://github.com/facebookresearch/vggt/blob/a288dd0f14786c93483e45524328726ab7b1b4ce/vggt/heads/track_head.py",
+        "git_blob_sha1": "a4f1d9bd83cca1f74f97a644a02b984904f84706",
+        "sha256": "5838f10401ad4c614e5608314f7b27b9195af8839e8bbb3321bfb6aad41a3e59",
+        "lines": "72-112"
+      }
+    },
+    "candidates": [
+      {
+        "name": "DPVO / DPV-SLAM (without classical loop closure)",
+        "priority": 1,
+        "architecture": "Learned CNN features + sparse patch recurrent correspondence/confidence + bundle adjustment. Produces an up-to-scale camera trajectory and sparse reconstruction, not dense VGGT output.",
+        "checkpoint": {
+          "author_url": "https://www.dropbox.com/scl/fo/2g6e134ruh1acmaye5bmy/AK0DY9WLZ25elq-7N7sJcB0/models.zip?rlkey=4j336vcc4h324j4p4ji3ppl0t&dl=1",
+          "archive_bytes": 13100005,
+          "file": "dpvo.pth",
+          "file_bytes": 14167743,
+          "released_state_keys": 98,
+          "current_inference_state_keys": 94,
+          "current_inference_parameters": 3384324,
+          "complete_artifact_SHA256_unverified": true,
+          "inspection_files": {
+            "availability": "checkpoint-availability.json",
+            "state_metadata": "dpvo-released-state-metadata.json",
+            "metadata_sha256": "093d69530bddd81e8afbbf4a60a762347bbd3c3609745c71b4fd578a8658ecb6"
+          },
+          "proof": "HEAD + complete ZIP central-directory via64KiB suffix;128KiB prefix contains full19226B torch metadata pickle. No complete model download."
+        },
+        "license": {
+          "code": "MIT (2022 Princeton Vision & Learning Lab)",
+          "code_source": "dpvo_license",
+          "checkpoint": "Official release linked by repository; archive directory contains only dpvo.pth. No separate weight license/model card identified. Code MIT must not be presented as independently verified rights for the checkpoint or compiled derivative."
+        },
+        "indoor_evidence": {
+          "authors_papers": [
+            "https://arxiv.org/pdf/2208.04726v2",
+            "https://arxiv.org/html/2408.01654v1"
+          ],
+          "datasets": [
+            "TUM-RGBD Freiburg1",
+            "EuRoC",
+            "ICL-NUIM"
+          ],
+          "reported_TUM_xyz_ATE_m": {
+            "DPVO_default": 0.012,
+            "DPV_SLAM_proximity_only": 0.01
+          },
+          "scope": "Author GPU results, not our RK measurement; monocular evaluation uses trajectory scale alignment, not metric scale recovery."
+        },
+        "published_runtime": {
+          "platform": "RTX3090",
+          "DPVO_default": {
+            "reported_fps": 60,
+            "VRAM_GB": 4.9
+          },
+          "DPVO_fast": {
+            "reported_fps": 120,
+            "VRAM_GB": 2.5
+          },
+          "DPV_SLAM_proximity_only_EuRoC": {
+            "reported_fps": 50,
+            "VRAM_GB": 5.0
+          },
+          "critical_caveat": "DPVO paper EuRoC protocol explicitly skips every other input image and says this doubles effective reported FPS. Neither GPU rate nor final recovered trajectory measures each fresh source-frame inference on RK3588S.",
+          "sources": [
+            "https://arxiv.org/pdf/2208.04726v2#page=7",
+            "https://arxiv.org/html/2408.01654v1#S4"
+          ]
+        },
+        "blocking_portability": "Official import and online tensors are CUDA-specific; cuda_corr, cuda_ba and scatter reductions are outside a straightforward fixed ONNX/RKNN neural graph.",
+        "backend_compatibility": "SE3/up-to-scale sparse graph differs from VGGT SL4 projective dense submaps. A new measured and validated bridge is required.",
+        "research_contract": {
+          "candidate": "DPVO / optional learned proximity-only DPV-SLAM",
+          "scope": "Independent research probe; does not replace VGGT, implement a conventional tracker, or claim complete VO timing.",
+          "source_commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+          "official_imports": {
+            "entry": "from dpvo.net import VONet; from dpvo.dpvo import DPVO",
+            "obstacles": [
+              "net.py imports fastba, altcorr, lietorch and torch_scatter even for neural-only construction.",
+              "dpvo.py creates CUDA SE3 identity at import and hard-codes CUDA allocations.",
+              "Official complete package cannot run unchanged on RK3588S; isolated module import/refactoring and exact operators must be disclosed."
+            ],
+            "build": [
+              "cuda_corr",
+              "cuda_ba",
+              "lietorch_backends",
+              "torch_scatter",
+              "Eigen 3.4.0"
+            ],
+            "sources": [
+              "dpvo_cuda_build",
+              "dpvo_network",
+              "dpvo_online"
+            ]
+          },
+          "weights": {
+            "artifact": "dpvo.pth",
+            "archive_bytes": 13100005,
+            "pth_bytes": 14167743,
+            "released_state_keys": 98,
+            "released_numel": 3532549,
+            "released_dtype": "FP32 FloatStorage for all 98 metadata entries",
+            "loader_kept_keys": 94,
+            "inference_numel": 3384324,
+            "prefix_rule": "Strip module. exactly as official loader; reject any duplicate result key.",
+            "dropped_legacy_keys": [
+              "module.update.lmbda.0.weight",
+              "module.update.lmbda.0.bias",
+              "module.update.lmbda.2.weight",
+              "module.update.lmbda.2.bias"
+            ],
+            "requirement": "Only these four legacy lmbda tensors may be excluded because official current code explicitly excludes them. Require exact key/shape/dtype coverage and a newly computed full artifact SHA after an authorized complete download. No strict=False/random missing weights.",
+            "full_file_sha256": null,
+            "metadata_pickle_sha256": "47370ca2f31040b3c7da2cc30d7cc7cf4ab0b77b0046fefd4b2bae6c50f8278d",
+            "metadata_inspection": "Restricted pickle metadata only from a bounded 128 KiB ZIP prefix; no torch import, tensor storage loading, model construction, or forward.",
+            "sources": [
+              "dpvo_online",
+              "dpvo_release_link"
+            ]
+          },
+          "encoder": {
+            "input": "One actual new source image [1,1,3,H,W], BGR for official TUM reader; source uint8 range0..255 converted to floating 2*(image/255)-0.5 exactly. Do not substitute VGGT RGB normalization.",
+            "recommended_initial_fixed_shape": [
+              1,
+              1,
+              3,
+              480,
+              640
+            ],
+            "fnet_output": [
+              1,
+              1,
+              128,
+              120,
+              160
+            ],
+            "inet_output": [
+              1,
+              1,
+              384,
+              120,
+              160
+            ],
+            "feature_scale": "Each encoder output divided by4.0 in Patchifier.",
+            "layers": "Twin BasicEncoder4: Conv7 stride2, two32-channel residual blocks, two64-channel residual blocks (first stride2), Conv1 output128/384. fnet uses InstanceNorm2d without learned affine parameters; inet uses no norm. ReLU/residual unchanged.",
+            "calls_per_new_source": "Exactly one fnet and one inet extraction per incoming frame, including initialization frames that later receive no pose.",
+            "static_mac": {
+              "both_encoders_640x480": 12047155200,
+              "both_encoders_320x240": 3011788800,
+              "basis": "Integer formula from actual source conv sizes, NOT a measurement. Excludes normalization, correlation, patch extraction, updater, BA, I/O, and memory costs. Smaller resolution is a research change and has no indoor accuracy proof."
+            },
+            "sources": [
+              "dpvo_network",
+              "dpvo_encoders",
+              "dpvo_online",
+              "dpvo_tum"
+            ]
+          },
+          "patch_and_update": {
+            "patch_size": 3,
+            "default_yaml_patches": 96,
+            "fast_yaml_patches": 48,
+            "python_config_initial_patches": 80,
+            "warning": "Actual config/default.yaml overrides Python initial defaults; do not report80 as the paper/default96 setup.",
+            "gmap": "[1,M,128,3,3] correlation patches",
+            "imap": "[1,M,384,1,1], reshaped to [1,M,384] for context",
+            "update_inputs": {
+              "net": [
+                1,
+                "E",
+                384
+              ],
+              "inp": [
+                1,
+                "E",
+                384
+              ],
+              "corr": [
+                1,
+                "E",
+                882
+              ],
+              "ii": [
+                "E"
+              ],
+              "jj": [
+                "E"
+              ],
+              "kk": [
+                "E"
+              ],
+              "flow": null
+            },
+            "corr_dim_formula": "2 levels *7*7 neighborhood *3*3 patch =882",
+            "update_outputs": {
+              "new_net": [
+                1,
+                "E",
+                384
+              ],
+              "delta": [
+                1,
+                "E",
+                2
+              ],
+              "weight": [
+                1,
+                "E",
+                2
+              ],
+              "third_output": null
+            },
+            "update_equation": "Add context and correlation MLP; LN eps1e-3; masked temporal neighbor FC additions; two grouped SoftAgg updates; two LN+gated residual units; independent2D residual and sigmoid confidence heads.",
+            "dynamic_ops": "fastba.neighbors(kk,jj), torch.unique/group inverse, scatter_softmax and scatter_sum; E and memberships change with current factor graph.",
+            "safe_static_probe": "A fixed synthetic or board-captured E/edge graph can measure the complete neural update only if neighbor/group operations retain exact semantics. Naive zero-padding edges corrupts grouped softmax. Stage split CPU+NPU must include every gather/scatter/transfer in end-to-end timing.",
+            "calls_per_source": "Before initialization motion_probe calls one Update for each attempted frame with n>0; at eight accepted frames initialization calls update12 times. Steady state calls update once, each with correlation plus two BA iterations. terminate adds12 updates and must be excluded from fresh-output rates but included in total shutdown time.",
+            "sources": [
+              "dpvo_network",
+              "dpvo_aggregation",
+              "dpvo_online",
+              "dpvo_default",
+              "dpvo_fast",
+              "dpvo_config"
+            ]
+          },
+          "npu_candidate_ops": [
+            "Fixed CNN Conv/Relu/Add; InstanceNorm as explicit exact reductions subject to compiler and runtime evidence; fixed row FC/MatMul, LN, sigmoid. No RKNN support claim until actual target profile."
+          ],
+          "cpu_or_new_kernel_work": [
+            "Random patch coordinates and patch sampling",
+            "Geometry projection/SE3 exp-log and motion initialization",
+            "Dynamic bilinear correlation (two feature scales,7x7 neighborhood)",
+            "Temporal neighbor and grouped scatter reductions",
+            "Block-sparse BA, with2 iterations per update",
+            "Graph/keyframe retention and pose lifecycle"
+          ],
+          "state": {
+            "feature_ring_frames": 36,
+            "poses": "World-to-camera internal SE3; published terminate() poses are inverse c2w, xyz+xyzw.",
+            "patch_depth": "Inverse-depth sparse3x3 patches, not dense depth.",
+            "graph": "Dynamic ii/jj/kk edges, per-edge384 hidden state, changing target/weights, sliding optimization window and retained removed-frame relations.",
+            "limits": "N=BUFFER_SIZE default4096 poses; source explicitly raises on overflow. Proximity/global options introduce additional retention, so bounded feature ring does not prove an arbitrarily long total memory bound.",
+            "sources": [
+              "dpvo_online",
+              "dpvo_config",
+              "dpvo_camera_convention"
+            ]
+          },
+          "no_orb_required_config": {
+            "CLASSIC_LOOP_CLOSURE": false,
+            "LOOP_CLOSURE": "False for first VO probe; optional learned proximity=True later, without classical mode.",
+            "no_conventional_frontend": "Random sparse learned patches, recurrent correspondence and BA are the authors learned algorithm, not ORB/LK/PnP. Still a different architecture/checkpoint from original VGGT."
+          },
+          "measurement_acceptance": "Record source timestamps, actual network/BA calls, initialization gaps, new observed-frame pose publication, all failures and CPU/NPU stage time. Never count terminate() recovered poses or motion-model-only initialization as actual freshly inferred poses. For20Hz, steady source period is50ms;100ms latency allowance is not a100ms per-frame throughput budget.",
+          "dense_mapping_and_vggt_bridge": "DPVO has no dense map/inferred intrinsics. Adding it to VGGT requires a separately validated scale/gauge/SL4 bridge; no rigid pose composition through arbitrary SL4. This probe does not prove2-5s map updates."
+        }
+      },
+      {
+        "name": "TartanVO",
+        "priority": 2,
+        "architecture": "Two-image PWC-Net dense-flow pyramid -> camera-intrinsics channels -> learned residual PoseNet. No ORB/LK/PnP and no BA in its learned forward.",
+        "source_parameters_integer_count": 24509482,
+        "parameter_count_checkpoint_verified": false,
+        "checkpoint": {
+          "file": "tartanvo_1914.pkl",
+          "author_folder": "https://drive.google.com/drive/folders/1kzj2ZR4AxnDyR8elFhfnS2yX1wIxQaZO?usp=sharing",
+          "folder_file_id": "11NnRppfg1TTXQoNILPz96gfayVtbNRb8",
+          "folder_reported_bytes": 98095963,
+          "folder_name_confirmed": true,
+          "direct_model_view": "https://drive.google.com/file/d/11NnRppfg1TTXQoNILPz96gfayVtbNRb8/view",
+          "availability_limits": "Author Box HEAD404; Azure mirror DNS unresolved on current network. Author Drive folder exposes file name/size; complete download and SHA not verified.",
+          "directory_metadata_sha256": "d53d3aeb33ff6b317e8904ca11fc24b3129fac66968e44bd05a443a27b30efeb"
+        },
+        "license": {
+          "code": "BSD-3-Clause CMU2020",
+          "source": "tartan_license",
+          "checkpoint": "No separate weight license/model card independently identified; do not infer artifact grant from code label alone."
+        },
+        "inputs_outputs": {
+          "image_pair": "Two B3x448x640 images with dimensions multiple64, official optical flow at112x160.",
+          "intrinsics": "Two per-pixel calibration ray channels, transformed consistently with crop/flow scale.",
+          "outputs": "Quarter-resolution flow plus6D motion; NED convention, translation up-to-scale, no dense depth/inferred K/pose confidence."
+        },
+        "published_runtime": {
+          "time_ms": 40,
+          "platform": "NVIDIA GTX1080",
+          "paper": "https://arxiv.org/pdf/2011.00359#page=5",
+          "RK3588S_time": null
+        },
+        "indoor_evidence": {
+          "official_demo": "EuRoC V102",
+          "paper": "https://arxiv.org/pdf/2011.00359",
+          "training": "TartanAir simulation; authors report indoor/outdoor real-data generalization without finetuning."
+        },
+        "GT_boundary": "GT is optional benchmark input, not a required network condition. If pose-file supplies motion, TartanVO.py explicitly replaces predicted per-frame translation magnitude using GT norm. Research must omit this input, preserve raw predicted scale, and evaluate with disclosed post-hoc trajectory alignment only.",
+        "portability": "Conv/deconv/FC portion may suit fixed graph. Five levels of CuPy correlation, four grid_sample warps and threshold mask are essential inference operations; CPU correlation explicitly raises NotImplementedError and warp mask hardcodes.cuda(). A mathematically verified CPU/newNPU equivalent is required before the complete checkpoint can run on RK.",
+        "next_step": "Lower priority than DPVO: only consider isolated PoseNet+one true correlation/warp level feasibility. PoseNet-only fast output with supplied flow is not complete camera pose inference.",
+        "sources": [
+          "tartan_readme",
+          "tartan_online",
+          "tartan_network",
+          "tartan_pwc",
+          "tartan_correlation",
+          "tartan_pose"
+        ]
+      },
+      {
+        "name": "Monodepth2 odometry checkpoint",
+        "priority": 3,
+        "disposition": "Cheap convolutional feasibility control; not selected for indoor SLAM integration.",
+        "architecture": "Separate ResNet18 depth encoder/decoder and6-channel two-image pose encoder/Conv PoseDecoder. No learned uncertainty or joint geometric optimization in inference.",
+        "checkpoint": {
+          "author_url": "https://storage.googleapis.com/niantic-lon-static/research/monodepth2/mono_odom_640x192.zip",
+          "archive_bytes": 103575326,
+          "directory_verified": true,
+          "files": [
+            "pose_encoder.pth",
+            "pose.pth",
+            "encoder.pth",
+            "depth.pth",
+            "poses.npy"
+          ],
+          "availability_file": "checkpoint-availability.json",
+          "full_SHA256_unverified": true
+        },
+        "license": {
+          "code": "Niantic Monodepth2 noncommercial license, patent pending; NOT MIT/BSD/Apache",
+          "source": "mono_license",
+          "checkpoint": "Author release is linked by README; no independent artifact-specific license established beyond this noncommercial repository notice."
+        },
+        "indoor_evidence": "Only KITTI odometry/depth evaluation established in inspected primary release; no released indoor-trained model or TUM validation identified.",
+        "output_semantics": "Dense disparity/depth and pairwise axis-angle/translation, but no confidence/shared global metric scale/loop graph. KITTI evaluation aligns5-frame snippets to GT scale; that is not a metric or long-trajectory guarantee.",
+        "portability": "Convolutions, normalization, ELU/ReLU, resize/padding and sigmoid are a much simpler static graph than Transformers. Official evaluate_pose.py still calls.cuda(); CPU adaptation can use standard Torch ops but has not been measured. No RK20Hz claim.",
+        "published_runtime": "No whole depth+pose RK or attributable inference benchmark verified in inspected source; do not turn its TitanXp training setup into an inference-speed claim.",
+        "sources": [
+          "mono_readme",
+          "mono_pose_eval",
+          "mono_pose",
+          "mono_encoder",
+          "mono_depth"
+        ]
+      }
+    ],
+    "deprioritized": [
+      {
+        "name": "Native VGGT tracking head",
+        "reason": "Original forward still calls full aggregator before tracker; head predicts2D tracks/visibility/confidence, not a lightweight new-camera6DoF incremental branch. Deriving poses using PnP would violate this task restriction.",
+        "sources": [
+          "vggt_full_forward",
+          "vggt_track_head"
+        ]
+      },
+      {
+        "name": "R3 / CUT3R",
+        "reason": "Public causal candidates exist, but retain large per-image encoders and require different learned checkpoints. The next experiment prioritizes a smaller per-frame network. No RK3588S 20 Hz result is established.",
+        "official_repos": [
+          "https://github.com/KevinXu02/R3",
+          "https://github.com/CUT3R/CUT3R"
+        ]
+      },
+      {
+        "name": "OTT3R / Mem3R",
+        "reason": "Inspected author README did not provide a directly downloadable complete pretrained pose/depth student artifact; generic encoder weights and train-local last.ckpt are not enough.",
+        "source_manifests": [
+          "OTT3R/manifest.json",
+          "Mem3R/manifest.json"
+        ]
+      },
+      {
+        "name": "FastVGGT / SwiftVGGT",
+        "reason": "Training-free long-sequence/chunk reconstruction optimizations are not proof of20Hz new-observation pose for two-image submaps. FastVGGT README evaluates1000images; SwiftVGGT uses chunk/overlap processing and single-Sim3 alignment instead ofIRLS. Do not extrapolate headline4x or33% total time to the current short submap.",
+        "official_repos": [
+          "https://github.com/mystorm16/FastVGGT",
+          "https://github.com/Jho-Yonsei/SwiftVGGT"
+        ],
+        "browsed_current_author_READMEs": true
+      }
+    ],
+    "one_next_executable_research_experiment": {
+      "candidate": "DPVO original released weights, independent CNN+update probe",
+      "reason": "Only3.384M inference parameters and13.1MB public archive with verified complete state metadata, plus real indoor evidence; the most concrete low-compute learned alternative identified.",
+      "authorization_boundary": "Proposed isolated research. No complete checkpoint download, candidate board inference or production replacement has occurred.",
+      "steps": [
+        "Download the official 13.1 MB archive, retain HTTP provenance and full SHA, and apply exactly the 94-inference-key loading contract.",
+        "Port only standard fnet/inet forward and neural Update with exact captured dynamic neighbor/group results; establish a board CPU FP32 numerical reference before compiling fixedCNN/FC components. No optional dependency stubs can stand in for active inference.",
+        "Run one fixed original image resolution/pinned indoor source with board-only CPU reference and RKNN candidates, actual target profiles, owned outputs and stage errors. Use fullweights and all normalizations/biases.",
+        "Measure true sampling/correlation/scatter/SE3/BA CPU closure separately. A fast CNN result alone cannot justify learned VO20Hz. If complete CPU/newkernel closure exceeds50ms steady period or fails accuracy/pose freshness, stop before fullintegration.",
+        "Only after full fresh-frame learned-VO evidence should a no-ORB proximity-loop and dense-VGGT scale/projective bridge be evaluated. Replacing the default model remains a distinct architecture decision."
+      ],
+      "unchanged": [
+        "VGGT production checkpoint/default executor",
+        "Original mapping/loop computation",
+        "No ORB/LK/PnP tracking frontend"
+      ]
+    },
+    "evidence_files": {
+      "checkpoint-availability.json": {
+        "sha256": "5ac3232270f929fbc045726f6e1f75e914dc11d760a379213ee90225fbaf5f7b",
+        "bytes": 3726
+      },
+      "dpvo-checkpoint-header.json": {
+        "sha256": "4577ba7abd3bac677f6a3a7543b720d28042589aaa63b8fda6840d711660e30d",
+        "bytes": 9447
+      },
+      "dpvo-released-state-metadata.json": {
+        "sha256": "093d69530bddd81e8afbbf4a60a762347bbd3c3609745c71b4fd578a8658ecb6",
+        "bytes": 33606
+      },
+      "static-size-budget.json": {
+        "sha256": "d12f5f814b7fd62082a4fd18918a0407f56be35f9f2db23a5627d0ec2793e9c6",
+        "bytes": 7908
+      },
+      "TartanVO/manifest.json": {
+        "sha256": "f009223e3821b495cef81d33b85b3000609f9b81c2b434b80ca7adeb1434948e",
+        "bytes": 4068
+      },
+      "DPVO/manifest.json": {
+        "sha256": "ce2ecaf96b086f69ef4d90a2e07e7b81afe8ae094656eb41260182000a69e375",
+        "bytes": 8084
+      },
+      "Monodepth2/manifest.json": {
+        "sha256": "dba1cc4febd1495fdc15dd9e60766a853993670cfcc4653dcf2153a4f16315e2",
+        "bytes": 2857
+      },
+      "VGGT/manifest.json": {
+        "sha256": "0b55a03051b6170288420a0edd21aa4d9331f6bc87d11a74bcb3f06a885e90d9",
+        "bytes": 1172
+      }
+    }
+  },
+  "bounded_metadata_evidence": {
+    "checkpoint-availability.json": {
+      "file": "vggt-v25-research/checkpoint-availability.json",
+      "raw_sha256": "5ac3232270f929fbc045726f6e1f75e914dc11d760a379213ee90225fbaf5f7b",
+      "raw_bytes": 3726,
+      "host_home_redacted": false,
+      "data": {
+        "checked_utc": "2026-10-11T00:08:42Z",
+        "probes": [
+          {
+            "name": "tartanvo_azure",
+            "official_link": "https://tartanair.blob.core.windows.net/tartanvo/models/tartanvo_1914.pkl",
+            "full_download_performed": false,
+            "weight_SHA256": null,
+            "error": {
+              "type": "URLError",
+              "message": "<urlopen error [Errno -2] Name or service not known>"
+            }
+          },
+          {
+            "name": "tartanvo_box",
+            "official_link": "https://cmu.box.com/shared/static/t1a5u4x6dxohl89104dyrsiz42mvq2sz.pkl",
+            "full_download_performed": false,
+            "weight_SHA256": null,
+            "error": {
+              "type": "HTTPError",
+              "message": "HTTP Error 404: Not Found"
+            }
+          },
+          {
+            "name": "monodepth2_odom",
+            "official_link": "https://storage.googleapis.com/niantic-lon-static/research/monodepth2/mono_odom_640x192.zip",
+            "full_download_performed": false,
+            "weight_SHA256": null,
+            "head": {
+              "status": 200,
+              "content_length": "103575326",
+              "content_type": "application/zip",
+              "accept_ranges": "bytes",
+              "etag": "\"56f2aceed28cadb2d958a0d98c81809c\"",
+              "last_modified": "Fri, 31 May 2019 10:17:32 GMT"
+            },
+            "suffix": {
+              "status": 206,
+              "content_range": "bytes 103509790-103575325/103575326",
+              "content_type": "application/zip",
+              "body_read_bytes": 65536,
+              "sha256": "1df505e04fbb198878fb0b9efa0331446a256de81ded7894ac3e28e558f656b6"
+            },
+            "zip_directory": {
+              "eocd_entry_count": 5,
+              "directory_bytes": 403,
+              "entries_read": 5,
+              "all_entries_covered": true,
+              "entries": [
+                {
+                  "filename": "pose_encoder.pth",
+                  "uncompressed_bytes": 46856589,
+                  "compressed_bytes": 43488758,
+                  "crc32": "7485b31c"
+                },
+                {
+                  "filename": "pose.pth",
+                  "uncompressed_bytes": 5259718,
+                  "compressed_bytes": 4865986,
+                  "crc32": "dbaa7e00"
+                },
+                {
+                  "filename": "encoder.pth",
+                  "uncompressed_bytes": 46819013,
+                  "compressed_bytes": 43465805,
+                  "crc32": "8dfd0694"
+                },
+                {
+                  "filename": "poses.npy",
+                  "uncompressed_bytes": 76928,
+                  "compressed_bytes": 51167,
+                  "crc32": "07139384"
+                },
+                {
+                  "filename": "depth.pth",
+                  "uncompressed_bytes": 12617260,
+                  "compressed_bytes": 11702842,
+                  "crc32": "3632d465"
+                }
+              ]
+            }
+          },
+          {
+            "name": "dpvo_models",
+            "official_link": "https://www.dropbox.com/scl/fo/2g6e134ruh1acmaye5bmy/AK0DY9WLZ25elq-7N7sJcB0/models.zip?rlkey=4j336vcc4h324j4p4ji3ppl0t&dl=1",
+            "full_download_performed": false,
+            "weight_SHA256": null,
+            "head": {
+              "status": 200,
+              "content_length": "13100005",
+              "content_type": "application/json",
+              "accept_ranges": "bytes",
+              "etag": "1786642049942339d",
+              "last_modified": null
+            },
+            "suffix": {
+              "status": 206,
+              "content_range": "bytes 13034469-13100004/13100005",
+              "content_type": "application/binary",
+              "body_read_bytes": 65536,
+              "sha256": "933ba98fb1d3caf9b3c905759f02e15396e622214c217a063a07010e5904c80c"
+            },
+            "zip_directory": {
+              "eocd_entry_count": 1,
+              "directory_bytes": 78,
+              "entries_read": 1,
+              "all_entries_covered": true,
+              "entries": [
+                {
+                  "filename": "dpvo.pth",
+                  "uncompressed_bytes": 14167743,
+                  "compressed_bytes": 13099839,
+                  "crc32": "1668e07c"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "dpvo-checkpoint-header.json": {
+      "file": "vggt-v25-research/dpvo-checkpoint-header.json",
+      "raw_sha256": "4577ba7abd3bac677f6a3a7543b720d28042589aaa63b8fda6840d711660e30d",
+      "raw_bytes": 9447,
+      "host_home_redacted": false,
+      "data": {
+        "official_link": "https://www.dropbox.com/scl/fo/2g6e134ruh1acmaye5bmy/AK0DY9WLZ25elq-7N7sJcB0/models.zip?rlkey=4j336vcc4h324j4p4ji3ppl0t&dl=1",
+        "full_checkpoint_downloaded": false,
+        "model_loaded": false,
+        "model_forward_run": false,
+        "http_status": 206,
+        "content_range": "bytes 0-131071/13100005",
+        "range_bytes": 131072,
+        "range_sha256": "5f4283f098ea5c169ce982be8d4ee3d893b8e825eaa80a4668475de0eadfed04",
+        "outer_member": "dpvo.pth",
+        "outer_compression_method": 8,
+        "partially_decompressed_member_bytes": 155730,
+        "inner_magic": "504b0304",
+        "first_inner_member": "archive/data.pkl",
+        "first_inner_method": 0,
+        "first_inner_bytes": 0,
+        "pickle_complete": true,
+        "state_keys": [
+          "module.patchify.fnet.conv1.weight",
+          "module.patchify.fnet.conv1.bias",
+          "module.patchify.fnet.layer1.0.conv1.weight",
+          "module.patchify.fnet.layer1.0.conv1.bias",
+          "module.patchify.fnet.layer1.0.conv2.weight",
+          "module.patchify.fnet.layer1.0.conv2.bias",
+          "module.patchify.fnet.layer1.1.conv1.weight",
+          "module.patchify.fnet.layer1.1.conv1.bias",
+          "module.patchify.fnet.layer1.1.conv2.weight",
+          "module.patchify.fnet.layer1.1.conv2.bias",
+          "module.patchify.fnet.layer2.0.conv1.weight",
+          "module.patchify.fnet.layer2.0.conv1.bias",
+          "module.patchify.fnet.layer2.0.conv2.weight",
+          "module.patchify.fnet.layer2.0.conv2.bias",
+          "module.patchify.fnet.layer2.0.downsample.0.weight",
+          "module.patchify.fnet.layer2.0.downsample.0.bias",
+          "module.patchify.fnet.layer2.1.conv1.weight",
+          "module.patchify.fnet.layer2.1.conv1.bias",
+          "module.patchify.fnet.layer2.1.conv2.weight",
+          "module.patchify.fnet.layer2.1.conv2.bias",
+          "module.patchify.fnet.conv2.weight",
+          "module.patchify.fnet.conv2.bias",
+          "module.patchify.inet.conv1.weight",
+          "module.patchify.inet.conv1.bias",
+          "module.patchify.inet.layer1.0.conv1.weight",
+          "module.patchify.inet.layer1.0.conv1.bias",
+          "module.patchify.inet.layer1.0.conv2.weight",
+          "module.patchify.inet.layer1.0.conv2.bias",
+          "module.patchify.inet.layer1.1.conv1.weight",
+          "module.patchify.inet.layer1.1.conv1.bias",
+          "module.patchify.inet.layer1.1.conv2.weight",
+          "module.patchify.inet.layer1.1.conv2.bias",
+          "module.patchify.inet.layer2.0.conv1.weight",
+          "module.patchify.inet.layer2.0.conv1.bias",
+          "module.patchify.inet.layer2.0.conv2.weight",
+          "module.patchify.inet.layer2.0.conv2.bias",
+          "module.patchify.inet.layer2.0.downsample.0.weight",
+          "module.patchify.inet.layer2.0.downsample.0.bias",
+          "module.patchify.inet.layer2.1.conv1.weight",
+          "module.patchify.inet.layer2.1.conv1.bias",
+          "module.patchify.inet.layer2.1.conv2.weight",
+          "module.patchify.inet.layer2.1.conv2.bias",
+          "module.patchify.inet.conv2.weight",
+          "module.patchify.inet.conv2.bias",
+          "module.update.c1.0.weight",
+          "module.update.c1.0.bias",
+          "module.update.c1.2.weight",
+          "module.update.c1.2.bias",
+          "module.update.c2.0.weight",
+          "module.update.c2.0.bias",
+          "module.update.c2.2.weight",
+          "module.update.c2.2.bias",
+          "module.update.norm.weight",
+          "module.update.norm.bias",
+          "module.update.agg_kk.f.weight",
+          "module.update.agg_kk.f.bias",
+          "module.update.agg_kk.g.weight",
+          "module.update.agg_kk.g.bias",
+          "module.update.agg_kk.h.weight",
+          "module.update.agg_kk.h.bias",
+          "module.update.agg_ij.f.weight",
+          "module.update.agg_ij.f.bias",
+          "module.update.agg_ij.g.weight",
+          "module.update.agg_ij.g.bias",
+          "module.update.agg_ij.h.weight",
+          "module.update.agg_ij.h.bias",
+          "module.update.gru.0.weight",
+          "module.update.gru.0.bias",
+          "module.update.gru.1.gate.0.weight",
+          "module.update.gru.1.gate.0.bias",
+          "module.update.gru.1.res.0.weight",
+          "module.update.gru.1.res.0.bias",
+          "module.update.gru.1.res.2.weight",
+          "module.update.gru.1.res.2.bias",
+          "module.update.gru.2.weight",
+          "module.update.gru.2.bias",
+          "module.update.gru.3.gate.0.weight",
+          "module.update.gru.3.gate.0.bias",
+          "module.update.gru.3.res.0.weight",
+          "module.update.gru.3.res.0.bias",
+          "module.update.gru.3.res.2.weight",
+          "module.update.gru.3.res.2.bias",
+          "module.update.corr.0.weight",
+          "module.update.corr.0.bias",
+          "module.update.corr.2.weight",
+          "module.update.corr.2.bias",
+          "module.update.corr.3.weight",
+          "module.update.corr.3.bias",
+          "module.update.corr.5.weight",
+          "module.update.corr.5.bias",
+          "module.update.d.1.weight",
+          "module.update.d.1.bias",
+          "module.update.w.1.weight",
+          "module.update.w.1.bias",
+          "module.update.lmbda.0.weight",
+          "module.update.lmbda.0.bias",
+          "module.update.lmbda.2.weight",
+          "module.update.lmbda.2.bias",
+          "module.patchify",
+          "module.patchify.fnet",
+          "module.patchify.fnet.norm1",
+          "module.patchify.fnet.conv1",
+          "module.patchify.fnet.relu1",
+          "module.patchify.fnet.layer1",
+          "module.patchify.fnet.layer1.0",
+          "module.patchify.fnet.layer1.0.conv1",
+          "module.patchify.fnet.layer1.0.conv2",
+          "module.patchify.fnet.layer1.0.relu",
+          "module.patchify.fnet.layer1.0.norm1",
+          "module.patchify.fnet.layer1.0.norm2",
+          "module.patchify.fnet.layer1.1",
+          "module.patchify.fnet.layer1.1.conv1",
+          "module.patchify.fnet.layer1.1.conv2",
+          "module.patchify.fnet.layer1.1.relu",
+          "module.patchify.fnet.layer1.1.norm1",
+          "module.patchify.fnet.layer1.1.norm2",
+          "module.patchify.fnet.layer2",
+          "module.patchify.fnet.layer2.0",
+          "module.patchify.fnet.layer2.0.conv1",
+          "module.patchify.fnet.layer2.0.conv2",
+          "module.patchify.fnet.layer2.0.relu",
+          "module.patchify.fnet.layer2.0.norm1",
+          "module.patchify.fnet.layer2.0.norm2",
+          "module.patchify.fnet.layer2.0.norm3",
+          "module.patchify.fnet.layer2.0.downsample",
+          "module.patchify.fnet.layer2.0.downsample.0",
+          "module.patchify.fnet.layer2.0.downsample.1",
+          "module.patchify.fnet.layer2.1",
+          "module.patchify.fnet.layer2.1.conv1",
+          "module.patchify.fnet.layer2.1.conv2",
+          "module.patchify.fnet.layer2.1.relu",
+          "module.patchify.fnet.layer2.1.norm1",
+          "module.patchify.fnet.layer2.1.norm2",
+          "module.patchify.fnet.conv2",
+          "module.patchify.inet",
+          "module.patchify.inet.norm1",
+          "module.patchify.inet.conv1",
+          "module.patchify.inet.relu1",
+          "module.patchify.inet.layer1",
+          "module.patchify.inet.layer1.0",
+          "module.patchify.inet.layer1.0.conv1",
+          "module.patchify.inet.layer1.0.conv2",
+          "module.patchify.inet.layer1.0.relu",
+          "module.patchify.inet.layer1.0.norm1",
+          "module.patchify.inet.layer1.0.norm2",
+          "module.patchify.inet.layer1.1",
+          "module.patchify.inet.layer1.1.conv1",
+          "module.patchify.inet.layer1.1.conv2",
+          "module.patchify.inet.layer1.1.relu",
+          "module.patchify.inet.layer1.1.norm1",
+          "module.patchify.inet.layer1.1.norm2",
+          "module.patchify.inet.layer2",
+          "module.patchify.inet.layer2.0",
+          "module.patchify.inet.layer2.0.conv1",
+          "module.patchify.inet.layer2.0.conv2",
+          "module.patchify.inet.layer2.0.relu",
+          "module.patchify.inet.layer2.0.norm1",
+          "module.patchify.inet.layer2.0.norm2",
+          "module.patchify.inet.layer2.0.norm3",
+          "module.patchify.inet.layer2.0.downsample",
+          "module.patchify.inet.layer2.0.downsample.0",
+          "module.patchify.inet.layer2.0.downsample.1",
+          "module.patchify.inet.layer2.1",
+          "module.patchify.inet.layer2.1.conv1",
+          "module.patchify.inet.layer2.1.conv2",
+          "module.patchify.inet.layer2.1.relu",
+          "module.patchify.inet.layer2.1.norm1",
+          "module.patchify.inet.layer2.1.norm2",
+          "module.patchify.inet.conv2",
+          "module.update",
+          "module.update.c1",
+          "module.update.c1.0",
+          "module.update.c1.1",
+          "module.update.c1.2",
+          "module.update.c2",
+          "module.update.c2.0",
+          "module.update.c2.1",
+          "module.update.c2.2",
+          "module.update.norm",
+          "module.update.agg_kk",
+          "module.update.agg_kk.f",
+          "module.update.agg_kk.g",
+          "module.update.agg_kk.h",
+          "module.update.agg_ij",
+          "module.update.agg_ij.f",
+          "module.update.agg_ij.g",
+          "module.update.agg_ij.h",
+          "module.update.gru",
+          "module.update.gru.0",
+          "module.update.gru.1",
+          "module.update.gru.1.gate",
+          "module.update.gru.1.gate.0",
+          "module.update.gru.1.gate.1",
+          "module.update.gru.1.res",
+          "module.update.gru.1.res.0",
+          "module.update.gru.1.res.1",
+          "module.update.gru.1.res.2",
+          "module.update.gru.2",
+          "module.update.gru.3",
+          "module.update.gru.3.gate",
+          "module.update.gru.3.gate.0",
+          "module.update.gru.3.gate.1",
+          "module.update.gru.3.res",
+          "module.update.gru.3.res.0",
+          "module.update.gru.3.res.1",
+          "module.update.gru.3.res.2",
+          "module.update.corr",
+          "module.update.corr.0",
+          "module.update.corr.1",
+          "module.update.corr.2",
+          "module.update.corr.3",
+          "module.update.corr.4",
+          "module.update.corr.5",
+          "module.update.d",
+          "module.update.d.0",
+          "module.update.d.1",
+          "module.update.d.2",
+          "module.update.w",
+          "module.update.w.0",
+          "module.update.w.1",
+          "module.update.w.2",
+          "module.update.w.3",
+          "module.update.lmbda",
+          "module.update.lmbda.0",
+          "module.update.lmbda.1",
+          "module.update.lmbda.2",
+          "module.update.lmbda.3",
+          "module.update.lmbda.4"
+        ],
+        "state_key_count": 228,
+        "torch_storage_types": [],
+        "metadata_pickle_bytes": 19226,
+        "metadata_pickle_sha256": "47370ca2f31040b3c7da2cc30d7cc7cf4ab0b77b0046fefd4b2bae6c50f8278d"
+      }
+    },
+    "dpvo-released-state-metadata.json": {
+      "file": "vggt-v25-research/dpvo-released-state-metadata.json",
+      "raw_sha256": "093d69530bddd81e8afbbf4a60a762347bbd3c3609745c71b4fd578a8658ecb6",
+      "raw_bytes": 33606,
+      "host_home_redacted": false,
+      "data": {
+        "metadata_only": true,
+        "pickle_loaded_with_restricted_globals_only": true,
+        "torch_imported": false,
+        "model_constructed": false,
+        "tensor_storage_loaded": false,
+        "full_checkpoint_downloaded": false,
+        "metadata_pickle_sha256": "47370ca2f31040b3c7da2cc30d7cc7cf4ab0b77b0046fefd4b2bae6c50f8278d",
+        "released_state_key_count": 98,
+        "released_tensor_numel": 3532549,
+        "official_loader_filtered_state_key_count": 94,
+        "official_loader_kept_numel": 3384324,
+        "official_loader_dropped_keys": [
+          "module.update.lmbda.0.weight",
+          "module.update.lmbda.0.bias",
+          "module.update.lmbda.2.weight",
+          "module.update.lmbda.2.bias"
+        ],
+        "entries": [
+          {
+            "key": "module.patchify.fnet.conv1.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "0",
+              "original_device": "cuda:0",
+              "numel": 4704
+            },
+            "offset": 0,
+            "shape": [
+              32,
+              3,
+              7,
+              7
+            ],
+            "stride": [
+              147,
+              49,
+              7,
+              1
+            ],
+            "numel": 4704
+          },
+          {
+            "key": "module.patchify.fnet.conv1.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "1",
+              "original_device": "cuda:0",
+              "numel": 32
+            },
+            "offset": 0,
+            "shape": [
+              32
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 32
+          },
+          {
+            "key": "module.patchify.fnet.layer1.0.conv1.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "2",
+              "original_device": "cuda:0",
+              "numel": 9216
+            },
+            "offset": 0,
+            "shape": [
+              32,
+              32,
+              3,
+              3
+            ],
+            "stride": [
+              288,
+              9,
+              3,
+              1
+            ],
+            "numel": 9216
+          },
+          {
+            "key": "module.patchify.fnet.layer1.0.conv1.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "3",
+              "original_device": "cuda:0",
+              "numel": 32
+            },
+            "offset": 0,
+            "shape": [
+              32
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 32
+          },
+          {
+            "key": "module.patchify.fnet.layer1.0.conv2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "4",
+              "original_device": "cuda:0",
+              "numel": 9216
+            },
+            "offset": 0,
+            "shape": [
+              32,
+              32,
+              3,
+              3
+            ],
+            "stride": [
+              288,
+              9,
+              3,
+              1
+            ],
+            "numel": 9216
+          },
+          {
+            "key": "module.patchify.fnet.layer1.0.conv2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "5",
+              "original_device": "cuda:0",
+              "numel": 32
+            },
+            "offset": 0,
+            "shape": [
+              32
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 32
+          },
+          {
+            "key": "module.patchify.fnet.layer1.1.conv1.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "6",
+              "original_device": "cuda:0",
+              "numel": 9216
+            },
+            "offset": 0,
+            "shape": [
+              32,
+              32,
+              3,
+              3
+            ],
+            "stride": [
+              288,
+              9,
+              3,
+              1
+            ],
+            "numel": 9216
+          },
+          {
+            "key": "module.patchify.fnet.layer1.1.conv1.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "7",
+              "original_device": "cuda:0",
+              "numel": 32
+            },
+            "offset": 0,
+            "shape": [
+              32
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 32
+          },
+          {
+            "key": "module.patchify.fnet.layer1.1.conv2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "8",
+              "original_device": "cuda:0",
+              "numel": 9216
+            },
+            "offset": 0,
+            "shape": [
+              32,
+              32,
+              3,
+              3
+            ],
+            "stride": [
+              288,
+              9,
+              3,
+              1
+            ],
+            "numel": 9216
+          },
+          {
+            "key": "module.patchify.fnet.layer1.1.conv2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "9",
+              "original_device": "cuda:0",
+              "numel": 32
+            },
+            "offset": 0,
+            "shape": [
+              32
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 32
+          },
+          {
+            "key": "module.patchify.fnet.layer2.0.conv1.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "10",
+              "original_device": "cuda:0",
+              "numel": 18432
+            },
+            "offset": 0,
+            "shape": [
+              64,
+              32,
+              3,
+              3
+            ],
+            "stride": [
+              288,
+              9,
+              3,
+              1
+            ],
+            "numel": 18432
+          },
+          {
+            "key": "module.patchify.fnet.layer2.0.conv1.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "11",
+              "original_device": "cuda:0",
+              "numel": 64
+            },
+            "offset": 0,
+            "shape": [
+              64
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 64
+          },
+          {
+            "key": "module.patchify.fnet.layer2.0.conv2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "12",
+              "original_device": "cuda:0",
+              "numel": 36864
+            },
+            "offset": 0,
+            "shape": [
+              64,
+              64,
+              3,
+              3
+            ],
+            "stride": [
+              576,
+              9,
+              3,
+              1
+            ],
+            "numel": 36864
+          },
+          {
+            "key": "module.patchify.fnet.layer2.0.conv2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "13",
+              "original_device": "cuda:0",
+              "numel": 64
+            },
+            "offset": 0,
+            "shape": [
+              64
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 64
+          },
+          {
+            "key": "module.patchify.fnet.layer2.0.downsample.0.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "14",
+              "original_device": "cuda:0",
+              "numel": 2048
+            },
+            "offset": 0,
+            "shape": [
+              64,
+              32,
+              1,
+              1
+            ],
+            "stride": [
+              32,
+              1,
+              1,
+              1
+            ],
+            "numel": 2048
+          },
+          {
+            "key": "module.patchify.fnet.layer2.0.downsample.0.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "15",
+              "original_device": "cuda:0",
+              "numel": 64
+            },
+            "offset": 0,
+            "shape": [
+              64
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 64
+          },
+          {
+            "key": "module.patchify.fnet.layer2.1.conv1.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "16",
+              "original_device": "cuda:0",
+              "numel": 36864
+            },
+            "offset": 0,
+            "shape": [
+              64,
+              64,
+              3,
+              3
+            ],
+            "stride": [
+              576,
+              9,
+              3,
+              1
+            ],
+            "numel": 36864
+          },
+          {
+            "key": "module.patchify.fnet.layer2.1.conv1.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "17",
+              "original_device": "cuda:0",
+              "numel": 64
+            },
+            "offset": 0,
+            "shape": [
+              64
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 64
+          },
+          {
+            "key": "module.patchify.fnet.layer2.1.conv2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "18",
+              "original_device": "cuda:0",
+              "numel": 36864
+            },
+            "offset": 0,
+            "shape": [
+              64,
+              64,
+              3,
+              3
+            ],
+            "stride": [
+              576,
+              9,
+              3,
+              1
+            ],
+            "numel": 36864
+          },
+          {
+            "key": "module.patchify.fnet.layer2.1.conv2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "19",
+              "original_device": "cuda:0",
+              "numel": 64
+            },
+            "offset": 0,
+            "shape": [
+              64
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 64
+          },
+          {
+            "key": "module.patchify.fnet.conv2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "20",
+              "original_device": "cuda:0",
+              "numel": 8192
+            },
+            "offset": 0,
+            "shape": [
+              128,
+              64,
+              1,
+              1
+            ],
+            "stride": [
+              64,
+              1,
+              1,
+              1
+            ],
+            "numel": 8192
+          },
+          {
+            "key": "module.patchify.fnet.conv2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "21",
+              "original_device": "cuda:0",
+              "numel": 128
+            },
+            "offset": 0,
+            "shape": [
+              128
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 128
+          },
+          {
+            "key": "module.patchify.inet.conv1.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "22",
+              "original_device": "cuda:0",
+              "numel": 4704
+            },
+            "offset": 0,
+            "shape": [
+              32,
+              3,
+              7,
+              7
+            ],
+            "stride": [
+              147,
+              49,
+              7,
+              1
+            ],
+            "numel": 4704
+          },
+          {
+            "key": "module.patchify.inet.conv1.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "23",
+              "original_device": "cuda:0",
+              "numel": 32
+            },
+            "offset": 0,
+            "shape": [
+              32
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 32
+          },
+          {
+            "key": "module.patchify.inet.layer1.0.conv1.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "24",
+              "original_device": "cuda:0",
+              "numel": 9216
+            },
+            "offset": 0,
+            "shape": [
+              32,
+              32,
+              3,
+              3
+            ],
+            "stride": [
+              288,
+              9,
+              3,
+              1
+            ],
+            "numel": 9216
+          },
+          {
+            "key": "module.patchify.inet.layer1.0.conv1.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "25",
+              "original_device": "cuda:0",
+              "numel": 32
+            },
+            "offset": 0,
+            "shape": [
+              32
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 32
+          },
+          {
+            "key": "module.patchify.inet.layer1.0.conv2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "26",
+              "original_device": "cuda:0",
+              "numel": 9216
+            },
+            "offset": 0,
+            "shape": [
+              32,
+              32,
+              3,
+              3
+            ],
+            "stride": [
+              288,
+              9,
+              3,
+              1
+            ],
+            "numel": 9216
+          },
+          {
+            "key": "module.patchify.inet.layer1.0.conv2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "27",
+              "original_device": "cuda:0",
+              "numel": 32
+            },
+            "offset": 0,
+            "shape": [
+              32
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 32
+          },
+          {
+            "key": "module.patchify.inet.layer1.1.conv1.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "28",
+              "original_device": "cuda:0",
+              "numel": 9216
+            },
+            "offset": 0,
+            "shape": [
+              32,
+              32,
+              3,
+              3
+            ],
+            "stride": [
+              288,
+              9,
+              3,
+              1
+            ],
+            "numel": 9216
+          },
+          {
+            "key": "module.patchify.inet.layer1.1.conv1.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "29",
+              "original_device": "cuda:0",
+              "numel": 32
+            },
+            "offset": 0,
+            "shape": [
+              32
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 32
+          },
+          {
+            "key": "module.patchify.inet.layer1.1.conv2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "30",
+              "original_device": "cuda:0",
+              "numel": 9216
+            },
+            "offset": 0,
+            "shape": [
+              32,
+              32,
+              3,
+              3
+            ],
+            "stride": [
+              288,
+              9,
+              3,
+              1
+            ],
+            "numel": 9216
+          },
+          {
+            "key": "module.patchify.inet.layer1.1.conv2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "31",
+              "original_device": "cuda:0",
+              "numel": 32
+            },
+            "offset": 0,
+            "shape": [
+              32
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 32
+          },
+          {
+            "key": "module.patchify.inet.layer2.0.conv1.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "32",
+              "original_device": "cuda:0",
+              "numel": 18432
+            },
+            "offset": 0,
+            "shape": [
+              64,
+              32,
+              3,
+              3
+            ],
+            "stride": [
+              288,
+              9,
+              3,
+              1
+            ],
+            "numel": 18432
+          },
+          {
+            "key": "module.patchify.inet.layer2.0.conv1.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "33",
+              "original_device": "cuda:0",
+              "numel": 64
+            },
+            "offset": 0,
+            "shape": [
+              64
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 64
+          },
+          {
+            "key": "module.patchify.inet.layer2.0.conv2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "34",
+              "original_device": "cuda:0",
+              "numel": 36864
+            },
+            "offset": 0,
+            "shape": [
+              64,
+              64,
+              3,
+              3
+            ],
+            "stride": [
+              576,
+              9,
+              3,
+              1
+            ],
+            "numel": 36864
+          },
+          {
+            "key": "module.patchify.inet.layer2.0.conv2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "35",
+              "original_device": "cuda:0",
+              "numel": 64
+            },
+            "offset": 0,
+            "shape": [
+              64
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 64
+          },
+          {
+            "key": "module.patchify.inet.layer2.0.downsample.0.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "36",
+              "original_device": "cuda:0",
+              "numel": 2048
+            },
+            "offset": 0,
+            "shape": [
+              64,
+              32,
+              1,
+              1
+            ],
+            "stride": [
+              32,
+              1,
+              1,
+              1
+            ],
+            "numel": 2048
+          },
+          {
+            "key": "module.patchify.inet.layer2.0.downsample.0.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "37",
+              "original_device": "cuda:0",
+              "numel": 64
+            },
+            "offset": 0,
+            "shape": [
+              64
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 64
+          },
+          {
+            "key": "module.patchify.inet.layer2.1.conv1.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "38",
+              "original_device": "cuda:0",
+              "numel": 36864
+            },
+            "offset": 0,
+            "shape": [
+              64,
+              64,
+              3,
+              3
+            ],
+            "stride": [
+              576,
+              9,
+              3,
+              1
+            ],
+            "numel": 36864
+          },
+          {
+            "key": "module.patchify.inet.layer2.1.conv1.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "39",
+              "original_device": "cuda:0",
+              "numel": 64
+            },
+            "offset": 0,
+            "shape": [
+              64
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 64
+          },
+          {
+            "key": "module.patchify.inet.layer2.1.conv2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "40",
+              "original_device": "cuda:0",
+              "numel": 36864
+            },
+            "offset": 0,
+            "shape": [
+              64,
+              64,
+              3,
+              3
+            ],
+            "stride": [
+              576,
+              9,
+              3,
+              1
+            ],
+            "numel": 36864
+          },
+          {
+            "key": "module.patchify.inet.layer2.1.conv2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "41",
+              "original_device": "cuda:0",
+              "numel": 64
+            },
+            "offset": 0,
+            "shape": [
+              64
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 64
+          },
+          {
+            "key": "module.patchify.inet.conv2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "42",
+              "original_device": "cuda:0",
+              "numel": 24576
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              64,
+              1,
+              1
+            ],
+            "stride": [
+              64,
+              1,
+              1,
+              1
+            ],
+            "numel": 24576
+          },
+          {
+            "key": "module.patchify.inet.conv2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "43",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.c1.0.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "44",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.c1.0.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "45",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.c1.2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "46",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.c1.2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "47",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.c2.0.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "48",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.c2.0.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "49",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.c2.2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "50",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.c2.2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "51",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.norm.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "52",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.norm.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "53",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.agg_kk.f.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "54",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.agg_kk.f.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "55",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.agg_kk.g.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "56",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.agg_kk.g.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "57",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.agg_kk.h.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "58",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.agg_kk.h.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "59",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.agg_ij.f.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "60",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.agg_ij.f.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "61",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.agg_ij.g.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "62",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.agg_ij.g.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "63",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.agg_ij.h.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "64",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.agg_ij.h.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "65",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.gru.0.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "66",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.gru.0.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "67",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.gru.1.gate.0.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "68",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.gru.1.gate.0.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "69",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.gru.1.res.0.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "70",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.gru.1.res.0.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "71",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.gru.1.res.2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "72",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.gru.1.res.2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "73",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.gru.2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "74",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.gru.2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "75",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.gru.3.gate.0.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "76",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.gru.3.gate.0.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "77",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.gru.3.res.0.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "78",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.gru.3.res.0.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "79",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.gru.3.res.2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "80",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.gru.3.res.2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "81",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.corr.0.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "82",
+              "original_device": "cuda:0",
+              "numel": 338688
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              882
+            ],
+            "stride": [
+              882,
+              1
+            ],
+            "numel": 338688
+          },
+          {
+            "key": "module.update.corr.0.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "83",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.corr.2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "84",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.corr.2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "85",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.corr.3.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "86",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.corr.3.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "87",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.corr.5.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "88",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.corr.5.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "89",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.d.1.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "90",
+              "original_device": "cuda:0",
+              "numel": 768
+            },
+            "offset": 0,
+            "shape": [
+              2,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 768
+          },
+          {
+            "key": "module.update.d.1.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "91",
+              "original_device": "cuda:0",
+              "numel": 2
+            },
+            "offset": 0,
+            "shape": [
+              2
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 2
+          },
+          {
+            "key": "module.update.w.1.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "92",
+              "original_device": "cuda:0",
+              "numel": 768
+            },
+            "offset": 0,
+            "shape": [
+              2,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 768
+          },
+          {
+            "key": "module.update.w.1.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "93",
+              "original_device": "cuda:0",
+              "numel": 2
+            },
+            "offset": 0,
+            "shape": [
+              2
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 2
+          },
+          {
+            "key": "module.update.lmbda.0.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "94",
+              "original_device": "cuda:0",
+              "numel": 147456
+            },
+            "offset": 0,
+            "shape": [
+              384,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 147456
+          },
+          {
+            "key": "module.update.lmbda.0.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "95",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              384
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.lmbda.2.weight",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "96",
+              "original_device": "cuda:0",
+              "numel": 384
+            },
+            "offset": 0,
+            "shape": [
+              1,
+              384
+            ],
+            "stride": [
+              384,
+              1
+            ],
+            "numel": 384
+          },
+          {
+            "key": "module.update.lmbda.2.bias",
+            "storage": {
+              "type": "FloatStorage",
+              "id": "97",
+              "original_device": "cuda:0",
+              "numel": 1
+            },
+            "offset": 0,
+            "shape": [
+              1
+            ],
+            "stride": [
+              1
+            ],
+            "numel": 1
+          }
+        ]
+      }
+    },
+    "static-size-budget.json": {
+      "file": "vggt-v25-research/static-size-budget.json",
+      "raw_sha256": "d12f5f814b7fd62082a4fd18918a0407f56be35f9f2db23a5627d0ec2793e9c6",
+      "raw_bytes": 7908,
+      "host_home_redacted": false,
+      "data": {
+        "derivation": "Integer-only formulas from pinned source constructors. No network construction, weights downloaded, tensor inference, or RK timing. MAC excludes all activation/norm/correlation/BA/memory/packing costs. MAC is not a hardware latency bound.",
+        "DPVO": {
+          "encoder_components": [
+            {
+              "name": "fnet",
+              "parameter_numel": 181440,
+              "mac_640x480": 5866291200,
+              "mac_320x240": 1466572800
+            },
+            {
+              "name": "inet",
+              "parameter_numel": 198080,
+              "mac_640x480": 6180864000,
+              "mac_320x240": 1545216000
+            }
+          ],
+          "update_parameter_numel": 3004804,
+          "total_network_parameter_numel": 3384324,
+          "source_refs": [
+            "dpvo/net.py:19-178",
+            "dpvo/extractor.py:6-53,200-263",
+            "dpvo/blocks.py:15-48"
+          ],
+          "two_encoders_mac_640x480": 12047155200,
+          "two_encoders_mac_320x240": 3011788800,
+          "recurrent_update_MAC_not_counted": true,
+          "correlation_BA_MAC_not_counted": true
+        },
+        "TartanVO": {
+          "PWC_parameter_numel": 9374340,
+          "PoseNet_parameter_numel": 15135142,
+          "total_parameter_numel": 24509482,
+          "PWC_layers": [
+            {
+              "layer": "conv1a",
+              "parameter_numel": 448,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv1aa",
+              "parameter_numel": 2320,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv1b",
+              "parameter_numel": 2320,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv2a",
+              "parameter_numel": 4640,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv2aa",
+              "parameter_numel": 9248,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv2b",
+              "parameter_numel": 9248,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv3a",
+              "parameter_numel": 18496,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv3aa",
+              "parameter_numel": 36928,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv3b",
+              "parameter_numel": 36928,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv4a",
+              "parameter_numel": 55392,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv4aa",
+              "parameter_numel": 83040,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv4b",
+              "parameter_numel": 83040,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv5a",
+              "parameter_numel": 110720,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv5aa",
+              "parameter_numel": 147584,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv5b",
+              "parameter_numel": 147584,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv6aa",
+              "parameter_numel": 225988,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv6a",
+              "parameter_numel": 345940,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv6b",
+              "parameter_numel": 345940,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv6_0",
+              "parameter_numel": 93440,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv6_1",
+              "parameter_numel": 240896,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv6_2",
+              "parameter_numel": 291264,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv6_3",
+              "parameter_numel": 249472,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv6_4",
+              "parameter_numel": 143168,
+              "kind": "conv"
+            },
+            {
+              "layer": "predict_flow6",
+              "parameter_numel": 9524,
+              "kind": "predict_flow"
+            },
+            {
+              "layer": "deconv6",
+              "parameter_numel": 66,
+              "kind": "deconv"
+            },
+            {
+              "layer": "upfeat6",
+              "parameter_numel": 16930,
+              "kind": "deconv"
+            },
+            {
+              "layer": "conv5_0",
+              "parameter_numel": 245504,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv5_1",
+              "parameter_numel": 392960,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv5_2",
+              "parameter_numel": 405312,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv5_3",
+              "parameter_numel": 325504,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv5_4",
+              "parameter_numel": 181184,
+              "kind": "conv"
+            },
+            {
+              "layer": "predict_flow5",
+              "parameter_numel": 11900,
+              "kind": "predict_flow"
+            },
+            {
+              "layer": "deconv5",
+              "parameter_numel": 66,
+              "kind": "deconv"
+            },
+            {
+              "layer": "upfeat5",
+              "parameter_numel": 21154,
+              "kind": "deconv"
+            },
+            {
+              "layer": "conv4_0",
+              "parameter_numel": 208640,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv4_1",
+              "parameter_numel": 356096,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv4_2",
+              "parameter_numel": 377664,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv4_3",
+              "parameter_numel": 307072,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv4_4",
+              "parameter_numel": 171968,
+              "kind": "conv"
+            },
+            {
+              "layer": "predict_flow4",
+              "parameter_numel": 11324,
+              "kind": "predict_flow"
+            },
+            {
+              "layer": "deconv4",
+              "parameter_numel": 66,
+              "kind": "deconv"
+            },
+            {
+              "layer": "upfeat4",
+              "parameter_numel": 20130,
+              "kind": "deconv"
+            },
+            {
+              "layer": "conv3_0",
+              "parameter_numel": 171776,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv3_1",
+              "parameter_numel": 319232,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv3_2",
+              "parameter_numel": 350016,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv3_3",
+              "parameter_numel": 288640,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv3_4",
+              "parameter_numel": 162752,
+              "kind": "conv"
+            },
+            {
+              "layer": "predict_flow3",
+              "parameter_numel": 10748,
+              "kind": "predict_flow"
+            },
+            {
+              "layer": "deconv3",
+              "parameter_numel": 66,
+              "kind": "deconv"
+            },
+            {
+              "layer": "upfeat3",
+              "parameter_numel": 19106,
+              "kind": "deconv"
+            },
+            {
+              "layer": "conv2_0",
+              "parameter_numel": 134912,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv2_1",
+              "parameter_numel": 282368,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv2_2",
+              "parameter_numel": 322368,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv2_3",
+              "parameter_numel": 270208,
+              "kind": "conv"
+            },
+            {
+              "layer": "conv2_4",
+              "parameter_numel": 153536,
+              "kind": "conv"
+            },
+            {
+              "layer": "predict_flow2",
+              "parameter_numel": 10172,
+              "kind": "predict_flow"
+            },
+            {
+              "layer": "deconv2",
+              "parameter_numel": 66,
+              "kind": "deconv"
+            },
+            {
+              "layer": "dc_conv1",
+              "parameter_numel": 651008,
+              "kind": "conv"
+            },
+            {
+              "layer": "dc_conv2",
+              "parameter_numel": 147584,
+              "kind": "conv"
+            },
+            {
+              "layer": "dc_conv3",
+              "parameter_numel": 147584,
+              "kind": "conv"
+            },
+            {
+              "layer": "dc_conv4",
+              "parameter_numel": 110688,
+              "kind": "conv"
+            },
+            {
+              "layer": "dc_conv5",
+              "parameter_numel": 55360,
+              "kind": "conv"
+            },
+            {
+              "layer": "dc_conv6",
+              "parameter_numel": 18464,
+              "kind": "conv"
+            },
+            {
+              "layer": "dc_conv7",
+              "parameter_numel": 578,
+              "kind": "predict_flow"
+            }
+          ],
+          "note": "Counts include unused deconv2 declared in official PWC constructor. Strict downloaded-state count is unverified."
+        }
+      }
+    },
+    "TartanVO/manifest.json": {
+      "file": "TartanVO/manifest.json",
+      "raw_sha256": "f009223e3821b495cef81d33b85b3000609f9b81c2b434b80ca7adeb1434948e",
+      "raw_bytes": 4068,
+      "host_home_redacted": false,
+      "data": {
+        "repo": "castacks/tartanvo",
+        "commit": "ec2ecc38b590ff27b76cc7818cf198d6420dce4b",
+        "default_branch": "python3",
+        "retrieved_files": [
+          {
+            "path": "README.md",
+            "bytes": 10347,
+            "git_blob_sha1": "401f82f0dd1077546ac8de93a35c64847dd8af56",
+            "sha256": "6806a53dc9b58134e75c4476703e7c59be2f7272c580b25dcb42f5c820937ade",
+            "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/README.md"
+          },
+          {
+            "path": "LICENSE",
+            "bytes": 1522,
+            "git_blob_sha1": "935ebb0ecd56a67013069dc85184c8812dac5b11",
+            "sha256": "0b8ade8355cb891984323e5422bbdea48991de43851e5e1a732bf8399c860975",
+            "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/LICENSE"
+          },
+          {
+            "path": "vo_trajectory_from_folder.py",
+            "bytes": 4738,
+            "git_blob_sha1": "70ea19cd114821fb7b26ab96327ea1cad7b8a424",
+            "sha256": "a98b957c699407fdee5f890e2e19bfa81c45db9f90687f4c016da18545ff476c",
+            "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/vo_trajectory_from_folder.py"
+          },
+          {
+            "path": "Network/VOFlowNet.py",
+            "bytes": 5275,
+            "git_blob_sha1": "ecf35a0259c98b362c49d412068b1957069137ce",
+            "sha256": "702592d5805d16a66a81ba60e8b7fa81ac9c3a40bf3ffabee42db457c8ad1acd",
+            "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/Network/VOFlowNet.py"
+          },
+          {
+            "path": "Network/VONet.py",
+            "bytes": 2157,
+            "git_blob_sha1": "85fe4ab7a55c67c53d71ff126a2131a30e55cbca",
+            "sha256": "f4b6fa58ecdd229fef3cadc370c89ad188df5ed9bf4da4804a782eac18df328b",
+            "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/Network/VONet.py"
+          },
+          {
+            "path": "Network/PWCNet.py",
+            "available_in_pinned_tree": false
+          },
+          {
+            "path": "requirements.txt",
+            "available_in_pinned_tree": false
+          },
+          {
+            "path": "TartanVO.py",
+            "bytes": 4374,
+            "git_blob_sha1": "61ee4883a53e6518e525a549fc7e7f34c1c45a60",
+            "sha256": "9ca946513deb9c58dc56ebe5511aff1dafe4a00383bfd7a07103ffd10b6061d8",
+            "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/TartanVO.py"
+          },
+          {
+            "path": "Network/PWC/PWCNet.py",
+            "bytes": 11243,
+            "git_blob_sha1": "9ced464cff89acf44fc99aaeb6555835d8ec7801",
+            "sha256": "1cc08039ebd96390e9c84602fd47dbf22a4bd3945d509802c920204f5fe92df3",
+            "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/Network/PWC/PWCNet.py"
+          },
+          {
+            "path": "Network/PWC/correlation.py",
+            "bytes": 13539,
+            "git_blob_sha1": "7966a3560c9d99d9f85ccfd51168e2cb304cd6ad",
+            "sha256": "683325716add562ce33cc550edf220267c103032b3523e7a411448d02a70613f",
+            "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/Network/PWC/correlation.py"
+          },
+          {
+            "path": "Network/PWC/__init__.py",
+            "bytes": 22,
+            "git_blob_sha1": "cb47132724b8a47fd24f58a072c94f1d5ffb685b",
+            "sha256": "24ae9b269204b3b7d95db6d680cafb4629954f24a036702d756ad7011930cf0b",
+            "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/Network/PWC/__init__.py"
+          },
+          {
+            "path": "Datasets/tartanTrajFlowDataset.py",
+            "bytes": 2159,
+            "git_blob_sha1": "1373e580387160133b4468421ec0dc6909209e05",
+            "sha256": "b6c60941a9df59232223cffb16953b6c226793bcbfa4c782a2d58e4f125c58c4",
+            "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/Datasets/tartanTrajFlowDataset.py"
+          },
+          {
+            "path": "Datasets/utils.py",
+            "bytes": 7947,
+            "git_blob_sha1": "4631ff2f9409c98afd7bd6e00ed43b70e15d1a42",
+            "sha256": "ba4bf78c31fde24de2ac0a00c6325163e99cc2896b2acd62978fe66f71f05d86",
+            "url": "https://github.com/castacks/tartanvo/blob/ec2ecc38b590ff27b76cc7818cf198d6420dce4b/Datasets/utils.py"
+          }
+        ]
+      }
+    },
+    "DPVO/manifest.json": {
+      "file": "DPVO/manifest.json",
+      "raw_sha256": "ce2ecaf96b086f69ef4d90a2e07e7b81afe8ae094656eb41260182000a69e375",
+      "raw_bytes": 8084,
+      "host_home_redacted": false,
+      "data": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "default_branch": "main",
+        "retrieved_files": [
+          {
+            "path": "README.md",
+            "bytes": 6097,
+            "git_blob_sha1": "278db416cbbbbb76049a20fb15587ac26c73d184",
+            "sha256": "9691b756f3964455eead997448f93e2e78f852ce076a8157024d1b45f1ca3282",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/README.md"
+          },
+          {
+            "path": "LICENSE",
+            "bytes": 1088,
+            "git_blob_sha1": "b567ea1f1def1d47479bbbaf0bc3bfb3a25a9417",
+            "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/LICENSE"
+          },
+          {
+            "path": "setup.py",
+            "bytes": 1342,
+            "git_blob_sha1": "86fe6caf7abef30dc527cf6de87615f49673a98a",
+            "sha256": "48c67bb89d46faae999ba98ac61fa6d965b0962365a0e5f3b74e4998cd02139e",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/setup.py"
+          },
+          {
+            "path": "download_models_and_data.sh",
+            "bytes": 521,
+            "git_blob_sha1": "04131fd34fbfd549eb8609370f36a70da157daaa",
+            "sha256": "a75998bead90e57611c4c78da24e196e51cfe998ba98a6a7eb17f9effdd3ef89",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/download_models_and_data.sh"
+          },
+          {
+            "path": "dpvo/net.py",
+            "bytes": 9019,
+            "git_blob_sha1": "96d9c1c18fa21db0b14fa724373f25d350b53301",
+            "sha256": "1aee33d54f0b1cc1f3f842b60790ff1299ef9c1e20bca6467ce7114dca802acc",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/net.py"
+          },
+          {
+            "path": "dpvo/dpvo.py",
+            "bytes": 17089,
+            "git_blob_sha1": "b6f4c5992d176844297718a33b459117bc27f4b6",
+            "sha256": "7efcb45689c2da8d18e2c69774e221799c9f8472e99531955f55dcb145626fd7",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/dpvo.py"
+          },
+          {
+            "path": "dpvo/altcorr/correlation.py",
+            "bytes": 2201,
+            "git_blob_sha1": "9b9d8d9d4b01fb603b9978c8788a717d7961b20c",
+            "sha256": "367fe95eff8c076b4ec3c4830ff9a9626a8bca4abadc9042a05bd3f58d577f4a",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/altcorr/correlation.py"
+          },
+          {
+            "path": "dpvo/fastba/fastba.py",
+            "available_in_pinned_tree": false
+          },
+          {
+            "path": "dpvo/config.py",
+            "bytes": 755,
+            "git_blob_sha1": "ec7c2f4eb2926d870d11f34bd40603e0480ede97",
+            "sha256": "f70eaf98ef32a7ea5a675de571373e32d0a6d1354bea9d13c6a779eb68f50bec",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/config.py"
+          },
+          {
+            "path": "dpvo/patchgraph.py",
+            "bytes": 4622,
+            "git_blob_sha1": "2ad26a690a93f17f2324ddd95acdc120b22a6f7d",
+            "sha256": "a2cef93f93c7aab83e8310ddf0207e248c62bc2eaae2a1158a305f3efccaef53",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/patchgraph.py"
+          },
+          {
+            "path": "dpvo/extractor.py",
+            "bytes": 8932,
+            "git_blob_sha1": "119141ea07368269e8fa42772d9da3bed8d90629",
+            "sha256": "f5cbcbe14c42e44bcec6e827a3429ebe93979a439ba9b9ef70d4f4baa3454a2b",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/extractor.py"
+          },
+          {
+            "path": "dpvo/blocks.py",
+            "bytes": 3199,
+            "git_blob_sha1": "9642de1088b29483b6fea355a04d7247f33b2330",
+            "sha256": "9c9e2848da524829374e56bb1b14a891e9e2c19bc683af8e958e8982ba33d661",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/blocks.py"
+          },
+          {
+            "path": "dpvo/fastba/__init__.py",
+            "bytes": 40,
+            "git_blob_sha1": "16ec66ade2ef4bc7b99673e0144a9e9a4bff2998",
+            "sha256": "27b90b01ebeb7cd5e51212e32d2fcf82416dc4fad8707c7a96e6d07b4d7ab605",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/__init__.py"
+          },
+          {
+            "path": "dpvo/fastba/ba.py",
+            "bytes": 328,
+            "git_blob_sha1": "d3095229ce1864808e6028b5690295ab41791b99",
+            "sha256": "dc108d12199e8a2f97a0b391f4b24e266e711d49eb20f0298ef692c7724a2e6c",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/ba.py"
+          },
+          {
+            "path": "dpvo/altcorr/correlation.cpp",
+            "bytes": 1879,
+            "git_blob_sha1": "7cd16793c8fc3381bde54a163145048e4ee0c560",
+            "sha256": "7d6e218c89a93edf98dbb88747bbc9633d77e6095c6225ab2094dd055d05ab98",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/altcorr/correlation.cpp"
+          },
+          {
+            "path": "dpvo/altcorr/correlation_kernel.cu",
+            "bytes": 11555,
+            "git_blob_sha1": "f4faa73863c071e126e62a77bffb6bcc98f8d55b",
+            "sha256": "85667383d879c9093cee5b88ae231f562d98e751b4a549917ebda105a1a291e0",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/altcorr/correlation_kernel.cu"
+          },
+          {
+            "path": "dpvo/fastba/ba.cpp",
+            "bytes": 5415,
+            "git_blob_sha1": "7fb106c9bdee0046df96c6534f30514c22e1d9c0",
+            "sha256": "cb0514d680cb1e44ba511cb82dde441fe35998f36706cc73322715f9706ed82f",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/ba.cpp"
+          },
+          {
+            "path": "dpvo/fastba/ba_cuda.cu",
+            "bytes": 18610,
+            "git_blob_sha1": "21de38925a03c99bc49a13829d148bac8e657157",
+            "sha256": "43813f87e191078102e5737575c5cceeee4fe607c54fa5a31f51c0aaf6311230",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/ba_cuda.cu"
+          },
+          {
+            "path": "config/default.yaml",
+            "bytes": 377,
+            "git_blob_sha1": "677e7c29f9f9ded923c66d2359808007f8a9533f",
+            "sha256": "0351abfbc60d9ec93bf402857130497b2f063f8ce0e8fd6e87cc55c73273594a",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/config/default.yaml"
+          },
+          {
+            "path": "config/fast.yaml",
+            "bytes": 376,
+            "git_blob_sha1": "17152701a7466bfedb3e42da10aae6f59ec95427",
+            "sha256": "24c82450151ce6e8431dfbf9dcc501a7a2747955a30a59f745bdc03bd84ce4c3",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/config/fast.yaml"
+          },
+          {
+            "path": "dpvo/loop_closure/retrieval.py",
+            "available_in_pinned_tree": false
+          },
+          {
+            "path": "demo.py",
+            "bytes": 3498,
+            "git_blob_sha1": "9cca9c2a4cd982aa2653f053c7801460c8ff2132",
+            "sha256": "5b7ddd33e79f8a14d0f75a29d6e9c8e76d54d6f2de5eac2cc7555d74f27d1f07",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/demo.py"
+          },
+          {
+            "path": "evaluate_tum.py",
+            "bytes": 5598,
+            "git_blob_sha1": "f9f4c127830a979ecae299fb0a93ea7d4b287ede",
+            "sha256": "2548c77758885daa7c527cd7584aceb343442beefdc18ebdd07a1c6fc15fd1e6",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/evaluate_tum.py"
+          },
+          {
+            "path": "evaluate_euroc.py",
+            "bytes": 4694,
+            "git_blob_sha1": "9f44e0d52f0c42b39dc713fa23c143b45a05d943",
+            "sha256": "7ed032a3c774d97aee5faaed23ba0a6bc9050134369c167cb9d85926eaae3a70",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/evaluate_euroc.py"
+          },
+          {
+            "path": "dpvo/projective_ops.py",
+            "bytes": 3560,
+            "git_blob_sha1": "24ad43ae029f6a3a9fa6df2e79ab3a1fdfca069d",
+            "sha256": "ef20f322a118b0790bff975cce3120ad31e867c8b088a9f408c3328c0fb664c1",
+            "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/projective_ops.py"
+          }
+        ]
+      }
+    },
+    "Monodepth2/manifest.json": {
+      "file": "Monodepth2/manifest.json",
+      "raw_sha256": "dba1cc4febd1495fdc15dd9e60766a853993670cfcc4653dcf2153a4f16315e2",
+      "raw_bytes": 2857,
+      "host_home_redacted": false,
+      "data": {
+        "repo": "nianticlabs/monodepth2",
+        "commit": "b017a8164fae339b0ce01f3a9e5048104d5abd0e",
+        "default_branch": "master",
+        "retrieved_files": [
+          {
+            "path": "README.md",
+            "bytes": 14460,
+            "git_blob_sha1": "164c657b89e664cfae9fb7757d22af660cc3f942",
+            "sha256": "0239b52ba16a9eee37085be0e36b34c1f47045bb08d9efeec6df580ed2daf6f6",
+            "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/README.md"
+          },
+          {
+            "path": "LICENSE",
+            "bytes": 8096,
+            "git_blob_sha1": "31fadc86ef8f2528ef0b50e1a395d179c650746f",
+            "sha256": "e02c50ac489412782c230c9c3f59ce4368686b98a7c33b1c1198ae82cbe7379b",
+            "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/LICENSE"
+          },
+          {
+            "path": "evaluate_pose.py",
+            "bytes": 4858,
+            "git_blob_sha1": "4b852a042ff908cb4785aaa9400c9e59a577b3de",
+            "sha256": "23a4fc565ad144de5925860fa429999fe76e834bbe1c756939ec805c469da8d5",
+            "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/evaluate_pose.py"
+          },
+          {
+            "path": "networks/pose_decoder.py",
+            "bytes": 1875,
+            "git_blob_sha1": "4b03b60ea839c366126a0adf94fda445c231143f",
+            "sha256": "e369613794a6e03d4ddb280d9530018c26581aae93eac583cec2771a55e992cf",
+            "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/networks/pose_decoder.py"
+          },
+          {
+            "path": "networks/resnet_encoder.py",
+            "bytes": 4046,
+            "git_blob_sha1": "9c94418d383e5c48acb64e946e54f607ea9c2861",
+            "sha256": "a4a60c66699e21c287c4f70af78b1f3be607642889edce5eddb391f7765c8d44",
+            "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/networks/resnet_encoder.py"
+          },
+          {
+            "path": "networks/depth_decoder.py",
+            "bytes": 2218,
+            "git_blob_sha1": "498ec385d2a6b7322a55f190bd6ab76330b55da7",
+            "sha256": "1e894105362af006347250c527adcb969215391c9cd1221254ff808014bdff99",
+            "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/networks/depth_decoder.py"
+          },
+          {
+            "path": "layers.py",
+            "bytes": 8155,
+            "git_blob_sha1": "070cadb6dac216dbe87faa796f825fcac1fb9b63",
+            "sha256": "d6eab2ea55081a5ed445d4e1ebb9ebc6b19ca79ed1d8fc25fe3554673e388ca8",
+            "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/layers.py"
+          },
+          {
+            "path": "utils.py",
+            "bytes": 4314,
+            "git_blob_sha1": "e309cf7ec2a2cb4bb32254006b8337f96ba5117d",
+            "sha256": "977dce64ba454d063e4aa06806d162b6f547d878828b592218d1f699f81bc319",
+            "url": "https://github.com/nianticlabs/monodepth2/blob/b017a8164fae339b0ce01f3a9e5048104d5abd0e/utils.py"
+          }
+        ]
+      }
+    },
+    "VGGT/manifest.json": {
+      "file": "VGGT/manifest.json",
+      "raw_sha256": "0b55a03051b6170288420a0edd21aa4d9331f6bc87d11a74bcb3f06a885e90d9",
+      "raw_bytes": 1172,
+      "host_home_redacted": false,
+      "data": {
+        "repo": "facebookresearch/vggt",
+        "commit": "a288dd0f14786c93483e45524328726ab7b1b4ce",
+        "default_branch": "main",
+        "retrieved_files": [
+          {
+            "path": "README.md",
+            "bytes": 14404,
+            "git_blob_sha1": "fc04f23891e77e71b6c2b6c8e6716ee573dd8fa1",
+            "sha256": "56426b9aea25174ccbc4c2c37a3a22107fd8b5ac9dc5a8bf008e7457402ed3bd",
+            "url": "https://github.com/facebookresearch/vggt/blob/a288dd0f14786c93483e45524328726ab7b1b4ce/README.md"
+          },
+          {
+            "path": "vggt/models/vggt.py",
+            "bytes": 4862,
+            "git_blob_sha1": "686e6f9d3f9e37769c195258f429a66d927375c0",
+            "sha256": "dbc92d6214882161d9042b1bc60cc932a9fd6bb609fc913d14906328f7833607",
+            "url": "https://github.com/facebookresearch/vggt/blob/a288dd0f14786c93483e45524328726ab7b1b4ce/vggt/models/vggt.py"
+          },
+          {
+            "path": "vggt/heads/track_head.py",
+            "bytes": 4207,
+            "git_blob_sha1": "a4f1d9bd83cca1f74f97a644a02b984904f84706",
+            "sha256": "5838f10401ad4c614e5608314f7b27b9195af8839e8bbb3321bfb6aad41a3e59",
+            "url": "https://github.com/facebookresearch/vggt/blob/a288dd0f14786c93483e45524328726ab7b1b4ce/vggt/heads/track_head.py"
+          }
+        ]
+      }
+    }
+  }
+}
