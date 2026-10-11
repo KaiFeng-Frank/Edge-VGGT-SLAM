@@ -1,0 +1,98 @@
+{
+  "schema": "v42_native_FP16_input_static_feasibility",
+  "status": "query_required_not_executed",
+  "candidate_accepted": false,
+  "SDK_or_model_executed": false,
+  "source_evidence": [
+    {
+      "sha256": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a",
+      "evidence_id": "rknn_api_v2.3.2.h"
+    },
+    {
+      "sha256": "55d7b04e782a687fedb6475b8388a12d52361cc56b1a7f260537bd3e1d679d1d",
+      "evidence_id": "v37_grouped_rknn.py"
+    },
+    {
+      "sha256": "34b94c0ba8a6e735baec21fb7a8602c09f8c8b8b56f521b0322d05a8973a0637",
+      "evidence_id": "fp16_input_transport.py"
+    },
+    {
+      "sha256": "fa7776b11dca6670d885e0cab7b78a1ac89a5909d19ad1cce37c02209ad3af12",
+      "evidence_id": "run.json"
+    }
+  ],
+  "saved_v41_query_commands": {
+    "input_attributes": 1,
+    "output_attributes": 2,
+    "native_input_8_queried": false,
+    "native_NHWC_input_10_queried": false
+  },
+  "v38_AB_warm_mean_ms": {
+    "fp32": {
+      "samples": 2,
+      "pack_ms": 17.26521000819048,
+      "input_set_ms": 42.70700449706055,
+      "run_api_ms": 84.50700849789428,
+      "forward_ms": 156.88920349930413
+    },
+    "fp16": {
+      "samples": 2,
+      "pack_ms": 44.275732994719874,
+      "input_set_ms": 52.72721400251612,
+      "run_api_ms": 91.24302949931007,
+      "forward_ms": 205.68574949720642
+    }
+  },
+  "v38_FP16_pass_through": 0,
+  "v38_zero_copy": false,
+  "required_queries": {
+    "commands": [
+      1,
+      8,
+      10
+    ],
+    "per_tensor_fields": [
+      "index",
+      "n_dims",
+      "dims",
+      "name",
+      "n_elems",
+      "size",
+      "fmt",
+      "type",
+      "qnt_type",
+      "fl",
+      "zp",
+      "scale",
+      "w_stride",
+      "h_stride",
+      "size_with_stride",
+      "pass_through"
+    ],
+    "scope": "Every actual selected static model and each of its three inputs, under the same real context/core configuration; query errors retained."
+  },
+  "minimal_measurable_next_candidate": {
+    "transport": "Owned native FP16 via inputs_set/pass_through1",
+    "packing": "One small NEON kernel fusing CF FP32 transpose and conversion into a layout proved by actual native query; retain all input finite/overflow and byte/stride checks.",
+    "layout_acceptance": "Initially only a fully proved dense FP16 layout. Do not infer native from command1, format label alone, or a legacy model. Reject unsupported or ambiguous blocked/padded layouts.",
+    "ownership": "Buffer remains owned until synchronous run/get/output-copy/release finishes; no caller alias and no partial graph on any error.",
+    "output_transport": "Keep original outputs_get(want_float1), owned canonical copy and release.",
+    "board_AB_metrics": [
+      "pack_seconds",
+      "input_set_seconds",
+      "run_api_seconds",
+      "forward_seconds",
+      "total_execute_seconds",
+      "full_graph_seconds",
+      "callback_seconds",
+      "outputs_bitwise_vs_same_call_original_SDK",
+      "strict_original_Torch_gate_retained",
+      "context_DMA_and_close",
+      "temperature_and_frequency"
+    ],
+    "not_zero_copy": true,
+    "performance_estimate_supported": false
+  },
+  "separate_zero_copy_scope": "SDK-managed create_mem/set_io_mem with actual native attrs, CPU-to-device coherency/mem_sync where required, all DMA included in cache budget and destroy_mem before context teardown; no implementation or bypass flags added.",
+  "retained_boundary": "Historical FP32 failure stays diagnostic/non-adopted; pass_through/layout equivalence needs an actual same-state SDK AB, not old trajectory gold."
+}

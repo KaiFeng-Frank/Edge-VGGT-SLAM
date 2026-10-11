@@ -1,0 +1,38 @@
+{
+  "schema": "v42_metadata_only_candidate_static_fake_receipt",
+  "status": "passed_generated_fake_only",
+  "candidate_accepted": false,
+  "actual_SDK_or_model_executed": false,
+  "source_parent": {
+    "file": "v41_online_update.py",
+    "sha256": "c7caef0c76673cd4511aa1a4c8a8a5427bfee691e1964227d782d0d6f26554eb",
+    "unmodified": true
+  },
+  "change_scope": "One NPU_used reporting block only; cache/session locks read bools instead of deep-copying all metadata. Full metrics/lifecycle/math/ownership/failure handling untouched.",
+  "test_command": "python3 -m pytest -q test_v42_metadata_only.py",
+  "tests_passed": 7,
+  "tests_seconds": 0.14,
+  "artifacts": [
+    {
+      "file": "audit-v41-update-performance.py",
+      "bytes": 8303,
+      "sha256": "9665cf5da88cace1587c84dcaf849cb9ae9f2d9135b4c27f7ffc72921aeb658d"
+    },
+    {
+      "file": "test_v42_metadata_only.py",
+      "bytes": 9035,
+      "sha256": "dcf244590f4ba8877369ddbc1c4e94467a8c785c3ed4247e984bfbca0ccb0895"
+    },
+    {
+      "file": "v42_cache_activity.py",
+      "bytes": 1363,
+      "sha256": "58acede7cd759ed6954d5b95e72c0f432408ebdf59e24de56afd6fab314872e4"
+    },
+    {
+      "file": "v42_metadata_only_update.py",
+      "bytes": 14855,
+      "sha256": "4152c78b9f5942115fd3f754744fff234c788550806296e16dfb53b062038054"
+    }
+  ],
+  "test_scope": "Seven tests passed on the pinned internal sources; public copy retains candidate/helper bytes and only adjusts analyzer/fixture location configuration. Public wrapper paths were statically parsed here."
+}

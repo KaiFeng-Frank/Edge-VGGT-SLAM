@@ -14,6 +14,14 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
 
+## Completed EOF lifecycle (v42)
+
+The optional learned DPVO research replay now completes all **192 observations, 158 fresh poses and 12 separate EOF updates** on RK3588S. A ninth static model adds the previously missing complete `B1_D3_M16` source group; the eight existing model/compile entries are preserved. The saved-input board Torch/ORT export passes all nine fixed comparisons. **This repairs lifecycle coverage; it does not accept the historically rejected SDK precision or change default VGGT.**
+
+The complete online replay measures **2.698 Hz**, fresh admission-to-publication **P95 386.036 ms**, and peak process RSS **510.852 MiB** on the 16 GB board. EOF adds **2.971 s**, excluded from fresh output. All 192 non-clock observation results and 41 saved-array pairs match the previous two-RKNN-stage online prefix. Fresh ATE remains **1.968 cm**, or **+76.92%** versus full-resolution FAST on the same observations. Separate runs are not a controlled speed comparison; camera latency, 20 Hz, dense mapping, endurance and 8 GB acceptance remain unvalidated.
+
+[Source and reproduction](deploy/rk3588/validation/dpvo_online_replay/V42.md), [export, complete replay and independent saved-data checks](results/dpvo_eof_update_v42.json), and [engineering records 76–79](docs/ENGINEERING_NOTES.md) distinguish completed fixes from measured bottlenecks and untested proposals. The records cover redundant metadata copies, source-batch catalogue/call-count tradeoffs, native-input layout requirements and the prior FP16 transport regression.
+
 ## Recurrent RKNN research and lifecycle coverage (v41)
 
 The optional DPVO research path now feeds complete RKNN Update outputs back into the original online lifecycle, with either the original CPU encoder or the half-resolution RKNN encoder. Both instrumented file replays processed all **192 observations and published 158 fresh poses**. **Both entire runs remain failed:** the first offline EOF Update requires the unsupported `B1_D3_M16` shape. Its complete inputs were saved and execution stopped, without padding, edge removal or a Torch fallback. Startup D1 motion probes have a separate explicit original-Torch route.

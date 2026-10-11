@@ -752,3 +752,45 @@ preparation/query 是 correlation 的嵌套项，不再次相加。两次不是�
 **证据与结论边界：** 保存 JSON 独立评价确认两份共同观测集合和端点相同；两路在线回放的 fresh 覆盖是 158/192（82.292%），本表可用端点覆盖是 128/162（79.012%）。后两路 ATE 对原全分辨率 FAST 分别增加约 **151.6%、76.9%**，旋转和平移 RPE 也未满足 10–20% 损失目标。表中的单次结果不能建立组件误差来源、误差相互抵消、因果提速或泛化精度结论；接近半分辨率 CPU 的某个指标也不改变全分辨率质量拒绝。
 
 **后续使用边界：** 组件固定门槛、状态递推一致性、共同观测集合 GT 误差、全部观测覆盖和完整时延都要保留；两份失败运行的 EOF 指标仍不可用。本表是 DPVO 研究路径对原 DPVO FAST 的短序列比较，不是原 VGGT 518 精度基线、地图质量、30 分钟稳定性或默认模型替换验收。[共同观测集合、固定端点、单次 Sim3 与完整误差证据](../results/dpvo_online_update_v41.json)。
+
+## 76. 读取一个活动标志，不应深复制全部 context 来源与属性
+
+**触发与证据：** 完整 RKNN Update 已返回后，冻结 v41 callback 每次调用 `cache.metrics()`，只从 history/live session 中提取 `npu_used is True`。真实 bothNPU 回放结束前有八个 live context、零次 eviction；该 reporting query 经 `_usage()` 和 `sessions` 至少深复制 16 份 session metadata，随后又复制完整 cache，其中包含 attrs、bindings、内存记录和来源 SHA。157 次稳态完整 Update 的 callback 均值为 **169.551 ms**，完整 staged graph 为 **136.546 ms**；差额 **33.006 ms**还包含外层快照、plan 与输出检查，不能全部归因于 metadata。
+
+**可测方案：** 只替换这一个 reporting block，按原 cache→session 锁顺序读取相同的 history/live 布尔值，保留历史最后一项、live 覆盖历史和严格 `is True` 的规则。标志仍由原 SDK session 在实际 run API 调用处设置；不根据模型文件名猜测 NPU。公开 `metrics()`、source recheck、context close、内存清理检查、双重输入所有权快照、finite/domain 检查、完整源组、revision 检查与失败存盘保持。原 cache 每次 hit 为读取一个 `closed` 字段再深复制 session，也是可单独测量的冗余，本候选尚未改变它。
+
+**验证边界：** 七个 generated/fake 检查通过，包括精确源码差异、历史/live 覆盖、hot metrics 调用由一次降为零、输出 bitwise 与独占所有权、晚组失败、未知 D3、stale revision、六输入失败保存和 close/cleanup 检查。它们验证契约，不是板端提速；候选仍使用 v41 八形状目录，不能据此称 EOF 已修复。两份真实 v41 run 的 failed EOF 与严格 FP32 拒绝保持，未更改默认 VGGT、数学或接受门槛。[保存时钟与静态分析](../results/dpvo_update_performance_v42.json)、[最小候选和 fake 检查](../deploy/rk3588/validation/dpvo_update_performance/README.md)、[原运行边界](../results/dpvo_online_update_v41.json)。
+
+**后续板端同状态对照：** 在三个真实保存输入（观测34/127/191，704/800/752条边）上，原版A和只改reporting block的B使用两套独立cache、相同八模型目录。每状态执行ABBA两轮；各方法各状态排除首次调用，余3次为暖样本。完整callback墙钟均值A→B分别为 **93.686→81.816、146.065→124.458、122.133→105.570 ms**。24次调用的net/delta/weight与各状态首份A输出字节相同，两路各56次SDK均完成输出release，各6个实际创建的context关闭、cache模型/DMA归零。保存、哈希、输入预检和外部统计在计时外，callback本身的正常记录复制仍在墙钟内。
+
+这些是本次固定状态的组件结果，每项只有3个暖样本，未控温控频；完整图内部时钟也有波动，不能把全部差额都归于一个复制函数。输入来自已有NPU反馈轨迹，没有新的CPUteacher、BA或递归状态提交；候选尚未接入v42完整在线回放，不能换算新鲜位姿Hz、改变原FP32拒绝或称为20Hz通过。[板端交错对照和保存输出审核](../results/dpvo_metadata_callback_ab_v42.json)。
+
+## 77. 限制独立源 batch 可缩小模型目录，却增加完整图的调用次数
+
+**触发与证据：** 第 73 条按独立源轴设置 `max_sources_per_batch=2`，保留每个源的全部 D×M 依赖。读取实际 v41 callback 的 `source_degrees`，逐次核对源数、每源 D×16 边数和已保存 degree plan：bothNPU 的 **169 次成功完整 Update**共有 **893 个** B1/B2 组；同 degree 的完整独立源不设 B2 上限时为 **668 个**。其中157次稳态为 **845→620**，调用组数减少 **26.63%**；CPUencoder 的对应数为892→668、844→620。
+
+**可测方案：** 为真实前缀建立精确静态目录并比较完整链路：M16 的 B1/B2/B3×D4、B1/B2/B3×D5、B2/B3/B4/B5×D6、B1/B2/B3×D7，共13种。第一次 EOF 的 noncap 图另为 B1D3+B1D4+B3D5+B3D6，须单独覆盖。只合并等 degree 的完整独立源，保持源组内部邻居、归约、所有边和最终原边序；不同 batch 的 SDK 数值与 complete graph 时钟仍需实测，不把独立性当成已验证的浮点 bitwise 等价。
+
+**验证边界：** 以上是固定两份保存拓扑的静态重分组，未执行大 batch 模型，也不能保证后续 EOF 迭代或新反馈轨迹的形状。输入元素、MAC 和输出元素不减少；组数比例只适用于假设的固定每次调用成本，不能直接套到 inputset 或 run。该 bothNPU 稳态 SDK run API 合计均值已为 **64.910 ms**，inputset 为 **30.241 ms**；保留原 run 时钟而将其余开销都置零，也仍超过50ms。这只是保持原调用时钟的极端预算，不是大 batch 的硬件下界或提速预测。原 run 仍 failed EOF，候选未采用，20Hz 目标未验证。[逐次拓扑核对、目录与嵌套时钟](../results/dpvo_update_performance_v42.json)、[可复用只读分析器](../deploy/rk3588/validation/dpvo_update_performance/audit-v41-update-performance.py)。
+
+## 78. 逻辑 FP16 属性不能代替 native 查询，预转换反例也不能外推到 NEON
+
+**触发与证据：** 第 63 条发现 NumPy FP16 typed transport 并未减少完整 SDK 成本。同 context 的固定 AB/BA/AB 中，每种去掉首次调用后的两次 warm 均值为：FP32 pack/inputset/run/forward **17.265/42.707/84.507/156.889 ms**，FP16 为 **44.276/52.727/91.243/205.686 ms**；两路都是 `pass_through=0`，没有零拷贝。另一方面，冻结 v41 session 实际只查询普通输入/输出属性（command1/2）；保存的 FP16/NHWC logical attrs 不能证明 command8/10 的实际 native 布局。
+
+**可测方案：** 先对每个实际模型的三个输入查询 native8 与 nativeNHWC10，保留返回码、dims、format/type、quantization、字节数和全部 stride/padding。只支持由这些查询证明的布局，模糊或不支持的布局显式拒绝。随后可单独测试一个小 NEON 内核，将原 FP32 CF 输入一次转置并转换到已确认的 native FP16 自有 buffer，再使用 `inputs_set` 的 pass-through1；保持 finite/FP16 overflow、字节边界和同步所有权检查，原输出申请、独立拷贝及 release 路径保持。若 native 是 NC1HWC2，不猜通道分块或尾部 padding，也不能直接套 dense NHWC 内核。
+
+**验证边界：** 此记录仅为本地固定 header、源码和保存 JSON 的静态可行性分析，native 查询与 NEON 方案未在本收据中执行。后续须同当前状态做原 SDK 对照，分别报告 pack、inputset、run、完整图和 callback，并保留严格原 Torch 门槛的拒绝；v38 的六次输出字节一致不授权新 native 路径。pass-through1 不自动消除 `inputs_set` 的拷贝，因此不能称 zero-copy。SDK 管理的 `create_mem/set_io_mem/mem_sync/destroy_mem` 是另一实验，须另核缓存一致性、DMA预算与销毁顺序。旧 NumPy 反例不证明 NEON 或 native 一定更慢，也不支持其一定更快。[固定 source/query 证据与后续验证条件](../results/dpvo_native_input_feasibility_v42.json)、[原 FP16 反例](../results/dpvo_fp16_input_transport_v38.json)。
+
+**后续实际 native 查询：** 九个固定 M16 模型已由板端独立执行 init、coremask7、command1/8/10 查询及立即 destroy，共9次初始化、9次成功销毁、零次 SDK forward；保存收据 SHA 为 `89f0cead99df024b25ed3d2638e412a075f91d6736ecdb2b35ace2304eef0642`。独立保存 JSON 审查逐个核了81份 attrs：27个输入的 command8与command10属性完全相同，均为 **FP16、NC1HWC2、C2=8**；普通 command1 为 NHWC/rank4。net/inp 的 native shape 是 `[B,48,D,16,8]`，corr 为 `[B,111,D,16,8]`，对应882个有效通道扩为888个存储通道，末块六个 padding 通道。全部 w_stride=16、h_stride=0、size_with_stride=size，没有额外空间 stride 字节；qnt_type=2 但 scale=1、zp=0、fl=0，不能因此称输入已做 INT8 量化。
+
+**由查询收敛后的方案与边界：** `nativeNHWC` 的命令名称没有返回 dense NHWC，因此当前查询不支持将 dense NHWC FP16 直接当 native buffer。可测下一步应收敛到实际 **C2=8** 的自有打包：`dst[b,c//8,d,m,c%8]=FP16(src[b,c,d,m])`，corr 尾部六通道初始化为零，并核精确字节数、finite/FP16 overflow、索引、所有权和销毁。查询到的 pass_through字段仍为0；它没有提交任何输入，不能证明 `inputs_set/pass_through1`、padding消费、舍入或 `set_io_mem` 的接受与输出等价性。这些须同当前保存状态对原 SDK 做板端 AB，再比较完整 pack/inputset/run/graph 时钟；查询成功不是传输验收、零拷贝、精度通过或提速结果。原 SDK FP32拒绝和不采用边界保持。[真实查询与独立保存属性审查](../results/dpvo_native_input_query_v42.json)。
+
+## 79. EOF 补图需要同输入参考，并单独验证在线前缀未改变
+
+**问题与修复：** 第 74 条的完整在线前缀在 EOF 首次请求 `B1_D3_M16` 时失败。现在只补这一种真实形状：读取原失败的完整640边输入，在板端执行一次原参数完整 Torch Update 产生新的同输入参考，再取源帧11、目标9/10/11的全部48边。该参考绑定的是含 NPU 反馈的失败输入，不是此前纯 CPU 轨迹的旧 gold；三类 Torch/ORT 对照共9项均通过原 `rtol=1e-4, atol=1e-5`。原94项权重和50项 Update 参数保持，旧八份模型及编译来源保持，目录仅增加独立D3项，没有截邻居、补零或完整 Update 的 CPU 回退。
+
+**完整生命周期证据：** 新运行 SHA `c0546eb004e79fe9d953901a882d51ff60a620cc124cad7c9eed42365a339fcf` 为 completed：192个观测、158个 fresh、169次在线完整 Update，以及随后12次 EOF Update/24步 BA。EOF独立耗时 **2.970749 s**，历史位姿重建不计 fresh。共965次 Update SDK和192次编码器SDK；九个 Update context、编码器context全部关闭，模型缓冲/DMA归零、清理错误为空。先前两次 failed run 原样保留，未知新形状仍拒绝，本次覆盖不保证任意未来拓扑。
+
+**不改变在线输出的证据：** 保存数据独审核对192条非时钟结果、EOF前 metadata，以及7对NPZ中的41对实际数组，全部一致；初始seed/RNG与94项权重metadata一致。旧failed运行未保存最终RNG，因此没有宣称最终RNG SHA可直接比较。新增图只在EOF首次使用，在线位姿和保存状态保持一致。所有真实Torch/ORT/SDK调用在RK3588S，主机仅非量化编译与保存数据审核。
+
+**性能和质量仍须分别验收：** 本次在线回放 **58.554 s，158/58.554=2.698 Hz**；从观测读入到事件JSON flush的fresh P95为 **386.036 ms**，16GB板峰值RSS **510.852 MiB**。不同轮次未控温控频，不将它与v41的2.602Hz之差归因于EOF补图。共同158个fresh、128对1秒端点的ATE/旋转RPE/平移RPE仍为 **0.019683m / 1.793720° / 0.036012m**，相对原全分辨率FAST分别增加 **76.92% / 81.98% / 110.76%**。EOF完成不改善在线精度，也不使原SDK逐元素拒绝、20Hz、相机排队、稠密地图或30分钟目标变为通过。默认VGGT与模型权重许可边界保持。[补图和完整回放源码](../deploy/rk3588/validation/dpvo_online_replay/V42.md)、[实际导出/编译、前缀一致性与独立轨迹评价](../results/dpvo_eof_update_v42.json)。
