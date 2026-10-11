@@ -1,0 +1,363 @@
+{
+  "schema": "v58_original_VGGT_grouped_DINO_end_to_end_result",
+  "status": "completed_experiment_no_realtime_breakthrough",
+  "original_model_only": true,
+  "candidate_quality_accepted": false,
+  "realtime_validated": false,
+  "default_backend_changed": false,
+  "decision": "Keep six-group DINO as an explicit experimental option; full-model service did not improve. Stop current W4A4 branch. No claim of reaching 20 Hz or 100 ms.",
+  "checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "grouped_graphs": {
+    "manifest_sha256": "a602bcdaab3f2e1ab51d49feb300ff3af76c07fe334489c983d647859f3f9493",
+    "group_count": 6,
+    "original_layers": 24,
+    "original_block_parameter_tensors": 336,
+    "group0_reused": true,
+    "build_seconds_including_checks_and_copy": 97.34518886401202,
+    "all_12_ORT_group_vs_separate_outputs_byte_equal": true,
+    "original_Torch_FP32_group_gates": [
+      false,
+      true,
+      false,
+      true,
+      false,
+      false
+    ],
+    "original_FP32_failures_retained": true
+  },
+  "component": {
+    "scope": "four-block/group component route including conversion/SDK/finite checks/owned copies; excludes hashes/NPY IO",
+    "inputs": 2,
+    "calls": 16,
+    "sdk_runs": 40,
+    "subsequent_calls_per_role": 6,
+    "separate_four_blocks_seconds": 0.037150073156226426,
+    "group_seconds": 0.02854648899422803,
+    "observed_fraction_reduction": 0.23158996553836975,
+    "all_8_group_outputs_byte_equal_to_previous_FP16": true,
+    "all_contexts_closed": true
+  },
+  "complete_model": {
+    "scope": "offline complete original model + SL4; not paced input latency",
+    "pair_count": 16,
+    "input_indices": [
+      32,
+      80,
+      128,
+      176,
+      224,
+      272,
+      320,
+      368,
+      416,
+      464,
+      512,
+      560,
+      608,
+      656,
+      704,
+      752,
+      797
+    ],
+    "image_shape": [
+      2,
+      3,
+      84,
+      112
+    ],
+    "service_mean_seconds": 1.9821021836869477,
+    "previous_v57_service_mean_seconds": 1.9750539875658433,
+    "timing_comparison_interleaved": false,
+    "whole_service_improvement_observed": false,
+    "phase_mean_seconds": {
+      "DINO": 0.27576755643167417,
+      "aggregator_including_DINO": 1.4816966152502573,
+      "camera_head": 0.21546889674573322,
+      "depth_head": 0.16181696406238189
+    },
+    "byte_equal_arrays_vs_previous_FP16": 80,
+    "total_arrays": 80,
+    "pose_file_byte_equal": true,
+    "strict_original_FP32_arrays_passed": 0,
+    "dino_SDK_runs": 102,
+    "previous_dino_SDK_runs": 408,
+    "contexts_created_and_closed": 32,
+    "previous_contexts": 50,
+    "trajectory": {
+      "ATE_rmse_m": 0.17476037041206874,
+      "RPE_translation_rmse_m": 0.3150170096702616,
+      "RPE_rotation_rmse_degrees": 10.88688684428624,
+      "alignment": "positive-scale Sim3",
+      "RPE_interval": {
+        "delta_matched_frames": 1,
+        "pair_count": 16,
+        "estimated_interval_seconds": {
+          "minimum": 1.4999890327453613,
+          "mean": 1.5940091907978058,
+          "maximum": 1.60414719581604
+        },
+        "ground_truth_interval_seconds": {
+          "minimum": 1.5,
+          "mean": 1.5937312543392181,
+          "maximum": 1.6098999977111816
+        }
+      },
+      "short_sparse_sequence_not_general_quality_acceptance": true
+    }
+  },
+  "timestamp_replay": {
+    "original_frames": 798,
+    "fresh_pose_count": 16,
+    "fresh_wall_seconds_including_EOF_drain": 29.490645046986174,
+    "fresh_pose_hz": 0.5425449316048493,
+    "input_to_pose_p95_seconds": 2.4715603888835176,
+    "peak_rss_mib": 7259.27734375,
+    "startup_seconds": 38.74347105898778,
+    "latency_scope": "original software arrival through decode, queue, full model, SL4, dense chunk and poses/map atomic replacements",
+    "max_loops": 0,
+    "model_threads": 1,
+    "cpu_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "decoder_cpu_affinity": [
+      0
+    ],
+    "source_counts": {
+      "queue_capacity": 1,
+      "generated": 793,
+      "delivered": 17,
+      "overwritten": 776,
+      "skipped_before_decode": 5
+    },
+    "unique_monotonic_observation_sequences": true,
+    "contexts_created_and_closed": 32,
+    "cleanup_errors": [],
+    "map_chunks": 16,
+    "graph_nodes": 32,
+    "previous_v57_fresh_pose_hz": 0.5383028195931379,
+    "previous_v57_P95_seconds": 2.580836647619435,
+    "previous_v57_startup_seconds": 21.795648273
+  },
+  "int4": {
+    "schema": "v58_original_VGGT_DINO0_FC1_INT4_findings",
+    "scope": "Single real captured original DINO block0 FC1; component diagnostic only",
+    "original_model_only": true,
+    "candidate_accepted": false,
+    "whole_model_or_SLAM_candidate_executed": false,
+    "decision": "Stop the current W4A4 INT4 branch: quality failed and no useful speed improvement established",
+    "problem": {
+      "M": 53,
+      "K": 1024,
+      "N": 4096,
+      "matmul_type": 10,
+      "core_mask": 1
+    },
+    "pins": {
+      "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+      "capture_sha256": "5219c8c18c0ba2b92b32568e1f18c20516a07595749d6d697584d2e12fd6db4e",
+      "SDK_library_sha256": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+      "typed_ABI_source_sha256": "69056a2cb44ba69a2d311265b71ff919e4758fcaa150834a0b0cfe85dbcaef7d"
+    },
+    "r2_normal_B_failure": {
+      "receipt": {
+        "artifact": "fc1-int4-diagnostic-r2/diagnostic.json",
+        "sha256": "af17481988559c33743527625f5d6d00f091a7296dba02ece596acbfec861dda"
+      },
+      "stage_receipt": {
+        "artifact": "fc1-int4-diagnostic-r2/stage.json",
+        "sha256": "0b728108e49a03ba25b8db7d1ba609bb930004bde9fb93589fbe9a5987545aa8"
+      },
+      "worker_log": {
+        "artifact": "fc1-int4-diagnostic-r2/worker.log",
+        "sha256": "f7140493f09b2bb071af4487bad631a05bbc5df8d3bda84100aa0a018fa5e003"
+      },
+      "source_sha256": "9db9dfcebdafd4c10208602e5881abda5636adc2d1fdc9dba3e5f78f77551e43",
+      "worker_returncode": -6,
+      "signal": "SIGABRT",
+      "last_flushed_call": "rknn_matmul_set_io_mem for B",
+      "phase": "before",
+      "completion_receipt_present": false,
+      "internal_cause_established": false,
+      "cleanup_verified": false,
+      "performance_result_available": false
+    },
+    "r3_instrumented_native_B": {
+      "receipt": {
+        "artifact": "fc1-int4-native-b-r3/diagnostic.json",
+        "sha256": "0d050dad2dc5fae31b969e859c46234c3a8590469cf63d739d0c3c93dc873880"
+      },
+      "worker_receipt": {
+        "artifact": "fc1-int4-native-b-r3/worker/result.json",
+        "sha256": "81aeff64b9525d70005498f9d9bd1fe1218440846be5a649819c08a4e9780beb"
+      },
+      "wrapper_source_sha256": "37213285af34977d4e84de59005b32940d56f93d3a64f19ad431fa56f2e97c7a",
+      "probe_source_sha256": "e654a8138e14f96a9e44ef8ec5df6c135a6c20996fd3c294060ea7c70c340ff2",
+      "worker_returncode": 0,
+      "B_layout": 1,
+      "AC_layout": 0,
+      "bounded_calls": 4,
+      "all_integer_outputs_equal_INT32_reference": true,
+      "observed_INT16_overflow_elements": 0,
+      "released": true,
+      "cleanup_error_count": 0,
+      "timing_is_not_performance_evidence": true,
+      "timing_reason": "Each native call has fsynced instrumentation"
+    },
+    "r4_uninstrumented_per_tensor": {
+      "receipt": {
+        "artifact": "fc1-int4-native-b-r4/result.json",
+        "sha256": "0e0b61a0c1ef7a47deb3c99296e84ba2d29f4f23c23f6cff0c996444b16cee73"
+      },
+      "source_sha256": "e654a8138e14f96a9e44ef8ec5df6c135a6c20996fd3c294060ea7c70c340ff2",
+      "bounded_calls": 4,
+      "all_integer_outputs_equal_INT32_reference": true,
+      "observed_INT16_overflow_elements": 0,
+      "strict_FP32_comparison": {
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "passed": false,
+        "failed_elements": 217044,
+        "elements": 217088,
+        "failed_percent": 99.97973172169812,
+        "maximum_absolute_error": 9.416859477758408,
+        "relative_L2": 0.2932055365834654
+      },
+      "warm_calls": 3,
+      "warm_run_mean_ms": 16.37625165555316,
+      "warm_run_sync_ownedcopy_mean_ms": 16.61979334312491,
+      "quantization_plus_packing_ms": 152.73739100666717,
+      "setup_upload_sync_bind_ms": 9.036417002789676,
+      "released": true,
+      "cleanup_error_count": 0
+    },
+    "r5_uninstrumented_row_channel": {
+      "receipt": {
+        "artifact": "fc1-int4-row-channel-r5/result.json",
+        "sha256": "ed736bbb948523a69b986722fdd531c81afb42f1bfdaccc25e6c778d34419732"
+      },
+      "source_sha256": "9ef6cf990347d235b893e135607feff476e605051dd7f6a655f46d867890018a",
+      "bounded_calls": 4,
+      "all_integer_outputs_equal_INT32_reference": true,
+      "observed_INT16_overflow_elements": 0,
+      "strict_FP32_comparison": {
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "passed": false,
+        "failed_elements": 216944,
+        "elements": 217088,
+        "failed_percent": 99.93366745283019,
+        "maximum_absolute_error": 9.04200267791748,
+        "relative_L2": 0.1121644330503473
+      },
+      "warm_calls": 3,
+      "warm_run_mean_ms": 16.239265338905778,
+      "warm_run_sync_ownedcopy_mean_ms": 16.37255700188689,
+      "quantization_plus_packing_ms": 152.92026600218378,
+      "setup_upload_sync_bind_ms": 8.441417012363672,
+      "released": true,
+      "cleanup_error_count": 0,
+      "quantized_A_nonzero_fraction": 0.0388782429245283,
+      "quantized_B_nonzero_fraction": 0.5182695388793945
+    },
+    "interpretation": {
+      "current_error_matches_CPU_quantization_only_reference": true,
+      "warm_mean_excludes_first_call": true,
+      "run_sync_ownedcopy_excludes_quantization_dequantization_setup_reference_and_file_writes": true,
+      "quantization_plus_packing_includes_one_time_weight_preparation": true,
+      "no_same_core_FP16_comparison_or_end_to_end_speedup_established": true,
+      "zero_overflow_on_this_capture_is_not_general_overflow_safety": true
+    }
+  },
+  "service_budget": {
+    "schema": "v58_saved_original_model_service_budget",
+    "source_sha256": "3938383cf3a07cb589be26500900685646072ac368148064c1c0a72dc38f34c6",
+    "saved_run_only": true,
+    "count": 16,
+    "complete_service_seconds": 1.9750539875658433,
+    "measured_phase_seconds": {
+      "DINO": 0.29025012812599016,
+      "aggregator_including_DINO": 1.4941413298129191,
+      "camera_head": 0.21623399055897607,
+      "depth_head": 0.17340817368494754
+    },
+    "aggregator_excluding_DINO_seconds": 1.203891201686929,
+    "condition": "Hypothetically eliminate all measured DINO time with every other phase unchanged; not a measured implementation or hardware bound",
+    "hypothetical_service_without_DINO_seconds": 1.6848038594398531,
+    "hypothetical_rate_Hz": 0.5935409005606564,
+    "measured_service_divided_by_20Hz_50ms_budget": 39.501079751316865,
+    "real_time_validated": false
+  },
+  "source_validation": {
+    "generated_tests": 60,
+    "passed": 60,
+    "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider tests/test_rknn_grouped_dino.py tests/test_replay_original_vggt.py tests/test_compare_complete_model.py",
+    "no_model_or_SDK_execution_in_tests": true
+  },
+  "limitations": [
+    "16 GB board; 8 GB operation not verified",
+    "29.49-second replay, not 30-minute stability",
+    "Physical camera tests deferred",
+    "Loop closure remains unsupported; max_loops=0",
+    "Original FP32 tensor gates still fail",
+    "Matched trajectory uses a short, sparse, low-resolution sequence",
+    "Sequential performance observations are not controlled thermal comparisons",
+    "Startup time is reported separately and excluded from paced pose timing"
+  ],
+  "evidence": [
+    {
+      "file": "dino-group0-export.json",
+      "sha256": "c4e3970ba332f18026670734413450c4bec7dd03d31ebe83d66e03813ad6236c",
+      "bytes": 54178
+    },
+    {
+      "file": "dino-group0-ort-check-r2.json",
+      "sha256": "dc3e9fe1b140ca5364e526b192d0a1dec90152f3f66ad0f4bc0e95099d86405d",
+      "bytes": 1290
+    },
+    {
+      "file": "dino-group0-compile-r2.json",
+      "sha256": "467a278d07d330a86f6411846edf3c613791affaee226cdadb68e723d97468f0",
+      "bytes": 1564
+    },
+    {
+      "file": "dino-group0-probe-r1/result.json",
+      "sha256": "4ac06037f9991ec0e103ee1dab74364ab31c72dec4a913a142fa78c434b871e5",
+      "bytes": 34149
+    },
+    {
+      "file": "dino-groups-compiled.json",
+      "sha256": "a602bcdaab3f2e1ab51d49feb300ff3af76c07fe334489c983d647859f3f9493",
+      "bytes": 321275
+    },
+    {
+      "file": "grouped-dino-complete-r1/result.json",
+      "sha256": "679b31f60f78d6323d8ee7a905ef7cf6d79507e68d17f22e5ca37b19f35a863d",
+      "bytes": 103003
+    },
+    {
+      "file": "grouped-dino-trajectory-metrics.json",
+      "sha256": "6d1fc6501aee2df3d7d0d8636ee0bc023ebe3dac6d4785768ffe3e6a56a5b00a",
+      "bytes": 84349
+    },
+    {
+      "file": "grouped-dino-replay-r1/results.json",
+      "sha256": "51ef4c0ad30f2b48e39a6db34f027344c3392845195fdc55bffe23c14bd0676f",
+      "bytes": 92959
+    }
+  ],
+  "runtime_source_sha256": {
+    "patch_cache.py": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b",
+    "rknn_aggregator_blocks.py": "4fea665334e9d12a3d55839c3150680e269bab9794074d698bed2ad0a6e41c93",
+    "rknn_camera_head.py": "89c77fdb67348160b6d55676da22528cc1cb121985276cb1ae1970b2aa8a9fdc",
+    "rknn_dino_blocks.py": "6cf230ea3ae6c65b9a3c7ec0b31e9abb346edb2fc0413b6b77a3a3b510b495de",
+    "rknn_depth_head.py": "7efacdb27be4aeb134fd2b64e2819136320fc45d25973517584522d314ba7894",
+    "rknn_aggregator_pairs.py": "08270da911213d0d22c21c9a7f001aaa7e16d7f7b32220f8a2b0c1ddc4b09b88",
+    "rknn_half_io_pairs.py": "53b573f494f2598183659ba4e8dcb7503c770d9e2ac7b95cae9016279805d9a4",
+    "native/fp16_neon.c": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3",
+    "rknn_half_io_dino.py": "e39469432aa5663f0a15756be0067ec92a0fb7127e6702a794298c3e902f3cd7",
+    "rknn_grouped_dino.py": "e0e5664dc231a9960db12ae6c690d3f0604417a4d74991dcbd0ca2ca765ef6ac"
+  }
+}

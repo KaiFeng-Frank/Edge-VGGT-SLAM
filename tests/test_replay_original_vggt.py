@@ -19,6 +19,7 @@ RUNTIME_SOURCES = ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_h
                    'rknn_dino_blocks.py', 'rknn_depth_head.py', 'rknn_aggregator_pairs.py')
 HALF_IO_SOURCES = ('rknn_half_io_pairs.py', 'native/fp16_neon.c')
 DINO_HALF_IO_SOURCES = ('rknn_half_io_dino.py',)
+GROUPED_DINO_SOURCES = ('rknn_grouped_dino.py',)
 
 
 def load_replay():
@@ -35,7 +36,7 @@ def load_replay():
 
 
 def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=False,
-                  half_io=False, no_cache=False, fail=None, model_threads=None):
+                  half_io=False, grouped_dino=False, no_cache=False, fail=None, model_threads=None):
     replay = load_replay()
     events = []
     modules = {name: ModuleType(name) for name in (
@@ -44,7 +45,7 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
         'vggt_slam.patch_cache', 'vggt_slam.rknn_aggregator_blocks', 'vggt_slam.rknn_camera_head',
         'vggt_slam.rknn_dino_blocks', 'vggt_slam.rknn_depth_head',
         'vggt_slam.rknn_aggregator_pairs', 'vggt_slam.rknn_half_io_pairs',
-        'vggt_slam.rknn_half_io_dino')}
+        'vggt_slam.rknn_half_io_dino', 'vggt_slam.rknn_grouped_dino')}
     modules['vggt_slam'].__path__ = []
     modules['torch'].__version__ = 'generated-service-double'
     for name in ('set_num_threads', 'set_num_interop_threads'):
@@ -141,6 +142,16 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
             raise RuntimeError('generated half I/O DINO install failure')
         return Handle('dino_rknn')
     modules['vggt_slam.rknn_half_io_dino'].install_half_io_dino = install_half_dino
+    def install_grouped_dino(*args, **kwargs):
+        assert args[0] is model and args[2] == 'b' * 64
+        assert kwargs == dict(source_root=replay.BASE / 'src',
+            half_io_library=replay.BASE.parent / 'neon.placeholder',
+            half_io_library_sha256='d' * 64)
+        events.append('install_grouped_dino')
+        if fail == 'install_grouped_dino':
+            raise RuntimeError('generated grouped DINO install failure')
+        return Handle('dino_rknn')
+    modules['vggt_slam.rknn_grouped_dino'].install_grouped_dino = install_grouped_dino
     def install_depth(*args, **kwargs):
         assert args[0] is model and args[2] == 'c' * 64
         assert kwargs['source_root'] == replay.BASE / 'src'
@@ -240,8 +251,11 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
             # resolve exclusively to the service doubles above.
             source_hashes = {}
             for name in (RUNTIME_SOURCES + (HALF_IO_SOURCES if half_io else ()) +
-                         (DINO_HALF_IO_SOURCES if half_io and dino else ())):
-                content = (ROOT / 'vggt_slam' / name).read_bytes()
+                         (DINO_HALF_IO_SOURCES if half_io and dino else ()) +
+                         (GROUPED_DINO_SOURCES if grouped_dino else ())):
+                content = (b'# Generated grouped service double; never imported from disk.\n'
+                           if name == 'rknn_grouped_dino.py' else
+                           (ROOT / 'vggt_slam' / name).read_bytes())
                 (runtime_directory / name).parent.mkdir(parents=True, exist_ok=True)
                 (runtime_directory / name).write_bytes(content)
                 if name != 'rknn_aggregator_pairs.py' or paired:
@@ -262,6 +276,8 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
             if dino:
                 args += ['--rknn-dino-manifest', str(root/'dino.placeholder'),
                          '--rknn-dino-manifest-sha256', 'b'*64]
+            if grouped_dino:
+                args += ['--rknn-grouped-dino']
             if depth:
                 args += ['--rknn-depth-manifest', str(root/'depth.placeholder'),
                          '--rknn-depth-manifest-sha256', 'c'*64]
@@ -277,6 +293,7 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
             report = json.loads((root/'out/results.json').read_text())
             assert report['runtime_source_sha256'] == source_hashes
             assert report['rknn_paired_aggregator'] is paired
+            assert report['rknn_grouped_dino'] is grouped_dino
             if half_io:
                 assert report['half_io_experiment'] is True and report['internal_precision_changed'] is False
                 assert report['half_io_dino'] is dino
@@ -474,3 +491,52 @@ def test_generated_half_io_arguments_rejected_before_loading(args, message):
         with pytest.raises(SystemExit) as exc:
             replay.main()
     assert exc.value.code == 2 and message in stderr.getvalue()
+
+
+@pytest.mark.parametrize('args,message', [
+    (['--rknn-grouped-dino'], 'requires --rknn-dino-manifest and --half-io-library'),
+    (['--rknn-grouped-dino', '--rknn-dino-manifest', 'generated',
+      '--rknn-dino-manifest-sha256', 'b' * 64], 'requires --rknn-dino-manifest and --half-io-library'),
+    (['--rknn-grouped-dino', '--half-io-library', 'generated',
+      '--half-io-library-sha256', 'd' * 64], 'requires --rknn-dino-manifest and --half-io-library'),
+    (['--rknn-grouped-dino', '--rknn-dino-manifest', 'generated',
+      '--rknn-dino-manifest-sha256', 'b' * 64, '--half-io-library', 'generated',
+      '--half-io-library-sha256', 'd' * 64], 'requires --rknn-paired-aggregator'),
+])
+def test_grouped_dependencies_reject_before_board_or_model(args, message):
+    replay = load_replay()
+    stderr = io.StringIO()
+    base = ['generated-replay', '--rgb-index', 'generated', '--checkpoint', 'generated', '--output', 'generated']
+    with patch.object(sys, 'argv', base + args), contextlib.redirect_stderr(stderr), \
+            patch.object(Path, 'is_file', side_effect=AssertionError('must reject before board check')):
+        with pytest.raises(SystemExit) as exc:
+            replay.main()
+    assert exc.value.code == 2 and message in stderr.getvalue()
+
+
+@pytest.mark.parametrize('fail', [None, 'install_grouped_dino', 'predict', 'close_dino_rknn'])
+def test_grouped_half_io_dispatch_and_failure_cleanup(fail):
+    code, report, events = generated_run(npu=True, paired=True, camera=True, dino=True,
+        depth=True, half_io=True, grouped_dino=True, fail=fail)
+    assert code == (0 if fail is None else 1)
+    assert report['status'] == ('completed' if fail is None else 'failed')
+    assert report['rknn_grouped_dino'] and report['half_io_dino']
+    assert report['internal_precision_changed'] is False and report['candidate_accepted'] is False
+    assert 'rknn_grouped_dino.py' in report['runtime_source_sha256']
+    assert all(name not in events for name in ('install_rknn', 'install_paired_rknn',
+                                             'install_dino_rknn', 'install_half_io_dino'))
+    closes = [event for event in events if event.startswith('close_') and event not in
+              ('close_pre_hook', 'close_post_hook')]
+    if fail == 'install_grouped_dino':
+        assert closes == ['close_camera_rknn', 'close_rknn']
+        assert 'install_depth_rknn' not in events and 'install_cache' not in events and 'predict' not in events
+        assert 'dino_rknn' not in report
+    else:
+        assert [event for event in events if event.startswith('install_')] == [
+            'install_half_io_rknn', 'install_camera_rknn', 'install_grouped_dino',
+            'install_depth_rknn', 'install_cache']
+        assert closes == ['close_replay', 'close_cache', 'close_depth_rknn', 'close_dino_rknn',
+                          'close_camera_rknn', 'close_rknn']
+        assert all(report[name]['closed'] for name in ('rknn', 'camera_rknn', 'dino_rknn', 'depth_rknn', 'cache'))
+    assert bool(report['cleanup_errors']) is (fail == 'close_dino_rknn')
+    assert events.count('close_pre_hook') == events.count('close_post_hook') == 1

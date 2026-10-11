@@ -39,6 +39,7 @@ The experimental complete-model path now executes **all 48 original aggregator b
 | Same paired path, one CPU thread | 2.177 s | 0.17476 m |
 | Explicit FP16 SDK I/O, same original FP16 graphs | 2.077 s | 0.17476 m |
 | Add DINO FP16 I/O and preserve both cache guards with faster lookup | 1.975 s | 0.17476 m |
+| Optional six-group DINO, no observed service improvement | 1.982 s | 0.17476 m |
 | Calibrated W8A8 aggregator diagnostic, quality unaccepted | 1.880 s | 0.18141 m |
 | Calibrated W8A8 aggregator + DINO, rejected rotation error | 1.728 s | 0.19823 m |
 
@@ -77,6 +78,17 @@ including the EOF drain, not sustained real-time operation.
 [Current measured results](results/original_dino_io_guard_v57.json).
 Add the two `--half-io-library` options to the paired command as described in
 [FP16 I/O setup](deploy/rk3588/validation/original_half_io/README.md).
+
+An optional six-group DINO backend reduces complete-model RKNN contexts from
+50 to 32 and preserves all 80 saved prediction arrays and poses bitwise against
+the preceding FP16 path. **It did not improve matched complete-model service:**
+1.982 s versus 1.975 s. Its separate 798-frame replay produced 16 fresh poses
+at **0.543 Hz, complete P95 2.472 s**, with 7,259.28 MiB peak RSS. Startup took
+38.74 s, reported separately from the 29.49-second replay. These sequential
+short runs establish no real-time breakthrough. The default backend selection
+is unchanged; add `--rknn-grouped-dino` only with the six-group manifest.
+[Results, including the stopped INT4 experiment](results/original_grouped_dino_v58.json),
+[grouped graph build and runtime](deploy/rk3588/validation/original_grouped_dino/README.md).
 
 A separate original-aggregator W8A8 calibration experiment measured **0.570 Hz,
 P95 2.494 s**. Its short matched trajectory ATE increased 2.38% versus CPU FP32,

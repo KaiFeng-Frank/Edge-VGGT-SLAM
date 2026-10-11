@@ -33,9 +33,13 @@ def main():
     p.add_argument('--rknn-camera-head', action='store_true')
     p.add_argument('--rknn-dino-manifest', type=Path)
     p.add_argument('--rknn-dino-manifest-sha256')
+    p.add_argument('--rknn-grouped-dino', action='store_true',
+                   help='Execute all 24 original DINO layers as six four-layer graphs')
     p.add_argument('--rknn-depth-manifest', type=Path)
     p.add_argument('--rknn-depth-manifest-sha256')
     args = p.parse_args()
+    if args.rknn_grouped_dino and (args.rknn_dino_manifest is None or args.half_io_library is None):
+        p.error('--rknn-grouped-dino requires --rknn-dino-manifest and --half-io-library')
     if (args.half_io_library is None) != (args.half_io_library_sha256 is None):
         p.error('--half-io-library and --half-io-library-sha256 must be supplied together')
     if args.half_io_library is not None:
@@ -101,6 +105,7 @@ def main():
                                ('_camera' if args.rknn_camera_head else '') +
                                ('_depth_logits' if args.rknn_depth_manifest else '') + '_remaining_CPU_FP32')
     report['script_sha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    report['rknn_grouped_dino'] = args.rknn_grouped_dino
     report['runtime_source_sha256'] = {
         name: hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
         for name in ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
@@ -109,6 +114,8 @@ def main():
     if args.half_io_library is not None:
         half_io_sources = ('rknn_half_io_pairs.py', 'native/fp16_neon.c') + (
             ('rknn_half_io_dino.py',) if args.rknn_dino_manifest is not None else ())
+        if args.rknn_grouped_dino:
+            half_io_sources += ('rknn_grouped_dino.py',)
         for name in half_io_sources:
             report['runtime_source_sha256'][name] = hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
         report.update(half_io_experiment=True, internal_precision_changed=False,
@@ -163,7 +170,10 @@ def main():
         if args.rknn_dino_manifest is not None:
             dino_options = dict(source_root=BASE / 'src')
             if args.half_io_library is not None:
-                from vggt_slam.rknn_half_io_dino import install_half_io_dino as install_dino
+                if args.rknn_grouped_dino:
+                    from vggt_slam.rknn_grouped_dino import install_grouped_dino as install_dino
+                else:
+                    from vggt_slam.rknn_half_io_dino import install_half_io_dino as install_dino
                 dino_options.update(half_io_library=args.half_io_library,
                                     half_io_library_sha256=args.half_io_library_sha256)
             else:
