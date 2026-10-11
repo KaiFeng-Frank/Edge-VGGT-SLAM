@@ -584,3 +584,47 @@ preparation/query 是 correlation 的嵌套项，不再次相加。两次不是�
 **验证：** 保存数组独审 **2,481 项通过**，重读九份输出 NPZ、18 份 feature，分别比较原 CPU 与 spatial CPU ORT；normal/profile 重复字节、九次 release 和两个 context destroy 均独核。原 FP32 门限仍全部失败，historical spatial 父图拒绝保留，没有裁剪、放宽门限或接入默认 VGGT。算子标签 INT8 只记录 SDK 声明，不推定内部每步运算精度。组件结果不是新轨迹，更不是实时验收。
 
 **下一候选的依据：** 静态查图确认十个 Div 的分母本来是 `[1,C,1,1]`，合计仅 **480 个元素**，而对应大张量共 **16,926,720 个元素**。可研究先对小分母取倒数，再广播乘法，保留原参数和其他节点。但倒数引入额外舍入，编译器还可能重新融合大 Div 或把 Mul 放到 CPU。本轮只完成这项静态提案，尚未生成或测试新候选；需重新执行板端 CPU 对照、PTQ 和实际 profile，不能提前宣称等价通过或加速。[原始执行、独审和静态提案](../results/spatial_encoder_ptq_v37.json)。
+
+
+## 63. 提前转换 FP16 输入不一定减少 SDK 输入开销
+
+**问题与对照：** B8/D8/M48 Update 的原输入提交曾耗时约 43 ms，因此在同一模型、同一 context 上比较原 FP32 typed transport 与预先转为 FP16 的 typed transport。两者都按实际 NHWC 打包，使用 `pass_through=0`；这不是 zero-copy，也没有假定 native packed layout。顺序固定为 FP32、FP16、FP16、FP32、FP32、FP16，每种首次调用单列，各余两次为 warm。
+
+**实际结果：** warm 完整 SDK 均值为 **FP32 156.889 ms、FP16 205.686 ms**。FP16 的 NumPy 布局/类型打包约 44 ms，输入提交仍约 53 ms；原 FP32 的后两次打包约 16–19 ms、提交约 43 ms。六次 net/delta/weight 输出在 CF 与还原原边序后分别逐字节一致；原 CPU 数值门限仍全部失败。六次输出 release 成功，结束销毁 context，恢复原打包回调。
+
+**工程结论：** 输入字节减半不等于完整调用更快。转换发生在哪里、转换实现及 SDK 是否仍作内部处理，都要用外层耗时核实；不能只看 dtype 或内部 run 时间。此次预转换更慢，保留原 FP32 输入方式。该结论只覆盖这套 NumPy typed transport、一个实际形状和少量 warm 样本，不外推到 NEON 打包或 native zero-copy。[实现、原始计时和保存数组证据](../results/dpvo_fp16_input_transport_v38.json)。
+
+## 64. 完整图的形状缓存有真实内存成本，小块耗时不能代表全图
+
+**实际工作：** 三份原 M48 捕获图按全部邻居及 patch 分组，在 RK3588S 执行全部 **14 种真实形状**。复用已有 B8 模型，另编译 13 个非量化 RKNN；所有模型合计 **129,598,920 B**。普通运行每图一次 cold、两次 warm，共九次完整调用、48 次 SDK；profile 独立执行三次完整图、16 次 SDK。
+
+| 原边数 | 分组数 | cold 完整耗时（ms） | 两次 warm 均值（ms） |
+| --- | ---: | ---: | ---: |
+| 3,072 | 1 | 325.485 | 203.866 |
+| 7,248 | 5 | 910.285 | 608.959 |
+| 10,128 | 10 | 1,525.935 | 1,004.553 |
+
+完整时钟包含不可变输入快照、输入检查、分组打包、需要时的 context 初始化、SDK I/O/copy/release、值域检查与原边序 scatter；参考误差统计、输出哈希和保存结果在外层计时之外；cold 初始化中的模型读取及源码哈希仍包含在内。各组、cache、初始化时钟互相嵌套，不得相加。此处没有 BA、反馈更新或 fresh 位姿，不能换算成实时 SLAM 帧率。
+
+**缓存证据：** 上限为 14 contexts、256 MiB 模型缓冲、512 MiB DMA。普通运行创建 14 次、命中 34 次、没有驱逐；峰值模型缓冲 **129,598,934 B**，DMA **335,704,064 B**，进程峰值 RSS **941.594 MiB**。模型缓冲每个额外一字节来自 ctypes buffer，不是编译文件改变。profile 创建 14 次、命中两次。两组运行关闭后 contexts、模型缓冲及 DMA 都归零。仅这三种固定图的联合形状集合能全部驻留；不能据此宣称更长轨迹没有编译、驱逐或内存问题。
+
+**执行与接受边界：** 每个实际 SDK profile 都记录 50 个内部 NPU、3 个内部 CPU（Exp×2、Min）和 6 个 CPU I/O 行，仍不是全 NPU。原逐元素 FP32 门限继续拒绝；完整图 warm 耗时也远超目标。真实14形状的普通/profile执行和缓存关闭已验证，但未接入递归 VO，未改变默认 VGGT。[源码及运行合同](../deploy/rk3588/validation/dpvo_grouped_update/V38.md)、[完整计时、数组与缓存证据](../results/dpvo_grouped_full_v38.json)。
+
+
+## 65. 将大张量除法缩到小分母，必须沿 CPU、PTQ、实际 placement 分段验证
+
+**问题与最小改写：** 上一轮十个大张量 CPU Div 合计耗时约 820 ms。父图的分母已经是 `[1,C,1,1]`，因此只将这十处 `centered / denominator` 改为 `centered * (1 / denominator)`。保留全部 65 个原 initializer 的 protobuf 字节与顺序、其他节点和 I/O，只增加一个非学习 FP32 常数 1。CPU 除法涉及的输出元素从 16,926,720 降到 480，广播乘法留给编译器调度。
+
+**逐段验证：** 板端同一三帧、同一索引分别执行父图与新图，CPU ORT 关闭图优化；六次调用确认候选对当前父图通过原 `rtol=1e-4, atol=1e-5`，但并非 bitwise。父图对原始 CPU 网络的历史拒绝仍保留，两者对原始网络都未通过。随后在板端使用相同 32 行、64 个输入文件及量化配置完成 PTQ，校准/build **48.169 s**，模型 **2,176,498 B**。init/query/destroy 的零推理阶段确认实际端口，随后另跑六次普通、三次 profile 推理。
+
+**实际执行位置：** 三个新 profile 各有 **133 个 NPU、25 个 CPU 行**，其中 CPU 为十个小 Div、十个 Sqrt、一个 Gather 和四个 I/O；没有 CPU Transpose。十个 Div 的输出都仅 `[1,32,1,1]` 或 `[1,64,1,1]`，未重新融合成大除法。对应十个大张量乘法实际在 NPU，九个融合 ReLU、一个独立 Mul。
+
+| 三张保存输入 | 帧 0 | 帧 1 | 帧 2 |
+| --- | ---: | ---: | ---: |
+| 十个 CPU 小 Div 合计（ms） | 0.141 | 0.176 | 0.180 |
+| 十个 NPU 乘法/融合乘法合计（ms） | 5.894 | 6.305 | 6.482 |
+| profile 算子表总耗时（ms） | 61.702 | 65.827 | 68.230 |
+
+普通三次 warm 完整 SDK 均值 **81.012 ms**，包含 typed 输入打包、set/run/get、自有输出拷贝与 release；相对历史 spatial INT8 的 905.223 ms 有明显下降。但两次运行非同期交错、未控温控频，不能把比值写成受控加速比，profile 内部时间也不能再加到完整调用时间。
+
+**精度与采用边界：** fmap 对原 CPU 相对 L2 为 **15.806%–16.294%**，context 为 **2.845%–3.979%**，这些是 feature 误差，不是 ATE/RPE。原逐元素门限继续失败；没有因性能改善放宽门限或采用候选。该实验验证了消除大 CPU 除法的方法，未验证完整反馈、地图、20 Hz 或相机延迟。后续仍需解决量化误差及完整 Update 的计算成本。[源码与复现合同](../deploy/rk3588/validation/dpvo_encoder_reciprocal/README.md)、[CPU、PTQ、接口、普通/profile 与独审证据](../results/dpvo_reciprocal_encoder_v38.json)。

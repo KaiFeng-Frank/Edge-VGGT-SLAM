@@ -1,0 +1,427 @@
+{
+  "schema": "v38_publication_review_bundle",
+  "status": "passed",
+  "scope": "Changed public text only; excludes this self-referential summary. All new measured model work was on RK3588S.",
+  "static_patch": {
+    "file": "/run/user/1000/edge-vggt-v38/output/public-static-review-r2.json",
+    "bytes": 7129,
+    "sha256": "7b9383c0a63c70efab8ed12cd4129476d4df944b0173c5c4da3f5054386e7f64",
+    "receipt": {
+      "schema": "v38_public_patch_static_review",
+      "status": "passed",
+      "checked_files": [
+        {
+          "file": "README.md",
+          "bytes": 86406,
+          "sha256": "6e41bfe417f2c6aaac456da000c74838a4d5f1ab15d9091342f766eef613111f"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/LICENSE",
+          "bytes": 1088,
+          "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/README.md",
+          "bytes": 2524,
+          "sha256": "5c6b94500c3e8a77a79ba93b4f7c12618d9faa2559dcbc8812c2dd7cac372faa"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/audit-v38-reciprocal-CPU-PTQ.py",
+          "bytes": 16461,
+          "sha256": "4b92905bc3a78141f764512fddb893381a76d7eafffdbb08342d3ec17c57bf60"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/audit-v38-reciprocal-int8.py",
+          "bytes": 23670,
+          "sha256": "f305a3495fa9a25476172d1e0ee2b3bd4b0ff4571135850fa9d051b71e907f17"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/board-helper-static-review-r1.json",
+          "bytes": 1411,
+          "sha256": "c8e98222f68ab8d69ab460dea24b23eda75e41390c89c1b430d4d3b48bee70b0"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/board-source-freeze-r1.json",
+          "bytes": 1188,
+          "sha256": "904eb930ae9fe0b93286b8fd566258bcba295986d2e2f14ef0f3ce328eb6acff"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/compile-v38-reciprocal-int8-board.py",
+          "bytes": 11934,
+          "sha256": "72cad7e4a6a31d4860875c7d40cf2d672c1190ee3fedceb3271556fc52255f41"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/query-v38-reciprocal-int8-io-board.py",
+          "bytes": 12071,
+          "sha256": "78c5a8bafeca7686086ebe4fdaa7796af97f294b35e9c7d6c4ec8f90244bc3ed"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/rewrite-v38-spatial-reciprocal.py",
+          "bytes": 17473,
+          "sha256": "6ccda3f8c50dff5b36c8d65e9901df50fa28b8fb1624a141baedbeda34829d28"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/run-v38-reciprocal-int8-board.py",
+          "bytes": 16342,
+          "sha256": "a18045ee34d3e27ba4a28e07ef031abd69f1aef6a5c1af89173aded51cfcdadb"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/run-v38-spatial-reciprocal-ort-board.py",
+          "bytes": 19426,
+          "sha256": "a7f181015d4479856329460dc4099171d4bb0dce8cedf317c35e719f3f36548b"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/sdk-source-freeze-r1.json",
+          "bytes": 1082,
+          "sha256": "1cf9d8d347aea5c33d5621b3ca78e894053f918530ecbdef16c2b5a616f70f92"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/test_v38_reciprocal_ort.py",
+          "bytes": 9374,
+          "sha256": "e502d64ff4e90bb7c44406cc4cd304c5cad30e54be7936b62836bb3f2a80fdb5"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/test_v38_reciprocal_ptq.py",
+          "bytes": 4458,
+          "sha256": "d9133dcc85aebae34da873d61c8b493cd16b2381244ff21f9c2b33824e1ad211"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/test_v38_reciprocal_sdk.py",
+          "bytes": 5725,
+          "sha256": "cf9e743a7b49cae7355e6ded43ad5c03fa167bdd62bcae90d1b0c3dd21e08319"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_encoder_reciprocal/test_v38_spatial_reciprocal.py",
+          "bytes": 8594,
+          "sha256": "f7630286db871087435dd52b470bac5aa137d1fdaa9a3d413161b5bf73ddb5d0"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_grouped_update/V38.md",
+          "bytes": 2402,
+          "sha256": "7b2280a314230ac40b04aab52095ed548f4a4236114aea5dd9579f1bc4d5f37c"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_grouped_update/actual-index-preflight-r1.json",
+          "bytes": 5235,
+          "sha256": "a0157538cba9c1974715f4234e776de9f0f87b2a99778f25e329c718739e6e24"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_grouped_update/audit-v38-B8-input-AB.py",
+          "bytes": 15519,
+          "sha256": "565221c805296d108065384adf903d00375114a80379053a93e9ed6c32a0b03c"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_grouped_update/audit-v38-grouped-full.py",
+          "bytes": 24653,
+          "sha256": "4b369517e80892fea48744098d66d6148f1b2c3b1165ab0099e401a6fda32156"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_grouped_update/fp16_input_transport.py",
+          "bytes": 2594,
+          "sha256": "34b94c0ba8a6e735baec21fb7a8602c09f8c8b8b56f521b0322d05a8973a0637"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_grouped_update/run-v38-B8-input-AB-board.py",
+          "bytes": 13333,
+          "sha256": "3cbf72a1a4ad7dcb683b12b50dfcc98737b0e1423fee54aede0c8138996bc431"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_grouped_update/run-v38-grouped-full-board.py",
+          "bytes": 19690,
+          "sha256": "6da1b7431ff17626f592d4815ecddd883884437c94ec06d19dde76804f7a82b7"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_grouped_update/test_fp16_input_transport.py",
+          "bytes": 2276,
+          "sha256": "263e518033d503f609fe7a104ad5e074f7f7b355265addc8c1718f380a82d225"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_grouped_update/test_v38_B8_input_AB_audit.py",
+          "bytes": 2618,
+          "sha256": "9f0a76a9e27700be4b17c5257ae63a13f119bfeb984a9b1df9947a58af70df7b"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_grouped_update/test_v38_grouped_full_audit.py",
+          "bytes": 4297,
+          "sha256": "a79a1c4c71f95bc9b26d84b5236708105ee5e063ca556b78d402774accaa4e35"
+        },
+        {
+          "file": "deploy/rk3588/validation/dpvo_grouped_update/test_v38_grouped_full_board.py",
+          "bytes": 7290,
+          "sha256": "ec723517989725adf23f616c12f47d70e814f90fa30b8d56bb17ac29f3c0a1b5"
+        },
+        {
+          "file": "docs/ENGINEERING_NOTES.md",
+          "bytes": 115826,
+          "sha256": "5b6a4f2ea9727457bc9d3f50f71e2f4eceaafe903b2bf08c26b745b50faf010c"
+        },
+        {
+          "file": "results/dpvo_fp16_input_transport_v38.json",
+          "bytes": 202920,
+          "sha256": "e94fde8b3f43b42ce9e1515d85851cf8d7550ea3ee5f2e6a2a988b650aa87b00"
+        },
+        {
+          "file": "results/dpvo_grouped_full_v38.json",
+          "bytes": 5316554,
+          "sha256": "f6c20fd6d1ff7ae9bfa5e8e1c39a39b28bac34a0f6c4ea0e2163314b52b7faf8"
+        },
+        {
+          "file": "results/dpvo_reciprocal_encoder_v38.json",
+          "bytes": 635353,
+          "sha256": "804a16cbecdb4aab3895b973b3f2e57c0b6266fead0f4597a260240c5a57be0a"
+        },
+        {
+          "file": "results/synthetic_tests_v38.json",
+          "bytes": 2814,
+          "sha256": "c2f53aa85a0a481f4a6e956cc5b7959c8426da171875c084008b24ff8a228bd7"
+        }
+      ],
+      "local_markdown_links_checked": 223,
+      "errors": [],
+      "scope": "Changed public text only: Python AST, strict JSON, local links, excluded artifact types, credential-shaped strings and whitespace.",
+      "model_or_SDK_OR_ORT_executed": false,
+      "boundaries": "Static publication review is not inference, license legal advice, runtime accuracy or real-time validation."
+    }
+  },
+  "claim_review": {
+    "file": "/run/user/1000/edge-vggt-v38/grouped_fullboard/review/doc-review-r1.json",
+    "bytes": 9611,
+    "sha256": "e61356c0a22a6f1d626f7b4cde27e58d15451d162e2053a9ee30b3fb2c7362aa",
+    "receipt": {
+      "status": "passed_no_current_blockers",
+      "reviewed_file_sha256": {
+        "README.md": "6e41bfe417f2c6aaac456da000c74838a4d5f1ab15d9091342f766eef613111f",
+        "docs/ENGINEERING_NOTES.md": "5b6a4f2ea9727457bc9d3f50f71e2f4eceaafe903b2bf08c26b745b50faf010c",
+        "deploy/rk3588/validation/dpvo_grouped_update/V38.md": "7b2280a314230ac40b04aab52095ed548f4a4236114aea5dd9579f1bc4d5f37c",
+        "deploy/rk3588/validation/dpvo_encoder_reciprocal/README.md": "5c6b94500c3e8a77a79ba93b4f7c12618d9faa2559dcbc8812c2dd7cac372faa"
+      },
+      "reviewed_scope": {
+        "README.md": "Only the new v38 section",
+        "docs/ENGINEERING_NOTES.md": "Records63\u201365",
+        "package_documents": "Complete V38.md and reciprocal README"
+      },
+      "section_sha256": {
+        "README.md": "4818d4f7d8d5fae248e9c0852ad12d41297dbc7fa7791493ca190c824efd5b5f",
+        "docs/ENGINEERING_NOTES.md": "19c4b871dee8afb8966512d3e775d1a83900b9e513049281bed551f8d24467cb",
+        "deploy/rk3588/validation/dpvo_grouped_update/V38.md": "7b2280a314230ac40b04aab52095ed548f4a4236114aea5dd9579f1bc4d5f37c",
+        "deploy/rk3588/validation/dpvo_encoder_reciprocal/README.md": "5c6b94500c3e8a77a79ba93b4f7c12618d9faa2559dcbc8812c2dd7cac372faa"
+      },
+      "findings": [],
+      "resolved_wording": "Record64 now specifies output hashes outside fullwall and model/source hashing inside cold initialization.",
+      "raw_receipt_sha256": {
+        "grouped_normal": {
+          "file": "vggt-v38-grouped-full-normal-r1/run.json",
+          "sha256": "91f9dad894ff46225a2bf15f3239c00aa72e027e0a34f4d7518100449aadce00"
+        },
+        "grouped_profile": {
+          "file": "vggt-v38-grouped-full-profile-r1/run.json",
+          "sha256": "6a21af8f0d536c3a8972caae1db8b919c30cb894ec0a64207a6e474905bb6ae3"
+        },
+        "input_AB": {
+          "file": "vggt-v38-B8-input-AB-normal-r1/run.json",
+          "sha256": "fa7776b11dca6670d885e0cab7b78a1ac89a5909d19ad1cce37c02209ad3af12"
+        },
+        "reciprocal_rewrite": {
+          "file": "vggt-v38-spatial-reciprocal-rewrite-r1/rewrite.json",
+          "sha256": "98c585fd19dbb41c8190f99fa13cd10868e522f6a29524fc3730cfe61c245764"
+        },
+        "reciprocal_ORT": {
+          "file": "vggt-v38-reciprocal-ort-r1/ort.json",
+          "sha256": "c62a554509ae4304cfc0989d9df6bf6eba4cb57ea7646af33ebfd1c31db02b24"
+        },
+        "reciprocal_PTQ": {
+          "file": "vggt-v38-reciprocal-int8-r1/compile.json",
+          "sha256": "5f803b6cc0f623524caeb59b95ecea47a71cc17709da46f33455a8c9f4087522"
+        },
+        "reciprocal_query": {
+          "file": "vggt-v38-reciprocal-int8-query-r1/query.json",
+          "sha256": "f829f63336439d46d2c94949daa8d63485017b413ffc9bc272992a307deda6ba"
+        },
+        "reciprocal_normal": {
+          "file": "vggt-v38-reciprocal-int8-normal-r1/run.json",
+          "sha256": "87ba80bd95cc790a552178a36402424b096c6c6d3c7822ea973816d991a0e74b"
+        },
+        "reciprocal_profile": {
+          "file": "vggt-v38-reciprocal-int8-profile-r1/run.json",
+          "sha256": "895c409fdf6cce86eaab941dfd48fe71f5d017bbaf616d52df1dea080f4d78ca"
+        }
+      },
+      "public_source_SHA_matches_actual_receipts": {
+        "deploy/rk3588/validation/dpvo_grouped_update/run-v38-grouped-full-board.py": "6da1b7431ff17626f592d4815ecddd883884437c94ec06d19dde76804f7a82b7",
+        "deploy/rk3588/validation/dpvo_grouped_update/run-v38-B8-input-AB-board.py": "3cbf72a1a4ad7dcb683b12b50dfcc98737b0e1423fee54aede0c8138996bc431",
+        "deploy/rk3588/validation/dpvo_encoder_reciprocal/rewrite-v38-spatial-reciprocal.py": "6ccda3f8c50dff5b36c8d65e9901df50fa28b8fb1624a141baedbeda34829d28",
+        "deploy/rk3588/validation/dpvo_encoder_reciprocal/run-v38-spatial-reciprocal-ort-board.py": "a7f181015d4479856329460dc4099171d4bb0dce8cedf317c35e719f3f36548b",
+        "deploy/rk3588/validation/dpvo_encoder_reciprocal/compile-v38-reciprocal-int8-board.py": "72cad7e4a6a31d4860875c7d40cf2d672c1190ee3fedceb3271556fc52255f41",
+        "deploy/rk3588/validation/dpvo_encoder_reciprocal/query-v38-reciprocal-int8-io-board.py": "78c5a8bafeca7686086ebe4fdaa7796af97f294b35e9c7d6c4ec8f90244bc3ed",
+        "deploy/rk3588/validation/dpvo_encoder_reciprocal/run-v38-reciprocal-int8-board.py": "a18045ee34d3e27ba4a28e07ef031abd69f1aef6a5c1af89173aded51cfcdadb"
+      },
+      "markdown_links": [
+        {
+          "document": "README.md",
+          "url": "deploy/rk3588/validation/dpvo_encoder_reciprocal/README.md",
+          "resolves_within_public": true
+        },
+        {
+          "document": "README.md",
+          "url": "results/dpvo_reciprocal_encoder_v38.json",
+          "resolves_within_public": true
+        },
+        {
+          "document": "README.md",
+          "url": "deploy/rk3588/validation/dpvo_grouped_update/V38.md",
+          "resolves_within_public": true
+        },
+        {
+          "document": "README.md",
+          "url": "results/dpvo_grouped_full_v38.json",
+          "resolves_within_public": true
+        },
+        {
+          "document": "README.md",
+          "url": "results/dpvo_fp16_input_transport_v38.json",
+          "resolves_within_public": true
+        },
+        {
+          "document": "README.md",
+          "url": "docs/ENGINEERING_NOTES.md",
+          "resolves_within_public": true
+        },
+        {
+          "document": "docs/ENGINEERING_NOTES.md",
+          "url": "../results/dpvo_fp16_input_transport_v38.json",
+          "resolves_within_public": true
+        },
+        {
+          "document": "docs/ENGINEERING_NOTES.md",
+          "url": "../deploy/rk3588/validation/dpvo_grouped_update/V38.md",
+          "resolves_within_public": true
+        },
+        {
+          "document": "docs/ENGINEERING_NOTES.md",
+          "url": "../results/dpvo_grouped_full_v38.json",
+          "resolves_within_public": true
+        },
+        {
+          "document": "docs/ENGINEERING_NOTES.md",
+          "url": "../deploy/rk3588/validation/dpvo_encoder_reciprocal/README.md",
+          "resolves_within_public": true
+        },
+        {
+          "document": "docs/ENGINEERING_NOTES.md",
+          "url": "../results/dpvo_reciprocal_encoder_v38.json",
+          "resolves_within_public": true
+        },
+        {
+          "document": "deploy/rk3588/validation/dpvo_grouped_update/V38.md",
+          "url": "../../../../results/dpvo_grouped_full_v38.json",
+          "resolves_within_public": true
+        },
+        {
+          "document": "deploy/rk3588/validation/dpvo_grouped_update/V38.md",
+          "url": "../../../../results/dpvo_fp16_input_transport_v38.json",
+          "resolves_within_public": true
+        },
+        {
+          "document": "deploy/rk3588/validation/dpvo_grouped_update/V38.md",
+          "url": "V37.md",
+          "resolves_within_public": true
+        },
+        {
+          "document": "deploy/rk3588/validation/dpvo_encoder_reciprocal/README.md",
+          "url": "../../../../results/dpvo_reciprocal_encoder_v38.json",
+          "resolves_within_public": true
+        }
+      ],
+      "numerical_and_timing_crosschecks": {
+        "reciprocal_ordinary_warm_ms": 81.01152199863766,
+        "reciprocal_profile": [
+          {
+            "frame_index": 0,
+            "target_rows": {
+              "CPU": 25,
+              "NPU": 133
+            },
+            "CPU_ops": {
+              "InputOperator": 2,
+              "Sqrt": 10,
+              "Div": 10,
+              "OutputOperator": 2,
+              "Gather": 1
+            },
+            "small_Div_us": 141,
+            "selected_NPU_multiplication_us": 5894,
+            "total_operator_us": 61702,
+            "raw_sha256": "9dbdaaedd05b01a63cda1a341b8f6c24708bb29d580c3c74adfccfe89b35b5f2"
+          },
+          {
+            "frame_index": 1,
+            "target_rows": {
+              "CPU": 25,
+              "NPU": 133
+            },
+            "CPU_ops": {
+              "InputOperator": 2,
+              "Sqrt": 10,
+              "Div": 10,
+              "OutputOperator": 2,
+              "Gather": 1
+            },
+            "small_Div_us": 176,
+            "selected_NPU_multiplication_us": 6305,
+            "total_operator_us": 65827,
+            "raw_sha256": "4ef77ac069ca44ab453085c4202057a26f1589f624691b5921a7f629d3aec161"
+          },
+          {
+            "frame_index": 2,
+            "target_rows": {
+              "CPU": 25,
+              "NPU": 133
+            },
+            "CPU_ops": {
+              "InputOperator": 2,
+              "Sqrt": 10,
+              "Div": 10,
+              "OutputOperator": 2,
+              "Gather": 1
+            },
+            "small_Div_us": 180,
+            "selected_NPU_multiplication_us": 6482,
+            "total_operator_us": 68230,
+            "raw_sha256": "f5bbfdf98c6a8ed9551f2ce6c8c57a1fcd537b085eefa9eb301c95b6840864f2"
+          }
+        ],
+        "reciprocal_fmap_relative_L2_percent_range": [
+          15.806373356749534,
+          16.294408913035596
+        ],
+        "reciprocal_context_relative_L2_percent_range": [
+          2.844588607334523,
+          3.9788931629249578
+        ],
+        "grouped_ordinary_warm_ms": {
+          "13": 203.8662285049213,
+          "127": 608.9593525030068,
+          "191": 1004.552580001473
+        },
+        "grouped_peak_DMA_bytes": 335704064,
+        "grouped_model_host_bytes": 129598934,
+        "same_context_input_AB_warm_ms": {
+          "fp32": 156.88920349930413,
+          "fp16": 205.68574949720642
+        }
+      },
+      "claim_boundaries": [
+        "Strict FP32 rejection retained throughout; no adoption or threshold relaxation.",
+        "Normal complete clocks and separate profile sums are distinguished; no double addition.",
+        "Historical spatial timing is a separate uncontrolled run; no controlled causal ratio.",
+        "Component runs do not establish fresh-pose/trajectory/camera/map/endurance/8GB acceptance; default VGGT and no-ORB boundary retained.",
+        "Integer/quantized operator labels do not imply all internal computation is INT8; actual CPU operations remain explicit."
+      ],
+      "limitations": [
+        "This review is documentation, saved JSON/profile text and source bytes only; no model/ORT/SDK execution, tests or new raw-array audit.",
+        "Independent reciprocal SDK saved-array audit was not yet frozen at this review and is not claimed complete or treated as a blocker.",
+        "Whole-file hashes bind reviewed bytes; sections outside the listed scope are not a new comprehensive audit."
+      ]
+    }
+  }
+}

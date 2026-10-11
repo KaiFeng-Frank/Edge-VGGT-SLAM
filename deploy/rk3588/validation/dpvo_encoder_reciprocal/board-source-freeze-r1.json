@@ -1,0 +1,23 @@
+{
+  "schema": "v38_reciprocal_board_source_freeze",
+  "status": "prepared_not_board_validated",
+  "sources": {
+    "run-v38-spatial-reciprocal-ort-board.py": "a7f181015d4479856329460dc4099171d4bb0dce8cedf317c35e719f3f36548b",
+    "compile-v38-reciprocal-int8-board.py": "72cad7e4a6a31d4860875c7d40cf2d672c1190ee3fedceb3271556fc52255f41"
+  },
+  "tests": {
+    "test_v38_reciprocal_ort.py": "e502d64ff4e90bb7c44406cc4cd304c5cad30e54be7936b62836bb3f2a80fdb5",
+    "test_v38_reciprocal_ptq.py": "d9133dcc85aebae34da873d61c8b493cd16b2381244ff21f9c2b33824e1ad211"
+  },
+  "synthetic_tests": {
+    "file": "synthetic-tests-r1.json",
+    "sha256": "98f60ce55ae319000accbbf8de9715ccb8663e32ee309403fa329cd5442a0fe7",
+    "passed": 27
+  },
+  "frozen_dependencies": {
+    "run-v33-dpvo-sparse-context-ort-board.py": "b184dcc440771730cce13f9e7a72c065b619f469cab5b754a43a89c6bb0314cd",
+    "compile-v37-spatial-int8-board.py": "0fc013d5b6ed45cb97d592e8cd115304d971a000e2ab5353314413f56d41a3fa"
+  },
+  "new_rewriter_and_recipe_sha256": "Explicit CLI parameters checked before import/graph construction; forthcoming frozen rewrite schema/API must match.",
+  "actual_board_CPU_ORT_or_PTQ_results": null
+}
