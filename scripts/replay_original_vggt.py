@@ -26,11 +26,29 @@ def main():
     p.add_argument('--rknn-manifest', type=Path)
     p.add_argument('--rknn-manifest-sha256')
     p.add_argument('--rknn-camera-head', action='store_true')
+    p.add_argument('--rknn-dino-manifest', type=Path)
+    p.add_argument('--rknn-dino-manifest-sha256')
+    p.add_argument('--rknn-depth-manifest', type=Path)
+    p.add_argument('--rknn-depth-manifest-sha256')
     args = p.parse_args()
     if args.rknn_camera_head and args.rknn_manifest is None:
         p.error('--rknn-camera-head requires --rknn-manifest')
     if (args.rknn_manifest is None) != (args.rknn_manifest_sha256 is None):
         p.error('--rknn-manifest and --rknn-manifest-sha256 must be supplied together')
+    if (args.rknn_dino_manifest is None) != (args.rknn_dino_manifest_sha256 is None):
+        p.error('--rknn-dino-manifest and --rknn-dino-manifest-sha256 must be supplied together')
+    if args.rknn_dino_manifest is not None:
+        if not re.fullmatch('[0-9a-f]{64}', args.rknn_dino_manifest_sha256):
+            p.error('--rknn-dino-manifest-sha256 must be a lowercase SHA256 hex digest')
+        if args.image_size != 112:
+            p.error('The fixed original RKNN DINO manifest requires --image-size 112')
+    if (args.rknn_depth_manifest is None) != (args.rknn_depth_manifest_sha256 is None):
+        p.error('--rknn-depth-manifest and --rknn-depth-manifest-sha256 must be supplied together')
+    if args.rknn_depth_manifest is not None:
+        if not re.fullmatch('[0-9a-f]{64}', args.rknn_depth_manifest_sha256):
+            p.error('--rknn-depth-manifest-sha256 must be a lowercase SHA256 hex digest')
+        if args.image_size != 112:
+            p.error('The fixed original RKNN depth manifest requires --image-size 112')
     if args.rknn_manifest is not None:
         if not re.fullmatch('[0-9a-f]{64}', args.rknn_manifest_sha256):
             p.error('--rknn-manifest-sha256 must be a lowercase SHA256 hex digest')
@@ -51,6 +69,10 @@ def main():
                   rknn_manifest=(str(args.rknn_manifest.resolve()) if args.rknn_manifest is not None else None),
                   rknn_manifest_sha256=args.rknn_manifest_sha256,
                   rknn_camera_head=args.rknn_camera_head,
+                  rknn_dino_manifest=(str(args.rknn_dino_manifest.resolve()) if args.rknn_dino_manifest else None),
+                  rknn_dino_manifest_sha256=args.rknn_dino_manifest_sha256,
+                  rknn_depth_manifest=(str(args.rknn_depth_manifest.resolve()) if args.rknn_depth_manifest else None),
+                  rknn_depth_manifest_sha256=args.rknn_depth_manifest_sha256,
                   model_threads=args.model_threads,
                   image_size=args.image_size, patch_cache=not args.no_patch_cache, board=compatible,
                   rgb_index=str(args.rgb_index.resolve()), checkpoint=str(args.checkpoint.resolve()),
@@ -58,7 +80,12 @@ def main():
                   real_time_validated=False, short_replay_not_30min=True,
                   latency_scope='original software arrival through decode, queue, full model, SL4, dense chunk and poses/map atomic replacements',
                   physical_sensor_latency_validated=False)
-    replay = cache = camera_rknn = rknn = None
+    if args.rknn_dino_manifest is not None or args.rknn_depth_manifest is not None:
+        report['precision'] = ('NPU_FP16' + ('_DINO' if args.rknn_dino_manifest else '') +
+                               ('_aggregator' if args.rknn_manifest else '') +
+                               ('_camera' if args.rknn_camera_head else '') +
+                               ('_depth_logits' if args.rknn_depth_manifest else '') + '_remaining_CPU_FP32')
+    replay = cache = depth_rknn = dino_rknn = camera_rknn = rknn = None
     hooks = []
     affinity = os.sched_getaffinity(0)
     setup = time.monotonic()
@@ -94,6 +121,14 @@ def main():
         if args.rknn_camera_head:
             from vggt_slam.rknn_camera_head import install_rknn_camera_head
             camera_rknn = install_rknn_camera_head(model)
+        if args.rknn_dino_manifest is not None:
+            from vggt_slam.rknn_dino_blocks import install_rknn_dino_blocks
+            dino_rknn = install_rknn_dino_blocks(model, args.rknn_dino_manifest,
+                                               args.rknn_dino_manifest_sha256, source_root=BASE / 'src')
+        if args.rknn_depth_manifest is not None:
+            from vggt_slam.rknn_depth_head import install_rknn_depth_head
+            depth_rknn = install_rknn_depth_head(model, args.rknn_depth_manifest,
+                                                args.rknn_depth_manifest_sha256, source_root=BASE / 'src')
         if not args.no_patch_cache:
             from vggt_slam.patch_cache import install_patch_cache
             cache = install_patch_cache(model)
@@ -182,8 +217,8 @@ def main():
     except BaseException as exc:
         report.update(status='failed', error=f'{type(exc).__name__}: {exc}', traceback=traceback.format_exc())
     finally:
-        # Stop arrivals, then restore the cache, camera head and aggregator.
-        for handle in (replay, cache, camera_rknn, rknn):
+        # Stop arrivals, then restore cache before any model backend.
+        for handle in (replay, cache, depth_rknn, dino_rknn, camera_rknn, rknn):
             if handle is not None:
                 try:
                     handle.close()
@@ -197,6 +232,10 @@ def main():
             report['cache'] = cache.metrics()
         if camera_rknn is not None:
             report['camera_rknn'] = camera_rknn.metrics()
+        if dino_rknn is not None:
+            report['dino_rknn'] = dino_rknn.metrics()
+        if depth_rknn is not None:
+            report['depth_rknn'] = depth_rknn.metrics()
         if rknn is not None:
             report['rknn'] = rknn.metrics()
         try:

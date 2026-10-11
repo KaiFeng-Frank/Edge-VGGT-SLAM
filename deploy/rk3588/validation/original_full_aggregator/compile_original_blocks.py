@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compile all original VGGT aggregator blocks on RK3588, one SDK process each."""
+"""Compile complete original VGGT block groups on RK3588, one SDK process each."""
 import argparse
 import hashlib
 import json
@@ -36,9 +36,12 @@ def main():
         raise ValueError('Original export manifest hash mismatch')
     root = args.manifest.resolve().parent
     manifest = json.loads(args.manifest.read_text())
-    expected = [(r, i) for i in range(24) for r in ('frame', 'global')]
+    is_dino = manifest.get('schema') == 'v54_original_VGGT_24_DINO_block_ONNX_manifest'
+    expected = ([('dino', i) for i in range(24)] if is_dino else
+                [(r, i) for i in range(24) for r in ('frame', 'global')])
     if [(b['role'], b['index']) for b in manifest['blocks']] != expected:
-        raise ValueError('Exactly all 48 original blocks required')
+        raise ValueError('Exactly the complete ordered original block group is required')
+    total = len(expected)
     os.sched_setaffinity(0, {4, 5, 6, 7})
     if args.worker is not None:
         b = manifest['blocks'][args.worker]
@@ -96,10 +99,11 @@ def main():
         if artifact.stat().st_size != result['rknn']['bytes'] or sha(artifact) != result['rknn']['sha256']:
             raise ValueError('Compiled RKNN bytes changed')
         b['rknn'] = result['rknn']
-        print(json.dumps(dict(completed=i+1, total=48, role=b['role'], index=b['index'],
+        print(json.dumps(dict(completed=i+1, total=total, role=b['role'], index=b['index'],
                               block_seconds=result['seconds'], elapsed_seconds=time.monotonic()-begin)), flush=True)
-        write(root / 'compile-progress.json', dict(completed=i+1, total=48, elapsed_seconds=time.monotonic()-begin))
-    manifest.update(schema='v53_original_VGGT_48_block_RKNN_manifest', status='compiled_not_quality_accepted',
+        write(root / 'compile-progress.json', dict(completed=i+1, total=total, elapsed_seconds=time.monotonic()-begin))
+    manifest.update(schema=('v54_original_VGGT_24_DINO_block_RKNN_manifest' if is_dino else
+                            'v53_original_VGGT_48_block_RKNN_manifest'), status='compiled_not_quality_accepted',
                     export_manifest_sha256=args.manifest_sha256, compile_seconds=time.monotonic()-begin)
     write(root / 'compiled.json', manifest)
     print(json.dumps(dict(manifest=str(root/'compiled.json'), sha256=sha(root/'compiled.json'))), flush=True)

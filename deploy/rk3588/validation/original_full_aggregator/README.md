@@ -1,10 +1,12 @@
-# Complete original VGGT with RKNN aggregator blocks
+# Complete original VGGT with optional RKNN execution
 
 This experimental backend runs all 24 original frame blocks and all 24 original
 global blocks through RKNN. It retains the original aggregator's alternating
 execution, concatenated frame/global outputs, selected intermediate layers and
-target tokens. Original DINO, CameraHead, DPT and pose decoding remain CPU FP32;
-the compiled aggregator uses RKNN's nonquantized FP16 configuration. No original
+target tokens. The compiled aggregator uses RKNN's nonquantized FP16
+configuration. Optional adapters also execute the original DINO blocks,
+CameraHead and DPT logits through RKNN. Original preprocessing, boundary
+operations, activations, pose decoding and SL4 remain on CPU. No original
 layer or token computation is omitted. This is not a fully NPU-resident model.
 
 The fixed input is two RGB frames, `[2,3,84,112]`. Frame blocks consume
@@ -50,6 +52,41 @@ material and remain private.
    It validates all 69 original head parameters against the retained capture
    metadata before replacing the head forward.
 
+For the complete original DINO block group, use
+`../original_dino/capture_original_dino_board.py` in the production environment
+with the same `--repo`, `--checkpoint`, two `--images`, and new `--output-dir`.
+It records all 24 original blocks for a two-frame batch and each individual
+frame. In the board compiler environment, run
+`../original_dino/export_original_dino.py --capture-dir CAPTURE
+--capture-sha256 SHA256 --operator-directory PARENT_VALIDATION_DIRECTORY
+--output-dir EXPORT`, then the same `compile_original_blocks.py` command above
+on its `export.json`. Every original block is retained; its fixed graph accepts
+one `[1,53,1024]` frame. A cold pair invokes each block twice; the original tail
+cache permits one new frame on a hit. Token preparation and final normalization
+retain the original CPU implementation. Add `--rknn-dino-manifest
+EXPORT/compiled.json --rknn-dino-manifest-sha256 SHA256` to replay.
+
+For original DPT, `../original_depth/capture_original_depth_board.py` runs one
+complete original FP32 forward, recording the 62 learned tensors, retained
+tokens, original geometric constants and raw depth logits. It takes the same
+capture options and optional `--model-threads 4`. Run
+`../original_depth/export_original_depth.py --capture-dir CAPTURE
+--capture-sha256 SHA256 --output-dir EXPORT` in the board compiler environment.
+Before compilation, run `../original_depth/check_original_depth_ort_board.py`
+with those capture options, `--export-dir EXPORT --export-sha256 SHA256` and a
+new `--output-dir`. It checks both original per-frame FP32 logits at the fixed
+`rtol=1e-4, atol=1e-5`. After this check passes, run
+`../original_depth/compile_original_depth.py --manifest EXPORT/export.json
+--manifest-sha256 SHA256`. Add `--rknn-depth-manifest EXPORT/compiled.json
+--rknn-depth-manifest-sha256 SHA256` to replay. Original one-frame chunking,
+exponential depth/confidence activation and final views/concatenation remain
+unchanged. Compilation success alone does not establish numerical acceptance
+or placement of every operator on the NPU.
+
+All selected backends install before the patch cache, and that cache closes
+before any backend. Unsupported shapes, changed original identities and SDK
+errors stop execution without an implicit fallback.
+
 `compare_complete_model.py` uses the same fixed 17 real TUM frames for CPU,
 RKNN aggregator, and RKNN aggregator plus CameraHead branches, and runs the
 unchanged SL4 graph. It saves
@@ -59,6 +96,14 @@ comparison. Timestamp replay separately measures actual fresh-pose throughput,
 decoding, queue time, full inference, graph work and publication, including EOF
 drain. Neither successful compilation nor finite predictions establish
 trajectory accuracy, realtime operation, loop closure or 8 GB stability.
+
+The comparison runner also accepts `--dino-manifest` and
+`--dino-manifest-sha256`, optionally `--depth-manifest` and
+`--depth-manifest-sha256`. `--reference-run ORIGINAL_COMPLETED_RUN` reuses the
+saved CPU baseline only when all input indices, timestamps and shapes match;
+the reference receipt and each of its 16 output arrays are hashed. In this
+mode only the new complete candidate runs. This avoids rerunning unchanged
+CPU inference; it does not turn the timing comparison into an interleaved one.
 
 The repository's code license and original VGGT checkpoint terms remain
 separate; see [model licensing](../../../../MODEL_LICENSES.md).

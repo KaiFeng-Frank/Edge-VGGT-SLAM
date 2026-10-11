@@ -26,19 +26,36 @@ Use a new output directory. Default image size is 112; `--no-patch-cache` disabl
 
 The first full timestamp replay served **7 new pose/map updates from 798 input frames**, at **0.195 Hz** over 35.900 s including the EOF drain. Complete software-arrival-to-published-pose **P95 was 8.160 s**; 790 frames were skipped or overwritten. Peak process RSS was 4,977.2 MiB on the 16 GB board. These measurements include decoding, queuing, original model execution, SL4 and pose/map publication. They do **not** meet the real-time target. Resolution quality, trajectory accuracy, 30-minute operation and 8 GB deployment remain unvalidated. [Measured record](results/original_timestamp_replay_v52.json).
 
-An experimental complete-model path now executes **all 48 original aggregator blocks and all four original CameraHead refinements through RKNN**. Original DINO, dense depth and SL4 remain on CPU. On 17 identical TUM frames, 16 complete overlapping pairs per branch measured:
+The experimental complete-model path now executes **all 48 original aggregator blocks, all 24 original DINO blocks, all four original CameraHead refinements and original DPT logits through RKNN**. Original preprocessing, boundary operations, activations and SL4 remain on CPU. On 17 identical TUM frames, 16 complete overlapping pairs per configuration measured:
 
 | Complete original-model configuration | Mean service time | Sim3-aligned ATE RMSE |
 | --- | ---: | ---: |
 | CPU FP32 | 7.458 s | 0.17719 m |
 | RKNN aggregator, CPU heads | 5.366 s | 0.17857 m |
 | RKNN aggregator and CameraHead | 3.609 s | 0.17808 m |
+| Add all 24 original DINO blocks | 3.087 s | 0.17476 m |
+| Add original DPT logits | 2.665 s | 0.17476 m |
 
-These are sequential branch observations, not an interleaved thermal comparison. Service timing excludes paced input queues and file publication. The last branch's ATE changed by +0.50% on this short sparse segment; this does not validate overall trajectory quality. All strict FP32 tensor comparisons still fail, and the FP16 candidate is not accepted as numerically equivalent.
+These are sequential observations across runs, not an interleaved thermal comparison. Service timing excludes paced input queues and file publication. This short, sparse, low-resolution segment does not validate overall trajectory quality. All strict FP32 tensor comparisons still fail, and the FP16 candidate is not accepted as numerically equivalent.
 
 The separate 798-frame timestamp replay with RKNN aggregator and CameraHead delivered **10 fresh updates at 0.312 Hz, P95 4.878 s** with four A76 threads. Two threads delivered 9 updates at 0.267 Hz, P95 6.239 s, so four remains the default. These results still miss realtime. Peak process RSS was about 6.64 GiB on the 16 GB board; SDK allocation metrics are reported separately and do not establish 8 GB operation. [Complete measurements and limits](results/original_full_npu_v53.json).
 
+The latest replay also enables original DINO and DPT execution through RKNN:
+**12 fresh updates at 0.398 Hz, complete input-to-pose P95 3.212 s** from the
+same 798-frame source. It publishes 12 dense chunks; 785 source frames are
+skipped or overwritten. Peak process RSS is 7,412.98 MiB on the 16 GB board.
+All 74 RKNN contexts close cleanly. The result still misses the pose-rate and
+latency targets; 30-minute and 8 GB operation remain unvalidated. The new DPT
+FP32 ONNX graph separately passes both original-reference checks before SDK
+compilation, preserving all 62 learned tensors and original inplace residual
+semantics. [Latest complete measurements](results/original_dino_depth_v54.json).
+
 After privately producing the pinned original artifacts, add `--rknn-manifest PATH/compiled.json --rknn-manifest-sha256 SHA256 --rknn-camera-head` to the replay command. `--model-threads 2` selects CPUs 6–7; the default four uses CPUs 4–7. These settings affect only the process. [Build and reproduction instructions](deploy/rk3588/validation/original_full_aggregator/README.md).
+
+The latest configuration additionally uses `--rknn-dino-manifest DINO/compiled.json
+--rknn-dino-manifest-sha256 SHA256 --rknn-depth-manifest DEPTH/compiled.json
+--rknn-depth-manifest-sha256 SHA256`. All selected backends install before the
+original tail cache. Unsupported inputs and SDK failures raise without fallback.
 
 ## Original-model evidence
 

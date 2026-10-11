@@ -29,13 +29,14 @@ def load_replay():
     return module
 
 
-def generated_run(*, npu=False, camera=False, no_cache=False, fail=None, model_threads=None):
+def generated_run(*, npu=False, camera=False, dino=False, depth=False, no_cache=False, fail=None, model_threads=None):
     replay = load_replay()
     events = []
     modules = {name: ModuleType(name) for name in (
         'cv2', 'torch', 'vggt_slam', 'vggt_slam.runtime', 'vggt_slam.solver',
         'vggt_slam.timestamp_replay', 'vggt_slam.edge_mapping',
-        'vggt_slam.patch_cache', 'vggt_slam.rknn_aggregator_blocks', 'vggt_slam.rknn_camera_head')}
+        'vggt_slam.patch_cache', 'vggt_slam.rknn_aggregator_blocks', 'vggt_slam.rknn_camera_head',
+        'vggt_slam.rknn_dino_blocks', 'vggt_slam.rknn_depth_head')}
     modules['vggt_slam'].__path__ = []
     modules['torch'].__version__ = 'generated-service-double'
     for name in ('set_num_threads', 'set_num_interop_threads'):
@@ -94,6 +95,22 @@ def generated_run(*, npu=False, camera=False, no_cache=False, fail=None, model_t
     modules['vggt_slam.rknn_aggregator_blocks'].install_rknn_aggregator_blocks = install_rknn
     modules['vggt_slam.patch_cache'].install_patch_cache = install_cache
     modules['vggt_slam.rknn_camera_head'].install_rknn_camera_head = install_camera
+    def install_dino(*args, **kwargs):
+        assert args[0] is model and args[2] == 'b' * 64
+        assert kwargs['source_root'] == replay.BASE / 'src'
+        events.append('install_dino_rknn')
+        if fail == 'install_dino_rknn':
+            raise RuntimeError('generated DINO install failure')
+        return Handle('dino_rknn')
+    modules['vggt_slam.rknn_dino_blocks'].install_rknn_dino_blocks = install_dino
+    def install_depth(*args, **kwargs):
+        assert args[0] is model and args[2] == 'c' * 64
+        assert kwargs['source_root'] == replay.BASE / 'src'
+        events.append('install_depth_rknn')
+        if fail == 'install_depth_rknn':
+            raise RuntimeError('generated depth install failure')
+        return Handle('depth_rknn')
+    modules['vggt_slam.rknn_depth_head'].install_rknn_depth_head = install_depth
     rows = [dict(timestamp=float(i), path=f'/generated/{i}.png') for i in (1, 2, 3)]
     modules['vggt_slam.timestamp_replay'].read_rgb_index = lambda _: rows
 
@@ -187,6 +204,12 @@ def generated_run(*, npu=False, camera=False, no_cache=False, fail=None, model_t
                 args += ['--no-patch-cache']
             if camera:
                 args += ['--rknn-camera-head']
+            if dino:
+                args += ['--rknn-dino-manifest', str(root/'dino.placeholder'),
+                         '--rknn-dino-manifest-sha256', 'b'*64]
+            if depth:
+                args += ['--rknn-depth-manifest', str(root/'depth.placeholder'),
+                         '--rknn-depth-manifest-sha256', 'c'*64]
             if model_threads is not None:
                 args += ['--model-threads', str(model_threads)]
             with patch.dict(sys.modules, modules), patch.object(sys, 'argv', args), \
@@ -267,6 +290,37 @@ def test_generated_camera_installation_failure_restores_aggregator():
     assert code == 1 and report['status'] == 'failed'
     assert events.index('install_rknn') < events.index('install_camera_rknn') < events.index('close_rknn')
     assert report['rknn']['closed'] and 'install_cache' not in events and 'predict' not in events
+
+
+@pytest.mark.parametrize('fail', [None, 'install_dino_rknn', 'predict'])
+def test_generated_dino_lifecycle_with_all_backends(fail):
+    code, report, events = generated_run(npu=True, camera=True, dino=True, fail=fail)
+    assert code == (0 if fail is None else 1)
+    assert report['precision'] == 'NPU_FP16_DINO_aggregator_camera_remaining_CPU_FP32'
+    assert report['rknn']['closed'] and report['camera_rknn']['closed']
+    if fail == 'install_dino_rknn':
+        assert 'install_cache' not in events and 'predict' not in events
+        assert 'dino_rknn' not in report
+    else:
+        assert report['dino_rknn']['closed']
+        assert events.index('install_dino_rknn') < events.index('install_cache')
+        assert events.index('close_replay') < events.index('close_cache') < events.index('close_dino_rknn')
+        assert events.index('close_dino_rknn') < events.index('close_camera_rknn') < events.index('close_rknn')
+
+
+@pytest.mark.parametrize('fail', [None, 'install_depth_rknn', 'predict'])
+def test_generated_depth_lifecycle_with_all_backends(fail):
+    code, report, events = generated_run(npu=True, camera=True, dino=True, depth=True, fail=fail)
+    assert code == (0 if fail is None else 1)
+    assert report['precision'] == 'NPU_FP16_DINO_aggregator_camera_depth_logits_remaining_CPU_FP32'
+    assert all(report[name]['closed'] for name in ('rknn', 'camera_rknn', 'dino_rknn'))
+    if fail == 'install_depth_rknn':
+        assert 'install_cache' not in events and 'predict' not in events
+        assert 'depth_rknn' not in report
+    else:
+        assert report['depth_rknn']['closed']
+        assert events.index('install_dino_rknn') < events.index('install_depth_rknn') < events.index('install_cache')
+        assert events.index('close_cache') < events.index('close_depth_rknn') < events.index('close_dino_rknn')
 
 
 @pytest.mark.parametrize('args,message', [
