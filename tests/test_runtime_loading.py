@@ -14,6 +14,9 @@ from vggt_slam import runtime
 
 @pytest.fixture
 def tiny_vggt(monkeypatch):
+    # Only these generated fixtures bypass the 5 GB original-file identity.
+    # Production load_model has no verification bypass option.
+    monkeypatch.setattr(runtime, "verify_original_checkpoint", lambda path: None)
     constructions = []
 
     class TinyAggregator(nn.Module):

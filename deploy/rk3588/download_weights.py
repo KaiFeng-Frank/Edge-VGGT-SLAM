@@ -18,7 +18,7 @@ from urllib.request import Request, urlopen
 import uuid
 
 
-MODEL_URL = "https://huggingface.co/facebook/VGGT-1B/resolve/main/model.pt"
+MODEL_URL = "https://huggingface.co/facebook/VGGT-1B/resolve/860abec7937da0a4c03c41d3c269c366e82abdf9/model.pt"
 MODEL_SIZE = 5026874952
 MODEL_SHA256 = "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
 STOP_REQUESTED = threading.Event()
@@ -74,6 +74,8 @@ class InvalidRangeResponse(RuntimeError):
 
 
 def download(args):
+    if args.size != MODEL_SIZE or args.sha256 != MODEL_SHA256:
+        raise ValueError("Only the pinned original VGGT checkpoint size and SHA256 are supported.")
     destination = Path(args.output).expanduser().resolve()
     destination.parent.mkdir(parents=True, exist_ok=True)
     if destination.is_file():

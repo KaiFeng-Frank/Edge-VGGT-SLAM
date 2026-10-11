@@ -152,3 +152,7 @@
 - **实际放置：** 最终表含 58 个算子，其中 56 个内部算子全部位于 NPU。两个 FC1/GELU 融合算子为 INT8，FC1 权重为 INT8、bias 标签为 INT32；FC2 权重为 FLOAT16、bias 为 FLOAT，FC2 的 GELU 与 residual 输入保持 FLOAT16。新增四处转换的独立 profile 均值合计 9.407 ms。算子标签不证明内部累加算术精度。
 - **日志边界：** SDK stdout 的一条 INT64 reshape 常量记录被成功状态 JSON 打断。审查仅在内存移去精确 SHA 绑定的 168 B 插入，恢复该行；原始日志保持不变，全部编译行与 16 份运行表逐项核对。
 - **复现：** [实际算子收据](../deploy/rk3588/validation/original_mixed_precision/layout/public-hybrid-operators-audit-r1.json)、[便携解析器与冻结清单](../deploy/rk3588/validation/original_mixed_precision/layout/hybrid-operators-publication-r1.json)。
+
+## 108. 相同模型结构不能证明是指定的原始权重
+
+原加载器只检查 VGGT 参数键和结构，不能区分同结构的其他 checkpoint。现在显式本地路径、缓存和自动下载均在反序列化及 VGGT 构造之前强制检查原始 5,026,874,952 B 与完整 SHA256，使用 4 MiB 流式读取；下载固定既有 revision，下载工具拒绝修改权重身份。板端实际原文件检查通过，用时 4.590 s（启动文件校验，非 forward）；32 项板端生成加载测试通过。未改变模型计算，也不代表实时验收通过。[结果与源码绑定](../results/original_checkpoint_identity_v51.json)。

@@ -5,8 +5,13 @@ from collections.abc import Mapping
 
 import torch
 
+from vggt_slam.checkpoint_identity import verify_original_checkpoint
 
-VGGT_CHECKPOINT_URL = "https://huggingface.co/facebook/VGGT-1B/resolve/main/model.pt"
+
+VGGT_CHECKPOINT_URL = (
+    "https://huggingface.co/facebook/VGGT-1B/resolve/"
+    "860abec7937da0a4c03c41d3c269c366e82abdf9/model.pt"
+)
 
 
 def resolve_device(device="auto"):
@@ -48,7 +53,10 @@ def _load_checkpoint(path):
 
 def load_model(checkpoint=None, device="auto", image_size=518,
                prune_unused_heads=False, offline=False):
-    """Load pretrained VGGT; an explicit checkpoint never accesses the network.
+    """Load only the verified original VGGT checkpoint.
+
+    An explicit checkpoint never accesses the network. Every existing or
+    downloaded file must match the fixed original size and SHA before loading.
 
     ``checkpoint=None`` retains upstream's automatic model download, unless
     ``offline=True`` restricts loading to the existing torch.hub checkpoint.
@@ -56,8 +64,6 @@ def load_model(checkpoint=None, device="auto", image_size=518,
     SLAM forward pass does not call. It also retains only the intermediate
     layers consumed by the camera and depth heads.
     """
-    from vggt.models.vggt import VGGT
-
     device = resolve_device(device)
     image_size = validate_image_size(image_size)
     if checkpoint is not None:
@@ -72,6 +78,9 @@ def load_model(checkpoint=None, device="auto", image_size=518,
             f"VGGT checkpoint not found: {checkpoint_path}. "
             "Supply --checkpoint with the local pretrained weights."
         )
+
+    verify_original_checkpoint(checkpoint_path)
+    from vggt.models.vggt import VGGT
 
     state_dict = _load_checkpoint(checkpoint_path)
     if isinstance(state_dict, Mapping):

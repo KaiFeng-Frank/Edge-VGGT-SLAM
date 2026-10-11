@@ -1,0 +1,37 @@
+{
+  "schema": "v51_original_checkpoint_identity_enforcement",
+  "status": "original_checkpoint_identity_verified",
+  "verifier_sha256": "9fc0b927f6a68ac6ca55194616104febb1c488370593d4be60e8dba5bc336461",
+  "script_sha256": "58fe1375f8f3d2431505763a6ca2385db94c76c51e53c8d7c10c3e36b26eedf3",
+  "checkpoint": {
+    "file": "model.pt",
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "startup_file_verification_ns": 4590035919,
+  "active_model_directories": [
+    "vggt"
+  ],
+  "active_weight_files": [
+    "model.pt"
+  ],
+  "checkpoint_deserialized": false,
+  "model_constructed_or_executed": false,
+  "performance_or_trajectory_acceptance": false,
+  "host_generated_checks_passed": 14,
+  "board_generated_loader_checks_passed": 32,
+  "board_generated_checks_receipt_sha256": "9275c6d5d9ef2d0785504488d0aded868d3ff5bbcda380a15656bcdaf15dd6e6",
+  "board_actual_file_check_receipt_sha256": "f098e07fa769c007f5d3952d5d4a4d3aecec326d6c93da1795d0cc0a7d399eb2",
+  "no_runtime_identity_bypass": true,
+  "automatic_download_revision": "860abec7937da0a4c03c41d3c269c366e82abdf9",
+  "forward_tensor_computation_changed": false,
+  "real_time_validated": false,
+  "checked_source_sha256": {
+    "vggt_slam/checkpoint_identity.py": "9fc0b927f6a68ac6ca55194616104febb1c488370593d4be60e8dba5bc336461",
+    "vggt_slam/runtime.py": "f36bb5b87fbdbf03984ea3e1466e6ee27865a540ae3e5abd4ee07a45538e23f5",
+    "deploy/rk3588/download_weights.py": "3fb6b1290b2440ba477e8b93af8dc60f9fac3d225e743afc954b4db62cda0f71",
+    "tests/test_runtime_loading.py": "c4b221cc394fb17379ff487920aa1bcebc957eb9eff10200964752032f8d3f25",
+    "tests/test_checkpoint_identity.py": "dc9f4fba23eb3908948fc818f9067e5b2a0d86b348ffbc215f95f72e716bb643",
+    "tests/test_original_weight_download.py": "d0997c40f797ccb81e8d590b357a652f5a27d7838e4ee959de9ea3b472fcfe36"
+  }
+}
