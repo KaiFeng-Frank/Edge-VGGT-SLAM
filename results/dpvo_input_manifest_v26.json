@@ -1,0 +1,56 @@
+{
+  "rgb_index_sha256": "532884d60bef0c9a05e14bf311998883baf59a2fa47009d1021f2c7937bd69a3",
+  "frames": [
+    {
+      "frame_id": "1305031102.175304",
+      "relative_path": "rgb/1305031102.175304.png",
+      "bytes": 506503,
+      "sha256": "331c3fd7a3d5eefb19e3da2026625aa221ca1991f5ae30ff96060e2e3e45e368"
+    },
+    {
+      "frame_id": "1305031102.211214",
+      "relative_path": "rgb/1305031102.211214.png",
+      "bytes": 498009,
+      "sha256": "cd3f24c9902586ae22d303092d12c208e024b30130147c198fcd3b01a29f5682"
+    },
+    {
+      "frame_id": "1305031102.243211",
+      "relative_path": "rgb/1305031102.243211.png",
+      "bytes": 498830,
+      "sha256": "9d216b19fe8a35079327da61bbe77615d81529cc1a493abae717abb05bdb8469"
+    }
+  ],
+  "dataset": "TUM RGB-D freiburg1_xyz",
+  "schema": "v26_DPVO_original_TUM_three_frames",
+  "preprocessing": {
+    "decode": "cv2.imread BGR uint8",
+    "K": [
+      517.3,
+      516.5,
+      318.6,
+      255.3
+    ],
+    "distortion": [
+      0.2624,
+      -0.9531,
+      -0.0054,
+      0.0026,
+      1.1633
+    ],
+    "crop": [
+      8,
+      8,
+      16,
+      16
+    ],
+    "shape": [
+      1,
+      1,
+      3,
+      464,
+      608
+    ],
+    "normalization": "2 * (image / 255.0) - 0.5, FP32",
+    "GT_or_sensor_depth_input": false
+  }
+}

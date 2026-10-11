@@ -1,0 +1,485 @@
+{
+  "kind": "v26_DPVO_external_source_and_weight_provenance",
+  "source_manifest": {
+    "file": "vggt-v26-dpvo-source/manifest.json",
+    "raw_sha256": "ce2ecaf96b086f69ef4d90a2e07e7b81afe8ae094656eb41260182000a69e375",
+    "raw_bytes": 8084,
+    "host_home_redacted": false,
+    "data": {
+      "repo": "princeton-vl/DPVO",
+      "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+      "default_branch": "main",
+      "retrieved_files": [
+        {
+          "path": "README.md",
+          "bytes": 6097,
+          "git_blob_sha1": "278db416cbbbbb76049a20fb15587ac26c73d184",
+          "sha256": "9691b756f3964455eead997448f93e2e78f852ce076a8157024d1b45f1ca3282",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/README.md"
+        },
+        {
+          "path": "LICENSE",
+          "bytes": 1088,
+          "git_blob_sha1": "b567ea1f1def1d47479bbbaf0bc3bfb3a25a9417",
+          "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/LICENSE"
+        },
+        {
+          "path": "setup.py",
+          "bytes": 1342,
+          "git_blob_sha1": "86fe6caf7abef30dc527cf6de87615f49673a98a",
+          "sha256": "48c67bb89d46faae999ba98ac61fa6d965b0962365a0e5f3b74e4998cd02139e",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/setup.py"
+        },
+        {
+          "path": "download_models_and_data.sh",
+          "bytes": 521,
+          "git_blob_sha1": "04131fd34fbfd549eb8609370f36a70da157daaa",
+          "sha256": "a75998bead90e57611c4c78da24e196e51cfe998ba98a6a7eb17f9effdd3ef89",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/download_models_and_data.sh"
+        },
+        {
+          "path": "dpvo/net.py",
+          "bytes": 9019,
+          "git_blob_sha1": "96d9c1c18fa21db0b14fa724373f25d350b53301",
+          "sha256": "1aee33d54f0b1cc1f3f842b60790ff1299ef9c1e20bca6467ce7114dca802acc",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/net.py"
+        },
+        {
+          "path": "dpvo/dpvo.py",
+          "bytes": 17089,
+          "git_blob_sha1": "b6f4c5992d176844297718a33b459117bc27f4b6",
+          "sha256": "7efcb45689c2da8d18e2c69774e221799c9f8472e99531955f55dcb145626fd7",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/dpvo.py"
+        },
+        {
+          "path": "dpvo/altcorr/correlation.py",
+          "bytes": 2201,
+          "git_blob_sha1": "9b9d8d9d4b01fb603b9978c8788a717d7961b20c",
+          "sha256": "367fe95eff8c076b4ec3c4830ff9a9626a8bca4abadc9042a05bd3f58d577f4a",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/altcorr/correlation.py"
+        },
+        {
+          "path": "dpvo/fastba/fastba.py",
+          "available_in_pinned_tree": false
+        },
+        {
+          "path": "dpvo/config.py",
+          "bytes": 755,
+          "git_blob_sha1": "ec7c2f4eb2926d870d11f34bd40603e0480ede97",
+          "sha256": "f70eaf98ef32a7ea5a675de571373e32d0a6d1354bea9d13c6a779eb68f50bec",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/config.py"
+        },
+        {
+          "path": "dpvo/patchgraph.py",
+          "bytes": 4622,
+          "git_blob_sha1": "2ad26a690a93f17f2324ddd95acdc120b22a6f7d",
+          "sha256": "a2cef93f93c7aab83e8310ddf0207e248c62bc2eaae2a1158a305f3efccaef53",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/patchgraph.py"
+        },
+        {
+          "path": "dpvo/extractor.py",
+          "bytes": 8932,
+          "git_blob_sha1": "119141ea07368269e8fa42772d9da3bed8d90629",
+          "sha256": "f5cbcbe14c42e44bcec6e827a3429ebe93979a439ba9b9ef70d4f4baa3454a2b",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/extractor.py"
+        },
+        {
+          "path": "dpvo/blocks.py",
+          "bytes": 3199,
+          "git_blob_sha1": "9642de1088b29483b6fea355a04d7247f33b2330",
+          "sha256": "9c9e2848da524829374e56bb1b14a891e9e2c19bc683af8e958e8982ba33d661",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/blocks.py"
+        },
+        {
+          "path": "dpvo/fastba/__init__.py",
+          "bytes": 40,
+          "git_blob_sha1": "16ec66ade2ef4bc7b99673e0144a9e9a4bff2998",
+          "sha256": "27b90b01ebeb7cd5e51212e32d2fcf82416dc4fad8707c7a96e6d07b4d7ab605",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/__init__.py"
+        },
+        {
+          "path": "dpvo/fastba/ba.py",
+          "bytes": 328,
+          "git_blob_sha1": "d3095229ce1864808e6028b5690295ab41791b99",
+          "sha256": "dc108d12199e8a2f97a0b391f4b24e266e711d49eb20f0298ef692c7724a2e6c",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/ba.py"
+        },
+        {
+          "path": "dpvo/altcorr/correlation.cpp",
+          "bytes": 1879,
+          "git_blob_sha1": "7cd16793c8fc3381bde54a163145048e4ee0c560",
+          "sha256": "7d6e218c89a93edf98dbb88747bbc9633d77e6095c6225ab2094dd055d05ab98",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/altcorr/correlation.cpp"
+        },
+        {
+          "path": "dpvo/altcorr/correlation_kernel.cu",
+          "bytes": 11555,
+          "git_blob_sha1": "f4faa73863c071e126e62a77bffb6bcc98f8d55b",
+          "sha256": "85667383d879c9093cee5b88ae231f562d98e751b4a549917ebda105a1a291e0",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/altcorr/correlation_kernel.cu"
+        },
+        {
+          "path": "dpvo/fastba/ba.cpp",
+          "bytes": 5415,
+          "git_blob_sha1": "7fb106c9bdee0046df96c6534f30514c22e1d9c0",
+          "sha256": "cb0514d680cb1e44ba511cb82dde441fe35998f36706cc73322715f9706ed82f",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/ba.cpp"
+        },
+        {
+          "path": "dpvo/fastba/ba_cuda.cu",
+          "bytes": 18610,
+          "git_blob_sha1": "21de38925a03c99bc49a13829d148bac8e657157",
+          "sha256": "43813f87e191078102e5737575c5cceeee4fe607c54fa5a31f51c0aaf6311230",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/ba_cuda.cu"
+        },
+        {
+          "path": "config/default.yaml",
+          "bytes": 377,
+          "git_blob_sha1": "677e7c29f9f9ded923c66d2359808007f8a9533f",
+          "sha256": "0351abfbc60d9ec93bf402857130497b2f063f8ce0e8fd6e87cc55c73273594a",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/config/default.yaml"
+        },
+        {
+          "path": "config/fast.yaml",
+          "bytes": 376,
+          "git_blob_sha1": "17152701a7466bfedb3e42da10aae6f59ec95427",
+          "sha256": "24c82450151ce6e8431dfbf9dcc501a7a2747955a30a59f745bdc03bd84ce4c3",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/config/fast.yaml"
+        },
+        {
+          "path": "dpvo/loop_closure/retrieval.py",
+          "available_in_pinned_tree": false
+        },
+        {
+          "path": "demo.py",
+          "bytes": 3498,
+          "git_blob_sha1": "9cca9c2a4cd982aa2653f053c7801460c8ff2132",
+          "sha256": "5b7ddd33e79f8a14d0f75a29d6e9c8e76d54d6f2de5eac2cc7555d74f27d1f07",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/demo.py"
+        },
+        {
+          "path": "evaluate_tum.py",
+          "bytes": 5598,
+          "git_blob_sha1": "f9f4c127830a979ecae299fb0a93ea7d4b287ede",
+          "sha256": "2548c77758885daa7c527cd7584aceb343442beefdc18ebdd07a1c6fc15fd1e6",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/evaluate_tum.py"
+        },
+        {
+          "path": "evaluate_euroc.py",
+          "bytes": 4694,
+          "git_blob_sha1": "9f44e0d52f0c42b39dc713fa23c143b45a05d943",
+          "sha256": "7ed032a3c774d97aee5faaed23ba0a6bc9050134369c167cb9d85926eaae3a70",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/evaluate_euroc.py"
+        },
+        {
+          "path": "dpvo/projective_ops.py",
+          "bytes": 3560,
+          "git_blob_sha1": "24ad43ae029f6a3a9fa6df2e79ab3a1fdfca069d",
+          "sha256": "ef20f322a118b0790bff975cce3120ad31e867c8b088a9f408c3328c0fb664c1",
+          "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/projective_ops.py"
+        }
+      ]
+    }
+  },
+  "source_additions": {
+    "file": "vggt-v26-dpvo-source/source_manifest_additions.json",
+    "raw_sha256": "9e5c273245a06a2efa99dbe8c97ae7d2d16dc307b22d8d594661a2d1fec85cc5",
+    "raw_bytes": 697,
+    "host_home_redacted": false,
+    "data": {
+      "repo": "princeton-vl/DPVO",
+      "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+      "parent_manifest_sha256": "ce2ecaf96b086f69ef4d90a2e07e7b81afe8ae094656eb41260182000a69e375",
+      "retrieved_files": [
+        {
+          "path": "dpvo/utils.py",
+          "bytes": 2628,
+          "git_blob_sha1": "13b79f9b0ed7222b45d137481de2f5bd390eff83",
+          "sha256": "5bc5820014045b6979d9979ae80a2b519c64f9491ae83e909a77731152751a4a",
+          "url": "https://raw.githubusercontent.com/princeton-vl/DPVO/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/utils.py",
+          "source_url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/utils.py",
+          "HTTP_status": 200
+        }
+      ]
+    }
+  },
+  "checkpoint_download": {
+    "file": "vggt-v26-dpvo-weights/checkpoint.json",
+    "raw_sha256": "8104e656a1efc7969f5b5248f69c7bc1f7a9a09aa73231ef8a02ca1309518223",
+    "raw_bytes": 3154,
+    "host_home_redacted": false,
+    "data": {
+      "schema_version": 1,
+      "status": "completed_download_and_container_validation",
+      "checked_utc": "2026-10-11T00:26:17.784775+00:00",
+      "official_repository": "https://github.com/princeton-vl/DPVO",
+      "official_commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+      "official_download_source": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/download_models_and_data.sh#L4",
+      "official_download_source_sha256": "a75998bead90e57611c4c78da24e196e51cfe998ba98a6a7eb17f9effdd3ef89",
+      "official_url": "https://www.dropbox.com/scl/fo/2g6e134ruh1acmaye5bmy/AK0DY9WLZ25elq-7N7sJcB0/models.zip?rlkey=4j336vcc4h324j4p4ji3ppl0t&dl=1",
+      "http": [
+        {
+          "status": 200,
+          "headers": {
+            "content-length": "13100005",
+            "content-type": "application/binary",
+            "accept-ranges": "bytes",
+            "etag": "1786642049942339d",
+            "last-modified": null,
+            "date": "Sun, 11 Oct 2026 00:26:19 GMT"
+          },
+          "TLS_verification": "default verified HTTPS",
+          "redirect_origin_only": "https://uc1fc66205e5edce5ee2b26385ad.dl.dropboxusercontent.com"
+        }
+      ],
+      "execution_scope": {
+        "torch_imported": false,
+        "torch_load_called": false,
+        "pickle_unpickled": false,
+        "model_constructed": false,
+        "model_forward_run": false,
+        "board_tasks_run": false
+      },
+      "license": {
+        "repository_code": "MIT",
+        "code_license_url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/LICENSE",
+        "code_license_sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
+        "separate_checkpoint_license_verified": false,
+        "checkpoint_license": "unknown; archive contains no separate model license or model card",
+        "checkpoint_not_published_by_this_task": true
+      },
+      "download_seconds": 9.891472015995532,
+      "archive": {
+        "file": "models.zip",
+        "bytes": 13100005,
+        "sha256": "89f43de2c92676ddcf7f49e8ae3f8940b7af73f549a7a5b8308850b67de78479"
+      },
+      "checkpoint": {
+        "file": "dpvo.pth",
+        "bytes": 14167743,
+        "sha256": "30d02dc2b88a321cf99aad8e4ea1152a44d791b5b65bf95ad036922819c0ff12",
+        "zip_crc32": "1668e07c"
+      },
+      "metadata": {
+        "file": "archive/data.pkl",
+        "bytes": 19226,
+        "sha256": "47370ca2f31040b3c7da2cc30d7cc7cf4ab0b77b0046fefd4b2bae6c50f8278d",
+        "exact_v25_metadata_bytes_equal": true,
+        "released_state_key_count": 98,
+        "released_tensor_numel": 3532549,
+        "official_loader_kept_key_count": 94,
+        "official_loader_kept_tensor_numel": 3384324,
+        "official_loader_dropped_keys": [
+          "module.update.lmbda.0.weight",
+          "module.update.lmbda.0.bias",
+          "module.update.lmbda.2.weight",
+          "module.update.lmbda.2.bias"
+        ],
+        "all_released_storage_lengths_verified": true,
+        "official_loader_prefix_removal": "module.",
+        "original_storage_device": "cuda:0; board loader must explicitly map to CPU"
+      },
+      "verification": {
+        "outer_zip_crc": true,
+        "inner_zip_crc": true,
+        "single_safe_member_only": true,
+        "v25_archive_prefix_equal": true,
+        "v25_archive_suffix_equal": true
+      },
+      "http_redirect_path_or_signed_query_published": false
+    }
+  },
+  "input_manifest": {
+    "file": "vggt-v26-dpvo-source/input-manifest.json",
+    "raw_sha256": "bffcd221ee1e7c4b17045bf9b642df7272747ee000e67d5e682610b635804539",
+    "raw_bytes": 1284,
+    "host_home_redacted": false,
+    "data": {
+      "rgb_index_sha256": "532884d60bef0c9a05e14bf311998883baf59a2fa47009d1021f2c7937bd69a3",
+      "frames": [
+        {
+          "frame_id": "1305031102.175304",
+          "relative_path": "rgb/1305031102.175304.png",
+          "bytes": 506503,
+          "sha256": "331c3fd7a3d5eefb19e3da2026625aa221ca1991f5ae30ff96060e2e3e45e368"
+        },
+        {
+          "frame_id": "1305031102.211214",
+          "relative_path": "rgb/1305031102.211214.png",
+          "bytes": 498009,
+          "sha256": "cd3f24c9902586ae22d303092d12c208e024b30130147c198fcd3b01a29f5682"
+        },
+        {
+          "frame_id": "1305031102.243211",
+          "relative_path": "rgb/1305031102.243211.png",
+          "bytes": 498830,
+          "sha256": "9d216b19fe8a35079327da61bbe77615d81529cc1a493abae717abb05bdb8469"
+        }
+      ],
+      "dataset": "TUM RGB-D freiburg1_xyz",
+      "schema": "v26_DPVO_original_TUM_three_frames",
+      "preprocessing": {
+        "decode": "cv2.imread BGR uint8",
+        "K": [
+          517.3,
+          516.5,
+          318.6,
+          255.3
+        ],
+        "distortion": [
+          0.2624,
+          -0.9531,
+          -0.0054,
+          0.0026,
+          1.1633
+        ],
+        "crop": [
+          8,
+          8,
+          16,
+          16
+        ],
+        "shape": [
+          1,
+          1,
+          3,
+          464,
+          608
+        ],
+        "normalization": "2 * (image / 255.0) - 0.5, FP32",
+        "GT_or_sensor_depth_input": false
+      }
+    }
+  },
+  "cpu_operator_semantics": {
+    "file": "vggt-v26-dpvo-source/cpu-ops-semantics.json",
+    "raw_sha256": "efe9d4b7873e58f2c4211fa63b95b9fee74626e57965e360ec0358c99035f052",
+    "raw_bytes": 6971,
+    "host_home_redacted": true,
+    "data": {
+      "kind": "dpvo_cpu_reference_semantics_v26",
+      "status": "passed",
+      "scope": {
+        "synthetic_only": true,
+        "real_weights_forward": false,
+        "real_image_processing": false,
+        "board_executed": false,
+        "cuda_executed": false,
+        "full_VO_implemented": false,
+        "bundle_adjustment_implemented": false,
+        "pose_accuracy_validated": false,
+        "realtime_validated": false
+      },
+      "sources": {
+        "repo": "princeton-vl/DPVO",
+        "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+        "license": "MIT",
+        "files": [
+          {
+            "file": "dpvo/fastba/ba.cpp",
+            "sha256": "cb0514d680cb1e44ba511cb82dde441fe35998f36706cc73322715f9706ed82f",
+            "bytes": 5415,
+            "matches_pinned_source": true
+          },
+          {
+            "file": "dpvo/altcorr/correlation_kernel.cu",
+            "sha256": "85667383d879c9093cee5b88ae231f562d98e751b4a549917ebda105a1a291e0",
+            "bytes": 11555,
+            "matches_pinned_source": true
+          },
+          {
+            "file": "dpvo/altcorr/correlation.py",
+            "sha256": "367fe95eff8c076b4ec3c4830ff9a9626a8bca4abadc9042a05bd3f58d577f4a",
+            "bytes": 2201,
+            "matches_pinned_source": true
+          },
+          {
+            "file": "dpvo/blocks.py",
+            "sha256": "9c9e2848da524829374e56bb1b14a891e9e2c19bc683af8e958e8982ba33d661",
+            "bytes": 3199,
+            "matches_pinned_source": true
+          },
+          {
+            "file": "dpvo/net.py",
+            "sha256": "1aee33d54f0b1cc1f3f842b60790ff1299ef9c1e20bca6467ce7114dca802acc",
+            "bytes": 9019,
+            "matches_pinned_source": true
+          },
+          {
+            "file": "dpvo/utils.py",
+            "sha256": "5bc5820014045b6979d9979ae80a2b519c64f9491ae83e909a77731152751a4a",
+            "bytes": 2628,
+            "matches_pinned_source": true
+          }
+        ],
+        "torch_scatter_semantics": {
+          "version": "2.1.2",
+          "source": "https://github.com/rusty1s/pytorch_scatter/tree/2.1.2/torch_scatter",
+          "version_reference_not_vendored_binary": true
+        }
+      },
+      "implementation": {
+        "file": "dpvo_cpu_ops.py",
+        "sha256": "15191a0d481176e5be80bb6c41c3fb3f4d057d95b18ab18f6e0efcd73793dd32",
+        "bytes": 13588
+      },
+      "tests": {
+        "file": "test_dpvo_cpu_ops.py",
+        "sha256": "0b0f094c909e4b364f5d5b174562d51352c56e397250b4f624087a6ed0f07a24",
+        "command": "env PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 TMPDIR=/dev/shm/vggt-v26-dpvo-source <host-home>/miniconda3/envs/ctvggt/bin/python -B -m pytest -q -p no:cacheprovider /dev/shm/vggt-v26-dpvo-source/test_dpvo_cpu_ops.py --basetemp=/dev/shm/vggt-v26-dpvo-source/pytest-full-r2",
+        "cwd": "/dev/shm/vggt-v26-dpvo-source",
+        "exit_code": 0,
+        "passed": 38,
+        "failed": 0,
+        "skipped": 0,
+        "elapsed_seconds": 3.7,
+        "stdout_summary": "38 passed in 3.70s",
+        "host_machine": "x86_64",
+        "python": "3.11.14",
+        "torch": "2.11.0.dev20260201+cu128"
+      },
+      "semantics": {
+        "neighbors": "Group by exact int64 kk; stable ascending jj order within each group; output predecessor/successor original edge indices, -1 at group boundaries. Equal jj preserves input order.",
+        "scatter": "Torch CPU broadcast along requested dim; dense max(group)+1 output, absent groups zero; grouped per-channel max-subtracted softmax returns original src order. Empty edges retained as empty outputs.",
+        "patchify": "FP32 xy centers; floor integer base; zero out-of-bounds samples; bilinear 2R+1 square from raw 2R+2 square. Non-bilinear mode returns raw samples, as official wrapper. FP32 fractions preserve original promotion behavior.",
+        "correlation": "Select source patch by ii and target view by jj. Dot across C before four bilinear terms; no channel normalization. C divisible by 8; FP32 coords; integer sampling zero outside target; output axes B,E,offset_x,offset_y,patch_y,patch_x.",
+        "pyramid": "Independent avg_pool2d on original fmap for levels 1 and 4, kernel=stride=level, incomplete spatial cells discarded; coords divided by each corresponding level.",
+        "flatten": "torch.stack(level_outputs,-1) then reshape B,E,-1; level is the innermost/interleaved feature dimension consumed by original Update.corr.",
+        "memory": "Gathered channel features chunked to at most 64 edges. No materialized B,E,C,H,W selected-view tensor. Result allocation still scales with required E*neighbor*patch output."
+      },
+      "synthetic_oracles": [
+        "Independent Python stable grouped sorting with ties, singleton, empty edges and IDs beyond FP32 precision.",
+        "Independent scalar group softmax/sum at positive and negative dim, gaps, per-batch broadcast, large scores, input preservation and autograd checks.",
+        "Independent scalar zero-padded patch sampler at integer/fractional/negative/out-of-bounds coordinates on non-square tensors, FP16 fraction promotion and noncontiguous input.",
+        "Independent scalar channel dot and bilinear sampling with explicitly ordered x/y offsets and patch pixels; radii 0,1,3; two batches and unsorted patch/view indices.",
+        "Independent nested-loop average pooling, partial-cell truncation and two-level interleaving; 65-edge chunk boundary; empty correlations and forward-only dropout invariance.",
+        "Native contract refusal of invalid coordinate dtype/nonfinite/shape, channels, indices and radius."
+      ],
+      "limitations": [
+        "No comparison against an executed CUDA extension or learned whole-VO run was performed. CPU floating reduction/FMA order may differ from CUDA, particularly FP16 accumulation; mathematical forward ordering is validated, not bitwise GPU equality.",
+        "Correlation is a forward reference; original stochastic dropout backward and custom CUDA gradient semantics are not implemented.",
+        "BF16 correlation/patch features are rejected rather than silently converted; supported native feature dtypes are FP16/FP32/FP64. Defined FP32 coordinate/int64 index contracts are checked.",
+        "These operations enable neural Update research only. Delta/weight output without BA and a maintained graph is not an estimated camera pose.",
+        "No real-input runtime/performance inference follows from tiny synthetic test durations."
+      ],
+      "BA_static_next_step": {
+        "implemented": false,
+        "source": "dpvo/fastba/ba_cuda.cu",
+        "source_sha256": "43813f87e191078102e5737575c5cceeee4fe607c54fa5a31f51c0aaf6311230",
+        "required_before_full_VO": [
+          "Preserve original (tx,ty,tz,qx,qy,qz,qw) SE3 action/relative transform and left retraction, with original small-angle branches.",
+          "Port exact center-patch reprojection residual/Jacobians, weight/depth validity rules and B/E/C/v/u assembly; preserve fixed-window and gauge semantics.",
+          "Port Schur elimination, depth damping and original diagonal regularization/cholesky behavior, including failure checks and sparse EfficientE equivalence.",
+          "Validate against independent finite-difference/tiny geometry references and then original real CUDA/CPU data if available; neural runtime alone does not validate BA."
+        ]
+      }
+    }
+  },
+  "production_changed": false,
+  "ORB_used": false,
+  "host_real_checkpoint_or_image_forward": false,
+  "code_license": "MIT; retained in adapted CPU operator helper",
+  "separate_checkpoint_license_verified": false,
+  "redistributes_weights_ONNX_RKNN_or_dataset": false
+}

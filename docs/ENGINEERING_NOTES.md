@@ -1,6 +1,6 @@
 # 可复用的工程问题记录
 
-这里记录移植中能够复现、值得复用的故障定位方法。v24 的 DA3-SMALL 是独立模型研究，原 VGGT 默认模型没有替换；ONNX 的 CPU 数值验证也不代表 NPU 或实时 SLAM 已通过。各条状态以链接中的固定源码、输入和收据为准。
+这里记录移植中能够复现、值得复用的故障定位方法。DA3-SMALL 和 DPVO 均是独立模型研究，原 VGGT 默认模型没有替换；ONNX 的 CPU 数值验证也不代表 NPU 或实时 SLAM 已通过。各条状态以链接中的固定源码、输入和收据为准。
 
 ## 1. 严格加载遇到 437 个存储键、443 个模型键
 
@@ -80,7 +80,7 @@
 - **根因证据：** 当前固定两视图 DA3 图中，pose 不依赖 DPT，但仍依赖全部 12 个 backbone block。按三份已编译 profile 的输出依赖归属，移除 depth 独占行约省 226–235 ms，pose 与共享行仍有 853–897 ms；再将这些行的 CPU 时间置零，NPU 余项仍约 673–675 ms。
 - **办法：** 分别核算新观测 pose 的依赖路径和低频 dense 分支，先验证实际 pose-only 图与原参考的数值、执行位置和完整调用时间，再讨论独立调度、可精确复用的输入计算及余下热点。
 - **验证边界：** 上述是保持其他 profile 行时间不变的反事实预算，不是硬件下界，也不是新图实测。不能把取消 DPT、缓存旧 pose 或固定输入的重复调用计成 20 Hz 新观测位姿；2–5 秒地图与 20 Hz/P95≤100 ms 须分别验收。该 DA3 研究也不代表默认 VGGT 已达到目标。
-- **链接：** [依赖与固定余项预算](../results/da3_budget_v25.json)（SHA `1b438ae9fc8a846a00efa7555b73f6ae618a14974ff519d10f7d4afa8392b13f`）。
+- **链接：** [依赖与固定余项预算](../results/da3_budget_v25.json)。
 
 ## 11. 消除 CPU Resize 前，先保留它的像素坐标语义
 
@@ -89,3 +89,35 @@
 - **办法：** 如进一步改写固定尺寸图，保留原坐标、边界和双线性权重；可研究分离的两轴 Gather 与加权和。先对原 CPU 参考使用既定 `rtol=1e-4`、`atol=1e-5`，再检查实际 placement 和完整时延，不能直接换成 `half_pixel`、nearest 或整数重复。
 - **验证边界：** 此改写尚未实现。运算顺序会影响舍入，Gather 也可能仍在 CPU，并增加中间缓冲；保持数学表达并不自动保证字节一致或更快。
 - **链接：** [原 Resize 属性与实际 profile](../results/da3_layout_v25.json)、[官方插值实现](https://github.com/ByteDance-Seed/Depth-Anything-3/blob/3d835ec1a5802d64a8b8b15f817a1ab54809bfe4/src/depth_anything_3/model/utils/head_utils.py)。
+
+## 12. 小模型也要先固定输入和完整权重契约
+
+- **现象：** 图像与权重都能加载，不代表输入或网络已经与作者版本一致。直接复用 VGGT 的 RGB、ImageNet 归一化、336 输入，或者对遗留 checkpoint 使用 `strict=False`，都可能产生看似正常的输出。
+- **根因证据：** 固定 DPVO 的 TUM reader 使用 `cv2.imread` 的 BGR uint8，先用原 K、五项畸变执行 `cv2.undistort`，再裁掉左右各 16、上下各 8 像素：原 `640×480` 变为 `608×464`，`cx=302.6, cy=247.3`。进入网络的公式是 `2*(image/255)-0.5`，范围为 `[-0.5,1.5]`，两个 encoder 输出还各除以 `4`。官方发布文件有 98 个张量，当前原始神经模块有 94 个；官方 loader 明确排除四个 `update.lmbda` 遗留键并移除 `module.` 前缀。
+- **办法：** 逐项固定 BGR、K/D、裁边、一次 FP32 归一化与 `/4`，保留原始连续帧及 PNG SHA。只允许这四个已知遗留键，逐 shape/dtype/参数字节核对剩余 94 键，再 `strict=True`。本次 98 键含 3,532,549 个元素，94 个推理键含 3,384,324 个元素；不能将差额当成漏载，也不能据此接受其他缺失键。
+- **验证边界：** 三个连续原始帧的 CPU capture、singleton-view 包装器与板端 CPU ORT 已形成对照链。原包装器输出字节一致，六个 ORT feature 数组在固定 `rtol=1e-4, atol=1e-5` 下均为零失败元素；独立保存数组审计 120 项通过。这里验证的是原神经 encoder 的 CPU FP32 路径，且未使用 GT 或传感器 depth；不是原完整 CUDA VO、NPU 或轨迹验收。eager/导出的差异也不能通过再归一化或放宽门限消除。
+- **链接：** [源码与权重来源](../results/dpvo_sources_v26.json)、[CPU/ORT/SDK 编码器证据](../results/dpvo_encoders_v26.json)、[官方 TUM reader](https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/evaluate_tum.py#L26-L51)、[官方归一化](https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/dpvo.py#L389)、[官方遗留键规则](https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/dpvo.py#L89-L101)。
+
+## 13. 自定义 CUDA 算子的 shape 相同，索引和展平顺序仍可能错
+
+- **现象：** CPU 版 correlation 也能输出 `[1,E,882]`，Update 也能正常运行，但交换 offset 或把两个 level 直接拼接，会改变已训练 FC 接收到的每个特征。
+- **根因证据：** `fastba.neighbors` 的本体先在 CPU 按 patch ID 分组，再对目标帧 ID 稳定排序，最后把结果搬回 CUDA。同目标 ID 的边须保留输入顺序，组边界使用 `-1`。correlation 核先算通道点积，再做四项双线性组合；越界采样为零，没有额外通道归一化。返回轴为 `(B,E,offset_x,offset_y,patch_y,patch_x)`。原 `CorrBlock` 对 `[1,4]` 两个 level 执行 `stack(...,-1)` 再展平，因此 **level 是最内层交错维度**，不是“level 1 的完整向量 + level 4 的完整向量”。
+- **办法：** 从原 C++/CUDA 和 Python wrapper 一起读取契约，用独立小张量验证稳定 ties、空组、边界、分数坐标、非方形 patch、offset 轴及 level 交错。邻居缺失时，原 Update 先将邻居输入乘零再送进有 bias 的 `c1/c2`；不能直接跳过这些 FC。分组 ID 保持 int64，不能转换为 FP32 后分组。保留原最大值平移的分组 softmax 和 scatter sum。
+- **验证边界：** 当前 CPU reference 通过 38 项纯合成检查，未实际执行 CUDA extension 作逐字节对照。浮点通道归约、FP16 累加和 FMA 顺序可能不同；“数学前向语义对照通过”不能改写为 GPU bitwise 等价，也不包含训练 backward/dropout。
+- **链接：** [CPU 算子与动态神经探针](../results/dpvo_motion_v26.json)、[邻居排序原实现](https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/ba.cpp#L61-L100)、[correlation 轴置换](https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/altcorr/correlation_kernel.cu#L198-L232)、[原两级展平](https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/net.py#L163-L175)。
+
+## 14. 神经 Update 的二维修正不是相机位姿
+
+- **现象：** encoder、相关性和原 Update 全部使用真实预训练权重成功运行，容易被说成已经移植了 learned VO，或把神经调用频率当作新观测 pose 频率。
+- **根因证据：** 原 Update 返回边的 hidden state、二维 `delta` 和二维 sigmoid `weight`。原完整链路必须先从当前姿态与 patch 几何重投影，再算相关性/Update，构造中心像素 `target=coords+delta`，最后调用 BA 更新 SE3 与逆深度。当前动态探针使用固定 identity 图、单位逆深度和预定边集合；它没有执行 BA，也没有建立持续的帧/关键帧图。三帧结果不会自动完成原 VO 初始化。
+- **办法：** 分开记录 encoder、patch 选取、correlation、分组/Update 和未来 BA 的时长与调用次数。明确当前输出是边的像素修正/权重，不输出假的 `Tcw`；固定 identity 场景是算子探针，不是轨迹。后续完整 VO 必须保留原初始化、几何重投影、关键帧/图状态、SE3 更新与失败语义；仍不能使用 ORB、LK/PnP 或补帧插值来代替要求的新观测位姿。
+- **验证边界：** 当前 CPU Torch reference 的 E=96 场景记录 correlation **710.015 ms**、Update **103.582 ms**；E=864 固定图记录 **6,018.016 ms** 与 **276.762 ms**。这是真实捕获 feature 上的参考实现时长，不是优化算法或硬件下界，不能据此推断任何更快实现必然失败。当前只可记录“板端三帧神经组件成功”，不能记录“完整 DPVO 成功”“20 Hz 位姿”“稠密地图达标”或“已替换原 VGGT”。SDK/混合执行还须分别报告 CPU 与 NPU 的实际算子、同步 I/O 和所有必要动态 CPU 工作；compiled target 表不能代替实际 profile。
+- **链接：** [动态神经探针与时长](../results/dpvo_motion_v26.json)、[原 Update 输出](https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/net.py#L74-L94)、[原重投影、Update 与 BA](https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/dpvo.py#L328-L354)。本地 `run-v26-dpvo-motion-board.py` 已显式设置 `BA_executed=false`、`valid_pose_output=false`、`tracked_trajectory=false`。
+
+## 15. 小参数量仍可能被 InstanceNorm 路径的 CPU 转置与输出 I/O 拖慢
+
+- **现象：** 两个 CNN 的 SDK 普通首帧后三次平均 **426.785 ms**，完整调用计入输入布局/提交、同步 run、两路 FP32 输出获取、拷贝及释放。CPU ORT 三帧此前约 **277–293 ms**。两个 CNN 合计仅 379,520 个参数（含 Update 的完整神经模块为 3,384,324 个）；当前短测仍没有证明混合 SDK 更快。
+- **根因证据：** 三份实际 profile 均为 **82 个内部 NPU、5 个内部 CPU Transpose、3 个 CPU I/O**，共 90 行。五个 Transpose 都出现在 fnet 前五处高分辨率 InstanceNorm 路径，由 `(1,32,232,304)` 变为 `(232,304,1,32)`；三次合计分别 **216.530 / 219.718 / 216.708 ms**。普通 run API 本身约 352–357 ms，不能当完整时延。两路原 FP32 feature 输出还共 **36,110,336 字节（34.4375 MiB）**，SDK driver 实际执行了 owned copy 与 release。这些是实际布局和 I/O 证据；尚不能由节点位置推断 InstanceNorm 本身不支持 NPU 或指定唯一编译根因。
+- **办法：** 优先研究保持原统计轴、eps、affine/default 语义的固定 InstanceNorm 图表示，检查能否避免这些布局转换；不能直接删 normalization 或换成有运行统计的 BatchNorm。次优先级是输出需求：原 Patchifier 对稠密 `imap` 只采样 96 个中心，FP32 context 为 **147,456 字节**，完整 `imap` 为 **27,082,752 字节**。可研究固定中心输入与仅返回采样 context，但保留完整 encoder、`/4`、坐标及双线性语义，稠密 `fmap` 仍供相关金字塔使用。先作原输出数值对照，再看实际 placement 与全调用时延；payload 减少不能自动解释成 FPS 提升。
+- **验证边界：** 六次普通 SDK 调用和三次独立 profile 已完成，尚不是持久吞吐或控制温度/频率的公平 benchmark。相对原 CPU 的固定 FP32 gate 全失败：三帧 `fmap` 相对 L2 为 **0.3802 / 0.3502 / 0.4135%**，`imap` 为 **0.0902 / 0.0995 / 0.0956%**；这些是 feature 差异，不是 VO 轨迹误差。两项图/输出优化均尚未实施，不能预设成功、全 NPU、精度通过或 20 Hz。profile 时长与普通均值分列，CNN 成功也不消除 correlation、Update、BA 和地图成本。
+- **链接：** [实际 SDK、CPU/ORT 与数值对照](../results/dpvo_encoders_v26.json)、[原 feature 缩放与采样](https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/net.py#L114-L147)、[官方默认 96 点 RANDOM](https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/config/default.yaml)。

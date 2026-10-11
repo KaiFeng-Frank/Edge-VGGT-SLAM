@@ -1,0 +1,176 @@
+{
+  "repo": "princeton-vl/DPVO",
+  "commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+  "default_branch": "main",
+  "retrieved_files": [
+    {
+      "path": "README.md",
+      "bytes": 6097,
+      "git_blob_sha1": "278db416cbbbbb76049a20fb15587ac26c73d184",
+      "sha256": "9691b756f3964455eead997448f93e2e78f852ce076a8157024d1b45f1ca3282",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/README.md"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1088,
+      "git_blob_sha1": "b567ea1f1def1d47479bbbaf0bc3bfb3a25a9417",
+      "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/LICENSE"
+    },
+    {
+      "path": "setup.py",
+      "bytes": 1342,
+      "git_blob_sha1": "86fe6caf7abef30dc527cf6de87615f49673a98a",
+      "sha256": "48c67bb89d46faae999ba98ac61fa6d965b0962365a0e5f3b74e4998cd02139e",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/setup.py"
+    },
+    {
+      "path": "download_models_and_data.sh",
+      "bytes": 521,
+      "git_blob_sha1": "04131fd34fbfd549eb8609370f36a70da157daaa",
+      "sha256": "a75998bead90e57611c4c78da24e196e51cfe998ba98a6a7eb17f9effdd3ef89",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/download_models_and_data.sh"
+    },
+    {
+      "path": "dpvo/net.py",
+      "bytes": 9019,
+      "git_blob_sha1": "96d9c1c18fa21db0b14fa724373f25d350b53301",
+      "sha256": "1aee33d54f0b1cc1f3f842b60790ff1299ef9c1e20bca6467ce7114dca802acc",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/net.py"
+    },
+    {
+      "path": "dpvo/dpvo.py",
+      "bytes": 17089,
+      "git_blob_sha1": "b6f4c5992d176844297718a33b459117bc27f4b6",
+      "sha256": "7efcb45689c2da8d18e2c69774e221799c9f8472e99531955f55dcb145626fd7",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/dpvo.py"
+    },
+    {
+      "path": "dpvo/altcorr/correlation.py",
+      "bytes": 2201,
+      "git_blob_sha1": "9b9d8d9d4b01fb603b9978c8788a717d7961b20c",
+      "sha256": "367fe95eff8c076b4ec3c4830ff9a9626a8bca4abadc9042a05bd3f58d577f4a",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/altcorr/correlation.py"
+    },
+    {
+      "path": "dpvo/fastba/fastba.py",
+      "available_in_pinned_tree": false
+    },
+    {
+      "path": "dpvo/config.py",
+      "bytes": 755,
+      "git_blob_sha1": "ec7c2f4eb2926d870d11f34bd40603e0480ede97",
+      "sha256": "f70eaf98ef32a7ea5a675de571373e32d0a6d1354bea9d13c6a779eb68f50bec",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/config.py"
+    },
+    {
+      "path": "dpvo/patchgraph.py",
+      "bytes": 4622,
+      "git_blob_sha1": "2ad26a690a93f17f2324ddd95acdc120b22a6f7d",
+      "sha256": "a2cef93f93c7aab83e8310ddf0207e248c62bc2eaae2a1158a305f3efccaef53",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/patchgraph.py"
+    },
+    {
+      "path": "dpvo/extractor.py",
+      "bytes": 8932,
+      "git_blob_sha1": "119141ea07368269e8fa42772d9da3bed8d90629",
+      "sha256": "f5cbcbe14c42e44bcec6e827a3429ebe93979a439ba9b9ef70d4f4baa3454a2b",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/extractor.py"
+    },
+    {
+      "path": "dpvo/blocks.py",
+      "bytes": 3199,
+      "git_blob_sha1": "9642de1088b29483b6fea355a04d7247f33b2330",
+      "sha256": "9c9e2848da524829374e56bb1b14a891e9e2c19bc683af8e958e8982ba33d661",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/blocks.py"
+    },
+    {
+      "path": "dpvo/fastba/__init__.py",
+      "bytes": 40,
+      "git_blob_sha1": "16ec66ade2ef4bc7b99673e0144a9e9a4bff2998",
+      "sha256": "27b90b01ebeb7cd5e51212e32d2fcf82416dc4fad8707c7a96e6d07b4d7ab605",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/__init__.py"
+    },
+    {
+      "path": "dpvo/fastba/ba.py",
+      "bytes": 328,
+      "git_blob_sha1": "d3095229ce1864808e6028b5690295ab41791b99",
+      "sha256": "dc108d12199e8a2f97a0b391f4b24e266e711d49eb20f0298ef692c7724a2e6c",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/ba.py"
+    },
+    {
+      "path": "dpvo/altcorr/correlation.cpp",
+      "bytes": 1879,
+      "git_blob_sha1": "7cd16793c8fc3381bde54a163145048e4ee0c560",
+      "sha256": "7d6e218c89a93edf98dbb88747bbc9633d77e6095c6225ab2094dd055d05ab98",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/altcorr/correlation.cpp"
+    },
+    {
+      "path": "dpvo/altcorr/correlation_kernel.cu",
+      "bytes": 11555,
+      "git_blob_sha1": "f4faa73863c071e126e62a77bffb6bcc98f8d55b",
+      "sha256": "85667383d879c9093cee5b88ae231f562d98e751b4a549917ebda105a1a291e0",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/altcorr/correlation_kernel.cu"
+    },
+    {
+      "path": "dpvo/fastba/ba.cpp",
+      "bytes": 5415,
+      "git_blob_sha1": "7fb106c9bdee0046df96c6534f30514c22e1d9c0",
+      "sha256": "cb0514d680cb1e44ba511cb82dde441fe35998f36706cc73322715f9706ed82f",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/ba.cpp"
+    },
+    {
+      "path": "dpvo/fastba/ba_cuda.cu",
+      "bytes": 18610,
+      "git_blob_sha1": "21de38925a03c99bc49a13829d148bac8e657157",
+      "sha256": "43813f87e191078102e5737575c5cceeee4fe607c54fa5a31f51c0aaf6311230",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/fastba/ba_cuda.cu"
+    },
+    {
+      "path": "config/default.yaml",
+      "bytes": 377,
+      "git_blob_sha1": "677e7c29f9f9ded923c66d2359808007f8a9533f",
+      "sha256": "0351abfbc60d9ec93bf402857130497b2f063f8ce0e8fd6e87cc55c73273594a",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/config/default.yaml"
+    },
+    {
+      "path": "config/fast.yaml",
+      "bytes": 376,
+      "git_blob_sha1": "17152701a7466bfedb3e42da10aae6f59ec95427",
+      "sha256": "24c82450151ce6e8431dfbf9dcc501a7a2747955a30a59f745bdc03bd84ce4c3",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/config/fast.yaml"
+    },
+    {
+      "path": "dpvo/loop_closure/retrieval.py",
+      "available_in_pinned_tree": false
+    },
+    {
+      "path": "demo.py",
+      "bytes": 3498,
+      "git_blob_sha1": "9cca9c2a4cd982aa2653f053c7801460c8ff2132",
+      "sha256": "5b7ddd33e79f8a14d0f75a29d6e9c8e76d54d6f2de5eac2cc7555d74f27d1f07",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/demo.py"
+    },
+    {
+      "path": "evaluate_tum.py",
+      "bytes": 5598,
+      "git_blob_sha1": "f9f4c127830a979ecae299fb0a93ea7d4b287ede",
+      "sha256": "2548c77758885daa7c527cd7584aceb343442beefdc18ebdd07a1c6fc15fd1e6",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/evaluate_tum.py"
+    },
+    {
+      "path": "evaluate_euroc.py",
+      "bytes": 4694,
+      "git_blob_sha1": "9f44e0d52f0c42b39dc713fa23c143b45a05d943",
+      "sha256": "7ed032a3c774d97aee5faaed23ba0a6bc9050134369c167cb9d85926eaae3a70",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/evaluate_euroc.py"
+    },
+    {
+      "path": "dpvo/projective_ops.py",
+      "bytes": 3560,
+      "git_blob_sha1": "24ad43ae029f6a3a9fa6df2e79ab3a1fdfca069d",
+      "sha256": "ef20f322a118b0790bff975cce3120ad31e867c8b088a9f408c3328c0fb664c1",
+      "url": "https://github.com/princeton-vl/DPVO/blob/0ac95b656d1fda91c271d2a106460d19ad966fc7/dpvo/projective_ops.py"
+    }
+  ]
+}
