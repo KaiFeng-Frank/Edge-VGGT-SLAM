@@ -22,6 +22,8 @@ The v28 [Update export adapter](deploy/rk3588/validation/dpvo_update_export.py) 
 
 The v29 vectorized assembler, fixed-graph ORT feedback driver and independent geometry auditors remain in that MIT-attributed geometry directory. The graph-expression experiments preserve external pretrained parameters; source publication does not redistribute or relicense those parameters.
 
+The v30 [fresh-observation lifecycle and encoder adapters](deploy/rk3588/validation/dpvo_stream/README.md) retain the same pinned DPVO attribution and adjacent [MIT license](deploy/rk3588/validation/dpvo_stream/LICENSE). This optional CPU research preserves original neural weights externally; its source publication and saved-trajectory diagnostics do not establish a weight redistribution or commercial license, or replace the default VGGT model.
+
 Package download manifests identify upstream distribution artifacts; a manifest does not grant a different license to those packages.
 
 ## Co-Me research subset

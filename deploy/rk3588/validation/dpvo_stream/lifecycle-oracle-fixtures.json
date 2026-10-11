@@ -1,0 +1,59 @@
+{
+  "status": "passed_tiny_synthetic_only",
+  "checks": [
+    {
+      "name": "forward_then_backward_patch_outer_target_inner",
+      "passed": true
+    },
+    {
+      "name": "eight_admitted_frames_have_6144_edges_including_768_self_edges",
+      "passed": true
+    },
+    {
+      "name": "initialization_topology_has_every_patch_target_pair_once",
+      "passed": true
+    },
+    {
+      "name": "initialization_append_counts",
+      "passed": true
+    },
+    {
+      "name": "lifetime13_window_uses_slots1_through13",
+      "passed": true
+    },
+    {
+      "name": "append_preserves_old_recurrent_rows_and_zeros_new_rows",
+      "passed": true
+    },
+    {
+      "name": "middle_delete_remaps_patch_source_target_and_preserves_source_identity",
+      "passed": true
+    },
+    {
+      "name": "inactive_source_age_removal_is_strict_less_than_n_minus22",
+      "passed": true
+    },
+    {
+      "name": "depth_torch_median_is_lower_middle_not_numpy_median",
+      "passed": true
+    },
+    {
+      "name": "motion_dt_uses_all_observations_even_rejected",
+      "passed": true
+    },
+    {
+      "name": "deleted_world_to_camera_reconstruction_left_multiplies_parent",
+      "passed": true
+    },
+    {
+      "name": "translation_only_flow_retains_relative_translation_after_pose_composition",
+      "passed": true
+    }
+  ],
+  "check_count": 12,
+  "model_forward_calls": 0,
+  "real_input_used": false,
+  "board_jobs": 0,
+  "scope": "Integer topology, median convention, timestamp choice and tiny SE3 matrix algebra only.",
+  "fixture_source_sha256": "1af1af1c9c0c306679fcfd4616458010b844028cfb81f91874309243f6e47ce8"
+}

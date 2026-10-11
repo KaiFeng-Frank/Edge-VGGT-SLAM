@@ -14,6 +14,16 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
 
+## Fresh-observation learned VO research (v30)
+
+An optional DPVO CPU research replay now processes the first **192 consecutive TUM fr1_xyz RGB frames entirely on RK3588S**, preserving the original learned frontend's motion admission, eight-view initialization, recurrent graph and keyframe deletion. It uses original CPU ORT encoders, the original Torch Update at changing graph sizes, native CPU correlation and the online BA equations. It adds no ORB/LK/PnP pose frontend and leaves the default VGGT mapper unchanged.
+
+The 16 GB board produced **179 fresh-observation poses**, removed 169 historical keyframes and finished with 17 retained frames and 23,520 active edges. Replay took **699.765 s** for 6.368 s of source video; fresh output averaged **0.256 Hz** and software processing P95 was **6.655 s**. Separate EOF optimization took **71.088 s**, and peak process RSS was **1,369.723 MiB**. This is an unpaced CPU baseline, not accepted real-time, camera, NPU, dense-mapping, endurance or 8 GB performance. [Board provenance, failed startup, complete lifecycle and cleanup audit](results/dpvo_stream_v30.json).
+
+Post-run GT analysis reports **1.085 cm Sim3-aligned ATE RMSE** for the 179 online poses and **0.969° rotation RPE RMSE** on 149 of 162 predeclared one-second endpoint pairs. The separately aligned EOF reconstruction covers all 192 observations and has 1.066 cm ATE RMSE; reconstructed observations do not count as fresh. This short prefix uses GT scale alignment and has no independent original CUDA or full-VGGT trajectory baseline, so it does not establish metric online scale or the accuracy-loss target. [Separate trajectory populations and coverage](results/dpvo_trajectory_v30.json).
+
+The [implementation and reproduction contract](deploy/rk3588/validation/dpvo_stream/README.md), [88 passing targeted synthetic checks](results/synthetic_tests_v30.json) and engineering records 31–35 document the new lifecycle, cache index domains, timing definitions, startup manifest fix and thermal confounding. No model weights or dataset files are published.
+
 ## Model execution and SLAM backend (v21)
 
 `ModelExecutor` separates hardware-specific inference from submap construction and SL4 optimization. It receives the already-preprocessed CPU RGB batch and returns canonical camera matrices, depth and confidence. The original `TorchVGGTExecutor` owns device transfer, the model call and pose decoding; `Solver` uses this interface for both normal prediction and loop verification. Another NPU can implement the same contract without exposing Torch parameters. Unsupported requests and device errors must fail explicitly.
