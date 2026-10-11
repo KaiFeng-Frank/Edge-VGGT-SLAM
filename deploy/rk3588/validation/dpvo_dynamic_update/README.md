@@ -32,3 +32,11 @@ There is no NPU, physical-camera latency, fresh-pose rate, dense-map, loop-closu
 The [129 passing targeted synthetic tests](../../../../results/synthetic_tests_v31.json) cover topology/ownership, fake runtime contracts, tiny generated dynamic graphs, comparison scheduling and saved-array audit rejection. Their success validates these test cases; the actual model's failed FP32 gate remains separate.
 
 DPVO-derived code retains the adjacent [MIT license](LICENSE), Copyright (c) 2022 Princeton Vision & Learning Lab. That code license does not license the external checkpoint or its ONNX/RKNN derivatives. [Weight and artifact licensing](../../../../MODEL_LICENSES.md) remains separate.
+
+## Source-frame layout plan (v32; no new neural execution)
+
+`source_frame_plan.py` checks the complete source-frame Cartesian product and copies between original `[B,E,C]` edge order and canonical `[B,D,M,C]` order. Each source must retain every patch and every target edge, with `ii == kk // M`; integer domains exclude original `ii*12345+jj` collisions. Missing/duplicate rows, mixed ownership and capacity overflow are rejected. Inputs must remain stable during construction, for example through an owner-held graph snapshot. Returned indices and copied values have independent ownership.
+
+For the saved 23,520-edge graph, all 17 source blocks satisfy these conditions. The plan closes both group dependencies and neighbor links, but it is not a neural wrapper or a finite/dtype/state-commit validator. A future executor must preserve c1/c2 ordering and boundary bias, validate every block against the same graph revision, restore original edge order and commit only after all blocks succeed. Total original Linear work remains 63.7695 GMAC; no new export, RKNN invocation or block speedup was measured.
+
+The [saved-array Where diagnosis and implementation contract](../../../../results/dpvo_update_plan_v32.json) separate measured failures in an instrumented graph from hypotheses about the original graph. The tiny layout tests use only generated integers/arrays and are included in [v32 validation](../../../../results/synthetic_tests_v32.json). The adjacent MIT license applies to this source adaptation; checkpoints and binaries remain external.

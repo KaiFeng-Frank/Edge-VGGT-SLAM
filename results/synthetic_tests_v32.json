@@ -1,0 +1,37 @@
+{
+  "kind": "v32_public_targeted_synthetic_validation",
+  "status": "passed",
+  "exit_code": 0,
+  "command": [
+    "<host-home>/miniconda3/envs/ctvggt/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/dev/shm/vggt-v32-dpvo-encoder/pytest-public-r1",
+    "tests/test_v32_encoder_audit.py",
+    "tests/test_v32_encoder_diagnostic_compile.py",
+    "tests/test_v32_encoder_runtime.py",
+    "tests/test_v32_source_frame_plan.py"
+  ],
+  "output": "...........................................                              [100%]\n43 passed in 0.16s\n",
+  "scope": "Four tiny generated metadata/integer/numeric-array modules and fake SDK ABI checks. No original checkpoint, actual image, real-model forward/ORT session, RKNN compile, BA or board work.",
+  "test_source_sha256": {
+    "tests/test_v32_encoder_audit.py": "06897f96567cf90fb0d78f484f052d8c4cd69224f0e59fd9a2aa731d57931028",
+    "tests/test_v32_encoder_diagnostic_compile.py": "482c5478fba47353e1069d7bc08d693a9dd5330789a3458093ee1130363831a8",
+    "tests/test_v32_encoder_runtime.py": "39879a42c6f586e313d1fcf02646a00f1373e5bab5965bf51033cdb889cae77a",
+    "tests/test_v32_source_frame_plan.py": "2616ea9adc066766718dd817b663270414e293dd6750cf87699fdb7e4cbf2ef9"
+  },
+  "implementation_source_sha256": {
+    "deploy/rk3588/validation/dpvo_encoder_opt/audit-v32-dpvo-encoder.py": "06345e02589fb349cc6c4e52f0c8df6d0f585d902bab9a5ed95540969dfd5620",
+    "deploy/rk3588/validation/dpvo_encoder_opt/compile-v32-dpvo-encoder-diagnostic.py": "364d3493f9fe13789b449c0836c37d0eedca71cdbde71e10e28723ec88d1b003",
+    "deploy/rk3588/validation/dpvo_encoder_opt/run-v32-dpvo-encoder-board.py": "aca819f85bc2cb0f7f7e6f517745eeda4202dfac48f996a96729b564c19d99ff",
+    "deploy/rk3588/validation/dpvo_dynamic_update/source_frame_plan.py": "04e240c2c35bd1359dbe5649fb038490a0a7ff99654d8d112ad7c83acc87ac2e",
+    "deploy/rk3588/validation/run-v26-dpvo-rknn-board.py": "895ac2902a66c68048c03e98f353300c7065e7568047479db4fee2f9a80a33d3",
+    "deploy/rk3588/validation/audit-v26-dpvo-rknn.py": "22b5b2ce0f6e86e9351f6337486f96d649964de6447d5556dd55fee5946d6d65"
+  },
+  "passed": 43,
+  "skipped": 0
+}

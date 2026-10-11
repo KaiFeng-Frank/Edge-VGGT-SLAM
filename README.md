@@ -14,6 +14,12 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
 
+## Encoder layout investigation (v32)
+
+An explicit diagnostic of the already FP32-rejected DPVO spatial InstanceNorm rewrite reduced same-input RKNN encoder warm calls from **419.830 ms to 207.028 ms** on RK3588S. This short AB/BA/AB comparison has two warm samples per method. **Both graphs still fail the original strict FP32 gate; the candidate is not adopted and no trajectory was run.** The default VGGT mapper remains unchanged.
+
+Separate profiles show 159 internal NPU operators and three CPU I/O operators, with no internal CPU Transpose. Full SDK output retrieval still costs about 65 ms in those profiles, despite CPU I/O operator rows totaling less than 1 ms. The [implementation and evidence](deploy/rk3588/validation/dpvo_encoder_opt/README.md) preserve complete-call timing, original failures and saved-array checks. [Engineering records 40–43](docs/ENGINEERING_NOTES.md) cover this distinction, the measured layout improvement, a saved-tensor Where failure and the limits of dependency-preserving Update partitioning. These component results do not establish real-time SLAM.
+
 ## Dynamic Update investigation (v31)
 
 A single CPU ONNX Update now executes on changing real graph sizes on RK3588S, preserving the original DPVO weights. Its static shape/parameter audit passes, but **the existing FP32 numerical gate fails**: the 14-frame streaming diagnostic stopped during initialization with zero fresh poses, and a separate 23,520-edge comparison rejected one of two saved states. All measured outputs remained finite with confidence in [0,1]. No ordinary candidate trajectory was run, and the default VGGT model remains unchanged.
