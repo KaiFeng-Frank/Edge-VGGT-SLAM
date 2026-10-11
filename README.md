@@ -14,13 +14,29 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
 
+## Recurrent RKNN research and lifecycle coverage (v41)
+
+The optional DPVO research path now feeds complete RKNN Update outputs back into the original online lifecycle, with either the original CPU encoder or the half-resolution RKNN encoder. Both instrumented file replays processed all **192 observations and published 158 fresh poses**. **Both entire runs remain failed:** the first offline EOF Update requires the unsupported `B1_D3_M16` shape. Its complete inputs were saved and execution stopped, without padding, edge removal or a Torch fallback. Startup D1 motion probes have a separate explicit original-Torch route.
+
+| Same predeclared half-resolution policy | Fresh poses / active replay | Fresh software latency P95 | Entire run |
+| --- | ---: | ---: | --- |
+| Original CPU network, exact cached preprocessing | 1.476 Hz | 764.036 ms | Completed research replay |
+| CPU encoder, RKNN complete Update | 1.421 Hz | 725.280 ms | Failed at EOF |
+| RKNN encoder and complete Update | 2.602 Hz | 411.798 ms | Failed at EOF |
+
+The clocks include image decoding, preprocessing, complete correlation/Update/BA, instrumentation and event flush; model loading precedes replay, and EOF is separate. These are serial, unpaced dataset measurements on the 16 GB board, not physical-camera or queue latency. Separate thermal histories prevent a controlled speedup claim. **Historical tensor precision rejection and the workload's quality rejection remain; default VGGT is unchanged.** Model calls used the board, and host compilation used no calibration or real model forward. [Sources and reproduction](deploy/rk3588/validation/dpvo_online_replay/README.md), [measurements and saved evidence](results/dpvo_online_update_v41.json), [engineering records 72 onward](docs/ENGINEERING_NOTES.md).
+
+On 158 common fresh observations, the two-RKNN-stage run has ATE RMSE **1.968 cm versus 1.113 cm (+76.92%)** for original full-resolution FAST CPU; translation and rotation RPE also regress. The CPU-encoder/RKNN-Update run has ATE **2.800 cm**. Component tensor error does not predict recurrent trajectory error, and neither experiment meets the accuracy target. These are DPVO comparisons, not an original-VGGT quality result.
+
+The preprocessing change itself preserved all 192 non-clock CPU results, the shared RNG and 55 saved-array pairs exactly. Faster preprocessing did not make that separate full CPU replay faster. The new lifecycle failure also shows why an online-only shape catalogue is insufficient for termination. Sustained accurate 20 Hz, map updates, endurance and 8 GB acceptance remain unresolved.
+
 ## Complete M16 Update measurements and deployment coverage (v40)
 
 All eight actual M16 shapes now execute on RK3588S. The three saved complete Update graphs measure **61.294 / 68.482 / 71.344 ms** mean warm calls, including snapshots, packing, SDK I/O, output ownership and original-edge restoration. **All original FP32 tensor gates still fail.** These fixed-state diagnostics omit recurrent tracking, correlation, BA and pose publication; they do not establish a new trajectory or real-time rate. The v39 workload's accuracy rejection remains in force. [Implementation and reproduction](deploy/rk3588/validation/dpvo_m16_grouped/README.md), [actual compilation, SDK and saved-array evidence](results/dpvo_m16_grouped_v40.json).
 
 The eight tested shapes do not cover all 13 shapes in the saved CPU trajectory. Splitting only independent complete source batches can reduce the required model catalogue, but increases SDK calls and still needs two new shapes plus an explicit motion-probe route. [Engineering records 69–70](docs/ENGINEERING_NOTES.md) preserve the measured costs and coverage limits. Default VGGT and separate code/weight licensing remain unchanged.
 
-A separate preprocessing optimization reuses the original fixed undistortion maps and combines 80 remap calls into one. All **192 board-processed images and normalized inputs match byte for byte**. Same-image interleaved measurements reduce preprocessing, excluding image decoding, from **12.764 to 6.672 ms** with 1.84 MB retained maps. It is not yet integrated into a new full VO replay. [Implementation and source attribution](deploy/rk3588/validation/fixed_undistort/README.md), [board measurements and saved-array checks](results/fixed_undistort_v40.json), [engineering record 71](docs/ENGINEERING_NOTES.md).
+A separate preprocessing optimization reuses the original fixed undistortion maps and combines 80 remap calls into one. All **192 board-processed images and normalized inputs match byte for byte**. Same-image interleaved measurements reduce preprocessing, excluding image decoding, from **12.764 to 6.672 ms** with 1.84 MB retained maps. At the v40 stage it had not been integrated into a full VO replay; v41 above records the subsequent exact CPU integration. [Implementation and source attribution](deploy/rk3588/validation/fixed_undistort/README.md), [board measurements and saved-array checks](results/fixed_undistort_v40.json), [engineering record 71](docs/ENGINEERING_NOTES.md).
 
 ## Workload reduction and measured quality cost (v39)
 

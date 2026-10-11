@@ -1,0 +1,129 @@
+{
+  "schema": "v41_publication_content_review",
+  "status": "passed",
+  "changed_text_files_checked": 28,
+  "local_markdown_links_checked": 249,
+  "checks": [
+    "UTF8 text only allowlist",
+    "Python AST/JSON parsing/shell syntax",
+    "relative Markdown file links",
+    "private key and common credential token patterns",
+    "no model/NPZ/SDK/data binaries in staged files"
+  ],
+  "files": {
+    "README.md": {
+      "sha256": "602b1f6363941a90860c56828ac775cf06cd064ba3c3cd31abb9c80c9234243d",
+      "bytes": 92293
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/LICENSE": {
+      "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
+      "bytes": 1088
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/README.md": {
+      "sha256": "d9ae38d86b83115e7cc7b5d0a9196b95990f35e2287aba6b242217256bf02447",
+      "bytes": 9808
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/audit-v41-cached-cpu.py": {
+      "sha256": "dc41a379c4f3d5ef3bb6ce8a628b85c5d22cc0111ea24a80a33ed4015524830e",
+      "bytes": 4212
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/audit-v41-missing-export.py": {
+      "sha256": "ef260b374a31848acf0547a61604ec76d7301a4d04e3c8c3186678ec473c8b50",
+      "bytes": 14346
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/audit-v41-online-saved-arrays.py": {
+      "sha256": "8b1104eaa9a24e69ca457a54b06dc346fd332874e70921beeec806da98864d55",
+      "bytes": 13954
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/board-config.json": {
+      "sha256": "2293381c0f7b069e3c07f9f03e89d3fa27f9ad951022663e1dc0c1314c0a7d5c",
+      "bytes": 2449
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/compile-v41-m16-online-update.py": {
+      "sha256": "4ddab438d294172380876d82ae1e6fd7a4f52ed797f901248fec492d331f2ff1",
+      "bytes": 8951
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/constructor-kwargs-board.json": {
+      "sha256": "4a375d6ab7b184b3e2c3af61376b298ce66cb2977471693177d9d2e808d62d38",
+      "bytes": 1217
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/evaluate-v41-online.py": {
+      "sha256": "3a2d2837390fc00572d9ebadf3011eabbf3f753619b33a06fd43773374a47f85",
+      "bytes": 21314
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/export-v41-m16-missing-source-board.py": {
+      "sha256": "350294c45f2a78f77daa376b3e24cac7443a11d1cb1d83b6a51b6f3bde6669a9",
+      "bytes": 20036
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/run-v41-cached-cpu-board.py": {
+      "sha256": "18ad8f7bc3cc48790d2329b35372fd77473942c698cd3e7e291298194e498c2d",
+      "bytes": 18275
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/run-v41-online-npu-board.py": {
+      "sha256": "73f5a4c011d957f95d8d8e54687a167709f22cc6104611a7d62bf7b4f68ea6d9",
+      "bytes": 29235
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/test_v41_failed_eof_evaluation.py": {
+      "sha256": "01b6e2caf1c03e6c851df9b95f4254b918851075e7ef88b80780ad7ec01169bb",
+      "bytes": 5159
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/test_v41_half_rknn_encoder.py": {
+      "sha256": "5d8f5d3d6f37cf3a94c7aa8ed740bec83062f9922820539752a46b08e3d454d7",
+      "bytes": 16712
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/test_v41_missing_saved_audit.py": {
+      "sha256": "4fa7923fc594159c5270935c2915072ee908f3ad2af5f7cb1933da7b9bd1e995",
+      "bytes": 1834
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/test_v41_missing_source_export.py": {
+      "sha256": "3d53742597d6bb5308ab74a079010a3252c7ca87a203cb436d3ac73f767ff49c",
+      "bytes": 6628
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/test_v41_online_compiler.py": {
+      "sha256": "2452a7e91ec2df42a5427a90f9f42457895fe2af989d8b1cc2fedfdcde8ece17",
+      "bytes": 4856
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/test_v41_online_evaluation.py": {
+      "sha256": "5ed23dd9c246750b147201ae9e352a97204c9c85ebbfbba2c89fdb4f633b7bf2",
+      "bytes": 3115
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/test_v41_online_update.py": {
+      "sha256": "cf0a3b7a296c5a47da90da2a7fd3d4af04d775d9a094bf8056eb8d0b39d62751",
+      "bytes": 10178
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/v37_grouped_contracts.py": {
+      "sha256": "aa9e6af938f64ae4a4a82ffc84b487321fff208547703b0d65646c72b96d85c9",
+      "bytes": 10936
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/v40_m16_grouped_contracts.py": {
+      "sha256": "7be6bf750dabb8a3d88464fd1502bde3bf7690596a39791710cf41a9f8cb62fe",
+      "bytes": 14085
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/v41_half_rknn_encoder.py": {
+      "sha256": "ebe62f848421ffb97262f1c70b5e1af95e7e6f0db0ca6b66850797dd9f89a52f",
+      "bytes": 17533
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/v41_online_contracts.py": {
+      "sha256": "3533d791978085216c4a28cfae45d2c8ce9e2d62a8862efbf66db02d34be5e21",
+      "bytes": 15846
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/v41_online_factory.py": {
+      "sha256": "e942d769dd02f37ad0e7eb154f44f1a48e7ab748044f7acff9f0f49f8f7be2c4",
+      "bytes": 5897
+    },
+    "deploy/rk3588/validation/dpvo_online_replay/v41_online_update.py": {
+      "sha256": "c7caef0c76673cd4511aa1a4c8a8a5427bfee691e1964227d782d0d6f26554eb",
+      "bytes": 14187
+    },
+    "docs/ENGINEERING_NOTES.md": {
+      "sha256": "544656547aea38dee00f3380d0a75878aa8053cd6704772bdc3c0cbdab2d8c33",
+      "bytes": 137772
+    },
+    "results/dpvo_online_update_v41.json": {
+      "sha256": "5e7adaebc84c7562b7f4ce74551732df47920d4b14ab8cd854a816424ebff64c",
+      "bytes": 43465606
+    }
+  },
+  "candidate_accepted": false,
+  "realtime_validated": false
+}
