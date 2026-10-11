@@ -14,13 +14,21 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
 
+## Quantized layout regressions and complete grouped Update (v37)
+
+The original sparse INT8 encoder now has actual board deployment evidence: **429.429 ms** warm complete SDK calls, with about **280 ms in ten CPU Transpose operations**. A spatial rewrite removes those CPU transposes but its INT8 graph falls back to full-tensor CPU Div, regressing to **905.223 ms**. Both fail the unchanged original FP32 gate. These are separate small component runs, with no controlled speedup or real-time claim. [Original INT8 evidence](results/dpvo_encoder_int8_v37.json), [spatial PTQ and deployment](results/spatial_encoder_ptq_v37.json), [reproduction contract](deploy/rk3588/validation/dpvo_encoder_int8/README.md).
+
+Three complete M48 Update states ran grouped Torch/ORT on RK3588S, preserving all 50 original parameters. A few delta elements fail the fixed FP32 tolerance despite relative L2 around 1e-6. The actual **B8/D8/M48 initial graph** also ran RKNN: warm complete SDK calls average **174.289 ms**, still numerically rejected; the later two larger graphs have not run RKNN. [Sources, exact scope and evidence](deploy/rk3588/validation/dpvo_grouped_update/V37.md).
+
+The most recent complete fresh-pose replay remains **0.665 Hz** from v36. No new full trajectory, camera or endurance claim is made. [Engineering records 59–62](docs/ENGINEERING_NOTES.md) preserve the layout bottleneck, full-group precision rejection, list-identity guard and quantized Div fallback.
+
 ## Per-frame cache, board PTQ and complete Update capture (v36)
 
 A per-frame correlation cache avoids rebuilding unchanged historical features. Its board AB outputs match the old cache bitwise. The complete optional DPVO FAST replay produced **179 fresh poses in 269.215 s (0.665 Hz)**, with fresh software P95 **2.170 s** and peak RSS **949.781 MiB**. Poses and lifecycle results match v35 exactly; separate runs were not temperature/frequency controlled. **Real-time acceptance remains unmet and the encoder FP32 rejection remains.** [Code, component/full replay evidence and audits](deploy/rk3588/validation/dpvo_frame_cache/README.md).
 
 An isolated ARM environment now completes actual **board-CPU PTQ calibration/build** in 60.291 s using 32 predeclared, nonoverlapping calibration frames from the same sequence. Native initialization/query/destruction confirms INT8 image/feature ports and preserved INT64 indices. This is not deployment inference, precision, internal INT8 coverage or performance acceptance. [Toolchain, calibration and query evidence](results/board_ptq_v36.json).
 
-Three original complete M48 Update states now have same-call input/gold captures, with **3,072 / 7,248 / 10,128 edges**. Saved-array audits verify grouping and restoration, but real grouped Torch/ORT/NPU execution remains unmeasured. [Capture and grouping contract](deploy/rk3588/validation/dpvo_grouped_update/RUN.md). [Chinese engineering records 55–58](docs/ENGINEERING_NOTES.md) document the tool runtime-library failure, calibration/IO contracts, cache ownership and full-graph validation. No model/data binaries are published; default VGGT and the separate weight-license boundaries remain unchanged.
+Three original complete M48 Update states now have same-call input/gold captures, with **3,072 / 7,248 / 10,128 edges**. At this v36 stage, saved-array audits verified grouping and restoration; subsequent grouped Torch/ORT and initial B8 NPU execution are reported in v37 above. [Capture and grouping contract](deploy/rk3588/validation/dpvo_grouped_update/RUN.md). [Chinese engineering records 55–58](docs/ENGINEERING_NOTES.md) document the tool runtime-library failure, calibration/IO contracts, cache ownership and full-graph validation. No model/data binaries are published; default VGGT and the separate weight-license boundaries remain unchanged.
 
 ## End-to-end NPU encoder diagnostic and engineering records (v35)
 
@@ -30,7 +38,7 @@ On the same 179 common-fresh observations, a single evaluation-only Sim3 per run
 
 A separate channel-first source-block Update preserves the CPU/ORT gate and produces two-state warm SDK means of **54.287 / 66.368 ms**. Actual RKNN profiles still contain six NPU Transpose operations and three internal CPU operations; the original FP32 gate fails. This is a D10/M96 component experiment, not the Update used by the full M48 replay. [Implementation and measured boundaries](deploy/rk3588/validation/dpvo_source_frame_channel_first/README.md).
 
-The [board-only INT8 preparation](deploy/rk3588/validation/board_ptq/README.md) records a separate deployment issue: quantization calibration itself executes the model, and the pinned ARM toolkit has different Torch requirements from the host toolkit. At the v35 stage, only the isolated ARM dependency plan and guards were prepared. Subsequent actual installation/calibration and native IO query are reported in v36 above; INT8 deployment inference remains unvalidated. [Preparation evidence](results/board_ptq_preparation_v35.json). [Engineering records 51–54](docs/ENGINEERING_NOTES.md) preserve these findings and their limits.
+The [board-only INT8 preparation](deploy/rk3588/validation/board_ptq/README.md) records a separate deployment issue: quantization calibration itself executes the model, and the pinned ARM toolkit has different Torch requirements from the host toolkit. At the v35 stage, only the isolated ARM dependency plan and guards were prepared. Subsequent actual installation/calibration and native IO query are reported in v36 above; Subsequent INT8 deployment inference and its rejection are reported in v37 above. [Preparation evidence](results/board_ptq_preparation_v35.json). [Engineering records 51–54](docs/ENGINEERING_NOTES.md) preserve these findings and their limits.
 
 ## FAST replay and SDK output investigation (v34)
 

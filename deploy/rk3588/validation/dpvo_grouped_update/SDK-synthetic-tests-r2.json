@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "synthetic_only": true,
+  "actual_model_OR_ORT_SDK_execution": false,
+  "command": [
+    "/home/frank/miniconda3/envs/ctvggt/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/run/user/1000/edge-vggt-v37/grouped_sdk/pytest-portable-r2",
+    "test_v37_grouped_sdk.py"
+  ],
+  "cwd": "/run/user/1000/edge-vggt-v37/grouped_sdk",
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "TMPDIR": "/run/user/1000/edge-vggt-v37/grouped_sdk"
+  },
+  "exit_code": 0,
+  "wall_seconds": 0.6427538758143783,
+  "stdout": ".................................                                        [100%]\n33 passed in 0.12s\n",
+  "stderr": "",
+  "source_sha256": {
+    "compile-v37-grouped-update.py": "fb3a6e9eed9a4bc3f8490f0cf61c7ef5d5f4f4eff065bb9d9f057de97fb9cdd1",
+    "v37_grouped_contracts.py": "aa9e6af938f64ae4a4a82ffc84b487321fff208547703b0d65646c72b96d85c9",
+    "v37_grouped_rknn.py": "55d7b04e782a687fedb6475b8388a12d52361cc56b1a7f260537bd3e1d679d1d",
+    "test_v37_grouped_sdk.py": "6031ddd3b199db8b9ea679f99c96fa467667c3a1a6aafa4f521b4ba5ef7df99d"
+  },
+  "parent_receipt_sha256": "e5e7c36bd477da0090a28ba338fe7ce3516ed0f1ff556696a1e6537d6c5e124c",
+  "parent_test_copy_sha256": "d99d2d4c142974c8820edc20b1e0588fa3a9c6916a0c3b26bb7d4cfda769f646",
+  "delta": "Test harness source resolution only: environment override, existing public-relative helper/ABI/adapter, then original research directory fallback. Frozen compiler/contracts/runtime unchanged.",
+  "limits": [
+    "Generated arrays/fake SDK only; actual ABI file imported for ctypes definitions, no hardware library loaded."
+  ]
+}

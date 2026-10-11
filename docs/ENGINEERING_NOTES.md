@@ -539,3 +539,48 @@ preparation/query 是 correlation 的嵌套项，不再次相加。两次不是�
 **可复用合同：** 每个源帧保留全部 D 个目标与 48 个 patch；只把相同 D 的完整源帧组装成 `[B,C,D,48]`，不补零、不删邻居、不跨源归约。实际三图分别产生 **1 / 5 / 10 个桶**，初始化图可以是真实 B8/D8/M48。每桶的输出先暂存，确认快照身份未变、所有桶成功后才按原边序整体还原；失败时不提交部分 recurrent 状态。geometry/features/graph 的 revision 是捕获器根据实际内容建立的序号与哈希，不冒充原 core 没有暴露的全局地图 revision。
 
 **验证与边界：** 保存数组独审 **242 项通过**，重读全部六个文件、核 file/raw SHA、`inp == frame_contexts[kk]`、完整拓扑与分桶后原边序 round-trip。它没有重新执行原 gold，也没有执行真实分组 Torch/ORT/SDK。三个完整图仅原 Linear 的静态预算就有 **8.359 / 19.680 / 27.492 GMAC**，分组没有减少这些乘加。末图完整 FP32 输入加输出为 **82,563,456 B**；后续必须统计全部桶的打包、完整 I/O、scatter 和原 FP32 门槛，不能把历史单块的倒数称为 fresh 位姿吞吐。新 SDK 支持 B>1 仍须单独建立实际格式、stride、输出 ownership 和释放合同。[捕获及分组源码](../deploy/rk3588/validation/dpvo_grouped_update/RUN.md)、[实际捕获、完整图预算和保存数组独审](../results/dpvo_grouped_update_capture_v36.json)。
+
+## 59. INT8 编码器的主要耗时仍可能落在 CPU 布局转换
+
+**现象与证据：** 原稀疏编码器实际执行普通六次、独立 profile 三次 SDK 调用。普通首帧后三次完整 I/O 均值 **429.429 ms**，包含输入打包、SDK 转换、同步 run、`want_float=1` 输出的独立拷贝与 release。三个实际 profile 各有 **95 行：80 个 NPU INT8 标签、10 个 CPU Transpose、1 个 CPU Gather、4 个 CPU I/O**。CPU 转置合计 **279.751 / 280.882 / 287.270 ms**，占各次算子表总耗时 **67.28%–67.65%**；exNorm 为 74.483–74.605 ms，卷积族合计 17.925–18.350 ms。算子表各项是 run 内部时间，不能再次加到 SDK 外层。
+
+**办法与验证：** 不由端口 INT8 或编译成功推断内部全 NPU；保留实际 profile、真实数组与原 FP32 对照。保存数组独审 **3,017 项通过**，重读九个 NPZ、18 份 feature，并从原 CPU 完整 imap 按同一 indices 重算 context。normal/profile 同帧数组逐字节相同，九次 release、两个 context destroy 均有记录。fmap 相对原 CPU 的相对 L2 为 **11.961%–12.201%**，context 为 **2.845%–3.979%**；原 `rtol=1e-4, atol=1e-5` 门槛全部拒绝，没有裁剪或放宽。
+
+**边界与状态：** INT8 标签不等于独立测得每个内核的算术精度，也不消除 CPU 算子。这是固定三帧编码器诊断，不是持久执行、位姿或轨迹验收。历史 FP16 411.549 ms 不是同期控温交错基准，不能声称因果加速。默认 VGGT 不变。[原 INT8 推理、profile 与独审](../results/dpvo_encoder_int8_v37.json)。
+
+## 60. 完整源组的原参数相同，仍须保留逐元素 FP32 拒绝
+
+**问题：** 相同参数与闭合的源帧分组能保证数学依赖未截断，不能保证改变 batch、Conv 表达与归约顺序后仍逐元素通过固定浮点门槛。用全局相对 L2 很小来覆盖少数超限元素，会改变接受定义。
+
+**实际验证：** 原 M48 完整图 **3,072 / 7,248 / 10,128 边**按真实 degree 组成 **1 / 5 / 10 个桶**，14 张独立 ONNX 图，保留完整目标×patch 组、真实 B、不 padding、不删边。保存数组与静态 ONNX 独审 **593 项通过**，核 36 个新产物与六个原捕获 NPZ、`inp=context[kk]`、pack/scatter 原边序，以及每图全部 **50 个原 Update 参数**字节和 reshape 对应。每图静态有 21 Conv、两次 Softmax，没有 Transpose/Gather/Where/Pad；这不是 SDK placement 证明。
+
+**拒绝证据：** 观测 13 的分组 Torch 对原 gold 的 delta 有 **1 个元素**超限，误差/允许误差为 **1.06524 倍**；观测 127 的 ORT 对原 gold 有 **3 个**，最坏 **3.00868 倍**，ORT 对分组 Torch 有 **2 个**。整体相对 L2 约 `1e-6`、finite 与 weight 值域通过，仍记为 **numerical_rejected**。gold 来自捕获时一次实际原 callback，本次未另跑全图原 Update，也没有以新结果覆盖旧 gold。
+
+**计时与边界：** 三图完整分组 ORT 单次分别 **265.340 / 647.259 / 1,032.817 ms**，包含本次拷贝、输入验证、pack、独立结果拷贝和 scatter；callback 内部是嵌套项。每组只测一次，历史原 callback 也不是同期 AB。分组没有降低原 Linear MAC，不证明完整反馈、轨迹或 20 Hz，候选未采纳。[完整分组、原门槛失败及独审](../results/dpvo_grouped_update_v37.json)。
+
+
+**真实 B>1 SDK 补充：** 初始完整图 B8/D8/M48 已单独编译并在板端执行四次普通调用、一次独立 profile，三次 warm 完整 SDK 均值 **174.289 ms**。实际输入是 NHWC，需要真正打包；输出为 CF，delta/weight 原生逻辑大小 12,288 B，内部 stride footprint 为 49,152 B，`want_float=1` 仍按实际返回的 FP32 逻辑字节核验。全部结果按原边序还原后保存。profile 有 **50 个 NPU、3 个内部 CPU（Exp×2、Min×1）及 6 个 CPU I/O**；三个输出仍拒绝原 FP32 门槛，delta 相对 L2 为 **0.18484%**，不因此采用。
+
+该 174.289 ms 包含输入检查/打包、set/run/get、自有 CF 拷贝及 release；不含全图计划、原边序 scatter、参考比较、初始化或 BA。保存数组独审另有 **664 项通过**：十份 CF/full NPZ 按独立 lexsort 与逆置换恢复，五次普通/profile 输出逐字节相同，五次 release 和两个 context destroy 均成功。SDK 只执行了 E=3,072 的初始图，不能外推后面两份大图，更不能作为 fresh 位姿频率。新增有界 context cache 目前仅通过合成生命周期测试，本次单 context 调用不证明其真实多形状生命周期。
+
+## 61. 原始数据清单与解析后清单的 SHA 不能互换
+
+**现象与根因证据：** spatial PTQ 首次启动将解析后绝对路径清单的 SHA `00b58af6…`，传给原相对路径 `dataset.txt` 的校验参数。原清单实际 SHA 为 `5c4c4712…`，两份文本所指输入相同，文件字节却不同。入口报 `Calibration dataset list SHA mismatch`，**operations 为空、没有导入 RKNN 或建立 Toolkit**；这是启动参数身份错误，不是量化算法失败。r1 失败收据保留。
+
+**办法与验证：** r2 只改启动参数为原清单 SHA，编译源码未变。七个 helper 函数 AST 与冻结 v35 相同，量化配置相同；32 行、64 个有序图像/INT64 索引文件的 SHA、大小、dtype/shape/range 元数据与 v36 原 PTQ 完全一致，前后 source pin 保留。独立复核 **383 项通过**，仅读取源码、JSON 和清单文本，**没有读取校准 NPY、复做像素处理或证明样本代表性**。原图索引保持 INT64、原一次归一化合同不变。
+
+**结果与边界：** 板端校准/build **48.182 s**，导出 **2,250,354 B** RKNN，四个操作返回零，release 与空 cleanup 有记录。历史 spatial 父图的 FP32 拒绝始终保留；采样 suffix 的 bitwise 通过不能提升父图为通过。另一个零推理接口查询记录 init→query→destroy，**run 为零**；图像和 feature 端口是 INT8、patch 索引仍是 INT64。成功编译与端口查询不证明内部全 INT8、精度、推理速度或 VO，模型仅保留在实验存储。[PTQ、原清单错误与零推理查询证据](../results/spatial_encoder_ptq_v37.json)。
+
+## 62. 浮点图有效的改写，量化后可能换成更慢的 CPU 算子
+
+**实际回归：** 历史 spatial 归约改写曾减少 FP16 编码器的布局开销，但同一 spatial 图做 INT8 PTQ 后，三次 warm 完整 SDK 调用均值达到 **905.223 ms**；本轮原图 INT8 为 **429.429 ms**。两次不是控温交错 AB，不将比例写成因果速度结论。实际 profile 才揭示了执行位置：CPU Transpose 从十个变为零，取而代之的是十个大张量 CPU Div。
+
+| 三张保存输入 | 帧 0 | 帧 1 | 帧 2 |
+| --- | ---: | ---: | ---: |
+| CPU Div 合计（ms） | 819.606 | 824.763 | 824.310 |
+| 占 profile 算子表总耗时 | 92.18% | 92.27% | 92.27% |
+| 十个 CPU Sqrt 合计（ms） | 0.124 | 0.119 | 0.118 |
+
+**验证：** 保存数组独审 **2,481 项通过**，重读九份输出 NPZ、18 份 feature，分别比较原 CPU 与 spatial CPU ORT；normal/profile 重复字节、九次 release 和两个 context destroy 均独核。原 FP32 门限仍全部失败，historical spatial 父图拒绝保留，没有裁剪、放宽门限或接入默认 VGGT。算子标签 INT8 只记录 SDK 声明，不推定内部每步运算精度。组件结果不是新轨迹，更不是实时验收。
+
+**下一候选的依据：** 静态查图确认十个 Div 的分母本来是 `[1,C,1,1]`，合计仅 **480 个元素**，而对应大张量共 **16,926,720 个元素**。可研究先对小分母取倒数，再广播乘法，保留原参数和其他节点。但倒数引入额外舍入，编译器还可能重新融合大 Div 或把 Mul 放到 CPU。本轮只完成这项静态提案，尚未生成或测试新候选；需重新执行板端 CPU 对照、PTQ 和实际 profile，不能提前宣称等价通过或加速。[原始执行、独审和静态提案](../results/spatial_encoder_ptq_v37.json)。
