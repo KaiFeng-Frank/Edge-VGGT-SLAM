@@ -107,9 +107,12 @@ def main():
                      'rknn_dino_blocks.py', 'rknn_depth_head.py') +
                     (('rknn_aggregator_pairs.py',) if args.rknn_paired_aggregator else ())}
     if args.half_io_library is not None:
-        for name in ('rknn_half_io_pairs.py', 'native/fp16_neon.c'):
+        half_io_sources = ('rknn_half_io_pairs.py', 'native/fp16_neon.c') + (
+            ('rknn_half_io_dino.py',) if args.rknn_dino_manifest is not None else ())
+        for name in half_io_sources:
             report['runtime_source_sha256'][name] = hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
         report.update(half_io_experiment=True, internal_precision_changed=False,
+                      half_io_dino=args.rknn_dino_manifest is not None,
                       half_io_library=str(args.half_io_library.resolve()),
                       half_io_library_sha256=args.half_io_library_sha256,
                       half_io_source_sha256=report['runtime_source_sha256']['native/fp16_neon.c'])
@@ -158,9 +161,15 @@ def main():
             from vggt_slam.rknn_camera_head import install_rknn_camera_head
             camera_rknn = install_rknn_camera_head(model)
         if args.rknn_dino_manifest is not None:
-            from vggt_slam.rknn_dino_blocks import install_rknn_dino_blocks
-            dino_rknn = install_rknn_dino_blocks(model, args.rknn_dino_manifest,
-                                               args.rknn_dino_manifest_sha256, source_root=BASE / 'src')
+            dino_options = dict(source_root=BASE / 'src')
+            if args.half_io_library is not None:
+                from vggt_slam.rknn_half_io_dino import install_half_io_dino as install_dino
+                dino_options.update(half_io_library=args.half_io_library,
+                                    half_io_library_sha256=args.half_io_library_sha256)
+            else:
+                from vggt_slam.rknn_dino_blocks import install_rknn_dino_blocks as install_dino
+            dino_rknn = install_dino(model, args.rknn_dino_manifest,
+                                     args.rknn_dino_manifest_sha256, **dino_options)
         if args.rknn_depth_manifest is not None:
             from vggt_slam.rknn_depth_head import install_rknn_depth_head
             depth_rknn = install_rknn_depth_head(model, args.rknn_depth_manifest,

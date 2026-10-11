@@ -1,0 +1,384 @@
+{
+  "schema": "v57_original_VGGT_DINO_IO_guard_and_calibration",
+  "original_model_only": true,
+  "realtime_validated": false,
+  "quality_accepted": false,
+  "model": "pinned original VGGT, no added learned model or pose frontend",
+  "checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "conditions": {
+    "board": "RK3588S 16GB",
+    "model_threads": 1,
+    "model_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "decoder_affinity": [
+      0
+    ],
+    "NPU_core_mask": 7,
+    "image_shape": [
+      2,
+      3,
+      84,
+      112
+    ],
+    "fixed_comparison_pairs": 16,
+    "timing": "sequential observations, not interleaved thermal comparison; complete service excludes paced queue/publication",
+    "RPE": "adjacent matched frames about 1.6 seconds; positive Sim3 alignment; sparse short segment"
+  },
+  "matched_comparisons": [
+    {
+      "configuration": "native FP16 I/O for original aggregator and DINO",
+      "complete_service_mean_s": 2.0275030500652065,
+      "first_pair_s": 2.7814895709743723,
+      "guard_total_s": 3.120556268055225,
+      "guard_per_pair_s": 0.19503476675345155,
+      "prediction_arrays": 80,
+      "byte_equal_to_previous_FP16_arrays": 80,
+      "poses_byte_equal_to_previous_FP16": true,
+      "strict_original_FP32_arrays_passed": 0,
+      "ATE_rmse_m": 0.17476037041206874,
+      "RPE_translation_rmse_m": 0.3150170096702616,
+      "RPE_rotation_rmse_degrees": 10.88688684428624,
+      "phase_mean_s": {
+        "DINO": 0.28829047430735955,
+        "aggregator_including_DINO": 1.5478721477502404,
+        "camera_head": 0.21643044111806375,
+        "depth_head": 0.16326327687602316
+      },
+      "contexts": {
+        "depth_rknn": {
+          "contexts_created": 1,
+          "contexts_destroyed": 1,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        },
+        "dino_rknn": {
+          "contexts_created": 24,
+          "contexts_destroyed": 24,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        },
+        "camera_rknn": {
+          "contexts_created": 1,
+          "contexts_destroyed": 1,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        },
+        "rknn": {
+          "contexts_created": 24,
+          "contexts_destroyed": 24,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        }
+      },
+      "runtime_source_sha256": {
+        "patch_cache.py": "13b81c62ef53da34bc7f6d62878921d60bb86f961a1eb8ee782aef6aa059ffab",
+        "rknn_aggregator_blocks.py": "4fea665334e9d12a3d55839c3150680e269bab9794074d698bed2ad0a6e41c93",
+        "rknn_camera_head.py": "89c77fdb67348160b6d55676da22528cc1cb121985276cb1ae1970b2aa8a9fdc",
+        "rknn_dino_blocks.py": "6cf230ea3ae6c65b9a3c7ec0b31e9abb346edb2fc0413b6b77a3a3b510b495de",
+        "rknn_depth_head.py": "7efacdb27be4aeb134fd2b64e2819136320fc45d25973517584522d314ba7894",
+        "rknn_aggregator_pairs.py": "08270da911213d0d22c21c9a7f001aaa7e16d7f7b32220f8a2b0c1ddc4b09b88",
+        "rknn_half_io_pairs.py": "53b573f494f2598183659ba4e8dcb7503c770d9e2ac7b95cae9016279805d9a4",
+        "native/fp16_neon.c": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3"
+      },
+      "private_runtime_sha256": {
+        "rknn_half_io_dino.py": "0365dc36c8ebf004546d8b54153155168ae7bb37e7ed3cd4b2b14d9d6f21ecd1"
+      }
+    },
+    {
+      "configuration": "same with dictionary-only guard fast path; board OrderedDict fell back",
+      "complete_service_mean_s": 2.0338930168181832,
+      "first_pair_s": 2.8086242399876937,
+      "guard_total_s": 3.1603775271214545,
+      "guard_per_pair_s": 0.1975235954450909,
+      "prediction_arrays": 80,
+      "byte_equal_to_previous_FP16_arrays": 80,
+      "poses_byte_equal_to_previous_FP16": true,
+      "strict_original_FP32_arrays_passed": 0,
+      "ATE_rmse_m": 0.17476037041206874,
+      "RPE_translation_rmse_m": 0.3150170096702616,
+      "RPE_rotation_rmse_degrees": 10.88688684428624,
+      "phase_mean_s": {
+        "DINO": 0.28857172418975097,
+        "aggregator_including_DINO": 1.5556357449422649,
+        "camera_head": 0.21571526118896145,
+        "depth_head": 0.1637743289993523
+      },
+      "contexts": {
+        "depth_rknn": {
+          "contexts_created": 1,
+          "contexts_destroyed": 1,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        },
+        "dino_rknn": {
+          "contexts_created": 24,
+          "contexts_destroyed": 24,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        },
+        "camera_rknn": {
+          "contexts_created": 1,
+          "contexts_destroyed": 1,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        },
+        "rknn": {
+          "contexts_created": 24,
+          "contexts_destroyed": 24,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        }
+      },
+      "runtime_source_sha256": {
+        "patch_cache.py": "13b81c62ef53da34bc7f6d62878921d60bb86f961a1eb8ee782aef6aa059ffab",
+        "rknn_aggregator_blocks.py": "4fea665334e9d12a3d55839c3150680e269bab9794074d698bed2ad0a6e41c93",
+        "rknn_camera_head.py": "89c77fdb67348160b6d55676da22528cc1cb121985276cb1ae1970b2aa8a9fdc",
+        "rknn_dino_blocks.py": "6cf230ea3ae6c65b9a3c7ec0b31e9abb346edb2fc0413b6b77a3a3b510b495de",
+        "rknn_depth_head.py": "7efacdb27be4aeb134fd2b64e2819136320fc45d25973517584522d314ba7894",
+        "rknn_aggregator_pairs.py": "08270da911213d0d22c21c9a7f001aaa7e16d7f7b32220f8a2b0c1ddc4b09b88",
+        "rknn_half_io_pairs.py": "53b573f494f2598183659ba4e8dcb7503c770d9e2ac7b95cae9016279805d9a4",
+        "native/fp16_neon.c": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3"
+      },
+      "private_runtime_sha256": {
+        "rknn_half_io_dino.py": "0365dc36c8ebf004546d8b54153155168ae7bb37e7ed3cd4b2b14d9d6f21ecd1",
+        "patch_cache_fast_lookup.py": "de3082b7bd608a22f304eef45eddb1a934c484364648ca3f63c49a7a38f21acf"
+      }
+    },
+    {
+      "configuration": "same with exact OrderedDict support; both complete guards retained",
+      "complete_service_mean_s": 1.9750539875658433,
+      "first_pair_s": 2.610678804019699,
+      "guard_total_s": 2.246020892984234,
+      "guard_per_pair_s": 0.1403763058115146,
+      "prediction_arrays": 80,
+      "byte_equal_to_previous_FP16_arrays": 80,
+      "poses_byte_equal_to_previous_FP16": true,
+      "strict_original_FP32_arrays_passed": 0,
+      "ATE_rmse_m": 0.17476037041206874,
+      "RPE_translation_rmse_m": 0.3150170096702616,
+      "RPE_rotation_rmse_degrees": 10.88688684428624,
+      "phase_mean_s": {
+        "DINO": 0.29025012812599016,
+        "aggregator_including_DINO": 1.4941413298129191,
+        "camera_head": 0.21623399055897607,
+        "depth_head": 0.17340817368494754
+      },
+      "contexts": {
+        "depth_rknn": {
+          "contexts_created": 1,
+          "contexts_destroyed": 1,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        },
+        "dino_rknn": {
+          "contexts_created": 24,
+          "contexts_destroyed": 24,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        },
+        "camera_rknn": {
+          "contexts_created": 1,
+          "contexts_destroyed": 1,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        },
+        "rknn": {
+          "contexts_created": 24,
+          "contexts_destroyed": 24,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        }
+      },
+      "runtime_source_sha256": {
+        "patch_cache.py": "13b81c62ef53da34bc7f6d62878921d60bb86f961a1eb8ee782aef6aa059ffab",
+        "rknn_aggregator_blocks.py": "4fea665334e9d12a3d55839c3150680e269bab9794074d698bed2ad0a6e41c93",
+        "rknn_camera_head.py": "89c77fdb67348160b6d55676da22528cc1cb121985276cb1ae1970b2aa8a9fdc",
+        "rknn_dino_blocks.py": "6cf230ea3ae6c65b9a3c7ec0b31e9abb346edb2fc0413b6b77a3a3b510b495de",
+        "rknn_depth_head.py": "7efacdb27be4aeb134fd2b64e2819136320fc45d25973517584522d314ba7894",
+        "rknn_aggregator_pairs.py": "08270da911213d0d22c21c9a7f001aaa7e16d7f7b32220f8a2b0c1ddc4b09b88",
+        "rknn_half_io_pairs.py": "53b573f494f2598183659ba4e8dcb7503c770d9e2ac7b95cae9016279805d9a4",
+        "native/fp16_neon.c": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3"
+      },
+      "private_runtime_sha256": {
+        "rknn_half_io_dino.py": "0365dc36c8ebf004546d8b54153155168ae7bb37e7ed3cd4b2b14d9d6f21ecd1",
+        "patch_cache_fast_lookup_r2.py": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b"
+      }
+    },
+    {
+      "configuration": "original DINO and aggregator W8A8 diagnostic, rejected",
+      "complete_service_mean_s": 1.7281289003767597,
+      "first_pair_s": 2.2808731049881317,
+      "guard_total_s": 2.7564396948728245,
+      "guard_per_pair_s": 0.17227748092955153,
+      "prediction_arrays": 80,
+      "byte_equal_to_previous_FP16_arrays": 0,
+      "poses_byte_equal_to_previous_FP16": false,
+      "strict_original_FP32_arrays_passed": 0,
+      "ATE_rmse_m": 0.19822661496508437,
+      "RPE_translation_rmse_m": 0.3752401955053052,
+      "RPE_rotation_rmse_degrees": 14.480890836606518,
+      "phase_mean_s": {
+        "DINO": 0.21307731562956178,
+        "aggregator_including_DINO": 1.242242629878092,
+        "camera_head": 0.21696976918246946,
+        "depth_head": 0.1693264258756244
+      },
+      "contexts": {
+        "depth_rknn": {
+          "contexts_created": 1,
+          "contexts_destroyed": 1,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        },
+        "dino_rknn": {
+          "contexts_created": 24,
+          "contexts_destroyed": 24,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        },
+        "camera_rknn": {
+          "contexts_created": 1,
+          "contexts_destroyed": 1,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        },
+        "rknn": {
+          "contexts_created": 24,
+          "contexts_destroyed": 24,
+          "live_contexts": 0,
+          "closed": true,
+          "failed": false,
+          "cleanup_errors": []
+        }
+      },
+      "runtime_source_sha256": {
+        "patch_cache.py": "13b81c62ef53da34bc7f6d62878921d60bb86f961a1eb8ee782aef6aa059ffab",
+        "rknn_aggregator_blocks.py": "4fea665334e9d12a3d55839c3150680e269bab9794074d698bed2ad0a6e41c93",
+        "rknn_camera_head.py": "89c77fdb67348160b6d55676da22528cc1cb121985276cb1ae1970b2aa8a9fdc",
+        "rknn_dino_blocks.py": "6cf230ea3ae6c65b9a3c7ec0b31e9abb346edb2fc0413b6b77a3a3b510b495de",
+        "rknn_depth_head.py": "7efacdb27be4aeb134fd2b64e2819136320fc45d25973517584522d314ba7894",
+        "rknn_aggregator_pairs.py": "08270da911213d0d22c21c9a7f001aaa7e16d7f7b32220f8a2b0c1ddc4b09b88"
+      },
+      "private_runtime_sha256": {},
+      "RPE_rotation_increase_vs_original_CPU_fraction": 0.34517259908651776
+    }
+  ],
+  "timestamp_replay": {
+    "fresh_poses": 16,
+    "poses_including_seed": 17,
+    "fresh_Hz": 0.5383028195931379,
+    "publication_P95_s": 2.580836647619435,
+    "publication_max_s": 3.1509879361547064,
+    "wall_s_including_EOF_drain": 29.72304698699736,
+    "startup_s_excluded": 21.79564827302238,
+    "peak_RSS_MiB": 7259.59765625,
+    "source_counts": {
+      "original_frames": 798,
+      "generated": 794,
+      "delivered": 17,
+      "overwritten": 777,
+      "skipped_before_decode": 4,
+      "queue_capacity": 1
+    },
+    "checked_all_unique_sequences_and_latency_components": true,
+    "map_chunks": 16,
+    "map_points": 225747,
+    "contexts": {
+      "created": 50,
+      "destroyed": 50,
+      "live": 0,
+      "cleanup_errors": []
+    },
+    "runtime_source_sha256": {
+      "patch_cache.py": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b",
+      "rknn_aggregator_blocks.py": "4fea665334e9d12a3d55839c3150680e269bab9794074d698bed2ad0a6e41c93",
+      "rknn_camera_head.py": "89c77fdb67348160b6d55676da22528cc1cb121985276cb1ae1970b2aa8a9fdc",
+      "rknn_dino_blocks.py": "6cf230ea3ae6c65b9a3c7ec0b31e9abb346edb2fc0413b6b77a3a3b510b495de",
+      "rknn_depth_head.py": "7efacdb27be4aeb134fd2b64e2819136320fc45d25973517584522d314ba7894",
+      "rknn_aggregator_pairs.py": "08270da911213d0d22c21c9a7f001aaa7e16d7f7b32220f8a2b0c1ddc4b09b88",
+      "rknn_half_io_pairs.py": "53b573f494f2598183659ba4e8dcb7503c770d9e2ac7b95cae9016279805d9a4",
+      "native/fp16_neon.c": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3",
+      "rknn_half_io_dino.py": "e39469432aa5663f0a15756be0067ec92a0fb7127e6702a794298c3e902f3cd7"
+    },
+    "script_sha256": "321a8e3d5cee723459865a35b9e2c6330a3532a9e2ebff098d4fecdf6dbd008e"
+  },
+  "calibration": {
+    "original_dino_blocks": 24,
+    "compiled_count": 24,
+    "complete_compile_s": 240.42044290699414,
+    "calibration_manifest_sha256": "a1e6f1b2a89e1a96987befdea4f0a048aaf06066efa9fff72a370ac77d45507c",
+    "fixed_matched_evaluation_disjoint_from_calibration": true,
+    "adopted": false,
+    "reason": "rotation RPE exceeds 20 percent increase; no paced run performed"
+  },
+  "limits": [
+    "strict original FP32 checks still fail",
+    "FP16 byte equality covers these saved inputs only",
+    "20 Hz and 100 ms P95 unachieved",
+    "30-minute stability, loop closure, 8GB operation, physical camera and general map quality unvalidated"
+  ],
+  "evidence_sha256": {
+    "half-dino-complete-r1/result.json": "f8f802f78e8ce3385f5f815edf625cfafcd9680899017a5874327b8f6187df99",
+    "half-dino-trajectory-metrics.json": "67d17edbc0d382d298d70c91ebf15c076bdc310232717d9386be93bec8f09eb0",
+    "fast-guard-complete-r1/result.json": "781f6db7faab24da04fcf8bfd045c29e603637e93c7f19a80256d4e5e4f21c00",
+    "fast-guard-trajectory-metrics.json": "f3c52845493f10c3acf8defb50c3565c9f29136267895a2a51413c64d4308832",
+    "fast-guard-complete-r2/result.json": "3938383cf3a07cb589be26500900685646072ac368148064c1c0a72dc38f34c6",
+    "fast-guard-r2-trajectory-metrics.json": "f6d5e4c6bb4d1bd1194babb3b2288a468323e0727e1cbdaa19c48ffe31d865dc",
+    "ptq-dino-complete-r1/result.json": "412f00ea8b8c0f303b14d6e8624747f5fcc89b3883eafea6655ce6f81701e7c0",
+    "ptq-dino-trajectory-metrics.json": "d094a6cd29a8e4a0a0c6c0bef7b1db605032be8853c52c258e1ae35d1bc1873e",
+    "half-dino-guard-replay-r1/results.json": "cae773850e899f7de4d20424e551d73f25dcb56cce3d0d813d06ca24ac81c37b",
+    "half-dino-guard-replay-r1/map.json": "6b3fc6af0bc76516ddc3d6ac77966441982e37181bf3927ba53a93f42b8968c2",
+    "ptq-dino-compiled.json": "bf0225fec017d8dfd06eed29b3eab12bece0aa352853832bf38da6bcfaf743ee",
+    "fc1-int4-failed-r1.json": "882322817a7efd12dcde2703a1eb813472453183d536262418f8cf11d6e1febf"
+  },
+  "original_FC1_INT4_initial_diagnostic": {
+    "status": "SDK_process_terminated_without_completion_receipt",
+    "capture_sha256": "5219c8c18c0ba2b92b32568e1f18c20516a07595749d6d697584d2e12fd6db4e",
+    "probe_script_sha256": "34e83a7df88087719bee99e6787abc06743f9068f1352e5efee31026f417259e",
+    "log_sha256": "44cdb0bb2624aa39fcd14f690e2a4cc974e02b0cf62762bd9d9d8b5d349c7320",
+    "observed_output": "E RKNN: Unsupport type bits 0; Aborted",
+    "outer_shell_exit_code": 0,
+    "expected_result_json_present": false,
+    "observed_output_directory_empty": true,
+    "no_probe_process_remaining": true,
+    "type10_support_validated": false,
+    "cause_established": false,
+    "cleanup_verified": false,
+    "performance_or_quality_result_available": false,
+    "candidate_accepted": false
+  }
+}

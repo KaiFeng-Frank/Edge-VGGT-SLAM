@@ -543,5 +543,16 @@
     },
     "quality_accepted": false,
     "real_time_validated": false
+  },
+  "original_dino_IO_guard_v57": {
+    "record": "results/original_dino_io_guard_v57.json",
+    "complete_service_mean_seconds": 1.9750539875658433,
+    "fresh_pose_hz": 0.5383028195931379,
+    "input_to_pose_p95_seconds": 2.580836647619435,
+    "fresh_updates": 16,
+    "matched_arrays_bitwise_equal_to_previous_FP16": 80,
+    "strict_FP32_arrays_passed": 0,
+    "quality_accepted": false,
+    "real_time_validated": false
   }
 }

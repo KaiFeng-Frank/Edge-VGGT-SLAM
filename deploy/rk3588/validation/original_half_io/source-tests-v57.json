@@ -1,0 +1,40 @@
+{
+  "scope": "host generated modules/service/SDK doubles only; no real model or SDK execution",
+  "python": "/home/frank/miniconda3/envs/ctvggt/bin/python",
+  "torch": "2.11.0.dev20260201+cu128",
+  "pytest": "9.0.2",
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_patch_cache.py",
+    "tests/test_patch_cache_lookup.py",
+    "tests/test_rknn_half_io_pairs.py",
+    "tests/test_rknn_half_io_dino.py",
+    "tests/test_replay_original_vggt.py",
+    "tests/test_compare_complete_model.py"
+  ],
+  "passed": 99,
+  "subtests_passed": 4,
+  "seconds": 0.99,
+  "file_sha256": {
+    "tests/test_patch_cache.py": "b4f4f8a0c6759b4e1b8ce0375fe9f2e089dd3a7e58fea2d93458bf67e66f3a70",
+    "tests/test_patch_cache_lookup.py": "331668143f885c523bba952290103eec9a57af8811d5ad24998567e9c62e7411",
+    "tests/test_rknn_half_io_pairs.py": "89532a64cc868984611b2a3ce43e79c4e2025c18ab5a7fdfc2361734e4d26e29",
+    "tests/test_rknn_half_io_dino.py": "2a6b7b7919ee94479685a2c19bdd4c79620a9570e296c7c03f41ea46086c323d",
+    "tests/test_replay_original_vggt.py": "180e18ad1d6606019c9d9356370d50530d21cce0a83e747738eef4e9dcb701c0",
+    "tests/test_compare_complete_model.py": "678e0387846d57fcc29cdfb63c0f469b3788ea5e2e2f86b9cf93475264a69895",
+    "vggt_slam/patch_cache.py": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b",
+    "vggt_slam/rknn_half_io_dino.py": "e39469432aa5663f0a15756be0067ec92a0fb7127e6702a794298c3e902f3cd7",
+    "scripts/replay_original_vggt.py": "321a8e3d5cee723459865a35b9e2c6330a3532a9e2ebff098d4fecdf6dbd008e",
+    "deploy/rk3588/validation/original_full_aggregator/compare_complete_model.py": "9b813dce2ae950ca073c2ac00438190cb07d55e2e9032506e2e01240e42dd870"
+  },
+  "prior_reference_checks": {
+    "passed": 45,
+    "reference_sha256": "13b81c62ef53da34bc7f6d62878921d60bb86f961a1eb8ee782aef6aa059ffab",
+    "candidate_sha256": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b"
+  }
+}

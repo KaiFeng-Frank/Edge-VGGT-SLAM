@@ -47,7 +47,7 @@ def test_optional_half_io_dispatch_and_failed_install_remove_phase_hooks(tmp_pat
     source_dir = tmp_path / 'src/vggt_slam'
     for name in ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
                  'rknn_dino_blocks.py', 'rknn_depth_head.py', 'rknn_aggregator_pairs.py',
-                 'rknn_half_io_pairs.py', 'native/fp16_neon.c'):
+                 'rknn_half_io_pairs.py', 'rknn_half_io_dino.py', 'native/fp16_neon.c'):
         target = source_dir / name
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes((ROOT / 'vggt_slam' / name).read_bytes())

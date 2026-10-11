@@ -14,6 +14,8 @@ import copy
 import hashlib
 import threading
 import time
+import types
+from collections import OrderedDict
 
 import torch
 from torch import nn
@@ -41,6 +43,53 @@ def _tensor_state(name, tensor, *, parameter):
         raise PatchCacheStaleState(f"{name}: cannot verify tensor version") from exc
     return (name, id(tensor), version, tensor.dtype, tensor.device,
             tuple(tensor.shape), tuple(tensor.stride()), tensor.data_ptr(), tensor.requires_grad)
+
+
+# A reference to the default implementation, not a cross-call class-field cache.
+# Replacing nn.Module.__getattr__ after import therefore takes the slow path.
+_DEFAULT_MODULE_GETATTR = nn.Module.__getattr__
+_FINGERPRINT_SCALARS = (
+    "eps", "patch_size", "embed_dim", "num_register_tokens", "num_heads",
+    "interpolate_antialias", "interpolate_offset", "chunked_blocks", "use_reentrant")
+_FINGERPRINT_PRESENCE_FIELDS = _FINGERPRINT_SCALARS + ("packed_weight", "pool")
+
+
+def _class_presence_plan(module_type):
+    """Raw MRO inspection; caller caches the result for this fingerprint only."""
+    if type(module_type) is not type:
+        return None
+    namespaces = tuple(type.__getattribute__(base, "__dict__")
+                       for base in type.__getattribute__(module_type, "__mro__"))
+
+    def first(name):
+        return next((namespace[name] for namespace in namespaces if name in namespace), None)
+
+    if (first("__getattribute__") is not object.__getattribute__
+            or first("__getattr__") is not _DEFAULT_MODULE_GETATTR
+            or type(first("__dict__")) is not types.GetSetDescriptorType):
+        return None
+    # Every class-defined field retains hasattr/getattr, including descriptors.
+    return frozenset(key for key in _FINGERPRINT_PRESENCE_FIELDS
+                     if any(key in namespace for namespace in namespaces))
+
+
+def _instance_presence_lookup(module, class_fields):
+    if class_fields is None:
+        return None
+    namespace = object.__getattribute__(module, "__dict__")
+    registries = tuple(namespace.get(key) for key in ("_parameters", "_buffers", "_modules"))
+    # Custom registry mappings may have observable lookup behavior. Keep it.
+    if type(namespace) is not dict or any(type(registry) not in (dict, OrderedDict) for registry in registries):
+        return None
+    return class_fields, namespace, registries
+
+
+def _has_module_field(module, key, lookup):
+    if lookup is None or key in lookup[0]:
+        return hasattr(module, key)
+    namespace, registries = lookup[1], lookup[2]
+    return (key in namespace or key in registries[0]
+            or key in registries[1] or key in registries[2])
 
 
 class PatchCacheHandle:
@@ -105,6 +154,8 @@ class PatchCacheHandle:
     def _fingerprint(self):
         modules = []
         backends = []
+        # Local lifetime is intentional: class/MRO changes are seen by every guard.
+        class_plans = {}
         for name, module in self.model.named_modules():
             if module.training:
                 raise PatchCacheStaleState("Patch cache requires all model modules to remain in eval mode")
@@ -112,15 +163,21 @@ class PatchCacheHandle:
                        self._original_patch if module is self.patch_embed else module.forward)
             hooks = tuple((attribute, tuple((key, id(value)) for key, value in getattr(module, attribute).items()))
                           for attribute in ("_forward_pre_hooks", "_forward_hooks"))
-            scalar_fields = tuple((key, getattr(module, key)) for key in
-                ("eps", "patch_size", "embed_dim", "num_register_tokens", "num_heads",
-                 "interpolate_antialias", "interpolate_offset", "chunked_blocks", "use_reentrant")
-                if hasattr(module, key))
+            module_type = type(module)
+            if type(module_type) is type:
+                if module_type not in class_plans:
+                    class_plans[module_type] = _class_presence_plan(module_type)
+                class_fields = class_plans[module_type]
+            else:
+                class_fields = None
+            lookup = _instance_presence_lookup(module, class_fields)
+            scalar_fields = tuple((key, getattr(module, key)) for key in _FINGERPRINT_SCALARS
+                                  if _has_module_field(module, key, lookup))
             modules.append((name, id(module), type(module), id(type(module).forward),
                             _forward_identity(forward), hooks, scalar_fields))
             # RKNN replacement objects remain intact. Mutable context LRU/stats
             # are deliberately excluded; backend/library/config identities are not.
-            if hasattr(module, "packed_weight") and hasattr(module, "pool"):
+            if _has_module_field(module, "packed_weight", lookup) and _has_module_field(module, "pool", lookup):
                 pool, packed = module.pool, module.packed_weight
                 api = getattr(pool, "api", None)
                 backends.append((name, id(pool), id(api), id(getattr(api, "library", None)),

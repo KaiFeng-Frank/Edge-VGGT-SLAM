@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RUNTIME_SOURCES = ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
                    'rknn_dino_blocks.py', 'rknn_depth_head.py', 'rknn_aggregator_pairs.py')
 HALF_IO_SOURCES = ('rknn_half_io_pairs.py', 'native/fp16_neon.c')
+DINO_HALF_IO_SOURCES = ('rknn_half_io_dino.py',)
 
 
 def load_replay():
@@ -42,7 +43,8 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
         'vggt_slam.timestamp_replay', 'vggt_slam.edge_mapping',
         'vggt_slam.patch_cache', 'vggt_slam.rknn_aggregator_blocks', 'vggt_slam.rknn_camera_head',
         'vggt_slam.rknn_dino_blocks', 'vggt_slam.rknn_depth_head',
-        'vggt_slam.rknn_aggregator_pairs', 'vggt_slam.rknn_half_io_pairs')}
+        'vggt_slam.rknn_aggregator_pairs', 'vggt_slam.rknn_half_io_pairs',
+        'vggt_slam.rknn_half_io_dino')}
     modules['vggt_slam'].__path__ = []
     modules['torch'].__version__ = 'generated-service-double'
     for name in ('set_num_threads', 'set_num_interop_threads'):
@@ -129,6 +131,16 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
             raise RuntimeError('generated DINO install failure')
         return Handle('dino_rknn')
     modules['vggt_slam.rknn_dino_blocks'].install_rknn_dino_blocks = install_dino
+    def install_half_dino(*args, **kwargs):
+        assert args[0] is model and args[2] == 'b' * 64
+        assert kwargs == dict(source_root=replay.BASE / 'src',
+            half_io_library=replay.BASE.parent / 'neon.placeholder',
+            half_io_library_sha256='d' * 64)
+        events.append('install_half_io_dino')
+        if fail == 'install_half_io_dino':
+            raise RuntimeError('generated half I/O DINO install failure')
+        return Handle('dino_rknn')
+    modules['vggt_slam.rknn_half_io_dino'].install_half_io_dino = install_half_dino
     def install_depth(*args, **kwargs):
         assert args[0] is model and args[2] == 'c' * 64
         assert kwargs['source_root'] == replay.BASE / 'src'
@@ -227,7 +239,8 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
             # Hash real source bytes in the generated board tree; imports still
             # resolve exclusively to the service doubles above.
             source_hashes = {}
-            for name in RUNTIME_SOURCES + (HALF_IO_SOURCES if half_io else ()):
+            for name in (RUNTIME_SOURCES + (HALF_IO_SOURCES if half_io else ()) +
+                         (DINO_HALF_IO_SOURCES if half_io and dino else ())):
                 content = (ROOT / 'vggt_slam' / name).read_bytes()
                 (runtime_directory / name).parent.mkdir(parents=True, exist_ok=True)
                 (runtime_directory / name).write_bytes(content)
@@ -266,6 +279,7 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
             assert report['rknn_paired_aggregator'] is paired
             if half_io:
                 assert report['half_io_experiment'] is True and report['internal_precision_changed'] is False
+                assert report['half_io_dino'] is dino
                 assert report['half_io_library_sha256'] == 'd' * 64
                 assert report['half_io_source_sha256'] == source_hashes['native/fp16_neon.c']
             else:
@@ -411,7 +425,7 @@ def test_generated_invalid_backend_arguments_rejected_before_loading(args, messa
     assert exc.value.code == 2 and message in stderr.getvalue()
 
 
-@pytest.mark.parametrize('fail', [None, 'install_half_io_rknn', 'predict'])
+@pytest.mark.parametrize('fail', [None, 'install_half_io_rknn', 'install_half_io_dino', 'predict'])
 def test_generated_half_io_lifecycle_and_unchanged_precision(fail):
     code, report, events = generated_run(npu=True, paired=True, camera=True, dino=True,
                                          depth=True, half_io=True, fail=fail)
@@ -421,14 +435,27 @@ def test_generated_half_io_lifecycle_and_unchanged_precision(fail):
     assert 'install_paired_rknn' not in events and 'install_rknn' not in events
     if fail == 'install_half_io_rknn':
         assert 'install_cache' not in events and 'predict' not in events
+    elif fail == 'install_half_io_dino':
+        assert 'install_cache' not in events and 'install_depth_rknn' not in events and 'predict' not in events
+        assert [event for event in events if event.startswith('close_') and event not in
+                ('close_pre_hook', 'close_post_hook')] == ['close_camera_rknn', 'close_rknn']
     else:
         assert [event for event in events if event.startswith('install_')] == [
-            'install_half_io_rknn', 'install_camera_rknn', 'install_dino_rknn',
+            'install_half_io_rknn', 'install_camera_rknn', 'install_half_io_dino',
             'install_depth_rknn', 'install_cache']
         assert [event for event in events if event.startswith('close_') and event not in
                 ('close_pre_hook', 'close_post_hook')] == [
             'close_replay', 'close_cache', 'close_depth_rknn', 'close_dino_rknn',
             'close_camera_rknn', 'close_rknn']
+
+
+def test_generated_half_io_without_dino_keeps_paired_aggregator_only():
+    code, report, events = generated_run(npu=True, paired=True, half_io=True)
+    assert code == 0 and report['status'] == 'completed'
+    assert report['half_io_dino'] is False
+    assert 'rknn_half_io_dino.py' not in report['runtime_source_sha256']
+    assert 'install_half_io_rknn' in events and 'install_half_io_dino' not in events
+    assert 'install_dino_rknn' not in events
 
 
 @pytest.mark.parametrize('args,message', [

@@ -38,7 +38,9 @@ The experimental complete-model path now executes **all 48 original aggregator b
 | Pair all 48 aggregator blocks, four CPU threads | 2.590 s | 0.17476 m |
 | Same paired path, one CPU thread | 2.177 s | 0.17476 m |
 | Explicit FP16 SDK I/O, same original FP16 graphs | 2.077 s | 0.17476 m |
+| Add DINO FP16 I/O and preserve both cache guards with faster lookup | 1.975 s | 0.17476 m |
 | Calibrated W8A8 aggregator diagnostic, quality unaccepted | 1.880 s | 0.18141 m |
+| Calibrated W8A8 aggregator + DINO, rejected rotation error | 1.728 s | 0.19823 m |
 
 These are sequential observations across runs, not an interleaved thermal comparison. Service timing excludes paced input queues and file publication. This short, sparse, low-resolution segment does not validate overall trajectory quality. All strict FP32 tensor comparisons still fail, and the FP16 candidate is not accepted as numerically equivalent.
 
@@ -65,10 +67,14 @@ candidate. Peak RSS is 7,296.82 MiB; all 50 contexts close cleanly. This is a
 [Results and limitations](results/original_fused_aggregator_v55.json),
 [pair export and replay instructions](deploy/rk3588/validation/original_fused_aggregator/README.md).
 
-The current optional FP16 I/O path uses NEON conversions while retaining the
-same FP16 graphs and original FP32 boundaries. The fixed comparison preserves
-all 80 prediction arrays and the trajectory bitwise. Complete timestamp replay
-measured **15 fresh poses at 0.513 Hz, P95 2.551 s**; RSS was 7,300.45 MiB.
+The current optional FP16 I/O path covers the original aggregator and DINO,
+with faster cache-state lookup that retains both complete guards. It preserves
+all 80 prediction arrays and the trajectory bitwise against the preceding FP16
+path. Complete timestamp replay measured **16 fresh poses at 0.538 Hz, P95
+2.581 s**; RSS was 7,259.60 MiB. This improves throughput from 0.513 Hz, but
+does not improve the preceding 2.551 s P95. The test covers 29.72 seconds,
+including the EOF drain, not sustained real-time operation.
+[Current measured results](results/original_dino_io_guard_v57.json).
 Add the two `--half-io-library` options to the paired command as described in
 [FP16 I/O setup](deploy/rk3588/validation/original_half_io/README.md).
 

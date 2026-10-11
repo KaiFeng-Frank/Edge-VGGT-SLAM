@@ -42,3 +42,13 @@ still fail. Neither these timings nor the component equality establish general
 model quality, real-time operation or 30-minute stability.
 
 See [measured results](../../../../results/original_calibration_half_io_v56.json).
+
+The same two library options now also select explicit FP16 I/O for all 24
+original DINO blocks when a DINO manifest is supplied. The original token
+preparation, cache, final norm and FP32 boundaries are retained. The fixed
+comparison measured 2.0275 seconds before the guard optimization and 1.9751
+seconds afterwards; all 80 arrays and saved poses match the previous FP16
+path bitwise. These are sequential runs, not a controlled thermal comparison.
+Both complete cache guards remain; the presence lookup now handles exact
+`dict` and `OrderedDict` registries, while custom lookup behavior uses the
+original path. No new CLI flag is needed.

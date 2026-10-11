@@ -45,3 +45,18 @@ No weights, calibration arrays, ONNX/RKNN files or SDK binaries are public.
 Code licensing does not grant rights to original model weights. See
 [measured results](../../../../results/original_calibration_half_io_v56.json)
 and [model provenance](../../../../MODEL_LICENSES.md).
+
+The additional `compile_calibrated_dino.py` compiles all 24 unchanged original
+DINO graphs using the same original-FP32 capture's 16 individual-frame inputs
+per layer. `rknn_calibrated_dino.py` and
+`compare_calibrated_dino_complete.py --calibrated-dino` retain the original
+parameter checks and execute this diagnostic alongside the calibrated
+aggregator. Copy them beside `rknn_calibrated_pairs.py` in the recorded board
+experiment directory. `analyze_calibrated_dino_saved.py` reads the resulting
+private outputs and original reference. The fixed evaluation images are
+disjoint from calibration.
+
+This candidate is rejected: complete mean service was 1.7281 seconds, but
+rotation RPE increased from 10.7651 to 14.4809 degrees (+34.5%) versus the
+original CPU reference. No timestamp replay was performed for it. The normal
+replay entry continues to select the original FP16 graphs.
