@@ -1,0 +1,17 @@
+{
+  "schema": "v48_original_AB_tiny_generated_checks",
+  "status": "passed",
+  "actual_inference_executed": false,
+  "real_SDK_loaded": false,
+  "actual_board_operations": false,
+  "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest /dev/shm/edge-vggt-v48/ab/test_v48_frame_global_ab.py -q -p no:cacheprovider",
+  "exit_code": 0,
+  "passed": 33,
+  "failed": 0,
+  "skipped": 0,
+  "stdout": "................................. [100%]\n33 passed in 0.06s\n",
+  "test_sha256": "8264cc9bd09a47f85bc82c3ccbaab488e081a9f96a152a742df6019898ebade9",
+  "runner_sha256": "f857689cb0310aafde9287d7cb11c0f8aa799b01151b6865b11d11aa8d03f6d7",
+  "contracts_sha256": "6b63e117445a453ac383c0d8fa76cc831c9d81af4b2f33f982459aa5fe0a8802",
+  "typed_abi_source_sha256": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608"
+}

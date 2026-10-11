@@ -1,0 +1,547 @@
+{
+  "schema": 1,
+  "kind": "original_VGGT_source_derived_compute_budget_v48",
+  "execution": {
+    "stdlib_only": true,
+    "actual_model_OR_ORT_OR_RKNN_OR_compile_run": false,
+    "board_access": false,
+    "production_source_modified": false
+  },
+  "counting": {
+    "FLOP_per_MAC": 2,
+    "scope": "Dense matrices, conventional padded dense convolution, and QK/AV multiplication only",
+    "excluded": [
+      "bias",
+      "residual",
+      "normalization",
+      "softmax",
+      "GELU",
+      "SiLU",
+      "RoPE",
+      "position embedding/interpolation",
+      "depth activation",
+      "memory/layout",
+      "queue",
+      "image loading",
+      "pose decoding",
+      "SL4 graph",
+      "map alignment"
+    ],
+    "mathematical_budget_is_measured_instruction_count": false,
+    "hardware_peak_or_precision_throughput_assumption_used": false
+  },
+  "formulas_MAC": {
+    "N": "(H/14)*(W/14)+5, per image; B=1 in these cases",
+    "block_linear": "3*S*N*D^2 + S*N*D^2 + 2*S*N*D*(4*D) = 12*S*N*D^2",
+    "per_image_attention_one_group": "2*S*N^2*D, QK and AV; heads*(D/heads)=D",
+    "global_attention_one_group": "2*(S*N)^2*D",
+    "backbone": "24*(36*S*N*D^2 + 4*S*N^2*D + 2*(S*N)^2*D) + S*(N-5)*3*14^2*D",
+    "camera_trunk": "16*(12*S*2048^2 + 2*S^2*2048)",
+    "camera_branches": "4*S*(9*2048 + 3*2048^2 + 2048*1024 + 1024*9)",
+    "cached_DINO_old_image": "(patch conv + complete 24-block DINO work)/S, one unchanged overlap image",
+    "DPT": "Per-convolution components calculated from audited DPT spatial scales; see each workload"
+  },
+  "configuration_from_fixed_source_AST": {
+    "embedding": 1024,
+    "depth_per_group": 24,
+    "DINO_depth": 24,
+    "heads": 16,
+    "MLP_expansion": 4,
+    "patch_size": 14,
+    "DINO_special_tokens": 5,
+    "aggregator_special_tokens": 5,
+    "camera_embedding": 2048,
+    "camera_depth": 4,
+    "camera_iterations": 4,
+    "DPT_features": 256,
+    "DPT_channels": [
+      256,
+      512,
+      1024,
+      1024
+    ],
+    "DPT_layers": [
+      4,
+      11,
+      17,
+      23
+    ]
+  },
+  "source_SHA_verified": {
+    "models/vggt.py": {
+      "sha256": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+      "bytes": 5361
+    },
+    "models/aggregator.py": {
+      "sha256": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+      "bytes": 28283,
+      "audited_functions": [
+        {
+          "class": "Aggregator",
+          "name": "forward",
+          "line": 484,
+          "ast_sha256": "89daa7d791304909a06337661faecc11d58e02583e22d4d657799d0a3450f7e0"
+        },
+        {
+          "class": "Aggregator",
+          "name": "_process_global_attention",
+          "line": 629,
+          "ast_sha256": "aecf34668e15c73e0c7cbc227a6806e7cf283e11764477fbc5bf3a89480eee1c"
+        }
+      ]
+    },
+    "layers/vision_transformer.py": {
+      "sha256": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+      "bytes": 15142
+    },
+    "layers/block.py": {
+      "sha256": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+      "bytes": 9866
+    },
+    "layers/attention.py": {
+      "sha256": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+      "bytes": 3018,
+      "audited_functions": [
+        {
+          "class": "Attention",
+          "name": "forward",
+          "line": 50,
+          "ast_sha256": "0d4cac46ae7e24532f520d70f700c7dc8369f602c02c05e473f1551beb6ec31d"
+        }
+      ]
+    },
+    "layers/mlp.py": {
+      "sha256": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa",
+      "bytes": 1269
+    },
+    "layers/patch_embed.py": {
+      "sha256": "c2543ec293951d081db662b2125027625f6e632971630facaa7f911c2377d335",
+      "bytes": 2794
+    },
+    "heads/camera_head.py": {
+      "sha256": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+      "bytes": 5876,
+      "audited_functions": [
+        {
+          "class": "CameraHead",
+          "name": "trunk_fn",
+          "line": 95,
+          "ast_sha256": "47318a1241487514617bbe7b58a58abb737ebfa9fb9020bc692eb072edbc498d"
+        }
+      ]
+    },
+    "heads/dpt_head.py": {
+      "sha256": "72e9ed26196113eb71e26b641b4262606b5aacc797accafc6c975f5db0d2ace2",
+      "bytes": 17338,
+      "audited_functions": [
+        {
+          "class": "DPTHead",
+          "name": "scratch_forward",
+          "line": 261,
+          "ast_sha256": "68f14745e3c8afa215d2545f9ece22029b939f7eb6668638614063f306271cde"
+        }
+      ]
+    }
+  },
+  "saved_receipts": {
+    "profile_336_v17.json": {
+      "sha256": "6c3d2cb51af75410188c062e83a26eae4d4c5d69c632a6eeae95993eba004820",
+      "bytes": 71968
+    },
+    "original_only_v47.json": {
+      "sha256": "6df277cd1721bf834a18e9776f92a1eea9aa3b3afee179ba95916f357adedb6c",
+      "bytes": 69803
+    },
+    "frame_block_v17.json": {
+      "sha256": "c63e45872a609a346031622dbc3a7ffcb268f59412e4cc8544d61d5a72a1ad12",
+      "bytes": 9487
+    },
+    "global_block_v17.json": {
+      "sha256": "9bf92b37e51bfa67f7964d0cbb079bfaeb9aa08d942749727dfbc64c3a575a5e",
+      "bytes": 20120
+    },
+    "camera_head_v15.json": {
+      "sha256": "c85825759d3449db216b3cd74af9b4ca218a0216ae35c1b60b7476de1d5e6dca",
+      "bytes": 11908
+    },
+    "camera_capture112.json": {
+      "sha256": "1c3234cfa65914a6f41634432153fa8ebb6dcf9c8d3eb3215f0955fc0ed000f1",
+      "bytes": 32642
+    }
+  },
+  "checkpoint_provenance_from_receipts": {
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "checkpoint_rehashed_by_this_script": false
+  },
+  "source_derived_active_parameters_by_component": {
+    "original_DINO_encoder": 304372736,
+    "original_24_frame_24_global_blocks": 604729344,
+    "original_aggregator_camera_register_tokens": 10240,
+    "original_camera_head": 216174610,
+    "original_depth_head": 32654562
+  },
+  "active_parameter_count": 1157941492,
+  "workloads": [
+    {
+      "input_shape_SCHW": [
+        2,
+        3,
+        252,
+        336
+      ],
+      "input_evidence": "profile_336_v17.json:input_tensor.shape",
+      "patch_grid": [
+        18,
+        24
+      ],
+      "patch_tokens": 432,
+      "tokens_per_image": 437,
+      "global_tokens": 874,
+      "MAC_by_component": {
+        "DINO_patch_convolution": 520224768,
+        "DINO_24_blocks_linear": 263939162112,
+        "DINO_24_blocks_attention_QK_AV": 18773016576,
+        "frame_24_blocks_linear": 263939162112,
+        "frame_24_blocks_attention_QK_AV": 18773016576,
+        "global_24_blocks_linear": 263939162112,
+        "global_24_blocks_attention_QK_AV": 37546033152,
+        "camera_16_trunk_calls_linear": 1610612736,
+        "camera_16_trunk_calls_attention_QK_AV": 262144,
+        "camera_four_iterations_branch_linear": 117661696,
+        "depth_head_convolutions": 94047657984
+      },
+      "DPT_conventional_dense_MAC_per_image": {
+        "projects_1x1": 2491416576,
+        "resize_convolutions": 1925185536,
+        "scratch_3x3": 7389315072,
+        "fusion_spatial_3x3": 21530935296,
+        "fusion_upsampled_1x1": 2406481920,
+        "output_3x3_1x1": 11280494592
+      },
+      "counted_full_forward_MAC": 963205971968,
+      "counted_full_forward_FLOP": 1926411943936,
+      "one_old_DINO_exact_reuse_MAC_saved": 141616201728,
+      "one_old_DINO_exact_reuse_fraction_of_full_MAC": 0.14702587592833657,
+      "counted_full_forward_with_one_old_DINO_reused_FLOP": 1643179540480,
+      "backbone_MLP_fraction_of_backbone_block_MAC": 0.6089197224975224,
+      "attention_QK_AV_fraction_of_backbone_block_MAC": 0.08662041625371655,
+      "full_original_backbone_camera_prefix_MAC": 869158313984,
+      "full_original_backbone_camera_prefix_with_old_DINO_reused_MAC": 727542112256,
+      "prefix_is_usable_SLAM_pose_or_registered_map_proof": false,
+      "fresh_observations_per_overlap_batch": 1,
+      "required_batches_per_second_for_20_fresh_poses": 20.0,
+      "required_average_effective_TFLOP_per_second_by_counting_convention": {
+        "current_full_forward_each_batch": 38.52823887872,
+        "full_forward_with_one_old_DINO_reused": 32.8635908096,
+        "backbone_camera_prefix_with_one_old_DINO_reused": 29.10168449024,
+        "backbone_linear_only_with_one_old_DINO_reused": 26.3939162112
+      },
+      "service_time_budget_seconds_per_batch_to_avoid_unbounded_serial_queue": 0.05,
+      "image_arrival_to_pose_P95_target_seconds": 0.1,
+      "dense_head_at_2_to_5_seconds_instead_of_each_batch": {
+        "hypothetical_dense_forward_rate_Hz": [
+          0.2,
+          0.5
+        ],
+        "average_total_required_TFLOP_per_second_with_cached_prefix": [
+          29.1393035534336,
+          29.195732148224
+        ],
+        "scheduling_or_SL4_association_correctness_validated": false
+      },
+      "one_complete_frame_global_pair_MAC": 24341557248,
+      "one_complete_frame_global_pair_FLOP": 48683114496,
+      "pair_FP32_cross_boundary_feature_payload_bytes": {
+        "two_separate_graphs_input_output_calls": 14319616,
+        "one_combined_graph_input_output_call": 7159808,
+        "potential_intermediate_payload_saved": 7159808,
+        "includes_positions_or_internal_layout_copies": false,
+        "payload_is_measured_transfer_or_time_saving": false
+      }
+    },
+    {
+      "input_shape_SCHW": [
+        2,
+        3,
+        84,
+        112
+      ],
+      "input_evidence": "original_only_v47.json:new_runtime_board_regression.actual_tensor_shape",
+      "patch_grid": [
+        6,
+        8
+      ],
+      "patch_tokens": 48,
+      "tokens_per_image": 53,
+      "global_tokens": 106,
+      "MAC_by_component": {
+        "DINO_patch_convolution": 57802752,
+        "DINO_24_blocks_linear": 32010928128,
+        "DINO_24_blocks_attention_QK_AV": 276135936,
+        "frame_24_blocks_linear": 32010928128,
+        "frame_24_blocks_attention_QK_AV": 276135936,
+        "global_24_blocks_linear": 32010928128,
+        "global_24_blocks_attention_QK_AV": 552271872,
+        "camera_16_trunk_calls_linear": 1610612736,
+        "camera_16_trunk_calls_attention_QK_AV": 262144,
+        "camera_four_iterations_branch_linear": 117661696,
+        "depth_head_convolutions": 10449739776
+      },
+      "DPT_conventional_dense_MAC_per_image": {
+        "projects_1x1": 276824064,
+        "resize_convolutions": 213909504,
+        "scratch_3x3": 821035008,
+        "fusion_spatial_3x3": 2392326144,
+        "fusion_upsampled_1x1": 267386880,
+        "output_3x3_1x1": 1253388288
+      },
+      "counted_full_forward_MAC": 109373407232,
+      "counted_full_forward_FLOP": 218746814464,
+      "one_old_DINO_exact_reuse_MAC_saved": 16172433408,
+      "one_old_DINO_exact_reuse_fraction_of_full_MAC": 0.14786440156971117,
+      "counted_full_forward_with_one_old_DINO_reused_FLOP": 186401947648,
+      "backbone_MLP_fraction_of_backbone_block_MAC": 0.6590860330401201,
+      "attention_QK_AV_fraction_of_backbone_block_MAC": 0.01137095043981978,
+      "full_original_backbone_camera_prefix_MAC": 98923667456,
+      "full_original_backbone_camera_prefix_with_old_DINO_reused_MAC": 82751234048,
+      "prefix_is_usable_SLAM_pose_or_registered_map_proof": false,
+      "fresh_observations_per_overlap_batch": 1,
+      "required_batches_per_second_for_20_fresh_poses": 20.0,
+      "required_average_effective_TFLOP_per_second_by_counting_convention": {
+        "current_full_forward_each_batch": 4.37493628928,
+        "full_forward_with_one_old_DINO_reused": 3.72803895296,
+        "backbone_camera_prefix_with_one_old_DINO_reused": 3.31004936192,
+        "backbone_linear_only_with_one_old_DINO_reused": 3.2010928128
+      },
+      "service_time_budget_seconds_per_batch_to_avoid_unbounded_serial_queue": 0.05,
+      "image_arrival_to_pose_P95_target_seconds": 0.1,
+      "dense_head_at_2_to_5_seconds_instead_of_each_batch": {
+        "hypothetical_dense_forward_rate_Hz": [
+          0.2,
+          0.5
+        ],
+        "average_total_required_TFLOP_per_second_with_cached_prefix": [
+          3.3142292578304,
+          3.320499101696
+        ],
+        "scheduling_or_SL4_association_correctness_validated": false
+      },
+      "one_complete_frame_global_pair_MAC": 2702094336,
+      "one_complete_frame_global_pair_FLOP": 5404188672,
+      "pair_FP32_cross_boundary_feature_payload_bytes": {
+        "two_separate_graphs_input_output_calls": 1736704,
+        "one_combined_graph_input_output_call": 868352,
+        "potential_intermediate_payload_saved": 868352,
+        "includes_positions_or_internal_layout_copies": false,
+        "payload_is_measured_transfer_or_time_saving": false
+      }
+    },
+    {
+      "input_shape_SCHW": [
+        2,
+        3,
+        392,
+        518
+      ],
+      "input_evidence": "original_only_v47.json:original518_cache_diagnostic.actual_input_shape",
+      "patch_grid": [
+        28,
+        37
+      ],
+      "patch_tokens": 1036,
+      "tokens_per_image": 1041,
+      "global_tokens": 2082,
+      "MAC_by_component": {
+        "DINO_patch_convolution": 1247576064,
+        "DINO_24_blocks_linear": 628742946816,
+        "DINO_24_blocks_attention_QK_AV": 106530177024,
+        "frame_24_blocks_linear": 628742946816,
+        "frame_24_blocks_attention_QK_AV": 106530177024,
+        "global_24_blocks_linear": 628742946816,
+        "global_24_blocks_attention_QK_AV": 213060354048,
+        "camera_16_trunk_calls_linear": 1610612736,
+        "camera_16_trunk_calls_attention_QK_AV": 262144,
+        "camera_four_iterations_branch_linear": 117661696,
+        "depth_head_convolutions": 225721882624
+      },
+      "DPT_conventional_dense_MAC_per_image": {
+        "projects_1x1": 5974786048,
+        "resize_convolutions": 4682940416,
+        "scratch_3x3": 17737187328,
+        "fusion_spatial_3x3": 51642630144,
+        "fusion_upsampled_1x1": 5771100160,
+        "output_3x3_1x1": 27052297216
+      },
+      "counted_full_forward_MAC": 2541047543808,
+      "counted_full_forward_FLOP": 5082095087616,
+      "one_old_DINO_exact_reuse_MAC_saved": 368260349952,
+      "one_old_DINO_exact_reuse_fraction_of_full_MAC": 0.14492462010377305,
+      "counted_full_forward_with_one_old_DINO_reused_FLOP": 4345574387712,
+      "backbone_MLP_fraction_of_backbone_block_MAC": 0.5438130642591609,
+      "attention_QK_AV_fraction_of_backbone_block_MAC": 0.18428040361125864,
+      "full_original_backbone_camera_prefix_MAC": 2315325661184,
+      "full_original_backbone_camera_prefix_with_old_DINO_reused_MAC": 1947065311232,
+      "prefix_is_usable_SLAM_pose_or_registered_map_proof": false,
+      "fresh_observations_per_overlap_batch": 1,
+      "required_batches_per_second_for_20_fresh_poses": 20.0,
+      "required_average_effective_TFLOP_per_second_by_counting_convention": {
+        "current_full_forward_each_batch": 101.64190175232,
+        "full_forward_with_one_old_DINO_reused": 86.91148775424,
+        "backbone_camera_prefix_with_one_old_DINO_reused": 77.88261244928,
+        "backbone_linear_only_with_one_old_DINO_reused": 62.8742946816
+      },
+      "service_time_budget_seconds_per_batch_to_avoid_unbounded_serial_queue": 0.05,
+      "image_arrival_to_pose_P95_target_seconds": 0.1,
+      "dense_head_at_2_to_5_seconds_instead_of_each_batch": {
+        "hypothetical_dense_forward_rate_Hz": [
+          0.2,
+          0.5
+        ],
+        "average_total_required_TFLOP_per_second_with_cached_prefix": [
+          77.97290120232961,
+          78.108334331904
+        ],
+        "scheduling_or_SL4_association_correctness_validated": false
+      },
+      "one_complete_frame_global_pair_MAC": 65711517696,
+      "one_complete_frame_global_pair_FLOP": 131423035392,
+      "pair_FP32_cross_boundary_feature_payload_bytes": {
+        "two_separate_graphs_input_output_calls": 34111488,
+        "one_combined_graph_input_output_call": 17055744,
+        "potential_intermediate_payload_saved": 17055744,
+        "includes_positions_or_internal_layout_copies": false,
+        "payload_is_measured_transfer_or_time_saving": false
+      }
+    },
+    {
+      "input_shape_SCHW": [
+        3,
+        3,
+        252,
+        336
+      ],
+      "input_evidence": "analytical S=3 batching scenario; no execution asserted",
+      "patch_grid": [
+        18,
+        24
+      ],
+      "patch_tokens": 432,
+      "tokens_per_image": 437,
+      "global_tokens": 1311,
+      "MAC_by_component": {
+        "DINO_patch_convolution": 780337152,
+        "DINO_24_blocks_linear": 395908743168,
+        "DINO_24_blocks_attention_QK_AV": 28159524864,
+        "frame_24_blocks_linear": 395908743168,
+        "frame_24_blocks_attention_QK_AV": 28159524864,
+        "global_24_blocks_linear": 395908743168,
+        "global_24_blocks_attention_QK_AV": 84478574592,
+        "camera_16_trunk_calls_linear": 2415919104,
+        "camera_16_trunk_calls_attention_QK_AV": 589824,
+        "camera_four_iterations_branch_linear": 176492544,
+        "depth_head_convolutions": 141071486976
+      },
+      "DPT_conventional_dense_MAC_per_image": {
+        "projects_1x1": 2491416576,
+        "resize_convolutions": 1925185536,
+        "scratch_3x3": 7389315072,
+        "fusion_spatial_3x3": 21530935296,
+        "fusion_upsampled_1x1": 2406481920,
+        "output_3x3_1x1": 11280494592
+      },
+      "counted_full_forward_MAC": 1472968679424,
+      "counted_full_forward_FLOP": 2945937358848,
+      "one_old_DINO_exact_reuse_MAC_saved": 141616201728,
+      "one_old_DINO_exact_reuse_fraction_of_full_MAC": 0.09614338967708301,
+      "counted_full_forward_with_one_old_DINO_reused_FLOP": 2662704955392,
+      "backbone_MLP_fraction_of_backbone_block_MAC": 0.5960129989814231,
+      "attention_QK_AV_fraction_of_backbone_block_MAC": 0.10598050152786535,
+      "full_original_backbone_camera_prefix_MAC": 1331897192448,
+      "full_original_backbone_camera_prefix_with_old_DINO_reused_MAC": 1190280990720,
+      "prefix_is_usable_SLAM_pose_or_registered_map_proof": false,
+      "fresh_observations_per_overlap_batch": 2,
+      "required_batches_per_second_for_20_fresh_poses": 10.0,
+      "required_average_effective_TFLOP_per_second_by_counting_convention": {
+        "current_full_forward_each_batch": 29.45937358848,
+        "full_forward_with_one_old_DINO_reused": 26.62704955392,
+        "backbone_camera_prefix_with_one_old_DINO_reused": 23.8056198144,
+        "backbone_linear_only_with_one_old_DINO_reused": 21.11513296896
+      },
+      "service_time_budget_seconds_per_batch_to_avoid_unbounded_serial_queue": 0.1,
+      "image_arrival_to_pose_P95_target_seconds": 0.1,
+      "dense_head_at_2_to_5_seconds_instead_of_each_batch": {
+        "hypothetical_dense_forward_rate_Hz": [
+          0.2,
+          0.5
+        ],
+        "average_total_required_TFLOP_per_second_with_cached_prefix": [
+          23.8620484091904,
+          23.946691301376
+        ],
+        "scheduling_or_SL4_association_correctness_validated": false
+      },
+      "one_complete_frame_global_pair_MAC": 37685649408,
+      "one_complete_frame_global_pair_FLOP": 75371298816,
+      "pair_FP32_cross_boundary_feature_payload_bytes": {
+        "two_separate_graphs_input_output_calls": 21479424,
+        "one_combined_graph_input_output_call": 10739712,
+        "potential_intermediate_payload_saved": 10739712,
+        "includes_positions_or_internal_layout_copies": false,
+        "payload_is_measured_transfer_or_time_saving": false
+      }
+    }
+  ],
+  "FP16_weight_payload_and_conditional_streaming": {
+    "logical_unique_active_parameter_FP16_bytes": 2315882984,
+    "logical_unique_active_parameter_FP16_GiB": 2.156834103167057,
+    "entire_original_FP16_model_execution_or_quality_validated": false,
+    "backbone_72_blocks_matrix_FP16_bytes": 1811939328,
+    "camera_unique_matrix_FP16_bytes": 432068608,
+    "camera_four_iteration_logical_matrix_reads_FP16_bytes_if_no_inter_iteration_cache": 1728274432,
+    "backbone_camera_logical_matrix_reads_FP16_bytes_per_forward_if_each_use_is_streamed_once": 3540213760,
+    "conditional_streamed_matrix_bytes_per_second_at_20_S2_updates": 70804275200,
+    "conditional_streamed_matrix_GB_per_second_at_20_S2_updates": 70.8042752,
+    "scope": "Matrix weights only, no biases/norms/patch convolution/depth head/packing duplication",
+    "measured_DRAM_bandwidth_or_minimum_IO_requirement": false,
+    "note": "Device caches, weight packing, persistent contexts and repeated reads change actual traffic. DINO reuse removes old-image MACs, but one fresh image still touches each DINO layer's weights. Unique parameter payload, SDK allocation and host-to-device upload are different quantities.",
+    "existing_complete_camera_RKNN_DMA_bytes": 3424231424,
+    "SDK_DMA_not_whole_model_or_whole_board_memory": true
+  },
+  "existing_measured_evidence": {
+    "original_336_S2_CPU_unhooked_full_forward_seconds": 34.06903659000818,
+    "separate_hooked_full_forward_seconds": 50.83266894100234,
+    "hooked_stage_seconds_must_not_be_added_to_unhooked_measurement": true,
+    "captured_complete_DINO_frame_global_call_counts": [
+      24,
+      24,
+      24
+    ],
+    "captured_camera_trunk_calls": 16,
+    "complete_camera_NPU_last_three_mean_ms": 203.6457706684208,
+    "complete_camera_NPU_strict_FP32_elementwise_gate_passed": false,
+    "camera_measurement_is_repeated_saved_input_not_fresh_stream": true,
+    "camera_saving_ratio_or_full_model_uniform_latency_extrapolated": false
+  },
+  "reuse_scope": {
+    "proven_unchanged_reuse": "DINO normalized-pixel encoder tail for one identical old image and unchanged evaluation state",
+    "frame_and_global_context_reused_by_this_budget": false,
+    "why_global_tail_is_not_generic_cache": "Original global attention is bidirectional over S*N tokens. A fresh image changes attention keys, values and softmax denominators for old queries, then changes inputs to later frame/global layers. An autoregressive old KV cache would not compute the same original outputs.",
+    "retained_layers": [
+      4,
+      11,
+      17,
+      23
+    ],
+    "retention_omits_transformer_compute": false
+  },
+  "limits": [
+    "No hardware impossibility proof, sustained FP16 peak assumption or promise of 20 Hz.",
+    "Current component implementations and full CPU measurements do not meet the goal; another implementation needs actual complete-model numerical and fresh-stream evidence.",
+    "S=2 overlap batches contribute one new observation, not two fresh poses. S=3 batching can contribute two new observations but has batch-wait latency and more global-attention work.",
+    "Inverse average throughput cannot establish end-to-end P95 latency or 30-minute bounded queues.",
+    "Lower input geometry is a workload count; original weights alone do not establish <=10-20% ATE/RPE loss at that geometry.",
+    "Computing camera outputs before the dense head does not prove poses are aligned to the existing SL4 graph; the current graph uses dense predictions and overlap geometry.",
+    "Asynchronous dense updates are conditional arithmetic scenarios, not a tested scheduling design or acceptance result.",
+    "FP16 logical parameter bytes do not establish 8 GB operation with SDK contexts, activations, OS and maps."
+  ]
+}

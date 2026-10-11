@@ -1,0 +1,17 @@
+{
+  "schema": "original_pair_AB_public_packaging_v48",
+  "actual_board_source_freeze_sha256": "81c2481bac266e020160ca8cb2232caaaa6160bd7fc0d27de4057a427c2e6bf2",
+  "runtime_sources_unchanged": {
+    "run-v48-frame-global-ab-board.py": "f857689cb0310aafde9287d7cb11c0f8aa799b01151b6865b11d11aa8d03f6d7",
+    "v48_ab_contracts.py": "6b63e117445a453ac383c0d8fa76cc831c9d81af4b2f33f982459aa5fe0a8802"
+  },
+  "public_test_sha256": "0d04186e959ec4e81e573eb0c3f603a99d1ca22f7adb54cfd77ef91616c46e3e",
+  "test_only_change": "Resolve the same frozen parent runtime from sibling validation directory instead of private research worktree. No test assertion or runtime change.",
+  "public_packaged_tiny_generated_checks": {
+    "passed": 33,
+    "failed": 0,
+    "skipped": 0,
+    "actual_model_OR_SDK_executed": false
+  },
+  "historical_freeze_note": "Preparation README/test hashes in source-freeze-r1.json remain historical; RESULT.md records the subsequent actual board run. Public test path was adapted as recorded here."
+}

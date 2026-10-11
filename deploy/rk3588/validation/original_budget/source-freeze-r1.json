@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "status": "frozen_original_VGGT_static_budget",
+  "current_report": "compute-budget-r2.json",
+  "retained_initial_draft": "compute-budget-r1.json",
+  "files": {
+    "calculate_original_vggt_budget.py": {
+      "sha256": "6ff761a330333fd9c976d64ca60c1688324adb6ba81b1b50304f8988ad997fca",
+      "bytes": 26760
+    },
+    "check_budget_formulas.py": {
+      "sha256": "a7b158ef4c56004cad327d80880c4dfaad6695a21f77e863cdd838f0645e101b",
+      "bytes": 6075
+    },
+    "README.md": {
+      "sha256": "6007cfdc492848894f29a6c95a45ddf70a3929a46dda24d52581ed686107dbe0",
+      "bytes": 5601
+    },
+    "compute-budget-r2.json": {
+      "sha256": "ffc32399cf1186d6d4c00c1b0481ccde7998fabc633df1a1ac3aec072b88cc70",
+      "bytes": 24535
+    },
+    "selfchecks-r1.json": {
+      "sha256": "d191dbeeb1103bf6fcda68c932ef0a00e05af3160c61510608c1572fa8260eca",
+      "bytes": 1410
+    }
+  },
+  "fixed_original_sources": {
+    "models/vggt.py": {
+      "sha256": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+      "bytes": 5361
+    },
+    "models/aggregator.py": {
+      "sha256": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+      "bytes": 28283,
+      "audited_functions": [
+        {
+          "class": "Aggregator",
+          "name": "forward",
+          "line": 484,
+          "ast_sha256": "89daa7d791304909a06337661faecc11d58e02583e22d4d657799d0a3450f7e0"
+        },
+        {
+          "class": "Aggregator",
+          "name": "_process_global_attention",
+          "line": 629,
+          "ast_sha256": "aecf34668e15c73e0c7cbc227a6806e7cf283e11764477fbc5bf3a89480eee1c"
+        }
+      ]
+    },
+    "layers/vision_transformer.py": {
+      "sha256": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+      "bytes": 15142
+    },
+    "layers/block.py": {
+      "sha256": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+      "bytes": 9866
+    },
+    "layers/attention.py": {
+      "sha256": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+      "bytes": 3018,
+      "audited_functions": [
+        {
+          "class": "Attention",
+          "name": "forward",
+          "line": 50,
+          "ast_sha256": "0d4cac46ae7e24532f520d70f700c7dc8369f602c02c05e473f1551beb6ec31d"
+        }
+      ]
+    },
+    "layers/mlp.py": {
+      "sha256": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa",
+      "bytes": 1269
+    },
+    "layers/patch_embed.py": {
+      "sha256": "c2543ec293951d081db662b2125027625f6e632971630facaa7f911c2377d335",
+      "bytes": 2794
+    },
+    "heads/camera_head.py": {
+      "sha256": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+      "bytes": 5876,
+      "audited_functions": [
+        {
+          "class": "CameraHead",
+          "name": "trunk_fn",
+          "line": 95,
+          "ast_sha256": "47318a1241487514617bbe7b58a58abb737ebfa9fb9020bc692eb072edbc498d"
+        }
+      ]
+    },
+    "heads/dpt_head.py": {
+      "sha256": "72e9ed26196113eb71e26b641b4262606b5aacc797accafc6c975f5db0d2ace2",
+      "bytes": 17338,
+      "audited_functions": [
+        {
+          "class": "DPTHead",
+          "name": "scratch_forward",
+          "line": 261,
+          "ast_sha256": "68f14745e3c8afa215d2545f9ece22029b939f7eb6668638614063f306271cde"
+        }
+      ]
+    }
+  },
+  "saved_metadata_inputs": {
+    "profile_336_v17.json": {
+      "sha256": "6c3d2cb51af75410188c062e83a26eae4d4c5d69c632a6eeae95993eba004820",
+      "bytes": 71968
+    },
+    "original_only_v47.json": {
+      "sha256": "6df277cd1721bf834a18e9776f92a1eea9aa3b3afee179ba95916f357adedb6c",
+      "bytes": 69803
+    },
+    "frame_block_v17.json": {
+      "sha256": "c63e45872a609a346031622dbc3a7ffcb268f59412e4cc8544d61d5a72a1ad12",
+      "bytes": 9487
+    },
+    "global_block_v17.json": {
+      "sha256": "9bf92b37e51bfa67f7964d0cbb079bfaeb9aa08d942749727dfbc64c3a575a5e",
+      "bytes": 20120
+    },
+    "camera_head_v15.json": {
+      "sha256": "c85825759d3449db216b3cd74af9b4ca218a0216ae35c1b60b7476de1d5e6dca",
+      "bytes": 11908
+    },
+    "camera_capture112.json": {
+      "sha256": "1c3234cfa65914a6f41634432153fa8ebb6dcf9c8d3eb3215f0955fc0ed000f1",
+      "bytes": 32642
+    }
+  },
+  "actual_model_OR_ORT_OR_RKNN_OR_compile_run": false,
+  "board_access": false,
+  "selfchecks": {
+    "count": 12,
+    "status": "passed_static_formula_checks"
+  }
+}

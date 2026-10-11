@@ -1,0 +1,27 @@
+{
+  "kind": "v47_original_VGGT_pair_source_synthetic_freeze",
+  "status": "passed_source_and_tiny_generated_checks",
+  "source_hashes": {
+    "analyze-v47-block-profiles.py": "1640469baba32242a7e1a6181e1d96d9139ab4b8145db33c5edebb8bdbcb54ef",
+    "check-v47-pair-onnx-board.py": "7b6571ffd74778c05c3dca15305ee248a234b0329bb1e144d7cd83284c2af916",
+    "compile-v47-pair.py": "459bbbb81aa43b3ca7562e1f9dc5c946086b276b89f68730123383df84e4ff8a",
+    "export-v47-frame-global-pair.py": "ab8e1548369d402448c29be19bfa6c47f7466f27a02f8f6c753fe5ebb5ed89f0",
+    "run-v47-pair-rknn-board.py": "e0083d2a0a7d0fe9b397cc28f0c81b3be9239ecce846e21402c2647b222f9d8f",
+    "test_v47_frame_global_pair.py": "7388ad5170f8ab1e68970402e5e0295021681ab1a1ec9382d344c8c128fb3d33",
+    "test_v47_pair_runtime_contracts.py": "48ffbfa928e9c6a5c23280108d452184fbc895cbb7e9f107954c99f18ff91285",
+    "v47_pair_contracts.py": "4ec6c0e827ab9669c942b589d2c504f0c9de306f76f4f4be0799af14ae322cd7"
+  },
+  "passed": 23,
+  "failed": 0,
+  "skipped": 0,
+  "host_original_model_or_ORT_execution": false,
+  "host_compiler_executed": false,
+  "board_operations": false,
+  "tests_scope": [
+    "Generated tiny ONNX ReferenceEvaluator pair and namespace/ordering/weight mutation guards",
+    "Fake descriptor/ORT session contracts, fixed FP32 rejection and generated SDK save wrapper"
+  ],
+  "syntax_all_sources_passed": true,
+  "paired_actual_board_CPU_gate": "pending",
+  "paired_actual_RKNN_gate": "pending"
+}

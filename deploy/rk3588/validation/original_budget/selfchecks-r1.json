@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "status": "passed_static_formula_checks",
+  "checks": {
+    "captured_matrix_shapes_equal_12D_squared": true,
+    "tiny_pair_manual_2736_MAC_5472_FLOP": true,
+    "case_0_captured_linear_and_enumerated_attention_axes": true,
+    "case_0_full_and_cached_totals_fresh_observation_denominator": true,
+    "case_1_captured_linear_and_enumerated_attention_axes": true,
+    "case_1_full_and_cached_totals_fresh_observation_denominator": true,
+    "case_2_captured_linear_and_enumerated_attention_axes": true,
+    "case_2_full_and_cached_totals_fresh_observation_denominator": true,
+    "case_3_captured_linear_and_enumerated_attention_axes": true,
+    "case_3_full_and_cached_totals_fresh_observation_denominator": true,
+    "conditional_camera_streaming_uses_four_iterations_and_FP16_two_bytes": true,
+    "complete_active_parameter_count_matches_v47_saved_count": true
+  },
+  "check_count": 12,
+  "script_sha256": "a7b158ef4c56004cad327d80880c4dfaad6695a21f77e863cdd838f0645e101b",
+  "input_SHA": {
+    "budget": "ffc32399cf1186d6d4c00c1b0481ccde7998fabc633df1a1ac3aec072b88cc70",
+    "profile": "6c3d2cb51af75410188c062e83a26eae4d4c5d69c632a6eeae95993eba004820",
+    "camera_capture": "1c3234cfa65914a6f41634432153fa8ebb6dcf9c8d3eb3215f0955fc0ed000f1"
+  },
+  "actual_model_OR_ORT_OR_RKNN_OR_compile_run": false,
+  "board_access": false,
+  "proves_hardware_throughput_or_model_quality": false
+}

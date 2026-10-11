@@ -1,0 +1,82 @@
+{
+  "schema": "v48_original_frame_global_AB_saved_provenance_audit",
+  "status": "passed_saved_lineage_checks",
+  "host_model_or_ORT_SDK_compile_executed": false,
+  "board_operations": false,
+  "candidate_accepted": false,
+  "actual_AB_executed": false,
+  "parents": {
+    "frame0": {
+      "original_parameter_count": 18,
+      "original_parameter_identity_matches_fused": true,
+      "saved_model_sha_verified": true,
+      "export_sha256": "07d139bc51dc5ab244920020e7728e774ee62f055a464c107da292664ae24eaa",
+      "ort_sha256": "e65ea97ef477709bc0a346658fdf7adeca1ff6e4c8efcbeaaffca3076889b3ca",
+      "graph_sha256": "20912c4580eec7d3935900437cbd2733013bd1f92229befac48bad5d860cb1ce",
+      "compile_sha256": "4d44169d783ea2bdb840d07fb2bac895672c01ce03218e4548c695d2acb81673",
+      "model_sha256": "0471b1a39629d61f4ef75285768e537af34862f66ebad6495c9bbe46380ed778",
+      "model_bytes": 27989748,
+      "shape": [
+        2,
+        437,
+        1024
+      ]
+    },
+    "global0": {
+      "original_parameter_count": 18,
+      "original_parameter_identity_matches_fused": true,
+      "saved_model_sha_verified": true,
+      "export_sha256": "f851432a0dd8e9c2d66b4dfee2a76dfb674836bfb710a2ccbea09972f5e3f33d",
+      "ort_sha256": "1929248412b695bffc5e12d89efdca478413c94a80b3ed68b31354df00fbfa87",
+      "graph_sha256": "f67c2210f6a53a7ff88865e4607c6d1760cf23c221941339c204c7414cda2778",
+      "compile_sha256": "ac86341dfde8cc3e8af20c5de0970a87a93f292a1280aeb512c657a0605aa29a",
+      "model_sha256": "ba201c49ba4849e5e4812142bfc92c3dda98ec3fda5566e2a80040389c0375a9",
+      "model_bytes": 27411252,
+      "shape": [
+        1,
+        874,
+        1024
+      ]
+    }
+  },
+  "fused_compile_sha256": "5084e00143c4ab5fce94ceae81247c11939ddb7783d80d1b937bffcbdc0bcfb9",
+  "fused_board_ORT_sha256": "f93e1939be9628b7e28df8f91cf06d28002f0b3871a0d0a46adca1780ffa5fc0",
+  "fused_board_ORT_gate_passed": true,
+  "all_saved_inputs_unchanged": true,
+  "source_and_input_hashes": {
+    "/dev/shm/edge-vggt-v47/blocks/pair-r2/export.json": "149450ffc675ce59950c6f89cf84adb41e388cd050eeb731b6d09a6fe16e9fe1",
+    "/dev/shm/edge-vggt-v47/blocks/pair-r2/pair.onnx": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+    "/dev/shm/edge-vggt-v47/blocks/pair-r2/input.npy": "bb6535dea18e988c0bdedd1e34aa5e0faac8ecedc938c9604ae49dbe4547f00d",
+    "/dev/shm/edge-vggt-v47/blocks/pair-r2/output.npy": "9b264c17333aaeee2e9c046c41fab0e13a2cdf237dec1e7799ffbf9ed4ba775b",
+    "/dev/shm/edge-vggt-v47/blocks/pair-r2/frame-reference.npy": "d9a0ea770c0625537690eed65d042fb29cf4703f97d2ffb89717ad74ef2c010e",
+    "/dev/shm/edge-vggt-v47/blocks/pair-r2/positions.npy": "8a01a56f84a95c19d3894590d4bcc05da80c1eb71a43801dd4abcd953322e064",
+    "/dev/shm/vggt-v19-frame336-export-r3/export.json": "07d139bc51dc5ab244920020e7728e774ee62f055a464c107da292664ae24eaa",
+    "/dev/shm/vggt-v19-frame336-ort-r3/check.json": "e65ea97ef477709bc0a346658fdf7adeca1ff6e4c8efcbeaaffca3076889b3ca",
+    "/dev/shm/vggt-v19-frame336-compile-r1/compile.json": "4d44169d783ea2bdb840d07fb2bac895672c01ce03218e4548c695d2acb81673",
+    "/media/frank/Extreme SSD/workspace-storage/host-memory-20261011/dev-shm/vggt-v19-frame336-compile-r1/block.rknn": "0471b1a39629d61f4ef75285768e537af34862f66ebad6495c9bbe46380ed778",
+    "/dev/shm/vggt-v17-global336-export-r3/export.json": "f851432a0dd8e9c2d66b4dfee2a76dfb674836bfb710a2ccbea09972f5e3f33d",
+    "/dev/shm/vggt-v17-global336-ort-r3/check.json": "1929248412b695bffc5e12d89efdca478413c94a80b3ed68b31354df00fbfa87",
+    "/dev/shm/vggt-v17-global336-compile-r3/compile.json": "ac86341dfde8cc3e8af20c5de0970a87a93f292a1280aeb512c657a0605aa29a",
+    "/media/frank/Extreme SSD/workspace-storage/host-memory-20261011/dev-shm/vggt-v17-global336-compile-r3/block.rknn": "ba201c49ba4849e5e4812142bfc92c3dda98ec3fda5566e2a80040389c0375a9",
+    "/dev/shm/edge-vggt-v48/compile-r1/compile.json": "5084e00143c4ab5fce94ceae81247c11939ddb7783d80d1b937bffcbdc0bcfb9",
+    "/dev/shm/edge-vggt-v48/ort-r2/check.json": "f93e1939be9628b7e28df8f91cf06d28002f0b3871a0d0a46adca1780ffa5fc0"
+  },
+  "source_and_input_hashes_after": {
+    "/dev/shm/edge-vggt-v47/blocks/pair-r2/export.json": "149450ffc675ce59950c6f89cf84adb41e388cd050eeb731b6d09a6fe16e9fe1",
+    "/dev/shm/edge-vggt-v47/blocks/pair-r2/pair.onnx": "2cf1f4de19c91b42b5bf685ab5e949bd98b08a64fc2e78b7f0c8f07992a009fc",
+    "/dev/shm/edge-vggt-v47/blocks/pair-r2/input.npy": "bb6535dea18e988c0bdedd1e34aa5e0faac8ecedc938c9604ae49dbe4547f00d",
+    "/dev/shm/edge-vggt-v47/blocks/pair-r2/output.npy": "9b264c17333aaeee2e9c046c41fab0e13a2cdf237dec1e7799ffbf9ed4ba775b",
+    "/dev/shm/edge-vggt-v47/blocks/pair-r2/frame-reference.npy": "d9a0ea770c0625537690eed65d042fb29cf4703f97d2ffb89717ad74ef2c010e",
+    "/dev/shm/edge-vggt-v47/blocks/pair-r2/positions.npy": "8a01a56f84a95c19d3894590d4bcc05da80c1eb71a43801dd4abcd953322e064",
+    "/dev/shm/vggt-v19-frame336-export-r3/export.json": "07d139bc51dc5ab244920020e7728e774ee62f055a464c107da292664ae24eaa",
+    "/dev/shm/vggt-v19-frame336-ort-r3/check.json": "e65ea97ef477709bc0a346658fdf7adeca1ff6e4c8efcbeaaffca3076889b3ca",
+    "/dev/shm/vggt-v19-frame336-compile-r1/compile.json": "4d44169d783ea2bdb840d07fb2bac895672c01ce03218e4548c695d2acb81673",
+    "/media/frank/Extreme SSD/workspace-storage/host-memory-20261011/dev-shm/vggt-v19-frame336-compile-r1/block.rknn": "0471b1a39629d61f4ef75285768e537af34862f66ebad6495c9bbe46380ed778",
+    "/dev/shm/vggt-v17-global336-export-r3/export.json": "f851432a0dd8e9c2d66b4dfee2a76dfb674836bfb710a2ccbea09972f5e3f33d",
+    "/dev/shm/vggt-v17-global336-ort-r3/check.json": "1929248412b695bffc5e12d89efdca478413c94a80b3ed68b31354df00fbfa87",
+    "/dev/shm/vggt-v17-global336-compile-r3/compile.json": "ac86341dfde8cc3e8af20c5de0970a87a93f292a1280aeb512c657a0605aa29a",
+    "/media/frank/Extreme SSD/workspace-storage/host-memory-20261011/dev-shm/vggt-v17-global336-compile-r3/block.rknn": "ba201c49ba4849e5e4812142bfc92c3dda98ec3fda5566e2a80040389c0375a9",
+    "/dev/shm/edge-vggt-v48/compile-r1/compile.json": "5084e00143c4ab5fce94ceae81247c11939ddb7783d80d1b937bffcbdc0bcfb9",
+    "/dev/shm/edge-vggt-v48/ort-r2/check.json": "f93e1939be9628b7e28df8f91cf06d28002f0b3871a0d0a46adca1780ffa5fc0"
+  }
+}

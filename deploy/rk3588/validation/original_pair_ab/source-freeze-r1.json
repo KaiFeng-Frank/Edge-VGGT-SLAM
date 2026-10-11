@@ -1,0 +1,46 @@
+{
+  "schema": "v48_original_VGGT_frame_global_controlled_AB_source_freeze",
+  "status": "prepared_not_board_executed",
+  "candidate_accepted": false,
+  "actual_AB_executed": false,
+  "host_real_model_ORT_SDK_compile_executed": false,
+  "frozen_pair_export_sha256": "149450ffc675ce59950c6f89cf84adb41e388cd050eeb731b6d09a6fe16e9fe1",
+  "frozen_pair_contracts_sha256": "4ec6c0e827ab9669c942b589d2c504f0c9de306f76f4f4be0799af14ae322cd7",
+  "typed_abi_source_sha256": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608",
+  "sdk_header_sha256": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a",
+  "sdk_library_sha256": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+  "fixed_sdk_call_count": 12,
+  "fixed_route_call_count": 8,
+  "tiny_generated_checks_passed": 33,
+  "timing_scope": "Instrumented route includes bridge checks/hashes; separate SDK IO sum excludes hashes",
+  "files": {
+    "v48_ab_contracts.py": {
+      "bytes": 9998,
+      "sha256": "6b63e117445a453ac383c0d8fa76cc831c9d81af4b2f33f982459aa5fe0a8802"
+    },
+    "run-v48-frame-global-ab-board.py": {
+      "bytes": 27425,
+      "sha256": "f857689cb0310aafde9287d7cb11c0f8aa799b01151b6865b11d11aa8d03f6d7"
+    },
+    "test_v48_frame_global_ab.py": {
+      "bytes": 11339,
+      "sha256": "8264cc9bd09a47f85bc82c3ccbaab488e081a9f96a152a742df6019898ebade9"
+    },
+    "README.md": {
+      "bytes": 6113,
+      "sha256": "d07b74bc7b96b19bf1999074d6b17583b418d49686b5e598976c9f9ee78cfbc1"
+    },
+    "run-ab-board.sh": {
+      "bytes": 1767,
+      "sha256": "1001547e7552f2753789d977129e1d568bc6c11d5189c03f2876175cdb0f8294"
+    },
+    "provenance-saved-audit-r1.json": {
+      "bytes": 6244,
+      "sha256": "4a0ecd694b6007e4043ba8792b7c71248cf58eec7e0fdba1273e6639e6557437"
+    },
+    "tiny-checks-r1.json": {
+      "bytes": 822,
+      "sha256": "38716e42f9416a92f75d6d5e6500ad4066ee6fce02ce5f528369c6eaccff9c42"
+    }
+  }
+}
