@@ -40,6 +40,16 @@ def atomic_json(path, value):
 
 def platform_sample():
     result = dict(temperature_c={}, cpu_frequency_khz={})
+    # Clock state belongs in each timing record; a configured maximum alone
+    # does not establish the actual frequency used by an inference run.
+    npu = Path("/sys/class/devfreq/fdab0000.npu")
+    result["npu"] = {}
+    for name in ("cur_freq", "min_freq", "max_freq", "governor"):
+        try:
+            value = npu.joinpath(name).read_text().strip()
+            result["npu"][name] = value if name == "governor" else int(value)
+        except (OSError, ValueError):
+            result["npu"][name] = None
     try:
         fields = {"MemTotal", "MemAvailable", "MemFree", "Buffers", "Cached",
                   "SReclaimable", "Shmem", "CmaTotal", "CmaFree"}

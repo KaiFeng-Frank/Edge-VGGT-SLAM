@@ -228,3 +228,11 @@
 原 DINO 0–3 层的两个真实输入、16 次 ABBA 调用中，四个独立图与合并图的复测均值为 37.150 / 28.546 ms，输出逐字节一致。随后保留全部原节点、336 个原块参数和所有 token，将 24 层完整编译成六组；12 次 FP32 合并图与分层 ONNX 链对照全部逐字节相同。原 Torch FP32 门槛在四组仍有失败，未抹除。六组图接入原 token 准备、最终 norm、相机头、深度头和 SL4，明确拒绝会被绕过的中间 block hooks，没有伪造中间输出。
 
 完整 16 对输入的 80 个数组和轨迹仍与上一版 FP16 逐字节相同，DINO SDK 调用从 408 降到 102，整网上下文从 50 降到 32；但完整服务均值由 1.9751 变成 1.9821 s，没有观察到整网提速。DINO 自身均值仅从 0.2903 降到 0.2758 s，不能把首组的 23.16% 局部差值线性外推。真实时间戳回放得到 16 次新位姿、0.5425 Hz、P95 2.4716 s、峰值 RSS 7259.28 MiB；单槽队列、16 个地图块和全部上下文释放均已核对。启动为 38.74 s，另计、不混入 29.49 s 回放；没有 30 分钟、8 GB、闭环或实物相机验收。保留显式实验选项，不改变默认后端，不宣称实时突破。[完整结果](../results/original_grouped_dino_v58.json)、[复现](../deploy/rk3588/validation/original_grouped_dino/README.md)。
+
+## 122. 性能记录必须包含实际 NPU 频率，不能只记录允许上限
+
+板端只读检查发现当前 NPU 的 governor 为 userspace，实际和目标频率均为 300 MHz，允许范围为 300–1000 MHz；当前 transition 统计为零次切换。这个快照不能证明全部历史测试都运行在 300 MHz：旧 preflight 曾记录 1000 MHz，v57/v58 回放又没有逐次保存 NPU 频率。因此保留原始计时，不将配置上限当作实测频率，也不追溯填补缺失值。
+
+`platform_sample()` 现随每次回放更新读取 NPU 的实际频率、上下限与 governor，缺失或不可读明确记为 null；不写任何系统设置。真实板端读取已验证当前 300 MHz。临时 1 GHz 的完整模型对照与时间戳回放已经准备，但尚未执行，仍待全局时钟变更授权；本次没有新的推理性能结果。[只读证据和执行状态](../results/original_npu_clock_v59.json)。
+
+另一个恢复细节是 userspace 请求当前为 `undefined`。只写频率的测试可恢复实际 300 MHz 和原 governor/上下限，但请求会变成显式 300 MHz，不能声称内部状态逐字节恢复。[官方 userspace governor 源码](https://raw.githubusercontent.com/rockchip-linux/kernel/develop-5.10/drivers/devfreq/governor_userspace.c)解释了这个区别；它不是对本板定制内核二进制的逐字节核验。

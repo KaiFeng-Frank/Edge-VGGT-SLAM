@@ -1,5 +1,5 @@
 {
-  "schema": "original_VGGT_only_source_snapshot_v58",
+  "schema": "original_VGGT_only_source_snapshot_v59",
   "upstream_commit": "35327ac28b7d193df9ccc39ba6346052bb6f1207",
   "model": "original VGGT only",
   "scope": "Current published file hashes; this manifest excludes itself. Model weights, arrays and external SDK are not published.",
@@ -20,7 +20,8 @@
     "results/original_calibration_half_io_v56.json",
     "results/original_dino_io_guard_v57.json",
     "deploy/rk3588/validation/original_half_io/source-tests-v57.json",
-    "results/original_grouped_dino_v58.json"
+    "results/original_grouped_dino_v58.json",
+    "results/original_npu_clock_v59.json"
   ],
   "file_sha256": {
     ".gitignore": "5c914f3ced73f7a831f890a98f771bde1e11fdcf288b87f45a9fb538bef93b2e",
@@ -301,7 +302,7 @@
     "deploy/rk3588/validation/vggt-v16-camera-step-compile112-r1.json": "c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a",
     "deploy/rk3588/validation/vggt-v16-camera-step-export112-r1.json": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
     "deploy/rk3588/vggt-spark.patch": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864",
-    "docs/ENGINEERING_NOTES.md": "947233dd67b808cf177be6743bd2ad4735c6d30546b7161773ebfb1bb071d860",
+    "docs/ENGINEERING_NOTES.md": "90d43fe8c678bf35b38ef604e85677aa418e176feab1539ee02d3f6dd5560d0e",
     "evals/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "evals/eval_tum.sh": "0d9de08050e3e04dc6911681b7b8655e45b5e9e3727a423a3832c1be57cedd44",
     "evals/process_logs_tum.py": "9a78265063ad670136d6f4d6b5773d0e362f07b64f41f26ea2c941e973f59c3a",
@@ -331,6 +332,7 @@
     "results/original_fused_aggregator_v55.json": "46fa2f1eb2eb8c1e394505ca82b6d098205d5fcbdbe903b1b1916f11ebac0645",
     "results/original_grouped_dino_v58.json": "b63dc8c1cadd16c6394472881c035541d5d8a5a03927e415c401199046fa5eb6",
     "results/original_mixed_precision_v50.json": "df81409dd7090d2b6f9352c8e44b55d7397224dda64d3e694bf658168ae0325f",
+    "results/original_npu_clock_v59.json": "287b1886059bd1a559aea19924113263566f7084915b40c635063c9bacaa5885",
     "results/original_only_v47.json": "6df277cd1721bf834a18e9776f92a1eea9aa3b3afee179ba95916f357adedb6c",
     "results/original_pair_v48.json": "98465570fc8b1b1a4e89fc58c2edf6cadc4abbac1c23c7c858693f258e0fd96b",
     "results/original_precision_v49.json": "5c7906aee768f89c45d8af784556578e015d6e98ad6ebf21e12f8429ed6d34f2",
@@ -408,7 +410,7 @@
     "vggt_slam/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "vggt_slam/cameras.py": "d63056430f7fbb195f3188d6c3556a694b84a1893fe7e244f7f1c3be73be118f",
     "vggt_slam/checkpoint_identity.py": "9fc0b927f6a68ac6ca55194616104febb1c488370593d4be60e8dba5bc336461",
-    "vggt_slam/edge_mapping.py": "73de3126ef20ea4a7bea8a44954ae8d0f88c77f1a77536cd60bf772038d06818",
+    "vggt_slam/edge_mapping.py": "40cd678ccdc393f5f5aa7f08572e3cedceaca10712c59efd4dfce59c57605c47",
     "vggt_slam/frame_overlap.py": "bbb78f549a34b58eaf27556e6dda703468cc0518de4b936f7f886882d151afb8",
     "vggt_slam/graph.py": "dda8fb7c947c3c39baa7d190e2942cd4b9f26fe1557d7605fdc8651f27a5ab48",
     "vggt_slam/image_rectification.py": "e8c8472ac4dc3b84c132f20afd35be4dbeb3c23a9491ae1299ae5b1938e7ffdd",

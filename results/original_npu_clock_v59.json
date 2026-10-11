@@ -1,0 +1,271 @@
+{
+  "schema": "original_VGGT_NPU_frequency_observability_v59",
+  "status": "readonly_board_verified_frequency_test_not_executed",
+  "original_model_only": true,
+  "system_setting_writes": false,
+  "actual_model_or_SDK_executed": false,
+  "frequency_test_authorization": "pending",
+  "real_time_validated": false,
+  "board_snapshot_sha256": "b986733c689a19705cf5e195948dd02bb9ad2c9b001ac504fd3118a86305c7d5",
+  "board_snapshot": {
+    "schema": "v58_readonly_NPU_frequency_thermal_snapshot",
+    "board_writes_performed": false,
+    "actual_model_or_SDK_executed": false,
+    "monotonic": 181786.21306772,
+    "kernel": {
+      "system": "Linux",
+      "node": "root",
+      "release": "5.10.66",
+      "version": "#237 SMP Wed Apr 29 02:01:20 UTC 2026",
+      "machine": "aarch64",
+      "processor": "aarch64"
+    },
+    "devfreq_path": "/sys/devices/platform/fdab0000.npu/devfreq/fdab0000.npu",
+    "devfreq": {
+      "governor": {
+        "value": "userspace",
+        "permissions": "0o644"
+      },
+      "available_governors": {
+        "value": "userspace powersave performance simple_ondemand",
+        "permissions": "0o444"
+      },
+      "cur_freq": {
+        "value": "300000000",
+        "permissions": "0o444"
+      },
+      "target_freq": {
+        "value": "300000000",
+        "permissions": "0o444"
+      },
+      "available_frequencies": {
+        "value": "300000000 400000000 500000000 600000000 700000000 800000000 900000000 1000000000",
+        "permissions": "0o444"
+      },
+      "min_freq": {
+        "value": "300000000",
+        "permissions": "0o644"
+      },
+      "max_freq": {
+        "value": "1000000000",
+        "permissions": "0o644"
+      },
+      "polling_interval": {
+        "value": "50",
+        "permissions": "0o644"
+      },
+      "userspace/set_freq": {
+        "value": "undefined",
+        "permissions": "0o644"
+      },
+      "trans_stat": {
+        "value": "From  :   To\n           : 300000000 400000000 500000000 600000000 700000000 800000000 9000000001000000000   time(ms)\n* 300000000:         0         0         0         0         0         0         0         0 181783910\n  400000000:         0         0         0         0         0         0         0         0         0\n  500000000:         0         0         0         0         0         0         0         0         0\n  600000000:         0         0         0         0         0         0         0         0         0\n  700000000:         0         0         0         0         0         0         0         0         0\n  800000000:         0         0         0         0         0         0         0         0         0\n  900000000:         0         0         0         0         0         0         0         0         0\n 1000000000:         0         0         0         0         0         0         0         0         0\nTotal transition : 0",
+        "permissions": "0o644"
+      }
+    },
+    "thermal_zones": [
+      {
+        "path": "/sys/class/thermal/thermal_zone0",
+        "type": "soc-thermal",
+        "temp_mC": 49000,
+        "mode": "enabled",
+        "policy": "power_allocator",
+        "trips": {
+          "trip_point_0_hyst": "2000",
+          "trip_point_0_temp": "75000",
+          "trip_point_0_type": "passive",
+          "trip_point_1_hyst": "2000",
+          "trip_point_1_temp": "85000",
+          "trip_point_1_type": "passive",
+          "trip_point_2_hyst": "2000",
+          "trip_point_2_temp": "115000",
+          "trip_point_2_type": "critical"
+        },
+        "cooling_bindings": [
+          {
+            "name": "cdev0",
+            "path": "/sys/devices/virtual/thermal/cooling_device0",
+            "type": "thermal-cpufreq-0",
+            "trip": "1"
+          },
+          {
+            "name": "cdev1",
+            "path": "/sys/devices/virtual/thermal/cooling_device1",
+            "type": "thermal-cpufreq-1",
+            "trip": "1"
+          },
+          {
+            "name": "cdev2",
+            "path": "/sys/devices/virtual/thermal/cooling_device2",
+            "type": "thermal-cpufreq-2",
+            "trip": "1"
+          },
+          {
+            "name": "cdev3",
+            "path": "/sys/devices/virtual/thermal/cooling_device3",
+            "type": "thermal-devfreq-0",
+            "trip": "1"
+          }
+        ]
+      },
+      {
+        "path": "/sys/class/thermal/thermal_zone1",
+        "type": "bigcore0-thermal",
+        "temp_mC": 49000,
+        "mode": "enabled",
+        "policy": "power_allocator",
+        "trips": {},
+        "cooling_bindings": []
+      },
+      {
+        "path": "/sys/class/thermal/thermal_zone2",
+        "type": "bigcore1-thermal",
+        "temp_mC": 49000,
+        "mode": "enabled",
+        "policy": "power_allocator",
+        "trips": {},
+        "cooling_bindings": []
+      },
+      {
+        "path": "/sys/class/thermal/thermal_zone3",
+        "type": "littlecore-thermal",
+        "temp_mC": 49000,
+        "mode": "enabled",
+        "policy": "power_allocator",
+        "trips": {},
+        "cooling_bindings": []
+      },
+      {
+        "path": "/sys/class/thermal/thermal_zone4",
+        "type": "center-thermal",
+        "temp_mC": 49923,
+        "mode": "enabled",
+        "policy": "power_allocator",
+        "trips": {},
+        "cooling_bindings": []
+      },
+      {
+        "path": "/sys/class/thermal/thermal_zone5",
+        "type": "gpu-thermal",
+        "temp_mC": 49000,
+        "mode": "enabled",
+        "policy": "power_allocator",
+        "trips": {},
+        "cooling_bindings": []
+      },
+      {
+        "path": "/sys/class/thermal/thermal_zone6",
+        "type": "npu-thermal",
+        "temp_mC": 48076,
+        "mode": "enabled",
+        "policy": "power_allocator",
+        "trips": {},
+        "cooling_bindings": []
+      }
+    ],
+    "cooling_devices": [
+      {
+        "path": "/sys/class/thermal/cooling_device0",
+        "type": "thermal-cpufreq-0",
+        "cur_state": "0",
+        "max_state": "7"
+      },
+      {
+        "path": "/sys/class/thermal/cooling_device1",
+        "type": "thermal-cpufreq-1",
+        "cur_state": "0",
+        "max_state": "10"
+      },
+      {
+        "path": "/sys/class/thermal/cooling_device2",
+        "type": "thermal-cpufreq-2",
+        "cur_state": "0",
+        "max_state": "10"
+      },
+      {
+        "path": "/sys/class/thermal/cooling_device3",
+        "type": "thermal-devfreq-0",
+        "cur_state": "0",
+        "max_state": "7"
+      }
+    ],
+    "npu_device_tree": {
+      "rockchip,high-temp": 85000,
+      "rockchip,high-temp-max-freq": 800000,
+      "rockchip,temp-hysteresis": 5000,
+      "rockchip,init-freq": 1000000,
+      "node_has_cooling_cells": false,
+      "opp_1000MHz_hz": 1000000000,
+      "soc_map3_cooling_phandle": 73,
+      "gpu_phandle": 73
+    },
+    "official_source_urls": [
+      "https://raw.githubusercontent.com/rockchip-linux/kernel/develop-5.10/drivers/devfreq/governor_userspace.c",
+      "https://raw.githubusercontent.com/rockchip-linux/kernel/develop-5.10/drivers/soc/rockchip/rockchip_system_monitor.c"
+    ],
+    "source_limit": "Official develop-5.10 source explains controls; it is not a byte identity audit of the custom running kernel 5.10.66.",
+    "restoration_limit": "Frequency-only restoration of originally undefined userspace request writes the effective original 300000000 Hz; it does not restore the prior unset request flag. No governor change is proposed."
+  },
+  "updated_platform_sample": {
+    "cpu_frequency_khz": {
+      "policy0": 1200000,
+      "policy4": 408000,
+      "policy6": 1608000
+    },
+    "linux_memory_bytes": {
+      "Buffers": 54923264,
+      "Cached": 13181136896,
+      "CmaFree": 0,
+      "CmaTotal": 8388608,
+      "MemAvailable": 14413422592,
+      "MemFree": 2881957888,
+      "MemTotal": 16461864960,
+      "SReclaimable": 110665728,
+      "Shmem": 1651159040
+    },
+    "npu": {
+      "cur_freq": 300000000,
+      "governor": "userspace",
+      "max_freq": 1000000000,
+      "min_freq": 300000000
+    },
+    "peak_rss_mib": 16.0625,
+    "temperature_c": {
+      "bigcore0-thermal": 49.923,
+      "bigcore1-thermal": 49.923,
+      "center-thermal": 49.0,
+      "gpu-thermal": 48.076,
+      "littlecore-thermal": 49.0,
+      "npu-thermal": 49.0,
+      "soc-thermal": 49.0
+    }
+  },
+  "source_sha256": {
+    "vggt_slam/edge_mapping.py": "40cd678ccdc393f5f5aa7f08572e3cedceaca10712c59efd4dfce59c57605c47"
+  },
+  "previous_preflight": {
+    "file": "deploy/rk3588/validation/preflight.json in the earlier private project tree",
+    "sha256": "20c2e9cd5358fc7e8af2aa310bc9a2a52cdbb9786621f88b2a508ddbbd900818",
+    "json_key": "devfreq_at_preflight.fdab0000.npu.cur_freq",
+    "value": "1000000000"
+  },
+  "measurement_limit": "v57/v58 replay did not sample NPU frequency. Do not retroactively fill it or claim all historical runs used 300 MHz. No 1 GHz throughput measurement was made here.",
+  "prepared_test": {
+    "frequency_hz": 1000000000,
+    "timeout_per_run_seconds": 180,
+    "temperature_stop_c": 75,
+    "scope": "same original VGGT complete-model matched pairs, then timestamp replay; separate sequential bounded runs",
+    "restore": "Original actual 300 MHz; unchanged governor/min/max. An undefined userspace request becomes explicit 300 MHz.",
+    "executed": false
+  },
+  "performance_reference": {
+    "path": "results/original_grouped_dino_v58.json",
+    "fresh_pose_rate_hz": 0.5425449316048493,
+    "input_to_published_pose_p95_seconds": 2.4715603888835176,
+    "new_performance_measurement": false
+  },
+  "validation": {
+    "python_syntax": "passed",
+    "actual_board_readonly_platform_sample": "passed"
+  }
+}
