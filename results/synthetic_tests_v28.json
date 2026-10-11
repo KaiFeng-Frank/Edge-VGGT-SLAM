@@ -1,0 +1,55 @@
+{
+  "kind": "v28_public_targeted_synthetic_validation",
+  "status": "passed",
+  "passed": 136,
+  "skipped": 0,
+  "scope": "Full Update external topology, saved-array auditors, geometry and feedback guards, mixed SDK inputs and one-call invalid-output diagnostics; tiny synthetic arrays only, no real checkpoint/image forward or board execution",
+  "command": [
+    "<python-with-numpy-onnx-onnxruntime-pytest>",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/dev/shm/vggt-v28-public-testtmp",
+    "tests/test_audit_dpvo_update.py",
+    "tests/test_dpvo_cpu_geometry.py",
+    "tests/test_dpvo_feedback_probe.py",
+    "tests/test_dpvo_feedback_saved_audit.py",
+    "tests/test_dpvo_update_export.py",
+    "tests/test_v28_rknn_diagnostic.py",
+    "tests/test_v28_rknn_inputs.py"
+  ],
+  "dependencies": "NumPy, pytest, Torch, ONNX and ONNXRuntime; original DPVO net/blocks class ASTs from the external pinned checkout with DIM=8 random parameters. DPVO_SOURCE_DIR and DPVO_CPU_OPS specify sources; EDGE_VGGT_ABI_HELPER specifies the pure ctypes helper, no SDK library loaded.",
+  "environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "elapsed_seconds": 1.1863552080467343,
+  "exit_code": 0,
+  "output": "........................................................................ [ 52%]\n................................................................         [100%]\n136 passed in 0.87s\n",
+  "test_source_sha256": {
+    "tests/test_audit_dpvo_update.py": "a659680921a7f441bd5980f03eaedf9aba285fc5ea244f8f90f97a731933c2bd",
+    "tests/test_dpvo_cpu_geometry.py": "be1177a8c957e3ae8075af499379736eb32610d3492b6fe2e56c56b6a5457567",
+    "tests/test_dpvo_feedback_probe.py": "eaa8204472badc9563bfc5972fd1c1b4bb209155bc1f1085f012696a4c423ea3",
+    "tests/test_dpvo_feedback_saved_audit.py": "ca6a2e5b1c1b804b8db92b0fb688ea2ff7a3a930469adac3f3bce127dd5d62ab",
+    "tests/test_dpvo_update_export.py": "da422f959926dde90480c9a67f3f1fdc0ed49a72088addb394f0c8fbe1bee053",
+    "tests/test_v28_rknn_diagnostic.py": "b276d1fc8347e6a4b0f5e9c1c7bed367c4e70f541624cc48a375d36341e2b6b5",
+    "tests/test_v28_rknn_inputs.py": "6c9864147d0e196943ed588a3a3c4d2f93d393d451ce3772008347afc2a3fb57"
+  },
+  "implementation_source_sha256": {
+    "deploy/rk3588/validation/audit-v28-dpvo-update.py": "f44665045cad6453255248b6a87343e4da8ab612ac0b38261aa5773c1d697f55",
+    "deploy/rk3588/validation/diagnose-v28-dpvo-update-rknn-board.py": "e744026c954845108aea271ea716d51250b9b116f4259adc94d5e6eda338de91",
+    "deploy/rk3588/validation/dpvo_geometry/audit-v28-dpvo-feedback.py": "ce5a7f8aeb25b79c15138f43bfd6cd840cf03ea35005fe53e3121b8b823d7d53",
+    "deploy/rk3588/validation/dpvo_geometry/dpvo_cpu_geometry.py": "13eb1e03eb4a5ed1bd1533549f2b9f4994abfaa61e0b55304b99e6fe77d813df",
+    "deploy/rk3588/validation/dpvo_geometry/run-v28-dpvo-feedback-board.py": "e35a2bde3154f527a010b0cf7a2f3192bfe6e356ffd3f6b6259a9289e6bbed42",
+    "deploy/rk3588/validation/dpvo_update_export.py": "3f755c8e24d092fa55fdf698d87c3d9ba8944487ee95d4e5afc47554d31d1380",
+    "deploy/rk3588/validation/probe-v28-rknn-attrs-board.py": "1365be3f9becdc3053c847a147a61059ddfc38af9e4a08c88f4bb0e6ab240628",
+    "deploy/rk3588/validation/run-v28-dpvo-update-capture-board.py": "4313959dbac53d26ea2e5cdfc77f6e10baf458377ba732bf8e983978c9fda278",
+    "deploy/rk3588/validation/run-v28-dpvo-update-export-board.py": "d336c80135c7d81b7ca96e4d503a46aba2fad28349f337f50e20b7b5dc9d83c0",
+    "deploy/rk3588/validation/run-v28-dpvo-update-ort-board.py": "162efbc561ddc20e03b3f05133941a480fe23f18468b5d824d8d05d1bd9b0f6f",
+    "deploy/rk3588/validation/run-v28-dpvo-update-rknn-board.py": "7d44c4ef260126ba0551d7596e9861a3007ec92d56cb33aa99e2223c2b110928",
+    "deploy/rk3588/validation/v28_rknn_inputs.py": "040f55b89accb7a03a523ef2ab8c4bf12755f15da34813dc6ee607b6deb90c88"
+  }
+}

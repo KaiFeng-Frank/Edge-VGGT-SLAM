@@ -50,6 +50,8 @@ The [v21 board regression](results/model_execution_v21.json) exercises the real 
 
 The project name describes this execution boundary and embedded deployment direction. It does not change the outstanding acceptance targets: fresh-observation tracking rate, input-to-pose P95 latency, dense-map cadence, endurance, bounded memory and trajectory/map quality remain separately measurable requirements.
 
+The v28 DPVO research has a separate lower-level boundary: graph management supplies explicit integer neighbor/group indices and masks to the learned Update executor; the geometry side consumes pixel corrections and nonnegative weights. It does not implement `ModelExecutor.predict`, whose dense VGGT camera/depth contract is different. The fixed-capacity CPU ORT export and mixed-type RKNN binding are research helpers; the current ORT weight-domain violation and RKNN nonfinite outputs prevent their acceptance in the feedback backend. The measured fixed-graph geometry loop uses the original Torch Update. See [Update evidence](results/dpvo_update_cpu_v28.json) and [feedback scope](results/dpvo_feedback_v28.json).
+
 ## License boundary
 
 The repository's BSD-2-Clause code license does not grant rights to external model weights, vendor SDKs or third-party implementations. Loading weights through a generic executor, compiling them to RKNN or changing the project name does not remove their applicable terms. See [model licenses](MODEL_LICENSES.md) and [third-party notices](THIRD_PARTY_NOTICES.md).

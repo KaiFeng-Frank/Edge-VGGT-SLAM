@@ -18,6 +18,8 @@ Third-party repositories, checkpoints, headers, compiled libraries and data are 
 
 The v27 [native correlation helper](deploy/rk3588/validation/dpvo_native/README.md) also adapts DPVO's forward arithmetic and retains its [MIT notice](deploy/rk3588/validation/dpvo_native/LICENSE). Its C ABI header is project source, not a Rockchip SDK header. The independent NumPy oracle documents the pinned source contract. No DPVO checkpoint, external checkout, native shared library or toolchain package is included.
 
+The v28 [Update export adapter](deploy/rk3588/validation/dpvo_update_export.py) retains the full DPVO MIT notice. The separate [CPU geometry and feedback research](deploy/rk3588/validation/dpvo_geometry/README.md) preserves the same pinned DPVO attribution with its own adjacent [MIT license](deploy/rk3588/validation/dpvo_geometry/LICENSE). Its online equations were checked against the source hashes in [v28 feedback evidence](results/dpvo_feedback_v28.json); neither this adaptation nor successful compilation establishes a license for the external DPVO checkpoint.
+
 Package download manifests identify upstream distribution artifacts; a manifest does not grant a different license to those packages.
 
 ## Co-Me research subset

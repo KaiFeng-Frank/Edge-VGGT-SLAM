@@ -1,0 +1,3430 @@
+{
+  "kind": "v28_full_DPVO_Update_mixed_input_RKNN_invalid_output_diagnostic",
+  "status": "nonfinite_outputs_rejected_root_cause_unconfirmed",
+  "actual_inference_on_RK3588S": true,
+  "host_real_model_inference": false,
+  "original_VGGT_default_unchanged": true,
+  "ORB_used": false,
+  "candidate_runtime_accepted": false,
+  "outputs_clipped": false,
+  "FP32_thresholds_relaxed": false,
+  "BA_executed": false,
+  "tracked_trajectory": false,
+  "realtime_validated": false,
+  "timing_interpretation": "Only one invalid output diagnostic with performance instrumentation. No valid NPU latency or speedup result; actual internal CPU operators are retained in the SDK profile.",
+  "root_cause": "Unconfirmed: unused -inf branches and FP16 normalization/intermediates require isolation. A historical arithmetic Where rule is explicitly disabled; its existence does not prove it ran.",
+  "evidence": {
+    "normal_failure": {
+      "file": "vggt-v28-dpvo-update-npu-E864-normal-r1/run.json",
+      "raw_sha256": "10a4e98abaf667e18be58aff006784b8868b215096f39f0e72592bc25cea4540",
+      "raw_bytes": 24468,
+      "host_home_redacted": false,
+      "data": {
+        "schema": "v28_DPVO_full_Update_RKNN",
+        "status": "failed",
+        "script_sha256": "7d44c4ef260126ba0551d7596e9861a3007ec92d56cb33aa99e2223c2b110928",
+        "actual_board_execution": true,
+        "production_changed": false,
+        "ORB_used": false,
+        "CPU_model_fallback": false,
+        "BA_executed": false,
+        "valid_pose_output": false,
+        "realtime_validated": false,
+        "model_key": "E864",
+        "collect_perf_detail": false,
+        "init_flags": 0,
+        "calls": [],
+        "cleanup_errors": [],
+        "init_seconds": 0.020986585004720837,
+        "capture_sha256": "87e18137a828496d623721f7748e288d02f9d8d6879278da1e5d3d9731cfa0a1",
+        "export_sha256": "56f96b7bf80bde596de6a4008da2858a869a9f19a3162abb8db8ab1af0156cac",
+        "ort_sha256": "d3f1479fc4bb4a992a778a6bda88387b67af9304b6a33f7ae705147207b590c3",
+        "compile_sha256": "0c92d8b8ed187781e93a764672336c1e91e9ac6a609ae023afb311addb28dc7e",
+        "packing_helper_sha256": "040f55b89accb7a03a523ef2ab8c4bf12755f15da34813dc6ee607b6deb90c88",
+        "model_sha256": "61b6c353346294416f10aa0f0a61c779584813741a52b34a7ad2e9bcb683710b",
+        "input_attributes": [
+          {
+            "index": 0,
+            "name": "net",
+            "shape": [
+              1,
+              864,
+              384
+            ],
+            "n_elems": 331776,
+            "size": 663552,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 663552
+          },
+          {
+            "index": 1,
+            "name": "inp",
+            "shape": [
+              1,
+              864,
+              384
+            ],
+            "n_elems": 331776,
+            "size": 663552,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 663552
+          },
+          {
+            "index": 2,
+            "name": "corr",
+            "shape": [
+              1,
+              864,
+              882
+            ],
+            "n_elems": 762048,
+            "size": 1524096,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1524096
+          },
+          {
+            "index": 3,
+            "name": "previous_indices",
+            "shape": [
+              864
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 4,
+            "name": "previous_valid",
+            "shape": [
+              1,
+              864,
+              1
+            ],
+            "n_elems": 864,
+            "size": 1728,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1728
+          },
+          {
+            "index": 5,
+            "name": "following_indices",
+            "shape": [
+              864
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 6,
+            "name": "following_valid",
+            "shape": [
+              1,
+              864,
+              1
+            ],
+            "n_elems": 864,
+            "size": 1728,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1728
+          },
+          {
+            "index": 7,
+            "name": "kk_indices",
+            "shape": [
+              288,
+              3
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 8,
+            "name": "kk_valid",
+            "shape": [
+              288,
+              3
+            ],
+            "n_elems": 864,
+            "size": 1728,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1728
+          },
+          {
+            "index": 9,
+            "name": "kk_inverse",
+            "shape": [
+              864
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 10,
+            "name": "ij_indices",
+            "shape": [
+              9,
+              96
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 11,
+            "name": "ij_valid",
+            "shape": [
+              9,
+              96
+            ],
+            "n_elems": 864,
+            "size": 1728,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1728
+          },
+          {
+            "index": 12,
+            "name": "ij_inverse",
+            "shape": [
+              864
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          }
+        ],
+        "output_attributes": [
+          {
+            "index": 0,
+            "name": "net_out",
+            "shape": [
+              1,
+              864,
+              384
+            ],
+            "n_elems": 331776,
+            "size": 663552,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 663552
+          },
+          {
+            "index": 1,
+            "name": "delta",
+            "shape": [
+              1,
+              864,
+              2
+            ],
+            "n_elems": 1728,
+            "size": 3456,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 3456
+          },
+          {
+            "index": 2,
+            "name": "weight",
+            "shape": [
+              1,
+              864,
+              2
+            ],
+            "n_elems": 1728,
+            "size": 3456,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 3456
+          }
+        ],
+        "abi": {
+          "context_size": 8,
+          "pointer_size": 8,
+          "structs": {
+            "rknn_input_output_num": {
+              "size": 8,
+              "alignment": 4,
+              "offsets": {
+                "n_input": 0,
+                "n_output": 4
+              }
+            },
+            "rknn_tensor_attr": {
+              "size": 376,
+              "alignment": 4,
+              "offsets": {
+                "index": 0,
+                "n_dims": 4,
+                "dims": 8,
+                "name": 72,
+                "n_elems": 328,
+                "size": 332,
+                "fmt": 336,
+                "type": 340,
+                "qnt_type": 344,
+                "fl": 348,
+                "zp": 352,
+                "scale": 356,
+                "w_stride": 360,
+                "size_with_stride": 364,
+                "pass_through": 368,
+                "h_stride": 372
+              }
+            },
+            "rknn_input": {
+              "size": 32,
+              "alignment": 8,
+              "offsets": {
+                "index": 0,
+                "buf": 8,
+                "size": 16,
+                "pass_through": 20,
+                "type": 24,
+                "fmt": 28
+              }
+            },
+            "rknn_output": {
+              "size": 24,
+              "alignment": 8,
+              "offsets": {
+                "want_float": 0,
+                "is_prealloc": 1,
+                "index": 4,
+                "buf": 8,
+                "size": 16
+              }
+            },
+            "rknn_sdk_version": {
+              "size": 512,
+              "alignment": 1,
+              "offsets": {
+                "api_version": 0,
+                "drv_version": 256
+              }
+            },
+            "rknn_mem_size": {
+              "size": 64,
+              "alignment": 8,
+              "offsets": {
+                "total_weight_size": 0,
+                "total_internal_size": 4,
+                "total_dma_allocated_size": 8,
+                "total_sram_size": 16,
+                "free_sram_size": 20,
+                "reserved": 24
+              }
+            },
+            "rknn_perf_run": {
+              "size": 8,
+              "alignment": 8,
+              "offsets": {
+                "run_duration": 0
+              }
+            },
+            "rknn_perf_detail": {
+              "size": 16,
+              "alignment": 8,
+              "offsets": {
+                "perf_data": 0,
+                "data_len": 8
+              }
+            },
+            "rknn_run_extend": {
+              "size": 24,
+              "alignment": 8,
+              "offsets": {
+                "frame_id": 0,
+                "non_block": 8,
+                "timeout_ms": 12,
+                "fence_fd": 16
+              }
+            },
+            "rknn_output_extend": {
+              "size": 8,
+              "alignment": 8,
+              "offsets": {
+                "frame_id": 0
+              }
+            }
+          }
+        },
+        "versions": {
+          "api": "2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+          "driver": "0.7.2"
+        },
+        "core_mask": 7,
+        "cpu_affinity": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "memory": {
+          "total_dma_allocated_size": 20692992,
+          "total_weight_size": 9967360,
+          "total_internal_size": 9464960
+        },
+        "error": "ValueError('Nonfinite SDK output')",
+        "traceback": "Traceback (most recent call last):\n  File \"/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/run-v28-dpvo-update-rknn-board.py\", line 102, in main\n    values,timing=execute(api,context,abi,packing,source['feed'],bindings,model['outputs'],r['cleanup_errors']);metadata={k:meta(v) for k,v in values.items()};key=(source['name'],source['step'])\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/run-v28-dpvo-update-rknn-board.py\", line 47, in execute\n    require(all(np.isfinite(x).all() for x in owned.values()),'Nonfinite SDK output')\n  File \"/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/run-v28-dpvo-update-rknn-board.py\", line 13, in require\n    if not ok:raise ValueError(message)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Nonfinite SDK output\n",
+        "destroy_code": 0,
+        "source_hashes_after": {
+          "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/run-v12-rknn-block-board.py": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608",
+          "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/reference/rknn_api_v2.3.2.h": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a",
+          "/usr/lib/librknnrt.so": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/run-v28-dpvo-update-rknn-board.py": "7d44c4ef260126ba0551d7596e9861a3007ec92d56cb33aa99e2223c2b110928",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/v28_rknn_inputs.py": "040f55b89accb7a03a523ef2ab8c4bf12755f15da34813dc6ee607b6deb90c88",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/capture.json": "87e18137a828496d623721f7748e288d02f9d8d6879278da1e5d3d9731cfa0a1",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/export.json": "56f96b7bf80bde596de6a4008da2858a869a9f19a3162abb8db8ab1af0156cac",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/ort.json": "d3f1479fc4bb4a992a778a6bda88387b67af9304b6a33f7ae705147207b590c3",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-compile-E864-r1/compile.json": "0c92d8b8ed187781e93a764672336c1e91e9ac6a609ae023afb311addb28dc7e",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-compile-E864-r1/block.rknn": "61b6c353346294416f10aa0f0a61c779584813741a52b34a7ad2e9bcb683710b",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/E864.onnx": "c7a51b1fa37342f8ee3ac1d0133dc2bf4e015d3b44579a4408e67585f63396b3",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/three_frame_all_pairs_identity-topology.npz": "a457f95e5bc769be86006349d5fe87cd546f2882642ab0ef66b0037300ac00c8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state0-input.npz": "c01f08feae04ede7ff9b7e859b231a97c86fb54a7690bf96e895f44281d8637c",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state0-output.npz": "f54e8c54e15f63a59890cd3a71eba8283c98588070cb4ecdcf96d3b044e45125",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state0.npz": "a32bc789dd539c410aa388148386df0d92ef764d7c8b32d5c1d414b6b450ad8f",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state1-input.npz": "e077093715800217b0bb06f6d36e2c1d91f72c4b368d4847b5e44d8dd1654251",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state1-output.npz": "d891d5beea1eecbfb7d537b911462bc8656bd8a5587d6c68cf1b07f0952eede0",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state1.npz": "05a3b0a21eeacfd147c388c8ccf4d3f58edf354111f3bae27f05cefec3b687cb",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state2-input.npz": "41d8bff233c62d58e057595306a6ac3ec7b788900439802fcb51fe02255c0b2c",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state2-output.npz": "9f1d7d06d7eb6a3c02dda706e84744e6bbf09a45f17e149ba92688d8b91b1486",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state2.npz": "455dc6262eb16c0aafbca199f9668cc0cfe213ec27eb210acd780f96ee632c93",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state3-input.npz": "f755acd2263613d3757a76092b99582a0a0fe98d3e8ccef72146b48c5a1df104",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state3-output.npz": "3e0ba4c178b4a0a7d85bb0649cab7c1d2b6852d47a9bcdda42588e9fb36707fc",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state3.npz": "86b82e6070501cd68058fdb4a36ea5d189b3cf648e6e76f91713d402264bf93d",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/three_frame_all_pairs_shifted-topology.npz": "a457f95e5bc769be86006349d5fe87cd546f2882642ab0ef66b0037300ac00c8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state0-input.npz": "9d6756add82f2b594708fde677393ee5d84ed591a26d3432b08408f8784c7c23",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state0-output.npz": "53fb2b2ae82c1eb9bde8adb76b7895c2388075b383386663021cd7a2a92e0d4b",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state0.npz": "f53d89e9aee698298f45e3c92953afe614cd3a5ddbccbc79304a34e734595f24",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state1-input.npz": "c03cd3b1afe69f97ad61be015505857da4d01dfe6a9c5835f20cb2f319560268",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state1-output.npz": "3e029b71286f15b52e013d71287cfa00f61b2fd910a86bdfc5261c4d79a08f95",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state1.npz": "a7a7e05b43b191f0c2da752418cba2205e61084213dd492f43c89e3fa8afd935",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state2-input.npz": "7479324cf6be0010d1a679193083eabee6a01877695745e381b12db4d917f975",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state2-output.npz": "1005c746cff8bde1d64e9590093cbdda9438d3b4e563fc38b381106ff86b0601",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state2.npz": "feb8b68b46ccdb55c7413ca007d5818f874ae87bd73e34fab19f7836df49a432",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state3-input.npz": "6c2a0e6eddc90c86d4a7632c0e651ec1d03ab5ecb7849cea7b391dca9f600fd4",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state3-output.npz": "ecf6695c412dcf616428ca005982ae58b130c7587b298b0f12607cbe9a49bba0",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state3.npz": "6dcc554cb53ee1051e5c49dd1fd781b80f3d60b0f82091b64bb761bade9a01e2"
+        },
+        "sources_and_inputs_unchanged": true,
+        "affinity_restored": true,
+        "source_pins": {
+          "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/run-v12-rknn-block-board.py": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608",
+          "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/reference/rknn_api_v2.3.2.h": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a",
+          "/usr/lib/librknnrt.so": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/run-v28-dpvo-update-rknn-board.py": "7d44c4ef260126ba0551d7596e9861a3007ec92d56cb33aa99e2223c2b110928",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/v28_rknn_inputs.py": "040f55b89accb7a03a523ef2ab8c4bf12755f15da34813dc6ee607b6deb90c88",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/capture.json": "87e18137a828496d623721f7748e288d02f9d8d6879278da1e5d3d9731cfa0a1",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/export.json": "56f96b7bf80bde596de6a4008da2858a869a9f19a3162abb8db8ab1af0156cac",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/ort.json": "d3f1479fc4bb4a992a778a6bda88387b67af9304b6a33f7ae705147207b590c3",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-compile-E864-r1/compile.json": "0c92d8b8ed187781e93a764672336c1e91e9ac6a609ae023afb311addb28dc7e",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-compile-E864-r1/block.rknn": "61b6c353346294416f10aa0f0a61c779584813741a52b34a7ad2e9bcb683710b",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/E864.onnx": "c7a51b1fa37342f8ee3ac1d0133dc2bf4e015d3b44579a4408e67585f63396b3",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/three_frame_all_pairs_identity-topology.npz": "a457f95e5bc769be86006349d5fe87cd546f2882642ab0ef66b0037300ac00c8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state0-input.npz": "c01f08feae04ede7ff9b7e859b231a97c86fb54a7690bf96e895f44281d8637c",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state0-output.npz": "f54e8c54e15f63a59890cd3a71eba8283c98588070cb4ecdcf96d3b044e45125",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state0.npz": "a32bc789dd539c410aa388148386df0d92ef764d7c8b32d5c1d414b6b450ad8f",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state1-input.npz": "e077093715800217b0bb06f6d36e2c1d91f72c4b368d4847b5e44d8dd1654251",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state1-output.npz": "d891d5beea1eecbfb7d537b911462bc8656bd8a5587d6c68cf1b07f0952eede0",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state1.npz": "05a3b0a21eeacfd147c388c8ccf4d3f58edf354111f3bae27f05cefec3b687cb",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state2-input.npz": "41d8bff233c62d58e057595306a6ac3ec7b788900439802fcb51fe02255c0b2c",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state2-output.npz": "9f1d7d06d7eb6a3c02dda706e84744e6bbf09a45f17e149ba92688d8b91b1486",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state2.npz": "455dc6262eb16c0aafbca199f9668cc0cfe213ec27eb210acd780f96ee632c93",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state3-input.npz": "f755acd2263613d3757a76092b99582a0a0fe98d3e8ccef72146b48c5a1df104",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state3-output.npz": "3e0ba4c178b4a0a7d85bb0649cab7c1d2b6852d47a9bcdda42588e9fb36707fc",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state3.npz": "86b82e6070501cd68058fdb4a36ea5d189b3cf648e6e76f91713d402264bf93d",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/three_frame_all_pairs_shifted-topology.npz": "a457f95e5bc769be86006349d5fe87cd546f2882642ab0ef66b0037300ac00c8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state0-input.npz": "9d6756add82f2b594708fde677393ee5d84ed591a26d3432b08408f8784c7c23",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state0-output.npz": "53fb2b2ae82c1eb9bde8adb76b7895c2388075b383386663021cd7a2a92e0d4b",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state0.npz": "f53d89e9aee698298f45e3c92953afe614cd3a5ddbccbc79304a34e734595f24",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state1-input.npz": "c03cd3b1afe69f97ad61be015505857da4d01dfe6a9c5835f20cb2f319560268",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state1-output.npz": "3e029b71286f15b52e013d71287cfa00f61b2fd910a86bdfc5261c4d79a08f95",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state1.npz": "a7a7e05b43b191f0c2da752418cba2205e61084213dd492f43c89e3fa8afd935",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state2-input.npz": "7479324cf6be0010d1a679193083eabee6a01877695745e381b12db4d917f975",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state2-output.npz": "1005c746cff8bde1d64e9590093cbdda9438d3b4e563fc38b381106ff86b0601",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state2.npz": "feb8b68b46ccdb55c7413ca007d5818f874ae87bd73e34fab19f7836df49a432",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state3-input.npz": "6c2a0e6eddc90c86d4a7632c0e651ec1d03ab5ecb7849cea7b391dca9f600fd4",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state3-output.npz": "ecf6695c412dcf616428ca005982ae58b130c7587b298b0f12607cbe9a49bba0",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state3.npz": "6dcc554cb53ee1051e5c49dd1fd781b80f3d60b0f82091b64bb761bade9a01e2"
+        },
+        "peak_rss_mib": 165.46875
+      },
+      "platform_samples": {
+        "file": "vggt-v28-dpvo-update-npu-E864-normal-r1/platform_samples.json",
+        "raw_sha256": "03e0aad79f287fdaa5aaa61b62a1116a3178181e3c7469981ee65cf3ef68314c",
+        "raw_bytes": 1717,
+        "host_home_redacted": false,
+        "data": {
+          "scope": "Read-only before/after; no clock/governor/cooling changes",
+          "before": {
+            "monotonic": 102581.41705719,
+            "sysfs": {
+              "/sys/class/thermal/thermal_zone2/temp": "49923",
+              "/sys/class/thermal/thermal_zone0/temp": "49923",
+              "/sys/class/thermal/thermal_zone5/temp": "49923",
+              "/sys/class/thermal/thermal_zone3/temp": "49923",
+              "/sys/class/thermal/thermal_zone1/temp": "49923",
+              "/sys/class/thermal/thermal_zone6/temp": "49923",
+              "/sys/class/thermal/thermal_zone4/temp": "49923",
+              "/sys/devices/system/cpu/cpufreq/policy6/scaling_cur_freq": "408000",
+              "/sys/devices/system/cpu/cpufreq/policy4/scaling_cur_freq": "1416000",
+              "/sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq": "1200000",
+              "/sys/class/devfreq/fdab0000.npu/cur_freq": "300000000",
+              "/sys/class/devfreq/fb000000.gpu/cur_freq": "300000000"
+            }
+          },
+          "after": {
+            "monotonic": 102582.376677203,
+            "sysfs": {
+              "/sys/class/thermal/thermal_zone2/temp": "51769",
+              "/sys/class/thermal/thermal_zone0/temp": "51769",
+              "/sys/class/thermal/thermal_zone5/temp": "50846",
+              "/sys/class/thermal/thermal_zone3/temp": "51769",
+              "/sys/class/thermal/thermal_zone1/temp": "51769",
+              "/sys/class/thermal/thermal_zone6/temp": "50846",
+              "/sys/class/thermal/thermal_zone4/temp": "51769",
+              "/sys/devices/system/cpu/cpufreq/policy6/scaling_cur_freq": "408000",
+              "/sys/devices/system/cpu/cpufreq/policy4/scaling_cur_freq": "1416000",
+              "/sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq": "1200000",
+              "/sys/class/devfreq/fdab0000.npu/cur_freq": "300000000",
+              "/sys/class/devfreq/fb000000.gpu/cur_freq": "300000000"
+            }
+          }
+        }
+      },
+      "combined_log": {
+        "bytes": 198,
+        "sha256": "c38ee17f7df74d1224f79cd2f18c61985a156781279ffc56b572aa13abf02ad2"
+      }
+    },
+    "single_call_diagnostic": {
+      "file": "vggt-v28-dpvo-update-npu-E864-diagnostic-r1/run.json",
+      "raw_sha256": "015062189a845f70583be509cdc03e2195ff0b4b42fcd4b10478faba063b282c",
+      "raw_bytes": 67786,
+      "host_home_redacted": false,
+      "data": {
+        "schema": "v28_DPVO_full_Update_RKNN",
+        "status": "single_call_invalid_output_diagnostic_saved_not_accepted",
+        "script_sha256": "7d44c4ef260126ba0551d7596e9861a3007ec92d56cb33aa99e2223c2b110928",
+        "actual_board_execution": true,
+        "production_changed": false,
+        "ORB_used": false,
+        "CPU_model_fallback": false,
+        "BA_executed": false,
+        "valid_pose_output": false,
+        "realtime_validated": false,
+        "model_key": "E864",
+        "collect_perf_detail": true,
+        "init_flags": 8,
+        "calls": [
+          {
+            "index": 0,
+            "case": "three_frame_all_pairs_identity",
+            "step": 0,
+            "timing_role": "profile",
+            "timing": {
+              "pack_seconds": 0.003361167007824406,
+              "input_set_seconds": 0.015538834995822981,
+              "run_api_seconds": 0.07267663300444838,
+              "outputs_get_seconds": 0.0007944999961182475,
+              "owned_copy_seconds": 0.0004237910034134984,
+              "output_bytes": 1340928,
+              "frame_id": 0,
+              "input_records": [
+                {
+                  "name": "net",
+                  "index": 0,
+                  "source_dtype": "float32",
+                  "transport_dtype": "float32",
+                  "transport_type": 0,
+                  "format": 3,
+                  "bytes": 1327104,
+                  "logical_shape": [
+                    1,
+                    864,
+                    384
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": false,
+                  "pass_through": 0
+                },
+                {
+                  "name": "inp",
+                  "index": 1,
+                  "source_dtype": "float32",
+                  "transport_dtype": "float32",
+                  "transport_type": 0,
+                  "format": 3,
+                  "bytes": 1327104,
+                  "logical_shape": [
+                    1,
+                    864,
+                    384
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": false,
+                  "pass_through": 0
+                },
+                {
+                  "name": "corr",
+                  "index": 2,
+                  "source_dtype": "float32",
+                  "transport_dtype": "float32",
+                  "transport_type": 0,
+                  "format": 3,
+                  "bytes": 3048192,
+                  "logical_shape": [
+                    1,
+                    864,
+                    882
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": false,
+                  "pass_through": 0
+                },
+                {
+                  "name": "previous_indices",
+                  "index": 3,
+                  "source_dtype": "int64",
+                  "transport_dtype": "int64",
+                  "transport_type": 8,
+                  "format": 3,
+                  "bytes": 6912,
+                  "logical_shape": [
+                    864
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": true,
+                  "pass_through": 0
+                },
+                {
+                  "name": "previous_valid",
+                  "index": 4,
+                  "source_dtype": "float32",
+                  "transport_dtype": "float32",
+                  "transport_type": 0,
+                  "format": 3,
+                  "bytes": 3456,
+                  "logical_shape": [
+                    1,
+                    864,
+                    1
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": false,
+                  "pass_through": 0
+                },
+                {
+                  "name": "following_indices",
+                  "index": 5,
+                  "source_dtype": "int64",
+                  "transport_dtype": "int64",
+                  "transport_type": 8,
+                  "format": 3,
+                  "bytes": 6912,
+                  "logical_shape": [
+                    864
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": true,
+                  "pass_through": 0
+                },
+                {
+                  "name": "following_valid",
+                  "index": 6,
+                  "source_dtype": "float32",
+                  "transport_dtype": "float32",
+                  "transport_type": 0,
+                  "format": 3,
+                  "bytes": 3456,
+                  "logical_shape": [
+                    1,
+                    864,
+                    1
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": false,
+                  "pass_through": 0
+                },
+                {
+                  "name": "kk_indices",
+                  "index": 7,
+                  "source_dtype": "int64",
+                  "transport_dtype": "int64",
+                  "transport_type": 8,
+                  "format": 3,
+                  "bytes": 6912,
+                  "logical_shape": [
+                    288,
+                    3
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": true,
+                  "pass_through": 0
+                },
+                {
+                  "name": "kk_valid",
+                  "index": 8,
+                  "source_dtype": "float32",
+                  "transport_dtype": "float32",
+                  "transport_type": 0,
+                  "format": 3,
+                  "bytes": 3456,
+                  "logical_shape": [
+                    288,
+                    3
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": false,
+                  "pass_through": 0
+                },
+                {
+                  "name": "kk_inverse",
+                  "index": 9,
+                  "source_dtype": "int64",
+                  "transport_dtype": "int64",
+                  "transport_type": 8,
+                  "format": 3,
+                  "bytes": 6912,
+                  "logical_shape": [
+                    864
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": true,
+                  "pass_through": 0
+                },
+                {
+                  "name": "ij_indices",
+                  "index": 10,
+                  "source_dtype": "int64",
+                  "transport_dtype": "int64",
+                  "transport_type": 8,
+                  "format": 3,
+                  "bytes": 6912,
+                  "logical_shape": [
+                    9,
+                    96
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": true,
+                  "pass_through": 0
+                },
+                {
+                  "name": "ij_valid",
+                  "index": 11,
+                  "source_dtype": "float32",
+                  "transport_dtype": "float32",
+                  "transport_type": 0,
+                  "format": 3,
+                  "bytes": 3456,
+                  "logical_shape": [
+                    9,
+                    96
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": false,
+                  "pass_through": 0
+                },
+                {
+                  "name": "ij_inverse",
+                  "index": 12,
+                  "source_dtype": "int64",
+                  "transport_dtype": "int64",
+                  "transport_type": 8,
+                  "format": 3,
+                  "bytes": 6912,
+                  "logical_shape": [
+                    864
+                  ],
+                  "owned": true,
+                  "exact_integer_cast_verified": true,
+                  "pass_through": 0
+                }
+              ],
+              "release_seconds": 5.833004252053797e-06,
+              "output_buffers_released": true,
+              "forward_seconds": 0.0928159260074608
+            },
+            "versus_original": {
+              "net": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "gate_passed": false,
+                "failed_elements": null,
+                "comparison_undefined_due_to_nonfinite": true,
+                "nan_elements": 226977,
+                "positive_inf_elements": 104799,
+                "negative_inf_elements": 0,
+                "finite_elements": 0,
+                "element_count": 331776,
+                "finite_min": null,
+                "finite_max": null
+              },
+              "delta": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "gate_passed": false,
+                "failed_elements": null,
+                "comparison_undefined_due_to_nonfinite": true,
+                "nan_elements": 0,
+                "positive_inf_elements": 1728,
+                "negative_inf_elements": 0,
+                "finite_elements": 0,
+                "element_count": 1728,
+                "finite_min": null,
+                "finite_max": null
+              },
+              "weight": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 1728,
+                "gate_passed": false,
+                "max_abs": 0.9980468274671637,
+                "relative_l2": 2.05910878111508,
+                "bitwise_equal": false
+              }
+            },
+            "versus_ORT": {
+              "net": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "gate_passed": false,
+                "failed_elements": null,
+                "comparison_undefined_due_to_nonfinite": true,
+                "nan_elements": 226977,
+                "positive_inf_elements": 104799,
+                "negative_inf_elements": 0,
+                "finite_elements": 0,
+                "element_count": 331776,
+                "finite_min": null,
+                "finite_max": null
+              },
+              "delta": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "gate_passed": false,
+                "failed_elements": null,
+                "comparison_undefined_due_to_nonfinite": true,
+                "nan_elements": 0,
+                "positive_inf_elements": 1728,
+                "negative_inf_elements": 0,
+                "finite_elements": 0,
+                "element_count": 1728,
+                "finite_min": null,
+                "finite_max": null
+              },
+              "weight": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "failed_elements": 1728,
+                "gate_passed": false,
+                "max_abs": 0.9980469346046448,
+                "relative_l2": 2.05910881279254,
+                "bitwise_equal": false
+              }
+            },
+            "outputs": {
+              "file": "call-00.npz",
+              "bytes": 1341674,
+              "sha256": "e744236ba09a38469dfa9c358494bd3fadad3f29847a1eb0605a608e78547fef",
+              "arrays": {
+                "net": {
+                  "shape": [
+                    1,
+                    864,
+                    384
+                  ],
+                  "dtype": "float32",
+                  "bytes": 1327104,
+                  "tensor_sha256": "141732d5a36a924335ea143b83d45beeef598721ce15b263ba168b2c7d61e960"
+                },
+                "delta": {
+                  "shape": [
+                    1,
+                    864,
+                    2
+                  ],
+                  "dtype": "float32",
+                  "bytes": 6912,
+                  "tensor_sha256": "23884a80bdda660fd89799abd28f6e1ac9389025b79f8511eadda94b645f6aaf"
+                },
+                "weight": {
+                  "shape": [
+                    1,
+                    864,
+                    2
+                  ],
+                  "dtype": "float32",
+                  "bytes": 6912,
+                  "tensor_sha256": "c516480c4a822eba01ab788fae7eb9d06f2ae1774a9eb086819f1882d959cdcc"
+                }
+              }
+            },
+            "repeat_bitwise_equal": true,
+            "profile": {
+              "query_command": 3,
+              "bytes": 32565,
+              "raw_sha256": "7a1211c274b6ba926d4d4f1731065136271854680b3c881d2e4dd3d45da6b95e",
+              "raw_text": "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n                                                                          Network Layer Information Table                                                                                \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nID   OpType             DataType Target InputShape                               OutputShape            Cycles(DDR/NPU/Total)    Time(us)     MacUsage(%)          WorkLoad(0/1/2)      RW(KB)       FullName        \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1    InputOperator      FLOAT16  CPU    \\                                        (1,864,384)            0/0/0                    4                                 0.0%/0.0%/0.0%       0            InputOperator:net\n2    InputOperator      FLOAT16  CPU    \\                                        (1,864,384)            0/0/0                    1                                 0.0%/0.0%/0.0%       0            InputOperator:inp\n3    InputOperator      FLOAT16  CPU    \\                                        (1,864,882)            0/0/0                    1                                 0.0%/0.0%/0.0%       0            InputOperator:corr\n4    InputOperator      INT64    CPU    \\                                        (864)                  0/0/0                    1                                 0.0%/0.0%/0.0%       0            InputOperator:previous_indices\n5    InputOperator      FLOAT16  CPU    \\                                        (1,864,1)              0/0/0                    1                                 0.0%/0.0%/0.0%       0            InputOperator:previous_valid\n6    InputOperator      INT64    CPU    \\                                        (864)                  0/0/0                    0                                 0.0%/0.0%/0.0%       0            InputOperator:following_indices\n7    InputOperator      FLOAT16  CPU    \\                                        (1,864,1)              0/0/0                    1                                 0.0%/0.0%/0.0%       0            InputOperator:following_valid\n8    InputOperator      INT64    CPU    \\                                        (288,3)                0/0/0                    0                                 0.0%/0.0%/0.0%       0            InputOperator:kk_indices\n9    InputOperator      FLOAT16  CPU    \\                                        (288,3)                0/0/0                    1                                 0.0%/0.0%/0.0%       0            InputOperator:kk_valid\n10   InputOperator      INT64    CPU    \\                                        (864)                  0/0/0                    1                                 0.0%/0.0%/0.0%       0            InputOperator:kk_inverse\n11   InputOperator      INT64    CPU    \\                                        (9,96)                 0/0/0                    1                                 0.0%/0.0%/0.0%       0            InputOperator:ij_indices\n12   InputOperator      FLOAT16  CPU    \\                                        (9,96)                 0/0/0                    0                                 0.0%/0.0%/0.0%       0            InputOperator:ij_valid\n13   InputOperator      INT64    CPU    \\                                        (864)                  0/0/0                    0                                 0.0%/0.0%/0.0%       0            InputOperator:ij_inverse\n14   Reshape            FLOAT16  CPU    (1,864,882),(4)                          (1,864,1,882)          0/0/0                    1759                              0.0%/0.0%/0.0%       1488         Reshape:corr_rs \n15   Transpose          FLOAT16  NPU    (1,864,1,882)                            (1,882,1,864)          0/0/0                    2595                              100.0%/0.0%/0.0%     1488         Transpose:corr_tp\n16   ConvRelu           FLOAT16  NPU    (1,882,1,864),(384,882,1,1),(384)        (1,384,1,864)          122080/580608/580608     842          22.63/22.63/22.63    33.3%/33.3%/33.3%    2172         Conv:/corr/corr.0/MatMul#2\n17   Conv               FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384)        (1,384,1,864)          68638/248832/248832      396          20.95/20.95/20.95    33.3%/33.3%/33.3%    937          Conv:/corr/corr.2/MatMul#2\n18   Reshape            FLOAT16  NPU    (1,864,384),(4)                          (1,864,1,384)          0/0/0                    681                               100.0%/0.0%/0.0%     648          Reshape:net_rs  \n19   Reshape            FLOAT16  NPU    (1,864,384),(4)                          (1,864,1,384)          0/0/0                    653                               100.0%/0.0%/0.0%     648          Reshape:inp_rs  \n20   Add                FLOAT16  NPU    (1,864,1,384),(1,864,1,384)              (1,864,1,384)          0/0/0                    159                               33.3%/33.3%/33.3%    1296         Add:/Add        \n21   Transpose          FLOAT16  NPU    (1,864,1,384)                            (1,384,1,864)          0/0/0                    771                               100.0%/0.0%/0.0%     648          Transpose:/Add_output_0-rs_tp\n22   Reshape            FLOAT16  NPU    (1,864,1),(4)                            (1,1,1,864)            0/0/0                    65                                100.0%/0.0%/0.0%     1            Reshape:previous_valid_rs\n23   Reshape            FLOAT16  NPU    (1,864,1),(4)                            (1,1,1,864)            0/0/0                    65                                100.0%/0.0%/0.0%     1            Reshape:following_valid_rs\n24   Reshape            FLOAT16  CPU    (288,3),(4)                              (1,288,3,1)            0/0/0                    24                                0.0%/0.0%/0.0%       1            Reshape:/Unsqueeze_1_2rs\n25   Conv               FLOAT16  NPU    (1,288,3,1),(1,288,3,1)                  (1,288,1,1)            171/240/240              63           0.00/0.00/0.00       100.0%/0.0%/0.0%     3            Conv:/ReduceSum_2conv\n26   Greater            FLOAT16  CPU    (1,288,1,1),(1,1,1,1)                    (1,288,1,1)            0/0/0                    41                                0.0%/0.0%/0.0%       0            Greater:/Greater_1\n27   Not                INT8     CPU    (1,288,1,1)                              (1,288,1,1)            0/0/0                    15                                0.0%/0.0%/0.0%       0            Not:/Not        \n28   Cast               INT8     NPU    (1,288,1,1)                              (1,288,1,1)            0/0/0                    63                                100.0%/0.0%/0.0%     0            Cast:/Cast      \n29   Greater            FLOAT16  CPU    (1,288,3,1),(1,1,1,1)                    (1,288,3,1)            0/0/0                    58                                0.0%/0.0%/0.0%       1            Greater:/Greater\n30   Reshape            FLOAT16  NPU    (9,96),(4)                               (1,9,96,1)             0/0/0                    65                                100.0%/0.0%/0.0%     1            Reshape:/Unsqueeze_3_2rs\n31   Greater            FLOAT16  CPU    (1,9,96,1),(1,1,1,1)                     (1,9,96,1)             0/0/0                    60                                0.0%/0.0%/0.0%       3            Greater:/Greater_2\n32   Transpose          FLOAT16  NPU    (1,9,96,1)                               (1,96,9,1)             0/0/0                    68                                100.0%/0.0%/0.0%     3            Transpose:/Unsqueeze_3_output_0_tp\n33   Conv               FLOAT16  NPU    (1,96,9,1),(1,96,1,1)                    (1,1,9,1)              88/48/88                 77           0.00/0.00/0.00       33.3%/33.3%/33.3%    1            Conv:/ReduceSum_3_2conv\n34   Transpose          FLOAT16  NPU    (1,1,9,1)                                (1,9,1,1)              0/0/0                    63                                100.0%/0.0%/0.0%     0            Transpose:/ReduceSum_3_output_0_conv_tp\n35   Greater            FLOAT16  CPU    (1,9,1,1),(1,1,1,1)                      (1,9,1,1)              0/0/0                    17                                0.0%/0.0%/0.0%       0            Greater:/Greater_3\n36   Not                INT8     CPU    (1,9,1,1)                                (1,9,1,1)              0/0/0                    7                                 0.0%/0.0%/0.0%       0            Not:/Not_1      \n37   Cast               INT8     NPU    (1,9,1,1)                                (1,9,1,1)              0/0/0                    62                                100.0%/0.0%/0.0%     0            Cast:/Cast_1    \n38   exNorm             FLOAT16  NPU    (1,384,1,864),(1,384,1,1),...            (1,384,1,864)          0/0/0                    1104                              100.0%/0.0%/0.0%     651          exNorm:/corr/corr.3/LayerNormalization#1\n39   Relu               FLOAT16  NPU    (1,384,1,864)                            (1,384,1,864)          0/0/0                    135                               33.3%/33.3%/33.3%    648          Relu:/corr/corr.4/Relu\n40   ConvAdd            FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384),...    (1,384,1,864)          96690/248832/248832      396          20.95/20.95/20.95    33.3%/33.3%/33.3%    1585         Conv:/corr/corr.5/MatMul#2_ConvAdd\n41   exNorm             FLOAT16  NPU    (1,384,1,864),(1,384,1,1),...            (1,384,1,864)          0/0/0                    1129                              100.0%/0.0%/0.0%     651          exNorm:/norm/LayerNormalization#1\n42   Gather             FLOAT16  CPU    (1,384,1,864),(864)                      (1,384,1,864)          0/0/0                    2804                              0.0%/0.0%/0.0%       654          Gather:/Gather  \n43   Mul                FLOAT16  NPU    (1,1,1,864),(1,384,1,864)                (1,384,1,864)          0/0/0                    298                               100.0%/0.0%/0.0%     649          Mul:/Mul        \n44   ConvRelu           FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384)        (1,384,1,864)          68638/248832/248832      396          20.95/20.95/20.95    33.3%/33.3%/33.3%    937          Conv:/c1/c1.0/MatMul#2\n45   ConvAdd            FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384),...    (1,384,1,864)          96690/248832/248832      396          20.95/20.95/20.95    33.3%/33.3%/33.3%    1585         Conv:/c1/c1.2/MatMul#2_ConvAdd\n46   Gather             FLOAT16  CPU    (1,384,1,864),(864)                      (1,384,1,864)          0/0/0                    2750                              0.0%/0.0%/0.0%       654          Gather:/Gather_1\n47   Mul                FLOAT16  NPU    (1,1,1,864),(1,384,1,864)                (1,384,1,864)          0/0/0                    295                               100.0%/0.0%/0.0%     649          Mul:/Mul_1      \n48   ConvRelu           FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384)        (1,384,1,864)          68638/248832/248832      397          20.89/20.89/20.89    33.3%/33.3%/33.3%    937          Conv:/c2/c2.0/MatMul#2\n49   ConvAdd            FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384),...    (1,384,1,864)          96690/248832/248832      396          20.95/20.95/20.95    33.3%/33.3%/33.3%    1585         Conv:/c2/c2.2/MatMul#2_ConvAdd\n50   Conv               FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384)        (1,384,1,864)          68638/248832/248832      395          21.00/21.00/21.00    33.3%/33.3%/33.3%    937          Conv:/f/MatMul#2\n51   Transpose          FLOAT16  NPU    (1,384,1,864)                            (1,864,1,384)          0/0/0                    589                               100.0%/0.0%/0.0%     648          Transpose:/f/MatMul_output_0_mm_tp\n52   Conv               FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384)        (1,384,1,864)          68638/248832/248832      397          20.89/20.89/20.89    33.3%/33.3%/33.3%    937          Conv:/g/MatMul#2\n53   Transpose          FLOAT16  NPU    (1,384,1,864)                            (1,864,1,384)          0/0/0                    589                               100.0%/0.0%/0.0%     648          Transpose:/g/MatMul_output_0_mm_tp\n54   Reshape            FLOAT16  NPU    (1,864,1,384),(3)                        (1,864,384)            0/0/0                    231                               100.0%/0.0%/0.0%     648          Reshape:/f/Add_output_0-rs\n55   Gather             FLOAT16  CPU    (1,864,384),(288,3)                      (1,288,3,384)          0/0/0                    546                               0.0%/0.0%/0.0%       654          Gather:/Gather_3\n56   Reshape            FLOAT16  NPU    (1,864,1,384),(3)                        (1,864,384)            0/0/0                    233                               100.0%/0.0%/0.0%     648          Reshape:/g/Add_output_0-rs\n57   Gather             FLOAT16  CPU    (1,864,384),(288,3)                      (1,288,3,384)          0/0/0                    566                               0.0%/0.0%/0.0%       654          Gather:/Gather_2\n58   Where              INT8     NPU    (1,288,3,1),(1,288,3,384),...            (1,288,3,384)          0/0/0                    165                               33.3%/33.3%/33.3%    1296         Where:/Where    \n59   ReduceMax          FLOAT16  CPU    (1,288,3,384),(1)                        (1,288,1,384)          0/0/0                    1636                              0.0%/0.0%/0.0%       648          ReduceMax:/ReduceMax\n60   Where              INT8     NPU    (1,288,1,1),(1,288,1,384),...            (1,288,1,384)          0/0/0                    105                               33.3%/33.3%/33.3%    432          Where:/Where_1  \n61   Expand             FLOAT16  NPU    (1,288,1,384),(4)                        (1,288,3,384)          0/0/0                    286                               100.0%/0.0%/0.0%     216          Expand:/Where_1_output_0_expand\n62   Sub                FLOAT16  NPU    (1,288,3,384),(1,288,3,384)              (1,288,3,384)          0/0/0                    273                               100.0%/0.0%/0.0%     1296         Sub:/Sub        \n63   Where              INT8     NPU    (1,288,3,1),(1,288,3,384),...            (1,288,3,384)          0/0/0                    162                               33.3%/33.3%/33.3%    1296         Where:/Where_2  \n64   Exp                FLOAT16  CPU    (1,288,3,384)                            (1,288,3,384)          0/0/0                    4449                              0.0%/0.0%/0.0%       648          Exp:/Exp        \n65   Mul                FLOAT16  NPU    (1,288,3,384),(1,288,3,1)                (1,288,3,384)          0/0/0                    494                               100.0%/0.0%/0.0%     649          Mul:/Mul_2      \n66   Conv               FLOAT16  NPU    (1,288,3,384),(1,288,3,1)                (1,288,1,384)          37477/5760/37477         222          0.10/0.10/0.10       100.0%/0.0%/0.0%     649          Conv:/ReduceSum_1_2conv\n67   Add                FLOAT16  NPU    (1,288,1,384),(1,288,1,1)                (1,288,1,384)          0/0/0                    94                                33.3%/33.3%/33.3%    216          Add:/Add_4      \n68   Expand             FLOAT16  NPU    (1,288,1,384),(4)                        (1,288,3,384)          0/0/0                    284                               100.0%/0.0%/0.0%     216          Expand:/Add_4_output_0_expand\n69   Div                FLOAT16  NPU    (1,288,3,384),(1,288,3,384)              (1,288,3,384)          0/0/0                    444                               100.0%/0.0%/0.0%     1296         Div:/Div        \n70   Mul                FLOAT16  NPU    (1,288,3,384),(1,288,3,384)              (1,288,3,384)          0/0/0                    286                               100.0%/0.0%/0.0%     1296         Mul:/Mul_3      \n71   Conv               FLOAT16  NPU    (1,288,3,384),(1,288,3,1)                (1,288,1,384)          37477/5760/37477         221          0.10/0.10/0.10       100.0%/0.0%/0.0%     649          Conv:/ReduceSum_2_2conv\n72   Transpose          FLOAT16  NPU    (1,288,1,384)                            (1,384,1,288)          0/0/0                    249                               100.0%/0.0%/0.0%     216          Transpose:/ReduceSum_2_output_0_tp\n73   Conv               FLOAT16  NPU    (1,384,1,288),(384,384,1,1),(384)        (1,384,1,288)          31235/82944/82944        180          15.36/15.36/15.36    33.3%/33.3%/33.3%    505          Conv:/h/MatMul#2\n74   Gather             FLOAT16  CPU    (1,384,1,288),(864)                      (1,384,1,864)          0/0/0                    2523                              0.0%/0.0%/0.0%       222          Gather:/Gather_4\n75   Add                FLOAT16  NPU    (1,384,1,864),(1,384,1,864)              (1,384,1,864)          0/0/0                    169                               33.3%/33.3%/33.3%    1296         Add:/Add_5      \n76   Conv               FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384)        (1,384,1,864)          68638/248832/248832      397          20.89/20.89/20.89    33.3%/33.3%/33.3%    937          Conv:/f_1/MatMul#2\n77   Transpose          FLOAT16  NPU    (1,384,1,864)                            (1,864,1,384)          0/0/0                    588                               100.0%/0.0%/0.0%     648          Transpose:/f_1/MatMul_output_0_mm_tp\n78   Conv               FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384)        (1,384,1,864)          68638/248832/248832      399          20.79/20.79/20.79    33.3%/33.3%/33.3%    937          Conv:/g_1/MatMul#2\n79   Transpose          FLOAT16  NPU    (1,384,1,864)                            (1,864,1,384)          0/0/0                    588                               100.0%/0.0%/0.0%     648          Transpose:/g_1/MatMul_output_0_mm_tp\n80   Reshape            FLOAT16  NPU    (1,864,1,384),(3)                        (1,864,384)            0/0/0                    233                               100.0%/0.0%/0.0%     648          Reshape:/f_1/Add_output_0-rs\n81   Gather             FLOAT16  CPU    (1,864,384),(9,96)                       (1,9,96,384)           0/0/0                    738                               0.0%/0.0%/0.0%       654          Gather:/Gather_6\n82   Reshape            FLOAT16  NPU    (1,864,1,384),(3)                        (1,864,384)            0/0/0                    237                               100.0%/0.0%/0.0%     648          Reshape:/g_1/Add_output_0-rs\n83   Gather             FLOAT16  CPU    (1,864,384),(9,96)                       (1,9,96,384)           0/0/0                    756                               0.0%/0.0%/0.0%       654          Gather:/Gather_5\n84   Where              INT8     NPU    (1,9,96,1),(1,9,96,384),(1,9,96,384)     (1,9,96,384)           0/0/0                    231                               33.3%/33.3%/33.3%    2305         Where:/Where_3  \n85   ReduceMax          FLOAT16  CPU    (1,9,96,384),(1)                         (1,9,1,384)            0/0/0                    1332                              0.0%/0.0%/0.0%       1152         ReduceMax:/ReduceMax_1\n86   Where              INT8     NPU    (1,9,1,1),(1,9,1,384),(1,9,1,384)        (1,9,1,384)            0/0/0                    77                                33.3%/33.3%/33.3%    24           Where:/Where_4  \n87   Expand             FLOAT16  NPU    (1,9,1,384),(4)                          (1,9,96,384)           0/0/0                    726                               100.0%/0.0%/0.0%     12           Expand:/Where_4_output_0_expand\n88   Sub                FLOAT16  NPU    (1,9,96,384),(1,9,96,384)                (1,9,96,384)           0/0/0                    469                               100.0%/0.0%/0.0%     2304         Sub:/Sub_1      \n89   Where              INT8     NPU    (1,9,96,1),(1,9,96,384),(1,9,96,384)     (1,9,96,384)           0/0/0                    233                               33.3%/33.3%/33.3%    2305         Where:/Where_5  \n90   Exp                FLOAT16  CPU    (1,9,96,384)                             (1,9,96,384)           0/0/0                    4432                              0.0%/0.0%/0.0%       1152         Exp:/Exp_1      \n91   Mul                FLOAT16  NPU    (1,9,96,384),(1,9,96,1)                  (1,9,96,384)           0/0/0                    1118                              100.0%/0.0%/0.0%     1155         Mul:/Mul_4      \n92   Transpose          FLOAT16  CPU    (1,9,96,384)                             (1,96,9,384)           0/0/0                    5661                              0.0%/0.0%/0.0%       1152         Transpose:/Mul_4_output_0_tp\n93   Conv               FLOAT16  NPU    (1,96,9,384),(1,96,1,1)                  (1,1,9,384)            30399/10368/30399        136          0.16/0.16/0.16       33.3%/33.3%/33.3%    648          Conv:/ReduceSum_4_2conv\n94   Transpose          FLOAT16  NPU    (1,1,9,384)                              (1,9,1,384)            0/0/0                    116                               100.0%/0.0%/0.0%     54           Transpose:/ReduceSum_4_output_0_conv_tp\n95   Add                FLOAT16  NPU    (1,9,1,384),(1,9,1,1)                    (1,9,1,384)            0/0/0                    77                                33.3%/33.3%/33.3%    12           Add:/Add_6      \n96   Expand             FLOAT16  NPU    (1,9,1,384),(4)                          (1,9,96,384)           0/0/0                    730                               100.0%/0.0%/0.0%     12           Expand:/Add_6_output_0_expand\n97   Div                FLOAT16  NPU    (1,9,96,384),(1,9,96,384)                (1,9,96,384)           0/0/0                    745                               100.0%/0.0%/0.0%     2304         Div:/Div_1      \n98   Mul                FLOAT16  NPU    (1,9,96,384),(1,9,96,384)                (1,9,96,384)           0/0/0                    446                               100.0%/0.0%/0.0%     2304         Mul:/Mul_5      \n99   Transpose          FLOAT16  CPU    (1,9,96,384)                             (1,96,9,384)           0/0/0                    5700                              0.0%/0.0%/0.0%       1152         Transpose:/Mul_5_output_0_tp\n100  Conv               FLOAT16  NPU    (1,96,9,384),(1,96,1,1)                  (1,1,9,384)            30399/10368/30399        127          0.17/0.17/0.17       33.3%/33.3%/33.3%    648          Conv:/ReduceSum_5_2conv\n101  Transpose          FLOAT16  NPU    (1,1,9,384)                              (1,384,1,9)            0/0/0                    106                               100.0%/0.0%/0.0%     54           Transpose:/ReduceSum_5_output_0_tp\n102  Conv               FLOAT16  NPU    (1,384,1,9),(384,384,1,1),(384)          (1,384,1,9)            13118/4608/13118         98           0.88/0.88/0.88       33.3%/33.3%/33.3%    296          Conv:/h_1/MatMul#2\n103  Gather             FLOAT16  CPU    (1,384,1,9),(864)                        (1,384,1,864)          0/0/0                    2487                              0.0%/0.0%/0.0%       13           Gather:/Gather_7\n104  Add                FLOAT16  NPU    (1,384,1,864),(1,384,1,864)              (1,384,1,864)          0/0/0                    162                               33.3%/33.3%/33.3%    1296         Add:/Add_7      \n105  exNorm             FLOAT16  NPU    (1,384,1,864),(1,384,1,1),...            (1,384,1,864)          0/0/0                    1116                              100.0%/0.0%/0.0%     651          exNorm:/gru/gru.0/LayerNormalization#1\n106  ConvSigmoid        FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384)        (1,384,1,864)          68638/248832/248832      798          10.39/10.39/10.39    100.0%/0.0%/0.0%     937          Conv:/gru/gru.1/gate/gate.0/MatMul#2\n107  ConvRelu           FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384)        (1,384,1,864)          68638/248832/248832      397          20.89/20.89/20.89    33.3%/33.3%/33.3%    937          Conv:/gru/gru.1/res/res.0/MatMul#2\n108  ConvMul            FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384),...    (1,384,1,864)          96690/248832/248832      398          20.84/20.84/20.84    33.3%/33.3%/33.3%    1585         Conv:/gru/gru.1/res/res.2/MatMul#2_ConvMul\n109  Add                FLOAT16  NPU    (1,384,1,864),(1,384,1,864)              (1,384,1,864)          0/0/0                    162                               33.3%/33.3%/33.3%    1296         Add:/gru/gru.1/Add\n110  exNorm             FLOAT16  NPU    (1,384,1,864),(1,384,1,1),...            (1,384,1,864)          0/0/0                    1118                              100.0%/0.0%/0.0%     651          exNorm:/gru/gru.2/LayerNormalization#1\n111  ConvRelu           FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384)        (1,384,1,864)          68638/248832/248832      396          20.95/20.95/20.95    33.3%/33.3%/33.3%    937          Conv:/gru/gru.3/res/res.0/MatMul#2\n112  ConvSigmoid        FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384)        (1,384,1,864)          68638/248832/248832      799          10.38/10.38/10.38    100.0%/0.0%/0.0%     937          Conv:/gru/gru.3/gate/gate.0/MatMul#2\n113  ConvMul            FLOAT16  NPU    (1,384,1,864),(384,384,1,1),(384),...    (1,384,1,864)          96690/248832/248832      404          20.53/20.53/20.53    33.3%/33.3%/33.3%    1585         Conv:/gru/gru.3/res/res.2/MatMul#2_ConvMul\n114  Add                FLOAT16  NPU    (1,384,1,864),(1,384,1,864)              (1,384,1,864)          0/0/0                    163                               33.3%/33.3%/33.3%    1296         Add:/gru/gru.3/Add\n115  Relu               FLOAT16  NPU    (1,384,1,864)                            (1,384,1,864)          0/0/0                    141                               33.3%/33.3%/33.3%    648          Relu:/d/d.0/Relu\n116  Conv               FLOAT16  NPU    (1,384,1,864),(2,384,1,1),(2)            (1,2,1,864)            28705/10368/28705        188          0.23/0.23/0.23       100.0%/0.0%/0.0%     649          Conv:/d/d.1/MatMul#2\n117  ConvSigmoid        FLOAT16  NPU    (1,384,1,864),(2,384,1,1),(2)            (1,2,1,864)            28705/10368/28705        195          0.22/0.22/0.22       100.0%/0.0%/0.0%     649          Conv:/w/w.1/MatMul#2\n118  Transpose          FLOAT16  NPU    (1,384,1,864)                            (1,864,1,384)          0/0/0                    298                               100.0%/0.0%/0.0%     648          Transpose:net_out-rs_tp\n119  Reshape            FLOAT16  NPU    (1,864,1,384),(3)                        (1,864,384)            0/0/0                    235                               100.0%/0.0%/0.0%     648          Reshape:net_out-rs\n120  OutputOperator     FLOAT16  CPU    (1,864,384)                              \\                      0/0/0                    15                                0.0%/0.0%/0.0%       648          OutputOperator:net_out\n121  Transpose          FLOAT16  NPU    (1,2,1,864)                              (1,864,1,2)            0/0/0                    77                                100.0%/0.0%/0.0%     13           Transpose:/d/d.1/MatMul_output_0_mm_tp\n122  Reshape            FLOAT16  CPU    (1,864,1,2),(3)                          (1,864,2)              0/0/0                    31                                0.0%/0.0%/0.0%       3            Reshape:delta-rs\n123  OutputOperator     FLOAT16  CPU    (1,864,2)                                \\                      0/0/0                    2                                 0.0%/0.0%/0.0%       3            OutputOperator:delta\n124  Transpose          FLOAT16  NPU    (1,2,1,864)                              (1,864,1,2)            0/0/0                    76                                100.0%/0.0%/0.0%     13           Transpose:/w/w.1/MatMul_output_0_mm_tp\n125  Reshape            FLOAT16  CPU    (1,864,1,2),(3)                          (1,864,2)              0/0/0                    20                                0.0%/0.0%/0.0%       3            Reshape:weight-rs\n126  OutputOperator     FLOAT16  CPU    (1,864,2)                                \\                      0/0/0                    1                                 0.0%/0.0%/0.0%       3            OutputOperator:weight\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nTotal Operator Elapsed Per Frame Time(us): 71140\nTotal Memory Read/Write Per Frame Size(KB): 80244.82\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n---------------------------------------------------------------------------------------------------\n                                 Operator Time Consuming Ranking Table            \n---------------------------------------------------------------------------------------------------\nOpType             CallNumber   CPUTime(us)  GPUTime(us)  NPUTime(us)  TotalTime(us)  TimeRatio(%)  \n---------------------------------------------------------------------------------------------------\nTranspose          16           11361        0            6773         18134          25.49%        \nGather             8            13170        0            0            13170          18.51%        \nExp                2            8881         0            0            8881           12.48%        \nReshape            14           1834         0            2698         4532           6.37%         \nexNorm             4            0            0            4467         4467           6.28%         \nConv               14           0            0            3296         3296           4.63%         \nReduceMax          2            2968         0            0            2968           4.17%         \nMul                6            0            0            2937         2937           4.13%         \nConvRelu           5            0            0            2428         2428           3.41%         \nExpand             4            0            0            2026         2026           2.85%         \nConvSigmoid        3            0            0            1792         1792           2.52%         \nDiv                2            0            0            1189         1189           1.67%         \nConvAdd            3            0            0            1188         1188           1.67%         \nAdd                7            0            0            986          986            1.39%         \nWhere              6            0            0            973          973            1.37%         \nConvMul            2            0            0            802          802            1.13%         \nSub                2            0            0            742          742            1.04%         \nRelu               2            0            0            276          276            0.39%         \nGreater            4            176          0            0            176            0.25%         \nCast               2            0            0            125          125            0.18%         \nNot                2            22           0            0            22             0.03%         \nOutputOperator     3            18           0            0            18             0.03%         \nInputOperator      13           12           0            0            12             0.02%         \n---------------------------------------------------------------------------------------------------\nTotal                           38442        0            32698        71140         \n---------------------------------------------------------------------------------------------------\n",
+              "operator_targets_interpreted_by_probe": false
+            }
+          }
+        ],
+        "cleanup_errors": [],
+        "init_seconds": 0.02056541900674347,
+        "capture_sha256": "87e18137a828496d623721f7748e288d02f9d8d6879278da1e5d3d9731cfa0a1",
+        "export_sha256": "56f96b7bf80bde596de6a4008da2858a869a9f19a3162abb8db8ab1af0156cac",
+        "ort_sha256": "d3f1479fc4bb4a992a778a6bda88387b67af9304b6a33f7ae705147207b590c3",
+        "compile_sha256": "0c92d8b8ed187781e93a764672336c1e91e9ac6a609ae023afb311addb28dc7e",
+        "packing_helper_sha256": "040f55b89accb7a03a523ef2ab8c4bf12755f15da34813dc6ee607b6deb90c88",
+        "model_sha256": "61b6c353346294416f10aa0f0a61c779584813741a52b34a7ad2e9bcb683710b",
+        "input_attributes": [
+          {
+            "index": 0,
+            "name": "net",
+            "shape": [
+              1,
+              864,
+              384
+            ],
+            "n_elems": 331776,
+            "size": 663552,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 663552
+          },
+          {
+            "index": 1,
+            "name": "inp",
+            "shape": [
+              1,
+              864,
+              384
+            ],
+            "n_elems": 331776,
+            "size": 663552,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 663552
+          },
+          {
+            "index": 2,
+            "name": "corr",
+            "shape": [
+              1,
+              864,
+              882
+            ],
+            "n_elems": 762048,
+            "size": 1524096,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1524096
+          },
+          {
+            "index": 3,
+            "name": "previous_indices",
+            "shape": [
+              864
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 4,
+            "name": "previous_valid",
+            "shape": [
+              1,
+              864,
+              1
+            ],
+            "n_elems": 864,
+            "size": 1728,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1728
+          },
+          {
+            "index": 5,
+            "name": "following_indices",
+            "shape": [
+              864
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 6,
+            "name": "following_valid",
+            "shape": [
+              1,
+              864,
+              1
+            ],
+            "n_elems": 864,
+            "size": 1728,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1728
+          },
+          {
+            "index": 7,
+            "name": "kk_indices",
+            "shape": [
+              288,
+              3
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 8,
+            "name": "kk_valid",
+            "shape": [
+              288,
+              3
+            ],
+            "n_elems": 864,
+            "size": 1728,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1728
+          },
+          {
+            "index": 9,
+            "name": "kk_inverse",
+            "shape": [
+              864
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 10,
+            "name": "ij_indices",
+            "shape": [
+              9,
+              96
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 11,
+            "name": "ij_valid",
+            "shape": [
+              9,
+              96
+            ],
+            "n_elems": 864,
+            "size": 1728,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1728
+          },
+          {
+            "index": 12,
+            "name": "ij_inverse",
+            "shape": [
+              864
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          }
+        ],
+        "output_attributes": [
+          {
+            "index": 0,
+            "name": "net_out",
+            "shape": [
+              1,
+              864,
+              384
+            ],
+            "n_elems": 331776,
+            "size": 663552,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 663552
+          },
+          {
+            "index": 1,
+            "name": "delta",
+            "shape": [
+              1,
+              864,
+              2
+            ],
+            "n_elems": 1728,
+            "size": 3456,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 3456
+          },
+          {
+            "index": 2,
+            "name": "weight",
+            "shape": [
+              1,
+              864,
+              2
+            ],
+            "n_elems": 1728,
+            "size": 3456,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 3456
+          }
+        ],
+        "abi": {
+          "context_size": 8,
+          "pointer_size": 8,
+          "structs": {
+            "rknn_input_output_num": {
+              "size": 8,
+              "alignment": 4,
+              "offsets": {
+                "n_input": 0,
+                "n_output": 4
+              }
+            },
+            "rknn_tensor_attr": {
+              "size": 376,
+              "alignment": 4,
+              "offsets": {
+                "index": 0,
+                "n_dims": 4,
+                "dims": 8,
+                "name": 72,
+                "n_elems": 328,
+                "size": 332,
+                "fmt": 336,
+                "type": 340,
+                "qnt_type": 344,
+                "fl": 348,
+                "zp": 352,
+                "scale": 356,
+                "w_stride": 360,
+                "size_with_stride": 364,
+                "pass_through": 368,
+                "h_stride": 372
+              }
+            },
+            "rknn_input": {
+              "size": 32,
+              "alignment": 8,
+              "offsets": {
+                "index": 0,
+                "buf": 8,
+                "size": 16,
+                "pass_through": 20,
+                "type": 24,
+                "fmt": 28
+              }
+            },
+            "rknn_output": {
+              "size": 24,
+              "alignment": 8,
+              "offsets": {
+                "want_float": 0,
+                "is_prealloc": 1,
+                "index": 4,
+                "buf": 8,
+                "size": 16
+              }
+            },
+            "rknn_sdk_version": {
+              "size": 512,
+              "alignment": 1,
+              "offsets": {
+                "api_version": 0,
+                "drv_version": 256
+              }
+            },
+            "rknn_mem_size": {
+              "size": 64,
+              "alignment": 8,
+              "offsets": {
+                "total_weight_size": 0,
+                "total_internal_size": 4,
+                "total_dma_allocated_size": 8,
+                "total_sram_size": 16,
+                "free_sram_size": 20,
+                "reserved": 24
+              }
+            },
+            "rknn_perf_run": {
+              "size": 8,
+              "alignment": 8,
+              "offsets": {
+                "run_duration": 0
+              }
+            },
+            "rknn_perf_detail": {
+              "size": 16,
+              "alignment": 8,
+              "offsets": {
+                "perf_data": 0,
+                "data_len": 8
+              }
+            },
+            "rknn_run_extend": {
+              "size": 24,
+              "alignment": 8,
+              "offsets": {
+                "frame_id": 0,
+                "non_block": 8,
+                "timeout_ms": 12,
+                "fence_fd": 16
+              }
+            },
+            "rknn_output_extend": {
+              "size": 8,
+              "alignment": 8,
+              "offsets": {
+                "frame_id": 0
+              }
+            }
+          }
+        },
+        "versions": {
+          "api": "2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+          "driver": "0.7.2"
+        },
+        "core_mask": 7,
+        "cpu_affinity": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "memory": {
+          "total_dma_allocated_size": 20692992,
+          "total_weight_size": 9967360,
+          "total_internal_size": 9464960
+        },
+        "error": "RuntimeError('Diagnostic intentionally stops before a second SDK call')",
+        "traceback": "Traceback (most recent call last):\n  File \"/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/run-v28-dpvo-update-rknn-board.py\", line 102, in main\n    values,timing=execute(api,context,abi,packing,source['feed'],bindings,model['outputs'],r['cleanup_errors']);metadata={k:meta(v) for k,v in values.items()};key=(source['name'],source['step'])\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/diagnose-v28-dpvo-update-rknn-board.py\", line 40, in one_call\n    if executed:raise RuntimeError('Diagnostic intentionally stops before a second SDK call')\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Diagnostic intentionally stops before a second SDK call\n",
+        "destroy_code": 0,
+        "source_hashes_after": {
+          "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/run-v12-rknn-block-board.py": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608",
+          "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/reference/rknn_api_v2.3.2.h": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a",
+          "/usr/lib/librknnrt.so": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/run-v28-dpvo-update-rknn-board.py": "7d44c4ef260126ba0551d7596e9861a3007ec92d56cb33aa99e2223c2b110928",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/v28_rknn_inputs.py": "040f55b89accb7a03a523ef2ab8c4bf12755f15da34813dc6ee607b6deb90c88",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/capture.json": "87e18137a828496d623721f7748e288d02f9d8d6879278da1e5d3d9731cfa0a1",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/export.json": "56f96b7bf80bde596de6a4008da2858a869a9f19a3162abb8db8ab1af0156cac",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/ort.json": "d3f1479fc4bb4a992a778a6bda88387b67af9304b6a33f7ae705147207b590c3",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-compile-E864-r1/compile.json": "0c92d8b8ed187781e93a764672336c1e91e9ac6a609ae023afb311addb28dc7e",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-compile-E864-r1/block.rknn": "61b6c353346294416f10aa0f0a61c779584813741a52b34a7ad2e9bcb683710b",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/E864.onnx": "c7a51b1fa37342f8ee3ac1d0133dc2bf4e015d3b44579a4408e67585f63396b3",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/three_frame_all_pairs_identity-topology.npz": "a457f95e5bc769be86006349d5fe87cd546f2882642ab0ef66b0037300ac00c8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state0-input.npz": "c01f08feae04ede7ff9b7e859b231a97c86fb54a7690bf96e895f44281d8637c",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state0-output.npz": "f54e8c54e15f63a59890cd3a71eba8283c98588070cb4ecdcf96d3b044e45125",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state0.npz": "a32bc789dd539c410aa388148386df0d92ef764d7c8b32d5c1d414b6b450ad8f",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state1-input.npz": "e077093715800217b0bb06f6d36e2c1d91f72c4b368d4847b5e44d8dd1654251",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state1-output.npz": "d891d5beea1eecbfb7d537b911462bc8656bd8a5587d6c68cf1b07f0952eede0",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state1.npz": "05a3b0a21eeacfd147c388c8ccf4d3f58edf354111f3bae27f05cefec3b687cb",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state2-input.npz": "41d8bff233c62d58e057595306a6ac3ec7b788900439802fcb51fe02255c0b2c",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state2-output.npz": "9f1d7d06d7eb6a3c02dda706e84744e6bbf09a45f17e149ba92688d8b91b1486",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state2.npz": "455dc6262eb16c0aafbca199f9668cc0cfe213ec27eb210acd780f96ee632c93",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state3-input.npz": "f755acd2263613d3757a76092b99582a0a0fe98d3e8ccef72146b48c5a1df104",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state3-output.npz": "3e0ba4c178b4a0a7d85bb0649cab7c1d2b6852d47a9bcdda42588e9fb36707fc",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state3.npz": "86b82e6070501cd68058fdb4a36ea5d189b3cf648e6e76f91713d402264bf93d",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/three_frame_all_pairs_shifted-topology.npz": "a457f95e5bc769be86006349d5fe87cd546f2882642ab0ef66b0037300ac00c8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state0-input.npz": "9d6756add82f2b594708fde677393ee5d84ed591a26d3432b08408f8784c7c23",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state0-output.npz": "53fb2b2ae82c1eb9bde8adb76b7895c2388075b383386663021cd7a2a92e0d4b",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state0.npz": "f53d89e9aee698298f45e3c92953afe614cd3a5ddbccbc79304a34e734595f24",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state1-input.npz": "c03cd3b1afe69f97ad61be015505857da4d01dfe6a9c5835f20cb2f319560268",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state1-output.npz": "3e029b71286f15b52e013d71287cfa00f61b2fd910a86bdfc5261c4d79a08f95",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state1.npz": "a7a7e05b43b191f0c2da752418cba2205e61084213dd492f43c89e3fa8afd935",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state2-input.npz": "7479324cf6be0010d1a679193083eabee6a01877695745e381b12db4d917f975",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state2-output.npz": "1005c746cff8bde1d64e9590093cbdda9438d3b4e563fc38b381106ff86b0601",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state2.npz": "feb8b68b46ccdb55c7413ca007d5818f874ae87bd73e34fab19f7836df49a432",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state3-input.npz": "6c2a0e6eddc90c86d4a7632c0e651ec1d03ab5ecb7849cea7b391dca9f600fd4",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state3-output.npz": "ecf6695c412dcf616428ca005982ae58b130c7587b298b0f12607cbe9a49bba0",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state3.npz": "6dcc554cb53ee1051e5c49dd1fd781b80f3d60b0f82091b64bb761bade9a01e2"
+        },
+        "sources_and_inputs_unchanged": true,
+        "affinity_restored": true,
+        "source_pins": {
+          "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/run-v12-rknn-block-board.py": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608",
+          "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/reference/rknn_api_v2.3.2.h": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a",
+          "/usr/lib/librknnrt.so": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/run-v28-dpvo-update-rknn-board.py": "7d44c4ef260126ba0551d7596e9861a3007ec92d56cb33aa99e2223c2b110928",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/v28_rknn_inputs.py": "040f55b89accb7a03a523ef2ab8c4bf12755f15da34813dc6ee607b6deb90c88",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/capture.json": "87e18137a828496d623721f7748e288d02f9d8d6879278da1e5d3d9731cfa0a1",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/export.json": "56f96b7bf80bde596de6a4008da2858a869a9f19a3162abb8db8ab1af0156cac",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/ort.json": "d3f1479fc4bb4a992a778a6bda88387b67af9304b6a33f7ae705147207b590c3",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-compile-E864-r1/compile.json": "0c92d8b8ed187781e93a764672336c1e91e9ac6a609ae023afb311addb28dc7e",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-compile-E864-r1/block.rknn": "61b6c353346294416f10aa0f0a61c779584813741a52b34a7ad2e9bcb683710b",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/E864.onnx": "c7a51b1fa37342f8ee3ac1d0133dc2bf4e015d3b44579a4408e67585f63396b3",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/three_frame_all_pairs_identity-topology.npz": "a457f95e5bc769be86006349d5fe87cd546f2882642ab0ef66b0037300ac00c8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state0-input.npz": "c01f08feae04ede7ff9b7e859b231a97c86fb54a7690bf96e895f44281d8637c",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state0-output.npz": "f54e8c54e15f63a59890cd3a71eba8283c98588070cb4ecdcf96d3b044e45125",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state0.npz": "a32bc789dd539c410aa388148386df0d92ef764d7c8b32d5c1d414b6b450ad8f",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state1-input.npz": "e077093715800217b0bb06f6d36e2c1d91f72c4b368d4847b5e44d8dd1654251",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state1-output.npz": "d891d5beea1eecbfb7d537b911462bc8656bd8a5587d6c68cf1b07f0952eede0",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state1.npz": "05a3b0a21eeacfd147c388c8ccf4d3f58edf354111f3bae27f05cefec3b687cb",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state2-input.npz": "41d8bff233c62d58e057595306a6ac3ec7b788900439802fcb51fe02255c0b2c",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state2-output.npz": "9f1d7d06d7eb6a3c02dda706e84744e6bbf09a45f17e149ba92688d8b91b1486",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state2.npz": "455dc6262eb16c0aafbca199f9668cc0cfe213ec27eb210acd780f96ee632c93",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state3-input.npz": "f755acd2263613d3757a76092b99582a0a0fe98d3e8ccef72146b48c5a1df104",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_identity-state3-output.npz": "3e0ba4c178b4a0a7d85bb0649cab7c1d2b6852d47a9bcdda42588e9fb36707fc",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_identity-state3.npz": "86b82e6070501cd68058fdb4a36ea5d189b3cf648e6e76f91713d402264bf93d",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-export-r1/three_frame_all_pairs_shifted-topology.npz": "a457f95e5bc769be86006349d5fe87cd546f2882642ab0ef66b0037300ac00c8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state0-input.npz": "9d6756add82f2b594708fde677393ee5d84ed591a26d3432b08408f8784c7c23",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state0-output.npz": "53fb2b2ae82c1eb9bde8adb76b7895c2388075b383386663021cd7a2a92e0d4b",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state0.npz": "f53d89e9aee698298f45e3c92953afe614cd3a5ddbccbc79304a34e734595f24",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state1-input.npz": "c03cd3b1afe69f97ad61be015505857da4d01dfe6a9c5835f20cb2f319560268",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state1-output.npz": "3e029b71286f15b52e013d71287cfa00f61b2fd910a86bdfc5261c4d79a08f95",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state1.npz": "a7a7e05b43b191f0c2da752418cba2205e61084213dd492f43c89e3fa8afd935",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state2-input.npz": "7479324cf6be0010d1a679193083eabee6a01877695745e381b12db4d917f975",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state2-output.npz": "1005c746cff8bde1d64e9590093cbdda9438d3b4e563fc38b381106ff86b0601",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state2.npz": "feb8b68b46ccdb55c7413ca007d5818f874ae87bd73e34fab19f7836df49a432",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state3-input.npz": "6c2a0e6eddc90c86d4a7632c0e651ec1d03ab5ecb7849cea7b391dca9f600fd4",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-capture-r1/three_frame_all_pairs_shifted-state3-output.npz": "ecf6695c412dcf616428ca005982ae58b130c7587b298b0f12607cbe9a49bba0",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-ort-r1/disabled-three_frame_all_pairs_shifted-state3.npz": "6dcc554cb53ee1051e5c49dd1fd781b80f3d60b0f82091b64bb761bade9a01e2"
+        },
+        "peak_rss_mib": 164.78515625,
+        "diagnostic_entry_sha256": "e744026c954845108aea271ea716d51250b9b116f4259adc94d5e6eda338de91",
+        "frozen_runner_sha256": "7d44c4ef260126ba0551d7596e9861a3007ec92d56cb33aa99e2223c2b110928",
+        "diagnostic_post_copy_checks_intercepted": [
+          "Nonfinite SDK output"
+        ],
+        "diagnostic_SDK_calls": 1,
+        "original_runner_return_code": 1,
+        "original_runner_terminal_status": "failed",
+        "candidate_runtime_accepted": false,
+        "outputs_clipped_or_modified": false,
+        "FP32_thresholds_relaxed": false,
+        "diagnostic_sources_unchanged": true
+      },
+      "platform_samples": {
+        "file": "vggt-v28-dpvo-update-npu-E864-diagnostic-r1/platform_samples.json",
+        "raw_sha256": "b0b9ca962164272cf66fb077508295e544705ba11678b555f31bfe2762290205",
+        "raw_bytes": 1718,
+        "host_home_redacted": false,
+        "data": {
+          "scope": "Read-only before/after; no clock/governor/cooling changes",
+          "before": {
+            "monotonic": 103039.504040176,
+            "sysfs": {
+              "/sys/class/thermal/thermal_zone2/temp": "49923",
+              "/sys/class/thermal/thermal_zone0/temp": "49923",
+              "/sys/class/thermal/thermal_zone5/temp": "49000",
+              "/sys/class/thermal/thermal_zone3/temp": "49923",
+              "/sys/class/thermal/thermal_zone1/temp": "49923",
+              "/sys/class/thermal/thermal_zone6/temp": "49000",
+              "/sys/class/thermal/thermal_zone4/temp": "49923",
+              "/sys/devices/system/cpu/cpufreq/policy6/scaling_cur_freq": "408000",
+              "/sys/devices/system/cpu/cpufreq/policy4/scaling_cur_freq": "1416000",
+              "/sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq": "1200000",
+              "/sys/class/devfreq/fdab0000.npu/cur_freq": "300000000",
+              "/sys/class/devfreq/fb000000.gpu/cur_freq": "300000000"
+            }
+          },
+          "after": {
+            "monotonic": 103040.485083649,
+            "sysfs": {
+              "/sys/class/thermal/thermal_zone2/temp": "51769",
+              "/sys/class/thermal/thermal_zone0/temp": "50846",
+              "/sys/class/thermal/thermal_zone5/temp": "49923",
+              "/sys/class/thermal/thermal_zone3/temp": "50846",
+              "/sys/class/thermal/thermal_zone1/temp": "51769",
+              "/sys/class/thermal/thermal_zone6/temp": "49923",
+              "/sys/class/thermal/thermal_zone4/temp": "51769",
+              "/sys/devices/system/cpu/cpufreq/policy6/scaling_cur_freq": "1416000",
+              "/sys/devices/system/cpu/cpufreq/policy4/scaling_cur_freq": "408000",
+              "/sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq": "1200000",
+              "/sys/class/devfreq/fdab0000.npu/cur_freq": "300000000",
+              "/sys/class/devfreq/fb000000.gpu/cur_freq": "300000000"
+            }
+          }
+        }
+      },
+      "combined_log": {
+        "bytes": 534,
+        "sha256": "1d0f2fd4e7b2f7fb7720c438cf3b0f4b979613b54a1717dd838cbc79d2d698b8"
+      }
+    },
+    "SDK_attrs": {
+      "file": "vggt-v28-dpvo-update-compile-E864-r1/attrs.json",
+      "raw_sha256": "7d91683a7cad4d0411fb6d45b6aa3acc3dd320237f431ce23c38c9d80df5e31c",
+      "raw_bytes": 10661,
+      "host_home_redacted": false,
+      "data": {
+        "status": "queried_contract_no_inference",
+        "script_sha256": "1365be3f9becdc3053c847a147a61059ddfc38af9e4a08c88f4bb0e6ab240628",
+        "model_inference_executed": false,
+        "NPU_execution_measured": false,
+        "source_pins": {
+          "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/run-v12-rknn-block-board.py": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608",
+          "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/reference/rknn_api_v2.3.2.h": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a",
+          "/usr/lib/librknnrt.so": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-compile-E864-r1/block.rknn": "61b6c353346294416f10aa0f0a61c779584813741a52b34a7ad2e9bcb683710b",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/probe-v28-rknn-attrs-board.py": "1365be3f9becdc3053c847a147a61059ddfc38af9e4a08c88f4bb0e6ab240628"
+        },
+        "cleanup_errors": [],
+        "inputs": [
+          {
+            "index": 0,
+            "name": "net",
+            "shape": [
+              1,
+              864,
+              384
+            ],
+            "n_elems": 331776,
+            "size": 663552,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 663552
+          },
+          {
+            "index": 1,
+            "name": "inp",
+            "shape": [
+              1,
+              864,
+              384
+            ],
+            "n_elems": 331776,
+            "size": 663552,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 663552
+          },
+          {
+            "index": 2,
+            "name": "corr",
+            "shape": [
+              1,
+              864,
+              882
+            ],
+            "n_elems": 762048,
+            "size": 1524096,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1524096
+          },
+          {
+            "index": 3,
+            "name": "previous_indices",
+            "shape": [
+              864
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 4,
+            "name": "previous_valid",
+            "shape": [
+              1,
+              864,
+              1
+            ],
+            "n_elems": 864,
+            "size": 1728,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1728
+          },
+          {
+            "index": 5,
+            "name": "following_indices",
+            "shape": [
+              864
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 6,
+            "name": "following_valid",
+            "shape": [
+              1,
+              864,
+              1
+            ],
+            "n_elems": 864,
+            "size": 1728,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1728
+          },
+          {
+            "index": 7,
+            "name": "kk_indices",
+            "shape": [
+              288,
+              3
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 8,
+            "name": "kk_valid",
+            "shape": [
+              288,
+              3
+            ],
+            "n_elems": 864,
+            "size": 1728,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1728
+          },
+          {
+            "index": 9,
+            "name": "kk_inverse",
+            "shape": [
+              864
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 10,
+            "name": "ij_indices",
+            "shape": [
+              9,
+              96
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          },
+          {
+            "index": 11,
+            "name": "ij_valid",
+            "shape": [
+              9,
+              96
+            ],
+            "n_elems": 864,
+            "size": 1728,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 1728
+          },
+          {
+            "index": 12,
+            "name": "ij_inverse",
+            "shape": [
+              864
+            ],
+            "n_elems": 864,
+            "size": 6912,
+            "format": 3,
+            "type": 8,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 6912
+          }
+        ],
+        "outputs": [
+          {
+            "index": 0,
+            "name": "net_out",
+            "shape": [
+              1,
+              864,
+              384
+            ],
+            "n_elems": 331776,
+            "size": 663552,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 663552
+          },
+          {
+            "index": 1,
+            "name": "delta",
+            "shape": [
+              1,
+              864,
+              2
+            ],
+            "n_elems": 1728,
+            "size": 3456,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 3456
+          },
+          {
+            "index": 2,
+            "name": "weight",
+            "shape": [
+              1,
+              864,
+              2
+            ],
+            "n_elems": 1728,
+            "size": 3456,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 3456
+          }
+        ],
+        "versions": {
+          "api": "2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+          "driver": "0.7.2"
+        },
+        "memory": {
+          "total_dma_allocated_size": 20692992,
+          "total_weight_size": 9967360,
+          "total_internal_size": 9464960
+        },
+        "abi": {
+          "context_size": 8,
+          "pointer_size": 8,
+          "structs": {
+            "rknn_input_output_num": {
+              "size": 8,
+              "alignment": 4,
+              "offsets": {
+                "n_input": 0,
+                "n_output": 4
+              }
+            },
+            "rknn_tensor_attr": {
+              "size": 376,
+              "alignment": 4,
+              "offsets": {
+                "index": 0,
+                "n_dims": 4,
+                "dims": 8,
+                "name": 72,
+                "n_elems": 328,
+                "size": 332,
+                "fmt": 336,
+                "type": 340,
+                "qnt_type": 344,
+                "fl": 348,
+                "zp": 352,
+                "scale": 356,
+                "w_stride": 360,
+                "size_with_stride": 364,
+                "pass_through": 368,
+                "h_stride": 372
+              }
+            },
+            "rknn_input": {
+              "size": 32,
+              "alignment": 8,
+              "offsets": {
+                "index": 0,
+                "buf": 8,
+                "size": 16,
+                "pass_through": 20,
+                "type": 24,
+                "fmt": 28
+              }
+            },
+            "rknn_output": {
+              "size": 24,
+              "alignment": 8,
+              "offsets": {
+                "want_float": 0,
+                "is_prealloc": 1,
+                "index": 4,
+                "buf": 8,
+                "size": 16
+              }
+            },
+            "rknn_sdk_version": {
+              "size": 512,
+              "alignment": 1,
+              "offsets": {
+                "api_version": 0,
+                "drv_version": 256
+              }
+            },
+            "rknn_mem_size": {
+              "size": 64,
+              "alignment": 8,
+              "offsets": {
+                "total_weight_size": 0,
+                "total_internal_size": 4,
+                "total_dma_allocated_size": 8,
+                "total_sram_size": 16,
+                "free_sram_size": 20,
+                "reserved": 24
+              }
+            },
+            "rknn_perf_run": {
+              "size": 8,
+              "alignment": 8,
+              "offsets": {
+                "run_duration": 0
+              }
+            },
+            "rknn_perf_detail": {
+              "size": 16,
+              "alignment": 8,
+              "offsets": {
+                "perf_data": 0,
+                "data_len": 8
+              }
+            },
+            "rknn_run_extend": {
+              "size": 24,
+              "alignment": 8,
+              "offsets": {
+                "frame_id": 0,
+                "non_block": 8,
+                "timeout_ms": 12,
+                "fence_fd": 16
+              }
+            },
+            "rknn_output_extend": {
+              "size": 8,
+              "alignment": 8,
+              "offsets": {
+                "frame_id": 0
+              }
+            }
+          }
+        },
+        "destroy_code": 0,
+        "source_hashes_after": {
+          "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/validation/run-v12-rknn-block-board.py": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608",
+          "/mnt/vggt-data/vggt-slam2/src/deploy/rk3588/reference/rknn_api_v2.3.2.h": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a",
+          "/usr/lib/librknnrt.so": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-update-compile-E864-r1/block.rknn": "61b6c353346294416f10aa0f0a61c779584813741a52b34a7ad2e9bcb683710b",
+          "/mnt/vggt-data/vggt-slam2/experiments/vggt-v28-dpvo-opt/probe-v28-rknn-attrs-board.py": "1365be3f9becdc3053c847a147a61059ddfc38af9e4a08c88f4bb0e6ab240628"
+        },
+        "sources_unchanged": true
+      },
+      "combined_log": {
+        "bytes": 128854,
+        "sha256": "d7b4c987b26f938f45cc23cc3e264eb5f4edf35e3ce6a1bf07986c0bb0a3b5c3"
+      }
+    },
+    "compile_E864": {
+      "file": "vggt-v28-dpvo-update-compile-E864-r1/compile.json",
+      "raw_sha256": "0c92d8b8ed187781e93a764672336c1e91e9ac6a609ae023afb311addb28dc7e",
+      "raw_bytes": 1575,
+      "host_home_redacted": true,
+      "data": {
+        "status": "compiled_not_runtime_validated",
+        "model_inference_executed": false,
+        "production_changed": false,
+        "realtime_validated": false,
+        "input": {
+          "path": "<host-home>/\u684c\u9762/vggt-slam2-rk3588s/outputs/v28/vggt-v28-dpvo-update-export-r1/E864.onnx",
+          "sha256": "c7a51b1fa37342f8ee3ac1d0133dc2bf4e015d3b44579a4408e67585f63396b3"
+        },
+        "script_sha256": "a40bf09e53ef9b378db4781be18f9e53f824afcc809c9009e0a65f4f0f91b4e5",
+        "machine": "x86_64",
+        "python": "3.11.14 | packaged by conda-forge | (main, Jan 26 2026, 23:48:32) [GCC 14.3.0]",
+        "configuration": {
+          "target_platform": "rk3588",
+          "float_dtype": "float16",
+          "optimization_level": 3,
+          "do_quantization": false
+        },
+        "operations": [
+          {
+            "name": "config",
+            "code": 0,
+            "seconds": 7.573515176773071e-05
+          },
+          {
+            "name": "load_onnx",
+            "code": 0,
+            "seconds": 0.07164494693279266
+          },
+          {
+            "name": "build",
+            "code": 0,
+            "seconds": 0.7691508969292045
+          },
+          {
+            "name": "export_rknn",
+            "code": 0,
+            "seconds": 0.0024635465815663338
+          }
+        ],
+        "versions": {
+          "rknn-toolkit2": "2.3.2",
+          "torch": "2.4.0+cpu",
+          "numpy": "1.26.4",
+          "onnx": "1.16.2",
+          "onnxruntime": "1.20.1",
+          "protobuf": "4.25.4"
+        },
+        "output": {
+          "path": "<host-home>/\u684c\u9762/vggt-slam2-rk3588s/outputs/v28/vggt-v28-dpvo-update-compile-E864-r1/block.rknn",
+          "size": 11421336,
+          "sha256": "61b6c353346294416f10aa0f0a61c779584813741a52b34a7ad2e9bcb683710b"
+        },
+        "released": true,
+        "peak_rss_mib": 466.33203125
+      },
+      "combined_log": {
+        "bytes": 128854,
+        "sha256": "d7b4c987b26f938f45cc23cc3e264eb5f4edf35e3ce6a1bf07986c0bb0a3b5c3"
+      }
+    },
+    "compile_E96": {
+      "file": "vggt-v28-dpvo-update-compile-E96-r1/compile.json",
+      "raw_sha256": "2aff800b58fd1b2435f01362a0921ea83231f56bff67ec7d5b2c9714f8714fd6",
+      "raw_bytes": 1570,
+      "host_home_redacted": true,
+      "data": {
+        "status": "compiled_not_runtime_validated",
+        "model_inference_executed": false,
+        "production_changed": false,
+        "realtime_validated": false,
+        "input": {
+          "path": "<host-home>/\u684c\u9762/vggt-slam2-rk3588s/outputs/v28/vggt-v28-dpvo-update-export-r1/E96.onnx",
+          "sha256": "7c0dea7bae8f8dddd6d55ee87e7d927491be52d21d80e2f882a28e028379856f"
+        },
+        "script_sha256": "a40bf09e53ef9b378db4781be18f9e53f824afcc809c9009e0a65f4f0f91b4e5",
+        "machine": "x86_64",
+        "python": "3.11.14 | packaged by conda-forge | (main, Jan 26 2026, 23:48:32) [GCC 14.3.0]",
+        "configuration": {
+          "target_platform": "rk3588",
+          "float_dtype": "float16",
+          "optimization_level": 3,
+          "do_quantization": false
+        },
+        "operations": [
+          {
+            "name": "config",
+            "code": 0,
+            "seconds": 6.489222869277e-05
+          },
+          {
+            "name": "load_onnx",
+            "code": 0,
+            "seconds": 0.034412486013025045
+          },
+          {
+            "name": "build",
+            "code": 0,
+            "seconds": 0.6078989040106535
+          },
+          {
+            "name": "export_rknn",
+            "code": 0,
+            "seconds": 0.0022179200313985348
+          }
+        ],
+        "versions": {
+          "rknn-toolkit2": "2.3.2",
+          "torch": "2.4.0+cpu",
+          "numpy": "1.26.4",
+          "onnx": "1.16.2",
+          "onnxruntime": "1.20.1",
+          "protobuf": "4.25.4"
+        },
+        "output": {
+          "path": "<host-home>/\u684c\u9762/vggt-slam2-rk3588s/outputs/v28/vggt-v28-dpvo-update-compile-E96-r1/block.rknn",
+          "size": 8175306,
+          "sha256": "f634af960733c828e07c710639a267e560bb988b444519d96cfe87c5d47864da"
+        },
+        "released": true,
+        "peak_rss_mib": 413.12890625
+      },
+      "combined_log": {
+        "bytes": 123236,
+        "sha256": "564ed6aa3d4e4766caca1d5f0274a0a4d8e2c084f1b3f2cd8e0867092571025d"
+      }
+    },
+    "input_packing_synthetic": {
+      "file": "vggt-v28-dpvo-opt/rknn-inputs-synthetic-review.json",
+      "raw_sha256": "77abdc8134bdc03705353752cf47412e5293ad49e6477f9d840865d87f6777c0",
+      "raw_bytes": 3766,
+      "host_home_redacted": true,
+      "data": {
+        "schema": "v28_DPVO_mixed_input_synthetic_review",
+        "status": "passed",
+        "synthetic_only": true,
+        "model_or_feature_forward_executed": false,
+        "SDK_library_loaded": false,
+        "board_tasks_executed": false,
+        "production_changed": false,
+        "source_sha256": {
+          "v28_rknn_inputs.py": "040f55b89accb7a03a523ef2ab8c4bf12755f15da34813dc6ee607b6deb90c88",
+          "test_v28_rknn_inputs.py": "6c9864147d0e196943ed588a3a3c4d2f93d393d451ce3772008347afc2a3fb57",
+          "run-v28-dpvo-update-rknn-board.py": "7d44c4ef260126ba0551d7596e9861a3007ec92d56cb33aa99e2223c2b110928",
+          "run-v12-rknn-block-board.py": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608",
+          "rknn_api_v2.3.2.h": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a"
+        },
+        "tests": {
+          "command": "env PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm/vggt-v28-dpvo-opt EDGE_VGGT_ABI_HELPER=/dev/shm/vggt-v15-public-snapshot/deploy/rk3588/validation/run-v12-rknn-block-board.py <host-home>/miniconda3/envs/ctvggt/bin/python -m pytest test_v28_rknn_inputs.py -q -p no:cacheprovider --basetemp=/dev/shm/vggt-v28-dpvo-opt/pytest-input-packing-r1",
+          "cwd": "/dev/shm/vggt-v28-dpvo-opt",
+          "passed": 48,
+          "skipped": 0,
+          "exit_code": 0,
+          "pytest_seconds": 0.12,
+          "stdout": "................................................                         [100%]\n48 passed in 0.12s\n"
+        },
+        "actual_query_metadata": {
+          "file": "attrs.json",
+          "sha256": "7d91683a7cad4d0411fb6d45b6aa3acc3dd320237f431ce23c38c9d80df5e31c",
+          "inference_executed": false,
+          "validated_inputs": 13,
+          "validated_outputs": 3,
+          "integer_inputs": {
+            "count": 6,
+            "native_type": 8,
+            "transport_type": 8,
+            "transport_dtype": "int64",
+            "transport_bytes": "8*n_elems"
+          },
+          "float_inputs": {
+            "count": 7,
+            "native_type": 1,
+            "transport_type": 0,
+            "transport_dtype": "float32",
+            "native_bytes": "2*n_elems",
+            "transport_bytes": "4*n_elems"
+          },
+          "all_neutral_quantization": {
+            "type": 2,
+            "scale": 1.0,
+            "zero_point": 0,
+            "fractional_length": 0
+          },
+          "format": 3,
+          "output_shapes": [
+            [
+              1,
+              864,
+              384
+            ],
+            [
+              1,
+              864,
+              2
+            ],
+            [
+              1,
+              864,
+              2
+            ]
+          ],
+          "returned_FP32_bytes": [
+            1327104,
+            6912,
+            6912
+          ]
+        },
+        "covered": [
+          "Typed mixed ctypes pointers and owned C-order lifetime; source changes do not alias request buffers",
+          "INT64 retained; INT32 explicit bounded exact cast and round trip only",
+          "Nonidentity/DFP/wrong datatype/layout/name/index/shape/bytes rejected",
+          "Finite FP32 sources and exact binary masks; padding indices must also be safe",
+          "Output want_float=1 and FP32 returned byte counts independent of FP16 model attrs",
+          "Actual execute() fake SDK: owned copy before release, partial get/frame/bytes/nonfinite/release failures",
+          "Actual execute() retains strict micro-negative weight rejection without clipping"
+        ],
+        "readonly_runner_review": {
+          "normal_calls": 11,
+          "separate_profile_calls": 3,
+          "synchronous_frame_ID_required": true,
+          "owned_output_copy_before_finally_release": true,
+          "context_destroy_in_main_finally": true
+        },
+        "limitations": [
+          "Descriptor acceptance and fake tests do not establish real SDK mixed input execution, operator placement or numerical quality.",
+          "SDK logs must still be inspected: a zero C return can accompany an internal error.",
+          "The existing strict weight [0,1] admission gate remains; tiny negative numerical differences are not clipped.",
+          "Only exact rank1..3 shapes with format NCHW/UNDEFINED are supported; no unproven NHWC or packed layout mapping."
+        ]
+      }
+    },
+    "static_failure_review": {
+      "file": "vggt-v28-dpvo-opt/update-nonfinite-static-public-review-r1.json",
+      "raw_sha256": "52d89f6c0ea9e1bee675d3776d461a4474683eed59c79a8fa2959e685959e2f2",
+      "raw_bytes": 5851,
+      "host_home_redacted": false,
+      "data": {
+        "schema": "v28_public_safe_Update_nonfinite_static_review",
+        "status": "static_review_completed_root_cause_unconfirmed",
+        "original_private_review": {
+          "file": "update-nonfinite-static-review-r1.json",
+          "sha256": "f9d68e95b905f34452a108791705f161b6eba0fc573442e963423d54b15bf2e9"
+        },
+        "scope": {
+          "actual_saved_arrays_read": true,
+          "actual_ONNX_static_read": true,
+          "actual_compiler_log_read": true,
+          "host_model_or_ORT_forward_executed": false,
+          "board_operations_executed": false,
+          "production_changed": false,
+          "frozen_sources_modified": false,
+          "no_NPU_performance_or_pose_claim": true
+        },
+        "graphs": {
+          "E864": {
+            "artifact": {
+              "file": "E864.onnx",
+              "bytes": 17798725,
+              "sha256": "c7a51b1fa37342f8ee3ac1d0133dc2bf4e015d3b44579a4408e67585f63396b3"
+            },
+            "node_count": 133,
+            "initializer_count": 50,
+            "all_original_parameter_initializers_finite": true,
+            "nonfinite_constant_count": 2,
+            "nonfinite_constants": [
+              {
+                "tensor": "/Constant_4_output_0",
+                "producer": "/Constant_4",
+                "shape": [
+                  1,
+                  288,
+                  3,
+                  384
+                ],
+                "dtype": "float32",
+                "negative_inf_count": 331776,
+                "positive_inf_count": 0,
+                "nan_count": 0,
+                "raw_sha256": "a0e9dc1d9ba34fdc03b2d15e9c157e5fe7a53948da2a91a652d78a9376d69b0e",
+                "immediate_consumers": [
+                  "/Where"
+                ],
+                "FP16_cast_still_negative_inf": true
+              },
+              {
+                "tensor": "/Constant_11_output_0",
+                "producer": "/Constant_11",
+                "shape": [
+                  1,
+                  9,
+                  96,
+                  384
+                ],
+                "dtype": "float32",
+                "negative_inf_count": 331776,
+                "positive_inf_count": 0,
+                "nan_count": 0,
+                "raw_sha256": "a0e9dc1d9ba34fdc03b2d15e9c157e5fe7a53948da2a91a652d78a9376d69b0e",
+                "immediate_consumers": [
+                  "/Where_3"
+                ],
+                "FP16_cast_still_negative_inf": true
+              }
+            ]
+          },
+          "E96": {
+            "artifact": {
+              "file": "E96.onnx",
+              "bytes": 12772916,
+              "sha256": "7c0dea7bae8f8dddd6d55ee87e7d927491be52d21d80e2f882a28e028379856f"
+            },
+            "node_count": 133,
+            "initializer_count": 50,
+            "all_original_parameter_initializers_finite": true,
+            "nonfinite_constant_count": 2,
+            "nonfinite_constants": [
+              {
+                "tensor": "/Constant_4_output_0",
+                "producer": "/Constant_4",
+                "shape": [
+                  1,
+                  96,
+                  1,
+                  384
+                ],
+                "dtype": "float32",
+                "negative_inf_count": 36864,
+                "positive_inf_count": 0,
+                "nan_count": 0,
+                "raw_sha256": "320121ff273521372f065e78f06f6ed6d37cb8f4ad996a449c9567f2b26dc4f1",
+                "immediate_consumers": [
+                  "/Where"
+                ],
+                "FP16_cast_still_negative_inf": true
+              },
+              {
+                "tensor": "/Constant_11_output_0",
+                "producer": "/Constant_11",
+                "shape": [
+                  1,
+                  1,
+                  96,
+                  384
+                ],
+                "dtype": "float32",
+                "negative_inf_count": 36864,
+                "positive_inf_count": 0,
+                "nan_count": 0,
+                "raw_sha256": "320121ff273521372f065e78f06f6ed6d37cb8f4ad996a449c9567f2b26dc4f1",
+                "immediate_consumers": [
+                  "/Where_3"
+                ],
+                "FP16_cast_still_negative_inf": true
+              }
+            ]
+          }
+        },
+        "actual_topologies": {
+          "all_four_recorded_kk_and_ij_masks_exactly_one": true,
+          "all_groups_nonempty": true
+        },
+        "compiler_evidence": {
+          "original_E864_log": {
+            "file": "vggt-v28-dpvo-update-compile-E864-r1.log",
+            "bytes": 128854,
+            "sha256": "d7b4c987b26f938f45cc23cc3e264eb5f4edf35e3ce6a1bf07986c0bb0a3b5c3"
+          },
+          "LayerNorm_to_exNorm_rewrite_lines": [
+            44,
+            49,
+            96,
+            107
+          ],
+          "LayerNorm_epsilon": 0.0010000000474974513,
+          "Where_NPU_rows": 6,
+          "exNorm_NPU_rows": 4,
+          "float_branches_FLOAT16_boolean_conditions_INT8": true
+        },
+        "vendor_rule_summary": {
+          "symbol": "_p_convert_where_to_sub_mul",
+          "binary": {
+            "file": "elemwise.cpython-311-x86_64-linux-gnu.so",
+            "bytes": 361032,
+            "sha256": "d193aa3d741c3ad5e806f116a04ef5481a3ab87a34c08c9fc3df7a1de2bd092c"
+          },
+          "LayerNorm_rule_binary": {
+            "file": "norm.cpython-311-x86_64-linux-gnu.so",
+            "bytes": 1323616,
+            "sha256": "02e5db30adc0865944b6bc6c7beb014c26ee8ae9d8c48c41788e022b776723e9"
+          },
+          "vendor_documentation_says_currently_disabled": true,
+          "rule_application_logged_in_this_compile": false,
+          "historical_formula": "(X-Y)*B+Y",
+          "risk_summary": "With an infinite inactive branch, this historical arithmetic expansion is not IEEE-equivalent to selection even for a true mask. Current compiler/kernel use is not demonstrated; the embedded vendor description says the historical rewrite is disabled.",
+          "full_vendor_comment_not_reproduced": true
+        },
+        "first_possible_infinity_constant_propagation": [
+          "/Where",
+          "/ReduceMax",
+          "/Where_1",
+          "/Sub",
+          "/Where_2",
+          "/Exp",
+          "/Mul_2",
+          "/ReduceSum_1",
+          "/Add_4",
+          "/Div",
+          "/Mul_3",
+          "/ReduceSum_2",
+          "/h/MatMul",
+          "/Gather_4",
+          "/Add_5",
+          "agg_ij",
+          "gru",
+          "net_out/delta/weight"
+        ],
+        "raw_input_direct_FP16_cast_all_finite": true,
+        "first_nonfinite_runtime_node_unknown": true,
+        "frozen_sources_modified": false,
+        "limitations": [
+          "Original FP32/CPU ORT gates passed; NPU runtime failed, and these are separate conclusions.",
+          "No intermediate tensors were measured by this static review.",
+          "No attribution to FP16 rounding, Where arithmetic or LayerNorm has been established."
+        ]
+      }
+    },
+    "independent_saved_output_review": {
+      "file": "vggt-v28-dpvo-opt/update-npu-singlecall-independent-review-r1.json",
+      "raw_sha256": "aa428c96b17db6490bab5f322114e159b88de8adccb9c6f7a594c8c46e0cac9f",
+      "raw_bytes": 22630,
+      "host_home_redacted": false,
+      "data": {
+        "schema": "v28_independent_single_call_Update_RKNN_diagnostic_review",
+        "status": "passed_evidence_consistency_runtime_numerics_failed",
+        "checks_total": 84,
+        "checks_failed": 0,
+        "scope": {
+          "saved_arrays_and_JSON_profile_only": true,
+          "host_model_or_ORT_forward_executed": false,
+          "board_operations_executed": false,
+          "production_or_frozen_sources_changed": false
+        },
+        "receipts": {
+          "diagnostic": {
+            "file": "run.json",
+            "bytes": 67786,
+            "sha256": "015062189a845f70583be509cdc03e2195ff0b4b42fcd4b10478faba063b282c"
+          },
+          "capture": {
+            "file": "capture.json",
+            "bytes": 148120,
+            "sha256": "87e18137a828496d623721f7748e288d02f9d8d6879278da1e5d3d9731cfa0a1"
+          },
+          "export": {
+            "file": "export.json",
+            "bytes": 173336,
+            "sha256": "56f96b7bf80bde596de6a4008da2858a869a9f19a3162abb8db8ab1af0156cac"
+          },
+          "CPU_ORT": {
+            "file": "ort.json",
+            "bytes": 276026,
+            "sha256": "d3f1479fc4bb4a992a778a6bda88387b67af9304b6a33f7ae705147207b590c3"
+          },
+          "compile": {
+            "file": "compile.json",
+            "bytes": 1575,
+            "sha256": "0c92d8b8ed187781e93a764672336c1e91e9ac6a609ae023afb311addb28dc7e"
+          },
+          "saved_stdout_stderr_log": {
+            "file": "vggt-v28-dpvo-update-npu-E864-diagnostic-r1.log",
+            "bytes": 534,
+            "sha256": "1d0f2fd4e7b2f7fb7720c438cf3b0f4b979613b54a1717dd838cbc79d2d698b8"
+          }
+        },
+        "artifacts": {
+          "actual_outputs": {
+            "file": "call-00.npz",
+            "bytes": 1341674,
+            "sha256": "e744236ba09a38469dfa9c358494bd3fadad3f29847a1eb0605a608e78547fef"
+          },
+          "original_ONNX": {
+            "file": "E864.onnx",
+            "bytes": 17798725,
+            "sha256": "c7a51b1fa37342f8ee3ac1d0133dc2bf4e015d3b44579a4408e67585f63396b3"
+          },
+          "RKNN": {
+            "file": "block.rknn",
+            "bytes": 11421336,
+            "sha256": "61b6c353346294416f10aa0f0a61c779584813741a52b34a7ad2e9bcb683710b"
+          }
+        },
+        "sources": {
+          "diagnostic_entrypoint": {
+            "file": "diagnose-v28-dpvo-update-rknn-board.py",
+            "bytes": 4157,
+            "sha256": "e744026c954845108aea271ea716d51250b9b116f4259adc94d5e6eda338de91"
+          },
+          "frozen_runtime": {
+            "file": "run-v28-dpvo-update-rknn-board.py",
+            "bytes": 13980,
+            "sha256": "7d44c4ef260126ba0551d7596e9861a3007ec92d56cb33aa99e2223c2b110928"
+          },
+          "packing_helper": {
+            "file": "v28_rknn_inputs.py",
+            "bytes": 9610,
+            "sha256": "040f55b89accb7a03a523ef2ab8c4bf12755f15da34813dc6ee607b6deb90c88"
+          },
+          "profile_parser": {
+            "file": "audit-v26-dpvo-rknn.py",
+            "bytes": 23749,
+            "sha256": "22b5b2ce0f6e86e9351f6337486f96d649964de6447d5556dd55fee5946d6d65"
+          },
+          "SDK_library_sha256_reported": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+          "board_source_input_before_after_hashes_match": true,
+          "board_library_and_source_bytes_independently_rehashed_on_host": false
+        },
+        "call_identity": {
+          "index": 0,
+          "case": "three_frame_all_pairs_identity",
+          "step": 0,
+          "model_key": "E864",
+          "SDK_calls": 1,
+          "repeated_calls_exercised": false,
+          "SDK_frame_id": 0,
+          "SDK_frame_id_is_not_a_stream_sequence": true
+        },
+        "outputs": {
+          "net": {
+            "shape": [
+              1,
+              864,
+              384
+            ],
+            "dtype": "float32",
+            "elements": 331776,
+            "raw_sha256": "141732d5a36a924335ea143b83d45beeef598721ce15b263ba168b2c7d61e960",
+            "finite_elements": 0,
+            "nan_elements": 226977,
+            "positive_inf_elements": 104799,
+            "negative_inf_elements": 0,
+            "finite_min": null,
+            "finite_max": null,
+            "all_finite": false,
+            "all_zero": false,
+            "comparisons": {
+              "original_CPU": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "gate_passed": false,
+                "ordinary_error_metrics_undefined_due_to_nonfinite": true,
+                "nonfinite_elements": 331776
+              },
+              "CPU_ORT": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "gate_passed": false,
+                "ordinary_error_metrics_undefined_due_to_nonfinite": true,
+                "nonfinite_elements": 331776
+              }
+            }
+          },
+          "delta": {
+            "shape": [
+              1,
+              864,
+              2
+            ],
+            "dtype": "float32",
+            "elements": 1728,
+            "raw_sha256": "23884a80bdda660fd89799abd28f6e1ac9389025b79f8511eadda94b645f6aaf",
+            "finite_elements": 0,
+            "nan_elements": 0,
+            "positive_inf_elements": 1728,
+            "negative_inf_elements": 0,
+            "finite_min": null,
+            "finite_max": null,
+            "all_finite": false,
+            "all_zero": false,
+            "comparisons": {
+              "original_CPU": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "gate_passed": false,
+                "ordinary_error_metrics_undefined_due_to_nonfinite": true,
+                "nonfinite_elements": 1728
+              },
+              "CPU_ORT": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "gate_passed": false,
+                "ordinary_error_metrics_undefined_due_to_nonfinite": true,
+                "nonfinite_elements": 1728
+              }
+            }
+          },
+          "weight": {
+            "shape": [
+              1,
+              864,
+              2
+            ],
+            "dtype": "float32",
+            "elements": 1728,
+            "raw_sha256": "c516480c4a822eba01ab788fae7eb9d06f2ae1774a9eb086819f1882d959cdcc",
+            "finite_elements": 1728,
+            "nan_elements": 0,
+            "positive_inf_elements": 0,
+            "negative_inf_elements": 0,
+            "finite_min": 0.998046875,
+            "finite_max": 0.998046875,
+            "all_finite": true,
+            "all_zero": false,
+            "comparisons": {
+              "original_CPU": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "gate_passed": false,
+                "failed_elements": 1728,
+                "max_abs": 0.9980468274671637,
+                "relative_l2": 2.059108781115078
+              },
+              "CPU_ORT": {
+                "rtol": 0.0001,
+                "atol": 1e-05,
+                "gate_passed": false,
+                "failed_elements": 1728,
+                "max_abs": 0.9980469346046448,
+                "relative_l2": 2.0591088127925357
+              }
+            }
+          }
+        },
+        "strict_original_FP32_gate_passed": false,
+        "strict_CPU_ORT_FP32_gate_passed": false,
+        "runtime_candidate_accepted": false,
+        "profile": {
+          "raw_sha256": "7a1211c274b6ba926d4d4f1731065136271854680b3c881d2e4dd3d45da6b95e",
+          "bytes": 32565,
+          "rows": 126,
+          "internal_NPU_rows": 86,
+          "internal_CPU_rows": 24,
+          "CPU_IO_rows": 16,
+          "all_internal_operations_NPU": false,
+          "CPU_internal_types": {
+            "Exp": {
+              "rows": 2,
+              "elapsed_us": 8881
+            },
+            "Gather": {
+              "rows": 8,
+              "elapsed_us": 13170
+            },
+            "Greater": {
+              "rows": 4,
+              "elapsed_us": 176
+            },
+            "Not": {
+              "rows": 2,
+              "elapsed_us": 22
+            },
+            "ReduceMax": {
+              "rows": 2,
+              "elapsed_us": 2968
+            },
+            "Reshape": {
+              "rows": 4,
+              "elapsed_us": 1834
+            },
+            "Transpose": {
+              "rows": 2,
+              "elapsed_us": 11361
+            }
+          },
+          "CPU_IO_types": {
+            "InputOperator": {
+              "rows": 13,
+              "elapsed_us": 12
+            },
+            "OutputOperator": {
+              "rows": 3,
+              "elapsed_us": 18
+            }
+          },
+          "CPU_total_elapsed_us": 38442,
+          "NPU_total_elapsed_us": 32698,
+          "total_operator_elapsed_us": 71140,
+          "NPU_core_workload_patterns": [
+            [
+              33.3,
+              33.3,
+              33.3
+            ],
+            [
+              100.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "Where_and_norm_plus_CPU_softmax_nodes": [
+            {
+              "index": 38,
+              "type": "exNorm",
+              "dtype": "FLOAT16",
+              "target": "NPU",
+              "input_shapes": "(1,384,1,864),(1,384,1,1),...",
+              "output_shape": "(1,384,1,864)",
+              "elapsed_us": 1104,
+              "core_workload_percent": [
+                100.0,
+                0.0,
+                0.0
+              ],
+              "name": "exNorm:/corr/corr.3/LayerNormalization#1"
+            },
+            {
+              "index": 41,
+              "type": "exNorm",
+              "dtype": "FLOAT16",
+              "target": "NPU",
+              "input_shapes": "(1,384,1,864),(1,384,1,1),...",
+              "output_shape": "(1,384,1,864)",
+              "elapsed_us": 1129,
+              "core_workload_percent": [
+                100.0,
+                0.0,
+                0.0
+              ],
+              "name": "exNorm:/norm/LayerNormalization#1"
+            },
+            {
+              "index": 58,
+              "type": "Where",
+              "dtype": "INT8",
+              "target": "NPU",
+              "input_shapes": "(1,288,3,1),(1,288,3,384),...",
+              "output_shape": "(1,288,3,384)",
+              "elapsed_us": 165,
+              "core_workload_percent": [
+                33.3,
+                33.3,
+                33.3
+              ],
+              "name": "Where:/Where"
+            },
+            {
+              "index": 59,
+              "type": "ReduceMax",
+              "dtype": "FLOAT16",
+              "target": "CPU",
+              "input_shapes": "(1,288,3,384),(1)",
+              "output_shape": "(1,288,1,384)",
+              "elapsed_us": 1636,
+              "core_workload_percent": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "name": "ReduceMax:/ReduceMax"
+            },
+            {
+              "index": 60,
+              "type": "Where",
+              "dtype": "INT8",
+              "target": "NPU",
+              "input_shapes": "(1,288,1,1),(1,288,1,384),...",
+              "output_shape": "(1,288,1,384)",
+              "elapsed_us": 105,
+              "core_workload_percent": [
+                33.3,
+                33.3,
+                33.3
+              ],
+              "name": "Where:/Where_1"
+            },
+            {
+              "index": 63,
+              "type": "Where",
+              "dtype": "INT8",
+              "target": "NPU",
+              "input_shapes": "(1,288,3,1),(1,288,3,384),...",
+              "output_shape": "(1,288,3,384)",
+              "elapsed_us": 162,
+              "core_workload_percent": [
+                33.3,
+                33.3,
+                33.3
+              ],
+              "name": "Where:/Where_2"
+            },
+            {
+              "index": 64,
+              "type": "Exp",
+              "dtype": "FLOAT16",
+              "target": "CPU",
+              "input_shapes": "(1,288,3,384)",
+              "output_shape": "(1,288,3,384)",
+              "elapsed_us": 4449,
+              "core_workload_percent": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "name": "Exp:/Exp"
+            },
+            {
+              "index": 84,
+              "type": "Where",
+              "dtype": "INT8",
+              "target": "NPU",
+              "input_shapes": "(1,9,96,1),(1,9,96,384),(1,9,96,384)",
+              "output_shape": "(1,9,96,384)",
+              "elapsed_us": 231,
+              "core_workload_percent": [
+                33.3,
+                33.3,
+                33.3
+              ],
+              "name": "Where:/Where_3"
+            },
+            {
+              "index": 85,
+              "type": "ReduceMax",
+              "dtype": "FLOAT16",
+              "target": "CPU",
+              "input_shapes": "(1,9,96,384),(1)",
+              "output_shape": "(1,9,1,384)",
+              "elapsed_us": 1332,
+              "core_workload_percent": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "name": "ReduceMax:/ReduceMax_1"
+            },
+            {
+              "index": 86,
+              "type": "Where",
+              "dtype": "INT8",
+              "target": "NPU",
+              "input_shapes": "(1,9,1,1),(1,9,1,384),(1,9,1,384)",
+              "output_shape": "(1,9,1,384)",
+              "elapsed_us": 77,
+              "core_workload_percent": [
+                33.3,
+                33.3,
+                33.3
+              ],
+              "name": "Where:/Where_4"
+            },
+            {
+              "index": 89,
+              "type": "Where",
+              "dtype": "INT8",
+              "target": "NPU",
+              "input_shapes": "(1,9,96,1),(1,9,96,384),(1,9,96,384)",
+              "output_shape": "(1,9,96,384)",
+              "elapsed_us": 233,
+              "core_workload_percent": [
+                33.3,
+                33.3,
+                33.3
+              ],
+              "name": "Where:/Where_5"
+            },
+            {
+              "index": 90,
+              "type": "Exp",
+              "dtype": "FLOAT16",
+              "target": "CPU",
+              "input_shapes": "(1,9,96,384)",
+              "output_shape": "(1,9,96,384)",
+              "elapsed_us": 4432,
+              "core_workload_percent": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "name": "Exp:/Exp_1"
+            },
+            {
+              "index": 105,
+              "type": "exNorm",
+              "dtype": "FLOAT16",
+              "target": "NPU",
+              "input_shapes": "(1,384,1,864),(1,384,1,1),...",
+              "output_shape": "(1,384,1,864)",
+              "elapsed_us": 1116,
+              "core_workload_percent": [
+                100.0,
+                0.0,
+                0.0
+              ],
+              "name": "exNorm:/gru/gru.0/LayerNormalization#1"
+            },
+            {
+              "index": 110,
+              "type": "exNorm",
+              "dtype": "FLOAT16",
+              "target": "NPU",
+              "input_shapes": "(1,384,1,864),(1,384,1,1),...",
+              "output_shape": "(1,384,1,864)",
+              "elapsed_us": 1118,
+              "core_workload_percent": [
+                100.0,
+                0.0,
+                0.0
+              ],
+              "name": "exNorm:/gru/gru.2/LayerNormalization#1"
+            }
+          ],
+          "interpretation": "Executed operator targets and durations are measured. They do not locate the first nonfinite intermediate; profile durations from invalid output are not valid acceleration evidence."
+        },
+        "timing": {
+          "role": "single invalid-output profile diagnostic, no normal warm mean",
+          "forward_seconds": 0.0928159260074608,
+          "components": {
+            "pack_seconds": 0.003361167007824406,
+            "input_set_seconds": 0.015538834995822981,
+            "run_api_seconds": 0.07267663300444838,
+            "outputs_get_seconds": 0.0007944999961182475,
+            "owned_copy_seconds": 0.0004237910034134984,
+            "release_seconds": 5.833004252053797e-06
+          },
+          "scope": "Owned input packing/checks through SDK output release; post-copy numerical guards, raw SHA, reference comparisons, disk I/O and initialization are outside this endpoint.",
+          "valid_acceleration_result": false
+        },
+        "guards_and_cleanup": {
+          "only_failed_finite_guard_intercepted_to_preserve_raw_outputs": true,
+          "original_normal_driver_remains_fail_closed": true,
+          "outputs_clipped_or_corrected": false,
+          "gate_tolerances_relaxed": false,
+          "output_buffers_released": true,
+          "destroy_code": 0,
+          "cleanup_errors": [],
+          "affinity_restored": true,
+          "scheduler_stopped_intentionally_before_second_SDK_call": true,
+          "original_runner_return_code": 1,
+          "SDK_E_RKNN_log_lines": 0
+        },
+        "root_cause": "Unconfirmed. Two original -inf Where constants, FP16 exNorm and other kernels remain candidates; output arrays/profile do not reveal first corrupted node. Historical Where arithmetic rewrite is documented as disabled, not proven executed here.",
+        "limitations": [
+          "One E864 identity state only, no E96 hardware run.",
+          "Invalid SDK outputs must not drive BA or feedback.",
+          "Profile core use and C API success do not establish numerical correctness.",
+          "No valid pose, full VO, original VGGT speed, or realtime claim."
+        ],
+        "checks": [
+          {
+            "name": "file SHA:run.json",
+            "passed": true
+          },
+          {
+            "name": "exact one SDK diagnostic call",
+            "passed": true
+          },
+          {
+            "name": "diagnostic rejected without output correction or relaxed gate",
+            "passed": true
+          },
+          {
+            "name": "only failing post-copy finite guard intercepted",
+            "passed": true
+          },
+          {
+            "name": "context/affinity cleanup reported successful",
+            "passed": true
+          },
+          {
+            "name": "original scheduler intentionally stopped before second SDK execution",
+            "passed": true
+          },
+          {
+            "name": "board before/after sources and inputs unchanged (reported)",
+            "passed": true
+          },
+          {
+            "name": "actual diagnostic CPU/NPU/profile configuration",
+            "passed": true
+          },
+          {
+            "name": "research boundary:production_changed",
+            "passed": true
+          },
+          {
+            "name": "research boundary:ORB_used",
+            "passed": true
+          },
+          {
+            "name": "research boundary:CPU_model_fallback",
+            "passed": true
+          },
+          {
+            "name": "research boundary:BA_executed",
+            "passed": true
+          },
+          {
+            "name": "research boundary:valid_pose_output",
+            "passed": true
+          },
+          {
+            "name": "research boundary:realtime_validated",
+            "passed": true
+          },
+          {
+            "name": "actual scenario/state/profile identity",
+            "passed": true
+          },
+          {
+            "name": "artifact basename:call-00.npz",
+            "passed": true
+          },
+          {
+            "name": "file SHA:call-00.npz",
+            "passed": true
+          },
+          {
+            "name": "artifact bytes:call-00.npz",
+            "passed": true
+          },
+          {
+            "name": "artifact keys:call-00.npz",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:call-00.npz:net",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:call-00.npz:delta",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:call-00.npz:weight",
+            "passed": true
+          },
+          {
+            "name": "file SHA:capture.json",
+            "passed": true
+          },
+          {
+            "name": "file SHA:export.json",
+            "passed": true
+          },
+          {
+            "name": "file SHA:ort.json",
+            "passed": true
+          },
+          {
+            "name": "file SHA:compile.json",
+            "passed": true
+          },
+          {
+            "name": "original generic FP16 compile configuration",
+            "passed": true
+          },
+          {
+            "name": "file SHA:block.rknn",
+            "passed": true
+          },
+          {
+            "name": "compiled RKNN binding",
+            "passed": true
+          },
+          {
+            "name": "file SHA:E864.onnx",
+            "passed": true
+          },
+          {
+            "name": "compiled original ONNX binding",
+            "passed": true
+          },
+          {
+            "name": "artifact basename:three_frame_all_pairs_identity-state0-output.npz",
+            "passed": true
+          },
+          {
+            "name": "file SHA:three_frame_all_pairs_identity-state0-output.npz",
+            "passed": true
+          },
+          {
+            "name": "artifact bytes:three_frame_all_pairs_identity-state0-output.npz",
+            "passed": true
+          },
+          {
+            "name": "artifact keys:three_frame_all_pairs_identity-state0-output.npz",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:three_frame_all_pairs_identity-state0-output.npz:net",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:three_frame_all_pairs_identity-state0-output.npz:delta",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:three_frame_all_pairs_identity-state0-output.npz:weight",
+            "passed": true
+          },
+          {
+            "name": "artifact basename:three_frame_all_pairs_identity-state0-input.npz",
+            "passed": true
+          },
+          {
+            "name": "file SHA:three_frame_all_pairs_identity-state0-input.npz",
+            "passed": true
+          },
+          {
+            "name": "artifact bytes:three_frame_all_pairs_identity-state0-input.npz",
+            "passed": true
+          },
+          {
+            "name": "artifact keys:three_frame_all_pairs_identity-state0-input.npz",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:three_frame_all_pairs_identity-state0-input.npz:net",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:three_frame_all_pairs_identity-state0-input.npz:ctx",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:three_frame_all_pairs_identity-state0-input.npz:ii",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:three_frame_all_pairs_identity-state0-input.npz:jj",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:three_frame_all_pairs_identity-state0-input.npz:kk",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:three_frame_all_pairs_identity-state0-input.npz:corr",
+            "passed": true
+          },
+          {
+            "name": "artifact basename:disabled-three_frame_all_pairs_identity-state0.npz",
+            "passed": true
+          },
+          {
+            "name": "file SHA:disabled-three_frame_all_pairs_identity-state0.npz",
+            "passed": true
+          },
+          {
+            "name": "artifact bytes:disabled-three_frame_all_pairs_identity-state0.npz",
+            "passed": true
+          },
+          {
+            "name": "artifact keys:disabled-three_frame_all_pairs_identity-state0.npz",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:disabled-three_frame_all_pairs_identity-state0.npz:net",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:disabled-three_frame_all_pairs_identity-state0.npz:delta",
+            "passed": true
+          },
+          {
+            "name": "raw metadata:disabled-three_frame_all_pairs_identity-state0.npz:weight",
+            "passed": true
+          },
+          {
+            "name": "output FP32/shape:net",
+            "passed": true
+          },
+          {
+            "name": "finite CPU/ORT reference:net",
+            "passed": true
+          },
+          {
+            "name": "independent nonfinite counts match:net:original_CPU",
+            "passed": true
+          },
+          {
+            "name": "independent nonfinite counts match:net:CPU_ORT",
+            "passed": true
+          },
+          {
+            "name": "output FP32/shape:delta",
+            "passed": true
+          },
+          {
+            "name": "finite CPU/ORT reference:delta",
+            "passed": true
+          },
+          {
+            "name": "independent nonfinite counts match:delta:original_CPU",
+            "passed": true
+          },
+          {
+            "name": "independent nonfinite counts match:delta:CPU_ORT",
+            "passed": true
+          },
+          {
+            "name": "output FP32/shape:weight",
+            "passed": true
+          },
+          {
+            "name": "finite CPU/ORT reference:weight",
+            "passed": true
+          },
+          {
+            "name": "independent finite comparison matches:weight:original_CPU",
+            "passed": true
+          },
+          {
+            "name": "independent finite comparison matches:weight:CPU_ORT",
+            "passed": true
+          },
+          {
+            "name": "all net outputs nonfinite: exact counts",
+            "passed": true
+          },
+          {
+            "name": "all delta outputs +inf",
+            "passed": true
+          },
+          {
+            "name": "all finite weight outputs identical wrong constant",
+            "passed": true
+          },
+          {
+            "name": "file SHA:audit-v26-dpvo-rknn.py",
+            "passed": true
+          },
+          {
+            "name": "actual profile UTF8 bytes/raw SHA",
+            "passed": true
+          },
+          {
+            "name": "actual 126 rows: 86 internal NPU,24 internal CPU,16 CPU I/O",
+            "passed": true
+          },
+          {
+            "name": "actual Where/exNorm placement",
+            "passed": true
+          },
+          {
+            "name": "exact actual profile elapsed sums",
+            "passed": true
+          },
+          {
+            "name": "SDK endpoint timing components valid",
+            "passed": true
+          },
+          {
+            "name": "owned FP32 output bytes and release reported",
+            "passed": true
+          },
+          {
+            "name": "mixed owned INT64/FP32 transport records",
+            "passed": true
+          },
+          {
+            "name": "file SHA:diagnose-v28-dpvo-update-rknn-board.py",
+            "passed": true
+          },
+          {
+            "name": "file SHA:run-v28-dpvo-update-rknn-board.py",
+            "passed": true
+          },
+          {
+            "name": "file SHA:v28_rknn_inputs.py",
+            "passed": true
+          },
+          {
+            "name": "no SDK E RKNN line in saved diagnostic stdout/stderr log",
+            "passed": true
+          },
+          {
+            "name": "all independently read artifacts unchanged after review",
+            "passed": true
+          },
+          {
+            "name": "new independent receipt path",
+            "passed": true
+          }
+        ]
+      }
+    },
+    "diagnostic_synthetic": {
+      "file": "vggt-v28-dpvo-opt/rknn-diagnostic-synthetic-review.json",
+      "raw_sha256": "0fd83426a68d5d3618c55b6d09fd232b64d31f7c885ef6003e71b6e1c57f0ef6",
+      "raw_bytes": 2435,
+      "host_home_redacted": true,
+      "data": {
+        "schema": "v28_single_invalid_output_diagnostic_synthetic_review",
+        "status": "passed",
+        "blockers": [],
+        "source_sha256": {
+          "diagnose-v28-dpvo-update-rknn-board.py": "e744026c954845108aea271ea716d51250b9b116f4259adc94d5e6eda338de91",
+          "test_v28_rknn_diagnostic.py": "b276d1fc8347e6a4b0f5e9c1c7bed367c4e70f541624cc48a375d36341e2b6b5",
+          "run-v28-dpvo-update-rknn-board.py": "7d44c4ef260126ba0551d7596e9861a3007ec92d56cb33aa99e2223c2b110928",
+          "v28_rknn_inputs.py": "040f55b89accb7a03a523ef2ab8c4bf12755f15da34813dc6ee607b6deb90c88",
+          "test_v28_rknn_inputs.py": "6c9864147d0e196943ed588a3a3c4d2f93d393d451ce3772008347afc2a3fb57"
+        },
+        "tests": {
+          "passed": 14,
+          "skipped": 0,
+          "exit_code": 0,
+          "pytest_seconds": 0.16,
+          "command": "env PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dev/shm/vggt-v28-dpvo-opt EDGE_VGGT_ABI_HELPER=/dev/shm/vggt-v15-public-snapshot/deploy/rk3588/validation/run-v12-rknn-block-board.py <host-home>/miniconda3/envs/ctvggt/bin/python -m pytest test_v28_rknn_diagnostic.py -q -p no:cacheprovider --basetemp=/dev/shm/vggt-v28-dpvo-opt/pytest-input-diagnostic-r1",
+          "stdout": "..............                                                           [100%]\n14 passed in 0.16s\n"
+        },
+        "coverage": [
+          "Actual frozen execute() with typed owned mixed input buffers against synthetic SDK; diagnostic main orchestration is fake",
+          "NaN/micro-negative -1.19e-7 saved raw, no clipping, no candidate acceptance",
+          "Exactly one executed call; second attempt stops before input_set/run",
+          "Partial output get, frame mismatch, byte mismatch and release errors retain rejection/release semantics",
+          "Source/entry-source changes and context destroy errors reject saved-terminal status",
+          "Host/source preflight rejection before output or SDK; finite valid outputs never mislabeled as invalid"
+        ],
+        "hardware_executed": false,
+        "real_model_or_feature_forward": false,
+        "implementation_files_modified": false,
+        "limitations": [
+          "No real SDK/native log or operator-placement validation performed.",
+          "diagnostic_SDK_calls counts execute attempts; pre-run failures may have zero real rknn_run calls. Saved success requires one completed call record.",
+          "Context destruction tests use synthetic orchestration; actual frozen runner context-finally was reviewed read-only.",
+          "Numeric NaN comparisons are explicitly undefined/failed, not tolerance-adjusted."
+        ]
+      }
+    }
+  }
+}
