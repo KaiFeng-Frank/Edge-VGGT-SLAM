@@ -525,5 +525,23 @@
     "strict_FP32_arrays_passed": 0,
     "real_time_validated": false,
     "quality_accepted": false
+  },
+  "original_half_io_and_calibration_v56": {
+    "record": "results/original_calibration_half_io_v56.json",
+    "model": "original VGGT only",
+    "FP16_IO": {
+      "complete_service_mean_seconds": 2.076574924749366,
+      "fresh_pose_hz": 0.5130826150839521,
+      "input_to_pose_p95_seconds": 2.551325570789049,
+      "matched_arrays_bitwise_equal_to_previous_FP16": 80
+    },
+    "W8A8_aggregator_diagnostic": {
+      "complete_service_mean_seconds": 1.880095217618873,
+      "fresh_pose_hz": 0.5698889765141744,
+      "input_to_pose_p95_seconds": 2.494337761215865,
+      "mean_depth_confidence_relative_L2_vs_CPU": 0.394557938102592
+    },
+    "quality_accepted": false,
+    "real_time_validated": false
   }
 }

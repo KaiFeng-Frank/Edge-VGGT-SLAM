@@ -17,6 +17,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME_SOURCES = ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
                    'rknn_dino_blocks.py', 'rknn_depth_head.py', 'rknn_aggregator_pairs.py')
+HALF_IO_SOURCES = ('rknn_half_io_pairs.py', 'native/fp16_neon.c')
 
 
 def load_replay():
@@ -33,7 +34,7 @@ def load_replay():
 
 
 def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=False,
-                  no_cache=False, fail=None, model_threads=None):
+                  half_io=False, no_cache=False, fail=None, model_threads=None):
     replay = load_replay()
     events = []
     modules = {name: ModuleType(name) for name in (
@@ -41,7 +42,7 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
         'vggt_slam.timestamp_replay', 'vggt_slam.edge_mapping',
         'vggt_slam.patch_cache', 'vggt_slam.rknn_aggregator_blocks', 'vggt_slam.rknn_camera_head',
         'vggt_slam.rknn_dino_blocks', 'vggt_slam.rknn_depth_head',
-        'vggt_slam.rknn_aggregator_pairs')}
+        'vggt_slam.rknn_aggregator_pairs', 'vggt_slam.rknn_half_io_pairs')}
     modules['vggt_slam'].__path__ = []
     modules['torch'].__version__ = 'generated-service-double'
     for name in ('set_num_threads', 'set_num_interop_threads'):
@@ -98,6 +99,16 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
         events.append('install_cache')
         return Handle('cache')
 
+    def install_half_io(*args, **kwargs):
+        events.append('install_half_io_rknn')
+        if fail == 'install_half_io_rknn':
+            raise RuntimeError('generated half I/O install failure')
+        assert args[0] is model and args[2] == 'a' * 64
+        assert kwargs == dict(source_root=replay.BASE / 'src',
+            half_io_library=replay.BASE.parent / 'neon.placeholder',
+            half_io_library_sha256='d' * 64)
+        return Handle('rknn')
+
     def install_camera(arg):
         assert arg is model
         events.append('install_camera_rknn')
@@ -107,6 +118,7 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
 
     modules['vggt_slam.rknn_aggregator_blocks'].install_rknn_aggregator_blocks = install_rknn
     modules['vggt_slam.rknn_aggregator_pairs'].install_rknn_aggregator_pairs = install_paired_rknn
+    modules['vggt_slam.rknn_half_io_pairs'].install_half_io_pairs = install_half_io
     modules['vggt_slam.patch_cache'].install_patch_cache = install_cache
     modules['vggt_slam.rknn_camera_head'].install_rknn_camera_head = install_camera
     def install_dino(*args, **kwargs):
@@ -215,8 +227,9 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
             # Hash real source bytes in the generated board tree; imports still
             # resolve exclusively to the service doubles above.
             source_hashes = {}
-            for name in RUNTIME_SOURCES:
+            for name in RUNTIME_SOURCES + (HALF_IO_SOURCES if half_io else ()):
                 content = (ROOT / 'vggt_slam' / name).read_bytes()
+                (runtime_directory / name).parent.mkdir(parents=True, exist_ok=True)
                 (runtime_directory / name).write_bytes(content)
                 if name != 'rknn_aggregator_pairs.py' or paired:
                     source_hashes[name] = hashlib.sha256(content).hexdigest()
@@ -226,6 +239,9 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
                 args += ['--rknn-manifest', str(root/'manifest.placeholder'), '--rknn-manifest-sha256', 'a'*64]
             if paired:
                 args += ['--rknn-paired-aggregator']
+            if half_io:
+                args += ['--half-io-library', str(root / 'neon.placeholder'),
+                         '--half-io-library-sha256', 'd' * 64]
             if no_cache:
                 args += ['--no-patch-cache']
             if camera:
@@ -248,6 +264,12 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
             report = json.loads((root/'out/results.json').read_text())
             assert report['runtime_source_sha256'] == source_hashes
             assert report['rknn_paired_aggregator'] is paired
+            if half_io:
+                assert report['half_io_experiment'] is True and report['internal_precision_changed'] is False
+                assert report['half_io_library_sha256'] == 'd' * 64
+                assert report['half_io_source_sha256'] == source_hashes['native/fp16_neon.c']
+            else:
+                assert 'half_io_experiment' not in report
     finally:
         sys.path[:] = original_sys_path
     return code, report, events
@@ -384,6 +406,44 @@ def test_generated_invalid_backend_arguments_rejected_before_loading(args, messa
     replay = load_replay()
     stderr = io.StringIO()
     with patch.object(sys, 'argv', base+args), contextlib.redirect_stderr(stderr):
+        with pytest.raises(SystemExit) as exc:
+            replay.main()
+    assert exc.value.code == 2 and message in stderr.getvalue()
+
+
+@pytest.mark.parametrize('fail', [None, 'install_half_io_rknn', 'predict'])
+def test_generated_half_io_lifecycle_and_unchanged_precision(fail):
+    code, report, events = generated_run(npu=True, paired=True, camera=True, dino=True,
+                                         depth=True, half_io=True, fail=fail)
+    assert code == (0 if fail is None else 1)
+    assert report['precision'] == 'NPU_FP16_DINO_aggregator_camera_depth_logits_remaining_CPU_FP32'
+    assert report['candidate_accepted'] is False and report['trajectory_quality_validated'] is False
+    assert 'install_paired_rknn' not in events and 'install_rknn' not in events
+    if fail == 'install_half_io_rknn':
+        assert 'install_cache' not in events and 'predict' not in events
+    else:
+        assert [event for event in events if event.startswith('install_')] == [
+            'install_half_io_rknn', 'install_camera_rknn', 'install_dino_rknn',
+            'install_depth_rknn', 'install_cache']
+        assert [event for event in events if event.startswith('close_') and event not in
+                ('close_pre_hook', 'close_post_hook')] == [
+            'close_replay', 'close_cache', 'close_depth_rknn', 'close_dino_rknn',
+            'close_camera_rknn', 'close_rknn']
+
+
+@pytest.mark.parametrize('args,message', [
+    (['--half-io-library', 'generated'], 'supplied together'),
+    (['--half-io-library-sha256', 'd' * 64], 'supplied together'),
+    (['--half-io-library', 'generated', '--half-io-library-sha256', 'd' * 64],
+     'requires --rknn-paired-aggregator'),
+    (['--rknn-paired-aggregator', '--half-io-library', 'generated',
+      '--half-io-library-sha256', 'BAD'], 'lowercase SHA256'),
+])
+def test_generated_half_io_arguments_rejected_before_loading(args, message):
+    replay = load_replay()
+    stderr = io.StringIO()
+    base = ['generated-replay', '--rgb-index', 'generated', '--checkpoint', 'generated', '--output', 'generated']
+    with patch.object(sys, 'argv', base + args), contextlib.redirect_stderr(stderr):
         with pytest.raises(SystemExit) as exc:
             replay.main()
     assert exc.value.code == 2 and message in stderr.getvalue()

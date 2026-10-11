@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import resource
 import time
 import traceback
@@ -17,6 +18,8 @@ def main():
     p.add_argument('--manifest', type=Path, required=True)
     p.add_argument('--manifest-sha256', required=True)
     p.add_argument('--paired-aggregator', action='store_true')
+    p.add_argument('--half-io-library', type=Path)
+    p.add_argument('--half-io-library-sha256')
     p.add_argument('--model-threads', type=int, choices=(1, 2, 4), default=4)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--dino-manifest', type=Path)
@@ -26,6 +29,13 @@ def main():
     p.add_argument('--reference-run', type=Path,
                    help='Reuse a completed matched CPU FP32 run; run only the new DINO branch')
     args = p.parse_args()
+    if (args.half_io_library is None) != (args.half_io_library_sha256 is None):
+        p.error('--half-io-library and --half-io-library-sha256 must be supplied together')
+    if args.half_io_library is not None:
+        if not args.paired_aggregator:
+            p.error('--half-io-library requires --paired-aggregator')
+        if not re.fullmatch('[0-9a-f]{64}', args.half_io_library_sha256):
+            p.error('--half-io-library-sha256 must be a lowercase SHA256 hex digest')
     if (args.dino_manifest is None) != (args.dino_manifest_sha256 is None):
         p.error('Supply both DINO manifest and SHA256')
     if args.reference_run is not None and args.dino_manifest is None:
@@ -43,7 +53,12 @@ def main():
     from vggt_slam.solver import Solver
     from vggt_slam.patch_cache import install_patch_cache
     from vggt_slam.timestamp_replay import read_rgb_index
-    if args.paired_aggregator:
+    aggregator_options = {}
+    if args.half_io_library is not None:
+        from vggt_slam.rknn_half_io_pairs import install_half_io_pairs as install_aggregator
+        aggregator_options.update(half_io_library=args.half_io_library,
+                                   half_io_library_sha256=args.half_io_library_sha256)
+    elif args.paired_aggregator:
         from vggt_slam.rknn_aggregator_pairs import install_rknn_aggregator_pairs as install_aggregator
     else:
         from vggt_slam.rknn_aggregator_blocks import install_rknn_aggregator_blocks as install_aggregator
@@ -66,6 +81,13 @@ def main():
         for name in ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
                      'rknn_dino_blocks.py', 'rknn_depth_head.py') +
                     (('rknn_aggregator_pairs.py',) if args.paired_aggregator else ())}
+    if args.half_io_library is not None:
+        for name in ('rknn_half_io_pairs.py', 'native/fp16_neon.c'):
+            report['runtime_source_sha256'][name] = hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
+        report.update(half_io_experiment=True, internal_precision_changed=False,
+                      half_io_library=str(args.half_io_library.resolve()),
+                      half_io_library_sha256=args.half_io_library_sha256,
+                      half_io_source_sha256=report['runtime_source_sha256']['native/fp16_neon.c'])
     branches = ['cpu_fp32', 'npu_fp16_aggregator_cpu_fp32_heads',
                 'npu_fp16_aggregator_camera_cpu_fp32_DINO_depth']
     dino_branch = 'npu_fp16_DINO_aggregator_camera_cpu_fp32_depth'
@@ -116,7 +138,7 @@ def main():
             folder = args.output/branch
             folder.mkdir()
             if branch != 'cpu_fp32':
-                npu = install_aggregator(model, args.manifest, args.manifest_sha256)
+                npu = install_aggregator(model, args.manifest, args.manifest_sha256, **aggregator_options)
             if branch in ('npu_fp16_aggregator_camera_cpu_fp32_DINO_depth', dino_branch):
                 camera_npu = install_rknn_camera_head(model)
             if branch == dino_branch:

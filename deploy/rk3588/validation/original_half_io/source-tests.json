@@ -1,0 +1,21 @@
+{
+  "scope": "host fake SDK, converter and service checks; no actual model/native/SDK execution",
+  "replay_tests_passed": 32,
+  "runtime_and_comparison_tests_passed": 14,
+  "total": 46,
+  "source_sha256": {
+    "vggt_slam/rknn_half_io_pairs.py": "53b573f494f2598183659ba4e8dcb7503c770d9e2ac7b95cae9016279805d9a4",
+    "vggt_slam/native/fp16_neon.c": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3",
+    "scripts/replay_original_vggt.py": "142928f6d591923ea47ca469aaae3088600d6ee553ed9b6d692898b1fcb3a9dc",
+    "deploy/rk3588/validation/original_full_aggregator/compare_complete_model.py": "52a5f7c21db2e832f8b10a2aef66e9ce693afd30927e6da26d1874a1e72d3547",
+    "tests/test_replay_original_vggt.py": "d3fdf3a87a3b9a58abf3d4fda7ab9b1f650d84d7e24cb77eb965ee7f5056a129",
+    "tests/test_rknn_half_io_pairs.py": "89532a64cc868984611b2a3ce43e79c4e2025c18ab5a7fdfc2361734e4d26e29",
+    "tests/test_compare_complete_model.py": "23b7828230598a52d63cb3c3542753a69943d4e6a2c14f8298a3861f719c7a5b"
+  },
+  "actual_board_runs": [
+    "half-io-complete-r1/result.json",
+    "half-io-replay-r1/results.json",
+    "ptq-complete-r1/result.json",
+    "ptq-replay-r1/results.json"
+  ]
+}

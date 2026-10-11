@@ -1,0 +1,336 @@
+{
+  "schema": "original_VGGT_calibration_half_IO_v56",
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "quality_accepted": false,
+  "realtime_validated": false,
+  "image_shape": [
+    2,
+    3,
+    84,
+    112
+  ],
+  "original_aggregator_blocks_retained": 48,
+  "strict_original_FP32_gate": {
+    "rtol": 0.0001,
+    "atol": 1e-05
+  },
+  "v55_1thread_service_baseline_s": 2.177312713563879,
+  "timing_scopes": {
+    "service": "offline complete model + original SL4; excludes result-array/poses file saving",
+    "replay": "scheduled original arrival through decode/queue/model/SL4/dense chunk and atomic poses/map publication; startup excluded, EOF drain included",
+    "component": "normal synchronous SDK IO; half-stage sums include conversions/copies/release, exclude guard/hash/instrumentation; separate 12-call runs are not a joint A/B"
+  },
+  "frame_flatten": {
+    "normal_IO_mean_s": {
+      "original": 0.025371113830866914,
+      "flat": 0.026102488676163677
+    },
+    "versus_original_NPU": {
+      "bitwise_equal": true,
+      "strict_pass": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0
+    },
+    "ORT_vs_original_FP32": {
+      "bitwise_equal": false,
+      "strict_pass": true,
+      "max_abs": 1.3828277587890625e-05,
+      "relative_l2": 8.855475515467625e-07
+    },
+    "decision": "no speed gain; unchanged NPU output in this bounded component probe"
+  },
+  "channel_layout": {
+    "component": "original internal DINO block0; not aggregator",
+    "queried_logical_IO": [
+      {
+        "name": "channel_major_input",
+        "shape": [
+          1,
+          1,
+          53,
+          1024
+        ],
+        "format": 1,
+        "type": 1,
+        "size": 108544,
+        "size_with_stride": 108544
+      },
+      {
+        "name": "channel_major_output",
+        "shape": [
+          1,
+          1024,
+          1,
+          53
+        ],
+        "format": 0,
+        "type": 1,
+        "size": 108544,
+        "size_with_stride": 114688
+      }
+    ],
+    "r3_correct_NHWC_input": {
+      "normal_IO_mean_s": {
+        "original": 0.007422826999876027,
+        "flat": 0.006888465999509208
+      },
+      "versus_original_NPU": {
+        "bitwise_equal": false,
+        "strict_pass": false,
+        "max_abs": 0.015625,
+        "relative_l2": 0.0004213297151985046
+      }
+    },
+    "decision": "r2 timings invalid for optimization; corrected r3 remains numerically rejected",
+    "r2_packed_NCHW_API_fmt0_despite_NHWC_query": {
+      "bitwise_equal": false,
+      "strict_pass": false,
+      "max_abs": 5.09619140625,
+      "relative_l2": 1.0183934476863183
+    },
+    "r2_API_format": 0,
+    "r3_API_format": 1
+  },
+  "half_IO_component": {
+    "A": "FP32 input/pass0, want_float1",
+    "B": "FP16 input/type1/pass0, want_float0; owned FP16 copies widened to FP32 after release",
+    "numpy": {
+      "calls": 12,
+      "order": "ABBA x3, six per route, first calls included",
+      "mean_stage_s": {
+        "A": {
+          "numpy_cast_seconds": 1.0208265545467536e-06,
+          "rknn_inputs_set_seconds": 0.0030262363337290785,
+          "rknn_run_seconds": 0.03406898950440033,
+          "rknn_outputs_get_seconds": 0.0023052850010572,
+          "owned_copy_seconds": 0.0004577223347344746,
+          "rknn_outputs_release_seconds": 1.5847166650928557e-05,
+          "widen_seconds": 0.0
+        },
+        "B": {
+          "numpy_cast_seconds": 0.001829701834746326,
+          "rknn_inputs_set_seconds": 9.770833033447464e-05,
+          "rknn_run_seconds": 0.03365983666056612,
+          "rknn_outputs_get_seconds": 0.0002623054994425426,
+          "owned_copy_seconds": 0.00032282666749476147,
+          "rknn_outputs_release_seconds": 1.4826170324037472e-05,
+          "widen_seconds": 0.002782500169511574
+        }
+      },
+      "mean_stage_sum_s": {
+        "A": 0.03987510116712656,
+        "B": 0.038969705332419835
+      },
+      "outputs_byte_equal_to_first_A": "24/24",
+      "original_FP32_strict_pass": "0/24"
+    },
+    "native_NEON": {
+      "calls": 12,
+      "order": "ABBA x3, six per route, first calls included",
+      "mean_stage_s": {
+        "A": {
+          "native_cast_seconds": 1.3123353710398078e-06,
+          "rknn_inputs_set_seconds": 0.003265500495520731,
+          "rknn_run_seconds": 0.034148947665623076,
+          "rknn_outputs_get_seconds": 0.0025986528247206784,
+          "owned_copy_seconds": 0.0005410416682328408,
+          "rknn_outputs_release_seconds": 1.7451326129958034e-05,
+          "widen_seconds": 0.0
+        },
+        "B": {
+          "native_cast_seconds": 0.0002456319925840944,
+          "rknn_inputs_set_seconds": 0.00011059049575123936,
+          "rknn_run_seconds": 0.03489445500599686,
+          "rknn_outputs_get_seconds": 0.00032379849775073427,
+          "owned_copy_seconds": 0.0003867499957171579,
+          "rknn_outputs_release_seconds": 1.74999925851201e-05,
+          "widen_seconds": 0.0005117778297668943
+        }
+      },
+      "mean_stage_sum_s": {
+        "A": 0.040572906315598324,
+        "B": 0.0364905038101521
+      },
+      "outputs_byte_equal_to_first_A": "24/24",
+      "original_FP32_strict_pass": "0/24",
+      "native_identity": {
+        "source_sha256": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3",
+        "library_sha256": "d08147c438461669ad8ebd3c6483e0a7908053e95cc6f83d0fe7eb7a5cd668c9"
+      }
+    }
+  },
+  "original_calibration": {
+    "pairs": 8,
+    "captured_inputs_per_pair": 24,
+    "total_pair_prefix_inputs": 192,
+    "each_of_24_original_pair_graphs_calibrated_with_its_8_captured_inputs": true,
+    "calibration_images_disjoint_from_17_offline_evaluation_images": true,
+    "config": "w8a8 / normal / channel; original pair graphs and all original parameters retained",
+    "compiled_pair_count": 24,
+    "compile_total_wall_s": 531.6773911289929,
+    "duration_field": "seconds; compile_seconds is inherited from v55",
+    "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "parent_FP16_manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42"
+  },
+  "calibrated_aggregator_complete": {
+    "pairs": 16,
+    "model_threads": 1,
+    "complete_service_mean_s": 1.880095217618873,
+    "service_reduction_vs_v55_1thread_percent": 13.650657257152233,
+    "peak_RSS_MiB": 6674.85546875,
+    "original_FP32_strict_pass_arrays": 0,
+    "arrays": 80,
+    "finite_same_shape_dtype": true,
+    "byte_equal_arrays_vs_previous_FP16": 0,
+    "poses_byte_equal_vs_previous_FP16": false,
+    "FP32_error": {
+      "pose_enc": {
+        "relative_l2_mean": 0.04171288759785981,
+        "relative_l2_maximum": 0.09047548370589585,
+        "max_abs_maximum": 0.10968315601348877
+      },
+      "depth": {
+        "relative_l2_mean": 0.048447919766367316,
+        "relative_l2_maximum": 0.10531440206457518,
+        "max_abs_maximum": 0.39829564094543457
+      },
+      "depth_conf": {
+        "relative_l2_mean": 0.394557938102592,
+        "relative_l2_maximum": 0.6810712102998039,
+        "max_abs_maximum": 7.557709693908691
+      }
+    },
+    "trajectory_17_same_GT_associations_Sim3_adjacent_RPE": {
+      "candidate": {
+        "ATE_m": 0.18140815139142719,
+        "RPE_translation_m": 0.33167176400684756,
+        "RPE_rotation_deg": 8.509588564014306
+      },
+      "previous_FP16": {
+        "ATE_m": 0.17476037041206874,
+        "RPE_translation_m": 0.3150170096702616,
+        "RPE_rotation_deg": 10.88688684428624
+      },
+      "original_FP32": {
+        "ATE_m": 0.17719130291672058,
+        "RPE_translation_m": 0.3199527420629554,
+        "RPE_rotation_deg": 10.76508014394601
+      }
+    },
+    "contexts": {
+      "created": 50,
+      "destroyed": 50,
+      "live": 0,
+      "cleanup_errors": []
+    }
+  },
+  "calibrated_aggregator_replay": {
+    "fresh_poses": 17,
+    "poses_including_seed": 18,
+    "fresh_Hz": 0.5698889765141744,
+    "publication_P95_s": 2.494337761215865,
+    "publication_max_s": 3.2583124508382753,
+    "wall_s_including_EOF_drain": 29.83037170500029,
+    "startup_s_excluded": 28.04127156798495,
+    "peak_RSS_MiB": 6676.96875,
+    "source_counts": {
+      "original_frames": 798,
+      "generated": 794,
+      "delivered": 18,
+      "overwritten": 776,
+      "skipped_before_decode": 4,
+      "queue_capacity": 1
+    },
+    "checked_all_unique_sequences_and_latency_components": true,
+    "map_chunks": 17,
+    "map_points": 239849,
+    "contexts": {
+      "created": 50,
+      "destroyed": 50,
+      "live": 0,
+      "cleanup_errors": []
+    }
+  },
+  "native_half_IO_complete": {
+    "pairs": 16,
+    "model_threads": 1,
+    "complete_service_mean_s": 2.076574924749366,
+    "service_reduction_vs_v55_1thread_percent": 4.626702824401496,
+    "peak_RSS_MiB": 7297.23046875,
+    "original_FP32_strict_pass_arrays": 0,
+    "arrays": 80,
+    "finite_same_shape_dtype": true,
+    "byte_equal_arrays_vs_previous_FP16": 80,
+    "poses_byte_equal_vs_previous_FP16": true,
+    "trajectory_17_same_GT_associations_Sim3_adjacent_RPE": {
+      "ATE_m": 0.17476037041206874,
+      "RPE_translation_m": 0.3150170096702616,
+      "RPE_rotation_deg": 10.88688684428624
+    },
+    "contexts": {
+      "created": 50,
+      "destroyed": 50,
+      "live": 0,
+      "cleanup_errors": []
+    }
+  },
+  "native_half_IO_replay": {
+    "fresh_poses": 15,
+    "poses_including_seed": 16,
+    "fresh_Hz": 0.5130826150839521,
+    "publication_P95_s": 2.551325570789049,
+    "publication_max_s": 2.66299883951433,
+    "wall_s_including_EOF_drain": 29.23505797900725,
+    "startup_s_excluded": 24.725482067995472,
+    "peak_RSS_MiB": 7300.44921875,
+    "source_counts": {
+      "original_frames": 798,
+      "generated": 794,
+      "delivered": 16,
+      "overwritten": 778,
+      "skipped_before_decode": 4,
+      "queue_capacity": 1
+    },
+    "checked_all_unique_sequences_and_latency_components": true,
+    "map_chunks": 15,
+    "map_points": 211660,
+    "contexts": {
+      "created": 50,
+      "destroyed": 50,
+      "live": 0,
+      "cleanup_errors": []
+    }
+  },
+  "limits": [
+    "Both full candidates fail the original FP32 gate; byte equality only preserves the previous FP16 candidate.",
+    "Replay uses the entire source including calibration images; heldout numerical/trajectory evidence is the separate 16-pair evaluation.",
+    "Fresh rate remains below 1 Hz; no realtime acceptance, physical-camera latency, 30-minute stability or 8 GB-board validation.",
+    "Runs use one model CPU thread on the same 16 GB RK3588S; time reductions are measured runs, not controlled interleaved whole-model A/B.",
+    "ATE uses positive-scale Sim3; RPE uses consecutive matched frames and the same scale. Metric map scale is unvalidated."
+  ],
+  "evidence_sha256": {
+    "v55/pair-1thread-trajectory-metrics.json": "76bbe9a1b6f0b5f3260ef704a4901e05bc6323956544dd48ef1827d0ed80c70a",
+    "v56/layout-probe.json": "7583f6464a030ca51daaa51050e9704ea144a7b76569d2a7fc24e6e1d7b28877",
+    "v56/layout-compile.json": "f5138aa65da82edc215b10439cdc2a729321082291bae8f4c2c52018f2532a01",
+    "v56/channel-query.json": "e39d8dfdd322b876e5dbe53fe33cfe5a093be364371949432b485d91db4a3682",
+    "v56/channel-probe-r2.json": "c3dd751c7ef590e5a24d83cb6b94ea283fd0d0f70cf7a73ece2831049854f8ff",
+    "v56/channel-probe-r3.json": "07b342f802fe4bca005ce903108d387856b9aed5f2b27681f399a80aaedaef0c",
+    "v56/half-io-result.json": "d1b981e01c1ab6986b660ac53b0c2b6a5614636c0e1326528a17915c77862d63",
+    "v56/half-io-neon-result.json": "d84f6c4f03fd65ed0707595c91f69eb74a223e2afdace65467cd6574eae26f3b",
+    "v56/calibration-capture.json": "a1e6f1b2a89e1a96987befdea4f0a048aaf06066efa9fff72a370ac77d45507c",
+    "v56/ptq-compiled.json": "bdfe3757a7b4adef891dd622525d8a70ba948e9c0af9d0c1d9fffed41a74ea91",
+    "v56/ptq-trajectory-metrics.json": "3ee67ae8fdd56b0db7c800976180cccf8aa386812d56a8a41a43b96b3297e22b",
+    "v56/ptq-complete-r1/result.json": "46d3dd9a6d814ff36053023ec046c92ab077dad0b3c4221a7ec231b09af71064",
+    "v56/half-io-trajectory-metrics.json": "61a6ba704effcc7bd7cf079afa72382661795797ca2fd0691bd955ce2f2b8052",
+    "v56/half-io-complete-r1/result.json": "bc442b24cb832e8196b5e8773e69bb3342a7f1aea69ec6c21e11dee533b2fc46",
+    "v56/ptq-replay-r1/results.json": "1e8ff8d03b4754bf278eec3a4aa6eef10b97c89e9a3d65eb725dd895e46728d4",
+    "v56/ptq-replay-r1/map.json": "28bea69dc29da746122197abdf55865871350234a53a30b3decb7576efc7c53a",
+    "v56/half-io-replay-r1/results.json": "0d15f723ab73785b6878c5280df87ffc5e5a4090cbdf1e5226eeabf05d17196d",
+    "v56/half-io-replay-r1/map.json": "8e9e44246c38c7764821678df51dd2dfcb2bc7d1ab09e176d9d2fdcfea2d279c",
+    "v56/neon-build.json": "ba84c970275801e791f456540724264a478d821081a6694b3bbf42112d0391d9",
+    "v56/neon-check.json": "90a38cd4919eb2f0a86c446bb1014ded340ba84f09aa4865466340ecbaf41975",
+    "v56/source-tests.json": "523b72af248698f2acaddb1de79775ffd68e5226dd6a82db4922bd0171193d71"
+  },
+  "generated_source_tests_passed": 46
+}

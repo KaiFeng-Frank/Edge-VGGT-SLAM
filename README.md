@@ -37,6 +37,8 @@ The experimental complete-model path now executes **all 48 original aggregator b
 | Add original DPT logits | 2.665 s | 0.17476 m |
 | Pair all 48 aggregator blocks, four CPU threads | 2.590 s | 0.17476 m |
 | Same paired path, one CPU thread | 2.177 s | 0.17476 m |
+| Explicit FP16 SDK I/O, same original FP16 graphs | 2.077 s | 0.17476 m |
+| Calibrated W8A8 aggregator diagnostic, quality unaccepted | 1.880 s | 0.18141 m |
 
 These are sequential observations across runs, not an interleaved thermal comparison. Service timing excludes paced input queues and file publication. This short, sparse, low-resolution segment does not validate overall trajectory quality. All strict FP32 tensor comparisons still fail, and the FP16 candidate is not accepted as numerically equivalent.
 
@@ -50,9 +52,9 @@ All 74 RKNN contexts close cleanly. The result still misses the pose-rate and
 latency targets; 30-minute and 8 GB operation remain unvalidated. The new DPT
 FP32 ONNX graph separately passes both original-reference checks before SDK
 compilation, preserving all 62 learned tensors and original inplace residual
-semantics. [Latest complete measurements](results/original_dino_depth_v54.json).
+semantics. [DINO/DPT measurements](results/original_dino_depth_v54.json).
 
-The latest complete replay uses **24 frame/global graph pairs** with both
+The preceding complete replay uses **24 frame/global graph pairs** with both
 original outputs, all original DINO/CameraHead/DPT computations, and one CPU
 thread. It delivers **14 fresh updates at 0.478 Hz, complete P95 2.669 s** from
 798 source frames. All 80 prediction arrays and the saved trajectory on the
@@ -62,6 +64,21 @@ candidate. Peak RSS is 7,296.82 MiB; all 50 contexts close cleanly. This is a
 `--rknn-paired-aggregator --model-threads 1` and use the paired manifest.
 [Results and limitations](results/original_fused_aggregator_v55.json),
 [pair export and replay instructions](deploy/rk3588/validation/original_fused_aggregator/README.md).
+
+The current optional FP16 I/O path uses NEON conversions while retaining the
+same FP16 graphs and original FP32 boundaries. The fixed comparison preserves
+all 80 prediction arrays and the trajectory bitwise. Complete timestamp replay
+measured **15 fresh poses at 0.513 Hz, P95 2.551 s**; RSS was 7,300.45 MiB.
+Add the two `--half-io-library` options to the paired command as described in
+[FP16 I/O setup](deploy/rk3588/validation/original_half_io/README.md).
+
+A separate original-aggregator W8A8 calibration experiment measured **0.570 Hz,
+P95 2.494 s**. Its short matched trajectory ATE increased 2.38% versus CPU FP32,
+but mean depth-confidence relative L2 error was 39.46%. It remains an unaccepted
+quality experiment. Both paths retain all original layers and tokens, fail the
+strict original FP32 comparison and miss the real-time targets.
+[Measured results](results/original_calibration_half_io_v56.json),
+[calibration reproduction](deploy/rk3588/validation/original_calibrated_pairs/README.md).
 
 After privately producing the pinned original artifacts, add `--rknn-manifest PATH/compiled.json --rknn-manifest-sha256 SHA256 --rknn-camera-head` to the replay command. `--model-threads 2` selects CPUs 6–7; one and the default four use CPUs 4–7. The one-thread setting reduces Torch CPU parallelism while retaining the three-core NPU setting. These settings affect only the process. [Build and reproduction instructions](deploy/rk3588/validation/original_full_aggregator/README.md).
 
