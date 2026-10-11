@@ -107,3 +107,11 @@ CPU inference; it does not turn the timing comparison into an interleaved one.
 
 The repository's code license and original VGGT checkpoint terms remain
 separate; see [model licensing](../../../../MODEL_LICENSES.md).
+
+For all 48 blocks in 24 adjacent frame/global graphs, see the
+[paired backend](../original_fused_aggregator/README.md). Both original outputs
+are retained for the unchanged Aggregator. Use `--paired-aggregator` for this
+comparison runner or `--rknn-paired-aggregator` for timestamp replay. Both
+runners accept `--model-threads 1`; the default remains four. With the complete
+RKNN path, the one-thread configuration was faster on the measured inputs and
+preserved all 80 saved prediction arrays bitwise.

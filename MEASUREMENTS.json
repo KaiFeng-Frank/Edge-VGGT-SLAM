@@ -511,5 +511,19 @@
     "real_time_validated": false,
     "quality_accepted": false,
     "all_operators_on_NPU_verified": false
+  },
+  "original_fused_pairs_v55": {
+    "record": "results/original_fused_aggregator_v55.json",
+    "original_aggregator_blocks": 48,
+    "paired_graphs": 24,
+    "model_threads": 1,
+    "complete_original_model_mean_service_seconds": 2.177312713563879,
+    "fresh_pose_hz": 0.4784962622308792,
+    "input_to_pose_p95_seconds": 2.6693861758642017,
+    "fresh_updates": 14,
+    "bitwise_equal_arrays_vs_previous_candidate": 80,
+    "strict_FP32_arrays_passed": 0,
+    "real_time_validated": false,
+    "quality_accepted": false
   }
 }

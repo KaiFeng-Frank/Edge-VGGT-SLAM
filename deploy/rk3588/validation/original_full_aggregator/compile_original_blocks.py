@@ -37,7 +37,9 @@ def main():
     root = args.manifest.resolve().parent
     manifest = json.loads(args.manifest.read_text())
     is_dino = manifest.get('schema') == 'v54_original_VGGT_24_DINO_block_ONNX_manifest'
+    is_pair = manifest.get('schema') == 'v55_original_VGGT_24_frame_global_pair_ONNX_manifest'
     expected = ([('dino', i) for i in range(24)] if is_dino else
+                [('pair', i) for i in range(24)] if is_pair else
                 [(r, i) for i in range(24) for r in ('frame', 'global')])
     if [(b['role'], b['index']) for b in manifest['blocks']] != expected:
         raise ValueError('Exactly the complete ordered original block group is required')
@@ -102,7 +104,8 @@ def main():
         print(json.dumps(dict(completed=i+1, total=total, role=b['role'], index=b['index'],
                               block_seconds=result['seconds'], elapsed_seconds=time.monotonic()-begin)), flush=True)
         write(root / 'compile-progress.json', dict(completed=i+1, total=total, elapsed_seconds=time.monotonic()-begin))
-    manifest.update(schema=('v54_original_VGGT_24_DINO_block_RKNN_manifest' if is_dino else
+    manifest.update(schema=('v55_original_VGGT_24_frame_global_pair_RKNN_manifest' if is_pair else
+                            'v54_original_VGGT_24_DINO_block_RKNN_manifest' if is_dino else
                             'v53_original_VGGT_48_block_RKNN_manifest'), status='compiled_not_quality_accepted',
                     export_manifest_sha256=args.manifest_sha256, compile_seconds=time.monotonic()-begin)
     write(root / 'compiled.json', manifest)

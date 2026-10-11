@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """RK3588S original VGGT + SL4, latest-frame TUM timestamp replay."""
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -21,16 +22,20 @@ def main():
     p.add_argument('--checkpoint', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--image-size', type=int, default=112)
-    p.add_argument('--model-threads', type=int, choices=(2, 4), default=4)
+    p.add_argument('--model-threads', type=int, choices=(1, 2, 4), default=4)
     p.add_argument('--no-patch-cache', action='store_true')
     p.add_argument('--rknn-manifest', type=Path)
     p.add_argument('--rknn-manifest-sha256')
+    p.add_argument('--rknn-paired-aggregator', action='store_true',
+                   help='Use all 24 original frame/global pairs with both original outputs')
     p.add_argument('--rknn-camera-head', action='store_true')
     p.add_argument('--rknn-dino-manifest', type=Path)
     p.add_argument('--rknn-dino-manifest-sha256')
     p.add_argument('--rknn-depth-manifest', type=Path)
     p.add_argument('--rknn-depth-manifest-sha256')
     args = p.parse_args()
+    if args.rknn_paired_aggregator and args.rknn_manifest is None:
+        p.error('--rknn-paired-aggregator requires --rknn-manifest')
     if args.rknn_camera_head and args.rknn_manifest is None:
         p.error('--rknn-camera-head requires --rknn-manifest')
     if (args.rknn_manifest is None) != (args.rknn_manifest_sha256 is None):
@@ -68,6 +73,7 @@ def main():
                   max_loops=0, candidate_accepted=False, trajectory_quality_validated=False,
                   rknn_manifest=(str(args.rknn_manifest.resolve()) if args.rknn_manifest is not None else None),
                   rknn_manifest_sha256=args.rknn_manifest_sha256,
+                  rknn_paired_aggregator=args.rknn_paired_aggregator,
                   rknn_camera_head=args.rknn_camera_head,
                   rknn_dino_manifest=(str(args.rknn_dino_manifest.resolve()) if args.rknn_dino_manifest else None),
                   rknn_dino_manifest_sha256=args.rknn_dino_manifest_sha256,
@@ -85,6 +91,12 @@ def main():
                                ('_aggregator' if args.rknn_manifest else '') +
                                ('_camera' if args.rknn_camera_head else '') +
                                ('_depth_logits' if args.rknn_depth_manifest else '') + '_remaining_CPU_FP32')
+    report['script_sha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    report['runtime_source_sha256'] = {
+        name: hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
+        for name in ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
+                     'rknn_dino_blocks.py', 'rknn_depth_head.py') +
+                    (('rknn_aggregator_pairs.py',) if args.rknn_paired_aggregator else ())}
     replay = cache = depth_rknn = dino_rknn = camera_rknn = rknn = None
     hooks = []
     affinity = os.sched_getaffinity(0)
@@ -115,9 +127,12 @@ def main():
             forward_clock['seconds'] = time.monotonic() - forward_clock['begin']
         hooks = [model.register_forward_pre_hook(before_forward), model.register_forward_hook(after_forward)]
         if args.rknn_manifest is not None:
-            from vggt_slam.rknn_aggregator_blocks import install_rknn_aggregator_blocks
-            rknn = install_rknn_aggregator_blocks(model, args.rknn_manifest, args.rknn_manifest_sha256,
-                                                 source_root=BASE / 'src')
+            if args.rknn_paired_aggregator:
+                from vggt_slam.rknn_aggregator_pairs import install_rknn_aggregator_pairs as install_aggregator
+            else:
+                from vggt_slam.rknn_aggregator_blocks import install_rknn_aggregator_blocks as install_aggregator
+            rknn = install_aggregator(model, args.rknn_manifest, args.rknn_manifest_sha256,
+                                     source_root=BASE / 'src')
         if args.rknn_camera_head:
             from vggt_slam.rknn_camera_head import install_rknn_camera_head
             camera_rknn = install_rknn_camera_head(model)

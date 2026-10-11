@@ -39,7 +39,7 @@ def _tensor_state(name, tensor, *, parameter):
         version = tensor._version
     except RuntimeError as exc:
         raise PatchCacheStaleState(f"{name}: cannot verify tensor version") from exc
-    return (name, id(tensor), version, str(tensor.dtype), str(tensor.device),
+    return (name, id(tensor), version, tensor.dtype, tensor.device,
             tuple(tensor.shape), tuple(tensor.stride()), tensor.data_ptr(), tensor.requires_grad)
 
 
@@ -84,7 +84,6 @@ class PatchCacheHandle:
                            aggregator_seconds=0.)
         self._last_error = None
         self._restore_errors = []
-        self._check_eval()
         self._state = self._fingerprint()
         try:
             aggregator.forward = self._aggregate_callable
@@ -103,14 +102,12 @@ class PatchCacheHandle:
             self._clear()
             raise
 
-    def _check_eval(self):
-        if any(module.training for module in self.model.modules()):
-            raise PatchCacheStaleState("Patch cache requires all model modules to remain in eval mode")
-
     def _fingerprint(self):
         modules = []
         backends = []
         for name, module in self.model.named_modules():
+            if module.training:
+                raise PatchCacheStaleState("Patch cache requires all model modules to remain in eval mode")
             forward = (self._original_aggregator if module is self.aggregator else
                        self._original_patch if module is self.patch_embed else module.forward)
             hooks = tuple((attribute, tuple((key, id(value)) for key, value in getattr(module, attribute).items()))
@@ -149,7 +146,6 @@ class PatchCacheHandle:
                     or getattr(self.aggregator, "_vggt_patch_cache_owner", None) is not self
                     or getattr(self.patch_embed, "_vggt_patch_cache_owner", None) is not self):
                 raise PatchCacheStaleState("A patch-cache forward or owner changed after installation")
-            self._check_eval()
             if self._fingerprint() != self._state:
                 raise PatchCacheStaleState("Fixed model modules/parameters/buffers/backend changed; restore and reinstall")
         finally:

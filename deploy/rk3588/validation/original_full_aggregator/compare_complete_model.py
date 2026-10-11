@@ -16,6 +16,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--manifest', type=Path, required=True)
     p.add_argument('--manifest-sha256', required=True)
+    p.add_argument('--paired-aggregator', action='store_true')
+    p.add_argument('--model-threads', type=int, choices=(1, 2, 4), default=4)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--dino-manifest', type=Path)
     p.add_argument('--dino-manifest-sha256')
@@ -34,16 +36,19 @@ def main():
         p.error('The complete depth comparison requires the DINO candidate')
     assert b'rockchip,rk3588' in Path('/proc/device-tree/compatible').read_bytes()
     args.output.mkdir(parents=True, exist_ok=False)
-    os.sched_setaffinity(0, {4, 5, 6, 7})
+    os.sched_setaffinity(0, {6, 7} if args.model_threads == 2 else {4, 5, 6, 7})
     import numpy as np
     import torch
     from vggt_slam.runtime import load_model
     from vggt_slam.solver import Solver
     from vggt_slam.patch_cache import install_patch_cache
     from vggt_slam.timestamp_replay import read_rgb_index
-    from vggt_slam.rknn_aggregator_blocks import install_rknn_aggregator_blocks
+    if args.paired_aggregator:
+        from vggt_slam.rknn_aggregator_pairs import install_rknn_aggregator_pairs as install_aggregator
+    else:
+        from vggt_slam.rknn_aggregator_blocks import install_rknn_aggregator_blocks as install_aggregator
     from vggt_slam.rknn_camera_head import install_rknn_camera_head
-    torch.set_num_threads(4)
+    torch.set_num_threads(args.model_threads)
     torch.set_num_interop_threads(1)
     rows = read_rgb_index(BASE/'datasets/rgbd_dataset_freiburg1_xyz/rgb.txt')
     indices = list(range(32, 798, 48)) + [797]
@@ -52,14 +57,23 @@ def main():
                   input_timestamps=[r['timestamp'] for r in selected], branches={},
                   image_shape=[2,3,84,112], strict_rtol=1e-4, strict_atol=1e-5,
                   quality_accepted=False, realtime_validated=False,
+                  paired_aggregator=args.paired_aggregator,
+                  model_threads=args.model_threads,
                   timing_scope='offline complete original model + SL4; not paced input latency',
                   manifest_sha256=args.manifest_sha256, script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
+    report['runtime_source_sha256'] = {
+        name: hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
+        for name in ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
+                     'rknn_dino_blocks.py', 'rknn_depth_head.py') +
+                    (('rknn_aggregator_pairs.py',) if args.paired_aggregator else ())}
     branches = ['cpu_fp32', 'npu_fp16_aggregator_cpu_fp32_heads',
                 'npu_fp16_aggregator_camera_cpu_fp32_DINO_depth']
     dino_branch = 'npu_fp16_DINO_aggregator_camera_cpu_fp32_depth'
     if args.depth_manifest is not None:
         dino_branch = 'npu_fp16_DINO_aggregator_camera_depth_logits_cpu_fp32_boundaries'
         report['depth_manifest_sha256'] = args.depth_manifest_sha256
+    if args.paired_aggregator:
+        dino_branch += '_paired_aggregator'
     reference = args.output / 'cpu_fp32'
     if args.dino_manifest is not None:
         branches.append(dino_branch)
@@ -102,7 +116,7 @@ def main():
             folder = args.output/branch
             folder.mkdir()
             if branch != 'cpu_fp32':
-                npu = install_rknn_aggregator_blocks(model, args.manifest, args.manifest_sha256)
+                npu = install_aggregator(model, args.manifest, args.manifest_sha256)
             if branch in ('npu_fp16_aggregator_camera_cpu_fp32_DINO_depth', dino_branch):
                 camera_npu = install_rknn_camera_head(model)
             if branch == dino_branch:

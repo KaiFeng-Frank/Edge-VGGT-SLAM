@@ -1,5 +1,6 @@
 """Generated service-double checks only; no Torch, VGGT, RKNN or board run."""
 import contextlib
+import hashlib
 import importlib.util
 import io
 import json
@@ -14,6 +15,8 @@ import numpy as np
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
+RUNTIME_SOURCES = ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
+                   'rknn_dino_blocks.py', 'rknn_depth_head.py', 'rknn_aggregator_pairs.py')
 
 
 def load_replay():
@@ -29,14 +32,16 @@ def load_replay():
     return module
 
 
-def generated_run(*, npu=False, camera=False, dino=False, depth=False, no_cache=False, fail=None, model_threads=None):
+def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=False,
+                  no_cache=False, fail=None, model_threads=None):
     replay = load_replay()
     events = []
     modules = {name: ModuleType(name) for name in (
         'cv2', 'torch', 'vggt_slam', 'vggt_slam.runtime', 'vggt_slam.solver',
         'vggt_slam.timestamp_replay', 'vggt_slam.edge_mapping',
         'vggt_slam.patch_cache', 'vggt_slam.rknn_aggregator_blocks', 'vggt_slam.rknn_camera_head',
-        'vggt_slam.rknn_dino_blocks', 'vggt_slam.rknn_depth_head')}
+        'vggt_slam.rknn_dino_blocks', 'vggt_slam.rknn_depth_head',
+        'vggt_slam.rknn_aggregator_pairs')}
     modules['vggt_slam'].__path__ = []
     modules['torch'].__version__ = 'generated-service-double'
     for name in ('set_num_threads', 'set_num_interop_threads'):
@@ -80,6 +85,14 @@ def generated_run(*, npu=False, camera=False, dino=False, depth=False, no_cache=
         assert kwargs['source_root'] == replay.BASE / 'src'
         return Handle('rknn')
 
+    def install_paired_rknn(*args, **kwargs):
+        events.append('install_paired_rknn')
+        if fail == 'install_paired_rknn':
+            raise RuntimeError('generated pair install failure')
+        assert args[0] is model and args[2] == 'a' * 64
+        assert kwargs['source_root'] == replay.BASE / 'src'
+        return Handle('rknn')
+
     def install_cache(arg):
         assert arg is model
         events.append('install_cache')
@@ -93,6 +106,7 @@ def generated_run(*, npu=False, camera=False, dino=False, depth=False, no_cache=
         return Handle('camera_rknn')
 
     modules['vggt_slam.rknn_aggregator_blocks'].install_rknn_aggregator_blocks = install_rknn
+    modules['vggt_slam.rknn_aggregator_pairs'].install_rknn_aggregator_pairs = install_paired_rknn
     modules['vggt_slam.patch_cache'].install_patch_cache = install_cache
     modules['vggt_slam.rknn_camera_head'].install_rknn_camera_head = install_camera
     def install_dino(*args, **kwargs):
@@ -196,10 +210,22 @@ def generated_run(*, npu=False, camera=False, dino=False, depth=False, no_cache=
         with tempfile.TemporaryDirectory(prefix='generated-replay-check-') as temporary:
             root = Path(temporary)
             replay.BASE = root / 'board-source-placeholder'
+            runtime_directory = replay.BASE / 'src/vggt_slam'
+            runtime_directory.mkdir(parents=True)
+            # Hash real source bytes in the generated board tree; imports still
+            # resolve exclusively to the service doubles above.
+            source_hashes = {}
+            for name in RUNTIME_SOURCES:
+                content = (ROOT / 'vggt_slam' / name).read_bytes()
+                (runtime_directory / name).write_bytes(content)
+                if name != 'rknn_aggregator_pairs.py' or paired:
+                    source_hashes[name] = hashlib.sha256(content).hexdigest()
             args = ['generated-replay', '--rgb-index', str(root/'rgb.txt'),
                     '--checkpoint', str(root/'checkpoint.placeholder'), '--output', str(root/'out')]
             if npu:
                 args += ['--rknn-manifest', str(root/'manifest.placeholder'), '--rknn-manifest-sha256', 'a'*64]
+            if paired:
+                args += ['--rknn-paired-aggregator']
             if no_cache:
                 args += ['--no-patch-cache']
             if camera:
@@ -220,6 +246,8 @@ def generated_run(*, npu=False, camera=False, dino=False, depth=False, no_cache=
                     patch.object(replay.os, 'sched_setaffinity', set_affinity), contextlib.redirect_stdout(io.StringIO()):
                 code = replay.main()
             report = json.loads((root/'out/results.json').read_text())
+            assert report['runtime_source_sha256'] == source_hashes
+            assert report['rknn_paired_aggregator'] is paired
     finally:
         sys.path[:] = original_sys_path
     return code, report, events
@@ -263,15 +291,16 @@ def test_generated_lifecycle_and_complete_metrics(npu, camera, no_cache):
         assert 'camera_rknn' not in report and 'install_camera_rknn' not in events
 
 
-def test_generated_two_model_threads_use_only_cpu6_cpu7_and_restore_affinity():
-    code, report, events = generated_run(npu=True, camera=True, model_threads=2)
+@pytest.mark.parametrize('threads,cpus', [(1, [4, 5, 6, 7]), (2, [6, 7])])
+def test_generated_model_threads_preserve_decoder_and_restore_affinity(threads, cpus):
+    code, report, events = generated_run(npu=True, camera=True, model_threads=threads)
     assert code == 0 and report['status'] == 'completed'
-    assert report['model_threads'] == 2 and report['cpu_affinity'] == [6, 7]
+    assert report['model_threads'] == threads and report['cpu_affinity'] == cpus
     assert report['decoder_cpu_affinity'] == [0]
-    assert events.count('set_num_threads=2') == 1 and 'set_num_threads=4' not in events
+    assert events.count(f'set_num_threads={threads}') == 1 and 'set_num_threads=4' not in events
     assert events.count('set_num_interop_threads=1') == 1
     affinity_calls = [event for event in events if event.startswith('set_affinity=')]
-    assert affinity_calls == ['set_affinity=6,7', 'set_affinity=0,1,2,3,4,5,6,7']
+    assert affinity_calls == ['set_affinity=' + ','.join(map(str, cpus)), 'set_affinity=0,1,2,3,4,5,6,7']
 
 
 @pytest.mark.parametrize('fail', ['install_rknn', 'predict', 'close_cache'])
@@ -323,13 +352,33 @@ def test_generated_depth_lifecycle_with_all_backends(fail):
         assert events.index('close_cache') < events.index('close_depth_rknn') < events.index('close_dino_rknn')
 
 
+@pytest.mark.parametrize('fail', [None, 'predict'])
+def test_generated_paired_aggregator_lifecycle_with_all_backends(fail):
+    code, report, events = generated_run(npu=True, paired=True, camera=True,
+                                         dino=True, depth=True, fail=fail)
+    assert code == (0 if fail is None else 1)
+    assert report['status'] == ('completed' if fail is None else 'failed')
+    assert report['precision'] == 'NPU_FP16_DINO_aggregator_camera_depth_logits_remaining_CPU_FP32'
+    assert report['candidate_accepted'] is False and report['trajectory_quality_validated'] is False
+    assert all(report[name]['closed'] for name in ('rknn', 'camera_rknn', 'dino_rknn', 'depth_rknn', 'cache'))
+    assert [event for event in events if event.startswith('install_')] == [
+        'install_paired_rknn', 'install_camera_rknn', 'install_dino_rknn',
+        'install_depth_rknn', 'install_cache']
+    assert [event for event in events if event.startswith('close_') and event not in
+            ('close_pre_hook', 'close_post_hook')] == [
+        'close_replay', 'close_cache', 'close_depth_rknn', 'close_dino_rknn',
+        'close_camera_rknn', 'close_rknn']
+
+
 @pytest.mark.parametrize('args,message', [
     (['--rknn-manifest', 'generated'], 'supplied together'),
     (['--rknn-camera-head'], 'requires --rknn-manifest'),
+    (['--rknn-paired-aggregator'], 'requires --rknn-manifest'),
     (['--rknn-manifest-sha256', 'a'*64], 'supplied together'),
     (['--rknn-manifest', 'generated', '--rknn-manifest-sha256', 'BAD'], 'lowercase SHA256'),
     (['--rknn-manifest', 'generated', '--rknn-manifest-sha256', 'a'*64, '--image-size', '336'], 'image-size 112'),
-], ids=['missing-hash', 'camera-without-manifest', 'missing-manifest', 'malformed-hash', 'wrong-image-size'])
+], ids=['missing-hash', 'camera-without-manifest', 'pair-without-manifest',
+        'missing-manifest', 'malformed-hash', 'wrong-image-size'])
 def test_generated_invalid_backend_arguments_rejected_before_loading(args, message):
     base = ['generated-replay', '--rgb-index', 'generated', '--checkpoint', 'generated', '--output', 'generated']
     replay = load_replay()

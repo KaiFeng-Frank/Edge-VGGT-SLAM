@@ -35,12 +35,14 @@ The experimental complete-model path now executes **all 48 original aggregator b
 | RKNN aggregator and CameraHead | 3.609 s | 0.17808 m |
 | Add all 24 original DINO blocks | 3.087 s | 0.17476 m |
 | Add original DPT logits | 2.665 s | 0.17476 m |
+| Pair all 48 aggregator blocks, four CPU threads | 2.590 s | 0.17476 m |
+| Same paired path, one CPU thread | 2.177 s | 0.17476 m |
 
 These are sequential observations across runs, not an interleaved thermal comparison. Service timing excludes paced input queues and file publication. This short, sparse, low-resolution segment does not validate overall trajectory quality. All strict FP32 tensor comparisons still fail, and the FP16 candidate is not accepted as numerically equivalent.
 
 The separate 798-frame timestamp replay with RKNN aggregator and CameraHead delivered **10 fresh updates at 0.312 Hz, P95 4.878 s** with four A76 threads. Two threads delivered 9 updates at 0.267 Hz, P95 6.239 s, so four remains the default. These results still miss realtime. Peak process RSS was about 6.64 GiB on the 16 GB board; SDK allocation metrics are reported separately and do not establish 8 GB operation. [Complete measurements and limits](results/original_full_npu_v53.json).
 
-The latest replay also enables original DINO and DPT execution through RKNN:
+The replay enabling original DINO and DPT execution through RKNN measured:
 **12 fresh updates at 0.398 Hz, complete input-to-pose P95 3.212 s** from the
 same 798-frame source. It publishes 12 dense chunks; 785 source frames are
 skipped or overwritten. Peak process RSS is 7,412.98 MiB on the 16 GB board.
@@ -50,7 +52,18 @@ FP32 ONNX graph separately passes both original-reference checks before SDK
 compilation, preserving all 62 learned tensors and original inplace residual
 semantics. [Latest complete measurements](results/original_dino_depth_v54.json).
 
-After privately producing the pinned original artifacts, add `--rknn-manifest PATH/compiled.json --rknn-manifest-sha256 SHA256 --rknn-camera-head` to the replay command. `--model-threads 2` selects CPUs 6–7; the default four uses CPUs 4–7. These settings affect only the process. [Build and reproduction instructions](deploy/rk3588/validation/original_full_aggregator/README.md).
+The latest complete replay uses **24 frame/global graph pairs** with both
+original outputs, all original DINO/CameraHead/DPT computations, and one CPU
+thread. It delivers **14 fresh updates at 0.478 Hz, complete P95 2.669 s** from
+798 source frames. All 80 prediction arrays and the saved trajectory on the
+matched comparison inputs remain bitwise identical to the preceding FP16
+candidate. Peak RSS is 7,296.82 MiB; all 50 contexts close cleanly. This is a
+29.26-second test, still below the real-time target. Add
+`--rknn-paired-aggregator --model-threads 1` and use the paired manifest.
+[Results and limitations](results/original_fused_aggregator_v55.json),
+[pair export and replay instructions](deploy/rk3588/validation/original_fused_aggregator/README.md).
+
+After privately producing the pinned original artifacts, add `--rknn-manifest PATH/compiled.json --rknn-manifest-sha256 SHA256 --rknn-camera-head` to the replay command. `--model-threads 2` selects CPUs 6–7; one and the default four use CPUs 4–7. The one-thread setting reduces Torch CPU parallelism while retaining the three-core NPU setting. These settings affect only the process. [Build and reproduction instructions](deploy/rk3588/validation/original_full_aggregator/README.md).
 
 The latest configuration additionally uses `--rknn-dino-manifest DINO/compiled.json
 --rknn-dino-manifest-sha256 SHA256 --rknn-depth-manifest DEPTH/compiled.json
