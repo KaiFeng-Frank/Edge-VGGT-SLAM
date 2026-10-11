@@ -1,0 +1,240 @@
+{
+  "schema": "v31_public_docs_results_source_independent_review",
+  "status": "passed_no_current_blockers",
+  "scope": "Read-only documentation, JSON provenance, source bytes and reproduction-path review; no model, image, ORT, BA, board or test execution.",
+  "reviewed_file_sha256": {
+    "README.md": "4d2b075553f890ef7ec6d0f51c402836587ecf7ca1ccec3755f9efc433b822d1",
+    "docs/ENGINEERING_NOTES.md": "422093ded1c790aae7ed979faf02f9552906d478ca83dff275edcfa5f274ec82",
+    "THIRD_PARTY_NOTICES.md": "4d281c913346335967ecab378cbd18f7bbb1f5bb6a1632fa313837191d1097ca",
+    "deploy/rk3588/validation/dpvo_dynamic_update/README.md": "37de6f19dd899c64c6001d9870f9c64fdb907a9d37fb3748ece24768c8f09554",
+    "results/dpvo_dynamic_update_v31.json": "f2c1e33241130133a2af7ff74ddb71c46122f188ff2a52fe4968b6821a7c49e9"
+  },
+  "evidence": [
+    {
+      "name": "board_export",
+      "raw_sha256": "4cd7b17821ac0dd0b1b9fad33c85ee98b50b40097b8a9c4a3dd707405a6725a0",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "board_diagnostic14_failure",
+      "raw_sha256": "594672ac5af2ee5ad923e7e7c869e7d2528c7224dde288fa88490fb6874ef512",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "board_large_state_comparison",
+      "raw_sha256": "25ed1a743bbda78b8fa8eeefb0ed4827ca1c3d2fdf978c0c1e2a294e97ef3520",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "export_static_audit",
+      "raw_sha256": "e37d75c40468a99b925f1690214297244dc6996766b0b05bcd624ddbb3f89a97",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "diagnostic14_saved_array_audit",
+      "raw_sha256": "3a32b7d43a11c97f0741fdc76822aa7ed01f780ec0dfee679dd6a9991aa3915f",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "large_saved_array_audit",
+      "raw_sha256": "3b84e989d428ef18857cecc83ab5c8849e4861da45275b018e59db9a105a364f",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "reconstruction_contract",
+      "raw_sha256": "45ba417a63a813a3af0c33ed080fc404d9eb7052ddae309cb0dba02d4216c45f",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "source_freeze",
+      "raw_sha256": "d5ad5472c31393148afdde74f8773abdaf627df9d7bd8cd6825aae9838c31015",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "public_source_copy",
+      "raw_sha256": "cd51e928f4592e19551e7b9c2984e6eb6024f156809a2982a8d55351062df3fc",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "topology_synthetic",
+      "raw_sha256": "4c99bbaf11241551a452425c3a15f6e77286b2a52767f28d38532470ab9b89bc",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "dynamic_runtime_synthetic",
+      "raw_sha256": "5af29325f4b9cd94d8b6ce97848fa9c531cc0c396c3af4ec03171981468556b4",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "export_synthetic",
+      "raw_sha256": "2ce29a98df49db6a5eb3e8d2384cb30ef6b198f4e8d261feb590eb1415b14ffb",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "large_driver_synthetic",
+      "raw_sha256": "9095ae2180bcde7771ae7b87f91517277c22e2d7d0dffdfe266fab546a00fb50",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "diagnostic_auditor_synthetic",
+      "raw_sha256": "db935dc19f3dac1c2dd996a8e271d2c69884d191962098dbfca720229d66cd4d",
+      "embedded_redacted_JSON_exact": true
+    },
+    {
+      "name": "large_auditor_synthetic",
+      "raw_sha256": "ffea64d6cda7b53ffb9e89d2e8b864ea80a545fee1c31b77d573cadbc6e31d88",
+      "embedded_redacted_JSON_exact": true
+    }
+  ],
+  "source_copies": [
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/LICENSE",
+      "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
+      "byte_identical": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/dpvo_stream.py",
+      "sha256": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde",
+      "byte_identical": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/v30_frame_encoder.py",
+      "sha256": "fc6fc662613a720cfb779a360a63906a593a96ff08addecb9d01cfd8767ca7a8",
+      "byte_identical": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/v31_update_topology.py",
+      "sha256": "92c459ed444ea7086f3b838db5333ded8d10bb8374e54ecd6c1f93b030dee536",
+      "byte_identical": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/v31_dynamic_update.py",
+      "sha256": "2e313911b4cf2ac18373cbd3b72dbfe81644918b92c4ffee32f1109e238aa692",
+      "byte_identical": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-stream-board.py",
+      "sha256": "775aad5305612efd531cd56bbb68b36bdec30c9b5a37454f35ab677ffbafb059",
+      "byte_identical": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-update-export-board.py",
+      "sha256": "cece09f65635c733d25469d7986d482dd83db22180edc6dd0fa6669f170704f1",
+      "byte_identical": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-large-update-board.py",
+      "sha256": "32083ec282643a5149ddc38c374d8919f76182d0b4a2698d17040eb2d632826d",
+      "byte_identical": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-dynamic-update-export.py",
+      "sha256": "c18a852523ccf7d81e7e7b990ae011de97870bfaf557a2ce68b5dce90a9dfb7b",
+      "byte_identical": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/source-freeze.json",
+      "sha256": "d5ad5472c31393148afdde74f8773abdaf627df9d7bd8cd6825aae9838c31015",
+      "byte_identical": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/state-reconstruction-contract.json",
+      "sha256": "45ba417a63a813a3af0c33ed080fc404d9eb7052ddae309cb0dba02d4216c45f",
+      "byte_identical": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-diagnostic14.py",
+      "sha256": "01199aea3440d7e421c2d3b9d4a389f52c3a7cb28f412bc57a09ddca9cc69131",
+      "byte_identical": true
+    },
+    {
+      "file": "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-large-update.py",
+      "sha256": "f4f15f87a1f15394a191248166ffa23acf21dc6204bb36f64ffb2305eaff4fee",
+      "byte_identical": true
+    },
+    {
+      "file": "tests/test_v31_large_update_audit.py",
+      "sha256": "c10fa509a845852ab7f188d384185b9572dd4ef7534e1b8088362da3d8123f96",
+      "byte_identical": true
+    }
+  ],
+  "test_path_adaptations": [
+    {
+      "file": "tests/test_v31_dynamic_update.py",
+      "sha256": "1fb2d3a081566bd6e4d8b5d279b3ad2df2b48fe1e464cc54b5e4d1d7c3c1bf3b",
+      "reviewed_change": "helper/dependency path resolution only"
+    },
+    {
+      "file": "tests/test_v31_dynamic_update_export.py",
+      "sha256": "25aba8001fad32ed96d0c4539dc40752b085528923b325515b85daf6524bdbad",
+      "reviewed_change": "helper/dependency path resolution only"
+    },
+    {
+      "file": "tests/test_v31_large_update_board.py",
+      "sha256": "fb9aef14c779523b0b2511736cefc026453dad75a24cc19e4e0860b2e1306a3c",
+      "reviewed_change": "helper/dependency path resolution only"
+    },
+    {
+      "file": "tests/test_v31_update_topology.py",
+      "sha256": "c155bd19a50bac0c507ab22971f9d9e6fcd95d7650a61a09fc7261fa86c4ed05",
+      "reviewed_change": "helper/dependency path resolution only"
+    },
+    {
+      "file": "tests/test_v31_diagnostic14_audit.py",
+      "sha256": "16582fb03595e3637f7fbbe6be76aebab52541af22d06ff488e247e908d3ffb9",
+      "reviewed_change": "helper/dependency path resolution only"
+    }
+  ],
+  "local_links_checked": 115,
+  "missing_local_links": [],
+  "numerical_conclusion": "Candidate FP32 equivalence rejected; review acceptance only means publication evidence consistency.",
+  "confirmed": {
+    "E96_original_gate_passed_calls": 13,
+    "E6144_first_passed": true,
+    "E6144_second_failures": {
+      "net": 1,
+      "delta": 1,
+      "weight": 0
+    },
+    "fresh_poses": 0,
+    "large_edges": 23520,
+    "large_state_gates": [
+      false,
+      true
+    ],
+    "per_state_per_method_calls": 3,
+    "warm_calls_in_each_mean": 2,
+    "warm_Torch_seconds": [
+      2.5380300259930664,
+      2.930835898499936
+    ],
+    "warm_ORT_seconds": [
+      1.8424143934971653,
+      2.236757286998909
+    ],
+    "AB_BA_AB_order": true,
+    "finite_and_weight_domain_passed": true,
+    "thermal_frequency_control": false,
+    "copies_IO_topology_in_Update_timing": true,
+    "historical_feature_byte_certificate_available": false,
+    "raw_snapshot_target_weight_not_next_step_golden": true,
+    "reconstruction_projection_correlation_and_file_IO_outside_timing": true
+  },
+  "licensing": "Original DPVO MIT notice and license retained. External checkpoint/ONNX/RKNN weight rights not inferred from source license; default VGGT unchanged.",
+  "prior_findings_resolved": [
+    "Builder exact diagnostic audit status assertion corrected without editing raw evidence.",
+    "Final public-source-copy and two auditor-synthetic receipts are now correctly embedded."
+  ],
+  "remaining_nonblocking": [
+    "External checkpoint, original source/data and board experiment artifacts are intentionally required; no binaries or dataset arrays redistributed.",
+    "Difference root cause remains unlocated; no dynamic numerical, trajectory, NPU, physical-camera,20Hz,endurance or8GB acceptance claimed."
+  ],
+  "tests_rerun_by_reviewer": 0,
+  "host_model_forward_calls": 0,
+  "host_ORT_calls": 0,
+  "host_BA_calls": 0,
+  "board_jobs": 0,
+  "modified_files": [
+    "public-independent-review.json (new receipt only)"
+  ]
+}

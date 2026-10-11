@@ -14,6 +14,12 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
 
+## Dynamic Update investigation (v31)
+
+A single CPU ONNX Update now executes on changing real graph sizes on RK3588S, preserving the original DPVO weights. Its static shape/parameter audit passes, but **the existing FP32 numerical gate fails**: the 14-frame streaming diagnostic stopped during initialization with zero fresh poses, and a separate 23,520-edge comparison rejected one of two saved states. All measured outputs remained finite with confidence in [0,1]. No ordinary candidate trajectory was run, and the default VGGT model remains unchanged.
+
+In the same-process fixed-state comparison, ORT warm Update means were **1.842/2.237 s**, versus **2.538/2.931 s** for Torch. This is a short component measurement with uncontrolled temperature/frequency, not accepted real-time or NPU performance. The implementation, failed gates and evidence are [documented here](deploy/rk3588/validation/dpvo_dynamic_update/README.md); [engineering records 36–39](docs/ENGINEERING_NOTES.md) cover dynamic shapes, topology semantics, numerical versus trajectory evidence, and valid fixed-state comparisons. No weights, model binaries or dataset arrays are published.
+
 ## Fresh-observation learned VO research (v30)
 
 An optional DPVO CPU research replay now processes the first **192 consecutive TUM fr1_xyz RGB frames entirely on RK3588S**, preserving the original learned frontend's motion admission, eight-view initialization, recurrent graph and keyframe deletion. It uses original CPU ORT encoders, the original Torch Update at changing graph sizes, native CPU correlation and the online BA equations. It adds no ORB/LK/PnP pose frontend and leaves the default VGGT mapper unchanged.

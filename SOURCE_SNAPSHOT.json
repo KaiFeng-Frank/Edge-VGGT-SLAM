@@ -1,107 +1,164 @@
 {
   "upstream_commit": "35327ac28b7d193df9ccc39ba6346052bb6f1207",
   "synthetic_validation": {
-    "kind": "v30_public_targeted_synthetic_validation",
+    "kind": "v31_public_targeted_synthetic_validation",
     "status": "passed",
-    "passed": 88,
+    "passed": 129,
     "skipped": 0,
     "exit_code": 0,
-    "scope": "Tiny generated tensors, injected fake model/geometry/native cache/ORT session, saved-numeric SE3/GT and artifact tampering only. No actual model, image, native library, BA or board execution in these host tests; actual board receipts are separate.",
+    "scope": "Six tiny test modules: generated integer/numeric tensors, fake ORT/Torch adapters, tiny random toy ONNX export/ReferenceEvaluator, saved-artifact tampering. No original checkpoint/actual image/real-model ORT/Torch execution or BA on host.",
     "independent_batches": [
       {
         "status": "passed",
         "exit_code": 0,
-        "output": ".................                                                        [100%]\n17 passed in 0.05s\n",
-        "elapsed_seconds": 0.14184066839516163,
         "command": [
-          "<python-with-numpy-pytest>",
+          "<host-home>/miniconda3/envs/ctvggt/bin/python",
           "-B",
           "-m",
           "pytest",
           "-q",
           "-p",
           "no:cacheprovider",
-          "--basetemp=/dev/shm/vggt-v30-public-audit",
-          "tests/test_v30_stream_saved_audit.py"
+          "--basetemp=/dev/shm/vggt-v31-dpvo-update/pytest-public-audit-r1",
+          "tests/test_v31_large_update_audit.py"
         ],
+        "output": ".......                                                                  [100%]\n7 passed in 0.05s\n",
         "test_source_sha256": {
-          "tests/test_v30_stream_saved_audit.py": "5728c89babca79078df13e7a0ec2d6a5d19ee878f1facd54466e69200d3f0a01"
+          "tests/test_v31_large_update_audit.py": "c10fa509a845852ab7f188d384185b9572dd4ef7534e1b8088362da3d8123f96"
         },
         "implementation_source_sha256": {
-          "deploy/rk3588/validation/dpvo_stream/audit-v30-dpvo-stream.py": "b694543e290e7af2c3a9c7ad70cded7306de2fdb59c6290c21fd8dcdbdbbbd52"
-        }
+          "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-large-update.py": "f4f15f87a1f15394a191248166ffa23acf21dc6204bb36f64ffb2305eaff4fee",
+          "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-diagnostic14.py": "01199aea3440d7e421c2d3b9d4a389f52c3a7cb28f412bc57a09ddca9cc69131",
+          "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-dynamic-update-export.py": "c18a852523ccf7d81e7e7b990ae011de97870bfaf557a2ce68b5dce90a9dfb7b",
+          "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-large-update-board.py": "32083ec282643a5149ddc38c374d8919f76182d0b4a2698d17040eb2d632826d",
+          "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-update-export-board.py": "cece09f65635c733d25469d7986d482dd83db22180edc6dd0fa6669f170704f1",
+          "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-stream-board.py": "775aad5305612efd531cd56bbb68b36bdec30c9b5a37454f35ab677ffbafb059",
+          "deploy/rk3588/validation/dpvo_dynamic_update/v31_dynamic_update.py": "2e313911b4cf2ac18373cbd3b72dbfe81644918b92c4ffee32f1109e238aa692",
+          "deploy/rk3588/validation/dpvo_dynamic_update/v31_update_topology.py": "92c459ed444ea7086f3b838db5333ded8d10bb8374e54ecd6c1f93b030dee536",
+          "deploy/rk3588/validation/dpvo_dynamic_update/v30_frame_encoder.py": "fc6fc662613a720cfb779a360a63906a593a96ff08addecb9d01cfd8767ca7a8",
+          "deploy/rk3588/validation/dpvo_dynamic_update/dpvo_stream.py": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde"
+        },
+        "scope": "Synthetic generated tensors/fake ORT and source contracts only; export batch uses tiny random toy parameters. No actual model/checkpoint/image/real ORT session or board execution."
       },
       {
         "status": "passed",
         "exit_code": 0,
-        "output": "............................................................             [100%]\n60 passed in 0.67s\n",
-        "elapsed_seconds": 0.9628611193038523,
         "command": [
-          "<python-with-torch-numpy-pytest>",
+          "<host-home>/miniconda3/envs/ctvggt/bin/python",
           "-B",
           "-m",
           "pytest",
           "-q",
           "-p",
           "no:cacheprovider",
-          "--basetemp=/dev/shm/vggt-v30-public-base",
-          "tests/test_dpvo_stream.py",
-          "tests/test_v30_frame_encoder.py",
-          "tests/test_v30_stream_driver.py"
+          "--basetemp=/dev/shm/vggt-v31-dpvo-update/pytest-public-diagnostic_audit-r1",
+          "tests/test_v31_diagnostic14_audit.py"
         ],
+        "output": "........                                                                 [100%]\n8 passed in 0.04s\n",
         "test_source_sha256": {
-          "tests/test_dpvo_stream.py": "5b2401b362ffa1c2a3dcbdd5e7c39fcf1427afc1bc7cf03e173494a3ed2c0700",
-          "tests/test_v30_frame_encoder.py": "b5381c389b37b56950f9f5f2f299143ebd6be1cb72f794b359d45e0ceac5015b",
-          "tests/test_v30_stream_driver.py": "cfe03dceac531f19629edcef0c7ccbfd6b7da18939dbec8d849ecba8586a0f68"
+          "tests/test_v31_diagnostic14_audit.py": "16582fb03595e3637f7fbbe6be76aebab52541af22d06ff488e247e908d3ffb9"
         },
         "implementation_source_sha256": {
-          "deploy/rk3588/validation/dpvo_stream/lifecycle_oracle_fixtures.py": "1af1af1c9c0c306679fcfd4616458010b844028cfb81f91874309243f6e47ce8",
-          "deploy/rk3588/validation/dpvo_stream/run-v30-dpvo-stream-board.py": "22c5af18f8009524e348f7c400a2a8b72b0dffb55176b27d82c5ec22231dde86",
-          "deploy/rk3588/validation/dpvo_stream/v30_frame_encoder.py": "fc6fc662613a720cfb779a360a63906a593a96ff08addecb9d01cfd8767ca7a8",
-          "deploy/rk3588/validation/dpvo_stream/dpvo_stream.py": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde"
-        }
+          "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-large-update.py": "f4f15f87a1f15394a191248166ffa23acf21dc6204bb36f64ffb2305eaff4fee",
+          "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-diagnostic14.py": "01199aea3440d7e421c2d3b9d4a389f52c3a7cb28f412bc57a09ddca9cc69131",
+          "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-dynamic-update-export.py": "c18a852523ccf7d81e7e7b990ae011de97870bfaf557a2ce68b5dce90a9dfb7b",
+          "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-large-update-board.py": "32083ec282643a5149ddc38c374d8919f76182d0b4a2698d17040eb2d632826d",
+          "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-update-export-board.py": "cece09f65635c733d25469d7986d482dd83db22180edc6dd0fa6669f170704f1",
+          "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-stream-board.py": "775aad5305612efd531cd56bbb68b36bdec30c9b5a37454f35ab677ffbafb059",
+          "deploy/rk3588/validation/dpvo_dynamic_update/v31_dynamic_update.py": "2e313911b4cf2ac18373cbd3b72dbfe81644918b92c4ffee32f1109e238aa692",
+          "deploy/rk3588/validation/dpvo_dynamic_update/v31_update_topology.py": "92c459ed444ea7086f3b838db5333ded8d10bb8374e54ecd6c1f93b030dee536",
+          "deploy/rk3588/validation/dpvo_dynamic_update/v30_frame_encoder.py": "fc6fc662613a720cfb779a360a63906a593a96ff08addecb9d01cfd8767ca7a8",
+          "deploy/rk3588/validation/dpvo_dynamic_update/dpvo_stream.py": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde"
+        },
+        "scope": "Synthetic generated tensors/fake ORT and source contracts only; export batch uses tiny random toy parameters. No actual model/checkpoint/image/real ORT session or board execution."
       },
       {
         "status": "passed",
         "exit_code": 0,
-        "output": "...........                                                              [100%]\n11 passed in 0.06s\n",
-        "elapsed_seconds": 0.1463963808491826,
         "command": [
-          "<python-with-numpy-pytest>",
+          "<host-home>/miniconda3/envs/active-gs/bin/python",
           "-B",
           "-m",
           "pytest",
           "-q",
           "-p",
           "no:cacheprovider",
-          "--basetemp=/dev/shm/vggt-v30-public-evaluation",
-          "tests/test_v30_trajectory_evaluation.py"
+          "--basetemp=/dev/shm/vggt-v31-dpvo-update/pytest-public-export-r1",
+          "tests/test_v31_dynamic_update_export.py"
         ],
+        "output": ".............                                                            [100%]\n=============================== warnings summary ===============================\ntests/test_v31_dynamic_update_export.py::test_tiny_torch_export_uses_dynamic_E_groups_and_changed_topology\n  /dev/shm/vggt-v15-public-snapshot/deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-update-export-board.py:135: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter will be the default. To switch now, set dynamo=True in torch.onnx.export. This new exporter supports features like exporting LLMs with DynamicCache. We encourage you to try it and share feedback to help improve the experience. Learn more about the new export logic: https://pytorch.org/docs/stable/onnx_dynamo.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html.\n    torch.onnx.export(wrapped,arguments,str(path),**options)\n\ntests/test_v31_dynamic_update_export.py::test_tiny_torch_export_uses_dynamic_E_groups_and_changed_topology\n  <host-home>/miniconda3/envs/active-gs/lib/python3.10/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py:217: DeprecationWarning: The feature will be removed. Please remove usage of this function\n    setup_onnx_logging(verbose) as log_ctx,\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n13 passed, 2 warnings in 0.66s\n",
         "test_source_sha256": {
-          "tests/test_v30_trajectory_evaluation.py": "a5391f1aefc0d75a6cb3a1fde6b1ddaa478c5070ba878b1f12ffd42c0ba50133"
+          "tests/test_v31_dynamic_update_export.py": "25aba8001fad32ed96d0c4539dc40752b085528923b325515b85daf6524bdbad"
         },
         "implementation_source_sha256": {
-          "deploy/rk3588/validation/dpvo_stream/evaluate-v30-dpvo-trajectory.py": "b2312f222395e9e78cf958529966c67441b27971b63f007c100aca34fb10e336"
-        }
+          "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-dynamic-update-export.py": "c18a852523ccf7d81e7e7b990ae011de97870bfaf557a2ce68b5dce90a9dfb7b",
+          "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-large-update-board.py": "32083ec282643a5149ddc38c374d8919f76182d0b4a2698d17040eb2d632826d",
+          "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-update-export-board.py": "cece09f65635c733d25469d7986d482dd83db22180edc6dd0fa6669f170704f1",
+          "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-stream-board.py": "775aad5305612efd531cd56bbb68b36bdec30c9b5a37454f35ab677ffbafb059",
+          "deploy/rk3588/validation/dpvo_dynamic_update/v31_dynamic_update.py": "2e313911b4cf2ac18373cbd3b72dbfe81644918b92c4ffee32f1109e238aa692",
+          "deploy/rk3588/validation/dpvo_dynamic_update/v31_update_topology.py": "92c459ed444ea7086f3b838db5333ded8d10bb8374e54ecd6c1f93b030dee536",
+          "deploy/rk3588/validation/dpvo_dynamic_update/v30_frame_encoder.py": "fc6fc662613a720cfb779a360a63906a593a96ff08addecb9d01cfd8767ca7a8",
+          "deploy/rk3588/validation/dpvo_dynamic_update/dpvo_stream.py": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde"
+        },
+        "scope": "Synthetic generated tensors/fake ORT and source contracts only; export batch uses tiny random toy parameters. No actual model/checkpoint/image/real ORT session or board execution."
+      },
+      {
+        "status": "passed",
+        "exit_code": 0,
+        "command": [
+          "<host-home>/miniconda3/envs/ctvggt/bin/python",
+          "-B",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=/dev/shm/vggt-v31-dpvo-update/pytest-public-runtime-r1",
+          "tests/test_v31_update_topology.py",
+          "tests/test_v31_dynamic_update.py",
+          "tests/test_v31_large_update_board.py"
+        ],
+        "output": "........................................................................ [ 71%]\n.............................                                            [100%]\n101 passed in 0.70s\n",
+        "test_source_sha256": {
+          "tests/test_v31_update_topology.py": "c155bd19a50bac0c507ab22971f9d9e6fcd95d7650a61a09fc7261fa86c4ed05",
+          "tests/test_v31_dynamic_update.py": "1fb2d3a081566bd6e4d8b5d279b3ad2df2b48fe1e464cc54b5e4d1d7c3c1bf3b",
+          "tests/test_v31_large_update_board.py": "fb9aef14c779523b0b2511736cefc026453dad75a24cc19e4e0860b2e1306a3c"
+        },
+        "implementation_source_sha256": {
+          "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-dynamic-update-export.py": "c18a852523ccf7d81e7e7b990ae011de97870bfaf557a2ce68b5dce90a9dfb7b",
+          "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-large-update-board.py": "32083ec282643a5149ddc38c374d8919f76182d0b4a2698d17040eb2d632826d",
+          "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-update-export-board.py": "cece09f65635c733d25469d7986d482dd83db22180edc6dd0fa6669f170704f1",
+          "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-stream-board.py": "775aad5305612efd531cd56bbb68b36bdec30c9b5a37454f35ab677ffbafb059",
+          "deploy/rk3588/validation/dpvo_dynamic_update/v31_dynamic_update.py": "2e313911b4cf2ac18373cbd3b72dbfe81644918b92c4ffee32f1109e238aa692",
+          "deploy/rk3588/validation/dpvo_dynamic_update/v31_update_topology.py": "92c459ed444ea7086f3b838db5333ded8d10bb8374e54ecd6c1f93b030dee536",
+          "deploy/rk3588/validation/dpvo_dynamic_update/v30_frame_encoder.py": "fc6fc662613a720cfb779a360a63906a593a96ff08addecb9d01cfd8767ca7a8",
+          "deploy/rk3588/validation/dpvo_dynamic_update/dpvo_stream.py": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde"
+        },
+        "scope": "Synthetic generated tensors/fake ORT and source contracts only; export batch uses tiny random toy parameters. No actual model/checkpoint/image/real ORT session or board execution."
       }
     ],
     "test_source_sha256": {
-      "tests/test_v30_stream_saved_audit.py": "5728c89babca79078df13e7a0ec2d6a5d19ee878f1facd54466e69200d3f0a01",
-      "tests/test_dpvo_stream.py": "5b2401b362ffa1c2a3dcbdd5e7c39fcf1427afc1bc7cf03e173494a3ed2c0700",
-      "tests/test_v30_frame_encoder.py": "b5381c389b37b56950f9f5f2f299143ebd6be1cb72f794b359d45e0ceac5015b",
-      "tests/test_v30_stream_driver.py": "cfe03dceac531f19629edcef0c7ccbfd6b7da18939dbec8d849ecba8586a0f68",
-      "tests/test_v30_trajectory_evaluation.py": "a5391f1aefc0d75a6cb3a1fde6b1ddaa478c5070ba878b1f12ffd42c0ba50133"
+      "tests/test_v31_large_update_audit.py": "c10fa509a845852ab7f188d384185b9572dd4ef7534e1b8088362da3d8123f96",
+      "tests/test_v31_diagnostic14_audit.py": "16582fb03595e3637f7fbbe6be76aebab52541af22d06ff488e247e908d3ffb9",
+      "tests/test_v31_dynamic_update_export.py": "25aba8001fad32ed96d0c4539dc40752b085528923b325515b85daf6524bdbad",
+      "tests/test_v31_update_topology.py": "c155bd19a50bac0c507ab22971f9d9e6fcd95d7650a61a09fc7261fa86c4ed05",
+      "tests/test_v31_dynamic_update.py": "1fb2d3a081566bd6e4d8b5d279b3ad2df2b48fe1e464cc54b5e4d1d7c3c1bf3b",
+      "tests/test_v31_large_update_board.py": "fb9aef14c779523b0b2511736cefc026453dad75a24cc19e4e0860b2e1306a3c"
     },
     "implementation_source_sha256": {
-      "deploy/rk3588/validation/dpvo_stream/audit-v30-dpvo-stream.py": "b694543e290e7af2c3a9c7ad70cded7306de2fdb59c6290c21fd8dcdbdbbbd52",
-      "deploy/rk3588/validation/dpvo_stream/lifecycle_oracle_fixtures.py": "1af1af1c9c0c306679fcfd4616458010b844028cfb81f91874309243f6e47ce8",
-      "deploy/rk3588/validation/dpvo_stream/run-v30-dpvo-stream-board.py": "22c5af18f8009524e348f7c400a2a8b72b0dffb55176b27d82c5ec22231dde86",
-      "deploy/rk3588/validation/dpvo_stream/v30_frame_encoder.py": "fc6fc662613a720cfb779a360a63906a593a96ff08addecb9d01cfd8767ca7a8",
-      "deploy/rk3588/validation/dpvo_stream/dpvo_stream.py": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde",
-      "deploy/rk3588/validation/dpvo_stream/evaluate-v30-dpvo-trajectory.py": "b2312f222395e9e78cf958529966c67441b27971b63f007c100aca34fb10e336"
+      "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-large-update.py": "f4f15f87a1f15394a191248166ffa23acf21dc6204bb36f64ffb2305eaff4fee",
+      "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-diagnostic14.py": "01199aea3440d7e421c2d3b9d4a389f52c3a7cb28f412bc57a09ddca9cc69131",
+      "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-dynamic-update-export.py": "c18a852523ccf7d81e7e7b990ae011de97870bfaf557a2ce68b5dce90a9dfb7b",
+      "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-large-update-board.py": "32083ec282643a5149ddc38c374d8919f76182d0b4a2698d17040eb2d632826d",
+      "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-update-export-board.py": "cece09f65635c733d25469d7986d482dd83db22180edc6dd0fa6669f170704f1",
+      "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-stream-board.py": "775aad5305612efd531cd56bbb68b36bdec30c9b5a37454f35ab677ffbafb059",
+      "deploy/rk3588/validation/dpvo_dynamic_update/v31_dynamic_update.py": "2e313911b4cf2ac18373cbd3b72dbfe81644918b92c4ffee32f1109e238aa692",
+      "deploy/rk3588/validation/dpvo_dynamic_update/v31_update_topology.py": "92c459ed444ea7086f3b838db5333ded8d10bb8374e54ecd6c1f93b030dee536",
+      "deploy/rk3588/validation/dpvo_dynamic_update/v30_frame_encoder.py": "fc6fc662613a720cfb779a360a63906a593a96ff08addecb9d01cfd8767ca7a8",
+      "deploy/rk3588/validation/dpvo_dynamic_update/dpvo_stream.py": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde"
     }
   },
-  "validation_scope": "v30 changed helpers; prior version receipts remain under results/",
+  "validation_scope": "v31 changed helpers; prior version receipts remain under results/",
   "manifest_scope": "all publication files except SOURCE_SNAPSHOT.json itself and .git metadata",
   "files": {
     ".gitignore": "5c914f3ced73f7a831f890a98f771bde1e11fdcf288b87f45a9fb538bef93b2e",
@@ -109,9 +166,9 @@
     "LICENSE": "dc493d7ac51f587fd71184315999c792ead523bf46da0f0cbf3e26a577b1a580",
     "MEASUREMENTS.json": "115583486c6975838e18ba0c8b90bbd2a9e281a11f37ee596dd068908276cd7c",
     "MODEL_LICENSES.md": "c7e08cd2c73c68b3972088ae110893641df634ffe1f68edc851f30982a3ecddc",
-    "README.md": "10d47b514dae60c8e616f2c6c7b8a83883f4b0ad130114003213c1cde687f282",
+    "README.md": "4d2b075553f890ef7ec6d0f51c402836587ecf7ca1ccec3755f9efc433b822d1",
     "README_UPSTREAM.md": "3cc8069121fabc2b5e13e0997e2e927fac558fa3d8032b2599dbadc486672454",
-    "THIRD_PARTY_NOTICES.md": "13259a7980499bf842306511b146c285106da0123f47f1669ea48f3a58f3ec1d",
+    "THIRD_PARTY_NOTICES.md": "4d281c913346335967ecab378cbd18f7bbb1f5bb6a1632fa313837191d1097ca",
     "UPSTREAMS.json": "3bf0d19b84c79e9abba1811eb80537735685d37fb2579ddc386d9cbc7ad5a6e2",
     "assets/office_loop_figure.png": "5d20d0acb81d3fb38e14235499ba67a22441cfe835e899f3e224a99e514c28e9",
     "assets/vggt_slam_demo.gif": "dc2ed38e8efb7183425a131b6cb01924607301912ec094a7d6284b865ef3d831",
@@ -176,6 +233,20 @@
     "deploy/rk3588/validation/da3_probe_common.py": "3c54586b77af2b8f07d32f886f19dbaee2a57b0d587be84513f8e5bea54cb4d4",
     "deploy/rk3588/validation/diagnose-v28-dpvo-update-rknn-board.py": "e744026c954845108aea271ea716d51250b9b116f4259adc94d5e6eda338de91",
     "deploy/rk3588/validation/dpvo_cpu_ops.py": "15191a0d481176e5be80bb6c41c3fb3f4d057d95b18ab18f6e0efcd73793dd32",
+    "deploy/rk3588/validation/dpvo_dynamic_update/LICENSE": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
+    "deploy/rk3588/validation/dpvo_dynamic_update/README.md": "37de6f19dd899c64c6001d9870f9c64fdb907a9d37fb3748ece24768c8f09554",
+    "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-diagnostic14.py": "01199aea3440d7e421c2d3b9d4a389f52c3a7cb28f412bc57a09ddca9cc69131",
+    "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-dynamic-update-export.py": "c18a852523ccf7d81e7e7b990ae011de97870bfaf557a2ce68b5dce90a9dfb7b",
+    "deploy/rk3588/validation/dpvo_dynamic_update/audit-v31-large-update.py": "f4f15f87a1f15394a191248166ffa23acf21dc6204bb36f64ffb2305eaff4fee",
+    "deploy/rk3588/validation/dpvo_dynamic_update/dpvo_stream.py": "295233513c1b670c953db25bbf4bfad8bdb72b2001f40ac3e1bf5d17083f9bde",
+    "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-stream-board.py": "775aad5305612efd531cd56bbb68b36bdec30c9b5a37454f35ab677ffbafb059",
+    "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-dpvo-update-export-board.py": "cece09f65635c733d25469d7986d482dd83db22180edc6dd0fa6669f170704f1",
+    "deploy/rk3588/validation/dpvo_dynamic_update/run-v31-large-update-board.py": "32083ec282643a5149ddc38c374d8919f76182d0b4a2698d17040eb2d632826d",
+    "deploy/rk3588/validation/dpvo_dynamic_update/source-freeze.json": "d5ad5472c31393148afdde74f8773abdaf627df9d7bd8cd6825aae9838c31015",
+    "deploy/rk3588/validation/dpvo_dynamic_update/state-reconstruction-contract.json": "45ba417a63a813a3af0c33ed080fc404d9eb7052ddae309cb0dba02d4216c45f",
+    "deploy/rk3588/validation/dpvo_dynamic_update/v30_frame_encoder.py": "fc6fc662613a720cfb779a360a63906a593a96ff08addecb9d01cfd8767ca7a8",
+    "deploy/rk3588/validation/dpvo_dynamic_update/v31_dynamic_update.py": "2e313911b4cf2ac18373cbd3b72dbfe81644918b92c4ffee32f1109e238aa692",
+    "deploy/rk3588/validation/dpvo_dynamic_update/v31_update_topology.py": "92c459ed444ea7086f3b838db5333ded8d10bb8374e54ecd6c1f93b030dee536",
     "deploy/rk3588/validation/dpvo_geometry/LICENSE": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
     "deploy/rk3588/validation/dpvo_geometry/README.md": "afb5fb5ecc14b63b2501c3c928b337cfe124d4985e933c3409f51ddd863154aa",
     "deploy/rk3588/validation/dpvo_geometry/audit-v28-dpvo-feedback.py": "ce5a7f8aeb25b79c15138f43bfd6cd840cf03ea35005fe53e3121b8b823d7d53",
@@ -267,7 +338,7 @@
     "deploy/rk3588/validation/vggt-v16-camera-step-compile112-r1.json": "c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a",
     "deploy/rk3588/validation/vggt-v16-camera-step-export112-r1.json": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
     "deploy/rk3588/vggt-spark.patch": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864",
-    "docs/ENGINEERING_NOTES.md": "76bd491dfd75d5527c932e7bbad441c73e39b3bf6509ed8764aa2fa41dbf5531",
+    "docs/ENGINEERING_NOTES.md": "422093ded1c790aae7ed979faf02f9552906d478ca83dff275edcfa5f274ec82",
     "evals/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "evals/eval_tum.sh": "c01f407abcb9f99bbbdf2348d772d0746fcf5d84b5029c4a3271905e346b050b",
     "evals/process_logs_tum.py": "9a78265063ad670136d6f4d6b5773d0e362f07b64f41f26ea2c941e973f59c3a",
@@ -296,6 +367,7 @@
     "results/da3_layout_v25.json": "93844ac418645b2c2eb3039d51704bfd041107d6c70200efc7f6a8f9f7d4531a",
     "results/da3_rknn_v24.json": "6145e2860f195c994eab5dada85338c3de566f5a2151fd0f002aa1375b71b46e",
     "results/da3_sources_v24.json": "729c5be1786aee50ab06d24474cf16476c6ca2e50ca6ce18f1885eaf99981e4d",
+    "results/dpvo_dynamic_update_v31.json": "f2c1e33241130133a2af7ff74ddb71c46122f188ff2a52fe4968b6821a7c49e9",
     "results/dpvo_encoders_v26.json": "94fe5285865d1538ee8663b2599335a22615540ac40759c24c98b3a580279cac",
     "results/dpvo_feedback_v28.json": "b8405685d61c483a37e97af5dd02a5080827d8d55a4ec35ab5145e8d4ebe2a7d",
     "results/dpvo_feedback_v29.json": "3f7473a849e3ea8a49b0c26e2fdf93e92561b77f874561a432be72b5af94981a",
@@ -325,6 +397,7 @@
     "results/model_license_v21.json": "6a3077f9dd0610b1a0aeaf3fc90302ea05fc061b214487de8d1d7eb107c9f975",
     "results/patch_cache_v19.json": "0e04c1e0118b29f5d56b9344c6ee2168c2219d567cb5c54efc275a3cd53859fb",
     "results/profile_336_v17.json": "6c3d2cb51af75410188c062e83a26eae4d4c5d69c632a6eeae95993eba004820",
+    "results/public_review_v31.json": "eef8a817f0925c846a52fb64a25c6d7662380e0a3eaa63fa1e1060df6b3c3737",
     "results/quality_pairs_capture_v18.json": "a2ffeb1e7810862c37ad3be7ea268763f20f193515e19603d8832ec809f9bb98",
     "results/rectification_bridge_v16.json": "ae13b602e592ebe07f42e8a83d79a87d6af787ea8552853fca1e2b5a15bd6fa3",
     "results/rectification_v16.json": "b321f7e7ee01548fcf6dba7e5d50024ef923fe1f704aaedd36394997aa473583",
@@ -347,6 +420,7 @@
     "results/synthetic_tests_v28.json": "c128286b220dc65ce8dd4779da1e3fa0154fb8240a757adfb36ccf828d70a109",
     "results/synthetic_tests_v29.json": "62f487df0438cc18c61e99b617c2937e6951c8eab6e5574d6b1b639f98f10c9e",
     "results/synthetic_tests_v30.json": "16142e57a573945812e2a7c6cf610a55a46efafb0341fae78bba85ff3c2adfc3",
+    "results/synthetic_tests_v31.json": "1e79b109e54fa1c73dd0e826e0264c7c58e48d6540fa56324499df78c0b450da",
     "results/trajectory_v15.json": "5322bd84232b33727109ced8b88d25252f57c1a5fb768ca94021b89e7d53380f",
     "results/trajectory_v15.md": "eefeb76e78df6d114b85d1860d13fcba5852844af2b25fcc60ba7a1a2ebe0b3c",
     "results/trajectory_v16.json": "d502728fbf88bbc6bb065cd8bf3b02b0602caa6427e03623e97de8cdc0e32215",
@@ -460,6 +534,12 @@
     "tests/test_v30_stream_driver.py": "cfe03dceac531f19629edcef0c7ccbfd6b7da18939dbec8d849ecba8586a0f68",
     "tests/test_v30_stream_saved_audit.py": "5728c89babca79078df13e7a0ec2d6a5d19ee878f1facd54466e69200d3f0a01",
     "tests/test_v30_trajectory_evaluation.py": "a5391f1aefc0d75a6cb3a1fde6b1ddaa478c5070ba878b1f12ffd42c0ba50133",
+    "tests/test_v31_diagnostic14_audit.py": "16582fb03595e3637f7fbbe6be76aebab52541af22d06ff488e247e908d3ffb9",
+    "tests/test_v31_dynamic_update.py": "1fb2d3a081566bd6e4d8b5d279b3ad2df2b48fe1e464cc54b5e4d1d7c3c1bf3b",
+    "tests/test_v31_dynamic_update_export.py": "25aba8001fad32ed96d0c4539dc40752b085528923b325515b85daf6524bdbad",
+    "tests/test_v31_large_update_audit.py": "c10fa509a845852ab7f188d384185b9572dd4ef7534e1b8088362da3d8123f96",
+    "tests/test_v31_large_update_board.py": "fb9aef14c779523b0b2511736cefc026453dad75a24cc19e4e0860b2e1306a3c",
+    "tests/test_v31_update_topology.py": "c155bd19a50bac0c507ab22971f9d9e6fcd95d7650a61a09fc7261fa86c4ed05",
     "tests/test_xnnpack_linear.py": "6891c7841e316470e8a536c0e8777e799da7fa03ab6984a822398b81980afeb4",
     "tests/test_xnnpack_native.py": "c9f00ea3981c3bf595edfa6aec7d48f503fb7247c12777389ef2564ac9bda1d9",
     "vggt_slam/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
