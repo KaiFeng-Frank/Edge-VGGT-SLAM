@@ -403,3 +403,29 @@
 **实际验证：** 在板端 CPU ORT DisableAll、4 个 A76 线程上，对原图和空间归约图分别执行 3 张真实图像的父图／稀疏图配对。预声明中心覆盖重复、逆序和边界内点，不按结果挑点；六组 sparse fmap/context 与当场父图的完整 fmap／精确 context gather **逐字节相同**。原图仍通过原 CPU 门限；空间归约图的历史 FP32 拒绝仍存在，不能因后缀抽样正确而改写成模型已通过。
 
 **接口与边界：** patch 索引必须保留顺序和重复，形状相同不代表观测身份相同。当前中心是固定诊断规则，尚未绑定原 Patchifier 的 RNG、随机深度消费顺序和生命周期。未编译这一新后缀到 RKNN，尚不知实际 Gather 的 placement、SDK 输出大小及完整 I/O 收益。CPU 小测也不是 NPU 加速证据；须在新图实测这些条件后再接入流水线。[改写和板端对照](../results/dpvo_sparse_context_v33.json)。
+
+第 47 条记录 v33 的 CPU 阶段；后续 SDK 实测见第 48 条。
+
+## 48. 少返回 75% 的数据，不等于完整 SDK 调用快 75%
+
+**实验与证据：** 对原图及空间归约图分别复用历史已编译的完整 imap 父图，新编译稀疏 context 子图。保持同一真实图像与 INT64 索引，首帧同进程 AB/BA/AB，另外两帧交错配对；普通调用每种图 5 次，profile 另开进程各 3 次。输出从 **36,110,336 B** 降到 **9,175,040 B**，但首帧后两次 warm 完整 SDK 均值仅为原图 **427.916→411.549 ms**（减少约 3.8%），空间图 **217.184→178.058 ms**（约 18.0%）。未控温控频，两次 warm 不能当作稳定长时收益。
+
+**分解与解释：** 原图 getter 从 45.418 降到 13.826 ms，自有输出复制从 15.440 降到 3.988 ms；SDK run 却从 356.571 增到 383.328 ms。空间图 getter 为 67.921→28.253 ms，复制 17.791→5.816 ms，run 为 121.075→133.501 ms。getter/复制确实减少，但内部整张特征仍计算，新后缀也有代价；不能仅靠输出字节推算整机加速。实际 profile 的 Gather 在 CPU：原图另保留五个 CPU Transpose，空间图有 162 个内部 NPU 算子、一个内部 CPU Gather 和四个 CPU I/O 行。
+
+**接口与验收：** 查询实际索引为 INT64、非空间端口 fmt=3（UNDEFINED），不得误认成 fmt=2 的 NC1HWC2 或悄悄转换为浮点索引。实际 getter 仍逐次核 FP32 逻辑字节，并在 release 前拥有副本。三帧两种方法的 sparse fmap/context 均与相应 RKNN 父输出的选取结果 bitwise 相同，但两种方法仍不通过原 CPU FP32 门限。主机保存的是板端选取后的 canonical 数组，未保存完整 imap，独审不冒称重新从 full imap 计算了选取；profile 数组留在板端，主机只核其收据与 raw hash 一致性。没有把候选接入 VO。[完整收据与复现入口](../results/dpvo_sparse_context_v34.json)。
+
+## 49. 保留原算子的表达形式，可能改变编译器 placement
+
+**问题与办法：** v33 源帧分块把分组权重写成显式 max-shift、exp、sum 和除法，RKNN 出现两处 CPU ReduceMax。v34 仅把这一段改为 `torch.softmax`，分别沿目标轴和 patch 轴；c1/c2 顺序、全部 50 个 Update 参数和末端 stable weight 表达式均保留。两个冻结 D10/M96 源块在板端重新执行父块 Torch、新块 Torch 和 CPU ORT，66 组保存数组比较全部通过原 `rtol=1e-4, atol=1e-5`。完整 E=23,520 原参考来自 v33，本次未重新执行，不能混写成新的全图回归。
+
+**实际 placement：** 新 ONNX 为 100 节点、两处 Softmax，无显式 ReduceMax/Gather/Where；RKNN 两次独立 profile 均为 **55 个内部 NPU、3 个内部 CPU、6 个 CPU I/O**，两处 CPU ReduceMax 行消失。剩余内部 CPU 为末端权重的两处 Exp 和一处 Min，另有十个 NPU Transpose。ONNX 没有 Transpose 不代表编译后没有布局转换，静态节点数量也不能替代实际 profile。
+
+**边界：** 两个源块普通调用的后两次 warm 均值为 **61.839 / 67.621 ms**，但没有与 v33 做同期交错对照，不能据此报告受控加速比。所有 RKNN 输出有限、权重在 [0,1]，仍被原 FP32 门限拒绝。CPU 等价检查、placement 改善、整图新位姿速度各需自己的证据；本次未执行其他源块、反馈、BA 或轨迹。[源码、CPU 审计与板端收据](../results/dpvo_source_frame_softmax_v34.json)。
+
+## 50. FAST 配置需要完整回放验证，随机种子相同也不代表采样相同
+
+**实现与身份：** 在冻结原 DPVO `config.py` 上加载原 `fast.yaml`，使用 M=48、lifetime=11、removal=16、optimization=7；编码器 patch 提取、相关性与图后端三个位置须使用同一 M。保留原 CPU Torch 的 x、y、深度随机数消费顺序，即使深度随后由中位数覆盖也先消费该随机数。M=48 与 M=96 每帧消耗数量不同，不能因 seed 相同就说两次用了相同 patch 子集。CPU FP32、研究容量 64 和原 CUDA mixed precision/4096 容量的区别明确保留。
+
+**实际结果：** 同一 192 张 TUM fr1_xyz 图像和时间戳完整回放，得到 **179 个 fresh 位姿**；总回放 **348.556 s**，fresh 吞吐 **0.514 Hz**，软件逐帧 fresh 平均 **1.919 s**、P95 **2.887 s**。原默认历史回放为 699.765 s、0.256 Hz、3.880 s、6.655 s。FAST 单独 EOF 优化 24.598 s，不能计入 fresh 数量；峰值进程 RSS 为 **1,070.461 MiB**。硬件为 16 GB 板，没有因此认证 8 GB 部署或 30 分钟稳定运行。
+
+**精度与评估：** 两次输入 manifest 字节相同，先按 fresh 标记取共同 179 个观测，再关联 GT，每条轨迹各在同一共同集合上只拟合一次正尺度 Sim3。ATE RMSE 为默认 **1.0853 cm**、FAST **1.0714 cm**；固定全源 1 秒计划 162 对中有共同有效 149 对，旋转 RPE RMSE **0.96867→0.96821°**，平移 RPE RMSE **1.66276→1.63046 cm**，方向误差中位数 **3.036→3.152°**。EOF 的 192 个重建位姿另评，不混入在线样本。它只覆盖约 6.37 秒的视频，没有原 CUDA/full VGGT 轨迹基线；GT 只用于事后评估，不用于选配置。这是完整短回放进展，仍不满足实时目标，没有增加 ORB/LK/PnP，也未改变默认 VGGT。[实现、身份和评估收据](../results/dpvo_fast_v34.json)。

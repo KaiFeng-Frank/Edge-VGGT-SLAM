@@ -1,0 +1,53 @@
+{
+  "kind": "v34_public_targeted_synthetic_validation",
+  "status": "passed",
+  "passed": 66,
+  "failed": 0,
+  "skipped": 0,
+  "exit_code": 0,
+  "elapsed_seconds": 1.8354057129472494,
+  "scope": "Tiny generated arrays/topologies/ONNX, toy neural modules and fake SDK/ORT/geometry only; no real checkpoint, real model inference, actual ORT model, compilation, board job or BA.",
+  "command": [
+    "<host-home>/miniconda3/envs/ctvggt/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/dev/shm/vggt-v34-output/pytest-public-r1",
+    "tests/test_v34_dpvo_fast.py",
+    "tests/test_v34_fast_trajectory.py",
+    "tests/test_v34_source_frame_softmax_audit.py",
+    "tests/test_v34_source_frame_softmax_rknn_audit.py",
+    "tests/test_v34_source_frame_update_softmax.py",
+    "tests/test_v34_sparse_audit.py",
+    "tests/test_v34_sparse_compile.py",
+    "tests/test_v34_sparse_runtime.py"
+  ],
+  "test_source_sha256": {
+    "tests/test_v34_dpvo_fast.py": "11d89a4d99888f8a3dea9b2d36ce474bb2c6c31ea90b9441324f422127927c48",
+    "tests/test_v34_fast_trajectory.py": "0184c6daaa86219eba568c8960195b887221059fbf337b2aa6f28d064743890c",
+    "tests/test_v34_source_frame_softmax_audit.py": "96437dbfefe62281a57b034a6127594c78249ad93b97083d1f188d1a20af2b0a",
+    "tests/test_v34_source_frame_softmax_rknn_audit.py": "ad03f413c3871f05b5f1f89cb06f9e9c12aa6170e7aad047b3c07edcc4ccfa45",
+    "tests/test_v34_source_frame_update_softmax.py": "6dceba7b7c31e1b7f734a749cb27c86d5e909a3fbad353dbd91b29147d4e2a2c",
+    "tests/test_v34_sparse_audit.py": "82e9c63cb3a2540adfbf81a2af519d8f989d984abb60f20d8bc70c0822d60efb",
+    "tests/test_v34_sparse_compile.py": "725794831075e08c00e06b569c2748702d001a1291d3908c731af1672375b204",
+    "tests/test_v34_sparse_runtime.py": "8f217c46b2993a54f8c04237a74da095b289dbd5a9b3be975b50b22f285d0f1b"
+  },
+  "implementation_source_sha256": {
+    "deploy/rk3588/validation/dpvo_fast/evaluate-v34-fast-trajectory.py": "09b7a090a8dffa2401693d61baff9fbf73ddf368deceadf2f3631137b81d55d8",
+    "deploy/rk3588/validation/dpvo_fast/run-v34-dpvo-fast-board.py": "0f62c1df8ea68f88ec13b71b54f1f7b0b070736b7058ebd85fac013c2694b526",
+    "deploy/rk3588/validation/dpvo_sparse_context_sdk/audit-v34-dpvo-sparse-context.py": "7c2b53530fb5ab9e1ac6c3595b4135b175ff19df2ac239e419fb14c4d5a21fb9",
+    "deploy/rk3588/validation/dpvo_sparse_context_sdk/compile-v34-dpvo-sparse-context.py": "26e639520692619ca7d69916d11d81237c535ee31f3ea9aa848101e4742744fa",
+    "deploy/rk3588/validation/dpvo_sparse_context_sdk/run-v34-dpvo-sparse-context-board.py": "1c4281dc0bef9b4eaa7978719011c2342dd43c9c4005144a8b145ff603cd231f",
+    "deploy/rk3588/validation/dpvo_sparse_context_sdk/v34_sparse_rknn.py": "646f875d1b5eea561c0d6aa4d1b9078351014a39a62976ec895a814cd466b387",
+    "deploy/rk3588/validation/dpvo_source_frame_softmax/audit-v34-source-frame-softmax-rknn.py": "3b55dd072cfd2e3b68a4851b3e592add35adbb184b901ad25574bd43c38f7fc6",
+    "deploy/rk3588/validation/dpvo_source_frame_softmax/audit-v34-source-frame-softmax.py": "ecaea05e9958164d4b5abfa409680222ee5eff7a26b185171ff758e24739e606",
+    "deploy/rk3588/validation/dpvo_source_frame_softmax/export-v34-source-frame-softmax-board.py": "487e9c759eb11749902e39f9e96891e561d9f56fb606d79c0c555de331633e96",
+    "deploy/rk3588/validation/dpvo_source_frame_softmax/source_frame_update_softmax.py": "b89b9b84d3afb47fd926decddde0077222dc07930bf75ee08acb410dc4f6f3f4"
+  },
+  "source_hashes_unchanged": true,
+  "stdout_sha256": "839b3b669ab21d66fde356c40de2c90048ab0b047138434f79d39fa8c4f80a0a",
+  "stdout": "..................................................................       [100%]\n66 passed in 0.98s\n"
+}

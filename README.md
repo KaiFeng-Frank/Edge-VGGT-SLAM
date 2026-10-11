@@ -14,13 +14,21 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
 
+## FAST replay and SDK output investigation (v34)
+
+The optional original DPVO FAST configuration completed the same 192-frame CPU replay on RK3588S, with **179 fresh poses in 348.556 s (0.514 Hz)**. Fresh-observation software processing P95 decreased from the historical default's 6.655 s to **2.887 s**. On identical common-fresh observations, Sim3-aligned ATE RMSE was **1.071 cm**, versus 1.085 cm for the default. This short unpaced CPU test does not pass real-time or full-VGGT accuracy acceptance. EOF work, reconstructed poses, original random-draw order and the changed patch count are reported separately. [Implementation](deploy/rk3588/validation/dpvo_fast/README.md), [timing and trajectory evidence](results/dpvo_fast_v34.json).
+
+Sparse encoder outputs reduced logical FP32 return data from 36.1 MB to 9.18 MB. Same-process warm complete SDK calls changed from **427.916 to 411.549 ms** for the original graph and **217.184 to 178.058 ms** for the spatial rewrite. Each method has only two warm samples. Both remain FP32-rejected; the sparse Gather executes on CPU. Saved canonical outputs match their RKNN parents bitwise, which does not establish equality to the original CPU network. [Evidence and audit limits](results/dpvo_sparse_context_v34.json).
+
+An Update expression using explicit Softmax passes the CPU gate and removes the two CPU ReduceMax rows from the measured RKNN profile. **RKNN still fails the original FP32 gate**; two Exp and one Min remain on CPU. No full-graph Update or trajectory used this candidate. [Source and evidence](deploy/rk3588/validation/dpvo_source_frame_softmax/README.md). Engineering records **48–50** capture these findings. The default VGGT model, weights and mapper remain unchanged.
+
 ## Source-frame Update investigation (v33)
 
 A dependency-preserving DPVO Update block now passes the original CPU FP32 gate on two real saved states on RK3588S. Its RKNN build completes ordinary inference with finite outputs and valid confidence, but **fails that FP32 gate and remains unadopted**. Two warm calls per state average **68.292 / 87.103 ms**, including complete SDK I/O. Each call covers only one 960-edge source block; this is neither a full 23,520-edge update nor a real-time trajectory result.
 
 Separate profiles identify 59 internal NPU operators, five internal CPU operators and six CPU I/O operators. A startup adapter error exposed the difference between internal padded storage and converted output bytes; the fix keeps actual buffer-length and ownership checks. [Source, failed startup and board evidence](deploy/rk3588/validation/dpvo_source_frame/README.md), [engineering records 44–47](docs/ENGINEERING_NOTES.md) and the [conditional original FAST workload budget](results/dpvo_fast_budget_v33.json) preserve these limits. Original weights and the default VGGT mapper remain unchanged.
 
-A separate encoder suffix now returns 96 sampled contexts instead of the dense imap, reducing logical FP32 output from 36,110,336 to 9,175,040 bytes. Six board CPU comparisons preserve the parent outputs bitwise. The full encoder still computes the dense feature map, and the spatial parent's historical numerical rejection remains. [Evidence](results/dpvo_sparse_context_v33.json) establishes this output contract only; the new suffix has no NPU or full-pipeline performance result yet.
+A separate encoder suffix returns 96 sampled contexts instead of the dense imap, reducing logical FP32 output from 36,110,336 to 9,175,040 bytes. Six board CPU comparisons preserve the parent outputs bitwise. The full encoder still computes the dense feature map, and the spatial parent's historical numerical rejection remains. [v33 evidence](results/dpvo_sparse_context_v33.json) establishes the CPU output contract; subsequent SDK component measurements are reported in v34 above.
 
 ## Encoder layout investigation (v32)
 
