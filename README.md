@@ -14,6 +14,14 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
 
+## Per-frame cache, board PTQ and complete Update capture (v36)
+
+A per-frame correlation cache avoids rebuilding unchanged historical features. Its board AB outputs match the old cache bitwise. The complete optional DPVO FAST replay produced **179 fresh poses in 269.215 s (0.665 Hz)**, with fresh software P95 **2.170 s** and peak RSS **949.781 MiB**. Poses and lifecycle results match v35 exactly; separate runs were not temperature/frequency controlled. **Real-time acceptance remains unmet and the encoder FP32 rejection remains.** [Code, component/full replay evidence and audits](deploy/rk3588/validation/dpvo_frame_cache/README.md).
+
+An isolated ARM environment now completes actual **board-CPU PTQ calibration/build** in 60.291 s using 32 predeclared, nonoverlapping calibration frames from the same sequence. Native initialization/query/destruction confirms INT8 image/feature ports and preserved INT64 indices. This is not deployment inference, precision, internal INT8 coverage or performance acceptance. [Toolchain, calibration and query evidence](results/board_ptq_v36.json).
+
+Three original complete M48 Update states now have same-call input/gold captures, with **3,072 / 7,248 / 10,128 edges**. Saved-array audits verify grouping and restoration, but real grouped Torch/ORT/NPU execution remains unmeasured. [Capture and grouping contract](deploy/rk3588/validation/dpvo_grouped_update/RUN.md). [Chinese engineering records 55–58](docs/ENGINEERING_NOTES.md) document the tool runtime-library failure, calibration/IO contracts, cache ownership and full-graph validation. No model/data binaries are published; default VGGT and the separate weight-license boundaries remain unchanged.
+
 ## End-to-end NPU encoder diagnostic and engineering records (v35)
 
 An isolated original DPVO FAST replay now uses the dense spatial RKNN encoder with the original Torch Update, native correlation and CPU geometry on RK3588S. The same 192 TUM images produced **179 fresh poses in 284.058 s (0.630 Hz)**, with fresh software processing mean **1.549 s**, P95 **2.380 s**, and **23.271 s** of separate EOF work. One encoder context served exactly 192 SDK calls; peak process RSS was **922.297 MiB** on the 16 GB board. No ORB or added LK/PnP frontend is used. [Source and evidence](deploy/rk3588/validation/dpvo_fast_rknn/README.md).
@@ -22,7 +30,7 @@ On the same 179 common-fresh observations, a single evaluation-only Sim3 per run
 
 A separate channel-first source-block Update preserves the CPU/ORT gate and produces two-state warm SDK means of **54.287 / 66.368 ms**. Actual RKNN profiles still contain six NPU Transpose operations and three internal CPU operations; the original FP32 gate fails. This is a D10/M96 component experiment, not the Update used by the full M48 replay. [Implementation and measured boundaries](deploy/rk3588/validation/dpvo_source_frame_channel_first/README.md).
 
-The [board-only INT8 preparation](deploy/rk3588/validation/board_ptq/README.md) records a separate deployment issue: quantization calibration itself executes the model, and the pinned ARM toolkit has different Torch requirements from the host toolkit. The isolated ARM dependency plan and guards are prepared; installation, calibration and INT8 execution have **not** been validated. [Preparation evidence](results/board_ptq_preparation_v35.json). [Engineering records 51–54](docs/ENGINEERING_NOTES.md) preserve these findings and their limits.
+The [board-only INT8 preparation](deploy/rk3588/validation/board_ptq/README.md) records a separate deployment issue: quantization calibration itself executes the model, and the pinned ARM toolkit has different Torch requirements from the host toolkit. At the v35 stage, only the isolated ARM dependency plan and guards were prepared. Subsequent actual installation/calibration and native IO query are reported in v36 above; INT8 deployment inference remains unvalidated. [Preparation evidence](results/board_ptq_preparation_v35.json). [Engineering records 51–54](docs/ENGINEERING_NOTES.md) preserve these findings and their limits.
 
 ## FAST replay and SDK output investigation (v34)
 

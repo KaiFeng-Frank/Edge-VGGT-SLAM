@@ -1,0 +1,14 @@
+{
+  "schema": "v36_saved_array_AB_driver_tiny_tests",
+  "status": "passed",
+  "passed": 12,
+  "failed": 0,
+  "skipped": 0,
+  "command": "env TMPDIR=/run/user/1000/edge-vggt-v36/correlation PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 /home/frank/miniconda3/envs/ctvggt/bin/python -B -m pytest test_v36_ab_driver.py -q -p no:cacheprovider --basetemp=/run/user/1000/edge-vggt-v36/correlation/pytest-ab-final",
+  "stdout_exact": "............                                                             [100%]\n12 passed in 0.04s\n",
+  "implementation_sha256": "531777cd463d4ace4299960a7034cfe42b108db68391c3241cbc6d616a560c9d",
+  "test_sha256": "ee30e8c5a3f081e890d1c67ec3e8d029308f34d7e03a5f8c301a0023a83186d4",
+  "real_features_loaded": false,
+  "native_call_or_board_job_performed": false,
+  "initial_test_boundary_correction": "The first synthetic gate test assumed float32(1.00011) was inside tolerance; it actually rounds outside. Test fixed to neighboring representable FP32 values. Comparison implementation and gates unchanged."
+}

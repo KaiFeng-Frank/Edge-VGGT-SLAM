@@ -1,0 +1,25 @@
+{
+  "schema": "v36_saved_capture_auditor_synthetic_validation",
+  "status": "passed_synthetic_actual_capture_pending",
+  "source_sha256": {
+    "audit-v36-fast-update-capture.py": "29041c24c5eb39d46f1f6bd8b2a55d924ba5cb5f8fc54eb3bea752f8505278fa",
+    "test_audit_v36_fast_update_capture.py": "6ef8c7f57ac63c3b850abe3b51679b8ec2832465d7a53dbef62e9a88d4f7d578"
+  },
+  "command": "env TMPDIR=<R36> OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 python -B -m pytest -q -p no:cacheprovider test_audit_v36_fast_update_capture.py",
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "seconds": 0.1,
+  "synthetic_scope": "Fake saved FP32 arrays only; no real input/model/ORT/BA/SDK/board execution",
+  "positive": "Full two-source M48 plan and all six original/gold payload byte-exact pack/scatter + MAC/I/O",
+  "rejected": [
+    "changed ctx[kk] despite regenerated file/raw metadata",
+    "changed gold weight domain despite regenerated file/raw metadata",
+    "EOF substituted for declared online capture",
+    "original callback edge identity mismatch despite updated parent receipt binding",
+    "raw file mutation"
+  ],
+  "actual_saved_capture_checked": false,
+  "neural_equivalence_claim": false,
+  "candidate_accepted": false
+}

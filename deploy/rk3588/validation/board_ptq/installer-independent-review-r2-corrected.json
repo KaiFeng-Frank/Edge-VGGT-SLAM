@@ -1,0 +1,376 @@
+{
+  "schema": "v36_ARM_installation_saved_receipt_independent_review",
+  "status": "passed",
+  "checks": 364,
+  "failures": [],
+  "actual_installation_status": "installed_metadata_checked_not_calibrated_or_runtime_validated",
+  "installation_receipt_sha256": "42aaf27b35c9a5d275a4ec636f51455900ec19237674d0e3f707dc63fb5932a0",
+  "preflight_receipt_sha256": "5f1a68ae893875b9b24bc9d07b1e68564364ec1c9808054ac9347b6f319e6d4d",
+  "dependency_plan_sha256": "a32e1a00c8bdbf74241de3de236cdaef050567b26b9d591a7f57c65ab247e2b4",
+  "installer_sha256": "b013a7dc3985cc9b72ae64b650fc1ed888e7b7196df917bbce0c3c6f86dfe9a2",
+  "prior_correction_review_sha256": "8d6c7240439026fa7022ffeca0844c7c7a93402e81853bd453d8d9e0b6e555fe",
+  "first_attempt": {
+    "status": "failed",
+    "receipt_sha256": "80265ecc15caeb62f93afd1c6547a058c85c13479bbea69b51515c87056591a3",
+    "command32_log_sha256": "b53df6430a52c98f240c0b5219fab415b996c8c2f153e99f892f9a6526a141a7",
+    "failure_origin": "assembler dynamic loader could not locate libopcodes-2.38-system.so"
+  },
+  "commands_verified": 37,
+  "command_logs": [
+    {
+      "index": 0,
+      "file": "command-00.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "exit_code": 0
+    },
+    {
+      "index": 1,
+      "file": "command-01.log",
+      "sha256": "452108d56fb6cf2ec86a797b6b3012ef6df50f5708dc6b70c42b43ad12dc311c",
+      "bytes": 198,
+      "exit_code": 0
+    },
+    {
+      "index": 2,
+      "file": "command-02.log",
+      "sha256": "b8a7c7179dc17c6457246493e1b971101aa9dec9a32d2e0c8b2ff1c091c2c501",
+      "bytes": 223,
+      "exit_code": 0
+    },
+    {
+      "index": 3,
+      "file": "command-03.log",
+      "sha256": "5191e929063285d972c3466a9a6bbb313766c0b8cac647611da8ac939cf6292f",
+      "bytes": 220,
+      "exit_code": 0
+    },
+    {
+      "index": 4,
+      "file": "command-04.log",
+      "sha256": "83749e1a145962e4bc92ad0302f62543479187ac9462dbb7930ac440434ec2c8",
+      "bytes": 241,
+      "exit_code": 0
+    },
+    {
+      "index": 5,
+      "file": "command-05.log",
+      "sha256": "366fcc271ced3b0ea48e66955b8773e7da8bd4b8bb4f73f4ff2d4d56d4a2200b",
+      "bytes": 192,
+      "exit_code": 0
+    },
+    {
+      "index": 6,
+      "file": "command-06.log",
+      "sha256": "fc60b6762467ac2632b5128a4784566204e3df2b7d7ed30c4968170a2aed8bfb",
+      "bytes": 222,
+      "exit_code": 0
+    },
+    {
+      "index": 7,
+      "file": "command-07.log",
+      "sha256": "9e3367ceffccc7148edfc83564f0f56abeb83efef6e8973b31702b9c692024bb",
+      "bytes": 197,
+      "exit_code": 0
+    },
+    {
+      "index": 8,
+      "file": "command-08.log",
+      "sha256": "98c9e1c90a9a7e96469d1edb40a24341f0a36adab17e11d439203fd224020f77",
+      "bytes": 223,
+      "exit_code": 0
+    },
+    {
+      "index": 9,
+      "file": "command-09.log",
+      "sha256": "fddc4bf4dc14842e8a81c27e93f36bc78aab85f5610e0944d95fb161cca45f30",
+      "bytes": 176,
+      "exit_code": 0
+    },
+    {
+      "index": 10,
+      "file": "command-10.log",
+      "sha256": "582bcef9a18c4cd8135eab7352757f940480f81a30c4bfb0ee324c7d066ec308",
+      "bytes": 251,
+      "exit_code": 0
+    },
+    {
+      "index": 11,
+      "file": "command-11.log",
+      "sha256": "cc8ba35e1a55aff6699edf20cf8dca56a84c8f459457e601a83f038526c034a4",
+      "bytes": 244,
+      "exit_code": 0
+    },
+    {
+      "index": 12,
+      "file": "command-12.log",
+      "sha256": "1405f9ececc0954731248411435e795595a9b6f503c52d616de79ef429a76b5d",
+      "bytes": 226,
+      "exit_code": 0
+    },
+    {
+      "index": 13,
+      "file": "command-13.log",
+      "sha256": "e6de9e2758d6dd911d3f2f1989c01ff488b249611e668945922eae98203e2ed3",
+      "bytes": 232,
+      "exit_code": 0
+    },
+    {
+      "index": 14,
+      "file": "command-14.log",
+      "sha256": "2638c29a4da6d9826e5b1aedbd8398bb2b0f1d560ca52c20a239981a1d5b3498",
+      "bytes": 188,
+      "exit_code": 0
+    },
+    {
+      "index": 15,
+      "file": "command-15.log",
+      "sha256": "217fc9adfec369da7bd52f9eaee032edeb8cbaec333662810fbfd57c1153f95a",
+      "bytes": 215,
+      "exit_code": 0
+    },
+    {
+      "index": 16,
+      "file": "command-16.log",
+      "sha256": "a5befd36044ba257d2d2119f5fb6f8d3fe1f0ca132d887418f203158fe1d9aa5",
+      "bytes": 175,
+      "exit_code": 0
+    },
+    {
+      "index": 17,
+      "file": "command-17.log",
+      "sha256": "fc7dbe3044190beb0a1c9331588827a8da81afff752e595a6c6ab216f5bb21d2",
+      "bytes": 180,
+      "exit_code": 0
+    },
+    {
+      "index": 18,
+      "file": "command-18.log",
+      "sha256": "577abcfd075a2faad6e93cd3a3a4a7718f551abaaebaaf0443614a09e35b31a9",
+      "bytes": 182,
+      "exit_code": 0
+    },
+    {
+      "index": 19,
+      "file": "command-19.log",
+      "sha256": "38c5af3b1efdc700e1900ed6e967723e11d9f829d7c4039d2f4ac043835b0f05",
+      "bytes": 180,
+      "exit_code": 0
+    },
+    {
+      "index": 20,
+      "file": "command-20.log",
+      "sha256": "d6b6b65730af3dff63eeb06f15ae7091e3df418374367cbaa904d0fd16897fa2",
+      "bytes": 236,
+      "exit_code": 0
+    },
+    {
+      "index": 21,
+      "file": "command-21.log",
+      "sha256": "24f5c8b40639e76f4bbf77a2e727e52a617e526e63b8038d9a7af01fc80e0d80",
+      "bytes": 186,
+      "exit_code": 0
+    },
+    {
+      "index": 22,
+      "file": "command-22.log",
+      "sha256": "2972cc41665955472638108dc5b622c00ec9b2aff1ad079981b5e1c9fdc63583",
+      "bytes": 201,
+      "exit_code": 0
+    },
+    {
+      "index": 23,
+      "file": "command-23.log",
+      "sha256": "ca84983a5685ee5abc40631075a411aaaa38c2f50504c1d25d711fad82d1fe89",
+      "bytes": 203,
+      "exit_code": 0
+    },
+    {
+      "index": 24,
+      "file": "command-24.log",
+      "sha256": "c9e6ebf92e386321d32e8d1fe26b5213d8332ff3f236627d9216e9ebe4acc2c7",
+      "bytes": 203,
+      "exit_code": 0
+    },
+    {
+      "index": 25,
+      "file": "command-25.log",
+      "sha256": "c8fbd252599b94d8af9a98cb5dfc13d79bb5a84c0aad79b768575f1177effeff",
+      "bytes": 187,
+      "exit_code": 0
+    },
+    {
+      "index": 26,
+      "file": "command-26.log",
+      "sha256": "2b2cf0978b14b591fa7bd39d18fc5214add76d9aefa2edc8df8771575c3cca6c",
+      "bytes": 365,
+      "exit_code": 0
+    },
+    {
+      "index": 27,
+      "file": "command-27.log",
+      "sha256": "8ad8ddea5d23904e8a655605c772dad9d0c61c4d81992146336fa61bf6903796",
+      "bytes": 179,
+      "exit_code": 0
+    },
+    {
+      "index": 28,
+      "file": "command-28.log",
+      "sha256": "7710ff9a0e342603c4111c36c9fb68147340b14b907cff640a3f56fd5ed9d166",
+      "bytes": 224,
+      "exit_code": 0
+    },
+    {
+      "index": 29,
+      "file": "command-29.log",
+      "sha256": "39823b9735536be4c76a73cf0db5d928297ba74b91feb1bcae8c37a5b208470a",
+      "bytes": 228,
+      "exit_code": 0
+    },
+    {
+      "index": 30,
+      "file": "command-30.log",
+      "sha256": "75476f94a98a43a98ac089fb1fdef0f1859c6554820a3146bd7d7331e5c0862f",
+      "bytes": 188,
+      "exit_code": 0
+    },
+    {
+      "index": 31,
+      "file": "command-31.log",
+      "sha256": "6479dee321159b2da19cac362d1c3436570260bb328726ae68796c228370b4fc",
+      "bytes": 201,
+      "exit_code": 0
+    },
+    {
+      "index": 32,
+      "file": "command-32.log",
+      "sha256": "db567033fdb2edab553d04594258e2938d15dc9544e39384f98e3b149d260520",
+      "bytes": 1228742,
+      "exit_code": 0
+    },
+    {
+      "index": 33,
+      "file": "command-33.log",
+      "sha256": "e6bd5bdfa3f55c3852d7917bc2dec86d9eab1f03c977116a563152df5bc60f15",
+      "bytes": 193,
+      "exit_code": 0
+    },
+    {
+      "index": 34,
+      "file": "command-34.log",
+      "sha256": "6af78fded6075ea10ef5f003a9854f63ad9f10ff5ada7e04840a5365cc7879b6",
+      "bytes": 245,
+      "exit_code": 0
+    },
+    {
+      "index": 35,
+      "file": "command-35.log",
+      "sha256": "511def5b16e97a490e7fef845a5481ddb1cfd3b2119b442756192caffa608d87",
+      "bytes": 61,
+      "exit_code": 0
+    },
+    {
+      "index": 36,
+      "file": "command-36.log",
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "bytes": 30,
+      "exit_code": 0
+    }
+  ],
+  "fixed_wheels_installed": 31,
+  "native_optimizer_version": "0.3.8",
+  "native_optimizer_wheel_recorded": {
+    "source_sha256": "158bf9fda2e33bfe8ba1484f295cf25447921822f840de90831f7007af1295d3",
+    "wheel_sha256": "cfa7a200bae945b218b0a5ec97f73f9d04f2091abec350710847e9b974284998",
+    "wheel_file": "optimizer-source/onnxoptimizer-0.3.8/dist/onnxoptimizer-0.3.8-cp311-cp311-linux_aarch64.whl",
+    "wheel_bytes": 578786,
+    "MAX_JOBS": 2,
+    "external_pybind11": "2.11.1",
+    "protobuf_protoc": "built from bundled source"
+  },
+  "official_ARM_toolkit_version": "2.3.2",
+  "official_ARM_toolkit_recorded_sha256": "2793b0f4c008c13aae1d19c7cd9af891222d1bbe9e012ced05ec49d53240ed9c",
+  "metadata_versions_verified": 33,
+  "installed_versions": {
+    "MarkupSafe": "2.1.5",
+    "Pillow": "10.4.0",
+    "cmake": "3.26.4",
+    "coloredlogs": "15.0.1",
+    "fast-histogram": "0.14",
+    "filelock": "3.15.4",
+    "flatbuffers": "23.5.26",
+    "fsspec": "2024.6.1",
+    "humanfriendly": "10.0",
+    "jinja2": "3.1.4",
+    "mpmath": "1.3.0",
+    "networkx": "3.3",
+    "ninja": "1.11.1.1",
+    "numpy": "1.26.4",
+    "onnx": "1.16.1",
+    "onnxoptimizer": "0.3.8",
+    "onnxruntime": "1.16.0",
+    "opencv-python": "4.10.0.84",
+    "packaging": "24.1",
+    "protobuf": "3.20.3",
+    "psutil": "7.0.0",
+    "pybind11": "2.11.1",
+    "pytest-runner": "6.0.1",
+    "rknn-toolkit2": "2.3.2",
+    "ruamel.yaml": "0.18.6",
+    "ruamel.yaml.clib": "0.2.8",
+    "scipy": "1.11.4",
+    "setuptools": "70.1.0",
+    "sympy": "1.12",
+    "torch": "2.2.0",
+    "tqdm": "4.66.4",
+    "typing-extensions": "4.12.2",
+    "wheel": "0.43.0"
+  },
+  "native_build_seconds": 371.35593435401097,
+  "command_seconds_sum": 428.7279592450359,
+  "build_log_proofs": {
+    "C_GNU_11_4": true,
+    "CXX_GNU_11_4": true,
+    "C_ABI_done": true,
+    "CXX_ABI_done": true,
+    "external_pybind11_2_11_1": true,
+    "system_protobuf_off": true,
+    "protobuf_static": true,
+    "bundled_protoc_built": true,
+    "extension_built": true,
+    "first_failure_absent": true
+  },
+  "tool_library_path_correction": {
+    "process_local": true,
+    "expected_prefix": "SYSROOT/usr/lib/aarch64-linux-gnu",
+    "inherited_suffix_not_recorded": true,
+    "evidence": "Frozen installer and pure environment tests bind the supplied environment; the actual build log shows both compiler ABI checks succeeding."
+  },
+  "sources_before_after_equal_board_recorded": true,
+  "local_installer_source_independently_hashed": true,
+  "raw_logs_independently_hashed": true,
+  "package_wheel_and_GCC_bodies_independently_rehashed": false,
+  "shared_library_imports_verified": false,
+  "actual_SDK_import_verified": false,
+  "calibration_completed": false,
+  "quantized_model_compiled": false,
+  "NPU_runtime_validated": false,
+  "accuracy_validated": false,
+  "realtime_validated": false,
+  "reviewer_imported_SDK_or_models": false,
+  "reviewer_executed_installation_or_board": false,
+  "raw_receipts_modified": false,
+  "limitations": [
+    "Installed package versions and isolated venv identity are board metadata, not independent imports or filesystem inspection.",
+    "Wheel, SDK and native optimizer wheel payloads were not pulled for this review; their hashes are recorded/provenance-bound.",
+    "The successful bundled optimizer uses its own ONNX 1.13.0/protobuf sources; installed Python ONNX remains pinned 1.16.1 and protobuf 3.20.3.",
+    "Installation, dependency consistency and native build success do not prove SDK imports, PTQ calibration or a usable quantized model."
+  ],
+  "audit_correction": {
+    "initial_review_file": "installer-independent-review-r2.json",
+    "initial_review_sha256": "ad4fce3a5aa4ed622d81caff3e02d405fefae40ed78fedabacf84be5486a8359",
+    "initial_failure": "Auditor expected a bare protoc basename; actual successful build links protoc-3.20.1.0.",
+    "exact_log_proof": "[206/281] Linking CXX executable third_party/protobuf/cmake/protoc-3.20.1.0",
+    "raw_sources_and_receipts_unchanged": true
+  }
+}

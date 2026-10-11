@@ -1,0 +1,511 @@
+{
+  "schema": "v36_publication_review",
+  "status": "passed",
+  "base_public_commit": "75ec23ece2877d6bea05c61892d0c57bdbd4ca75",
+  "goal_complete": false,
+  "evidence": {
+    "static_staged_patch": {
+      "file": "/run/user/1000/edge-vggt-v36/output/public-static-review-r1.json",
+      "sha256": "0f065d3f02b96ed66b7c48c7088bbd9c5674f87b99841d25e3fdc35c84a40036",
+      "receipt": {
+        "schema": "v36_public_patch_static_review",
+        "status": "passed",
+        "checked_files": [
+          {
+            "file": "README.md",
+            "bytes": 83070,
+            "sha256": "02e6c8067751ebe02c39feb6c1aba038cf557468a51b3e734579e4c22dba31df"
+          },
+          {
+            "file": "THIRD_PARTY_NOTICES.md",
+            "bytes": 11266,
+            "sha256": "69e31ab43b4306504658b53a362ad5e98668b7dba3de6c8b38c245d1584035c0"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/LICENSE",
+            "bytes": 1088,
+            "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/README.md",
+            "bytes": 3660,
+            "sha256": "9d921c4cf32394aba781830480ba6f26a713cec36fc1b434053ee399a3cfef0a"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/audit-synthetic-tests-r1.json",
+            "bytes": 1202,
+            "sha256": "6faa56f2f064d06d02dca090faeba29f9801bfb4f16078902223493a9411b10d"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/audit-v36-dpvo-calibration.py",
+            "bytes": 15260,
+            "sha256": "33b6ad779e5c70d77d3d222c9d4200b8723c1cd6ba51ad4fd1c29450d403ad88"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/audit-v36-ptq-provenance.py",
+            "bytes": 12226,
+            "sha256": "abd4f4c47b7baf6f591202b770325c49e8649be1fb8f7f05645fccc0c0fc21f2"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/calibration-independent-review-r1.json",
+            "bytes": 3959,
+            "sha256": "e779fc8f4bc3008d4db84446350ba3a651b9dd29603e848c39baf8f7b3ef2757"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/calibration-policy.json",
+            "bytes": 3976,
+            "sha256": "7fde7e1635e8310b8782ddd6881a28aefa570eceafca0cb62e0809c3c5e2dcab"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/generate-v36-dpvo-calibration-board.py",
+            "bytes": 14279,
+            "sha256": "6da7358beea87520676083d52fa5171034cd10f8eaf31e47b9e753ab0aec4bb4"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/ptq-calibration-provenance-review-r1.json",
+            "bytes": 20745,
+            "sha256": "920e6fa6d3ed0869f1e941ace2658769c8a8083ea215aa1c4a56b8bd0f0abb0f"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/ptq-provenance-synthetic-tests-r1.json",
+            "bytes": 847,
+            "sha256": "925f5bbd38b4f07021f5b613f07242b356b6b94fab4e746c48fe38d4102cb115"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/source-freeze.json",
+            "bytes": 3856,
+            "sha256": "213d17b96d4cab295d78cce93c51e010517b26df8e85e90fa80a94c5d5933774"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/synthetic-tests-r1.json",
+            "bytes": 2032,
+            "sha256": "10bf90b6e1bc00fd78d72c2dfd7d15e5d5bbb26a43fde17bb337f0d1dfd32bc1"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/test_v36_calibration.py",
+            "bytes": 6549,
+            "sha256": "67711cf147c95a4bf2575ff4c6cdf2f6366e5cb801560a5c0162ea4d823aabc2"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/test_v36_calibration_audit.py",
+            "bytes": 3145,
+            "sha256": "50253838b15ebf4d1d70ad9aa409f085fb468d2ed88fbb029829eb912bb37dea"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_calibration/test_v36_ptq_provenance.py",
+            "bytes": 2886,
+            "sha256": "f73c212cd011e478647fdd00180d1009a936c15119a1d70750d41e80e2369755"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_ptq/README.md",
+            "bytes": 10355,
+            "sha256": "a06dd0a8269d36dd484deba019aa440002ade386b5cbfa9e3de6b72c035d92ab"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_ptq/install-v36-arm-toolchain-board.py",
+            "bytes": 15843,
+            "sha256": "b013a7dc3985cc9b72ae64b650fc1ed888e7b7196df917bbce0c3c6f86dfe9a2"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_ptq/installer-correction-independent-review-r1.json",
+            "bytes": 2438,
+            "sha256": "8d6c7240439026fa7022ffeca0844c7c7a93402e81853bd453d8d9e0b6e555fe"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_ptq/installer-independent-review-r2-corrected.json",
+            "bytes": 12071,
+            "sha256": "4db3ece2ca0b150d4303a48f89a542b5fafe58bad4798190215feaf9f3074535"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_ptq/io-query-independent-review-r1.json",
+            "bytes": 2587,
+            "sha256": "0459026f018bfad77769363f9cc783eed8e23d2e708f2e79ed8072984924269a"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_ptq/query-source-freeze-r1.json",
+            "bytes": 687,
+            "sha256": "19874684db30d3af2feb700838347b8224ac3ca8f75e1f3ae6dac76051f373ad"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_ptq/query-synthetic-tests-r1.json",
+            "bytes": 1393,
+            "sha256": "24e2789ffeef2a580e93ea92ac85776dda63bedeb818f3c7cb71a70a1150e751"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_ptq/query-v36-int8-io-board.py",
+            "bytes": 14514,
+            "sha256": "871f67c5a37ff23b703d173bb09234504a58fb16b8ace65e57991afe6f7e3d90"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_ptq/test_v36_installer_environment.py",
+            "bytes": 2451,
+            "sha256": "d9e31d19dab68ad7d5e78305b225d15f6b699dc90bf36961f73034c2ef6340cc"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_ptq/test_v36_int8_io_query.py",
+            "bytes": 7770,
+            "sha256": "2a6ad821e18d840f02c6e7c650fd5b57dc07dc7e867029a86f3a0c589f32a2c2"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/LICENSE",
+            "bytes": 1088,
+            "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/README.md",
+            "bytes": 7048,
+            "sha256": "4bf1a26f0e64d650701cfd96093b61e826d6a15cb5afb7e14c2328453605361a"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/ab-independent-review-r1.json",
+            "bytes": 10409,
+            "sha256": "31c5296e31ff87df694775a49d470c7d8035b472584132c76d8d8646d1d0199f"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/ab-synthetic-tests.json",
+            "bytes": 1042,
+            "sha256": "5f300fcc27e16a756820344143a06a1028360e9ecccaad77a9e0c7e8c977fa22"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/audit-v36-frame-cache-replay.py",
+            "bytes": 17232,
+            "sha256": "9f5f13b7ac702b8ae70a8a1bdbcb24d56820772ed3b3eda52aa9066e2f2ed255"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/audit-v36-frame-corr-ab.py",
+            "bytes": 25651,
+            "sha256": "52f3510cdd8159e11411e0b36c265cd24cea1bfdf679e26357b71bf80d27b36d"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/auditor-synthetic-tests.json",
+            "bytes": 1037,
+            "sha256": "5969aabd2580558aa0a29f4dc32bfbdc26a2fa4c122dd6b0b2ec4b1b3fe75af6"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/build-synthetic-tests.json",
+            "bytes": 736,
+            "sha256": "ddaa68990781f37a8ae6dee83bf8662a6fc44d4f58959cacfcda5dcadf5506ac"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/build-v36-frame-corr-board.py",
+            "bytes": 7063,
+            "sha256": "b1f2553aa0e7786dd1343288ea67dd05d5b6e9f470c88693a6134d5d82756d2d"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/cache-source-freeze.json",
+            "bytes": 1023,
+            "sha256": "9cd65e3468d6d60a0538298eb60adb3b00482dea73ffd78dc70c7c6b75cb5de8"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/cache-synthetic-tests.json",
+            "bytes": 1727,
+            "sha256": "d1a5e8dd3cb81e79ccfb7e79b5f07bcdba91786af02e31cc7d585beeca242d8c"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/dpvo_frame_corr.cpp",
+            "bytes": 6803,
+            "sha256": "a04ab5a4b86cfd189ef194893b9b07c06742e21141056cc94a120b42c9d2899d"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/dpvo_frame_corr.h",
+            "bytes": 2187,
+            "sha256": "55a39130998285aaf50d0e2f5b03660f5ad19f629907cea3ef850f552eb10e76"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/dpvo_frame_corr.py",
+            "bytes": 20715,
+            "sha256": "9743962325ba1c4ada689769eaf800a617ba1f46f4602062a6dab3b23b5bdf48"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/frame-cache-independent-review-r1.json",
+            "bytes": 155003,
+            "sha256": "9eca606226a10bfbab44db9a9c1cbdd229b8bfffd7fe9829bf7cea0292fdec95"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/full-replay-auditor-synthetic-tests-r1.json",
+            "bytes": 969,
+            "sha256": "de07f8bd91a511ab1ba6da88c5b936502a7dc1f92651b4ac82b659cad49143dd"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/full-replay-source-freeze-r2.json",
+            "bytes": 645,
+            "sha256": "154f32440be76ca9fde33873934ca76a6fc347c60e872875a1def6021b141941"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/run-v36-fast-frame-cache-board.py",
+            "bytes": 8098,
+            "sha256": "bf34cbb2e4396f18e8160a9eab1dae2f482b3f0fda0cba8c5942e7ede0e85c7e"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/run-v36-frame-corr-ab-board.py",
+            "bytes": 19166,
+            "sha256": "531777cd463d4ace4299960a7034cfe42b108db68391c3241cbc6d616a560c9d"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/test_audit_v36_frame_cache_replay.py",
+            "bytes": 3569,
+            "sha256": "f51bdac019590f22b7ac9d1ef6aa6c9000b7129f2782db28552ee1b85ba135a8"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/test_v36_ab_audit.py",
+            "bytes": 5242,
+            "sha256": "2c5efe5e9671e724cd57ca6c0b08645f21f8e4f13e72d1e20e2bed3c611cdd6e"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/test_v36_ab_driver.py",
+            "bytes": 5610,
+            "sha256": "ee30e8c5a3f081e890d1c67ec3e8d029308f34d7e03a5f8c301a0023a83186d4"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/test_v36_build.py",
+            "bytes": 2044,
+            "sha256": "9b76970f208b1c56704d349e8160d0f110142ddf16fb4c809150f78843ca7071"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/test_v36_fast_frame_cache_wrapper.py",
+            "bytes": 9243,
+            "sha256": "6ef02c22ea88e298e67ab52fcaccb911d02bab0990476436e503345323787283"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/test_v36_frame_corr.py",
+            "bytes": 15327,
+            "sha256": "3f404d6f478018fba14cfd80e3debbd0dbebe00c26db04edfc53347d5d5e433d"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/wrapper-synthetic-tests-r2.json",
+            "bytes": 1776,
+            "sha256": "0728ce0ebb063ad8f94cb6f304833a86259033c61e33041d43c786c24f5a03f4"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/LICENSE",
+            "bytes": 1088,
+            "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/RUN.md",
+            "bytes": 5353,
+            "sha256": "d9ff4ec28b6f88efd8a8d28d01128ccfac8bbe9b838424a2b86c4edc487c9db5"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/audit-v36-fast-update-capture.py",
+            "bytes": 15080,
+            "sha256": "29041c24c5eb39d46f1f6bd8b2a55d924ba5cb5f8fc54eb3bea752f8505278fa"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/capture-audit-synthetic-tests-r1.json",
+            "bytes": 1246,
+            "sha256": "055b91a502e0b5fa66163272fefc8b61a206a0141106d4a4f22ae1e8f9e8e08f"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/capture-independent-review-r1.json",
+            "bytes": 51434,
+            "sha256": "aaf9fd58729519674b3995a4036e2791d160bd5d10dbc8bf05f42528203d3b98"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/capture-v36-fast-update-board.py",
+            "bytes": 18891,
+            "sha256": "51b9d830762c1c1f701ca38a13378b874240a04f3d7e98181fa397ae1aa8a5d2"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/full-M48-update-contract.json",
+            "bytes": 24979,
+            "sha256": "5af1b9bedd5697746668201f6aa8bcbec8ef63a994ffe692df5b08dd39ae6a2f"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/source_frame_batches.py",
+            "bytes": 11584,
+            "sha256": "0f427739037e2178dddc4631a32fb602ac0a2ddc259e48e147028604ae6733f1"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/source_frame_plan.py",
+            "bytes": 5985,
+            "sha256": "04e240c2c35bd1359dbe5649fb038490a0a7ff99654d8d112ad7c83acc87ac2e"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/source_frame_update_channel_first.py",
+            "bytes": 14196,
+            "sha256": "7d89d91c64158d34f72b17091ebeaf06369ef71cb330495f6c3ec39092035c57"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/synthetic-tests-r1.json",
+            "bytes": 2453,
+            "sha256": "b8642151a285bc81ccc96b32fb45a5f711c7cb95b37277954e54b35293c29bf3"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/test_audit_v36_fast_update_capture.py",
+            "bytes": 6472,
+            "sha256": "6ef8c7f57ac63c3b850abe3b51679b8ec2832465d7a53dbef62e9a88d4f7d578"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/test_capture_v36_fast_update.py",
+            "bytes": 7419,
+            "sha256": "bd4e5b704c9b6c0c4d3fe6633cee9d7faf507ecde760fd28eb23e38c6148f8d9"
+          },
+          {
+            "file": "deploy/rk3588/validation/dpvo_grouped_update/test_source_frame_batches.py",
+            "bytes": 10869,
+            "sha256": "85374a19135c3ede66803a81f238d3fb84a57ecf7293348ec8f6cc997a9e14d9"
+          },
+          {
+            "file": "docs/ENGINEERING_NOTES.md",
+            "bytes": 101492,
+            "sha256": "aa2669f94113dc106df564d961c8fa3f1c99bdea85504f19a0685e8a332dfa1d"
+          },
+          {
+            "file": "results/board_ptq_v36.json",
+            "bytes": 406068,
+            "sha256": "64c47ceb756bb829f5391ff13b798a81410f8040b1e3efcf8419f54dc938b042"
+          },
+          {
+            "file": "results/dpvo_frame_cache_v36.json",
+            "bytes": 2720767,
+            "sha256": "e3915b58b854f9e0d5f0175c4ddd0f52d3c1facce619fe059e9caa0d1fabafd3"
+          },
+          {
+            "file": "results/dpvo_grouped_update_capture_v36.json",
+            "bytes": 3182826,
+            "sha256": "5d1a02e61d23c262e5e43f614f87d1a6a9815fdb12020450daf9ef5784675d06"
+          },
+          {
+            "file": "results/synthetic_tests_v36.json",
+            "bytes": 3021,
+            "sha256": "a932736f4c9084f76647563a696fb4ae80e3120caf303ae55528c6c16ce48d55"
+          }
+        ],
+        "local_markdown_links_checked": 243,
+        "errors": [],
+        "scope": "Changed public text only: Python AST, strict JSON, local links, excluded artifact types, credential-shaped strings and whitespace.",
+        "model_or_SDK_OR_ORT_executed": false,
+        "boundaries": "Static publication review is not inference, license legal advice, runtime accuracy or real-time validation."
+      }
+    },
+    "independent_claim_review": {
+      "file": "/run/user/1000/edge-vggt-v36/review/publication-review-r1.json",
+      "sha256": "b1b480d059910e227527b2a5dda6329e93a73977e8c4acd342a901317feb30a5",
+      "receipt": {
+        "schema": "v36_cache_and_M48_capture_publication_readonly_review",
+        "status": "passed_no_current_blockers",
+        "reviewed_file_sha256": {
+          "README.md": "02e6c8067751ebe02c39feb6c1aba038cf557468a51b3e734579e4c22dba31df",
+          "docs/ENGINEERING_NOTES.md": "aa2669f94113dc106df564d961c8fa3f1c99bdea85504f19a0685e8a332dfa1d",
+          "results/dpvo_frame_cache_v36.json": "e3915b58b854f9e0d5f0175c4ddd0f52d3c1facce619fe059e9caa0d1fabafd3",
+          "results/dpvo_grouped_update_capture_v36.json": "5d1a02e61d23c262e5e43f614f87d1a6a9815fdb12020450daf9ef5784675d06"
+        },
+        "checks": [
+          {
+            "name": "public cache review embedded exact",
+            "passed": true
+          },
+          {
+            "name": "cache receipt original SHA exact",
+            "passed": true
+          },
+          {
+            "name": "public capture review embedded exact",
+            "passed": true
+          },
+          {
+            "name": "capture receipt original SHA exact",
+            "passed": true
+          },
+          {
+            "name": "both realtime/candidate unaccepted",
+            "passed": true
+          },
+          {
+            "name": "capture grouped neural execution not claimed",
+            "passed": true
+          }
+        ],
+        "review_scope": [
+          "README v36 only",
+          "engineering records57/58 only",
+          "exact saved review embedding and current numeric/scope claims"
+        ],
+        "not_repeated": [
+          "component AB saved-array audit",
+          "model/native/ORT/BA/board work",
+          "actual capture audit execution",
+          "GT or trajectory accuracy evaluation",
+          "toolchain/PTQ notes55/56"
+        ],
+        "scope_findings": [
+          "All192 saved per-observation lifecycle/pose/BA values and separate EOF exact versus frozen v35; snapshot hashes compared as recorded metadata only",
+          "New269.215s vs old284.058s explicitly separate uncontrolled runs; fresh P952.170s, not physical camera latency or20Hz",
+          "Original encoder FP32 rejection and defaultVGGT preserved; DPVO is a separate learned-front research path",
+          "Capture three fullM48 inputs/gold,242checks,full group pack/scatter and unchanged static MAC budget; no grouped neural orB>1 SDK acceptance"
+        ],
+        "root_files_mutated": false
+      }
+    },
+    "synthetic_tests": {
+      "file": "/run/user/1000/edge-vggt-v36/public-snapshot/results/synthetic_tests_v36.json",
+      "sha256": "a932736f4c9084f76647563a696fb4ae80e3120caf303ae55528c6c16ce48d55",
+      "receipt": {
+        "kind": "targeted_public_v36_synthetic_verification",
+        "status": "passed",
+        "unique_tests_final_passed": 150,
+        "final_unresolved_failures": 0,
+        "final_unresolved_skips": 0,
+        "real_model_OR_ORT_OR_SDK_executed": false,
+        "board_job_executed": false,
+        "scope": "Generated tiny arrays, generic native scalar compilation and fake SDK/callback tests only.",
+        "rounds": [
+          {
+            "round": 1,
+            "log_sha256": "fe0bb2c08d9771ea501e25197de1097f19d83915f46c7502a6df2cc2a7861d7d",
+            "stdout": "........................................................................ [ 70%]\n..............................                                           [100%]\n102 passed in 1.37s\n"
+          },
+          {
+            "round": 2,
+            "log_sha256": "7fb6472ebbd4c2076c14b39e2a58e20626276b5a548320384d0312495a083214",
+            "stdout": ".................                                                        [100%]\n17 passed in 0.16s\n"
+          },
+          {
+            "round": 3,
+            "log_sha256": "eaeb2a78616a02324a67331505c406a4e1533738445e88c15517c7007e069dc8",
+            "stdout": "...........ssss.......                                                   [100%]\n18 passed, 4 skipped in 0.08s\n"
+          },
+          {
+            "round": 4,
+            "log_sha256": "044af7835ebc0e80d6e13d203b5537ecf4f236c8dbcf40820ee786efac8e4bd0",
+            "stdout": "................                                                         [100%]\n16 passed in 0.03s\n"
+          },
+          {
+            "round": 5,
+            "log_sha256": "808216c1e906665a6311eea3399af7e63a60328f6537b9bcf2f6f7027e943f4a",
+            "stdout": ".........                                                                [100%]\n9 passed in 0.15s\n"
+          }
+        ],
+        "notes": [
+          "102 initial source/helper tests passed; 17 AB/capture audit tests passed; 6 new provenance tests passed; 16 final IO query tests passed; 9 replay-auditor tests passed.",
+          "Round 3 had four ABI-helper location skips in the public test layout; the test default was corrected to the adjacent validation ABI helper. Round 4 reran all 16 IO query tests with zero skips.",
+          "Three public test harness defaults differ from private historical test receipts solely to resolve public sibling paths: frame correlation parent, original installer parent, IO query ABI. Runtime source hashes remain frozen.",
+          "Historical source-freeze receipts identify the exact private files at their original time; later public README status updates do not rewrite those receipts."
+        ],
+        "harness_adaptations": [
+          {
+            "file": "deploy/rk3588/validation/dpvo_frame_cache/test_v36_frame_corr.py",
+            "sha256": "3f404d6f478018fba14cfd80e3debbd0dbebe00c26db04edfc53347d5d5e433d"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_ptq/test_v36_installer_environment.py",
+            "sha256": "d9e31d19dab68ad7d5e78305b225d15f6b699dc90bf36961f73034c2ef6340cc"
+          },
+          {
+            "file": "deploy/rk3588/validation/board_ptq/test_v36_int8_io_query.py",
+            "sha256": "2a6ad821e18d840f02c6e7c650fd5b57dc07dc7e867029a86f3a0c589f32a2c2"
+          }
+        ]
+      }
+    }
+  },
+  "scope": "Review of source, metadata and claims; no new real neural inference, SDK, calibration or board job executed by publication checks.",
+  "exclusions": [
+    "Weights, ONNX/RKNN, native/SDK binaries, wheels and raw dataset/feature arrays are not published."
+  ],
+  "limitations": [
+    "The publication receipt itself is excluded from its self-referential file-hash list.",
+    "Source and model licensing remain separate; original default VGGT and rejected candidates remain unchanged."
+  ]
+}

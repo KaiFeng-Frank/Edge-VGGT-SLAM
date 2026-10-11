@@ -1,0 +1,18 @@
+{
+  "schema": "v36_PTQ_provenance_synthetic_tests",
+  "status": "passed",
+  "source_sha256": {
+    "audit-v36-ptq-provenance.py": "abd4f4c47b7baf6f591202b770325c49e8649be1fb8f7f05645fccc0c0fc21f2",
+    "test_v36_ptq_provenance.py": "f73c212cd011e478647fdd00180d1009a936c15119a1d70750d41e80e2369755"
+  },
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "pytest_seconds": 0.02,
+  "exit_code": 0,
+  "raw_summary": "6 passed in 0.02s",
+  "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/run/user/1000/edge-vggt-v36/calibration/tmp /home/frank/miniconda3/envs/active-gs/bin/python -B -m pytest -q -p no:cacheprovider --basetemp=/run/user/1000/edge-vggt-v36/calibration/pytest-ptq-provenance-r1 /run/user/1000/edge-vggt-v36/calibration/test_v36_ptq_provenance.py",
+  "actual_image_processing": false,
+  "model_forward": false,
+  "board_execution": false
+}

@@ -487,3 +487,55 @@
 **依赖证据：** 固定 RKNN Toolkit2 2.3.2 的 ARM64 CPython 3.11 requirements 要求 Torch `>=1.13.1, <=2.2.0`；已有板端 Torch 2.3.1 不在该范围，不能因为 x86 编译环境使用 2.4.0 成功就沿用。已按官方 wheel/PyPI 元数据整理隔离环境的 URL、版本、大小和 SHA。固定 `onnxoptimizer==0.3.8` 在检查的来源中没有所需 aarch64 wheel；官方 sdist 自带 ONNX、protobuf/protoc 和 pybind11 源码，但仍需本地构建。源码检查发现其内置 pybind11 为 2.9.2，准备使用独立 2.11.1 配合 CPython 3.11，不改原归档；CMake、Python.h 和项目已有 GCC/sysroot 也须核对。
 
 **处理与边界：** 准备脚本在实际安装/PTQ 入口先检查 Linux、aarch64 和 RK3588/S device tree；使用新 venv，不覆盖现有推理环境。下载与本地构建绑定文件身份，限制构建并发，保留失败产物；INT64 patch 索引不得为了通过校准改成 float。**本轮仅完成元数据、源码检查及合成/fake SDK 验证，未实际安装、量化或生成 INT8 模型。** 混合 FP32/INT64 校准输入是否被 SDK 正确保留、校准集是否代表场景、最终算子精度与轨迹性能仍待实测。SDK 完整 wheel 的 SHA256 也要在下载后补齐，当前只有固定 Git blob 与 metadata 身份。[准备源码与明确状态](../deploy/rk3588/validation/board_ptq/README.md)、[官方出处及依赖收据](../results/board_ptq_preparation_v35.json)。
+
+## 55. sysroot 指向目标库，但编译器子工具仍需自己的运行库
+
+**实际故障：** ARM64 隔离安装 r1 已装完 31 个固定 wheel，构建 `onnxoptimizer 0.3.8` 时却在 CMake 编译器 smoke 阶段失败。第一条有效错误来自 GCC 调起的 assembler：`aarch64-linux-gnu-as` 找不到 `libopcodes-2.38-system.so`。只验证 gcc/cc1plus 能运行，不能覆盖整个工具链。
+
+**原因与修复：** `--sysroot` 指定目标头文件和链接库，`-B`、PATH 选择工具路径；它们不配置子工具 ELF 加载器的共享库搜索路径。保留 r1 日志与部分 venv，另建 r2 venv，仅在构建子进程的 `LD_LIBRARY_PATH` 前置项目 sysroot 的 `usr/lib/aarch64-linux-gnu`，保留原非空路径，避免引入表示当前目录的空项。原推理环境和全局库配置不变。三项测试覆盖缺失、空值和已有路径，其他环境键值与原 installer 相同。
+
+**验证：** r2 的 37 条实际命令均成功，完成固定依赖、板端原生 optimizer wheel、官方 ARM Toolkit2 2.3.2 安装；metadata preflight 核对 33 个版本，`pip check` 通过。原生构建用时 **371.356 s**，日志确认 GNU 11.4.0、外部 pybind11 2.11.1 和内置 `protoc-3.20.1.0`。内置构建 ONNX 为 1.13.0，与 Python 环境 ONNX 1.16.1 分别记录。保存日志独审 **364 项、0 失败**；第一次审计误把带版本的 protoc 名称判为缺失，保留失败收据并修正匹配规则，未改原日志。安装 preflight 本身不验证共享库 import；随后独立的实际 PTQ 才验证了 SDK 校准构建路径，两个阶段不混为一个结论。[修正源码](../deploy/rk3588/validation/board_ptq/install-v36-arm-toolchain-board.py)、[失败、重试和安装证据](../results/board_ptq_v36.json)。
+
+**传输补充：** 本板的旧 ADB shell 还会在约 4 KB 的完整启动参数处直接报 `shell command too long`；另有远程 Python 失败但 ADB 退出码为零的历史情况。完整回放改为生成并保存可哈希的 `launch-board.sh`、推送后短命令执行，同时核验板端 JSON 的最终状态与清理记录。shell 退出码和“文件已推送”都不代替任务成功；第一次过长命令没有执行模型，未计入回放样本。[传输收据](../results/dpvo_frame_cache_v36.json)。
+
+## 56. 板端 PTQ 要绑定完整输入合同，编译成功不等于量化模型验收
+
+**固定采样：** 原稀疏编码器同时接收 FP32 BGR 图像和 INT64 patch 索引，必须保持输入顺序、dtype、索引顺序与重复项。预声明从 TUM fr1_xyz 的 798 个条目取零基序号 `256+16*i`，共 32 张、末项 752；与回放的 0–191 帧不重叠，不读 GT、不按像素或模型输出来选图。两组仍来自同一序列，不能称独立场景。板端按原 K/D 去畸变、裁到 464×608、仅一次 `2*(x/255)-0.5`；保留 BGR，不另作 RGB 交换或缩放。
+
+**随机数与身份：** 持久 CPU Generator seed 0 仅对选中样本依次消费 x、y、原随机深度；深度只做消费审计，不输入编码器。未选帧不消费随机数，所以这不是完整在线回放的 RNG 状态。保存 centers、RNG 接缝、每份文件/raw SHA 和有序 `dataset.txt`。32 张准备耗时 **2.589 s**、记录峰值 RSS **229.547 MiB**，完整产物 **109,036,861 B**。NumPy 独审 **1,787 项、0 失败**，核对采样身份、31 个状态接缝、160 个 sampling 行和可由 centers 推导的索引哈希。主机未读取 64 个 NPY 本体，也未重做预处理或抽样；图像本体身份以板端收据绑定。[固定 policy、生成器和独审](../deploy/rk3588/validation/board_calibration/README.md)。
+
+**实际 PTQ：** 新隔离 ARM 环境在 RK3588S CPU 上完成 `RKNN.build(do_quantization=True)`，用的是原稀疏 context 图，未使用历史被拒绝的空间归约父图。32 行 FP32 图像/INT64 索引保持原合同，SDK 配置采用 identity mean/std、无 RGB 交换；校准与 build 用时 **60.291 s**，记录峰值 RSS **1,170 MiB**，导出 **12,491,378 B** RKNN，config/load/build/export 均返回零，release 完成。模型 SHA 为 `6b11d6643a25a4bf9de1f1f2f0ecc607e20d7c0755e9262c91874509b18e9e42`，模型仅留在板端，未公开权重或二进制。
+
+**验收边界：** INT8 请求、成功编译、实际部署 I/O、内部算子精度、原 CPU 数值门槛、轨迹与完整耗时是不同证据。校准会执行模型，本次实际校准仅在板端；不能用主机“转换”名义规避这一约束。编译收据不证明量化精度、全 INT8 placement 或实时 SLAM，也不表示替换默认 VGGT。后续 I/O 查询与部署推理须另留收据。[安装、校准、PTQ 原始证据和来源 SHA](../results/board_ptq_v36.json)。
+
+**实际接口查询：** 随后独立完成 init→query→destroy，未调用推理。新模型的图像输入确为 NHWC INT8，两个输出也为 INT8；patch 索引仍是 INT64、UNDEFINED 格式、scale=1/zp=0。fmap 的逻辑原生大小为 2,256,896 B，带 stride 存储为 2,375,680 B，后续 `want_float=1` 输出应另核 FP32 逻辑大小，不能照搬原生存储长度。接口查询不证明内部全 INT8 placement 或数值正确。生成收据到实际 PTQ 的来源独审另有 **670 项通过**，逐项绑定 32 行、64 个文件的 SHA、大小、顺序及 index min/max；未把 metadata 核对说成重新读取了所有 NPY。
+
+## 57. 不可变帧缓存能避免历史特征重复准备，但整机收益仍受其他阶段限制
+
+**根因与修复：** 原 correlation 缓存以整组 source/target frame ID 及顺序为 key。新增、重排或删除帧会重建整个 context，重复拼接历史 gmap、转换 fmap 布局和计算 level-4 平均池化。新实现按稳定 frame ID 与不可变数组对象保存独立 native 快照，查询时只组合当前顺序的 handle 表；新增帧准备、删除帧释放，原 `kk/M`、`kk%M`、`jj` 映射及原边序不变。沿用同一 FP32 点积、双线性、零边界和池化实现，编译保持 `-fno-fast-math -ffp-contract=off`。query、驱逐、reset、close 共用锁，返回数组有独立 ownership，序列切换必须 reset；输入及其别名在保留期间不可修改。
+
+**组件证据：** 板端三份真实 M96 特征做首次两帧、增帧、重排、删中间帧四个场景，每场 AB/BA/AB/BA，共 **32 次调用**。新旧八个代表输出逐字节一致，相对原 CPU 参考全元素通过 `rtol=1e-4, atol=1e-5`；最大绝对差 **2.8610e-6**。首次 callback 的旧→新耗时分别为 **13.238→12.706、46.566→32.177、62.747→42.508、35.051→19.803 ms**。累计只准备三帧，场景间新增准备为 2/1/0/0；最后三个 handle 全部释放。NumPy 独审 **1,337 项通过**，重读 16 个 NPZ 和八个代表输出；其余 24 次重复核对保存的完整数组 hash，未冒充另有 24 份 raw 数组。
+
+**完整路径：** 另一次普通 M48 FAST 回放只替换缓存，保留原 Update、BA、RNG 和历史诊断 NPU 编码器。192 张输入产生 **179 个 fresh 位姿**，回放 **269.215 s（0.665 Hz）**；fresh 软件处理 P95 **2.170 s**，EOF 工作另计 **22.809 s**。历史 v35 为 284.058 s、0.630 Hz、P95 2.380 s。全部 192 帧中除本次时钟外的位姿、准入/删帧和 BA 诊断，以及 EOF 重建结果精确一致；source/input manifest、RNG、94 项原参数和记录的状态数组哈希保留一致。保存 JSON 独审 **1,607 项通过**，没有重读本次完整 feature/snapshot 数组或重新跑 GT，所以本条不新增原 VGGT 精度结论。
+
+| 在线累计阶段，包含初始化与 motion probe | v35（s） | 新帧缓存（s） |
+| --- | ---: | ---: |
+| correlation callback 内部总量 | 52.136 | 26.794 |
+| 其中 preparation | 18.076 | 1.791 |
+| 其中 native query | 22.244 | 24.893 |
+| 原 Update 外层 | 147.293 | 155.975 |
+| 原 BA | 17.348 | 17.591 |
+
+preparation/query 是 correlation 的嵌套项，不再次相加。两次不是同期交错且未控温控频：历史特征准备的工作确实减少，但总回放差值不能全部归因于缓存，Update 在新运行中反而更慢。新缓存累计准备 **192 帧**、命中 **2,365 次**、驱逐 175 帧，最终销毁 192 个 handle、保留零字节；峰值 native payload **166,820,864 B**，总进程 RSS **949.781 MiB**，历史 RSS 为 922.297 MiB。缓存上限只涵盖自有 native payload，不包含调用方 feature、Python metadata 和 query 输出；复用并不免费。
+
+**下一步边界：** 主要耗时仍在完整 Update 与相关性查询。该短序列、16 GB 板端回放没有物理相机队列、30 分钟、稠密地图或 8 GB 验收；0.665 Hz 也未达到实时要求。历史编码器的原 FP32 拒绝继续保留，默认 VGGT 不变，不增加 ORB/LK/PnP。[缓存源码及复现合同](../deploy/rk3588/validation/dpvo_frame_cache/README.md)、[实际构建、AB、完整回放和独审](../results/dpvo_frame_cache_v36.json)。
+
+## 58. 完整图分组验证需要同一次原调用的输入和输出，不能拿单块代替整图
+
+**问题：** 历史 D10/M96 单源块 SDK 耗时约几十毫秒，但 FAST 的 M=48 完整图在增长、删帧后有不同源帧数、邻居数和边序。乘一个估计块数或复用 B=1 的端口假设，无法证明完整图速度、精度或生命周期正确。分组还必须保留 c1→c2 的状态依赖和两类 SoftAgg 的完整归约范围。
+
+**实际捕获：** 在原 v35 完整 192 帧诊断入口上只增加观测记录，预声明取源观测 **13、127、191** 的第一个完整在线 Update，在 BA 前保存真实输入与原输出。原 callback 每次恰好执行一次，输出原样返回；motion probe 和 EOF 不能补齐缺失样本。实际共 215 次原调用，三份图分别为 **3,072 / 7,248 / 10,128 边**、8 / 13 / 17 个保留源帧；六个输入/gold NPZ 共 **170,193,896 B**，保留在实验存储，不公开特征数组。完整回放中的哈希、拷贝和存盘开销单列，捕获运行的耗时不作为普通性能结果。
+
+**可复用合同：** 每个源帧保留全部 D 个目标与 48 个 patch；只把相同 D 的完整源帧组装成 `[B,C,D,48]`，不补零、不删邻居、不跨源归约。实际三图分别产生 **1 / 5 / 10 个桶**，初始化图可以是真实 B8/D8/M48。每桶的输出先暂存，确认快照身份未变、所有桶成功后才按原边序整体还原；失败时不提交部分 recurrent 状态。geometry/features/graph 的 revision 是捕获器根据实际内容建立的序号与哈希，不冒充原 core 没有暴露的全局地图 revision。
+
+**验证与边界：** 保存数组独审 **242 项通过**，重读全部六个文件、核 file/raw SHA、`inp == frame_contexts[kk]`、完整拓扑与分桶后原边序 round-trip。它没有重新执行原 gold，也没有执行真实分组 Torch/ORT/SDK。三个完整图仅原 Linear 的静态预算就有 **8.359 / 19.680 / 27.492 GMAC**，分组没有减少这些乘加。末图完整 FP32 输入加输出为 **82,563,456 B**；后续必须统计全部桶的打包、完整 I/O、scatter 和原 FP32 门槛，不能把历史单块的倒数称为 fresh 位姿吞吐。新 SDK 支持 B>1 仍须单独建立实际格式、stride、输出 ownership 和释放合同。[捕获及分组源码](../deploy/rk3588/validation/dpvo_grouped_update/RUN.md)、[实际捕获、完整图预算和保存数组独审](../results/dpvo_grouped_update_capture_v36.json)。

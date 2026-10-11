@@ -1,0 +1,55 @@
+{
+  "schema": "v36_DPVO_calibration_synthetic_tests",
+  "status": "passed",
+  "created_utc": "2026-10-11T07:25:41.377648+00:00",
+  "command": "env PYTHONDONTWRITEBYTECODE=1 TMPDIR=/run/user/1000/edge-vggt-v36/calibration/tmp /home/frank/miniconda3/envs/active-gs/bin/python -B -m pytest -q -p no:cacheprovider --basetemp=/run/user/1000/edge-vggt-v36/calibration/pytest-r1 /run/user/1000/edge-vggt-v36/calibration/test_v36_calibration.py",
+  "result": {
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "pytest_seconds": 1.13,
+    "stdout_summary": "14 passed in 1.13s"
+  },
+  "source_files": {
+    "generate-v36-dpvo-calibration-board.py": {
+      "sha256": "6da7358beea87520676083d52fa5171034cd10f8eaf31e47b9e753ab0aec4bb4",
+      "bytes": 14279
+    },
+    "calibration-policy.json": {
+      "sha256": "7fde7e1635e8310b8782ddd6881a28aefa570eceafca0cb62e0809c3c5e2dcab",
+      "bytes": 3976
+    },
+    "test_v36_calibration.py": {
+      "sha256": "67711cf147c95a4bf2575ff4c6cdf2f6366e5cb801560a5c0162ea4d823aabc2",
+      "bytes": 6549
+    },
+    "README.md": {
+      "sha256": "cafb9fc31f6cf8d98ea900d4a371293902ed6b64ed4729e5cd6230fcd58216e5",
+      "bytes": 3523
+    }
+  },
+  "scope": {
+    "synthetic_pixels_and_fake_undistortion": true,
+    "small_CPU_rng_draws_only": true,
+    "real_image_processing": false,
+    "neural_forward": false,
+    "ORT_forward": false,
+    "board_execution": false,
+    "GT_read": false
+  },
+  "coverage": [
+    "fixed 32 calibration indices and separation from first 192 evaluation frames",
+    "RGB timestamp/path/population guards",
+    "original K/D crop and frozen once-only BGR normalization on synthetic buffers",
+    "original x then y then depth CPU RNG draws and state audit",
+    "INT64 row-major patch indices preserving order/repetitions",
+    "source-root symlink escape rejection",
+    "host guard before input/output actions",
+    "exact output-payload budget"
+  ],
+  "extra_checks": {
+    "python_AST_files": 2,
+    "README_bash_blocks": 1,
+    "bash_n_passed": true
+  }
+}

@@ -1,0 +1,6543 @@
+{
+  "schema": "v36_frame_cache_replay_independent_JSON_audit",
+  "status": "passed_saved_JSON_exact_baseline_reproduction_not_accuracy_or_realtime",
+  "checks": [
+    {
+      "name": "externally pinned v35 baseline receipt",
+      "passed": true
+    },
+    {
+      "name": "completed frozen cache wrapper and parent identities",
+      "passed": true
+    },
+    {
+      "name": "exact wrapper raw/final receipt SHA chain",
+      "passed": true
+    },
+    {
+      "name": "candidate finally restore and source chain unchanged",
+      "passed": true
+    },
+    {
+      "name": "v36 real scope and terminal identity",
+      "passed": true
+    },
+    {
+      "name": "wrapper changes only declared provenance/schema labels",
+      "passed": true
+    },
+    {
+      "name": "final run bound to exact wrapper and unedited parent body",
+      "passed": true
+    },
+    {
+      "name": "all original source images/sensor timestamps same frozen manifest",
+      "passed": true
+    },
+    {
+      "name": "cache original source/inputs and cleanup",
+      "passed": true
+    },
+    {
+      "name": "cache original 94 weight metadata stable",
+      "passed": true
+    },
+    {
+      "name": "cache original FP32 rejection retained without clipping/fallback",
+      "passed": true
+    },
+    {
+      "name": "cache experimental source and acceptance scope",
+      "passed": true
+    },
+    {
+      "name": "cache all requested observations retained",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 0",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 1",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 1",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 2",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 2",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 3",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 3",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 4",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 4",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 5",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 5",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 6",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 6",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 7",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 7",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 8",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 8",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 9",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 9",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 10",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 10",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 11",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 11",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 12",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 12",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 13",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 13",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 14",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 14",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 15",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 15",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 16",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 16",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 17",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 17",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 18",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 18",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 19",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 19",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 20",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 20",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 21",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 21",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 22",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 22",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 23",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 23",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 24",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 24",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 25",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 25",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 26",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 26",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 27",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 27",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 28",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 28",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 29",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 29",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 30",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 30",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 31",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 31",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 32",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 32",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 33",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 33",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 34",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 34",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 35",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 35",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 36",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 36",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 37",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 37",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 38",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 38",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 39",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 39",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 40",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 40",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 41",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 41",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 42",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 42",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 43",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 43",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 44",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 44",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 45",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 45",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 46",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 46",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 47",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 47",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 48",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 48",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 49",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 49",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 50",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 50",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 51",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 51",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 52",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 52",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 53",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 53",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 54",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 54",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 55",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 55",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 56",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 56",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 57",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 57",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 58",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 58",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 59",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 59",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 60",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 60",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 61",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 61",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 62",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 62",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 63",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 63",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 64",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 64",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 65",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 65",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 66",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 66",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 67",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 67",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 68",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 68",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 69",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 69",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 70",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 70",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 71",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 71",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 72",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 72",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 73",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 73",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 74",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 74",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 75",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 75",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 76",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 76",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 77",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 77",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 78",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 78",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 79",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 79",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 80",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 80",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 81",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 81",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 82",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 82",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 83",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 83",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 84",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 84",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 85",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 85",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 86",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 86",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 87",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 87",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 88",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 88",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 89",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 89",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 90",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 90",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 91",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 91",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 92",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 92",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 93",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 93",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 94",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 94",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 95",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 95",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 96",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 96",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 97",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 97",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 98",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 98",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 99",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 99",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 100",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 100",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 101",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 101",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 102",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 102",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 103",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 103",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 104",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 104",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 105",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 105",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 106",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 106",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 107",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 107",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 108",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 108",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 109",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 109",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 110",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 110",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 111",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 111",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 112",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 112",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 113",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 113",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 114",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 114",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 115",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 115",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 116",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 116",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 117",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 117",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 118",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 118",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 119",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 119",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 120",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 120",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 121",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 121",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 122",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 122",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 123",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 123",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 124",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 124",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 125",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 125",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 126",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 126",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 127",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 127",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 128",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 128",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 129",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 129",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 130",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 130",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 131",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 131",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 132",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 132",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 133",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 133",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 134",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 134",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 135",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 135",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 136",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 136",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 137",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 137",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 138",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 138",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 139",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 139",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 140",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 140",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 141",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 141",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 142",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 142",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 143",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 143",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 144",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 144",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 145",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 145",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 146",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 146",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 147",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 147",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 148",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 148",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 149",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 149",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 150",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 150",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 151",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 151",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 152",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 152",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 153",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 153",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 154",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 154",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 155",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 155",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 156",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 156",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 157",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 157",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 158",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 158",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 159",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 159",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 160",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 160",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 161",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 161",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 162",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 162",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 163",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 163",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 164",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 164",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 165",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 165",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 166",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 166",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 167",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 167",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 168",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 168",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 169",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 169",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 170",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 170",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 171",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 171",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 172",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 172",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 173",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 173",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 174",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 174",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 175",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 175",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 176",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 176",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 177",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 177",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 178",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 178",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 179",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 179",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 180",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 180",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 181",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 181",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 182",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 182",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 183",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 183",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 184",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 184",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 185",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 185",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 186",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 186",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 187",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 187",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 188",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 188",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 189",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 189",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 190",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 190",
+      "passed": true
+    },
+    {
+      "name": "cache source/pose/timing observation 191",
+      "passed": true
+    },
+    {
+      "name": "cache serial fresh capture order 191",
+      "passed": true
+    },
+    {
+      "name": "cache fresh count excludes EOF",
+      "passed": true
+    },
+    {
+      "name": "cache EOF reconstructed trajectory is separate offline work",
+      "passed": true
+    },
+    {
+      "name": "cache original neural/BA/motion accounting",
+      "passed": true
+    },
+    {
+      "name": "cache actual encoder SDK calls and final destroy",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 0",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 1",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 2",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 3",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 4",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 5",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 6",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 7",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 8",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 9",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 10",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 11",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 12",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 13",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 14",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 15",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 16",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 17",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 18",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 19",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 20",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 21",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 22",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 23",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 24",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 25",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 26",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 27",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 28",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 29",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 30",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 31",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 32",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 33",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 34",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 35",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 36",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 37",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 38",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 39",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 40",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 41",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 42",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 43",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 44",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 45",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 46",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 47",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 48",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 49",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 50",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 51",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 52",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 53",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 54",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 55",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 56",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 57",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 58",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 59",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 60",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 61",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 62",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 63",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 64",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 65",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 66",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 67",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 68",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 69",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 70",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 71",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 72",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 73",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 74",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 75",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 76",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 77",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 78",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 79",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 80",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 81",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 82",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 83",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 84",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 85",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 86",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 87",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 88",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 89",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 90",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 91",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 92",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 93",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 94",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 95",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 96",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 97",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 98",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 99",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 100",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 101",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 102",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 103",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 104",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 105",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 106",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 107",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 108",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 109",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 110",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 111",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 112",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 113",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 114",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 115",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 116",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 117",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 118",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 119",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 120",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 121",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 122",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 123",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 124",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 125",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 126",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 127",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 128",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 129",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 130",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 131",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 132",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 133",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 134",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 135",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 136",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 137",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 138",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 139",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 140",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 141",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 142",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 143",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 144",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 145",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 146",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 147",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 148",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 149",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 150",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 151",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 152",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 153",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 154",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 155",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 156",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 157",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 158",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 159",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 160",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 161",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 162",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 163",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 164",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 165",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 166",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 167",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 168",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 169",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 170",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 171",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 172",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 173",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 174",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 175",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 176",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 177",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 178",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 179",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 180",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 181",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 182",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 183",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 184",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 185",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 186",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 187",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 188",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 189",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 190",
+      "passed": true
+    },
+    {
+      "name": "cache synchronous copied/released SDK call 191",
+      "passed": true
+    },
+    {
+      "name": "v35 original source/inputs and cleanup",
+      "passed": true
+    },
+    {
+      "name": "v35 original 94 weight metadata stable",
+      "passed": true
+    },
+    {
+      "name": "v35 original FP32 rejection retained without clipping/fallback",
+      "passed": true
+    },
+    {
+      "name": "v35 experimental source and acceptance scope",
+      "passed": true
+    },
+    {
+      "name": "v35 all requested observations retained",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 0",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 1",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 1",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 2",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 2",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 3",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 3",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 4",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 4",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 5",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 5",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 6",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 6",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 7",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 7",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 8",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 8",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 9",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 9",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 10",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 10",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 11",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 11",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 12",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 12",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 13",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 13",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 14",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 14",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 15",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 15",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 16",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 16",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 17",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 17",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 18",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 18",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 19",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 19",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 20",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 20",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 21",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 21",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 22",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 22",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 23",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 23",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 24",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 24",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 25",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 25",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 26",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 26",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 27",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 27",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 28",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 28",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 29",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 29",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 30",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 30",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 31",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 31",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 32",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 32",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 33",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 33",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 34",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 34",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 35",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 35",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 36",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 36",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 37",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 37",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 38",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 38",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 39",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 39",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 40",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 40",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 41",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 41",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 42",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 42",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 43",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 43",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 44",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 44",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 45",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 45",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 46",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 46",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 47",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 47",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 48",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 48",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 49",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 49",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 50",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 50",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 51",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 51",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 52",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 52",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 53",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 53",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 54",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 54",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 55",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 55",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 56",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 56",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 57",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 57",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 58",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 58",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 59",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 59",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 60",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 60",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 61",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 61",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 62",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 62",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 63",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 63",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 64",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 64",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 65",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 65",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 66",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 66",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 67",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 67",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 68",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 68",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 69",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 69",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 70",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 70",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 71",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 71",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 72",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 72",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 73",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 73",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 74",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 74",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 75",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 75",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 76",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 76",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 77",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 77",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 78",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 78",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 79",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 79",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 80",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 80",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 81",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 81",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 82",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 82",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 83",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 83",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 84",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 84",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 85",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 85",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 86",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 86",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 87",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 87",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 88",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 88",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 89",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 89",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 90",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 90",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 91",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 91",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 92",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 92",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 93",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 93",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 94",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 94",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 95",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 95",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 96",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 96",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 97",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 97",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 98",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 98",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 99",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 99",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 100",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 100",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 101",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 101",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 102",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 102",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 103",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 103",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 104",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 104",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 105",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 105",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 106",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 106",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 107",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 107",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 108",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 108",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 109",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 109",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 110",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 110",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 111",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 111",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 112",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 112",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 113",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 113",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 114",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 114",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 115",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 115",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 116",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 116",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 117",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 117",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 118",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 118",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 119",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 119",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 120",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 120",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 121",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 121",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 122",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 122",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 123",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 123",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 124",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 124",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 125",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 125",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 126",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 126",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 127",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 127",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 128",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 128",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 129",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 129",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 130",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 130",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 131",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 131",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 132",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 132",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 133",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 133",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 134",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 134",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 135",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 135",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 136",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 136",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 137",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 137",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 138",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 138",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 139",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 139",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 140",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 140",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 141",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 141",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 142",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 142",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 143",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 143",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 144",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 144",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 145",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 145",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 146",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 146",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 147",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 147",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 148",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 148",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 149",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 149",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 150",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 150",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 151",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 151",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 152",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 152",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 153",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 153",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 154",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 154",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 155",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 155",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 156",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 156",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 157",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 157",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 158",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 158",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 159",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 159",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 160",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 160",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 161",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 161",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 162",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 162",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 163",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 163",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 164",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 164",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 165",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 165",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 166",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 166",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 167",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 167",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 168",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 168",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 169",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 169",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 170",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 170",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 171",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 171",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 172",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 172",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 173",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 173",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 174",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 174",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 175",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 175",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 176",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 176",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 177",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 177",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 178",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 178",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 179",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 179",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 180",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 180",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 181",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 181",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 182",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 182",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 183",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 183",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 184",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 184",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 185",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 185",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 186",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 186",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 187",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 187",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 188",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 188",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 189",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 189",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 190",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 190",
+      "passed": true
+    },
+    {
+      "name": "v35 source/pose/timing observation 191",
+      "passed": true
+    },
+    {
+      "name": "v35 serial fresh capture order 191",
+      "passed": true
+    },
+    {
+      "name": "v35 fresh count excludes EOF",
+      "passed": true
+    },
+    {
+      "name": "v35 EOF reconstructed trajectory is separate offline work",
+      "passed": true
+    },
+    {
+      "name": "v35 original neural/BA/motion accounting",
+      "passed": true
+    },
+    {
+      "name": "v35 actual encoder SDK calls and final destroy",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 0",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 1",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 2",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 3",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 4",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 5",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 6",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 7",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 8",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 9",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 10",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 11",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 12",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 13",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 14",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 15",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 16",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 17",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 18",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 19",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 20",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 21",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 22",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 23",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 24",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 25",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 26",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 27",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 28",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 29",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 30",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 31",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 32",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 33",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 34",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 35",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 36",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 37",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 38",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 39",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 40",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 41",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 42",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 43",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 44",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 45",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 46",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 47",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 48",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 49",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 50",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 51",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 52",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 53",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 54",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 55",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 56",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 57",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 58",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 59",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 60",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 61",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 62",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 63",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 64",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 65",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 66",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 67",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 68",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 69",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 70",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 71",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 72",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 73",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 74",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 75",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 76",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 77",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 78",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 79",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 80",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 81",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 82",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 83",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 84",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 85",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 86",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 87",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 88",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 89",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 90",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 91",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 92",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 93",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 94",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 95",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 96",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 97",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 98",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 99",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 100",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 101",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 102",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 103",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 104",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 105",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 106",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 107",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 108",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 109",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 110",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 111",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 112",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 113",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 114",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 115",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 116",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 117",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 118",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 119",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 120",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 121",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 122",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 123",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 124",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 125",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 126",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 127",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 128",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 129",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 130",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 131",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 132",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 133",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 134",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 135",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 136",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 137",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 138",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 139",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 140",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 141",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 142",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 143",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 144",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 145",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 146",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 147",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 148",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 149",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 150",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 151",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 152",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 153",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 154",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 155",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 156",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 157",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 158",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 159",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 160",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 161",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 162",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 163",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 164",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 165",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 166",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 167",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 168",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 169",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 170",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 171",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 172",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 173",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 174",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 175",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 176",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 177",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 178",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 179",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 180",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 181",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 182",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 183",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 184",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 185",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 186",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 187",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 188",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 189",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 190",
+      "passed": true
+    },
+    {
+      "name": "v35 synchronous copied/released SDK call 191",
+      "passed": true
+    },
+    {
+      "name": "exact original config/weights/RNG/lifecycle config",
+      "passed": true
+    },
+    {
+      "name": "exact original config/weights/RNG/lifecycle FAST_config_source",
+      "passed": true
+    },
+    {
+      "name": "exact original config/weights/RNG/lifecycle original_weights_before",
+      "passed": true
+    },
+    {
+      "name": "exact original config/weights/RNG/lifecycle original_weights_after",
+      "passed": true
+    },
+    {
+      "name": "exact original config/weights/RNG/lifecycle random_generator_before",
+      "passed": true
+    },
+    {
+      "name": "exact original config/weights/RNG/lifecycle random_generator_after",
+      "passed": true
+    },
+    {
+      "name": "exact original config/weights/RNG/lifecycle random_depth_draw_calls",
+      "passed": true
+    },
+    {
+      "name": "exact original config/weights/RNG/lifecycle online_lifecycle_source_sha256",
+      "passed": true
+    },
+    {
+      "name": "exact original config/weights/RNG/lifecycle stream_metrics",
+      "passed": true
+    },
+    {
+      "name": "exact original config/weights/RNG/lifecycle metrics_before_termination",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 0",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 1",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 2",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 3",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 4",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 5",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 6",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 7",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 8",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 9",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 10",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 11",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 12",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 13",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 14",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 15",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 16",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 17",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 18",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 19",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 20",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 21",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 22",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 23",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 24",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 25",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 26",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 27",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 28",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 29",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 30",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 31",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 32",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 33",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 34",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 35",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 36",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 37",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 38",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 39",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 40",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 41",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 42",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 43",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 44",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 45",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 46",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 47",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 48",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 49",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 50",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 51",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 52",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 53",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 54",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 55",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 56",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 57",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 58",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 59",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 60",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 61",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 62",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 63",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 64",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 65",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 66",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 67",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 68",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 69",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 70",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 71",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 72",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 73",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 74",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 75",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 76",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 77",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 78",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 79",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 80",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 81",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 82",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 83",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 84",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 85",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 86",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 87",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 88",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 89",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 90",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 91",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 92",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 93",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 94",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 95",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 96",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 97",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 98",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 99",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 100",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 101",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 102",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 103",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 104",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 105",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 106",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 107",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 108",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 109",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 110",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 111",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 112",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 113",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 114",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 115",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 116",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 117",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 118",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 119",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 120",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 121",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 122",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 123",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 124",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 125",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 126",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 127",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 128",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 129",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 130",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 131",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 132",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 133",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 134",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 135",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 136",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 137",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 138",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 139",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 140",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 141",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 142",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 143",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 144",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 145",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 146",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 147",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 148",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 149",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 150",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 151",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 152",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 153",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 154",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 155",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 156",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 157",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 158",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 159",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 160",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 161",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 162",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 163",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 164",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 165",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 166",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 167",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 168",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 169",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 170",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 171",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 172",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 173",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 174",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 175",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 176",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 177",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 178",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 179",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 180",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 181",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 182",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 183",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 184",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 185",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 186",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 187",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 188",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 189",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 190",
+      "passed": true
+    },
+    {
+      "name": "exact original observation pose/lifecycle/BA diagnostics 191",
+      "passed": true
+    },
+    {
+      "name": "exact separate EOF reconstructed trajectory and diagnostics",
+      "passed": true
+    },
+    {
+      "name": "recorded complete state tensor hashes same snapshot_before_termination",
+      "passed": true
+    },
+    {
+      "name": "recorded complete state tensor hashes same final_snapshot",
+      "passed": true
+    },
+    {
+      "name": "recorded original dense feature hashes same 0",
+      "passed": true
+    },
+    {
+      "name": "recorded original dense feature hashes same 1",
+      "passed": true
+    },
+    {
+      "name": "recorded original dense feature hashes same 2",
+      "passed": true
+    },
+    {
+      "name": "complete successful native cache histories",
+      "passed": true
+    },
+    {
+      "name": "all owned per-frame native contexts destroyed",
+      "passed": true
+    },
+    {
+      "name": "bounded stable feature ownership without historical rehash",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 0",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 1",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 2",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 3",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 4",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 5",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 6",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 7",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 8",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 9",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 10",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 11",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 12",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 13",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 14",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 15",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 16",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 17",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 18",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 19",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 20",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 21",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 22",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 23",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 24",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 25",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 26",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 27",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 28",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 29",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 30",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 31",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 32",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 33",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 34",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 35",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 36",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 37",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 38",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 39",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 40",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 41",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 42",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 43",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 44",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 45",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 46",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 47",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 48",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 49",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 50",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 51",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 52",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 53",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 54",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 55",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 56",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 57",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 58",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 59",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 60",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 61",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 62",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 63",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 64",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 65",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 66",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 67",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 68",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 69",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 70",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 71",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 72",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 73",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 74",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 75",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 76",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 77",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 78",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 79",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 80",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 81",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 82",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 83",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 84",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 85",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 86",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 87",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 88",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 89",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 90",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 91",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 92",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 93",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 94",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 95",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 96",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 97",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 98",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 99",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 100",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 101",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 102",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 103",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 104",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 105",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 106",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 107",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 108",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 109",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 110",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 111",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 112",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 113",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 114",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 115",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 116",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 117",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 118",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 119",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 120",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 121",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 122",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 123",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 124",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 125",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 126",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 127",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 128",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 129",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 130",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 131",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 132",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 133",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 134",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 135",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 136",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 137",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 138",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 139",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 140",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 141",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 142",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 143",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 144",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 145",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 146",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 147",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 148",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 149",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 150",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 151",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 152",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 153",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 154",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 155",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 156",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 157",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 158",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 159",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 160",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 161",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 162",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 163",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 164",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 165",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 166",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 167",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 168",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 169",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 170",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 171",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 172",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 173",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 174",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 175",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 176",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 177",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 178",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 179",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 180",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 181",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 182",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 183",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 184",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 185",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 186",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 187",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 188",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 189",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 190",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 191",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 192",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 193",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 194",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 195",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 196",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 197",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 198",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 199",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 200",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 201",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 202",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 203",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 204",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 205",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 206",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 207",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 208",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 209",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 210",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 211",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 212",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 213",
+      "passed": true
+    },
+    {
+      "name": "ordered real native query shape 214",
+      "passed": true
+    },
+    {
+      "name": "independent native timing sum total_seconds",
+      "passed": true
+    },
+    {
+      "name": "independent native timing sum preparation_seconds",
+      "passed": true
+    },
+    {
+      "name": "independent native timing sum query_seconds",
+      "passed": true
+    },
+    {
+      "name": "independent native timing sum kernel_seconds",
+      "passed": true
+    },
+    {
+      "name": "native prepare/hit counter sums",
+      "passed": true
+    }
+  ],
+  "auditor_sha256": "9f5f13b7ac702b8ae70a8a1bdbcb24d56820772ed3b3eda52aa9066e2f2ed255",
+  "model_native_ORT_BA_or_board_executed": false,
+  "snapshot_payloads_independently_read": false,
+  "trajectory_accuracy_or_20Hz_validated": false,
+  "input_sha256": {
+    "run": "bd486ae01ea68f18e1b81c15b99fec95f16584d03b0c2b839503e620f0822454",
+    "parent": "aaa2734f65691582962120054f4ce8937349b8a6baf2784305681c7581c8a813",
+    "wrapper": "d60380d248a0634ba95ac49ac208382a3f563ba83a15a5d2482e2fb57bcfe893",
+    "manifest": "347eea360fac46f215e980fc05a7589342b0b9fbbbc84f70f98a0a3e5629b49f",
+    "baseline": "4c09a78009d9b01278426e06312a6195c0c5c51562d9ffa3d1b3e9a839435167",
+    "baseline_manifest": "347eea360fac46f215e980fc05a7589342b0b9fbbbc84f70f98a0a3e5629b49f"
+  },
+  "cache_timing": {
+    "replay_wall_seconds": 269.21476663299836,
+    "source_sensor_span_seconds": 6.368432998657227,
+    "first_fresh_from_replay_start_seconds": 12.084145422006259,
+    "fresh_count": 179,
+    "first_fresh_observation": 13,
+    "last_fresh_observation": 191,
+    "fresh_processing_p50_seconds": 1.3851640560023952,
+    "fresh_processing_p95_seconds": 2.1700325225974666,
+    "online": {
+      "neural_calls": 203,
+      "BA_calls": 190,
+      "decode_seconds": 4.552354989995365,
+      "encode_outer_seconds": 48.750083490042016,
+      "stream_seconds": 215.76018305389152,
+      "original_Update_seconds": 155.97462762889336,
+      "BA_seconds": 17.590759773927857,
+      "correlation": {
+        "total_seconds": 26.793758989166236,
+        "native_query_seconds": 24.893331714949454,
+        "preparation_seconds": 1.7908673439669656,
+        "native_kernel_seconds": 24.709323561999998
+      }
+    },
+    "including_offline_EOF": {
+      "original_Update_seconds": 173.69519861890876,
+      "BA_seconds": 19.19324597893865,
+      "correlation": {
+        "total_seconds": 29.14901314517192,
+        "native_query_seconds": 27.242267493944382,
+        "preparation_seconds": 1.7908819259464508,
+        "native_kernel_seconds": 27.052060545999996
+      }
+    },
+    "offline_termination_seconds": 22.80860033299541,
+    "peak_RSS_MiB": 949.78125,
+    "timing_scope": "Unpaced software file-read admission to pose availability; first three include saved FP32 validation; no capture instrumentation; report/print flush outside per-frame clock, inside replay wall. Nested SDK/native timings must not be added twice."
+  },
+  "v35_timing": {
+    "replay_wall_seconds": 284.05793612400885,
+    "source_sensor_span_seconds": 6.368432998657227,
+    "first_fresh_from_replay_start_seconds": 11.938479616001132,
+    "fresh_count": 179,
+    "first_fresh_observation": 13,
+    "last_fresh_observation": 191,
+    "fresh_processing_p50_seconds": 1.4251393509912305,
+    "fresh_processing_p95_seconds": 2.379912668289035,
+    "online": {
+      "neural_calls": 203,
+      "BA_calls": 190,
+      "decode_seconds": 4.382693654959439,
+      "encode_outer_seconds": 47.07612864799739,
+      "stream_seconds": 232.46703344197886,
+      "original_Update_seconds": 147.29276383592514,
+      "BA_seconds": 17.348228868941078,
+      "correlation": {
+        "total_seconds": 52.135818322960404,
+        "native_query_seconds": 22.244480901994393,
+        "preparation_seconds": 18.07560631913657,
+        "native_kernel_seconds": 22.16277722200001
+      }
+    },
+    "including_offline_EOF": {
+      "original_Update_seconds": 165.05711003689794,
+      "BA_seconds": 18.93245077895699,
+      "correlation": {
+        "total_seconds": 54.96059735896415,
+        "native_query_seconds": 24.74424248696596,
+        "preparation_seconds": 18.210478666136623,
+        "native_kernel_seconds": 24.656255432000012
+      }
+    },
+    "offline_termination_seconds": 23.271455838999827,
+    "peak_RSS_MiB": 922.296875,
+    "timing_scope": "Unpaced software file-read admission to pose availability; first three include saved FP32 validation; no capture instrumentation; report/print flush outside per-frame clock, inside replay wall. Nested SDK/native timings must not be added twice."
+  },
+  "cache_ownership": {
+    "prepared_frames": 192,
+    "cache_hits": 2365,
+    "evicted_frames": 175,
+    "destroyed_frames": 192,
+    "peak_context_bytes": 166820864,
+    "current_context_bytes": 0,
+    "closed": true
+  },
+  "all_192_or_actual_source_result_numeric_fields_exact": true,
+  "offline_reconstructed_trajectory_exact": true,
+  "unchanged_recorded_state_tensor_hashes": true,
+  "comparison_is_same_process_controlled_AB": false,
+  "limitations": [
+    "Independent JSON pose values and clocks; snapshot/dense tensor payloads not provided here, only recorded hashes compared",
+    "No GT or full-original VGGT accuracy comparison",
+    "FP16 encoder remains rejected at original FP32 gate",
+    "Separate runs/thermal histories; numerical reproduction does not establish causal performance gain",
+    "Unpaced software admission, no camera queue or 20Hz/100ms validation"
+  ],
+  "check_count": 1607
+}

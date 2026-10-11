@@ -1,0 +1,18 @@
+{
+  "schema": "v36_correlation_AB_auditor_synthetic_tests",
+  "status": "passed",
+  "passed": 11,
+  "failed": 0,
+  "skipped": 0,
+  "exit_code": 0,
+  "command": "env TMPDIR=/run/user/1000/edge-vggt-v36/correlation PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 /home/frank/miniconda3/envs/ctvggt/bin/python -B -m pytest test_v36_ab_audit.py -q -p no:cacheprovider --basetemp=/run/user/1000/edge-vggt-v36/correlation/pytest-auditor",
+  "stdout_log": "auditor-synthetic-tests.log",
+  "stdout_sha256": "dd1dbb7cd11180bb13b756435c287872ccadffd13faaa006cc5600142d2c5a74",
+  "helper_file_sha256": {
+    "audit-v36-frame-corr-ab.py": "52f3510cdd8159e11411e0b36c265cd24cea1bfdf679e26357b71bf80d27b36d"
+  },
+  "test_file_sha256": {
+    "test_v36_ab_audit.py": "2c5efe5e9671e724cd57ca6c0b08645f21f8e4f13e72d1e20e2bed3c611cdd6e"
+  },
+  "scope": "Only generated tiny arrays and synthetic metadata; no real feature/model/native/SDK/ORT execution. Raw source/numerical evidence is independently reviewed by the separate NumPy saved-array receipt."
+}

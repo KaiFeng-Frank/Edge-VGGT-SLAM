@@ -1,0 +1,23 @@
+{
+  "schema": "v36_frame_cache_audit_tiny_tests",
+  "status": "passed",
+  "passed": 9,
+  "failed": 0,
+  "skipped": 0,
+  "pytest_reported_seconds": 0.04,
+  "executed_model_native_ORT_BA_or_board": false,
+  "frozen_file_sha256": {
+    "audit-v36-frame-cache-replay.py": "9f5f13b7ac702b8ae70a8a1bdbcb24d56820772ed3b3eda52aa9066e2f2ed255",
+    "test_audit_v36_frame_cache_replay.py": "f51bdac019590f22b7ac9d1ef6aa6c9000b7129f2782db28552ee1b85ba135a8",
+    "frame-cache-independent-review-r1.json": "9eca606226a10bfbab44db9a9c1cbdd229b8bfffd7fe9829bf7cea0292fdec95",
+    "engineering-v36-draft.md": "1d28d803853e651d4791e4ef35db4143f4db37592fe6b5bd97c6a338ad4d1df0"
+  },
+  "auditor_matches_saved_review": true,
+  "covered": [
+    "original sensor/source and admission identity",
+    "clock/timing arithmetic",
+    "fresh versus nonfresh pose ownership",
+    "only software clocks excluded from comparison",
+    "signed-zero FP32 pose bytes and finite/shape rejection"
+  ]
+}

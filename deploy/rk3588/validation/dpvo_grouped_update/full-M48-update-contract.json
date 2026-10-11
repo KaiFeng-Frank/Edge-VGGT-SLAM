@@ -1,0 +1,1067 @@
+{
+  "schema": "v36_full_M48_degree_batched_Update_research_contract",
+  "status": "synthetic_ready_actual_capture_and_batch_execution_pending",
+  "source_sha256": {
+    "source_frame_batches.py": "0f427739037e2178dddc4631a32fb602ac0a2ddc259e48e147028604ae6733f1",
+    "capture-v36-fast-update-board.py": "51b9d830762c1c1f701ca38a13378b874240a04f3d7e98181fa397ae1aa8a5d2",
+    "test_source_frame_batches.py": "85374a19135c3ede66803a81f238d3fb84a57ecf7293348ec8f6cc997a9e14d9",
+    "test_capture_v36_fast_update.py": "bd4e5b704c9b6c0c4d3fe6633cee9d7faf507ecde760fd28eb23e38c6148f8d9",
+    "source_frame_plan.py": "04e240c2c35bd1359dbe5649fb038490a0a7ff99654d8d112ad7c83acc87ac2e",
+    "source_frame_update_channel_first.py": "7d89d91c64158d34f72b17091ebeaf06369ef71cb330495f6c3ec39092035c57",
+    "LICENSE": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a"
+  },
+  "original_commit": "0ac95b656d1fda91c271d2a106460d19ad966fc7",
+  "license": "Princeton-VL DPVO MIT; adjacent LICENSE",
+  "topology_evidence": {
+    "public_relative_file": "results/dpvo_fast_rknn_v35.json",
+    "public_file_sha256": "2a6a9d9c7a17127b330d76c758f670ddd734df28571a12afbd3144a33425bdc2",
+    "evidence_key": "CPU_FAST_saved_critical_path",
+    "original_analysis_raw_sha256": "65fe885e6eb082da866b11c6902ccc5ca91cdd57c36d76ee4d177fdf38fe1eee",
+    "topology_path": "data.topology.last_pre_Update_plans",
+    "no_actual_feature_or_Update_execution": true,
+    "online_degree_block_occurrences": {
+      "8": 207,
+      "9": 258,
+      "10": 353,
+      "11": 628,
+      "12": 385,
+      "13": 170,
+      "14": 151,
+      "15": 81,
+      "16": 74,
+      "17": 20
+    }
+  },
+  "API": {
+    "build": "build_degree_plan(ii,jj,kk,patches_per_frame=48,max_sources_per_batch=None)",
+    "execute": "execute_grouped_update(plan,net,inp,corr,execute,snapshot_identity=SnapshotIdentity(...),current_identity=owner_reader)",
+    "callback": "execute(batch,feeds)->dict(net=FP32[N,384,D,48],delta=FP32[N,2,D,48],weight=FP32[N,2,D,48])",
+    "original_inputs": [
+      "FP32[1,E,384] net",
+      "FP32[1,E,384] inp=context[kk]",
+      "FP32[1,E,882] corr"
+    ],
+    "original_outputs": [
+      "FP32[1,E,384] net",
+      "FP32[1,E,2] delta",
+      "FP32[1,E,2] weight"
+    ],
+    "default_owned_staging_budget_bytes": 536870912,
+    "staging_budget_excludes_caller_inputs_model_SDK_and_full_original_reference": true,
+    "returned_output_is_owned_complete_graph": true
+  },
+  "invariants": {
+    "all_edges_exactly_once": true,
+    "no_padding": true,
+    "no_patch_or_target_truncation": true,
+    "equal_D_only": true,
+    "targets_sorted_per_source": true,
+    "source_batch_axis_is_not_reduced": true,
+    "invalid_neighbor_input_is_zero_before_Linear_bias": true,
+    "c2_reads_c1_updated_net": true,
+    "agg_kk_reduces_D": true,
+    "agg_ij_reduces_M": true,
+    "terminal_stable_sigmoid_from_frozen_v35": true,
+    "GRU_internal_sigmoids_unchanged": true,
+    "original_50_parameter_aliases_retained": true,
+    "staged_full_result_only_after_all_batches_and_owner_revision_match": true,
+    "ownership_snapshot_required_before_async_use": true,
+    "mathematical_dependency_closure_is_not_FP32_or_SDK_acceptance": true
+  },
+  "linear_MAC_equation": {
+    "expression": "2699520*E +147456*(number_of_source_frames*M + sum_source_D)",
+    "included": "Original Linear kernels only; c1/c2, corr, two SoftAgg f/g/h, two GatedResidual and d/w",
+    "excluded": "LayerNorm, softmax, exp, sigmoid, nonlinearity, data movement, validation, compiler/runtime overhead",
+    "changed_by_group_batching": false
+  },
+  "static_budgets": [
+    {
+      "Linear_MAC": 8358985728,
+      "Linear_GMAC": 8.358985728,
+      "unique_patch_groups": 384,
+      "unique_source_target_groups": 64,
+      "FP32_full_inputs_bytes": 20275200,
+      "FP32_full_outputs_bytes": 4767744,
+      "calls": 1,
+      "MAC_reduced": false,
+      "graph_shapes": [
+        {
+          "net": [
+            8,
+            384,
+            8,
+            48
+          ],
+          "inp": [
+            8,
+            384,
+            8,
+            48
+          ],
+          "corr": [
+            8,
+            882,
+            8,
+            48
+          ],
+          "delta": [
+            8,
+            2,
+            8,
+            48
+          ],
+          "weight": [
+            8,
+            2,
+            8,
+            48
+          ]
+        }
+      ],
+      "compilation_for_N_greater_than_one_verified": false,
+      "timing_or_20Hz_claim": false,
+      "case": "first_eight_admitted_complete_graph",
+      "edges": 3072,
+      "plan": {
+        "edges": 3072,
+        "patches": 48,
+        "full_source_blocks": 8,
+        "neural_calls": 1,
+        "topology_sha256": "745543387d7a905f09377dec389769e549958e9157ee3a11703a2fddf3aa33da",
+        "all_edges_exactly_once": true,
+        "original_edge_order_restored": true,
+        "padding": false,
+        "batch_items_independent_sources": true,
+        "batches": [
+          {
+            "source_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "target_slots": [
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ]
+            ],
+            "sources": 8,
+            "degree": 8,
+            "patches": 48,
+            "edges": 3072,
+            "padding": false,
+            "dependency_groups_split": false,
+            "physical_layout": "source_batch,channels,target,patch"
+          }
+        ]
+      },
+      "metadata_topology_only": true,
+      "actual_net_context_corr_loaded": false,
+      "canonical_constructed_order_not_actual_saved_edge_order": true,
+      "FP32_input_plus_output_bytes": 25042944
+    },
+    {
+      "Linear_MAC": 27492175872,
+      "Linear_GMAC": 27.492175872,
+      "unique_patch_groups": 816,
+      "unique_source_target_groups": 211,
+      "FP32_full_inputs_bytes": 66844800,
+      "FP32_full_outputs_bytes": 15718656,
+      "calls": 10,
+      "MAC_reduced": false,
+      "graph_shapes": [
+        {
+          "net": [
+            1,
+            384,
+            8,
+            48
+          ],
+          "inp": [
+            1,
+            384,
+            8,
+            48
+          ],
+          "corr": [
+            1,
+            882,
+            8,
+            48
+          ],
+          "delta": [
+            1,
+            2,
+            8,
+            48
+          ],
+          "weight": [
+            1,
+            2,
+            8,
+            48
+          ]
+        },
+        {
+          "net": [
+            1,
+            384,
+            9,
+            48
+          ],
+          "inp": [
+            1,
+            384,
+            9,
+            48
+          ],
+          "corr": [
+            1,
+            882,
+            9,
+            48
+          ],
+          "delta": [
+            1,
+            2,
+            9,
+            48
+          ],
+          "weight": [
+            1,
+            2,
+            9,
+            48
+          ]
+        },
+        {
+          "net": [
+            1,
+            384,
+            10,
+            48
+          ],
+          "inp": [
+            1,
+            384,
+            10,
+            48
+          ],
+          "corr": [
+            1,
+            882,
+            10,
+            48
+          ],
+          "delta": [
+            1,
+            2,
+            10,
+            48
+          ],
+          "weight": [
+            1,
+            2,
+            10,
+            48
+          ]
+        },
+        {
+          "net": [
+            5,
+            384,
+            11,
+            48
+          ],
+          "inp": [
+            5,
+            384,
+            11,
+            48
+          ],
+          "corr": [
+            5,
+            882,
+            11,
+            48
+          ],
+          "delta": [
+            5,
+            2,
+            11,
+            48
+          ],
+          "weight": [
+            5,
+            2,
+            11,
+            48
+          ]
+        },
+        {
+          "net": [
+            2,
+            384,
+            12,
+            48
+          ],
+          "inp": [
+            2,
+            384,
+            12,
+            48
+          ],
+          "corr": [
+            2,
+            882,
+            12,
+            48
+          ],
+          "delta": [
+            2,
+            2,
+            12,
+            48
+          ],
+          "weight": [
+            2,
+            2,
+            12,
+            48
+          ]
+        },
+        {
+          "net": [
+            2,
+            384,
+            13,
+            48
+          ],
+          "inp": [
+            2,
+            384,
+            13,
+            48
+          ],
+          "corr": [
+            2,
+            882,
+            13,
+            48
+          ],
+          "delta": [
+            2,
+            2,
+            13,
+            48
+          ],
+          "weight": [
+            2,
+            2,
+            13,
+            48
+          ]
+        },
+        {
+          "net": [
+            1,
+            384,
+            14,
+            48
+          ],
+          "inp": [
+            1,
+            384,
+            14,
+            48
+          ],
+          "corr": [
+            1,
+            882,
+            14,
+            48
+          ],
+          "delta": [
+            1,
+            2,
+            14,
+            48
+          ],
+          "weight": [
+            1,
+            2,
+            14,
+            48
+          ]
+        },
+        {
+          "net": [
+            1,
+            384,
+            15,
+            48
+          ],
+          "inp": [
+            1,
+            384,
+            15,
+            48
+          ],
+          "corr": [
+            1,
+            882,
+            15,
+            48
+          ],
+          "delta": [
+            1,
+            2,
+            15,
+            48
+          ],
+          "weight": [
+            1,
+            2,
+            15,
+            48
+          ]
+        },
+        {
+          "net": [
+            1,
+            384,
+            16,
+            48
+          ],
+          "inp": [
+            1,
+            384,
+            16,
+            48
+          ],
+          "corr": [
+            1,
+            882,
+            16,
+            48
+          ],
+          "delta": [
+            1,
+            2,
+            16,
+            48
+          ],
+          "weight": [
+            1,
+            2,
+            16,
+            48
+          ]
+        },
+        {
+          "net": [
+            2,
+            384,
+            17,
+            48
+          ],
+          "inp": [
+            2,
+            384,
+            17,
+            48
+          ],
+          "corr": [
+            2,
+            882,
+            17,
+            48
+          ],
+          "delta": [
+            2,
+            2,
+            17,
+            48
+          ],
+          "weight": [
+            2,
+            2,
+            17,
+            48
+          ]
+        }
+      ],
+      "compilation_for_N_greater_than_one_verified": false,
+      "timing_or_20Hz_claim": false,
+      "case": "historical_last_pre_Update_complete_graph",
+      "edges": 10128,
+      "plan": {
+        "edges": 10128,
+        "patches": 48,
+        "full_source_blocks": 17,
+        "neural_calls": 10,
+        "topology_sha256": "b3bb0cba177ce118a781ff8be8e5c00f2d34d83452d93b8c603884195aaf0e57",
+        "all_edges_exactly_once": true,
+        "original_edge_order_restored": true,
+        "padding": false,
+        "batch_items_independent_sources": true,
+        "batches": [
+          {
+            "source_slots": [
+              0
+            ],
+            "target_slots": [
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ]
+            ],
+            "sources": 1,
+            "degree": 8,
+            "patches": 48,
+            "edges": 384,
+            "padding": false,
+            "dependency_groups_split": false,
+            "physical_layout": "source_batch,channels,target,patch"
+          },
+          {
+            "source_slots": [
+              1
+            ],
+            "target_slots": [
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+              ]
+            ],
+            "sources": 1,
+            "degree": 9,
+            "patches": 48,
+            "edges": 432,
+            "padding": false,
+            "dependency_groups_split": false,
+            "physical_layout": "source_batch,channels,target,patch"
+          },
+          {
+            "source_slots": [
+              2
+            ],
+            "target_slots": [
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ]
+            ],
+            "sources": 1,
+            "degree": 10,
+            "patches": 48,
+            "edges": 480,
+            "padding": false,
+            "dependency_groups_split": false,
+            "physical_layout": "source_batch,channels,target,patch"
+          },
+          {
+            "source_slots": [
+              3,
+              13,
+              14,
+              15,
+              16
+            ],
+            "target_slots": [
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ],
+              [
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ],
+              [
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ],
+              [
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ],
+              [
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ]
+            ],
+            "sources": 5,
+            "degree": 11,
+            "patches": 48,
+            "edges": 2640,
+            "padding": false,
+            "dependency_groups_split": false,
+            "physical_layout": "source_batch,channels,target,patch"
+          },
+          {
+            "source_slots": [
+              4,
+              12
+            ],
+            "target_slots": [
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ]
+            ],
+            "sources": 2,
+            "degree": 12,
+            "patches": 48,
+            "edges": 1152,
+            "padding": false,
+            "dependency_groups_split": false,
+            "physical_layout": "source_batch,channels,target,patch"
+          },
+          {
+            "source_slots": [
+              5,
+              11
+            ],
+            "target_slots": [
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ]
+            ],
+            "sources": 2,
+            "degree": 13,
+            "patches": 48,
+            "edges": 1248,
+            "padding": false,
+            "dependency_groups_split": false,
+            "physical_layout": "source_batch,channels,target,patch"
+          },
+          {
+            "source_slots": [
+              10
+            ],
+            "target_slots": [
+              [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ]
+            ],
+            "sources": 1,
+            "degree": 14,
+            "patches": 48,
+            "edges": 672,
+            "padding": false,
+            "dependency_groups_split": false,
+            "physical_layout": "source_batch,channels,target,patch"
+          },
+          {
+            "source_slots": [
+              9
+            ],
+            "target_slots": [
+              [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ]
+            ],
+            "sources": 1,
+            "degree": 15,
+            "patches": 48,
+            "edges": 720,
+            "padding": false,
+            "dependency_groups_split": false,
+            "physical_layout": "source_batch,channels,target,patch"
+          },
+          {
+            "source_slots": [
+              8
+            ],
+            "target_slots": [
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ]
+            ],
+            "sources": 1,
+            "degree": 16,
+            "patches": 48,
+            "edges": 768,
+            "padding": false,
+            "dependency_groups_split": false,
+            "physical_layout": "source_batch,channels,target,patch"
+          },
+          {
+            "source_slots": [
+              6,
+              7
+            ],
+            "target_slots": [
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ],
+              [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ]
+            ],
+            "sources": 2,
+            "degree": 17,
+            "patches": 48,
+            "edges": 1632,
+            "padding": false,
+            "dependency_groups_split": false,
+            "physical_layout": "source_batch,channels,target,patch"
+          }
+        ]
+      },
+      "metadata_topology_only": true,
+      "actual_net_context_corr_loaded": false,
+      "canonical_constructed_order_not_actual_saved_edge_order": true,
+      "FP32_input_plus_output_bytes": 82563456
+    }
+  ],
+  "required_new_SDK_contract": {
+    "legacy_v35_B1_helper_reuse": false,
+    "each_static_shape_requires_verified_compile_and_actual_query": true,
+    "inputs": [
+      "FP32[N,384,D,48]",
+      "FP32[N,384,D,48]",
+      "FP32[N,882,D,48]"
+    ],
+    "outputs": [
+      "FP32[N,384,D,48]",
+      "FP32[N,2,D,48]",
+      "FP32[N,2,D,48]"
+    ],
+    "static_shape_key": [
+      "N",
+      "D",
+      "M",
+      "parameter_sha256",
+      "expression_source_sha256"
+    ],
+    "shorter_last_source_batch_is_actual_N_shape_not_padding": true,
+    "must_verify": [
+      "queried rank/shape/dtype/native format/strides/quantization",
+      "real N>1 physical IO pack/unpack",
+      "copy before release and context ownership",
+      "every source restored to actual ordered global IDs",
+      "full source buckets total timing with pack/scatter and IO",
+      "SDK allocations and context eviction/release",
+      "actual profile placement; do not infer from zero ONNX Transpose",
+      "original full Update unchanged rtol=1e-4 atol=1e-5 gate"
+    ],
+    "unsupported_static_shape_policy": "Explicit reject, or declared original CPU diagnostic path; never zero-pad or drop edges",
+    "model_context_memory_cost_unmeasured": true
+  },
+  "capture": {
+    "helper": "capture-v36-fast-update-board.py",
+    "parent_SHA256": "84b8f02e14c0695c79d5c47319ff47ec4c7a8dcf53a3b38d905e03bc1efde6a8",
+    "observation_ids": [
+      13,
+      127,
+      191
+    ],
+    "which": "first complete non-probe Update per selected online observation, before BA",
+    "original_gold_calls_per_selected_case": 1,
+    "original_outputs_returned_unchanged": true,
+    "random_or_state_mutation": false,
+    "source_identity_actual_context_kk_and_parent_receipt_bound": true,
+    "revisions": "capture-derived serials with actual graph/geometry/context+frame-identity hashes, recurrent actual callback index",
+    "not_complete_upstream_map_revision": true,
+    "EOF_and_motion_probes_excluded": true,
+    "unobserved_requested_case": "Fail with retained existing artifacts, no substitute",
+    "source_shape": "net/inp/corr and original ordered int64 ii/jj/kk + poses/patches/intrinsics/frame_contexts/retained observation IDs",
+    "extra_SHA_copy_save_overhead_separately_recorded": true,
+    "performance_claim": false
+  },
+  "tests": {
+    "command": "env TMPDIR=<R36> OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 python -B -m pytest -q -p no:cacheprovider test_source_frame_batches.py test_capture_v36_fast_update.py",
+    "cases": 26,
+    "passed": 26,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 0.78,
+    "scope": "Tiny random toy modules and fake callbacks only; no real inputs, weights, model, ORT, BA, SDK or board execution",
+    "original_toy_reference_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05
+    }
+  },
+  "claims": {
+    "full_M48_actual_group_execution": false,
+    "compiled_batch_greater_than_one": false,
+    "FP32_full_graph_equivalence_on_real_saved_inputs": false,
+    "NPU_success": false,
+    "trajectory_accuracy": false,
+    "realtime_20Hz": false,
+    "v35_single_D10_M96_latency_is_not_full_graph_budget": true
+  }
+}

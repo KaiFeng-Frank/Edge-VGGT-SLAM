@@ -1,0 +1,93 @@
+{
+  "schema": "v36_PTQ_native_IO_independent_review",
+  "status": "passed",
+  "checks": 60,
+  "failures": [],
+  "audit_script_sha256": "8d5e74adb86854e7558192343472f50d443616128ccda0adc669bc8f31c70c3b",
+  "query_receipt_sha256": "6649f8a9cfcea861cccf832b5a029a6d4b0c6c08f865551a102b953952cd0459",
+  "compile_receipt_sha256": "680373c1e605c10f660781988e74b65e07ea8d31a550fcd93022487978bac4a8",
+  "recorded_model": {
+    "file": "block-int8.rknn",
+    "bytes": 12491378,
+    "sha256": "6b11d6643a25a4bf9de1f1f2f0ecc607e20d7c0755e9262c91874509b18e9e42"
+  },
+  "native_attrs": [
+    {
+      "name": "normalized_bgr",
+      "shape": [
+        1,
+        464,
+        608,
+        3
+      ],
+      "type": 2,
+      "format": 1,
+      "quantization_type": 2,
+      "scale": 0.007812379859387875,
+      "zero_point": -64,
+      "size": 846336,
+      "size_with_stride": 846336
+    },
+    {
+      "name": "patch_indices",
+      "shape": [
+        96
+      ],
+      "type": 8,
+      "format": 3,
+      "quantization_type": 2,
+      "scale": 1.0,
+      "zero_point": 0,
+      "size": 768,
+      "size_with_stride": 768
+    },
+    {
+      "name": "fmap",
+      "shape": [
+        1,
+        128,
+        116,
+        152
+      ],
+      "type": 2,
+      "format": 0,
+      "quantization_type": 2,
+      "scale": 0.012200300581753254,
+      "zero_point": 8,
+      "size": 2256896,
+      "size_with_stride": 2375680
+    },
+    {
+      "name": "context",
+      "shape": [
+        1,
+        96,
+        384
+      ],
+      "type": 2,
+      "format": 3,
+      "quantization_type": 2,
+      "scale": 0.028529353439807892,
+      "zero_point": -6,
+      "size": 36864,
+      "size_with_stride": 36864
+    }
+  ],
+  "expected_future_want_float_logical_FP32_bytes": 9175040,
+  "sdk_run_calls": 0,
+  "query_context_destroyed": true,
+  "actual_model_binary_rehashed_on_host": false,
+  "native_library_rehashed_on_host": false,
+  "source_before_after_equality_scope": "board-recorded",
+  "saved_JSON_only": true,
+  "SDK_loaded": false,
+  "model_forward": false,
+  "board_execution": false,
+  "internal_INT8_operator_coverage_proven": false,
+  "precision_or_trajectory_accuracy_validated": false,
+  "limitations": [
+    "This independently recomputes saved descriptor shape/byte/quantization relations; it does not load the RKNN binary or runtime.",
+    "INT8 external ports and successful init/query/destroy do not prove internal INT8 coverage, correct inference or speed.",
+    "Future want_float output buffers must use exact logical FP32 bytes, not native size_with_stride, and be copied before release."
+  ]
+}
