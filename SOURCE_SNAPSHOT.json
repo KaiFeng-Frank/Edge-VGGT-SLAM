@@ -1,5 +1,5 @@
 {
-  "schema": "original_VGGT_only_source_snapshot_v51",
+  "schema": "original_VGGT_only_source_snapshot_v52",
   "upstream_commit": "35327ac28b7d193df9ccc39ba6346052bb6f1207",
   "model": "original VGGT only",
   "scope": "Current published file hashes; this manifest excludes itself. Model weights, arrays and external SDK are not published.",
@@ -12,7 +12,8 @@
     "results/original_precision_v49.json",
     "results/original_mixed_precision_v50.json",
     "deploy/rk3588/validation/original_mixed_precision/root-validation-r1.json",
-    "results/original_checkpoint_identity_v51.json"
+    "results/original_checkpoint_identity_v51.json",
+    "results/original_timestamp_replay_v52.json"
   ],
   "file_sha256": {
     ".gitignore": "5c914f3ced73f7a831f890a98f771bde1e11fdcf288b87f45a9fb538bef93b2e",
@@ -21,7 +22,7 @@
     "LICENSE": "dc493d7ac51f587fd71184315999c792ead523bf46da0f0cbf3e26a577b1a580",
     "MEASUREMENTS.json": "ffbf35f104b5b99cb599c4baef1ecd1b2b619adbfb7182f5d9adb51dc9783d0d",
     "MODEL_LICENSES.md": "55c1c587c0e879414de8133c4eb6686b490a899b388c57f950c652804aba5902",
-    "README.md": "3f8b8adf6215a2445899bf7b53aa9f24bd36c12ae669421e1f80c035768605c5",
+    "README.md": "3aa36674365cbf590d8fe36ba6f968df33482bab78a3b159deff1baec40c1b74",
     "THIRD_PARTY_NOTICES.md": "99176fb73e78ba0950493b942dfc6c6198a4b6ce432bb0904926edb31bc631ee",
     "UPSTREAMS.json": "9325cc1d2c33794ea3361d0884a5796b9b22b119b9a9822113e7b726e2d88a0a",
     "assets/office_loop_figure.png": "5d20d0acb81d3fb38e14235499ba67a22441cfe835e899f3e224a99e514c28e9",
@@ -252,7 +253,7 @@
     "deploy/rk3588/validation/vggt-v16-camera-step-compile112-r1.json": "c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a",
     "deploy/rk3588/validation/vggt-v16-camera-step-export112-r1.json": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
     "deploy/rk3588/vggt-spark.patch": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864",
-    "docs/ENGINEERING_NOTES.md": "79c0cffea60cd622f3282f839bb2bc13dd16fb3eb47d57ca72e8fc6537460ddf",
+    "docs/ENGINEERING_NOTES.md": "c4b1fa27122fc93ba21610685502b433982578f047447c2a08d89afa539fad66",
     "evals/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "evals/eval_tum.sh": "0d9de08050e3e04dc6911681b7b8655e45b5e9e3727a423a3832c1be57cedd44",
     "evals/process_logs_tum.py": "9a78265063ad670136d6f4d6b5773d0e362f07b64f41f26ea2c941e973f59c3a",
@@ -279,6 +280,7 @@
     "results/original_only_v47.json": "6df277cd1721bf834a18e9776f92a1eea9aa3b3afee179ba95916f357adedb6c",
     "results/original_pair_v48.json": "98465570fc8b1b1a4e89fc58c2edf6cadc4abbac1c23c7c858693f258e0fd96b",
     "results/original_precision_v49.json": "5c7906aee768f89c45d8af784556578e015d6e98ad6ebf21e12f8429ed6d34f2",
+    "results/original_timestamp_replay_v52.json": "bebb72aa910595a4742de655fbc625eb7eb2cae86cccf6442d526ed31ae19e2d",
     "results/patch_cache_v19.json": "0e04c1e0118b29f5d56b9344c6ee2168c2219d567cb5c54efc275a3cd53859fb",
     "results/profile_336_v17.json": "6c3d2cb51af75410188c062e83a26eae4d4c5d69c632a6eeae95993eba004820",
     "results/quality_pairs_capture_v18.json": "a2ffeb1e7810862c37ad3be7ea268763f20f193515e19603d8832ec809f9bb98",
@@ -297,6 +299,7 @@
     "scripts/probe_rknn.py": "9ea9da34dbb0d14598940cd0a164abbe6d882d7218a87eacbaedb64221059f4f",
     "scripts/probe_xnnpack_linear.py": "7add210163311aab031316a0bfbbb7c4e2e4b2054b393bd0bc1a954860a75e5f",
     "scripts/render_map_preview.py": "932c24eb135a4f0221f3697424f044df1787c3ceede9a71cea7529b85697e716",
+    "scripts/replay_original_vggt.py": "96b01584629d22d8fcab9526d7cbc3673c2c096a5122b6c4f31b262885bf29e6",
     "setup.py": "a4540f135807abebcf8e2864e5abf0c6fcbd324812fbad21c908339c40c856e3",
     "tests/test_aggregator_onnx_board_check.py": "7448469e72d5ea330ca124da6139ddc55eb41a2ecbdfbdd74e8e087d8c9a8a92",
     "tests/test_cameras.py": "51118b35dbfcc8551ae8826396f75a2dfbd223b788a4985c615a496bdd1cb1e7",

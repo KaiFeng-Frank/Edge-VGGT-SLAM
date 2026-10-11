@@ -10,6 +10,22 @@ The additional-model retrieval and semantic paths have been removed. **Loop clos
 
 The original checkpoint is `facebook/VGGT-1B`, `model.pt`, **5,026,874,952 bytes**, SHA256 `d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0`. Source-code and checkpoint licensing are separate; see [model provenance](MODEL_LICENSES.md) and [upstream pins](UPSTREAMS.json). No weights, captured arrays, weight-bearing exports or SDK binaries are distributed. The loader verifies this exact byte size and full SHA256 before deserialization, including explicit local paths and cached downloads. Automatic downloads use the recorded immutable revision; there is no runtime identity-check bypass.
 
+## Run original-model timestamp replay
+
+The board replay command runs original VGGT FP32, the original pose codec, dense map insertion and SL4, with a one-slot source queue and optional reuse of the previous frame's original DINO output. It writes `poses.tum`, `map.json`, `map_chunks/` and `results.json` after actual new-image updates:
+
+```sh
+. /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/env.sh
+python -B -u /mnt/vggt-data/vggt-slam2/src/scripts/replay_original_vggt.py \
+  --rgb-index /mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb.txt \
+  --checkpoint /mnt/vggt-data/vggt-slam2/weights/model.pt \
+  --output /mnt/vggt-data/vggt-slam2/experiments/original-replay-new-run
+```
+
+Use a new output directory. Default image size is 112; `--no-patch-cache` disables the original DINO tail cache. Do not restrict the outer process to CPUs 4–7: the decoder uses CPU0 and the model uses CPUs 4–7.
+
+The first full timestamp replay served **7 new pose/map updates from 798 input frames**, at **0.195 Hz** over 35.900 s including the EOF drain. Complete software-arrival-to-published-pose **P95 was 8.160 s**; 790 frames were skipped or overwritten. Peak process RSS was 4,977.2 MiB on the 16 GB board. These measurements include decoding, queuing, original model execution, SL4 and pose/map publication. They do **not** meet the real-time target. Resolution quality, trajectory accuracy, 30-minute operation and 8 GB deployment remain unvalidated. [Measured record](results/original_timestamp_replay_v52.json).
+
 ## Original-model evidence
 
 The current original-only runtime is deployed on RK3588S. Its 168 relevant generated checks and four actual original-model forwards pass; the fixed 112-scale TUM pair and first SL4 graph preserve the original outputs. A separate 518-scale diagnostic covers three overlapping submaps: all five prediction arrays and saved graph arrays match bitwise with the DINO tail cache on/off, reducing DINO computation from six image occurrences to four. Complete forwards still took **134–195 seconds**. These are numerical regression results, not real-time acceptance. [Current evidence and limits](results/original_only_v47.json).

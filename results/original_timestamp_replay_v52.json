@@ -1,0 +1,469 @@
+{
+  "status": "completed",
+  "model": "original_VGGT",
+  "precision": "CPU_FP32",
+  "max_loops": 0,
+  "image_size": 112,
+  "patch_cache": true,
+  "board": "9tripod,rk3588s,rockchip,rk3588,",
+  "fresh_pose_count": 7,
+  "updates": [
+    {
+      "revision": 1,
+      "timestamp": 1305031102.211214,
+      "sequence": 1,
+      "anchor_timestamp": 1305031102.175304,
+      "captured_monotonic": 170093.24274396896,
+      "published_monotonic": 170098.414056203,
+      "arrival_to_decode_seconds": 0.00011538102990016341,
+      "decode_seconds": 0.015552835015114397,
+      "queue_seconds": 0.00013329199282452464,
+      "prediction_seconds": 5.1481823089998215,
+      "full_model_seconds": 4.9732435409969185,
+      "SL4_and_points_seconds": 0.0036677079915534705,
+      "publication_seconds": 0.003660709015093744,
+      "processing_seconds": 5.155510726006469,
+      "input_to_pose_seconds": 5.171312234044308,
+      "graph_error": 5.102520015237698e-28,
+      "graph_nodes": 2,
+      "platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 81.307,
+          "soc-thermal": 77.615,
+          "gpu-thermal": 72.076,
+          "littlecore-thermal": 78.538,
+          "bigcore0-thermal": 81.307,
+          "npu-thermal": 73.923,
+          "center-thermal": 74.846
+        },
+        "cpu_frequency_khz": {
+          "policy6": 2352000,
+          "policy4": 2352000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 3162607616,
+          "MemAvailable": 14076043264,
+          "Buffers": 225595392,
+          "Cached": 12091580416,
+          "Shmem": 1651159040,
+          "SReclaimable": 445075456,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 4956.5546875
+      }
+    },
+    {
+      "revision": 2,
+      "timestamp": 1305031107.343509,
+      "sequence": 155,
+      "anchor_timestamp": 1305031102.211214,
+      "captured_monotonic": 170098.37503886223,
+      "published_monotonic": 170102.91334953,
+      "arrival_to_decode_seconds": 0.0002857537765521556,
+      "decode_seconds": 0.016551501001231372,
+      "queue_seconds": 0.023067336005624384,
+      "prediction_seconds": 4.489252700994257,
+      "full_model_seconds": 4.463358823006274,
+      "SL4_and_points_seconds": 0.005234833981376141,
+      "publication_seconds": 0.0039185420027934015,
+      "processing_seconds": 4.498406076978426,
+      "input_to_pose_seconds": 4.538310667761834,
+      "graph_error": 2.3748364219873277e-27,
+      "graph_nodes": 4,
+      "platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 86.777,
+          "soc-thermal": 83.153,
+          "gpu-thermal": 77.615,
+          "littlecore-thermal": 84.076,
+          "bigcore0-thermal": 86.777,
+          "npu-thermal": 79.461,
+          "center-thermal": 80.384
+        },
+        "cpu_frequency_khz": {
+          "policy6": 2352000,
+          "policy4": 1800000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 3061211136,
+          "MemAvailable": 14020165632,
+          "Buffers": 225599488,
+          "Cached": 12137160704,
+          "Shmem": 1651159040,
+          "SReclaimable": 445075456,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 4956.5546875
+      }
+    },
+    {
+      "revision": 3,
+      "timestamp": 1305031111.843299,
+      "sequence": 290,
+      "anchor_timestamp": 1305031107.343509,
+      "captured_monotonic": 170102.87482881546,
+      "published_monotonic": 170107.454704111,
+      "arrival_to_decode_seconds": 0.00018258552881889045,
+      "decode_seconds": 0.017523335001897067,
+      "queue_seconds": 0.021686585998395458,
+      "prediction_seconds": 4.530403080018004,
+      "full_model_seconds": 4.504763535980601,
+      "SL4_and_points_seconds": 0.005940375995123759,
+      "publication_seconds": 0.00413933300296776,
+      "processing_seconds": 4.540482789016096,
+      "input_to_pose_seconds": 4.579875295545207,
+      "graph_error": 7.623595035310582e-27,
+      "graph_nodes": 6,
+      "platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 87.666,
+          "soc-thermal": 83.153,
+          "gpu-thermal": 78.538,
+          "littlecore-thermal": 85.0,
+          "bigcore0-thermal": 87.666,
+          "npu-thermal": 81.307,
+          "center-thermal": 81.307
+        },
+        "cpu_frequency_khz": {
+          "policy6": 2352000,
+          "policy4": 408000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 2997510144,
+          "MemAvailable": 14019588096,
+          "Buffers": 225603584,
+          "Cached": 12200222720,
+          "Shmem": 1651159040,
+          "SReclaimable": 445075456,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 4976.84375
+      }
+    },
+    {
+      "revision": 4,
+      "timestamp": 1305031116.379384,
+      "sequence": 426,
+      "anchor_timestamp": 1305031111.843299,
+      "captured_monotonic": 170107.41091394424,
+      "published_monotonic": 170112.147288625,
+      "arrival_to_decode_seconds": 0.00021866275346837938,
+      "decode_seconds": 0.016948167991358787,
+      "queue_seconds": 0.027484045014716685,
+      "prediction_seconds": 4.68053517799126,
+      "full_model_seconds": 4.655248550989199,
+      "SL4_and_points_seconds": 0.006607709015952423,
+      "publication_seconds": 0.004580918001011014,
+      "processing_seconds": 4.691723805008223,
+      "input_to_pose_seconds": 4.736374680767767,
+      "graph_error": 9.85714686362844e-27,
+      "graph_nodes": 8,
+      "platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 87.666,
+          "soc-thermal": 84.076,
+          "gpu-thermal": 79.461,
+          "littlecore-thermal": 85.0,
+          "bigcore0-thermal": 87.666,
+          "npu-thermal": 81.307,
+          "center-thermal": 82.23
+        },
+        "cpu_frequency_khz": {
+          "policy6": 2352000,
+          "policy4": 2016000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 2934005760,
+          "MemAvailable": 14020145152,
+          "Buffers": 225615872,
+          "Cached": 12264542208,
+          "Shmem": 1651159040,
+          "SReclaimable": 445075456,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 4977.15625
+      }
+    },
+    {
+      "revision": 5,
+      "timestamp": 1305031121.083099,
+      "sequence": 567,
+      "anchor_timestamp": 1305031116.379384,
+      "captured_monotonic": 170112.1146287918,
+      "published_monotonic": 170117.298698184,
+      "arrival_to_decode_seconds": 0.00021716317860409617,
+      "decode_seconds": 0.019338085025083274,
+      "queue_seconds": 0.014050750993192196,
+      "prediction_seconds": 5.140540599997621,
+      "full_model_seconds": 5.11501188899274,
+      "SL4_and_points_seconds": 0.004880166990915313,
+      "publication_seconds": 0.005042625998612493,
+      "processing_seconds": 5.150463392987149,
+      "input_to_pose_seconds": 5.184069392184028,
+      "graph_error": 1.1075421259426667e-26,
+      "graph_nodes": 10,
+      "platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 86.777,
+          "soc-thermal": 84.076,
+          "gpu-thermal": 80.384,
+          "littlecore-thermal": 85.0,
+          "bigcore0-thermal": 86.777,
+          "npu-thermal": 81.307,
+          "center-thermal": 83.153
+        },
+        "cpu_frequency_khz": {
+          "policy6": 408000,
+          "policy4": 2352000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 2915446784,
+          "MemAvailable": 14075654144,
+          "Buffers": 225624064,
+          "Cached": 12338315264,
+          "Shmem": 1651159040,
+          "SReclaimable": 445091840,
+          "CmaTotal": 8388608,
+          "CmaFree": 4096
+        },
+        "peak_rss_mib": 4977.1875
+      }
+    },
+    {
+      "revision": 6,
+      "timestamp": 1305031126.247298,
+      "sequence": 722,
+      "anchor_timestamp": 1305031121.083099,
+      "captured_monotonic": 170117.27882790565,
+      "published_monotonic": 170122.71464727,
+      "arrival_to_decode_seconds": 0.00020610934006981552,
+      "decode_seconds": 0.017746169003657997,
+      "queue_seconds": 0.002767917001619935,
+      "prediction_seconds": 5.4037095840030815,
+      "full_model_seconds": 5.378040581999812,
+      "SL4_and_points_seconds": 0.006140459008747712,
+      "publication_seconds": 0.0052491259993985295,
+      "processing_seconds": 5.415099169011228,
+      "input_to_pose_seconds": 5.4358193643565755,
+      "graph_error": 1.572602508111486e-26,
+      "graph_nodes": 12,
+      "platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 87.666,
+          "soc-thermal": 84.076,
+          "gpu-thermal": 80.384,
+          "littlecore-thermal": 85.0,
+          "bigcore0-thermal": 87.666,
+          "npu-thermal": 81.307,
+          "center-thermal": 82.23
+        },
+        "cpu_frequency_khz": {
+          "policy6": 2352000,
+          "policy4": 1800000,
+          "policy0": 1800000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 2877247488,
+          "MemAvailable": 14073450496,
+          "Buffers": 225632256,
+          "Cached": 12374294528,
+          "Shmem": 1651159040,
+          "SReclaimable": 445091840,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 4977.1875
+      }
+    },
+    {
+      "revision": 7,
+      "timestamp": 1305031128.747363,
+      "sequence": 797,
+      "anchor_timestamp": 1305031126.247298,
+      "captured_monotonic": 170119.77889299393,
+      "published_monotonic": 170129.106403287,
+      "arrival_to_decode_seconds": 0.0002788140845950693,
+      "decode_seconds": 0.0249529609864112,
+      "queue_seconds": 2.9113954589993227,
+      "prediction_seconds": 6.374688223993871,
+      "full_model_seconds": 6.348767221003072,
+      "SL4_and_points_seconds": 0.009554126008879393,
+      "publication_seconds": 0.00664070900529623,
+      "processing_seconds": 6.390883059008047,
+      "input_to_pose_seconds": 9.327510293078376,
+      "graph_error": 1.8855542234506282e-26,
+      "graph_nodes": 14,
+      "platform": {
+        "temperature_c": {
+          "bigcore1-thermal": 87.666,
+          "soc-thermal": 84.076,
+          "gpu-thermal": 80.384,
+          "littlecore-thermal": 85.0,
+          "bigcore0-thermal": 87.666,
+          "npu-thermal": 81.307,
+          "center-thermal": 82.23
+        },
+        "cpu_frequency_khz": {
+          "policy6": 2208000,
+          "policy4": 2016000,
+          "policy0": 1608000
+        },
+        "linux_memory_bytes": {
+          "MemTotal": 16461864960,
+          "MemFree": 2822701056,
+          "MemAvailable": 14019264512,
+          "Buffers": 225640448,
+          "Cached": 12374646784,
+          "Shmem": 1651159040,
+          "SReclaimable": 445091840,
+          "CmaTotal": 8388608,
+          "CmaFree": 0
+        },
+        "peak_rss_mib": 4977.1875
+      }
+    }
+  ],
+  "cleanup_errors": [],
+  "decoder_cpu_affinity": [
+    0
+  ],
+  "real_time_validated": false,
+  "short_replay_not_30min": true,
+  "latency_scope": "original software arrival through decode, queue, full model, SL4, dense chunk and poses/map atomic replacements",
+  "physical_sensor_latency_validated": false,
+  "startup_seconds": 9.227862051979173,
+  "torch_version": "2.3.1",
+  "original_frames": 798,
+  "cpu_affinity": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "platform_start": {
+    "temperature_c": {
+      "bigcore1-thermal": 61.923,
+      "soc-thermal": 60.076,
+      "gpu-thermal": 58.23,
+      "littlecore-thermal": 61.0,
+      "bigcore0-thermal": 61.923,
+      "npu-thermal": 59.153,
+      "center-thermal": 59.153
+    },
+    "cpu_frequency_khz": {
+      "policy6": 2352000,
+      "policy4": 408000,
+      "policy0": 1800000
+    },
+    "linux_memory_bytes": {
+      "MemTotal": 16461864960,
+      "MemFree": 3201122304,
+      "MemAvailable": 14114533376,
+      "Buffers": 225595392,
+      "Cached": 12091572224,
+      "Shmem": 1651159040,
+      "SReclaimable": 445059072,
+      "CmaTotal": 8388608,
+      "CmaFree": 0
+    },
+    "peak_rss_mib": 391.703125
+  },
+  "seed_timestamp": 1305031102.175304,
+  "fresh_wall_seconds_including_EOF_drain": 35.89956944101141,
+  "fresh_pose_hz": 0.19498841097529293,
+  "input_to_pose_p95_seconds": 8.160003014461832,
+  "source": {
+    "source": "original_timestamp_rgb_replay",
+    "queue_capacity": 1,
+    "original_frames": 798,
+    "generated": 794,
+    "delivered": 8,
+    "overwritten": 786,
+    "skipped_before_decode": 4,
+    "decode_policy": "first_then_latest_due_original_timestamp",
+    "start_monotonic": 170093.206833846,
+    "end_monotonic": 170119.804204977,
+    "last_capture_monotonic": 170119.77889299393,
+    "physical_sensor_latency_validated": false,
+    "error": null
+  },
+  "cache": {
+    "requests": 7,
+    "input_frames": 14,
+    "hit_frames": 6,
+    "miss_frames": 8,
+    "computed_frames": 8,
+    "loop_bypass_calls": 0,
+    "loop_bypass_frames": 0,
+    "loop_computed_frames": 0,
+    "original_dino_calls": 7,
+    "completed_original_dino_calls": 7,
+    "errors": 0,
+    "invalidations": 0,
+    "peak_cache_bytes": 196608,
+    "lock_wait_seconds": 6.912296521477401e-05,
+    "guard_seconds": 0.9378516360011417,
+    "hash_seconds": 0.0019217930384911597,
+    "lookup_seconds": 7.495898171328008e-05,
+    "original_dino_seconds": 4.841421986959176,
+    "loop_original_dino_seconds": 0.0,
+    "assembly_seconds": 0.0005731239798478782,
+    "tail_clone_seconds": 0.0004004580550827086,
+    "cache_forward_seconds": 4.853485321014887,
+    "aggregator_seconds": 22.054095964937005,
+    "enabled": false,
+    "cache_entries": 0,
+    "cache_bytes": 0,
+    "max_bytes": 8388608,
+    "tail_content_key": null,
+    "closed": true,
+    "restored": true,
+    "last_error": null,
+    "restore_errors": [],
+    "policy": "previous_main_batch_last_frame_only",
+    "loop_policy": "original_DINO_no_main_cache_read_or_write",
+    "cached_payload": "cloned_x_norm_patchtokens_CPU_FP32_only",
+    "model_lifecycle": "fixed_backend_modules_parameters_buffers_versions_storage",
+    "arbitrary_batch_bit_equality_validated": false,
+    "accuracy_validated": false,
+    "real_time_validated": false
+  },
+  "peak_rss_mib": 4977.1875,
+  "schema": "v52_original_VGGT_timestamp_replay",
+  "dataset": "TUM RGB-D freiburg1_xyz",
+  "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "source_commit_before_new_runner": "7e43d4df789644640371c47e6ab4f59a35af6d25",
+  "runner_sha256": "96b01584629d22d8fcab9526d7cbc3673c2c096a5122b6c4f31b262885bf29e6",
+  "raw_results_sha256": "bf4828fdd1e27cd028b10e5950c8f096c238a85bff2b2160f9278fafd100862b",
+  "poses_sha256": "88ec1dc890b526358f68bde3cb6bcd0eb2b00b0ba9b8a9f33ba7d0dc7d9e8425",
+  "map_manifest_sha256": "e731545203685f86bf8a1e1d04b1e70381b143f2f69b897a8ba52902a73924cc",
+  "unique_saved_poses_including_seed": 8,
+  "unique_new_pose_updates": 7,
+  "unused_source_frames": 790,
+  "map_point_count": 98784,
+  "timing_counter_and_output_consistency_checked": true,
+  "trajectory_quality_validated": false,
+  "full_model_F32_to_F16_experiment_adopted": false,
+  "scope_limits": [
+    "Original model at requested112/actual84x112; resolution quality not accepted",
+    "16 GB board; process RSS does not establish 8 GB or 30-minute stability",
+    "Seven new pose updates; no interpolated or repeated poses in numerator",
+    "Software timestamp replay, including EOF drain; physical camera not tested",
+    "No compliant loop retrieval; max_loops=0"
+  ]
+}
