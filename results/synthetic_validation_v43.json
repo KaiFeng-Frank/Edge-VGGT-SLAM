@@ -1,0 +1,70 @@
+{
+  "schema": "v43_public_source_validation",
+  "status": "passed",
+  "total_passed": 81,
+  "model_execution": false,
+  "SDK_execution": false,
+  "board_jobs": 0,
+  "tests": [
+    {
+      "schema": "v43_public_generated_fake_saved_contract_tests",
+      "status": "passed",
+      "command": [
+        "/home/frank/miniconda3/envs/ctvggt/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "/dev/shm/edge-vggt-v43/public-snapshot/deploy/rk3588/validation/dpvo_native_input/test_v43_native_fp16_pack.py",
+        "/dev/shm/edge-vggt-v43/public-snapshot/deploy/rk3588/validation/dpvo_native_input/test_v43_native_transport.py",
+        "/dev/shm/edge-vggt-v43/public-snapshot/deploy/rk3588/validation/dpvo_native_input/test_v43_native_full_ab.py",
+        "/dev/shm/edge-vggt-v43/public-snapshot/deploy/rk3588/validation/dpvo_online_replay/test_v43_metadata_only_online.py",
+        "/dev/shm/edge-vggt-v43/public-snapshot/deploy/rk3588/validation/dpvo_online_replay/test_v43_saved_evaluation.py",
+        "--basetemp=/dev/shm/edge-vggt-v43/output/public-pytest-r1"
+      ],
+      "returncode": 0,
+      "stdout": "........................................................................ [ 96%]\n...                                                                      [100%]\n75 passed in 0.38s\n",
+      "stderr": "",
+      "model_execution": false,
+      "SDK_execution": false,
+      "board_jobs": 0,
+      "tests": {
+        "deploy/rk3588/validation/dpvo_native_input/test_v43_native_fp16_pack.py": "232964ebfe908d24906691d9eb9baea8b0d042a12477d8f7d88de027948dbf76",
+        "deploy/rk3588/validation/dpvo_native_input/test_v43_native_transport.py": "7e5f633e3e47031d4fab485ffc1dbb611ce0202a7e38757115222e34cea1a7e0",
+        "deploy/rk3588/validation/dpvo_native_input/test_v43_native_full_ab.py": "de6397f56d57d9daaea7d12af61c770d6a5593798e601b3ad05a015d51b26813",
+        "deploy/rk3588/validation/dpvo_online_replay/test_v43_metadata_only_online.py": "a43b93e0d11e6594f2ef53de80623444ca8816f7aafb63ce9052d39ef7b47a6e",
+        "deploy/rk3588/validation/dpvo_online_replay/test_v43_saved_evaluation.py": "35e2fa90c2ce360c48186b944b42401ad3cdad40304c3832e6b32b4630d07684"
+      }
+    },
+    {
+      "schema": "v43_public_saved_audit_negative_tests",
+      "status": "passed",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "stdout": "......                                                                   [100%]\n6 passed in 0.06s\n",
+      "command": [
+        "/home/frank/miniconda3/envs/ctvggt/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "deploy/rk3588/validation/dpvo_native_input/test_v43_native_full_saved_audit.py",
+        "--basetemp=/dev/shm/edge-vggt-v43/output/public-audit-pytest-r1"
+      ],
+      "cwd": "/dev/shm/edge-vggt-v43/public-snapshot",
+      "environment": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "TMPDIR": "/dev/shm/edge-vggt-v43/output"
+      },
+      "test_sha256": "57e7d11348b3d3783cc397075276e3fe94c3b10aad2868b3afb43c0a3c1d46f7",
+      "model_execution": false,
+      "SDK_execution": false,
+      "board_jobs": 0
+    }
+  ]
+}

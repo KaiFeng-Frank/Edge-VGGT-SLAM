@@ -14,6 +14,16 @@ In the pinned upstream implementation, LK selects keyframes for VGGT inference (
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
 
+## Metadata integration and native input transport (v43)
+
+The metadata-only optimization now completes the full optional DPVO research replay: **192 observations, 158 fresh poses, 2.746 Hz and fresh software P95 383.419 ms**. All 192 non-clock results and 55 saved-array pairs, including final state and EOF, match v42 bitwise. Final RNG metadata/digests also match; raw RNG bytes were not separately saved. Peak process RSS is **513.148 MiB** on the 16 GB board. This is a separate unpaced run, not a controlled end-to-end speedup or camera-latency result. [Minimal integration](deploy/rk3588/validation/dpvo_online_replay/V43.md), [complete replay and saved-data audits](results/dpvo_metadata_online_v43.json).
+
+A new board-built NEON converter packs the actually queried **NC1HWC2, C2=8 FP16** input layout, including the six corr padding channels. Nine generated shape checks and a real saved source group pass bitwise conversion, rounding, overflow, bounds and ownership checks. An actual single-group SDK ABBA test also produces identical outputs in all eight calls; three warm calls per method average **12.654→10.186 ms** complete execute wall time. This measures one B2D6 group, not a complete Update or pose rate, and does not change the original Torch precision rejection. [Implementation and measured scope](deploy/rk3588/validation/dpvo_native_input/README.md), [build, conversion, SDK and independent evidence](results/dpvo_native_input_v43.json), [engineering records 80–82](docs/ENGINEERING_NOTES.md).
+
+A subsequent same-callback comparison covers three complete saved Update graphs (704/800/752 edges). All **24 full outputs match bitwise**, with 56 SDK calls and releases per method and every context closed. Warm callback wall means are **94.828→71.467 / 105.123→94.093 / 116.358→91.406 ms**. These remain fixed-state component measurements; native input transport has not yet entered a complete recurrent replay. The measurements and their independent saved-array review are included in the native-input evidence above. The published source also passes [81 generated/fake checks](results/synthetic_validation_v43.json).
+
+**Accuracy rejection remains, and default VGGT is unchanged.** The metadata-only replay preserves the same trajectory. Native input transport is a separate component experiment; 20 Hz, dense mapping, camera latency, endurance and 8 GB acceptance remain unvalidated.
+
 ## Completed EOF lifecycle (v42)
 
 The optional learned DPVO research replay now completes all **192 observations, 158 fresh poses and 12 separate EOF updates** on RK3588S. A ninth static model adds the previously missing complete `B1_D3_M16` source group; the eight existing model/compile entries are preserved. The saved-input board Torch/ORT export passes all nine fixed comparisons. **This repairs lifecycle coverage; it does not accept the historically rejected SDK precision or change default VGGT.**
