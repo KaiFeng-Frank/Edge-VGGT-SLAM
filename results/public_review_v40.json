@@ -1,0 +1,145 @@
+{
+  "schema": "v40_publication_content_review",
+  "status": "passed",
+  "changed_text_files_checked": 32,
+  "local_markdown_links_checked": 281,
+  "checks": [
+    "UTF8 text only allowlist",
+    "Python AST/JSON parsing/shell syntax",
+    "relative Markdown file links",
+    "private key and common credential token patterns",
+    "no model/NPZ/SDK/data binaries in staged files"
+  ],
+  "files": {
+    "README.md": {
+      "sha256": "840e81c17c8e03a9a518ee19574318ac85ebaba6fec7d6b9102d905cdc94a439",
+      "bytes": 89616
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "sha256": "77c321e6e987de0af7bb1dd7e07a8681aac50410719dc38b8a302eef59a90fb0",
+      "bytes": 12397
+    },
+    "deploy/rk3588/validation/dpvo_m16_grouped/LICENSE": {
+      "sha256": "c5b0105dcef65f5423bec0aafe796364a086375e23746cf75402aba0f897489a",
+      "bytes": 1088
+    },
+    "deploy/rk3588/validation/dpvo_m16_grouped/README.md": {
+      "sha256": "4b947f8140eca6b1e9615ffd971cb71f81645d15770489ae5cf1be9ae706eecf",
+      "bytes": 6736
+    },
+    "deploy/rk3588/validation/dpvo_m16_grouped/analyze-shape-coverage.py": {
+      "sha256": "e5036b198da757a7944a29e494082dfe044dc1b27a05f8e98a905f95b9290ba1",
+      "bytes": 3086
+    },
+    "deploy/rk3588/validation/dpvo_m16_grouped/audit-v40-m16-grouped.py": {
+      "sha256": "8c84e098a83bc581ab66479386cd2dad00212f87fb3d59a54fbd8771e8031f73",
+      "bytes": 28268
+    },
+    "deploy/rk3588/validation/dpvo_m16_grouped/compile-v40-m16-grouped-update.py": {
+      "sha256": "3ccd9002247bf3ff15e87bf04db2e3462db782c6d5a637f50b98094bcd584294",
+      "bytes": 7949
+    },
+    "deploy/rk3588/validation/dpvo_m16_grouped/run-v40-m16-grouped-board.py": {
+      "sha256": "49670a57dc19f4e053c937b5c2490a34d3b327cb18fe1f2ff28111858d511940",
+      "bytes": 21665
+    },
+    "deploy/rk3588/validation/dpvo_m16_grouped/test_v40_m16_contracts.py": {
+      "sha256": "9cf025f012dce05a1bae30a7db130fd0f083d60f8fbdcb84af594644b9b59ded",
+      "bytes": 9774
+    },
+    "deploy/rk3588/validation/dpvo_m16_grouped/test_v40_m16_runtime.py": {
+      "sha256": "38ed77785ed96a39d98661e2ab66cc30d47a7df5b438447ba25571eea97c0d35",
+      "bytes": 11881
+    },
+    "deploy/rk3588/validation/dpvo_m16_grouped/test_v40_m16_saved_audit.py": {
+      "sha256": "feed56f34ea9fff339a660cc2448495d448b83b4ca627b5c4020b6205ac5dda5",
+      "bytes": 6689
+    },
+    "deploy/rk3588/validation/dpvo_m16_grouped/v40_m16_grouped_contracts.py": {
+      "sha256": "7be6bf750dabb8a3d88464fd1502bde3bf7690596a39791710cf41a9f8cb62fe",
+      "bytes": 14085
+    },
+    "deploy/rk3588/validation/dpvo_m16_grouped/v40_m16_grouped_rknn.py": {
+      "sha256": "d4cdd1f9f21b04e44b6369c8ad7aea1fe4fbd43855b13993c6fdf4550f7bf0d7",
+      "bytes": 4102
+    },
+    "deploy/rk3588/validation/fixed_undistort/LICENSE": {
+      "sha256": "dc493d7ac51f587fd71184315999c792ead523bf46da0f0cbf3e26a577b1a580",
+      "bytes": 1298
+    },
+    "deploy/rk3588/validation/fixed_undistort/OPENCV_APACHE_LICENSE.txt": {
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    "deploy/rk3588/validation/fixed_undistort/OPENCV_NOTICE.md": {
+      "sha256": "d264d4658efa7ee5cff53cfc0dfe0f2506c0edeb0c2efa4ea9bd200c02985253",
+      "bytes": 1417
+    },
+    "deploy/rk3588/validation/fixed_undistort/OPENCV_UNDISTORT_NOTICE.txt": {
+      "sha256": "fe733cd8b4ce4c34d2a91440cdbc19f30a73719545e2198485308a67de583cfe",
+      "bytes": 2157
+    },
+    "deploy/rk3588/validation/fixed_undistort/README.md": {
+      "sha256": "23cffeff08e05d1e9b598a12ce8003134e43e9c1100c1d84c16318991a48f2ca",
+      "bytes": 4332
+    },
+    "deploy/rk3588/validation/fixed_undistort/analyze-v39-costs.py": {
+      "sha256": "8b1f97c0d64101e47c488658ea36e78f2375fcb99b24e759683437bace1ba9f3",
+      "bytes": 7129
+    },
+    "deploy/rk3588/validation/fixed_undistort/audit-v40-preprocessing.py": {
+      "sha256": "d93555f24633069f44a752326a8224caccce224747cac35c99027f8998c3c57c",
+      "bytes": 3553
+    },
+    "deploy/rk3588/validation/fixed_undistort/fixed_undistort_cache.py": {
+      "sha256": "14c7331fcb9bc84e13fa8d9b38f0a0575b529729b08dd539915f3714a632972c",
+      "bytes": 5648
+    },
+    "deploy/rk3588/validation/fixed_undistort/opencv-source-notice.json": {
+      "sha256": "3e4c66f027d428b6f12e3cd818b3fe846b2c10046d9ff2314bfbcb95fbffab0d",
+      "bytes": 1378
+    },
+    "deploy/rk3588/validation/fixed_undistort/run-v40-undistort-cache-board.py": {
+      "sha256": "d0e526be97cf46ea9f82880cccef91167a45ecd5110b545b59a2b4b3a02387ba",
+      "bytes": 12171
+    },
+    "deploy/rk3588/validation/fixed_undistort/run-v40-undistort-single-board.py": {
+      "sha256": "7e3af1583ec2b67242cefb48ee3e65e47de7e89c0d25c02e2232389eff09f6bf",
+      "bytes": 12310
+    },
+    "deploy/rk3588/validation/fixed_undistort/single_remap_cache.py": {
+      "sha256": "6ae53bd252de2333bf105e0f5f98c842dd2cc79244f8f1acf9572809bd627c63",
+      "bytes": 6128
+    },
+    "deploy/rk3588/validation/fixed_undistort/test_fixed_undistort_cache.py": {
+      "sha256": "94f798cb683086c2c28df271716e705a90e9b9613f0ca759d242ba27a5c53651",
+      "bytes": 5160
+    },
+    "deploy/rk3588/validation/fixed_undistort/test_single_remap_cache.py": {
+      "sha256": "ef8c0dd5645daf16e49043f0daae5bc0263f1a8938d31cfa4a238e2526e355fe",
+      "bytes": 3720
+    },
+    "deploy/rk3588/validation/fixed_undistort/test_undistort_board_contract.py": {
+      "sha256": "eaed6badf11d6c11d603aa001af256537cc3eef6c8215b33ea27ee0e1583623d",
+      "bytes": 2176
+    },
+    "docs/ENGINEERING_NOTES.md": {
+      "sha256": "a4ff1b86fb0ad1aa710301144630b40a63d94ed8dfd738c737c8a4b378e2d1d6",
+      "bytes": 129248
+    },
+    "results/dpvo_m16_grouped_v40.json": {
+      "sha256": "19ff3cef882fa64c9d2c4b1d07eeccfd6a9df88f874db709c512fe5fc692020c",
+      "bytes": 4016772
+    },
+    "results/fixed_undistort_v40.json": {
+      "sha256": "fa16c15938b94c3457f44a89bdb135222438968b36cc6e6cb530e1b5d646f7b8",
+      "bytes": 1373454
+    },
+    "results/synthetic_tests_v40.json": {
+      "sha256": "50e453a4054ac0d17fa8140a5c8fb12297151b9ea97c881521db151ff0611347",
+      "bytes": 3509
+    }
+  },
+  "candidate_accepted": false,
+  "realtime_validated": false
+}
