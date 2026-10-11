@@ -6,13 +6,23 @@ An embedded execution project based on [MIT-SPARK/VGGT-SLAM](https://github.com/
 
 **License scope:** the repository's BSD-2-Clause code license does **not** license the external model weights. The pinned original VGGT-1B checkpoint is **CC-BY-NC-4.0**, with a non-commercial restriction. Compiling it to RKNN does not grant commercial-use rights. See [model licenses](MODEL_LICENSES.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
-The optional LK/PnP/triangulation frontend is a historical custom architecture experiment, separate from the original VGGT-SLAM 2 frontend; it does not use ORB. It is not the current route for claiming original-network real-time performance.
+The LK/PnP/triangulation frontend is an archived custom architecture experiment, separate from the original VGGT-SLAM 2 frontend. It will not be used in the current port or counted toward original-network real-time performance.
 
 In the pinned upstream implementation, LK selects keyframes for VGGT inference ([main.py](https://github.com/MIT-SPARK/VGGT-SLAM/blob/35327ac28b7d193df9ccc39ba6346052bb6f1207/main.py), [frame_overlap.py](https://github.com/MIT-SPARK/VGGT-SLAM/blob/35327ac28b7d193df9ccc39ba6346052bb6f1207/vggt_slam/frame_overlap.py)). The continuous LK/PnP poses added here are not original-model outputs. Their publication rate is neither the original network's inference rate nor evidence that the original architecture meets the real-time target.
 
 **Status: sustained accurate 20 Hz tracking, 2–5-second map updates, 30-minute endurance, physical-camera latency and 8 GB operation have not passed validation.** The continuous RGB replay below is a custom-frontend diagnostic, not original-architecture acceptance or a completed real-time SLAM system. The current hybrid mapper uses CPU/XNNPACK for most of VGGT and RKNN for the original four-iteration CameraHead. It is not an all-NPU implementation.
 
 可复用的问题、根因证据和修复边界整理在[中文工程记录](docs/ENGINEERING_NOTES.md)，包括严格权重加载、ONNX 导出、RKNN 优化器与许可边界。
+
+## Current scope: original VGGT only (2026-10-12)
+
+Only the original VGGT model is allowed for this port. **DPVO, DA3 and other replacement-model research is stopped.** Earlier measurements remain historical records and do not count toward VGGT-SLAM2 acceptance. No ORB or added LK/PnP pose frontend will be used to satisfy the tracking target. The execution interface remains open to other NPUs running the same model.
+
+The next work concerns the original VGGT operator execution, CPU/NPU partitioning, memory layout and validated caching, with actual inference and calibration on RK3588S. Original-model real-time performance is still unvalidated; alternative-model frame rates cannot fill that gap. [Persistent project constraints](AGENTS.md), [engineering records and scope correction](docs/ENGINEERING_NOTES.md), [last completed alternative experiment, archived](results/archived_alternative_research_v46.json).
+
+The [original-model source and saved-evidence review](results/original_vggt_scope_review_v46.json) identifies the next controlled experiment: exact independent DINO overlap caching in consecutive original-model submaps, with the complete frame/global transformer, camera and depth computations preserved. Its existing fixed-pair evidence does not establish full replay equivalence or real-time performance.
+
+The sections below retain the chronology of prior experiments. Their research proposals are superseded by this scope restriction.
 
 ## Closed-cache replay, initialization coverage and runtime budget (v45)
 

@@ -1,0 +1,45 @@
+{
+  "schema": "v46_scope_and_history_publication_review",
+  "status": "passed",
+  "changed_text_files_checked": 6,
+  "local_markdown_links_checked": 316,
+  "checks": [
+    "UTF8 Markdown/JSON-only allowlist",
+    "JSON parsing",
+    "relative Markdown file links",
+    "private-key/common credential-token patterns",
+    "no new runtime implementation or model/array/SDK binaries"
+  ],
+  "files": {
+    "AGENTS.md": {
+      "sha256": "b6570cef4e3fad6b149522c3d347c2aa5a8bbc6044a251ea4d1b16240d2510e3",
+      "bytes": 2206
+    },
+    "ARCHITECTURE.md": {
+      "sha256": "a3d08e08ea12a9f90837d0c7ba9f49004e27b43b189b9e5d00652b9398c44a04",
+      "bytes": 7389
+    },
+    "README.md": {
+      "sha256": "78895d53ab84b7e99e0d07391a0912a49f639d37f46c8f977bdd8b1125a632b1",
+      "bytes": 101580
+    },
+    "docs/ENGINEERING_NOTES.md": {
+      "sha256": "931823bfbbfcf9ab984c0fe4755773b71a1decafbed90ac38569570270b9b2fd",
+      "bytes": 178496
+    },
+    "results/archived_alternative_research_v46.json": {
+      "sha256": "f8a1a0b81723631857b087272adeaac388000029e6abd8d7f48386d76b5ed68d",
+      "bytes": 1017859
+    },
+    "results/original_vggt_scope_review_v46.json": {
+      "sha256": "05988a5016d719e68ba7882b3cae9c1a7571283642abfdbf850e62e9da30525c",
+      "bytes": 14440
+    }
+  },
+  "current_allowed_model": "original_VGGT",
+  "alternative_model_research_stopped": true,
+  "runtime_tests_required": false,
+  "test_scope": "Documentation and archived evidence only; no runtime source change and no post-restriction alternative-model execution.",
+  "candidate_accepted": false,
+  "realtime_validated": false
+}

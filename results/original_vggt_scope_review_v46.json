@@ -1,0 +1,251 @@
+{
+  "schema": "original_VGGT_only_static_execution_review_v46",
+  "status": "completed_source_and_saved_evidence_review_no_new_inference",
+  "current_scope": "Original VGGT-1B only; no further DPVO, DA3, Co-Me approximation or traditional pose frontend work.",
+  "execution": {
+    "source_inspection": true,
+    "saved_JSON_only": true,
+    "model_forward": false,
+    "image_decode": false,
+    "ORT": false,
+    "board": false,
+    "compiler": false,
+    "production_modified": false,
+    "public_modified": false
+  },
+  "model_identity": {
+    "checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "checkpoint_bytes": 5026874952,
+    "parameter_count_active_camera_depth_path": 1157941492,
+    "parameters_by_component": {
+      "DINO_encoder": 304372736,
+      "frame_and_global_48_blocks": 604729344,
+      "aggregator_camera_and_register_tokens": 10240,
+      "camera_head": 216174610,
+      "depth_head": 32654562
+    },
+    "topology": {
+      "DINO_blocks": 24,
+      "frame_blocks": 24,
+      "global_blocks": 24,
+      "embedding": 1024,
+      "heads": 16,
+      "MLP_expansion": 4,
+      "patch_size": 14,
+      "special_tokens_per_image": 5,
+      "camera_embedding": 2048,
+      "camera_blocks": 4,
+      "camera_iterations": 4,
+      "retained_aggregator_layers": [
+        4,
+        11,
+        17,
+        23
+      ],
+      "retention_does_not_remove_any_transformer_call": true
+    },
+    "parameter_count_scope": "Camera+depth execution with unused point/track heads pruned; not DPVO94 state tensors. Complete checkpoint weights remain a separate identity.",
+    "checkpoint_rehashed_by_this_review": false,
+    "third_party_core_directly_rehashed": false,
+    "third_party_core_scope": "Public snapshot has saved source pins, not the upstream model source tree; model math/source binding is historical receipt evidence."
+  },
+  "executor_boundary": {
+    "file": "vggt_slam/model_execution.py",
+    "implemented": "TorchVGGTExecutor.predict; prepared CPU FP32 RGB [S,3,H,W] to canonical NumPy extrinsic/intrinsic/depth/depth_conf",
+    "full_RKNN_VGGT_executor_exists": false,
+    "partial_RKNN": "rknn_linear MatMul or rknn_camera original69-tensor shared head step, not complete network",
+    "loop_contract": "Solver uses the same executor for normal and compute_similarity=True(query,retrieved); unsupported similarity is rejected, original .95 ratio gate preserved.",
+    "backend_files": [
+      "vggt_slam/solver.py",
+      "vggt_slam/graph.py",
+      "vggt_slam/submap.py"
+    ],
+    "backend_semantics": "Original depth unprojection, submap overlap/homography constraints, SL4 Levenberg-Marquardt optimization. Not metric SE3 and not another model VO backend.",
+    "backend_performance_acceptance": "No isolated published SL4 critical-path benchmark was located in the reviewed original-model evidence; do not label model remainder as backend/BA."
+  },
+  "completed_evidence": {
+    "original_336_S2": {
+      "file": "results/profile_336_v17.json",
+      "input_shape": [
+        2,
+        3,
+        252,
+        336
+      ],
+      "unhooked_seconds": 34.06903659000818,
+      "hooked_seconds": 50.83266894100234,
+      "hooked_stage_seconds": {
+        "dino_encoder": 12.288254735001829,
+        "frame_blocks": 14.29726256201684,
+        "global_blocks": 15.924267683978542,
+        "camera_head": 2.172835010002018,
+        "depth_head": 6.095448071006103
+      },
+      "scope": "One unhooked forward and one hooked/copy/logging forward; stage timers inclusive/nested. They are not additive to the unhooked clock or a sustained replay."
+    },
+    "exact_overlap_DINO": {
+      "file": "results/patch_cache_v19.json",
+      "pairs": 3,
+      "input_frames": 6,
+      "computed_frames": 4,
+      "hit_frames": 2,
+      "cache_bytes": 1769472,
+      "pose_depth_conf_byte_equal": true,
+      "scope": "Same fixed original CPU FP32 pixels/weights; historical reference/cache different thermal states. No controlled speed ratio, arbitrary batch, complete graph or trajectory gate."
+    },
+    "shape_cached_Linear": {
+      "file": "vggt_slam/rknn_linear.py",
+      "cache_key": "(power_of_two_rows,padded_K,padded_N)",
+      "weight_rebind": "A new layer.weight_token on the same shape context copies/synchronizes/rebinds all B weights. Every Linear copies A, runs synchronously, syncs C and copies output to host.",
+      "original_518_S3_evidence": {
+        "file": "deploy/rk3588/validation/orb-v9-profile518-board.json",
+        "sha256": "853a7934c7be63ef32f2c22d08a7c56915ef48f41d2f055800f9145b2262dfc8",
+        "historical_filename_is_not_an_active_ORB_dependency": true,
+        "model_only_profile_used": true,
+        "input_shape": [
+          3,
+          3,
+          294,
+          518
+        ],
+        "forward_seconds": 109.06413408400113,
+        "measured_peak_process_RSS_MiB": 8174.5859375,
+        "disjoint_inclusive_groups_seconds": {
+          "patch_embed": 24.520111589001317,
+          "frame_blocks": 25.06592547602486,
+          "global_blocks": 41.19852559699939,
+          "camera_head": 1.6356455399945844,
+          "depth_head": 16.543126744996698
+        },
+        "attention_groups_including_QKV_and_projection_seconds": 50.96983890800038,
+        "attention_groups_after_subtracting_linear_seconds": 43.12681195700861,
+        "zero_entire_attention_group_optimistic_remaining_seconds": 58.09429517600074,
+        "zero_entire_attention_group_optimistic_speedup": 1.877363926244112,
+        "zero_non_linear_attention_remainder_optimistic_remaining_seconds": 65.93732212699251,
+        "zero_non_linear_attention_remainder_optimistic_speedup": 1.6540576803217484,
+        "attention_remainder_includes_norm_rope_and_layout_not_only_SDPA": true,
+        "counter_delta": {
+          "linear_calls": 288,
+          "npu_calls": 864,
+          "npu_run_attempts": 864,
+          "npu_run_seconds": 22.705284282943467,
+          "linear_seconds": 33.53899418997025,
+          "context_creates": 8,
+          "context_evictions": 0,
+          "weight_upload_bytes": 3623878656,
+          "input_rows": 675648,
+          "padded_rows": 61632,
+          "npu_errors": 0
+        },
+        "FP16_host_weight_copy_bytes": 1811939328,
+        "claim_scope": "One historical original-model S3 forward; Amdahl counterfactual holds all other stages fixed. Not a proof about a wholly redesigned heterogeneous implementation."
+      },
+      "inference": "Layer-specific immutable weight residence or whole-block graphs could avoid repeated upload and intermediate I/O. Hardware benefit and memory budget need new original-model board measurements."
+    },
+    "camera_shared_step": {
+      "file": "results/camera_step_v16.json",
+      "original_parameter_tensors": 69,
+      "step_parameter_tensors": 68,
+      "iterations": 4,
+      "warm_ms": 212.70703566551674,
+      "DMA_bytes": 869425152,
+      "output_relative_L2": 0.007872656637062313,
+      "scope": "Existing partial original-head execution; no all-network NPU, strict FP32 equality, 20Hz or original SLAM quality acceptance."
+    },
+    "attention_hybrid": {
+      "file": "results/hybrid_block_v20.json",
+      "CPU_complete_block_ms": 631.042479998238,
+      "hybrid_complete_block_ms": 549.8096106603043,
+      "strict_FP32_passed": false,
+      "scope": "Same fixed original global0 block, alternating short test, CPU norm/qkv/RoPE/projection/MLP and three NPU attention shards. Not a full-model or long replay speed ratio."
+    },
+    "MLP_hidden_shards": {
+      "file": "results/mlp_execution_v23.json",
+      "baseline_R2_warm_ms": 71.53844474669313,
+      "shards_R2_warm_ms": 81.0648310034594,
+      "adopted": false,
+      "scope": "Original four weight tensors/exact symbolic GELU pass board ORT before FP16 RKNN conversion; actual strict original FP32 output gate failed. Hidden split changed FP summation and showed no net improvement in this run."
+    }
+  },
+  "next_action": {
+    "priority": 1,
+    "name": "Original complete-model replay with exact overlap DINO reuse; one implementation variable only",
+    "API": "vggt_slam.patch_cache.install_patch_cache(model,max_bytes=8*1024*1024), after fixed backend selection; inference/no_grad, explicit close before backend restore.",
+    "board_driver_work_needed": "New small original-VGGT replay harness, reusing the frozen probe-v19-patch-cache-board.py input/output source gates plus Solver.run_predictions/add_points/graph.optimize. The historical probe is fixed336/3pairs and is not a general replay CLI.",
+    "preserve": [
+      "Same original checkpoint and identical prepared RGB/pixel grid for A/B",
+      "All 24 DINO+24 frame+24 global calls for every newly encoded frame; no layer/token merge/skip",
+      "Camera four iterations, original depth head and codec",
+      "Original SL4 constraints and loop similarity API; first stage explicitly max_loops=0 without retrieval/CLIP. Loop calls must bypass the DINO main-tail cache when separately validated.",
+      "Same admitted observations and immutable overlap ownership; no ORB/LK/PnP"
+    ],
+    "compare": [
+      "Prepared input/checkpoint/backend/seed/source identity",
+      "Canonical pose/K/depth/conf plus same graph request sequence; fixed rtol1e-4/atol1e-5, byte equality separately",
+      "Cache hit/miss/guard/hash/clone bytes and cleanup",
+      "Unhooked full input-to-pose/map/loop wall clocks; paired AB/BA order; record temperature/frequency without system changes",
+      "Fresh observation rate/coverage, map cadence and map/model resident memory separately"
+    ],
+    "no_resizing_shortcut": true,
+    "no_new_inference_performed": true,
+    "stopping_condition": "Any changed prepared pixel/model state, stale cache, nonfinite or numerical mismatch stops the candidate; same-image later global tokens are not valid cache entries.",
+    "expected_boundary": "Only unchanged independent DINO work is removed. Frame/global/depth remain large; this action is not a claim that original VGGT can reach20Hz.",
+    "first_stage": {
+      "max_loops": 0,
+      "retrieval_executed": false,
+      "CLIP_executed": false,
+      "other_auxiliary_models_executed": false,
+      "loop_interface_preserved": true,
+      "loop_validation": "Separate future original-VGGT capability/numerical test; not acceptance evidence from first cache/SL4 AB."
+    }
+  },
+  "following_layout_action": {
+    "name": "Immutable original layer weights / continuous complete frame+global block execution",
+    "reuse_files": [
+      "vggt_slam/rknn_linear.py",
+      "deploy/rk3588/validation/export-v17-aggregator-block-r3.py",
+      "deploy/rk3588/validation/export-v23-mlp-r2.py",
+      "results/camera_step_v16.json"
+    ],
+    "smallest_scope": "One actual frame0->global0 pair on the same tokens/positions with all36 original block parameter tensors, comparing separate original CPU, separate RKNN and combined static-weight graph. Do not assume whole-layer residency fits8GB.",
+    "goal": "Eliminate repeated B uploads and CPU round trips between complete blocks, rather than add more per-Linear launches or hidden-shard CPU reductions.",
+    "gates": "Board original Torch teacher and ONNX CPU fixed gate first; nonquantized RKNN arithmetic/FP16 error, actual attrs/native transport/profile and whole IO timing separately. No inherited pass from older different graphs.",
+    "unverified": [
+      "Fused paired graph export/CPU gate",
+      "SDK layout/device-resident connections",
+      "Persistent all-layer memory/budget",
+      "Layer error accumulation and full pose/depth/trajectory quality",
+      "End-to-end speed and sustained30minute/8GB suitability"
+    ]
+  },
+  "limits": [
+    "Historical runs differ in resolution/batch/thread/thermal state; no cross-run causal speed claim.",
+    "Architecture MAC shares are planning arithmetic, not actual FP16 hardware throughput or impossibility proof.",
+    "Any original RKNN strict FP32 failures remain rejected, even if finite outputs or a small relativeL2.",
+    "Alternative-model archived throughput/94-tensor/gauge/correlation numbers are not VGGT evidence."
+  ],
+  "reviewed_file_sha256": {
+    "AGENTS.md": "b6570cef4e3fad6b149522c3d347c2aa5a8bbc6044a251ea4d1b16240d2510e3",
+    "vggt_slam/runtime.py": "baf65a5afcfa98584e25b1ef85d7cae31507a7da2b4cc03f97d2015776796e8c",
+    "vggt_slam/model_execution.py": "819c7af4fc7c4da0db0b94b85d5600319b95eda328dbe064d2684fc10462d5d8",
+    "vggt_slam/solver.py": "a38123d4924fd31016dc625811fa58339179fa03380eb9250f90f90f3fca6b3b",
+    "vggt_slam/graph.py": "dda8fb7c947c3c39baa7d190e2942cd4b9f26fe1557d7605fdc8651f27a5ab48",
+    "vggt_slam/submap.py": "fddccafee4e9f32452ce044b80669bd48f5fe5f331a980986a6091e7fce92e63",
+    "vggt_slam/map.py": "2d7b374101248519d921e16e272063ff6f7e001c7af0073a7a7c13c14ac79143",
+    "vggt_slam/rknn_linear.py": "69056a2cb44ba69a2d311265b71ff919e4758fcaa150834a0b0cfe85dbcaef7d",
+    "vggt_slam/rknn_camera.py": "8c10c11157589623528555a3bfa7e529e7e44cfda1bc9212e86be467272ab994",
+    "vggt_slam/patch_cache.py": "cd86bcb580cbf55ca92b6b98b203bb6e789bf35adfa47644103efd6be592e6f9",
+    "vggt_slam/edge_mapping.py": "c889a193da92cc74671d31ee9a70352cff089ae70fff9174ea526add2261e134",
+    "results/capacity_v20.json": "244726f99941a7389de0446204c97ae922b8d6f53004d356ba129facd6273672",
+    "results/profile_336_v17.json": "6c3d2cb51af75410188c062e83a26eae4d4c5d69c632a6eeae95993eba004820",
+    "results/patch_cache_v19.json": "0e04c1e0118b29f5d56b9344c6ee2168c2219d567cb5c54efc275a3cd53859fb",
+    "results/camera_step_v16.json": "cdf9ec63d2b5f889267d6d08cce365d9d07889c59aad1e73af436d96ac32e8e6",
+    "results/hybrid_block_v20.json": "8f0befaa26e3f775824d58455691302a301878d324aff94e27392ea1a796fc57",
+    "results/mlp_execution_v23.json": "2be59db0fb061bd4fac76f6b596ad3f419d56170c2e911a0332e27ec85e6c1ec",
+    "results/camera_bottleneck_v23.json": "5193f3da463fe3f97ef98f8cb2052d0c14180647cb8c64f9d040f484e7bc0297",
+    "results/mlp_layout_v19.json": "4a3d5b144730d9a01cc66fb5ce575d40eb309ae559fd9fbd8ee54ab5d2f0cb7d",
+    "deploy/rk3588/validation/probe-v19-patch-cache-board.py": "ba179154ef65d691dec977029b492e6094cf68ef57399a4f6bc403abbbcd12fb",
+    "deploy/rk3588/validation/export-v17-aggregator-block-r3.py": "6724aba806806ec36d8ba097f0c2076f3703e106f23c83d4272ae2e3a3fc2874",
+    "deploy/rk3588/validation/export-v23-mlp-r2.py": "31602681e0c6ee5650baf66784764124926b8666ca75e4529bda71f98d54585a"
+  }
+}
