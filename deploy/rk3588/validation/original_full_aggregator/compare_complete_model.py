@@ -34,6 +34,8 @@ def main():
                    help='Execute all 24 original DINO layers as six four-layer graphs')
     p.add_argument('--depth-manifest', type=Path)
     p.add_argument('--depth-manifest-sha256')
+    p.add_argument('--camera-split4', action='store_true',
+                   help='Use the measured original four-way FC1 camera graph in the complete DINO branch')
     p.add_argument('--reference-run', type=Path,
                    help='Reuse a completed matched CPU FP32 run; run only the new DINO branch')
     args = p.parse_args()
@@ -58,6 +60,8 @@ def main():
         p.error('Supply both DINO manifest and SHA256')
     if args.reference_run is not None and args.dino_manifest is None:
         p.error('--reference-run requires the DINO candidate')
+    if args.camera_split4 and args.dino_manifest is None:
+        p.error('--camera-split4 requires the complete DINO candidate')
     if (args.depth_manifest is None) != (args.depth_manifest_sha256 is None):
         p.error('Supply both depth manifest and SHA256')
     if args.depth_manifest is not None and args.dino_manifest is None:
@@ -101,6 +105,9 @@ def main():
                   manifest_sha256=args.manifest_sha256, script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
     report['grouped_dino'] = args.grouped_dino
     report['retained_aggregator'] = args.retained_aggregator
+    report['camera_split4'] = args.camera_split4
+    if args.camera_split4:
+        report.update(compiled_graph_changed=True, compiled_camera_rounding_equivalence_validated=False)
     report['save_aggregator_outputs'] = args.save_aggregator_outputs
     report['runtime_source_sha256'] = {
         name: hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
@@ -124,6 +131,8 @@ def main():
         if args.retained_aggregator:
             report.update(internal_precision_changed=None,
                           compiled_boundary_rounding_equivalence_validated=False)
+    if args.camera_split4:
+        report['internal_precision_changed'] = None
     branches = ['cpu_fp32', 'npu_fp16_aggregator_cpu_fp32_heads',
                 'npu_fp16_aggregator_camera_cpu_fp32_DINO_depth']
     dino_branch = 'npu_fp16_DINO_aggregator_camera_cpu_fp32_depth'
@@ -180,7 +189,8 @@ def main():
             if branch != 'cpu_fp32':
                 npu = install_aggregator(model, args.manifest, args.manifest_sha256, **aggregator_options)
             if branch in ('npu_fp16_aggregator_camera_cpu_fp32_DINO_depth', dino_branch):
-                camera_npu = install_rknn_camera_head(model)
+                camera_npu = (install_rknn_camera_head(model, split_fc1=True)
+                              if args.camera_split4 and branch == dino_branch else install_rknn_camera_head(model))
             if branch == dino_branch:
                 dino_options = {}
                 if args.half_io_library is not None:

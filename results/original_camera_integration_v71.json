@@ -1,0 +1,573 @@
+{
+  "schema": "original_VGGT_CameraHead_split4_complete_integration_v71",
+  "status": "optional_integration_measured_not_realtime_or_quality_accepted",
+  "original_model_only": true,
+  "checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "additional_learned_models_used": false,
+  "traditional_pose_frontend_added": false,
+  "all_actual_model_execution_on_RK3588S": true,
+  "original_forward_source_byte_unchanged": true,
+  "original_head_parameters_verified": 69,
+  "original_refinements": 4,
+  "camera_contexts_per_process": 1,
+  "default_backend_changed": false,
+  "compiled_camera_rounding_equivalence_validated": false,
+  "candidate_accepted": false,
+  "trajectory_quality_validated": false,
+  "real_time_validated": false,
+  "actual_frequency_hz": 300000000,
+  "clock_or_governor_writes": false,
+  "integration": {
+    "complete_flag": "--camera-split4",
+    "replay_flag": "--rknn-camera-split4",
+    "replay_requires": "--rknn-camera-head",
+    "candidate_rknn_sha256": "0c216630b608ddd72ae288385c886d20d5e002b85fad3f741ed1308360bd7f51",
+    "fixed_compile_receipt_sha256": "a2cdad4a6d2af60c6b3244dfefb3d1a1fadead72c6b2374ef2c089912d318f74",
+    "fixed_FP32_ONNX_check_receipt_sha256": "9c58744a713a8ad686e66e811163c260e82f6522f0a936dbcc92cb5fdfdc4c2a",
+    "destroyed_handle_cleared_only_after_success": true
+  },
+  "complete_comparison": {
+    "input_indices": [
+      32,
+      80,
+      128,
+      176,
+      224,
+      272,
+      320,
+      368,
+      416,
+      464,
+      512,
+      560,
+      608,
+      656,
+      704,
+      752,
+      797
+    ],
+    "input_shape": [
+      2,
+      3,
+      84,
+      112
+    ],
+    "original_pairs_per_route": 16,
+    "timing_scope": "Offline complete model plus SL4; sequential baseline then candidate, not paced input latency.",
+    "baseline": {
+      "result_sha256": "d69b6249759cf795c48a19bb6b48cba073675b5118270c1318dd181e78473864",
+      "runner_sha256": "f59dd9ca465cebd5b9cb3a83b10fb7fe50a0af7c3368cfeb5fec5d0a7524886b",
+      "camera_split4": false,
+      "camera_model_sha256": "0821683fe1f9526c52777b0ef1ba45ba4c744375f9fd731f0f3d2068e4355af9",
+      "runtime_source_sha256": {
+        "patch_cache.py": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b",
+        "rknn_aggregator_blocks.py": "4fea665334e9d12a3d55839c3150680e269bab9794074d698bed2ad0a6e41c93",
+        "rknn_camera_head.py": "89c77fdb67348160b6d55676da22528cc1cb121985276cb1ae1970b2aa8a9fdc",
+        "rknn_dino_blocks.py": "6cf230ea3ae6c65b9a3c7ec0b31e9abb346edb2fc0413b6b77a3a3b510b495de",
+        "rknn_depth_head.py": "7efacdb27be4aeb134fd2b64e2819136320fc45d25973517584522d314ba7894",
+        "rknn_aggregator_pairs.py": "08270da911213d0d22c21c9a7f001aaa7e16d7f7b32220f8a2b0c1ddc4b09b88",
+        "rknn_half_io_pairs.py": "53b573f494f2598183659ba4e8dcb7503c770d9e2ac7b95cae9016279805d9a4",
+        "native/fp16_neon.c": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3",
+        "rknn_half_io_dino.py": "e39469432aa5663f0a15756be0067ec92a0fb7127e6702a794298c3e902f3cd7",
+        "rknn_grouped_dino.py": "e0e5664dc231a9960db12ae6c690d3f0604417a4d74991dcbd0ca2ca765ef6ac",
+        "rknn_retained_aggregator.py": "04fbb5b2ad7db22bf26d52d4a6b5a3fadffa042557919575938b035f5dd06b5f"
+      },
+      "prediction_arrays_checked": 80,
+      "aggregator_arrays_checked": 80,
+      "original_CPU_strict_pass": 0,
+      "original_CPU_strict_count": 80,
+      "original_CPU_error_by_field": {
+        "pose_enc": {
+          "mean_relative_l2": 0.012400812479033631,
+          "max_relative_l2": 0.020854109578716182,
+          "max_abs": 0.030428792349994183,
+          "strict_pass_count": 0
+        },
+        "extrinsic": {
+          "mean_relative_l2": 0.012553168500034635,
+          "max_relative_l2": 0.03608022837096737,
+          "max_abs": 0.05449996516108513,
+          "strict_pass_count": 0
+        },
+        "intrinsic": {
+          "mean_relative_l2": 0.012262326675967635,
+          "max_relative_l2": 0.02591656350700739,
+          "max_abs": 12.749420166015625,
+          "strict_pass_count": 0
+        },
+        "depth": {
+          "mean_relative_l2": 0.009391248657142186,
+          "max_relative_l2": 0.018620952540362036,
+          "max_abs": 0.24108558893203735,
+          "strict_pass_count": 0
+        },
+        "depth_conf": {
+          "mean_relative_l2": 0.07198473991739024,
+          "max_relative_l2": 0.1119653783721371,
+          "max_abs": 1.0974855422973633,
+          "strict_pass_count": 0
+        }
+      },
+      "timing": {
+        "prediction": {
+          "count": 16,
+          "mean_seconds": 1.7780824990059045,
+          "p95_seconds": 1.974537886242615,
+          "first_seconds": 2.641982891014777,
+          "excluding_first_mean_seconds": 1.7204891395386464
+        },
+        "complete_service": {
+          "count": 16,
+          "mean_seconds": 1.8132115468142729,
+          "p95_seconds": 2.0062377954891417,
+          "first_seconds": 2.7010065219947137,
+          "excluding_first_mean_seconds": 1.7540252151355769
+        },
+        "phase_mean_seconds": {
+          "DINO": 0.2713552849345433,
+          "aggregator_including_DINO": 1.3280929615611967,
+          "camera_head": 0.21162175318931986,
+          "depth_head": 0.16320060505859146
+        },
+        "aggregator_excluding_DINO_mean_seconds": 1.0567376766266534,
+        "guard_seconds_per_pair": 0.11512776950621628
+      },
+      "lifecycle": {
+        "rknn": {
+          "created": 4,
+          "destroyed": 4,
+          "live": 0,
+          "successful_runs": 64,
+          "outputs_acquired_released": 144
+        },
+        "dino_rknn": {
+          "created": 6,
+          "destroyed": 6,
+          "live": 0,
+          "successful_runs": 102,
+          "owned_outputs_converted": 102
+        },
+        "camera_rknn": {
+          "created": 1,
+          "destroyed": 1,
+          "live": 0,
+          "successful_runs": 64,
+          "last_call_released_outputs": 4
+        },
+        "depth_rknn": {
+          "created": 1,
+          "destroyed": 1,
+          "live": 0,
+          "successful_runs": 32
+        }
+      },
+      "total_contexts_created_destroyed": 12,
+      "total_successful_SDK_runs": 262,
+      "patch_cache_closed_restored": true,
+      "cleanup_errors": [],
+      "poses_sha256": "cb768b2ed3f10e4ed758528ebba3e4e440b80cdd09bb82143a180128ec19c31e",
+      "model_threads": 1,
+      "cpu_affinity": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "peak_RSS_MiB": 7198.7734375,
+      "short_matched_trajectory": {
+        "matches": 17,
+        "RPE_pairs": 16,
+        "timestamp_tolerance_seconds": 0.02,
+        "alignment": "Independent positive-scale Sim3 for each trajectory; its same scale used for adjacent matched-frame RPE",
+        "estimated_RMSE": {
+          "ate_translation": 0.17476037041206874,
+          "rpe_translation": 0.3150170096702616,
+          "rpe_rotation": 10.88688684428624
+        },
+        "original_CPU_RMSE": {
+          "ate_translation": 0.17719130291672058,
+          "rpe_translation": 0.3199527420629554,
+          "rpe_rotation": 10.76508014394601
+        },
+        "change_vs_CPU_percent": {
+          "ate_translation": -1.371925407532204,
+          "rpe_translation": -1.5426441920359024,
+          "rpe_rotation": 1.1314983140996882
+        },
+        "quality_accepted": false
+      }
+    },
+    "candidate": {
+      "result_sha256": "4644c425a238f672dd92a0319348d2a10de756151e5484a9c2eb65686616e84a",
+      "runner_sha256": "1e1d28e11f2f476b875593d272526bf816ac3049fa3b69309acaf10a08229927",
+      "camera_split4": true,
+      "camera_model_sha256": "0c216630b608ddd72ae288385c886d20d5e002b85fad3f741ed1308360bd7f51",
+      "runtime_source_sha256": {
+        "patch_cache.py": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b",
+        "rknn_aggregator_blocks.py": "4fea665334e9d12a3d55839c3150680e269bab9794074d698bed2ad0a6e41c93",
+        "rknn_camera_head.py": "e20518d08c47746e1bf58e07bd6d0270bc7c7f6daa4d0858593f478ce6dfb09e",
+        "rknn_dino_blocks.py": "6cf230ea3ae6c65b9a3c7ec0b31e9abb346edb2fc0413b6b77a3a3b510b495de",
+        "rknn_depth_head.py": "7efacdb27be4aeb134fd2b64e2819136320fc45d25973517584522d314ba7894",
+        "rknn_aggregator_pairs.py": "08270da911213d0d22c21c9a7f001aaa7e16d7f7b32220f8a2b0c1ddc4b09b88",
+        "rknn_half_io_pairs.py": "53b573f494f2598183659ba4e8dcb7503c770d9e2ac7b95cae9016279805d9a4",
+        "native/fp16_neon.c": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3",
+        "rknn_half_io_dino.py": "e39469432aa5663f0a15756be0067ec92a0fb7127e6702a794298c3e902f3cd7",
+        "rknn_grouped_dino.py": "e0e5664dc231a9960db12ae6c690d3f0604417a4d74991dcbd0ca2ca765ef6ac",
+        "rknn_retained_aggregator.py": "04fbb5b2ad7db22bf26d52d4a6b5a3fadffa042557919575938b035f5dd06b5f"
+      },
+      "prediction_arrays_checked": 80,
+      "aggregator_arrays_checked": 80,
+      "original_CPU_strict_pass": 0,
+      "original_CPU_strict_count": 80,
+      "original_CPU_error_by_field": {
+        "pose_enc": {
+          "mean_relative_l2": 0.01242020431693126,
+          "max_relative_l2": 0.020822660412890378,
+          "max_abs": 0.030606175772845745,
+          "strict_pass_count": 0
+        },
+        "extrinsic": {
+          "mean_relative_l2": 0.012539002468525238,
+          "max_relative_l2": 0.03553718344589599,
+          "max_abs": 0.05382658168673515,
+          "strict_pass_count": 0
+        },
+        "intrinsic": {
+          "mean_relative_l2": 0.012217115858917747,
+          "max_relative_l2": 0.026157949566259577,
+          "max_abs": 12.77337646484375,
+          "strict_pass_count": 0
+        },
+        "depth": {
+          "mean_relative_l2": 0.009391248657142186,
+          "max_relative_l2": 0.018620952540362036,
+          "max_abs": 0.24108558893203735,
+          "strict_pass_count": 0
+        },
+        "depth_conf": {
+          "mean_relative_l2": 0.07198473991739024,
+          "max_relative_l2": 0.1119653783721371,
+          "max_abs": 1.0974855422973633,
+          "strict_pass_count": 0
+        }
+      },
+      "timing": {
+        "prediction": {
+          "count": 16,
+          "mean_seconds": 1.7057752468226681,
+          "p95_seconds": 1.8532731030063587,
+          "first_seconds": 2.3711149049922824,
+          "excluding_first_mean_seconds": 1.6614192696113605
+        },
+        "complete_service": {
+          "count": 16,
+          "mean_seconds": 1.7383205913192796,
+          "p95_seconds": 1.8807204492695746,
+          "first_seconds": 2.385887531010667,
+          "excluding_first_mean_seconds": 1.6951494620065204
+        },
+        "phase_mean_seconds": {
+          "DINO": 0.27022219912214496,
+          "aggregator_including_DINO": 1.3137426786906872,
+          "camera_head": 0.17079116043714748,
+          "depth_head": 0.16244215961887676
+        },
+        "aggregator_excluding_DINO_mean_seconds": 1.0435204795685422,
+        "guard_seconds_per_pair": 0.10485149469059252
+      },
+      "lifecycle": {
+        "rknn": {
+          "created": 4,
+          "destroyed": 4,
+          "live": 0,
+          "successful_runs": 64,
+          "outputs_acquired_released": 144
+        },
+        "dino_rknn": {
+          "created": 6,
+          "destroyed": 6,
+          "live": 0,
+          "successful_runs": 102,
+          "owned_outputs_converted": 102
+        },
+        "camera_rknn": {
+          "created": 1,
+          "destroyed": 1,
+          "live": 0,
+          "successful_runs": 64,
+          "last_call_released_outputs": 4
+        },
+        "depth_rknn": {
+          "created": 1,
+          "destroyed": 1,
+          "live": 0,
+          "successful_runs": 32
+        }
+      },
+      "total_contexts_created_destroyed": 12,
+      "total_successful_SDK_runs": 262,
+      "patch_cache_closed_restored": true,
+      "cleanup_errors": [],
+      "poses_sha256": "9049613e5a4b0363fca73a715d9690182e25bdbe52269ec91ff5a4b971666348",
+      "model_threads": 1,
+      "cpu_affinity": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "peak_RSS_MiB": 7078.83984375,
+      "short_matched_trajectory": {
+        "matches": 17,
+        "RPE_pairs": 16,
+        "timestamp_tolerance_seconds": 0.02,
+        "alignment": "Independent positive-scale Sim3 for each trajectory; its same scale used for adjacent matched-frame RPE",
+        "estimated_RMSE": {
+          "ate_translation": 0.17472483156286983,
+          "rpe_translation": 0.3148947819086311,
+          "rpe_rotation": 10.859344849627053
+        },
+        "original_CPU_RMSE": {
+          "ate_translation": 0.17719130291672058,
+          "rpe_translation": 0.3199527420629554,
+          "rpe_rotation": 10.76508014394601
+        },
+        "change_vs_CPU_percent": {
+          "ate_translation": -1.3919821759028395,
+          "rpe_translation": -1.5808460092300192,
+          "rpe_rotation": 0.8756526140128562
+        },
+        "quality_accepted": false
+      }
+    },
+    "difference": {
+      "pair": {
+        "arrays_compared": 80,
+        "arrays_byte_equal": 32,
+        "NPZ_files_byte_equal": 0,
+        "field_summary": {
+          "pose_enc": {
+            "byte_equal_count": 0,
+            "strict_pass_count": 0,
+            "max_abs": 0.0026521682739257812,
+            "mean_relative_l2": 0.00028899376314521513
+          },
+          "extrinsic": {
+            "byte_equal_count": 0,
+            "strict_pass_count": 0,
+            "max_abs": 0.005670264363288879,
+            "mean_relative_l2": 0.0004715863688258238
+          },
+          "intrinsic": {
+            "byte_equal_count": 0,
+            "strict_pass_count": 1,
+            "max_abs": 0.803253173828125,
+            "mean_relative_l2": 0.00046532117721187455
+          },
+          "depth": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "depth_conf": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          }
+        }
+      },
+      "aggregator": {
+        "arrays_compared": 80,
+        "arrays_byte_equal": 80,
+        "NPZ_files_byte_equal": 16,
+        "field_summary": {
+          "layer_04": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "layer_11": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "layer_17": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "layer_23": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "target_tokens": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          }
+        }
+      }
+    },
+    "timing_reduction_percent": {
+      "mean_seconds": 4.130293325485002,
+      "excluding_first_mean_seconds": 3.356608138869066
+    },
+    "attribution_limit": "Other phase timings and startup cache also vary; do not attribute every measured saved millisecond solely to camera FC1.",
+    "baseline_audit": {
+      "private_evidence": "baseline_saved_audit.json",
+      "sha256": "3fadc8ea35c02433683b3157c53ba982bc24fbc206e67eb198710e79f66b5b45"
+    },
+    "candidate_audit": {
+      "private_evidence": "candidate_saved_audit.json",
+      "sha256": "3a27efbf029c5652b22765603d9cb0ea1f9e25d756122b7e18928f2a0e7ba3ee"
+    },
+    "baseline_receipt": {
+      "private_evidence": "complete-baseline-r1/result.json",
+      "sha256": "d69b6249759cf795c48a19bb6b48cba073675b5118270c1318dd181e78473864"
+    },
+    "candidate_receipt": {
+      "private_evidence": "complete-candidate-r1/result.json",
+      "sha256": "4644c425a238f672dd92a0319348d2a10de756151e5484a9c2eb65686616e84a"
+    }
+  },
+  "replay": {
+    "fresh_pose_count": 18,
+    "fresh_pose_hz": 0.6090496923479266,
+    "fresh_wall_seconds_including_EOF_drain": 29.5542387200112,
+    "input_to_pose_p95_seconds": 2.39631700979662,
+    "source": {
+      "source": "original_timestamp_rgb_replay",
+      "queue_capacity": 1,
+      "original_frames": 798,
+      "generated": 792,
+      "delivered": 19,
+      "overwritten": 773,
+      "skipped_before_decode": 6,
+      "decode_policy": "first_then_latest_due_original_timestamp",
+      "start_monotonic": 219774.931375079,
+      "end_monotonic": 219801.522709626,
+      "last_capture_monotonic": 219801.5034341812,
+      "physical_sensor_latency_validated": false,
+      "error": null
+    },
+    "EOF_drain_seconds_after_source_end": 2.9629041730077006,
+    "segment_mean_seconds": {
+      "arrival_to_decode_seconds": 0.0002258041495224461,
+      "decode_seconds": 0.03011895893562016,
+      "queue_seconds": 0.08391477461393354,
+      "prediction_seconds": 1.587703594664668,
+      "SL4_and_points_seconds": 0.03334312844930941,
+      "publication_seconds": 0.015668633555631258
+    },
+    "full_model_mean_seconds": 1.5172897311648639,
+    "processing_mean_seconds": 1.6367153566696087,
+    "map_chunk_count": 18,
+    "graph_node_count": 36,
+    "map_arrays_checked": 72,
+    "point_count_total": 253981,
+    "poses_count": 19,
+    "lifecycle": {
+      "rknn": {
+        "contexts_created_destroyed": 4,
+        "successful_SDK_runs": 72,
+        "live_contexts": 0,
+        "cleanup_errors": []
+      },
+      "dino_rknn": {
+        "contexts_created_destroyed": 6,
+        "successful_SDK_runs": 114,
+        "live_contexts": 0,
+        "cleanup_errors": []
+      },
+      "camera_rknn": {
+        "contexts_created_destroyed": 1,
+        "successful_SDK_runs": 72,
+        "live_contexts": 0,
+        "cleanup_errors": []
+      },
+      "depth_rknn": {
+        "contexts_created_destroyed": 1,
+        "successful_SDK_runs": 36,
+        "live_contexts": 0,
+        "cleanup_errors": []
+      }
+    },
+    "total_contexts_created_destroyed": 12,
+    "total_successful_SDK_runs": 294,
+    "aggregator_outputs_acquired_released": 162,
+    "patch_cache_closed_restored": true,
+    "original_frames": 798,
+    "startup_seconds": 37.245712741976604,
+    "peak_process_RSS_MiB": 7198.125,
+    "complete_latency_scope": "original software arrival through decode, queue, full model, SL4, dense chunk and poses/map atomic replacements",
+    "physical_sensor_latency_validated": false,
+    "result": {
+      "private_evidence": "replay-r1/results.json",
+      "sha256": "a7406aed51c1ed8bde8239ef33210dc620235fc72aedf1d0040d6bfa499c0893"
+    },
+    "saved_audit": {
+      "private_evidence": "replay_saved_audit.json",
+      "sha256": "09ac136dc6cc9ac44d51b7d800af8e495203acd0244305a82df0b7f26eb1c2c4"
+    },
+    "camera_identity_and_monitor_audit": {
+      "private_evidence": "replay_identity_monitor_audit.json",
+      "sha256": "07574ac464d5fba39c0bbb07cf6faed0084fd4712332e6de483b53dd87055cf1"
+    }
+  },
+  "monitors": {
+    "stages": 3,
+    "samples": 440,
+    "sampled_frequencies_hz": [
+      300000000
+    ],
+    "maximum_sampled_temperature_c": 66.538,
+    "all_terminal_child_returncodes_zero": true,
+    "thermal_stop_c": 75,
+    "receipts": [
+      {
+        "private_evidence": "vggt-v71-baseline-control-r1.json",
+        "sha256": "9860b0b4968a206c5e45e4d31ddbbf90c22a1cebcd5bc4710caf16921fb07a0c"
+      },
+      {
+        "private_evidence": "vggt-v71-candidate-control-r1.json",
+        "sha256": "3c056d35b1c33413fd804cba755c5f4cfd28c880ccfd3000ab0f2e551a30842c"
+      },
+      {
+        "private_evidence": "vggt-v71-replay-control-r1.json",
+        "sha256": "1d215bda5dedb5b13dc39ef424900dd33af06a335673c5b4c83b76d4ba3e8df7"
+      }
+    ]
+  },
+  "generated_checks": {
+    "scope": "Generated argument/dispatch, pinned receipt and fake SDK checks; no actual Torch, model, ORT or SDK execution",
+    "command": "env PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q tests/test_camera_split4_integration.py tests/test_compare_complete_model.py tests/test_replay_original_vggt.py",
+    "passed": 74,
+    "failed": 0,
+    "sources": {
+      "vggt_slam/rknn_camera_head.py": "e20518d08c47746e1bf58e07bd6d0270bc7c7f6daa4d0858593f478ce6dfb09e",
+      "scripts/replay_original_vggt.py": "acfd428acda824617db658a24970e82fd1e6618fb1b6ed64b388d397178fc6db",
+      "deploy/rk3588/validation/original_full_aggregator/compare_complete_model.py": "1e1d28e11f2f476b875593d272526bf816ac3049fa3b69309acaf10a08229927",
+      "tests/test_camera_split4_integration.py": "84b2758aeea67fc65bc6876f31676a7e56d2ec42091cf6f03a6cb90a04ca3273",
+      "tests/test_compare_complete_model.py": "553b1ac3b23eec91558a0d1f121846ec9596560ff087ec6aa2a8af049a87ba7b",
+      "tests/test_replay_original_vggt.py": "25dfd96b201d8a69e59015de3755feeee46199e66974b115f9404b6ab7d49c28",
+      "tests/fixtures/split4-compile.json": "a2cdad4a6d2af60c6b3244dfefb3d1a1fadead72c6b2374ef2c089912d318f74",
+      "tests/fixtures/split4-ort.json": "9c58744a713a8ad686e66e811163c260e82f6522f0a936dbcc92cb5fdfdc4c2a"
+    }
+  },
+  "limits": [
+    "Original CPU FP32 strict gate still fails for all 80 complete-run prediction tensors in both routes.",
+    "Fixed 17-pose quality is not the new timestamp replay quality, broad map quality, metric-scale accuracy or failure rate.",
+    "Replay selected images differ from prior runs; complete-model service improvements do not establish replay latency improvement.",
+    "No new 1 GHz test. No physical camera, replacement loop closure, 30-minute stability or 8 GB validation.",
+    "RSS is a process measurement on a 16 GB board, not the total deployment memory requirement."
+  ],
+  "publication_policy": "Source and result metadata only; no checkpoints, captured arrays, weight-bearing exports or SDK binaries."
+}

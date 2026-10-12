@@ -1,0 +1,216 @@
+{
+  "schema": "v69_original_CameraHead_step_FC1_split_compile",
+  "status": "compiled_not_quality_accepted",
+  "chunks": 4,
+  "script_sha256": "9af02ea5042285ef8846b3a656162bf8fb35df1b0487eb0f2812e879313e2aee",
+  "helper_sha256": "cb107c093cee8359724095a5298d0cdf2407499503a1fa0358da49d2055c2894",
+  "baseline_onnx_sha256": "f89fb0e66f43a3d3b94a76ec0124d4f521fa1ce9a6c93efab5e362d3a614eb9f",
+  "trunk_blocks_per_step": 4,
+  "required_outer_iterations": 4,
+  "candidate_accepted": false,
+  "full_model_or_realtime_validated": false,
+  "model_inference_executed": false,
+  "configuration": {
+    "target_platform": "rk3588",
+    "float_dtype": "float16",
+    "optimization_level": 3,
+    "mean_values": null,
+    "std_values": null,
+    "quant_img_RGB2BGR": false,
+    "model_pruning": false,
+    "remove_reshape": false,
+    "quantize_weight": false,
+    "enable_flash_attention": false
+  },
+  "build_options": {
+    "do_quantization": false,
+    "dataset": null,
+    "auto_hybrid": false
+  },
+  "operations": [
+    {
+      "name": "config",
+      "status": "completed",
+      "code": 0,
+      "seconds": 0.00012074998812749982
+    },
+    {
+      "name": "load_onnx",
+      "status": "completed",
+      "code": 0,
+      "seconds": 3.8691520980210043
+    },
+    {
+      "name": "build",
+      "status": "completed",
+      "code": 0,
+      "seconds": 51.749659449997125
+    },
+    {
+      "name": "export_rknn",
+      "status": "completed",
+      "code": 0,
+      "seconds": 0.3503996189974714
+    }
+  ],
+  "released": true,
+  "cleanup_errors": [],
+  "graph_proof": {
+    "replacements": [
+      {
+        "index": 0,
+        "original_weight": "camera_head.trunk.0.mlp.fc1.weight",
+        "original_bias": "camera_head.trunk.0.mlp.fc1.bias",
+        "weight_raw_sha256": "fb11713df490d28ad5e3691e684556824cb001e7fa52450297650c1ce65e42e5",
+        "bias_raw_sha256": "b75a509e0e799c5a88912fa94bc9d1590663ceaf1f17defce0fd8043d81ab3a1",
+        "chunks": 4,
+        "hidden_output": "/trunk/trunk.0/mlp/fc1/Add_output_0",
+        "original_fc1_nodes": [
+          "/trunk/trunk.0/mlp/fc1/Transpose",
+          "/trunk/trunk.0/mlp/fc1/MatMul",
+          "/trunk/trunk.0/mlp/fc1/Add"
+        ],
+        "output_channel_ranges": [
+          [
+            0,
+            2048
+          ],
+          [
+            2048,
+            4096
+          ],
+          [
+            4096,
+            6144
+          ],
+          [
+            6144,
+            8192
+          ]
+        ]
+      },
+      {
+        "index": 1,
+        "original_weight": "camera_head.trunk.1.mlp.fc1.weight",
+        "original_bias": "camera_head.trunk.1.mlp.fc1.bias",
+        "weight_raw_sha256": "7494f47e0ab560fe96c08f9182fb91d3b08a8933b0c04d5f7974f14f3e534ba2",
+        "bias_raw_sha256": "5989273fcc8eeef3aa2813938c10d4c17ca08375b379440f22024b49e1956a72",
+        "chunks": 4,
+        "hidden_output": "/trunk/trunk.1/mlp/fc1/Add_output_0",
+        "original_fc1_nodes": [
+          "/trunk/trunk.1/mlp/fc1/Transpose",
+          "/trunk/trunk.1/mlp/fc1/MatMul",
+          "/trunk/trunk.1/mlp/fc1/Add"
+        ],
+        "output_channel_ranges": [
+          [
+            0,
+            2048
+          ],
+          [
+            2048,
+            4096
+          ],
+          [
+            4096,
+            6144
+          ],
+          [
+            6144,
+            8192
+          ]
+        ]
+      },
+      {
+        "index": 2,
+        "original_weight": "camera_head.trunk.2.mlp.fc1.weight",
+        "original_bias": "camera_head.trunk.2.mlp.fc1.bias",
+        "weight_raw_sha256": "d3b45033a52f98bdeed6531e3f411fb4914b56bf6122d32f2a2ac7c6433b1d1e",
+        "bias_raw_sha256": "3df88781aab1df51bada02e7d8584dc66bea90f9319308bdae2782d6463b4bf8",
+        "chunks": 4,
+        "hidden_output": "/trunk/trunk.2/mlp/fc1/Add_output_0",
+        "original_fc1_nodes": [
+          "/trunk/trunk.2/mlp/fc1/Transpose",
+          "/trunk/trunk.2/mlp/fc1/MatMul",
+          "/trunk/trunk.2/mlp/fc1/Add"
+        ],
+        "output_channel_ranges": [
+          [
+            0,
+            2048
+          ],
+          [
+            2048,
+            4096
+          ],
+          [
+            4096,
+            6144
+          ],
+          [
+            6144,
+            8192
+          ]
+        ]
+      },
+      {
+        "index": 3,
+        "original_weight": "camera_head.trunk.3.mlp.fc1.weight",
+        "original_bias": "camera_head.trunk.3.mlp.fc1.bias",
+        "weight_raw_sha256": "bd3d1a410e5ffa622728e7a1e27a11d1760f64cea98437418ecbb17434d6d6c8",
+        "bias_raw_sha256": "c7776c391b7ddda60d92cdfb2a90db75a53c0fa3ae4f7239f25df8621b13373e",
+        "chunks": 4,
+        "hidden_output": "/trunk/trunk.3/mlp/fc1/Add_output_0",
+        "original_fc1_nodes": [
+          "/trunk/trunk.3/mlp/fc1/Transpose",
+          "/trunk/trunk.3/mlp/fc1/MatMul",
+          "/trunk/trunk.3/mlp/fc1/Add"
+        ],
+        "output_channel_ranges": [
+          [
+            0,
+            2048
+          ],
+          [
+            2048,
+            4096
+          ],
+          [
+            4096,
+            6144
+          ],
+          [
+            6144,
+            8192
+          ]
+        ]
+      }
+    ],
+    "all_other_original_nodes_protobuf_unchanged": true,
+    "all_other_original_initializers_protobuf_unchanged": true,
+    "all_original_FC1_parameter_values_preserved": true,
+    "FC1_weights_not_duplicated": true,
+    "original_GELU_nodes_protobuf_unchanged": true,
+    "original_IO_protobuf_unchanged": true,
+    "original_nodes": 357,
+    "candidate_nodes": 381,
+    "original_initializers": 68,
+    "candidate_initializers": 92,
+    "ONNX_version": "1.16.1"
+  },
+  "onnx": {
+    "file": "camera-step-split4.onnx",
+    "bytes": 864771004,
+    "sha256": "f1b9eee30144ec643aa351db724c2f740a79d82a8f9df5468f4338e377600a7f"
+  },
+  "RKNN_Toolkit2_version": "2.3.2",
+  "rknn": {
+    "file": "camera-step-split4.rknn",
+    "bytes": 434656165,
+    "sha256": "0c216630b608ddd72ae288385c886d20d5e002b85fad3f741ed1308360bd7f51"
+  },
+  "release_code": null,
+  "environment_restored": true,
+  "source_and_inputs_unchanged": true,
+  "seconds": 69.67724633400212
+}

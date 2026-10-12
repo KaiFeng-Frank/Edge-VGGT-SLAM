@@ -45,10 +45,20 @@ into four parts while retaining every original parameter and all four
 refinements. At 300 MHz, matched complete-head warm calls fall from
 **213.300 to 177.352 ms (16.85%)**. Actual profiles show three-core convolutions
 and a separate GELU in place of the single-core fused FC1/GELU. Outputs change
-and both routes still fail the original FP32 strict gate. This one-input,
-three-warm-call comparison is not enabled in the full-model runtime and adds
-no new replay or trajectory-quality result.
+and both routes still fail the original FP32 strict gate. That component
+comparison used one input and three warm calls per route.
 [Measurements and reproduction](deploy/rk3588/validation/original_camera_partition/README.md).
+
+The optional complete-model integration now measures **1.813 to 1.738 s
+(4.13%)** on the same 16 pairs at 300 MHz, or **1.754 to 1.695 s (3.36%)**
+excluding first calls. All retained features and depth/confidence arrays remain
+byte-identical; pose and intrinsic outputs change. The short matched trajectory's
+ATE/RPE changes relative to original CPU are under 2%, while the strict tensor
+gate still fails. A separate 798-frame timestamp replay produces **18 fresh
+updates at 0.609 Hz, complete P95 2.396 s**, below the real-time target.
+Select it explicitly with `--rknn-camera-split4` alongside the existing camera
+flag; defaults remain unchanged.
+[Complete comparison, replay and limits](deploy/rk3588/validation/original_camera_integration/README.md).
 
 Applying the same output-channel idea to both FC1 layers of the original
 frame0/global0 pair gives a smaller component gain: **39.019 ms to 37.850 ms

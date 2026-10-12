@@ -1,0 +1,16 @@
+{
+  "scope": "Generated argument/dispatch, pinned receipt and fake SDK checks; no actual Torch, model, ORT or SDK execution",
+  "command": "env PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q tests/test_camera_split4_integration.py tests/test_compare_complete_model.py tests/test_replay_original_vggt.py",
+  "passed": 74,
+  "failed": 0,
+  "sources": {
+    "vggt_slam/rknn_camera_head.py": "e20518d08c47746e1bf58e07bd6d0270bc7c7f6daa4d0858593f478ce6dfb09e",
+    "scripts/replay_original_vggt.py": "acfd428acda824617db658a24970e82fd1e6618fb1b6ed64b388d397178fc6db",
+    "deploy/rk3588/validation/original_full_aggregator/compare_complete_model.py": "1e1d28e11f2f476b875593d272526bf816ac3049fa3b69309acaf10a08229927",
+    "tests/test_camera_split4_integration.py": "84b2758aeea67fc65bc6876f31676a7e56d2ec42091cf6f03a6cb90a04ca3273",
+    "tests/test_compare_complete_model.py": "553b1ac3b23eec91558a0d1f121846ec9596560ff087ec6aa2a8af049a87ba7b",
+    "tests/test_replay_original_vggt.py": "25dfd96b201d8a69e59015de3755feeee46199e66974b115f9404b6ab7d49c28",
+    "tests/fixtures/split4-compile.json": "a2cdad4a6d2af60c6b3244dfefb3d1a1fadead72c6b2374ef2c089912d318f74",
+    "tests/fixtures/split4-ort.json": "9c58744a713a8ad686e66e811163c260e82f6522f0a936dbcc92cb5fdfdc4c2a"
+  }
+}

@@ -535,6 +535,18 @@ def test_grouped_dependencies_reject_before_board_or_model(args, message):
     assert exc.value.code == 2 and message in stderr.getvalue()
 
 
+def test_camera_split4_requires_original_camera_before_board_or_model():
+    replay = load_replay()
+    stderr = io.StringIO()
+    args = ['generated-replay', '--rgb-index', 'generated', '--checkpoint', 'generated',
+            '--output', 'generated', '--rknn-camera-split4']
+    with patch.object(sys, 'argv', args), contextlib.redirect_stderr(stderr), \
+            patch.object(Path, 'is_file', side_effect=AssertionError('must reject before board check')):
+        with pytest.raises(SystemExit) as exc:
+            replay.main()
+    assert exc.value.code == 2 and 'requires --rknn-camera-head' in stderr.getvalue()
+
+
 @pytest.mark.parametrize('fail', [None, 'install_grouped_dino', 'predict', 'close_dino_rknn'])
 def test_grouped_half_io_dispatch_and_failure_cleanup(fail):
     code, report, events = generated_run(npu=True, paired=True, camera=True, dino=True,

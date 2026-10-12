@@ -1,0 +1,20 @@
+{
+  "status": "source_checked_with_saved_evidence_and_generated_tests",
+  "checks": {
+    "audit_replay_identity.py": {
+      "sha256": "d79d490d1e4317a6d6b2ec2eb2cddfd2d650b1338ef582de395781436e1f8737",
+      "AST_pass": true
+    },
+    "run_board_stage.py": {
+      "sha256": "f80aaf78cebcc0255cc82942be7322adb8d4c77df073d18d885af9afd8438397",
+      "AST_pass": true
+    },
+    "audit_complete_saved.py": {
+      "sha256": "7d58643c3e4bb4e171945394f87cc1184c10a8a283d6950145451fdb098ce698",
+      "AST_pass": true
+    }
+  },
+  "actual_model_execution_on_host": false,
+  "targeted_generated_tests_passed": 74,
+  "actual_board_evidence": "results/original_camera_integration_v71.json"
+}

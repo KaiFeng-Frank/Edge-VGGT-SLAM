@@ -30,6 +30,83 @@ COMPILE_SHA = 'c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a'
 HEAD_ACT_SHA = '428bdb087f457b809a66e22d7d01147c1cb4dab43bb0d98bc61c7f05d8383a1e'
 LIBRARY_SHA = 'd31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8'
 HEADER_SHA = 'c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a'
+SPLIT_COMPILE_SHA = 'a2cdad4a6d2af60c6b3244dfefb3d1a1fadead72c6b2374ef2c089912d318f74'
+SPLIT_CHECK_SHA = '9c58744a713a8ad686e66e811163c260e82f6522f0a936dbcc92cb5fdfdc4c2a'
+SPLIT_MODEL_SHA = '0c216630b608ddd72ae288385c886d20d5e002b85fad3f741ed1308360bd7f51'
+SPLIT_MODEL_BYTES = 434656165
+SPLIT_GRAPH_SHA = 'f1b9eee30144ec643aa351db724c2f740a79d82a8f9df5468f4338e377600a7f'
+ORIGINAL_GRAPH_SHA = 'f89fb0e66f43a3d3b94a76ec0124d4f521fa1ce9a6c93efab5e362d3a614eb9f'
+SPLIT_BUILDER_SHA = '9af02ea5042285ef8846b3a656162bf8fb35df1b0487eb0f2812e879313e2aee'
+SPLIT_HELPER_SHA = 'cb107c093cee8359724095a5298d0cdf2407499503a1fa0358da49d2055c2894'
+SPLIT_PROBE_SHA = 'e7279111524148e8fc681cc11d873bc8ba23d85d1f027a900c57b250e8828dbc'
+
+
+def _split4_artifact(source_root, weights):
+    """Select only the already measured original split4 graph; no acceptance claim."""
+    directory = BASE / 'experiments/vggt-v69-camera-step-split4-r1'
+    compile_path = pin(directory / 'result.json', SPLIT_COMPILE_SHA)
+    check_path = pin(BASE / 'experiments/vggt-v69-head-ort-r1/result.json', SPLIT_CHECK_SHA)
+    compiled, checked = json.loads(compile_path.read_text()), json.loads(check_path.read_text())
+    config = dict(target_platform='rk3588', float_dtype='float16', optimization_level=3,
+                  mean_values=None, std_values=None, quant_img_RGB2BGR=False,
+                  model_pruning=False, remove_reshape=False, quantize_weight=False,
+                  enable_flash_attention=False)
+    if (compiled.get('schema') != 'v69_original_CameraHead_step_FC1_split_compile'
+            or compiled.get('status') != 'compiled_not_quality_accepted'
+            or [compiled.get(k) for k in ('chunks', 'trunk_blocks_per_step', 'required_outer_iterations')] != [4, 4, 4]
+            or compiled.get('baseline_onnx_sha256') != ORIGINAL_GRAPH_SHA
+            or compiled.get('script_sha256') != SPLIT_BUILDER_SHA or compiled.get('helper_sha256') != SPLIT_HELPER_SHA
+            or compiled.get('configuration') != config
+            or compiled.get('build_options') != dict(do_quantization=False, dataset=None, auto_hybrid=False)
+            or compiled.get('released') is not True or compiled.get('release_code') not in (None, 0)
+            or compiled.get('cleanup_errors') != [] or compiled.get('source_and_inputs_unchanged') is not True
+            or compiled.get('environment_restored') is not True or compiled.get('candidate_accepted') is not False):
+        raise ValueError('Frozen original split4 compilation provenance differs')
+    operations = compiled.get('operations', [])
+    if ([x.get('name') for x in operations] != ['config', 'load_onnx', 'build', 'export_rknn']
+            or any(x.get('status') != 'completed' or x.get('code') not in (None, 0) for x in operations)):
+        raise ValueError('Original split4 compilation did not complete cleanly')
+    graph = compiled.get('onnx', {})
+    artifact = compiled.get('rknn', {})
+    if (graph != dict(file='camera-step-split4.onnx', bytes=864771004, sha256=SPLIT_GRAPH_SHA)
+            or artifact != dict(file='camera-step-split4.rknn', bytes=SPLIT_MODEL_BYTES, sha256=SPLIT_MODEL_SHA)):
+        raise ValueError('Frozen split4 artifact identity differs')
+    proof = compiled.get('graph_proof', {})
+    flags = ('all_other_original_nodes_protobuf_unchanged', 'all_other_original_initializers_protobuf_unchanged',
+             'all_original_FC1_parameter_values_preserved', 'FC1_weights_not_duplicated',
+             'original_GELU_nodes_protobuf_unchanged', 'original_IO_protobuf_unchanged')
+    replacements = proof.get('replacements', [])
+    if (any(proof.get(k) is not True for k in flags) or len(replacements) != 4
+            or [r.get('index') for r in replacements] != list(range(4))):
+        raise ValueError('Original four-block FC1 preservation proof differs')
+    for index, row in enumerate(replacements):
+        weight, bias = f'trunk.{index}.mlp.fc1.weight', f'trunk.{index}.mlp.fc1.bias'
+        if (row.get('chunks') != 4 or row.get('original_weight') != 'camera_head.' + weight
+                or row.get('original_bias') != 'camera_head.' + bias
+                or row.get('weight_raw_sha256') != weights[weight]['sha256']
+                or row.get('bias_raw_sha256') != weights[bias]['sha256']
+                or row.get('output_channel_ranges') != [[i * 2048, (i + 1) * 2048] for i in range(4)]):
+            raise ValueError('Original FC1 parameter or channel identity differs')
+    checks = checked.get('onnx_checks', [])
+    graphs = [dict(route='A', onnx_sha256=ORIGINAL_GRAPH_SHA, rknn_sha256=MODEL_SHA),
+              dict(route='B', onnx_sha256=SPLIT_GRAPH_SHA, rknn_sha256=SPLIT_MODEL_SHA)]
+    if (checked.get('schema') != 'v69_original_CameraHead_step_split_probe'
+            or checked.get('mode') != 'check_onnx' or checked.get('status') != 'passed_original_FP32_fixed_conditioning_ONNX_gate'
+            or checked.get('script_sha256') != SPLIT_PROBE_SHA or checked.get('candidate_receipt_sha256') != SPLIT_COMPILE_SHA
+            or checked.get('capture_sha256') != CAPTURE_SHA or checked.get('export_sha256') != EXPORT_SHA
+            or checked.get('graphs') != graphs or len(checks) != 8
+            or [(r.get('route'), r.get('iteration')) for r in checks] != [(route, i) for route in 'AB' for i in range(4)]
+            or any(r.get('comparison', {}).get('strict_pass') is not True for r in checks)
+            or checked.get('contexts_created') != 0 or checked.get('npu_run_api_called') is not False
+            or checked.get('cleanup_errors') != [] or checked.get('source_and_inputs_unchanged') is not True
+            or checked.get('affinity_restored') is not True):
+        raise ValueError('Passed same-graph original FP32 fixed-conditioning check required')
+    validation = source_root / 'deploy/rk3588/validation/original_camera_partition'
+    for name, digest in [('compile_camera_step_split_board.py', SPLIT_BUILDER_SHA),
+                         ('compile_camera_fc1_splits_board.py', SPLIT_HELPER_SHA),
+                         ('probe_camera_step_split_board.py', SPLIT_PROBE_SHA)]:
+        pin(validation / name, digest)
+    return directory / artifact['file']
 
 
 def sha(path):
@@ -56,7 +133,7 @@ def load_source(path, expected, name):
 
 class RKNNOriginalCameraHead:
     def __init__(self, model, *, source_root=BASE / 'src',
-                 model_path=BASE / 'experiments/vggt-v16-camera-step/camera-step-fp16.rknn',
+                 model_path=None, split_fc1=False,
                  library_path='/usr/lib/librknnrt.so', core_mask=7, timeout_ms=30000):
         self.lock = threading.RLock()
         self.closed = self.failed = False
@@ -69,6 +146,8 @@ class RKNNOriginalCameraHead:
                           candidate_accepted=False, full_model_quality_validated=False,
                           real_time_validated=False, all_operators_on_npu_verified=False)
         try:
+            if type(split_fc1) is not bool:
+                raise ValueError('split_fc1 must be bool')
             if type(core_mask) is not int or core_mask not in (1, 7) or type(timeout_ms) is not int or not 0 < timeout_ms <= 600000:
                 raise ValueError('core_mask 1/7 and timeout_ms 1..600000 required')
             source_root = Path(source_root).resolve(strict=True)
@@ -118,8 +197,17 @@ class RKNNOriginalCameraHead:
             pin(head_act.__file__, HEAD_ACT_SHA)
             self.activate_pose = head_act.activate_pose
             pin(source_root / 'deploy/rk3588/reference/rknn_api_v2.3.2.h', HEADER_SHA)
-            path = pin(model_path, MODEL_SHA)
-            if path.stat().st_size != MODEL_BYTES:
+            expected_sha, expected_bytes = MODEL_SHA, MODEL_BYTES
+            default_path = BASE / 'experiments/vggt-v16-camera-step/camera-step-fp16.rknn'
+            if split_fc1:
+                default_path = _split4_artifact(source_root, weights)
+                expected_sha, expected_bytes = SPLIT_MODEL_SHA, SPLIT_MODEL_BYTES
+                self.stats.update(camera_graph_variant='original_v69_FC1_split4',
+                                  compile_receipt_sha256=SPLIT_COMPILE_SHA, check_receipt_sha256=SPLIT_CHECK_SHA,
+                                  baseline_model_sha256=MODEL_SHA, original_GELU_nodes_protobuf_unchanged=True,
+                                  compiled_rounding_equivalence_validated=False, compiled_graph_changed=True)
+            path = pin(default_path if model_path is None else model_path, expected_sha)
+            if path.stat().st_size != expected_bytes:
                 raise ValueError('Existing shared-step RKNN byte size mismatch')
             self.api = self.base.bind_api(ct.CDLL(str(pin(library_path, LIBRARY_SHA))))
             self.context = self.base.CONTEXT()
@@ -140,8 +228,11 @@ class RKNNOriginalCameraHead:
             output = self.base.query(self.api, self.context, 2, self.base.TensorAttr(index=0))
             self.bindings = self.step.validate_bindings(self.base, attrs, output)
             memory = self.base.query(self.api, self.context, 6, self.base.MemSize())
-            self.stats.update(model_sha256=MODEL_SHA, verified_original_parameters=69,
+            self.stats.update(model_sha256=expected_sha, verified_original_parameters=69,
                               sdk_dma_bytes=int(memory.total_dma_allocated_size),
+                              sdk_memory=dict(weight_bytes=int(memory.total_weight_size),
+                                              internal_bytes=int(memory.total_internal_size),
+                                              dma_bytes=int(memory.total_dma_allocated_size)),
                               input_attrs=[self.base.attr_record(a) for a in attrs],
                               output_attr=self.base.attr_record(output), core_mask=core_mask)
             forward = self._make_forward()
@@ -214,10 +305,9 @@ class RKNNOriginalCameraHead:
                 try:
                     self.base.check_call(self.api.rknn_destroy(self.context), 'rknn_destroy')
                     self.stats['contexts_destroyed'] += 1
+                    self.context.value = 0
                 except BaseException as exc:
                     self.stats['cleanup_errors'].append(f'{type(exc).__name__}: {exc}')
-                finally:
-                    self.context.value = 0
             if self.stats['cleanup_errors']:
                 raise RuntimeError('CameraHead cleanup failed: ' + '; '.join(self.stats['cleanup_errors']))
 

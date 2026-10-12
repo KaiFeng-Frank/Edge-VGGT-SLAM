@@ -35,6 +35,8 @@ def main():
     p.add_argument('--half-io-library', type=Path)
     p.add_argument('--half-io-library-sha256')
     p.add_argument('--rknn-camera-head', action='store_true')
+    p.add_argument('--rknn-camera-split4', action='store_true',
+                   help='Use the measured original four-way FC1 camera graph; quality remains unaccepted')
     p.add_argument('--rknn-dino-manifest', type=Path)
     p.add_argument('--rknn-dino-manifest-sha256')
     p.add_argument('--rknn-grouped-dino', action='store_true',
@@ -63,6 +65,8 @@ def main():
         p.error('--rknn-paired-aggregator requires --rknn-manifest')
     if args.rknn_camera_head and args.rknn_manifest is None:
         p.error('--rknn-camera-head requires --rknn-manifest')
+    if args.rknn_camera_split4 and not args.rknn_camera_head:
+        p.error('--rknn-camera-split4 requires --rknn-camera-head')
     if (args.rknn_manifest is None) != (args.rknn_manifest_sha256 is None):
         p.error('--rknn-manifest and --rknn-manifest-sha256 must be supplied together')
     if (args.rknn_dino_manifest is None) != (args.rknn_dino_manifest_sha256 is None):
@@ -119,6 +123,7 @@ def main():
     report['script_sha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     report['rknn_grouped_dino'] = args.rknn_grouped_dino
     report['rknn_retained_aggregator'] = args.rknn_retained_aggregator
+    report['rknn_camera_split4'] = args.rknn_camera_split4
     report['runtime_source_sha256'] = {
         name: hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
         for name in ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
@@ -141,6 +146,9 @@ def main():
         if args.rknn_retained_aggregator:
             report.update(internal_precision_changed=None,
                           compiled_boundary_rounding_equivalence_validated=False)
+    if args.rknn_camera_split4:
+        report.update(compiled_graph_changed=True, internal_precision_changed=None,
+                      compiled_camera_rounding_equivalence_validated=False)
     replay = cache = depth_rknn = dino_rknn = camera_rknn = rknn = None
     hooks = []
     affinity = os.sched_getaffinity(0)
@@ -186,7 +194,8 @@ def main():
                                      **aggregator_options)
         if args.rknn_camera_head:
             from vggt_slam.rknn_camera_head import install_rknn_camera_head
-            camera_rknn = install_rknn_camera_head(model)
+            camera_rknn = (install_rknn_camera_head(model, split_fc1=True) if args.rknn_camera_split4
+                           else install_rknn_camera_head(model))
         if args.rknn_dino_manifest is not None:
             dino_options = dict(source_root=BASE / 'src')
             if args.half_io_library is not None:

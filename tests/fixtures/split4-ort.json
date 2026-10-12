@@ -1,0 +1,295 @@
+{
+  "schema": "v69_original_CameraHead_step_split_probe",
+  "status": "passed_original_FP32_fixed_conditioning_ONNX_gate",
+  "mode": "check_onnx",
+  "script_sha256": "e7279111524148e8fc681cc11d873bc8ba23d85d1f027a900c57b250e8828dbc",
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "full_model_or_realtime_validated": false,
+  "clock_writes": false,
+  "core_mask": 7,
+  "init_flags": 0,
+  "normal_benchmark_timing": false,
+  "capture_sha256": "1c3234cfa65914a6f41634432153fa8ebb6dcf9c8d3eb3215f0955fc0ed000f1",
+  "export_sha256": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
+  "candidate_receipt_sha256": "a2cdad4a6d2af60c6b3244dfefb3d1a1fadead72c6b2374ef2c089912d318f74",
+  "actual_execution_on_board_only": true,
+  "Torch_used": false,
+  "calls": [],
+  "graphs": [
+    {
+      "route": "A",
+      "onnx_sha256": "f89fb0e66f43a3d3b94a76ec0124d4f521fa1ce9a6c93efab5e362d3a614eb9f",
+      "rknn_sha256": "0821683fe1f9526c52777b0ef1ba45ba4c744375f9fd731f0f3d2068e4355af9"
+    },
+    {
+      "route": "B",
+      "onnx_sha256": "f1b9eee30144ec643aa351db724c2f740a79d82a8f9df5468f4338e377600a7f",
+      "rknn_sha256": "0c216630b608ddd72ae288385c886d20d5e002b85fad3f741ed1308360bd7f51"
+    }
+  ],
+  "cleanup_errors": [],
+  "contexts_created": 0,
+  "contexts_destroyed": 0,
+  "outputs_acquired": 0,
+  "outputs_released": 0,
+  "sdk_run_attempts": 0,
+  "sdk_runs_succeeded": 0,
+  "npu_run_api_called": false,
+  "npu_run_api_call_count": 0,
+  "timing_scope": "Four sequential SDK steps, original FP32 unactivated accumulation and all four activations; file saves/comparisons excluded. Profile query costs occur only in the separate profile mode.",
+  "board": "9tripod,rk3588s,rockchip,rk3588,",
+  "cpu_affinity": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "NumPy_version": "1.26.4",
+  "ORT_version": "1.16.0",
+  "onnx_checks": [
+    {
+      "route": "A",
+      "iteration": 0,
+      "comparison": {
+        "bitwise_equal": false,
+        "strict_pass": true,
+        "outside": 0,
+        "elements": 18,
+        "max_abs": 2.980232238769531e-07,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "relative_l2": 2.2485943404772885e-07
+      },
+      "artifact": {
+        "file": "ort-A-0.npy",
+        "bytes": 200,
+        "sha256": "2cd25231085af4822e743cf10788e1f8d89a9d73f2d72cc72910c5acf4bfb3e7",
+        "tensor": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "8078ddcd68b0213201f434d6c7cd409a2e6ca61a7a8a297ae91237d1b4f37a00"
+        }
+      }
+    },
+    {
+      "route": "A",
+      "iteration": 1,
+      "comparison": {
+        "bitwise_equal": false,
+        "strict_pass": true,
+        "outside": 0,
+        "elements": 18,
+        "max_abs": 6.426125764846802e-08,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "relative_l2": 4.54732357043532e-06
+      },
+      "artifact": {
+        "file": "ort-A-1.npy",
+        "bytes": 200,
+        "sha256": "a1001fecf9d01200e5e63ef86eb64db4e66186fae3fd3e64ca44d6a50a039d37",
+        "tensor": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "71ec7e06d6e83f460ee95a204de1f6a2dacb0fbfff430fccf5a872a74806e284"
+        }
+      }
+    },
+    {
+      "route": "A",
+      "iteration": 2,
+      "comparison": {
+        "bitwise_equal": false,
+        "strict_pass": true,
+        "outside": 0,
+        "elements": 18,
+        "max_abs": 9.19681042432785e-08,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "relative_l2": 9.804449760442927e-06
+      },
+      "artifact": {
+        "file": "ort-A-2.npy",
+        "bytes": 200,
+        "sha256": "8f45813f6b8a14d0d8c0061474872c12ddd13cf0ccd9d5e2bab54ba5a5120bfa",
+        "tensor": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "aa85274f6ddabfe0dcf2c29bf5e30c9547baeb0b9976cb8519156b694dc706bd"
+        }
+      }
+    },
+    {
+      "route": "A",
+      "iteration": 3,
+      "comparison": {
+        "bitwise_equal": false,
+        "strict_pass": true,
+        "outside": 0,
+        "elements": 18,
+        "max_abs": 1.19674950838089e-07,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "relative_l2": 1.5806161730655524e-05
+      },
+      "artifact": {
+        "file": "ort-A-3.npy",
+        "bytes": 200,
+        "sha256": "5ebf4e4af095f5ea1ee23b11f52a857d94051b1b1048f80ffcddb4e5c31027ee",
+        "tensor": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "36747fcf46e227943462c60dbe2d9fc0db7ce50b6e0687d27c86f79ce5341275"
+        }
+      }
+    },
+    {
+      "route": "B",
+      "iteration": 0,
+      "comparison": {
+        "bitwise_equal": false,
+        "strict_pass": true,
+        "outside": 0,
+        "elements": 18,
+        "max_abs": 3.5762786865234375e-07,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "relative_l2": 2.4342902474473753e-07
+      },
+      "artifact": {
+        "file": "ort-B-0.npy",
+        "bytes": 200,
+        "sha256": "e01b7f767790dcf33220463d1116d653c2a758c290c4f7e72c0f0a84850c19fc",
+        "tensor": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "260c2bc797a036c512e5c26a43ae21922a43fc51f5196833d4fa6a286249eaec"
+        }
+      }
+    },
+    {
+      "route": "B",
+      "iteration": 1,
+      "comparison": {
+        "bitwise_equal": false,
+        "strict_pass": true,
+        "outside": 0,
+        "elements": 18,
+        "max_abs": 6.984919309616089e-08,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "relative_l2": 4.5394897922279e-06
+      },
+      "artifact": {
+        "file": "ort-B-1.npy",
+        "bytes": 200,
+        "sha256": "128a659d526902f22762a527e7665cf875369ec5295d3efac0060fde726d79ca",
+        "tensor": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "677b7bfdf874eb8f359900098b9d8126a8b1d7faa4d9297845d911bd7676948c"
+        }
+      }
+    },
+    {
+      "route": "B",
+      "iteration": 2,
+      "comparison": {
+        "bitwise_equal": false,
+        "strict_pass": true,
+        "outside": 0,
+        "elements": 18,
+        "max_abs": 9.138602763414383e-08,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "relative_l2": 9.841961299339812e-06
+      },
+      "artifact": {
+        "file": "ort-B-2.npy",
+        "bytes": 200,
+        "sha256": "bb703b2f399405dd9a22509f78ea9d975233f1d46f15c9e5a5d6e58cdb66d9ed",
+        "tensor": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "f1bb60dcd8755368d5027ca6197a36baae3d87d4c71edcf8f19eabb57f9b714b"
+        }
+      }
+    },
+    {
+      "route": "B",
+      "iteration": 3,
+      "comparison": {
+        "bitwise_equal": false,
+        "strict_pass": true,
+        "outside": 0,
+        "elements": 18,
+        "max_abs": 1.0314397513866425e-07,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "relative_l2": 1.5127818022454776e-05
+      },
+      "artifact": {
+        "file": "ort-B-3.npy",
+        "bytes": 200,
+        "sha256": "da4e04bfa96c9245925e81892d6fbe0e0ea44702290f6a9d17888084a3afdcf5",
+        "tensor": {
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "bytes": 72,
+          "sha256": "f739de90553fe279b9cc50ed58fe6d8bb274a783b624d85b5b745af24c1e625a"
+        }
+      }
+    }
+  ],
+  "live_contexts": 0,
+  "source_and_inputs_unchanged": true,
+  "affinity_restored": true
+}

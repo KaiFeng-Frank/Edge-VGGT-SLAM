@@ -22,6 +22,7 @@ def load_runner():
 
 
 @pytest.mark.parametrize('args,message', [
+    (['--camera-split4'], 'requires the complete DINO candidate'),
     (['--half-io-library', 'generated'], 'supplied together'),
     (['--half-io-library-sha256', 'd' * 64], 'supplied together'),
     (['--half-io-library', 'generated', '--half-io-library-sha256', 'd' * 64], 'requires --paired-aggregator'),
