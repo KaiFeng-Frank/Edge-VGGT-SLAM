@@ -6,7 +6,24 @@ The current tree contains only this model's execution path and relevant componen
 
 **The real-time target remains unachieved.** The target is at least 20 fresh-observation poses per second with complete input-to-pose P95 latency at most 100 ms. Map cadence, bounded queues, trajectory quality, 30-minute stability and operation within 8 GB each need separate validation. A component's timing, repeated prediction or offline reconstruction does not satisfy those targets. Current measurements use dataset files on a 16 GB RK3588S; physical-camera validation is deferred.
 
-**Latest 1 GHz timestamp replay: two parallel instances of the original VGGT
+**Latest original-model experiment: four retained aggregator groups compiled
+with W8A8, while DINO, CameraHead, DPT and SL4 retain the current baseline.**
+At 1 GHz, the same 16-pair complete comparison improves from **1.211 to
+1.043 s mean service (13.88% less time)** and 3926 to 3337 MiB peak process RSS.
+A separate single-instance timestamp replay produces **30 fresh poses at
+1.075 Hz, complete input-to-pose P95 1.157 s**, with 3341 MiB peak RSS.
+Publication-gap maximum is 1.114 s (one of 29 gaps exceeds one second).
+Neither strict one-update-every-second nor the 20 Hz / 100 ms target is met.
+
+On 17 disjoint evaluation images, Sim3-aligned ATE/translation-RPE/rotation-RPE
+RMSE stays within the original CPU baseline's 20% bound. However, the worst
+rotation segment rises to 24.34°, and saved depth/confidence relative L2
+errors are 5.26% / 42.91%. This does not establish general trajectory or dense
+map quality. The experimental wrappers preserve the default runtime;
+all 12 contexts close and the test restores 300 MHz.
+[Whole-model results, thermal build failures and reproduction](deploy/rk3588/validation/original_calibrated_retained/README.md).
+
+**Earlier 1 GHz timestamp replay: two parallel instances of the original VGGT
 feed one ordered original SL4 solver, producing 32 fresh pose/map updates from
 798 frames at 1.120 Hz. Complete input-to-pose P95 is 1.976 s.** Dispatching
 new requests at least 0.8 s apart reduces publication-gap P95 to 1.031 s and

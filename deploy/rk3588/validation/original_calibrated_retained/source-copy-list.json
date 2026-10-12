@@ -1,0 +1,73 @@
+{
+  "schema": "v80_original_calibrated_retained_frozen_source",
+  "files": {
+    "compile_retained_int8_board_r1.py": {
+      "bytes": 14018,
+      "sha256": "fae89ae5de8434081cc581b364b94ad31d5e74ebde3e836b4b3ae4032eb9e251"
+    },
+    "compile_retained_int8_board_r2.py": {
+      "bytes": 14052,
+      "sha256": "13061f83535dadc1b951604556df1f260c168cf86fe14868a8ec734fd507139e"
+    },
+    "calibrated_retained_contract.py": {
+      "bytes": 4530,
+      "sha256": "54445659a031f4109ed41f1e738658033cf12d20560bb1e29d1e3f320adc6746"
+    },
+    "assemble_retained_int8_manifest.py": {
+      "bytes": 6434,
+      "sha256": "5831f5e21a26950bdf93298c4429f4a325a20bcb6afc1b3c4a10cbd8b18a1680"
+    },
+    "rknn_calibrated_retained.py": {
+      "bytes": 16049,
+      "sha256": "f3f106034c6621a1e3ed07bdb265107b8522103f7d186ba4bbe0d0cefda16f2f"
+    },
+    "run_calibrated_retained_complete.py": {
+      "bytes": 9155,
+      "sha256": "ddd8c866b4e902b988921aa0876b8e3336cfc9b1667360808e59edbcab1a7f81"
+    },
+    "run_calibrated_retained_replay.py": {
+      "bytes": 10785,
+      "sha256": "3c179078013f6058cebea6b31384da5c727f811d375d24f61c7575a7cd7da735"
+    },
+    "audit_complete_quantized_saved.py": {
+      "bytes": 12409,
+      "sha256": "d72dc8328d12b4d6272e1e29cc62df9ada05caa6663b4e6468ad6c0bf3062e43"
+    },
+    "test_rknn_calibrated_retained.py": {
+      "bytes": 6079,
+      "sha256": "edbf287e534a086585a134f62328bcac4e97b6f0bd05cff8f1dfab70b6f6b974",
+      "executed_private_source_sha256": "9de53660ebd3f377621dca2d5826051d23081a7e74e29c32c91ba663aecfafd9",
+      "publication_change": "Resolve repository from source ancestors for portable generated-only tests"
+    },
+    "run_board_stage.py": {
+      "bytes": 3907,
+      "sha256": "a4a311e456d326961cf5f486df12ae4988e589a49f8cd2d353a3154427ee4197"
+    },
+    "run_compile_thermal_stage.py": {
+      "bytes": 4531,
+      "sha256": "a793985b562c056b3c458a6862640f903f2ac781cf30dc05e1681b7fd66da9e3"
+    },
+    "run_compile_thermal_stage_r2.py": {
+      "bytes": 4822,
+      "sha256": "1e2b81343977111212e9e94a3c279e030e0ef3cce49548b822e8c0556413eb96"
+    },
+    "run_int8_1ghz.sh": {
+      "bytes": 1770,
+      "sha256": "f119d175cbdbc0458edc62e393486c245e7514e0ea9040aa02356491f91d4f4e"
+    },
+    "run_replay_int8_1ghz.sh": {
+      "bytes": 1893,
+      "sha256": "211fb48eb8dd507ac7ce25e65513687d77b40bfb05751991d726c6365c1c44cd"
+    },
+    "run_fp16_1ghz.sh": {
+      "bytes": 1660,
+      "sha256": "2e8e3ca9d21d5c02d2783f98a151992be3ae38ba1516874deb3f0f6ccda8467c"
+    },
+    "audit_calibrated_replay_saved.py": {
+      "bytes": 19355,
+      "sha256": "9f61e97ae4b5bdc74656be9d32b493f15b2b99c499dd2debe221a3bf27b4a50b"
+    }
+  },
+  "original_model_only": true,
+  "private_weights_graphs_arrays_SDK_binaries_published": false
+}
