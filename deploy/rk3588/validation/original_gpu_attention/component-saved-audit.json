@@ -1,0 +1,52 @@
+{
+  "schema": "v83_saved_original_GPU_attention_audit",
+  "status": "passed",
+  "actual_inference_executed": false,
+  "source_sha256": "56d34010c0e90ee02ac07ccb2e3c57a8c6792ffbb105ce1c7f231aab0ffc17b3",
+  "capture_sha256": "3b4eb0b24d320699dd7d198fd3158454a3043ed7244a0290b267cbfc450e8fee",
+  "saved_arrays_verified": 48,
+  "strict_rtol": 0.0001,
+  "strict_atol": 1e-05,
+  "cases": [
+    {
+      "case": "v53",
+      "role": "frame",
+      "saved_arrays_strict_pass": true,
+      "maximum_absolute_error": 9.5367431640625e-07,
+      "warm_mean_seconds": 0.007968528666727556,
+      "warm_repeats_byte_equal": true,
+      "all_resources_released": true
+    },
+    {
+      "case": "v53",
+      "role": "global",
+      "saved_arrays_strict_pass": true,
+      "maximum_absolute_error": 3.337860107421875e-06,
+      "warm_mean_seconds": 0.014281369668121139,
+      "warm_repeats_byte_equal": true,
+      "all_resources_released": true
+    },
+    {
+      "case": "v56-calib00",
+      "role": "frame",
+      "saved_arrays_strict_pass": true,
+      "maximum_absolute_error": 9.5367431640625e-07,
+      "warm_mean_seconds": 0.007640160668718939,
+      "warm_repeats_byte_equal": true,
+      "all_resources_released": true
+    },
+    {
+      "case": "v56-calib00",
+      "role": "global",
+      "saved_arrays_strict_pass": true,
+      "maximum_absolute_error": 2.1457672119140625e-06,
+      "warm_mean_seconds": 0.011642417666735128,
+      "warm_repeats_byte_equal": true,
+      "all_resources_released": true
+    }
+  ],
+  "full_pair_or_full_model_speedup_validated": false,
+  "probe_result_sha256": "781cd011b16c559cfc7711ba820f0f219035fea6d4979d1f266c262a5f0dd3a6",
+  "actual_probe_source_sha256": "a4ed51987d38a5edd5ac04797aa98481d9c402fbff22f4188136815cf1f25d94",
+  "private_full_saved_audit_sha256": "3596508dcf1e54d35939a4b8d0cbc1f5d5c07f98f5e16a1c5aeb7f6505fd4fad"
+}

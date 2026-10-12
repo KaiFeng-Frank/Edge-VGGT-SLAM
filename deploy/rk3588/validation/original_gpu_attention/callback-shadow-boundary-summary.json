@@ -1,0 +1,46 @@
+{
+  "shadow": {
+    "receipt_sha256": "28b7beb345a851471581ea83c0c0192128cac662cb9c477d3aaf4b234d38f19d",
+    "schema": "v83_original_attention_callback_staging_shadow",
+    "status": "diagnostic_completed_no_quality_acceptance",
+    "script_sha256": "ecd8faee4a4c611b7ff185637ce6bb219b12b2c016d576b0a066e31416d26e0b",
+    "captured_callback_receipt_sha256": "f21539a34e1b54f66494f90ec58f27ac57b3052e6dab8acc5d90ce06ffc032b4",
+    "input_domain": "gpu",
+    "CPU_snapshot_assumed_current": false,
+    "callbacks_checked": 4,
+    "all_selected_norm_RoPE_output_strict_passed": true,
+    "GPU_output_relative_l2_range": [
+      9.217615096771245e-08,
+      1.0058410338632421e-07
+    ],
+    "CPU_after_FROM_vs_GPU_output_byte_equal": true,
+    "note": "Same captured GPU-side inputs replayed in the separate frozen GPU component; no whole-model acceptance."
+  },
+  "boundary": {
+    "receipt_sha256": "1a5ae4d4daa4722eebf9e3db697cbc77ccdcfd779157c73c1094ac2a2ebdcf4e",
+    "captured_callback_receipt_sha256": "f21539a34e1b54f66494f90ec58f27ac57b3052e6dab8acc5d90ce06ffc032b4",
+    "pair_result_sha256": "dc5994075699fe97d1df93fbaa32f8bf5b5e49ac2edac2c7e8eeb412556f80d0",
+    "case": "v53",
+    "frame_repeated_GPU_arrays": 11,
+    "frame_repeated_GPU_arrays_all_byte_equal": true,
+    "frame_CPU_output_after_FROM_repeated_byte_equal": true,
+    "pair_outputs": {
+      "frame": {
+        "byte_equal": false,
+        "changed_elements": 13326,
+        "max_abs": 1.88909912109375,
+        "relative_l2": 0.12339069758517984,
+        "reference_all_zero": false
+      },
+      "global_output": {
+        "byte_equal": false,
+        "changed_elements": 46872,
+        "max_abs": 1.88885498046875,
+        "relative_l2": 0.14426720428034337,
+        "reference_all_zero": false
+      }
+    },
+    "root_cause_established": false,
+    "scope": "Two diagnostic callbacks of the v53 input; saved observations locate a mismatch across this boundary, not its cause."
+  }
+}

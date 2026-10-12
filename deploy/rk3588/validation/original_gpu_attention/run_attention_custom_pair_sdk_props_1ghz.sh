@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+. /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/env.sh
+export LD_LIBRARY_PATH=/mnt/vggt-data/vggt-slam2/experiments/vggt-v83-gpu-loader-r1:"$LD_LIBRARY_PATH"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
+exec /mnt/vggt-data/vggt-slam2/venv/bin/python -B -u /mnt/vggt-data/vggt-slam2/experiments/vggt-v83-source-r1/probe_attention_custom_pair_board.py --compiled /mnt/vggt-data/vggt-slam2/experiments/vggt-v83-pair-attention-custom-compile-r2/result.json --compiled-sha256 c4354a9e1aa05d0b9910b808eb372495b0892da08dd890ccc566b79b4228cc4c --runtime-source /mnt/vggt-data/vggt-slam2/experiments/vggt-v83-source-r1/rknn_original_attention_custom_gpu_only.py --runtime-source-sha256 99e549da5da2ac3e33b86274ea4bde8c2115c2b202746bfbebdbabe14887e03b --borrowed-source /mnt/vggt-data/vggt-slam2/experiments/vggt-v83-source-r1/original_attention_tail_borrowed_sdk_props.py --borrowed-source-sha256 284d8808951ab1b8c477a56d3bd39d972936302efb8106dd02112111c3b82f9c --abi /mnt/vggt-data/vggt-slam2/experiments/vggt-v83-source-r1/custom-op-abi.json --abi-sha256 06a7ad4af33d64d500ff41a998225c12344abc6897ac55d7683239c08a445589 --rounds 2 --output-dir /mnt/vggt-data/vggt-slam2/experiments/vggt-v83-attention-custom-pair-sdk-props-r1

@@ -1,175 +1,55 @@
 # Edge-VGGT-SLAM
 
-This project ports **VGGT-SLAM2 with its original pretrained VGGT model** to RK3588S. The pose and dense-depth path remains original VGGT, CameraHead, DPT, the original pose codec, submap construction and SL4 graph optimization. VGGT's internal DINO modules remain part of that model.
+将 **VGGT-SLAM2 的原始预训练 VGGT** 移植到 RK3588S，输出相机位姿和稠密地图。模型执行与原有子地图构建、SL4 图优化分离，便于实现和验证嵌入式执行后端。
 
-The current tree contains only this model's execution path and relevant component diagnostics. Improvements may change operator implementations, storage, layout and validated reuse of unchanged computations. They must retain the original checkpoint and pass comparisons against the original model on identical inputs. No additional learned model or added traditional pose frontend is permitted. [Project constraints](AGENTS.md), [execution architecture](ARCHITECTURE.md).
+当前只支持原 VGGT checkpoint；其内部 DINO、frame/global attention、CameraHead 和 DPT 均保留。没有额外模型或传统位姿前端。推理、校准与模型验证全部在 RK3588S 板端完成。
 
-**The real-time target remains unachieved.** The target is at least 20 fresh-observation poses per second with complete input-to-pose P95 latency at most 100 ms. Map cadence, bounded queues, trajectory quality, 30-minute stability and operation within 8 GB each need separate validation. A component's timing, repeated prediction or offline reconstruction does not satisfy those targets. Current measurements use dataset files on a 16 GB RK3588S; physical-camera validation is deferred.
+## 当前能做到什么
 
-**Latest original-model experiment: CameraHead PTQ preserves its original graph and all four refinements.** The same 16-pair complete comparison measures 1.043 → 1.024 s mean service (a small 1.86% difference between separate runs). A separate timestamp replay produces **31 fresh poses at 1.117 Hz, complete P95 1.069 s**; one of 30 publication gaps exceeds one second (maximum 1.041 s). Peak RSS is 3380 MiB. Short-trajectory rotation RPE RMSE rises 7.30% against original CPU and the worst rotation segment reaches 27.24°. This remains experimental, with no new general quality, 20 Hz/100 ms or long-run acceptance. [Results, exact unchanged-output checks and reproduction](deploy/rk3588/validation/original_calibrated_camera/README.md).
+已完成原模型的 CPU 参考路径和实验性 RKNN 全链路，并在真实 TUM 数据集上按原时间戳回放。当前实验链路的 aggregator 与 CameraHead 采用 W8A8 编译配置，DINO 与 DPT 保留 FP16；原预处理、位姿解码、子地图和 SL4 保持原实现。
 
-**Earlier component experiment: the original MLP now executes through native
-NPU MatMul, GPU Erf and shared DMA buffers.** The missing, matching GPU firmware
-was added with explicit user approval; GPU clocks and the kernel driver were
-unchanged. GPU activation reduces the native MLP from 36.962 to 12.182 ms,
-but the existing compiled MLP is still faster at 6.634 ms in the same trial.
-A separate original FC2 trial shares one input among three single-core NPU
-contexts: 10.297 to 8.156 ms (20.79% less time), with all 26 saved outputs
-byte-identical. Combining GPU activation with this shared-input FC2 takes
-11.841 ms versus 7.494 ms for the compiled MLP in a new matched trial, so
-the combination is not adopted. These are component measurements, not a
-whole-model or SLAM speedup. [Measurements, failures and reproduction](deploy/rk3588/validation/original_native_gpu/README.md).
+最近一次完整回放的实测如下；这是 16 GB RK3588S 上、NPU 1 GHz 的短时实验，输入为两帧 `84×112` 图像：
 
-**Earlier original-model experiment: four retained aggregator groups compiled
-with W8A8, while DINO, CameraHead, DPT and SL4 retain the current baseline.**
-At 1 GHz, the same 16-pair complete comparison improves from **1.211 to
-1.043 s mean service (13.88% less time)** and 3926 to 3337 MiB peak process RSS.
-A separate single-instance timestamp replay produces **30 fresh poses at
-1.075 Hz, complete input-to-pose P95 1.157 s**, with 3341 MiB peak RSS.
-Publication-gap maximum is 1.114 s (one of 29 gaps exceeds one second).
-Neither strict one-update-every-second nor the 20 Hz / 100 ms target is met.
+| 指标 | 实测 |
+| --- | ---: |
+| 数据集输入 / 新观测位姿更新 | 798 帧 / 31 次 |
+| 新观测位姿平均更新率 | **1.1167 Hz** |
+| 完整输入到位姿发布 P95 | **1.0688 s** |
+| 回放时长，含 EOF 排空 | 27.7595 s |
+| 启动时间，另计 | 57.3481 s |
+| 峰值进程 RSS | 3380.19 MiB |
 
-On 17 disjoint evaluation images, Sim3-aligned ATE/translation-RPE/rotation-RPE
-RMSE stays within the original CPU baseline's 20% bound. However, the worst
-rotation segment rises to 24.34°, and saved depth/confidence relative L2
-errors are 5.26% / 42.91%. This does not establish general trajectory or dense
-map quality. The experimental wrappers preserve the default runtime;
-all 12 contexts close and the test restores 300 MHz.
-[Whole-model results, thermal build failures and reproduction](deploy/rk3588/validation/original_calibrated_retained/README.md).
+**尚未达到实时目标：新观测位姿至少 20 Hz，完整延迟 P95 不超过 100 ms。** 30 个发布间隔中仍有 1 个超过一秒，最大 1.0414 s；平均更新率不代表每秒都有新位姿。
 
-**Earlier 1 GHz timestamp replay: two parallel instances of the original VGGT
-feed one ordered original SL4 solver, producing 32 fresh pose/map updates from
-798 frames at 1.120 Hz. Complete input-to-pose P95 is 1.976 s.** Dispatching
-new requests at least 0.8 s apart reduces publication-gap P95 to 1.031 s and
-maximum gap to 1.219 s. Two of 31 gaps still exceed one second, so this does
-**not** establish one fresh update every second or meet the project real-time
-target. Results are published as soon as original inference, SL4 and map
-publication finish; no poses are interpolated or repeated. Startup is 93.698 s;
-peak process RSS is 6217.49 MiB on the 16 GB board. All 24 SDK contexts close.
+精度仍处于实验验证阶段。17 帧固定短序列经 Sim3 对齐后的 ATE / RPE RMSE 相对原 CPU 参考的变化在 10% 以内，但旋转 RPE RMSE 上升 7.30%，最差旋转段达到 27.24°；严格 FP32 张量比较未通过。这不建立普遍轨迹或地图质量结论，也不能把固定输入的质量结果直接用于另一次不同选帧的回放。
 
-The unstaggered two-worker replay measured 1.101 Hz / P95 2.364 s, with
-14 of 31 publication gaps exceeding one second. The earlier single-worker run
-measured 0.900 Hz / P95 1.367 s. These are separate short replays with different
-selected frames; throughput, latency, cadence and trajectory quality must be
-assessed separately.
+物理相机测试暂缓；30 分钟稳定性和物理 8 GB 板运行尚未验收。当前没有已验证的回环实现，Solver 只支持 `max_loops=0`。
 
-A separate matched eight-pair complete-model comparison using three workers
-reduces offline batch time from **10.773 to 5.143 s (2.095× throughput)**. All
-40 prediction comparisons are byte-identical; ordered original SL4 produces
-identical saved poses and maps. This batch excludes initialization and saved
-output writes. The three-worker timestamp replay subsequently fails at its
-first inference with an SDK allocation error and SIGSEGV; only the two-worker
-replay completes. Original Torch FP32 quality, physical 8 GB operation and
-30-minute stability remain unvalidated. All frequency tests restore 300 MHz.
-[Execution sources, measurements and reproduction](deploy/rk3588/validation/original_parallel_execution/README.md).
+[完整测量、精度边界与复现步骤](deploy/rk3588/validation/original_calibrated_camera/README.md) · [机器可读结果](results/original_calibrated_camera_v82.json)
 
-The preceding optional `--immutable-execution` optimization keeps the original
-model arithmetic and reduces repeated model-tree inspection under an explicit
-exclusive-owner contract. It retains per-call tensor versions, ownership and
-I/O checks, with full validation at session start and close; it does not detect
-arbitrary live model mutation. The flag defaults off.
-[Contract and matched comparison](deploy/rk3588/validation/original_immutable_execution/README.md).
+## 准备板端环境
 
-Further original-model execution diagnostics found no production improvement: FC2 output-channel partition and native tensor metadata checks were slower; a five-pair FC2 K4 comparison at 1 GHz gave only a small, variable component difference. Profiles of all four current groups confirm that their main residual stream already retains its channel layout. Those component diagnostics were not adopted; the later session improvement above changes only execution checks. [Evidence and reproduction](deploy/rk3588/validation/original_execution_diagnostics/README.md).
+已测试的环境是 Linux aarch64、Python 3.11.17、CPU PyTorch 2.3.1、torchvision 0.18.1，以及提供 SL4 的 GTSAM 构建。NPU 路径使用 RKNN SDK / runtime 2.3.2。
 
-A subsequent original-pair quantization experiment is also **not adopted**.
-Power-of-two Norm/linear scaling preserves all four tested complete FP32
-outputs byte-for-byte, but its INT8 output errors remain about **9–12%**.
-At 1 GHz the two-block component takes 32.682 ms in FP16, 20.957 ms with plain
-INT8 and 20.666 ms with the scaling. The small difference from plain INT8
-does not establish a new speed or full-model quality improvement. The latest
-complete replay result above is unchanged.
-[Measurements and reproduction](deploy/rk3588/validation/original_power2_smoothing/README.md).
+按照[部署指南](deploy/rk3588/README.md)准备原模型源码和[外部依赖](deploy/rk3588/dependencies/README.md)。以下沿用已验证的板端目录 `/mnt/vggt-data/vggt-slam2`；仓库位于其中的 `src/`。将所需的 `python/`、`wheelhouse/` 等文件准备好后，运行离线安装器：
 
-The subsequent **300 MHz retained-group path** reduces mean complete-model
-service on the same 16 pairs from **1.958 s to 1.797 s (8.23%)**. All 80
-prediction arrays, 80 retained/target arrays and the saved trajectory remain
-byte-identical to the preceding FP16 path; the original FP32 strict gate
-still fails. It executes all 48 original aggregator blocks using four graph
-calls and keeps the original consumer outputs. Complete-model contexts fall
-from 32 to 12. Its separate timestamp replay produced **17 fresh poses at
-0.594 Hz, complete P95 2.071 s**, with 7,187.75 MiB peak RSS on the 16 GB board.
-Startup was 30.71 s, separate from the 28.60-second replay. These results
-remain below the real-time targets. Defaults are unchanged; select the
-experimental path with `--rknn-retained-aggregator` and its compiled manifest.
-[Measured results and limits](results/original_retained_groups_v67.json),
-[reproduction](deploy/rk3588/validation/original_retained_groups/README.md).
+```sh
+sh /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/install-offline.sh
+. /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/env.sh
+```
 
-The subsequent original-MLP native MatMul diagnostic is **not adopted**:
-at 300 MHz on one NPU core, the matched fused rank3 compiled MLP takes
-15.139 ms and the native route takes 33.878 ms. Both fail the strict original
-FP32 tensor gate; this is one component on one real input, with no new full-model
-or replay improvement. An initially unfused rank2 comparison is preserved as
-a compiler-layout pitfall, not a speedup claim.
-[Measurement and reproduction](deploy/rk3588/validation/original_native_mlp/README.md).
+原权重单独下载，不随仓库分发：
 
-A new original-CameraHead diagnostic splits each trunk FC1's output channels
-into four parts while retaining every original parameter and all four
-refinements. At 300 MHz, matched complete-head warm calls fall from
-**213.300 to 177.352 ms (16.85%)**. Actual profiles show three-core convolutions
-and a separate GELU in place of the single-core fused FC1/GELU. Outputs change
-and both routes still fail the original FP32 strict gate. That component
-comparison used one input and three warm calls per route.
-[Measurements and reproduction](deploy/rk3588/validation/original_camera_partition/README.md).
+```sh
+python /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/download_weights.py \
+  --output /mnt/vggt-data/vggt-slam2/weights/model.pt
+```
 
-The optional complete-model integration now measures **1.813 to 1.738 s
-(4.13%)** on the same 16 pairs at 300 MHz, or **1.754 to 1.695 s (3.36%)**
-excluding first calls. All retained features and depth/confidence arrays remain
-byte-identical; pose and intrinsic outputs change. The short matched trajectory's
-ATE/RPE changes relative to original CPU are under 2%, while the strict tensor
-gate still fails. A separate 798-frame timestamp replay produces **18 fresh
-updates at 0.609 Hz, complete P95 2.396 s**, below the real-time target.
-Select it explicitly with `--rknn-camera-split4` alongside the existing camera
-flag; defaults remain unchanged.
-[Complete comparison, replay and limits](deploy/rk3588/validation/original_camera_integration/README.md).
+唯一支持的权重为原 `facebook/VGGT-1B/model.pt`，大小 **5,026,874,952 bytes**。下载器及加载器会校验固定完整 SHA256，加载前必须通过；[固定源码、权重版本和哈希](UPSTREAMS.json)。ONNX / RKNN 文件需要在授权环境中自行生成，构建入口见对应复现目录。
 
-Applying the same output-channel idea to both FC1 layers of the original
-frame0/global0 pair gives a smaller component gain: **39.019 ms to 37.850 ms
-(two parts, 3.00%) or 37.914 ms (four parts, 2.83%)**, at 300 MHz with 38 warm
-calls per graph across two real inputs. FP32 ONNX outputs remain byte-identical;
-NPU outputs change and the original FP32 strict checks fail. This pair-only
-diagnostic is not installed in the full-model runtime.
-[Evidence and reproduction](deploy/rk3588/validation/original_pair_partition/README.md).
+## 运行时间戳回放
 
-A separate **FC2 input-channel partition** diagnostic reduces the complete
-original pair from **39.067 to 35.766 ms (8.45%)** using four K parts, with
-38 warm calls per graph across two real inputs at 300 MHz. Its FP32 graph passes
-the existing tolerance but changes reduction order and is not byte-identical.
-FP16 outputs change and the original FP32 strict checks still fail. The result
-is a component measurement; full-model integration and quality remain untested.
-[Evidence and reproduction](deploy/rk3588/validation/original_pair_fc2_partition/README.md).
-
-Extending that FC2 rewrite to all four retained groups fails the fixed FP32
-gate in group 2: one element exceeds tolerance on the second real input.
-A balanced-sum follow-up fails at the same element. Neither version was
-compiled or integrated; the pair-level gain is not a full-model gain.
-[Full-group checks](deploy/rk3588/validation/original_retained_fc2/README.md).
-
-A separate original-checkpoint memory experiment reclaims clean file-backed
-pages after backend initialization. Process RSS changes from **7094.8 to
-2703.1 MiB**, then stays at **2744.5–2762.1 MiB** in 16 complete inference
-snapshots. All 160 saved arrays and the trajectory remain byte-identical.
-The earlier initialization peak remains **7095.7 MiB**; speed does not improve.
-This is an explicit diagnostic, with no production-default change or physical
-8 GB acceptance. [Measurements and reproduction](deploy/rk3588/validation/original_checkpoint_pageout/README.md).
-
-Reclaiming those pages **after each backend installation** also lowers the
-observed initialization peak: **7169.9 to 3920.1 MiB** in a complete 16-pair
-comparison, with all 160 saved arrays and the trajectory byte-identical.
-The new explicit `--checkpoint-pageout` replay option produces 18 fresh updates
-from 798 timestamped frames at **0.621 Hz, complete P95 2.030 s**, with peak
-process RSS **3920.4 MiB**. This improves measured memory usage; there is no
-speed improvement or real-time acceptance. The option is off by default, and
-physical 8 GB operation remains untested.
-[Implementation, measurements and reproduction](deploy/rk3588/validation/original_staged_pageout/README.md).
-
-The additional-model retrieval and semantic paths have been removed. **Loop closure has no replacement implementation:** `max_loops=0` is the supported Solver configuration. Requests to enable loops or supply legacy auxiliary-model arguments must fail before loading or inference. The original VGGT model's numerical similarity capability does not itself implement loop retrieval.
-
-The original checkpoint is `facebook/VGGT-1B`, `model.pt`, **5,026,874,952 bytes**, SHA256 `d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0`. Source-code and checkpoint licensing are separate; see [model provenance](MODEL_LICENSES.md) and [upstream pins](UPSTREAMS.json). No weights, captured arrays, weight-bearing exports or SDK binaries are distributed. The loader verifies this exact byte size and full SHA256 before deserialization, including explicit local paths and cached downloads. Automatic downloads use the recorded immutable revision; there is no runtime identity-check bypass.
-
-## Run original-model timestamp replay
-
-The board replay command runs original VGGT FP32, the original pose codec, dense map insertion and SL4, with a one-slot source queue and optional reuse of the previous frame's original DINO output. It writes `poses.tum`, `map.json`, `map_chunks/` and `results.json` after actual new-image updates:
+准备好 TUM 数据集的 `rgb.txt` 和图像后，在板端运行默认的原 CPU FP32 参考路径：
 
 ```sh
 . /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/env.sh
@@ -179,132 +59,20 @@ python -B -u /mnt/vggt-data/vggt-slam2/src/scripts/replay_original_vggt.py \
   --output /mnt/vggt-data/vggt-slam2/experiments/original-replay-new-run
 ```
 
-Use a new output directory. Default image size is 112; `--no-patch-cache` disables the original DINO tail cache. Do not restrict the outer process to CPUs 4–7: the decoder uses CPU0 and the model uses CPUs 4–7.
+使用新的输出目录。默认图像宽度为 112；该数据集的实际输入高度为 84。解码器使用 CPU0，模型默认使用 CPU4–7，不要把整个进程的亲和性限制到 CPU4–7。完整参数见 `python scripts/replay_original_vggt.py --help`。
 
-`--model-cpus 6 7 --model-threads 1` can set model-process affinity independently of the thread count. The matched complete-model comparator accepts the same options. This leaves the decoder on CPU0 and changes no system clocks or governors. The default affinity remains unchanged: a matched 16-pair check measured 1.952 s with CPUs 4–7 and 1.956 s with CPUs 6–7, with identical outputs and no observed improvement. [Measured CPU-affinity comparison](results/original_cpu_affinity_v60.json).
+输出包括 `poses.tum`、`map.json`、`map_chunks/` 和 `results.json`，位姿与地图在真实新观测计算及原 SL4 完成后发布，输入队列容量为 1。
 
-The earlier original-aggregator FC1 tap diagnostic was rejected: matched component calls became 40–45% slower after extra output handling. [Measured diagnostic and failure](results/original_fc1_tap_v61.json). The CameraHead output-channel experiment above adds no SDK output or diagnostic tap.
+上表的 NPU 实验需要原模型的固定编译产物及实验 wrapper；按[当前 NPU 全链路复现说明](deploy/rk3588/validation/original_calibrated_camera/README.md)构建和启动。普通回放命令保持 CPU 参考默认配置。频率实验使用有界温控控制器并恢复原频率；回放入口本身不修改系统时钟或 governor。
 
-The first full timestamp replay served **7 new pose/map updates from 798 input frames**, at **0.195 Hz** over 35.900 s including the EOF drain. Complete software-arrival-to-published-pose **P95 was 8.160 s**; 790 frames were skipped or overwritten. Peak process RSS was 4,977.2 MiB on the 16 GB board. These measurements include decoding, queuing, original model execution, SL4 and pose/map publication. They do **not** meet the real-time target. Resolution quality, trajectory accuracy, 30-minute operation and 8 GB deployment remain unvalidated. [Measured record](results/original_timestamp_replay_v52.json).
+## 开发与证据
 
-The experimental complete-model path now executes **all 48 original aggregator blocks, all 24 original DINO blocks, all four original CameraHead refinements and original DPT logits through RKNN**. Original preprocessing, boundary operations, activations and SL4 remain on CPU. On 17 identical TUM frames, 16 complete overlapping pairs per configuration measured:
+- [执行架构](ARCHITECTURE.md)：原模型输出契约、缓存和 SL4 的边界。
+- [项目约束](AGENTS.md)：唯一原模型、板端执行及验收要求。
+- [测量索引](MEASUREMENTS.json)与[结果目录](results/)：完整链路、组件实验及失败记录。
+- [工程笔记](docs/ENGINEERING_NOTES.md)：有价值的问题、原因证据和后续验证条件。
 
-| Complete original-model configuration | Mean service time | Sim3-aligned ATE RMSE |
-| --- | ---: | ---: |
-| CPU FP32 | 7.458 s | 0.17719 m |
-| RKNN aggregator, CPU heads | 5.366 s | 0.17857 m |
-| RKNN aggregator and CameraHead | 3.609 s | 0.17808 m |
-| Add all 24 original DINO blocks | 3.087 s | 0.17476 m |
-| Add original DPT logits | 2.665 s | 0.17476 m |
-| Pair all 48 aggregator blocks, four CPU threads | 2.590 s | 0.17476 m |
-| Same paired path, one CPU thread | 2.177 s | 0.17476 m |
-| Explicit FP16 SDK I/O, same original FP16 graphs | 2.077 s | 0.17476 m |
-| Add DINO FP16 I/O and preserve both cache guards with faster lookup | 1.975 s | 0.17476 m |
-| Optional six-group DINO, no observed service improvement | 1.982 s | 0.17476 m |
-| Calibrated W8A8 aggregator diagnostic, quality unaccepted | 1.880 s | 0.18141 m |
-| Calibrated W8A8 aggregator + DINO, rejected rotation error | 1.728 s | 0.19823 m |
-
-These are sequential observations across runs, not an interleaved thermal comparison. Service timing excludes paced input queues and file publication. This short, sparse, low-resolution segment does not validate overall trajectory quality. All strict FP32 tensor comparisons still fail, and the FP16 candidate is not accepted as numerically equivalent.
-
-The separate 798-frame timestamp replay with RKNN aggregator and CameraHead delivered **10 fresh updates at 0.312 Hz, P95 4.878 s** with four A76 threads. Two threads delivered 9 updates at 0.267 Hz, P95 6.239 s, so four remains the default. These results still miss realtime. Peak process RSS was about 6.64 GiB on the 16 GB board; SDK allocation metrics are reported separately and do not establish 8 GB operation. [Complete measurements and limits](results/original_full_npu_v53.json).
-
-The replay enabling original DINO and DPT execution through RKNN measured:
-**12 fresh updates at 0.398 Hz, complete input-to-pose P95 3.212 s** from the
-same 798-frame source. It publishes 12 dense chunks; 785 source frames are
-skipped or overwritten. Peak process RSS is 7,412.98 MiB on the 16 GB board.
-All 74 RKNN contexts close cleanly. The result still misses the pose-rate and
-latency targets; 30-minute and 8 GB operation remain unvalidated. The new DPT
-FP32 ONNX graph separately passes both original-reference checks before SDK
-compilation, preserving all 62 learned tensors and original inplace residual
-semantics. [DINO/DPT measurements](results/original_dino_depth_v54.json).
-
-The preceding complete replay uses **24 frame/global graph pairs** with both
-original outputs, all original DINO/CameraHead/DPT computations, and one CPU
-thread. It delivers **14 fresh updates at 0.478 Hz, complete P95 2.669 s** from
-798 source frames. All 80 prediction arrays and the saved trajectory on the
-matched comparison inputs remain bitwise identical to the preceding FP16
-candidate. Peak RSS is 7,296.82 MiB; all 50 contexts close cleanly. This is a
-29.26-second test, still below the real-time target. Add
-`--rknn-paired-aggregator --model-threads 1` and use the paired manifest.
-[Results and limitations](results/original_fused_aggregator_v55.json),
-[pair export and replay instructions](deploy/rk3588/validation/original_fused_aggregator/README.md).
-
-The current optional FP16 I/O path covers the original aggregator and DINO,
-with faster cache-state lookup that retains both complete guards. It preserves
-all 80 prediction arrays and the trajectory bitwise against the preceding FP16
-path. Complete timestamp replay measured **16 fresh poses at 0.538 Hz, P95
-2.581 s**; RSS was 7,259.60 MiB. This improves throughput from 0.513 Hz, but
-does not improve the preceding 2.551 s P95. The test covers 29.72 seconds,
-including the EOF drain, not sustained real-time operation.
-[Current measured results](results/original_dino_io_guard_v57.json).
-Add the two `--half-io-library` options to the paired command as described in
-[FP16 I/O setup](deploy/rk3588/validation/original_half_io/README.md).
-
-An optional six-group DINO backend reduces complete-model RKNN contexts from
-50 to 32 and preserves all 80 saved prediction arrays and poses bitwise against
-the preceding FP16 path. **It did not improve matched complete-model service:**
-1.982 s versus 1.975 s. Its separate 798-frame replay produced 16 fresh poses
-at **0.543 Hz, complete P95 2.472 s**, with 7,259.28 MiB peak RSS. Startup took
-38.74 s, reported separately from the 29.49-second replay. These sequential
-short runs establish no real-time breakthrough. The default backend selection
-is unchanged; add `--rknn-grouped-dino` only with the six-group manifest.
-[Results, including the stopped INT4 experiment](results/original_grouped_dino_v58.json),
-[grouped graph build and runtime](deploy/rk3588/validation/original_grouped_dino/README.md).
-
-A separate original-aggregator W8A8 calibration experiment measured **0.570 Hz,
-P95 2.494 s**. Its short matched trajectory ATE increased 2.38% versus CPU FP32,
-but mean depth-confidence relative L2 error was 39.46%. It remains an unaccepted
-quality experiment. Both paths retain all original layers and tokens, fail the
-strict original FP32 comparison and miss the real-time targets.
-[Measured results](results/original_calibration_half_io_v56.json),
-[calibration reproduction](deploy/rk3588/validation/original_calibrated_pairs/README.md).
-
-After privately producing the pinned original artifacts, add `--rknn-manifest PATH/compiled.json --rknn-manifest-sha256 SHA256 --rknn-camera-head` to the replay command. `--model-threads 2` selects CPUs 6–7; one and the default four use CPUs 4–7. The one-thread setting reduces Torch CPU parallelism while retaining the three-core NPU setting. These settings affect only the process. [Build and reproduction instructions](deploy/rk3588/validation/original_full_aggregator/README.md).
-
-The latest configuration additionally uses `--rknn-dino-manifest DINO/compiled.json
---rknn-dino-manifest-sha256 SHA256 --rknn-depth-manifest DEPTH/compiled.json
---rknn-depth-manifest-sha256 SHA256`. All selected backends install before the
-original tail cache. Unsupported inputs and SDK failures raise without fallback.
-
-The optional `--checkpoint-pageout` requires the complete retained/paired
-aggregator, native half I/O, grouped DINO, camera split4, depth and patch-cache
-configuration. It advises only verified clean mappings of the original
-checkpoint in its own process, after each of the four backend installations.
-Its startup cost is included in `startup_seconds`; replay does not add per-frame
-memory snapshots. Exact measured arguments and artifact identities are in the
-[staged pageout reproduction](deploy/rk3588/validation/original_staged_pageout/README.md).
-
-## Original-model evidence
-
-The current original-only runtime is deployed on RK3588S. Its 168 relevant generated checks and four actual original-model forwards pass; the fixed 112-scale TUM pair and first SL4 graph preserve the original outputs. A separate 518-scale diagnostic covers three overlapping submaps: all five prediction arrays and saved graph arrays match bitwise with the DINO tail cache on/off, reducing DINO computation from six image occurrences to four. Complete forwards still took **134–195 seconds**. These are numerical regression results, not real-time acceptance. [Current evidence and limits](results/original_only_v47.json).
-
-| Experiment | Measured result | Boundary |
-| --- | --- | --- |
-| Original CPU FP32 VGGT, two office images, four A76 threads, requested 112 | 3.831 s complete forward; actual 56×112 input | Excludes preprocessing, graph optimization and publication; no real-time claim |
-| Original DINO block 0, `[1,37,1024]`, RKNN | Three warm complete I/O calls average 5.489 ms | One original-weight block; relative L2 error 1.2253% against FP32; no complete-model accuracy acceptance |
-| Original complete frame0 → global0 pair, RKNN, actual image shape `[2,3,252,336]` | Three warm complete I/O calls average 338.683 ms; all 52 internal operators on NPU | Two blocks only; relative L2 error 0.483569% against original FP32, strict elementwise gate fails |
-| Original complete CameraHead, RKNN | Three warm complete I/O calls average 203.646 ms | All four refinement iterations retained; strict FP32 elementwise gate fails |
-| Original CPU DINO tail reuse, three overlapping pairs | Six input frames require four actual DINO computations; saved pose/depth/confidence match original references bitwise | Fixed-input evidence; frame/global attention and heads still run, arbitrary-input and trajectory equivalence unproven |
-
-A same-process AB/BA check found bitwise-identical separate/fused NPU outputs and observed warm SDK I/O means of **396.442 / 334.831 ms** (15.54% lower in this short test). Both routes still fail the original FP32 gate. This is a component optimization, with full-model speed and trajectory quality unproven.
-
-A new original-pair PTQ diagnostic used eight real calibration pairs and two disjoint heldout pairs, entirely on RK3588S. Normal SDK IO means were **337.086 / 255.640 ms** for FP16 / PTQ (24.16% lower), but PTQ tensor relative L2 errors rose to **10.31–10.55%**. Both NPU implementations fail the fixed original FP32 gate; the candidate remains unadopted. The new board CPU ORT check also preserves a one-element strict-gate failure on one heldout input. [Precision result and limits](results/original_precision_v49.json), [reproduction and independent audits](deploy/rk3588/validation/original_precision/README.md).
-
-The next original-graph diagnostic found **no observed Flash Attention flag benefit on RK3588S**: ordinary/off versus on took 336.829 / 336.963 ms mean normal SDK IO, with the same visible compiled operator placement. A saved-reference analysis also proves that even the closest finite FP16 representation cannot meet the existing strict component tolerance for every element of these two outputs. Those strict failures remain recorded; full-model ATE/RPE acceptance is a separate, unmeasured question. [Engineering findings](docs/ENGINEERING_NOTES.md#102-fp16-可表示精度与原-fp32-组件门槛是不同问题), [representation proof](deploy/rk3588/validation/original_mixed_precision/accuracy/RESOLUTION_NOTE.md).
-
-A conservative mixed-precision original-pair candidate retained floating logical I/O and requested INT8 at four FC1/GELU outputs. It measured **336.673 / 319.928 ms** normal SDK IO for ordinary / hybrid (4.97% lower), but its tensor relative L2 errors were **6.67–7.91%** against original FP32. It remains unadopted. The first SDK selector rejection, corrected configuration, raw-evidence hashes and scope limits are preserved in the [v50 record](results/original_mixed_precision_v50.json) and [reproduction tools](deploy/rk3588/validation/original_mixed_precision/README.md).
-
-The [continuous pair record](results/original_pair_v48.json) binds the new board CPU check, nonquantized compile, actual SDK calls and independent saved-output audit. Its [reproduction tools](deploy/rk3588/validation/original_pair/README.md) retain the complete original blocks and the numerical rejection.
-
-The [measurement summary](MEASUREMENTS.json), [complete-head record](results/camera_head_v15.json), [tail-cache record](results/patch_cache_v19.json) and [complete-block attention record](results/hybrid_block_v20.json) preserve each experiment's inputs, numerical failures and timing scope. The [current arithmetic budget](deploy/rk3588/validation/original_budget/README.md) audits original source, saved tensor dimensions and the fresh-observation denominator; it uses no hardware peak assumption. The [earlier capacity calculation](results/capacity_v20.json) is a source-based workload/storage projection, not measured hardware throughput or endurance. [Engineering notes](docs/ENGINEERING_NOTES.md) explain the remaining execution and validation issues.
-
-Historical records keep their original identity and failed gates. Component RKNN execution does not establish a complete NPU model, and its FP16 numerical rejection is not removed by successful compilation. Archived files remain in repository history; they are not current implementation or reproduction options.
-
-## Setup and checks
-
-The tested environment uses Linux aarch64, Python 3.11.17, PyTorch 2.3.1 CPU, torchvision 0.18.1 and an external GTSAM build providing SL4. The [deployment guide](deploy/rk3588/README.md) lists original source/checkpoint pins and external SDK requirements. Real inference, tracing/export validation and calibration run only on RK3588S. Host work is limited to source/static inspection, saved-data audits, non-calibrating compilation and small generated checks.
-
-Use the original-model entrypoint's `--help` for current dataset arguments. Lightweight checks for the retained execution contracts are:
+已配置开发依赖时，可运行现有轻量回归检查：
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -p no:cacheprovider \
@@ -312,8 +80,10 @@ PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -p no:cacheprovider \
   tests/test_solver_execution.py tests/test_patch_cache.py
 ```
 
-These checks use generated data or fake services; they do not establish board inference or SL4 trajectory quality. A fresh clone needs the licensed external dependencies listed in the deployment guide before hardware diagnostics can run.
+这些检查使用生成数据或 fake 服务，不代替原模型板端推理、轨迹质量或实时验收。实验的组件计时与端到端回放结果分开记录。
 
-## Attribution
+## 许可与致谢
 
-The root [BSD-2-Clause license](LICENSE) and MIT-SPARK copyright are retained. The pinned VGGT implementation, original model weights, runtime dependencies and dataset retain their own terms. [Third-party notices](THIRD_PARTY_NOTICES.md) identify those boundaries. The repository license grants no additional commercial rights to the original checkpoint or compiled artifacts containing it.
+基于 MIT-SPARK 的 [VGGT-SLAM](https://github.com/MIT-SPARK/VGGT-SLAM) 和固定版本的 [VGGT_SPARK](https://github.com/MIT-SPARK/VGGT_SPARK)。保留 MIT-SPARK 版权及仓库的 [BSD-2-Clause 许可](LICENSE)。
+
+**仓库代码许可不等于模型权重许可。** 本项目使用的原 VGGT 权重及固定实现有独立的非商业使用条款；编译产物中的权重仍受原条款约束。详见[模型来源与许可](MODEL_LICENSES.md)、[第三方声明](THIRD_PARTY_NOTICES.md)和[上游版本记录](UPSTREAMS.json)。仓库不分发权重、捕获数组、含权重的导出图或 SDK 二进制。

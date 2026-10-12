@@ -1,0 +1,102 @@
+{
+  "schema": "v83_saved_control_restoration_summary",
+  "scope": "Only the listed saved controller receipts; sampled observations, not continuous proof.",
+  "controls": [
+    {
+      "receipt_sha256": "b5381bf785683b819d4869397d493d18e2bea23faba9afc5d2a3489f82dff030",
+      "child_returncode": 0,
+      "observation_count": 4,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "observed_max_temperature_c": 52.692,
+      "frequency_governor_limits_restored": true,
+      "restored_NPU_hz": 300000000,
+      "restore_errors": []
+    },
+    {
+      "receipt_sha256": "8cb5f9e97da9699faa05c4edf98a9c1b1f8179610aee4ed6c2e67565271531c9",
+      "child_returncode": 0,
+      "observation_count": 7,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "observed_max_temperature_c": 52.692,
+      "frequency_governor_limits_restored": true,
+      "restored_NPU_hz": 300000000,
+      "restore_errors": []
+    },
+    {
+      "receipt_sha256": "f5195a32e5b6238a059c5b154ceaa3177bf5805e42883f3d2e695318eeec816d",
+      "child_returncode": 0,
+      "observation_count": 7,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "observed_max_temperature_c": 53.615,
+      "frequency_governor_limits_restored": true,
+      "restored_NPU_hz": 300000000,
+      "restore_errors": []
+    },
+    {
+      "receipt_sha256": "f098279b33b34f095f22f6e8bfe3c9ea96eae1343e74f38d8f9af07390747fe3",
+      "child_returncode": 0,
+      "observation_count": 6,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "observed_max_temperature_c": 52.692,
+      "frequency_governor_limits_restored": true,
+      "restored_NPU_hz": 300000000,
+      "restore_errors": []
+    },
+    {
+      "receipt_sha256": "b5c1107fcea77ccbacf7d12b9aa80bad2757376755b8a238cca082d1d1f06eac",
+      "child_returncode": 0,
+      "observation_count": 7,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "observed_max_temperature_c": 53.615,
+      "frequency_governor_limits_restored": true,
+      "restored_NPU_hz": 300000000,
+      "restore_errors": []
+    },
+    {
+      "receipt_sha256": "6b531b9c401f292f890262b5c3278c67b833ae124cce453a4c4052fe1722eaf9",
+      "child_returncode": 0,
+      "observation_count": 7,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "observed_max_temperature_c": 53.615,
+      "frequency_governor_limits_restored": true,
+      "restored_NPU_hz": 300000000,
+      "restore_errors": []
+    },
+    {
+      "receipt_sha256": "1a28100b04bf1aad755f4cb3133593fc7cb4f8428747ce3afe20bc7dbd99db62",
+      "child_returncode": 0,
+      "observation_count": 7,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "observed_max_temperature_c": 52.692,
+      "frequency_governor_limits_restored": true,
+      "restored_NPU_hz": 300000000,
+      "restore_errors": []
+    },
+    {
+      "receipt_sha256": "59cf03d87e8799c65f0d7a8c0fd186adb58bf73ec29d1813e096008e1f065c73",
+      "child_returncode": 0,
+      "observation_count": 6,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "observed_max_temperature_c": 53.615,
+      "frequency_governor_limits_restored": true,
+      "restored_NPU_hz": 300000000,
+      "restore_errors": []
+    }
+  ]
+}

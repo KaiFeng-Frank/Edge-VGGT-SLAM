@@ -1,0 +1,24 @@
+{
+  "schema": "v83_original_attention_capture_saved_audit",
+  "status": "passed_saved_array_identity_audit",
+  "capture_sha256": "3b4eb0b24d320699dd7d198fd3158454a3043ed7244a0290b267cbfc450e8fee",
+  "capture_script_sha256": "c307091ec55daa32d3cb1fd53cef3f931bd50e97feb6f1f63894a2eecf959a5c",
+  "auditor_source_sha256": "b2b403c16b662a881911ca4af5347a10ee0e395524e30db887fa0a2f6e669303",
+  "original_tail_sha256": "4b723e499763bb90565f6e11e16c551664634aaf72da46c7cdc493b84208ef67",
+  "original_calibration_sha256": "a1e6f1b2a89e1a96987befdea4f0a048aaf06066efa9fff72a370ac77d45507c",
+  "NPY_files_verified": 96,
+  "total_NPY_bytes": 26300032,
+  "original_parameters_verified": 36,
+  "original_block_forwards": 4,
+  "old_CPU_block_references_byte_equal": 3,
+  "all_hooks_state_inputs_sources_environment_affinity_restored": true,
+  "cleanup_errors": [],
+  "host_model_ORT_SDK_inference_executed": false,
+  "limits": [
+    "QKNorm, RoPE and SDPA were captured on board; this audit does not recompute these model operations.",
+    "Three old block references verified by matching raw bytes to pinned original CPU receipt hashes.",
+    "Attention tails and v56 frame0 block output are new original CPU references, not earlier independent references.",
+    "No GPU candidate equivalence, model trajectory quality or inference performance acceptance."
+  ],
+  "private_full_saved_audit_sha256": "599593158ffdc3b8adeb5fe5c03e1f96765862318539ac864b3b8422896c01d6"
+}

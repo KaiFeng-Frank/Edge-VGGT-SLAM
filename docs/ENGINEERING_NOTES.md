@@ -508,3 +508,13 @@ FC2只切输出通道352/352/320，完整K=4096由cores1/2/4分别计算。三�
 独立798时间戳回放31个新位姿/27.759472s=1.116736Hz，完整P951.068790s；30发布间隔最大1.041363s，1次超过1s。启动57.348069s，峰3380.19MiB，恢复300MHz。回放选帧不同于同16对离线评测，不能借用其质量结论；尚未达到20Hz/100ms、严格每秒一次、30分钟、物理相机或8GB验收。
 
 当前四个INT8聚合图两组原输入的SDK诊断均1231行，1218NPU、13CPU仅I/O，没有内部CPU数学回退。192个exNorm占诊断算子和的22.79–25.01%，Q/K Norm比1024通道Norm更耗时；WorkLoad单核与DataType INT8标签不等于连续利用率或全部整数算术证明。flags8的独立组profile不能当flags0整网时延。下一候选是保留原参数/全部token的QK归一化+RoPE+完整注意力GPU融合，尚未实现或验证，不能据此宣称加速。源码与统计见[v82复现](../deploy/rk3588/validation/original_calibrated_camera/README.md)。
+
+## 160. 原 GPU 注意力通过独立算子检查，SDK 完整块接入仍失败
+
+在 RK3588S 用两组真实原输入捕获 frame0/global0 的完整 QKV、原 Q/K affine 参数、二维 RoPE 表和投影前输出，36 原参数与 96 个 NPY 身份核验通过；三份已有原 CPU 块参考逐字节相同。仅板端 GPU 执行原 QK norm、RoPE、全 key softmax/V 与原 consumer layout，28 次独立 tail 输出和 48 份保存数组通过固定 `rtol=1e-4/atol=1e-5`。六次暖态含上传、下载、finite/owned 和释放，frame 为 7.640–7.969 ms、global 11.642–14.281 ms；这些不是 NPU 对照或整网收益。
+
+将两处 tail 委托给 SDK GPU custom-op，保留全部原参数/token 与其余 QKV/proj/残差/MLP。1 GHz 同轮完整 FP16 pair A/GPU pair B 各六次暖态为 26.986/92.455 ms。A 同输入四次重复稳定，B 每个出口四次均不相同；对原 CPU frame/global 相对 L2 为 15.94–32.98%/38.10–52.60%，候选拒绝。独立保存审计核对 16 NPZ/32 输出与四份 CPU 参考；2 SDK contexts、16 SDK runs/32 buffers、两 bridge 的 48 events 均关闭，资源关闭不代表数值接受。
+
+角色源/名称分离、自建严格 program、入口 queue finish+FROM_DEVICE、额外 output TO 与 SDK 示例 import 属性对照仍未解决。SDK 实际 options 追加 fast-relaxed-math/mad-enable/CL_DTYPE_half；不能由相同 kernel 文本推断实际算术相同，严格 program 仍失败也不能确定根因。四个回调按同一 GPU 侧输入复测的 norm/RoPE/输出 strict 全过，输出 L2 为 9.218e-8–1.006e-7，GPU 输出与 FROM 后 CPU 输出逐字节相同；两次 frame 回调的 11 个 GPU 保存数组相同，后续完整 frame 出口却有 13,326 个元素变化。这定位了所观察的边界差异，未证明来源。
+
+最后改用 SDK CPU callback，ready CPU QKV 经私有板端 GPU 执行全部原 tail 并复制回 SDK。独立保存复核 16 NPZ/32 输出与四原 CPU 参考，两路线每输入/出口均四次重复逐字节相同；同轮暖6 A/B 为 27.153/72.639 ms，B 原 CPU L2 为 .4250–.4756%，固定 strict 仍全部失败，2 contexts/32 buffers/80 GPU events 全闭。这条稳定路径更慢，未采用。所有结论仅是局部 pair；未接入现有整网/SL4/真实回放，不新增轨迹、20 Hz/100 ms、8 GB 或长期验收。公开仅已执行原创源码与紧凑统计，见[GPU 注意力诊断](../deploy/rk3588/validation/original_gpu_attention/README.md)。

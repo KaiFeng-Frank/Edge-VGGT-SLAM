@@ -1,0 +1,241 @@
+{
+  "schema": "v83_public_authored_source_copy_list",
+  "files": [
+    {
+      "file": "capture_original_attention_tail_board.py",
+      "bytes": 20897,
+      "sha256": "c307091ec55daa32d3cb1fd53cef3f931bd50e97feb6f1f63894a2eecf959a5c"
+    },
+    {
+      "file": "audit_attention_capture_saved.py",
+      "bytes": 11809,
+      "sha256": "b2b403c16b662a881911ca4af5347a10ee0e395524e30db887fa0a2f6e669303"
+    },
+    {
+      "file": "audit_attention_gpu_saved.py",
+      "bytes": 3769,
+      "sha256": "56d34010c0e90ee02ac07ccb2e3c57a8c6792ffbb105ce1c7f231aab0ffc17b3"
+    },
+    {
+      "file": "audit_attention_custom_pair_saved.py",
+      "bytes": 11293,
+      "sha256": "b965f54d4dbf1483fbc87e7df0c47f0b76e196216bc9b96b22127c8e80480e68"
+    },
+    {
+      "file": "audit_attention_cpu_staging_saved.py",
+      "bytes": 11728,
+      "sha256": "d76bc2f83deed31092f1a09e8715dbadfae2ad087df6f1d8977aff0f74a8457a"
+    },
+    {
+      "file": "original_attention_tail_opencl.py",
+      "bytes": 24320,
+      "sha256": "9dc9e66b9b0521ff168e31063c47bd21c6dc4cbccc9bd339a4ecf28b647b33e7"
+    },
+    {
+      "file": "probe_original_attention_tail_gpu_board.py",
+      "bytes": 18248,
+      "sha256": "9e3841660988e80a62de82e46c871297c4cf87e23381cfd21ea5fd7a1d42c973"
+    },
+    {
+      "file": "probe_original_attention_tail_gpu_board_r2.py",
+      "bytes": 19432,
+      "sha256": "a4ed51987d38a5edd5ac04797aa98481d9c402fbff22f4188136815cf1f25d94"
+    },
+    {
+      "file": "build_pair_attention_custom_board.py",
+      "bytes": 16869,
+      "sha256": "2050cf3c51986e787f3661e787925a4639f6008091584dcf8f2050797a11bc27"
+    },
+    {
+      "file": "build_pair_attention_custom_board_r2.py",
+      "bytes": 18218,
+      "sha256": "a081e542ea33f8278e33baedaf4d6567719522658726df6ce671ab7da1640899"
+    },
+    {
+      "file": "compile_pair_attention_custom_board.py",
+      "bytes": 9740,
+      "sha256": "4974c85f19db018fbc30cbb4ff7f962085c1696b5c0b757d428aff78110b85d3"
+    },
+    {
+      "file": "compile_pair_attention_custom_board_r2.py",
+      "bytes": 10008,
+      "sha256": "d4229b79a113a78bcb8d025a88050da13fa011dbaeae9fe8d076034b1433d5d1"
+    },
+    {
+      "file": "rknn_original_attention_custom.py",
+      "bytes": 18530,
+      "sha256": "e3dbb1d2ed763ee41ab475332f65b15d02bfef6ba718a5738e257317fed39ddd"
+    },
+    {
+      "file": "rknn_original_attention_custom_distinct.py",
+      "bytes": 18789,
+      "sha256": "68f77690d05353921f12a67cb1975c361ca996afaf0f35aa15bdb8ebeb25a80b"
+    },
+    {
+      "file": "rknn_original_attention_custom_handoff.py",
+      "bytes": 19238,
+      "sha256": "0b45fb144f0f679555fe0d3d82fdba2b1a9ea4bd6b1b8d3680c89c5a8b646a4c"
+    },
+    {
+      "file": "rknn_original_attention_custom_diagnostic.py",
+      "bytes": 8917,
+      "sha256": "88720d0e20386df721a79fa249d997033378517af90efa1a650d7314eb101348"
+    },
+    {
+      "file": "rknn_original_attention_custom_output_sync.py",
+      "bytes": 19284,
+      "sha256": "8fece0c2868003c08bdb44709e994e5599eb2a0aaee8e9965f0e1b63fb1b0ab9"
+    },
+    {
+      "file": "rknn_original_attention_custom_cpu_staging.py",
+      "bytes": 7794,
+      "sha256": "a301bb4f219e37aceaa2e7734028b59595d2513fd8905c49e4be737e2b6ba9fc"
+    },
+    {
+      "file": "original_attention_tail_borrowed_opencl.py",
+      "bytes": 21831,
+      "sha256": "46bb37de24fad391d4921be761091eedbf9269186041077343781f06dff40712"
+    },
+    {
+      "file": "original_attention_tail_borrowed_opencl_r2.py",
+      "bytes": 28943,
+      "sha256": "7042e3bd33d6c542469ddbccbb2ae7e1f81e208cc469acc6c1eecd9f768191ec"
+    },
+    {
+      "file": "original_attention_tail_borrowed_opencl_r3.py",
+      "bytes": 31477,
+      "sha256": "dd1b9d13dece28bf95c83442ca3d5e0eaa2881773e41de2f11744325169b2990"
+    },
+    {
+      "file": "original_attention_tail_borrowed_strict.py",
+      "bytes": 22945,
+      "sha256": "6a3909d9a767676c4c3e8ff152beb31439bba8adf3a4d668e37b53298d226a59"
+    },
+    {
+      "file": "original_attention_tail_borrowed_sdk_props.py",
+      "bytes": 22946,
+      "sha256": "284d8808951ab1b8c477a56d3bd39d972936302efb8106dd02112111c3b82f9c"
+    },
+    {
+      "file": "probe_attention_custom_pair_board.py",
+      "bytes": 13512,
+      "sha256": "8eb45b85ac78f0dd0214da110d46c55891bd733e5f7d47a3a8bdd854cd38773e"
+    },
+    {
+      "file": "probe_attention_custom_pair_board_r2.py",
+      "bytes": 13803,
+      "sha256": "fb03ce96710fa24e60f942396f938c4068f1bc2408bc31b274f5e6a8063d102b"
+    },
+    {
+      "file": "probe_callback_shadow_board.py",
+      "bytes": 9046,
+      "sha256": "d5fdca6966db2f8702137be3b75fdc35a15e9fde73baff1c982531eafdba4794"
+    },
+    {
+      "file": "probe_callback_shadow_board_r2.py",
+      "bytes": 9120,
+      "sha256": "ecd8faee4a4c611b7ff185637ce6bb219b12b2c016d576b0a066e31416d26e0b"
+    },
+    {
+      "file": "run_thermal_stage.py",
+      "bytes": 4822,
+      "sha256": "e0be87ac7c98d5be58e7d8fd981a8ba85663c30cbb61ec4565ca1f630e5f5ada"
+    },
+    {
+      "file": "run_attention_tail_capture.sh",
+      "bytes": 308,
+      "sha256": "db52e77cd3bc72e373307f382bc4f7407634b1d51233cf32e715e8cd80b85c04"
+    },
+    {
+      "file": "run_original_attention_tail_gpu_1ghz.sh",
+      "bytes": 1001,
+      "sha256": "6a635a074715ef83aa328258b9fe153655081b60920d32577faf749b474b8bf3"
+    },
+    {
+      "file": "run_original_attention_tail_gpu_1ghz_r2.sh",
+      "bytes": 1004,
+      "sha256": "412dba41144e013432a97e231fff5ca4a448511712991c103a65cac8def9634c"
+    },
+    {
+      "file": "run_compile_attention_pair.sh",
+      "bytes": 898,
+      "sha256": "27deb658e10e29c14a0e6722bd3de8c6fe1f129ae990505e1a66a433d8e5b0d8"
+    },
+    {
+      "file": "run_compile_attention_pair_r2.sh",
+      "bytes": 904,
+      "sha256": "6de99eb7bb1055870c4cc2bbf5326399fe211392891ecc0f172432fc46c6b282"
+    },
+    {
+      "file": "run_attention_custom_pair_1ghz.sh",
+      "bytes": 1256,
+      "sha256": "b162c7649446600a4d1db12ad5123eafe82b58b0553fc945b4432a03cb380b82"
+    },
+    {
+      "file": "run_attention_custom_pair_distinct_1ghz.sh",
+      "bytes": 1274,
+      "sha256": "a1269454bf2223c732b0dd34de5753fb8ab8ce88b1a3ad2cfa6717780a833a11"
+    },
+    {
+      "file": "run_attention_custom_pair_strict_1ghz.sh",
+      "bytes": 1272,
+      "sha256": "81eb491667dacba0db2d1337bb8e6c1e2aad39a3677574c8b9ff7c45fbe27eca"
+    },
+    {
+      "file": "run_attention_custom_pair_handoff_1ghz.sh",
+      "bytes": 1272,
+      "sha256": "4665c3cfc5f36e05e5286707be424a2592f9fa2fba8af73731631cbf7b521f4e"
+    },
+    {
+      "file": "run_attention_custom_pair_diagnostic_1ghz.sh",
+      "bytes": 1384,
+      "sha256": "ce3e5f04e3331af1fa543bf18d413c23f6cbe9e3b56a09e56439affbde065cba"
+    },
+    {
+      "file": "run_attention_custom_pair_diagnostic_r2_1ghz.sh",
+      "bytes": 1384,
+      "sha256": "ac854a9cb7fb21c45a6d5e74a90f2da317a515fb3c3246434db4e9206dd0c673"
+    },
+    {
+      "file": "run_attention_custom_pair_output_sync_1ghz.sh",
+      "bytes": 1280,
+      "sha256": "818aa9f1028608049018bea6184580cd47047bc4a9d791750dd1708e388966f1"
+    },
+    {
+      "file": "run_attention_custom_pair_sdk_props_1ghz.sh",
+      "bytes": 1278,
+      "sha256": "2d52c45d6a458d70ce4b183d51e65b49b31004668296eeb83f6564bc211df838"
+    },
+    {
+      "file": "run_attention_custom_pair_cpu_staging_1ghz.sh",
+      "bytes": 1280,
+      "sha256": "d8bae2f555ad66ac9e0f7b1a54112e3c13840b24e257609a0f1249cd98de7715"
+    },
+    {
+      "file": "run_callback_shadow.sh",
+      "bytes": 590,
+      "sha256": "368f0388e2be2428e09f2356f4951210a8fabb3d34d05a9835e68d0b701dc337"
+    },
+    {
+      "file": "run_callback_shadow_r2.sh",
+      "bytes": 593,
+      "sha256": "aece6b629741510a045bfd3d0e6f0adf0a61be20b80f712ca7b5cdb9688b1153"
+    },
+    {
+      "file": "probe_custom_op_abi.c",
+      "bytes": 1555,
+      "sha256": "1e541b74b377a9a5cf753ccd1974fc725167ebe122b6ce048dd385b30f20c6e7"
+    },
+    {
+      "file": "build_custom_abi_board.py",
+      "bytes": 1513,
+      "sha256": "4d99104b9a6da32c923de8db81a03fc198c1f703b8a4a58129b08c4ac3491a07"
+    },
+    {
+      "file": "custom-op-abi.json",
+      "bytes": 1252,
+      "sha256": "06a7ad4af33d64d500ff41a998225c12344abc6897ac55d7683239c08a445589"
+    }
+  ],
+  "excluded": "No checkpoints, activations, ONNX/RKNN exports, vendor headers, libraries or firmware."
+}

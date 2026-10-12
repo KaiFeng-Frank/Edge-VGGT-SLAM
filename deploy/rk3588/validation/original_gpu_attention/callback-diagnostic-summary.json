@@ -1,0 +1,298 @@
+{
+  "schema": "v83_saved_custom_callback_diagnostic_summary",
+  "receipts": [
+    {
+      "receipt_sha256": "d9946de23848762b35ee284fe2896a8b2229052936d536e44c6d360b3a15c059",
+      "status": "callback_or_capture_failed",
+      "diagnostic_source_sha256": "88720d0e20386df721a79fa249d997033378517af90efa1a650d7314eb101348",
+      "captures": [
+        {
+          "role": "frame",
+          "callback_index": 0,
+          "status": "callback_failed",
+          "GPU_readback_completed": false,
+          "actual_SDK_program": {
+            "function_name": "original_qk_norm_rope_frame",
+            "build_options": "-cl-std=CL1.2 -DBATCH=2 -DTOKENS=53 -DLOCAL_KEYS=64 -cl-fast-relaxed-math -cl-mad-enable -DCL_DTYPE_half ",
+            "source_bytes": 6884,
+            "source_sha256": "b46d892d10a1b70c817cdfc0d3ae9dd1c8e35ca9b8b19a44c16d3f09b9b17fc1",
+            "expected_defines": {
+              "BATCH": 2,
+              "TOKENS": 53,
+              "LOCAL_KEYS": 64
+            },
+            "source_defines": {
+              "BATCH": [
+                2
+              ],
+              "TOKENS": [
+                53
+              ],
+              "LOCAL_KEYS": [
+                64
+              ]
+            },
+            "option_defines": {
+              "BATCH": [
+                2
+              ],
+              "TOKENS": [
+                53
+              ],
+              "LOCAL_KEYS": [
+                64
+              ]
+            },
+            "compile_work_group_size": [
+              64,
+              1,
+              1
+            ],
+            "binary_bytes": 19747,
+            "binary_sha256": "12753449c82fbf24b9bb472cefd8bcdc4d73816b3f5468289191a3c2c5145299"
+          }
+        },
+        {
+          "role": "frame",
+          "callback_index": 1,
+          "status": "callback_failed",
+          "GPU_readback_completed": false,
+          "actual_SDK_program": {
+            "function_name": "original_qk_norm_rope_frame",
+            "build_options": "-cl-std=CL1.2 -DBATCH=2 -DTOKENS=53 -DLOCAL_KEYS=64 -cl-fast-relaxed-math -cl-mad-enable -DCL_DTYPE_half ",
+            "source_bytes": 6884,
+            "source_sha256": "b46d892d10a1b70c817cdfc0d3ae9dd1c8e35ca9b8b19a44c16d3f09b9b17fc1",
+            "expected_defines": {
+              "BATCH": 2,
+              "TOKENS": 53,
+              "LOCAL_KEYS": 64
+            },
+            "source_defines": {
+              "BATCH": [
+                2
+              ],
+              "TOKENS": [
+                53
+              ],
+              "LOCAL_KEYS": [
+                64
+              ]
+            },
+            "option_defines": {
+              "BATCH": [
+                2
+              ],
+              "TOKENS": [
+                53
+              ],
+              "LOCAL_KEYS": [
+                64
+              ]
+            },
+            "compile_work_group_size": [
+              64,
+              1,
+              1
+            ],
+            "binary_bytes": 19747,
+            "binary_sha256": "12753449c82fbf24b9bb472cefd8bcdc4d73816b3f5468289191a3c2c5145299"
+          }
+        }
+      ]
+    },
+    {
+      "receipt_sha256": "f21539a34e1b54f66494f90ec58f27ac57b3052e6dab8acc5d90ce06ffc032b4",
+      "status": "captures_saved_no_numerical_acceptance",
+      "diagnostic_source_sha256": "88720d0e20386df721a79fa249d997033378517af90efa1a650d7314eb101348",
+      "captures": [
+        {
+          "role": "frame",
+          "callback_index": 0,
+          "status": "returned",
+          "GPU_readback_completed": true,
+          "actual_SDK_program": {
+            "function_name": "original_qk_norm_rope_frame",
+            "build_options": "-cl-std=CL1.2 -DBATCH=2 -DTOKENS=53 -DLOCAL_KEYS=64 -cl-fast-relaxed-math -cl-mad-enable -DCL_DTYPE_half ",
+            "source_bytes": 7222,
+            "source_sha256": "3d7a38172b25b39ddd00ed0abfb9e9dd79e25de83bfc221e7b07a125f39eb1d5",
+            "expected_defines": {
+              "BATCH": 2,
+              "TOKENS": 53,
+              "LOCAL_KEYS": 64
+            },
+            "source_defines": {
+              "BATCH": [
+                2
+              ],
+              "TOKENS": [
+                53
+              ],
+              "LOCAL_KEYS": [
+                64
+              ]
+            },
+            "option_defines": {
+              "BATCH": [
+                2
+              ],
+              "TOKENS": [
+                53
+              ],
+              "LOCAL_KEYS": [
+                64
+              ]
+            },
+            "compile_work_group_size": [
+              64,
+              1,
+              1
+            ],
+            "binary_bytes": 21317,
+            "binary_sha256": "b17c0d4264fe5b0f7d54f377ece6490f507872d2d606f868176d16fbc2024a82"
+          }
+        },
+        {
+          "role": "global",
+          "callback_index": 0,
+          "status": "returned",
+          "GPU_readback_completed": true,
+          "actual_SDK_program": {
+            "function_name": "original_qk_norm_rope_global",
+            "build_options": "-cl-std=CL1.2 -DBATCH=1 -DTOKENS=106 -DLOCAL_KEYS=128 -cl-fast-relaxed-math -cl-mad-enable -DCL_DTYPE_half ",
+            "source_bytes": 7225,
+            "source_sha256": "17201b84a08aaeedd148690e8156cce1d25a5044718c67539a8c8b214110a4df",
+            "expected_defines": {
+              "BATCH": 1,
+              "TOKENS": 106,
+              "LOCAL_KEYS": 128
+            },
+            "source_defines": {
+              "BATCH": [
+                1
+              ],
+              "TOKENS": [
+                106
+              ],
+              "LOCAL_KEYS": [
+                128
+              ]
+            },
+            "option_defines": {
+              "BATCH": [
+                1
+              ],
+              "TOKENS": [
+                106
+              ],
+              "LOCAL_KEYS": [
+                128
+              ]
+            },
+            "compile_work_group_size": [
+              64,
+              1,
+              1
+            ],
+            "binary_bytes": 21624,
+            "binary_sha256": "9ee9fcd5ace7e2b2f012317b7da3a9e912fdef2c858782f50cb7ec0246d388c4"
+          }
+        },
+        {
+          "role": "frame",
+          "callback_index": 1,
+          "status": "returned",
+          "GPU_readback_completed": true,
+          "actual_SDK_program": {
+            "function_name": "original_qk_norm_rope_frame",
+            "build_options": "-cl-std=CL1.2 -DBATCH=2 -DTOKENS=53 -DLOCAL_KEYS=64 -cl-fast-relaxed-math -cl-mad-enable -DCL_DTYPE_half ",
+            "source_bytes": 7222,
+            "source_sha256": "3d7a38172b25b39ddd00ed0abfb9e9dd79e25de83bfc221e7b07a125f39eb1d5",
+            "expected_defines": {
+              "BATCH": 2,
+              "TOKENS": 53,
+              "LOCAL_KEYS": 64
+            },
+            "source_defines": {
+              "BATCH": [
+                2
+              ],
+              "TOKENS": [
+                53
+              ],
+              "LOCAL_KEYS": [
+                64
+              ]
+            },
+            "option_defines": {
+              "BATCH": [
+                2
+              ],
+              "TOKENS": [
+                53
+              ],
+              "LOCAL_KEYS": [
+                64
+              ]
+            },
+            "compile_work_group_size": [
+              64,
+              1,
+              1
+            ],
+            "binary_bytes": 21317,
+            "binary_sha256": "b17c0d4264fe5b0f7d54f377ece6490f507872d2d606f868176d16fbc2024a82"
+          }
+        },
+        {
+          "role": "global",
+          "callback_index": 1,
+          "status": "returned",
+          "GPU_readback_completed": true,
+          "actual_SDK_program": {
+            "function_name": "original_qk_norm_rope_global",
+            "build_options": "-cl-std=CL1.2 -DBATCH=1 -DTOKENS=106 -DLOCAL_KEYS=128 -cl-fast-relaxed-math -cl-mad-enable -DCL_DTYPE_half ",
+            "source_bytes": 7225,
+            "source_sha256": "17201b84a08aaeedd148690e8156cce1d25a5044718c67539a8c8b214110a4df",
+            "expected_defines": {
+              "BATCH": 1,
+              "TOKENS": 106,
+              "LOCAL_KEYS": 128
+            },
+            "source_defines": {
+              "BATCH": [
+                1
+              ],
+              "TOKENS": [
+                106
+              ],
+              "LOCAL_KEYS": [
+                128
+              ]
+            },
+            "option_defines": {
+              "BATCH": [
+                1
+              ],
+              "TOKENS": [
+                106
+              ],
+              "LOCAL_KEYS": [
+                128
+              ]
+            },
+            "compile_work_group_size": [
+              64,
+              1,
+              1
+            ],
+            "binary_bytes": 21624,
+            "binary_sha256": "9ee9fcd5ace7e2b2f012317b7da3a9e912fdef2c858782f50cb7ec0246d388c4"
+          }
+        }
+      ]
+    }
+  ],
+  "timings_not_normal_performance": true,
+  "actual_SDK_options_include_fast_relaxed_math": true,
+  "root_cause_established": false
+}

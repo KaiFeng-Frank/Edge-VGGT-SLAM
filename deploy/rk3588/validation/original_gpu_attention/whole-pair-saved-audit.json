@@ -1,0 +1,236 @@
+{
+  "schema": "v83_original_attention_custom_pair_saved_audit",
+  "status": "passed_saved_verification_candidate_rejected",
+  "auditor_source_sha256": "b965f54d4dbf1483fbc87e7df0c47f0b76e196216bc9b96b22127c8e80480e68",
+  "result_sha256": "a70a78f76dc285d68792abf9d07044d510c5a3958a183bf24605b462fc2a9d8d",
+  "capture_sha256": "3b4eb0b24d320699dd7d198fd3158454a3043ed7244a0290b267cbfc450e8fee",
+  "actual_runner_source_sha256": "8eb45b85ac78f0dd0214da110d46c55891bd733e5f7d47a3a8bdd854cd38773e",
+  "checked_NPZ_files": 16,
+  "checked_output_arrays": 32,
+  "checked_original_CPU_reference_arrays": 4,
+  "all_artifact_hashes_shapes_dtypes_finite_verified": true,
+  "all_saved_comparison_metrics_independently_recomputed": true,
+  "summary": {
+    "A": {
+      "warm_calls": 6,
+      "mean_seconds": 0.02698575299291406,
+      "p95_seconds": 0.03048493075039005
+    },
+    "B": {
+      "warm_calls": 6,
+      "mean_seconds": 0.09245515500757999,
+      "p95_seconds": 0.10853945874987403
+    }
+  },
+  "B_to_A_warm_mean_ratio": 3.426072825607532,
+  "cells": [
+    {
+      "case": "v53",
+      "route": "A",
+      "output": "frame",
+      "calls": 4,
+      "unique_raw_sha256": 1,
+      "original_CPU_relative_l2_range": [
+        0.004222512956891439,
+        0.004222512956891439
+      ],
+      "original_CPU_max_abs_range": [
+        0.07805871963500977,
+        0.07805871963500977
+      ],
+      "original_CPU_failed_elements_range": [
+        55865,
+        55865
+      ],
+      "original_CPU_strict_passed_outputs": 0
+    },
+    {
+      "case": "v53",
+      "route": "A",
+      "output": "global_output",
+      "calls": 4,
+      "unique_raw_sha256": 1,
+      "original_CPU_relative_l2_range": [
+        0.004732235017510962,
+        0.004732235017510962
+      ],
+      "original_CPU_max_abs_range": [
+        0.02930513024330139,
+        0.02930513024330139
+      ],
+      "original_CPU_failed_elements_range": [
+        63240,
+        63240
+      ],
+      "original_CPU_strict_passed_outputs": 0
+    },
+    {
+      "case": "v53",
+      "route": "B",
+      "output": "frame",
+      "calls": 4,
+      "unique_raw_sha256": 4,
+      "original_CPU_relative_l2_range": [
+        0.16279320692749022,
+        0.32981218687910924
+      ],
+      "original_CPU_max_abs_range": [
+        3.0692901611328125,
+        7.511940002441406
+      ],
+      "original_CPU_failed_elements_range": [
+        68913,
+        69383
+      ],
+      "original_CPU_strict_passed_outputs": 0
+    },
+    {
+      "case": "v53",
+      "route": "B",
+      "output": "global_output",
+      "calls": 4,
+      "unique_raw_sha256": 4,
+      "original_CPU_relative_l2_range": [
+        0.39146904863584187,
+        0.5259978854291283
+      ],
+      "original_CPU_max_abs_range": [
+        5.063702642917633,
+        7.260103940963745
+      ],
+      "original_CPU_failed_elements_range": [
+        83142,
+        83599
+      ],
+      "original_CPU_strict_passed_outputs": 0
+    },
+    {
+      "case": "v56-calib00",
+      "route": "A",
+      "output": "frame",
+      "calls": 4,
+      "unique_raw_sha256": 1,
+      "original_CPU_relative_l2_range": [
+        0.004170387944136208,
+        0.004170387944136208
+      ],
+      "original_CPU_max_abs_range": [
+        0.08833599090576172,
+        0.08833599090576172
+      ],
+      "original_CPU_failed_elements_range": [
+        55336,
+        55336
+      ],
+      "original_CPU_strict_passed_outputs": 0
+    },
+    {
+      "case": "v56-calib00",
+      "route": "A",
+      "output": "global_output",
+      "calls": 4,
+      "unique_raw_sha256": 1,
+      "original_CPU_relative_l2_range": [
+        0.004487401292507264,
+        0.004487401292507264
+      ],
+      "original_CPU_max_abs_range": [
+        0.02497321367263794,
+        0.02497321367263794
+      ],
+      "original_CPU_failed_elements_range": [
+        63072,
+        63072
+      ],
+      "original_CPU_strict_passed_outputs": 0
+    },
+    {
+      "case": "v56-calib00",
+      "route": "B",
+      "output": "frame",
+      "calls": 4,
+      "unique_raw_sha256": 4,
+      "original_CPU_relative_l2_range": [
+        0.15942248437097334,
+        0.23658859438593263
+      ],
+      "original_CPU_max_abs_range": [
+        3.0579724311828613,
+        3.0579724311828613
+      ],
+      "original_CPU_failed_elements_range": [
+        68981,
+        69710
+      ],
+      "original_CPU_strict_passed_outputs": 0
+    },
+    {
+      "case": "v56-calib00",
+      "route": "B",
+      "output": "global_output",
+      "calls": 4,
+      "unique_raw_sha256": 4,
+      "original_CPU_relative_l2_range": [
+        0.3810166547286684,
+        0.4904061493076586
+      ],
+      "original_CPU_max_abs_range": [
+        4.89834725856781,
+        5.12100350856781
+      ],
+      "original_CPU_failed_elements_range": [
+        83372,
+        84825
+      ],
+      "original_CPU_strict_passed_outputs": 0
+    }
+  ],
+  "resources": {
+    "contexts_created": 2,
+    "contexts_destroyed": 2,
+    "live_contexts": 0,
+    "SDK_counters": {
+      "sdk_run_attempts": 16,
+      "sdk_runs_succeeded": 16,
+      "outputs_acquired": 32,
+      "outputs_released": 32
+    },
+    "GPU_bridges": {
+      "global": {
+        "calls_attempted": 8,
+        "calls_completed": 8,
+        "events_created": 24,
+        "events_released": 24,
+        "live_OpenCL_objects": 0,
+        "live_owned_DMA_fds": 0,
+        "fully_released": true
+      },
+      "frame": {
+        "calls_attempted": 8,
+        "calls_completed": 8,
+        "events_created": 24,
+        "events_released": 24,
+        "live_OpenCL_objects": 0,
+        "live_owned_DMA_fds": 0,
+        "fully_released": true
+      }
+    },
+    "cleanup_errors": []
+  },
+  "saved_NPU_frequency_hz": [
+    1000000000
+  ],
+  "call_snapshot_max_temperature_c": 53.615,
+  "saved_GPU_observed_hz": [
+    300000000
+  ],
+  "candidate_accepted": false,
+  "full_model_or_realtime_validated": false,
+  "limits": [
+    "Saved arrays and receipt assertions only; source/SDK binaries and device state were not re-executed.",
+    "A is stable per input; B differs across all four repetitions for each input/output.",
+    "Both routes fail the unchanged original FP32 tensor gate. B varies and is slower; not adopted.",
+    "No causal attribution to DMA coherence, compiler, memory ordering or internal precision from these outputs alone."
+  ],
+  "private_full_saved_audit_sha256": "302aa2da3a812fb8c384f73a83a9c39ee206ce00611f46565e9c11faf5f4f039"
+}
