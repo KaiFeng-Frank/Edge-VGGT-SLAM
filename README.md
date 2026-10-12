@@ -68,6 +68,7 @@ The NPU experiment above requires pinned compiled artifacts and experimental wra
 ## Development and evidence
 
 - [Architecture](ARCHITECTURE.md): original prediction contract, caching and SL4 boundaries.
+- [Real-time feasibility review](docs/REALTIME_FEASIBILITY_REVIEW.md): measured bottlenecks, validation gaps and decision gates for the 20 Hz / 100 ms target.
 - [Project constraints](AGENTS.md): original-model-only scope, board execution and acceptance targets.
 - [Measurement index](MEASUREMENTS.json) and [results](results/): complete runs, component experiments and failure records.
 - [Engineering notes](docs/ENGINEERING_NOTES.md): useful findings, supporting evidence and remaining validation conditions.
