@@ -6,6 +6,18 @@ The current tree contains only this model's execution path and relevant componen
 
 **The real-time target remains unachieved.** The target is at least 20 fresh-observation poses per second with complete input-to-pose P95 latency at most 100 ms. Map cadence, bounded queues, trajectory quality, 30-minute stability and operation within 8 GB each need separate validation. A component's timing, repeated prediction or offline reconstruction does not satisfy those targets. Current measurements use dataset files on a 16 GB RK3588S; physical-camera validation is deferred.
 
+**Latest authorized 1 GHz NPU test:** the original-model timestamp replay
+delivered **20 fresh poses at 0.676 Hz, complete input-to-pose P95 2.028 s**
+from 798 source frames. A separate comparison on identical inputs reduced
+mean complete-model service from **1.968 s at 300 MHz to 1.586 s at 1 GHz**
+(19.43%); all 80 saved arrays and poses remained byte-identical to the FP16
+baseline. The strict original FP32 checks still fail. Maximum sampled
+temperature across both runs was 63.769 C; both workers finished and the NPU
+was restored to 300 MHz. This was a 29.60-second replay on the 16 GB board,
+with 7,261.66 MiB peak process RSS. It remains below the real-time target.
+[Measured results and timing records](results/original_1ghz_v63.json),
+[bounded test and restoration](deploy/rk3588/validation/original_clock_test/README.md).
+
 The additional-model retrieval and semantic paths have been removed. **Loop closure has no replacement implementation:** `max_loops=0` is the supported Solver configuration. Requests to enable loops or supply legacy auxiliary-model arguments must fail before loading or inference. The original VGGT model's numerical similarity capability does not itself implement loop retrieval.
 
 The original checkpoint is `facebook/VGGT-1B`, `model.pt`, **5,026,874,952 bytes**, SHA256 `d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0`. Source-code and checkpoint licensing are separate; see [model provenance](MODEL_LICENSES.md) and [upstream pins](UPSTREAMS.json). No weights, captured arrays, weight-bearing exports or SDK binaries are distributed. The loader verifies this exact byte size and full SHA256 before deserialization, including explicit local paths and cached downloads. Automatic downloads use the recorded immutable revision; there is no runtime identity-check bypass.

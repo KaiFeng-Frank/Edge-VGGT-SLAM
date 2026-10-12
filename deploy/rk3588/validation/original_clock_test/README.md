@@ -1,8 +1,15 @@
-# Prepared original VGGT frequency comparison
+# Bounded original VGGT frequency comparison
 
-**Not executed. Explicit authorization to change the system-wide NPU clock is
-required by [AGENTS.md](../../../../AGENTS.md).** These files make the proposed
-test reviewable; publishing or deploying them does not authorize execution.
+**Executed with explicit user authorization in v63.** Both bounded workers
+completed; actual NPU frequency, governor and limits were restored. The matched
+complete-model mean decreased from 1.968 to 1.586 s (19.43%), with all 80 arrays
+and poses byte-identical to the prior FP16 path. Timestamp replay measured
+0.676 fresh poses/s and complete P95 2.028 s; realtime remains unmet.
+[Results, sampled clocks, temperatures and evidence hashes](../../../../results/original_1ghz_v63.json).
+
+Explicit authorization for a system-wide NPU clock change is required by
+[AGENTS.md](../../../../AGENTS.md). The two authorized tests are complete;
+publishing these scripts does not authorize further clock changes.
 
 The two launchers use the current original-model graphs: first the fixed 16-pair
 complete-model comparison, then the real timestamp replay. Run them separately
@@ -12,9 +19,10 @@ zone reaches 75 C. The wrapper stops the worker process group and restores the
 original actual NPU frequency in `finally`, then verifies the governor and
 limits. It changes no CPU clock, governor, driver, model or network setting.
 
-The currently observed actual frequency is 300 MHz, with the userspace request
-shown as `undefined`. Restoring an explicit 300 MHz request restores the actual
-frequency, but is not a byte-for-byte restoration of that internal request.
+Before the first test, actual frequency was 300 MHz and the userspace request
+was `undefined`. Both tests restored actual 300 MHz, governor and limits;
+the request is now explicit 300 MHz. This is not a byte-for-byte restoration
+of the initial internal request.
 Read the source and saved control record rather than assuming every cleanup
 succeeded. A worker's success also does not establish numerical or real-time
 acceptance: inspect its own result, output arrays, timing and cleanup records.
@@ -33,4 +41,9 @@ Existing result directories must not be overwritten.
 
 `test_npu_frequency_test.py` uses fake sysfs, signals and processes only.
 The controller is unchanged from its eight passing v59 generated checks;
-the saved log is included. It has not been tested by changing the actual clock.
+the saved log is included. The v63 actual runs recorded 97 and 107 samples,
+all at 1 GHz, with maximum sampled temperatures 61.923 and 63.769 C. Each
+finished within 55 seconds, with no restoration errors. The original launchers
+retain their prepared v59 worker-directory names; new v63 control directories
+identify this execution. Existing worker directories now contain results and
+must not be reused or overwritten.

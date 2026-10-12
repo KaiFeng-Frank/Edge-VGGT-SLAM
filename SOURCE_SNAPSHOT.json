@@ -1,5 +1,5 @@
 {
-  "schema": "original_VGGT_only_source_snapshot_v62",
+  "schema": "original_VGGT_only_source_snapshot_v63",
   "upstream_commit": "35327ac28b7d193df9ccc39ba6346052bb6f1207",
   "model": "original VGGT only",
   "scope": "Current published file hashes; this manifest excludes itself. Model weights, arrays and external SDK are not published.",
@@ -24,7 +24,8 @@
     "results/original_npu_clock_v59.json",
     "results/original_cpu_affinity_v60.json",
     "results/original_fc1_tap_v61.json",
-    "results/original_guard_diagnostic_v62.json"
+    "results/original_guard_diagnostic_v62.json",
+    "results/original_1ghz_v63.json"
   ],
   "file_sha256": {
     ".gitignore": "5c914f3ced73f7a831f890a98f771bde1e11fdcf288b87f45a9fb538bef93b2e",
@@ -33,7 +34,7 @@
     "LICENSE": "dc493d7ac51f587fd71184315999c792ead523bf46da0f0cbf3e26a577b1a580",
     "MEASUREMENTS.json": "60409b2e357f8cadc9d889b5e3fcc9b13e39699b5e2381308883ef24bcc6a379",
     "MODEL_LICENSES.md": "55c1c587c0e879414de8133c4eb6686b490a899b388c57f950c652804aba5902",
-    "README.md": "b7d4e3819b1f59a15478654af5db95d8abda03dad26de24f083d93ba97cf34e6",
+    "README.md": "bccde8e6d1253f6d317aee0caec6cca562dd3667561c3501192a05913b6cb583",
     "THIRD_PARTY_NOTICES.md": "99176fb73e78ba0950493b942dfc6c6198a4b6ce432bb0904926edb31bc631ee",
     "UPSTREAMS.json": "9325cc1d2c33794ea3361d0884a5796b9b22b119b9a9822113e7b726e2d88a0a",
     "assets/office_loop_figure.png": "5d20d0acb81d3fb38e14235499ba67a22441cfe835e899f3e224a99e514c28e9",
@@ -105,7 +106,7 @@
     "deploy/rk3588/validation/original_calibrated_pairs/replay_calibrated_original.py": "2404beda17aba32604da08b57115a8c034d93821ec84342b28d96c70a6ad09f5",
     "deploy/rk3588/validation/original_calibrated_pairs/rknn_calibrated_dino.py": "8897ef8d7ceba80576922854eb9febc41e6a470f164b360a87457334cd956cda",
     "deploy/rk3588/validation/original_calibrated_pairs/rknn_calibrated_pairs.py": "edf5678518208127402d3b4c358c7c9b8fdb82970efea98ba04a7cd109a5f231",
-    "deploy/rk3588/validation/original_clock_test/README.md": "6856536e1521843d513862d97551bbcec2b956394682bd3a3623d7fd83d4bf29",
+    "deploy/rk3588/validation/original_clock_test/README.md": "3e0dc7f92e9df408a1ebc9d7d48124944e7f9b8a29688ca3291d355bd6649556",
     "deploy/rk3588/validation/original_clock_test/frequency-safety-tests.log": "d536ca1ce20f08b16510e923503d81100575a68732140b5088e1d5423f47d645",
     "deploy/rk3588/validation/original_clock_test/npu_frequency_test.py": "285a077e9a7415ddedc044df1ab848d32858dabdb1c0c4e53c4fe28f4cfc2769",
     "deploy/rk3588/validation/original_clock_test/run_1ghz_complete.sh": "15aa60eb12b74e885ab007c0cc0672b25b5c497d43b92491b55419229cc1ee9a",
@@ -320,7 +321,7 @@
     "deploy/rk3588/validation/vggt-v16-camera-step-compile112-r1.json": "c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a",
     "deploy/rk3588/validation/vggt-v16-camera-step-export112-r1.json": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
     "deploy/rk3588/vggt-spark.patch": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864",
-    "docs/ENGINEERING_NOTES.md": "80bae449702c58d4054d6404e6ac9b27aac457846c022a45839677bdab913f18",
+    "docs/ENGINEERING_NOTES.md": "765fb2d4e280f99c102fe1914caeedf83a1ada4e6167158b62139612fb0cb8f2",
     "evals/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "evals/eval_tum.sh": "0d9de08050e3e04dc6911681b7b8655e45b5e9e3727a423a3832c1be57cedd44",
     "evals/process_logs_tum.py": "9a78265063ad670136d6f4d6b5773d0e362f07b64f41f26ea2c941e973f59c3a",
@@ -342,6 +343,7 @@
     "results/hybrid_block_v20.json": "8f0befaa26e3f775824d58455691302a301878d324aff94e27392ea1a796fc57",
     "results/hybrid_pairs_v16.json": "d4909c8f19c8cd494b3b4b47829f143500b2f33bb426242040a94b57158cbcc7",
     "results/mlp_layout_v19.json": "4a3d5b144730d9a01cc66fb5ce575d40eb309ae559fd9fbd8ee54ab5d2f0cb7d",
+    "results/original_1ghz_v63.json": "ae2fdf3fc876024f8b497de060e737347ff7f1b47dca6d7c957eb34c363513b8",
     "results/original_calibration_half_io_v56.json": "bddfa2d69214e9d5a8d3362e54fe79a3bcac89c83c1d90e9278b3546f959c3d5",
     "results/original_checkpoint_identity_v51.json": "ef371d960d8a3928b555c5331998e650b6ba03aa61b38d91f0a5ad9b91842d37",
     "results/original_cpu_affinity_v60.json": "ebd5808ce3d0f71b17e469d17c18a58275b7f10253abb363ea589e6bbc7c8178",
