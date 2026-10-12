@@ -1,0 +1,31 @@
+{
+  "status": "source_syntax_checked",
+  "checks": {
+    "capture_camera_fc1_board.py": {
+      "sha256": "a00e34d8ff0d6ecc02f8f5fbc2059cccb9883f39dee6f9f698a51e1c7beaf753",
+      "AST_pass": true
+    },
+    "compile_camera_fc1_splits_board.py": {
+      "sha256": "cb107c093cee8359724095a5298d0cdf2407499503a1fa0358da49d2055c2894",
+      "AST_pass": true
+    },
+    "compile_camera_step_split_board.py": {
+      "sha256": "9af02ea5042285ef8846b3a656162bf8fb35df1b0487eb0f2812e879313e2aee",
+      "AST_pass": true
+    },
+    "probe_camera_fc1_board.py": {
+      "sha256": "f468243017360006bd92af028393af388a2ee24adf3ec0acaa525fe9b171d436",
+      "AST_pass": true
+    },
+    "probe_camera_step_split_board.py": {
+      "sha256": "e7279111524148e8fc681cc11d873bc8ba23d85d1f027a900c57b250e8828dbc",
+      "AST_pass": true
+    },
+    "run_board_stage.py": {
+      "sha256": "c1aa89e661294a71d01ef9f25901b9a963437545e38074945548e9c68d9952dc",
+      "AST_pass": true
+    }
+  },
+  "actual_model_execution_on_host": false,
+  "actual_board_evidence_in": "results/original_camera_partition_v69.json"
+}

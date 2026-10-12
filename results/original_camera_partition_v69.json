@@ -1,0 +1,1004 @@
+{
+  "schema": "original_VGGT_CameraHead_output_partition_v69",
+  "status": "measured_component_and_complete_head_benefit_not_adopted",
+  "original_model_only": true,
+  "checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "additional_learned_models_used": false,
+  "traditional_pose_frontend_added": false,
+  "all_actual_Torch_ORT_SDK_and_compilation_on_RK3588S": true,
+  "production_runtime_changed": false,
+  "default_backend_changed": false,
+  "candidate_quality_accepted": false,
+  "full_model_speedup_measured": false,
+  "timestamp_replay_run": false,
+  "real_time_validated": false,
+  "actual_frequency_hz": 300000000,
+  "clock_or_governor_writes": false,
+  "input_scope": "One frozen original two-image camera-token pair; four genuine refinements. No new complete dataset run.",
+  "capture": {
+    "receipt": {
+      "private_evidence": "capture-r1/capture.json",
+      "sha256": "018751211df1babf165ce44c5303dfabf167f9663876fa5e0ee01303346d1650"
+    },
+    "original_capture_sha256": "1c3234cfa65914a6f41634432153fa8ebb6dcf9c8d3eb3215f0955fc0ed000f1",
+    "parameters_verified": 69,
+    "four_archived_poses_byte_identical": true,
+    "aggregator_reexecuted": false,
+    "original_input_shapes": [
+      [
+        1,
+        2,
+        2048
+      ],
+      [
+        1,
+        2,
+        2048
+      ],
+      [
+        1,
+        2,
+        2048
+      ],
+      [
+        1,
+        2,
+        2048
+      ]
+    ],
+    "original_post_GELU_shapes": [
+      [
+        1,
+        2,
+        8192
+      ],
+      [
+        1,
+        2,
+        8192
+      ],
+      [
+        1,
+        2,
+        8192
+      ],
+      [
+        1,
+        2,
+        8192
+      ]
+    ]
+  },
+  "component": {
+    "timing": {
+      "1": {
+        "warm_mean_seconds": 0.006270834091331132,
+        "warm_count": 11
+      },
+      "2": {
+        "warm_mean_seconds": 0.006442387096202848,
+        "warm_count": 11
+      },
+      "4": {
+        "warm_mean_seconds": 0.0033654774544464253,
+        "warm_count": 11
+      }
+    },
+    "normal_calls": 36,
+    "profile_calls": 12,
+    "normal_order": "three balanced rounds over four original refinement inputs",
+    "warm_policy": "exclude only first SDK use of each graph, 11 remaining calls each",
+    "complete_IO_includes": [
+      "input submission and SDK conversion",
+      "blocking run",
+      "output retrieval/conversion",
+      "owned FP32 copy",
+      "output release"
+    ],
+    "four_parts_reduction_percent": 46.33126302769042,
+    "ORT_original_FP32_strict_checks_passed": 12,
+    "unique_input_numerics": [
+      {
+        "chunks": 1,
+        "iteration": 0,
+        "original_FP32": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0019301176071166992,
+          "relative_l2": 0.0006173521426840524,
+          "outside": 12524,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "unsplit_FP16": {
+          "bitwise_equal": true,
+          "elements": 16384,
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "outside": 0,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "chunks": 2,
+        "iteration": 0,
+        "original_FP32": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0019301176071166992,
+          "relative_l2": 0.0006173521426840524,
+          "outside": 12524,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "unsplit_FP16": {
+          "bitwise_equal": true,
+          "elements": 16384,
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "outside": 0,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "chunks": 4,
+        "iteration": 0,
+        "original_FP32": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0019301176071166992,
+          "relative_l2": 0.0006330246131977248,
+          "outside": 12693,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "unsplit_FP16": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0009765625,
+          "relative_l2": 0.0003211133574721806,
+          "outside": 1901,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "chunks": 2,
+        "iteration": 1,
+        "original_FP32": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0014119148254394531,
+          "relative_l2": 0.0007501242749962393,
+          "outside": 13181,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "unsplit_FP16": {
+          "bitwise_equal": true,
+          "elements": 16384,
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "outside": 0,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "chunks": 4,
+        "iteration": 1,
+        "original_FP32": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0013075470924377441,
+          "relative_l2": 0.0007807426777355892,
+          "outside": 13270,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "unsplit_FP16": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0009765625,
+          "relative_l2": 0.0003527543209280687,
+          "outside": 1917,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "chunks": 1,
+        "iteration": 1,
+        "original_FP32": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0014119148254394531,
+          "relative_l2": 0.0007501242749962393,
+          "outside": 13181,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "unsplit_FP16": {
+          "bitwise_equal": true,
+          "elements": 16384,
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "outside": 0,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "chunks": 4,
+        "iteration": 2,
+        "original_FP32": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0017746686935424805,
+          "relative_l2": 0.0007705083110109839,
+          "outside": 13141,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "unsplit_FP16": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0009765625,
+          "relative_l2": 0.00034828070764949013,
+          "outside": 1842,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "chunks": 1,
+        "iteration": 2,
+        "original_FP32": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.001466512680053711,
+          "relative_l2": 0.0007503466465673535,
+          "outside": 13128,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "unsplit_FP16": {
+          "bitwise_equal": true,
+          "elements": 16384,
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "outside": 0,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "chunks": 2,
+        "iteration": 2,
+        "original_FP32": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.001466512680053711,
+          "relative_l2": 0.0007503466465673535,
+          "outside": 13128,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "unsplit_FP16": {
+          "bitwise_equal": true,
+          "elements": 16384,
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "outside": 0,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "chunks": 1,
+        "iteration": 3,
+        "original_FP32": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0012590885162353516,
+          "relative_l2": 0.0007534625695118902,
+          "outside": 13189,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "unsplit_FP16": {
+          "bitwise_equal": true,
+          "elements": 16384,
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "outside": 0,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "chunks": 2,
+        "iteration": 3,
+        "original_FP32": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0012590885162353516,
+          "relative_l2": 0.0007534625695118902,
+          "outside": 13189,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "unsplit_FP16": {
+          "bitwise_equal": true,
+          "elements": 16384,
+          "max_abs": 0.0,
+          "relative_l2": 0.0,
+          "outside": 0,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "chunks": 4,
+        "iteration": 3,
+        "original_FP32": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0018842220306396484,
+          "relative_l2": 0.0007885744925565793,
+          "outside": 13191,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "unsplit_FP16": {
+          "bitwise_equal": false,
+          "elements": 16384,
+          "max_abs": 0.0009765625,
+          "relative_l2": 0.0003592478296485966,
+          "outside": 1857,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      }
+    ],
+    "normal_receipt": {
+      "private_evidence": "normal-r1/result.json",
+      "sha256": "ffa48d9d7d6037f6e8510e4a8dfd5c70512591e37406241b3fcd20b74a7bc604"
+    },
+    "profile_receipt": {
+      "private_evidence": "profile-r1/result.json",
+      "sha256": "bf4d502141b552a02b4bc86cd9c1390758106ff92c3b7d8f2b6e183154d6eed8"
+    },
+    "compilation": [
+      {
+        "chunks": 1,
+        "receipt": {
+          "private_evidence": "chunks1-r1/result.json",
+          "sha256": "faeeb30a908561793d4804383fb69df30cc3faf58b64226778df298f5e36f681"
+        },
+        "onnx": {
+          "file": "fc1-gelu.onnx",
+          "bytes": 67142548,
+          "sha256": "33c4b7a6a17ee1a7340c398c61190975e00a8eebfed8baf985f532f581927ae5"
+        },
+        "rknn": {
+          "file": "fc1-gelu.rknn",
+          "bytes": 33629424,
+          "sha256": "f8d2f7f822a27c4fd91127d09b17b741be512853c9bedd2549546bfcecb6f797"
+        }
+      },
+      {
+        "chunks": 2,
+        "receipt": {
+          "private_evidence": "chunks2-r1/result.json",
+          "sha256": "c886039d4201cf57b96221b136d2b37a729b2de391ae51455182ff9185e4fd80"
+        },
+        "onnx": {
+          "file": "fc1-gelu.onnx",
+          "bytes": 67143890,
+          "sha256": "aea43e7e277a1580596020b164cf9e45c86df2d476375f841e5d1bc3c0f380e3"
+        },
+        "rknn": {
+          "file": "fc1-gelu.rknn",
+          "bytes": 33651568,
+          "sha256": "80cdcc36942371a42632543259ccd66b32fbc83b7047eb8aa960f103b64ac70c"
+        }
+      },
+      {
+        "chunks": 4,
+        "receipt": {
+          "private_evidence": "chunks4-r1/result.json",
+          "sha256": "884cd740e93bc73904ae88209fffd58a1399c0c333332e27c2f4be169f614698"
+        },
+        "onnx": {
+          "file": "fc1-gelu.onnx",
+          "bytes": 67145898,
+          "sha256": "ee8de0d165905db817ff8a2d62e9073f5d7382e4a954eee47e9f92250e644332"
+        },
+        "rknn": {
+          "file": "fc1-gelu.rknn",
+          "bytes": 33680432,
+          "sha256": "635a2b81ce3619106c3dd3a5a1f71995208e271b273671977d9beafaed10b6c6"
+        }
+      }
+    ],
+    "independent_audit": {
+      "private_evidence": "audit_saved.json",
+      "sha256": "8ba5619b4bff8d80c1c5274413057a798e46a964a83df50b682a57ca28329b7c"
+    }
+  },
+  "complete_head": {
+    "normal_order": "ABBAABBA",
+    "A": "existing original FP16 step",
+    "B": "same step with all four trunk FC1s partitioned into four output-channel parts",
+    "original_trunk_blocks_per_refinement": 4,
+    "original_refinements": 4,
+    "original_learned_parameter_tensors": 69,
+    "original_parameter_tensors_inside_graph": 68,
+    "original_empty_pose_parameter_outside_graph": true,
+    "original_unactivated_FP32_recurrence": true,
+    "all_four_original_activations_in_timed_interval": true,
+    "graph_proof": {
+      "replacements": [
+        {
+          "index": 0,
+          "original_weight": "camera_head.trunk.0.mlp.fc1.weight",
+          "original_bias": "camera_head.trunk.0.mlp.fc1.bias",
+          "weight_raw_sha256": "fb11713df490d28ad5e3691e684556824cb001e7fa52450297650c1ce65e42e5",
+          "bias_raw_sha256": "b75a509e0e799c5a88912fa94bc9d1590663ceaf1f17defce0fd8043d81ab3a1",
+          "chunks": 4,
+          "hidden_output": "/trunk/trunk.0/mlp/fc1/Add_output_0",
+          "original_fc1_nodes": [
+            "/trunk/trunk.0/mlp/fc1/Transpose",
+            "/trunk/trunk.0/mlp/fc1/MatMul",
+            "/trunk/trunk.0/mlp/fc1/Add"
+          ],
+          "output_channel_ranges": [
+            [
+              0,
+              2048
+            ],
+            [
+              2048,
+              4096
+            ],
+            [
+              4096,
+              6144
+            ],
+            [
+              6144,
+              8192
+            ]
+          ]
+        },
+        {
+          "index": 1,
+          "original_weight": "camera_head.trunk.1.mlp.fc1.weight",
+          "original_bias": "camera_head.trunk.1.mlp.fc1.bias",
+          "weight_raw_sha256": "7494f47e0ab560fe96c08f9182fb91d3b08a8933b0c04d5f7974f14f3e534ba2",
+          "bias_raw_sha256": "5989273fcc8eeef3aa2813938c10d4c17ca08375b379440f22024b49e1956a72",
+          "chunks": 4,
+          "hidden_output": "/trunk/trunk.1/mlp/fc1/Add_output_0",
+          "original_fc1_nodes": [
+            "/trunk/trunk.1/mlp/fc1/Transpose",
+            "/trunk/trunk.1/mlp/fc1/MatMul",
+            "/trunk/trunk.1/mlp/fc1/Add"
+          ],
+          "output_channel_ranges": [
+            [
+              0,
+              2048
+            ],
+            [
+              2048,
+              4096
+            ],
+            [
+              4096,
+              6144
+            ],
+            [
+              6144,
+              8192
+            ]
+          ]
+        },
+        {
+          "index": 2,
+          "original_weight": "camera_head.trunk.2.mlp.fc1.weight",
+          "original_bias": "camera_head.trunk.2.mlp.fc1.bias",
+          "weight_raw_sha256": "d3b45033a52f98bdeed6531e3f411fb4914b56bf6122d32f2a2ac7c6433b1d1e",
+          "bias_raw_sha256": "3df88781aab1df51bada02e7d8584dc66bea90f9319308bdae2782d6463b4bf8",
+          "chunks": 4,
+          "hidden_output": "/trunk/trunk.2/mlp/fc1/Add_output_0",
+          "original_fc1_nodes": [
+            "/trunk/trunk.2/mlp/fc1/Transpose",
+            "/trunk/trunk.2/mlp/fc1/MatMul",
+            "/trunk/trunk.2/mlp/fc1/Add"
+          ],
+          "output_channel_ranges": [
+            [
+              0,
+              2048
+            ],
+            [
+              2048,
+              4096
+            ],
+            [
+              4096,
+              6144
+            ],
+            [
+              6144,
+              8192
+            ]
+          ]
+        },
+        {
+          "index": 3,
+          "original_weight": "camera_head.trunk.3.mlp.fc1.weight",
+          "original_bias": "camera_head.trunk.3.mlp.fc1.bias",
+          "weight_raw_sha256": "bd3d1a410e5ffa622728e7a1e27a11d1760f64cea98437418ecbb17434d6d6c8",
+          "bias_raw_sha256": "c7776c391b7ddda60d92cdfb2a90db75a53c0fa3ae4f7239f25df8621b13373e",
+          "chunks": 4,
+          "hidden_output": "/trunk/trunk.3/mlp/fc1/Add_output_0",
+          "original_fc1_nodes": [
+            "/trunk/trunk.3/mlp/fc1/Transpose",
+            "/trunk/trunk.3/mlp/fc1/MatMul",
+            "/trunk/trunk.3/mlp/fc1/Add"
+          ],
+          "output_channel_ranges": [
+            [
+              0,
+              2048
+            ],
+            [
+              2048,
+              4096
+            ],
+            [
+              4096,
+              6144
+            ],
+            [
+              6144,
+              8192
+            ]
+          ]
+        }
+      ],
+      "all_other_original_nodes_protobuf_unchanged": true,
+      "all_other_original_initializers_protobuf_unchanged": true,
+      "all_original_FC1_parameter_values_preserved": true,
+      "FC1_weights_not_duplicated": true,
+      "original_GELU_nodes_protobuf_unchanged": true,
+      "original_IO_protobuf_unchanged": true,
+      "original_nodes": 357,
+      "candidate_nodes": 381,
+      "original_initializers": 68,
+      "candidate_initializers": 92,
+      "ONNX_version": "1.16.1"
+    },
+    "candidate_ONNX": {
+      "file": "camera-step-split4.onnx",
+      "bytes": 864771004,
+      "sha256": "f1b9eee30144ec643aa351db724c2f740a79d82a8f9df5468f4338e377600a7f"
+    },
+    "candidate_RKNN": {
+      "file": "camera-step-split4.rknn",
+      "bytes": 434656165,
+      "sha256": "0c216630b608ddd72ae288385c886d20d5e002b85fad3f741ed1308360bd7f51"
+    },
+    "normal_summary_seconds": {
+      "A": {
+        "calls": 4,
+        "warm_count": 3,
+        "first": 0.1885906029783655,
+        "warm_mean": 0.21329964633332565,
+        "warm_sdk_io_mean": 0.2115458546516796
+      },
+      "B": {
+        "calls": 4,
+        "warm_count": 3,
+        "first": 0.17683460100670345,
+        "warm_mean": 0.17735240666661412,
+        "warm_sdk_io_mean": 0.17564956031856127
+      }
+    },
+    "warm_reduction_percent": 16.852929803051055,
+    "all_normal_call_seconds": [
+      {
+        "route": "A",
+        "first_for_route": true,
+        "complete_head_seconds": 0.1885906029783655,
+        "sdk_io_seconds": 0.18719497698475607
+      },
+      {
+        "route": "B",
+        "first_for_route": true,
+        "complete_head_seconds": 0.17683460100670345,
+        "sdk_io_seconds": 0.17478039197158068
+      },
+      {
+        "route": "B",
+        "first_for_route": false,
+        "complete_head_seconds": 0.17370968402246945,
+        "sdk_io_seconds": 0.17199701798381284
+      },
+      {
+        "route": "A",
+        "first_for_route": false,
+        "complete_head_seconds": 0.21700760500971228,
+        "sdk_io_seconds": 0.2153264379594475
+      },
+      {
+        "route": "A",
+        "first_for_route": false,
+        "complete_head_seconds": 0.2120145630033221,
+        "sdk_io_seconds": 0.2102981050265953
+      },
+      {
+        "route": "B",
+        "first_for_route": false,
+        "complete_head_seconds": 0.17752935099997558,
+        "sdk_io_seconds": 0.17582076898543164
+      },
+      {
+        "route": "B",
+        "first_for_route": false,
+        "complete_head_seconds": 0.18081818497739732,
+        "sdk_io_seconds": 0.17913089398643933
+      },
+      {
+        "route": "A",
+        "first_for_route": false,
+        "complete_head_seconds": 0.21087677098694257,
+        "sdk_io_seconds": 0.209013020968996
+      }
+    ],
+    "numerical_scope": "Encoded-pose tensor error only; not ATE/RPE or map quality.",
+    "final_pose_errors_against_original_FP32": {
+      "A": {
+        "bitwise_equal": false,
+        "strict_pass": false,
+        "outside": 18,
+        "elements": 18,
+        "max_abs": 0.006448331288993359,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "relative_l2": 0.007872656637062311
+      },
+      "B": {
+        "bitwise_equal": false,
+        "strict_pass": false,
+        "outside": 18,
+        "elements": 18,
+        "max_abs": 0.006485286168754101,
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "relative_l2": 0.007874472220088287
+      }
+    },
+    "SDK_graphs": [
+      {
+        "route": "A",
+        "onnx_sha256": "f89fb0e66f43a3d3b94a76ec0124d4f521fa1ce9a6c93efab5e362d3a614eb9f",
+        "rknn_sha256": "0821683fe1f9526c52777b0ef1ba45ba4c744375f9fd731f0f3d2068e4355af9",
+        "inputs": [
+          {
+            "index": 0,
+            "name": "camera_tokens",
+            "shape": [
+              1,
+              2,
+              2048
+            ],
+            "n_elems": 4096,
+            "size": 8192,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 8192
+          },
+          {
+            "index": 1,
+            "name": "conditioning_pose",
+            "shape": [
+              1,
+              2,
+              9
+            ],
+            "n_elems": 18,
+            "size": 36,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 36
+          }
+        ],
+        "output": {
+          "index": 0,
+          "name": "pose_delta",
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "n_elems": 18,
+          "size": 36,
+          "format": 3,
+          "type": 1,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 0,
+          "pass_through": 0,
+          "scale": 1.0,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 36
+        },
+        "SDK_version": "2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+        "driver_version": "0.7.2",
+        "memory": {
+          "weight_bytes": 432555136,
+          "internal_bytes": 315584,
+          "dma_bytes": 869425152
+        }
+      },
+      {
+        "route": "B",
+        "onnx_sha256": "f1b9eee30144ec643aa351db724c2f740a79d82a8f9df5468f4338e377600a7f",
+        "rknn_sha256": "0c216630b608ddd72ae288385c886d20d5e002b85fad3f741ed1308360bd7f51",
+        "inputs": [
+          {
+            "index": 0,
+            "name": "camera_tokens",
+            "shape": [
+              1,
+              2,
+              2048
+            ],
+            "n_elems": 4096,
+            "size": 8192,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 8192
+          },
+          {
+            "index": 1,
+            "name": "conditioning_pose",
+            "shape": [
+              1,
+              2,
+              9
+            ],
+            "n_elems": 18,
+            "size": 36,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 36
+          }
+        ],
+        "output": {
+          "index": 0,
+          "name": "pose_delta",
+          "shape": [
+            1,
+            2,
+            9
+          ],
+          "n_elems": 18,
+          "size": 36,
+          "format": 3,
+          "type": 1,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 0,
+          "pass_through": 0,
+          "scale": 1.0,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 36
+        },
+        "SDK_version": "2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+        "driver_version": "0.7.2",
+        "memory": {
+          "weight_bytes": 432555136,
+          "internal_bytes": 315584,
+          "dma_bytes": 869842944
+        }
+      }
+    ],
+    "compilation": {
+      "private_evidence": "head-compiled-r1/result.json",
+      "sha256": "a2cdad4a6d2af60c6b3244dfefb3d1a1fadead72c6b2374ef2c089912d318f74"
+    },
+    "ORT_check": {
+      "private_evidence": "head-ort-r1/result.json",
+      "sha256": "9c58744a713a8ad686e66e811163c260e82f6522f0a936dbcc92cb5fdfdc4c2a"
+    },
+    "normal_receipt": {
+      "private_evidence": "head-normal-r1/result.json",
+      "sha256": "b40bee2c47cd46420b4480d192bc4834524dc6c1688d79fe08061752db4db869"
+    },
+    "profile_receipt": {
+      "private_evidence": "head-profile-r1/result.json",
+      "sha256": "cc145e830e37133c677086275d8514ef0c9c14c0bc1973257e983c209c30f534"
+    },
+    "ORT_fixed_original_conditioning_checks_passed": 8,
+    "independent_audit": {
+      "private_evidence": "audit_head_saved.json",
+      "sha256": "4001ac05597ff21ecf90a58083330947c53e3eff1d2d6204aa805129ef4f832c"
+    }
+  },
+  "operator_evidence": {
+    "component_two_parts": "two single-core ConvExGelu operations; no normal timing benefit",
+    "component_four_parts": "four three-core Conv operations, internal Concat and one separate NPU exGelu",
+    "complete_head": "same split topology at four trunk FC1s in each refinement; pose_branch FC1 remains fused",
+    "internal_CPU_operators_remaining": "conditioning reshape and delta reshape in complete step",
+    "no_extra_SDK_outputs": true,
+    "no_claim_of_parallel_branch_execution": true,
+    "profile_times_not_used_as_normal_benchmark": true
+  },
+  "monitors": {
+    "stages": 11,
+    "samples": 330,
+    "all_terminal_child_returncodes_zero": true,
+    "sampled_frequencies_hz": [
+      300000000
+    ],
+    "maximum_sampled_temperature_c": 68.384,
+    "thermal_stop_c": 75,
+    "receipts": [
+      {
+        "private_evidence": "vggt-v69-capture-control-r1.json",
+        "sha256": "f0017276c01e6421e73ce386ba4f343743d7ce4dae3b9e7c7ff693efbe3b1fec"
+      },
+      {
+        "private_evidence": "vggt-v69-compile1-control-r1.json",
+        "sha256": "c416c9999c14334227d93efe896d87c010ea9f5a2beb8b15185cb977d88cfec9"
+      },
+      {
+        "private_evidence": "vggt-v69-compile2-control-r1.json",
+        "sha256": "91141f4fec347ed2920e9a59984d1776c47beb8ef0d63d4ebda6e1372c29d057"
+      },
+      {
+        "private_evidence": "vggt-v69-compile4-control-r1.json",
+        "sha256": "24a4776c6b7e573044a627641d0f8b59007550c168979967847acfd68d529c90"
+      },
+      {
+        "private_evidence": "vggt-v69-compilehead-control-r1.json",
+        "sha256": "88f192fff3327634e1b76ff04a47837acde587596bbe233e19cb25081db7e20b"
+      },
+      {
+        "private_evidence": "vggt-v69-headnormal-control-r1.json",
+        "sha256": "fddd51a998e7c9095baceec356ab59c4c6934f2c11bdec37864bce0a18f6de78"
+      },
+      {
+        "private_evidence": "vggt-v69-headort-control-r1.json",
+        "sha256": "caf246f76f458c503ebe65c3f76c0f77f2b4780d3687e33e89022bb52aa13789"
+      },
+      {
+        "private_evidence": "vggt-v69-headprofile-control-r1.json",
+        "sha256": "63bf36e3cf9e9447e78b1539f7bdc924517c89fc7096895bc7e5b3c75000233e"
+      },
+      {
+        "private_evidence": "vggt-v69-metadata-control-r1.json",
+        "sha256": "86185b6593cdc0b717efea4c29596f39204dd8042d2e9255ccb0c1f1583062cb"
+      },
+      {
+        "private_evidence": "vggt-v69-normal-control-r1.json",
+        "sha256": "285f9790c8a82ef223b66dfc73889ed0b42c21504500f878928b3ffa048c2f58"
+      },
+      {
+        "private_evidence": "vggt-v69-profile-control-r1.json",
+        "sha256": "8bfb21354e189244dc85d048a503ebb84930567f1a9dd5d1d8dacaec0981c882"
+      }
+    ]
+  },
+  "lifecycles": [
+    {
+      "evidence": "normal-r1/result.json",
+      "contexts_created": 3,
+      "contexts_destroyed": 3,
+      "outputs_acquired": 36,
+      "outputs_released": 36,
+      "sdk_run_attempts": 36,
+      "sdk_runs_succeeded": 36,
+      "cleanup_errors": []
+    },
+    {
+      "evidence": "profile-r1/result.json",
+      "contexts_created": 3,
+      "contexts_destroyed": 3,
+      "outputs_acquired": 12,
+      "outputs_released": 12,
+      "sdk_run_attempts": 12,
+      "sdk_runs_succeeded": 12,
+      "cleanup_errors": []
+    },
+    {
+      "evidence": "head-normal-r1/result.json",
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "outputs_acquired": 32,
+      "outputs_released": 32,
+      "sdk_run_attempts": 32,
+      "sdk_runs_succeeded": 32,
+      "cleanup_errors": []
+    },
+    {
+      "evidence": "head-profile-r1/result.json",
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "outputs_acquired": 8,
+      "outputs_released": 8,
+      "sdk_run_attempts": 8,
+      "sdk_runs_succeeded": 8,
+      "cleanup_errors": []
+    }
+  ],
+  "limits": [
+    "One fixed original raw-token pair, no heldout images or trajectory acceptance.",
+    "Full-head warm estimates use only three calls per route; thermal and CPU scheduling effects are not completely controlled.",
+    "All fixed original FP32 final-pose strict checks fail; the candidate is not equivalent to the preceding FP16 graph.",
+    "No whole-model speedup, fresh-pose rate or P95 may be inferred from these component times.",
+    "No new 1 GHz test; the previous 1 GHz complete replay remains 0.6757475667 Hz / P95 2.028273954 s.",
+    "Physical camera, loop closure, 30-minute stability, 8 GB and broad map quality remain unvalidated."
+  ],
+  "publication_policy": "Source and result metadata only; no checkpoints, captured arrays, ONNX/RKNN or SDK binaries."
+}

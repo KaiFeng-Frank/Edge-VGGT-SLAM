@@ -40,6 +40,16 @@ or replay improvement. An initially unfused rank2 comparison is preserved as
 a compiler-layout pitfall, not a speedup claim.
 [Measurement and reproduction](deploy/rk3588/validation/original_native_mlp/README.md).
 
+A new original-CameraHead diagnostic splits each trunk FC1's output channels
+into four parts while retaining every original parameter and all four
+refinements. At 300 MHz, matched complete-head warm calls fall from
+**213.300 to 177.352 ms (16.85%)**. Actual profiles show three-core convolutions
+and a separate GELU in place of the single-core fused FC1/GELU. Outputs change
+and both routes still fail the original FP32 strict gate. This one-input,
+three-warm-call comparison is not enabled in the full-model runtime and adds
+no new replay or trajectory-quality result.
+[Measurements and reproduction](deploy/rk3588/validation/original_camera_partition/README.md).
+
 The additional-model retrieval and semantic paths have been removed. **Loop closure has no replacement implementation:** `max_loops=0` is the supported Solver configuration. Requests to enable loops or supply legacy auxiliary-model arguments must fail before loading or inference. The original VGGT model's numerical similarity capability does not itself implement loop retrieval.
 
 The original checkpoint is `facebook/VGGT-1B`, `model.pt`, **5,026,874,952 bytes**, SHA256 `d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0`. Source-code and checkpoint licensing are separate; see [model provenance](MODEL_LICENSES.md) and [upstream pins](UPSTREAMS.json). No weights, captured arrays, weight-bearing exports or SDK binaries are distributed. The loader verifies this exact byte size and full SHA256 before deserialization, including explicit local paths and cached downloads. Automatic downloads use the recorded immutable revision; there is no runtime identity-check bypass.
@@ -60,7 +70,7 @@ Use a new output directory. Default image size is 112; `--no-patch-cache` disabl
 
 `--model-cpus 6 7 --model-threads 1` can set model-process affinity independently of the thread count. The matched complete-model comparator accepts the same options. This leaves the decoder on CPU0 and changes no system clocks or governors. The default affinity remains unchanged: a matched 16-pair check measured 1.952 s with CPUs 4–7 and 1.956 s with CPUs 6–7, with identical outputs and no observed improvement. [Measured CPU-affinity comparison](results/original_cpu_affinity_v60.json).
 
-The latest FC1 fusion/layout diagnostic was also rejected: matched component calls became 40–45% slower after extra output handling. Production inference is unchanged, and there is no new end-to-end performance improvement. [Measured diagnostic and failure](results/original_fc1_tap_v61.json).
+The earlier original-aggregator FC1 tap diagnostic was rejected: matched component calls became 40–45% slower after extra output handling. [Measured diagnostic and failure](results/original_fc1_tap_v61.json). The CameraHead output-channel experiment above adds no SDK output or diagnostic tap.
 
 The first full timestamp replay served **7 new pose/map updates from 798 input frames**, at **0.195 Hz** over 35.900 s including the EOF drain. Complete software-arrival-to-published-pose **P95 was 8.160 s**; 790 frames were skipped or overwritten. Peak process RSS was 4,977.2 MiB on the 16 GB board. These measurements include decoding, queuing, original model execution, SL4 and pose/map publication. They do **not** meet the real-time target. Resolution quality, trajectory accuracy, 30-minute operation and 8 GB deployment remain unvalidated. [Measured record](results/original_timestamp_replay_v52.json).
 
