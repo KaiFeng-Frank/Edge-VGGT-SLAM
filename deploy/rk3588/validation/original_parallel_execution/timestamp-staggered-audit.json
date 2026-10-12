@@ -1,0 +1,101 @@
+{
+  "schema": "v79_saved_parallel_timestamp_audit",
+  "auditor_sha256": "a113457d25412c934afcb9f6d054257f788d2a542e5d9ef203d813ee920fa719",
+  "experiment_schema": "v79_original_VGGT_parallel_shared_timestamp_replay_two_lanes_staggered",
+  "declared_lane_count": 2,
+  "result_sha256": "06278a86deab600f812d6db1d7982ef2fd4a636d5f76c95b39577984b3149984",
+  "control_sha256": "431af2b50ebf9d313d8829880e5196550e6cfd050cd81f5f85b787cd3e8b97f0",
+  "frozen_sources": {
+    "replay_parallel_staggered_board.py": "5d3473fb0f12282a4cc4209986e1f37ed58192fdbf01e575d89453fe13a04569",
+    "full_parallel_shared_board.py": "7081dfe13f0ef83ff23b41d12a891ff838eaaf545da8598777f02578cb3597f4",
+    "commit_parallel_predictions_board.py": "00084698639cf8779a05a114ef2a571fa977ba808a2609a1ea048a9d93f83702"
+  },
+  "shared_registry_source_sha256": "ff36b0ff84e5a3179dc8a922336a44f766a14088ddcad931dbd17c08cb4ad7ed",
+  "source_identity_verified": true,
+  "actual_model_SDK_board_calls_by_auditor": 0,
+  "controller": {
+    "status": "worker_completed_pending_result_review",
+    "child_returncode": 0,
+    "sample_count": 243,
+    "frequencies_hz": [
+      1000000000
+    ],
+    "maximum_temperature_c": 69.307,
+    "restored_effective_hz": 300000000,
+    "restored_raw_request_hz": 300000000,
+    "governor_limits_restored": true
+  },
+  "status": "passed_saved_success_audit",
+  "experiment_completed": true,
+  "original_frames": 798,
+  "source_accounting": {
+    "generated": 789,
+    "delivered": 33,
+    "overwritten": 756,
+    "skipped_before_decode": 9
+  },
+  "seed_sequence": 0,
+  "fresh_count": 32,
+  "unique_fresh_targets": true,
+  "ordered_overlap_verified": true,
+  "maximum_uncommitted": 2,
+  "per_lane_outstanding_one_verified": true,
+  "EOF_tail_drained": true,
+  "fresh_wall_seconds_including_EOF_drain": 28.56509245300549,
+  "fresh_pose_hz": 1.1202484309352587,
+  "input_to_pose_p95_seconds": 1.976139368211443,
+  "maximum_phase_sum_error_seconds": 0.0,
+  "startup_seconds": 93.6977543719986,
+  "peak_rss_mib": 6217.4921875,
+  "staggered_dispatch": true,
+  "dispatch_interval_count": 31,
+  "minimum_observed_dispatch_interval_seconds": 0.8002027059847023,
+  "required_dispatch_interval_seconds": 0.8,
+  "staggered_dispatch_gate_verified": true,
+  "publication_interval_count": 31,
+  "publication_interval_p95_seconds": 1.0313541245122906,
+  "maximum_publication_gap_seconds": 1.2191618309880141,
+  "publication_intervals_greater_than_one_second": 2,
+  "initial_fresh_publication_delay_seconds": 2.271974395000143,
+  "mean_fresh_rate_at_least_one_hz": true,
+  "strict_at_least_one_update_each_second": false,
+  "cadence_scope": "First fresh publication after replay start and every subsequent consecutive publication gap; mean Hz alone is not cadence acceptance.",
+  "memory_scope": "process_wide_all_worker_threads",
+  "map_chunks": 32,
+  "graph_nodes": 64,
+  "map_arrays_verified": 128,
+  "map_points": 451521,
+  "poses": 33,
+  "map_sha256": "8ea1591e23a0270614ab1121c81f8f278a674b728aae056bb88081effab751e5",
+  "poses_sha256": "3636de3a144fd1cc3e37f8c300441c829d955cfcc1a47409c67e082e357e155f",
+  "actual_contexts_created_destroyed": 24,
+  "share_init_requests": 12,
+  "SDK_runs": 704,
+  "SDK_context_cleanup_verified": true,
+  "thread_join_verified": true,
+  "workers": {
+    "0": {
+      "complete_original_pairs": 16,
+      "contexts": 12,
+      "SDK_runs": 352,
+      "cache_hits": 0,
+      "cache_computed_frames": 32,
+      "immutable_final_validated": true,
+      "pageout_receipts_verified": 4
+    },
+    "1": {
+      "complete_original_pairs": 16,
+      "contexts": 12,
+      "SDK_runs": 352,
+      "cache_hits": 0,
+      "cache_computed_frames": 32,
+      "immutable_final_validated": true,
+      "pageout_receipts_verified": 4
+    }
+  },
+  "limitations": [
+    "Software timestamp replay; no physical camera latency validation.",
+    "Short run; no30min or physical8GB acceptance.",
+    "Original FP32 quality acceptance is not established by this runtime audit."
+  ]
+}

@@ -6,24 +6,38 @@ The current tree contains only this model's execution path and relevant componen
 
 **The real-time target remains unachieved.** The target is at least 20 fresh-observation poses per second with complete input-to-pose P95 latency at most 100 ms. Map cadence, bounded queues, trajectory quality, 30-minute stability and operation within 8 GB each need separate validation. A component's timing, repeated prediction or offline reconstruction does not satisfy those targets. Current measurements use dataset files on a 16 GB RK3588S; physical-camera validation is deferred.
 
-**Latest authorized 1 GHz test with explicit immutable execution:** 798 original
-timestamp frames produced **26 fresh poses at 0.900 Hz, complete input-to-pose
-P95 1.367 s**. The prior run produced 22 poses at 0.776 Hz / P95 1.571 s;
-the new run remains below both 1 Hz and the project target. Startup was
-38.752 s and peak process RSS 3920.42 MiB on the 16 GB board.
+**Latest 1 GHz timestamp replay: two parallel instances of the original VGGT
+feed one ordered original SL4 solver, producing 32 fresh pose/map updates from
+798 frames at 1.120 Hz. Complete input-to-pose P95 is 1.976 s.** Dispatching
+new requests at least 0.8 s apart reduces publication-gap P95 to 1.031 s and
+maximum gap to 1.219 s. Two of 31 gaps still exceed one second, so this does
+**not** establish one fresh update every second or meet the project real-time
+target. Results are published as soon as original inference, SL4 and map
+publication finish; no poses are interpolated or repeated. Startup is 93.698 s;
+peak process RSS is 6217.49 MiB on the 16 GB board. All 24 SDK contexts close.
 
-On the same fixed 16 image pairs at 1 GHz, complete-model service falls from
-**1.390 to 1.248 s (10.20%)**, or **1.357 to 1.227 s (9.56%)** excluding first
-calls. All 160 saved arrays and poses remain byte-identical to the preceding
-FP16 path; original FP32 strict checks still fail. These are sequential runs.
-The optional `--immutable-execution` session reduces repeated model-tree
-inspection under an explicit exclusive-owner contract that forbids model
-mutation. It retains per-call tensor versions, ownership and I/O checks, with
-full validation at session start and close. It does **not** preserve arbitrary
-live model-mutation detection. Model arithmetic and checkpoint are unchanged;
-the flag defaults off. All jobs restored 300 MHz.
-[Measurements, contract and reproduction](deploy/rk3588/validation/original_immutable_execution/README.md).
-[Earlier current-runtime frequency comparison](deploy/rk3588/validation/original_clock_current/README.md).
+The unstaggered two-worker replay measured 1.101 Hz / P95 2.364 s, with
+14 of 31 publication gaps exceeding one second. The earlier single-worker run
+measured 0.900 Hz / P95 1.367 s. These are separate short replays with different
+selected frames; throughput, latency, cadence and trajectory quality must be
+assessed separately.
+
+A separate matched eight-pair complete-model comparison using three workers
+reduces offline batch time from **10.773 to 5.143 s (2.095× throughput)**. All
+40 prediction comparisons are byte-identical; ordered original SL4 produces
+identical saved poses and maps. This batch excludes initialization and saved
+output writes. The three-worker timestamp replay subsequently fails at its
+first inference with an SDK allocation error and SIGSEGV; only the two-worker
+replay completes. Original Torch FP32 quality, physical 8 GB operation and
+30-minute stability remain unvalidated. All frequency tests restore 300 MHz.
+[Execution sources, measurements and reproduction](deploy/rk3588/validation/original_parallel_execution/README.md).
+
+The preceding optional `--immutable-execution` optimization keeps the original
+model arithmetic and reduces repeated model-tree inspection under an explicit
+exclusive-owner contract. It retains per-call tensor versions, ownership and
+I/O checks, with full validation at session start and close; it does not detect
+arbitrary live model mutation. The flag defaults off.
+[Contract and matched comparison](deploy/rk3588/validation/original_immutable_execution/README.md).
 
 Further original-model execution diagnostics found no production improvement: FC2 output-channel partition and native tensor metadata checks were slower; a five-pair FC2 K4 comparison at 1 GHz gave only a small, variable component difference. Profiles of all four current groups confirm that their main residual stream already retains its channel layout. Those component diagnostics were not adopted; the later session improvement above changes only execution checks. [Evidence and reproduction](deploy/rk3588/validation/original_execution_diagnostics/README.md).
 

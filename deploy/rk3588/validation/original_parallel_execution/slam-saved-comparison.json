@@ -1,0 +1,86 @@
+{
+  "source_result_sha256": "0e98fb9b0c2a70ac2cfb638e9089426608a82b4ad849b995675bfea3876404f8",
+  "both_status": "completed_saved_SL4_not_realtime_acceptance",
+  "poses_byte_equal": true,
+  "pose_sha256": "08a5349def5448e935d919c24a78fdbb4dba70cd43b66f3a967cf2eced897c97",
+  "maps_equal": true,
+  "map_chunk_array_checks": [
+    {
+      "file": "submap_000000.npz",
+      "fields_equal": [
+        "points_0",
+        "colors_0",
+        "points_1",
+        "colors_1"
+      ]
+    },
+    {
+      "file": "submap_000002.npz",
+      "fields_equal": [
+        "points_0",
+        "colors_0",
+        "points_1",
+        "colors_1"
+      ]
+    },
+    {
+      "file": "submap_000004.npz",
+      "fields_equal": [
+        "points_0",
+        "colors_0",
+        "points_1",
+        "colors_1"
+      ]
+    },
+    {
+      "file": "submap_000006.npz",
+      "fields_equal": [
+        "points_0",
+        "colors_0",
+        "points_1",
+        "colors_1"
+      ]
+    },
+    {
+      "file": "submap_000008.npz",
+      "fields_equal": [
+        "points_0",
+        "colors_0",
+        "points_1",
+        "colors_1"
+      ]
+    },
+    {
+      "file": "submap_000010.npz",
+      "fields_equal": [
+        "points_0",
+        "colors_0",
+        "points_1",
+        "colors_1"
+      ]
+    },
+    {
+      "file": "submap_000012.npz",
+      "fields_equal": [
+        "points_0",
+        "colors_0",
+        "points_1",
+        "colors_1"
+      ]
+    },
+    {
+      "file": "submap_000014.npz",
+      "fields_equal": [
+        "points_0",
+        "colors_0",
+        "points_1",
+        "colors_1"
+      ]
+    }
+  ],
+  "ordered_commits": 8,
+  "graph_nodes": 16,
+  "point_count": 112893,
+  "original_model_forward_calls": 0,
+  "not_timestamp_replay_or_live_latency": true
+}

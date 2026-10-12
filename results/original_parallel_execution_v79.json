@@ -1,0 +1,416 @@
+{
+  "schema": "v79_original_VGGT_parallel_execution_public_summary",
+  "status": "offline_comparison_and_two_lane_replays_completed_three_lane_timestamp_failed",
+  "publication_ready": true,
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "realtime_validated": false,
+  "original_checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "frequency_hz": 1000000000,
+  "pair00_parallel": {
+    "status": "completed_component_diagnostic_not_adopted",
+    "source_sha256": "0a07df23434b2d4999a1863678b5c09af21ffe18ce0c7ad803254af92badec8c",
+    "result_sha256": "9800f2d3b75eb28d2382de55a6a46a8a31581ccd6fca03f4208e683af7edb7f6",
+    "control_sha256": "c48610601ce0f139c10df571dd7021f3130498086eebf311e3463d488b43de51",
+    "requests_per_phase": 8,
+    "phase_order": [
+      "S",
+      "P",
+      "P",
+      "S"
+    ],
+    "independent_contexts": 4,
+    "requested_masks": {
+      "serial": 7,
+      "parallel": [
+        1,
+        2,
+        4
+      ]
+    },
+    "normal_init_flags": 0,
+    "async_flag_used": false,
+    "summary": {
+      "S": {
+        "phases": 2,
+        "requests": 16,
+        "batch_wall_seconds": 0.5325964289950207,
+        "requests_per_second": 30.041508220757496
+      },
+      "P": {
+        "phases": 2,
+        "requests": 16,
+        "batch_wall_seconds": 0.31016265699872747,
+        "requests_per_second": 51.585836137796704
+      },
+      "parallel_to_serial_throughput_ratio": 1.717152007107051
+    },
+    "sdk_calls": 32,
+    "owned_outputs_byte_equal_to_same_input_serial": 64,
+    "outputs_acquired": 64,
+    "outputs_released": 64,
+    "contexts_destroyed": 4,
+    "live_contexts": 0,
+    "cleanup_errors": [],
+    "frequency_restored_hz": 300000000,
+    "physical_weight_sharing_verified": false,
+    "actual_per_core_utilization_verified": false,
+    "scope": "Only original pair00 component throughput; not complete-model service, fresh pose rate or SL4 latency."
+  },
+  "dup_context_failure": {
+    "status": "not_used",
+    "header_signature": "int rknn_dup_context(rknn_context* context_in, rknn_context* context_out);",
+    "aarch64_context_type": "uint64_t",
+    "ctypes_signature_matches_pinned_header": true,
+    "api_version": "2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+    "driver_version": "0.7.2",
+    "first_duplicate_call_SIGSEGV": true,
+    "r1_child_returncode": -11,
+    "r2_child_returncode": -11,
+    "r2_receipt_sha256": "36f3b04be97f4d0defd688bf8849238fcba2c4a88d3b807a53fc629de3a050e7",
+    "r2_faulthandler_log_sha256": "115a0036e822c44af724a78349e28b9203f2332020f2b5ca8b623def610358a3",
+    "master_init_mask_queries_completed_before_failure": true,
+    "model_inference_started": false,
+    "root_cause_identified": false,
+    "SDK_context_cleanup_verified": false,
+    "frequency_restored_hz": 300000000,
+    "replacement": "Four independent flags0 rknn_init calls; no context duplication."
+  },
+  "pair00_rope_layout": {
+    "status": "not_adopted",
+    "check_result_sha256": "2af93fd54940cffd014f789f599060ce3a199cd85396ebe5b5ddac9be6952dac",
+    "compile_sha256": "7101a94a027d2af938abb426830b6708bea1e52e881398316513f4294baba01a",
+    "normal_result_sha256": "7d6be5214af2d0132d2057e75d92331b934fa1574b3c66d863713eb428675806",
+    "profile_result_sha256": "2015e02b4db13d1163f18c376bdd4cffdcfb1478c4f1930ec99f6bed84b2c4da",
+    "saved_audit_sha256": "66561808f52bf652858cebf81caa1cfd99879aa52a832ac5314d531fcf6da878",
+    "original_graph_sha256": "efbbaee8f3d6326565930e5a045eac0d500fdb35453fdf85ddac7481ec2fac65",
+    "FP32_candidate_vs_baseline_complete_outputs_byte_equal": 4,
+    "FP16_candidate_vs_baseline_outputs_byte_equal": true,
+    "original_FP32_strict_gate_passed_by_FP16": false,
+    "warm_calls_per_route": 38,
+    "mean_ms": {
+      "A": 29.28803913221744,
+      "B": 28.54815196999545
+    },
+    "mean_latency_reduction_percent": 2.526243422722352,
+    "profile_per_route_and_input": {
+      "operator_rows": 57,
+      "transpose_rows": 9,
+      "reshape_rows": 11
+    },
+    "intended_layout_conversion_removal_proved": false,
+    "scope": "Two saved real pair00 inputs only; same operator counts and remaining Q/K layout conversions. The small timing difference does not establish a stable layout benefit."
+  },
+  "complete_original_model_parallel": {
+    "status": "completed_not_quality_acceptance",
+    "source_sha256": "7081dfe13f0ef83ff23b41d12a891ff838eaaf545da8598777f02578cb3597f4",
+    "registry_sha256": "ff36b0ff84e5a3179dc8a922336a44f766a14088ddcad931dbd17c08cb4ad7ed",
+    "result_sha256": "0e98fb9b0c2a70ac2cfb638e9089426608a82b4ad849b995675bfea3876404f8",
+    "control_sha256": "ef75034367f038c41a9ae9634d38efb53e8c2ea7d913a0debda35b2319439452",
+    "saved_audit_sha256": "12999ca2a5039db1a6f016a3acb208f15c1a9476177b81ad9eb098b78253a460",
+    "source_indices": [
+      32,
+      80,
+      128,
+      176,
+      224,
+      272,
+      320,
+      368,
+      416
+    ],
+    "overlapping_pairs": 8,
+    "process_count": 1,
+    "worker_threads": 3,
+    "original_models_per_worker": 1,
+    "original_model_cache_session_owned_by_worker": true,
+    "initialization_serialized": true,
+    "original_graphs_layers_tokens_weights_unchanged": true,
+    "SDK_shared_weight_flag": 32,
+    "ASYNC_flag_used": false,
+    "master_model_input": "verified_original_RKNN_filename",
+    "shared_child_model_input": "owned_original_RKNN_CPU_buffer_retained_until_context_destroyed",
+    "physical_weight_sharing_verified": false,
+    "NPZ_files_checked": 16,
+    "saved_arrays_checked": 96,
+    "prediction_arrays_byte_equal_to_same_input_serial": 40,
+    "prediction_array_comparisons": 40,
+    "prepared_pixels_byte_equal": 8,
+    "timing": {
+      "serial": {
+        "unique_pairs": 8,
+        "batch_wall_seconds": 10.77327345701633,
+        "complete_pairs_per_second": 0.7425783845475328,
+        "request_service_mean_seconds": 1.345907374878152,
+        "preprocessing_total_seconds": 1.1434369489725213,
+        "worker_jobs": {
+          "0": 8
+        }
+      },
+      "parallel": {
+        "unique_pairs": 8,
+        "batch_wall_seconds": 5.142681641998934,
+        "complete_pairs_per_second": 1.555608640960019,
+        "request_service_mean_seconds": 1.7648680421152676,
+        "preprocessing_total_seconds": 0.5062826788926031,
+        "worker_jobs": {
+          "0": 3,
+          "1": 2,
+          "2": 3
+        }
+      }
+    },
+    "complete_batch_throughput_ratio": 2.0948746601449773,
+    "phase_timing_scope": "Eight-pair offline complete inference batch including preprocessing; initialization and artifact saving excluded. Not SL4 or input-to-pose latency.",
+    "memory": {
+      "process_peak_rss_MiB": 8618.390625,
+      "scope": "same process across all worker threads, not independent worker RSS",
+      "physical_8GB_acceptance": false,
+      "physical_weight_sharing_verified": false,
+      "SDK_DMA_and_RSS_not_added": true
+    },
+    "resources": {
+      "actual_contexts_created": 36,
+      "actual_contexts_destroyed": 36,
+      "live_contexts": 0,
+      "share_init_requests": 24,
+      "init_actor_threads": 3,
+      "model_input_kinds": {
+        "filename": 12,
+        "owned_CPU_buffer": 24
+      },
+      "all_workers_and_backends_closed": true,
+      "all_worker_threads_joined": true,
+      "cleanup_errors": []
+    },
+    "monitor": {
+      "sample_count": 301,
+      "all_frequency_samples_hz": 1000000000,
+      "maximum_sampled_temperature_c": 69.307,
+      "frequency_governor_limits_restored": true,
+      "restored_effective_frequency_hz": 300000000,
+      "restore_errors": []
+    },
+    "original_Torch_FP32_quality_evaluated_on_these_inputs": false
+  },
+  "saved_SL4_commit": {
+    "status": "completed_saved_SL4_not_realtime_acceptance",
+    "source_sha256": "00084698639cf8779a05a114ef2a571fa977ba808a2609a1ea048a9d93f83702",
+    "serial_result_sha256": "aa9b520d86fb631b0d70fa333281b764378fa4be66001053e43acc35d12a1a33",
+    "parallel_result_sha256": "f983224e03cff60be490daca4486727efbe1d9e10909b024e28e39a113abbc16",
+    "comparison_sha256": "d0f41be857f6bcfb20729212fa860bbd381daf8ec90fca1d65c65d9fe55d986d",
+    "source_result_sha256": "0e98fb9b0c2a70ac2cfb638e9089426608a82b4ad849b995675bfea3876404f8",
+    "ordered_commits": 8,
+    "graph_nodes": 16,
+    "points": 112893,
+    "poses_byte_equal": true,
+    "poses_sha256": "08a5349def5448e935d919c24a78fdbb4dba70cd43b66f3a967cf2eced897c97",
+    "map_json_equal": true,
+    "map_chunk_fields_finite_and_byte_equal": 32,
+    "original_model_forward_calls": 0,
+    "scope": "A single ordered original Solver consumes the saved verified predictions and prepared pixels. Offline commits do not establish live fresh-pose latency or new GT trajectory quality."
+  },
+  "limits": [
+    "Two-lane staggered dispatch completes32fresh poses at average1.120248Hz/P95input1.976139s.2/31 publication gaps exceed one second, max1.219162s; every-second and20Hz/100ms acceptance remain unmet.",
+    "A/B request latency does not equal the offline batch throughput; parallel request service mean is higher in this run.",
+    "Original Torch FP32 quality and GT trajectory metrics on these eight inputs were not tested by this comparison.",
+    "Three-lane offline peak8618.39MiB; two-lane replay peak6209.21MiB. Both use a16GB board; physical8GB operation is unvalidated.",
+    "20 Hz fresh poses, full P95<=100 ms and 30-minute stability are not established.",
+    "SDK flag and successful initialization do not quantify physical weight-memory sharing.",
+    "Repository code and original checkpoint licenses remain separate."
+  ],
+  "failed_full_model_initialization": {
+    "independent_processes": {
+      "result_sha256": "eb82de6288f587caef26e0e58a4f172a6be51395fdf7ef3dc387711ec68d2b8f",
+      "status": "failed_cleanup",
+      "SDK_init_returncode": -6,
+      "second_instance_not_initialized": true
+    },
+    "same_process_filename_shared_children": {
+      "result_sha256": "10e885c1a8cefc3805d07ce0b9d578ce31bdb380ff0b4280a17fad2766530900",
+      "status": "failed_cleanup",
+      "SDK_init_returncode": -6,
+      "created_contexts": 13,
+      "destroyed_contexts": 13,
+      "live_contexts": 0,
+      "share_init_requests": 1,
+      "root_cause_identified": false
+    },
+    "successful_change": "Explicit 0x20 shared init with owned CPU model buffers for all children, preserving original model-file identity and buffer lifetime."
+  },
+  "pair00_CPU_buffer_shared_loader_reproducer": {
+    "source_sha256": "3f8d73aca5b1ee78c9d59488e1f88e5f33f79bdb3309967a856ecbb2fbe1a199",
+    "result_sha256": "d7e758986541760d74b136054e07f1ed3d28288ac1b96aadc9d56fec0cb69ae2",
+    "status": "completed_component_parallel_diagnostic_not_adopted",
+    "contexts_created": 4,
+    "contexts_destroyed": 4,
+    "SDK_calls": 32,
+    "byte_equal_output_comparisons": 64,
+    "phase_order": [
+      "S",
+      "P",
+      "P",
+      "S"
+    ],
+    "scope": "Standalone pair00 initialization reproducer; not complete-model or fresh-pose performance."
+  },
+  "timestamp_replay": {
+    "three_lanes": {
+      "status": "failed_first_inference_after_three_workers_ready",
+      "control_sha256": "6df4b67bd93e0c9e4d8a88f0fb46bbd88e0c28ab6091e7a703b270c9c63c5898",
+      "worker_log_sha256": "af74a99753a4ef936c9300914293ba5ac0e4f3185fc5ed9207ba2b84d9575d1a",
+      "child_returncode": -11,
+      "controller_seconds": 155.70414110299316,
+      "reported_failed_SDK_allocation_bytes": 229376,
+      "reported_errno": 12,
+      "SIGSEGV": true,
+      "inference_cleanup_verified": false,
+      "frequency_governor_limits_restored": true,
+      "restore_errors": [],
+      "saved_audit_sha256": "75ca22c05aa318e75ec7d08bef33fed96639827857b4be8c25e3fabcd3c53f07"
+    },
+    "two_lanes": {
+      "script_sha256": "6bdbe52d3a2766629a62ad6d820b984fc2d4ce45254696ffd6a2796bace99c53",
+      "startup_seconds": 99.30489597798442,
+      "fresh_pose_count": 32,
+      "fresh_pose_hz": 1.1006824205000225,
+      "fresh_wall_seconds_including_EOF_drain": 29.072872796008596,
+      "input_to_pose_p95_seconds": 2.364494814556383,
+      "peak_rss_mib": 6209.2109375,
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 787,
+        "delivered": 33,
+        "overwritten": 754,
+        "skipped_before_decode": 11,
+        "decode_policy": "first_then_latest_due_original_timestamp",
+        "start_monotonic": 242561.619962653,
+        "end_monotonic": 242588.216528659,
+        "last_capture_monotonic": 242588.19202184677,
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "map_chunks": 32,
+      "graph_nodes": 64,
+      "EOF_tail_drained": true,
+      "all_worker_threads_joined": true,
+      "cleanup_errors": [],
+      "status": "completed_short_replay_not_realtime_acceptance",
+      "result_sha256": "24601c2fdfc932c2761cbf2f08f6132bb1edacac1ea18f6597766ec2f8f6b837",
+      "control_sha256": "5fb7e8b49b7c7a70d9a6cda6aa7d8fd6b77de271f4cda0b8ebffca5474ecf536",
+      "core_masks": [
+        1,
+        2
+      ],
+      "first_pose_seconds": 2.3667781130061485,
+      "publication_interval_p95_seconds": 1.6440079574967967,
+      "maximum_publication_interval_seconds": 1.6834184610052034,
+      "publication_intervals_above_one_second": 14,
+      "publication_intervals": 31,
+      "every_second_fresh_update_requirement_met": false,
+      "actual_contexts_created": 24,
+      "actual_contexts_destroyed": 24,
+      "live_contexts": 0,
+      "retained_CPU_model_bytes_after_close": 0,
+      "input_queue_capacity": 1,
+      "max_outstanding_per_lane": 1,
+      "max_total_uncommitted": 2,
+      "unique_ordered_SL4_solver": true,
+      "complete_latency_scope": "original software arrival through decoder, latest slot, dispatch, complete model, owned-copy/thread queue, ordered SL4, chunk/poses/map atomic publication",
+      "quality_validated": false,
+      "physical_8GB_validated": false,
+      "thirty_minute_validated": false,
+      "monitor": {
+        "samples": 255,
+        "all_sampled_frequency_hz": [
+          1000000000
+        ],
+        "maximum_sampled_temperature_c": 71.153,
+        "restored": {
+          "governor": "userspace",
+          "cur_freq": "300000000",
+          "min_freq": "300000000",
+          "max_freq": "1000000000",
+          "userspace/set_freq": "300000000"
+        },
+        "cleanup_errors": []
+      },
+      "saved_audit_sha256": "5c3fd912690629a01ca9ff6d38453ad365f7a7c379b0faf73a8e40b48b57b612"
+    },
+    "offline_throughput_does_not_establish_live_acceptance": true,
+    "two_lanes_staggered": {
+      "script_sha256": "5d3473fb0f12282a4cc4209986e1f37ed58192fdbf01e575d89453fe13a04569",
+      "startup_seconds": 93.6977543719986,
+      "fresh_pose_count": 32,
+      "fresh_pose_hz": 1.1202484309352587,
+      "fresh_wall_seconds_including_EOF_drain": 28.56509245300549,
+      "input_to_pose_p95_seconds": 1.976139368211443,
+      "peak_rss_mib": 6217.4921875,
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 789,
+        "delivered": 33,
+        "overwritten": 756,
+        "skipped_before_decode": 9,
+        "decode_policy": "first_then_latest_due_original_timestamp",
+        "start_monotonic": 243004.406299976,
+        "end_monotonic": 243031.002928981,
+        "last_capture_monotonic": 243030.9783592224,
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "map_chunks": 32,
+      "graph_nodes": 64,
+      "EOF_tail_drained": true,
+      "all_worker_threads_joined": true,
+      "cleanup_errors": [],
+      "minimum_dispatch_interval_seconds": 0.8,
+      "status": "completed_short_replay_not_realtime_acceptance",
+      "result_sha256": "06278a86deab600f812d6db1d7982ef2fd4a636d5f76c95b39577984b3149984",
+      "control_sha256": "431af2b50ebf9d313d8829880e5196550e6cfd050cd81f5f85b787cd3e8b97f0",
+      "source_delta_sha256": "12a20cc90d3a25d2ee74503d2ad2f36c3b18f0690da7eb0428203fd86c84a08c",
+      "core_masks": [
+        1,
+        2
+      ],
+      "publication_interval_p95_seconds": 1.0313541245122906,
+      "maximum_publication_interval_seconds": 1.2191618309880141,
+      "publication_intervals_above_one_second": 2,
+      "publication_intervals": 31,
+      "every_second_fresh_update_requirement_met": false,
+      "actual_contexts_created": 24,
+      "actual_contexts_destroyed": 24,
+      "live_contexts": 0,
+      "retained_CPU_model_bytes_after_close": 0,
+      "pose_output_delayed_for_pacing": false,
+      "changes": "Minimum0.8s between complete original-model request dispatches. Take latest frame at dispatch, publish immediately after ordered SL4/map; no interpolation or repeated predictions.",
+      "quality_validated": false,
+      "physical_8GB_validated": false,
+      "thirty_minute_validated": false,
+      "monitor": {
+        "samples": 243,
+        "all_sampled_frequency_hz": [
+          1000000000
+        ],
+        "maximum_sampled_temperature_c": 69.307,
+        "restored": {
+          "governor": "userspace",
+          "cur_freq": "300000000",
+          "min_freq": "300000000",
+          "max_freq": "1000000000",
+          "userspace/set_freq": "300000000"
+        },
+        "restore_errors": []
+      },
+      "saved_audit_sha256": "6753b0969ff36161bb8ebeb84fca06cf16c011c654df6b437d2fce526a9d6d52"
+    }
+  },
+  "source_copy_allowlist_sha256": "857600a51d952dba5239cb0055ed89eb41b90ff4a2e16f91d8b6843c9e2651e2"
+}

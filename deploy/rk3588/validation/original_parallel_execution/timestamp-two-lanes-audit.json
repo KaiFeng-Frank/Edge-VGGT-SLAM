@@ -1,0 +1,96 @@
+{
+  "schema": "v79_saved_parallel_timestamp_audit",
+  "auditor_sha256": "605ed1c56642242baf57f602273bf406527b3cdbb56c1f6d732119f7ecbefe03",
+  "experiment_schema": "v79_original_VGGT_parallel_shared_timestamp_replay_two_lanes",
+  "declared_lane_count": 2,
+  "result_sha256": "24601c2fdfc932c2761cbf2f08f6132bb1edacac1ea18f6597766ec2f8f6b837",
+  "control_sha256": "5fb7e8b49b7c7a70d9a6cda6aa7d8fd6b77de271f4cda0b8ebffca5474ecf536",
+  "frozen_sources": {
+    "replay_parallel_two_lanes_board.py": "6bdbe52d3a2766629a62ad6d820b984fc2d4ce45254696ffd6a2796bace99c53",
+    "full_parallel_shared_board.py": "7081dfe13f0ef83ff23b41d12a891ff838eaaf545da8598777f02578cb3597f4",
+    "commit_parallel_predictions_board.py": "00084698639cf8779a05a114ef2a571fa977ba808a2609a1ea048a9d93f83702"
+  },
+  "shared_registry_source_sha256": "ff36b0ff84e5a3179dc8a922336a44f766a14088ddcad931dbd17c08cb4ad7ed",
+  "source_identity_verified": true,
+  "actual_model_SDK_board_calls_by_auditor": 0,
+  "controller": {
+    "status": "worker_completed_pending_result_review",
+    "child_returncode": 0,
+    "sample_count": 255,
+    "frequencies_hz": [
+      1000000000
+    ],
+    "maximum_temperature_c": 71.153,
+    "restored_effective_hz": 300000000,
+    "restored_raw_request_hz": 300000000,
+    "governor_limits_restored": true
+  },
+  "status": "passed_saved_success_audit",
+  "experiment_completed": true,
+  "original_frames": 798,
+  "source_accounting": {
+    "generated": 787,
+    "delivered": 33,
+    "overwritten": 754,
+    "skipped_before_decode": 11
+  },
+  "seed_sequence": 0,
+  "fresh_count": 32,
+  "unique_fresh_targets": true,
+  "ordered_overlap_verified": true,
+  "maximum_uncommitted": 2,
+  "per_lane_outstanding_one_verified": true,
+  "EOF_tail_drained": true,
+  "fresh_wall_seconds_including_EOF_drain": 29.072872796008596,
+  "fresh_pose_hz": 1.1006824205000225,
+  "input_to_pose_p95_seconds": 2.364494814556383,
+  "maximum_phase_sum_error_seconds": 0.0,
+  "startup_seconds": 99.30489597798442,
+  "peak_rss_mib": 6209.2109375,
+  "publication_interval_count": 31,
+  "publication_interval_p95_seconds": 1.6440079574967967,
+  "maximum_publication_gap_seconds": 1.6834184610052034,
+  "publication_intervals_greater_than_one_second": 14,
+  "initial_fresh_publication_delay_seconds": 2.3667781130061485,
+  "mean_fresh_rate_at_least_one_hz": true,
+  "strict_at_least_one_update_each_second": false,
+  "cadence_scope": "First fresh publication after replay start and every subsequent consecutive publication gap; mean Hz alone is not cadence acceptance.",
+  "memory_scope": "process_wide_all_worker_threads",
+  "map_chunks": 32,
+  "graph_nodes": 64,
+  "map_arrays_verified": 128,
+  "map_points": 451517,
+  "poses": 33,
+  "map_sha256": "52fec3b65e4dc1a45048ee4a1dc465543463e01737d8f4edb1ce72db70f8d295",
+  "poses_sha256": "3c9b397662c3918856be1f55df62dcb5201b3cd48e0c6edc94289d7dab827059",
+  "actual_contexts_created_destroyed": 24,
+  "share_init_requests": 12,
+  "SDK_runs": 704,
+  "SDK_context_cleanup_verified": true,
+  "thread_join_verified": true,
+  "workers": {
+    "0": {
+      "complete_original_pairs": 16,
+      "contexts": 12,
+      "SDK_runs": 352,
+      "cache_hits": 0,
+      "cache_computed_frames": 32,
+      "immutable_final_validated": true,
+      "pageout_receipts_verified": 4
+    },
+    "1": {
+      "complete_original_pairs": 16,
+      "contexts": 12,
+      "SDK_runs": 352,
+      "cache_hits": 0,
+      "cache_computed_frames": 32,
+      "immutable_final_validated": true,
+      "pageout_receipts_verified": 4
+    }
+  },
+  "limitations": [
+    "Software timestamp replay; no physical camera latency validation.",
+    "Short run; no30min or physical8GB acceptance.",
+    "Original FP32 quality acceptance is not established by this runtime audit."
+  ]
+}

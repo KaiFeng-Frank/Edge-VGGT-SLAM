@@ -1,0 +1,47 @@
+{
+  "schema": "v79_saved_parallel_timestamp_audit",
+  "auditor_sha256": "605ed1c56642242baf57f602273bf406527b3cdbb56c1f6d732119f7ecbefe03",
+  "experiment_schema": "v79_original_VGGT_parallel_shared_timestamp_replay",
+  "declared_lane_count": 3,
+  "result_sha256": "ab3a857b3f2d4f6bd00e90de63cf8dfccea344a7a614af9aafd3dc696ffc4034",
+  "control_sha256": "6df4b67bd93e0c9e4d8a88f0fb46bbd88e0c28ab6091e7a703b270c9c63c5898",
+  "frozen_sources": {
+    "replay_parallel_shared_board.py": "01e5b2d3e4f548b9d42de000bac9a8b9fd19e91d5f8b909db41444eeb5b67c26",
+    "full_parallel_shared_board.py": "7081dfe13f0ef83ff23b41d12a891ff838eaaf545da8598777f02578cb3597f4",
+    "commit_parallel_predictions_board.py": "00084698639cf8779a05a114ef2a571fa977ba808a2609a1ea048a9d93f83702"
+  },
+  "shared_registry_source_sha256": "ff36b0ff84e5a3179dc8a922336a44f766a14088ddcad931dbd17c08cb4ad7ed",
+  "source_identity_verified": true,
+  "actual_model_SDK_board_calls_by_auditor": 0,
+  "controller": {
+    "status": "failed",
+    "child_returncode": -11,
+    "sample_count": 300,
+    "frequencies_hz": [
+      1000000000
+    ],
+    "maximum_temperature_c": 68.384,
+    "restored_effective_hz": 300000000,
+    "restored_raw_request_hz": 300000000,
+    "governor_limits_restored": true
+  },
+  "status": "verified_failed_run_no_replay_acceptance",
+  "experiment_completed": false,
+  "saved_partial_result_status": "running",
+  "saved_partial_fresh_pose_count": 0,
+  "published_pose_count_authoritative": false,
+  "SDK_context_cleanup_verified": false,
+  "thread_join_verified": false,
+  "SLAM_throughput_hz": null,
+  "latency_P95_seconds": null,
+  "fatal_SIGSEGV": true,
+  "log_sha256": "af74a99753a4ef936c9300914293ba5ac0e4f3185fc5ed9207ba2b84d9575d1a",
+  "SDK_allocation_failure_in_log": true,
+  "SDK_allocation_sizes_in_log": [
+    229376
+  ],
+  "limitations": [
+    "Partial running JSON is not a successful run or cleanup receipt.",
+    "Process termination does not prove explicit SDK destruction."
+  ]
+}

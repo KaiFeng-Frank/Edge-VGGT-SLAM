@@ -1,0 +1,194 @@
+{
+  "schema": "v79_saved_full_shared_buffer_audit",
+  "status": "passed_saved_artifact_checks_not_quality_or_realtime_acceptance",
+  "actual_model_or_SDK_execution_performed_by_auditor": false,
+  "source_result_sha256": "0e98fb9b0c2a70ac2cfb638e9089426608a82b4ad849b995675bfea3876404f8",
+  "control_sha256": "ef75034367f038c41a9ae9634d38efb53e8c2ea7d913a0debda35b2319439452",
+  "runner_sha256": "7081dfe13f0ef83ff23b41d12a891ff838eaaf545da8598777f02578cb3597f4",
+  "registry_sha256": "ff36b0ff84e5a3179dc8a922336a44f766a14088ddcad931dbd17c08cb4ad7ed",
+  "NPZ_files_checked": 16,
+  "saved_arrays_checked": 96,
+  "all_file_raw_sha_shape_dtype_finite_checks_passed": true,
+  "prediction_arrays_byte_equal": 40,
+  "prediction_array_comparisons": 40,
+  "prepared_images_byte_equal": 8,
+  "adjacent_pair_image_overlaps_byte_equal_each_route": 7,
+  "unique_source_image_metadata_count": 9,
+  "source_image_SHA_metadata_same_across_routes": true,
+  "source_image_files_rehashed_on_host": false,
+  "artifacts": [
+    {
+      "route": "serial",
+      "case_index": 0,
+      "file": "worker-0/serial/pair-01.npz",
+      "bytes": 378068,
+      "sha256": "b15313a22a19ef07314fa463ec00f71bce09be754e5b93a58f9c837b19763cdb"
+    },
+    {
+      "route": "serial",
+      "case_index": 1,
+      "file": "worker-0/serial/pair-02.npz",
+      "bytes": 378068,
+      "sha256": "ab952c6c28368c871e743b98b6faa6d4d850d0b12bfc5aa14d25d0b24a08171f"
+    },
+    {
+      "route": "serial",
+      "case_index": 2,
+      "file": "worker-0/serial/pair-03.npz",
+      "bytes": 378068,
+      "sha256": "09fb07dbe2035d027c00d49c2cd4d0c8eaa71fcd960a8e67bd93ffb2034962a4"
+    },
+    {
+      "route": "serial",
+      "case_index": 3,
+      "file": "worker-0/serial/pair-04.npz",
+      "bytes": 378068,
+      "sha256": "c43aef2638b12ad7a433408f0c47dea43a97ad70e180d2227c4bb6b9566199f2"
+    },
+    {
+      "route": "serial",
+      "case_index": 4,
+      "file": "worker-0/serial/pair-05.npz",
+      "bytes": 378068,
+      "sha256": "62b9e87507dc8a06be4fcb11bc6116f9025cbe557d79601e96a30a20aa8f5d45"
+    },
+    {
+      "route": "serial",
+      "case_index": 5,
+      "file": "worker-0/serial/pair-06.npz",
+      "bytes": 378068,
+      "sha256": "9634e4a54dd14aac92e9a386d89f2eebec72b83b199ade0767733abad19ba88d"
+    },
+    {
+      "route": "serial",
+      "case_index": 6,
+      "file": "worker-0/serial/pair-07.npz",
+      "bytes": 378068,
+      "sha256": "e3d56e1b861a2dec697f5d92423c49b1a637d35a4972078529223ca7a9d184b8"
+    },
+    {
+      "route": "serial",
+      "case_index": 7,
+      "file": "worker-0/serial/pair-08.npz",
+      "bytes": 378068,
+      "sha256": "e82986c885d0fbce2eacaea99527ed8b1349c7c09c712b00add2bd62369714a1"
+    },
+    {
+      "route": "parallel",
+      "case_index": 0,
+      "file": "worker-0/parallel/pair-01.npz",
+      "bytes": 378068,
+      "sha256": "b15313a22a19ef07314fa463ec00f71bce09be754e5b93a58f9c837b19763cdb"
+    },
+    {
+      "route": "parallel",
+      "case_index": 1,
+      "file": "worker-1/parallel/pair-02.npz",
+      "bytes": 378068,
+      "sha256": "ab952c6c28368c871e743b98b6faa6d4d850d0b12bfc5aa14d25d0b24a08171f"
+    },
+    {
+      "route": "parallel",
+      "case_index": 2,
+      "file": "worker-2/parallel/pair-03.npz",
+      "bytes": 378068,
+      "sha256": "09fb07dbe2035d027c00d49c2cd4d0c8eaa71fcd960a8e67bd93ffb2034962a4"
+    },
+    {
+      "route": "parallel",
+      "case_index": 3,
+      "file": "worker-2/parallel/pair-04.npz",
+      "bytes": 378068,
+      "sha256": "c43aef2638b12ad7a433408f0c47dea43a97ad70e180d2227c4bb6b9566199f2"
+    },
+    {
+      "route": "parallel",
+      "case_index": 4,
+      "file": "worker-0/parallel/pair-05.npz",
+      "bytes": 378068,
+      "sha256": "62b9e87507dc8a06be4fcb11bc6116f9025cbe557d79601e96a30a20aa8f5d45"
+    },
+    {
+      "route": "parallel",
+      "case_index": 5,
+      "file": "worker-1/parallel/pair-06.npz",
+      "bytes": 378068,
+      "sha256": "9634e4a54dd14aac92e9a386d89f2eebec72b83b199ade0767733abad19ba88d"
+    },
+    {
+      "route": "parallel",
+      "case_index": 6,
+      "file": "worker-2/parallel/pair-07.npz",
+      "bytes": 378068,
+      "sha256": "e3d56e1b861a2dec697f5d92423c49b1a637d35a4972078529223ca7a9d184b8"
+    },
+    {
+      "route": "parallel",
+      "case_index": 7,
+      "file": "worker-0/parallel/pair-08.npz",
+      "bytes": 378068,
+      "sha256": "e82986c885d0fbce2eacaea99527ed8b1349c7c09c712b00add2bd62369714a1"
+    }
+  ],
+  "timing": {
+    "serial": {
+      "unique_pairs": 8,
+      "batch_wall_seconds": 10.77327345701633,
+      "complete_pairs_per_second": 0.7425783845475328,
+      "request_service_mean_seconds": 1.345907374878152,
+      "preprocessing_total_seconds": 1.1434369489725213,
+      "worker_jobs": {
+        "0": 8
+      }
+    },
+    "parallel": {
+      "unique_pairs": 8,
+      "batch_wall_seconds": 5.142681641998934,
+      "complete_pairs_per_second": 1.555608640960019,
+      "request_service_mean_seconds": 1.7648680421152676,
+      "preprocessing_total_seconds": 0.5062826788926031,
+      "worker_jobs": {
+        "0": 3,
+        "1": 2,
+        "2": 3
+      }
+    }
+  },
+  "complete_batch_throughput_ratio": 2.0948746601449773,
+  "resources": {
+    "actual_contexts_created": 36,
+    "actual_contexts_destroyed": 36,
+    "live_contexts": 0,
+    "share_init_requests": 24,
+    "init_actor_threads": 3,
+    "model_input_kinds": {
+      "filename": 12,
+      "owned_CPU_buffer": 24
+    },
+    "all_workers_and_backends_closed": true,
+    "all_worker_threads_joined": true,
+    "cleanup_errors": []
+  },
+  "memory": {
+    "process_peak_rss_MiB": 8618.390625,
+    "scope": "same process across all worker threads, not independent worker RSS",
+    "physical_8GB_acceptance": false,
+    "physical_weight_sharing_verified": false,
+    "SDK_DMA_and_RSS_not_added": true
+  },
+  "monitor": {
+    "sample_count": 301,
+    "all_frequency_samples_hz": 1000000000,
+    "maximum_sampled_temperature_c": 69.307,
+    "frequency_governor_limits_restored": true,
+    "restored_effective_frequency_hz": 300000000,
+    "restore_errors": []
+  },
+  "limits": [
+    "One eight-pair offline batch comparison; preprocessing and original complete inference included, initialization and saved output writes excluded.",
+    "Same-sample parallel vs serial original FP16 equality, not original Torch FP32 quality validation.",
+    "Original PNG identities compared as receipt metadata; saved prepared pixels independently rehashed.",
+    "This inference receipt establishes no timestamp SL4 latency, 20 Hz, 30-minute or 8 GB acceptance.",
+    "Frequency and temperature claims cover saved samples, not continuous measurement."
+  ]
+}

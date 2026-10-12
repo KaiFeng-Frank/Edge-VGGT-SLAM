@@ -1,0 +1,66 @@
+{
+  "schema": "v79_executed_public_source_allowlist",
+  "copy_exact_bytes": true,
+  "sources": {
+    "full_parallel_shared_board.py": {
+      "bytes": 23184,
+      "sha256": "7081dfe13f0ef83ff23b41d12a891ff838eaaf545da8598777f02578cb3597f4"
+    },
+    "commit_parallel_predictions_board.py": {
+      "bytes": 14331,
+      "sha256": "00084698639cf8779a05a114ef2a571fa977ba808a2609a1ea048a9d93f83702"
+    },
+    "replay_parallel_shared_board.py": {
+      "bytes": 24809,
+      "sha256": "01e5b2d3e4f548b9d42de000bac9a8b9fd19e91d5f8b909db41444eeb5b67c26"
+    },
+    "replay_parallel_two_lanes_board.py": {
+      "bytes": 24807,
+      "sha256": "6bdbe52d3a2766629a62ad6d820b984fc2d4ce45254696ffd6a2796bace99c53"
+    },
+    "probe_original_parallel_lanes_board_r6.py": {
+      "bytes": 23571,
+      "sha256": "3f8d73aca5b1ee78c9d59488e1f88e5f33f79bdb3309967a856ecbb2fbe1a199"
+    },
+    "mask-shared-buffer-overlay/vggt_slam/rknn_camera_head.py": {
+      "bytes": 21478,
+      "sha256": "7174264ed3246575d14cb9be5d83c3a64c74a3fb706fa7ee0d55abd547ef2b0b"
+    },
+    "mask-shared-buffer-overlay/vggt_slam/rknn_depth_head.py": {
+      "bytes": 18011,
+      "sha256": "767dda60b7ecb786ac1b97dfa06874dd0bbeab1c7defc8920954df53346e5346"
+    },
+    "mask-shared-buffer-overlay/vggt_slam/rknn_grouped_dino.py": {
+      "bytes": 22929,
+      "sha256": "efe974e51561e740af495378846d9acd447cd7d14225b772c1777e36bdca0c67"
+    },
+    "mask-shared-buffer-overlay/vggt_slam/rknn_retained_aggregator.py": {
+      "bytes": 41152,
+      "sha256": "a75b07d6a250a3849a815681f8b746c7f137fa73ab0b8d7df692d349f57d4679"
+    },
+    "mask-shared-buffer-overlay/vggt_slam/shared_context_registry.py": {
+      "bytes": 10767,
+      "sha256": "ff36b0ff84e5a3179dc8a922336a44f766a14088ddcad931dbd17c08cb4ad7ed"
+    },
+    "audit_timestamp_parallel_saved.py": {
+      "bytes": 16581,
+      "sha256": "605ed1c56642242baf57f602273bf406527b3cdbb56c1f6d732119f7ecbefe03"
+    },
+    "replay_parallel_staggered_board.py": {
+      "bytes": 24936,
+      "sha256": "5d3473fb0f12282a4cc4209986e1f37ed58192fdbf01e575d89453fe13a04569"
+    },
+    "audit_timestamp_staggered_saved.py": {
+      "bytes": 17676,
+      "sha256": "a113457d25412c934afcb9f6d054257f788d2a542e5d9ef203d813ee920fa719"
+    }
+  },
+  "excluded": [
+    "weights",
+    "captured arrays",
+    "weight-bearing graphs",
+    "vendor headers",
+    "SDK and native binaries",
+    "credentials"
+  ]
+}
