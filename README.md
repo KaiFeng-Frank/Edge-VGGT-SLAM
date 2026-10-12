@@ -18,11 +18,19 @@ with 7,261.66 MiB peak process RSS. It remains below the real-time target.
 [Measured results and timing records](results/original_1ghz_v63.json),
 [bounded test and restoration](deploy/rk3588/validation/original_clock_test/README.md).
 
-A subsequent original pair0+pair1 graph-composition diagnostic measured
-**81.196 → 77.027 ms** for those four blocks, with all four outputs byte-identical
-to the separate FP16 path on two real inputs. This **5.13% component reduction
-has not been integrated or measured in the full model**; the replay result
-above remains current. [Diagnostic and limitations](results/original_pair_group_v64.json).
+The subsequent **300 MHz retained-group path** reduces mean complete-model
+service on the same 16 pairs from **1.958 s to 1.797 s (8.23%)**. All 80
+prediction arrays, 80 retained/target arrays and the saved trajectory remain
+byte-identical to the preceding FP16 path; the original FP32 strict gate
+still fails. It executes all 48 original aggregator blocks using four graph
+calls and keeps the original consumer outputs. Complete-model contexts fall
+from 32 to 12. Its separate timestamp replay produced **17 fresh poses at
+0.594 Hz, complete P95 2.071 s**, with 7,187.75 MiB peak RSS on the 16 GB board.
+Startup was 30.71 s, separate from the 28.60-second replay. These results
+remain below the real-time targets. Defaults are unchanged; select the
+experimental path with `--rknn-retained-aggregator` and its compiled manifest.
+[Measured results and limits](results/original_retained_groups_v67.json),
+[reproduction](deploy/rk3588/validation/original_retained_groups/README.md).
 
 The additional-model retrieval and semantic paths have been removed. **Loop closure has no replacement implementation:** `max_loops=0` is the supported Solver configuration. Requests to enable loops or supply legacy auxiliary-model arguments must fail before loading or inference. The original VGGT model's numerical similarity capability does not itself implement loop retrieval.
 

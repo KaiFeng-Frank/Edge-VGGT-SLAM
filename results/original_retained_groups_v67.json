@@ -1,0 +1,1121 @@
+{
+  "schema": "v67_original_VGGT_retained_groups_complete_model_and_replay",
+  "status": "measured_original_FP16_diagnostic_not_quality_or_realtime_accepted",
+  "original_model_only": true,
+  "configuration": {
+    "NPU_hz": 300000000,
+    "NPU_core_mask": 7,
+    "model_threads": 1,
+    "model_cpus": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "decoder_cpus": [
+      0
+    ],
+    "board_memory_GiB": 16,
+    "image_shape": [
+      1,
+      2,
+      3,
+      84,
+      112
+    ],
+    "tokens_per_frame": 53,
+    "all_48_original_aggregator_blocks": true,
+    "all_24_original_DINO_blocks": true,
+    "original_CameraHead_iterations": 4,
+    "original_DPT_and_SL4": true,
+    "max_loops": 0
+  },
+  "checkpoint": {
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "bytes": 5026874952
+  },
+  "export_manifest": {
+    "artifact": "group-export.json",
+    "bytes": 445759,
+    "sha256": "41014fa4724d668da40842b8af1a95f2f7e89e4f8c37c72b2022f9aafe229f5c"
+  },
+  "compiled_manifest": {
+    "artifact": "group-compiled.json",
+    "bytes": 448393,
+    "sha256": "771a9b82007d2feefd65ebbf3f4b0fb27070b79ff7f6d0faab1a8c866da90e43"
+  },
+  "consumer_contract": {
+    "effective_target_layer": 21,
+    "target_global_zero_based_index": 20,
+    "target_clone_and_normalization_preserved": true,
+    "retained_concat_layers": [
+      4,
+      11,
+      17,
+      23
+    ],
+    "original_Torch_concats_retained": 4,
+    "unconsumed_concat_allocations_omitted": 20,
+    "output_list_length": 24,
+    "all_original_parameter_tensors": 864,
+    "group_output_counts": [
+      2,
+      2,
+      2,
+      3
+    ],
+    "constructor_override_audit": {
+      "artifact": "consumer-contract-correction.json",
+      "bytes": 1753,
+      "sha256": "c54777c37d6433e29e84391d0316f038719c1cf2343be58ccc6dec21aa64a9d3"
+    }
+  },
+  "groups": [
+    {
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "graph_sha256": "385dc1df2e5916072be9772943d745381ab70c619384f9adb4a5fd62dd17fd03",
+      "graph_bytes": 504586580,
+      "original_parameter_tensors": 180,
+      "output_sources": [
+        {
+          "index": 0,
+          "name": "frame_output",
+          "pair_index": 4,
+          "role": "frame"
+        },
+        {
+          "index": 1,
+          "name": "global_output",
+          "pair_index": 4,
+          "role": "global"
+        }
+      ],
+      "check_receipt": {
+        "artifact": "check0/check.json",
+        "bytes": 25249,
+        "sha256": "451294f24862ede64ac218fec72079ddb82d7bbe7922c782c06a1b9fcbc67845"
+      },
+      "compile_receipt": {
+        "artifact": "compile0/result.json",
+        "bytes": 24658,
+        "sha256": "ec0e0406ddde8ce38f0147e3e01a83b6f2e0f0eef05243da3a04da004d2b3a5a"
+      },
+      "rknn": {
+        "file": "group.rknn",
+        "bytes": 262828583,
+        "sha256": "a8a73db00551f782067bbeaf99b674b7c1915eec0eb7cf21b932ba510612c9d7"
+      },
+      "compile_seconds": 82.5566895030206,
+      "SDK_operations": [
+        {
+          "name": "config",
+          "status": "returned",
+          "code": 0,
+          "seconds": 0.0016712500073481351
+        },
+        {
+          "name": "load_onnx",
+          "status": "returned",
+          "code": 0,
+          "seconds": 2.4962781670037657
+        },
+        {
+          "name": "build",
+          "status": "returned",
+          "code": 0,
+          "seconds": 73.71730578198913
+        },
+        {
+          "name": "export_rknn",
+          "status": "returned",
+          "code": 0,
+          "seconds": 0.19928185301250778
+        }
+      ],
+      "released": true,
+      "cleanup_errors": [],
+      "original_FP32_reference_gate_passed": true
+    },
+    {
+      "indices": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "graph_sha256": "050e53c09bb09b23a605b6fec5f911051930cf9c85e0b55bcdc38d05f7d1885a",
+      "graph_bytes": 706422997,
+      "original_parameter_tensors": 252,
+      "output_sources": [
+        {
+          "index": 0,
+          "name": "frame_output",
+          "pair_index": 11,
+          "role": "frame"
+        },
+        {
+          "index": 1,
+          "name": "global_output",
+          "pair_index": 11,
+          "role": "global"
+        }
+      ],
+      "check_receipt": {
+        "artifact": "check1/check.json",
+        "bytes": 28603,
+        "sha256": "a23219427c97c57f2bfc2b1b38ffcea7e08b5a826aa67171bed185179fafaedc"
+      },
+      "compile_receipt": {
+        "artifact": "compile1/result.json",
+        "bytes": 28012,
+        "sha256": "1c1e57dd4f32f27143ea5aa1b8c93e022f5c598ad1e6e5af9189a52950150300"
+      },
+      "rknn": {
+        "file": "group.rknn",
+        "bytes": 367913703,
+        "sha256": "4935aff95c64c67a1427cc570f1937e29654064c72112093290a444a950fd5c4"
+      },
+      "compile_seconds": 124.3618288699945,
+      "SDK_operations": [
+        {
+          "name": "config",
+          "status": "returned",
+          "code": 0,
+          "seconds": 0.00011987498146481812
+        },
+        {
+          "name": "load_onnx",
+          "status": "returned",
+          "code": 0,
+          "seconds": 3.4139575099979993
+        },
+        {
+          "name": "build",
+          "status": "returned",
+          "code": 0,
+          "seconds": 114.20367447499302
+        },
+        {
+          "name": "export_rknn",
+          "status": "returned",
+          "code": 0,
+          "seconds": 0.2813227369915694
+        }
+      ],
+      "released": true,
+      "cleanup_errors": [],
+      "original_FP32_reference_gate_passed": true
+    },
+    {
+      "indices": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "graph_sha256": "5951bec456f99c3ef88d4c6d2acc42808070d35fa54004d2d13c645746360cba",
+      "graph_bytes": 605509783,
+      "original_parameter_tensors": 216,
+      "output_sources": [
+        {
+          "index": 0,
+          "name": "frame_output",
+          "pair_index": 17,
+          "role": "frame"
+        },
+        {
+          "index": 1,
+          "name": "global_output",
+          "pair_index": 17,
+          "role": "global"
+        }
+      ],
+      "check_receipt": {
+        "artifact": "check2/check.json",
+        "bytes": 26960,
+        "sha256": "c2fcc07a6439d2d368257845f54857d4b9fd9de0955ade66ffaabac36a367220"
+      },
+      "compile_receipt": {
+        "artifact": "compile2-r2/result.json",
+        "bytes": 26368,
+        "sha256": "abb3182234d3ef6c9db608d70e57e07c55a21842b5afd7faa9c36658b74a9d00"
+      },
+      "rknn": {
+        "file": "group.rknn",
+        "bytes": 315374823,
+        "sha256": "5f8209077ea0cce5bfbe01b0504111b9ba399259785d58790a017ed61a0ac894"
+      },
+      "compile_seconds": 102.21946968801785,
+      "SDK_operations": [
+        {
+          "name": "config",
+          "status": "returned",
+          "code": 0,
+          "seconds": 0.00011666698264889419
+        },
+        {
+          "name": "load_onnx",
+          "status": "returned",
+          "code": 0,
+          "seconds": 3.09252389401081
+        },
+        {
+          "name": "build",
+          "status": "returned",
+          "code": 0,
+          "seconds": 93.46736151599907
+        },
+        {
+          "name": "export_rknn",
+          "status": "returned",
+          "code": 0,
+          "seconds": 0.24854406699887477
+        }
+      ],
+      "released": true,
+      "cleanup_errors": [],
+      "original_FP32_reference_gate_passed": false
+    },
+    {
+      "indices": [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "graph_sha256": "3d1fdf4f1f92fcee2a607dc389cc775df2f32a58318287c3771387154984195d",
+      "graph_bytes": 605509783,
+      "original_parameter_tensors": 216,
+      "output_sources": [
+        {
+          "index": 0,
+          "name": "frame_output",
+          "pair_index": 23,
+          "role": "frame"
+        },
+        {
+          "index": 1,
+          "name": "global_output",
+          "pair_index": 23,
+          "role": "global"
+        },
+        {
+          "index": 2,
+          "name": "target_global_output",
+          "pair_index": 20,
+          "role": "global"
+        }
+      ],
+      "check_receipt": {
+        "artifact": "check3/check.json",
+        "bytes": 31520,
+        "sha256": "73adc476da271391d5263b5723d49879cb30b91c95a345be57e6362b284b2da3"
+      },
+      "compile_receipt": {
+        "artifact": "compile3/result.json",
+        "bytes": 30621,
+        "sha256": "4524de07244f4e110a5ce73151dda0750d31508b727fe8d3171fdaf6efee4329"
+      },
+      "rknn": {
+        "file": "group.rknn",
+        "bytes": 315388509,
+        "sha256": "ad01e82e59b71d05bb3abbe69689468365686b7543be779184146de5d2bcc4b2"
+      },
+      "compile_seconds": 105.75802837597439,
+      "SDK_operations": [
+        {
+          "name": "config",
+          "status": "returned",
+          "code": 0,
+          "seconds": 0.00011695802095346153
+        },
+        {
+          "name": "load_onnx",
+          "status": "returned",
+          "code": 0,
+          "seconds": 3.053250390017638
+        },
+        {
+          "name": "build",
+          "status": "returned",
+          "code": 0,
+          "seconds": 97.03294399901642
+        },
+        {
+          "name": "export_rknn",
+          "status": "returned",
+          "code": 0,
+          "seconds": 0.24646214899257757
+        }
+      ],
+      "released": true,
+      "cleanup_errors": [],
+      "original_FP32_reference_gate_passed": false
+    }
+  ],
+  "ONNX_check": {
+    "real_inputs_per_group": 2,
+    "saved_arrays_checked": 36,
+    "group_chain_pairs_byte_equal": 18,
+    "original_FP32_gate_by_group": [
+      true,
+      true,
+      false,
+      false
+    ],
+    "second_input_has_original_Torch_output_reference": false,
+    "independent_saved_audit": {
+      "artifact": "checks_saved_audit.json",
+      "bytes": 13590,
+      "sha256": "66c3932b2174a14fd2bb4af74cdea9b0be69a00143ae3f7d40ed614e7ccf95fd"
+    }
+  },
+  "complete_model": {
+    "scope": "16 fixed offline pairs; original complete model + SL4; sequential runs, not paced latency",
+    "input_indices": [
+      32,
+      80,
+      128,
+      176,
+      224,
+      272,
+      320,
+      368,
+      416,
+      464,
+      512,
+      560,
+      608,
+      656,
+      704,
+      752,
+      797
+    ],
+    "baseline_timing": {
+      "prediction": {
+        "count": 16,
+        "mean_seconds": 1.9257375608085567,
+        "p95_seconds": 2.0737386352484464,
+        "first_seconds": 2.601359220017912,
+        "excluding_first_mean_seconds": 1.8806961168612664
+      },
+      "complete_service": {
+        "count": 16,
+        "mean_seconds": 1.958479704502679,
+        "p95_seconds": 2.100225398251496,
+        "first_seconds": 2.616625638009282,
+        "excluding_first_mean_seconds": 1.914603308935572
+      },
+      "phase_mean_seconds": {
+        "DINO": 0.2669771830624086,
+        "aggregator_including_DINO": 1.46660420481021,
+        "camera_head": 0.21656368587537145,
+        "depth_head": 0.16390413100089063
+      },
+      "aggregator_excluding_DINO_mean_seconds": 1.1996270217478013,
+      "guard_seconds_per_pair": 0.13212985193422355
+    },
+    "candidate_timing": {
+      "prediction": {
+        "count": 16,
+        "mean_seconds": 1.7635314140643459,
+        "p95_seconds": 1.9360141004945035,
+        "first_seconds": 2.5351941300032195,
+        "excluding_first_mean_seconds": 1.7120872330017542
+      },
+      "complete_service": {
+        "count": 16,
+        "mean_seconds": 1.7972859644414712,
+        "p95_seconds": 1.9705898227693979,
+        "first_seconds": 2.580490260006627,
+        "excluding_first_mean_seconds": 1.7450723447371275
+      },
+      "phase_mean_seconds": {
+        "DINO": 0.2657296933721227,
+        "aggregator_including_DINO": 1.3147750617517886,
+        "camera_head": 0.21327752649813192,
+        "depth_head": 0.1639003263135237
+      },
+      "aggregator_excluding_DINO_mean_seconds": 1.0490453683796659,
+      "guard_seconds_per_pair": 0.11158163343679917
+    },
+    "mean_service_reduction_percent": 8.230554531181122,
+    "warm_service_reduction_percent": 8.854626094462137,
+    "saved_differences": {
+      "pair": {
+        "arrays_compared": 80,
+        "arrays_byte_equal": 80,
+        "NPZ_files_byte_equal": 16,
+        "field_summary": {
+          "pose_enc": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "extrinsic": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "intrinsic": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "depth": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "depth_conf": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          }
+        }
+      },
+      "aggregator": {
+        "arrays_compared": 80,
+        "arrays_byte_equal": 80,
+        "NPZ_files_byte_equal": 16,
+        "field_summary": {
+          "layer_04": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "layer_11": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "layer_17": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "layer_23": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          },
+          "target_tokens": {
+            "byte_equal_count": 16,
+            "strict_pass_count": 16,
+            "max_abs": 0.0,
+            "mean_relative_l2": 0.0
+          }
+        }
+      },
+      "poses_file_byte_equal": true
+    },
+    "original_CPU_strict_passes": 0,
+    "original_CPU_strict_checks": 80,
+    "original_CPU_error_by_field": {
+      "pose_enc": {
+        "mean_relative_l2": 0.012400812479033631,
+        "max_relative_l2": 0.020854109578716182,
+        "max_abs": 0.030428792349994183,
+        "strict_pass_count": 0
+      },
+      "extrinsic": {
+        "mean_relative_l2": 0.012553168500034635,
+        "max_relative_l2": 0.03608022837096737,
+        "max_abs": 0.05449996516108513,
+        "strict_pass_count": 0
+      },
+      "intrinsic": {
+        "mean_relative_l2": 0.012262326675967635,
+        "max_relative_l2": 0.02591656350700739,
+        "max_abs": 12.749420166015625,
+        "strict_pass_count": 0
+      },
+      "depth": {
+        "mean_relative_l2": 0.009391248657142186,
+        "max_relative_l2": 0.018620952540362036,
+        "max_abs": 0.24108558893203735,
+        "strict_pass_count": 0
+      },
+      "depth_conf": {
+        "mean_relative_l2": 0.07198473991739024,
+        "max_relative_l2": 0.1119653783721371,
+        "max_abs": 1.0974855422973633,
+        "strict_pass_count": 0
+      }
+    },
+    "baseline_context_count": 32,
+    "candidate_context_count": 12,
+    "baseline_SDK_runs": 582,
+    "candidate_SDK_runs": 262,
+    "candidate_lifecycle": {
+      "rknn": {
+        "created": 4,
+        "destroyed": 4,
+        "live": 0,
+        "successful_runs": 64
+      },
+      "dino_rknn": {
+        "created": 6,
+        "destroyed": 6,
+        "live": 0,
+        "successful_runs": 102
+      },
+      "camera_rknn": {
+        "created": 1,
+        "destroyed": 1,
+        "live": 0,
+        "successful_runs": 64
+      },
+      "depth_rknn": {
+        "created": 1,
+        "destroyed": 1,
+        "live": 0,
+        "successful_runs": 32
+      }
+    },
+    "baseline_peak_RSS_MiB": 7226.28515625,
+    "candidate_peak_RSS_MiB": 7189.58984375,
+    "intermediate_saves_after_timed_service": true,
+    "baseline_receipt": {
+      "artifact": "complete-baseline-r1/result.json",
+      "bytes": 107259,
+      "sha256": "c806810089efa2ee311f0c9be77e1a68de43fe7e723b3014a8c475aed626a32c"
+    },
+    "candidate_receipt": {
+      "artifact": "complete-candidate-r1/result.json",
+      "bytes": 68536,
+      "sha256": "66abb80316dbd811f7f60e5a000e770645329126bea5797d82c5427d1ac300df"
+    },
+    "independent_saved_audit": {
+      "artifact": "candidate_saved_audit.json",
+      "bytes": 49613,
+      "sha256": "4ddcb0854d654e74785374c71aad75e92411abc00626cbc4ebceb4e5279c4289"
+    }
+  },
+  "replay": {
+    "fresh_pose_count": 17,
+    "original_frames": 798,
+    "fresh_pose_hz": 0.5944991163085128,
+    "input_to_pose_p95_seconds": 2.071269311365904,
+    "fresh_wall_seconds_including_EOF_drain": 28.59550087401294,
+    "startup_seconds": 30.710380710981553,
+    "peak_RSS_MiB": 7187.75390625,
+    "source": {
+      "source": "original_timestamp_rgb_replay",
+      "queue_capacity": 1,
+      "original_frames": 798,
+      "generated": 793,
+      "delivered": 18,
+      "overwritten": 775,
+      "skipped_before_decode": 5,
+      "decode_policy": "first_then_latest_due_original_timestamp",
+      "start_monotonic": 211631.971233275,
+      "end_monotonic": 211658.564402364,
+      "last_capture_monotonic": 211658.54329252243,
+      "physical_sensor_latency_validated": false,
+      "error": null
+    },
+    "map_chunks": 17,
+    "cleanup_errors": [],
+    "result": {
+      "artifact": "replay-r1/results.json",
+      "bytes": 64532,
+      "sha256": "7504e5fe71c0ec6366bc78be9c949c6c4dd207a58927e51c7fe4f527545dcec0"
+    },
+    "independent_saved_audit": {
+      "artifact": "replay_saved_audit.json",
+      "bytes": 7382,
+      "sha256": "7dcb3fdf115e9c7e42bd027ead383cd23e6ead5946e7be2ce51ab57e4bbc4e06"
+    },
+    "saved_data_checks": {
+      "schema": "v67_original_VGGT_timestamp_replay_saved_audit",
+      "status": "passed_saved_data_checks",
+      "scope": "Saved JSON, original RGB index, poses and map NPZ only; no model, ORT, SDK, board or trajectory-quality execution.",
+      "auditor_source_sha256": "941c2c9f19e65353288a391f9bff6a6d5f349f81f0b21e297b6dc192bb9e140d",
+      "results_sha256": "7504e5fe71c0ec6366bc78be9c949c6c4dd207a58927e51c7fe4f527545dcec0",
+      "complete_result_sha256": "66abb80316dbd811f7f60e5a000e770645329126bea5797d82c5427d1ac300df",
+      "replay_source_sha256": "2f9b065d15b20820bf026bfcfea3aae209dff8d542c08d44902cbb0563445ad3",
+      "source_runtime_and_manifests_match_complete_candidate": true,
+      "rgb_index_sha256": "532884d60bef0c9a05e14bf311998883baf59a2fa47009d1021f2c7937bd69a3",
+      "original_index_timestamps_independently_matched": true,
+      "fresh_pose_count": 17,
+      "unique_sequence_count": 17,
+      "sequences": [
+        1,
+        68,
+        116,
+        165,
+        214,
+        263,
+        312,
+        361,
+        410,
+        459,
+        508,
+        557,
+        607,
+        656,
+        705,
+        754,
+        797
+      ],
+      "source": {
+        "source": "original_timestamp_rgb_replay",
+        "queue_capacity": 1,
+        "original_frames": 798,
+        "generated": 793,
+        "delivered": 18,
+        "overwritten": 775,
+        "skipped_before_decode": 5,
+        "decode_policy": "first_then_latest_due_original_timestamp",
+        "start_monotonic": 211631.971233275,
+        "end_monotonic": 211658.564402364,
+        "last_capture_monotonic": 211658.54329252243,
+        "physical_sensor_latency_validated": false,
+        "error": null
+      },
+      "fresh_wall_seconds_including_EOF_drain": 28.59550087401294,
+      "fresh_pose_hz": 0.5944991163085128,
+      "input_to_pose_p95_seconds": 2.071269311365904,
+      "last_input_to_pose_seconds": 2.023441626573913,
+      "EOF_drain_seconds_after_source_end": 2.0023317850136664,
+      "segment_mean_seconds": {
+        "arrival_to_decode_seconds": 0.00020112090415376073,
+        "decode_seconds": 0.028508612940854886,
+        "queue_seconds": 0.027854819003122804,
+        "prediction_seconds": 1.630075462825035,
+        "SL4_and_points_seconds": 0.03137321387561422,
+        "publication_seconds": 0.015273972179891323
+      },
+      "full_model_mean_seconds": 1.5600453945893713,
+      "processing_mean_seconds": 1.6767226488805402,
+      "input_to_pose_segment_max_residual_seconds": 0.0,
+      "processing_segment_max_residual_seconds": 0.0,
+      "full_model_nested_in_prediction_not_added_twice": true,
+      "map_sha256": "2c760cd4c9419a497935dbedae346dfee1754df31af876b9c1a237408a843097",
+      "map_chunk_count": 17,
+      "graph_node_count": 34,
+      "map_arrays_checked": 68,
+      "point_count_total": 239892,
+      "map_chunks_finite_and_shape_counts_match": true,
+      "map_artifact_rows": [
+        {
+          "file": "map_chunks/submap_000000.npz",
+          "bytes": 212694,
+          "sha256": "dbc93f5cbb819815e5d4ff9200aa6d7064f6cf4682029eb2826b9c4dbb3b91bb"
+        },
+        {
+          "file": "map_chunks/submap_000002.npz",
+          "bytes": 212679,
+          "sha256": "a3e97accd6626b9385743463168e6c1bed8959f6b423c780506243e06cbbb50d"
+        },
+        {
+          "file": "map_chunks/submap_000004.npz",
+          "bytes": 212694,
+          "sha256": "c4f032cb754e8d2b5d77304e8fe947b3eb3ae52f36def8f3894ba7e34d89ce14"
+        },
+        {
+          "file": "map_chunks/submap_000006.npz",
+          "bytes": 212694,
+          "sha256": "934ecf7943d05caf3e41371265df95357b9dbae98e79b36c0a43b2c6869f3164"
+        },
+        {
+          "file": "map_chunks/submap_000008.npz",
+          "bytes": 212694,
+          "sha256": "1e770b829112b4d9bdf629045bb02e54ac5afaae98d6780744abd57deb483762"
+        },
+        {
+          "file": "map_chunks/submap_000010.npz",
+          "bytes": 212664,
+          "sha256": "5194adaf20a24bbb648a936cfe490510c44eeeb5332a4bde13194fd291141d0e"
+        },
+        {
+          "file": "map_chunks/submap_000012.npz",
+          "bytes": 212619,
+          "sha256": "a56b89f285e5989870191c855475d46f260862068b760b5d78f9a1c9d52c5082"
+        },
+        {
+          "file": "map_chunks/submap_000014.npz",
+          "bytes": 212694,
+          "sha256": "c4a375cce3bcf83746e48c3a39b4fe4934126cad62c330a1247b1fc103db996e"
+        },
+        {
+          "file": "map_chunks/submap_000016.npz",
+          "bytes": 212694,
+          "sha256": "57120802db8ccc4ca35a1be8d59ad0caeb8f8f70660f98e479bc6098380f3c63"
+        },
+        {
+          "file": "map_chunks/submap_000018.npz",
+          "bytes": 212694,
+          "sha256": "2984db074d143c77374cb2b0c0f2a8feb0c3cc890c03c3a6813a3cc0a3a4552e"
+        },
+        {
+          "file": "map_chunks/submap_000020.npz",
+          "bytes": 212694,
+          "sha256": "3489905513ef4e64fcef0bd058b7fe44b3e3fb3cae2ea9d8254fc2c73de6c9ba"
+        },
+        {
+          "file": "map_chunks/submap_000022.npz",
+          "bytes": 212694,
+          "sha256": "1b2a52d83a6fda854920b1b7ae2fe9ec733585732353761522390aabece1c4fc"
+        },
+        {
+          "file": "map_chunks/submap_000024.npz",
+          "bytes": 212694,
+          "sha256": "7268b142b86bc231010cd4381cb19aff4b0ee33e4399f0f12813406dea4826b5"
+        },
+        {
+          "file": "map_chunks/submap_000026.npz",
+          "bytes": 212649,
+          "sha256": "d5f02197bb5fa77a598595a46fbd490d2af6a98bcbf68d7472ab9d696d7d5eff"
+        },
+        {
+          "file": "map_chunks/submap_000028.npz",
+          "bytes": 212694,
+          "sha256": "f21efbf97d290636bf7eba284af8a1c13f1483df0d001ff48c32200ab9949275"
+        },
+        {
+          "file": "map_chunks/submap_000030.npz",
+          "bytes": 212694,
+          "sha256": "a249045e461141a2b491d1d2f9e1d62e902a9e2365e33abf0e327fe49dcf6837"
+        },
+        {
+          "file": "map_chunks/submap_000032.npz",
+          "bytes": 212679,
+          "sha256": "f9022ffdb5f1a64c4b5c119fbed9b719f44b171763524195d16fd4fd9dc26436"
+        }
+      ],
+      "poses_count": 18,
+      "poses_timestamps_match_updates_and_seed": true,
+      "poses_sha256": "35bf19b952d0783ca31dbf07a2dc4d9343d47fbe8022859b8114e6674137003f",
+      "quaternion_unit_length_max_error": 4.798379693582433e-09,
+      "lifecycle": {
+        "rknn": {
+          "contexts_created_destroyed": 4,
+          "successful_SDK_runs": 68,
+          "live_contexts": 0,
+          "cleanup_errors": []
+        },
+        "dino_rknn": {
+          "contexts_created_destroyed": 6,
+          "successful_SDK_runs": 108,
+          "live_contexts": 0,
+          "cleanup_errors": []
+        },
+        "camera_rknn": {
+          "contexts_created_destroyed": 1,
+          "successful_SDK_runs": 68,
+          "live_contexts": 0,
+          "cleanup_errors": []
+        },
+        "depth_rknn": {
+          "contexts_created_destroyed": 1,
+          "successful_SDK_runs": 34,
+          "live_contexts": 0,
+          "cleanup_errors": []
+        }
+      },
+      "total_contexts_created_destroyed": 12,
+      "total_successful_SDK_runs": 278,
+      "aggregator_outputs_acquired_released": 153,
+      "patch_cache_closed_restored": true,
+      "candidate_accepted": false,
+      "trajectory_quality_validated": false,
+      "physical_sensor_latency_validated": false,
+      "real_time_validated": false,
+      "limitations": [
+        "New selected timestamps are not the fixed-input complete comparison; no baseline trajectory quality is projected to this replay.",
+        "Software scheduled RGB arrival includes decode, queue, full prediction, SL4/points and dense map/pose publication; EOF drain is included.",
+        "Saved lifecycle counters and frozen finally paths support cleanup; this audit does not independently observe SDK frees.",
+        "Only aggregator buffers have full acquired/released counters; DINO completed owned conversions and camera last_steps are additional recorded evidence, not complete buffer instrumentation.",
+        "Finite poses and maps do not establish trajectory/map quality, metric scale, physical-camera latency, 30-minute stability or 8GB operation."
+      ]
+    }
+  },
+  "thermal_interruption_and_successful_retry": {
+    "status": "compile_process_stopped_by_temperature_monitor",
+    "monitor_sha256": "a8d6d9e37136aa0ed536319e3d30c84ab57b7b3f12f3d433a576510e7b1c1410",
+    "control_sha256": "3639130b23208600ee51690010a3071250e9b6c2d89f8ea56a8e24a7e78b10fc",
+    "partial_receipt_sha256": "de98ccd1527fce2060932cd77b576d942d69296bd818a379649cd02de83dec4a",
+    "temperature_limit_c": 75,
+    "maximum_sampled_temperature_c": 77.615,
+    "all_observed_npu_hz": [
+      300000000
+    ],
+    "returncode": -15,
+    "wrapper_cleanup_errors": [],
+    "SDK_release_confirmed": false,
+    "original_failed_directory_preserved": "vggt-v67-retained-groups-r1/compile2",
+    "retry_directory": "vggt-v67-retained-groups-r1/compile2-r2",
+    "retry_condition": "three read-only samples below55C; no system cooling/governor changes; same graph/check/config/build/source",
+    "retry_success_receipt_sha256": "abb3182234d3ef6c9db608d70e57e07c55a21842b5afd7faa9c36658b74a9d00",
+    "retry_max_sampled_temperature_c": 71.153,
+    "retry_SDK_release_confirmed": true
+  },
+  "board_stage_observations": [
+    {
+      "artifact": "vggt-v67-compose-control-r1.json",
+      "sha256": "54f3fa6eedd07e00c0556d8eb0aa4c7a5dd286c890d1d03c6053e237b14f5469",
+      "stage": "compose",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 26.681186222005635,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 63.769,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "check0-control.json",
+      "sha256": "f0ebfc5f26734f9d35aa4cc444da2971d8e73e023cbcce24d6ac9250d15022dd",
+      "stage": "check0",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 9.561186211009044,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 64.692,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "compile0-control.json",
+      "sha256": "3743f70c8a1c3e70f1bfd5adf93937280a07a614fe09214c9cef39cfba40572b",
+      "stage": "compile0",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 83.44667063502129,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 69.307,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "check1-control.json",
+      "sha256": "29a759d6074d1ea2259bd0cf0211153cff5d54ef30b574e81eda91b49a37d756",
+      "stage": "check1",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 14.535197126999265,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 71.153,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "compile1-control.json",
+      "sha256": "3eb7af36ba6551cb981c4314f94e4785d7edc883229b8c2731784fefea1112b5",
+      "stage": "compile1",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 125.23914341701311,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 72.076,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "check2-control.json",
+      "sha256": "185cf572deb188e8d542a3a7ec5b2c3091d8b6581853a86cc512746d1de33bb4",
+      "stage": "check2",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 12.578018762986176,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 73.923,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "compile2-control.json",
+      "sha256": "3639130b23208600ee51690010a3071250e9b6c2d89f8ea56a8e24a7e78b10fc",
+      "stage": "compile2",
+      "status": "failed",
+      "returncode": -15,
+      "seconds": 100.3352159979986,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 77.615,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "compile2-r2-control.json",
+      "sha256": "82347e20ff77c854e16fc69246eff1484fdc0e6712fc248e6fd78d43030182ad",
+      "stage": "compile2-r2",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 103.10443611000665,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 71.153,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "check3-control.json",
+      "sha256": "a928c14e1efba494d10bdb3ae57f36fde6581e636b9ad5d327c7b9d09fc6cb52",
+      "stage": "check3",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 12.580870806006715,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 74.846,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "compile3-control.json",
+      "sha256": "962f721951b67867fc1c71adc8a41adab23bdbebefba06901be4cfb9697a5e90",
+      "stage": "compile3",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 106.64531775700743,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 71.153,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "assemble-control.json",
+      "sha256": "21b597be990e09f1720709c73644ff06a8c0701677ac15e69631c3fc55c91f6a",
+      "stage": "assemble",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 8.524357897986192,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 64.692,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "vggt-v67-complete-baseline-control-r1.json",
+      "sha256": "f981ac5b0bc8710f1c963259d0b1084d5415d135a2d5880f9a3509109ce8372c",
+      "stage": "complete-baseline",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 71.17515423501027,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 60.076,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "vggt-v67-complete-candidate-control-r1.json",
+      "bytes": 57436,
+      "sha256": "cb96411fcf427c264b31783dd42188ff4e2a3780019ab217110087a1b995fa7b",
+      "stage": "complete-candidate",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 78.95930664098705,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 65.615,
+      "cleanup_errors": [],
+      "frequency_written": false
+    },
+    {
+      "artifact": "vggt-v67-replay-control-r1.json",
+      "bytes": 45719,
+      "sha256": "c6c728349fa5d8c37a40331c58edfa1ce5836fa9f6f9a4776b2510ebd060d455",
+      "stage": "replay",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 61.94749301599222,
+      "observed_npu_hz": [
+        300000000
+      ],
+      "maximum_sampled_temperature_c": 65.615,
+      "cleanup_errors": [],
+      "frequency_written": false
+    }
+  ],
+  "candidate_accepted": false,
+  "quality_accepted": false,
+  "realtime_validated": false,
+  "limitations": [
+    "The original strict FP32 gate remains 0/80 on full prediction arrays; FP16-baseline identity is a separate observed result.",
+    "Byte equality covers these fixed inputs only, not every possible input or undocumented internal compiler precision.",
+    "Complete-model service is sequential offline timing; fresh-observation replay has a separate end-to-end denominator.",
+    "Replay selects different source frames from earlier runs; no new paired trajectory, ATE/RPE or map-quality acceptance is inferred.",
+    "Short dataset replay on 16 GiB hardware does not establish physical-camera latency, 30-minute stability or operation within8 GiB.",
+    "RSS and SDK DMA reports must not be added as disjoint allocations. Constructor/hash verification startup is reported separately.",
+    "The target remains20 Hz and full P95 at most100ms. Loop closure is unsupported; max_loops=0.",
+    "Current tests make no clock/governor writes; the previous separately authorized1GHz measurement remains historical evidence."
+  ],
+  "post_test_board_state": {
+    "NPU": {
+      "cur_freq": "300000000",
+      "governor": "userspace",
+      "min_freq": "300000000",
+      "max_freq": "1000000000",
+      "userspace/set_freq": "300000000"
+    },
+    "temperatures_c": {
+      "bigcore1-thermal": 49.923,
+      "soc-thermal": 49.923,
+      "gpu-thermal": 49.0,
+      "littlecore-thermal": 49.923,
+      "bigcore0-thermal": 49.923,
+      "npu-thermal": 49.0,
+      "center-thermal": 49.923
+    },
+    "meminfo_selected": [
+      "MemTotal:       16076040 kB",
+      "MemAvailable:   14081268 kB",
+      "SwapTotal:             0 kB",
+      "SwapFree:              0 kB"
+    ],
+    "disk_free_bytes": 46256443392,
+    "active_weight_files": [
+      "model.pt"
+    ],
+    "third_party_model_directories": [
+      "vggt"
+    ]
+  }
+}

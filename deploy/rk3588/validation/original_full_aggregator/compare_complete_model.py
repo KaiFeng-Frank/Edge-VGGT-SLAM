@@ -18,6 +18,10 @@ def main():
     p.add_argument('--manifest', type=Path, required=True)
     p.add_argument('--manifest-sha256', required=True)
     p.add_argument('--paired-aggregator', action='store_true')
+    p.add_argument('--retained-aggregator', action='store_true',
+                   help='Group all original attention blocks at retained consumers, including target tokens')
+    p.add_argument('--save-aggregator-outputs', action='store_true',
+                   help='Save retained layer tensors and target tokens after timed service for matched checks')
     p.add_argument('--half-io-library', type=Path)
     p.add_argument('--half-io-library-sha256')
     p.add_argument('--model-threads', type=int, choices=(1, 2, 4), default=4)
@@ -39,6 +43,8 @@ def main():
         p.error('--model-cpus must not contain duplicate CPUs')
     if len(cpus) < args.model_threads:
         p.error('--model-cpus must contain at least --model-threads CPUs')
+    if args.retained_aggregator and (not args.paired_aggregator or args.half_io_library is None):
+        p.error('--retained-aggregator requires --paired-aggregator and --half-io-library')
     if args.grouped_dino and (args.dino_manifest is None or args.half_io_library is None):
         p.error('--grouped-dino requires --dino-manifest and --half-io-library')
     if (args.half_io_library is None) != (args.half_io_library_sha256 is None):
@@ -68,7 +74,10 @@ def main():
     from vggt_slam.timestamp_replay import read_rgb_index
     aggregator_options = {}
     if args.half_io_library is not None:
-        from vggt_slam.rknn_half_io_pairs import install_half_io_pairs as install_aggregator
+        if args.retained_aggregator:
+            from vggt_slam.rknn_retained_aggregator import install_retained_aggregator as install_aggregator
+        else:
+            from vggt_slam.rknn_half_io_pairs import install_half_io_pairs as install_aggregator
         aggregator_options.update(half_io_library=args.half_io_library,
                                    half_io_library_sha256=args.half_io_library_sha256)
     elif args.paired_aggregator:
@@ -91,6 +100,8 @@ def main():
                   timing_scope='offline complete original model + SL4; not paced input latency',
                   manifest_sha256=args.manifest_sha256, script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
     report['grouped_dino'] = args.grouped_dino
+    report['retained_aggregator'] = args.retained_aggregator
+    report['save_aggregator_outputs'] = args.save_aggregator_outputs
     report['runtime_source_sha256'] = {
         name: hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
         for name in ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
@@ -101,6 +112,8 @@ def main():
             ('rknn_half_io_dino.py',) if args.dino_manifest is not None else ())
         if args.grouped_dino:
             half_io_sources += ('rknn_grouped_dino.py',)
+        if args.retained_aggregator:
+            half_io_sources += ('rknn_retained_aggregator.py',)
         for name in half_io_sources:
             report['runtime_source_sha256'][name] = hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
         report.update(half_io_experiment=True, internal_precision_changed=False,
@@ -108,6 +121,9 @@ def main():
                       half_io_library=str(args.half_io_library.resolve()),
                       half_io_library_sha256=args.half_io_library_sha256,
                       half_io_source_sha256=report['runtime_source_sha256']['native/fp16_neon.c'])
+        if args.retained_aggregator:
+            report.update(internal_precision_changed=None,
+                          compiled_boundary_rounding_equivalence_validated=False)
     branches = ['cpu_fp32', 'npu_fp16_aggregator_cpu_fp32_heads',
                 'npu_fp16_aggregator_camera_cpu_fp32_DINO_depth']
     dino_branch = 'npu_fp16_DINO_aggregator_camera_cpu_fp32_depth'
@@ -116,6 +132,8 @@ def main():
         report['depth_manifest_sha256'] = args.depth_manifest_sha256
     if args.paired_aggregator:
         dino_branch += '_paired_aggregator'
+    if args.retained_aggregator:
+        dino_branch += '_retained_groups'
     reference = args.output / 'cpu_fp32'
     if args.dino_manifest is not None:
         branches.append(dino_branch)
@@ -140,12 +158,14 @@ def main():
         branches = [dino_branch]
     model = load_model(BASE/'weights/model.pt', device='cpu', image_size=112,
                        prune_unused_heads=True, offline=True)
-    phase_starts, phase_seconds, hooks = {}, {}, []
+    phase_starts, phase_seconds, hooks, aggregator_outputs = {}, {}, [], {}
     def clock_hooks(name):
         def before(module, inputs):
             phase_starts[name] = time.monotonic()
         def after(module, inputs, outputs):
             phase_seconds[name] = time.monotonic()-phase_starts[name]
+            if name == 'aggregator_including_DINO' and args.save_aggregator_outputs:
+                aggregator_outputs['value'] = outputs
         return before, after
     for name, module in (('DINO',model.aggregator.patch_embed),
                          ('aggregator_including_DINO',model.aggregator),
@@ -198,6 +218,30 @@ def main():
                            graph_error=float(solver.graph.graph.error(solver.graph.values)))
                 arrays = {k:np.array(pred[k],copy=True) for k in ('pose_enc','extrinsic','intrinsic','depth','depth_conf')}
                 np.savez(folder/f'pair-{i:02d}.npz',**arrays)
+                if args.save_aggregator_outputs:
+                    values = aggregator_outputs.pop('value')
+                    if (not isinstance(values, tuple) or len(values) != 4 or len(values[0]) != 24
+                            or values[1] != 5 or values[3] is not None):
+                        raise ValueError('Original Aggregator four-result contract differs')
+                    retained = {4, 11, 17, 23}
+                    if any(value is not None for j, value in enumerate(values[0]) if j not in retained):
+                        raise ValueError('Unexpected retained original layer')
+                    captured = {f'layer_{j:02d}': values[0][j] for j in sorted(retained)}
+                    captured['target_tokens'] = values[2]
+                    saved = {}
+                    for key, value in captured.items():
+                        shape = (2, 53, 1024) if key == 'target_tokens' else (1, 2, 53, 2048)
+                        if (not isinstance(value, torch.Tensor) or value.dtype != torch.float32
+                                or value.device.type != 'cpu' or tuple(value.shape) != shape
+                                or not torch.isfinite(value).all()):
+                            raise ValueError(f'Original Aggregator output differs: {key}')
+                        saved[key] = value.detach().numpy().copy()
+                    path = folder/f'aggregator-{i:02d}.npz'
+                    np.savez(path, **saved)
+                    row['aggregator_artifact'] = dict(file=path.name,
+                        bytes=path.stat().st_size, sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                        captured_after_timed_service=True)
+                    del values, captured, saved
                 if branch != 'cpu_fp32':
                     row['original_fp32_comparison'] = {}
                     with np.load(reference/f'pair-{i:02d}.npz') as ref:

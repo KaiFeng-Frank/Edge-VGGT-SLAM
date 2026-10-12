@@ -30,6 +30,8 @@ def main():
     p.add_argument('--rknn-manifest-sha256')
     p.add_argument('--rknn-paired-aggregator', action='store_true',
                    help='Use all 24 original frame/global pairs with both original outputs')
+    p.add_argument('--rknn-retained-aggregator', action='store_true',
+                   help='Group all original attention blocks at retained consumers, including target tokens')
     p.add_argument('--half-io-library', type=Path)
     p.add_argument('--half-io-library-sha256')
     p.add_argument('--rknn-camera-head', action='store_true')
@@ -46,6 +48,8 @@ def main():
         p.error('--model-cpus must not contain duplicate CPUs')
     if len(cpus) < args.model_threads:
         p.error('--model-cpus must contain at least --model-threads CPUs')
+    if args.rknn_retained_aggregator and (not args.rknn_paired_aggregator or args.half_io_library is None):
+        p.error('--rknn-retained-aggregator requires --rknn-paired-aggregator and --half-io-library')
     if args.rknn_grouped_dino and (args.rknn_dino_manifest is None or args.half_io_library is None):
         p.error('--rknn-grouped-dino requires --rknn-dino-manifest and --half-io-library')
     if (args.half_io_library is None) != (args.half_io_library_sha256 is None):
@@ -114,6 +118,7 @@ def main():
                                ('_depth_logits' if args.rknn_depth_manifest else '') + '_remaining_CPU_FP32')
     report['script_sha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     report['rknn_grouped_dino'] = args.rknn_grouped_dino
+    report['rknn_retained_aggregator'] = args.rknn_retained_aggregator
     report['runtime_source_sha256'] = {
         name: hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
         for name in ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
@@ -124,6 +129,8 @@ def main():
             ('rknn_half_io_dino.py',) if args.rknn_dino_manifest is not None else ())
         if args.rknn_grouped_dino:
             half_io_sources += ('rknn_grouped_dino.py',)
+        if args.rknn_retained_aggregator:
+            half_io_sources += ('rknn_retained_aggregator.py',)
         for name in half_io_sources:
             report['runtime_source_sha256'][name] = hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
         report.update(half_io_experiment=True, internal_precision_changed=False,
@@ -131,6 +138,9 @@ def main():
                       half_io_library=str(args.half_io_library.resolve()),
                       half_io_library_sha256=args.half_io_library_sha256,
                       half_io_source_sha256=report['runtime_source_sha256']['native/fp16_neon.c'])
+        if args.rknn_retained_aggregator:
+            report.update(internal_precision_changed=None,
+                          compiled_boundary_rounding_equivalence_validated=False)
     replay = cache = depth_rknn = dino_rknn = camera_rknn = rknn = None
     hooks = []
     affinity = os.sched_getaffinity(0)
@@ -162,7 +172,10 @@ def main():
         if args.rknn_manifest is not None:
             aggregator_options = dict(source_root=BASE / 'src')
             if args.half_io_library is not None:
-                from vggt_slam.rknn_half_io_pairs import install_half_io_pairs as install_aggregator
+                if args.rknn_retained_aggregator:
+                    from vggt_slam.rknn_retained_aggregator import install_retained_aggregator as install_aggregator
+                else:
+                    from vggt_slam.rknn_half_io_pairs import install_half_io_pairs as install_aggregator
                 aggregator_options.update(half_io_library=args.half_io_library,
                                            half_io_library_sha256=args.half_io_library_sha256)
             elif args.rknn_paired_aggregator:

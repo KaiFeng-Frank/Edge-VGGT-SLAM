@@ -1,0 +1,109 @@
+{
+  "schema": "v66_original_VGGT_first_retained_group_component",
+  "status": "component_measured_not_full_model_or_quality_acceptance",
+  "original_model_only": true,
+  "pair_indices": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "original_attention_blocks_retained": 10,
+  "retained_outputs": [
+    "frame4",
+    "global4"
+  ],
+  "NPU_hz": 300000000,
+  "evidence": {
+    "export": {
+      "artifact": "group-export.json",
+      "bytes": 95136,
+      "sha256": "94408328485f46cf35c047e413e47283cb49c34432f4abc8cbd1458b6966e138"
+    },
+    "ONNX_check": {
+      "artifact": "check/check.json",
+      "bytes": 24599,
+      "sha256": "ac515be04e6cbfa39de63b5428d2eabb2b161cd3c61a8a714b24430eb0347b7d"
+    },
+    "ONNX_independent_audit": {
+      "artifact": "check-audit.json",
+      "bytes": 5828,
+      "sha256": "48ea5242c1b37753cff8e7849edec2a59979b5e6ca9be6f80e29fc8642d35e95"
+    },
+    "compile": {
+      "artifact": "compile-result.json",
+      "bytes": 24006,
+      "sha256": "4f9bb29b9f5b6f7c9d99e922191c285d5431295efb6cb1fe0a9de1356cc37936"
+    },
+    "probe": {
+      "artifact": "probe-r1/result.json",
+      "bytes": 103174,
+      "sha256": "0aca1e51d37f9e564b4e5b3618e297c5733e81cd534e1724b2b418ab3ee5f17d"
+    },
+    "saved_array_audit": {
+      "artifact": "probe-audit.json",
+      "bytes": 870,
+      "sha256": "592bd7593aae33935c55ef02f399d023a3c9663ebd7dcdc973483f8b6eb3c4e6"
+    }
+  },
+  "ONNX_chain": {
+    "real_inputs": 2,
+    "retained_comparisons": 4,
+    "all_byte_equal": true,
+    "original_FP32_reference_checks": 2,
+    "original_FP32_reference_passes": 2
+  },
+  "FP16_probe": {
+    "schema": "v66_independent_saved_probe_audit",
+    "method": "Host saved JSON/NPZ/NPY only; no model or SDK execution",
+    "probe_result_sha256": "0aca1e51d37f9e564b4e5b3618e297c5733e81cd534e1724b2b418ab3ee5f17d",
+    "all_32_saved_endpoint_arrays_finite_and_byte_equal_per_input": true,
+    "calls": 16,
+    "SDK_runs": 48,
+    "owned_output_buffers_released": 96,
+    "contexts_destroyed": 6,
+    "strict_original_FP32_passes": 0,
+    "strict_original_FP32_comparisons": 16,
+    "mean_component_seconds": {
+      "A": 0.20724600700486917,
+      "B": 0.177733101338769
+    },
+    "component_reduction_percent": 14.240518354308652,
+    "mean_run_API_seconds": {
+      "A": 0.18740722783453143,
+      "B": 0.17393720516217095
+    },
+    "all_32_observed_frequency_samples_hz": [
+      300000000
+    ],
+    "max_sampled_temperature_c": 57.307,
+    "cleanup_errors": [],
+    "whole_model_or_realtime_claim": false
+  },
+  "configuration": {
+    "float_dtype": "float16",
+    "quantize_weight": false,
+    "do_quantization": false,
+    "model_pruning": false,
+    "remove_reshape": false,
+    "enable_flash_attention": false
+  },
+  "frozen_future_consumer_metadata_correction": {
+    "standalone_aggregator_default_target_layer": 20,
+    "actual_VGGT_constructor_target_layer": 21,
+    "actual_target_producer_global_index": 20,
+    "earlier_future_global19_metadata_correct": false,
+    "first_group_0_to_4_math_or_outputs_affected": false,
+    "corrected_in_v67_before_graph_execution": true
+  },
+  "candidate_accepted": false,
+  "quality_accepted": false,
+  "realtime_validated": false,
+  "limitations": [
+    "Component call means exclude first call per input and route; six remaining calls per route, ABBAABBA ordering across two real inputs.",
+    "All endpoint arrays match the separate FP16 route on these inputs, while all 16 available original FP32 probe checks fail.",
+    "No component-to-whole-model speedup extrapolation. See the separate v67 full-path measurements.",
+    "Frozen v66 future consumer metadata was corrected after checking the outer VGGT constructor; the executed first group does not contain that target layer."
+  ]
+}
