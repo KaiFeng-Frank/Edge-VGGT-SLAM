@@ -1,0 +1,378 @@
+{
+  "schema": "original_VGGT_execution_diagnostics_v76",
+  "status": "diagnostics_completed_candidates_not_adopted",
+  "original_model_only": true,
+  "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "production_inference_changed": false,
+  "new_full_model_or_trajectory_or_realtime_validation": false,
+  "goal_achieved": false,
+  "latest_full_runtime_receipt": "results/original_1ghz_current_v75.json",
+  "latest_full_runtime_fresh_pose_hz": 0.7759883772444884,
+  "latest_full_runtime_input_to_pose_p95_seconds": 1.5705221903845084,
+  "FC2_output_channel_partition": {
+    "scope": "Original frame0/global0 pair; full K retained, original parameters and tokens preserved; FP32 output equality precedes FP16 compilation",
+    "frequency_hz": 300000000,
+    "init_flags": 0,
+    "schedule": "ABCCBA*10 per input, two real saved inputs; exclude first of each input/route; 38 warm per route",
+    "summary": {
+      "A": {
+        "warm_count": 38,
+        "mean_component_seconds": 0.03829999394350268,
+        "per_input": {
+          "v53": 0.038150462207053544,
+          "v56-calib00": 0.03844952567995183
+        }
+      },
+      "B": {
+        "warm_count": 38,
+        "mean_component_seconds": 0.04024877705638861,
+        "per_input": {
+          "v53": 0.039935115845812684,
+          "v56-calib00": 0.04056243826696453
+        }
+      },
+      "C": {
+        "warm_count": 38,
+        "mean_component_seconds": 0.04170637142133752,
+        "per_input": {
+          "v53": 0.04152872768463567,
+          "v56-calib00": 0.04188401515803937
+        }
+      }
+    },
+    "FP32_candidate_outputs_byte_equal_count": 8,
+    "original_Torch_SDK_strict": {
+      "covered_outputs": 126,
+      "passed": 0,
+      "reference_case": "v53",
+      "missing_case": "v56-calib00"
+    },
+    "SDK_calls": 126,
+    "outputs_released": 252,
+    "contexts_closed": 6,
+    "profile_explanation": "Original three-core ConvAdd becomes serial split Conv with Concat, LayerScale Mul and residual Add; no speed improvement",
+    "adopted": false
+  },
+  "native_tensor_metadata_loop": {
+    "scope": "Full original model fingerprint only; no forward, SDK or ORT inference; module traversal and both guards retained",
+    "candidate_is_native_implementation_of_same_tensor_metadata_loop": true,
+    "all_48_complete_fingerprints_equal": true,
+    "exclude_first_per_route": {
+      "A": {
+        "count": 23,
+        "mean_ms": 37.740389649432316,
+        "median_ms": 32.83758700126782,
+        "p95_ms": 34.42562420386821,
+        "min_ms": 31.52771102031693,
+        "max_ms": 147.47076499043033
+      },
+      "B": {
+        "count": 23,
+        "mean_ms": 36.15623378351776,
+        "median_ms": 36.07946200645529,
+        "p95_ms": 37.27759891480673,
+        "min_ms": 35.037044988712296,
+        "max_ms": 37.420546024804935
+      }
+    },
+    "ABBA_block_differences": {
+      "block_count": 12,
+      "B_slower_count": 11,
+      "mean_B_minus_A_ms": -1.2960937868532103,
+      "median_B_minus_A_ms": 3.586552760680206,
+      "p95_B_minus_A_ms": 4.191301528771874
+    },
+    "median_B_slower_percent": 9.872451971158247,
+    "outlier_cause_unknown": true,
+    "decision": "Do not infer gain from A mean inflated by one 147.471 ms call; B is slower in 11/12 blocks",
+    "board_native_behavior_tests_passed": 7,
+    "initial_fake_fixture_corrected": true,
+    "initial_toolchain_library_path_failure_preserved": true,
+    "adopted": false
+  },
+  "current_four_group_profile": {
+    "scope": "Eight independent group component SDK inferences, not a chained full-model normal run",
+    "actual_SDK_component_inference": true,
+    "actual_full_Torch_model_OR_ORT_or_compiler_execution": false,
+    "raw_receipt_field_clarification": "Frozen actual_model_or_ORT_or_compiler_execution=False is overbroad; actual SDK component inference occurred eight times",
+    "frequency_hz": 1000000000,
+    "init_flags": 8,
+    "aggregates": {
+      "v53": {
+        "total_profile_operator_us": 614883,
+        "operator_count": 1231,
+        "MLP": {
+          "FC1": {
+            "count": 48,
+            "us": 91545,
+            "share_percent": 14.888198242592493
+          },
+          "FC2": {
+            "count": 48,
+            "us": 126491,
+            "share_percent": 20.571555889494423
+          }
+        },
+        "layout_locations": {
+          "public_input_output_boundary": {
+            "count": 26,
+            "us": 12634
+          },
+          "frame_attention": {
+            "count": 240,
+            "us": 83282
+          },
+          "frame_global_bridge": {
+            "count": 88,
+            "us": 16125
+          },
+          "global_attention": {
+            "count": 48,
+            "us": 52
+          }
+        },
+        "reported_SDK_WorkLoad": {
+          "FC1": [
+            "100.0%/0.0%/0.0%"
+          ],
+          "FC2": [
+            "34.4%/32.8%/32.8%"
+          ],
+          "SDPA": [
+            "100.0%/0.0%/0.0%"
+          ],
+          "norm": [
+            "100.0%/0.0%/0.0%"
+          ]
+        },
+        "normalization_us": 87248,
+        "SDPA_us": 56152,
+        "transpose_and_reshape_us": 112093
+      },
+      "v56-calib00": {
+        "total_profile_operator_us": 741320,
+        "operator_count": 1231,
+        "MLP": {
+          "FC1": {
+            "count": 48,
+            "us": 101056,
+            "share_percent": 13.631899854313927
+          },
+          "FC2": {
+            "count": 48,
+            "us": 133882,
+            "share_percent": 18.059947121351104
+          }
+        },
+        "layout_locations": {
+          "public_input_output_boundary": {
+            "count": 26,
+            "us": 13759
+          },
+          "frame_attention": {
+            "count": 240,
+            "us": 100242
+          },
+          "frame_global_bridge": {
+            "count": 88,
+            "us": 23420
+          },
+          "global_attention": {
+            "count": 48,
+            "us": 107
+          }
+        },
+        "reported_SDK_WorkLoad": {
+          "FC1": [
+            "100.0%/0.0%/0.0%"
+          ],
+          "FC2": [
+            "34.4%/32.8%/32.8%"
+          ],
+          "SDPA": [
+            "100.0%/0.0%/0.0%"
+          ],
+          "norm": [
+            "100.0%/0.0%/0.0%"
+          ]
+        },
+        "normalization_us": 108730,
+        "SDPA_us": 62249,
+        "transpose_and_reshape_us": 137528
+      }
+    },
+    "route_accounting": {
+      "profile_call_count": 8,
+      "rknn_run_seconds": 1.5246982350654434,
+      "complete_route_seconds": 1.5573150310083292,
+      "rknn_run_route_share_percent": 97.90557496117101,
+      "all_conversion_owned_copy_submission_get_release_seconds": 0.018662002898054197,
+      "all_conversion_owned_copy_submission_get_release_route_share_percent": 1.1983447489086994,
+      "input_conversion_seconds": 0.0010030419507529587,
+      "output_conversion_seconds": 0.005223167972872034,
+      "owned_half_copy_seconds": 0.004554668033961207
+    },
+    "resources": {
+      "contexts_created": 4,
+      "contexts_destroyed": 4,
+      "live_contexts": 0,
+      "SDK_runs": 8,
+      "outputs_acquired": 18,
+      "outputs_released": 18,
+      "cleanup_errors": [],
+      "source_and_inputs_unchanged": true,
+      "affinity_restored": true
+    },
+    "control": {
+      "sha256": "cb43e8b83a5ae059abb89633c2db75be999d66269b8413bc71637885ab24d4a8",
+      "sample_count": 28,
+      "all_observed_frequency_hz": 1000000000,
+      "max_monitor_temperature_c": 60.076,
+      "probe_before_after_sample_count": 16,
+      "all_call_frequency_samples_match": true,
+      "max_call_temperature_c": 58.23,
+      "child_returncode": 0,
+      "restored_frequency_hz": 300000000,
+      "governor_and_limits_restored": true,
+      "restore_errors": []
+    },
+    "same_artifact_same_input_normal_reference_available": false,
+    "normal_profile_byte_equal_not_claimed": true,
+    "layout_conclusion": "Main residual flow already retains channel layout. Most remaining layout work is inside original frame attention, not removable layer-boundary conversion."
+  },
+  "group0_FC2_K4": {
+    "scope": "Original group0 five frame/global pairs; ten FC2 operators partitioned on K, same parameter values, FP32 reduction order changed; groups1/2/3 not changed",
+    "compiled_from_existing_passed_fixed_FP32_gate": true,
+    "frequency_hz": 1000000000,
+    "init_flags": 0,
+    "schedule": "ABBA repeated6; two cases in fixed original order",
+    "warm_scope": "Exclude first call of each route within each input:11 warm/case/route,22 total/route; second-case first is not a fresh-context cold call",
+    "summary": {
+      "A": {
+        "warm_count": 22,
+        "mean_seconds": 0.13464076722580517,
+        "median_seconds": 0.1358109509892529,
+        "p95_seconds": 0.13829023479192984,
+        "min_seconds": 0.12488084597862326,
+        "max_seconds": 0.13863326399587095,
+        "inputs": {
+          "v53": {
+            "warm_count": 11,
+            "mean_seconds": 0.13480396808749487
+          },
+          "v56-calib00": {
+            "warm_count": 11,
+            "mean_seconds": 0.13447756636411545
+          }
+        }
+      },
+      "B": {
+        "warm_count": 22,
+        "mean_seconds": 0.13242914399994665,
+        "median_seconds": 0.1349137834913563,
+        "p95_seconds": 0.1388665535938344,
+        "min_seconds": 0.1025463440164458,
+        "max_seconds": 0.13901301397709176,
+        "inputs": {
+          "v53": {
+            "warm_count": 11,
+            "mean_seconds": 0.13383849427389743
+          },
+          "v56-calib00": {
+            "warm_count": 11,
+            "mean_seconds": 0.13101979372599584
+          }
+        }
+      }
+    },
+    "root_saved_review": {
+      "status": "passed_saved_checks",
+      "NPZ_files": 4,
+      "independent_saved_arrays": 8,
+      "logged_output_hashes_matching_first": 96,
+      "block_median_B_minus_A_ms": -0.6722920079482719,
+      "blocks_B_slower": 5,
+      "blocks_B_faster": 7,
+      "block_differences_ms": [
+        8.068813011050224,
+        6.800667004426941,
+        1.6737290134187788,
+        -0.8847710123518482,
+        -10.305354982847348,
+        -0.4598130035446957,
+        -2.520875495974906,
+        -3.184249988407828,
+        0.8461259858449921,
+        6.51743849448394,
+        -3.656333006802015,
+        -18.915251494036056
+      ],
+      "controls_samples": 26,
+      "max_temperature_c": 60.076,
+      "frequency_restored_hz": 300000000,
+      "new_full_model_performance_claim": false
+    },
+    "first_saved_outputs_vs_original_Torch_FP32": {
+      "A": [
+        {
+          "output": 0,
+          "strict_pass": false,
+          "relative_l2": 0.0061424829054235,
+          "max_abs": 0.04753541946411133
+        },
+        {
+          "output": 1,
+          "strict_pass": false,
+          "relative_l2": 0.00791243616741371,
+          "max_abs": 0.06452608108520508
+        }
+      ],
+      "B": [
+        {
+          "output": 0,
+          "strict_pass": false,
+          "relative_l2": 0.006107058661314653,
+          "max_abs": 0.04753541946411133
+        },
+        {
+          "output": 1,
+          "strict_pass": false,
+          "relative_l2": 0.007835864453820918,
+          "max_abs": 0.05671358108520508
+        }
+      ]
+    },
+    "strict_rtol": 0.0001,
+    "strict_atol": 1e-05,
+    "second_input_has_no_original_Torch_reference": true,
+    "contexts_created": 2,
+    "contexts_destroyed": 2,
+    "SDK_calls": 48,
+    "outputs_released": 96,
+    "decision": "Small variable component difference; not evidence of reliable improvement. Do not integrate or compile groups1/3 on this evidence.",
+    "adopted": false,
+    "compile_stage_wall_seconds": 103.44972297700588,
+    "sdk_build_seconds": 90.6223261889827
+  },
+  "source_and_raw_receipt_sha256": {
+    "normal-r1/result.json": "9fbac911b79f8bef2da6fa968c49135cc8b043cf30a71320f93b3e4023adb789",
+    "profile-r1/result.json": "6d2ce3be93863ef6ae230cdb216faf6c3448ae20ee7826c0cc5583ff9038d63d",
+    "audit_saved.json": "088f8058675bf4cb8c133b3ec31aef02ca22add96587a9ef278a23ffbbdf3866",
+    "native-benchmark.json": "ebe2b09beeeca4f6da5e9d158f17b36cef52298f98819ac801da7deaae9a80b1",
+    "native-benchmark-analysis.json": "4875f3b2fe2008257ae7aa454b4525aa059ac1c4aa6fa2dd8d21158f1a7a1a75",
+    "retained-profile-1ghz-r1/result.json": "7ac89585dedcedfea1168d085c811483cc31ecf1932e8bfdaf84b07022044dea",
+    "retained-profile-analysis.json": "e34e2c3ce62f3eeda0bdf94c870172f41a56279bc908c184539b42c1af35cebb",
+    "retained-profile-saved-audit.json": "0f8e480ab016b637b68a55907b6ecea5d282cd06f37d460c166b90ef3e14463e",
+    "k4-group0-compile-r1/result.json": "d1ef4a8fb38fdbcf8499baed8536e1cd82061e283d98fc576fcc6f4fa951da06",
+    "retained-k4-normal-1ghz-r1/result.json": "8d31a17ed1650bc85f12bf5e20c8f6be973ec77918ef26f51b5d5ff34bac8d5f",
+    "retained-k4-1ghz-control-r1/control.json": "f16f091a1f4f8402a1d805c23a61ca7f12724cf3a8eeaec6177c340d2fb963a4",
+    "root-k4-saved-review.json": "da480667505c6fb3cc4815a322ef5224ef120b08dc65507c950baaa064fa2e53",
+    "retained-k4-original-reference-audit.json": "4af6ea57683bd02f70f212fdf08c566b0ca21ecbf1b4c4584cd2542d34e94902"
+  },
+  "limits": [
+    "No new complete-model run, trajectory evaluation, physical camera test, 30-minute test or physical 8GB validation.",
+    "Component measurements and profiling clocks do not establish fresh-pose throughput.",
+    "Raw arrays, ONNX/RKNN files, checkpoint, shared libraries and SDK logs remain private.",
+    "Existing original FP32 strict tensor failures are not reclassified as passes. Repository code and model weight licenses remain separate."
+  ]
+}

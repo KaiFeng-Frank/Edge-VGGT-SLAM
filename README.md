@@ -17,6 +17,8 @@ The real-time target remains unmet.
 [Current measurements and reproduction](deploy/rk3588/validation/original_clock_current/README.md).
 The [earlier v63 frequency result](results/original_1ghz_v63.json) used the preceding configuration.
 
+Further original-model execution diagnostics found no production improvement: FC2 output-channel partition and native tensor metadata checks were slower; a five-pair FC2 K4 comparison at 1 GHz gave only a small, variable component difference. Profiles of all four current groups confirm that their main residual stream already retains its channel layout. These diagnostics do not change the full-runtime figures above. [Evidence and reproduction](deploy/rk3588/validation/original_execution_diagnostics/README.md).
+
 The subsequent **300 MHz retained-group path** reduces mean complete-model
 service on the same 16 pairs from **1.958 s to 1.797 s (8.23%)**. All 80
 prediction arrays, 80 retained/target arrays and the saved trajectory remain
