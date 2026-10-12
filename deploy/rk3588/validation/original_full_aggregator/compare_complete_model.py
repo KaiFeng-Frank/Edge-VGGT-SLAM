@@ -34,6 +34,8 @@ def main():
                    help='Execute all 24 original DINO layers as six four-layer graphs')
     p.add_argument('--depth-manifest', type=Path)
     p.add_argument('--depth-manifest-sha256')
+    p.add_argument('--checkpoint-pageout', action='store_true',
+                   help='Reclaim clean original checkpoint pages after each backend install; explicit experiment')
     p.add_argument('--camera-split4', action='store_true',
                    help='Use the measured original four-way FC1 camera graph in the complete DINO branch')
     p.add_argument('--reference-run', type=Path,
@@ -66,6 +68,10 @@ def main():
         p.error('Supply both depth manifest and SHA256')
     if args.depth_manifest is not None and args.dino_manifest is None:
         p.error('The complete depth comparison requires the DINO candidate')
+    if args.checkpoint_pageout and not (args.retained_aggregator and args.grouped_dino
+            and args.depth_manifest is not None and args.camera_split4
+            and args.half_io_library is not None and args.reference_run is not None):
+        p.error('--checkpoint-pageout requires the complete retained/grouped-DINO/depth/camera-split4/half-IO candidate and --reference-run')
     assert b'rockchip,rk3588' in Path('/proc/device-tree/compatible').read_bytes()
     args.output.mkdir(parents=True, exist_ok=False)
     os.sched_setaffinity(0, cpus)
@@ -106,6 +112,7 @@ def main():
     report['grouped_dino'] = args.grouped_dino
     report['retained_aggregator'] = args.retained_aggregator
     report['camera_split4'] = args.camera_split4
+    report['checkpoint_pageout'] = args.checkpoint_pageout
     if args.camera_split4:
         report.update(compiled_graph_changed=True, compiled_camera_rounding_equivalence_validated=False)
     report['save_aggregator_outputs'] = args.save_aggregator_outputs
@@ -133,6 +140,9 @@ def main():
                           compiled_boundary_rounding_equivalence_validated=False)
     if args.camera_split4:
         report['internal_precision_changed'] = None
+    if args.checkpoint_pageout:
+        report['runtime_source_sha256']['checkpoint_residency.py'] = hashlib.sha256(
+            (BASE/'src/vggt_slam/checkpoint_residency.py').read_bytes()).hexdigest()
     branches = ['cpu_fp32', 'npu_fp16_aggregator_cpu_fp32_heads',
                 'npu_fp16_aggregator_camera_cpu_fp32_DINO_depth']
     dino_branch = 'npu_fp16_DINO_aggregator_camera_cpu_fp32_depth'
@@ -165,8 +175,14 @@ def main():
         if set(report['reused_cpu_reference']['array_sha256']) != {f'pair-{i:02d}.npz' for i in range(1, len(selected))}:
             raise ValueError('Reference must retain all original complete output arrays')
         branches = [dino_branch]
+    loaded_checkpoint_stat = None
+    if args.checkpoint_pageout:
+        from vggt_slam.checkpoint_residency import checkpoint_stat, memory_snapshot, pageout_checkpoint
+        loaded_checkpoint_stat = checkpoint_stat(BASE/'weights/model.pt')
     model = load_model(BASE/'weights/model.pt', device='cpu', image_size=112,
                        prune_unused_heads=True, offline=True)
+    if args.checkpoint_pageout and checkpoint_stat(BASE/'weights/model.pt') != loaded_checkpoint_stat:
+        raise ValueError('Original checkpoint changed across verified load_model')
     phase_starts, phase_seconds, hooks, aggregator_outputs = {}, {}, [], {}
     def clock_hooks(name):
         def before(module, inputs):
@@ -181,16 +197,34 @@ def main():
                          ('camera_head',model.camera_head),('depth_head',model.depth_head)):
         before,after = clock_hooks(name)
         hooks.extend((module.register_forward_pre_hook(before),module.register_forward_hook(after)))
+    def pageout_after_install(stage, result, folder):
+        if not args.checkpoint_pageout:
+            return
+        receipt_path = folder/f'checkpoint-pageout-{stage}.json'
+        item = dict(stage=stage, file=receipt_path.relative_to(args.output).as_posix(), status='calling')
+        result.setdefault('checkpoint_pageout_stages', []).append(item)
+        (args.output/'result.json').write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
+        try:
+            receipt = pageout_checkpoint(model, BASE/'weights/model.pt', loaded_checkpoint_stat,
+                receipt_path, source_root=BASE/'src', stage=stage)
+            item.update(status=receipt['status'], sha256=hashlib.sha256(receipt_path.read_bytes()).hexdigest())
+        except BaseException:
+            item['status'] = 'failed'
+            raise
     npu = camera_npu = dino_npu = depth_npu = cache = None
     try:
         for branch in branches:
             folder = args.output/branch
             folder.mkdir()
+            result = dict(updates=[], status='running')
+            report['branches'][branch] = result
             if branch != 'cpu_fp32':
                 npu = install_aggregator(model, args.manifest, args.manifest_sha256, **aggregator_options)
+                pageout_after_install('aggregator_installed', result, folder)
             if branch in ('npu_fp16_aggregator_camera_cpu_fp32_DINO_depth', dino_branch):
                 camera_npu = (install_rknn_camera_head(model, split_fc1=True)
                               if args.camera_split4 and branch == dino_branch else install_rknn_camera_head(model))
+                pageout_after_install('camera_installed', result, folder)
             if branch == dino_branch:
                 dino_options = {}
                 if args.half_io_library is not None:
@@ -204,13 +238,13 @@ def main():
                     from vggt_slam.rknn_dino_blocks import install_rknn_dino_blocks as install_dino
                 dino_npu = install_dino(model, args.dino_manifest, args.dino_manifest_sha256,
                                         **dino_options)
+                pageout_after_install('DINO_installed', result, folder)
                 if args.depth_manifest is not None:
                     from vggt_slam.rknn_depth_head import install_rknn_depth_head
                     depth_npu = install_rknn_depth_head(model, args.depth_manifest, args.depth_manifest_sha256)
+                    pageout_after_install('depth_installed', result, folder)
             cache = install_patch_cache(model)
             solver = Solver(25.,device='cpu',image_size=112,max_loops=0,offline=True,enable_viewer=False)
-            result = dict(updates=[], status='running')
-            report['branches'][branch] = result
             for i in range(1,len(selected)):
                 paths = [selected[i-1]['path'],selected[i]['path']]
                 start = time.monotonic()
@@ -226,6 +260,8 @@ def main():
                            complete_service_seconds=time.monotonic()-start,
                            model_phase_seconds=dict(phase_seconds),
                            graph_error=float(solver.graph.graph.error(solver.graph.values)))
+                if args.checkpoint_pageout:
+                    row['checkpoint_pageout_post_inference'] = memory_snapshot(BASE/'weights/model.pt', loaded_checkpoint_stat)
                 arrays = {k:np.array(pred[k],copy=True) for k in ('pose_enc','extrinsic','intrinsic','depth','depth_conf')}
                 np.savez(folder/f'pair-{i:02d}.npz',**arrays)
                 if args.save_aggregator_outputs:
@@ -303,6 +339,13 @@ def main():
         if cleanup_errors:
             report['status'] = 'failed'
         report['peak_RSS_MiB']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024
+        if args.checkpoint_pageout:
+            try:
+                report['checkpoint_pageout_post_cleanup_memory'] = memory_snapshot(BASE/'weights/model.pt', loaded_checkpoint_stat)
+                report['post_cleanup_RSS_MiB'] = report['checkpoint_pageout_post_cleanup_memory']['status_kB']['VmRSS']/1024
+            except BaseException as exc:
+                cleanup_errors.append(f'pageout final snapshot: {type(exc).__name__}: {exc}')
+                report['status'] = 'failed'
         (args.output/'result.json').write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
         if cleanup_errors:
             raise RuntimeError('Backend cleanup failed: ' + '; '.join(cleanup_errors))

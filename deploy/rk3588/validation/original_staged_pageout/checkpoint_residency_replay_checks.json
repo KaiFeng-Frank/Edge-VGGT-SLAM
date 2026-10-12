@@ -1,0 +1,31 @@
+{
+  "schema": "v74_checkpoint_residency_replay_generated_source_checks",
+  "status": "passed_generated_service_checks_only",
+  "files": {
+    "scripts/replay_original_vggt.py": {
+      "bytes": 25724,
+      "sha256": "eb793e40e126753c4c4714547b0cae9e102c4f3da7f93d6071dbb8474f3821e4"
+    },
+    "tests/test_checkpoint_residency_replay.py": {
+      "bytes": 16969,
+      "sha256": "b53c850204e42b64b112e608ecbfa02c2807ec60c0338d2d36788cfc2443881b"
+    }
+  },
+  "new_tests_passed": 18,
+  "existing_replay_tests_passed": 47,
+  "initial_combined_tests_passed": 65,
+  "final_new_test_file_passed": 18,
+  "actual_model_or_SDK_or_board_or_madvise_run": false,
+  "scopes": [
+    "flag dependencies rejected before board/load",
+    "pre/post verified-load stat match",
+    "four install/advice calls in order and durable pre-advice report",
+    "stage errors preserve receipt and close every installed handle",
+    "startup includes advice/snapshot; one post-publication diagnostic snapshot",
+    "default false never calls residency helper",
+    "source/queue/SL4 publication loop unchanged"
+  ],
+  "production_files_modified": [
+    "scripts/replay_original_vggt.py"
+  ]
+}

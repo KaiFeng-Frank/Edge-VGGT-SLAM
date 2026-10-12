@@ -90,6 +90,16 @@ The earlier initialization peak remains **7095.7 MiB**; speed does not improve.
 This is an explicit diagnostic, with no production-default change or physical
 8 GB acceptance. [Measurements and reproduction](deploy/rk3588/validation/original_checkpoint_pageout/README.md).
 
+Reclaiming those pages **after each backend installation** also lowers the
+observed initialization peak: **7169.9 to 3920.1 MiB** in a complete 16-pair
+comparison, with all 160 saved arrays and the trajectory byte-identical.
+The new explicit `--checkpoint-pageout` replay option produces 18 fresh updates
+from 798 timestamped frames at **0.621 Hz, complete P95 2.030 s**, with peak
+process RSS **3920.4 MiB**. This improves measured memory usage; there is no
+speed improvement or real-time acceptance. The option is off by default, and
+physical 8 GB operation remains untested.
+[Implementation, measurements and reproduction](deploy/rk3588/validation/original_staged_pageout/README.md).
+
 The additional-model retrieval and semantic paths have been removed. **Loop closure has no replacement implementation:** `max_loops=0` is the supported Solver configuration. Requests to enable loops or supply legacy auxiliary-model arguments must fail before loading or inference. The original VGGT model's numerical similarity capability does not itself implement loop retrieval.
 
 The original checkpoint is `facebook/VGGT-1B`, `model.pt`, **5,026,874,952 bytes**, SHA256 `d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0`. Source-code and checkpoint licensing are separate; see [model provenance](MODEL_LICENSES.md) and [upstream pins](UPSTREAMS.json). No weights, captured arrays, weight-bearing exports or SDK binaries are distributed. The loader verifies this exact byte size and full SHA256 before deserialization, including explicit local paths and cached downloads. Automatic downloads use the recorded immutable revision; there is no runtime identity-check bypass.
@@ -192,6 +202,14 @@ The latest configuration additionally uses `--rknn-dino-manifest DINO/compiled.j
 --rknn-dino-manifest-sha256 SHA256 --rknn-depth-manifest DEPTH/compiled.json
 --rknn-depth-manifest-sha256 SHA256`. All selected backends install before the
 original tail cache. Unsupported inputs and SDK failures raise without fallback.
+
+The optional `--checkpoint-pageout` requires the complete retained/paired
+aggregator, native half I/O, grouped DINO, camera split4, depth and patch-cache
+configuration. It advises only verified clean mappings of the original
+checkpoint in its own process, after each of the four backend installations.
+Its startup cost is included in `startup_seconds`; replay does not add per-frame
+memory snapshots. Exact measured arguments and artifact identities are in the
+[staged pageout reproduction](deploy/rk3588/validation/original_staged_pageout/README.md).
 
 ## Original-model evidence
 

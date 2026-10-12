@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "source_sha256": "75b81c6b8dd2c9fcb96f76bdb5fecb5d15e5c7794a161deee8aa4f323d020e7c",
+  "cases": [
+    {
+      "failure_stage": null,
+      "advice_count": 4,
+      "cleanup_order": [
+        "cache",
+        "depth",
+        "DINO",
+        "camera",
+        "agg"
+      ]
+    },
+    {
+      "failure_stage": "aggregator_installed",
+      "advice_count": 1,
+      "cleanup_order": [
+        "agg"
+      ]
+    },
+    {
+      "failure_stage": "camera_installed",
+      "advice_count": 2,
+      "cleanup_order": [
+        "camera",
+        "agg"
+      ]
+    },
+    {
+      "failure_stage": "DINO_installed",
+      "advice_count": 3,
+      "cleanup_order": [
+        "DINO",
+        "camera",
+        "agg"
+      ]
+    },
+    {
+      "failure_stage": "depth_installed",
+      "advice_count": 4,
+      "cleanup_order": [
+        "depth",
+        "DINO",
+        "camera",
+        "agg"
+      ]
+    }
+  ],
+  "dependency_gate_before_torch": true,
+  "memory_snapshot_outside_service": true,
+  "original_cleanup_AST_executed_with_fake_handles": true,
+  "actual_model_OR\u0422_SDK_madvise_execution": false
+}

@@ -1,0 +1,637 @@
+{
+  "schema": "v74_original_VGGT_staged_checkpoint_residency_public",
+  "status": "saved_complete_and_timestamp_replay_independently_verified_not_quality_or_realtime_acceptance",
+  "original_model_only": true,
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "implementation": {
+    "explicit_flag": "--checkpoint-pageout",
+    "default_enabled": false,
+    "required_configuration": [
+      "retained aggregator",
+      "paired aggregator",
+      "native FP16 I/O",
+      "grouped DINO",
+      "camera split4",
+      "depth logits backend",
+      "patch cache"
+    ],
+    "stage_order": [
+      "aggregator_installed",
+      "camera_installed",
+      "DINO_installed",
+      "depth_installed"
+    ],
+    "each_stage_receipt_reference_persisted_before_advice": true,
+    "verified_checkpoint_load_unchanged": true,
+    "original_parameters_and_tensor_identity_preserved_by_contract": true,
+    "no_original_layers_tokens_or_weights_removed": true,
+    "source_and_model_forward_math_unchanged": true,
+    "startup_cost_includes_four_advice_calls_and_startup_snapshot": true,
+    "per_frame_memory_snapshot_added": false,
+    "post_publication_precleanup_snapshot_is_separate_diagnostic_work": true,
+    "queue_and_SL4_map_publication_loop_unchanged": true
+  },
+  "frozen_source_files": {
+    "vggt_slam/checkpoint_residency.py": {
+      "sha256": "1948fa3f49814d8fc1025516025df79adc7b1bd0e0a54a86f842b1590f445777",
+      "bytes": 13027
+    },
+    "scripts/replay_original_vggt.py": {
+      "sha256": "eb793e40e126753c4c4714547b0cae9e102c4f3da7f93d6071dbb8474f3821e4",
+      "bytes": 25724
+    },
+    "deploy/rk3588/validation/original_full_aggregator/compare_complete_model.py": {
+      "sha256": "75b81c6b8dd2c9fcb96f76bdb5fecb5d15e5c7794a161deee8aa4f323d020e7c",
+      "bytes": 22169
+    },
+    "tests/test_checkpoint_residency_replay.py": {
+      "sha256": "b53c850204e42b64b112e608ecbfa02c2807ec60c0338d2d36788cfc2443881b",
+      "bytes": 16969
+    }
+  },
+  "generated_replay_tests": {
+    "receipt_sha256": "ace52fb4cefe2c2a7caa6e78ae46ef42e189f0ea3c9fc10ca16cc50430a63a6f",
+    "combined_unique_cases_passed": 65,
+    "new_cases": 18,
+    "existing_cases": 47,
+    "final_new_file_rerun_passed": 18,
+    "rerun_does_not_add_to_unique_case_count": true,
+    "actual_model_SDK_board_or_madvise_run": false
+  },
+  "baseline": {
+    "result_sha256": "9a733793681352b2a565a0e6299079b205b00dfbb6bcfb1cd7797461932a8cef",
+    "actual_comparator_script_sha256": "1e1d28e11f2f476b875593d272526bf816ac3049fa3b69309acaf10a08229927",
+    "saved_repeat_audit_sha256": "4a93d0cca19a78ac5f74ad33507d45d2af7d9b779cd28bbf6248a2d7d045ef9a",
+    "previous_v73_result_sha256": "045e7f6fef23bf80d44ce8effc5e8991fa9a974302942ae8cf35dc1c81ae4146",
+    "image_shape": [
+      2,
+      3,
+      84,
+      112
+    ],
+    "input_indices": [
+      32,
+      80,
+      128,
+      176,
+      224,
+      272,
+      320,
+      368,
+      416,
+      464,
+      512,
+      560,
+      608,
+      656,
+      704,
+      752,
+      797
+    ],
+    "model_threads": 1,
+    "cpu_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "same_existing_FP16_model_configuration": true,
+    "checkpoint_pageout_enabled": false,
+    "pairs": 16,
+    "all16_complete_service_mean_seconds": 1.593269042810789,
+    "first_complete_service_seconds": 2.130306548002409,
+    "warm15_complete_service_mean_seconds": 1.557466542464681,
+    "all16_phase_mean_seconds": {
+      "DINO": 0.25519227824952395,
+      "aggregator_including_DINO": 1.2417141222485952,
+      "camera_head": 0.14555991824636294,
+      "depth_head": 0.13911057387304027
+    },
+    "timing_scope": "offline full original model plus SL4 service; not timestamp latency or an interleaved causal speed comparison",
+    "NPZ_files_file_SHA_equal_to_previous": 32,
+    "saved_predict_and_retained_target_arrays_byte_equal_per_saved_audit": 160,
+    "poses_file_byte_equal_to_previous": true,
+    "original_CPU_FP32_strict_passes": 0,
+    "original_CPU_FP32_strict_comparisons": 80,
+    "peak_RSS_MiB": 7169.87109375,
+    "resources": {
+      "rknn": {
+        "contexts_created_and_destroyed": 4,
+        "SDK_runs": 64
+      },
+      "dino_rknn": {
+        "contexts_created_and_destroyed": 6,
+        "SDK_runs": 102
+      },
+      "camera_rknn": {
+        "contexts_created_and_destroyed": 1,
+        "SDK_runs": 64
+      },
+      "depth_rknn": {
+        "contexts_created_and_destroyed": 1,
+        "SDK_runs": 32
+      }
+    },
+    "total_contexts_created_and_destroyed": 12,
+    "SDK_runs": 262,
+    "aggregator_outputs_acquired_and_released": 144,
+    "cache_closed_and_restored": true,
+    "cleanup_errors": [],
+    "source_runtime_sha256": {
+      "patch_cache.py": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b",
+      "rknn_aggregator_blocks.py": "4fea665334e9d12a3d55839c3150680e269bab9794074d698bed2ad0a6e41c93",
+      "rknn_camera_head.py": "e20518d08c47746e1bf58e07bd6d0270bc7c7f6daa4d0858593f478ce6dfb09e",
+      "rknn_dino_blocks.py": "6cf230ea3ae6c65b9a3c7ec0b31e9abb346edb2fc0413b6b77a3a3b510b495de",
+      "rknn_depth_head.py": "7efacdb27be4aeb134fd2b64e2819136320fc45d25973517584522d314ba7894",
+      "rknn_aggregator_pairs.py": "08270da911213d0d22c21c9a7f001aaa7e16d7f7b32220f8a2b0c1ddc4b09b88",
+      "rknn_half_io_pairs.py": "53b573f494f2598183659ba4e8dcb7503c770d9e2ac7b95cae9016279805d9a4",
+      "native/fp16_neon.c": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3",
+      "rknn_half_io_dino.py": "e39469432aa5663f0a15756be0067ec92a0fb7127e6702a794298c3e902f3cd7",
+      "rknn_grouped_dino.py": "e0e5664dc231a9960db12ae6c690d3f0604417a4d74991dcbd0ca2ca765ef6ac",
+      "rknn_retained_aggregator.py": "04fbb5b2ad7db22bf26d52d4a6b5a3fadffa042557919575938b035f5dd06b5f"
+    }
+  },
+  "baseline_memory_monitor": {
+    "control_sha256": "ab617c7ba4a36db4ef9e023089de08ce01be023b5f7b2cab046572516cc03a0c",
+    "monitor_source_sha256": "cffea1b1828e9763783ac523df3f03837bcb08fbe8ecec535b607bfd7cb9693b",
+    "samples": 125,
+    "worker_memory_samples": 123,
+    "rollup_samples": 123,
+    "checkpoint_mapping_observations": 77,
+    "observed_peak_rollup_MiB": {
+      "Rss": 7168.35546875,
+      "Pss": 7164.470703125,
+      "Pss_Anon": 297.67578125,
+      "Pss_File": 4552.474609375,
+      "Pss_Shmem": 2314.3203125,
+      "Private_Clean": 4585.9765625,
+      "Private_Dirty": 2577.6875,
+      "Swap": 0.0
+    },
+    "maximum_checkpoint_residency_MiB": {
+      "Size": 4794.00390625,
+      "Rss": 4420.1875,
+      "Pss": 4420.1875,
+      "Private_Clean": 4420.1875,
+      "Private_Dirty": 0.0,
+      "Shared_Clean": 0.0,
+      "Shared_Dirty": 0.0,
+      "Anonymous": 0.0,
+      "Swap": 0.0
+    },
+    "all_observed_checkpoint_resident_pages_clean": true,
+    "NPU_hz": 300000000,
+    "frequency_written": false,
+    "maximum_sampled_temperature_C": 63.769,
+    "child_returncode": 0,
+    "wrapper_seconds": 73.46617271497962,
+    "cleanup_errors": [],
+    "limits": [
+      "Sequential procfs reads are non-atomic samples, not precise instantaneous peaks.",
+      "RSS, PSS and SDK DMA counters are different accounting views and must not be summed as independent physical memory.",
+      "Baseline checkpoint pages observed clean do not establish reclaimed memory, reduced startup HWM or 8 GB validation."
+    ]
+  },
+  "candidate_complete": {
+    "status": "independently_verified_fixed_input_complete_saved_evidence",
+    "result_sha256": "94190f294f13a07f0390edc60c1488f73f3257893413b6fd0812c1bcaff9997b",
+    "saved_complete_audit_sha256": "8ce53423c895cfe9d29ce2b8f5945c0782602b37721e51c4dd6bb2757cdd2c09",
+    "comparator_source_sha256": "75b81c6b8dd2c9fcb96f76bdb5fecb5d15e5c7794a161deee8aa4f323d020e7c",
+    "input_indices": [
+      32,
+      80,
+      128,
+      176,
+      224,
+      272,
+      320,
+      368,
+      416,
+      464,
+      512,
+      560,
+      608,
+      656,
+      704,
+      752,
+      797
+    ],
+    "pairs": 16,
+    "prediction_arrays_byte_equal_to_baseline": 80,
+    "retained_and_target_arrays_byte_equal_to_baseline": 80,
+    "whole_NPZ_files_byte_equal_to_baseline": 32,
+    "poses_file_byte_equal_to_baseline": true,
+    "all_160_arrays_finite_and_bytes_independently_verified": true,
+    "all16_complete_service_mean_seconds": 1.5899647013138747,
+    "warm15_complete_service_mean_seconds": 1.5620005013343568,
+    "peak_RSS_MiB": 3920.0625,
+    "baseline_peak_RSS_MiB": 7169.87109375,
+    "observed_process_HWM_decrease_MiB": 3249.80859375,
+    "observed_process_HWM_decrease_percent": 45.32589988379106,
+    "active_post_inference_memory_samples": 16,
+    "active_rollup_RSS_range_MiB": [
+      2740.984375,
+      2758.3046875
+    ],
+    "active_status_VmRSS_range_MiB": [
+      2740.984375,
+      2758.1484375
+    ],
+    "active_checkpoint_RSS_range_MiB": [
+      8.1875,
+      8.1875
+    ],
+    "post_cleanup_RSS_MiB": 444.8984375,
+    "post_cleanup_is_not_active_model_memory": true,
+    "four_advice_stages": [
+      {
+        "stage": "aggregator_installed",
+        "receipt_sha256": "36410b02cf5426f89ff6e4c33b4914f4d0ee551d359f8cc055c7b55058c4d36f",
+        "helper_sha256": "1948fa3f49814d8fc1025516025df79adc7b1bd0e0a54a86f842b1590f445777",
+        "status": "advice_completed_not_memory_or_quality_acceptance",
+        "before": {
+          "process_rollup_RSS_MiB": 3919.046875,
+          "process_status_VmRSS_MiB": 3919.03515625,
+          "process_rollup_PSS_MiB": 3915.1884765625,
+          "checkpoint_RSS_MiB": 2309.0625,
+          "checkpoint_private_clean_MiB": 2309.0625,
+          "checkpoint_private_dirty_MiB": 0.0,
+          "swap_MiB": 0.0
+        },
+        "after_immediate": {
+          "process_rollup_RSS_MiB": 1611.3125,
+          "process_status_VmRSS_MiB": 1611.2578125,
+          "process_rollup_PSS_MiB": 1607.4541015625,
+          "checkpoint_RSS_MiB": 0.0,
+          "checkpoint_private_clean_MiB": 0.0,
+          "checkpoint_private_dirty_MiB": 0.0,
+          "swap_MiB": 0.0
+        },
+        "advice_returncode": 0,
+        "advice_errno": 0,
+        "advice_seconds": 0.5270627200079616,
+        "helper_seconds": 0.8747842540033162,
+        "checkpoint_VMA_layout_stat_and_tensor_metadata_preserved": true,
+        "tensor_metadata_sha256": "23e8b30ee474b09583b1737fb99bcee9e030cb271771c0eedd7f49f1f97ca8e0"
+      },
+      {
+        "stage": "camera_installed",
+        "receipt_sha256": "bb298dc8ed7d744d35761a13f35cd85335f58ad3acaaa59d26b730270d37b04f",
+        "helper_sha256": "1948fa3f49814d8fc1025516025df79adc7b1bd0e0a54a86f842b1590f445777",
+        "status": "advice_completed_not_memory_or_quality_acceptance",
+        "before": {
+          "process_rollup_RSS_MiB": 2852.640625,
+          "process_status_VmRSS_MiB": 2852.45703125,
+          "process_rollup_PSS_MiB": 2848.7822265625,
+          "checkpoint_RSS_MiB": 824.875,
+          "checkpoint_private_clean_MiB": 824.875,
+          "checkpoint_private_dirty_MiB": 0.0,
+          "swap_MiB": 0.0
+        },
+        "after_immediate": {
+          "process_rollup_RSS_MiB": 2027.765625,
+          "process_status_VmRSS_MiB": 2027.58203125,
+          "process_rollup_PSS_MiB": 2023.9072265625,
+          "checkpoint_RSS_MiB": 0.0,
+          "checkpoint_private_clean_MiB": 0.0,
+          "checkpoint_private_dirty_MiB": 0.0,
+          "swap_MiB": 0.0
+        },
+        "advice_returncode": 0,
+        "advice_errno": 0,
+        "advice_seconds": 0.1950025190017186,
+        "helper_seconds": 0.5082718009944074,
+        "checkpoint_VMA_layout_stat_and_tensor_metadata_preserved": true,
+        "tensor_metadata_sha256": "23e8b30ee474b09583b1737fb99bcee9e030cb271771c0eedd7f49f1f97ca8e0"
+      },
+      {
+        "stage": "DINO_installed",
+        "receipt_sha256": "dc87597362ff9b2268a76e3751dbf306a3430c785f4b0ae3b06f77256fe8b305",
+        "helper_sha256": "1948fa3f49814d8fc1025516025df79adc7b1bd0e0a54a86f842b1590f445777",
+        "status": "advice_completed_not_memory_or_quality_acceptance",
+        "before": {
+          "process_rollup_RSS_MiB": 3795.87109375,
+          "process_status_VmRSS_MiB": 3795.73046875,
+          "process_rollup_PSS_MiB": 3792.0126953125,
+          "checkpoint_RSS_MiB": 1170.04296875,
+          "checkpoint_private_clean_MiB": 1170.04296875,
+          "checkpoint_private_dirty_MiB": 0.0,
+          "swap_MiB": 0.0
+        },
+        "after_immediate": {
+          "process_rollup_RSS_MiB": 2626.484375,
+          "process_status_VmRSS_MiB": 2626.4609375,
+          "process_rollup_PSS_MiB": 2622.6259765625,
+          "checkpoint_RSS_MiB": 0.0,
+          "checkpoint_private_clean_MiB": 0.0,
+          "checkpoint_private_dirty_MiB": 0.0,
+          "swap_MiB": 0.0
+        },
+        "advice_returncode": 0,
+        "advice_errno": 0,
+        "advice_seconds": 0.27263806900009513,
+        "helper_seconds": 0.7613323270052206,
+        "checkpoint_VMA_layout_stat_and_tensor_metadata_preserved": true,
+        "tensor_metadata_sha256": "23e8b30ee474b09583b1737fb99bcee9e030cb271771c0eedd7f49f1f97ca8e0"
+      },
+      {
+        "stage": "depth_installed",
+        "receipt_sha256": "9403ac92fa811f2f3fc9e0bedf17b92169470f8f4e87bf8865565c346e5c5f2d",
+        "helper_sha256": "1948fa3f49814d8fc1025516025df79adc7b1bd0e0a54a86f842b1590f445777",
+        "status": "advice_completed_not_memory_or_quality_acceptance",
+        "before": {
+          "process_rollup_RSS_MiB": 2829.671875,
+          "process_status_VmRSS_MiB": 2758.48828125,
+          "process_rollup_PSS_MiB": 2825.8134765625,
+          "checkpoint_RSS_MiB": 124.75,
+          "checkpoint_private_clean_MiB": 124.75,
+          "checkpoint_private_dirty_MiB": 0.0,
+          "swap_MiB": 0.0
+        },
+        "after_immediate": {
+          "process_rollup_RSS_MiB": 2704.92578125,
+          "process_status_VmRSS_MiB": 2633.7421875,
+          "process_rollup_PSS_MiB": 2701.0673828125,
+          "checkpoint_RSS_MiB": 0.00390625,
+          "checkpoint_private_clean_MiB": 0.00390625,
+          "checkpoint_private_dirty_MiB": 0.0,
+          "swap_MiB": 0.0
+        },
+        "advice_returncode": 0,
+        "advice_errno": 0,
+        "advice_seconds": 0.03014317000634037,
+        "helper_seconds": 0.33326303301146254,
+        "checkpoint_VMA_layout_stat_and_tensor_metadata_preserved": true,
+        "tensor_metadata_sha256": "23e8b30ee474b09583b1737fb99bcee9e030cb271771c0eedd7f49f1f97ca8e0"
+      }
+    ],
+    "total_advice_seconds": 1.0248464780161157,
+    "total_helper_seconds": 2.4776514150144067,
+    "advice_in_initialization_not_complete_service_seconds": true,
+    "original_CPU_FP32_strict_passes": 0,
+    "original_CPU_FP32_strict_comparisons": 80,
+    "resources": {
+      "rknn": {
+        "contexts_created_and_destroyed": 4,
+        "SDK_runs": 64
+      },
+      "dino_rknn": {
+        "contexts_created_and_destroyed": 6,
+        "SDK_runs": 102
+      },
+      "camera_rknn": {
+        "contexts_created_and_destroyed": 1,
+        "SDK_runs": 64
+      },
+      "depth_rknn": {
+        "contexts_created_and_destroyed": 1,
+        "SDK_runs": 32
+      }
+    },
+    "total_contexts_created_and_destroyed": 12,
+    "SDK_runs": 262,
+    "aggregator_outputs_acquired_and_released": 144,
+    "cache_closed_and_restored": true,
+    "cleanup_errors": [],
+    "monitor": {
+      "control_sha256": "489a88e51eeac97fd6018ee0114d050bfe8ab878920d294af72053d46b7ae7fb",
+      "samples": 98,
+      "NPU_hz": 300000000,
+      "frequency_written": false,
+      "maximum_sampled_temperature_C": 63.769,
+      "wrapper_seconds": 55.4461485290085,
+      "child_returncode": 0,
+      "cleanup_errors": []
+    },
+    "speedup_claimed": false,
+    "comparison_interleaved": false,
+    "new_trajectory_quality_accepted": false,
+    "eight_GB_hardware_validated": false,
+    "long_run_stability_validated": false,
+    "limits": [
+      "OS process high-water RSS is lower in this staged run; RSS/PSS/device DMA accounting are not summed as independent physical memory.",
+      "Post-inference points are sampled residency, not exact inference peaks; post-cleanup RSS follows context destruction.",
+      "Identical outputs on these 16 pairs preserve the tested existing FP16 branch. Original CPU strict gates remain failed.",
+      "This fixed-input complete-model comparison does not itself establish timestamp replay freshness, P95 or trajectory quality. Separate replay measurements are recorded below; 20 Hz, 30-minute and 8 GB acceptance remain unmet or untested."
+    ],
+    "saved_source_identity_memory_audit_sha256": "93e0e7cc281ac3d6c5b3abc28d44ec98f6acd34b0baa3d2ebabddbbc30dc894e"
+  },
+  "candidate_timestamp_replay": {
+    "status": "independent_saved_timeline_map_residency_resources_and_monitor_verified",
+    "result_sha256": "cbd6435fb6dab3808cf4fa2641b3057716778a84cb65e1ac54fc53235308288b",
+    "map_sha256": "339a120edc8899306e9f948a2ddce591010ae2e5f56d78a501119d40e7a82eb8",
+    "poses_sha256": "a8e597ddba00522bba031b28f27ba9f4844deea49640f72aa9d282798007e621",
+    "script_sha256": "eb793e40e126753c4c4714547b0cae9e102c4f3da7f93d6071dbb8474f3821e4",
+    "checkpoint_residency_source_sha256": "1948fa3f49814d8fc1025516025df79adc7b1bd0e0a54a86f842b1590f445777",
+    "checkpoint_pageout_enabled": true,
+    "original_frames": 798,
+    "fresh_pose_count": 18,
+    "fresh_wall_seconds_including_EOF_drain": 28.965324785996927,
+    "fresh_pose_hz": 0.6214327004094898,
+    "full_input_to_pose_P95_seconds": 2.0300571300162114,
+    "startup_seconds": 39.456760338973254,
+    "peak_RSS_MiB": 3920.39453125,
+    "first_fresh_source_timestamp": 1305031102.211214,
+    "last_fresh_source_timestamp": 1305031128.747363,
+    "source": {
+      "queue_capacity": 1,
+      "original_frames": 798,
+      "generated": 798,
+      "delivered": 19,
+      "overwritten": 779,
+      "skipped_before_decode": 0,
+      "decode_policy": "first_then_latest_due_original_timestamp",
+      "physical_sensor_latency_validated": false,
+      "error": null
+    },
+    "map": {
+      "revision": 18,
+      "dense_chunks": 18,
+      "nodes": 36,
+      "units": "model_units",
+      "metric_scale_validated": false,
+      "finite_saved_points": 253976,
+      "poses_rows_including_seed": 19
+    },
+    "four_advice_stages": [
+      {
+        "stage": "aggregator_installed",
+        "receipt": "checkpoint-pageout-aggregator_installed.json",
+        "status": "advice_completed_not_memory_or_quality_acceptance",
+        "sha256": "b00ea8ff22ebd92d316b811272f3879825203590abb87b349a0565655f547f3d",
+        "helper_seconds": 0.8760025470110122,
+        "advice_calls": 1,
+        "advice_seconds": 0.5253074690117501,
+        "tensor_storage_VA_version_unchanged": true,
+        "checkpoint_VMA_layout_unchanged": true,
+        "before_rollup_RSS_MiB": 3919.453125,
+        "after_rollup_RSS_MiB": 1611.75390625
+      },
+      {
+        "stage": "camera_installed",
+        "receipt": "checkpoint-pageout-camera_installed.json",
+        "status": "advice_completed_not_memory_or_quality_acceptance",
+        "sha256": "237b9518a33b63e4501a5e88ab13cd2ba2e230dd1a87b6479bfa8fd46eb1d4a0",
+        "helper_seconds": 0.512668385024881,
+        "advice_calls": 1,
+        "advice_seconds": 0.1954280610079877,
+        "tensor_storage_VA_version_unchanged": true,
+        "checkpoint_VMA_layout_unchanged": true,
+        "before_rollup_RSS_MiB": 2853.109375,
+        "after_rollup_RSS_MiB": 2028.234375
+      },
+      {
+        "stage": "DINO_installed",
+        "receipt": "checkpoint-pageout-DINO_installed.json",
+        "status": "advice_completed_not_memory_or_quality_acceptance",
+        "sha256": "724114ce0639eb172f8b0b0cf9cdd2b503b9f9d07ec7506a2d0f15ccc73172c2",
+        "helper_seconds": 0.7731862439832184,
+        "advice_calls": 1,
+        "advice_seconds": 0.288796696026111,
+        "tensor_storage_VA_version_unchanged": true,
+        "checkpoint_VMA_layout_unchanged": true,
+        "before_rollup_RSS_MiB": 3796.0,
+        "after_rollup_RSS_MiB": 2626.0078125
+      },
+      {
+        "stage": "depth_installed",
+        "receipt": "checkpoint-pageout-depth_installed.json",
+        "status": "advice_completed_not_memory_or_quality_acceptance",
+        "sha256": "5a1dd96cdc94f7b26193f0c1b5e58fb54a0bca5fb97c9f2c4d51760d46d06a56",
+        "helper_seconds": 0.33141678301035427,
+        "advice_calls": 1,
+        "advice_seconds": 0.03009504498913884,
+        "tensor_storage_VA_version_unchanged": true,
+        "checkpoint_VMA_layout_unchanged": true,
+        "before_rollup_RSS_MiB": 2829.1953125,
+        "after_rollup_RSS_MiB": 2704.4453125
+      }
+    ],
+    "startup_active_rollup_RSS_MiB": 2704.5859375,
+    "precleanup_active_rollup_RSS_MiB": 2756.3359375,
+    "startup_checkpoint_RSS_MiB": 0.03515625,
+    "precleanup_checkpoint_RSS_MiB": 8.21875,
+    "startup_memory_snapshot_seconds": 0.07923942498746328,
+    "post_publication_precleanup_diagnostic_seconds": 0.11302692798199132,
+    "startup_cost_includes_advice_and_snapshot": true,
+    "no_per_frame_smaps_reads": true,
+    "latency_scope": "original software arrival through decode, queue, full model, SL4, dense chunk and poses/map atomic replacements",
+    "pageout_timing_scope": "Four advice calls and startup snapshot are included in startup_seconds; no per-frame memory reads; precleanup snapshot is separate diagnostic work after the final publication",
+    "resources_reported": {
+      "rknn": {
+        "contexts_created": 4,
+        "contexts_destroyed": 4,
+        "live_contexts": 0,
+        "closed": true,
+        "SDK_runs": 72,
+        "cleanup_errors": []
+      },
+      "dino_rknn": {
+        "contexts_created": 6,
+        "contexts_destroyed": 6,
+        "live_contexts": 0,
+        "closed": true,
+        "SDK_runs": 114,
+        "cleanup_errors": []
+      },
+      "camera_rknn": {
+        "contexts_created": 1,
+        "contexts_destroyed": 1,
+        "live_contexts": 0,
+        "closed": true,
+        "SDK_runs": 72,
+        "cleanup_errors": []
+      },
+      "depth_rknn": {
+        "contexts_created": 1,
+        "contexts_destroyed": 1,
+        "live_contexts": 0,
+        "closed": true,
+        "SDK_runs": 36,
+        "cleanup_errors": []
+      }
+    },
+    "total_contexts_created_and_destroyed_reported": 12,
+    "total_SDK_runs_reported": 294,
+    "aggregator_outputs_acquired": 162,
+    "aggregator_outputs_released": 162,
+    "cache": {
+      "requests": 18,
+      "input_frames": 36,
+      "hit_frames": 17,
+      "miss_frames": 19,
+      "computed_frames": 19,
+      "closed": true,
+      "restored": true,
+      "restore_errors": []
+    },
+    "cleanup_errors": [],
+    "monitor": {
+      "control_sha256": "456b5e86af88b9620d460edd1ca8f8e1eb57d75ad493e6fcc1d286e3135d20e7",
+      "samples": 126,
+      "NPU_hz": 300000000,
+      "frequency_written": false,
+      "wrapper_seconds": 71.15340027399361,
+      "child_returncode": 0,
+      "cleanup_errors": [],
+      "monitor_maximum_sampled_temperature_C": 65.615,
+      "platform_maximum_sampled_temperature_C": 66.538,
+      "platform_samples": 19,
+      "frequency_scope": "126 external monitor samples and 19 saved platform samples; not a continuous trace"
+    },
+    "independent_replay_saved_audit_sha256": "926c94389f9b125225b98b6833bab4e66b305f75df7899201870229a81d942cd",
+    "speedup_claimed": false,
+    "twenty_Hz_or_100ms_P95_achieved": false,
+    "eight_GB_hardware_validated": false,
+    "thirty_minute_stability_validated": false,
+    "trajectory_quality_validated": false,
+    "candidate_accepted": false,
+    "limits": [
+      "Independent saved audit verified source timing arithmetic, anchor chain, finite maps/poses, checkpoint mapping continuity and reported lifecycle metrics. Saved scope limitations remain explicit.",
+      "This replay processes a different timestamp-selected trajectory from the fixed complete-model comparison; that comparison is not a new replay ATE/RPE result.",
+      "Startup advice/snapshot cost is in startup_seconds; final diagnostic work occurs after the last publication and is explicitly timed separately.",
+      "Peak process RSS, active sampled residency and post-context-cleanup memory are different scopes.",
+      "No physical camera, 8 GB-board, 30-minute, new quality or real-time acceptance is claimed.",
+      "Raw 1343-row tensor metadata is not saved; continuity review binds the saved metadata counts and digests.",
+      "Explicit per-output release counters are available for aggregator outputs; independent release counters are not saved for every backend.",
+      "Frequency evidence comprises discrete monitor/platform samples, not continuous monitoring."
+    ],
+    "EOF_to_final_publication_seconds": 2.3741211140004452,
+    "queue_and_drop_accounting_verified": true,
+    "finite_map_arrays_verified": 72,
+    "map_node_transforms_finite_verified": 36,
+    "total_contexts_created_and_destroyed_verified": 12,
+    "successful_SDK_runs_verified": 294,
+    "checkpoint_file_and_mapping_continuity_verified": true,
+    "saved_checkpoint_mapping_snapshot_count": 10
+  },
+  "eight_GB_hardware_validated": false,
+  "original_FP32_quality_accepted": false,
+  "twenty_Hz_and_100ms_P95_achieved": false,
+  "new_speedup_claimed": false,
+  "limits": [
+    "Completed baseline, staged complete-model and timestamp-replay saved evidence is bound by source review, complete memory audit and replay audit receipts.",
+    "A saved FP16 repeat cannot be promoted to original FP32 component equivalence or new ATE/RPE acceptance.",
+    "Staged complete-model and timestamp-replay measurements are taken from v74 actual records; no v73 one-off figures are reused.",
+    "Startup peak, active residency, post-cleanup memory, trajectory quality and long-run stability must remain separate."
+  ],
+  "target_result_file": "results/original_staged_pageout_v74.json",
+  "public_reproduction_directory": "deploy/rk3588/validation/original_staged_pageout",
+  "public_receipts": {
+    "source-review.json": {
+      "file": "deploy/rk3588/validation/original_staged_pageout/source-review.json",
+      "sha256": "b142d2779aba2fcfa99620a83eead8a1788b4087710970ecec3e1b953e640c3e"
+    },
+    "saved-complete-memory-audit.json": {
+      "file": "deploy/rk3588/validation/original_staged_pageout/saved-complete-memory-audit.json",
+      "sha256": "93e0e7cc281ac3d6c5b3abc28d44ec98f6acd34b0baa3d2ebabddbbc30dc894e"
+    },
+    "saved-replay-audit.json": {
+      "file": "deploy/rk3588/validation/original_staged_pageout/saved-replay-audit.json",
+      "sha256": "926c94389f9b125225b98b6833bab4e66b305f75df7899201870229a81d942cd"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "v74_original_checkpoint_residency_independent_static_review",
+  "status": "no_source_blocker_identified",
+  "review_scope": "Source diff, fixed SHA and AST only; no actual advice, model, SDK, ORT, compiler or board job.",
+  "baseline_public_commit": "0f01c2d",
+  "sources": [
+    {
+      "file": "vggt_slam/checkpoint_residency.py",
+      "bytes": 13027,
+      "sha256": "1948fa3f49814d8fc1025516025df79adc7b1bd0e0a54a86f842b1590f445777",
+      "AST_passed": true
+    },
+    {
+      "file": "deploy/rk3588/validation/original_full_aggregator/compare_complete_model.py",
+      "bytes": 22169,
+      "sha256": "75b81c6b8dd2c9fcb96f76bdb5fecb5d15e5c7794a161deee8aa4f323d020e7c",
+      "AST_passed": true
+    },
+    {
+      "file": "scripts/replay_original_vggt.py",
+      "bytes": 25724,
+      "sha256": "eb793e40e126753c4c4714547b0cae9e102c4f3da7f93d6071dbb8474f3821e4",
+      "AST_passed": true
+    }
+  ],
+  "frozen_v73_helper_sha256": "32af80618d131d846431c1592d36f0b2948917e23c1e8753c1a4a1f07077e756",
+  "unchanged_safety_function_AST": [
+    "checkpoint_stat",
+    "parse_smaps",
+    "selected",
+    "validate_vmas",
+    "mapping_identity",
+    "fault_fields",
+    "memory_snapshot",
+    "tensor_metadata"
+  ],
+  "optional_flag_default": false,
+  "stage_order": [
+    "aggregator_installed",
+    "camera_installed",
+    "DINO_installed",
+    "depth_installed"
+  ],
+  "stage_invariants": [
+    "Install handle is assigned successfully before pageout; failed constructor retains its existing internal cleanup.",
+    "Each stage writes a distinct receipt. Comparator persists result progress before helper; replay now atomic_json(results.json,report) immediately after stage entry append, before helper.",
+    "Original checkpoint loader SHA validation and stable pre/post file stat precede the first advice; inode/dev/file size/mtime/ctime/offset/clean private self VMA checks remain.",
+    "Only MADV_PAGEOUT=21 is invoked; no MADV_DONTNEED, unmap, parameter deletion, tensor clone/rebinding or alternate advice retry.",
+    "Every stage checks tensor/storage/data pointer and version metadata before and after; all original CPU parameters and buffers remain.",
+    "Later unchanged backend raw-SHA validation and CPU prefix/finalnorm reads may refault original file pages. No validation or existing backend/cache guards are omitted."
+  ],
+  "cleanup": {
+    "comparator": "cache -> depth -> DINO -> camera -> aggregator; original hook removal, metrics and exception handling preserved",
+    "replay": "decoder/replay -> cache -> depth -> DINO -> camera -> aggregator -> hooks -> original CPU affinity restoration; original finally retained"
+  },
+  "original_loop_checks": {
+    "deploy/rk3588/validation/original_full_aggregator/compare_complete_model.py": "Original complete pair loop AST unchanged after removing the sole optional post-service memory_snapshot statement; complete_service_seconds is recorded first.",
+    "scripts/replay_original_vggt.py": "Original entire timestamp replay while-loop AST unchanged; startup stage writes and final diagnostic are outside the loop."
+  },
+  "timing": {
+    "replay_startup_includes_stage_advice_and_progress_persistence": true,
+    "replay_per_frame_memory_reads_added": false,
+    "replay_precleanup_snapshot_after_final_publish_outside_fresh_wall_seconds": true,
+    "comparator_optional_snapshot_after_complete_service_recording": true
+  },
+  "alias_sensitive_points": [
+    "Reclamation applies to the verified original whole-file mapping, including shared/aliased tensor storage views; virtual mappings and tensor objects remain present.",
+    "Existing named_parameters/named_buffers enumeration deduplicates tensors. Metadata digests do not provide a new complete alias-topology guard; this inherited limit is not claimed as fixed.",
+    "Clean VMA advice does not prove tensor value identity by itself. Original immutable checkpoint provenance, existing parameter guards and subsequent saved-output comparisons provide separate evidence."
+  ],
+  "limits": [
+    "No startup HWM reduction, active residency bound, physical 8GB acceptance, output equivalence, trajectory quality or speed benefit is established by static review.",
+    "Every advice only affects subsequent residency; previous ru_maxrss/VmHWM remains an observed high water mark.",
+    "No actual advice or model run was performed by this reviewer. Author generated suites were not rerun."
+  ],
+  "tests_reexecuted_by_this_review": false
+}

@@ -1,0 +1,366 @@
+{
+  "schema": "v74_original_staged_checkpoint_independent_saved_replay_audit",
+  "status": "saved_timeline_map_residency_resources_and_monitor_verified",
+  "evidence_sha256": {
+    "results.json": "cbd6435fb6dab3808cf4fa2641b3057716778a84cb65e1ac54fc53235308288b",
+    "map.json": "339a120edc8899306e9f948a2ddce591010ae2e5f56d78a501119d40e7a82eb8",
+    "poses.tum": "a8e597ddba00522bba031b28f27ba9f4844deea49640f72aa9d282798007e621",
+    "replay_control": "456b5e86af88b9620d460edd1ca8f8e1eb57d75ad493e6fcc1d286e3135d20e7",
+    "source_review": "b142d2779aba2fcfa99620a83eead8a1788b4087710970ecec3e1b953e640c3e",
+    "complete_memory_audit": "93e0e7cc281ac3d6c5b3abc28d44ec98f6acd34b0baa3d2ebabddbbc30dc894e"
+  },
+  "verified_entrypoint_sha256": "eb793e40e126753c4c4714547b0cae9e102c4f3da7f93d6071dbb8474f3821e4",
+  "verified_runtime_source_sha256": {
+    "patch_cache.py": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b",
+    "rknn_aggregator_blocks.py": "4fea665334e9d12a3d55839c3150680e269bab9794074d698bed2ad0a6e41c93",
+    "rknn_camera_head.py": "e20518d08c47746e1bf58e07bd6d0270bc7c7f6daa4d0858593f478ce6dfb09e",
+    "rknn_dino_blocks.py": "6cf230ea3ae6c65b9a3c7ec0b31e9abb346edb2fc0413b6b77a3a3b510b495de",
+    "rknn_depth_head.py": "7efacdb27be4aeb134fd2b64e2819136320fc45d25973517584522d314ba7894",
+    "rknn_aggregator_pairs.py": "08270da911213d0d22c21c9a7f001aaa7e16d7f7b32220f8a2b0c1ddc4b09b88",
+    "rknn_half_io_pairs.py": "53b573f494f2598183659ba4e8dcb7503c770d9e2ac7b95cae9016279805d9a4",
+    "native/fp16_neon.c": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3",
+    "rknn_half_io_dino.py": "e39469432aa5663f0a15756be0067ec92a0fb7127e6702a794298c3e902f3cd7",
+    "rknn_grouped_dino.py": "e0e5664dc231a9960db12ae6c690d3f0604417a4d74991dcbd0ca2ca765ef6ac",
+    "rknn_retained_aggregator.py": "04fbb5b2ad7db22bf26d52d4a6b5a3fadffa042557919575938b035f5dd06b5f",
+    "checkpoint_residency.py": "1948fa3f49814d8fc1025516025df79adc7b1bd0e0a54a86f842b1590f445777",
+    "runtime.py": "f36bb5b87fbdbf03984ea3e1466e6ee27865a540ae3e5abd4ee07a45538e23f5",
+    "checkpoint_identity.py": "9fc0b927f6a68ac6ca55194616104febb1c488370593d4be60e8dba5bc336461"
+  },
+  "timestamp_replay_source_sha256": "14b168028a6f7722f4bea036285b4f9cd8119fed59230b7e3e07c4b7af07addc",
+  "public_summary": {
+    "fresh_observation_pose_count": 18,
+    "original_frame_count": 798,
+    "fresh_wall_seconds_including_EOF_drain": 28.965324785996927,
+    "fresh_pose_hz": 0.6214327004094898,
+    "input_to_pose_p95_seconds": 2.0300571300162114,
+    "input_to_pose_max_seconds": 2.3932655453390907,
+    "EOF_to_final_publication_seconds": 2.3741211140004452,
+    "startup_seconds": 39.456760338973254,
+    "peak_rss_mib": 3920.39453125,
+    "startup_rollup_Rss_MiB": 2704.5859375,
+    "precleanup_rollup_Rss_MiB": 2756.3359375,
+    "precleanup_snapshot_outside_publish_window_seconds": 0.11302692798199132,
+    "queue_capacity": 1,
+    "generated": 798,
+    "delivered_including_seed": 19,
+    "overwritten": 779,
+    "skipped_before_decode": 0,
+    "max_saved_queue_seconds": 0.6704760679858737,
+    "map_chunks": 18,
+    "map_nodes": 36,
+    "map_point_count": 253976,
+    "poses_rows_including_seed": 19,
+    "successful_advice_calls": 4,
+    "metadata_count": 1343,
+    "all_eight_metadata_digests_equal": true,
+    "all_10_saved_checkpoint_file_and_mapping_identities_equal": true,
+    "closed_contexts": 12,
+    "successful_sdk_runs": 294,
+    "monitor_samples": 126,
+    "all_sampled_NPU_frequency_hz": 300000000,
+    "monitor_max_sampled_temperature_C": 65.615,
+    "platform_max_sampled_temperature_C": 66.538,
+    "frequency_written": false,
+    "child_exit_code": 0,
+    "physical_8GB_validated": false,
+    "thirty_minute_stability_validated": false,
+    "trajectory_quality_validated": false,
+    "real_time_validated": false
+  },
+  "fresh_sequences": [
+    1,
+    59,
+    107,
+    154,
+    202,
+    250,
+    297,
+    344,
+    391,
+    437,
+    484,
+    532,
+    580,
+    628,
+    676,
+    724,
+    768,
+    797
+  ],
+  "timestamps": [
+    1305031102.175304,
+    1305031102.211214,
+    1305031104.14323,
+    1305031105.743312,
+    1305031107.311226,
+    1305031108.911364,
+    1305031110.511429,
+    1305031112.079339,
+    1305031113.643222,
+    1305031115.211374,
+    1305031116.743291,
+    1305031118.311299,
+    1305031119.911401,
+    1305031121.514107,
+    1305031123.113873,
+    1305031124.711251,
+    1305031126.311332,
+    1305031127.779346,
+    1305031128.747363
+  ],
+  "latency_and_processing_phase_sum_max_error_seconds": 0.0,
+  "phase_seconds_sum": {
+    "arrival_to_decode_seconds": 0.025128065433818847,
+    "decode_seconds": 0.4806594630354084,
+    "queue_seconds": 0.9607902239076793,
+    "prediction_seconds": 28.069503820035607,
+    "full_model_seconds": 27.039914965978824,
+    "SL4_and_points_seconds": 0.5440000550006516,
+    "publication_seconds": 0.259990233957069,
+    "processing_seconds": 28.873494108993327,
+    "input_to_pose_seconds": 30.340071861370234
+  },
+  "full_model_seconds_is_subspan_of_prediction_seconds_not_an_additional_stage": true,
+  "stage_receipts": [
+    {
+      "stage": "aggregator_installed",
+      "receipt_sha256": "b00ea8ff22ebd92d316b811272f3879825203590abb87b349a0565655f547f3d",
+      "helper_seconds": 0.8760025470110122,
+      "advice_seconds": 0.5253074690117501,
+      "metadata_count": 1343,
+      "metadata_before_after_equal": true
+    },
+    {
+      "stage": "camera_installed",
+      "receipt_sha256": "237b9518a33b63e4501a5e88ab13cd2ba2e230dd1a87b6479bfa8fd46eb1d4a0",
+      "helper_seconds": 0.512668385024881,
+      "advice_seconds": 0.1954280610079877,
+      "metadata_count": 1343,
+      "metadata_before_after_equal": true
+    },
+    {
+      "stage": "DINO_installed",
+      "receipt_sha256": "724114ce0639eb172f8b0b0cf9cdd2b503b9f9d07ec7506a2d0f15ccc73172c2",
+      "helper_seconds": 0.7731862439832184,
+      "advice_seconds": 0.288796696026111,
+      "metadata_count": 1343,
+      "metadata_before_after_equal": true
+    },
+    {
+      "stage": "depth_installed",
+      "receipt_sha256": "5a1dd96cdc94f7b26193f0c1b5e58fb54a0bca5fb97c9f2c4d51760d46d06a56",
+      "helper_seconds": 0.33141678301035427,
+      "advice_seconds": 0.03009504498913884,
+      "metadata_count": 1343,
+      "metadata_before_after_equal": true
+    }
+  ],
+  "map_chunk_artifacts": [
+    {
+      "file": "map_chunks/submap_000000.npz",
+      "bytes": 212694,
+      "sha256": "c7577479f64f1fad1b880cfa9efa7ab4dc7793677b5811c649467b589d139f04",
+      "all_arrays_finite": true,
+      "point_counts": [
+        6954,
+        7158
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000002.npz",
+      "bytes": 212679,
+      "sha256": "1aeff31cc47829a8372aca4958d887ab359f71da9433b518e401ccae07048f8b",
+      "all_arrays_finite": true,
+      "point_counts": [
+        6733,
+        7378
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000004.npz",
+      "bytes": 212649,
+      "sha256": "05a7a8dd1b6a67d0d1988663eefc0b6e1dacef7d14903c9a7a6cc5e6f2d96570",
+      "all_arrays_finite": true,
+      "point_counts": [
+        7173,
+        6936
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000006.npz",
+      "bytes": 212649,
+      "sha256": "509dd290fa48d607a2b8f00706257e0e21658695ca4bbac8b53a79ae49a60a5c",
+      "all_arrays_finite": true,
+      "point_counts": [
+        7828,
+        6281
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000008.npz",
+      "bytes": 212634,
+      "sha256": "71e6530ffb45a243ad8f96432b4affa5957f6b3ad6a4cc9214078918e00664b6",
+      "all_arrays_finite": true,
+      "point_counts": [
+        7085,
+        7023
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000010.npz",
+      "bytes": 212694,
+      "sha256": "fc5217db4da0d68c5ef4b738bf9fe6ade3f4d0343eb67779a1556cfb30207a94",
+      "all_arrays_finite": true,
+      "point_counts": [
+        8270,
+        5842
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000012.npz",
+      "bytes": 212634,
+      "sha256": "502e1e9dfc17ff35e18a6b0b1701e6e456051a5d2c7e500319a76617d9c44030",
+      "all_arrays_finite": true,
+      "point_counts": [
+        6826,
+        7282
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000014.npz",
+      "bytes": 212544,
+      "sha256": "ceca693ef3043214f4dff080511d2911027f17c90cb53d1c5b807f36eeba6ad4",
+      "all_arrays_finite": true,
+      "point_counts": [
+        7319,
+        6783
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000016.npz",
+      "bytes": 212694,
+      "sha256": "9a8e2aeeb768cae4662d5b0f062b293a75a653d7fb24a7149ef3f0abb61d3306",
+      "all_arrays_finite": true,
+      "point_counts": [
+        7877,
+        6235
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000018.npz",
+      "bytes": 212664,
+      "sha256": "02efda976ad56254098c507b255df7a8ad549eb21f8e6ec4a3df400c5e2f04bd",
+      "all_arrays_finite": true,
+      "point_counts": [
+        5539,
+        8571
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000020.npz",
+      "bytes": 212694,
+      "sha256": "4b9766cfa15fc5be411a9b81ec0a3fc062e4baacaaa593fd639b22e331c58f3c",
+      "all_arrays_finite": true,
+      "point_counts": [
+        9202,
+        4910
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000022.npz",
+      "bytes": 212694,
+      "sha256": "c5b028c5773c5a0afa7ff4eb16589769642ef8b479e27a3fe05b8ada58937bcd",
+      "all_arrays_finite": true,
+      "point_counts": [
+        6939,
+        7173
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000024.npz",
+      "bytes": 212679,
+      "sha256": "9d406cae8ea9d5c53f378c5b85822c6671dca1074accfd29fad5f6375192b2a0",
+      "all_arrays_finite": true,
+      "point_counts": [
+        7929,
+        6182
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000026.npz",
+      "bytes": 212694,
+      "sha256": "bf78202ede87c3df24293a0975906595b0fe76c4e17924b3a3c1dd84e3f245bb",
+      "all_arrays_finite": true,
+      "point_counts": [
+        6154,
+        7958
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000028.npz",
+      "bytes": 212649,
+      "sha256": "8209a9047b5c9630cd99fa72d0258ff4c44309b6d68ec1399abdd4d35babdd96",
+      "all_arrays_finite": true,
+      "point_counts": [
+        7067,
+        7042
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000030.npz",
+      "bytes": 212679,
+      "sha256": "67937974a05ece1f71b3ebe5065bd0152365495a65bd26abf92b21a20f183154",
+      "all_arrays_finite": true,
+      "point_counts": [
+        7132,
+        6979
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000032.npz",
+      "bytes": 212679,
+      "sha256": "556932120ec0538d49da47fa2f3fe37417bf4807f9a0b1f58c0d5629450ed9ae",
+      "all_arrays_finite": true,
+      "point_counts": [
+        6789,
+        7322
+      ]
+    },
+    {
+      "file": "map_chunks/submap_000034.npz",
+      "bytes": 212589,
+      "sha256": "ea342e9242b07645cb50ae4fbeb6137f03b88fc8be7a269819a9138f4571173e",
+      "all_arrays_finite": true,
+      "point_counts": [
+        7036,
+        7069
+      ]
+    }
+  ],
+  "map_chunk_arrays_verified": 72,
+  "context_counts": {
+    "rknn": 4,
+    "dino_rknn": 6,
+    "depth_rknn": 1,
+    "camera_rknn": 1
+  },
+  "sdk_run_counts": {
+    "rknn": 72,
+    "dino_rknn": 114,
+    "depth_rknn": 36,
+    "camera_rknn": 72
+  },
+  "all_recorded_cleanup_errors_empty": true,
+  "checkpoint_stat_and_mapping_continuity_verified": true,
+  "process_identity_and_fault_counter_continuity_verified": true,
+  "limits": [
+    "Software timestamps match the saved source schedule using exact pinned source arithmetic and anchor chain; raw RGB index is not separately rehashed.",
+    "Map NPZ file hashes are newly recorded identities; map.json provides no prior independent hash. All72 arrays and36 transforms were finite.",
+    "Only tensor metadata digests/counts are saved; raw1343 rows cannot be independently recomputed.",
+    "Successful SDK/context metrics and empty cleanup records are verified; independent per-output release counters are not saved for every backend.",
+    "Frequency evidence is126 monitor samples plus19 platform samples, not a continuous trace.",
+    "Process RSS/HWM does not bound total physical memory or qualify physical8GB hardware; procfs snapshots are sequential.",
+    "Short software replay does not establish20Hz,30-minute stability, physical sensor latency or trajectory quality.",
+    "No causal speed comparison against priorv71 or1GHz is made."
+  ]
+}

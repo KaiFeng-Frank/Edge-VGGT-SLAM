@@ -43,6 +43,8 @@ def main():
                    help='Execute all 24 original DINO layers as six four-layer graphs')
     p.add_argument('--rknn-depth-manifest', type=Path)
     p.add_argument('--rknn-depth-manifest-sha256')
+    p.add_argument('--checkpoint-pageout', action='store_true',
+                   help='Explicit clean original checkpoint residency experiment after each NPU backend installation')
     args = p.parse_args()
     cpus = (set(args.model_cpus) if args.model_cpus is not None else
             {6, 7} if args.model_threads == 2 else {4, 5, 6, 7})
@@ -50,6 +52,14 @@ def main():
         p.error('--model-cpus must not contain duplicate CPUs')
     if len(cpus) < args.model_threads:
         p.error('--model-cpus must contain at least --model-threads CPUs')
+    if args.checkpoint_pageout and not (
+            args.rknn_retained_aggregator and args.rknn_paired_aggregator and
+            args.rknn_manifest is not None and args.half_io_library is not None and
+            args.rknn_grouped_dino and args.rknn_dino_manifest is not None and
+            args.rknn_camera_head and args.rknn_camera_split4 and
+            args.rknn_depth_manifest is not None and not args.no_patch_cache):
+        p.error('--checkpoint-pageout requires retained and paired aggregator, half I/O, '
+                'grouped DINO, camera split4, depth and patch cache')
     if args.rknn_retained_aggregator and (not args.rknn_paired_aggregator or args.half_io_library is None):
         p.error('--rknn-retained-aggregator requires --rknn-paired-aggregator and --half-io-library')
     if args.rknn_grouped_dino and (args.rknn_dino_manifest is None or args.half_io_library is None):
@@ -124,6 +134,7 @@ def main():
     report['rknn_grouped_dino'] = args.rknn_grouped_dino
     report['rknn_retained_aggregator'] = args.rknn_retained_aggregator
     report['rknn_camera_split4'] = args.rknn_camera_split4
+    report['checkpoint_pageout'] = args.checkpoint_pageout
     report['runtime_source_sha256'] = {
         name: hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
         for name in ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
@@ -149,6 +160,14 @@ def main():
     if args.rknn_camera_split4:
         report.update(compiled_graph_changed=True, internal_precision_changed=None,
                       compiled_camera_rounding_equivalence_validated=False)
+    if args.checkpoint_pageout:
+        for name in ('checkpoint_residency.py', 'runtime.py', 'checkpoint_identity.py'):
+            report['runtime_source_sha256'][name] = hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
+        report.update(checkpoint_residency_source_sha256=report['runtime_source_sha256']['checkpoint_residency.py'],
+                      checkpoint_pageout_stages=[],
+                      checkpoint_pageout_timing_scope='Four advice calls and startup snapshot are included in startup_seconds; '
+                      'no per-frame memory reads; precleanup snapshot is separate diagnostic work after the final publication',
+                      eight_GB_hardware_validated=False)
     replay = cache = depth_rknn = dino_rknn = camera_rknn = rknn = None
     hooks = []
     affinity = os.sched_getaffinity(0)
@@ -169,8 +188,36 @@ def main():
         torch.set_num_threads(args.model_threads)
         torch.set_num_interop_threads(1)
         rows = read_rgb_index(args.rgb_index)
+        if args.checkpoint_pageout:
+            from vggt_slam.checkpoint_residency import checkpoint_stat, memory_snapshot, pageout_checkpoint
+            loaded_checkpoint_stat = checkpoint_stat(args.checkpoint)
         model = load_model(args.checkpoint, device='cpu', image_size=args.image_size,
                            prune_unused_heads=True, offline=True)
+        if args.checkpoint_pageout:
+            if checkpoint_stat(args.checkpoint) != loaded_checkpoint_stat:
+                raise RuntimeError('Original checkpoint stat changed during verified loading')
+
+            def reclaim_checkpoint(stage):
+                receipt_path = args.output / f'checkpoint-pageout-{stage}.json'
+                entry = dict(stage=stage, receipt=receipt_path.name, status='running')
+                report['checkpoint_pageout_stages'].append(entry)
+                atomic_json(args.output / 'results.json', report)
+                try:
+                    receipt = pageout_checkpoint(model, args.checkpoint, loaded_checkpoint_stat,
+                                                receipt_path, source_root=BASE / 'src', stage=stage)
+                except BaseException:
+                    entry['status'] = 'failed'
+                    if receipt_path.is_file():
+                        entry['sha256'] = hashlib.sha256(receipt_path.read_bytes()).hexdigest()
+                    raise
+                entry.update(sha256=hashlib.sha256(receipt_path.read_bytes()).hexdigest(),
+                             status=receipt['status'], helper_seconds=receipt['seconds'],
+                             advice_calls=len(receipt['advice_calls']),
+                             advice_seconds=sum(call['seconds'] for call in receipt['advice_calls']),
+                             tensor_storage_VA_version_unchanged=receipt['tensor_storage_VA_version_unchanged'],
+                             checkpoint_VMA_layout_unchanged=receipt['checkpoint_VMA_layout_unchanged'],
+                             before_rollup_RSS_MiB=receipt['before']['smaps_rollup_kB']['Rss']/1024,
+                             after_rollup_RSS_MiB=receipt['after_immediate']['smaps_rollup_kB']['Rss']/1024)
         forward_clock = {}
         def before_forward(module, inputs):
             forward_clock['begin'] = time.monotonic()
@@ -192,10 +239,14 @@ def main():
                 from vggt_slam.rknn_aggregator_blocks import install_rknn_aggregator_blocks as install_aggregator
             rknn = install_aggregator(model, args.rknn_manifest, args.rknn_manifest_sha256,
                                      **aggregator_options)
+            if args.checkpoint_pageout:
+                reclaim_checkpoint('aggregator_installed')
         if args.rknn_camera_head:
             from vggt_slam.rknn_camera_head import install_rknn_camera_head
             camera_rknn = (install_rknn_camera_head(model, split_fc1=True) if args.rknn_camera_split4
                            else install_rknn_camera_head(model))
+            if args.checkpoint_pageout:
+                reclaim_checkpoint('camera_installed')
         if args.rknn_dino_manifest is not None:
             dino_options = dict(source_root=BASE / 'src')
             if args.half_io_library is not None:
@@ -209,10 +260,14 @@ def main():
                 from vggt_slam.rknn_dino_blocks import install_rknn_dino_blocks as install_dino
             dino_rknn = install_dino(model, args.rknn_dino_manifest,
                                      args.rknn_dino_manifest_sha256, **dino_options)
+            if args.checkpoint_pageout:
+                reclaim_checkpoint('DINO_installed')
         if args.rknn_depth_manifest is not None:
             from vggt_slam.rknn_depth_head import install_rknn_depth_head
             depth_rknn = install_rknn_depth_head(model, args.rknn_depth_manifest,
                                                 args.rknn_depth_manifest_sha256, source_root=BASE / 'src')
+            if args.checkpoint_pageout:
+                reclaim_checkpoint('depth_installed')
         if not args.no_patch_cache:
             from vggt_slam.patch_cache import install_patch_cache
             cache = install_patch_cache(model)
@@ -222,6 +277,10 @@ def main():
         chunks.mkdir()
         manifest = dict(format='vggt_camera_local_dense_chunks_with_SL4_graph', units='model_units',
                         chunks=[], nodes={}, revision=0, metric_scale_validated=False, rectification=None)
+        if args.checkpoint_pageout:
+            snapshot_start = time.monotonic()
+            report['checkpoint_pageout_startup_memory'] = memory_snapshot(args.checkpoint, loaded_checkpoint_stat)
+            report['checkpoint_pageout_startup_snapshot_seconds'] = time.monotonic()-snapshot_start
         report.update(startup_seconds=time.monotonic()-setup, torch_version=torch.__version__, original_frames=len(rows),
                       cpu_affinity=sorted(os.sched_getaffinity(0)), platform_start=platform_sample())
         replay = TimestampReplay(rows, cpus={0})
@@ -298,6 +357,10 @@ def main():
         report.update(status='completed', fresh_wall_seconds_including_EOF_drain=duration,
                       fresh_pose_hz=report['fresh_pose_count']/duration,
                       input_to_pose_p95_seconds=float(np.percentile([r['input_to_pose_seconds'] for r in report['updates']], 95)))
+        if args.checkpoint_pageout:
+            snapshot_start = time.monotonic()
+            report['checkpoint_pageout_precleanup_memory'] = memory_snapshot(args.checkpoint, loaded_checkpoint_stat)
+            report['checkpoint_pageout_precleanup_diagnostic_seconds'] = time.monotonic()-snapshot_start
     except BaseException as exc:
         report.update(status='failed', error=f'{type(exc).__name__}: {exc}', traceback=traceback.format_exc())
     finally:
