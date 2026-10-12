@@ -1,0 +1,241 @@
+{
+  "schema": "v85_original_DPT_component_saved_audit",
+  "status": "passed",
+  "saved_data_only": true,
+  "model_SDK_ORT_or_board_execution_by_auditor": false,
+  "auditor_sha256": "0441c39b1c2ab7488f29b7d5e6353b7b3a41888c64b74f941a4efe51adafc9dc",
+  "result_sha256": "9be7aaee2bc9875eb34b32fedc40dc815ff4735c4bb44f4aa9bdf142ba3e61c4",
+  "probe_source_sha256": "cd9b5bbc092dcd34fe18dd5f577124356459cfc2e3a2e1bf5b739732fb5774b3",
+  "adapter_source_sha256": "b514be79204b00e63a4783621122d15acb0f07b6f297918c946da02714b53427",
+  "compiler_source_sha256": "82c07025a8f515c5c4df0a4c6430de4b7b00d08c3dc021603787fb5fd319a8ea",
+  "compile_receipt_sha256": "b88a01bc6c768a3730b61aadfe4c1b1d74f578852b7141478060ce89bf1a23b0",
+  "original_reference_sha256": "7d7a72318b8352b7b943b73d935066e5b10e364387d2f992af452b1bacc2e151",
+  "candidate_accepted": false,
+  "all_62_parameters_5_positions_and_original_ONNX_lineage_unchanged": true,
+  "artifact_validation": {
+    "NPZ_files": 28,
+    "FP32_arrays": 84,
+    "finite_scalar_count": 1053696,
+    "every_file_raw_hash_shape_and_finite_check_passed": true
+  },
+  "strict_rtol": 0.0001,
+  "strict_atol": 1e-05,
+  "independently_recomputed_strict_comparisons": {
+    "strict_failed": 84
+  },
+  "first_per_frame_route_numerics": [
+    {
+      "frame": 0,
+      "route": "A",
+      "vs_original_CPU": {
+        "logits": {
+          "elements": 18816,
+          "max_abs": 0.003737807273864746,
+          "rmse": 0.0006558621471961868,
+          "relative_l2": 0.0005372409042933017,
+          "outside_fixed_gate": 13556,
+          "maximum_tolerance_ratio": 313.0809932442187,
+          "fixed_gate_pass": false,
+          "bitwise_equal": false
+        },
+        "depth": {
+          "elements": 9408,
+          "max_abs": 0.00029718875885009766,
+          "rmse": 3.649977160798401e-05,
+          "relative_l2": 3.815184528397231e-05,
+          "outside_fixed_gate": 145,
+          "maximum_tolerance_ratio": 2.83310222090781,
+          "fixed_gate_pass": false,
+          "bitwise_equal": false
+        },
+        "depth_conf": {
+          "elements": 9408,
+          "max_abs": 0.024216651916503906,
+          "rmse": 0.005747095940212336,
+          "relative_l2": 0.0008225312439814911,
+          "outside_fixed_gate": 8365,
+          "maximum_tolerance_ratio": 29.467012909611434,
+          "fixed_gate_pass": false,
+          "bitwise_equal": false
+        }
+      }
+    },
+    {
+      "frame": 0,
+      "route": "B",
+      "vs_original_CPU": {
+        "logits": {
+          "elements": 18816,
+          "max_abs": 0.9677584171295166,
+          "rmse": 0.12071207781282986,
+          "relative_l2": 0.09887972056403678,
+          "outside_fixed_gate": 18805,
+          "maximum_tolerance_ratio": 54532.542438955854,
+          "fixed_gate_pass": false,
+          "bitwise_equal": false
+        },
+        "depth": {
+          "elements": 9408,
+          "max_abs": 0.043958187103271484,
+          "rmse": 0.015837291787611403,
+          "relative_l2": 0.016554128406269457,
+          "outside_fixed_gate": 9369,
+          "maximum_tolerance_ratio": 376.71257922979214,
+          "fixed_gate_pass": false,
+          "bitwise_equal": false
+        },
+        "depth_conf": {
+          "elements": 9408,
+          "max_abs": 2.5926904678344727,
+          "rmse": 0.8982924570906172,
+          "relative_l2": 0.1285646907371163,
+          "outside_fixed_gate": 9407,
+          "maximum_tolerance_ratio": 2745.9722845006077,
+          "fixed_gate_pass": false,
+          "bitwise_equal": false
+        }
+      }
+    },
+    {
+      "frame": 1,
+      "route": "A",
+      "vs_original_CPU": {
+        "logits": {
+          "elements": 18816,
+          "max_abs": 0.003429710865020752,
+          "rmse": 0.0005871965587242885,
+          "relative_l2": 0.000602667505777133,
+          "outside_fixed_gate": 13484,
+          "maximum_tolerance_ratio": 208.4852532913553,
+          "fixed_gate_pass": false,
+          "bitwise_equal": false
+        },
+        "depth": {
+          "elements": 9408,
+          "max_abs": 0.0003311634063720703,
+          "rmse": 3.870537682325901e-05,
+          "relative_l2": 4.198856793712766e-05,
+          "outside_fixed_gate": 173,
+          "maximum_tolerance_ratio": 2.7845903456628873,
+          "fixed_gate_pass": false,
+          "bitwise_equal": false
+        },
+        "depth_conf": {
+          "elements": 9408,
+          "max_abs": 0.01217794418334961,
+          "rmse": 0.003509216292665126,
+          "relative_l2": 0.0006978762602654766,
+          "outside_fixed_gate": 8112,
+          "maximum_tolerance_ratio": 21.05309068118586,
+          "fixed_gate_pass": false,
+          "bitwise_equal": false
+        }
+      }
+    },
+    {
+      "frame": 1,
+      "route": "B",
+      "vs_original_CPU": {
+        "logits": {
+          "elements": 18816,
+          "max_abs": 0.7477554231882095,
+          "rmse": 0.09189601688311354,
+          "relative_l2": 0.09431721365350115,
+          "outside_fixed_gate": 18809,
+          "maximum_tolerance_ratio": 62510.076631724485,
+          "fixed_gate_pass": false,
+          "bitwise_equal": false
+        },
+        "depth": {
+          "elements": 9408,
+          "max_abs": 0.043998003005981445,
+          "rmse": 0.016032273735359946,
+          "relative_l2": 0.017392214471847304,
+          "outside_fixed_gate": 9377,
+          "maximum_tolerance_ratio": 439.47754371582965,
+          "fixed_gate_pass": false,
+          "bitwise_equal": false
+        },
+        "depth_conf": {
+          "elements": 9408,
+          "max_abs": 1.361055850982666,
+          "rmse": 0.45541627082149255,
+          "relative_l2": 0.09056842822976194,
+          "outside_fixed_gate": 9406,
+          "maximum_tolerance_ratio": 2646.0632571325264,
+          "fixed_gate_pass": false,
+          "bitwise_equal": false
+        }
+      }
+    }
+  ],
+  "comparisons_to_first_byte_equal_arrays_including_self": 84,
+  "actual_repeat_byte_equal_arrays_excluding_first": 72,
+  "timing": {
+    "A": {
+      "calls": 14,
+      "warm_count": 12,
+      "first_per_frame_seconds": [
+        0.02419987801113166,
+        0.027633378020254895
+      ],
+      "warm_mean_seconds": 0.026457610161742195,
+      "warm_median_seconds": 0.026387502482975833,
+      "warm_p95_seconds": 0.02809063845052151,
+      "warm_sdk_IO_mean_seconds": 0.025300714580225758,
+      "warm_non_SDK_mean_seconds": 0.0011568955815164372,
+      "warm_mean_by_frame_seconds": [
+        0.02638889832693773,
+        0.02652632199654666
+      ]
+    },
+    "B": {
+      "calls": 14,
+      "warm_count": 12,
+      "first_per_frame_seconds": [
+        0.027644752990454435,
+        0.03323746199021116
+      ],
+      "warm_mean_seconds": 0.03158365608881771,
+      "warm_median_seconds": 0.031903524504741654,
+      "warm_p95_seconds": 0.03379046215559356,
+      "warm_sdk_IO_mean_seconds": 0.030410572420805693,
+      "warm_non_SDK_mean_seconds": 0.001173083668012019,
+      "warm_mean_by_frame_seconds": [
+        0.03140538534110723,
+        0.0317619268365282
+      ]
+    }
+  },
+  "W8A8_warm_latency_change_percent": 19.37456140497451,
+  "same_frame_input_and_source_image_lineage_checked": true,
+  "held_out_from_calibration_by_RGB_SHA": true,
+  "resources": {
+    "contexts_created": 2,
+    "contexts_destroyed": 2,
+    "live_contexts": 0,
+    "sdk_run_attempts": 28,
+    "sdk_runs_succeeded": 28,
+    "outputs_acquired": 28,
+    "outputs_released": 28,
+    "cleanup_errors": []
+  },
+  "controller": {
+    "receipt_sha256": "0cbe5554702c85c071805790b9fef783bf74b6ab15fe85c80ed468b002a133b5",
+    "child_returncode": 0,
+    "sampled_1GHz_observations": 10,
+    "per_call_before_after_1GHz_samples": 56,
+    "maximum_observed_temperature_c": 56.384,
+    "restored_frequency_hz": 300000000,
+    "governor_limits_and_raw_request_restored": true,
+    "restore_errors": []
+  },
+  "limits": [
+    "This is a two-frame original DPT component comparison; no complete model, trajectory or timestamp replay candidate ran.",
+    "Requested W8A8 changes internal precision; FP32 logical API conversion does not establish all-FP32 or all-INT8 internal placement.",
+    "Strict FP32 failures are preserved as numerical evidence; they do not replace a broader practical trajectory/depth quality criterion.",
+    "Complete component timing includes input views/finite, SDK conversions/run/get/copy/release and original CPU activation/output finite checks; saved arrays, hashes and comparisons are outside timing.",
+    "SDK/weight payload hashes are bound to board-generated receipts; the auditor did not independently rehash board-only RKNN binaries.",
+    "The candidate was rejected for slower component latency; no whole-model acceleration or quality acceptance is claimed."
+  ]
+}

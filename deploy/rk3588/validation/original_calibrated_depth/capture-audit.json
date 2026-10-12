@@ -1,0 +1,200 @@
+{
+  "schema": "v85_original_depth_calibration_saved_audit",
+  "status": "passed",
+  "saved_data_only": true,
+  "capture_sha256": "ec8e7278921cda830e2b7b0e5899f1e21c3b27d0b383797b0daf51034d311b7c",
+  "capture_source_sha256": "105ddd8c552ed9f9685708ee9a4dc2afccb4cbac1bc90c85a75a5e4674c0cf55",
+  "ancestor_sha256": {
+    "v56_calibration": "a1e6f1b2a89e1a96987befdea4f0a048aaf06066efa9fff72a370ac77d45507c",
+    "v53_original_blocks": "4b723e499763bb90565f6e11e16c551664634aaf72da46c7cdc493b84208ef67",
+    "v54_depth_capture": "fa33dc6a05c2e286ca9c9a17c0f62df21ee2b19da0f3ea693fcff3718bc99033",
+    "v54_depth_compiled_manifest": "9a6e5435df543b8484a4fc50da4b065995f32153233548829234dd149fbc7135"
+  },
+  "computed_artifacts": {
+    "array_files": 96,
+    "total_files": 98,
+    "file_hash_raw_hash_shape_and_finite_passed": true,
+    "float32_scalar_count": 6893568,
+    "shape_counts": {
+      "[1, 48, 2048]": 64,
+      "[1, 2, 84, 112]": 16,
+      "[2, 84, 112, 1]": 8,
+      "[2, 84, 112]": 8
+    },
+    "dataset_rows": 16,
+    "inputs_per_row": 4,
+    "dataset_exact_sample_frame_layer_order_passed": true
+  },
+  "original_output_reference_matches": [
+    {
+      "sample_id": "calib00",
+      "output": "depth",
+      "raw_sha256": "6ae657ba54403b93a3f52e5e7564b6bc92d2f87a407ea7fcf8ca295fab232a61",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib00",
+      "output": "depth_conf",
+      "raw_sha256": "08fd9657d6df5ff741ccd6117bea1548e525d34a6fb27a0104a768b936d0563c",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib01",
+      "output": "depth",
+      "raw_sha256": "e3d1c25fa11716b1bba1cf9e34e4b2ee15b6ae182df7a2bcf40ae88c997467c3",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib01",
+      "output": "depth_conf",
+      "raw_sha256": "1c2324892b7e9d028437d85dc51393168fdaddf788c6fb7ee393e4ca884a56a4",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib02",
+      "output": "depth",
+      "raw_sha256": "81d2e711fac1203a922cc74fe14ceb7a869fab2c1d8c265e5a5fe608a6a5f803",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib02",
+      "output": "depth_conf",
+      "raw_sha256": "719b69c056a271e0ad3b79c0cf1d132d1b2c7fbbd134b00cac7827ed191d39ac",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib03",
+      "output": "depth",
+      "raw_sha256": "90694ac8e3a6153dc87b1ee07c944065c1b212a2feb54f32b271a91c4371bde6",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib03",
+      "output": "depth_conf",
+      "raw_sha256": "60601d9ae8715e30e2ab0e5f8b331c517ef26628fc89a222e85b5d5e6446c638",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib04",
+      "output": "depth",
+      "raw_sha256": "100851d74e7fca0c7f4d82a051960acb82c10b2c7eec68ae42ec223d4548a6f7",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib04",
+      "output": "depth_conf",
+      "raw_sha256": "15fa65b3374f5fc5a28a76500971343b7e93354e09a4149ed2627b34ac2f7225",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib05",
+      "output": "depth",
+      "raw_sha256": "14b982fc19a738a53c5b9c1773cdf3954614cec11c3bfbda46db4b17d794fea4",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib05",
+      "output": "depth_conf",
+      "raw_sha256": "184cd39d519005e9dbf811af95074bec2efe63f14b267b01681acc734a109e0d",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib06",
+      "output": "depth",
+      "raw_sha256": "210b97550639b4c39b0b1195f576d6a00b2787a1568174707a1da2bbb4aaf25a",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib06",
+      "output": "depth_conf",
+      "raw_sha256": "f332cec7b63637b81f3d471ae7e2b07b8db3d6dd545079aa07e5b414c4564a3a",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib07",
+      "output": "depth",
+      "raw_sha256": "59578d5afb8720158ee34da706672a58fc6f434c62b1378198c0e540b7399c75",
+      "matches_original_FP32_capture": true
+    },
+    {
+      "sample_id": "calib07",
+      "output": "depth_conf",
+      "raw_sha256": "c895715ca1fbee1f61db542090b6d625464471ea99d8bff013a4e3fc47f1b8e2",
+      "matches_original_FP32_capture": true
+    }
+  ],
+  "lineage": {
+    "same_8_calibration_pairs_and_16_original_image_identities": true,
+    "same_preprocessed_image_hashes": true,
+    "evaluation_frames_disjoint": true,
+    "depth_parameter_metadata_matches_original": 62,
+    "selected_aggregator_parameter_metadata_matches_original": 144,
+    "reported_original_block_forwards": 64,
+    "reported_original_DPT_calls": 8,
+    "five_position_constant_metadata_match": true,
+    "original_architecture_and_inplace_relu_align_corners_activation_preservation_flags": true,
+    "original_source_lineage_matches": true,
+    "loader_and_contract_host_source_hashes_rechecked": true
+  },
+  "cleanup_and_identity_flags": {
+    "all_depth_and_conf_bitwise_equal_to_original_capture": true,
+    "hooks_removed": true,
+    "model_state_unchanged": true,
+    "source_and_inputs_unchanged": true,
+    "checkpoint_stat_unchanged": true,
+    "affinity_restored": true,
+    "environment_restored": true,
+    "checkpoint_verified_before_deserialization": true,
+    "original_inplace_relu_residual_skip_preserved": true,
+    "all_five_original_align_corners_resizes_preserved": true,
+    "original_five_position_additions_preserved": true,
+    "original_activation_and_chunking_preserved": true
+  },
+  "successful_retry": {
+    "control_sha256": "e8c854410f95137a85035475d0d1222f33a94afc2fd353983be2993090e167bf",
+    "status": "completed",
+    "child_returncode": 0,
+    "wall_seconds": 55.83601831897977,
+    "sample_count": 919,
+    "observed_npu_hz": [
+      300000000
+    ],
+    "frequency_written": false,
+    "maximum_observed_temperature_c": 70.23,
+    "thermal_pause_threshold_c": 65,
+    "thermal_resume_threshold_c": 55,
+    "thermal_events": {
+      "pause_compiler": 28,
+      "resume_compiler": 28
+    },
+    "cleanup_errors": [],
+    "error": null
+  },
+  "retained_first_failure": {
+    "control_sha256": "cbd537cee302feea23e98f89fb69094a4a0915bcf718e3f27998642ee1473540",
+    "status": "failed",
+    "child_returncode": -15,
+    "wall_seconds": 14.115143834002083,
+    "sample_count": 51,
+    "observed_npu_hz": [
+      300000000
+    ],
+    "frequency_written": false,
+    "maximum_observed_temperature_c": 75.769,
+    "thermal_pause_threshold_c": 70,
+    "thermal_resume_threshold_c": 63,
+    "thermal_events": {
+      "pause_compiler": 5,
+      "resume_compiler": 5
+    },
+    "cleanup_errors": [],
+    "error": "RuntimeError: Clock/temperature/timeout observation limit"
+  },
+  "limits": [
+    "Original depth/conf equality is independently verified by hashing saved output bytes against pinned original full-forward hashes.",
+    "Parameter/position/source metadata are checked against pinned ancestors; original weight arrays, upstream source bytes and fresh image pixels were validated by the board capture, not rerun or all rehashed by this saved-data audit.",
+    "Capture time includes loading, checks, hooks, private array saving and thermal pauses; it is not model inference performance.",
+    "First run was thermally stopped; no completed-capture or model cleanup claim is inferred for that failed process."
+  ],
+  "actual_model_ORT_SDK_or_board_execution_by_auditor": false
+}

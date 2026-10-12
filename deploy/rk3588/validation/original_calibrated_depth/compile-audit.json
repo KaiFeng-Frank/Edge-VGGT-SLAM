@@ -1,0 +1,215 @@
+{
+  "schema": "v85_original_DPT_saved_compile_audit",
+  "status": "passed_saved_compile_provenance_review",
+  "auditor_execution": "Host saved JSON/log/NPY only; no model, ORT, SDK, compiler, GPU or board execution",
+  "evidence": {
+    "depth-compiled.json": {
+      "bytes": 203749,
+      "sha256": "b88a01bc6c768a3730b61aadfe4c1b1d74f578852b7141478060ce89bf1a23b0"
+    },
+    "compile-control.json": {
+      "bytes": 111589,
+      "sha256": "d24846385509136886cdacc8c7485517675909d9e2bc7d7ddd77a3bfb7c68bd0"
+    },
+    "compile.log": {
+      "bytes": 66632,
+      "sha256": "058c243a35155cfe9ed83ec4bfff1c34de5d9b99246bae0c8e0749a317694640"
+    },
+    "depth-calibration-r2/capture.json": {
+      "bytes": 160518,
+      "sha256": "ec8e7278921cda830e2b7b0e5899f1e21c3b27d0b383797b0daf51034d311b7c"
+    },
+    "compile_depth_int8_board.py": {
+      "bytes": 20217,
+      "sha256": "82c07025a8f515c5c4df0a4c6430de4b7b00d08c3dc021603787fb5fd319a8ea"
+    },
+    "capture_depth_calibration_board.py": {
+      "bytes": 25848,
+      "sha256": "105ddd8c552ed9f9685708ee9a4dc2afccb4cbac1bc90c85a75a5e4674c0cf55"
+    },
+    "original-depth-compiled.json": {
+      "bytes": 20428,
+      "sha256": "9a6e5435df543b8484a4fc50da4b065995f32153233548829234dd149fbc7135"
+    },
+    "original-depth-export.json": {
+      "bytes": 19770,
+      "sha256": "649a09ea323a2e7caa067c278f6f97c8ce13082689add2545ffd4653d592f292"
+    }
+  },
+  "lineage": {
+    "checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "original_graph_sha256": "5f885c944f6ceff2c3eb8f5030249b90a85f5040a9a5ba892f74b95803af2a5b",
+    "graph_bytes": 135995381,
+    "graph_unchanged": true,
+    "original_parameters62_and_positions5_exact": true,
+    "original_architecture_exact": true,
+    "capture_samples8_exact": true,
+    "calibration_frames": 16,
+    "four_input_rows": 16,
+    "input_arrays_verified": 64,
+    "all_capture_arrays_verified": 96,
+    "depth_and_conf_rawSHA_equal_to_original_v56": true,
+    "source_maps_equal": true,
+    "all_reported_restore_and_identity_flags_true": true,
+    "prior_original_FP32_check_sha256": "0e32292723b9b97dd5c177e08ec0579ca59b312d23634f3215b8e574b27c143b"
+  },
+  "compile": {
+    "configuration": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "mean_values": null,
+      "std_values": null,
+      "quant_img_RGB2BGR": false,
+      "model_pruning": false,
+      "remove_reshape": false,
+      "quantize_weight": false,
+      "enable_flash_attention": false,
+      "quantized_dtype": "w8a8",
+      "quantized_algorithm": "normal",
+      "quantized_method": "channel"
+    },
+    "four_operation_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "four_operations_completed": true,
+    "released": true,
+    "release_code": null,
+    "cleanup_errors": [],
+    "compiler_report_seconds": 21.326066726003774,
+    "controller_child_wall_seconds": 22.14218926700414,
+    "rknn": {
+      "file": "depth-int8.rknn",
+      "bytes": 35366319,
+      "sha256": "0822d4b7e76e9492a9a7aef8fc82bdb82c47f250b9c1ecf16170f46c73b21019"
+    },
+    "prior_FP16_model_bytes": 68958190,
+    "file_size_fraction_of_prior_FP16": 0.5128661149603839,
+    "SDK_internal_log_sha256_declared": "941f99702ff67c5bb4e4d2bebe0e45dc2d40ba67a7c4c3648f954ee5ba852b43",
+    "model_binary_and_internal_sdk_log_not_rehashed_on_host": true
+  },
+  "compiler_operator_table": {
+    "rows": 63,
+    "declared_activation_dtype_counts": {
+      "INT8": 63
+    },
+    "target_counts": {
+      "CPU": 10,
+      "NPU": 53
+    },
+    "CPU_boundary_rows": 5,
+    "CPU_arithmetic_rows": [
+      {
+        "index": 14,
+        "op": "Resize",
+        "declared_data_type": "INT8",
+        "target": "CPU",
+        "line": 275,
+        "name": "Resize:scratch.refinenet4.resize"
+      },
+      {
+        "index": 27,
+        "op": "Resize",
+        "declared_data_type": "INT8",
+        "target": "CPU",
+        "line": 288,
+        "name": "Resize:scratch.refinenet3.resize"
+      },
+      {
+        "index": 41,
+        "op": "Resize",
+        "declared_data_type": "INT8",
+        "target": "CPU",
+        "line": 302,
+        "name": "Resize:scratch.refinenet2.resize"
+      },
+      {
+        "index": 55,
+        "op": "Resize",
+        "declared_data_type": "INT8",
+        "target": "CPU",
+        "line": 316,
+        "name": "Resize:scratch.refinenet1.resize"
+      },
+      {
+        "index": 58,
+        "op": "Resize",
+        "declared_data_type": "INT8",
+        "target": "CPU",
+        "line": 319,
+        "name": "Resize:final_resize"
+      }
+    ],
+    "NPU_op_type_counts": {
+      "Reshape": 8,
+      "Transpose": 4,
+      "exNorm": 4,
+      "Conv": 8,
+      "Add": 5,
+      "ConvRelu": 12,
+      "ConvAdd": 7,
+      "ConvAddRelu": 3,
+      "ConvTranspose": 2
+    },
+    "non_integer_norm_constants": [
+      {
+        "op_index": 44,
+        "user": "exNorm",
+        "tensor": "norm.weight",
+        "declared_data_type": "FLOAT16",
+        "line": 487
+      },
+      {
+        "op_index": 44,
+        "user": "exNorm",
+        "tensor": "norm.bias",
+        "declared_data_type": "FLOAT",
+        "line": 488
+      }
+    ],
+    "constant_table_dtype_row_counts": {
+      "INT64": 13,
+      "FLOAT16": 4,
+      "FLOAT": 14,
+      "INT8": 37,
+      "INT32": 32
+    },
+    "all_internal_arithmetic_INT8_verified": false,
+    "all_model_arithmetic_on_NPU": false,
+    "scope": "Compiler data-type and target annotations, not runtime profile or proof of accumulator/internal arithmetic precision."
+  },
+  "log_diagnostics": {
+    "unknown_op_target_zero_messages": 5,
+    "unknown_op_target_zero_line_numbers": [
+      249,
+      250,
+      251,
+      252,
+      253
+    ],
+    "fatal_unsupported_operator_return_observed": false,
+    "interpretation": "Five error-tagged unknown-target messages coexist with completed build/export code0 and five CPU Resize placements. No exclusive causal association is asserted. Norm constants use FLOAT16/FLOAT; shape tensors INT64 and quantized Conv biases INT32. Successful compilation is not runtime support, quality or timing acceptance."
+  },
+  "thermal": {
+    "samples": 77,
+    "sampled_npu_hz": [
+      300000000
+    ],
+    "sampled_max_all_zone_c": 67.461,
+    "initial_max_all_zone_c": 51.769,
+    "pause_events": 0,
+    "frequency_written": false,
+    "scope": "Discrete saved samples, not continuous thermal/frequency proof."
+  },
+  "acceptance": {
+    "candidate_accepted": false,
+    "runtime_quality_or_speed_or_realtime_validated": false,
+    "no_runtime_model_calls_by_this_audit": true
+  }
+}

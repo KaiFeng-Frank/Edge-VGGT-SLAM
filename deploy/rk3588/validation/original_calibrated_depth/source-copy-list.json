@@ -1,0 +1,52 @@
+{
+  "schema": "v85_original_DPT_public_source_copy_list",
+  "files": [
+    {
+      "file": "capture_depth_calibration_board.py",
+      "bytes": 25848,
+      "sha256": "105ddd8c552ed9f9685708ee9a4dc2afccb4cbac1bc90c85a75a5e4674c0cf55"
+    },
+    {
+      "file": "compile_depth_int8_board.py",
+      "bytes": 20217,
+      "sha256": "82c07025a8f515c5c4df0a4c6430de4b7b00d08c3dc021603787fb5fd319a8ea"
+    },
+    {
+      "file": "probe_depth_int8_board.py",
+      "bytes": 28117,
+      "sha256": "cd9b5bbc092dcd34fe18dd5f577124356459cfc2e3a2e1bf5b739732fb5774b3"
+    },
+    {
+      "file": "rknn_calibrated_depth.py",
+      "bytes": 13504,
+      "sha256": "b514be79204b00e63a4783621122d15acb0f07b6f297918c946da02714b53427"
+    },
+    {
+      "file": "run_capture_thermal_stage.py",
+      "bytes": 4881,
+      "sha256": "7579a51bfefc5f60b86c5053e62e2a548176db72ec0744af37a545a5f1827023"
+    },
+    {
+      "file": "run_depth_capture.sh",
+      "bytes": 493,
+      "sha256": "a7dd513c7248d3579b656b7b18f1cdfc4e485c63869ca0a071202a09b241819c"
+    },
+    {
+      "file": "run_depth_capture_r2.sh",
+      "bytes": 493,
+      "sha256": "5ad0d83874f6f1cbdc10b37f275ee14063e1e38c66fc101bd00f1684106f150f"
+    },
+    {
+      "file": "run_depth_compile.sh",
+      "bytes": 980,
+      "sha256": "bfffb68ff005e4a2a365359963251167ee21876bc2182a8a3457085966181b29"
+    },
+    {
+      "file": "run_depth_probe_1ghz.sh",
+      "bytes": 1075,
+      "sha256": "b9d8f3c1017e152e85469b2b85748502649fd59995c8fbe583f380dcb8968e55"
+    }
+  ],
+  "execution_scope": "Capture, compile and component probe executed. Adapter pure lineage and I/O helpers executed; complete-model adapter installation was not tested.",
+  "excluded": "Unexecuted full-model wrapper/launcher and all captured arrays, checkpoint weights, ONNX/RKNN graphs, SDK binaries and raw logs."
+}

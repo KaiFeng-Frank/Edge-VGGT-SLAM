@@ -554,5 +554,14 @@
     "strict_FP32_arrays_passed": 0,
     "quality_accepted": false,
     "real_time_validated": false
+  },
+  "original_calibrated_depth_v85": {
+    "record": "results/original_calibrated_depth_v85.json",
+    "status": "rejected_slower_than_original_FP16_component",
+    "candidate_accepted": false,
+    "FP16_component_warm_seconds": 0.026457610161742195,
+    "INT8_component_warm_seconds": 0.03158365608881771,
+    "full_pipeline_unchanged": true,
+    "real_time_validated": false
   }
 }
