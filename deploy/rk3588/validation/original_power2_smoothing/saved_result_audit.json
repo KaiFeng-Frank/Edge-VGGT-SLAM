@@ -1,0 +1,425 @@
+{
+  "schema": "v78_independent_saved_original_pair_smoothing_audit",
+  "status": "passed_saved_evidence_audit",
+  "auditor_sha256": "6ad40ccc3578adabf85c3213526260c765f019e010e7b1bf0da9c4e86284f1f4",
+  "model_Torch_ORT_SDK_compiler_board_executed_by_auditor": false,
+  "checkpoint_and_graph_math_quality_accepted": false,
+  "arrays_checked": 200,
+  "array_files_checked": 99,
+  "shapes_finite_file_raw_SHA_all_passed": true,
+  "check_result_sha256": "e9092d0aa3789d5b19719f87b7e2ed5312899f46df02efe00323e6049ce0a9dd",
+  "check_sha256": "21aa4d48b25e20c934b8eafbb01f90278a4f5b4467c534ed03b82850cfbbfa44",
+  "compile_sha256": "1855b487b08734bef44a2a1cb63e6638e4dcb0caf0697f2ef91e54a61150affd",
+  "candidate_model_sha256": "c25996f75b0609378f432cb0ced2166df82c22adc5aff6821c8959b13f000153",
+  "original_FP32_candidate_vs_original_gate": [
+    {
+      "input": "v53",
+      "output": 0,
+      "byte_equal": true,
+      "strict_pass": true
+    },
+    {
+      "input": "v53",
+      "output": 1,
+      "byte_equal": true,
+      "strict_pass": true
+    },
+    {
+      "input": "v56-calib00",
+      "output": 0,
+      "byte_equal": true,
+      "strict_pass": true
+    },
+    {
+      "input": "v56-calib00",
+      "output": 1,
+      "byte_equal": true,
+      "strict_pass": true
+    }
+  ],
+  "calibration_norm_arrays_checked": 32,
+  "four_saved_norm_channel_maxima_bitwise_recomputed": true,
+  "input_raw_sha256": {
+    "v53": "2e1defbdacd2b2ffc13ca171888953d402009f4dcb78a3799199236a65f548d1",
+    "v56-calib00": "443a1c32584e1786995fbd28bb0eac0253127b7974a99242e1a85d24f6201f51"
+  },
+  "sources": {
+    "check": "896ee7f99cf3b6d699e9c20826e618a696f3f54600705318a3054778d4f89615",
+    "compiler": "c0caf28ec34c0b323799e8030e758f606a8ef39df182d6f6ebe5a980cc5d1626",
+    "probe": "304dd3a00e0f318e28a974592e3d95f5946c9f0444a11c92878ba3fe8e0f9ff0"
+  },
+  "stage_audits": {
+    "normal": {
+      "result_sha256": "4ced2c8baff3d5ffc0a5c0d69e8119511a1f41791fb16f6eac960502a05b0cad",
+      "calls": 72,
+      "outputs": 144,
+      "contexts_created": 3,
+      "contexts_destroyed": 3,
+      "live_contexts": 0,
+      "repetitions_bitwise": true,
+      "sampled_frequency_count": 144,
+      "sampled_frequency_hz": 1000000000,
+      "max_call_temperature_c": 53.615,
+      "cleanup_errors": []
+    },
+    "profile": {
+      "result_sha256": "f68c39371eeed2beab6e7608e0bec598c39d7274727628ede795f8a94a8bc726",
+      "calls": 6,
+      "outputs": 12,
+      "contexts_created": 3,
+      "contexts_destroyed": 3,
+      "live_contexts": 0,
+      "repetitions_bitwise": true,
+      "sampled_frequency_count": 12,
+      "sampled_frequency_hz": 1000000000,
+      "max_call_temperature_c": 53.615,
+      "cleanup_errors": []
+    }
+  },
+  "normal_warm_route_timings": {
+    "A": {
+      "count": 22,
+      "mean_ms": 32.682420086613014,
+      "median_ms": 32.596378499874845,
+      "p95_ms": 34.99195335753029,
+      "min_ms": 28.925461985636503,
+      "max_ms": 35.57341999839991,
+      "per_input": {
+        "v53": {
+          "count": 11,
+          "mean_ms": 32.23892763013613,
+          "median_ms": 32.51937899040058,
+          "p95_ms": 33.54487850447185,
+          "min_ms": 28.925461985636503,
+          "max_ms": 33.70821199496277
+        },
+        "v56-calib00": {
+          "count": 11,
+          "mean_ms": 33.125912543089896,
+          "median_ms": 32.78887798660435,
+          "p95_ms": 35.29123250336852,
+          "min_ms": 31.092252989765257,
+          "max_ms": 35.57341999839991
+        }
+      }
+    },
+    "B": {
+      "count": 22,
+      "mean_ms": 20.95695090379608,
+      "median_ms": 20.93758549017366,
+      "p95_ms": 22.95988628466148,
+      "min_ms": 17.395625996869057,
+      "max_ms": 23.064419016009197,
+      "per_input": {
+        "v53": {
+          "count": 11,
+          "mean_ms": 20.183221540223297,
+          "median_ms": 20.37641897914,
+          "p95_ms": 21.93260649801232,
+          "min_ms": 17.395625996869057,
+          "max_ms": 22.02929399209097
+        },
+        "v56-calib00": {
+          "count": 11,
+          "mean_ms": 21.730680267368864,
+          "median_ms": 21.705834980821237,
+          "p95_ms": 23.01877349964343,
+          "min_ms": 19.617793994257227,
+          "max_ms": 23.064419016009197
+        }
+      }
+    },
+    "C": {
+      "count": 22,
+      "mean_ms": 20.66588081916879,
+      "median_ms": 20.77439801360015,
+      "p95_ms": 22.332306184398476,
+      "min_ms": 17.53258498501964,
+      "max_ms": 22.772751981392503,
+      "per_input": {
+        "v53": {
+          "count": 11,
+          "mean_ms": 20.12435800332407,
+          "median_ms": 20.45196099788882,
+          "p95_ms": 21.440709999296814,
+          "min_ms": 17.53258498501964,
+          "max_ms": 21.796251996420324
+        },
+        "v56-calib00": {
+          "count": 11,
+          "mean_ms": 21.20740363501351,
+          "median_ms": 21.43896001507528,
+          "p95_ms": 22.553126982529648,
+          "min_ms": 18.79879299667664,
+          "max_ms": 22.772751981392503
+        }
+      }
+    }
+  },
+  "first_output_errors": [
+    {
+      "input": "v53",
+      "role": "A",
+      "versus_original_FP32_ONNX": [
+        {
+          "strict_pass": false,
+          "outside_tolerance": 55860,
+          "elements": 108544,
+          "max_abs": 0.07805681228637695,
+          "relative_l2": 0.004222465922834342
+        },
+        {
+          "strict_pass": false,
+          "outside_tolerance": 63235,
+          "elements": 108544,
+          "max_abs": 0.0293026864528656,
+          "relative_l2": 0.004732177272062964
+        }
+      ],
+      "versus_original_Torch": [
+        {
+          "strict_pass": false,
+          "outside_tolerance": 55865,
+          "elements": 108544,
+          "max_abs": 0.07805871963500977,
+          "relative_l2": 0.004222512956891439
+        },
+        {
+          "strict_pass": false,
+          "outside_tolerance": 63240,
+          "elements": 108544,
+          "max_abs": 0.02930513024330139,
+          "relative_l2": 0.004732235017510962
+        }
+      ]
+    },
+    {
+      "input": "v53",
+      "role": "B",
+      "versus_original_FP32_ONNX": [
+        {
+          "strict_pass": false,
+          "outside_tolerance": 108448,
+          "elements": 108544,
+          "max_abs": 1.0492018461227417,
+          "relative_l2": 0.09545046262292715
+        },
+        {
+          "strict_pass": false,
+          "outside_tolerance": 108461,
+          "elements": 108544,
+          "max_abs": 0.8070845007896423,
+          "relative_l2": 0.12352292805242143
+        }
+      ],
+      "versus_original_Torch": [
+        {
+          "strict_pass": false,
+          "outside_tolerance": 108449,
+          "elements": 108544,
+          "max_abs": 1.0492041110992432,
+          "relative_l2": 0.09545044941773827
+        },
+        {
+          "strict_pass": false,
+          "outside_tolerance": 108461,
+          "elements": 108544,
+          "max_abs": 0.807084858417511,
+          "relative_l2": 0.12352291220789677
+        }
+      ]
+    },
+    {
+      "input": "v53",
+      "role": "C",
+      "versus_original_FP32_ONNX": [
+        {
+          "strict_pass": false,
+          "outside_tolerance": 108447,
+          "elements": 108544,
+          "max_abs": 0.9522832185029984,
+          "relative_l2": 0.09392581487736744
+        },
+        {
+          "strict_pass": false,
+          "outside_tolerance": 108459,
+          "elements": 108544,
+          "max_abs": 0.6754502654075623,
+          "relative_l2": 0.12219694856168416
+        }
+      ],
+      "versus_original_Torch": [
+        {
+          "strict_pass": false,
+          "outside_tolerance": 108448,
+          "elements": 108544,
+          "max_abs": 0.9522854834794998,
+          "relative_l2": 0.09392580084326702
+        },
+        {
+          "strict_pass": false,
+          "outside_tolerance": 108459,
+          "elements": 108544,
+          "max_abs": 0.6754506230354309,
+          "relative_l2": 0.12219692952456786
+        }
+      ]
+    },
+    {
+      "input": "v56-calib00",
+      "role": "A",
+      "versus_original_FP32_ONNX": [
+        {
+          "strict_pass": false,
+          "outside_tolerance": 55342,
+          "elements": 108544,
+          "max_abs": 0.08833682537078857,
+          "relative_l2": 0.004170374680728053
+        },
+        {
+          "strict_pass": false,
+          "outside_tolerance": 63070,
+          "elements": 108544,
+          "max_abs": 0.024972468614578247,
+          "relative_l2": 0.004487365987007608
+        }
+      ],
+      "versus_original_Torch": null
+    },
+    {
+      "input": "v56-calib00",
+      "role": "B",
+      "versus_original_FP32_ONNX": [
+        {
+          "strict_pass": false,
+          "outside_tolerance": 108448,
+          "elements": 108544,
+          "max_abs": 0.8439017236232758,
+          "relative_l2": 0.09456560933904004
+        },
+        {
+          "strict_pass": false,
+          "outside_tolerance": 108457,
+          "elements": 108544,
+          "max_abs": 0.6099299192428589,
+          "relative_l2": 0.12095015713036122
+        }
+      ],
+      "versus_original_Torch": null
+    },
+    {
+      "input": "v56-calib00",
+      "role": "C",
+      "versus_original_FP32_ONNX": [
+        {
+          "strict_pass": false,
+          "outside_tolerance": 108446,
+          "elements": 108544,
+          "max_abs": 0.7857505530118942,
+          "relative_l2": 0.09316912552540499
+        },
+        {
+          "strict_pass": false,
+          "outside_tolerance": 108457,
+          "elements": 108544,
+          "max_abs": 0.5911250412464142,
+          "relative_l2": 0.1194917065251708
+        }
+      ],
+      "versus_original_Torch": null
+    }
+  ],
+  "profile_raw_and_normal_equivalence": [
+    {
+      "input": "v53",
+      "role": "A",
+      "raw_sha256": "887679495ad31be7a369aef7c418a630e4c2f90d4dc45a036bd89e61578ab0b9",
+      "bytes": 16706,
+      "outputs_byte_equal_to_normal": true
+    },
+    {
+      "input": "v53",
+      "role": "B",
+      "raw_sha256": "d729b34a312bbdffd9b75c694469c9de23feda0d68b72fa0936c3136c2477788",
+      "bytes": 16706,
+      "outputs_byte_equal_to_normal": true
+    },
+    {
+      "input": "v53",
+      "role": "C",
+      "raw_sha256": "0d7b4408313b11a7bc269e837739cc2c1fddfddab4e5aae4ea994861cbda41fd",
+      "bytes": 16706,
+      "outputs_byte_equal_to_normal": true
+    },
+    {
+      "input": "v56-calib00",
+      "role": "A",
+      "raw_sha256": "339738d8bab4c2ac91743a4c00519827e520e40954be9c6857e2be03ebb1a055",
+      "bytes": 16706,
+      "outputs_byte_equal_to_normal": true
+    },
+    {
+      "input": "v56-calib00",
+      "role": "B",
+      "raw_sha256": "61a61222cefb164485f97357651c83c03f9951402bd79e4d89b9bd824aa1ff82",
+      "bytes": 16706,
+      "outputs_byte_equal_to_normal": true
+    },
+    {
+      "input": "v56-calib00",
+      "role": "C",
+      "raw_sha256": "0cd43ab4339d2dbd7f10c75df5a3b4f25a1b56d067ecf2c80743d16abefa2d46",
+      "bytes": 16706,
+      "outputs_byte_equal_to_normal": true
+    }
+  ],
+  "controls": [
+    {
+      "stage": "vggt-v78-smoothcheck-control-r1.json",
+      "sha256": "48a8100aaf8ee6c903a04396e92bf6b7c0d90eb9484082afabd3ee4363ded182",
+      "samples": 13,
+      "sampled_hz": 300000000,
+      "max_temperature_c": 59.153,
+      "child_returncode": 0,
+      "restored_frequency_hz": null,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "vggt-v78-smoothcompile-control-r1.json",
+      "sha256": "51adff14facc501adaddc73ae027ccde1f52dc8714a30e99cf77d7b842ed3ba9",
+      "samples": 45,
+      "sampled_hz": 300000000,
+      "max_temperature_c": 61.923,
+      "child_returncode": 0,
+      "restored_frequency_hz": null,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "normal-control-r1",
+      "sha256": "867f3e773c48ebc3f8b7be5c1f8e4f317b4b09206ba4e70f0b35c21fc3ce26d1",
+      "samples": 11,
+      "sampled_hz": 1000000000,
+      "max_temperature_c": 52.692,
+      "child_returncode": 0,
+      "restored_frequency_hz": 300000000,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "profile-control-r1",
+      "sha256": "5f66cd1ce8d1ca9dd114f34775c459ac3248fd733969d206c3efea076b397d33",
+      "samples": 4,
+      "sampled_hz": 1000000000,
+      "max_temperature_c": 53.615,
+      "child_returncode": 0,
+      "restored_frequency_hz": 300000000,
+      "cleanup_errors": []
+    }
+  ],
+  "limits": [
+    "Partial outputs_get failure accounting can record released>acquired; this frozen limitation was not exercised. All actual calls succeeded and buffers balanced.",
+    "The second case calib00 is one of eight calibration inputs and not held out; v53 image SHA overlap with calibration is empty.",
+    "Component diagnostic only, not a whole-model speed or quality acceptance. Original FP32 gates remain fixed; all actual NPU routes fail them.",
+    "Profile timings remain separate from normal; sampled 1GHz does not prove unsampled continuous frequency.",
+    "Host audit does not independently reconstruct the 12 derived initializer inverse transforms; the pinned actual source/check receipt enforce these, and private weight graphs are not loaded."
+  ]
+}

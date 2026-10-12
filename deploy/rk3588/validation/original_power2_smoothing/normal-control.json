@@ -1,0 +1,181 @@
+{
+  "status": "worker_completed_pending_result_review",
+  "original_model_only": true,
+  "baseline": {
+    "governor": "userspace",
+    "cur_freq": "300000000",
+    "min_freq": "300000000",
+    "max_freq": "1000000000",
+    "userspace/set_freq": "300000000"
+  },
+  "requested_frequency_hz": 1000000000,
+  "temperature_limit_c": 75.0,
+  "timeout_seconds": 180.0,
+  "baseline_temperatures_c": {
+    "soc-thermal": 49.0,
+    "bigcore0-thermal": 49.923,
+    "bigcore1-thermal": 49.923,
+    "littlecore-thermal": 49.923,
+    "center-thermal": 49.923,
+    "gpu-thermal": 49.0,
+    "npu-thermal": 49.0
+  },
+  "observations": [
+    {
+      "seconds": 0.013652042980538681,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 49.923,
+        "bigcore0-thermal": 49.923,
+        "bigcore1-thermal": 49.923,
+        "littlecore-thermal": 49.0,
+        "center-thermal": 49.923,
+        "gpu-thermal": 49.0,
+        "npu-thermal": 49.0
+      }
+    },
+    {
+      "seconds": 0.5175240520038642,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 50.846,
+        "bigcore0-thermal": 50.846,
+        "bigcore1-thermal": 50.846,
+        "littlecore-thermal": 50.846,
+        "center-thermal": 50.846,
+        "gpu-thermal": 49.923,
+        "npu-thermal": 49.923
+      }
+    },
+    {
+      "seconds": 1.0192583529860713,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 51.769,
+        "bigcore0-thermal": 51.769,
+        "bigcore1-thermal": 52.692,
+        "littlecore-thermal": 51.769,
+        "center-thermal": 51.769,
+        "gpu-thermal": 50.846,
+        "npu-thermal": 50.846
+      }
+    },
+    {
+      "seconds": 1.5226551950036082,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 50.846,
+        "bigcore0-thermal": 50.846,
+        "bigcore1-thermal": 51.769,
+        "littlecore-thermal": 50.846,
+        "center-thermal": 51.769,
+        "gpu-thermal": 50.846,
+        "npu-thermal": 50.846
+      }
+    },
+    {
+      "seconds": 2.029825745994458,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 50.846,
+        "bigcore0-thermal": 50.846,
+        "bigcore1-thermal": 50.846,
+        "littlecore-thermal": 50.846,
+        "center-thermal": 51.769,
+        "gpu-thermal": 49.923,
+        "npu-thermal": 50.846
+      }
+    },
+    {
+      "seconds": 2.5376820050005335,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 50.846,
+        "bigcore0-thermal": 51.769,
+        "bigcore1-thermal": 51.769,
+        "littlecore-thermal": 50.846,
+        "center-thermal": 51.769,
+        "gpu-thermal": 50.846,
+        "npu-thermal": 50.846
+      }
+    },
+    {
+      "seconds": 3.046864973002812,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 50.846,
+        "bigcore0-thermal": 51.769,
+        "bigcore1-thermal": 50.846,
+        "littlecore-thermal": 50.846,
+        "center-thermal": 51.769,
+        "gpu-thermal": 50.846,
+        "npu-thermal": 50.846
+      }
+    },
+    {
+      "seconds": 3.559670274000382,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 51.769,
+        "bigcore0-thermal": 51.769,
+        "bigcore1-thermal": 51.769,
+        "littlecore-thermal": 50.846,
+        "center-thermal": 51.769,
+        "gpu-thermal": 50.846,
+        "npu-thermal": 50.846
+      }
+    },
+    {
+      "seconds": 4.072358784003882,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 51.769,
+        "bigcore0-thermal": 51.769,
+        "bigcore1-thermal": 51.769,
+        "littlecore-thermal": 51.769,
+        "center-thermal": 51.769,
+        "gpu-thermal": 50.846,
+        "npu-thermal": 50.846
+      }
+    },
+    {
+      "seconds": 4.591348460991867,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 51.769,
+        "bigcore0-thermal": 51.769,
+        "bigcore1-thermal": 51.769,
+        "littlecore-thermal": 51.769,
+        "center-thermal": 52.692,
+        "gpu-thermal": 50.846,
+        "npu-thermal": 51.769
+      }
+    },
+    {
+      "seconds": 5.110717347008176,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 51.769,
+        "bigcore0-thermal": 52.692,
+        "bigcore1-thermal": 52.692,
+        "littlecore-thermal": 51.769,
+        "center-thermal": 51.769,
+        "gpu-thermal": 51.769,
+        "npu-thermal": 51.769
+      }
+    }
+  ],
+  "child_returncode": 0,
+  "restore_errors": [],
+  "candidate_accepted": false,
+  "restored": {
+    "governor": "userspace",
+    "cur_freq": "300000000",
+    "min_freq": "300000000",
+    "max_freq": "1000000000",
+    "userspace/set_freq": "300000000"
+  },
+  "userspace_request_was_undefined": false,
+  "frequency_governor_limits_restored": true,
+  "seconds": 5.142039725003997
+}

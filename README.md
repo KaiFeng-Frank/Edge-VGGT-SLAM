@@ -27,6 +27,15 @@ the flag defaults off. All jobs restored 300 MHz.
 
 Further original-model execution diagnostics found no production improvement: FC2 output-channel partition and native tensor metadata checks were slower; a five-pair FC2 K4 comparison at 1 GHz gave only a small, variable component difference. Profiles of all four current groups confirm that their main residual stream already retains its channel layout. Those component diagnostics were not adopted; the later session improvement above changes only execution checks. [Evidence and reproduction](deploy/rk3588/validation/original_execution_diagnostics/README.md).
 
+A subsequent original-pair quantization experiment is also **not adopted**.
+Power-of-two Norm/linear scaling preserves all four tested complete FP32
+outputs byte-for-byte, but its INT8 output errors remain about **9–12%**.
+At 1 GHz the two-block component takes 32.682 ms in FP16, 20.957 ms with plain
+INT8 and 20.666 ms with the scaling. The small difference from plain INT8
+does not establish a new speed or full-model quality improvement. The latest
+complete replay result above is unchanged.
+[Measurements and reproduction](deploy/rk3588/validation/original_power2_smoothing/README.md).
+
 The subsequent **300 MHz retained-group path** reduces mean complete-model
 service on the same 16 pairs from **1.958 s to 1.797 s (8.23%)**. All 80
 prediction arrays, 80 retained/target arrays and the saved trajectory remain

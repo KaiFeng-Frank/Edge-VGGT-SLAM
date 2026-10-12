@@ -1,0 +1,357 @@
+{
+  "schema": "v78_original_pair_power2_smooth_ONNX_check",
+  "script_sha256": "896ee7f99cf3b6d699e9c20826e618a696f3f54600705318a3054778d4f89615",
+  "original_pair_onnx_sha256": "efbbaee8f3d6326565930e5a045eac0d500fdb35453fdf85ddac7481ec2fac65",
+  "candidate_onnx_sha256": "6fee3cc508e19a62f2c7438912637c20a05b4c6c59bb81c27d0fbb78839f611b",
+  "cases": [
+    {
+      "tag": "v53",
+      "directory": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v53-capture-r1",
+      "capture_manifest_sha256": "4b723e499763bb90565f6e11e16c551664634aaf72da46c7cdc493b84208ef67",
+      "input": {
+        "file": "frame-00-input.npy",
+        "bytes": 434304,
+        "sha256": "3ffb061f849b7b9b9b9cfb6cf646b940941e6d58fc97396193047c476ad116f9",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "raw_sha256": "2e1defbdacd2b2ffc13ca171888953d402009f4dcb78a3799199236a65f548d1"
+      },
+      "original_outputs": [
+        {
+          "file": "frame-00-output.npy",
+          "bytes": 434304,
+          "sha256": "d5ef6cf66a96c54da4a30331348a495674419a90cde8a8232438360b3a3ca569",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "2296fb2f68d4bd304167cff64b1f96bde7c61e55070baf417a02f7e7d0f937dc"
+        },
+        {
+          "file": "global-00-output.npy",
+          "bytes": 434304,
+          "sha256": "20827fb47c2ca3e5a6929c501aaca02471c59763b6d0eedf4d2650d5309e9c45",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "32fb6be0f79480022151f83ab79e35e05d829b78c5b7b1b9c99051c2a0065edc"
+        }
+      ],
+      "source_images": [
+        {
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.243216.png",
+          "bytes": 478978,
+          "sha256": "dffe2b7b0efb05d9a3cb9d7d938efee092d16436d6fc9a29432b1c447cd20333"
+        },
+        {
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.511333.png",
+          "bytes": 495949,
+          "sha256": "04c6b5a3018a8c8faf6a713466a4257360e1c9dd844c4dfb8237640a56a820b2"
+        }
+      ],
+      "input_origin": "original full FP32 model frame0 input",
+      "saved_input": {
+        "file": "v53-input.npy",
+        "bytes": 434304,
+        "sha256": "3ffb061f849b7b9b9b9cfb6cf646b940941e6d58fc97396193047c476ad116f9",
+        "name": "input",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "raw_sha256": "2e1defbdacd2b2ffc13ca171888953d402009f4dcb78a3799199236a65f548d1"
+      },
+      "baseline_outputs": [
+        {
+          "file": "v53-baseline-0.npy",
+          "bytes": 434304,
+          "sha256": "41d29880a335aab804ab7939a8bb64592f76259192df12cf314c9fdf478944e9",
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "7d5cf960a3279feadfa6de4b7983439344168313464d6cd292436a06dc72693f"
+        },
+        {
+          "file": "v53-baseline-1.npy",
+          "bytes": 434304,
+          "sha256": "0a9338c03b3477561cb2111d94f7802bf8cad38b98c9d1c33b6c4e3611855110",
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "0e7446d9a9e5c3e83d6e6781cffefd734e33edad36fea36a4eb946a74960f09b"
+        }
+      ],
+      "candidate_outputs": [
+        {
+          "file": "v53-candidate-0.npy",
+          "bytes": 434304,
+          "sha256": "41d29880a335aab804ab7939a8bb64592f76259192df12cf314c9fdf478944e9",
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "7d5cf960a3279feadfa6de4b7983439344168313464d6cd292436a06dc72693f"
+        },
+        {
+          "file": "v53-candidate-1.npy",
+          "bytes": 434304,
+          "sha256": "0a9338c03b3477561cb2111d94f7802bf8cad38b98c9d1c33b6c4e3611855110",
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "0e7446d9a9e5c3e83d6e6781cffefd734e33edad36fea36a4eb946a74960f09b"
+        }
+      ],
+      "checks": [
+        {
+          "name": "frame_output",
+          "byte_equal_to_baseline": true,
+          "versus_baseline_FP32_ONNX": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "versus_original_FP32": {
+            "baseline": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.4781951904296875e-05,
+              "relative_l2": 8.874554983280384e-07
+            },
+            "candidate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.4781951904296875e-05,
+              "relative_l2": 8.874554983280384e-07
+            }
+          }
+        },
+        {
+          "name": "global_output",
+          "byte_equal_to_baseline": true,
+          "versus_baseline_FP32_ONNX": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "versus_original_FP32": {
+            "baseline": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.71661376953125e-05,
+              "relative_l2": 1.1357558240076958e-06
+            },
+            "candidate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.71661376953125e-05,
+              "relative_l2": 1.1357558240076958e-06
+            }
+          }
+        }
+      ]
+    },
+    {
+      "tag": "v56-calib00",
+      "directory": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v56-calibration-r1",
+      "capture_manifest_sha256": "a1e6f1b2a89e1a96987befdea4f0a048aaf06066efa9fff72a370ac77d45507c",
+      "input": {
+        "file": "aggregator/00/calib00.npy",
+        "bytes": 434304,
+        "sha256": "e036989c2e6b529bda51e1502dbb977b66ea113b5449f640d9430bb5d02028c6",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "finite": true,
+        "raw_sha256": "443a1c32584e1786995fbd28bb0eac0253127b7974a99242e1a85d24f6201f51",
+        "minimum": -7.554426670074463,
+        "maximum": 3.3671395778656006
+      },
+      "original_outputs": null,
+      "source_images": [
+        {
+          "index": 0,
+          "timestamp": 1305031102.175304,
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031102.175304.png",
+          "bytes": 506503,
+          "sha256": "331c3fd7a3d5eefb19e3da2026625aa221ca1991f5ae30ff96060e2e3e45e368"
+        },
+        {
+          "index": 48,
+          "timestamp": 1305031103.775342,
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.775342.png",
+          "bytes": 499894,
+          "sha256": "965eefeeb53c411760fdcf86f588b4d6bdca31c914a3fbcbcc9debf97543ac87"
+        }
+      ],
+      "input_origin": "saved original full FP32 model activation; no original four-output Torch reference saved",
+      "saved_input": {
+        "file": "v56-calib00-input.npy",
+        "bytes": 434304,
+        "sha256": "e036989c2e6b529bda51e1502dbb977b66ea113b5449f640d9430bb5d02028c6",
+        "name": "input",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "raw_sha256": "443a1c32584e1786995fbd28bb0eac0253127b7974a99242e1a85d24f6201f51"
+      },
+      "baseline_outputs": [
+        {
+          "file": "v56-calib00-baseline-0.npy",
+          "bytes": 434304,
+          "sha256": "22a1bcfe96ca237571eb2a3bcbfd5402608ed4b7895df86b9fac999bd2829e5f",
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "22401e8513df9d8b34f8946ec487e94db5d67b7c8767c0d95f00d43c322e0fcc"
+        },
+        {
+          "file": "v56-calib00-baseline-1.npy",
+          "bytes": 434304,
+          "sha256": "99e113ebead6bbd9af394348e9c3657101e0fe23a0065038ce0d6334bbf6914f",
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "f24f6509ab9ef9177556a15272fd7a0aece056ffb8da0aac5314780edd99355a"
+        }
+      ],
+      "candidate_outputs": [
+        {
+          "file": "v56-calib00-candidate-0.npy",
+          "bytes": 434304,
+          "sha256": "22a1bcfe96ca237571eb2a3bcbfd5402608ed4b7895df86b9fac999bd2829e5f",
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "22401e8513df9d8b34f8946ec487e94db5d67b7c8767c0d95f00d43c322e0fcc"
+        },
+        {
+          "file": "v56-calib00-candidate-1.npy",
+          "bytes": 434304,
+          "sha256": "99e113ebead6bbd9af394348e9c3657101e0fe23a0065038ce0d6334bbf6914f",
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "f24f6509ab9ef9177556a15272fd7a0aece056ffb8da0aac5314780edd99355a"
+        }
+      ],
+      "checks": [
+        {
+          "name": "frame_output",
+          "byte_equal_to_baseline": true,
+          "versus_baseline_FP32_ONNX": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "versus_original_FP32": null
+        },
+        {
+          "name": "global_output",
+          "byte_equal_to_baseline": true,
+          "versus_baseline_FP32_ONNX": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "versus_original_FP32": null
+        }
+      ]
+    }
+  ],
+  "all_candidate_vs_baseline_FP32_ONNX_strict_passed": true,
+  "status": "passed_original_FP32_ONNX_equivalence_not_quality_accepted",
+  "ORT_version": "1.16.0",
+  "optimization": "ORT_DISABLE_ALL",
+  "candidate_accepted": false
+}

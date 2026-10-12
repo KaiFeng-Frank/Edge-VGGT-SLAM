@@ -1,0 +1,589 @@
+{
+  "stage": "smoothcheck",
+  "command": [
+    "env",
+    "-u",
+    "PYTHONPATH",
+    "-u",
+    "PYTHONHOME",
+    "-u",
+    "VIRTUAL_ENV",
+    "LD_LIBRARY_PATH=/mnt/vggt-data/vggt-slam2/sysroot/usr/lib/aarch64-linux-gnu",
+    "OMP_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "taskset",
+    "-c",
+    "4-7",
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/bin/python",
+    "-B",
+    "-u",
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v78-source-r1/build_pair_power2_smooth_board.py",
+    "--output-dir",
+    "/mnt/vggt-data/vggt-slam2/experiments/vggt-v78-pair-power2-smooth-check-r1",
+    "--check-only"
+  ],
+  "status": "completed",
+  "frequency_written": false,
+  "timeout_seconds": 180.0,
+  "samples": [
+    {
+      "elapsed_seconds": 3.7919962778687477e-06,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 49.0,
+        "soc-thermal": 49.0,
+        "gpu-thermal": 48.076,
+        "littlecore-thermal": 49.0,
+        "bigcore0-thermal": 49.0,
+        "npu-thermal": 48.076,
+        "center-thermal": 49.0
+      }
+    },
+    {
+      "elapsed_seconds": 0.002059458987787366,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 49.0,
+        "soc-thermal": 49.0,
+        "gpu-thermal": 48.076,
+        "littlecore-thermal": 49.0,
+        "bigcore0-thermal": 49.0,
+        "npu-thermal": 48.076,
+        "center-thermal": 49.0
+      },
+      "worker_memory": {
+        "pid": 283386,
+        "status": {
+          "VmPeak": "7796 kB",
+          "VmSize": "7796 kB",
+          "VmLck": "0 kB",
+          "VmPin": "0 kB",
+          "VmHWM": "804 kB",
+          "VmRSS": "804 kB",
+          "RssAnon": "84 kB",
+          "RssFile": "720 kB",
+          "RssShmem": "0 kB",
+          "VmData": "208 kB",
+          "VmStk": "132 kB",
+          "VmExe": "32 kB",
+          "VmLib": "1748 kB",
+          "VmPTE": "48 kB",
+          "VmSwap": "0 kB"
+        },
+        "smaps_rollup": {
+          "Rss": "1688 kB",
+          "Pss": "202 kB",
+          "Pss_Anon": "92 kB",
+          "Pss_File": "110 kB",
+          "Pss_Shmem": "0 kB",
+          "Shared_Clean": "1564 kB",
+          "Shared_Dirty": "0 kB",
+          "Private_Clean": "32 kB",
+          "Private_Dirty": "92 kB",
+          "Anonymous": "92 kB",
+          "Shared_Hugetlb": "0 kB",
+          "Private_Hugetlb": "0 kB",
+          "Swap": "0 kB",
+          "SwapPss": "0 kB",
+          "Locked": "0 kB"
+        },
+        "weight_mappings": []
+      }
+    },
+    {
+      "elapsed_seconds": 0.5043415509862825,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 51.769,
+        "soc-thermal": 50.846,
+        "gpu-thermal": 49.0,
+        "littlecore-thermal": 50.846,
+        "bigcore0-thermal": 51.769,
+        "npu-thermal": 49.923,
+        "center-thermal": 50.846
+      },
+      "worker_memory": {
+        "pid": 283386,
+        "status": {
+          "VmPeak": "120556 kB",
+          "VmSize": "120556 kB",
+          "VmLck": "0 kB",
+          "VmPin": "0 kB",
+          "VmHWM": "64876 kB",
+          "VmRSS": "64876 kB",
+          "RssAnon": "40800 kB",
+          "RssFile": "24076 kB",
+          "RssShmem": "0 kB",
+          "VmData": "42236 kB",
+          "VmStk": "132 kB",
+          "VmExe": "16916 kB",
+          "VmLib": "51760 kB",
+          "VmPTE": "232 kB",
+          "VmSwap": "0 kB"
+        },
+        "smaps_rollup": {
+          "Rss": "65076 kB",
+          "Pss": "61848 kB",
+          "Pss_Anon": "41000 kB",
+          "Pss_File": "20848 kB",
+          "Pss_Shmem": "0 kB",
+          "Shared_Clean": "3772 kB",
+          "Shared_Dirty": "0 kB",
+          "Private_Clean": "20304 kB",
+          "Private_Dirty": "41000 kB",
+          "Anonymous": "41000 kB",
+          "Shared_Hugetlb": "0 kB",
+          "Private_Hugetlb": "0 kB",
+          "Swap": "0 kB",
+          "SwapPss": "0 kB",
+          "Locked": "0 kB"
+        },
+        "weight_mappings": []
+      }
+    },
+    {
+      "elapsed_seconds": 1.0246045620006043,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 53.615,
+        "soc-thermal": 52.692,
+        "gpu-thermal": 50.846,
+        "littlecore-thermal": 52.692,
+        "bigcore0-thermal": 53.615,
+        "npu-thermal": 51.769,
+        "center-thermal": 51.769
+      },
+      "worker_memory": {
+        "pid": 283386,
+        "status": {
+          "VmPeak": "511584 kB",
+          "VmSize": "357552 kB",
+          "VmLck": "0 kB",
+          "VmPin": "0 kB",
+          "VmHWM": "457684 kB",
+          "VmRSS": "293900 kB",
+          "RssAnon": "267952 kB",
+          "RssFile": "25948 kB",
+          "RssShmem": "0 kB",
+          "VmData": "279232 kB",
+          "VmStk": "132 kB",
+          "VmExe": "16916 kB",
+          "VmLib": "51760 kB",
+          "VmPTE": "700 kB",
+          "VmSwap": "0 kB"
+        },
+        "smaps_rollup": {
+          "Rss": "293900 kB",
+          "Pss": "290672 kB",
+          "Pss_Anon": "267952 kB",
+          "Pss_File": "22720 kB",
+          "Pss_Shmem": "0 kB",
+          "Shared_Clean": "3772 kB",
+          "Shared_Dirty": "0 kB",
+          "Private_Clean": "22176 kB",
+          "Private_Dirty": "267952 kB",
+          "Anonymous": "267952 kB",
+          "Shared_Hugetlb": "0 kB",
+          "Private_Hugetlb": "0 kB",
+          "Swap": "0 kB",
+          "SwapPss": "0 kB",
+          "Locked": "0 kB"
+        },
+        "weight_mappings": []
+      }
+    },
+    {
+      "elapsed_seconds": 1.5470744060003199,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 53.615,
+        "soc-thermal": 53.615,
+        "gpu-thermal": 50.846,
+        "littlecore-thermal": 53.615,
+        "bigcore0-thermal": 53.615,
+        "npu-thermal": 51.769,
+        "center-thermal": 52.692
+      },
+      "worker_memory": {
+        "pid": 283386,
+        "status": {
+          "VmPeak": "687576 kB",
+          "VmSize": "687576 kB",
+          "VmLck": "0 kB",
+          "VmPin": "0 kB",
+          "VmHWM": "568076 kB",
+          "VmRSS": "568076 kB",
+          "RssAnon": "537560 kB",
+          "RssFile": "30516 kB",
+          "RssShmem": "0 kB",
+          "VmData": "609256 kB",
+          "VmStk": "132 kB",
+          "VmExe": "16916 kB",
+          "VmLib": "51760 kB",
+          "VmPTE": "1240 kB",
+          "VmSwap": "0 kB"
+        },
+        "smaps_rollup": {
+          "Rss": "572684 kB",
+          "Pss": "569456 kB",
+          "Pss_Anon": "542164 kB",
+          "Pss_File": "27292 kB",
+          "Pss_Shmem": "0 kB",
+          "Shared_Clean": "3772 kB",
+          "Shared_Dirty": "0 kB",
+          "Private_Clean": "26748 kB",
+          "Private_Dirty": "542164 kB",
+          "Anonymous": "542164 kB",
+          "Shared_Hugetlb": "0 kB",
+          "Private_Hugetlb": "0 kB",
+          "Swap": "0 kB",
+          "SwapPss": "0 kB",
+          "Locked": "0 kB"
+        },
+        "weight_mappings": []
+      }
+    },
+    {
+      "elapsed_seconds": 2.082507376006106,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 56.384,
+        "soc-thermal": 54.538,
+        "gpu-thermal": 51.769,
+        "littlecore-thermal": 55.461,
+        "bigcore0-thermal": 56.384,
+        "npu-thermal": 52.692,
+        "center-thermal": 52.692
+      },
+      "worker_memory": {
+        "pid": 283386,
+        "status": {
+          "VmPeak": "698460 kB",
+          "VmSize": "698460 kB",
+          "VmLck": "0 kB",
+          "VmPin": "0 kB",
+          "VmHWM": "579776 kB",
+          "VmRSS": "579776 kB",
+          "RssAnon": "548788 kB",
+          "RssFile": "30988 kB",
+          "RssShmem": "0 kB",
+          "VmData": "620140 kB",
+          "VmStk": "132 kB",
+          "VmExe": "16916 kB",
+          "VmLib": "51760 kB",
+          "VmPTE": "1268 kB",
+          "VmSwap": "0 kB"
+        },
+        "smaps_rollup": {
+          "Rss": "579980 kB",
+          "Pss": "576752 kB",
+          "Pss_Anon": "548992 kB",
+          "Pss_File": "27760 kB",
+          "Pss_Shmem": "0 kB",
+          "Shared_Clean": "3772 kB",
+          "Shared_Dirty": "0 kB",
+          "Private_Clean": "27216 kB",
+          "Private_Dirty": "548992 kB",
+          "Anonymous": "548992 kB",
+          "Shared_Hugetlb": "0 kB",
+          "Private_Hugetlb": "0 kB",
+          "Swap": "0 kB",
+          "SwapPss": "0 kB",
+          "Locked": "0 kB"
+        },
+        "weight_mappings": []
+      }
+    },
+    {
+      "elapsed_seconds": 2.620539972005645,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 57.307,
+        "soc-thermal": 55.461,
+        "gpu-thermal": 52.692,
+        "littlecore-thermal": 56.384,
+        "bigcore0-thermal": 57.307,
+        "npu-thermal": 53.615,
+        "center-thermal": 53.615
+      },
+      "worker_memory": {
+        "pid": 283386,
+        "status": {
+          "VmPeak": "698460 kB",
+          "VmSize": "698460 kB",
+          "VmLck": "0 kB",
+          "VmPin": "0 kB",
+          "VmHWM": "579776 kB",
+          "VmRSS": "579776 kB",
+          "RssAnon": "548788 kB",
+          "RssFile": "30988 kB",
+          "RssShmem": "0 kB",
+          "VmData": "620140 kB",
+          "VmStk": "132 kB",
+          "VmExe": "16916 kB",
+          "VmLib": "51760 kB",
+          "VmPTE": "1268 kB",
+          "VmSwap": "0 kB"
+        },
+        "smaps_rollup": {
+          "Rss": "579992 kB",
+          "Pss": "576764 kB",
+          "Pss_Anon": "549004 kB",
+          "Pss_File": "27760 kB",
+          "Pss_Shmem": "0 kB",
+          "Shared_Clean": "3772 kB",
+          "Shared_Dirty": "0 kB",
+          "Private_Clean": "27216 kB",
+          "Private_Dirty": "549004 kB",
+          "Anonymous": "549004 kB",
+          "Shared_Hugetlb": "0 kB",
+          "Private_Hugetlb": "0 kB",
+          "Swap": "0 kB",
+          "SwapPss": "0 kB",
+          "Locked": "0 kB"
+        },
+        "weight_mappings": []
+      }
+    },
+    {
+      "elapsed_seconds": 3.158111733995611,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 57.307,
+        "soc-thermal": 56.384,
+        "gpu-thermal": 53.615,
+        "littlecore-thermal": 57.307,
+        "bigcore0-thermal": 57.307,
+        "npu-thermal": 54.538,
+        "center-thermal": 54.538
+      },
+      "worker_memory": {
+        "pid": 283386,
+        "status": {
+          "VmPeak": "741820 kB",
+          "VmSize": "729528 kB",
+          "VmLck": "0 kB",
+          "VmPin": "0 kB",
+          "VmHWM": "627824 kB",
+          "VmRSS": "615664 kB",
+          "RssAnon": "584612 kB",
+          "RssFile": "31052 kB",
+          "RssShmem": "0 kB",
+          "VmData": "651208 kB",
+          "VmStk": "132 kB",
+          "VmExe": "16916 kB",
+          "VmLib": "51760 kB",
+          "VmPTE": "1328 kB",
+          "VmSwap": "0 kB"
+        },
+        "smaps_rollup": {
+          "Rss": "615816 kB",
+          "Pss": "612588 kB",
+          "Pss_Anon": "584764 kB",
+          "Pss_File": "27824 kB",
+          "Pss_Shmem": "0 kB",
+          "Shared_Clean": "3772 kB",
+          "Shared_Dirty": "0 kB",
+          "Private_Clean": "27280 kB",
+          "Private_Dirty": "584764 kB",
+          "Anonymous": "584764 kB",
+          "Shared_Hugetlb": "0 kB",
+          "Private_Hugetlb": "0 kB",
+          "Swap": "0 kB",
+          "SwapPss": "0 kB",
+          "Locked": "0 kB"
+        },
+        "weight_mappings": []
+      }
+    },
+    {
+      "elapsed_seconds": 3.70417683100095,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 57.307,
+        "soc-thermal": 56.384,
+        "gpu-thermal": 53.615,
+        "littlecore-thermal": 57.307,
+        "bigcore0-thermal": 57.307,
+        "npu-thermal": 54.538,
+        "center-thermal": 55.461
+      },
+      "worker_memory": {
+        "pid": 283386,
+        "status": {
+          "VmPeak": "872888 kB",
+          "VmSize": "803256 kB",
+          "VmLck": "0 kB",
+          "VmPin": "0 kB",
+          "VmHWM": "759108 kB",
+          "VmRSS": "689832 kB",
+          "RssAnon": "658656 kB",
+          "RssFile": "31176 kB",
+          "RssShmem": "0 kB",
+          "VmData": "724936 kB",
+          "VmStk": "132 kB",
+          "VmExe": "16916 kB",
+          "VmLib": "51760 kB",
+          "VmPTE": "1472 kB",
+          "VmSwap": "0 kB"
+        },
+        "smaps_rollup": {
+          "Rss": "689840 kB",
+          "Pss": "686612 kB",
+          "Pss_Anon": "658664 kB",
+          "Pss_File": "27948 kB",
+          "Pss_Shmem": "0 kB",
+          "Shared_Clean": "3772 kB",
+          "Shared_Dirty": "0 kB",
+          "Private_Clean": "27404 kB",
+          "Private_Dirty": "658664 kB",
+          "Anonymous": "658664 kB",
+          "Shared_Hugetlb": "0 kB",
+          "Private_Hugetlb": "0 kB",
+          "Swap": "0 kB",
+          "SwapPss": "0 kB",
+          "Locked": "0 kB"
+        },
+        "weight_mappings": []
+      }
+    },
+    {
+      "elapsed_seconds": 4.25421880299109,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 57.307,
+        "soc-thermal": 56.384,
+        "gpu-thermal": 53.615,
+        "littlecore-thermal": 57.307,
+        "bigcore0-thermal": 57.307,
+        "npu-thermal": 54.538,
+        "center-thermal": 55.461
+      },
+      "worker_memory": {
+        "pid": 283386,
+        "status": {
+          "VmPeak": "1086180 kB",
+          "VmSize": "975324 kB",
+          "VmLck": "0 kB",
+          "VmPin": "0 kB",
+          "VmHWM": "972600 kB",
+          "VmRSS": "828960 kB",
+          "RssAnon": "797784 kB",
+          "RssFile": "31176 kB",
+          "RssShmem": "0 kB",
+          "VmData": "897004 kB",
+          "VmStk": "132 kB",
+          "VmExe": "16916 kB",
+          "VmLib": "51760 kB",
+          "VmPTE": "1756 kB",
+          "VmSwap": "0 kB"
+        },
+        "smaps_rollup": {
+          "Rss": "829012 kB",
+          "Pss": "825784 kB",
+          "Pss_Anon": "797836 kB",
+          "Pss_File": "27948 kB",
+          "Pss_Shmem": "0 kB",
+          "Shared_Clean": "3772 kB",
+          "Shared_Dirty": "0 kB",
+          "Private_Clean": "27404 kB",
+          "Private_Dirty": "797836 kB",
+          "Anonymous": "797836 kB",
+          "Shared_Hugetlb": "0 kB",
+          "Private_Hugetlb": "0 kB",
+          "Swap": "0 kB",
+          "SwapPss": "0 kB",
+          "Locked": "0 kB"
+        },
+        "weight_mappings": []
+      }
+    },
+    {
+      "elapsed_seconds": 4.812576483993325,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 59.153,
+        "soc-thermal": 57.307,
+        "gpu-thermal": 53.615,
+        "littlecore-thermal": 57.307,
+        "bigcore0-thermal": 58.23,
+        "npu-thermal": 55.461,
+        "center-thermal": 55.461
+      },
+      "worker_memory": {
+        "pid": 283386,
+        "status": {
+          "VmPeak": "1086180 kB",
+          "VmSize": "995804 kB",
+          "VmLck": "0 kB",
+          "VmPin": "0 kB",
+          "VmHWM": "972600 kB",
+          "VmRSS": "845292 kB",
+          "RssAnon": "814116 kB",
+          "RssFile": "31176 kB",
+          "RssShmem": "0 kB",
+          "VmData": "917484 kB",
+          "VmStk": "132 kB",
+          "VmExe": "16916 kB",
+          "VmLib": "51760 kB",
+          "VmPTE": "1792 kB",
+          "VmSwap": "0 kB"
+        },
+        "smaps_rollup": {
+          "Rss": "845788 kB",
+          "Pss": "842560 kB",
+          "Pss_Anon": "814220 kB",
+          "Pss_File": "28340 kB",
+          "Pss_Shmem": "0 kB",
+          "Shared_Clean": "3772 kB",
+          "Shared_Dirty": "0 kB",
+          "Private_Clean": "27796 kB",
+          "Private_Dirty": "814220 kB",
+          "Anonymous": "814220 kB",
+          "Shared_Hugetlb": "0 kB",
+          "Private_Hugetlb": "0 kB",
+          "Swap": "0 kB",
+          "SwapPss": "0 kB",
+          "Locked": "0 kB"
+        },
+        "weight_mappings": []
+      }
+    },
+    {
+      "elapsed_seconds": 5.359364621981513,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 58.23,
+        "soc-thermal": 57.307,
+        "gpu-thermal": 54.538,
+        "littlecore-thermal": 57.307,
+        "bigcore0-thermal": 58.23,
+        "npu-thermal": 55.461,
+        "center-thermal": 56.384
+      },
+      "worker_memory": {
+        "pid": 283386,
+        "status": {},
+        "smaps_rollup_error": "ProcessLookupError",
+        "weight_mappings": []
+      }
+    },
+    {
+      "elapsed_seconds": 5.862158631003695,
+      "npu_hz": 300000000,
+      "temperatures_c": {
+        "bigcore1-thermal": 53.615,
+        "soc-thermal": 53.615,
+        "gpu-thermal": 52.692,
+        "littlecore-thermal": 53.615,
+        "bigcore0-thermal": 53.615,
+        "npu-thermal": 53.615,
+        "center-thermal": 53.615
+      }
+    }
+  ],
+  "cleanup_errors": [],
+  "child_pid": 283386,
+  "returncode": 0,
+  "seconds": 5.865492673008703
+}

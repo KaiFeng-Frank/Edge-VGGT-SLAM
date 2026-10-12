@@ -1,0 +1,67 @@
+{
+  "schema": "v78_original_pair_power2_smooth_W8A8_compile",
+  "status": "compiled_not_quality_accepted",
+  "original_model_only": true,
+  "original_checkpoint_unchanged": true,
+  "candidate_accepted": false,
+  "script_sha256": "c0caf28ec34c0b323799e8030e758f606a8ef39df182d6f6ebe5a980cc5d1626",
+  "check_source_sha256": "896ee7f99cf3b6d699e9c20826e618a696f3f54600705318a3054778d4f89615",
+  "checked_sha256": "e9092d0aa3789d5b19719f87b7e2ed5312899f46df02efe00323e6049ce0a9dd",
+  "check_receipt_sha256": "21aa4d48b25e20c934b8eafbb01f90278a4f5b4467c534ed03b82850cfbbfa44",
+  "configuration": {
+    "target_platform": "rk3588",
+    "float_dtype": "float16",
+    "optimization_level": 3,
+    "mean_values": null,
+    "std_values": null,
+    "quant_img_RGB2BGR": false,
+    "model_pruning": false,
+    "remove_reshape": false,
+    "quantize_weight": false,
+    "enable_flash_attention": false,
+    "quantized_dtype": "w8a8",
+    "quantized_algorithm": "normal",
+    "quantized_method": "channel"
+  },
+  "build_options": {
+    "do_quantization": true,
+    "auto_hybrid": false
+  },
+  "capture_sha256": "a1e6f1b2a89e1a96987befdea4f0a048aaf06066efa9fff72a370ac77d45507c",
+  "dataset_sha256": "34789c52e8f625fe966cefab16ac3046c3a72ab71051ccd3e14e7d9374b12696",
+  "original_graph_sha256": "efbbaee8f3d6326565930e5a045eac0d500fdb35453fdf85ddac7481ec2fac65",
+  "candidate_graph_sha256": "6fee3cc508e19a62f2c7438912637c20a05b4c6c59bb81c27d0fbb78839f611b",
+  "operations": [
+    {
+      "name": "config",
+      "code": 0,
+      "seconds": 0.0016951670113485307
+    },
+    {
+      "name": "load_onnx",
+      "code": 0,
+      "seconds": 0.5092240929952823
+    },
+    {
+      "name": "build",
+      "code": 0,
+      "seconds": 19.28182135501993
+    },
+    {
+      "name": "export_rknn",
+      "code": 0,
+      "seconds": 0.022198168997419998
+    }
+  ],
+  "cleanup_errors": [],
+  "released": true,
+  "rknn": {
+    "file": "pair.rknn",
+    "bytes": 27736654,
+    "sha256": "c25996f75b0609378f432cb0ced2166df82c22adc5aff6821c8959b13f000153"
+  },
+  "release_code": null,
+  "environment_restored": true,
+  "source_and_inputs_unchanged": true,
+  "seconds": 20.01456071899156
+}

@@ -1,0 +1,1131 @@
+{
+  "schema": "v78_original_pair_power2_smooth_NPU_probe",
+  "status": "completed_component_diagnostic_not_quality_accepted",
+  "script_sha256": "304dd3a00e0f318e28a974592e3d95f5946c9f0444a11c92878ba3fe8e0f9ff0",
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "realtime_validated": false,
+  "profile": true,
+  "frequency_hz": 1000000000,
+  "core_mask": 7,
+  "init_flags": 8,
+  "API": "All routes FP32 input pass_through=0 / want_float=1 owned FP32 outputs",
+  "timing_scope": "Complete two-output SDK route incl conversion in inputs/outputs API, owned copy/release/finite; excludes hash, NPZ, profile and platform reads",
+  "schedule": [
+    "A",
+    "B",
+    "C"
+  ],
+  "calls": [
+    {
+      "input": "v53",
+      "role": "A",
+      "sequence": 0,
+      "first_for_input_role": true,
+      "component_seconds": 0.025899419008055702,
+      "timing": {
+        "inputs_set": 0.001662499998928979,
+        "run": 0.022815044008893892,
+        "outputs_get": 0.0007854580180719495,
+        "owned_copy": 0.0005063329881522804,
+        "outputs_release": 6.416987162083387e-06,
+        "finite": 0.00011374999303370714,
+        "route_seconds": 0.025899419008055702
+      },
+      "versus_original_ONNX": [
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 55860,
+          "elements": 108544,
+          "max_abs": 0.07805681228637695,
+          "relative_l2": 0.004222465922834133
+        },
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 63235,
+          "elements": 108544,
+          "max_abs": 0.0293026864528656,
+          "relative_l2": 0.004732177272062702
+        }
+      ],
+      "versus_original_Torch": [
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 55865,
+          "elements": 108544,
+          "max_abs": 0.07805871963500977,
+          "relative_l2": 0.004222512956891238
+        },
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 63240,
+          "elements": 108544,
+          "max_abs": 0.02930513024330139,
+          "relative_l2": 0.004732235017510707
+        }
+      ],
+      "repeat_first_role_byte_equal": [
+        true,
+        true
+      ],
+      "raw_sha256": [
+        "3369bcaa6c923325f53566f0affe070d156046b8d7fa67526f23523e94e496d1",
+        "457d0ff8d8870a76a97cbd4e8e3186b93c7beb7d5f22ea10fb509179394b6da9"
+      ],
+      "platform_before": {
+        "actual_frequency_hz": 1000000000,
+        "temperatures_c": {
+          "bigcore1-thermal": 53.615,
+          "soc-thermal": 52.692,
+          "gpu-thermal": 50.846,
+          "littlecore-thermal": 52.692,
+          "bigcore0-thermal": 53.615,
+          "npu-thermal": 50.846,
+          "center-thermal": 52.692
+        }
+      },
+      "platform_after": {
+        "actual_frequency_hz": 1000000000,
+        "temperatures_c": {
+          "bigcore1-thermal": 52.692,
+          "soc-thermal": 52.692,
+          "gpu-thermal": 50.846,
+          "littlecore-thermal": 52.692,
+          "bigcore0-thermal": 52.692,
+          "npu-thermal": 51.769,
+          "center-thermal": 52.692
+        }
+      },
+      "artifact": {
+        "file": "v53-00-A.npz",
+        "bytes": 868866,
+        "sha256": "ffcf74558e280b4d6a38356a30ea41ad01d281e7aacf22c5f0fc7422f9a0dd86"
+      },
+      "profile": {
+        "query_command": 3,
+        "bytes": 16706,
+        "raw_sha256": "887679495ad31be7a369aef7c418a630e4c2f90d4dc45a036bd89e61578ab0b9",
+        "raw_text": "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n                                                                          Network Layer Information Table                                                                                \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nID   OpType             DataType Target InputShape                               OutputShape            Cycles(DDR/NPU/Total)    Time(us)     MacUsage(%)          WorkLoad(0/1/2)      RW(KB)       FullName        \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1    InputOperator      FLOAT16  CPU    \\                                        (2,53,1024)            0/0/0                    4                                 0.0%/0.0%/0.0%       0            InputOperator:input\n2    Reshape            FLOAT16  NPU    (2,53,1024),(4)                          (2,53,1,1024)          0/0/0                    258                               100.0%/0.0%/0.0%     212          Reshape:input_rs#1\n3    Transpose          FLOAT16  NPU    (2,53,1,1024)                            (2,1024,1,53)          0/0/0                    473                               100.0%/0.0%/0.0%     224          Transpose:input_tp\n4    exNorm             FLOAT16  NPU    (2,1024,1,53),(1,1024,1,1),...           (2,1024,1,53)          0/0/0                    294                               100.0%/0.0%/0.0%     222          exNorm:frame0/norm1#1\n5    Conv               FLOAT16  NPU    (2,1024,1,53),(3072,1024,1,1),(3072)     (2,3072,1,53)          303209/786432/786432     558          38.90/38.90/38.90    33.3%/33.3%/33.3%    6368         Conv:frame0/attn.qkv.matmul#2\n6    Reshape            FLOAT16  NPU    (2,3072,1,53),(4)                        (2,64,48,53)           0/0/0                    1067                              100.0%/0.0%/0.0%     636          Reshape:frame0/qkv_transpose_rs_swap_tp#1\n7    Split              FLOAT16  NPU    (2,64,48,53),(3)                         (2,64,16,53),...       0/0/0                    195                               100.0%/0.0%/0.0%     636          Split:frame0/qkv_transpose_swap_split\n8    exNorm             FLOAT16  NPU    (2,64,16,53),(1,64,1,1),(1,64,1,1),...   (2,64,16,53)           0/0/0                    354                               100.0%/0.0%/0.0%     212          exNorm:frame0/attn.q_norm#1\n9    Transpose          FLOAT16  NPU    (2,64,16,53)                             (2,16,53,64)           0/0/0                    273                               100.0%/0.0%/0.0%     212          Transpose:frame0/attn.q_norm#1_rs_tp\n10   Mul                FLOAT16  NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    128                               100.0%/0.0%/0.0%     265          Mul:frame0/attn.q_norm_mul#1\n11   Gather             FLOAT16  NPU    (2,16,53,64),(64)                        (2,16,53,64)           0/0/0                    104                               100.0%/0.0%/0.0%     212          Gather:frame0/query_rope_permuted\n12   Mul                FLOAT16  NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    128                               100.0%/0.0%/0.0%     265          Mul:frame0/attn.q_norm_mul\n13   Add                FLOAT16  NPU    (2,16,53,64),(2,16,53,64)                (2,16,53,64)           0/0/0                    95                                34.0%/34.0%/32.1%    424          Add:frame0/query_rope\n14   Reshape            FLOAT16  NPU    (2,16,53,64),(4)                         (1,32,53,64)           0/0/0                    0                                 0.0%/0.0%/0.0%       212          Reshape:frame0/query_rope_tp_rs\n15   Transpose          FLOAT16  NPU    (1,32,53,64)                             (32,64,1,53)           0/0/0                    251                               100.0%/0.0%/0.0%     212          Transpose:frame0/query_rope_tp\n16   exNorm             FLOAT16  NPU    (2,64,16,53),(1,64,1,1),(1,64,1,1),...   (2,64,16,53)           0/0/0                    353                               100.0%/0.0%/0.0%     212          exNorm:frame0/attn.k_norm#1\n17   Transpose          FLOAT16  NPU    (2,64,16,53)                             (2,16,53,64)           0/0/0                    276                               100.0%/0.0%/0.0%     212          Transpose:frame0/attn.k_norm#1_rs_tp\n18   Mul                FLOAT16  NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    126                               100.0%/0.0%/0.0%     265          Mul:frame0/attn.k_norm_mul#1\n19   Gather             FLOAT16  NPU    (2,16,53,64),(64)                        (2,16,53,64)           0/0/0                    105                               100.0%/0.0%/0.0%     212          Gather:frame0/key_rope_permuted\n20   Mul                FLOAT16  NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    126                               100.0%/0.0%/0.0%     265          Mul:frame0/attn.k_norm_mul\n21   Add                FLOAT16  NPU    (2,16,53,64),(2,16,53,64)                (2,16,53,64)           0/0/0                    95                                34.0%/34.0%/32.1%    424          Add:frame0/key_rope\n22   Reshape            FLOAT16  NPU    (2,16,53,64),(4)                         (1,32,53,64)           0/0/0                    1                                 0.0%/0.0%/0.0%       212          Reshape:frame0/key_transpose_rs\n23   Transpose          FLOAT16  NPU    (1,32,53,64)                             (32,64,1,53)           0/0/0                    251                               100.0%/0.0%/0.0%     212          Transpose:frame0/key_transpose\n24   Transpose          FLOAT16  NPU    (2,64,16,53)                             (2,16,64,53)           0/0/0                    259                               100.0%/0.0%/0.0%     212          Transpose:frame0/value_tp\n25   Reshape            FLOAT16  NPU    (2,16,64,53),(4)                         (32,64,1,53)           0/0/0                    316                               100.0%/0.0%/0.0%     212          Reshape:frame0/value_tp_rs\n26   exSDPAttention     FLOAT16  NPU    (32,64,1,53),(32,64,1,53),...            (32,64,1,53)           0/0/0                    1024                              100.0%/0.0%/0.0%     636          exSDPAttention:frame0/attention_values_2sdpa\n27   Reshape            FLOAT16  NPU    (32,64,1,53),(4)                         (2,1024,1,53)          0/0/0                    0                                 0.0%/0.0%/0.0%       212          Reshape:frame0/attention_heads_flatten_rs\n28   ConvAdd            FLOAT16  NPU    (2,1024,1,53),(1024,1024,1,1),(1024),... (2,1024,1,53)          116366/262144/262144     250          28.95/28.95/28.95    34.4%/32.8%/32.8%    2476         Conv:frame0/attn.proj.matmul#2_ConvAdd\n29   exNorm             FLOAT16  NPU    (2,1024,1,53),(1,1024,1,1),...           (2,1024,1,53)          0/0/0                    296                               100.0%/0.0%/0.0%     222          exNorm:frame0/norm2#1\n30   ConvExGelu         FLOAT16  NPU    (2,1024,1,53),(4096,1024,1,1),(4096)     (2,4096,1,53)          401219/1048576/1048576   1769         16.36/16.36/16.36    100.0%/0.0%/0.0%     8420         Conv:frame0/mlp.fc1.matmul#2\n31   ConvAdd            FLOAT16  NPU    (2,4096,1,53),(1024,4096,1,1),(1024),... (2,1024,1,53)          409878/1048576/1048576   2491         11.62/11.62/11.62    34.4%/32.8%/32.8%    9256         Conv:frame0/mlp.fc2.matmul#2_ConvAdd\n32   Transpose          FLOAT16  NPU    (2,1024,1,53)                            (2,53,1,1024)          0/0/0                    528                               100.0%/0.0%/0.0%     212          Transpose:frame_output-rs_tp\n33   Reshape            FLOAT16  NPU    (2,53,1,1024),(3)                        (2,53,1024)            0/0/0                    151                               100.0%/0.0%/0.0%     224          Reshape:frame_output-rs\n34   OutputOperator     FLOAT16  CPU    (2,53,1024)                              \\                      0/0/0                    5                                 0.0%/0.0%/0.0%       212          OutputOperator:frame_output\n35   Reshape            FLOAT16  NPU    (2,53,1024),(4)                          (1,106,1,1024)         0/0/0                    218                               100.0%/0.0%/0.0%     212          Reshape:global_input_rs#1\n36   Transpose          FLOAT16  NPU    (1,106,1,1024)                           (1,1024,1,106)         0/0/0                    308                               100.0%/0.0%/0.0%     224          Transpose:global_input_tp\n37   exNorm             FLOAT16  NPU    (1,1024,1,106),(1,1024,1,1),...          (1,1024,1,106)         0/0/0                    276                               100.0%/0.0%/0.0%     222          exNorm:global0/norm1#1\n38   Conv               FLOAT16  NPU    (1,1024,1,106),(3072,1024,1,1),...       (1,3072,1,106)         303209/688128/688128     544          39.91/39.91/39.91    33.3%/33.3%/33.3%    6368         Conv:global0/attn.qkv.matmul#3\n39   Reshape            FLOAT16  NPU    (1,3072,1,106),(4)                       (16,192,1,106)         0/0/0                    0                                 0.0%/0.0%/0.0%       636          Reshape:global0/attn.qkv.matmul_mm_tp_sw_gather_rs\n40   Split              FLOAT16  NPU    (16,192,1,106),(3)                       (16,64,1,106),...      0/0/0                    191                               100.0%/0.0%/0.0%     636          Split:global0/qkv_transpose-rs_tp_split\n41   exNorm             FLOAT16  NPU    (16,64,1,106),(1,64,1,1),(1,64,1,1),...  (16,64,1,106)          0/0/0                    438                               100.0%/0.0%/0.0%     212          exNorm:global0/attn.q_norm#1\n42   Mul                FLOAT16  NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    117                               100.0%/0.0%/0.0%     225          Mul:global0/query_rope_sine\n43   Mul                FLOAT16  NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    115                               100.0%/0.0%/0.0%     225          Mul:global0/query_rope_cosine\n44   ConvAdd            FLOAT16  NPU    (16,64,1,106),(64,64,1,1),...            (16,64,1,106)          27880/14336/27880        132          3.43/3.43/3.43       49.7%/25.1%/25.1%    432          Conv:global0/query_rope_permuted_2conv_ConvAdd\n45   exNorm             FLOAT16  NPU    (16,64,1,106),(1,64,1,1),(1,64,1,1),...  (16,64,1,106)          0/0/0                    438                               100.0%/0.0%/0.0%     212          exNorm:global0/attn.k_norm#1\n46   Mul                FLOAT16  NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    115                               100.0%/0.0%/0.0%     225          Mul:global0/key_rope_sine\n47   Mul                FLOAT16  NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    115                               100.0%/0.0%/0.0%     225          Mul:global0/key_rope_cosine\n48   ConvAdd            FLOAT16  NPU    (16,64,1,106),(64,64,1,1),...            (16,64,1,106)          27880/14336/27880        131          3.45/3.45/3.45       49.7%/25.1%/25.1%    432          Conv:global0/key_rope_permuted_2conv_ConvAdd\n49   exSDPAttention     FLOAT16  NPU    (16,64,1,106),(16,64,1,106),...          (16,64,1,106)          0/0/0                    1144                              100.0%/0.0%/0.0%     636          exSDPAttention:global0/attention_values_2sdpa\n50   Reshape            FLOAT16  NPU    (16,64,1,106),(4)                        (1,1024,1,106)         0/0/0                    0                                 0.0%/0.0%/0.0%       212          Reshape:global0/attention_heads_flatten_rs\n51   ConvAdd            FLOAT16  NPU    (1,1024,1,106),(1024,1024,1,1),...       (1,1024,1,106)         116366/229376/229376     207          34.96/34.96/34.96    34.4%/32.8%/32.8%    2476         Conv:global0/attn.proj.matmul#2_ConvAdd\n52   exNorm             FLOAT16  NPU    (1,1024,1,106),(1,1024,1,1),...          (1,1024,1,106)         0/0/0                    277                               100.0%/0.0%/0.0%     222          exNorm:global0/norm2#1\n53   ConvExGelu         FLOAT16  NPU    (1,1024,1,106),(4096,1024,1,1),...       (1,4096,1,106)         401219/917504/917504     1776         16.30/16.30/16.30    100.0%/0.0%/0.0%     8420         Conv:global0/mlp.fc1.matmul#2\n54   ConvAdd            FLOAT16  NPU    (1,4096,1,106),(1024,4096,1,1),...       (1,1024,1,106)         409878/917504/917504     2482         11.66/11.66/11.66    34.4%/32.8%/32.8%    9256         Conv:global0/mlp.fc2.matmul#2_ConvAdd\n55   Transpose          FLOAT16  NPU    (1,1024,1,106)                           (1,106,1,1024)         0/0/0                    292                               100.0%/0.0%/0.0%     212          Transpose:global_output-rs_tp\n56   Reshape            FLOAT16  NPU    (1,106,1,1024),(3)                       (1,106,1024)           0/0/0                    156                               100.0%/0.0%/0.0%     224          Reshape:global_output-rs\n57   OutputOperator     FLOAT16  CPU    (1,106,1024)                             \\                      0/0/0                    6                                 0.0%/0.0%/0.0%       212          OutputOperator:global_output\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nTotal Operator Elapsed Per Frame Time(us): 22082\nTotal Memory Read/Write Per Frame Size(KB): 66980.88\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n---------------------------------------------------------------------------------------------------\n                                 Operator Time Consuming Ranking Table            \n---------------------------------------------------------------------------------------------------\nOpType             CallNumber   CPUTime(us)  GPUTime(us)  NPUTime(us)  TotalTime(us)  TimeRatio(%)  \n---------------------------------------------------------------------------------------------------\nConvAdd            6            0            0            5693         5693           25.78%        \nConvExGelu         2            0            0            3545         3545           16.05%        \nTranspose          9            0            0            2911         2911           13.18%        \nexNorm             8            0            0            2726         2726           12.34%        \nexSDPAttention     2            0            0            2168         2168           9.82%         \nReshape            11           0            0            2167         2167           9.81%         \nConv               2            0            0            1102         1102           4.99%         \nMul                8            0            0            970          970            4.39%         \nSplit              2            0            0            386          386            1.75%         \nGather             2            0            0            209          209            0.95%         \nAdd                2            0            0            190          190            0.86%         \nOutputOperator     2            11           0            0            11             0.05%         \nInputOperator      1            4            0            0            4              0.02%         \n---------------------------------------------------------------------------------------------------\nTotal                           15           0            22067        22082         \n---------------------------------------------------------------------------------------------------\n",
+        "operator_targets_interpreted_by_probe": false
+      }
+    },
+    {
+      "input": "v53",
+      "role": "B",
+      "sequence": 1,
+      "first_for_input_role": true,
+      "component_seconds": 0.01741629297612235,
+      "timing": {
+        "inputs_set": 0.001312499982304871,
+        "run": 0.015674167982069775,
+        "outputs_get": 0.00014145899331197143,
+        "owned_copy": 0.0001382499758619815,
+        "outputs_release": 4.958012141287327e-06,
+        "finite": 0.00013737499830313027,
+        "route_seconds": 0.01741629297612235
+      },
+      "versus_original_ONNX": [
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 108448,
+          "elements": 108544,
+          "max_abs": 1.0492018461227417,
+          "relative_l2": 0.09545046262292413
+        },
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 108461,
+          "elements": 108544,
+          "max_abs": 0.8070845007896423,
+          "relative_l2": 0.12352292805241788
+        }
+      ],
+      "versus_original_Torch": [
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 108449,
+          "elements": 108544,
+          "max_abs": 1.0492041110992432,
+          "relative_l2": 0.09545044941773538
+        },
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 108461,
+          "elements": 108544,
+          "max_abs": 0.807084858417511,
+          "relative_l2": 0.12352291220789301
+        }
+      ],
+      "repeat_first_role_byte_equal": [
+        true,
+        true
+      ],
+      "raw_sha256": [
+        "e9ba35ca70b78d466dfaf964a5bc070be0157db05d4055cbadf6fb2891cde534",
+        "ee07cae498fce9937473118e7578530ecb0883e29e5d1681dcab5b7979a06f68"
+      ],
+      "platform_before": {
+        "actual_frequency_hz": 1000000000,
+        "temperatures_c": {
+          "bigcore1-thermal": 52.692,
+          "soc-thermal": 52.692,
+          "gpu-thermal": 50.846,
+          "littlecore-thermal": 52.692,
+          "bigcore0-thermal": 52.692,
+          "npu-thermal": 51.769,
+          "center-thermal": 52.692
+        }
+      },
+      "platform_after": {
+        "actual_frequency_hz": 1000000000,
+        "temperatures_c": {
+          "bigcore1-thermal": 52.692,
+          "soc-thermal": 52.692,
+          "gpu-thermal": 50.846,
+          "littlecore-thermal": 52.692,
+          "bigcore0-thermal": 52.692,
+          "npu-thermal": 51.769,
+          "center-thermal": 52.692
+        }
+      },
+      "artifact": {
+        "file": "v53-01-B.npz",
+        "bytes": 868866,
+        "sha256": "bae162f2355f18afd118c8734cf7117fcbe4f02f171b33b3d8cc01a76666578c"
+      },
+      "profile": {
+        "query_command": 3,
+        "bytes": 16706,
+        "raw_sha256": "d729b34a312bbdffd9b75c694469c9de23feda0d68b72fa0936c3136c2477788",
+        "raw_text": "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n                                                                          Network Layer Information Table                                                                                \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nID   OpType             DataType Target InputShape                               OutputShape            Cycles(DDR/NPU/Total)    Time(us)     MacUsage(%)          WorkLoad(0/1/2)      RW(KB)       FullName        \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1    InputOperator      INT8     CPU    \\                                        (2,53,1024)            0/0/0                    4                                 0.0%/0.0%/0.0%       0            InputOperator:input\n2    Reshape            INT8     NPU    (2,53,1024),(4)                          (2,53,1,1024)          0/0/0                    250                               100.0%/0.0%/0.0%     106          Reshape:input_rs#1\n3    Transpose          INT8     NPU    (2,53,1,1024)                            (2,1024,1,53)          0/0/0                    331                               100.0%/0.0%/0.0%     128          Transpose:input_tp\n4    exNorm             INT8     NPU    (2,1024,1,53),(1,1024,1,1),...           (2,1024,1,53)          0/0/0                    382                               100.0%/0.0%/0.0%     116          exNorm:frame0/norm1#1\n5    Conv               INT8     NPU    (2,1024,1,53),(3072,1024,1,1),(3072)     (2,3072,1,53)          152384/393216/393216     324          33.50/33.50/33.50    33.3%/33.3%/33.3%    3202         Conv:frame0/attn.qkv.matmul#2\n6    Reshape            INT8     NPU    (2,3072,1,53),(4)                        (2,64,48,53)           0/0/0                    848                               100.0%/0.0%/0.0%     318          Reshape:frame0/qkv_transpose_rs_swap_tp#1\n7    Split              INT8     NPU    (2,64,48,53),(3)                         (2,64,16,53),...       0/0/0                    137                               100.0%/0.0%/0.0%     318          Split:frame0/qkv_transpose_swap_split\n8    exNorm             INT8     NPU    (2,64,16,53),(1,64,1,1),(1,64,1,1),...   (2,64,16,53)           0/0/0                    469                               100.0%/0.0%/0.0%     106          exNorm:frame0/attn.q_norm#1\n9    Transpose          INT8     NPU    (2,64,16,53)                             (2,16,53,64)           0/0/0                    193                               100.0%/0.0%/0.0%     106          Transpose:frame0/attn.q_norm#1_rs_tp\n10   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    111                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.q_norm_mul#1\n11   Gather             INT8     NPU    (2,16,53,64),(64)                        (2,16,53,64)           0/0/0                    88                                100.0%/0.0%/0.0%     106          Gather:frame0/query_rope_permuted\n12   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    111                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.q_norm_mul\n13   Add                INT8     NPU    (2,16,53,64),(2,16,53,64)                (2,16,53,64)           0/0/0                    86                                34.0%/34.0%/32.1%    212          Add:frame0/query_rope\n14   Reshape            INT8     NPU    (2,16,53,64),(4)                         (1,32,53,64)           0/0/0                    0                                 0.0%/0.0%/0.0%       106          Reshape:frame0/query_rope_tp_rs\n15   Transpose          INT8     NPU    (1,32,53,64)                             (32,64,1,53)           0/0/0                    207                               100.0%/0.0%/0.0%     106          Transpose:frame0/query_rope_tp\n16   exNorm             INT8     NPU    (2,64,16,53),(1,64,1,1),(1,64,1,1),...   (2,64,16,53)           0/0/0                    468                               100.0%/0.0%/0.0%     106          exNorm:frame0/attn.k_norm#1\n17   Transpose          INT8     NPU    (2,64,16,53)                             (2,16,53,64)           0/0/0                    195                               100.0%/0.0%/0.0%     106          Transpose:frame0/attn.k_norm#1_rs_tp\n18   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    111                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.k_norm_mul#1\n19   Gather             INT8     NPU    (2,16,53,64),(64)                        (2,16,53,64)           0/0/0                    87                                100.0%/0.0%/0.0%     106          Gather:frame0/key_rope_permuted\n20   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    111                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.k_norm_mul\n21   Add                INT8     NPU    (2,16,53,64),(2,16,53,64)                (2,16,53,64)           0/0/0                    87                                34.0%/34.0%/32.1%    212          Add:frame0/key_rope\n22   Reshape            INT8     NPU    (2,16,53,64),(4)                         (1,32,53,64)           0/0/0                    0                                 0.0%/0.0%/0.0%       106          Reshape:frame0/key_transpose_rs\n23   Transpose          INT8     NPU    (1,32,53,64)                             (32,64,1,53)           0/0/0                    256                               100.0%/0.0%/0.0%     106          Transpose:frame0/key_transpose\n24   Transpose          INT8     NPU    (2,64,16,53)                             (2,16,64,53)           0/0/0                    123                               100.0%/0.0%/0.0%     106          Transpose:frame0/value_tp\n25   Reshape            INT8     NPU    (2,16,64,53),(4)                         (32,64,1,53)           0/0/0                    244                               100.0%/0.0%/0.0%     106          Reshape:frame0/value_tp_rs\n26   exSDPAttention     INT8     NPU    (32,64,1,53),(32,64,1,53),...            (32,64,1,53)           0/0/0                    1037                              100.0%/0.0%/0.0%     318          exSDPAttention:frame0/attention_values_2sdpa\n27   Reshape            INT8     NPU    (32,64,1,53),(4)                         (2,1024,1,53)          0/0/0                    0                                 0.0%/0.0%/0.0%       106          Reshape:frame0/attention_heads_flatten_rs\n28   ConvAdd            INT8     NPU    (2,1024,1,53),(1024,1024,1,1),(1024),... (2,1024,1,53)          58443/131072/131072      168          21.54/21.54/21.54    34.4%/34.4%/31.3%    1244         Conv:frame0/attn.proj.matmul#2_ConvAdd\n29   exNorm             INT8     NPU    (2,1024,1,53),(1,1024,1,1),...           (2,1024,1,53)          0/0/0                    381                               100.0%/0.0%/0.0%     116          exNorm:frame0/norm2#1\n30   ConvExGelu         INT8     NPU    (2,1024,1,53),(4096,1024,1,1),(4096)     (2,4096,1,53)          201649/524288/524288     822          17.61/17.61/17.61    100.0%/0.0%/0.0%     4234         Conv:frame0/mlp.fc1.matmul#2\n31   ConvAdd            INT8     NPU    (2,4096,1,53),(1024,4096,1,1),(1024),... (2,1024,1,53)          205199/524288/524288     704          20.56/20.56/20.56    34.4%/34.4%/31.3%    4634         Conv:frame0/mlp.fc2.matmul#2_ConvAdd\n32   Transpose          INT8     NPU    (2,1024,1,53)                            (2,53,1,1024)          0/0/0                    378                               100.0%/0.0%/0.0%     106          Transpose:frame_output-rs_tp\n33   Reshape            INT8     NPU    (2,53,1,1024),(3)                        (2,53,1024)            0/0/0                    135                               100.0%/0.0%/0.0%     128          Reshape:frame_output-rs\n34   OutputOperator     INT8     CPU    (2,53,1024)                              \\                      0/0/0                    4                                 0.0%/0.0%/0.0%       106          OutputOperator:frame_output\n35   Reshape            INT8     NPU    (2,53,1024),(4)                          (1,106,1,1024)         0/0/0                    175                               100.0%/0.0%/0.0%     106          Reshape:global_input_rs#1\n36   Transpose          INT8     NPU    (1,106,1,1024)                           (1,1024,1,106)         0/0/0                    215                               100.0%/0.0%/0.0%     112          Transpose:global_input_tp\n37   exNorm             INT8     NPU    (1,1024,1,106),(1,1024,1,1),...          (1,1024,1,106)         0/0/0                    370                               100.0%/0.0%/0.0%     116          exNorm:global0/norm1#1\n38   Conv               INT8     NPU    (1,1024,1,106),(3072,1024,1,1),...       (1,3072,1,106)         152384/344064/344064     219          49.56/49.56/49.56    33.3%/33.3%/33.3%    3202         Conv:global0/attn.qkv.matmul#3\n39   Reshape            INT8     NPU    (1,3072,1,106),(4)                       (16,192,1,106)         0/0/0                    0                                 0.0%/0.0%/0.0%       318          Reshape:global0/attn.qkv.matmul_mm_tp_sw_gather_rs\n40   Split              INT8     NPU    (16,192,1,106),(3)                       (16,64,1,106),...      0/0/0                    136                               100.0%/0.0%/0.0%     318          Split:global0/qkv_transpose-rs_tp_split\n41   exNorm             INT8     NPU    (16,64,1,106),(1,64,1,1),(1,64,1,1),...  (16,64,1,106)          0/0/0                    495                               100.0%/0.0%/0.0%     106          exNorm:global0/attn.q_norm#1\n42   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    97                                100.0%/0.0%/0.0%     112          Mul:global0/query_rope_sine\n43   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    95                                100.0%/0.0%/0.0%     112          Mul:global0/query_rope_cosine\n44   ConvAdd            INT8     NPU    (16,64,1,106),(64,64,1,1),(64),...       (16,64,1,106)          13962/14336/14336        106          2.13/2.13/2.13       100.0%/0.0%/0.0%     216          Conv:global0/query_rope_permuted_2conv_ConvAdd\n45   exNorm             INT8     NPU    (16,64,1,106),(1,64,1,1),(1,64,1,1),...  (16,64,1,106)          0/0/0                    505                               100.0%/0.0%/0.0%     106          exNorm:global0/attn.k_norm#1\n46   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    96                                100.0%/0.0%/0.0%     112          Mul:global0/key_rope_sine\n47   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    95                                100.0%/0.0%/0.0%     112          Mul:global0/key_rope_cosine\n48   ConvAdd            INT8     NPU    (16,64,1,106),(64,64,1,1),(64),...       (16,64,1,106)          13962/14336/14336        105          2.15/2.15/2.15       100.0%/0.0%/0.0%     216          Conv:global0/key_rope_permuted_2conv_ConvAdd\n49   exSDPAttention     INT8     NPU    (16,64,1,106),(16,64,1,106),...          (16,64,1,106)          0/0/0                    1182                              100.0%/0.0%/0.0%     318          exSDPAttention:global0/attention_values_2sdpa\n50   Reshape            INT8     NPU    (16,64,1,106),(4)                        (1,1024,1,106)         0/0/0                    0                                 0.0%/0.0%/0.0%       106          Reshape:global0/attention_heads_flatten_rs\n51   ConvAdd            INT8     NPU    (1,1024,1,106),(1024,1024,1,1),...       (1,1024,1,106)         58443/114688/114688      134          27.00/27.00/27.00    34.4%/34.4%/31.3%    1244         Conv:global0/attn.proj.matmul#2_ConvAdd\n52   exNorm             INT8     NPU    (1,1024,1,106),(1,1024,1,1),...          (1,1024,1,106)         0/0/0                    369                               100.0%/0.0%/0.0%     116          exNorm:global0/norm2#1\n53   ConvExGelu         INT8     NPU    (1,1024,1,106),(4096,1024,1,1),...       (1,4096,1,106)         201649/458752/458752     544          26.60/26.60/26.60    100.0%/0.0%/0.0%     4234         Conv:global0/mlp.fc1.matmul#2\n54   ConvAdd            INT8     NPU    (1,4096,1,106),(1024,4096,1,1),...       (1,1024,1,106)         205199/458752/458752     739          19.58/19.58/19.58    34.4%/34.4%/31.3%    4634         Conv:global0/mlp.fc2.matmul#2_ConvAdd\n55   Transpose          INT8     NPU    (1,1024,1,106)                           (1,106,1,1024)         0/0/0                    200                               100.0%/0.0%/0.0%     106          Transpose:global_output-rs_tp\n56   Reshape            INT8     NPU    (1,106,1,1024),(3)                       (1,106,1024)           0/0/0                    129                               100.0%/0.0%/0.0%     112          Reshape:global_output-rs\n57   OutputOperator     INT8     CPU    (1,106,1024)                             \\                      0/0/0                    3                                 0.0%/0.0%/0.0%       106          OutputOperator:global_output\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nTotal Operator Elapsed Per Frame Time(us): 14861\nTotal Memory Read/Write Per Frame Size(KB): 33759.38\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n---------------------------------------------------------------------------------------------------\n                                 Operator Time Consuming Ranking Table            \n---------------------------------------------------------------------------------------------------\nOpType             CallNumber   CPUTime(us)  GPUTime(us)  NPUTime(us)  TotalTime(us)  TimeRatio(%)  \n---------------------------------------------------------------------------------------------------\nexNorm             8            0            0            3439         3439           23.14%        \nexSDPAttention     2            0            0            2219         2219           14.93%        \nTranspose          9            0            0            2098         2098           14.12%        \nConvAdd            6            0            0            1956         1956           13.16%        \nReshape            11           0            0            1781         1781           11.98%        \nConvExGelu         2            0            0            1366         1366           9.19%         \nMul                8            0            0            827          827            5.56%         \nConv               2            0            0            543          543            3.65%         \nSplit              2            0            0            273          273            1.84%         \nGather             2            0            0            175          175            1.18%         \nAdd                2            0            0            173          173            1.16%         \nOutputOperator     2            7            0            0            7              0.05%         \nInputOperator      1            4            0            0            4              0.03%         \n---------------------------------------------------------------------------------------------------\nTotal                           11           0            14850        14861         \n---------------------------------------------------------------------------------------------------\n",
+        "operator_targets_interpreted_by_probe": false
+      }
+    },
+    {
+      "input": "v53",
+      "role": "C",
+      "sequence": 2,
+      "first_for_input_role": true,
+      "component_seconds": 0.018081001995597035,
+      "timing": {
+        "inputs_set": 0.0015610000118613243,
+        "run": 0.016041085007600486,
+        "outputs_get": 0.00017091698828153312,
+        "owned_copy": 0.00015458301641047,
+        "outputs_release": 5.249981768429279e-06,
+        "finite": 0.0001402909983880818,
+        "route_seconds": 0.018081001995597035
+      },
+      "versus_original_ONNX": [
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 108447,
+          "elements": 108544,
+          "max_abs": 0.9522832185029984,
+          "relative_l2": 0.09392581487736419
+        },
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 108459,
+          "elements": 108544,
+          "max_abs": 0.6754502654075623,
+          "relative_l2": 0.12219694856168026
+        }
+      ],
+      "versus_original_Torch": [
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 108448,
+          "elements": 108544,
+          "max_abs": 0.9522854834794998,
+          "relative_l2": 0.09392580084326393
+        },
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 108459,
+          "elements": 108544,
+          "max_abs": 0.6754506230354309,
+          "relative_l2": 0.12219692952456399
+        }
+      ],
+      "repeat_first_role_byte_equal": [
+        true,
+        true
+      ],
+      "raw_sha256": [
+        "462567cdbcfcea6f0e6a9d1cccaa0cacc7f1590243b61dce045d0a4027881e82",
+        "a86dc9f3c564d933381105339883d4b68d7b2ca0ff775f00631287a68de246f9"
+      ],
+      "platform_before": {
+        "actual_frequency_hz": 1000000000,
+        "temperatures_c": {
+          "bigcore1-thermal": 52.692,
+          "soc-thermal": 52.692,
+          "gpu-thermal": 50.846,
+          "littlecore-thermal": 52.692,
+          "bigcore0-thermal": 52.692,
+          "npu-thermal": 51.769,
+          "center-thermal": 52.692
+        }
+      },
+      "platform_after": {
+        "actual_frequency_hz": 1000000000,
+        "temperatures_c": {
+          "bigcore1-thermal": 52.692,
+          "soc-thermal": 51.769,
+          "gpu-thermal": 50.846,
+          "littlecore-thermal": 51.769,
+          "bigcore0-thermal": 52.692,
+          "npu-thermal": 51.769,
+          "center-thermal": 52.692
+        }
+      },
+      "artifact": {
+        "file": "v53-02-C.npz",
+        "bytes": 868866,
+        "sha256": "8f02b35fc857db004a4470fa6ebec80fdefa4a3af0eaacc32764c60fb98e1c9c"
+      },
+      "profile": {
+        "query_command": 3,
+        "bytes": 16706,
+        "raw_sha256": "0d7b4408313b11a7bc269e837739cc2c1fddfddab4e5aae4ea994861cbda41fd",
+        "raw_text": "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n                                                                          Network Layer Information Table                                                                                \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nID   OpType             DataType Target InputShape                               OutputShape            Cycles(DDR/NPU/Total)    Time(us)     MacUsage(%)          WorkLoad(0/1/2)      RW(KB)       FullName        \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1    InputOperator      INT8     CPU    \\                                        (2,53,1024)            0/0/0                    5                                 0.0%/0.0%/0.0%       0            InputOperator:input\n2    Reshape            INT8     NPU    (2,53,1024),(4)                          (2,53,1,1024)          0/0/0                    200                               100.0%/0.0%/0.0%     106          Reshape:input_rs#1\n3    Transpose          INT8     NPU    (2,53,1,1024)                            (2,1024,1,53)          0/0/0                    337                               100.0%/0.0%/0.0%     128          Transpose:input_tp\n4    exNorm             INT8     NPU    (2,1024,1,53),(1,1024,1,1),...           (2,1024,1,53)          0/0/0                    389                               100.0%/0.0%/0.0%     116          exNorm:frame0/norm1#1\n5    Conv               INT8     NPU    (2,1024,1,53),(3072,1024,1,1),(3072)     (2,3072,1,53)          152384/393216/393216     332          32.69/32.69/32.69    33.3%/33.3%/33.3%    3202         Conv:frame0/attn.qkv.matmul#2\n6    Reshape            INT8     NPU    (2,3072,1,53),(4)                        (2,64,48,53)           0/0/0                    857                               100.0%/0.0%/0.0%     318          Reshape:frame0/qkv_transpose_rs_swap_tp#1\n7    Split              INT8     NPU    (2,64,48,53),(3)                         (2,64,16,53),...       0/0/0                    144                               100.0%/0.0%/0.0%     318          Split:frame0/qkv_transpose_swap_split\n8    exNorm             INT8     NPU    (2,64,16,53),(1,64,1,1),(1,64,1,1),...   (2,64,16,53)           0/0/0                    480                               100.0%/0.0%/0.0%     106          exNorm:frame0/attn.q_norm#1\n9    Transpose          INT8     NPU    (2,64,16,53)                             (2,16,53,64)           0/0/0                    200                               100.0%/0.0%/0.0%     106          Transpose:frame0/attn.q_norm#1_rs_tp\n10   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    119                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.q_norm_mul#1\n11   Gather             INT8     NPU    (2,16,53,64),(64)                        (2,16,53,64)           0/0/0                    97                                100.0%/0.0%/0.0%     106          Gather:frame0/query_rope_permuted\n12   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    120                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.q_norm_mul\n13   Add                INT8     NPU    (2,16,53,64),(2,16,53,64)                (2,16,53,64)           0/0/0                    97                                34.0%/34.0%/32.1%    212          Add:frame0/query_rope\n14   Reshape            INT8     NPU    (2,16,53,64),(4)                         (1,32,53,64)           0/0/0                    0                                 0.0%/0.0%/0.0%       106          Reshape:frame0/query_rope_tp_rs\n15   Transpose          INT8     NPU    (1,32,53,64)                             (32,64,1,53)           0/0/0                    217                               100.0%/0.0%/0.0%     106          Transpose:frame0/query_rope_tp\n16   exNorm             INT8     NPU    (2,64,16,53),(1,64,1,1),(1,64,1,1),...   (2,64,16,53)           0/0/0                    475                               100.0%/0.0%/0.0%     106          exNorm:frame0/attn.k_norm#1\n17   Transpose          INT8     NPU    (2,64,16,53)                             (2,16,53,64)           0/0/0                    200                               100.0%/0.0%/0.0%     106          Transpose:frame0/attn.k_norm#1_rs_tp\n18   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    118                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.k_norm_mul#1\n19   Gather             INT8     NPU    (2,16,53,64),(64)                        (2,16,53,64)           0/0/0                    96                                100.0%/0.0%/0.0%     106          Gather:frame0/key_rope_permuted\n20   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    120                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.k_norm_mul\n21   Add                INT8     NPU    (2,16,53,64),(2,16,53,64)                (2,16,53,64)           0/0/0                    96                                34.0%/34.0%/32.1%    212          Add:frame0/key_rope\n22   Reshape            INT8     NPU    (2,16,53,64),(4)                         (1,32,53,64)           0/0/0                    0                                 0.0%/0.0%/0.0%       106          Reshape:frame0/key_transpose_rs\n23   Transpose          INT8     NPU    (1,32,53,64)                             (32,64,1,53)           0/0/0                    217                               100.0%/0.0%/0.0%     106          Transpose:frame0/key_transpose\n24   Transpose          INT8     NPU    (2,64,16,53)                             (2,16,64,53)           0/0/0                    125                               100.0%/0.0%/0.0%     106          Transpose:frame0/value_tp\n25   Reshape            INT8     NPU    (2,16,64,53),(4)                         (32,64,1,53)           0/0/0                    256                               100.0%/0.0%/0.0%     106          Reshape:frame0/value_tp_rs\n26   exSDPAttention     INT8     NPU    (32,64,1,53),(32,64,1,53),...            (32,64,1,53)           0/0/0                    1045                              100.0%/0.0%/0.0%     318          exSDPAttention:frame0/attention_values_2sdpa\n27   Reshape            INT8     NPU    (32,64,1,53),(4)                         (2,1024,1,53)          0/0/0                    1                                 0.0%/0.0%/0.0%       106          Reshape:frame0/attention_heads_flatten_rs\n28   ConvAdd            INT8     NPU    (2,1024,1,53),(1024,1024,1,1),(1024),... (2,1024,1,53)          58443/131072/131072      183          19.77/19.77/19.77    34.4%/34.4%/31.3%    1244         Conv:frame0/attn.proj.matmul#2_ConvAdd\n29   exNorm             INT8     NPU    (2,1024,1,53),(1,1024,1,1),...           (2,1024,1,53)          0/0/0                    390                               100.0%/0.0%/0.0%     116          exNorm:frame0/norm2#1\n30   ConvExGelu         INT8     NPU    (2,1024,1,53),(4096,1024,1,1),(4096)     (2,4096,1,53)          201649/524288/524288     879          16.46/16.46/16.46    100.0%/0.0%/0.0%     4234         Conv:frame0/mlp.fc1.matmul#2\n31   ConvAdd            INT8     NPU    (2,4096,1,53),(1024,4096,1,1),(1024),... (2,1024,1,53)          205199/524288/524288     711          20.36/20.36/20.36    34.4%/34.4%/31.3%    4634         Conv:frame0/mlp.fc2.matmul#2_ConvAdd\n32   Transpose          INT8     NPU    (2,1024,1,53)                            (2,53,1,1024)          0/0/0                    381                               100.0%/0.0%/0.0%     106          Transpose:frame_output-rs_tp\n33   Reshape            INT8     NPU    (2,53,1,1024),(3)                        (2,53,1024)            0/0/0                    147                               100.0%/0.0%/0.0%     128          Reshape:frame_output-rs\n34   OutputOperator     INT8     CPU    (2,53,1024)                              \\                      0/0/0                    5                                 0.0%/0.0%/0.0%       106          OutputOperator:frame_output\n35   Reshape            INT8     NPU    (2,53,1024),(4)                          (1,106,1,1024)         0/0/0                    184                               100.0%/0.0%/0.0%     106          Reshape:global_input_rs#1\n36   Transpose          INT8     NPU    (1,106,1,1024)                           (1,1024,1,106)         0/0/0                    213                               100.0%/0.0%/0.0%     112          Transpose:global_input_tp\n37   exNorm             INT8     NPU    (1,1024,1,106),(1,1024,1,1),...          (1,1024,1,106)         0/0/0                    379                               100.0%/0.0%/0.0%     116          exNorm:global0/norm1#1\n38   Conv               INT8     NPU    (1,1024,1,106),(3072,1024,1,1),...       (1,3072,1,106)         152384/344064/344064     229          47.40/47.40/47.40    33.3%/33.3%/33.3%    3202         Conv:global0/attn.qkv.matmul#3\n39   Reshape            INT8     NPU    (1,3072,1,106),(4)                       (16,192,1,106)         0/0/0                    0                                 0.0%/0.0%/0.0%       318          Reshape:global0/attn.qkv.matmul_mm_tp_sw_gather_rs\n40   Split              INT8     NPU    (16,192,1,106),(3)                       (16,64,1,106),...      0/0/0                    127                               100.0%/0.0%/0.0%     318          Split:global0/qkv_transpose-rs_tp_split\n41   exNorm             INT8     NPU    (16,64,1,106),(1,64,1,1),(1,64,1,1),...  (16,64,1,106)          0/0/0                    498                               100.0%/0.0%/0.0%     106          exNorm:global0/attn.q_norm#1\n42   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    104                               100.0%/0.0%/0.0%     112          Mul:global0/query_rope_sine\n43   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    103                               100.0%/0.0%/0.0%     112          Mul:global0/query_rope_cosine\n44   ConvAdd            INT8     NPU    (16,64,1,106),(64,64,1,1),(64),...       (16,64,1,106)          13962/14336/14336        115          1.97/1.97/1.97       100.0%/0.0%/0.0%     216          Conv:global0/query_rope_permuted_2conv_ConvAdd\n45   exNorm             INT8     NPU    (16,64,1,106),(1,64,1,1),(1,64,1,1),...  (16,64,1,106)          0/0/0                    547                               100.0%/0.0%/0.0%     106          exNorm:global0/attn.k_norm#1\n46   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    103                               100.0%/0.0%/0.0%     112          Mul:global0/key_rope_sine\n47   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    103                               100.0%/0.0%/0.0%     112          Mul:global0/key_rope_cosine\n48   ConvAdd            INT8     NPU    (16,64,1,106),(64,64,1,1),(64),...       (16,64,1,106)          13962/14336/14336        114          1.98/1.98/1.98       100.0%/0.0%/0.0%     216          Conv:global0/key_rope_permuted_2conv_ConvAdd\n49   exSDPAttention     INT8     NPU    (16,64,1,106),(16,64,1,106),...          (16,64,1,106)          0/0/0                    1150                              100.0%/0.0%/0.0%     318          exSDPAttention:global0/attention_values_2sdpa\n50   Reshape            INT8     NPU    (16,64,1,106),(4)                        (1,1024,1,106)         0/0/0                    0                                 0.0%/0.0%/0.0%       106          Reshape:global0/attention_heads_flatten_rs\n51   ConvAdd            INT8     NPU    (1,1024,1,106),(1024,1024,1,1),...       (1,1024,1,106)         58443/114688/114688      145          24.95/24.95/24.95    34.4%/34.4%/31.3%    1244         Conv:global0/attn.proj.matmul#2_ConvAdd\n52   exNorm             INT8     NPU    (1,1024,1,106),(1,1024,1,1),...          (1,1024,1,106)         0/0/0                    387                               100.0%/0.0%/0.0%     116          exNorm:global0/norm2#1\n53   ConvExGelu         INT8     NPU    (1,1024,1,106),(4096,1024,1,1),...       (1,4096,1,106)         201649/458752/458752     553          26.17/26.17/26.17    100.0%/0.0%/0.0%     4234         Conv:global0/mlp.fc1.matmul#2\n54   ConvAdd            INT8     NPU    (1,4096,1,106),(1024,4096,1,1),...       (1,1024,1,106)         205199/458752/458752     709          20.41/20.41/20.41    34.4%/34.4%/31.3%    4634         Conv:global0/mlp.fc2.matmul#2_ConvAdd\n55   Transpose          INT8     NPU    (1,1024,1,106)                           (1,106,1,1024)         0/0/0                    213                               100.0%/0.0%/0.0%     106          Transpose:global_output-rs_tp\n56   Reshape            INT8     NPU    (1,106,1,1024),(3)                       (1,106,1024)           0/0/0                    139                               100.0%/0.0%/0.0%     112          Reshape:global_output-rs\n57   OutputOperator     INT8     CPU    (1,106,1024)                             \\                      0/0/0                    4                                 0.0%/0.0%/0.0%       106          OutputOperator:global_output\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nTotal Operator Elapsed Per Frame Time(us): 15158\nTotal Memory Read/Write Per Frame Size(KB): 33759.38\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n---------------------------------------------------------------------------------------------------\n                                 Operator Time Consuming Ranking Table            \n---------------------------------------------------------------------------------------------------\nOpType             CallNumber   CPUTime(us)  GPUTime(us)  NPUTime(us)  TotalTime(us)  TimeRatio(%)  \n---------------------------------------------------------------------------------------------------\nexNorm             8            0            0            3545         3545           23.39%        \nexSDPAttention     2            0            0            2195         2195           14.48%        \nTranspose          9            0            0            2103         2103           13.87%        \nConvAdd            6            0            0            1977         1977           13.04%        \nReshape            11           0            0            1784         1784           11.77%        \nConvExGelu         2            0            0            1432         1432           9.45%         \nMul                8            0            0            890          890            5.87%         \nConv               2            0            0            561          561            3.70%         \nSplit              2            0            0            271          271            1.79%         \nAdd                2            0            0            193          193            1.27%         \nGather             2            0            0            193          193            1.27%         \nOutputOperator     2            9            0            0            9              0.06%         \nInputOperator      1            5            0            0            5              0.03%         \n---------------------------------------------------------------------------------------------------\nTotal                           14           0            15144        15158         \n---------------------------------------------------------------------------------------------------\n",
+        "operator_targets_interpreted_by_probe": false
+      }
+    },
+    {
+      "input": "v56-calib00",
+      "role": "A",
+      "sequence": 0,
+      "first_for_input_role": true,
+      "component_seconds": 0.027254378015641123,
+      "timing": {
+        "inputs_set": 0.00161612598458305,
+        "run": 0.02402912700199522,
+        "outputs_get": 0.0011255419813096523,
+        "owned_copy": 0.0002537500113248825,
+        "outputs_release": 8.457980584353209e-06,
+        "finite": 0.00021087599452584982,
+        "route_seconds": 0.027254378015641123
+      },
+      "versus_original_ONNX": [
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 55342,
+          "elements": 108544,
+          "max_abs": 0.08833682537078857,
+          "relative_l2": 0.004170374680727854
+        },
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 63070,
+          "elements": 108544,
+          "max_abs": 0.024972468614578247,
+          "relative_l2": 0.004487365987007431
+        }
+      ],
+      "versus_original_Torch": null,
+      "repeat_first_role_byte_equal": [
+        true,
+        true
+      ],
+      "raw_sha256": [
+        "9c1db6d95a2651862b5b31d36148d30ded1742638558d5bb4c303afcae7861ca",
+        "456dc57a0181ee28c7168afb2b55b27fc959f91949dbc4f1a8128015c2e2b737"
+      ],
+      "platform_before": {
+        "actual_frequency_hz": 1000000000,
+        "temperatures_c": {
+          "bigcore1-thermal": 52.692,
+          "soc-thermal": 51.769,
+          "gpu-thermal": 50.846,
+          "littlecore-thermal": 52.692,
+          "bigcore0-thermal": 52.692,
+          "npu-thermal": 51.769,
+          "center-thermal": 52.692
+        }
+      },
+      "platform_after": {
+        "actual_frequency_hz": 1000000000,
+        "temperatures_c": {
+          "bigcore1-thermal": 52.692,
+          "soc-thermal": 51.769,
+          "gpu-thermal": 50.846,
+          "littlecore-thermal": 51.769,
+          "bigcore0-thermal": 51.769,
+          "npu-thermal": 51.769,
+          "center-thermal": 52.692
+        }
+      },
+      "artifact": {
+        "file": "v56-calib00-00-A.npz",
+        "bytes": 868866,
+        "sha256": "53a90abc7aa7261594eabc6c1e43ccf7814dd8358a95bcd3efeb05e4e97025bf"
+      },
+      "profile": {
+        "query_command": 3,
+        "bytes": 16706,
+        "raw_sha256": "339738d8bab4c2ac91743a4c00519827e520e40954be9c6857e2be03ebb1a055",
+        "raw_text": "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n                                                                          Network Layer Information Table                                                                                \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nID   OpType             DataType Target InputShape                               OutputShape            Cycles(DDR/NPU/Total)    Time(us)     MacUsage(%)          WorkLoad(0/1/2)      RW(KB)       FullName        \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1    InputOperator      FLOAT16  CPU    \\                                        (2,53,1024)            0/0/0                    4                                 0.0%/0.0%/0.0%       0            InputOperator:input\n2    Reshape            FLOAT16  NPU    (2,53,1024),(4)                          (2,53,1,1024)          0/0/0                    294                               100.0%/0.0%/0.0%     212          Reshape:input_rs#1\n3    Transpose          FLOAT16  NPU    (2,53,1,1024)                            (2,1024,1,53)          0/0/0                    482                               100.0%/0.0%/0.0%     224          Transpose:input_tp\n4    exNorm             FLOAT16  NPU    (2,1024,1,53),(1,1024,1,1),...           (2,1024,1,53)          0/0/0                    312                               100.0%/0.0%/0.0%     222          exNorm:frame0/norm1#1\n5    Conv               FLOAT16  NPU    (2,1024,1,53),(3072,1024,1,1),(3072)     (2,3072,1,53)          303209/786432/786432     581          37.36/37.36/37.36    33.3%/33.3%/33.3%    6368         Conv:frame0/attn.qkv.matmul#2\n6    Reshape            FLOAT16  NPU    (2,3072,1,53),(4)                        (2,64,48,53)           0/0/0                    1074                              100.0%/0.0%/0.0%     636          Reshape:frame0/qkv_transpose_rs_swap_tp#1\n7    Split              FLOAT16  NPU    (2,64,48,53),(3)                         (2,64,16,53),...       0/0/0                    213                               100.0%/0.0%/0.0%     636          Split:frame0/qkv_transpose_swap_split\n8    exNorm             FLOAT16  NPU    (2,64,16,53),(1,64,1,1),(1,64,1,1),...   (2,64,16,53)           0/0/0                    372                               100.0%/0.0%/0.0%     212          exNorm:frame0/attn.q_norm#1\n9    Transpose          FLOAT16  NPU    (2,64,16,53)                             (2,16,53,64)           0/0/0                    290                               100.0%/0.0%/0.0%     212          Transpose:frame0/attn.q_norm#1_rs_tp\n10   Mul                FLOAT16  NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    146                               100.0%/0.0%/0.0%     265          Mul:frame0/attn.q_norm_mul#1\n11   Gather             FLOAT16  NPU    (2,16,53,64),(64)                        (2,16,53,64)           0/0/0                    122                               100.0%/0.0%/0.0%     212          Gather:frame0/query_rope_permuted\n12   Mul                FLOAT16  NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    146                               100.0%/0.0%/0.0%     265          Mul:frame0/attn.q_norm_mul\n13   Add                FLOAT16  NPU    (2,16,53,64),(2,16,53,64)                (2,16,53,64)           0/0/0                    117                               34.0%/34.0%/32.1%    424          Add:frame0/query_rope\n14   Reshape            FLOAT16  NPU    (2,16,53,64),(4)                         (1,32,53,64)           0/0/0                    0                                 0.0%/0.0%/0.0%       212          Reshape:frame0/query_rope_tp_rs\n15   Transpose          FLOAT16  NPU    (1,32,53,64)                             (32,64,1,53)           0/0/0                    254                               100.0%/0.0%/0.0%     212          Transpose:frame0/query_rope_tp\n16   exNorm             FLOAT16  NPU    (2,64,16,53),(1,64,1,1),(1,64,1,1),...   (2,64,16,53)           0/0/0                    368                               100.0%/0.0%/0.0%     212          exNorm:frame0/attn.k_norm#1\n17   Transpose          FLOAT16  NPU    (2,64,16,53)                             (2,16,53,64)           0/0/0                    292                               100.0%/0.0%/0.0%     212          Transpose:frame0/attn.k_norm#1_rs_tp\n18   Mul                FLOAT16  NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    144                               100.0%/0.0%/0.0%     265          Mul:frame0/attn.k_norm_mul#1\n19   Gather             FLOAT16  NPU    (2,16,53,64),(64)                        (2,16,53,64)           0/0/0                    121                               100.0%/0.0%/0.0%     212          Gather:frame0/key_rope_permuted\n20   Mul                FLOAT16  NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    145                               100.0%/0.0%/0.0%     265          Mul:frame0/attn.k_norm_mul\n21   Add                FLOAT16  NPU    (2,16,53,64),(2,16,53,64)                (2,16,53,64)           0/0/0                    116                               34.0%/34.0%/32.1%    424          Add:frame0/key_rope\n22   Reshape            FLOAT16  NPU    (2,16,53,64),(4)                         (1,32,53,64)           0/0/0                    0                                 0.0%/0.0%/0.0%       212          Reshape:frame0/key_transpose_rs\n23   Transpose          FLOAT16  NPU    (1,32,53,64)                             (32,64,1,53)           0/0/0                    220                               100.0%/0.0%/0.0%     212          Transpose:frame0/key_transpose\n24   Transpose          FLOAT16  NPU    (2,64,16,53)                             (2,16,64,53)           0/0/0                    275                               100.0%/0.0%/0.0%     212          Transpose:frame0/value_tp\n25   Reshape            FLOAT16  NPU    (2,16,64,53),(4)                         (32,64,1,53)           0/0/0                    333                               100.0%/0.0%/0.0%     212          Reshape:frame0/value_tp_rs\n26   exSDPAttention     FLOAT16  NPU    (32,64,1,53),(32,64,1,53),...            (32,64,1,53)           0/0/0                    1043                              100.0%/0.0%/0.0%     636          exSDPAttention:frame0/attention_values_2sdpa\n27   Reshape            FLOAT16  NPU    (32,64,1,53),(4)                         (2,1024,1,53)          0/0/0                    0                                 0.0%/0.0%/0.0%       212          Reshape:frame0/attention_heads_flatten_rs\n28   ConvAdd            FLOAT16  NPU    (2,1024,1,53),(1024,1024,1,1),(1024),... (2,1024,1,53)          116366/262144/262144     271          26.70/26.70/26.70    34.4%/32.8%/32.8%    2476         Conv:frame0/attn.proj.matmul#2_ConvAdd\n29   exNorm             FLOAT16  NPU    (2,1024,1,53),(1,1024,1,1),...           (2,1024,1,53)          0/0/0                    310                               100.0%/0.0%/0.0%     222          exNorm:frame0/norm2#1\n30   ConvExGelu         FLOAT16  NPU    (2,1024,1,53),(4096,1024,1,1),(4096)     (2,4096,1,53)          401219/1048576/1048576   1735         16.68/16.68/16.68    100.0%/0.0%/0.0%     8420         Conv:frame0/mlp.fc1.matmul#2\n31   ConvAdd            FLOAT16  NPU    (2,4096,1,53),(1024,4096,1,1),(1024),... (2,1024,1,53)          409878/1048576/1048576   2538         11.40/11.40/11.40    34.4%/32.8%/32.8%    9256         Conv:frame0/mlp.fc2.matmul#2_ConvAdd\n32   Transpose          FLOAT16  NPU    (2,1024,1,53)                            (2,53,1,1024)          0/0/0                    548                               100.0%/0.0%/0.0%     212          Transpose:frame_output-rs_tp\n33   Reshape            FLOAT16  NPU    (2,53,1,1024),(3)                        (2,53,1024)            0/0/0                    168                               100.0%/0.0%/0.0%     224          Reshape:frame_output-rs\n34   OutputOperator     FLOAT16  CPU    (2,53,1024)                              \\                      0/0/0                    10                                0.0%/0.0%/0.0%       212          OutputOperator:frame_output\n35   Reshape            FLOAT16  NPU    (2,53,1024),(4)                          (1,106,1,1024)         0/0/0                    237                               100.0%/0.0%/0.0%     212          Reshape:global_input_rs#1\n36   Transpose          FLOAT16  NPU    (1,106,1,1024)                           (1,1024,1,106)         0/0/0                    325                               100.0%/0.0%/0.0%     224          Transpose:global_input_tp\n37   exNorm             FLOAT16  NPU    (1,1024,1,106),(1,1024,1,1),...          (1,1024,1,106)         0/0/0                    295                               100.0%/0.0%/0.0%     222          exNorm:global0/norm1#1\n38   Conv               FLOAT16  NPU    (1,1024,1,106),(3072,1024,1,1),...       (1,3072,1,106)         303209/688128/688128     572          37.95/37.95/37.95    33.3%/33.3%/33.3%    6368         Conv:global0/attn.qkv.matmul#3\n39   Reshape            FLOAT16  NPU    (1,3072,1,106),(4)                       (16,192,1,106)         0/0/0                    1                                 0.0%/0.0%/0.0%       636          Reshape:global0/attn.qkv.matmul_mm_tp_sw_gather_rs\n40   Split              FLOAT16  NPU    (16,192,1,106),(3)                       (16,64,1,106),...      0/0/0                    211                               100.0%/0.0%/0.0%     636          Split:global0/qkv_transpose-rs_tp_split\n41   exNorm             FLOAT16  NPU    (16,64,1,106),(1,64,1,1),(1,64,1,1),...  (16,64,1,106)          0/0/0                    457                               100.0%/0.0%/0.0%     212          exNorm:global0/attn.q_norm#1\n42   Mul                FLOAT16  NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    133                               100.0%/0.0%/0.0%     225          Mul:global0/query_rope_sine\n43   Mul                FLOAT16  NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    116                               100.0%/0.0%/0.0%     225          Mul:global0/query_rope_cosine\n44   ConvAdd            FLOAT16  NPU    (16,64,1,106),(64,64,1,1),...            (16,64,1,106)          27880/14336/27880        154          2.94/2.94/2.94       49.7%/25.1%/25.1%    432          Conv:global0/query_rope_permuted_2conv_ConvAdd\n45   exNorm             FLOAT16  NPU    (16,64,1,106),(1,64,1,1),(1,64,1,1),...  (16,64,1,106)          0/0/0                    454                               100.0%/0.0%/0.0%     212          exNorm:global0/attn.k_norm#1\n46   Mul                FLOAT16  NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    133                               100.0%/0.0%/0.0%     225          Mul:global0/key_rope_sine\n47   Mul                FLOAT16  NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    133                               100.0%/0.0%/0.0%     225          Mul:global0/key_rope_cosine\n48   ConvAdd            FLOAT16  NPU    (16,64,1,106),(64,64,1,1),...            (16,64,1,106)          27880/14336/27880        156          2.90/2.90/2.90       49.7%/25.1%/25.1%    432          Conv:global0/key_rope_permuted_2conv_ConvAdd\n49   exSDPAttention     FLOAT16  NPU    (16,64,1,106),(16,64,1,106),...          (16,64,1,106)          0/0/0                    1163                              100.0%/0.0%/0.0%     636          exSDPAttention:global0/attention_values_2sdpa\n50   Reshape            FLOAT16  NPU    (16,64,1,106),(4)                        (1,1024,1,106)         0/0/0                    0                                 0.0%/0.0%/0.0%       212          Reshape:global0/attention_heads_flatten_rs\n51   ConvAdd            FLOAT16  NPU    (1,1024,1,106),(1024,1024,1,1),...       (1,1024,1,106)         116366/229376/229376     273          26.51/26.51/26.51    34.4%/32.8%/32.8%    2476         Conv:global0/attn.proj.matmul#2_ConvAdd\n52   exNorm             FLOAT16  NPU    (1,1024,1,106),(1,1024,1,1),...          (1,1024,1,106)         0/0/0                    294                               100.0%/0.0%/0.0%     222          exNorm:global0/norm2#1\n53   ConvExGelu         FLOAT16  NPU    (1,1024,1,106),(4096,1024,1,1),...       (1,4096,1,106)         401219/917504/917504     1793         16.14/16.14/16.14    100.0%/0.0%/0.0%     8420         Conv:global0/mlp.fc1.matmul#2\n54   ConvAdd            FLOAT16  NPU    (1,4096,1,106),(1024,4096,1,1),...       (1,1024,1,106)         409878/917504/917504     2467         11.73/11.73/11.73    34.4%/32.8%/32.8%    9256         Conv:global0/mlp.fc2.matmul#2_ConvAdd\n55   Transpose          FLOAT16  NPU    (1,1024,1,106)                           (1,106,1,1024)         0/0/0                    256                               100.0%/0.0%/0.0%     212          Transpose:global_output-rs_tp\n56   Reshape            FLOAT16  NPU    (1,106,1,1024),(3)                       (1,106,1024)           0/0/0                    118                               100.0%/0.0%/0.0%     224          Reshape:global_output-rs\n57   OutputOperator     FLOAT16  CPU    (1,106,1024)                             \\                      0/0/0                    12                                0.0%/0.0%/0.0%       212          OutputOperator:global_output\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nTotal Operator Elapsed Per Frame Time(us): 22797\nTotal Memory Read/Write Per Frame Size(KB): 66980.88\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n---------------------------------------------------------------------------------------------------\n                                 Operator Time Consuming Ranking Table            \n---------------------------------------------------------------------------------------------------\nOpType             CallNumber   CPUTime(us)  GPUTime(us)  NPUTime(us)  TotalTime(us)  TimeRatio(%)  \n---------------------------------------------------------------------------------------------------\nConvAdd            6            0            0            5859         5859           25.70%        \nConvExGelu         2            0            0            3528         3528           15.48%        \nTranspose          9            0            0            2942         2942           12.91%        \nexNorm             8            0            0            2862         2862           12.55%        \nReshape            11           0            0            2225         2225           9.76%         \nexSDPAttention     2            0            0            2206         2206           9.68%         \nConv               2            0            0            1153         1153           5.06%         \nMul                8            0            0            1096         1096           4.81%         \nSplit              2            0            0            424          424            1.86%         \nGather             2            0            0            243          243            1.07%         \nAdd                2            0            0            233          233            1.02%         \nOutputOperator     2            22           0            0            22             0.10%         \nInputOperator      1            4            0            0            4              0.02%         \n---------------------------------------------------------------------------------------------------\nTotal                           26           0            22771        22797         \n---------------------------------------------------------------------------------------------------\n",
+        "operator_targets_interpreted_by_probe": false
+      }
+    },
+    {
+      "input": "v56-calib00",
+      "role": "B",
+      "sequence": 1,
+      "first_for_input_role": true,
+      "component_seconds": 0.019746044010389596,
+      "timing": {
+        "inputs_set": 0.0016592920001130551,
+        "run": 0.017370710003888234,
+        "outputs_get": 0.00026979201356880367,
+        "owned_copy": 0.00021991701214574277,
+        "outputs_release": 8.749979315325618e-06,
+        "finite": 0.00020854201284237206,
+        "route_seconds": 0.019746044010389596
+      },
+      "versus_original_ONNX": [
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 108448,
+          "elements": 108544,
+          "max_abs": 0.8439017236232758,
+          "relative_l2": 0.09456560933903656
+        },
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 108457,
+          "elements": 108544,
+          "max_abs": 0.6099299192428589,
+          "relative_l2": 0.12095015713035705
+        }
+      ],
+      "versus_original_Torch": null,
+      "repeat_first_role_byte_equal": [
+        true,
+        true
+      ],
+      "raw_sha256": [
+        "934b345e41e51b75499e3ce22b2f110e59ae319d729137bdfe9026e2a4df2e79",
+        "4b8b5b7f591fcc4f88288798e6b3d28ed67561380bcf48efcb1873c319bed6ef"
+      ],
+      "platform_before": {
+        "actual_frequency_hz": 1000000000,
+        "temperatures_c": {
+          "bigcore1-thermal": 51.769,
+          "soc-thermal": 51.769,
+          "gpu-thermal": 50.846,
+          "littlecore-thermal": 51.769,
+          "bigcore0-thermal": 51.769,
+          "npu-thermal": 50.846,
+          "center-thermal": 52.692
+        }
+      },
+      "platform_after": {
+        "actual_frequency_hz": 1000000000,
+        "temperatures_c": {
+          "bigcore1-thermal": 51.769,
+          "soc-thermal": 51.769,
+          "gpu-thermal": 51.769,
+          "littlecore-thermal": 51.769,
+          "bigcore0-thermal": 51.769,
+          "npu-thermal": 51.769,
+          "center-thermal": 52.692
+        }
+      },
+      "artifact": {
+        "file": "v56-calib00-01-B.npz",
+        "bytes": 868866,
+        "sha256": "df28295c0fd4e53939103409564bacd34ec12eef7a7a5a080b872c9d1e1c0f09"
+      },
+      "profile": {
+        "query_command": 3,
+        "bytes": 16706,
+        "raw_sha256": "61a61222cefb164485f97357651c83c03f9951402bd79e4d89b9bd824aa1ff82",
+        "raw_text": "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n                                                                          Network Layer Information Table                                                                                \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nID   OpType             DataType Target InputShape                               OutputShape            Cycles(DDR/NPU/Total)    Time(us)     MacUsage(%)          WorkLoad(0/1/2)      RW(KB)       FullName        \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1    InputOperator      INT8     CPU    \\                                        (2,53,1024)            0/0/0                    5                                 0.0%/0.0%/0.0%       0            InputOperator:input\n2    Reshape            INT8     NPU    (2,53,1024),(4)                          (2,53,1,1024)          0/0/0                    260                               100.0%/0.0%/0.0%     106          Reshape:input_rs#1\n3    Transpose          INT8     NPU    (2,53,1,1024)                            (2,1024,1,53)          0/0/0                    349                               100.0%/0.0%/0.0%     128          Transpose:input_tp\n4    exNorm             INT8     NPU    (2,1024,1,53),(1,1024,1,1),...           (2,1024,1,53)          0/0/0                    407                               100.0%/0.0%/0.0%     116          exNorm:frame0/norm1#1\n5    Conv               INT8     NPU    (2,1024,1,53),(3072,1024,1,1),(3072)     (2,3072,1,53)          152384/393216/393216     353          30.75/30.75/30.75    33.3%/33.3%/33.3%    3202         Conv:frame0/attn.qkv.matmul#2\n6    Reshape            INT8     NPU    (2,3072,1,53),(4)                        (2,64,48,53)           0/0/0                    874                               100.0%/0.0%/0.0%     318          Reshape:frame0/qkv_transpose_rs_swap_tp#1\n7    Split              INT8     NPU    (2,64,48,53),(3)                         (2,64,16,53),...       0/0/0                    161                               100.0%/0.0%/0.0%     318          Split:frame0/qkv_transpose_swap_split\n8    exNorm             INT8     NPU    (2,64,16,53),(1,64,1,1),(1,64,1,1),...   (2,64,16,53)           0/0/0                    492                               100.0%/0.0%/0.0%     106          exNorm:frame0/attn.q_norm#1\n9    Transpose          INT8     NPU    (2,64,16,53)                             (2,16,53,64)           0/0/0                    220                               100.0%/0.0%/0.0%     106          Transpose:frame0/attn.q_norm#1_rs_tp\n10   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    136                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.q_norm_mul#1\n11   Gather             INT8     NPU    (2,16,53,64),(64)                        (2,16,53,64)           0/0/0                    112                               100.0%/0.0%/0.0%     106          Gather:frame0/query_rope_permuted\n12   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    135                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.q_norm_mul\n13   Add                INT8     NPU    (2,16,53,64),(2,16,53,64)                (2,16,53,64)           0/0/0                    116                               34.0%/34.0%/32.1%    212          Add:frame0/query_rope\n14   Reshape            INT8     NPU    (2,16,53,64),(4)                         (1,32,53,64)           0/0/0                    0                                 0.0%/0.0%/0.0%       106          Reshape:frame0/query_rope_tp_rs\n15   Transpose          INT8     NPU    (1,32,53,64)                             (32,64,1,53)           0/0/0                    232                               100.0%/0.0%/0.0%     106          Transpose:frame0/query_rope_tp\n16   exNorm             INT8     NPU    (2,64,16,53),(1,64,1,1),(1,64,1,1),...   (2,64,16,53)           0/0/0                    493                               100.0%/0.0%/0.0%     106          exNorm:frame0/attn.k_norm#1\n17   Transpose          INT8     NPU    (2,64,16,53)                             (2,16,53,64)           0/0/0                    220                               100.0%/0.0%/0.0%     106          Transpose:frame0/attn.k_norm#1_rs_tp\n18   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    135                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.k_norm_mul#1\n19   Gather             INT8     NPU    (2,16,53,64),(64)                        (2,16,53,64)           0/0/0                    111                               100.0%/0.0%/0.0%     106          Gather:frame0/key_rope_permuted\n20   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    136                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.k_norm_mul\n21   Add                INT8     NPU    (2,16,53,64),(2,16,53,64)                (2,16,53,64)           0/0/0                    117                               34.0%/34.0%/32.1%    212          Add:frame0/key_rope\n22   Reshape            INT8     NPU    (2,16,53,64),(4)                         (1,32,53,64)           0/0/0                    0                                 0.0%/0.0%/0.0%       106          Reshape:frame0/key_transpose_rs\n23   Transpose          INT8     NPU    (1,32,53,64)                             (32,64,1,53)           0/0/0                    234                               100.0%/0.0%/0.0%     106          Transpose:frame0/key_transpose\n24   Transpose          INT8     NPU    (2,64,16,53)                             (2,16,64,53)           0/0/0                    145                               100.0%/0.0%/0.0%     106          Transpose:frame0/value_tp\n25   Reshape            INT8     NPU    (2,16,64,53),(4)                         (32,64,1,53)           0/0/0                    266                               100.0%/0.0%/0.0%     106          Reshape:frame0/value_tp_rs\n26   exSDPAttention     INT8     NPU    (32,64,1,53),(32,64,1,53),...            (32,64,1,53)           0/0/0                    1122                              100.0%/0.0%/0.0%     318          exSDPAttention:frame0/attention_values_2sdpa\n27   Reshape            INT8     NPU    (32,64,1,53),(4)                         (2,1024,1,53)          0/0/0                    1                                 0.0%/0.0%/0.0%       106          Reshape:frame0/attention_heads_flatten_rs\n28   ConvAdd            INT8     NPU    (2,1024,1,53),(1024,1024,1,1),(1024),... (2,1024,1,53)          58443/131072/131072      203          17.82/17.82/17.82    34.4%/34.4%/31.3%    1244         Conv:frame0/attn.proj.matmul#2_ConvAdd\n29   exNorm             INT8     NPU    (2,1024,1,53),(1,1024,1,1),...           (2,1024,1,53)          0/0/0                    406                               100.0%/0.0%/0.0%     116          exNorm:frame0/norm2#1\n30   ConvExGelu         INT8     NPU    (2,1024,1,53),(4096,1024,1,1),(4096)     (2,4096,1,53)          201649/524288/524288     847          17.09/17.09/17.09    100.0%/0.0%/0.0%     4234         Conv:frame0/mlp.fc1.matmul#2\n31   ConvAdd            INT8     NPU    (2,4096,1,53),(1024,4096,1,1),(1024),... (2,1024,1,53)          205199/524288/524288     732          19.77/19.77/19.77    34.4%/34.4%/31.3%    4634         Conv:frame0/mlp.fc2.matmul#2_ConvAdd\n32   Transpose          INT8     NPU    (2,1024,1,53)                            (2,53,1,1024)          0/0/0                    402                               100.0%/0.0%/0.0%     106          Transpose:frame_output-rs_tp\n33   Reshape            INT8     NPU    (2,53,1,1024),(3)                        (2,53,1024)            0/0/0                    159                               100.0%/0.0%/0.0%     128          Reshape:frame_output-rs\n34   OutputOperator     INT8     CPU    (2,53,1024)                              \\                      0/0/0                    10                                0.0%/0.0%/0.0%       106          OutputOperator:frame_output\n35   Reshape            INT8     NPU    (2,53,1024),(4)                          (1,106,1,1024)         0/0/0                    201                               100.0%/0.0%/0.0%     106          Reshape:global_input_rs#1\n36   Transpose          INT8     NPU    (1,106,1,1024)                           (1,1024,1,106)         0/0/0                    236                               100.0%/0.0%/0.0%     112          Transpose:global_input_tp\n37   exNorm             INT8     NPU    (1,1024,1,106),(1,1024,1,1),...          (1,1024,1,106)         0/0/0                    395                               100.0%/0.0%/0.0%     116          exNorm:global0/norm1#1\n38   Conv               INT8     NPU    (1,1024,1,106),(3072,1024,1,1),...       (1,3072,1,106)         152384/344064/344064     254          42.73/42.73/42.73    33.3%/33.3%/33.3%    3202         Conv:global0/attn.qkv.matmul#3\n39   Reshape            INT8     NPU    (1,3072,1,106),(4)                       (16,192,1,106)         0/0/0                    0                                 0.0%/0.0%/0.0%       318          Reshape:global0/attn.qkv.matmul_mm_tp_sw_gather_rs\n40   Split              INT8     NPU    (16,192,1,106),(3)                       (16,64,1,106),...      0/0/0                    165                               100.0%/0.0%/0.0%     318          Split:global0/qkv_transpose-rs_tp_split\n41   exNorm             INT8     NPU    (16,64,1,106),(1,64,1,1),(1,64,1,1),...  (16,64,1,106)          0/0/0                    570                               100.0%/0.0%/0.0%     106          exNorm:global0/attn.q_norm#1\n42   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    121                               100.0%/0.0%/0.0%     112          Mul:global0/query_rope_sine\n43   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    121                               100.0%/0.0%/0.0%     112          Mul:global0/query_rope_cosine\n44   ConvAdd            INT8     NPU    (16,64,1,106),(64,64,1,1),(64),...       (16,64,1,106)          13962/14336/14336        131          1.73/1.73/1.73       100.0%/0.0%/0.0%     216          Conv:global0/query_rope_permuted_2conv_ConvAdd\n45   exNorm             INT8     NPU    (16,64,1,106),(1,64,1,1),(1,64,1,1),...  (16,64,1,106)          0/0/0                    565                               100.0%/0.0%/0.0%     106          exNorm:global0/attn.k_norm#1\n46   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    120                               100.0%/0.0%/0.0%     112          Mul:global0/key_rope_sine\n47   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    120                               100.0%/0.0%/0.0%     112          Mul:global0/key_rope_cosine\n48   ConvAdd            INT8     NPU    (16,64,1,106),(64,64,1,1),(64),...       (16,64,1,106)          13962/14336/14336        132          1.71/1.71/1.71       100.0%/0.0%/0.0%     216          Conv:global0/key_rope_permuted_2conv_ConvAdd\n49   exSDPAttention     INT8     NPU    (16,64,1,106),(16,64,1,106),...          (16,64,1,106)          0/0/0                    1212                              100.0%/0.0%/0.0%     318          exSDPAttention:global0/attention_values_2sdpa\n50   Reshape            INT8     NPU    (16,64,1,106),(4)                        (1,1024,1,106)         0/0/0                    1                                 0.0%/0.0%/0.0%       106          Reshape:global0/attention_heads_flatten_rs\n51   ConvAdd            INT8     NPU    (1,1024,1,106),(1024,1024,1,1),...       (1,1024,1,106)         58443/114688/114688      167          21.67/21.67/21.67    34.4%/34.4%/31.3%    1244         Conv:global0/attn.proj.matmul#2_ConvAdd\n52   exNorm             INT8     NPU    (1,1024,1,106),(1,1024,1,1),...          (1,1024,1,106)         0/0/0                    395                               100.0%/0.0%/0.0%     116          exNorm:global0/norm2#1\n53   ConvExGelu         INT8     NPU    (1,1024,1,106),(4096,1024,1,1),...       (1,4096,1,106)         201649/458752/458752     568          25.48/25.48/25.48    100.0%/0.0%/0.0%     4234         Conv:global0/mlp.fc1.matmul#2\n54   ConvAdd            INT8     NPU    (1,4096,1,106),(1024,4096,1,1),...       (1,1024,1,106)         205199/458752/458752     741          19.53/19.53/19.53    34.4%/34.4%/31.3%    4634         Conv:global0/mlp.fc2.matmul#2_ConvAdd\n55   Transpose          INT8     NPU    (1,1024,1,106)                           (1,106,1,1024)         0/0/0                    172                               100.0%/0.0%/0.0%     106          Transpose:global_output-rs_tp\n56   Reshape            INT8     NPU    (1,106,1,1024),(3)                       (1,106,1024)           0/0/0                    94                                100.0%/0.0%/0.0%     112          Reshape:global_output-rs\n57   OutputOperator     INT8     CPU    (1,106,1024)                             \\                      0/0/0                    7                                 0.0%/0.0%/0.0%       106          OutputOperator:global_output\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nTotal Operator Elapsed Per Frame Time(us): 16079\nTotal Memory Read/Write Per Frame Size(KB): 33759.38\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n---------------------------------------------------------------------------------------------------\n                                 Operator Time Consuming Ranking Table            \n---------------------------------------------------------------------------------------------------\nOpType             CallNumber   CPUTime(us)  GPUTime(us)  NPUTime(us)  TotalTime(us)  TimeRatio(%)  \n---------------------------------------------------------------------------------------------------\nexNorm             8            0            0            3723         3723           23.15%        \nexSDPAttention     2            0            0            2334         2334           14.52%        \nTranspose          9            0            0            2210         2210           13.74%        \nConvAdd            6            0            0            2106         2106           13.10%        \nReshape            11           0            0            1856         1856           11.54%        \nConvExGelu         2            0            0            1415         1415           8.80%         \nMul                8            0            0            1024         1024           6.37%         \nConv               2            0            0            607          607            3.78%         \nSplit              2            0            0            326          326            2.03%         \nAdd                2            0            0            233          233            1.45%         \nGather             2            0            0            223          223            1.39%         \nOutputOperator     2            17           0            0            17             0.11%         \nInputOperator      1            5            0            0            5              0.03%         \n---------------------------------------------------------------------------------------------------\nTotal                           22           0            16057        16079         \n---------------------------------------------------------------------------------------------------\n",
+        "operator_targets_interpreted_by_probe": false
+      }
+    },
+    {
+      "input": "v56-calib00",
+      "role": "C",
+      "sequence": 2,
+      "first_for_input_role": true,
+      "component_seconds": 0.0211945440096315,
+      "timing": {
+        "inputs_set": 0.001986541989026591,
+        "run": 0.018301209987839684,
+        "outputs_get": 0.000375666975742206,
+        "owned_copy": 0.00026279198937118053,
+        "outputs_release": 1.0207993909716606e-05,
+        "finite": 0.00024383299751207232,
+        "route_seconds": 0.0211945440096315
+      },
+      "versus_original_ONNX": [
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 108446,
+          "elements": 108544,
+          "max_abs": 0.7857505530118942,
+          "relative_l2": 0.09316912552540142
+        },
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "outside_tolerance": 108457,
+          "elements": 108544,
+          "max_abs": 0.5911250412464142,
+          "relative_l2": 0.11949170652516614
+        }
+      ],
+      "versus_original_Torch": null,
+      "repeat_first_role_byte_equal": [
+        true,
+        true
+      ],
+      "raw_sha256": [
+        "5ff18643e0941dbb11473416e1c6c76dfc2eae3418d275ebfdf4f76d85f4fc81",
+        "39a08d8af7a962c1ac192b8c75cb2cefeedcc6c58bd0b8282e0723654ddf2c27"
+      ],
+      "platform_before": {
+        "actual_frequency_hz": 1000000000,
+        "temperatures_c": {
+          "bigcore1-thermal": 51.769,
+          "soc-thermal": 51.769,
+          "gpu-thermal": 50.846,
+          "littlecore-thermal": 51.769,
+          "bigcore0-thermal": 51.769,
+          "npu-thermal": 50.846,
+          "center-thermal": 51.769
+        }
+      },
+      "platform_after": {
+        "actual_frequency_hz": 1000000000,
+        "temperatures_c": {
+          "bigcore1-thermal": 51.769,
+          "soc-thermal": 51.769,
+          "gpu-thermal": 50.846,
+          "littlecore-thermal": 51.769,
+          "bigcore0-thermal": 51.769,
+          "npu-thermal": 50.846,
+          "center-thermal": 52.692
+        }
+      },
+      "artifact": {
+        "file": "v56-calib00-02-C.npz",
+        "bytes": 868866,
+        "sha256": "5f3d0025f6ed24effd4de1030ac1edd74f603ac77917142b0005b441f1be6149"
+      },
+      "profile": {
+        "query_command": 3,
+        "bytes": 16706,
+        "raw_sha256": "0cd43ab4339d2dbd7f10c75df5a3b4f25a1b56d067ecf2c80743d16abefa2d46",
+        "raw_text": "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n                                                                          Network Layer Information Table                                                                                \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nID   OpType             DataType Target InputShape                               OutputShape            Cycles(DDR/NPU/Total)    Time(us)     MacUsage(%)          WorkLoad(0/1/2)      RW(KB)       FullName        \n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n1    InputOperator      INT8     CPU    \\                                        (2,53,1024)            0/0/0                    7                                 0.0%/0.0%/0.0%       0            InputOperator:input\n2    Reshape            INT8     NPU    (2,53,1024),(4)                          (2,53,1,1024)          0/0/0                    274                               100.0%/0.0%/0.0%     106          Reshape:input_rs#1\n3    Transpose          INT8     NPU    (2,53,1,1024)                            (2,1024,1,53)          0/0/0                    351                               100.0%/0.0%/0.0%     128          Transpose:input_tp\n4    exNorm             INT8     NPU    (2,1024,1,53),(1,1024,1,1),...           (2,1024,1,53)          0/0/0                    418                               100.0%/0.0%/0.0%     116          exNorm:frame0/norm1#1\n5    Conv               INT8     NPU    (2,1024,1,53),(3072,1024,1,1),(3072)     (2,3072,1,53)          152384/393216/393216     375          28.95/28.95/28.95    33.3%/33.3%/33.3%    3202         Conv:frame0/attn.qkv.matmul#2\n6    Reshape            INT8     NPU    (2,3072,1,53),(4)                        (2,64,48,53)           0/0/0                    883                               100.0%/0.0%/0.0%     318          Reshape:frame0/qkv_transpose_rs_swap_tp#1\n7    Split              INT8     NPU    (2,64,48,53),(3)                         (2,64,16,53),...       0/0/0                    172                               100.0%/0.0%/0.0%     318          Split:frame0/qkv_transpose_swap_split\n8    exNorm             INT8     NPU    (2,64,16,53),(1,64,1,1),(1,64,1,1),...   (2,64,16,53)           0/0/0                    508                               100.0%/0.0%/0.0%     106          exNorm:frame0/attn.q_norm#1\n9    Transpose          INT8     NPU    (2,64,16,53)                             (2,16,53,64)           0/0/0                    230                               100.0%/0.0%/0.0%     106          Transpose:frame0/attn.q_norm#1_rs_tp\n10   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    148                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.q_norm_mul#1\n11   Gather             INT8     NPU    (2,16,53,64),(64)                        (2,16,53,64)           0/0/0                    125                               100.0%/0.0%/0.0%     106          Gather:frame0/query_rope_permuted\n12   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    149                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.q_norm_mul\n13   Add                INT8     NPU    (2,16,53,64),(2,16,53,64)                (2,16,53,64)           0/0/0                    133                               34.0%/34.0%/32.1%    212          Add:frame0/query_rope\n14   Reshape            INT8     NPU    (2,16,53,64),(4)                         (1,32,53,64)           0/0/0                    0                                 0.0%/0.0%/0.0%       106          Reshape:frame0/query_rope_tp_rs\n15   Transpose          INT8     NPU    (1,32,53,64)                             (32,64,1,53)           0/0/0                    245                               100.0%/0.0%/0.0%     106          Transpose:frame0/query_rope_tp\n16   exNorm             INT8     NPU    (2,64,16,53),(1,64,1,1),(1,64,1,1),...   (2,64,16,53)           0/0/0                    502                               100.0%/0.0%/0.0%     106          exNorm:frame0/attn.k_norm#1\n17   Transpose          INT8     NPU    (2,64,16,53)                             (2,16,53,64)           0/0/0                    232                               100.0%/0.0%/0.0%     106          Transpose:frame0/attn.k_norm#1_rs_tp\n18   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    148                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.k_norm_mul#1\n19   Gather             INT8     NPU    (2,16,53,64),(64)                        (2,16,53,64)           0/0/0                    124                               100.0%/0.0%/0.0%     106          Gather:frame0/key_rope_permuted\n20   Mul                INT8     NPU    (2,16,53,64),(1,1,53,64)                 (2,16,53,64)           0/0/0                    147                               100.0%/0.0%/0.0%     159          Mul:frame0/attn.k_norm_mul\n21   Add                INT8     NPU    (2,16,53,64),(2,16,53,64)                (2,16,53,64)           0/0/0                    133                               34.0%/34.0%/32.1%    212          Add:frame0/key_rope\n22   Reshape            INT8     NPU    (2,16,53,64),(4)                         (1,32,53,64)           0/0/0                    1                                 0.0%/0.0%/0.0%       106          Reshape:frame0/key_transpose_rs\n23   Transpose          INT8     NPU    (1,32,53,64)                             (32,64,1,53)           0/0/0                    243                               100.0%/0.0%/0.0%     106          Transpose:frame0/key_transpose\n24   Transpose          INT8     NPU    (2,64,16,53)                             (2,16,64,53)           0/0/0                    217                               100.0%/0.0%/0.0%     106          Transpose:frame0/value_tp\n25   Reshape            INT8     NPU    (2,16,64,53),(4)                         (32,64,1,53)           0/0/0                    289                               100.0%/0.0%/0.0%     106          Reshape:frame0/value_tp_rs\n26   exSDPAttention     INT8     NPU    (32,64,1,53),(32,64,1,53),...            (32,64,1,53)           0/0/0                    1076                              100.0%/0.0%/0.0%     318          exSDPAttention:frame0/attention_values_2sdpa\n27   Reshape            INT8     NPU    (32,64,1,53),(4)                         (2,1024,1,53)          0/0/0                    0                                 0.0%/0.0%/0.0%       106          Reshape:frame0/attention_heads_flatten_rs\n28   ConvAdd            INT8     NPU    (2,1024,1,53),(1024,1024,1,1),(1024),... (2,1024,1,53)          58443/131072/131072      224          16.15/16.15/16.15    34.4%/34.4%/31.3%    1244         Conv:frame0/attn.proj.matmul#2_ConvAdd\n29   exNorm             INT8     NPU    (2,1024,1,53),(1,1024,1,1),...           (2,1024,1,53)          0/0/0                    421                               100.0%/0.0%/0.0%     116          exNorm:frame0/norm2#1\n30   ConvExGelu         INT8     NPU    (2,1024,1,53),(4096,1024,1,1),(4096)     (2,4096,1,53)          201649/524288/524288     861          16.81/16.81/16.81    100.0%/0.0%/0.0%     4234         Conv:frame0/mlp.fc1.matmul#2\n31   ConvAdd            INT8     NPU    (2,4096,1,53),(1024,4096,1,1),(1024),... (2,1024,1,53)          205199/524288/524288     754          19.19/19.19/19.19    34.4%/34.4%/31.3%    4634         Conv:frame0/mlp.fc2.matmul#2_ConvAdd\n32   Transpose          INT8     NPU    (2,1024,1,53)                            (2,53,1,1024)          0/0/0                    408                               100.0%/0.0%/0.0%     106          Transpose:frame_output-rs_tp\n33   Reshape            INT8     NPU    (2,53,1,1024),(3)                        (2,53,1024)            0/0/0                    177                               100.0%/0.0%/0.0%     128          Reshape:frame_output-rs\n34   OutputOperator     INT8     CPU    (2,53,1024)                              \\                      0/0/0                    11                                0.0%/0.0%/0.0%       106          OutputOperator:frame_output\n35   Reshape            INT8     NPU    (2,53,1024),(4)                          (1,106,1,1024)         0/0/0                    215                               100.0%/0.0%/0.0%     106          Reshape:global_input_rs#1\n36   Transpose          INT8     NPU    (1,106,1,1024)                           (1,1024,1,106)         0/0/0                    240                               100.0%/0.0%/0.0%     112          Transpose:global_input_tp\n37   exNorm             INT8     NPU    (1,1024,1,106),(1,1024,1,1),...          (1,1024,1,106)         0/0/0                    411                               100.0%/0.0%/0.0%     116          exNorm:global0/norm1#1\n38   Conv               INT8     NPU    (1,1024,1,106),(3072,1024,1,1),...       (1,3072,1,106)         152384/344064/344064     268          40.50/40.50/40.50    33.3%/33.3%/33.3%    3202         Conv:global0/attn.qkv.matmul#3\n39   Reshape            INT8     NPU    (1,3072,1,106),(4)                       (16,192,1,106)         0/0/0                    0                                 0.0%/0.0%/0.0%       318          Reshape:global0/attn.qkv.matmul_mm_tp_sw_gather_rs\n40   Split              INT8     NPU    (16,192,1,106),(3)                       (16,64,1,106),...      0/0/0                    178                               100.0%/0.0%/0.0%     318          Split:global0/qkv_transpose-rs_tp_split\n41   exNorm             INT8     NPU    (16,64,1,106),(1,64,1,1),(1,64,1,1),...  (16,64,1,106)          0/0/0                    578                               100.0%/0.0%/0.0%     106          exNorm:global0/attn.q_norm#1\n42   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    134                               100.0%/0.0%/0.0%     112          Mul:global0/query_rope_sine\n43   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    133                               100.0%/0.0%/0.0%     112          Mul:global0/query_rope_cosine\n44   ConvAdd            INT8     NPU    (16,64,1,106),(64,64,1,1),(64),...       (16,64,1,106)          13962/14336/14336        144          1.57/1.57/1.57       100.0%/0.0%/0.0%     216          Conv:global0/query_rope_permuted_2conv_ConvAdd\n45   exNorm             INT8     NPU    (16,64,1,106),(1,64,1,1),(1,64,1,1),...  (16,64,1,106)          0/0/0                    581                               100.0%/0.0%/0.0%     106          exNorm:global0/attn.k_norm#1\n46   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    132                               100.0%/0.0%/0.0%     112          Mul:global0/key_rope_sine\n47   Mul                INT8     NPU    (16,64,1,106),(1,64,1,106)               (16,64,1,106)          0/0/0                    132                               100.0%/0.0%/0.0%     112          Mul:global0/key_rope_cosine\n48   ConvAdd            INT8     NPU    (16,64,1,106),(64,64,1,1),(64),...       (16,64,1,106)          13962/14336/14336        142          1.59/1.59/1.59       100.0%/0.0%/0.0%     216          Conv:global0/key_rope_permuted_2conv_ConvAdd\n49   exSDPAttention     INT8     NPU    (16,64,1,106),(16,64,1,106),...          (16,64,1,106)          0/0/0                    1172                              100.0%/0.0%/0.0%     318          exSDPAttention:global0/attention_values_2sdpa\n50   Reshape            INT8     NPU    (16,64,1,106),(4)                        (1,1024,1,106)         0/0/0                    1                                 0.0%/0.0%/0.0%       106          Reshape:global0/attention_heads_flatten_rs\n51   ConvAdd            INT8     NPU    (1,1024,1,106),(1024,1024,1,1),...       (1,1024,1,106)         58443/114688/114688      126          28.72/28.72/28.72    34.4%/34.4%/31.3%    1244         Conv:global0/attn.proj.matmul#2_ConvAdd\n52   exNorm             INT8     NPU    (1,1024,1,106),(1,1024,1,1),...          (1,1024,1,106)         0/0/0                    341                               100.0%/0.0%/0.0%     116          exNorm:global0/norm2#1\n53   ConvExGelu         INT8     NPU    (1,1024,1,106),(4096,1024,1,1),...       (1,4096,1,106)         201649/458752/458752     602          24.04/24.04/24.04    100.0%/0.0%/0.0%     4234         Conv:global0/mlp.fc1.matmul#2\n54   ConvAdd            INT8     NPU    (1,4096,1,106),(1024,4096,1,1),...       (1,1024,1,106)         205199/458752/458752     772          18.75/18.75/18.75    34.4%/34.4%/31.3%    4634         Conv:global0/mlp.fc2.matmul#2_ConvAdd\n55   Transpose          INT8     NPU    (1,1024,1,106)                           (1,106,1,1024)         0/0/0                    264                               100.0%/0.0%/0.0%     106          Transpose:global_output-rs_tp\n56   Reshape            INT8     NPU    (1,106,1,1024),(3)                       (1,106,1024)           0/0/0                    190                               100.0%/0.0%/0.0%     112          Reshape:global_output-rs\n57   OutputOperator     INT8     CPU    (1,106,1024)                             \\                      0/0/0                    9                                 0.0%/0.0%/0.0%       106          OutputOperator:global_output\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\nTotal Operator Elapsed Per Frame Time(us): 16751\nTotal Memory Read/Write Per Frame Size(KB): 33759.38\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n---------------------------------------------------------------------------------------------------\n                                 Operator Time Consuming Ranking Table            \n---------------------------------------------------------------------------------------------------\nOpType             CallNumber   CPUTime(us)  GPUTime(us)  NPUTime(us)  TotalTime(us)  TimeRatio(%)  \n---------------------------------------------------------------------------------------------------\nexNorm             8            0            0            3760         3760           22.45%        \nTranspose          9            0            0            2430         2430           14.51%        \nexSDPAttention     2            0            0            2248         2248           13.42%        \nConvAdd            6            0            0            2162         2162           12.91%        \nReshape            11           0            0            2030         2030           12.12%        \nConvExGelu         2            0            0            1463         1463           8.73%         \nMul                8            0            0            1123         1123           6.70%         \nConv               2            0            0            643          643            3.84%         \nSplit              2            0            0            350          350            2.09%         \nAdd                2            0            0            266          266            1.59%         \nGather             2            0            0            249          249            1.49%         \nOutputOperator     2            20           0            0            20             0.12%         \nInputOperator      1            7            0            0            7              0.04%         \n---------------------------------------------------------------------------------------------------\nTotal                           27           0            16724        16751         \n---------------------------------------------------------------------------------------------------\n",
+        "operator_targets_interpreted_by_probe": false
+      }
+    }
+  ],
+  "queries": [
+    {
+      "role": "A",
+      "model_sha256": "309a95a7467cce404161db3ed674b1ff1ca8cf7806776c40b21b195b2619cbd9",
+      "descriptors": [
+        {
+          "index": 0,
+          "name": "input",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "n_elems": 108544,
+          "size": 217088,
+          "format": 3,
+          "type": 1,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 0,
+          "pass_through": 0,
+          "scale": 1.0,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 217088
+        },
+        {
+          "index": 0,
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "n_elems": 108544,
+          "size": 217088,
+          "format": 3,
+          "type": 1,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 0,
+          "pass_through": 0,
+          "scale": 1.0,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 217088
+        },
+        {
+          "index": 1,
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "n_elems": 108544,
+          "size": 217088,
+          "format": 3,
+          "type": 1,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 0,
+          "pass_through": 0,
+          "scale": 1.0,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 217088
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "model_sha256": "9264eec3c2ad6d09663a34238a4d4169c94ec913a4be713affa8982c019ab3ba",
+      "descriptors": [
+        {
+          "index": 0,
+          "name": "input",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "n_elems": 108544,
+          "size": 108544,
+          "format": 3,
+          "type": 2,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 49,
+          "pass_through": 0,
+          "scale": 0.04322202131152153,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 108544
+        },
+        {
+          "index": 0,
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "n_elems": 108544,
+          "size": 108544,
+          "format": 3,
+          "type": 2,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 12,
+          "pass_through": 0,
+          "scale": 0.01938372477889061,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 108544
+        },
+        {
+          "index": 1,
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "n_elems": 108544,
+          "size": 108544,
+          "format": 3,
+          "type": 2,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 11,
+          "pass_through": 0,
+          "scale": 0.01880488730967045,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 108544
+        }
+      ]
+    },
+    {
+      "role": "C",
+      "model_sha256": "c25996f75b0609378f432cb0ced2166df82c22adc5aff6821c8959b13f000153",
+      "descriptors": [
+        {
+          "index": 0,
+          "name": "input",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "n_elems": 108544,
+          "size": 108544,
+          "format": 3,
+          "type": 2,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 49,
+          "pass_through": 0,
+          "scale": 0.04322202131152153,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 108544
+        },
+        {
+          "index": 0,
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "n_elems": 108544,
+          "size": 108544,
+          "format": 3,
+          "type": 2,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 12,
+          "pass_through": 0,
+          "scale": 0.01938372477889061,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 108544
+        },
+        {
+          "index": 1,
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "n_elems": 108544,
+          "size": 108544,
+          "format": 3,
+          "type": 2,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 11,
+          "pass_through": 0,
+          "scale": 0.01880488730967045,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 108544
+        }
+      ]
+    }
+  ],
+  "cleanup_errors": [],
+  "contexts_created": 3,
+  "contexts_destroyed": 3,
+  "counters": {
+    "run_attempts": 6,
+    "runs_succeeded": 6,
+    "outputs_acquired": 12,
+    "outputs_released": 12
+  },
+  "cases": [
+    {
+      "tag": "v53",
+      "directory": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v53-capture-r1",
+      "capture_manifest_sha256": "4b723e499763bb90565f6e11e16c551664634aaf72da46c7cdc493b84208ef67",
+      "input": {
+        "file": "frame-00-input.npy",
+        "bytes": 434304,
+        "sha256": "3ffb061f849b7b9b9b9cfb6cf646b940941e6d58fc97396193047c476ad116f9",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "raw_sha256": "2e1defbdacd2b2ffc13ca171888953d402009f4dcb78a3799199236a65f548d1"
+      },
+      "original_outputs": [
+        {
+          "file": "frame-00-output.npy",
+          "bytes": 434304,
+          "sha256": "d5ef6cf66a96c54da4a30331348a495674419a90cde8a8232438360b3a3ca569",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "2296fb2f68d4bd304167cff64b1f96bde7c61e55070baf417a02f7e7d0f937dc"
+        },
+        {
+          "file": "global-00-output.npy",
+          "bytes": 434304,
+          "sha256": "20827fb47c2ca3e5a6929c501aaca02471c59763b6d0eedf4d2650d5309e9c45",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "32fb6be0f79480022151f83ab79e35e05d829b78c5b7b1b9c99051c2a0065edc"
+        }
+      ],
+      "source_images": [
+        {
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.243216.png",
+          "bytes": 478978,
+          "sha256": "dffe2b7b0efb05d9a3cb9d7d938efee092d16436d6fc9a29432b1c447cd20333"
+        },
+        {
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.511333.png",
+          "bytes": 495949,
+          "sha256": "04c6b5a3018a8c8faf6a713466a4257360e1c9dd844c4dfb8237640a56a820b2"
+        }
+      ],
+      "input_origin": "original full FP32 model frame0 input",
+      "saved_input": {
+        "file": "v53-input.npy",
+        "bytes": 434304,
+        "sha256": "3ffb061f849b7b9b9b9cfb6cf646b940941e6d58fc97396193047c476ad116f9",
+        "name": "input",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "raw_sha256": "2e1defbdacd2b2ffc13ca171888953d402009f4dcb78a3799199236a65f548d1"
+      },
+      "baseline_outputs": [
+        {
+          "file": "v53-baseline-0.npy",
+          "bytes": 434304,
+          "sha256": "41d29880a335aab804ab7939a8bb64592f76259192df12cf314c9fdf478944e9",
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "7d5cf960a3279feadfa6de4b7983439344168313464d6cd292436a06dc72693f"
+        },
+        {
+          "file": "v53-baseline-1.npy",
+          "bytes": 434304,
+          "sha256": "0a9338c03b3477561cb2111d94f7802bf8cad38b98c9d1c33b6c4e3611855110",
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "0e7446d9a9e5c3e83d6e6781cffefd734e33edad36fea36a4eb946a74960f09b"
+        }
+      ],
+      "candidate_outputs": [
+        {
+          "file": "v53-candidate-0.npy",
+          "bytes": 434304,
+          "sha256": "41d29880a335aab804ab7939a8bb64592f76259192df12cf314c9fdf478944e9",
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "7d5cf960a3279feadfa6de4b7983439344168313464d6cd292436a06dc72693f"
+        },
+        {
+          "file": "v53-candidate-1.npy",
+          "bytes": 434304,
+          "sha256": "0a9338c03b3477561cb2111d94f7802bf8cad38b98c9d1c33b6c4e3611855110",
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "0e7446d9a9e5c3e83d6e6781cffefd734e33edad36fea36a4eb946a74960f09b"
+        }
+      ],
+      "checks": [
+        {
+          "name": "frame_output",
+          "byte_equal_to_baseline": true,
+          "versus_baseline_FP32_ONNX": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "versus_original_FP32": {
+            "baseline": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.4781951904296875e-05,
+              "relative_l2": 8.874554983280384e-07
+            },
+            "candidate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.4781951904296875e-05,
+              "relative_l2": 8.874554983280384e-07
+            }
+          }
+        },
+        {
+          "name": "global_output",
+          "byte_equal_to_baseline": true,
+          "versus_baseline_FP32_ONNX": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "versus_original_FP32": {
+            "baseline": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.71661376953125e-05,
+              "relative_l2": 1.1357558240076958e-06
+            },
+            "candidate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.71661376953125e-05,
+              "relative_l2": 1.1357558240076958e-06
+            }
+          }
+        }
+      ]
+    },
+    {
+      "tag": "v56-calib00",
+      "directory": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v56-calibration-r1",
+      "capture_manifest_sha256": "a1e6f1b2a89e1a96987befdea4f0a048aaf06066efa9fff72a370ac77d45507c",
+      "input": {
+        "file": "aggregator/00/calib00.npy",
+        "bytes": 434304,
+        "sha256": "e036989c2e6b529bda51e1502dbb977b66ea113b5449f640d9430bb5d02028c6",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "finite": true,
+        "raw_sha256": "443a1c32584e1786995fbd28bb0eac0253127b7974a99242e1a85d24f6201f51",
+        "minimum": -7.554426670074463,
+        "maximum": 3.3671395778656006
+      },
+      "original_outputs": null,
+      "source_images": [
+        {
+          "index": 0,
+          "timestamp": 1305031102.175304,
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031102.175304.png",
+          "bytes": 506503,
+          "sha256": "331c3fd7a3d5eefb19e3da2026625aa221ca1991f5ae30ff96060e2e3e45e368"
+        },
+        {
+          "index": 48,
+          "timestamp": 1305031103.775342,
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.775342.png",
+          "bytes": 499894,
+          "sha256": "965eefeeb53c411760fdcf86f588b4d6bdca31c914a3fbcbcc9debf97543ac87"
+        }
+      ],
+      "input_origin": "saved original full FP32 model activation; no original four-output Torch reference saved",
+      "saved_input": {
+        "file": "v56-calib00-input.npy",
+        "bytes": 434304,
+        "sha256": "e036989c2e6b529bda51e1502dbb977b66ea113b5449f640d9430bb5d02028c6",
+        "name": "input",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "raw_sha256": "443a1c32584e1786995fbd28bb0eac0253127b7974a99242e1a85d24f6201f51"
+      },
+      "baseline_outputs": [
+        {
+          "file": "v56-calib00-baseline-0.npy",
+          "bytes": 434304,
+          "sha256": "22a1bcfe96ca237571eb2a3bcbfd5402608ed4b7895df86b9fac999bd2829e5f",
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "22401e8513df9d8b34f8946ec487e94db5d67b7c8767c0d95f00d43c322e0fcc"
+        },
+        {
+          "file": "v56-calib00-baseline-1.npy",
+          "bytes": 434304,
+          "sha256": "99e113ebead6bbd9af394348e9c3657101e0fe23a0065038ce0d6334bbf6914f",
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "f24f6509ab9ef9177556a15272fd7a0aece056ffb8da0aac5314780edd99355a"
+        }
+      ],
+      "candidate_outputs": [
+        {
+          "file": "v56-calib00-candidate-0.npy",
+          "bytes": 434304,
+          "sha256": "22a1bcfe96ca237571eb2a3bcbfd5402608ed4b7895df86b9fac999bd2829e5f",
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "22401e8513df9d8b34f8946ec487e94db5d67b7c8767c0d95f00d43c322e0fcc"
+        },
+        {
+          "file": "v56-calib00-candidate-1.npy",
+          "bytes": 434304,
+          "sha256": "99e113ebead6bbd9af394348e9c3657101e0fe23a0065038ce0d6334bbf6914f",
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "f24f6509ab9ef9177556a15272fd7a0aece056ffb8da0aac5314780edd99355a"
+        }
+      ],
+      "checks": [
+        {
+          "name": "frame_output",
+          "byte_equal_to_baseline": true,
+          "versus_baseline_FP32_ONNX": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "versus_original_FP32": null
+        },
+        {
+          "name": "global_output",
+          "byte_equal_to_baseline": true,
+          "versus_baseline_FP32_ONNX": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "versus_original_FP32": null
+        }
+      ]
+    }
+  ],
+  "checked_sha256": "e9092d0aa3789d5b19719f87b7e2ed5312899f46df02efe00323e6049ce0a9dd",
+  "compiled_sha256": "1855b487b08734bef44a2a1cb63e6638e4dcb0caf0697f2ef91e54a61150affd",
+  "live_contexts": 0
+}

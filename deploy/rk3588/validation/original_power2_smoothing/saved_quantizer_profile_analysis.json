@@ -1,0 +1,534 @@
+{
+  "schema": "v78_saved_array_quantizer_and_profile_diagnostic",
+  "script_sha256": "19744fd16b3c497342ae38f24da342013343fd809bfeb80c011bc88536d2b0d1",
+  "host_model_execution": false,
+  "sdk_execution": false,
+  "input_and_output_descriptors_B_C_identical": true,
+  "isolated_roundtrip_convention": "float64 rint ties-to-even, affine clamp INT8, for saved tensors only; not claimed SDK exact rounding or inference/trajectory error, not a propagated-error bound",
+  "isolated_roundtrips": [
+    {
+      "input": "v53",
+      "tensor": "input",
+      "scale": 0.04322202131152153,
+      "zero_point": 49,
+      "elements": 108544,
+      "clipped_elements": 0,
+      "relative_l2": 0.04133299944066479,
+      "max_abs": 0.02161099761724472
+    },
+    {
+      "input": "v53",
+      "tensor": "frame_output",
+      "scale": 0.01938372477889061,
+      "zero_point": 12,
+      "elements": 108544,
+      "clipped_elements": 0,
+      "relative_l2": 0.02959867044991543,
+      "max_abs": 0.009691812098026276
+    },
+    {
+      "input": "v53",
+      "tensor": "global_output",
+      "scale": 0.01880488730967045,
+      "zero_point": 11,
+      "elements": 108544,
+      "clipped_elements": 0,
+      "relative_l2": 0.03396850615131037,
+      "max_abs": 0.009402161464095116
+    },
+    {
+      "input": "v56-calib00",
+      "tensor": "input",
+      "scale": 0.04322202131152153,
+      "zero_point": 49,
+      "elements": 108544,
+      "clipped_elements": 0,
+      "relative_l2": 0.04130458117285039,
+      "max_abs": 0.021610885858535767
+    },
+    {
+      "input": "v56-calib00",
+      "tensor": "frame_output",
+      "scale": 0.01938372477889061,
+      "zero_point": 12,
+      "elements": 108544,
+      "clipped_elements": 0,
+      "relative_l2": 0.029763439612139925,
+      "max_abs": 0.00969184935092926
+    },
+    {
+      "input": "v56-calib00",
+      "tensor": "global_output",
+      "scale": 0.01880488730967045,
+      "zero_point": 11,
+      "elements": 108544,
+      "clipped_elements": 0,
+      "relative_l2": 0.03406638108398155,
+      "max_abs": 0.009402426891028881
+    }
+  ],
+  "profiles": [
+    {
+      "input": "v53",
+      "role": "A",
+      "operator_count": 57,
+      "total_microseconds": 22082,
+      "placement_counts": {
+        "FLOAT16/CPU": 3,
+        "FLOAT16/NPU": 54
+      },
+      "original_linear_ops": [
+        {
+          "id": 5,
+          "op": "Conv",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 558,
+          "name": "Conv:frame0/attn.qkv.matmul#2"
+        },
+        {
+          "id": 28,
+          "op": "ConvAdd",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 250,
+          "name": "Conv:frame0/attn.proj.matmul#2_ConvAdd"
+        },
+        {
+          "id": 30,
+          "op": "ConvExGelu",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 1769,
+          "name": "Conv:frame0/mlp.fc1.matmul#2"
+        },
+        {
+          "id": 31,
+          "op": "ConvAdd",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 2491,
+          "name": "Conv:frame0/mlp.fc2.matmul#2_ConvAdd"
+        },
+        {
+          "id": 38,
+          "op": "Conv",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 544,
+          "name": "Conv:global0/attn.qkv.matmul#3"
+        },
+        {
+          "id": 51,
+          "op": "ConvAdd",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 207,
+          "name": "Conv:global0/attn.proj.matmul#2_ConvAdd"
+        },
+        {
+          "id": 53,
+          "op": "ConvExGelu",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 1776,
+          "name": "Conv:global0/mlp.fc1.matmul#2"
+        },
+        {
+          "id": 54,
+          "op": "ConvAdd",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 2482,
+          "name": "Conv:global0/mlp.fc2.matmul#2_ConvAdd"
+        }
+      ],
+      "profile_sha256": "887679495ad31be7a369aef7c418a630e4c2f90d4dc45a036bd89e61578ab0b9"
+    },
+    {
+      "input": "v53",
+      "role": "B",
+      "operator_count": 57,
+      "total_microseconds": 14861,
+      "placement_counts": {
+        "INT8/CPU": 3,
+        "INT8/NPU": 54
+      },
+      "original_linear_ops": [
+        {
+          "id": 5,
+          "op": "Conv",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 324,
+          "name": "Conv:frame0/attn.qkv.matmul#2"
+        },
+        {
+          "id": 28,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 168,
+          "name": "Conv:frame0/attn.proj.matmul#2_ConvAdd"
+        },
+        {
+          "id": 30,
+          "op": "ConvExGelu",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 822,
+          "name": "Conv:frame0/mlp.fc1.matmul#2"
+        },
+        {
+          "id": 31,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 704,
+          "name": "Conv:frame0/mlp.fc2.matmul#2_ConvAdd"
+        },
+        {
+          "id": 38,
+          "op": "Conv",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 219,
+          "name": "Conv:global0/attn.qkv.matmul#3"
+        },
+        {
+          "id": 51,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 134,
+          "name": "Conv:global0/attn.proj.matmul#2_ConvAdd"
+        },
+        {
+          "id": 53,
+          "op": "ConvExGelu",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 544,
+          "name": "Conv:global0/mlp.fc1.matmul#2"
+        },
+        {
+          "id": 54,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 739,
+          "name": "Conv:global0/mlp.fc2.matmul#2_ConvAdd"
+        }
+      ],
+      "profile_sha256": "d729b34a312bbdffd9b75c694469c9de23feda0d68b72fa0936c3136c2477788"
+    },
+    {
+      "input": "v53",
+      "role": "C",
+      "operator_count": 57,
+      "total_microseconds": 15158,
+      "placement_counts": {
+        "INT8/CPU": 3,
+        "INT8/NPU": 54
+      },
+      "original_linear_ops": [
+        {
+          "id": 5,
+          "op": "Conv",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 332,
+          "name": "Conv:frame0/attn.qkv.matmul#2"
+        },
+        {
+          "id": 28,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 183,
+          "name": "Conv:frame0/attn.proj.matmul#2_ConvAdd"
+        },
+        {
+          "id": 30,
+          "op": "ConvExGelu",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 879,
+          "name": "Conv:frame0/mlp.fc1.matmul#2"
+        },
+        {
+          "id": 31,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 711,
+          "name": "Conv:frame0/mlp.fc2.matmul#2_ConvAdd"
+        },
+        {
+          "id": 38,
+          "op": "Conv",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 229,
+          "name": "Conv:global0/attn.qkv.matmul#3"
+        },
+        {
+          "id": 51,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 145,
+          "name": "Conv:global0/attn.proj.matmul#2_ConvAdd"
+        },
+        {
+          "id": 53,
+          "op": "ConvExGelu",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 553,
+          "name": "Conv:global0/mlp.fc1.matmul#2"
+        },
+        {
+          "id": 54,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 709,
+          "name": "Conv:global0/mlp.fc2.matmul#2_ConvAdd"
+        }
+      ],
+      "profile_sha256": "0d7b4408313b11a7bc269e837739cc2c1fddfddab4e5aae4ea994861cbda41fd"
+    },
+    {
+      "input": "v56-calib00",
+      "role": "A",
+      "operator_count": 57,
+      "total_microseconds": 22797,
+      "placement_counts": {
+        "FLOAT16/CPU": 3,
+        "FLOAT16/NPU": 54
+      },
+      "original_linear_ops": [
+        {
+          "id": 5,
+          "op": "Conv",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 581,
+          "name": "Conv:frame0/attn.qkv.matmul#2"
+        },
+        {
+          "id": 28,
+          "op": "ConvAdd",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 271,
+          "name": "Conv:frame0/attn.proj.matmul#2_ConvAdd"
+        },
+        {
+          "id": 30,
+          "op": "ConvExGelu",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 1735,
+          "name": "Conv:frame0/mlp.fc1.matmul#2"
+        },
+        {
+          "id": 31,
+          "op": "ConvAdd",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 2538,
+          "name": "Conv:frame0/mlp.fc2.matmul#2_ConvAdd"
+        },
+        {
+          "id": 38,
+          "op": "Conv",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 572,
+          "name": "Conv:global0/attn.qkv.matmul#3"
+        },
+        {
+          "id": 51,
+          "op": "ConvAdd",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 273,
+          "name": "Conv:global0/attn.proj.matmul#2_ConvAdd"
+        },
+        {
+          "id": 53,
+          "op": "ConvExGelu",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 1793,
+          "name": "Conv:global0/mlp.fc1.matmul#2"
+        },
+        {
+          "id": 54,
+          "op": "ConvAdd",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "microseconds": 2467,
+          "name": "Conv:global0/mlp.fc2.matmul#2_ConvAdd"
+        }
+      ],
+      "profile_sha256": "339738d8bab4c2ac91743a4c00519827e520e40954be9c6857e2be03ebb1a055"
+    },
+    {
+      "input": "v56-calib00",
+      "role": "B",
+      "operator_count": 57,
+      "total_microseconds": 16079,
+      "placement_counts": {
+        "INT8/CPU": 3,
+        "INT8/NPU": 54
+      },
+      "original_linear_ops": [
+        {
+          "id": 5,
+          "op": "Conv",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 353,
+          "name": "Conv:frame0/attn.qkv.matmul#2"
+        },
+        {
+          "id": 28,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 203,
+          "name": "Conv:frame0/attn.proj.matmul#2_ConvAdd"
+        },
+        {
+          "id": 30,
+          "op": "ConvExGelu",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 847,
+          "name": "Conv:frame0/mlp.fc1.matmul#2"
+        },
+        {
+          "id": 31,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 732,
+          "name": "Conv:frame0/mlp.fc2.matmul#2_ConvAdd"
+        },
+        {
+          "id": 38,
+          "op": "Conv",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 254,
+          "name": "Conv:global0/attn.qkv.matmul#3"
+        },
+        {
+          "id": 51,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 167,
+          "name": "Conv:global0/attn.proj.matmul#2_ConvAdd"
+        },
+        {
+          "id": 53,
+          "op": "ConvExGelu",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 568,
+          "name": "Conv:global0/mlp.fc1.matmul#2"
+        },
+        {
+          "id": 54,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 741,
+          "name": "Conv:global0/mlp.fc2.matmul#2_ConvAdd"
+        }
+      ],
+      "profile_sha256": "61a61222cefb164485f97357651c83c03f9951402bd79e4d89b9bd824aa1ff82"
+    },
+    {
+      "input": "v56-calib00",
+      "role": "C",
+      "operator_count": 57,
+      "total_microseconds": 16751,
+      "placement_counts": {
+        "INT8/CPU": 3,
+        "INT8/NPU": 54
+      },
+      "original_linear_ops": [
+        {
+          "id": 5,
+          "op": "Conv",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 375,
+          "name": "Conv:frame0/attn.qkv.matmul#2"
+        },
+        {
+          "id": 28,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 224,
+          "name": "Conv:frame0/attn.proj.matmul#2_ConvAdd"
+        },
+        {
+          "id": 30,
+          "op": "ConvExGelu",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 861,
+          "name": "Conv:frame0/mlp.fc1.matmul#2"
+        },
+        {
+          "id": 31,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 754,
+          "name": "Conv:frame0/mlp.fc2.matmul#2_ConvAdd"
+        },
+        {
+          "id": 38,
+          "op": "Conv",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 268,
+          "name": "Conv:global0/attn.qkv.matmul#3"
+        },
+        {
+          "id": 51,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 126,
+          "name": "Conv:global0/attn.proj.matmul#2_ConvAdd"
+        },
+        {
+          "id": 53,
+          "op": "ConvExGelu",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 602,
+          "name": "Conv:global0/mlp.fc1.matmul#2"
+        },
+        {
+          "id": 54,
+          "op": "ConvAdd",
+          "dtype": "INT8",
+          "target": "NPU",
+          "microseconds": 772,
+          "name": "Conv:global0/mlp.fc2.matmul#2_ConvAdd"
+        }
+      ],
+      "profile_sha256": "0cd43ab4339d2dbd7f10c75df5a3b4f25a1b56d067ecf2c80743d16abefa2d46"
+    }
+  ]
+}

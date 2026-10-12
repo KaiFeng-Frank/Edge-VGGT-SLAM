@@ -1,0 +1,992 @@
+{
+  "schema": "v78_original_pair_power2_smooth_FP32_check",
+  "status": "checked_original_FP32_equivalence_not_quality_accepted",
+  "script_sha256": "896ee7f99cf3b6d699e9c20826e618a696f3f54600705318a3054778d4f89615",
+  "original_model_only": true,
+  "original_pair_onnx_sha256": "efbbaee8f3d6326565930e5a045eac0d500fdb35453fdf85ddac7481ec2fac65",
+  "parent_manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42",
+  "alpha": 0.5,
+  "calibration_host_execution": false,
+  "NPU_or_SDK_execution": false,
+  "candidate_accepted": false,
+  "cleanup_errors": [],
+  "v53_image_SHA_overlap_with_calibration": [],
+  "capture_graph": {
+    "file": "original-norm-capture.onnx",
+    "bytes": 100914911,
+    "sha256": "f42b4f27a34c6530f6853381c5fb9595bf2193d2250c2ab3906aa9b01fc19730"
+  },
+  "calibration": [
+    {
+      "sample_id": "calib00",
+      "input": {
+        "file": "aggregator/00/calib00.npy",
+        "bytes": 434304,
+        "sha256": "e036989c2e6b529bda51e1502dbb977b66ea113b5449f640d9430bb5d02028c6",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "finite": true,
+        "raw_sha256": "443a1c32584e1786995fbd28bb0eac0253127b7974a99242e1a85d24f6201f51",
+        "minimum": -7.554426670074463,
+        "maximum": 3.3671395778656006
+      },
+      "norms": [
+        {
+          "name": "frame0/norm1",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "1203ab9d146b8a2ad421f3b73bbcce324ee58f7d96e7f7bde98ed0469b63655e"
+        },
+        {
+          "name": "frame0/norm2",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "667ded365dc1b8b0926a17f7be76787c74cc9695ecd7c39ae69735f806ab3c59"
+        },
+        {
+          "name": "global0/norm1",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "f3ae7ea5685607c243b5dcdeb1b172fd2cc3b88b4b8628151faa0a1fe32eb8c1"
+        },
+        {
+          "name": "global0/norm2",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "6bbce57ee8dfc9cf6b6079b2dd445b2f267f62e9e5528f075c79cf4ab7d6f8ca"
+        }
+      ],
+      "artifact": {
+        "file": "calib00-norms.npz",
+        "bytes": 1737754,
+        "sha256": "25115a26a33237d2d794a8019c4f30ec2242f610d62b00c50fccad4631023593"
+      }
+    },
+    {
+      "sample_id": "calib01",
+      "input": {
+        "file": "aggregator/00/calib01.npy",
+        "bytes": 434304,
+        "sha256": "119170cfb3da618f5ae6e128f7fbf670a6d8f8ea7a492cf85d87ee6ed83bb7c4",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "finite": true,
+        "raw_sha256": "088ba9d3d27f88f575de420c97796e3d7e21f829da93f228ef1b9799968a2045",
+        "minimum": -7.550705909729004,
+        "maximum": 3.2561235427856445
+      },
+      "norms": [
+        {
+          "name": "frame0/norm1",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "1d0ab13dd1a001f6f250890747277a4e3c2bf7133bb2b70e395ea8db3f7450b5"
+        },
+        {
+          "name": "frame0/norm2",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "cc34051d78248cb678b3e148e17f91b2d588df2e11ef4ffe5d6eef578cead9b2"
+        },
+        {
+          "name": "global0/norm1",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "f8b8a82905f90bf81e10c72f591623fa097d5aa225383b1ffc14aff208052f3f"
+        },
+        {
+          "name": "global0/norm2",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "e5b0cdfb39704c204a11739f11ba2408b8b9d977bab32bb22655f5f2cf37793c"
+        }
+      ],
+      "artifact": {
+        "file": "calib01-norms.npz",
+        "bytes": 1737754,
+        "sha256": "8f7a6f5ae8f00604fea5bc8157048658ae64bf60a34f85df533f219823ee52f7"
+      }
+    },
+    {
+      "sample_id": "calib02",
+      "input": {
+        "file": "aggregator/00/calib02.npy",
+        "bytes": 434304,
+        "sha256": "92eaf6121f6ba4fe0963fea78bd99e060ca6da4150603d74188311174c3ed286",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "finite": true,
+        "raw_sha256": "28f307eb35ccaa85a3124af98b68c3a14982d33bd0230f3fbcb2970b544fa1d5",
+        "minimum": -7.56023645401001,
+        "maximum": 3.0384600162506104
+      },
+      "norms": [
+        {
+          "name": "frame0/norm1",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "2e0e7458007ba25af988839065edfcd477001a31d386b2ecc493f5515ef05b2c"
+        },
+        {
+          "name": "frame0/norm2",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "f6f05b2d1e6bdea66fdbb34333423c710c943b32ed38a906b00ee57d0f90505d"
+        },
+        {
+          "name": "global0/norm1",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "3fc77499bc21ebc13bd15e59bfbc29905306ec6dd34b34d875c8b22d2bcfe01d"
+        },
+        {
+          "name": "global0/norm2",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "2e8f0173316e30efc759f3f6212022157c58d7f7eeeae22ee3d2eee256d386e7"
+        }
+      ],
+      "artifact": {
+        "file": "calib02-norms.npz",
+        "bytes": 1737754,
+        "sha256": "b180387f096d38d629e911985a50b5a03f472c18a8b7b52fd951557b68ba48a9"
+      }
+    },
+    {
+      "sample_id": "calib03",
+      "input": {
+        "file": "aggregator/00/calib03.npy",
+        "bytes": 434304,
+        "sha256": "c77d333a7658ab7a7fba3c05b0e3a025808f36eef537f1c6d0004c3b411e32dd",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "finite": true,
+        "raw_sha256": "66c725e027e85a1bf704cb2fc91db71ddedf7667a7cad7369af699ebc6338d83",
+        "minimum": -7.620516777038574,
+        "maximum": 3.0611443519592285
+      },
+      "norms": [
+        {
+          "name": "frame0/norm1",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "dafe94cde7559bda21eca8279f29fb44f8dcb43a970f119f9a0399816263742a"
+        },
+        {
+          "name": "frame0/norm2",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "aac483249340584f5afe46e4486adf909a0abb5ca15286e689a41de958ddcd30"
+        },
+        {
+          "name": "global0/norm1",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "665f828117051b1235b2cf0bc3324816abcf1f1a09e9078bcfa61eeb3d7c844b"
+        },
+        {
+          "name": "global0/norm2",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "c503e5738d5844bb95f223dafe6b7616c6d9776e436f0251e6e2fe168d1371fb"
+        }
+      ],
+      "artifact": {
+        "file": "calib03-norms.npz",
+        "bytes": 1737754,
+        "sha256": "c28366ec5022f1c6292d08a7443c6202475516029e1b051ddf9f258e1b34a784"
+      }
+    },
+    {
+      "sample_id": "calib04",
+      "input": {
+        "file": "aggregator/00/calib04.npy",
+        "bytes": 434304,
+        "sha256": "96e356a475be827007ac0896c701c865f493b1b6bc6aabe3c75546a592a724b6",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "finite": true,
+        "raw_sha256": "cfbd04699cb649b906892fe5183dbe8a37a772e0f0138820c9499810bc840d0e",
+        "minimum": -7.531680583953857,
+        "maximum": 3.095237970352173
+      },
+      "norms": [
+        {
+          "name": "frame0/norm1",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "c15b00279bf2a289eadd70791b8a08e3b5c2fd8237488a59ea0f9265a29516e1"
+        },
+        {
+          "name": "frame0/norm2",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "f52eccc6f13bc33b585b542008b3a178441ee162302720eb10783b2d9c1b9a0e"
+        },
+        {
+          "name": "global0/norm1",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "fc99fd45930262bfa0f4ecac890fab097cb9b0cb0056d055ee61f32edbf218de"
+        },
+        {
+          "name": "global0/norm2",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "593fe3bef4d5d70256b49b694528de54b277790ad1f133574b8b79eb6cb8f9ff"
+        }
+      ],
+      "artifact": {
+        "file": "calib04-norms.npz",
+        "bytes": 1737754,
+        "sha256": "aa94137287b3d8f947e7840238fbde2c4da480492a10a266acc89910aef1b52a"
+      }
+    },
+    {
+      "sample_id": "calib05",
+      "input": {
+        "file": "aggregator/00/calib05.npy",
+        "bytes": 434304,
+        "sha256": "a97965cb7d56d4d919603917e5ad22428b9e4fdd6e79889fa3dcdfc366ecdb92",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "finite": true,
+        "raw_sha256": "ce5f7606b7b079adce60b53980a8e689e0a0b723083fd6860946fc1257b17956",
+        "minimum": -7.526791095733643,
+        "maximum": 3.0085911750793457
+      },
+      "norms": [
+        {
+          "name": "frame0/norm1",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "671309ce0e0f9f175d39450a1b64c5a33d058036218cb31673a683f2203e0c4c"
+        },
+        {
+          "name": "frame0/norm2",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "255cf57aa8360807909affde48018423e82c0ca5394abdff50b2d16e0147fe01"
+        },
+        {
+          "name": "global0/norm1",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "d7803672631362d630b55602e6e41296bc8fbe5099f38b724b4cb63749194307"
+        },
+        {
+          "name": "global0/norm2",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "ac6ad2c271976908a8a987b97debe17c8871ff7c36987241cb1a2c52b68bf7ad"
+        }
+      ],
+      "artifact": {
+        "file": "calib05-norms.npz",
+        "bytes": 1737754,
+        "sha256": "4f7596b7f48770a9c0aaa37994959ffb4540d7de23adf98232bd62e0c9e2d626"
+      }
+    },
+    {
+      "sample_id": "calib06",
+      "input": {
+        "file": "aggregator/00/calib06.npy",
+        "bytes": 434304,
+        "sha256": "772bbd2be494910d279e1f6241d4418057c56cdc3e3fd947bcf10be151691251",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "finite": true,
+        "raw_sha256": "edf3fd7350f73e6115ab07551dc72967ce5f06fe2c3ddd373c0e6e8ffc882db0",
+        "minimum": -7.590578556060791,
+        "maximum": 3.2196104526519775
+      },
+      "norms": [
+        {
+          "name": "frame0/norm1",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "940d58f14f13376557554cf6ac97b05369b8979f4ec60a388d8a24f2e169c023"
+        },
+        {
+          "name": "frame0/norm2",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "07395d2ed9db5b0d4cfb3d1f3db9aba7aafde2aa84a43cf6354187d06bf89a74"
+        },
+        {
+          "name": "global0/norm1",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "dcb97e5a2bd318fa373b0113357eaccb7f7f665001a4dd8cd5a2304e8ce76e44"
+        },
+        {
+          "name": "global0/norm2",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "96d72513a2eeee4b94db669bdd3050f80a5a28688e67576b3d8783ac4c265efc"
+        }
+      ],
+      "artifact": {
+        "file": "calib06-norms.npz",
+        "bytes": 1737754,
+        "sha256": "3f60cdf279bcef8d3c07c753f3d7d906377e6d253b9fcd7a28bf5d1a87390864"
+      }
+    },
+    {
+      "sample_id": "calib07",
+      "input": {
+        "file": "aggregator/00/calib07.npy",
+        "bytes": 434304,
+        "sha256": "9e060d136e8f7942ebf3a9530b3d424c76c3f2b0a1ee0da1a40959cac01e998b",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "finite": true,
+        "raw_sha256": "7707e295f6cbc57ba4ef37c3ec8cb0821b728bed4a4ab2231b42e36916d669ac",
+        "minimum": -7.654475688934326,
+        "maximum": 2.9270565509796143
+      },
+      "norms": [
+        {
+          "name": "frame0/norm1",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "9f2e7e8d0ed770570725f1d858dcf31ad0df109bebd14e2d01f0fedb26210c78"
+        },
+        {
+          "name": "frame0/norm2",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "raw_sha256": "abee8dcdbda65264ccec034a7f2a57a040c1b071fe038083768b15cb72c6786e"
+        },
+        {
+          "name": "global0/norm1",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "d01fee887a18a9a6cf3aa934edc1fefe2c69c07edf3519ffdea21df8d1744c3b"
+        },
+        {
+          "name": "global0/norm2",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "raw_sha256": "18195d4e4765ba04a83de98caf05b763fff2ae0d9e983adc2c8525339777325e"
+        }
+      ],
+      "artifact": {
+        "file": "calib07-norms.npz",
+        "bytes": 1737754,
+        "sha256": "f234e45d7e0e1fa9a6fab4476a134d62346ff93d63c5f487d64b9320c959643f"
+      }
+    }
+  ],
+  "graph_proof": {
+    "boundaries": [
+      {
+        "norm": "frame0/norm1",
+        "linear": "frame0/attn.qkv",
+        "alpha": 0.5,
+        "scale_raw_sha256": "97eecb70b468946619dd2089d7ca00bd8d0ec83b971f5308d4dcc25991b680f5",
+        "exponent_counts": {
+          "-3": 7,
+          "-2": 45,
+          "-1": 180,
+          "0": 536,
+          "1": 243,
+          "2": 13
+        },
+        "inverse_bytes_reconstructed": true,
+        "before_raw_sha256": [
+          "39fcfec97f75a692cc144503334c19932e8ad40f76a8116a708481ec4863bd42",
+          "88c1b5961ac7c46de5fc6efb61e400600d1fa70a003624d176c26e3f809ff021",
+          "bfb63a11243349e7f6499f09378195b1668a4acc1408876342fcb09fc91c36b2"
+        ],
+        "after_raw_sha256": [
+          "a6598cbdb7e6639eaab591e4985b114098f6abb6d258d7cf11ce3f23319d74eb",
+          "2b00538142f2436e281a401ceab35f2820116677d058b3c9fa391907d3b720f2",
+          "0a34044cfed7e11853a799ba36419e91b5a291dbdff0f93c2be3c29a7b8c2a3e"
+        ]
+      },
+      {
+        "norm": "frame0/norm2",
+        "linear": "frame0/mlp.fc1",
+        "alpha": 0.5,
+        "scale_raw_sha256": "bd543910c1f203ad848e6c7c8f748e0db133bb675e1d9193a8253d3ff15eb036",
+        "exponent_counts": {
+          "-4": 3,
+          "-3": 13,
+          "-2": 29,
+          "-1": 39,
+          "0": 523,
+          "1": 383,
+          "2": 27,
+          "3": 7
+        },
+        "inverse_bytes_reconstructed": true,
+        "before_raw_sha256": [
+          "dea09c8c63b86b0ef2253480f996750101a7d2b8d4d7da5e63b83f4e4f85e69c",
+          "6334793e051a36151cccaf9bece5455e556e73bcc3fca5422f61f66aec8738a3",
+          "220cd18d4433b6298876f3b84ecff723f39d879af6b0dba28531e3044c0c18a5"
+        ],
+        "after_raw_sha256": [
+          "0c17129bea0c52bdb53cf2d90152cd1ba2f9f7c1c9255973ea28cdd861a459f2",
+          "02134a1a8a679c33d3074d72ddbc5e56e3b3a6eccc3d77dfe9f1208c41de2f2b",
+          "106210dec8421feffc13ca426198f9ae5e723105f2253f40fd4acfd7245b73a9"
+        ]
+      },
+      {
+        "norm": "global0/norm1",
+        "linear": "global0/attn.qkv",
+        "alpha": 0.5,
+        "scale_raw_sha256": "aa1921031f7bed8269cfd0cc5ab0638e475eb428e2e9e55ba1562fba6e9e566a",
+        "exponent_counts": {
+          "-4": 1,
+          "-3": 26,
+          "-2": 106,
+          "-1": 132,
+          "0": 459,
+          "1": 288,
+          "2": 12
+        },
+        "inverse_bytes_reconstructed": true,
+        "before_raw_sha256": [
+          "e9ad2e2aba4d0b00cadb871023bdf9665f84b68b2ca78ec113cfafd25a5b77b0",
+          "e606a34a5312fd8b12c45e46b7fa85410d495e4585517b4165abba3db63f3094",
+          "f069999f2e10c7af5361b2237915af8f181aad33f77bf66e321b970cdf0e4c47"
+        ],
+        "after_raw_sha256": [
+          "a475081c85915346b053ec8cde8f761f3a793ae9edb686c94293cb065aebad4f",
+          "5bb147984ba9e827af351c00069b11688671801ba51bb28ced521f348c3c7b43",
+          "9376e4af7469cb5a5179479f5b4ace8f9526be5ab6269d1f06dd730deadfb770"
+        ]
+      },
+      {
+        "norm": "global0/norm2",
+        "linear": "global0/mlp.fc1",
+        "alpha": 0.5,
+        "scale_raw_sha256": "c513b9a9d85aae999b43fea06a8634179984128ce6c34c5ab67971755d2748ff",
+        "exponent_counts": {
+          "-4": 2,
+          "-3": 9,
+          "-2": 40,
+          "-1": 33,
+          "0": 310,
+          "1": 585,
+          "2": 38,
+          "3": 7
+        },
+        "inverse_bytes_reconstructed": true,
+        "before_raw_sha256": [
+          "0a4f2a01cf7bcfc651ba29a12211335c912c670fd49f8309952f535c6c9af7eb",
+          "b6cbdf950905e102fff48104213a36e8b7691588655916017b5e8e155199f8ea",
+          "72cf4915f48e8bfc0d01ae9299e6d663297d62fe0fa70741f97ccc324db19c6f"
+        ],
+        "after_raw_sha256": [
+          "fae6301d70c09a115a2fa525550fb7ac64f84d3248ae77f90e33b2f3b0f6c30d",
+          "7ae93230bc6940cca3a7390fc602270c2402a589133ac6a4784d32c4ffa4e453",
+          "f726e1bd4526efd092aaa515cab13c2cf5eec8c9cdd75f3ce026849b723b78b6"
+        ]
+      }
+    ],
+    "all_nodes_protobuf_unchanged": true,
+    "other_initializers_protobuf_unchanged": true,
+    "original_IO_protobuf_unchanged": true,
+    "changed_initializers": 12,
+    "inverse_bytes_reconstructed": true,
+    "all_original_parameter_values_literally_unchanged": false,
+    "checkpoint_file_modified": false
+  },
+  "onnx": {
+    "file": "pair-power2-smooth.onnx",
+    "bytes": 100914761,
+    "sha256": "6fee3cc508e19a62f2c7438912637c20a05b4c6c59bb81c27d0fbb78839f611b"
+  },
+  "norm_absmax": {
+    "file": "norm-absmax.npz",
+    "bytes": 33818,
+    "sha256": "802006f0dc553620512be50d2455cc452e72fd46d7683bce9cdd0a7caf4f8fc8"
+  },
+  "cases": [
+    {
+      "tag": "v53",
+      "directory": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v53-capture-r1",
+      "capture_manifest_sha256": "4b723e499763bb90565f6e11e16c551664634aaf72da46c7cdc493b84208ef67",
+      "input": {
+        "file": "frame-00-input.npy",
+        "bytes": 434304,
+        "sha256": "3ffb061f849b7b9b9b9cfb6cf646b940941e6d58fc97396193047c476ad116f9",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "raw_sha256": "2e1defbdacd2b2ffc13ca171888953d402009f4dcb78a3799199236a65f548d1"
+      },
+      "original_outputs": [
+        {
+          "file": "frame-00-output.npy",
+          "bytes": 434304,
+          "sha256": "d5ef6cf66a96c54da4a30331348a495674419a90cde8a8232438360b3a3ca569",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "2296fb2f68d4bd304167cff64b1f96bde7c61e55070baf417a02f7e7d0f937dc"
+        },
+        {
+          "file": "global-00-output.npy",
+          "bytes": 434304,
+          "sha256": "20827fb47c2ca3e5a6929c501aaca02471c59763b6d0eedf4d2650d5309e9c45",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "32fb6be0f79480022151f83ab79e35e05d829b78c5b7b1b9c99051c2a0065edc"
+        }
+      ],
+      "source_images": [
+        {
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.243216.png",
+          "bytes": 478978,
+          "sha256": "dffe2b7b0efb05d9a3cb9d7d938efee092d16436d6fc9a29432b1c447cd20333"
+        },
+        {
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.511333.png",
+          "bytes": 495949,
+          "sha256": "04c6b5a3018a8c8faf6a713466a4257360e1c9dd844c4dfb8237640a56a820b2"
+        }
+      ],
+      "input_origin": "original full FP32 model frame0 input",
+      "saved_input": {
+        "file": "v53-input.npy",
+        "bytes": 434304,
+        "sha256": "3ffb061f849b7b9b9b9cfb6cf646b940941e6d58fc97396193047c476ad116f9",
+        "name": "input",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "raw_sha256": "2e1defbdacd2b2ffc13ca171888953d402009f4dcb78a3799199236a65f548d1"
+      },
+      "baseline_outputs": [
+        {
+          "file": "v53-baseline-0.npy",
+          "bytes": 434304,
+          "sha256": "41d29880a335aab804ab7939a8bb64592f76259192df12cf314c9fdf478944e9",
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "7d5cf960a3279feadfa6de4b7983439344168313464d6cd292436a06dc72693f"
+        },
+        {
+          "file": "v53-baseline-1.npy",
+          "bytes": 434304,
+          "sha256": "0a9338c03b3477561cb2111d94f7802bf8cad38b98c9d1c33b6c4e3611855110",
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "0e7446d9a9e5c3e83d6e6781cffefd734e33edad36fea36a4eb946a74960f09b"
+        }
+      ],
+      "candidate_outputs": [
+        {
+          "file": "v53-candidate-0.npy",
+          "bytes": 434304,
+          "sha256": "41d29880a335aab804ab7939a8bb64592f76259192df12cf314c9fdf478944e9",
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "7d5cf960a3279feadfa6de4b7983439344168313464d6cd292436a06dc72693f"
+        },
+        {
+          "file": "v53-candidate-1.npy",
+          "bytes": 434304,
+          "sha256": "0a9338c03b3477561cb2111d94f7802bf8cad38b98c9d1c33b6c4e3611855110",
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "0e7446d9a9e5c3e83d6e6781cffefd734e33edad36fea36a4eb946a74960f09b"
+        }
+      ],
+      "checks": [
+        {
+          "name": "frame_output",
+          "byte_equal_to_baseline": true,
+          "versus_baseline_FP32_ONNX": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "versus_original_FP32": {
+            "baseline": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.4781951904296875e-05,
+              "relative_l2": 8.874554983280384e-07
+            },
+            "candidate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.4781951904296875e-05,
+              "relative_l2": 8.874554983280384e-07
+            }
+          }
+        },
+        {
+          "name": "global_output",
+          "byte_equal_to_baseline": true,
+          "versus_baseline_FP32_ONNX": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "versus_original_FP32": {
+            "baseline": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.71661376953125e-05,
+              "relative_l2": 1.1357558240076958e-06
+            },
+            "candidate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.71661376953125e-05,
+              "relative_l2": 1.1357558240076958e-06
+            }
+          }
+        }
+      ]
+    },
+    {
+      "tag": "v56-calib00",
+      "directory": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v56-calibration-r1",
+      "capture_manifest_sha256": "a1e6f1b2a89e1a96987befdea4f0a048aaf06066efa9fff72a370ac77d45507c",
+      "input": {
+        "file": "aggregator/00/calib00.npy",
+        "bytes": 434304,
+        "sha256": "e036989c2e6b529bda51e1502dbb977b66ea113b5449f640d9430bb5d02028c6",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "finite": true,
+        "raw_sha256": "443a1c32584e1786995fbd28bb0eac0253127b7974a99242e1a85d24f6201f51",
+        "minimum": -7.554426670074463,
+        "maximum": 3.3671395778656006
+      },
+      "original_outputs": null,
+      "source_images": [
+        {
+          "index": 0,
+          "timestamp": 1305031102.175304,
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031102.175304.png",
+          "bytes": 506503,
+          "sha256": "331c3fd7a3d5eefb19e3da2026625aa221ca1991f5ae30ff96060e2e3e45e368"
+        },
+        {
+          "index": 48,
+          "timestamp": 1305031103.775342,
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.775342.png",
+          "bytes": 499894,
+          "sha256": "965eefeeb53c411760fdcf86f588b4d6bdca31c914a3fbcbcc9debf97543ac87"
+        }
+      ],
+      "input_origin": "saved original full FP32 model activation; no original four-output Torch reference saved",
+      "saved_input": {
+        "file": "v56-calib00-input.npy",
+        "bytes": 434304,
+        "sha256": "e036989c2e6b529bda51e1502dbb977b66ea113b5449f640d9430bb5d02028c6",
+        "name": "input",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32",
+        "tensor_bytes": 434176,
+        "raw_sha256": "443a1c32584e1786995fbd28bb0eac0253127b7974a99242e1a85d24f6201f51"
+      },
+      "baseline_outputs": [
+        {
+          "file": "v56-calib00-baseline-0.npy",
+          "bytes": 434304,
+          "sha256": "22a1bcfe96ca237571eb2a3bcbfd5402608ed4b7895df86b9fac999bd2829e5f",
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "22401e8513df9d8b34f8946ec487e94db5d67b7c8767c0d95f00d43c322e0fcc"
+        },
+        {
+          "file": "v56-calib00-baseline-1.npy",
+          "bytes": 434304,
+          "sha256": "99e113ebead6bbd9af394348e9c3657101e0fe23a0065038ce0d6334bbf6914f",
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "f24f6509ab9ef9177556a15272fd7a0aece056ffb8da0aac5314780edd99355a"
+        }
+      ],
+      "candidate_outputs": [
+        {
+          "file": "v56-calib00-candidate-0.npy",
+          "bytes": 434304,
+          "sha256": "22a1bcfe96ca237571eb2a3bcbfd5402608ed4b7895df86b9fac999bd2829e5f",
+          "name": "frame_output",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "22401e8513df9d8b34f8946ec487e94db5d67b7c8767c0d95f00d43c322e0fcc"
+        },
+        {
+          "file": "v56-calib00-candidate-1.npy",
+          "bytes": 434304,
+          "sha256": "99e113ebead6bbd9af394348e9c3657101e0fe23a0065038ce0d6334bbf6914f",
+          "name": "global_output",
+          "shape": [
+            1,
+            106,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 434176,
+          "raw_sha256": "f24f6509ab9ef9177556a15272fd7a0aece056ffb8da0aac5314780edd99355a"
+        }
+      ],
+      "checks": [
+        {
+          "name": "frame_output",
+          "byte_equal_to_baseline": true,
+          "versus_baseline_FP32_ONNX": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "versus_original_FP32": null
+        },
+        {
+          "name": "global_output",
+          "byte_equal_to_baseline": true,
+          "versus_baseline_FP32_ONNX": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 0.0,
+            "relative_l2": 0.0
+          },
+          "versus_original_FP32": null
+        }
+      ]
+    }
+  ],
+  "check_receipt_sha256": "21aa4d48b25e20c934b8eafbb01f90278a4f5b4467c534ed03b82850cfbbfa44",
+  "seconds": 5.023613295983523,
+  "source_and_inputs_unchanged": true
+}

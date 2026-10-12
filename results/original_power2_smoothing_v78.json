@@ -1,0 +1,382 @@
+{
+  "schema": "v78_original_pair_power2_smoothing_1ghz",
+  "status": "component_measured_not_adopted",
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "real_time_validated": false,
+  "production_runtime_changed": false,
+  "all_original_layers_retained": true,
+  "checkpoint": {
+    "file": "model.pt",
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "scope": "Original frame0/global0 pair only: 2 of 48 original aggregator blocks, both complete exits; not complete model, SLAM, camera or map-quality measurement",
+  "method": {
+    "alpha": 0.5,
+    "scale": "2**rint(0.5*log2(max(act_absmax,1e-5))-0.5*log2(max(weight_absmax_K,1e-5)))",
+    "calibration_inputs": 8,
+    "actual_Norm_outputs_per_input": 4,
+    "changed_initializers": 12,
+    "original_checkpoint_file_unchanged": true,
+    "graph_initializers_transformed": true,
+    "original_nodes_and_other_initializers_unchanged": true,
+    "parameter_inverse_byte_equality": true,
+    "FP32_candidate_outputs_byte_equal": 4,
+    "FP32_candidate_outputs_compared": 4,
+    "validation_inputs": 2,
+    "image_disjoint_evaluation_inputs": 1,
+    "dataset_sha256": "34789c52e8f625fe966cefab16ac3046c3a72ab71051ccd3e14e7d9374b12696",
+    "candidate_graph_sha256": "6fee3cc508e19a62f2c7438912637c20a05b4c6c59bb81c27d0fbb78839f611b",
+    "compiled_rknn": {
+      "file": "pair.rknn",
+      "bytes": 27736654,
+      "sha256": "c25996f75b0609378f432cb0ced2166df82c22adc5aff6821c8959b13f000153"
+    }
+  },
+  "normal": {
+    "schedule": "ABCCBA repeated 6 times separately for 2 inputs",
+    "init_flags": 0,
+    "core_mask": 7,
+    "API": "FP32 input/pass_through=0 and both want_float=1 outputs on every route",
+    "scope": "Complete two-output SDK route incl conversion in inputs/outputs API, owned copy/release/finite; excludes hash, NPZ, profile and platform reads",
+    "routes": {
+      "A": {
+        "label": "original FP16",
+        "warm_count": 22,
+        "mean_seconds": 0.03268242008661301,
+        "median_seconds": 0.032596378499874845,
+        "p95_seconds": 0.03499195335753029,
+        "min_seconds": 0.028925461985636503,
+        "max_seconds": 0.03557341999839991,
+        "errors": [
+          {
+            "input": "v53",
+            "versus_original_ONNX": [
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 55860,
+                "elements": 108544,
+                "max_abs": 0.07805681228637695,
+                "relative_l2": 0.004222465922834133
+              },
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 63235,
+                "elements": 108544,
+                "max_abs": 0.0293026864528656,
+                "relative_l2": 0.004732177272062702
+              }
+            ],
+            "versus_original_Torch": [
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 55865,
+                "elements": 108544,
+                "max_abs": 0.07805871963500977,
+                "relative_l2": 0.004222512956891238
+              },
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 63240,
+                "elements": 108544,
+                "max_abs": 0.02930513024330139,
+                "relative_l2": 0.004732235017510707
+              }
+            ]
+          },
+          {
+            "input": "v56-calib00",
+            "versus_original_ONNX": [
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 55342,
+                "elements": 108544,
+                "max_abs": 0.08833682537078857,
+                "relative_l2": 0.004170374680727854
+              },
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 63070,
+                "elements": 108544,
+                "max_abs": 0.024972468614578247,
+                "relative_l2": 0.004487365987007431
+              }
+            ],
+            "versus_original_Torch": null
+          }
+        ]
+      },
+      "B": {
+        "label": "plain W8A8",
+        "warm_count": 22,
+        "mean_seconds": 0.02095695090379608,
+        "median_seconds": 0.02093758549017366,
+        "p95_seconds": 0.02295988628466148,
+        "min_seconds": 0.017395625996869057,
+        "max_seconds": 0.023064419016009197,
+        "errors": [
+          {
+            "input": "v53",
+            "versus_original_ONNX": [
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 108448,
+                "elements": 108544,
+                "max_abs": 1.0492018461227417,
+                "relative_l2": 0.09545046262292413
+              },
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 108461,
+                "elements": 108544,
+                "max_abs": 0.8070845007896423,
+                "relative_l2": 0.12352292805241788
+              }
+            ],
+            "versus_original_Torch": [
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 108449,
+                "elements": 108544,
+                "max_abs": 1.0492041110992432,
+                "relative_l2": 0.09545044941773538
+              },
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 108461,
+                "elements": 108544,
+                "max_abs": 0.807084858417511,
+                "relative_l2": 0.12352291220789301
+              }
+            ]
+          },
+          {
+            "input": "v56-calib00",
+            "versus_original_ONNX": [
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 108448,
+                "elements": 108544,
+                "max_abs": 0.8439017236232758,
+                "relative_l2": 0.09456560933903656
+              },
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 108457,
+                "elements": 108544,
+                "max_abs": 0.6099299192428589,
+                "relative_l2": 0.12095015713035705
+              }
+            ],
+            "versus_original_Torch": null
+          }
+        ]
+      },
+      "C": {
+        "label": "power-two-smoothed W8A8",
+        "warm_count": 22,
+        "mean_seconds": 0.02066588081916879,
+        "median_seconds": 0.020774398013600148,
+        "p95_seconds": 0.022332306184398475,
+        "min_seconds": 0.01753258498501964,
+        "max_seconds": 0.022772751981392503,
+        "errors": [
+          {
+            "input": "v53",
+            "versus_original_ONNX": [
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 108447,
+                "elements": 108544,
+                "max_abs": 0.9522832185029984,
+                "relative_l2": 0.09392581487736419
+              },
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 108459,
+                "elements": 108544,
+                "max_abs": 0.6754502654075623,
+                "relative_l2": 0.12219694856168026
+              }
+            ],
+            "versus_original_Torch": [
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 108448,
+                "elements": 108544,
+                "max_abs": 0.9522854834794998,
+                "relative_l2": 0.09392580084326393
+              },
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 108459,
+                "elements": 108544,
+                "max_abs": 0.6754506230354309,
+                "relative_l2": 0.12219692952456399
+              }
+            ]
+          },
+          {
+            "input": "v56-calib00",
+            "versus_original_ONNX": [
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 108446,
+                "elements": 108544,
+                "max_abs": 0.7857505530118942,
+                "relative_l2": 0.09316912552540142
+              },
+              {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 108457,
+                "elements": 108544,
+                "max_abs": 0.5911250412464142,
+                "relative_l2": 0.11949170652516614
+              }
+            ],
+            "versus_original_Torch": null
+          }
+        ]
+      }
+    },
+    "C_vs_A_mean_reduction_percent": 36.76759320637426,
+    "C_vs_B_mean_reduction_percent": 1.388895197414275,
+    "B_C_small_difference_not_established_speed_improvement": true,
+    "all_repeats_byte_equal": true
+  },
+  "profile": {
+    "separate_init_flags": 8,
+    "calls": 6,
+    "operator_rows_per_call": 57,
+    "each_route_NPU_operator_rows": 54,
+    "each_route_CPU_IO_rows": 3,
+    "B_C_NPU_rows_INT8_tagged": true,
+    "timing_not_substituted_for_normal_calls": true
+  },
+  "controls": [
+    {
+      "job": "normal",
+      "seconds": 5.142039725003997,
+      "monitor_samples": 11,
+      "per_call_platform_samples": 144,
+      "all_actual_frequency_hz": 1000000000,
+      "maximum_temperature_c": 53.615,
+      "restored": {
+        "governor": "userspace",
+        "cur_freq": "300000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "300000000"
+      },
+      "contexts_created": 3,
+      "contexts_destroyed": 3,
+      "live_contexts": 0,
+      "counters": {
+        "run_attempts": 72,
+        "runs_succeeded": 72,
+        "outputs_acquired": 144,
+        "outputs_released": 144
+      },
+      "cleanup_errors": []
+    },
+    {
+      "job": "profile",
+      "seconds": 1.5361786959983874,
+      "monitor_samples": 4,
+      "per_call_platform_samples": 12,
+      "all_actual_frequency_hz": 1000000000,
+      "maximum_temperature_c": 53.615,
+      "restored": {
+        "governor": "userspace",
+        "cur_freq": "300000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "300000000"
+      },
+      "contexts_created": 3,
+      "contexts_destroyed": 3,
+      "live_contexts": 0,
+      "counters": {
+        "run_attempts": 6,
+        "runs_succeeded": 6,
+        "outputs_acquired": 12,
+        "outputs_released": 12
+      },
+      "cleanup_errors": []
+    }
+  ],
+  "decision": "Do not adopt or expand this candidate to 24 pairs: only small local error improvement; approximately 9-12% component L2 errors remain, and no full-model map/trajectory quality gain is established.",
+  "latest_full_chain": {
+    "source": "results/original_immutable_execution_v77.json",
+    "fresh_pose_hz": 0.899908369852497,
+    "input_to_pose_p95_seconds": 1.3665765015830402,
+    "new_full_chain_test_in_this_experiment": false
+  },
+  "limitations": [
+    "Only two saved real pair inputs, one also in calibration; not held-out sequence quality acceptance.",
+    "All three NPU routes fail the fixed original FP32 strict tensor gate; smoothing FP32 graph equivalence does not imply INT8 equivalence.",
+    "Normal/profiling outputs and CPU input/output quantizer diagnostics are distinct measurements.",
+    "Partial outputs_get failure buffer accounting in the frozen probe is aggregate-only; failure status is retained. No such failure occurred in these runs.",
+    "No physical camera, 30-minute, 8 GB hardware, closure or new full-model accuracy validation."
+  ],
+  "evidence_files": {
+    "deploy/rk3588/validation/original_power2_smoothing/README.md": "916831cccd76d0b6aff9a82e8ab60033e5cb652673d3480c0206b883a1665324",
+    "deploy/rk3588/validation/original_power2_smoothing/analyze_saved.py": "19744fd16b3c497342ae38f24da342013343fd809bfeb80c011bc88536d2b0d1",
+    "deploy/rk3588/validation/original_power2_smoothing/audit_saved_results.py": "6ad40ccc3578adabf85c3213526260c765f019e010e7b1bf0da9c4e86284f1f4",
+    "deploy/rk3588/validation/original_power2_smoothing/board-commands.json": "1679ce374cdd6b34a41d84d1b3f50cdb91f021c50ccc926fbd7dceeb343deaaa",
+    "deploy/rk3588/validation/original_power2_smoothing/build_pair_power2_smooth_board.py": "896ee7f99cf3b6d699e9c20826e618a696f3f54600705318a3054778d4f89615",
+    "deploy/rk3588/validation/original_power2_smoothing/check-control.json": "48a8100aaf8ee6c903a04396e92bf6b7c0d90eb9484082afabd3ee4363ded182",
+    "deploy/rk3588/validation/original_power2_smoothing/check-result.json": "e9092d0aa3789d5b19719f87b7e2ed5312899f46df02efe00323e6049ce0a9dd",
+    "deploy/rk3588/validation/original_power2_smoothing/check.json": "21aa4d48b25e20c934b8eafbb01f90278a4f5b4467c534ed03b82850cfbbfa44",
+    "deploy/rk3588/validation/original_power2_smoothing/compile-control.json": "51adff14facc501adaddc73ae027ccde1f52dc8714a30e99cf77d7b842ed3ba9",
+    "deploy/rk3588/validation/original_power2_smoothing/compile.json": "1855b487b08734bef44a2a1cb63e6638e4dcb0caf0697f2ef91e54a61150affd",
+    "deploy/rk3588/validation/original_power2_smoothing/compile_smoothed_pair_board.py": "c0caf28ec34c0b323799e8030e758f606a8ef39df182d6f6ebe5a980cc5d1626",
+    "deploy/rk3588/validation/original_power2_smoothing/launch-normal-r1.sh": "13e8e1117c376e1422934b8d856e97d90d74da9ba200ee4ca67018e81b6702b1",
+    "deploy/rk3588/validation/original_power2_smoothing/launch-profile-r1.sh": "541c5abefd1adc84723c7bb2b4bb84324bf541112d1630c048c160ac9f7261f1",
+    "deploy/rk3588/validation/original_power2_smoothing/normal-control.json": "867f3e773c48ebc3f8b7be5c1f8e4f317b4b09206ba4e70f0b35c21fc3ce26d1",
+    "deploy/rk3588/validation/original_power2_smoothing/normal-result.json": "4ced2c8baff3d5ffc0a5c0d69e8119511a1f41791fb16f6eac960502a05b0cad",
+    "deploy/rk3588/validation/original_power2_smoothing/probe_smoothed_pair_board.py": "304dd3a00e0f318e28a974592e3d95f5946c9f0444a11c92878ba3fe8e0f9ff0",
+    "deploy/rk3588/validation/original_power2_smoothing/profile-control.json": "5f66cd1ce8d1ca9dd114f34775c459ac3248fd733969d206c3efea076b397d33",
+    "deploy/rk3588/validation/original_power2_smoothing/profile-result.json": "f68c39371eeed2beab6e7608e0bec598c39d7274727628ede795f8a94a8bc726",
+    "deploy/rk3588/validation/original_power2_smoothing/run_board_stage.py": "2f905d441c49430d84493567ec9c73f4d2fbe359a683d6f4bfe9f4b8059c5ec6",
+    "deploy/rk3588/validation/original_power2_smoothing/saved_quantizer_profile_analysis.json": "8d61953489948f10dc5eada9b3dc3fde3a5ea79788e023879622a2eb5e2355b6",
+    "deploy/rk3588/validation/original_power2_smoothing/saved_result_audit.json": "b1bf57a6009eee89c76f3e64c935e07ac862089df6700d942255c94492ff4add"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "status": "worker_completed_pending_result_review",
+  "original_model_only": true,
+  "baseline": {
+    "governor": "userspace",
+    "cur_freq": "300000000",
+    "min_freq": "300000000",
+    "max_freq": "1000000000",
+    "userspace/set_freq": "300000000"
+  },
+  "requested_frequency_hz": 1000000000,
+  "temperature_limit_c": 75.0,
+  "timeout_seconds": 180.0,
+  "baseline_temperatures_c": {
+    "soc-thermal": 49.923,
+    "bigcore0-thermal": 49.923,
+    "bigcore1-thermal": 49.923,
+    "littlecore-thermal": 49.0,
+    "center-thermal": 49.923,
+    "gpu-thermal": 49.0,
+    "npu-thermal": 49.0
+  },
+  "observations": [
+    {
+      "seconds": 0.013014167983783409,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 49.923,
+        "bigcore0-thermal": 49.923,
+        "bigcore1-thermal": 49.923,
+        "littlecore-thermal": 49.923,
+        "center-thermal": 49.923,
+        "gpu-thermal": 49.0,
+        "npu-thermal": 49.0
+      }
+    },
+    {
+      "seconds": 0.516678927000612,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 51.769,
+        "bigcore0-thermal": 52.692,
+        "bigcore1-thermal": 53.615,
+        "littlecore-thermal": 52.692,
+        "center-thermal": 52.692,
+        "gpu-thermal": 50.846,
+        "npu-thermal": 50.846
+      }
+    },
+    {
+      "seconds": 1.0185413110011723,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 52.692,
+        "bigcore0-thermal": 53.615,
+        "bigcore1-thermal": 53.615,
+        "littlecore-thermal": 52.692,
+        "center-thermal": 52.692,
+        "gpu-thermal": 50.846,
+        "npu-thermal": 50.846
+      }
+    },
+    {
+      "seconds": 1.5211059439752717,
+      "actual_frequency_hz": 1000000000,
+      "temperatures_c": {
+        "soc-thermal": 50.846,
+        "bigcore0-thermal": 50.846,
+        "bigcore1-thermal": 50.846,
+        "littlecore-thermal": 50.846,
+        "center-thermal": 50.846,
+        "gpu-thermal": 49.923,
+        "npu-thermal": 50.846
+      }
+    }
+  ],
+  "child_returncode": 0,
+  "restore_errors": [],
+  "candidate_accepted": false,
+  "restored": {
+    "governor": "userspace",
+    "cur_freq": "300000000",
+    "min_freq": "300000000",
+    "max_freq": "1000000000",
+    "userspace/set_freq": "300000000"
+  },
+  "userspace_request_was_undefined": false,
+  "frequency_governor_limits_restored": true,
+  "seconds": 1.5361786959983874
+}
