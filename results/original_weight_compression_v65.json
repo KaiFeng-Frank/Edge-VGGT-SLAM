@@ -1,0 +1,69 @@
+{
+  "schema": "v65_original_VGGT_weight_compression_configuration_rejection",
+  "status": "rejected_by_SDK_config",
+  "original_model_only": true,
+  "target_platform": "rk3588",
+  "toolkit_version": "2.3.2",
+  "evidence": {
+    "compile_receipt": {
+      "artifact": "result.json",
+      "bytes": 23373,
+      "sha256": "313aaec7e2f188f9a2e2c0013dfd5b9f6a4b21c1858e77585ec67328e8356c39"
+    },
+    "saved_failure_audit": {
+      "artifact": "failure-audit.json",
+      "sha256": "edb9a3d91cf191d45239ba43f95426c4950b98992715f1dab4ee3023e6486809"
+    },
+    "builder_source": {
+      "file": "deploy/rk3588/validation/original_pair_group/build_weight_compressed_pair_group.py",
+      "bytes": 9283,
+      "sha256": "6a56c089a24549e68d330a11f44196c367d8dd0c8aeceb44172b0cf42f45f9a8"
+    }
+  },
+  "unchanged_original_graph_sha256": "fa41f8743f0d03615bd1189c15402661e046bad2ac388aff4e5508bf778dead1",
+  "v64_export_manifest_sha256": "57c5dd1bcf1cad4d258d1b9c91ccdf23e4e19c71f58975022b48ad3ca8c6cf55",
+  "v64_check_receipt_sha256": "5d86ce49dad23858b21e1e8c35ebfaf5d8f3e23af00dfad6daf2b67ae84f3603",
+  "v64_baseline_compile_sha256": "8943f56ee991893d2b1bdb726e9d499d3c3e91145ff35672a8d0324755c93935",
+  "only_configuration_difference": {
+    "quantize_weight": {
+      "before": false,
+      "after": true
+    }
+  },
+  "planned_build_options": {
+    "do_quantization": false,
+    "dataset": null,
+    "auto_hybrid": false
+  },
+  "failure": {
+    "stage": "RKNN.config",
+    "exception": "ValueError",
+    "SDK_message": "The quantized_dtype = 'w8a16' not support in 'rk3588'!",
+    "operations_attempted": [
+      "config"
+    ],
+    "load_onnx_attempted": false,
+    "build_attempted": false,
+    "export_rknn_attempted": false
+  },
+  "compressed_RKNN_generated": false,
+  "new_model_memory_or_performance_results": null,
+  "new_numerical_accuracy_results": null,
+  "cleanup": {
+    "released": true,
+    "release_code": null,
+    "cleanup_errors": [],
+    "environment_restored": true,
+    "affinity_restored": true,
+    "source_and_inputs_unchanged": true
+  },
+  "candidate_accepted": false,
+  "quality_accepted": false,
+  "realtime_validated": false,
+  "branch_decision": "Stopped after configuration rejection; no dtype override or bypass.",
+  "limitations": [
+    "This is one installed SDK 2.3.2/rk3588 configuration rejection, not a native MatMul hardware test or a claim about all SDK versions.",
+    "No compressed artifact, runtime memory measurement, inference timing or new output comparison exists. The v64 FP32 gate is unchanged."
+  ],
+  "model_inference_ORT_or_calibration_executed": false
+}

@@ -1,5 +1,5 @@
 {
-  "schema": "original_VGGT_only_source_snapshot_v64",
+  "schema": "original_VGGT_only_source_snapshot_v65",
   "upstream_commit": "35327ac28b7d193df9ccc39ba6346052bb6f1207",
   "model": "original VGGT only",
   "scope": "Current published file hashes; this manifest excludes itself. Model weights, arrays and external SDK are not published.",
@@ -27,7 +27,8 @@
     "results/original_guard_diagnostic_v62.json",
     "results/original_1ghz_v63.json",
     "results/original_pair_group_v64.json",
-    "deploy/rk3588/validation/original_pair_group/generated-checks.json"
+    "deploy/rk3588/validation/original_pair_group/generated-checks.json",
+    "results/original_weight_compression_v65.json"
   ],
   "file_sha256": {
     ".gitignore": "5c914f3ced73f7a831f890a98f771bde1e11fdcf288b87f45a9fb538bef93b2e",
@@ -246,7 +247,8 @@
     "deploy/rk3588/validation/original_pair_ab/test_v48_frame_global_ab.py": "0d04186e959ec4e81e573eb0c3f603a99d1ca22f7adb54cfd77ef91616c46e3e",
     "deploy/rk3588/validation/original_pair_ab/tiny-checks-r1.json": "38716e42f9416a92f75d6d5e6500ad4066ee6fce02ce5f528369c6eaccff9c42",
     "deploy/rk3588/validation/original_pair_ab/v48_ab_contracts.py": "6b63e117445a453ac383c0d8fa76cc831c9d81af4b2f33f982459aa5fe0a8802",
-    "deploy/rk3588/validation/original_pair_group/README.md": "b0d35f33d3e9cedb8eaafa4b2a73400d04c74b4c694cb50a97c3a010d4f268b3",
+    "deploy/rk3588/validation/original_pair_group/README.md": "2a72edcb8d47b7c44d5ff6fe9cc3728746900ed68b4916d32154610d09d3d646",
+    "deploy/rk3588/validation/original_pair_group/build_weight_compressed_pair_group.py": "6a56c089a24549e68d330a11f44196c367d8dd0c8aeceb44172b0cf42f45f9a8",
     "deploy/rk3588/validation/original_pair_group/check_compile_pair_group.py": "4094e393d0504954a67993c24e82c5534862393930f60db3ec64c2c3e4098b76",
     "deploy/rk3588/validation/original_pair_group/compose_original_pair_group.py": "d87cbe84f4fe783d57b12d1236164ef9210c8e43843b0f864bb3f64b26fe838c",
     "deploy/rk3588/validation/original_pair_group/generated-checks.json": "65e0462c094293ac4b8908d2bc6ef5e0e28d23ed59c886d09527c535ea8f64b1",
@@ -331,7 +333,7 @@
     "deploy/rk3588/validation/vggt-v16-camera-step-compile112-r1.json": "c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a",
     "deploy/rk3588/validation/vggt-v16-camera-step-export112-r1.json": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
     "deploy/rk3588/vggt-spark.patch": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864",
-    "docs/ENGINEERING_NOTES.md": "b2e57f94e8cabb7bf767c58ee1a113976e5672a108a9f53f9960b5499bf30784",
+    "docs/ENGINEERING_NOTES.md": "ce49d75fb7d7fcb3536feca51691b29eb0eb7558cfd9856eaf807e947e1dfd1b",
     "evals/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "evals/eval_tum.sh": "0d9de08050e3e04dc6911681b7b8655e45b5e9e3727a423a3832c1be57cedd44",
     "evals/process_logs_tum.py": "9a78265063ad670136d6f4d6b5773d0e362f07b64f41f26ea2c941e973f59c3a",
@@ -371,6 +373,7 @@
     "results/original_pair_v48.json": "98465570fc8b1b1a4e89fc58c2edf6cadc4abbac1c23c7c858693f258e0fd96b",
     "results/original_precision_v49.json": "5c7906aee768f89c45d8af784556578e015d6e98ad6ebf21e12f8429ed6d34f2",
     "results/original_timestamp_replay_v52.json": "bebb72aa910595a4742de655fbc625eb7eb2cae86cccf6442d526ed31ae19e2d",
+    "results/original_weight_compression_v65.json": "d3b0e6d1bba8033457747e090e4dd22b48953cdebabb0de4fa3f85f25f799b9d",
     "results/patch_cache_v19.json": "0e04c1e0118b29f5d56b9344c6ee2168c2219d567cb5c54efc275a3cd53859fb",
     "results/profile_336_v17.json": "6c3d2cb51af75410188c062e83a26eae4d4c5d69c632a6eeae95993eba004820",
     "results/quality_pairs_capture_v18.json": "a2ffeb1e7810862c37ad3be7ea268763f20f193515e19603d8832ec809f9bb98",

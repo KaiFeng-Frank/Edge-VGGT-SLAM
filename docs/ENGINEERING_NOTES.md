@@ -284,3 +284,9 @@
 SDK 2.3.2 通用头文件有 FP16 激活与 INT8/INT4 权重的 type5–8 枚举，但同版本 User Guide §3.5.4.1 表 3-6 的 RK3588 列未列这些组合；Toolkit API 的 w8a16/w4a16 模式也限定在其它芯片。不能仅改枚举就声称本板可用，也不能把此前 type10、激活与权重都量化的 W4A4 结果当作 W4A16 实验。[官方支持表](https://github.com/airockchip/rknn-toolkit2/blob/v2.3.2/doc/02_Rockchip_RKNPU_User_Guide_RKNN_SDK_V2.3.2_EN.pdf)。
 
 `do_quantization=False` 时的 `quantize_weight` 是另一个选项：文档只承诺部分权重压缩、缩小模型文件，没有承诺特定权重位宽、上述混合精度算术或推理提速。因此若继续测试，应分别核验实际文件/分配大小、完整调用耗时和原模型输出，不能从文件缩小推导实时性能。[官方 config 定义，第 7–9 页](https://github.com/airockchip/rknn-toolkit2/blob/v2.3.2/doc/03_Rockchip_RKNPU_API_Reference_RKNN_Toolkit2_V2.3.2_EN.pdf)。本轮仅核查固定版本文档与既有记录，没有执行不受支持的类型调用；不是对硬件所有可能实现的不可行性证明。
+
+## 129. 权重压缩选项仍会触发目标平台的配置检查
+
+固定 v64 原 pair0+pair1 四输出合图、ORT 检查和普通 FP16 编译来源后，只将 `quantize_weight=False` 改为 `True`；计划的 build 仍为 `do_quantization=False, dataset=None, auto_hybrid=False`。板端 SDK 2.3.2 在 `RKNN.config` 阶段即抛出 `ValueError`，消息为 `The quantized_dtype = 'w8a16' not support in 'rk3588'!`。实际调用记录只有失败的 config，尚未执行 load_onnx、build 或 export_rknn，未生成压缩 RKNN，也没有新的文件大小、SDK 内存、推理速度或输出精度结果。不能把原 v64 的结果归到这次失败尝试。
+
+SDK release 正常返回，cleanup 为空；工作目录、TMPDIR 和 CPU 亲和性恢复，源码与原图的前后哈希一致。此次限制来自已安装版本的配置验证，不能推广为全部 SDK 版本或 native MatMul 硬件实现的不可行性证明。保留冻结构建脚本与失败证据后停止这一配置分支，不改 dtype 绕过检查，也不发布未执行的运行探针。[失败实测与证据哈希](../results/original_weight_compression_v65.json)、[复现命令与限制](../deploy/rk3588/validation/original_pair_group/README.md)。

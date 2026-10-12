@@ -64,3 +64,32 @@ failed gates and cleanup. These nine generated checks do not execute a model.
 
 Do not publish the generated ONNX/RKNN, captured tensors, original checkpoint
 or SDK library. Code licensing does not replace the original weight license.
+
+## SDK 2.3.2 weight-compression rejection (v65)
+
+The recorded board attempt changed only `quantize_weight=False` to `True` for
+this same four-output graph. Planned build options remained
+`do_quantization=False, dataset=None, auto_hybrid=False`. SDK 2.3.2 rejected
+`RKNN.config` with `The quantized_dtype = 'w8a16' not support in 'rk3588'!`.
+It did not reach ONNX loading, build or export. No compressed RKNN or new
+file-size, SDK-memory, inference-time or accuracy result exists. SDK release,
+environment/affinity restoration and unchanged source/input hashes passed.
+[Failure record and evidence hashes](../../../../results/original_weight_compression_v65.json).
+
+Using the isolated SDK 2.3.2 board interpreter, from the repository root:
+
+```sh
+python deploy/rk3588/validation/original_pair_group/build_weight_compressed_pair_group.py \
+  --manifest GROUP/export.json \
+  --check-report CHECK/check.json \
+  --baseline-compile COMPILED/result.json \
+  --output-dir COMPRESSION_ATTEMPT
+```
+
+`GROUP`, `CHECK` and `COMPILED` must contain the exact recorded v64 artifacts;
+the script pins their SHA256 values, including the ordinary FP16 baseline.
+`COMPRESSION_ATTEMPT` must be a new directory. These private weight-bearing
+artifacts are not bundled. The expected recorded result is a nonzero exit and
+a failed `result.json` at config, followed by cleanup. This branch stopped
+after that rejection; no dtype override was attempted. The result establishes
+this SDK/target configuration limit, not all hardware or SDK-version limits.
