@@ -1,0 +1,112 @@
+{
+  "schema": "v73_checkpoint_pageout_independent_static_generated_review",
+  "status": "no_source_blocker_identified",
+  "source_files": {
+    "checkpoint_pageout.py": {
+      "bytes": 12996,
+      "sha256": "32af80618d131d846431c1592d36f0b2948917e23c1e8753c1a4a1f07077e756",
+      "AST_passed": true
+    },
+    "compare_complete_pageout.py": {
+      "bytes": 21051,
+      "sha256": "7dc96998d9bec5f8852c443f715ab2c70c1ad6b3af2249e60b9c8a2c2b3ea457",
+      "AST_passed": true
+    }
+  },
+  "review_scope": "Source/AST and generated parsing checks only; no board, real madvise, model, ORT or SDK execution by reviewer.",
+  "static_findings": {
+    "only_self_procfs": true,
+    "only_original_model_pt_file_VMA_by_dev_inode_path": true,
+    "private_clean_file_mapping_only": true,
+    "aligned_offset_extent_with_final_page_rounding": true,
+    "missing_or_dirty_anonymous_swapped_locked_evidence_rejected": true,
+    "only_MADV_PAGEOUT_21_no_alternative_retry": true,
+    "verified_loader_SHA_bound_by_source_pins_and_stable_stat": true,
+    "held_readonly_descriptor_identity_checked": true,
+    "pre_call_and_post_call_VMA_identity_and_clean_checks": true,
+    "tensor_object_storage_pointer_version_metadata_preserved": true,
+    "failures_persisted_and_propagated": true,
+    "default_flag_false_preserves_original_inference": true,
+    "advice_after_backend_cache_solver_installation": true,
+    "original_forward_SL4_array_save_and_cleanup_order_retained": true,
+    "perpair_memory_snapshot_outside_service_timing": true,
+    "post_cleanup_RSS_separated_from_active_inference_RSS": true,
+    "prior_peak_HWM_not_claimed_lowered": true
+  },
+  "corrected_review_findings": [
+    "Final post-advice VMA layout/clean validation was added; failure cannot be labelled success when the mapping disappears.",
+    "Final snapshot RSS is named post_cleanup_RSS_MiB; active memory is assessed using per-pair snapshots."
+  ],
+  "reviewer_generated_checks": {
+    "executed": true,
+    "count": 8,
+    "coverage": [
+      "clean rw-p VMA accepted including rounded final page",
+      "private dirty, anonymous, swap and locked mappings rejected",
+      "missing clean evidence rejected",
+      "wrong inode not selected",
+      "proc stat comm with spaces/parentheses parsed correctly"
+    ],
+    "source_hash_at_execution_recorded": false,
+    "final_static_review_of_tested_parser_functions": true,
+    "actual_madvise_calls": 0,
+    "actual_model_SDK_ORT_calls": 0
+  },
+  "author_fake_tests": {
+    "source_file": "test_checkpoint_pageout.py",
+    "source_sha256": "1c0bd597f6a02c1de7e1200a822c6d0082857ace35a576ee23e95ad7f3f27b99",
+    "reported_status": "passed",
+    "reported_by": "original_pair_ab_v48",
+    "independently_rerun": false,
+    "source_reviewed": true,
+    "coverage": [
+      "safe fake-libc advice21",
+      "errno failure recorded without retry",
+      "post-advice VMA disappearance marks receipt failed",
+      "tensor metadata unchanged",
+      "wrapper install and timing order"
+    ]
+  },
+  "same_output_validation_plan": {
+    "actual_data_not_yet_audited": true,
+    "reference": "complete-baseline-r1",
+    "pairs": 16,
+    "timestamps": 17,
+    "NPZ_files": 32,
+    "arrays": 160,
+    "poses_file_byte_equality_required": true,
+    "SDK_contexts_closed_expected": 12,
+    "allow_numeric_similarity_instead_of_byte_equality": false
+  },
+  "limits": [
+    "madvise return 0 is a request outcome, not proof of eviction or memory reduction.",
+    "Memory effects, page faults, output equality and resources need the parent-run saved-data audit.",
+    "Runtime RSS does not lower initialization HWM or establish physical 8 GB hardware acceptance.",
+    "The failed FC2 K4 candidates remain uncompiled and unintegrated."
+  ],
+  "author_private_test_source": {
+    "bytes": 6819,
+    "sha256": "1c0bd597f6a02c1de7e1200a822c6d0082857ace35a576ee23e95ad7f3f27b99",
+    "AST_passed": true,
+    "scope": "Original generated test before publication path fix; archived privately"
+  },
+  "public_generated_tests": {
+    "source_file": "test_checkpoint_pageout.py",
+    "source_sha256": "3bb1b6e68652610f6a0e5bc8e40201c609b2f63b982ce37a1587cd1663171278",
+    "result": {
+      "status": "passed",
+      "generated_procfs_and_fake_libc_only": true,
+      "clean_mapping": true,
+      "dirty_and_missing_and_identity_rejections": 11,
+      "final_page_rounding": true,
+      "stat_comm_faults": true,
+      "only_advice_21": true,
+      "errno_failure_no_retry": true,
+      "post_advice_VMA_drift_rejected": true,
+      "tensor_metadata_unchanged": true,
+      "wrapper_install_and_timing_order": true,
+      "actual_model_SDK_OR\u03a4_advice_execution": false
+    },
+    "change": "Resolve repository root from __file__ instead of private host absolute path"
+  }
+}

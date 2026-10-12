@@ -1,0 +1,652 @@
+{
+  "schema": "v73_original_VGGT_retained_FC2_K4_result",
+  "status": "fixed_FP32_gate_rejected_no_candidate_compile_or_integration",
+  "original_model_only": true,
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "target_result_file": "results/original_retained_fc2_v73.json",
+  "sources": {
+    "deploy/rk3588/validation/original_retained_fc2/build_retained_fc2_k4_board.py": "7697ac2c7c561f48f5a0289ef5808cf6b26d4bc2d7525ae4b9b911296241709b",
+    "deploy/rk3588/validation/original_retained_fc2/build_retained_fc2_k4_balanced_board.py": "ccbb105fc5bd870d57466a19ee32221198a6b13a164d29cec87881090be8488e",
+    "deploy/rk3588/validation/original_retained_fc2/audit_retained_fc2_saved.py": "01697bbc2581af5801c7400aea7a1366a7d12df11b1bc3131ec8ab366baf1f86",
+    "deploy/rk3588/validation/original_retained_fc2/audit_retained_fc2_balanced_saved.py": "e0bd41ca7749098e56b8487de2346357aedac0bca042dc0ae56b6de8f9167827",
+    "deploy/rk3588/validation/original_retained_fc2/run_board_stage.py": "086f4d877abd3a8a88af393354edd563bcb27d0ba68f8e48fd0c6e0e4c99314b"
+  },
+  "baseline_manifest_sha256": "771a9b82007d2feefd65ebbf3f4b0fb27070b79ff7f6d0faab1a8c866da90e43",
+  "original_parent_manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42",
+  "fixed_gate": {
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "reference": "same-input original retained-group FP32 ONNX baseline",
+    "tolerance_changed": false
+  },
+  "baseline_remeasurement": {
+    "result_sha256": "045e7f6fef23bf80d44ce8effc5e8991fa9a974302942ae8cf35dc1c81ae4146",
+    "comparison_receipt_sha256": "dcb91d5290bc139f6a24dbdad8edf0449caa0ba55ede0bb0cdddf0860e289f9c",
+    "previous_v71_result_sha256": "4644c425a238f672dd92a0319348d2a10de756151e5484a9c2eb65686616e84a",
+    "image_shape": [
+      2,
+      3,
+      84,
+      112
+    ],
+    "input_indices": [
+      32,
+      80,
+      128,
+      176,
+      224,
+      272,
+      320,
+      368,
+      416,
+      464,
+      512,
+      560,
+      608,
+      656,
+      704,
+      752,
+      797
+    ],
+    "pairs": 16,
+    "model_threads": 1,
+    "all16_complete_service_mean_seconds": 1.6437493186840584,
+    "warm15_complete_service_mean_seconds": 1.5951094184633499,
+    "all16_phase_mean_seconds": {
+      "DINO": 0.25291385881064343,
+      "aggregator_including_DINO": 1.2420834007516532,
+      "camera_head": 0.15702857556061645,
+      "depth_head": 0.14448005374651984
+    },
+    "NPZ_files_byte_equal_to_v71": 32,
+    "prediction_arrays_byte_equal_to_v71": 80,
+    "retained_and_target_arrays_byte_equal_to_v71": 80,
+    "poses_file_byte_equal_to_v71": true,
+    "all_saved_arrays_finite": true,
+    "original_CPU_FP32_strict_arrays_passed": 0,
+    "original_CPU_FP32_strict_arrays_checked": 80,
+    "resources": {
+      "rknn": {
+        "contexts_created_and_destroyed": 4,
+        "SDK_runs": 64
+      },
+      "dino_rknn": {
+        "contexts_created_and_destroyed": 6,
+        "SDK_runs": 102
+      },
+      "camera_rknn": {
+        "contexts_created_and_destroyed": 1,
+        "SDK_runs": 64
+      },
+      "depth_rknn": {
+        "contexts_created_and_destroyed": 1,
+        "SDK_runs": 32
+      }
+    },
+    "total_contexts_created_and_destroyed": 12,
+    "total_SDK_runs": 262,
+    "aggregator_outputs_acquired_and_released": 144,
+    "cache_closed_and_restored": true,
+    "peak_RSS_MiB": 7171.51171875,
+    "cleanup_errors": [],
+    "new_optimization": false,
+    "new_trajectory_quality_measurement": false,
+    "paced_realtime_measurement": false,
+    "timing_scope": "offline complete original model plus SL4 service; startup and persistence excluded from each service; read-only memory monitor added"
+  },
+  "memory_observation": {
+    "saved_summary_sha256": "1604b41c28faa465a1992042f7b0977518b835f47bd2216061bb9e8fc6994ad2",
+    "control_sha256": "9444428d399ca59a07de7c459bcb439de470923ed013fa236ae6aecd8a04037b",
+    "samples": 103,
+    "worker_memory_samples": 101,
+    "checkpoint_mapping_observations": 81,
+    "observed_rollup_peak_MiB": {
+      "Rss": 7170.9140625,
+      "Pss": 7167.029296875,
+      "Pss_Anon": 302.28125,
+      "Pss_File": 4550.427734375,
+      "Pss_Shmem": 2314.3203125,
+      "Private_Clean": 4583.9296875,
+      "Private_Dirty": 2582.29296875,
+      "Swap": 0.0
+    },
+    "checkpoint_maximum_observed_MiB": {
+      "Size": 4794.00390625,
+      "Rss": 4420.1875,
+      "Pss": 4420.1875,
+      "Private_Clean": 4420.1875,
+      "Private_Dirty": 0.0,
+      "Shared_Clean": 0.0,
+      "Shared_Dirty": 0.0,
+      "Anonymous": 0.0,
+      "Swap": 0.0
+    },
+    "all_checkpoint_resident_pages_clean": true,
+    "requested_interval_seconds": 0.5,
+    "observed_mean_interval_seconds": 0.6060115921401302,
+    "individual_smaps_read_duration_recorded": false,
+    "actual_reclamation_in_this_result": false,
+    "memory_reclamation_bytes_measured": null,
+    "eight_GB_board_validated": false,
+    "limits": [
+      "RSS, PSS and SDK per-context DMA counters are different accounting views and are not added as independent physical memory.",
+      "Sequential status and smaps reads are not an atomic sample or exact instantaneous peak.",
+      "Clean immutable file-backed pages may be reclaimable; this observation measures neither successful reclamation nor removal of startup residency.",
+      "No .rknn filename VMA is not proof of absent SDK device/DMA allocations."
+    ]
+  },
+  "FC2_K4_checks": {
+    "scope": "isolated four retained groups, two real original activations per group; all original layers/tokens/parameter values retained; FP32 partial-sum order changed",
+    "groups": [
+      {
+        "group_index": 0,
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "check_sha256": "d970e42d437ad7fa05e94c24126e41d303ba28f7961565b382022370f820d3fb",
+        "build_receipt_sha256": "3501e82501f1ca6f3e10cb53399b227d722c371b02810ae4faa8d4c8a1828794",
+        "saved_audit_sha256": "3c81c14b9407a107e66e87deec08d673f3f1be679164c70e4af51af94ad0441d",
+        "check_status": "passed_original_FP32_ONNX_equivalence_not_quality_accepted",
+        "strict_baseline_gate_passed": true,
+        "checks": [
+          {
+            "case": "v53",
+            "output": "frame_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 1.430511474609375e-06,
+            "byte_equal": false
+          },
+          {
+            "case": "v53",
+            "output": "global_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 1.1473894119262695e-06,
+            "byte_equal": false
+          },
+          {
+            "case": "v56-calib00",
+            "output": "frame_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 1.3113021850585938e-06,
+            "byte_equal": false
+          },
+          {
+            "case": "v56-calib00",
+            "output": "global_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 1.3113021850585938e-06,
+            "byte_equal": false
+          }
+        ],
+        "separate_original_Torch_v53_checks": [
+          {
+            "output": "frame_output",
+            "baseline_outside_tolerance": 0,
+            "candidate_outside_tolerance": 0
+          },
+          {
+            "output": "global_output",
+            "baseline_outside_tolerance": 0,
+            "candidate_outside_tolerance": 0
+          }
+        ],
+        "original_Torch_reference_for_v56_calib00": false,
+        "saved_NPY_verified": 12,
+        "compiler_operations": 0,
+        "RKNN_artifact_created": false,
+        "cleanup_sessions_and_identity_checks_passed": true
+      },
+      {
+        "group_index": 1,
+        "indices": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "check_sha256": "6ba7091995fc2928db1377d07b638ea458b533e1b80d9fac6bd9d656d4604060",
+        "build_receipt_sha256": "2304ea92f0519ce4e2ca0f0ceae0b4ccfe164095dc72bc1eb07ce296947a663d",
+        "saved_audit_sha256": "f14efd97aec48102e382f287adb0ab892e2f5b79fdfb6d7971ae17c53394d245",
+        "check_status": "passed_original_FP32_ONNX_equivalence_not_quality_accepted",
+        "strict_baseline_gate_passed": true,
+        "checks": [
+          {
+            "case": "v53",
+            "output": "frame_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 7.748603820800781e-07,
+            "byte_equal": false
+          },
+          {
+            "case": "v53",
+            "output": "global_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 9.5367431640625e-07,
+            "byte_equal": false
+          },
+          {
+            "case": "v56-calib00",
+            "output": "frame_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 9.5367431640625e-07,
+            "byte_equal": false
+          },
+          {
+            "case": "v56-calib00",
+            "output": "global_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 9.5367431640625e-07,
+            "byte_equal": false
+          }
+        ],
+        "separate_original_Torch_v53_checks": [
+          {
+            "output": "frame_output",
+            "baseline_outside_tolerance": 0,
+            "candidate_outside_tolerance": 0
+          },
+          {
+            "output": "global_output",
+            "baseline_outside_tolerance": 0,
+            "candidate_outside_tolerance": 0
+          }
+        ],
+        "original_Torch_reference_for_v56_calib00": false,
+        "saved_NPY_verified": 12,
+        "compiler_operations": 0,
+        "RKNN_artifact_created": false,
+        "cleanup_sessions_and_identity_checks_passed": true
+      },
+      {
+        "group_index": 2,
+        "indices": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "check_sha256": "ff9b517253328af1c2759c744036cffcb27f7cba0479128541b9d4598849dc25",
+        "build_receipt_sha256": "a9b589eaa99b80af2e4e6c752628456833319e80dd7ddc3f4743df4abb929912",
+        "saved_audit_sha256": "565440280096dfc19de9a25bbb46bf09f4782fa01a1ae18cba2b005c03b07b06",
+        "check_status": "failed",
+        "strict_baseline_gate_passed": false,
+        "checks": [
+          {
+            "case": "v53",
+            "output": "frame_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 1.0639429092407227e-05,
+            "byte_equal": false
+          },
+          {
+            "case": "v53",
+            "output": "global_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 9.775161743164062e-06,
+            "byte_equal": false
+          },
+          {
+            "case": "v56-calib00",
+            "output": "frame_output",
+            "strict_pass": false,
+            "outside_tolerance": 1,
+            "elements": 108544,
+            "max_abs": 1.6257166862487793e-05,
+            "byte_equal": false
+          },
+          {
+            "case": "v56-calib00",
+            "output": "global_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 1.4483928680419922e-05,
+            "byte_equal": false
+          }
+        ],
+        "separate_original_Torch_v53_checks": [
+          {
+            "output": "frame_output",
+            "baseline_outside_tolerance": 3,
+            "candidate_outside_tolerance": 3
+          },
+          {
+            "output": "global_output",
+            "baseline_outside_tolerance": 0,
+            "candidate_outside_tolerance": 0
+          }
+        ],
+        "original_Torch_reference_for_v56_calib00": false,
+        "saved_NPY_verified": 12,
+        "compiler_operations": 0,
+        "RKNN_artifact_created": false,
+        "cleanup_sessions_and_identity_checks_passed": true
+      },
+      {
+        "group_index": 3,
+        "indices": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "check_sha256": "92836f6a62f7814cf069dabbd71da021e649bc7f679bf9586f3e03821e589b8c",
+        "build_receipt_sha256": "1cba326731c0d2c95ca30124f721c0d697ae4ff155498a183d32de9f4193a9f3",
+        "saved_audit_sha256": "ea0cd5fa74e31ca7743506fe9f4d722e84fd3f6880d091bdee1c5244ea0f0eae",
+        "check_status": "passed_original_FP32_ONNX_equivalence_not_quality_accepted",
+        "strict_baseline_gate_passed": true,
+        "checks": [
+          {
+            "case": "v53",
+            "output": "frame_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 1.52587890625e-05,
+            "byte_equal": false
+          },
+          {
+            "case": "v53",
+            "output": "global_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 2.288818359375e-05,
+            "byte_equal": false
+          },
+          {
+            "case": "v53",
+            "output": "target_global_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 6.198883056640625e-06,
+            "byte_equal": false
+          },
+          {
+            "case": "v56-calib00",
+            "output": "frame_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 1.9073486328125e-05,
+            "byte_equal": false
+          },
+          {
+            "case": "v56-calib00",
+            "output": "global_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 3.0517578125e-05,
+            "byte_equal": false
+          },
+          {
+            "case": "v56-calib00",
+            "output": "target_global_output",
+            "strict_pass": true,
+            "outside_tolerance": 0,
+            "elements": 108544,
+            "max_abs": 5.9604644775390625e-06,
+            "byte_equal": false
+          }
+        ],
+        "separate_original_Torch_v53_checks": [
+          {
+            "output": "frame_output",
+            "baseline_outside_tolerance": 2,
+            "candidate_outside_tolerance": 2
+          },
+          {
+            "output": "global_output",
+            "baseline_outside_tolerance": 2,
+            "candidate_outside_tolerance": 1
+          },
+          {
+            "output": "target_global_output",
+            "baseline_outside_tolerance": 0,
+            "candidate_outside_tolerance": 0
+          }
+        ],
+        "original_Torch_reference_for_v56_calib00": false,
+        "saved_NPY_verified": 17,
+        "compiler_operations": 0,
+        "RKNN_artifact_created": false,
+        "cleanup_sessions_and_identity_checks_passed": true
+      }
+    ],
+    "FC2_replacements": 48,
+    "original_parameter_tensors_retained": 864,
+    "strict_baseline_output_comparisons_passed": 17,
+    "strict_baseline_output_comparisons_checked": 18,
+    "byte_equal_baseline_outputs": 0,
+    "last_group_target_global_index": 20,
+    "original_target_clone_and_norm_required": true,
+    "group2_failure": {
+      "receipt_sha256": "d64b69a66272b2c9ad663fb21134a51b5378783c5ec76040d84b052355fc0bc1",
+      "case": "v56-calib00",
+      "output": "frame_output",
+      "elements": 108544,
+      "outside_tolerance": 1,
+      "absolute_error": 1.6257166862487793e-05,
+      "fixed_reference_threshold": 1.0125313550233843e-05,
+      "error_to_threshold_ratio": 1.6055963878878927,
+      "original_Torch_reference_available": false
+    }
+  },
+  "single_balanced_group2_followup": {
+    "partial_sum_order": "(p0+p1)+(p2+p3)",
+    "group_index": 2,
+    "indices": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "check_sha256": "9f6205942a8db6f1aaadc2ff1d7f48b42e7f93acb68673ef1d8d5f40051b820b",
+    "build_receipt_sha256": "6f385869cc40e231e610814ee2f566757195a6a96996c2632a331555b904bb62",
+    "saved_audit_sha256": "6e0acbfca60c78fcc341b37d86c67adef4c4a83ed53781c6d7661f951c73a972",
+    "check_status": "failed",
+    "strict_baseline_gate_passed": false,
+    "checks": [
+      {
+        "case": "v53",
+        "output": "frame_output",
+        "strict_pass": true,
+        "outside_tolerance": 0,
+        "elements": 108544,
+        "max_abs": 1.1801719665527344e-05,
+        "byte_equal": false
+      },
+      {
+        "case": "v53",
+        "output": "global_output",
+        "strict_pass": true,
+        "outside_tolerance": 0,
+        "elements": 108544,
+        "max_abs": 1.0728836059570312e-05,
+        "byte_equal": false
+      },
+      {
+        "case": "v56-calib00",
+        "output": "frame_output",
+        "strict_pass": false,
+        "outside_tolerance": 1,
+        "elements": 108544,
+        "max_abs": 2.1733343601226807e-05,
+        "byte_equal": false
+      },
+      {
+        "case": "v56-calib00",
+        "output": "global_output",
+        "strict_pass": true,
+        "outside_tolerance": 0,
+        "elements": 108544,
+        "max_abs": 2.0325183868408203e-05,
+        "byte_equal": false
+      }
+    ],
+    "separate_original_Torch_v53_checks": [
+      {
+        "output": "frame_output",
+        "baseline_outside_tolerance": 3,
+        "candidate_outside_tolerance": 4
+      },
+      {
+        "output": "global_output",
+        "baseline_outside_tolerance": 0,
+        "candidate_outside_tolerance": 0
+      }
+    ],
+    "original_Torch_reference_for_v56_calib00": false,
+    "saved_NPY_verified": 12,
+    "compiler_operations": 0,
+    "RKNN_artifact_created": false,
+    "cleanup_sessions_and_identity_checks_passed": true,
+    "failure": {
+      "receipt_sha256": "52058abc758c5607c6340773aa1633a3f13ee8d3ac0864f1fda9208d1663a9d4",
+      "case": "v56-calib00",
+      "output": "frame_output",
+      "elements": 108544,
+      "outside_tolerance": 1,
+      "absolute_error": 2.1733343601226807e-05,
+      "fixed_reference_threshold": 1.0125313550233843e-05,
+      "error_to_threshold_ratio": 2.146436601039864,
+      "original_Torch_reference_available": false
+    },
+    "same_real_inputs_as_left_associative": true,
+    "baseline_outputs_byte_equal_to_left_associative": true,
+    "same_violating_element_as_left_associative": true
+  },
+  "independent_saved_review": {
+    "saved_NPY_verified": 65,
+    "file_bytes_SHA_raw_SHA_shape_FP32_finite_verified": true,
+    "strict_failure_counts_independently_recomputed": true,
+    "baseline_NPZ_arrays_verified": 160,
+    "public_source_copies_byte_verified": 5
+  },
+  "stage_monitors": [
+    {
+      "stage": "baseline",
+      "sha256": "9444428d399ca59a07de7c459bcb439de470923ed013fa236ae6aecd8a04037b",
+      "samples": 103,
+      "NPU_hz": 300000000,
+      "maximum_sampled_temperature_C": 62.846,
+      "child_returncode": 0,
+      "frequency_written": false,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "check0",
+      "sha256": "c92de031d2fa19339c5e8071c7c6d701ef1a49727aa1e4ee571b000b4ea04e7f",
+      "samples": 32,
+      "NPU_hz": 300000000,
+      "maximum_sampled_temperature_C": 63.769,
+      "child_returncode": 0,
+      "frequency_written": false,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "check1",
+      "sha256": "14a56e3cdcdb97413b8a9484746e9ad2988a1980064bf180567d96beb7cb8307",
+      "samples": 41,
+      "NPU_hz": 300000000,
+      "maximum_sampled_temperature_C": 68.384,
+      "child_returncode": 0,
+      "frequency_written": false,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "check2",
+      "sha256": "794848628208b62bda8ac3d4806c4d6759381d8bc5965f011a1012a1dc12fc86",
+      "samples": 36,
+      "NPU_hz": 300000000,
+      "maximum_sampled_temperature_C": 69.307,
+      "child_returncode": 1,
+      "frequency_written": false,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "check3",
+      "sha256": "874c9973ec61a4cc871a4ab8bc9cf28441c4aae4930e1ad1569dc61c49d6ce1c",
+      "samples": 37,
+      "NPU_hz": 300000000,
+      "maximum_sampled_temperature_C": 68.384,
+      "child_returncode": 0,
+      "frequency_written": false,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "balanced2",
+      "sha256": "58a887a3cb046b9bc3f84b9008de8db03173ff988d5649bb8cf98f24b800a629",
+      "samples": 32,
+      "NPU_hz": 300000000,
+      "maximum_sampled_temperature_C": 65.615,
+      "child_returncode": 1,
+      "frequency_written": false,
+      "cleanup_errors": []
+    }
+  ],
+  "candidate_compiled": false,
+  "candidate_installed_in_full_model": false,
+  "candidate_full_model_tested": false,
+  "candidate_accepted": false,
+  "new_speedup_measured": false,
+  "quality_accepted": false,
+  "realtime_validated": false,
+  "original_Torch_discrepancy_scope": "Only v53 has original Torch references. Original Torch strict checks are independent of the baseline-vs-candidate FP32 ONNX gate; pre-existing later baseline-group failures do not explain away the new v56 group2 failure. Full-model FP16 strict comparison remains 0/80; no new ATE/RPE is claimed.",
+  "pageout_followup": {
+    "status": "measured_separately",
+    "separate_target_result": "results/original_checkpoint_pageout_v73.json",
+    "implemented_or_measured_in_this_result": false
+  },
+  "command_templates": {
+    "left_associative_check_only": "BOARD_PYTHON deploy/rk3588/validation/original_retained_fc2/build_retained_fc2_k4_board.py --group-index GROUP_INDEX --baseline-manifest EXPERIMENTS/vggt-v67-retained-groups-r1/compiled.json --parent-manifest EXPERIMENTS/vggt-v55-pair-graphs-r1/compiled.json --capture-dir EXPERIMENTS/vggt-v53-capture-r1 --calibration-dir EXPERIMENTS/vggt-v56-calibration-r1 --reference-helper deploy/rk3588/validation/original_retained_groups/check_compile_retained_groups.py --check-only --output-dir NEW_OUTPUT_DIRECTORY",
+    "single_balanced_followup": "BOARD_PYTHON deploy/rk3588/validation/original_retained_fc2/build_retained_fc2_k4_balanced_board.py --group-index 2 --baseline-manifest EXPERIMENTS/vggt-v67-retained-groups-r1/compiled.json --parent-manifest EXPERIMENTS/vggt-v55-pair-graphs-r1/compiled.json --capture-dir EXPERIMENTS/vggt-v53-capture-r1 --calibration-dir EXPERIMENTS/vggt-v56-calibration-r1 --reference-helper deploy/rk3588/validation/original_retained_groups/check_compile_retained_groups.py --check-only --output-dir NEW_OUTPUT_DIRECTORY",
+    "saved_array_audit": "HOST_NUMPY_PYTHON deploy/rk3588/validation/original_retained_fc2/audit_retained_fc2_saved.py --check CHECK_JSON CHECK_SHA256 --build BUILD_JSON BUILD_SHA256 --builder-sha256 BUILDER_SHA256 --output NEW_AUDIT_JSON",
+    "limits": "Real original-model checks/compile execute on the RK3588 board. Host audits read saved arrays only. Templates do not enable a rejected candidate in production."
+  },
+  "limits": [
+    "No new model, removed layers/tokens, changed parameter values, or relaxed tolerance.",
+    "No RKNN artifact or full-model/trajectory performance gain for these candidates.",
+    "Existing v72 component speed is not projected to the rejected four-group graph.",
+    "No 20 Hz, P95, 30-minute, loop-closure, or 8 GB acceptance follows from this record."
+  ],
+  "separate_checkpoint_pageout_result": "results/original_checkpoint_pageout_v73.json"
+}

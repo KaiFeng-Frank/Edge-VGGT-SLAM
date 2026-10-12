@@ -76,6 +76,20 @@ FP16 outputs change and the original FP32 strict checks still fail. The result
 is a component measurement; full-model integration and quality remain untested.
 [Evidence and reproduction](deploy/rk3588/validation/original_pair_fc2_partition/README.md).
 
+Extending that FC2 rewrite to all four retained groups fails the fixed FP32
+gate in group 2: one element exceeds tolerance on the second real input.
+A balanced-sum follow-up fails at the same element. Neither version was
+compiled or integrated; the pair-level gain is not a full-model gain.
+[Full-group checks](deploy/rk3588/validation/original_retained_fc2/README.md).
+
+A separate original-checkpoint memory experiment reclaims clean file-backed
+pages after backend initialization. Process RSS changes from **7094.8 to
+2703.1 MiB**, then stays at **2744.5–2762.1 MiB** in 16 complete inference
+snapshots. All 160 saved arrays and the trajectory remain byte-identical.
+The earlier initialization peak remains **7095.7 MiB**; speed does not improve.
+This is an explicit diagnostic, with no production-default change or physical
+8 GB acceptance. [Measurements and reproduction](deploy/rk3588/validation/original_checkpoint_pageout/README.md).
+
 The additional-model retrieval and semantic paths have been removed. **Loop closure has no replacement implementation:** `max_loops=0` is the supported Solver configuration. Requests to enable loops or supply legacy auxiliary-model arguments must fail before loading or inference. The original VGGT model's numerical similarity capability does not itself implement loop retrieval.
 
 The original checkpoint is `facebook/VGGT-1B`, `model.pt`, **5,026,874,952 bytes**, SHA256 `d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0`. Source-code and checkpoint licensing are separate; see [model provenance](MODEL_LICENSES.md) and [upstream pins](UPSTREAMS.json). No weights, captured arrays, weight-bearing exports or SDK binaries are distributed. The loader verifies this exact byte size and full SHA256 before deserialization, including explicit local paths and cached downloads. Automatic downloads use the recorded immutable revision; there is no runtime identity-check bypass.

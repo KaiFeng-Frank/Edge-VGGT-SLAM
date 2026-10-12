@@ -1,0 +1,201 @@
+{
+  "schema": "v73_original_checkpoint_pageout_result",
+  "status": "one_off_memory_residency_reduction_observed_outputs_unchanged_not_acceptance",
+  "original_model_only": true,
+  "result_sha256": "8ab679cd28e390bb00b8b2bc53bcebb29100813f3f1ecb78199b811f57319c46",
+  "baseline_result_sha256": "045e7f6fef23bf80d44ce8effc5e8991fa9a974302942ae8cf35dc1c81ae4146",
+  "pageout_receipt_sha256": "1b94f9b750839c9a937e078b4af5452c1eafc2007feb1b06dc13c36912b67ddb",
+  "complete_saved_audit_sha256": "0a0b27e061aaabd7a85cecc3c699010ab6d63a1bd86b35cff7d703ab3f493134",
+  "control_sha256": "1b59ba6571f0dfd1984be85a32d27d98eb00ac69a4038db53708b02b2361f9fc",
+  "helper_source_sha256": "32af80618d131d846431c1592d36f0b2948917e23c1e8753c1a4a1f07077e756",
+  "runner_source_sha256": "7dc96998d9bec5f8852c443f715ab2c70c1ad6b3af2249e60b9c8a2c2b3ea457",
+  "saved_auditor_sha256": "147dcfb49c8f20be5fa738d736153f0837065646eae08953326057324dcb93ed",
+  "checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "checkpoint_bytes": 5026874952,
+  "before": {
+    "stage": "after_backend_install_before_advice",
+    "process_rollup_MiB": {
+      "Rss": 7094.79296875,
+      "Pss": 7090.9384765625,
+      "Pss_Anon": 276.37890625,
+      "Pss_File": 4505.4736328125,
+      "Pss_Shmem": 2309.0859375,
+      "Private_Clean": 4538.6015625,
+      "Private_Dirty": 2551.53515625,
+      "Swap": 0.0
+    },
+    "VmHWM_MiB": 7095.74609375,
+    "checkpoint_MiB": {
+      "Size": 4794.00390625,
+      "Rss": 4392.7421875,
+      "Pss": 4392.7421875,
+      "Private_Clean": 4392.7421875,
+      "Private_Dirty": 0.0,
+      "Shared_Dirty": 0.0,
+      "Anonymous": 0.0,
+      "Swap": 0.0
+    },
+    "minor_faults": 216812,
+    "major_faults": 1232
+  },
+  "after_immediate": {
+    "stage": "immediately_after_advice",
+    "process_rollup_MiB": {
+      "Rss": 2703.14453125,
+      "Pss": 2699.2900390625,
+      "Pss_Anon": 277.47265625,
+      "Pss_File": 112.7314453125,
+      "Pss_Shmem": 2309.0859375,
+      "Private_Clean": 145.859375,
+      "Private_Dirty": 2552.62890625,
+      "Swap": 0.0
+    },
+    "VmHWM_MiB": 7095.74609375,
+    "checkpoint_MiB": {
+      "Size": 4794.00390625,
+      "Rss": 0.0,
+      "Pss": 0.0,
+      "Private_Clean": 0.0,
+      "Private_Dirty": 0.0,
+      "Shared_Dirty": 0.0,
+      "Anonymous": 0.0,
+      "Swap": 0.0
+    },
+    "minor_faults": 217092,
+    "major_faults": 1232
+  },
+  "after_context_cleanup": {
+    "stage": "after_all_contexts_destroyed",
+    "process_rollup_MiB": {
+      "Rss": 448.84375,
+      "Pss": 444.9658203125,
+      "Pss_Anon": 307.00390625,
+      "Pss_File": 137.9619140625,
+      "Pss_Shmem": 0.0,
+      "Private_Clean": 137.15625,
+      "Private_Dirty": 307.00390625,
+      "Swap": 0.0
+    },
+    "VmHWM_MiB": 7095.74609375,
+    "checkpoint_MiB": {
+      "Size": 4794.00390625,
+      "Rss": 8.18359375,
+      "Pss": 8.18359375,
+      "Private_Clean": 8.18359375,
+      "Private_Dirty": 0.0,
+      "Shared_Dirty": 0.0,
+      "Anonymous": 0.0,
+      "Swap": 0.0
+    },
+    "minor_faults": 225243,
+    "major_faults": 1594
+  },
+  "observed_before_to_immediate_rollup_RSS_decrease_MiB": 4391.6484375,
+  "active_post_inference_rollup_RSS_min_MiB": 2744.54296875,
+  "active_post_inference_rollup_RSS_max_MiB": 2762.25,
+  "process_peak_RSS_MiB": 7095.74609375,
+  "post_cleanup_RSS_MiB": 448.84375,
+  "advice_calls": 1,
+  "advice_returncode": 0,
+  "advice_errno": 0,
+  "advice_seconds": 1.017788726981962,
+  "helper_seconds": 1.4180391419795342,
+  "advice_number": 21,
+  "advised_bytes": 5026877440,
+  "checkpoint_VMA_layout_and_backing_stat_unchanged": true,
+  "tensor_metadata_VA_and_versions_unchanged": true,
+  "tensor_metadata_sha256": "962d09db2aefb8e5788fb15926cd722d5333f4acc91c30cb700d93b003a26503",
+  "tensor_count": 1343,
+  "checkpoint_backed_storage_count": 1341,
+  "helper_rehashed_or_read_tensor_values_after_advice": false,
+  "prediction_arrays_byte_equal_to_same_FP16_baseline": 80,
+  "retained_and_target_arrays_byte_equal_to_same_FP16_baseline": 80,
+  "whole_NPZ_files_byte_equal": 32,
+  "poses_file_byte_equal": true,
+  "arrays_finite_and_exact_bytes_verified": 160,
+  "poses_sha256": "9049613e5a4b0363fca73a715d9690182e25bdbe52269ec91ff5a4b971666348",
+  "original_CPU_FP32_strict_passes": 0,
+  "original_CPU_FP32_strict_comparisons": 80,
+  "resources": {
+    "rknn": {
+      "contexts_created_and_destroyed": 4,
+      "SDK_runs": 64
+    },
+    "dino_rknn": {
+      "contexts_created_and_destroyed": 6,
+      "SDK_runs": 102
+    },
+    "camera_rknn": {
+      "contexts_created_and_destroyed": 1,
+      "SDK_runs": 64
+    },
+    "depth_rknn": {
+      "contexts_created_and_destroyed": 1,
+      "SDK_runs": 32
+    }
+  },
+  "total_contexts_created_and_destroyed": 12,
+  "SDK_runs": 262,
+  "aggregator_outputs_acquired_and_released": 144,
+  "cache_closed_and_restored": true,
+  "cleanup_errors": [],
+  "timing": {
+    "candidate_all16_mean_seconds": 1.6621962555600476,
+    "candidate_warm15_mean_seconds": 1.602463510997283,
+    "baseline_all16_mean_seconds": 1.6437493186840584,
+    "baseline_warm15_mean_seconds": 1.5951094184633499,
+    "comparison_interleaved": false,
+    "speedup_claimed": false,
+    "advice_and_helper_outside_service_timing": true,
+    "candidate_first_seconds": 2.5581874240015168,
+    "baseline_first_seconds": 2.3733478219946846
+  },
+  "stage_monitor": {
+    "samples": 122,
+    "NPU_hz": 300000000,
+    "frequency_written": false,
+    "maximum_sampled_temperature_C": 62.846,
+    "child_returncode": 0,
+    "wrapper_seconds": 70.47049041400896,
+    "cleanup_errors": []
+  },
+  "eight_GB_hardware_validated": false,
+  "startup_peak_reduced": false,
+  "quality_or_realtime_acceptance_established": false,
+  "limits": [
+    "Observed process file-backed residency decreases; RSS/PSS changes are not a measurement of unique physical DRAM released.",
+    "Sequential procfs reads are non-atomic samples. Post-inference points are not exact inference peaks or a long-run steady-state guarantee.",
+    "The 448.8 MiB post-cleanup value follows destruction of every SDK context and cannot represent active-model memory.",
+    "Initialization already reached 7095.746 MiB (about 6.93 GiB); the prior HWM is retained and no 8 GB-board or constrained-memory start was tested.",
+    "Checkpoint contents were pinned at original load and backing stat stayed unchanged; helper checks metadata/VA/version, not a post-advice reread of every weight.",
+    "These 16 offline pairs preserve the tested existing FP16 outputs. They do not establish original FP32 strict equivalence, new ATE/RPE, timestamp freshness, P95, 30-minute, or 20 Hz acceptance."
+  ],
+  "target_result_file": "results/original_checkpoint_pageout_v73.json",
+  "memory_saved_review_sha256": "d3d776265c2c1c5a9bac6b2f4062bd1546ed32d90992fd767e015e91eefb3c5d",
+  "active_post_inference_samples": 16,
+  "active_checkpoint_residency_MiB": 8.18359375,
+  "source_paths": {
+    "deploy/rk3588/validation/original_checkpoint_pageout/checkpoint_pageout.py": "32af80618d131d846431c1592d36f0b2948917e23c1e8753c1a4a1f07077e756",
+    "deploy/rk3588/validation/original_checkpoint_pageout/compare_complete_pageout.py": "7dc96998d9bec5f8852c443f715ab2c70c1ad6b3af2249e60b9c8a2c2b3ea457",
+    "deploy/rk3588/validation/original_checkpoint_pageout/audit_pageout_complete_saved.py": "147dcfb49c8f20be5fa738d736153f0837065646eae08953326057324dcb93ed"
+  },
+  "production_default_changed": false,
+  "new_model_or_compute_precision": false,
+  "command_template": "BOARD_PYTHON deploy/rk3588/validation/original_checkpoint_pageout/compare_complete_pageout.py --manifest EXPERIMENTS/vggt-v67-retained-groups-r1/compiled.json --manifest-sha256 771a9b82007d2feefd65ebbf3f4b0fb27070b79ff7f6d0faab1a8c866da90e43 --paired-aggregator --retained-aggregator --save-aggregator-outputs --half-io-library EXPERIMENTS/vggt-v56-neon-build-r1/fp16_neon.so --half-io-library-sha256 d08147c438461669ad8ebd3c6483e0a7908053e95cc6f83d0fe7eb7a5cd668c9 --grouped-dino --dino-manifest EXPERIMENTS/vggt-v58-dino-groups-r1/compiled.json --dino-manifest-sha256 a602bcdaab3f2e1ab51d49feb300ff3af76c07fe334489c983d647859f3f9493 --depth-manifest DEPTH_MANIFEST_JSON --depth-manifest-sha256 9a6e5435df543b8484a4fc50da4b065995f32153233548829234dd149fbc7135 --camera-split4 --checkpoint-pageout --model-threads 1 --model-cpus 4 5 6 7 --reference-run ORIGINAL_CPU_REFERENCE_DIRECTORY --output NEW_OUTPUT_DIRECTORY",
+  "command_limit": "Board-only explicit validation experiment after all backend identity checks; original checkpoint immutable for process lifetime. Use pinned graph files already generated separately; no checkpoint or graph is included in this publication.",
+  "status_VmRSS_MiB": {
+    "before": 7094.78515625,
+    "after_immediate": 2703.0703125,
+    "active_post_inference_min": 2744.54296875,
+    "active_post_inference_max": 2762.08203125,
+    "note": "README and engineering note use /proc/self/status VmRSS; rollup values are separately labelled. Reads are sequential."
+  },
+  "fault_deltas_since_immediate_after_advice": {
+    "first_pair_major": 357,
+    "second_pair_additional_major": 5,
+    "remaining_pairs_additional_major": 0,
+    "first_pair_minor": 3482
+  },
+  "independent_runtime_saved_audit_sha256": "afbd7db4831ade1f47bba9ff476436692e670091d82206a1c3ecabb39758cdca",
+  "tensor_metadata_evidence_limit": "The helper compares all 1343 metadata entries in-process and records matching digests; individual metadata rows were not persisted for independent per-entry reconstruction."
+}
