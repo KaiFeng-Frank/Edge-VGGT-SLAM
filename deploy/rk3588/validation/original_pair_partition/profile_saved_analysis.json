@@ -1,0 +1,690 @@
+{
+  "schema": "v70_original_pair00_FC1_splits_saved_profile_analysis",
+  "source_receipt": {
+    "file": "profile-r1/result.json",
+    "bytes": 145875,
+    "sha256": "9edf4373cf4869a2754cd5223908300f8082bd10c7263913f36b415917376c64",
+    "script_sha256": "99e97d1d850e13ac2b8be47b1ef410cb58e49b442bb00a9050ba1be179a1dfd4"
+  },
+  "saved_data_only": true,
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "profile_timing_is_separate_from_normal_benchmark": true,
+  "cases": [
+    {
+      "input_case": "v53",
+      "route": "A",
+      "operator_rows": 57,
+      "row_ids_contiguous": true,
+      "datatype_counts": {
+        "FLOAT16": 57
+      },
+      "target_counts": {
+        "CPU": 3,
+        "NPU": 54
+      },
+      "CPU_operator_types": [
+        "InputOperator",
+        "OutputOperator"
+      ],
+      "CPU_time_ms": 0.014,
+      "whole_graph_operator_time_ms": 30.034,
+      "operator_row_sum_matches_declared_total": true,
+      "raw_sha256": "9caba44be5fa0f050f1d187770d22b2b36fb7324891acfbbf18e13c25f79c1bb",
+      "raw_bytes": 16706,
+      "raw_bytes_and_sha_match": true,
+      "FC1_complete_path_time_ms": 5.649,
+      "FC1_paths": {
+        "frame0": {
+          "complete_time_ms": 2.821,
+          "includes_all_FC1_Conv_Concat_GELU_rows": true,
+          "path": [
+            {
+              "operator": "ConvExGelu",
+              "count": 1,
+              "row_ids": [
+                30
+              ],
+              "time_ms": 2.821,
+              "core_workloads": [
+                "100.0%/0.0%/0.0%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            }
+          ]
+        },
+        "global0": {
+          "complete_time_ms": 2.828,
+          "includes_all_FC1_Conv_Concat_GELU_rows": true,
+          "path": [
+            {
+              "operator": "ConvExGelu",
+              "count": 1,
+              "row_ids": [
+                53
+              ],
+              "time_ms": 2.828,
+              "core_workloads": [
+                "100.0%/0.0%/0.0%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            }
+          ]
+        }
+      },
+      "FC2_time_ms": 6.941,
+      "FC2_core_workloads": [
+        "34.4%/32.8%/32.8%"
+      ]
+    },
+    {
+      "input_case": "v53",
+      "route": "B",
+      "operator_rows": 63,
+      "row_ids_contiguous": true,
+      "datatype_counts": {
+        "FLOAT16": 63
+      },
+      "target_counts": {
+        "CPU": 3,
+        "NPU": 60
+      },
+      "CPU_operator_types": [
+        "InputOperator",
+        "OutputOperator"
+      ],
+      "CPU_time_ms": 0.034,
+      "whole_graph_operator_time_ms": 28.271,
+      "operator_row_sum_matches_declared_total": true,
+      "raw_sha256": "03d2808e01c6572b8bd18c24876ba00f344e0f7a9c6412e5662b3b54f31f79e6",
+      "raw_bytes": 18184,
+      "raw_bytes_and_sha_match": true,
+      "FC1_complete_path_time_ms": 4.095,
+      "FC1_paths": {
+        "frame0": {
+          "complete_time_ms": 1.898,
+          "includes_all_FC1_Conv_Concat_GELU_rows": true,
+          "path": [
+            {
+              "operator": "Conv",
+              "count": 2,
+              "row_ids": [
+                30,
+                31
+              ],
+              "time_ms": 0.956,
+              "core_workloads": [
+                "33.6%/33.6%/32.8%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "Concat",
+              "count": 1,
+              "row_ids": [
+                32
+              ],
+              "time_ms": 0.124,
+              "core_workloads": [
+                "33.6%/33.2%/33.2%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "exGelu",
+              "count": 1,
+              "row_ids": [
+                33
+              ],
+              "time_ms": 0.818,
+              "core_workloads": [
+                "100.0%/0.0%/0.0%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            }
+          ]
+        },
+        "global0": {
+          "complete_time_ms": 2.197,
+          "includes_all_FC1_Conv_Concat_GELU_rows": true,
+          "path": [
+            {
+              "operator": "Conv",
+              "count": 2,
+              "row_ids": [
+                56,
+                57
+              ],
+              "time_ms": 1.096,
+              "core_workloads": [
+                "33.6%/33.6%/32.8%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "Concat",
+              "count": 1,
+              "row_ids": [
+                58
+              ],
+              "time_ms": 0.196,
+              "core_workloads": [
+                "33.6%/33.2%/33.2%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "exGelu",
+              "count": 1,
+              "row_ids": [
+                59
+              ],
+              "time_ms": 0.905,
+              "core_workloads": [
+                "100.0%/0.0%/0.0%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            }
+          ]
+        }
+      },
+      "FC2_time_ms": 7.004,
+      "FC2_core_workloads": [
+        "34.4%/32.8%/32.8%"
+      ]
+    },
+    {
+      "input_case": "v53",
+      "route": "C",
+      "operator_rows": 67,
+      "row_ids_contiguous": true,
+      "datatype_counts": {
+        "FLOAT16": 67
+      },
+      "target_counts": {
+        "CPU": 3,
+        "NPU": 64
+      },
+      "CPU_operator_types": [
+        "InputOperator",
+        "OutputOperator"
+      ],
+      "CPU_time_ms": 0.042,
+      "whole_graph_operator_time_ms": 31.514,
+      "operator_row_sum_matches_declared_total": true,
+      "raw_sha256": "fe96195242e6dfe83fa55f4cd6dd07dd6ac49fbf654886d40fea59a8680b2b5e",
+      "raw_bytes": 19110,
+      "raw_bytes_and_sha_match": true,
+      "FC1_complete_path_time_ms": 5.212999999999999,
+      "FC1_paths": {
+        "frame0": {
+          "complete_time_ms": 2.062,
+          "includes_all_FC1_Conv_Concat_GELU_rows": true,
+          "path": [
+            {
+              "operator": "Conv",
+              "count": 4,
+              "row_ids": [
+                30,
+                31,
+                32,
+                33
+              ],
+              "time_ms": 1.113,
+              "core_workloads": [
+                "34.4%/32.8%/32.8%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "Concat",
+              "count": 1,
+              "row_ids": [
+                34
+              ],
+              "time_ms": 0.128,
+              "core_workloads": [
+                "33.6%/33.6%/32.8%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "exGelu",
+              "count": 1,
+              "row_ids": [
+                35
+              ],
+              "time_ms": 0.821,
+              "core_workloads": [
+                "100.0%/0.0%/0.0%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            }
+          ]
+        },
+        "global0": {
+          "complete_time_ms": 3.151,
+          "includes_all_FC1_Conv_Concat_GELU_rows": true,
+          "path": [
+            {
+              "operator": "Conv",
+              "count": 4,
+              "row_ids": [
+                58,
+                59,
+                60,
+                61
+              ],
+              "time_ms": 2.001,
+              "core_workloads": [
+                "34.4%/32.8%/32.8%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "Concat",
+              "count": 1,
+              "row_ids": [
+                62
+              ],
+              "time_ms": 0.231,
+              "core_workloads": [
+                "33.6%/33.6%/32.8%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "exGelu",
+              "count": 1,
+              "row_ids": [
+                63
+              ],
+              "time_ms": 0.919,
+              "core_workloads": [
+                "100.0%/0.0%/0.0%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            }
+          ]
+        }
+      },
+      "FC2_time_ms": 7.015,
+      "FC2_core_workloads": [
+        "34.4%/32.8%/32.8%"
+      ]
+    },
+    {
+      "input_case": "v56-calib00",
+      "route": "A",
+      "operator_rows": 57,
+      "row_ids_contiguous": true,
+      "datatype_counts": {
+        "FLOAT16": 57
+      },
+      "target_counts": {
+        "CPU": 3,
+        "NPU": 54
+      },
+      "CPU_operator_types": [
+        "InputOperator",
+        "OutputOperator"
+      ],
+      "CPU_time_ms": 0.068,
+      "whole_graph_operator_time_ms": 32.666,
+      "operator_row_sum_matches_declared_total": true,
+      "raw_sha256": "b89de836b09f507cd5f48fbf95dfc96d574d71359647f5fc207f9455bbe2932a",
+      "raw_bytes": 16706,
+      "raw_bytes_and_sha_match": true,
+      "FC1_complete_path_time_ms": 5.957,
+      "FC1_paths": {
+        "frame0": {
+          "complete_time_ms": 2.881,
+          "includes_all_FC1_Conv_Concat_GELU_rows": true,
+          "path": [
+            {
+              "operator": "ConvExGelu",
+              "count": 1,
+              "row_ids": [
+                30
+              ],
+              "time_ms": 2.881,
+              "core_workloads": [
+                "100.0%/0.0%/0.0%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            }
+          ]
+        },
+        "global0": {
+          "complete_time_ms": 3.076,
+          "includes_all_FC1_Conv_Concat_GELU_rows": true,
+          "path": [
+            {
+              "operator": "ConvExGelu",
+              "count": 1,
+              "row_ids": [
+                53
+              ],
+              "time_ms": 3.076,
+              "core_workloads": [
+                "100.0%/0.0%/0.0%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            }
+          ]
+        }
+      },
+      "FC2_time_ms": 7.302,
+      "FC2_core_workloads": [
+        "34.4%/32.8%/32.8%"
+      ]
+    },
+    {
+      "input_case": "v56-calib00",
+      "route": "B",
+      "operator_rows": 63,
+      "row_ids_contiguous": true,
+      "datatype_counts": {
+        "FLOAT16": 63
+      },
+      "target_counts": {
+        "CPU": 3,
+        "NPU": 60
+      },
+      "CPU_operator_types": [
+        "InputOperator",
+        "OutputOperator"
+      ],
+      "CPU_time_ms": 0.091,
+      "whole_graph_operator_time_ms": 37.203,
+      "operator_row_sum_matches_declared_total": true,
+      "raw_sha256": "36b4ebd6202d4368e7ebb6306805c7b010a1fc85393db7cac88ac9d4783353dd",
+      "raw_bytes": 18184,
+      "raw_bytes_and_sha_match": true,
+      "FC1_complete_path_time_ms": 5.874,
+      "FC1_paths": {
+        "frame0": {
+          "complete_time_ms": 2.449,
+          "includes_all_FC1_Conv_Concat_GELU_rows": true,
+          "path": [
+            {
+              "operator": "Conv",
+              "count": 2,
+              "row_ids": [
+                30,
+                31
+              ],
+              "time_ms": 1.308,
+              "core_workloads": [
+                "33.6%/33.6%/32.8%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "Concat",
+              "count": 1,
+              "row_ids": [
+                32
+              ],
+              "time_ms": 0.293,
+              "core_workloads": [
+                "33.6%/33.2%/33.2%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "exGelu",
+              "count": 1,
+              "row_ids": [
+                33
+              ],
+              "time_ms": 0.848,
+              "core_workloads": [
+                "100.0%/0.0%/0.0%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            }
+          ]
+        },
+        "global0": {
+          "complete_time_ms": 3.425,
+          "includes_all_FC1_Conv_Concat_GELU_rows": true,
+          "path": [
+            {
+              "operator": "Conv",
+              "count": 2,
+              "row_ids": [
+                56,
+                57
+              ],
+              "time_ms": 1.728,
+              "core_workloads": [
+                "33.6%/33.6%/32.8%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "Concat",
+              "count": 1,
+              "row_ids": [
+                58
+              ],
+              "time_ms": 0.503,
+              "core_workloads": [
+                "33.6%/33.2%/33.2%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "exGelu",
+              "count": 1,
+              "row_ids": [
+                59
+              ],
+              "time_ms": 1.194,
+              "core_workloads": [
+                "100.0%/0.0%/0.0%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            }
+          ]
+        }
+      },
+      "FC2_time_ms": 7.311,
+      "FC2_core_workloads": [
+        "34.4%/32.8%/32.8%"
+      ]
+    },
+    {
+      "input_case": "v56-calib00",
+      "route": "C",
+      "operator_rows": 67,
+      "row_ids_contiguous": true,
+      "datatype_counts": {
+        "FLOAT16": 67
+      },
+      "target_counts": {
+        "CPU": 3,
+        "NPU": 64
+      },
+      "CPU_operator_types": [
+        "InputOperator",
+        "OutputOperator"
+      ],
+      "CPU_time_ms": 0.093,
+      "whole_graph_operator_time_ms": 39.31,
+      "operator_row_sum_matches_declared_total": true,
+      "raw_sha256": "08f7153dde20d096a54a43039daaef73cbfcabc2f3dd93f52ed958cfda8957ea",
+      "raw_bytes": 19110,
+      "raw_bytes_and_sha_match": true,
+      "FC1_complete_path_time_ms": 6.453,
+      "FC1_paths": {
+        "frame0": {
+          "complete_time_ms": 2.494,
+          "includes_all_FC1_Conv_Concat_GELU_rows": true,
+          "path": [
+            {
+              "operator": "Conv",
+              "count": 4,
+              "row_ids": [
+                30,
+                31,
+                32,
+                33
+              ],
+              "time_ms": 1.347,
+              "core_workloads": [
+                "34.4%/32.8%/32.8%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "Concat",
+              "count": 1,
+              "row_ids": [
+                34
+              ],
+              "time_ms": 0.18,
+              "core_workloads": [
+                "33.6%/33.6%/32.8%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "exGelu",
+              "count": 1,
+              "row_ids": [
+                35
+              ],
+              "time_ms": 0.967,
+              "core_workloads": [
+                "100.0%/0.0%/0.0%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            }
+          ]
+        },
+        "global0": {
+          "complete_time_ms": 3.959,
+          "includes_all_FC1_Conv_Concat_GELU_rows": true,
+          "path": [
+            {
+              "operator": "Conv",
+              "count": 4,
+              "row_ids": [
+                58,
+                59,
+                60,
+                61
+              ],
+              "time_ms": 2.629,
+              "core_workloads": [
+                "34.4%/32.8%/32.8%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "Concat",
+              "count": 1,
+              "row_ids": [
+                62
+              ],
+              "time_ms": 0.338,
+              "core_workloads": [
+                "33.6%/33.6%/32.8%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            },
+            {
+              "operator": "exGelu",
+              "count": 1,
+              "row_ids": [
+                63
+              ],
+              "time_ms": 0.992,
+              "core_workloads": [
+                "100.0%/0.0%/0.0%"
+              ],
+              "targets": [
+                "NPU"
+              ]
+            }
+          ]
+        }
+      },
+      "FC2_time_ms": 7.553,
+      "FC2_core_workloads": [
+        "34.4%/32.8%/32.8%"
+      ]
+    }
+  ],
+  "interpretation": {
+    "fusion_changed": true,
+    "original_FC1_ConvExGelu_removed_in_both_split_graphs": true,
+    "split_FC1_Conv_uses_all_three_cores": true,
+    "separate_exGelu_remains_core0_only": true,
+    "FC2_ConvAdd_retained": true,
+    "graph_speedup_not_established_by_profile": true
+  },
+  "limitations": [
+    "Six profiling calls, one per input and graph; these times are not ordinary benchmark times.",
+    "FLOAT16 is the SDK operator datatype label, not independent proof of every internal arithmetic precision.",
+    "Two input cases have visibly different profile times; no complete-backbone or full-model speedup is inferred."
+  ],
+  "all_raw_hashes_and_row_sums_verified": true,
+  "model_ORT_SDK_executed_by_analysis": false
+}

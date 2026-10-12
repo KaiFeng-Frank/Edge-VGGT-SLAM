@@ -50,6 +50,14 @@ three-warm-call comparison is not enabled in the full-model runtime and adds
 no new replay or trajectory-quality result.
 [Measurements and reproduction](deploy/rk3588/validation/original_camera_partition/README.md).
 
+Applying the same output-channel idea to both FC1 layers of the original
+frame0/global0 pair gives a smaller component gain: **39.019 ms to 37.850 ms
+(two parts, 3.00%) or 37.914 ms (four parts, 2.83%)**, at 300 MHz with 38 warm
+calls per graph across two real inputs. FP32 ONNX outputs remain byte-identical;
+NPU outputs change and the original FP32 strict checks fail. This pair-only
+diagnostic is not installed in the full-model runtime.
+[Evidence and reproduction](deploy/rk3588/validation/original_pair_partition/README.md).
+
 The additional-model retrieval and semantic paths have been removed. **Loop closure has no replacement implementation:** `max_loops=0` is the supported Solver configuration. Requests to enable loops or supply legacy auxiliary-model arguments must fail before loading or inference. The original VGGT model's numerical similarity capability does not itself implement loop retrieval.
 
 The original checkpoint is `facebook/VGGT-1B`, `model.pt`, **5,026,874,952 bytes**, SHA256 `d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0`. Source-code and checkpoint licensing are separate; see [model provenance](MODEL_LICENSES.md) and [upstream pins](UPSTREAMS.json). No weights, captured arrays, weight-bearing exports or SDK binaries are distributed. The loader verifies this exact byte size and full SHA256 before deserialization, including explicit local paths and cached downloads. Automatic downloads use the recorded immutable revision; there is no runtime identity-check bypass.
