@@ -140,6 +140,15 @@ receipts. Public metadata and hashes permit identity checks; raw-array
 recomputation requires access to those private captures.
 
 For the independent audit, place `audit_saved_results.py` in that private
-evidence root beside the frozen sources and run it there. It verifies saved
+evidence root beside the frozen sources. This exact historical auditor also
+reads the original Torch reference files `frame-00-output.npy` and
+`global-00-output.npy` at the fixed private path
+`/dev/shm/edge-vggt-v75/original-reference/v53`; their hashes are in the check
+receipt. Recreate that reference path before running the frozen auditor, or
+adapt it and record the changed source hash in a new audit. It verifies saved
 array identities, fixed-gate errors, repeats, counters and controller reports
 without importing or executing a model.
+
+The normal controller alone observed a maximum of 52.692 C. Its first per-call
+snapshot recorded 53.615 C on the two big-core thermal zones; the summary's
+53.615 C maximum includes both controller and per-call samples.
