@@ -1,0 +1,218 @@
+{
+  "schema": "v86_saved_original_QK_rows_FP32_audit",
+  "status": "passed",
+  "saved_data_only": true,
+  "host_Torch_OR_ORT_OR_SDK_OR_GPU_executed": false,
+  "numpy_version": "1.26.4",
+  "evidence": {
+    "check_sha256": "d7be30bf5a9e46374fdb4cff194003e673942c83c28512909174e42491f3d57a",
+    "result_sha256": "84cd3cac97adbac1e9d76235b0a4d32c4567a33a894921d67313fac949c2a9da",
+    "export_sha256": "c8d4d880c6d8d997e9db045d0ebd66ab3ae704e3d0c90e9656ae134b7b52c756",
+    "source_sha256": {
+      "checker": "fdb9bdeea3365343b66b2973cda949f69610ac29d3a8998d81c7d274034e5002",
+      "rewrite": "07b9c560a0268dbdc45e8364d3a802ead066c3c7f0a522e7eca5ebca48564fc3",
+      "reference_helper": "4094e393d0504954a67993c24e82c5534862393930f60db3ec64c2c3e4098b76"
+    },
+    "candidate_graph_sha256": "8087794597a5ce79baf1731b5f780967531c13a7fd374641f75a041bd16c9c89",
+    "original_graph_sha256": "efbbaee8f3d6326565930e5a045eac0d500fdb35453fdf85ddac7481ec2fac65",
+    "original_parent_manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42"
+  },
+  "arrays": {
+    "files": 12,
+    "elements": 1302528,
+    "tensor_bytes": 5210112,
+    "all_file_and_raw_sha256_shape_dtype_finite_verified": true,
+    "distinct_real_input_count": 2
+  },
+  "numerical": {
+    "strict_rtol": 0.0001,
+    "strict_atol": 1e-05,
+    "original_ONNX_vs_candidate_comparisons": 4,
+    "strict_pass_count": 4,
+    "byte_equal_count": 4,
+    "original_Torch_reference_case_count": 1,
+    "original_Torch_comparisons": 4,
+    "original_Torch_strict_pass_count": 4,
+    "cases": [
+      {
+        "tag": "v53",
+        "input_raw_sha256": "2e1defbdacd2b2ffc13ca171888953d402009f4dcb78a3799199236a65f548d1",
+        "checks": [
+          {
+            "name": "frame_output",
+            "versus_original_FP32_ONNX": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 0.0,
+              "relative_l2": 0.0
+            },
+            "byte_equal_to_original": true,
+            "versus_original_Torch": {
+              "original": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.4781951904296875e-05,
+                "relative_l2": 8.874554983280549e-07
+              },
+              "candidate": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.4781951904296875e-05,
+                "relative_l2": 8.874554983280549e-07
+              }
+            }
+          },
+          {
+            "name": "global_output",
+            "versus_original_FP32_ONNX": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 0.0,
+              "relative_l2": 0.0
+            },
+            "byte_equal_to_original": true,
+            "versus_original_Torch": {
+              "original": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.71661376953125e-05,
+                "relative_l2": 1.1357558240077205e-06
+              },
+              "candidate": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.71661376953125e-05,
+                "relative_l2": 1.1357558240077205e-06
+              }
+            }
+          }
+        ],
+        "ORT_CPU_seconds": {
+          "original": 0.1798731840099208,
+          "candidate": 0.17955147600150667
+        }
+      },
+      {
+        "tag": "v56-calib00",
+        "input_raw_sha256": "443a1c32584e1786995fbd28bb0eac0253127b7974a99242e1a85d24f6201f51",
+        "checks": [
+          {
+            "name": "frame_output",
+            "versus_original_FP32_ONNX": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 0.0,
+              "relative_l2": 0.0
+            },
+            "byte_equal_to_original": true
+          },
+          {
+            "name": "global_output",
+            "versus_original_FP32_ONNX": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 0.0,
+              "relative_l2": 0.0
+            },
+            "byte_equal_to_original": true
+          }
+        ],
+        "ORT_CPU_seconds": {
+          "original": 0.17988951900042593,
+          "candidate": 0.17977751800208353
+        }
+      }
+    ]
+  },
+  "scoped_proof": {
+    "original_parameters": 36,
+    "original_initializers": 63,
+    "added_INT64_shape_initializers": 4,
+    "original_nodes": 87,
+    "candidate_nodes": 95,
+    "removed_frame_nodes": 2,
+    "modified_frame_nodes": 11,
+    "added_frame_nodes": 10,
+    "all_preservation_fields_and_parent_parameter_hashes_consistent": true,
+    "all_original_learned_values_and_global_branch_unchanged_recorded": true
+  },
+  "execution": {
+    "ORT_sessions_created": 2,
+    "complete_graph_runs_inferred_from_frozen_source_and_two_completed_cases": 4,
+    "CPU_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "ORT_optimization": "ORT_DISABLE_ALL",
+    "ORT_intra_threads": 1,
+    "ORT_inter_threads": 1,
+    "SDK_executed": false,
+    "Torch_model_loaded": false,
+    "cleanup": {
+      "sessions_dropped": true,
+      "environment_restored": true,
+      "affinity_restored": true,
+      "source_and_inputs_unchanged": true
+    },
+    "cleanup_errors": []
+  },
+  "controls": {
+    "rewrite": {
+      "control_sha256": "45ab2d510f079232d4e18bd3aa0a672485714129a3554d9fa7d55cf974484866",
+      "log_sha256": "a2996f3a706ed23f72d382f55de7c5fa7a2637c95bebace38a819e485ad21f83",
+      "returncode": 0,
+      "sample_count": 11,
+      "sampled_npu_hz": [
+        300000000
+      ],
+      "max_temperature_c": 54.538,
+      "frequency_written": false,
+      "cleanup_errors": [],
+      "seconds": 2.5124780439946335
+    },
+    "FP32": {
+      "control_sha256": "9ca5403a3c899cab86dd82eed66f66f1a20ed28c3d92e5f11991b148692be222",
+      "log_sha256": "7a2785d37a808b1446fe6794e03d96409d13168bcfc11b8336bdd89d5dc1495f",
+      "returncode": 0,
+      "sample_count": 11,
+      "sampled_npu_hz": [
+        300000000
+      ],
+      "max_temperature_c": 57.307,
+      "frequency_written": false,
+      "cleanup_errors": [],
+      "seconds": 2.4814043329970445
+    }
+  },
+  "limitations": [
+    "Graph initializer/node protobuf preservation was verified on the board by the frozen rewrite and is consistent with saved proof fields; original and candidate ONNX payloads were not independently rehashed on this host.",
+    "ORT sessions_dropped records released Python references; it is not an independently queried native-resource counter.",
+    "Two component inputs establish this FP32 layout gate, not RKNN accuracy, full-model quality, or performance."
+  ]
+}

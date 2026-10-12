@@ -1,0 +1,403 @@
+{
+  "schema": "v86_original_QK_rows_saved_profile_audit",
+  "status": "passed_saved_profile_identity_and_mapping_review_candidate_not_adopted",
+  "auditor_scope": "Host saved JSON/text/hash/statistics only; no model, ORT, SDK, compiler, GPU or board execution. Repeat and resource flags are checked from pinned receipts; arrays are not independently recomputed here.",
+  "evidence": {
+    "normal_result": {
+      "file": "probe-r1/result.json",
+      "bytes": 111376,
+      "sha256": "41a4bc2195131e1a003dc7929e078ae49250062b58be8224d3f546195b305990"
+    },
+    "profile_result": {
+      "file": "profile-r1/result.json",
+      "bytes": 33423,
+      "sha256": "a4afff2dc46571fc73b61f0354542466419be021059776d70599070f625921ca"
+    },
+    "compile_log": {
+      "file": "compile.log",
+      "bytes": 86108,
+      "sha256": "ba858ccf2de05a5b020d3e41bf9a5da9ce941e1ff0facfa36f371eed6eb916ee"
+    },
+    "compile_receipt": {
+      "file": "compiled.json",
+      "bytes": 95124,
+      "sha256": "dea0d8f9115de5c3fe1d8d8ae2a37129c74890118f1a53d4085286157a14e272"
+    },
+    "rewrite_receipt": {
+      "file": "export.json",
+      "bytes": 40076,
+      "sha256": "c8d4d880c6d8d997e9db045d0ebd66ab3ae704e3d0c90e9656ae134b7b52c756"
+    },
+    "profile_control": {
+      "file": "profile-control-r1/control.json",
+      "bytes": 2086,
+      "sha256": "5e1506058106fa559b1a63a1b544fd75d1b770770434ac0590088d6031972b1c"
+    },
+    "profiles": [
+      {
+        "file": "profile-r1/v53-A-profile.txt",
+        "bytes": 16706,
+        "sha256": "08ff39c60d1e88b1e1a7d49d6d27e12e173a7910313c66ff956d38f79109a28c"
+      },
+      {
+        "file": "profile-r1/v53-B-profile.txt",
+        "bytes": 14943,
+        "sha256": "12bbbcda0eee1974c6cc348f90a3bce0fdc314802ea0725994998e49a8168d1b"
+      },
+      {
+        "file": "profile-r1/v56-calib00-A-profile.txt",
+        "bytes": 16706,
+        "sha256": "d20b8b86892989f515dbd7b87f1917963cb65189e62ef4d49cda0486affc4c44"
+      },
+      {
+        "file": "profile-r1/v56-calib00-B-profile.txt",
+        "bytes": 14943,
+        "sha256": "5b1860fd06fabfbe5b57b701d1cf1843dd2626dcd03ff0635c01c53ba5484a8f"
+      }
+    ]
+  },
+  "normal_flags0": {
+    "summary": {
+      "A": {
+        "warm_calls": 12,
+        "complete_component_mean_ms": 17.419717080580693,
+        "per_input_ms": {
+          "v53": 16.448459995444864,
+          "v56-calib00": 18.390974165716518
+        }
+      },
+      "B": {
+        "warm_calls": 12,
+        "complete_component_mean_ms": 17.883380334145233,
+        "per_input_ms": {
+          "v53": 16.65384216660944,
+          "v56-calib00": 19.112918501681026
+        }
+      }
+    },
+    "B_slowdown_percent": 2.6617151783792536,
+    "both_inputs_B_slower": true,
+    "reported_all_repeats_byte_stable": true,
+    "scope": "Complete pair00 FP32 SDK conversions, owned copies, release and finite checks; component-only, two real inputs,12 warm calls per route."
+  },
+  "separate_flags8": {
+    "calls": 4,
+    "profiles": {
+      "v53/A": {
+        "operator_rows": 57,
+        "target_counts": {
+          "CPU": 3,
+          "NPU": 54
+        },
+        "internal_CPU_arithmetic_rows": 0,
+        "declared_activation_dtype": "INT8",
+        "NPU_exNorm": 8,
+        "NPU_exSDPAttention": 2,
+        "diagnostic_operator_sum_us": 14187,
+        "frame_QKV_to_projection_tail": {
+          "nodes": 22,
+          "us": 4851
+        },
+        "frame_QKV_producer_layout": {
+          "nodes": 1,
+          "us": 883
+        },
+        "frame_split": {
+          "nodes": 1,
+          "us": 82
+        },
+        "frame_QK_norm": {
+          "nodes": 2,
+          "us": 931
+        },
+        "frame_post_QK_norm_layout": {
+          "nodes": 2,
+          "us": 389
+        },
+        "frame_pre_SDPA_QK_layout": {
+          "nodes": 4,
+          "us": 406
+        },
+        "frame_V_layout": {
+          "nodes": 2,
+          "us": 359
+        },
+        "frame_all_operand_layout_before_SDPA_excludes_split": {
+          "nodes": 9,
+          "us": 2037
+        },
+        "frame_RoPE": {
+          "nodes": 8,
+          "us": 765
+        },
+        "frame_SDPA": {
+          "nodes": 1,
+          "us": 1035
+        },
+        "frame_consumer_layout": {
+          "nodes": 1,
+          "us": 1
+        }
+      },
+      "v53/B": {
+        "operator_rows": 50,
+        "target_counts": {
+          "CPU": 3,
+          "NPU": 47
+        },
+        "internal_CPU_arithmetic_rows": 0,
+        "declared_activation_dtype": "INT8",
+        "NPU_exNorm": 8,
+        "NPU_exSDPAttention": 2,
+        "diagnostic_operator_sum_us": 15199,
+        "frame_QKV_to_projection_tail": {
+          "nodes": 15,
+          "us": 4881
+        },
+        "frame_QKV_producer_layout": {
+          "nodes": 4,
+          "us": 2050
+        },
+        "frame_split": {
+          "nodes": 1,
+          "us": 99
+        },
+        "frame_QK_norm": {
+          "nodes": 2,
+          "us": 1219
+        },
+        "frame_post_QK_norm_layout": {
+          "nodes": 0,
+          "us": 0
+        },
+        "frame_pre_SDPA_QK_layout": {
+          "nodes": 0,
+          "us": 0
+        },
+        "frame_V_layout": {
+          "nodes": 0,
+          "us": 0
+        },
+        "frame_all_operand_layout_before_SDPA_excludes_split": {
+          "nodes": 4,
+          "us": 2050
+        },
+        "frame_RoPE": {
+          "nodes": 6,
+          "us": 460
+        },
+        "frame_SDPA": {
+          "nodes": 1,
+          "us": 1053
+        },
+        "frame_consumer_layout": {
+          "nodes": 1,
+          "us": 0
+        }
+      },
+      "v56-calib00/A": {
+        "operator_rows": 57,
+        "target_counts": {
+          "CPU": 3,
+          "NPU": 54
+        },
+        "internal_CPU_arithmetic_rows": 0,
+        "declared_activation_dtype": "INT8",
+        "NPU_exNorm": 8,
+        "NPU_exSDPAttention": 2,
+        "diagnostic_operator_sum_us": 12985,
+        "frame_QKV_to_projection_tail": {
+          "nodes": 22,
+          "us": 4132
+        },
+        "frame_QKV_producer_layout": {
+          "nodes": 1,
+          "us": 836
+        },
+        "frame_split": {
+          "nodes": 1,
+          "us": 85
+        },
+        "frame_QK_norm": {
+          "nodes": 2,
+          "us": 839
+        },
+        "frame_post_QK_norm_layout": {
+          "nodes": 2,
+          "us": 295
+        },
+        "frame_pre_SDPA_QK_layout": {
+          "nodes": 4,
+          "us": 315
+        },
+        "frame_V_layout": {
+          "nodes": 2,
+          "us": 265
+        },
+        "frame_all_operand_layout_before_SDPA_excludes_split": {
+          "nodes": 9,
+          "us": 1711
+        },
+        "frame_RoPE": {
+          "nodes": 8,
+          "us": 505
+        },
+        "frame_SDPA": {
+          "nodes": 1,
+          "us": 992
+        },
+        "frame_consumer_layout": {
+          "nodes": 1,
+          "us": 0
+        }
+      },
+      "v56-calib00/B": {
+        "operator_rows": 50,
+        "target_counts": {
+          "CPU": 3,
+          "NPU": 47
+        },
+        "internal_CPU_arithmetic_rows": 0,
+        "declared_activation_dtype": "INT8",
+        "NPU_exNorm": 8,
+        "NPU_exSDPAttention": 2,
+        "diagnostic_operator_sum_us": 13271,
+        "frame_QKV_to_projection_tail": {
+          "nodes": 15,
+          "us": 4703
+        },
+        "frame_QKV_producer_layout": {
+          "nodes": 4,
+          "us": 2020
+        },
+        "frame_split": {
+          "nodes": 1,
+          "us": 107
+        },
+        "frame_QK_norm": {
+          "nodes": 2,
+          "us": 1189
+        },
+        "frame_post_QK_norm_layout": {
+          "nodes": 0,
+          "us": 0
+        },
+        "frame_pre_SDPA_QK_layout": {
+          "nodes": 0,
+          "us": 0
+        },
+        "frame_V_layout": {
+          "nodes": 0,
+          "us": 0
+        },
+        "frame_all_operand_layout_before_SDPA_excludes_split": {
+          "nodes": 4,
+          "us": 2020
+        },
+        "frame_RoPE": {
+          "nodes": 6,
+          "us": 375
+        },
+        "frame_SDPA": {
+          "nodes": 1,
+          "us": 1012
+        },
+        "frame_consumer_layout": {
+          "nodes": 1,
+          "us": 0
+        }
+      }
+    },
+    "scope": "One diagnostic call per input/route. Operator sums are not flags0 warm latency, a saving estimate or a causal decomposition of normal slowdown."
+  },
+  "compiled_operator_table": {
+    "rows": 50,
+    "NPU_rows": 47,
+    "CPU_IO_boundary_rows": 3,
+    "internal_CPU_arithmetic_rows": 0,
+    "NPU_SDPA_nodes": 2,
+    "declared_activation_dtype": "INT8",
+    "mixed_norm_constants": "Original exNorm weight FLOAT16 and bias FLOAT appear in compile log; activation labels do not establish integer-only arithmetic."
+  },
+  "mapping_findings": {
+    "original_producer": "[2,3072,1,53] -> Reshape[2,64,48,53] -> Split[2,64,16,53]",
+    "candidate_producer": [
+      "[2,3072,1,53]",
+      "[2,48,64,53]",
+      "[2,48,53,64]",
+      "[32,159,1,64]",
+      "[32,64,1,159]",
+      "Split ->3 x [32,64,1,53]"
+    ],
+    "source_first_split_not_retained_in_native_graph": true,
+    "observed_compiler_passes": [
+      {
+        "line": 20,
+        "text": "D     reduce_reshape_op_around_split: remove node = ['frame0/query_qk_rows_heads_view', 'frame0/key_qk_rows_heads_view', 'frame0/value_qk_rows_heads_view', 'frame0/qk_rows_split'], add node = ['frame0/attn.qkv_rs', 'frame0/qk_rows_split']"
+      },
+      {
+        "line": 25,
+        "text": "D     reduce_tp_in_mesh_backward: remove node = ['frame0/query_qk_rows_heads_transpose', 'frame0/key_qk_rows_heads_transpose', 'frame0/value_qk_rows_heads_transpose'], add node = ['frame0/attn.qkv_rs_tp']"
+      },
+      {
+        "line": 164,
+        "text": "D     reduce_reshape_op_around_split: remove node = ['frame0/query_rs', 'frame0/key_rs', 'frame0/value_rs', 'frame0/qk_rows_split'], add node = ['frame0/attn.qkv_rs_tp_gather', 'frame0/attn.qkv_rs_tp_gather_rs', 'frame0/qk_rows_split']"
+      },
+      {
+        "line": 197,
+        "text": "D     reduce_tp_in_mesh_backward: remove node = ['frame0/query_tp', 'frame0/key_tp', 'frame0/value_rs_tp'], add node = ['frame0/attn.qkv_rs_tp_gather_rs_tp']"
+      }
+    ],
+    "frame_tail_operator_rows_A_B": [
+      22,
+      15
+    ],
+    "QK_norm_native_inputs_A_B": [
+      "[2,64,16,53]",
+      "[32,64,1,53]"
+    ],
+    "removed_native_operand_layout_nodes": "2 post-QK-norm transposes,4 pre-SDPA Q/K views/transposes,2 V layout nodes",
+    "RoPE_A_B": [
+      "4Mul+2Gather+2Add",
+      "4Mul+2ConvAdd; permutation/add compiled to ConvAdd"
+    ],
+    "original_global0_ONNX_protobuf_unchanged": true
+  },
+  "resource_and_control": {
+    "normal_contexts_created_destroyed": [
+      2,
+      2
+    ],
+    "normal_runs": 28,
+    "normal_output_buffers_acquired_released": [
+      56,
+      56
+    ],
+    "profile_contexts_created_destroyed": [
+      2,
+      2
+    ],
+    "profile_runs": 4,
+    "profile_output_buffers_acquired_released": [
+      8,
+      8
+    ],
+    "reported_source_affinity_environment_restored": true,
+    "all_call_frequency_observations_1GHz": true,
+    "profile_controller_observations": 3,
+    "profile_peak_temperature_c": 52.692,
+    "profile_controller_child_returncode": 0,
+    "profile_restored_NPU_hz": 300000000,
+    "profile_governor_limits_restored": true
+  },
+  "interpretation": [
+    "Complete NPU SDPA and original independent norms remain fused; no internal CPU fallback explains the result.",
+    "Fewer layout/operators did not establish a flags0 gain. The four shared QKV producer conversions replace dispersed operand layout costs rather than eliminating them. Norm/RoPE mapping also changes; separate single-call flags8 timings do not isolate the cause of the2.6617% normal slowdown.",
+    "The unchanged global0 graph also shows differing diagnostic timings; original source identity does not imply identical compiled scheduling, quantization boundaries or consumer activations.",
+    "Next compiler target is preserving direct producer channel slices before independent original norms. reduce_reshape_op_around_split and reduce_tp_in_mesh_backward currently combine the branches before Split. A supported source alternative must prove its final compiled layout; no unsupported pass-disable flag or new transform is implemented.",
+    "No24-block expansion or full-model adoption follows this slower component result; FP32 source-equivalence gate and approximate W8A8 outputs are separate evidence."
+  ],
+  "causal_explanation_established": false,
+  "next_transform_implemented": false,
+  "candidate_accepted": false
+}

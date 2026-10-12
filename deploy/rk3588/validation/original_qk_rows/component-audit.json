@@ -1,0 +1,394 @@
+{
+  "schema": "v86_saved_original_QK_rows_component_audit",
+  "status": "passed_saved_evidence_checks_candidate_not_adopted",
+  "saved_data_only": true,
+  "host_model_OR_ORT_OR_SDK_OR_GPU_executed": false,
+  "numpy_version": "1.26.4",
+  "evidence": {
+    "normal_result_sha256": "41a4bc2195131e1a003dc7929e078ae49250062b58be8224d3f546195b305990",
+    "profile_result_sha256": "a4afff2dc46571fc73b61f0354542466419be021059776d70599070f625921ca",
+    "FP32_check_sha256": "d7be30bf5a9e46374fdb4cff194003e673942c83c28512909174e42491f3d57a",
+    "FP32_audit_sha256": "fa0dbd9d99377648382998ef74501d08a5c17a342045d232b8ddf0cb56af0c1a",
+    "compile_receipt_sha256": "dea0d8f9115de5c3fe1d8d8ae2a37129c74890118f1a53d4085286157a14e272",
+    "source_sha256": {
+      "probe": "bb609cab831fa6e320ecb052d67a04db19fa82dd5fe5ea373169d87fd8c5acb9",
+      "compiler": "61938e68d23ad78a6e366b90482a9884f92bf03264db910055443bc9df984fe0",
+      "FP32_checker": "fdb9bdeea3365343b66b2973cda949f69610ac29d3a8998d81c7d274034e5002",
+      "rewrite": "07b9c560a0268dbdc45e8364d3a802ead066c3c7f0a522e7eca5ebca48564fc3"
+    },
+    "original_RKNN_sha256": "9264eec3c2ad6d09663a34238a4d4169c94ec913a4be713affa8982c019ab3ba",
+    "candidate_RKNN_sha256": "90c90296e5e1db56aa1c462320fc7512fbdd40cf4b4fa4f162f6945de59b1865"
+  },
+  "original_real_input_count": 2,
+  "input_raw_sha256": {
+    "v53": "2e1defbdacd2b2ffc13ca171888953d402009f4dcb78a3799199236a65f548d1",
+    "v56-calib00": "443a1c32584e1786995fbd28bb0eac0253127b7974a99242e1a85d24f6201f51"
+  },
+  "strict_rtol": 0.0001,
+  "strict_atol": 1e-05,
+  "normal": {
+    "init_flags": 0,
+    "SDK_runs": 28,
+    "outputs_acquired": 56,
+    "outputs_released": 56,
+    "contexts_created": 2,
+    "contexts_destroyed": 2,
+    "live_contexts": 0,
+    "NPZ_files": 28,
+    "FP32_arrays": 56,
+    "all_file_SHA_shape_finite_verified": true,
+    "nonfirst_repeat_comparisons": 48,
+    "nonfirst_repeat_byte_equal_count": 48,
+    "original_FP32_ONNX_strict_comparisons": 56,
+    "original_FP32_ONNX_strict_pass_count": 0,
+    "case_routes": [
+      {
+        "input": "v53",
+        "role": "A",
+        "calls": 7,
+        "first_retained_and_excluded": 1,
+        "warm_count": 6,
+        "first_output_raw_sha256": [
+          "e9ba35ca70b78d466dfaf964a5bc070be0157db05d4055cbadf6fb2891cde534",
+          "ee07cae498fce9937473118e7578530ecb0883e29e5d1681dcab5b7979a06f68"
+        ],
+        "vs_original_FP32_ONNX": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 1.0492018461227417,
+            "relative_l2": 0.09545046262292715,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 108448,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.8070845007896423,
+            "relative_l2": 0.12352292805242143,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 108461,
+            "strict_pass": false
+          }
+        ],
+        "warm_mean_ms": 16.448459995444864
+      },
+      {
+        "input": "v53",
+        "role": "B",
+        "calls": 7,
+        "first_retained_and_excluded": 1,
+        "warm_count": 6,
+        "first_output_raw_sha256": [
+          "c60efb366020d2776ffdac507b482bd648a01603ce8e1ff0c790dabe39b6be58",
+          "bbf509e509121a07fec497279ef0c6927c2e623e418af22585318ab4e4150621"
+        ],
+        "vs_original_FP32_ONNX": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 1.0492018461227417,
+            "relative_l2": 0.09545372925576312,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 108448,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.8070845007896423,
+            "relative_l2": 0.12352673200935708,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 108461,
+            "strict_pass": false
+          }
+        ],
+        "warm_mean_ms": 16.65384216660944
+      },
+      {
+        "input": "v56-calib00",
+        "role": "A",
+        "calls": 7,
+        "first_retained_and_excluded": 1,
+        "warm_count": 6,
+        "first_output_raw_sha256": [
+          "934b345e41e51b75499e3ce22b2f110e59ae319d729137bdfe9026e2a4df2e79",
+          "4b8b5b7f591fcc4f88288798e6b3d28ed67561380bcf48efcb1873c319bed6ef"
+        ],
+        "vs_original_FP32_ONNX": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.8439017236232758,
+            "relative_l2": 0.09456560933904004,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 108448,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.6099299192428589,
+            "relative_l2": 0.12095015713036122,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 108457,
+            "strict_pass": false
+          }
+        ],
+        "warm_mean_ms": 18.390974165716518
+      },
+      {
+        "input": "v56-calib00",
+        "role": "B",
+        "calls": 7,
+        "first_retained_and_excluded": 1,
+        "warm_count": 6,
+        "first_output_raw_sha256": [
+          "934b345e41e51b75499e3ce22b2f110e59ae319d729137bdfe9026e2a4df2e79",
+          "4b8b5b7f591fcc4f88288798e6b3d28ed67561380bcf48efcb1873c319bed6ef"
+        ],
+        "vs_original_FP32_ONNX": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.8439017236232758,
+            "relative_l2": 0.09456560933904004,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 108448,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.6099299192428589,
+            "relative_l2": 0.12095015713036122,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 108457,
+            "strict_pass": false
+          }
+        ],
+        "warm_mean_ms": 19.112918501681026
+      }
+    ],
+    "cleanup_errors": [],
+    "source_and_inputs_unchanged": true,
+    "affinity_restored": true,
+    "environment_restored": true,
+    "warm_summary": {
+      "A": {
+        "warm_count": 12,
+        "mean_ms": 17.419717080580693,
+        "median_ms": 17.53043950884603,
+        "p95_ms": 19.337006490968633,
+        "min_ms": 14.731793984537944,
+        "max_ms": 19.374544004676864,
+        "phase_mean_ms": {
+          "rknn_inputs_set_seconds": 1.7736150039127097,
+          "rknn_run_seconds": 14.515529335767496,
+          "rknn_outputs_get_seconds": 0.32863558347647387,
+          "rknn_outputs_release_seconds": 0.008215332248558601,
+          "owned_output_copy_seconds": 0.27183349933087203,
+          "finite_check_seconds": 0.23474291810998693
+        }
+      },
+      "B": {
+        "warm_count": 12,
+        "mean_ms": 17.883380334145233,
+        "median_ms": 18.215813994174823,
+        "p95_ms": 19.82371084886836,
+        "min_ms": 14.954335027141497,
+        "max_ms": 19.942418992286548,
+        "phase_mean_ms": {
+          "rknn_inputs_set_seconds": 1.7871842428576201,
+          "rknn_run_seconds": 14.991897417833874,
+          "rknn_outputs_get_seconds": 0.3173090808559209,
+          "rknn_outputs_release_seconds": 0.008288416817473868,
+          "owned_output_copy_seconds": 0.2598020049238888,
+          "finite_check_seconds": 0.22995492084495103
+        }
+      }
+    },
+    "B_slowdown_percent": 2.6617151783792536,
+    "per_input_B_vs_A": [
+      {
+        "input": "v53",
+        "B_vs_A": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.03876744955778122,
+            "relative_l2": 0.0008376139146342147,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 4,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.0376097708940506,
+            "relative_l2": 0.002602568951626838,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 46,
+            "strict_pass": false
+          }
+        ],
+        "raw_differing_elements": [
+          4,
+          46
+        ],
+        "B_slowdown_percent": 1.2486407312383818
+      },
+      {
+        "input": "v56-calib00",
+        "B_vs_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "raw_differing_elements": [
+          0,
+          0
+        ],
+        "B_slowdown_percent": 3.9255361323399462
+      }
+    ]
+  },
+  "profile": {
+    "init_flags": 8,
+    "SDK_runs": 4,
+    "outputs_acquired": 8,
+    "outputs_released": 8,
+    "contexts_created": 2,
+    "contexts_destroyed": 2,
+    "live_contexts": 0,
+    "NPZ_files": 4,
+    "FP32_arrays": 8,
+    "all_file_SHA_shape_finite_verified": true,
+    "nonfirst_repeat_comparisons": 0,
+    "nonfirst_repeat_byte_equal_count": 0,
+    "original_FP32_ONNX_strict_comparisons": 8,
+    "original_FP32_ONNX_strict_pass_count": 0,
+    "case_routes": [
+      {
+        "input": "v53",
+        "role": "A",
+        "calls": 1,
+        "first_retained_and_excluded": 1,
+        "warm_count": 0
+      },
+      {
+        "input": "v53",
+        "role": "B",
+        "calls": 1,
+        "first_retained_and_excluded": 1,
+        "warm_count": 0
+      },
+      {
+        "input": "v56-calib00",
+        "role": "A",
+        "calls": 1,
+        "first_retained_and_excluded": 1,
+        "warm_count": 0
+      },
+      {
+        "input": "v56-calib00",
+        "role": "B",
+        "calls": 1,
+        "first_retained_and_excluded": 1,
+        "warm_count": 0
+      }
+    ],
+    "cleanup_errors": [],
+    "source_and_inputs_unchanged": true,
+    "affinity_restored": true,
+    "environment_restored": true,
+    "profile_vs_same_route_normal_byte_equal_count": 8,
+    "profile_arrays_compared": 8,
+    "raw_profile_texts": [
+      {
+        "input": "v53",
+        "role": "A",
+        "file": "v53-A-profile.txt",
+        "bytes": 16706,
+        "sha256": "08ff39c60d1e88b1e1a7d49d6d27e12e173a7910313c66ff956d38f79109a28c"
+      },
+      {
+        "input": "v53",
+        "role": "B",
+        "file": "v53-B-profile.txt",
+        "bytes": 14943,
+        "sha256": "12bbbcda0eee1974c6cc348f90a3bce0fdc314802ea0725994998e49a8168d1b"
+      },
+      {
+        "input": "v56-calib00",
+        "role": "A",
+        "file": "v56-calib00-A-profile.txt",
+        "bytes": 16706,
+        "sha256": "d20b8b86892989f515dbd7b87f1917963cb65189e62ef4d49cda0486affc4c44"
+      },
+      {
+        "input": "v56-calib00",
+        "role": "B",
+        "file": "v56-calib00-B-profile.txt",
+        "bytes": 14943,
+        "sha256": "5b1860fd06fabfbe5b57b701d1cf1843dd2626dcd03ff0635c01c53ba5484a8f"
+      }
+    ],
+    "normal_timing_statistics_computed": false
+  },
+  "controllers": {
+    "normal": {
+      "control_sha256": "f90fa13da9d2fe12dbe68d56854b2401b4dd58b72ae68cbd14de011b404cf647",
+      "worker_log_sha256": "182ed39f708a7ffff82b468883c0dce87712ab60718f011db74148ed0165c724",
+      "child_returncode": 0,
+      "controller_samples": 5,
+      "call_before_after_samples": 56,
+      "all_sampled_npu_hz": 1000000000,
+      "max_combined_temperature_c": 53.615,
+      "restored_effective_and_requested_npu_hz": 300000000,
+      "frequency_governor_limits_restored": true,
+      "restore_errors": [],
+      "seconds": 2.048049914999865
+    },
+    "profile": {
+      "control_sha256": "5e1506058106fa559b1a63a1b544fd75d1b770770434ac0590088d6031972b1c",
+      "worker_log_sha256": "9d856354552d0e18f9e37a936372a455a41165101b15dac2c6099ca2ca518048",
+      "child_returncode": 0,
+      "controller_samples": 3,
+      "call_before_after_samples": 8,
+      "all_sampled_npu_hz": 1000000000,
+      "max_combined_temperature_c": 53.615,
+      "restored_effective_and_requested_npu_hz": 300000000,
+      "frequency_governor_limits_restored": true,
+      "restore_errors": [],
+      "seconds": 1.0283502289967146
+    }
+  },
+  "conclusion": "The Q/K row layout passed the four FP32 original-ONNX checks but was 2.661715% slower in this matched W8A8 component run; it was not adopted.",
+  "candidate_accepted": false,
+  "quality_accepted": false,
+  "full_model_or_trajectory_or_realtime_validated": false,
+  "limitations": [
+    "Measured complete-pair component calls include input/output SDK conversion, run, owned copy, release and finite checks; saved hashes, comparisons and NPZ writes are outside timing.",
+    "FP32 API tensors do not establish FP32 internal arithmetic or verify that every internal operator ran as INT8 on the NPU.",
+    "All quantized outputs failed the original FP32 strict check; practical full-model trajectory quality was not tested for this candidate.",
+    "Profile flags8 calls are separate diagnostics and are excluded from normal timing statistics.",
+    "Original/candidate RKNN payload hashes are pinned board receipts; payloads were not independently rehashed on this host. The older baseline compile receipt lacks a release flag; new probe context cleanup was directly recorded separately."
+  ]
+}

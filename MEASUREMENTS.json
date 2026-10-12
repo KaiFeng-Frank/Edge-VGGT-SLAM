@@ -563,5 +563,16 @@
     "INT8_component_warm_seconds": 0.03158365608881771,
     "full_pipeline_unchanged": true,
     "real_time_validated": false
+  },
+  "original_qk_rows_v86": {
+    "record": "results/original_qk_rows_v86.json",
+    "status": "rejected_no_component_latency_gain",
+    "candidate_accepted": false,
+    "original_W8A8_component_warm_seconds": 0.017419717080580693,
+    "QK_rows_W8A8_component_warm_seconds": 0.017883380334145233,
+    "candidate_latency_change_percent": 2.6617151783792536,
+    "full_pipeline_unchanged": true,
+    "last_verified_complete_pipeline": "results/original_calibrated_camera_v82.json",
+    "real_time_validated": false
   }
 }

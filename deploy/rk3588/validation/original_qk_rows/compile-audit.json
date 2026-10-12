@@ -1,0 +1,190 @@
+{
+  "schema": "v86_QK_rows_saved_compile_lineage_audit",
+  "status": "passed_saved_lineage_not_candidate_acceptance",
+  "evidence_sha256": {
+    "compiled.json": "dea0d8f9115de5c3fe1d8d8ae2a37129c74890118f1a53d4085286157a14e272",
+    "export.json": "c8d4d880c6d8d997e9db045d0ebd66ab3ae704e3d0c90e9656ae134b7b52c756",
+    "FP32-r1/check.json": "d7be30bf5a9e46374fdb4cff194003e673942c83c28512909174e42491f3d57a",
+    "compile-control.json": "08f310ab825bfba35a3001e44b2bc1941e36b633c48f1d0230f7322cbf6e5fe6",
+    "compile.log": "ba858ccf2de05a5b020d3e41bf9a5da9ce941e1ff0facfa36f371eed6eb916ee",
+    "baseline-original-int8-compile.json": "46e83eb3d2b0e3ddfe7176d0d7de456190b53c48a9315a50bf0ea551315c9f8f",
+    "probe-r1/result.json": "41a4bc2195131e1a003dc7929e078ae49250062b58be8224d3f546195b305990",
+    "profile-r1/result.json": "a4afff2dc46571fc73b61f0354542466419be021059776d70599070f625921ca",
+    "compile_qk_rows_board.py": "61938e68d23ad78a6e366b90482a9884f92bf03264db910055443bc9df984fe0",
+    "rewrite_frame_qk_rows_board.py": "07b9c560a0268dbdc45e8364d3a802ead066c3c7f0a522e7eca5ebca48564fc3",
+    "check_qk_rows_FP32_board.py": "fdb9bdeea3365343b66b2973cda949f69610ac29d3a8998d81c7d274034e5002"
+  },
+  "original_checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "original_graph": {
+    "bytes": 100914761,
+    "sha256": "efbbaee8f3d6326565930e5a045eac0d500fdb35453fdf85ddac7481ec2fac65"
+  },
+  "candidate_graph": {
+    "bytes": 100916859,
+    "sha256": "8087794597a5ce79baf1731b5f780967531c13a7fd374641f75a041bd16c9c89"
+  },
+  "original_parameter_count": 36,
+  "original_initializer_count": 63,
+  "new_INT64_layout_constant_count": 4,
+  "global0_unchanged": true,
+  "original_all_layers_tokens_reductions_retained": true,
+  "FP32_gate": {
+    "case_count": 2,
+    "complete_output_comparisons": 4,
+    "strict_passed": true,
+    "byte_equal": true,
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "original_Torch_references_cover_only_v53": true
+  },
+  "A_reuse": {
+    "baseline_manifest_sha256": "bdfe3757a7b4adef891dd622525d8a70ba948e9c0af9d0c1d9fffed41a74ea91",
+    "baseline_leaf_sha256": "46e83eb3d2b0e3ddfe7176d0d7de456190b53c48a9315a50bf0ea551315c9f8f",
+    "parent_manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42",
+    "original_graph_ancestor_sha256": "2e96b1d0187a69dbac7672574d07ff38a479b78923d6e5640e57e661bb0e0471",
+    "ancestry_not_aliased": true,
+    "original_pair_metadata_equal": true,
+    "rknn_bytes": 27736654,
+    "rknn_sha256": "9264eec3c2ad6d09663a34238a4d4169c94ec913a4be713affa8982c019ab3ba",
+    "old_leaf_release_proof_available": false,
+    "new_probe_lifecycle_separately_recorded": true
+  },
+  "calibration": {
+    "capture_sha256": "a1e6f1b2a89e1a96987befdea4f0a048aaf06066efa9fff72a370ac77d45507c",
+    "sample_count": 8,
+    "source_pair_indices": [
+      [
+        0,
+        48
+      ],
+      [
+        96,
+        144
+      ],
+      [
+        192,
+        240
+      ],
+      [
+        288,
+        336
+      ],
+      [
+        384,
+        432
+      ],
+      [
+        480,
+        528
+      ],
+      [
+        576,
+        624
+      ],
+      [
+        672,
+        720
+      ]
+    ],
+    "input_shape": [
+      2,
+      53,
+      1024
+    ],
+    "dtype": "float32",
+    "dataset_bytes": 704,
+    "dataset_sha256": "34789c52e8f625fe966cefab16ac3046c3a72ab71051ccd3e14e7d9374b12696",
+    "exact_original_eight_paths_and_artifact_metadata_equal": true,
+    "configuration_equal_to_A": true,
+    "do_quantization": true,
+    "auto_hybrid": false
+  },
+  "build": {
+    "rknn_bytes": 29202510,
+    "rknn_sha256": "90c90296e5e1db56aa1c462320fc7512fbdd40cf4b4fa4f162f6945de59b1865",
+    "compiler_report_seconds": 25.66640841201297,
+    "controller_seconds": 26.56607387799886,
+    "operation_codes": {
+      "config": 0,
+      "load_onnx": 0,
+      "build": 0,
+      "export_rknn": 0
+    },
+    "released": true,
+    "release_code": null,
+    "cleanup_errors": [],
+    "source_inputs_environment_affinity_unchanged_or_restored": true,
+    "compile_cpus": [
+      4,
+      6
+    ],
+    "thermal_sample_count": 92,
+    "sampled_NPU_hz": 300000000,
+    "maximum_sampled_temperature_c": 62.846,
+    "pause_count": 0,
+    "frequency_written": false
+  },
+  "compiler_placement": {
+    "row_count": 50,
+    "NPU": 47,
+    "CPU": 3,
+    "CPU_ops": [
+      "InputOperator",
+      "OutputOperator",
+      "OutputOperator"
+    ],
+    "SDPA_annotated_NPU": 2,
+    "activation_dtype_annotations": {
+      "INT8": 50
+    },
+    "constant_dtype_annotations": {
+      "INT64": 11,
+      "FLOAT16": 8,
+      "FLOAT": 8,
+      "INT8": 20,
+      "INT32": 12
+    },
+    "all_internal_arithmetic_INT8_proven": false,
+    "scope": "SDK table target and dtype annotations; floating norm constants and integer biases/shapes remain. No proof of accumulator or nonlinear arithmetic precision."
+  },
+  "normal_component": {
+    "warm": {
+      "A": {
+        "count": 12,
+        "mean_ms": 17.419717080580693,
+        "per_input_ms": {
+          "v53": 16.448459995444864,
+          "v56-calib00": 18.390974165716518
+        }
+      },
+      "B": {
+        "count": 12,
+        "mean_ms": 17.883380334145233,
+        "per_input_ms": {
+          "v53": 16.65384216660944,
+          "v56-calib00": 19.112918501681026
+        }
+      }
+    },
+    "B_over_A_percent": 2.6617151783792536,
+    "schedule": "ABABBAABBAABBA",
+    "init_flags": 0,
+    "profile_calls_excluded": true,
+    "profile_call_count": 4,
+    "normal_contexts_created": 2,
+    "normal_contexts_destroyed": 2,
+    "normal_live_contexts": 0,
+    "queried_loaded_model_SHA_matches_A_and_B_receipts": true
+  },
+  "limits": [
+    "Only saved source/JSON/log provenance and aggregate timing audited here; raw SDK output numerical audit is separate.",
+    "RKNN/ONNX payloads remain private and were not independently rehashed on the host; board receipts and runtime model hash queries bind them.",
+    "W8A8 FP32 SDK input/output conversion is not internal FP32 equivalence.",
+    "One profile per input/route is diagnostic and excluded from flags0 means.",
+    "Candidate not adopted; no full-model, trajectory, live replay or 20 Hz claim."
+  ],
+  "actual_model_OR_Torch_OR_ORT_OR_SDK_or_board_executed_by_auditor": false
+}

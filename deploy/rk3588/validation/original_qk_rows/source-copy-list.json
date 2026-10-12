@@ -1,0 +1,52 @@
+{
+  "schema": "v86_original_QK_rows_public_source_copy_list",
+  "files": [
+    {
+      "file": "rewrite_frame_qk_rows_board.py",
+      "bytes": 28175,
+      "sha256": "07b9c560a0268dbdc45e8364d3a802ead066c3c7f0a522e7eca5ebca48564fc3"
+    },
+    {
+      "file": "check_qk_rows_FP32_board.py",
+      "bytes": 13906,
+      "sha256": "fdb9bdeea3365343b66b2973cda949f69610ac29d3a8998d81c7d274034e5002"
+    },
+    {
+      "file": "compile_qk_rows_board.py",
+      "bytes": 22386,
+      "sha256": "61938e68d23ad78a6e366b90482a9884f92bf03264db910055443bc9df984fe0"
+    },
+    {
+      "file": "probe_qk_rows_board.py",
+      "bytes": 15513,
+      "sha256": "bb609cab831fa6e320ecb052d67a04db19fa82dd5fe5ea373169d87fd8c5acb9"
+    },
+    {
+      "file": "run_qk_rows_rewrite.sh",
+      "bytes": 435,
+      "sha256": "004ff09763db26e9d9c41f3a1c2f75121e3220b00ebd82106045c8a7fcee59ae"
+    },
+    {
+      "file": "run_qk_rows_FP32.sh",
+      "bytes": 809,
+      "sha256": "c5acf311250d3b4e659dddc4ae0a43281c5e2a5b3ebec5e3720c644636b7773e"
+    },
+    {
+      "file": "run_qk_rows_compile.sh",
+      "bytes": 1327,
+      "sha256": "84fab99234ed56bf89bfca7db9d11f24c51aed4c941a8ee05f45d43a1726e363"
+    },
+    {
+      "file": "run_qk_rows_probe_1ghz.sh",
+      "bytes": 982,
+      "sha256": "dcde278edee1149058df233abec47030da58ddb310b4d6059bcc0726691735a3"
+    },
+    {
+      "file": "run_qk_rows_profile_1ghz.sh",
+      "bytes": 994,
+      "sha256": "bbc671899a726562bb11329a9197e3f5e62d86e028e193032813f68e6ff624c8"
+    }
+  ],
+  "executed_scope": "Four Python entry points and five recorded launchers: static rewrite, FP32 gate, W8A8 compile, separate normal/profile component probes.",
+  "excluded": "All private captured arrays, checkpoints, ONNX/RKNN graphs, vendor headers/libraries, raw logs and unexecuted drafts."
+}
