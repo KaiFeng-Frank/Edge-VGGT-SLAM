@@ -1,0 +1,44 @@
+{
+  "schema": "v82_calibrated_camera_runtime_source_checks",
+  "status": "passed_generated_checks_only",
+  "frozen_sources": [
+    {
+      "file": "rknn_calibrated_camera.py",
+      "bytes": 12731,
+      "sha256": "0a3db35965ffc7d17ff0855a5040ecb0f22f8be23a88605ec1a1e7793ad236ec"
+    },
+    {
+      "file": "run_calibrated_camera_complete.py",
+      "bytes": 12325,
+      "sha256": "af1de7652a8e5d116ffdc9438aec809349e4db548c2bf3984be7584407b1a205"
+    },
+    {
+      "file": "check_calibrated_camera_generated.py",
+      "bytes": 5899,
+      "sha256": "f836ef6fdcac90cb812f4ff776d5933f8465fde7430b5e5fcecdd0510e02743c"
+    },
+    {
+      "file": "check_camera_wrapper_generated.py",
+      "bytes": 5806,
+      "sha256": "941c6202f51435649ab431e03bc74640b3515ae15dfd88c54099890d27dcc00e"
+    }
+  ],
+  "AST_passed": 4,
+  "generated_checks_passed": 10,
+  "generated_receipts": [
+    {
+      "file": "calibrated-camera-generated-result.json",
+      "bytes": 1536,
+      "sha256": "444c369d527c27fbbac7cd0e19ce93fee99fe0f18182770c87224594bad9ef51"
+    },
+    {
+      "file": "camera-wrapper-generated-result.json",
+      "bytes": 869,
+      "sha256": "3b3db2e3961f80dfb760e297d36b520f7032477a667af3fe02d6f512ebfcc12a"
+    }
+  ],
+  "actual_model_or_SDK_or_device_execution": false,
+  "original_make_forward_and_execute_step_inherited_unchanged": true,
+  "expected_negative_pending_destroy_case_retains_live_context": true,
+  "production_defaults_modified": false
+}

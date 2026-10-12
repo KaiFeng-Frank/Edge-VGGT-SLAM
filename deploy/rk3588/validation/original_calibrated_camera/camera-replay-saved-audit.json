@@ -1,0 +1,385 @@
+{
+  "EOF_drain_seconds": 1.1664169510186184,
+  "acceptance": {
+    "all_publication_gaps_at_most_1s": false,
+    "average_fresh_pose_rate_at_least_1Hz": true,
+    "average_fresh_pose_rate_at_least_20Hz": false,
+    "candidate_accepted": false,
+    "complete_input_to_pose_P95_at_most_100ms": false,
+    "eight_GB_hardware_validated": false,
+    "limitations": "Short recorded-dataset consistency audit; map finiteness is not trajectory/quantization accuracy",
+    "physical_sensor_latency_validated": false,
+    "rate_and_P95_targets_both_met": false,
+    "real_time_validated": false,
+    "thirty_minute_run_validated": false,
+    "trajectory_quality_validated": false
+  },
+  "all_audited_input_files_unchanged": true,
+  "audit_scope": "Saved JSON/TUM/NumPy only; no model, SDK, or board execution",
+  "audit_script_sha256": "a81130890575130df7d3a2f96700f054039719f538eb7192f9de443138112242",
+  "control": {
+    "all_observed_frequencies_hz": 1000000000,
+    "exact_baseline_state_restored": {
+      "cur_freq": "300000000",
+      "governor": "userspace",
+      "max_freq": "1000000000",
+      "min_freq": "300000000",
+      "userspace/set_freq": "300000000"
+    },
+    "frequency_scope": "saved controller and per-update observations, not continuous telemetry",
+    "maximum_observed_temperature_c": 64.692,
+    "observations": 171,
+    "restore_errors": [],
+    "saved_update_frequency_observations": 31
+  },
+  "files": {
+    "control.json": {
+      "bytes": 62183,
+      "sha256": "dea9e44ad9eecee3f9d70122b36b69f748eff2f5dac88bdf727b38548e92f9ac"
+    },
+    "map.json": {
+      "bytes": 24318,
+      "sha256": "e86f7693ae024a77e2f91c8e6c6a056f290c0dc766bc28509818dc08a53bf1b8"
+    },
+    "map_chunks/submap_000000.npz": {
+      "bytes": 212694,
+      "sha256": "0a8f17ab3aae8ca573c8993c6b2084b1b7dac9346fbf0c51a2b8a25cb7c47396"
+    },
+    "map_chunks/submap_000002.npz": {
+      "bytes": 212694,
+      "sha256": "b1c60600236e92371f8fb7db9d9145648e35248f8ff225fa4357bf5912eccf7d"
+    },
+    "map_chunks/submap_000004.npz": {
+      "bytes": 212694,
+      "sha256": "767a93f4c27890234af16dd7e3b1baa541c0d5af368339fec6bd5c4b4c3c8c4a"
+    },
+    "map_chunks/submap_000006.npz": {
+      "bytes": 212604,
+      "sha256": "89f151eb555a5920db40ec0996d3a36a25ae659ec539c5c9d1410b583742f04d"
+    },
+    "map_chunks/submap_000008.npz": {
+      "bytes": 212589,
+      "sha256": "f6d405d56a647be3b224bf5d0131af8e524ccd017b66b964861665734bd9e984"
+    },
+    "map_chunks/submap_000010.npz": {
+      "bytes": 212664,
+      "sha256": "50904956e2a2e9e2e519ad2df0fa732ec3b527aeed631b8cf1d8bcb399c8b620"
+    },
+    "map_chunks/submap_000012.npz": {
+      "bytes": 212649,
+      "sha256": "8ba65d13f9ab9e94e3132f8f92d1c072f2a3d0367d3ba190551d69bc72b6638e"
+    },
+    "map_chunks/submap_000014.npz": {
+      "bytes": 212694,
+      "sha256": "07530915f6e6c32fae556e1b0721dfbadebf3c619c05210380c90a28d23033b8"
+    },
+    "map_chunks/submap_000016.npz": {
+      "bytes": 212694,
+      "sha256": "d84fa88158e46367addab73e258cd26a6f76f27e0b94e265ac70cb8855c96842"
+    },
+    "map_chunks/submap_000018.npz": {
+      "bytes": 212679,
+      "sha256": "18dda7f82b69712cfd515f539fd516687b83b718c43a7728da03f8eb0d1dd75f"
+    },
+    "map_chunks/submap_000020.npz": {
+      "bytes": 212694,
+      "sha256": "e6c75ad5d5aa88458e839ca7885b110060bc7f9022931d02301f3daa772ca820"
+    },
+    "map_chunks/submap_000022.npz": {
+      "bytes": 212694,
+      "sha256": "d2cbbff2888891d6caf3bb18f4c3cc0cbf076b487e030b956cc1095c7cdf2b02"
+    },
+    "map_chunks/submap_000024.npz": {
+      "bytes": 212664,
+      "sha256": "b7ab3c767e9c97b1007f66a301755dfe2dd6b01c8838f758e7ab9e3b6e2779eb"
+    },
+    "map_chunks/submap_000026.npz": {
+      "bytes": 212694,
+      "sha256": "69ff2242627b142fccee78b5e9df09c14b3978e16a9f0893c975c8ce06c59bdf"
+    },
+    "map_chunks/submap_000028.npz": {
+      "bytes": 212649,
+      "sha256": "f1970271c0ee170f49677c83d7637d35f29d2dbbb63999defa5c5ca2ca87c0dd"
+    },
+    "map_chunks/submap_000030.npz": {
+      "bytes": 212694,
+      "sha256": "a87e231ce26154e77ffe14b3ee2bb8a14e0ae4f202ea1bcca0ddf8c5f391baac"
+    },
+    "map_chunks/submap_000032.npz": {
+      "bytes": 212679,
+      "sha256": "74baa40b1fb511778c812f7c89cdd8a543938f0e3392e68dcf556fec319f0077"
+    },
+    "map_chunks/submap_000034.npz": {
+      "bytes": 212634,
+      "sha256": "e723a01fc5fcb6eb7c994fa54ee057406491b92f8907551c7a9120d1f6f9dafe"
+    },
+    "map_chunks/submap_000036.npz": {
+      "bytes": 212694,
+      "sha256": "5e1a4f69b5e736b603b662321ac0faad35a1b40e6f9e2d64ada312a2740c207f"
+    },
+    "map_chunks/submap_000038.npz": {
+      "bytes": 212694,
+      "sha256": "2d8fd7222f60760fa85533bb03412ea1a67048dd48f7a78f31c6bdc6c600b14c"
+    },
+    "map_chunks/submap_000040.npz": {
+      "bytes": 212694,
+      "sha256": "d81c0bcb5e614c16ee7100fb78aba612d96eae7795bafbed020fc7f6f103484e"
+    },
+    "map_chunks/submap_000042.npz": {
+      "bytes": 212694,
+      "sha256": "17428b5f711c531e72fe5b5c66878370936942ffc90529a5b379b28cd65d09f7"
+    },
+    "map_chunks/submap_000044.npz": {
+      "bytes": 212694,
+      "sha256": "3636563866b3b58a8b6886ca75fd532b9185d59806d031b07c1585d57307edaf"
+    },
+    "map_chunks/submap_000046.npz": {
+      "bytes": 212694,
+      "sha256": "4c830d282b0f51ebff6f44776c7f2ae6b7f048ac3d5c116cc63dc6308b9de088"
+    },
+    "map_chunks/submap_000048.npz": {
+      "bytes": 212679,
+      "sha256": "948dc92fa44b15358c206a2e30e6701703de7a6eaee28bd47f26a80bc139010c"
+    },
+    "map_chunks/submap_000050.npz": {
+      "bytes": 212694,
+      "sha256": "b1e7f7269c96eabf996d9714a6dad9a4ebb7a6ccd410fa15376332e334598c7c"
+    },
+    "map_chunks/submap_000052.npz": {
+      "bytes": 212694,
+      "sha256": "84c010cfa3fb8b1e429470aed4ee38bd02b3e61b1d2cc77933a6f501e20c6bf1"
+    },
+    "map_chunks/submap_000054.npz": {
+      "bytes": 212694,
+      "sha256": "7572e4c18892946570d769f0da90ee242d920b4f5980ac968c74f79952d5664e"
+    },
+    "map_chunks/submap_000056.npz": {
+      "bytes": 212694,
+      "sha256": "9c25010fcc29cc2d3d0dd0bc8dcc59e2ac0f63bfdf2a933ac68821a20c12a62e"
+    },
+    "map_chunks/submap_000058.npz": {
+      "bytes": 212694,
+      "sha256": "fb8ab7810233fa53247163935827b39027e456a98a9c6d8028c7b91806e099fa"
+    },
+    "map_chunks/submap_000060.npz": {
+      "bytes": 212649,
+      "sha256": "17ac8690d946d34562662a220be16b45dfab1e71ceeb78dc91766fa03b3826f1"
+    },
+    "poses.tum": {
+      "bytes": 3190,
+      "sha256": "532a3c6ce992cf5f11e94a4235cdb8938bd7bc56c14087c8539f927c6ca2c769"
+    },
+    "results.json": {
+      "bytes": 104290,
+      "sha256": "e4356e0c6ee07d5ed29e3bf8b63d1087810afaa196bb9f9aeee4eb568b2fcc2b"
+    },
+    "wrapper.json": {
+      "bytes": 25997,
+      "sha256": "3f09fbf7e323edff6d0749ce5e435419ed14ef146549362c1ecd445b4405dfb5"
+    }
+  },
+  "fresh_pose_count": 31,
+  "fresh_pose_hz": 1.1167359564625257,
+  "fresh_sequence_and_timestamp_unique_strictly_increasing": true,
+  "fresh_wall_seconds_including_EOF_drain": 27.759471539000515,
+  "input_inventory_sha256": "c286cb8d7c7733d58df507cd83a6ee6475f24273e8d298c9c0d97ab40b7f9bfc",
+  "input_to_pose_seconds": {
+    "exact_published_minus_captured_for_all_updates": true,
+    "maximum": 1.1874122695007827,
+    "p95": 1.0687904172809795
+  },
+  "map": {
+    "SL4_nodes": 62,
+    "SL4_shape": [
+      4,
+      4
+    ],
+    "all_shapes_and_values_checked": true,
+    "arrays_checked": 124,
+    "chunks": 31,
+    "colors_dtype": "uint8",
+    "metric_scale_validated": false,
+    "point_count_maximum": 9116,
+    "point_count_minimum": 4993,
+    "point_sets": 62,
+    "points_dtype": "float32",
+    "points_total": 437439,
+    "units": "model_units"
+  },
+  "original_timestamp_deadline_matches_all_captures": true,
+  "peak_RSS_MiB": 3380.1875,
+  "poses": {
+    "all_finite": true,
+    "columns": 8,
+    "maximum_quaternion_norm_error": 4.6771329031969344e-09,
+    "rows": 32,
+    "timestamps_match_seed_and_updates": true
+  },
+  "provenance": {
+    "DINO_depth_and_SL4_unchanged": true,
+    "adapter_source_sha256": "f3f106034c6621a1e3ed07bdb265107b8522103f7d186ba4bbe0d0cefda16f2f",
+    "all_internal_operators_INT8_verified": false,
+    "camera_adapter_source_sha256": "0a3db35965ffc7d17ff0855a5040ecb0f22f8be23a88605ec1a1e7793ad236ec",
+    "camera_all_internal_operators_INT8_verified": false,
+    "camera_compile_receipt_sha256": "4d4094c76570dd497af3553b6dfcbc768ebd65147717db7aca8b20bc4c0efc89",
+    "camera_logical_IO_descriptors": [
+      {
+        "format": 3,
+        "fractional_length": 0,
+        "h_stride": 0,
+        "index": 0,
+        "n_elems": 4096,
+        "name": "camera_tokens",
+        "pass_through": 0,
+        "quantization_type": 2,
+        "scale": 0.3101952075958252,
+        "shape": [
+          1,
+          2,
+          2048
+        ],
+        "size": 4096,
+        "size_with_stride": 4096,
+        "type": 2,
+        "w_stride": 0,
+        "zero_point": 79
+      },
+      {
+        "format": 3,
+        "fractional_length": 0,
+        "h_stride": 0,
+        "index": 1,
+        "n_elems": 18,
+        "name": "conditioning_pose",
+        "pass_through": 0,
+        "quantization_type": 2,
+        "scale": 0.005431869998574257,
+        "shape": [
+          1,
+          2,
+          9
+        ],
+        "size": 18,
+        "size_with_stride": 18,
+        "type": 2,
+        "w_stride": 0,
+        "zero_point": -88
+      },
+      {
+        "format": 3,
+        "fractional_length": 0,
+        "h_stride": 0,
+        "index": 0,
+        "n_elems": 18,
+        "name": "pose_delta",
+        "pass_through": 0,
+        "quantization_type": 2,
+        "scale": 0.005431870464235544,
+        "shape": [
+          1,
+          2,
+          9
+        ],
+        "size": 18,
+        "size_with_stride": 18,
+        "type": 2,
+        "w_stride": 0,
+        "zero_point": -88
+      }
+    ],
+    "compiled_camera_internal_precision_changed": true,
+    "entrypoint_sha256": "ed7ae7ba73d4e54d17a1be9bcc0c9213776371cbe90c5921210779ca6d252d3e",
+    "original_aggregator_ONNX_unchanged": true,
+    "original_camera_ONNX_unchanged": true,
+    "original_four_iterations_FP32_accumulation_and_activation_unchanged": true,
+    "original_model_only": true,
+    "quantized_manifest_sha256": "2d322f3afed5af4ab510a879960b941118c8a9ec585a7c4bd9bf06269fba1d97",
+    "requested_aggregator_quantized_dtype": "w8a8",
+    "requested_camera_quantized_dtype": "w8a8"
+  },
+  "publication_gaps_seconds": {
+    "above_50ms": 30,
+    "above_one_second": 1,
+    "count": 30,
+    "maximum": 1.0413630210096017,
+    "p95": 0.8965132478537271
+  },
+  "runtime": {
+    "SDK_run_count_by_backend": {
+      "camera_rknn": 124,
+      "depth_rknn": 62,
+      "dino_rknn": 192,
+      "rknn": 124
+    },
+    "cleanup_errors": [],
+    "contexts_created_and_destroyed": {
+      "camera_rknn": 2,
+      "depth_rknn": 1,
+      "dino_rknn": 6,
+      "rknn": 4
+    },
+    "immutable_session_and_cache_closed": true,
+    "live_contexts": 0,
+    "other_backends_output_acquire_release_totals": "not recorded; not independently asserted",
+    "retained_outputs_acquired_and_released": 279,
+    "total_SDK_runs": 502,
+    "total_contexts": 13,
+    "wrapper_installer_restored": true
+  },
+  "saved_latency_phase_equations_passed": true,
+  "saved_phase_seconds": {
+    "SL4_and_points_seconds": {
+      "maximum": 0.05705167297855951,
+      "mean": 0.03719652399811293,
+      "p95": 0.05631388050096575
+    },
+    "arrival_to_decode_seconds": {
+      "maximum": 0.024300428136484697,
+      "mean": 0.0018516082688415003,
+      "p95": 0.01387540326686576
+    },
+    "decode_seconds": {
+      "maximum": 0.05481996401795186,
+      "mean": 0.03208092258371893,
+      "p95": 0.05144265099079348
+    },
+    "full_model_seconds": {
+      "maximum": 0.9451704279927071,
+      "mean": 0.7871705737113277,
+      "p95": 0.8639539200084982
+    },
+    "prediction_seconds": {
+      "maximum": 1.1216599880135618,
+      "mean": 0.8375931243879735,
+      "p95": 0.9108955709962174
+    },
+    "processing_seconds": {
+      "maximum": 1.1392363230115734,
+      "mean": 0.891903711936339,
+      "p95": 0.9685455350117991
+    },
+    "publication_seconds": {
+      "maximum": 0.02503083599731326,
+      "mean": 0.017114063550252467,
+      "p95": 0.022199398503289558
+    },
+    "queue_seconds": {
+      "maximum": 0.12652684599743225,
+      "mean": 0.02487831838586698,
+      "p95": 0.06811313198704738
+    }
+  },
+  "schema": "v82_original_VGGT_INT8_camera_saved_timestamp_replay_audit",
+  "seed_delivered_once": true,
+  "source": {
+    "delivered": 32,
+    "generated": 797,
+    "original_frames": 798,
+    "overwritten": 765,
+    "queue_capacity": 1,
+    "skipped_before_decode": 1
+  },
+  "source_frame_conservation_passed": true,
+  "startup_seconds": 57.34806921999552,
+  "status": "passed_saved_file_consistency_checks"
+}

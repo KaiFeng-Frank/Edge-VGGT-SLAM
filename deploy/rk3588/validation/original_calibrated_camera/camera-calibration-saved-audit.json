@@ -1,0 +1,31 @@
+{
+  "schema": "v82_saved_original_camera_calibration_audit",
+  "capture_sha256": "ebb8c7902b1ae6418b57f7b1737e0ce1f12bfe44cca0a3d89f05bb091755a509",
+  "status": "passed_saved_array_and_original_full_pose_identity_checks",
+  "actual_host_model_or_GPU_or_SDK_execution": false,
+  "saved_arrays_verified": 104,
+  "calibration_pairs": 8,
+  "step_input_pairs": 32,
+  "original_full_FP32_final_poses_byte_equal": 8,
+  "calibration_and_17_evaluation_indices_disjoint": true,
+  "conditioning_is_previous_unactivated_FP32_sum": true,
+  "first_conditioning_original_empty_token_raw_sha256": "a4f798a79001dce1fb81a8081beb6cefa8c37ecb8e19379f582367a40e41da83",
+  "final_pose_raw_sha256": [
+    "56af0b0378044b3abac082990694c7c1a2d7f9b27a30e05f5717cffb0c3cb53f",
+    "6477c0fc2f6263b928e69de84e279867953ef8edb089266b09021a6a7000863d",
+    "4ae8af691b61d9da79d1b74b3a32307b5dd9e9bcfb0c6a88dbaecbca67560219",
+    "9c445f2046b39acbffedc41af6e3f2762d97f63eb6d12ac05bf91b20b693cf13",
+    "efb890e30372717efbc4188c4aafa3dfce0f0875fb19eaa23ec1de123c70925a",
+    "5961c76d89cf0ff007687903511fff6113b1486a8c4b9fc92b2b90a84244d47b",
+    "a4e3e6055dd9c0952bf270232130a71678a89af3b57eec99f6785778c336ae71",
+    "cd32de089b1b46f3e7691f2ec25174d7ebd1642aee3cab17c2f2cfffb79c2ce6"
+  ],
+  "actual_model_parameter_rehash_on_host": false,
+  "parameter_identity_scope": "Board capture checks 69 camera and 36 final-block parameters; this host audit verifies saved arrays and reference hashes only.",
+  "capture_control_sha256": "2421575d5f5a1fada0635b4532fbc2e877f6bf2e496baa9cc3c1995670438b58",
+  "NPU_hz": 300000000,
+  "max_temperature_c": 73.0,
+  "wall_seconds": 44.87502942600986,
+  "thermal_scheduler_events": 50,
+  "realtime_or_quality_acceptance": false
+}

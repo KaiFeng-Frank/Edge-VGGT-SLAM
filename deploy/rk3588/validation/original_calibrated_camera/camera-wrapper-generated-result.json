@@ -1,0 +1,29 @@
+{
+  "schema": "v82_calibrated_camera_wrapper_generated_checks",
+  "passed": 3,
+  "actual_model_or_SDK_or_device_execution": false,
+  "cases": [
+    {
+      "case": "success",
+      "passed": true,
+      "status": "completed_original_entrypoint_pending_saved_output_review",
+      "camera_resources_closed": true
+    },
+    {
+      "case": "comparator_before_cleanup_failure",
+      "passed": true,
+      "status": "failed",
+      "camera_resources_closed": true
+    },
+    {
+      "case": "camera_close_failure",
+      "passed": true,
+      "status": "failed_cleanup_or_identity",
+      "camera_resources_closed": false
+    }
+  ],
+  "sources": {
+    "run_calibrated_camera_complete.py": "af1de7652a8e5d116ffdc9438aec809349e4db548c2bf3984be7584407b1a205",
+    "check_camera_wrapper_generated.py": "941c6202f51435649ab431e03bc74640b3515ae15dfd88c54099890d27dcc00e"
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "v82_saved_original_camera_INT8_compilation_audit",
+  "status": "passed",
+  "scope": "Source and saved JSON/dataset/NPY identities only; no model, ORT, SDK or board execution",
+  "compile_receipt_sha256": "4d4094c76570dd497af3553b6dfcbc768ebd65147717db7aca8b20bc4c0efc89",
+  "controller_receipt_sha256": "a14d7afdb35a92c3a85f6523480b9b83f2070c24b866e186a6959b14570237f5",
+  "compiler_source_sha256": "2f935b2937b7465a140a8d1a408cdb0a7205a6a89e8d54833271cf0e51e4f374",
+  "capture_source_sha256": "0337c6fbdb2ea3d70073f6cd08e8e6f8f230c4284b198ecdf6dfa48f0eaf00e8",
+  "capture_receipt_sha256": "ebb8c7902b1ae6418b57f7b1737e0ce1f12bfe44cca0a3d89f05bb091755a509",
+  "controller_source_sha256": "662d2332cb3f72632b1d5b1d43455f216e0e44cbc1baa383a2af92f6ed82e073",
+  "lineage": {
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "unchanged_graph_sha256": "f1b9eee30144ec643aa351db724c2f740a79d82a8f9df5468f4338e377600a7f",
+    "original_graph_payload_rehashed_on_host": false,
+    "parameters_verified_against_frozen_export_metadata": 69,
+    "original_parameter_payload_rehashed_on_host": false,
+    "original_learned_empty_retained": true,
+    "original_four_refinements_and_FP32_outer_contract_retained": true,
+    "calibration_pairs": 8,
+    "ordered_two_input_rows": 32,
+    "unique_input_NPY_files_verified": 40,
+    "all_eight_original_final_poses_bitwise_equal": true,
+    "prior_FP32_graph_check_receipt_sha256": "9c58744a713a8ad686e66e811163c260e82f6522f0a936dbcc92cb5fdfdc4c2a"
+  },
+  "compilation": {
+    "configuration": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "mean_values": null,
+      "std_values": null,
+      "quant_img_RGB2BGR": false,
+      "model_pruning": false,
+      "remove_reshape": false,
+      "quantize_weight": false,
+      "enable_flash_attention": false,
+      "quantized_dtype": "w8a8",
+      "quantized_algorithm": "normal",
+      "quantized_method": "channel"
+    },
+    "compile_cpus": [
+      4,
+      6
+    ],
+    "operations": [
+      {
+        "name": "config",
+        "status": "completed",
+        "code": 0,
+        "seconds": 0.002576000988483429
+      },
+      {
+        "name": "load_onnx",
+        "status": "completed",
+        "code": 0,
+        "seconds": 4.377397982025286
+      },
+      {
+        "name": "build",
+        "status": "completed",
+        "code": 0,
+        "seconds": 206.85577007502434
+      },
+      {
+        "name": "export_rknn",
+        "status": "completed",
+        "code": 0,
+        "seconds": 0.17728581000119448
+      }
+    ],
+    "released": true,
+    "release_code": null,
+    "source_and_inputs_unchanged": true,
+    "environment_restored": true,
+    "affinity_restored": true,
+    "cleanup_errors": []
+  },
+  "output": {
+    "recorded_RKNN": {
+      "file": "camera-step-int8.rknn",
+      "bytes": 219174348,
+      "sha256": "8bb5b37de0b552b78a1f6eec582c70e6d4e8622e363815a2a2287c76ecbd56ac"
+    },
+    "RKNN_payload_rehashed_on_host": false
+  },
+  "control": {
+    "status": "completed",
+    "returncode": 0,
+    "seconds": 220.10419507400366,
+    "samples": 678,
+    "sampled_NPU_hz": [
+      300000000
+    ],
+    "sampled_max_temperature_c": 71.153,
+    "thermal_sensor_count": 7,
+    "thermal_pause_resume_event_count": 26,
+    "thermal_pause_seconds": 52.861524186009774,
+    "frequency_written": false,
+    "cleanup_errors": []
+  },
+  "limits": [
+    "RKNN payload remains board-only; output SHA is recorded by the compiler, not independently rehashed here.",
+    "Successful PTQ build is not runtime numerical, full-model quality or realtime acceptance.",
+    "All seven thermal nodes and NPU frequency are sampled; this does not prove values between observations."
+  ]
+}

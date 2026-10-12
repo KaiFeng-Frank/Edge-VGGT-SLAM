@@ -6,7 +6,9 @@ The current tree contains only this model's execution path and relevant componen
 
 **The real-time target remains unachieved.** The target is at least 20 fresh-observation poses per second with complete input-to-pose P95 latency at most 100 ms. Map cadence, bounded queues, trajectory quality, 30-minute stability and operation within 8 GB each need separate validation. A component's timing, repeated prediction or offline reconstruction does not satisfy those targets. Current measurements use dataset files on a 16 GB RK3588S; physical-camera validation is deferred.
 
-**Latest component experiment: the original MLP now executes through native
+**Latest original-model experiment: CameraHead PTQ preserves its original graph and all four refinements.** The same 16-pair complete comparison measures 1.043 → 1.024 s mean service (a small 1.86% difference between separate runs). A separate timestamp replay produces **31 fresh poses at 1.117 Hz, complete P95 1.069 s**; one of 30 publication gaps exceeds one second (maximum 1.041 s). Peak RSS is 3380 MiB. Short-trajectory rotation RPE RMSE rises 7.30% against original CPU and the worst rotation segment reaches 27.24°. This remains experimental, with no new general quality, 20 Hz/100 ms or long-run acceptance. [Results, exact unchanged-output checks and reproduction](deploy/rk3588/validation/original_calibrated_camera/README.md).
+
+**Earlier component experiment: the original MLP now executes through native
 NPU MatMul, GPU Erf and shared DMA buffers.** The missing, matching GPU firmware
 was added with explicit user approval; GPU clocks and the kernel driver were
 unchanged. GPU activation reduces the native MLP from 36.962 to 12.182 ms,
@@ -18,7 +20,7 @@ byte-identical. Combining GPU activation with this shared-input FC2 takes
 the combination is not adopted. These are component measurements, not a
 whole-model or SLAM speedup. [Measurements, failures and reproduction](deploy/rk3588/validation/original_native_gpu/README.md).
 
-**Latest original-model experiment: four retained aggregator groups compiled
+**Earlier original-model experiment: four retained aggregator groups compiled
 with W8A8, while DINO, CameraHead, DPT and SL4 retain the current baseline.**
 At 1 GHz, the same 16-pair complete comparison improves from **1.211 to
 1.043 s mean service (13.88% less time)** and 3926 to 3337 MiB peak process RSS.

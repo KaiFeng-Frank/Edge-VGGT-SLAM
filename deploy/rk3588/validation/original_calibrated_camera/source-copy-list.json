@@ -1,0 +1,86 @@
+{
+  "schema": "v82_executed_original_camera_and_profile_sources",
+  "files": {
+    "capture_camera_calibration_board.py": {
+      "bytes": 19838,
+      "sha256": "0337c6fbdb2ea3d70073f6cd08e8e6f8f230c4284b198ecdf6dfa48f0eaf00e8"
+    },
+    "compile_camera_int8_board.py": {
+      "bytes": 20553,
+      "sha256": "2f935b2937b7465a140a8d1a408cdb0a7205a6a89e8d54833271cf0e51e4f374"
+    },
+    "probe_camera_int8_board.py": {
+      "bytes": 31613,
+      "sha256": "a88c2d07a26d2ac6abb1f26a9e707e199a0d2572ef82b1d05ee62162ee6248a5"
+    },
+    "probe_calibrated_retained_profiles_board.py": {
+      "bytes": 16586,
+      "sha256": "549025448290ab72cbaf819ebbcc41ad2e3df6971aecaf20c1f13c1048c360d7"
+    },
+    "rknn_calibrated_camera.py": {
+      "bytes": 12731,
+      "sha256": "0a3db35965ffc7d17ff0855a5040ecb0f22f8be23a88605ec1a1e7793ad236ec"
+    },
+    "run_calibrated_camera_complete.py": {
+      "bytes": 12325,
+      "sha256": "af1de7652a8e5d116ffdc9438aec809349e4db548c2bf3984be7584407b1a205"
+    },
+    "run_calibrated_camera_replay.py": {
+      "bytes": 14473,
+      "sha256": "28ddacc4057c51c5b20358c029fd1691a29c5db42e84edf6c0997abe3ae7ec08"
+    },
+    "run_compile_thermal_stage_r2.py": {
+      "bytes": 4822,
+      "sha256": "662d2332cb3f72632b1d5b1d43455f216e0e44cbc1baa383a2af92f6ed82e073"
+    },
+    "run_camera_calibration.sh": {
+      "bytes": 299,
+      "sha256": "a9103231cda8194d4a7866d42fe43deeba46f80e1ddef975b0122b8be6c5d932"
+    },
+    "run_camera_int8_compile.sh": {
+      "bytes": 995,
+      "sha256": "c4856b4412f9ac2e420c597fce45f1e78a142bc76328356079982a6f6becc31b"
+    },
+    "run_camera_int8_probe_1ghz.sh": {
+      "bytes": 757,
+      "sha256": "bd2a417e5ae4a8e7f3f6a5cd87cdf7b0a5dfb23df3f807b5da8a27e762e58f4c"
+    },
+    "run_camera_int8_complete_1ghz.sh": {
+      "bytes": 2160,
+      "sha256": "3aaa7b9d68c4d8838709881f4b459094aa7187c3b78c01e846d92e7e673e9e5c"
+    },
+    "run_camera_int8_replay_1ghz.sh": {
+      "bytes": 2283,
+      "sha256": "c12a1136b78bdd07adb0ff2d66b63ba985dc6e3946ff210523cfd1ab02a56614"
+    },
+    "run_retained_int8_profile_1ghz.sh": {
+      "bytes": 384,
+      "sha256": "0b940296521becffa71fb0d761df80f876ebaefef6c8cf7081eb78c50fed488e"
+    },
+    "audit_camera_calibration_saved.py": {
+      "bytes": 4221,
+      "sha256": "024729c5f1290bd5fa69f9522e037237283354f35ad8ee315575fcb45e3c5ed5"
+    },
+    "audit_camera_int8_saved.py": {
+      "bytes": 18090,
+      "sha256": "5b5025e73f954d43e0fc3ac2e412658632301ee8797814f224fd19156689e199"
+    },
+    "audit_complete_camera_saved.py": {
+      "bytes": 19606,
+      "sha256": "1f906c40c8da693f0cdeca3bf9f096b37d4012ea03d6a51df62e6288aa1111be"
+    },
+    "audit_camera_replay_saved.py": {
+      "bytes": 26414,
+      "sha256": "a81130890575130df7d3a2f96700f054039719f538eb7192f9de443138112242"
+    },
+    "check_calibrated_camera_generated.py": {
+      "bytes": 5899,
+      "sha256": "f836ef6fdcac90cb812f4ff776d5933f8465fde7430b5e5fcecdd0510e02743c"
+    },
+    "check_camera_wrapper_generated.py": {
+      "bytes": 5806,
+      "sha256": "941c6202f51435649ab431e03bc74640b3515ae15dfd88c54099890d27dcc00e"
+    }
+  },
+  "no_weights_arrays_or_vendor_payloads": true
+}

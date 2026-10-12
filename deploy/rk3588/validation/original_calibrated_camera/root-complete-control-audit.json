@@ -1,0 +1,26 @@
+{
+  "schema": "v82_root_complete_control_audit",
+  "status": "passed",
+  "controller_sha256": "27f20f3c7c50f2b6801020f9ad82e1e906756bb176745f05ea2f34a56054ae78",
+  "wrapper_sha256": "9719378ac7051674d7b80b4942994a916c5480e2625212b6af85920cb3022c6a",
+  "observations": 171,
+  "frequencies_hz": [
+    1000000000
+  ],
+  "seconds": 87.79852265500813,
+  "peak_process_RSS_MiB": 3378.56640625,
+  "restored": {
+    "governor": "userspace",
+    "cur_freq": "300000000",
+    "min_freq": "300000000",
+    "max_freq": "1000000000",
+    "userspace/set_freq": "300000000"
+  },
+  "runtime_camera_contexts": {
+    "created": 2,
+    "destroyed": 2
+  },
+  "source_and_installers_restored": true,
+  "actual_host_model_execution": false,
+  "max_temperature_c": 66.538
+}

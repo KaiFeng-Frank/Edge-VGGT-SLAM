@@ -1,0 +1,474 @@
+{
+  "schema": "v82_original_INT8_retained_profile_saved_audit",
+  "status": "passed_saved_hash_shape_finite_profile_and_controller_audit",
+  "original_model_only": true,
+  "actual_model_SDK_ORT_or_board_execution_by_auditor": false,
+  "source_and_result_pins": {
+    "profile_source_sha256": "549025448290ab72cbaf819ebbcc41ad2e3df6971aecaf20c1f13c1048c360d7",
+    "profile_result_sha256": "742c29fbb45f170c41867c6fd2ec2501c02a9c2c1c3ecfd7561cc7e48d672996",
+    "control_sha256": "26148c674ef6c2671a3b8a2428da50e62b3632c8caa39e067b9a6b293c1cb1e5",
+    "normal_v80_complete_sha256": "576a0f0f55a103209e01b84d5bc16935d2815f08515842e8963c4dab380e09c6",
+    "original_manifest_sha256": "771a9b82007d2feefd65ebbf3f4b0fb27070b79ff7f6d0faab1a8c866da90e43",
+    "quantized_manifest_sha256": "2d322f3afed5af4ab510a879960b941118c8a9ec585a7c4bd9bf06269fba1d97",
+    "adapter_sha256": "f3f106034c6621a1e3ed07bdb265107b8522103f7d186ba4bbe0d0cefda16f2f"
+  },
+  "artifacts_checked": {
+    "profile_text_files": 8,
+    "NPZ_files": 8,
+    "output_arrays": 18,
+    "all_file_sizes_and_hashes_match": true,
+    "all_output_shape_dtype_finite_raw_hashes_match": true,
+    "original_input_metadata_matches_pinned_checks": true,
+    "original_input_bytes_independently_reread_here": false
+  },
+  "resources": {
+    "contexts_created": 4,
+    "contexts_destroyed": 4,
+    "live_contexts": 0,
+    "SDK_calls": 8,
+    "outputs_acquired": 18,
+    "outputs_released": 18,
+    "quantized_lineage_worker_rechecked": true,
+    "affinity_restored": true,
+    "cleanup_errors": []
+  },
+  "control": {
+    "observations": 44,
+    "before_after_samples": 16,
+    "all_observed_NPU_hz": 1000000000,
+    "max_temperature_c": 62.846,
+    "restored": {
+      "governor": "userspace",
+      "cur_freq": "300000000",
+      "min_freq": "300000000",
+      "max_freq": "1000000000",
+      "userspace/set_freq": "300000000"
+    },
+    "baseline_equals_restored": true,
+    "restore_errors": [],
+    "worker_elapsed_seconds": 21.78544523002347
+  },
+  "normal_v80_budget": {
+    "complete_calls": 16,
+    "cache_outer_aggregator_minus_DINO_seconds_per_pose": 0.4859660228175926,
+    "retained_inner_forward_minus_DINO_seconds_per_pose": 0.4739077951890067,
+    "group_route_seconds_per_pose": 0.45768122781555576,
+    "SDK_run_seconds_per_pose": 0.42783717075144523,
+    "SDK_run_fraction_of_cache_outer_minus_DINO": 0.8803849459904195,
+    "submission_seconds_per_pose": 0.019485004371745163,
+    "output_get_seconds_per_pose": 0.00361101611815684,
+    "owned_copy_seconds_per_pose": 0.0022514298052556114,
+    "output_finite_check_seconds_per_pose": 0.001993268369915313,
+    "route_external_seconds_per_pose": 0.028284795002036844,
+    "route_external_includes": "Original token/positions/retained concat/target normalization, cache+retained guards and version checks; this subtotal is not purely validation."
+  },
+  "profile_summaries": {
+    "v53": {
+      "operator_rows": 1231,
+      "operator_us": 365041,
+      "operator_types": {
+        "exNorm": {
+          "count": 192,
+          "us": 91305,
+          "profile_share_percent": 25.012259
+        },
+        "exSDPAttention": {
+          "count": 48,
+          "us": 54302,
+          "profile_share_percent": 14.875589
+        },
+        "ConvAdd": {
+          "count": 144,
+          "us": 52945,
+          "profile_share_percent": 14.50385
+        },
+        "Transpose": {
+          "count": 177,
+          "us": 37773,
+          "profile_share_percent": 10.347605
+        },
+        "ConvExGelu": {
+          "count": 48,
+          "us": 35526,
+          "profile_share_percent": 9.732057
+        },
+        "Reshape": {
+          "count": 225,
+          "us": 32711,
+          "profile_share_percent": 8.960911
+        },
+        "Mul": {
+          "count": 192,
+          "us": 25506,
+          "profile_share_percent": 6.98716
+        },
+        "Conv": {
+          "count": 48,
+          "us": 15225,
+          "profile_share_percent": 4.170764
+        },
+        "Split": {
+          "count": 48,
+          "us": 8562,
+          "profile_share_percent": 2.34549
+        },
+        "Gather": {
+          "count": 48,
+          "us": 5612,
+          "profile_share_percent": 1.537362
+        },
+        "Add": {
+          "count": 48,
+          "us": 5376,
+          "profile_share_percent": 1.472711
+        },
+        "OutputOperator": {
+          "count": 9,
+          "us": 183,
+          "profile_share_percent": 0.050131
+        },
+        "InputOperator": {
+          "count": 4,
+          "us": 15,
+          "profile_share_percent": 0.004109
+        }
+      },
+      "SDK_DataType": {
+        "INT8": {
+          "count": 1231,
+          "us": 365041
+        }
+      },
+      "SDK_Target": {
+        "NPU": {
+          "count": 1218,
+          "us": 364843
+        },
+        "CPU": {
+          "count": 13,
+          "us": 198
+        }
+      },
+      "semantic_hotspots": {
+        "norm1024": {
+          "count": 96,
+          "us": 40076
+        },
+        "QK64_norm": {
+          "count": 96,
+          "us": 51229
+        },
+        "QK_RoPE_arithmetic_and_layout": {
+          "count": 432,
+          "us": 58998
+        },
+        "SDPA": {
+          "count": 48,
+          "us": 54302
+        },
+        "FC1": {
+          "count": 48,
+          "us": 35526
+        },
+        "FC2": {
+          "count": 48,
+          "us": 37656
+        }
+      },
+      "reported_WorkLoad": {
+        "norm1024": [
+          "100.0%/0.0%/0.0%"
+        ],
+        "QK64_norm": [
+          "100.0%/0.0%/0.0%"
+        ],
+        "QK_RoPE_arithmetic_and_layout": [
+          "0.0%/0.0%/0.0%",
+          "100.0%/0.0%/0.0%",
+          "34.0%/34.0%/32.1%"
+        ],
+        "SDPA": [
+          "100.0%/0.0%/0.0%"
+        ],
+        "FC1": [
+          "100.0%/0.0%/0.0%"
+        ],
+        "FC2": [
+          "34.4%/34.4%/31.3%"
+        ]
+      },
+      "core0_only_reported_operator_us": 297480,
+      "CPU_internal_operator_count": 0
+    },
+    "v56-calib00": {
+      "operator_rows": 1231,
+      "operator_us": 511484,
+      "operator_types": {
+        "exNorm": {
+          "count": 192,
+          "us": 116581,
+          "profile_share_percent": 22.792697
+        },
+        "ConvAdd": {
+          "count": 144,
+          "us": 73099,
+          "profile_share_percent": 14.291552
+        },
+        "exSDPAttention": {
+          "count": 48,
+          "us": 62001,
+          "profile_share_percent": 12.121787
+        },
+        "Transpose": {
+          "count": 177,
+          "us": 58999,
+          "profile_share_percent": 11.534867
+        },
+        "Mul": {
+          "count": 192,
+          "us": 51120,
+          "profile_share_percent": 9.994448
+        },
+        "ConvExGelu": {
+          "count": 48,
+          "us": 42382,
+          "profile_share_percent": 8.286085
+        },
+        "Reshape": {
+          "count": 225,
+          "us": 39707,
+          "profile_share_percent": 7.763097
+        },
+        "Split": {
+          "count": 48,
+          "us": 21966,
+          "profile_share_percent": 4.294562
+        },
+        "Conv": {
+          "count": 48,
+          "us": 21734,
+          "profile_share_percent": 4.249204
+        },
+        "Add": {
+          "count": 48,
+          "us": 12214,
+          "profile_share_percent": 2.387953
+        },
+        "Gather": {
+          "count": 48,
+          "us": 11378,
+          "profile_share_percent": 2.224508
+        },
+        "OutputOperator": {
+          "count": 9,
+          "us": 276,
+          "profile_share_percent": 0.053961
+        },
+        "InputOperator": {
+          "count": 4,
+          "us": 27,
+          "profile_share_percent": 0.005279
+        }
+      },
+      "SDK_DataType": {
+        "INT8": {
+          "count": 1231,
+          "us": 511484
+        }
+      },
+      "SDK_Target": {
+        "NPU": {
+          "count": 1218,
+          "us": 511181
+        },
+        "CPU": {
+          "count": 13,
+          "us": 303
+        }
+      },
+      "semantic_hotspots": {
+        "norm1024": {
+          "count": 96,
+          "us": 53320
+        },
+        "QK64_norm": {
+          "count": 96,
+          "us": 63261
+        },
+        "QK_RoPE_arithmetic_and_layout": {
+          "count": 432,
+          "us": 111327
+        },
+        "SDPA": {
+          "count": 48,
+          "us": 62001
+        },
+        "FC1": {
+          "count": 48,
+          "us": 42382
+        },
+        "FC2": {
+          "count": 48,
+          "us": 44614
+        }
+      },
+      "reported_WorkLoad": {
+        "norm1024": [
+          "100.0%/0.0%/0.0%"
+        ],
+        "QK64_norm": [
+          "100.0%/0.0%/0.0%"
+        ],
+        "QK_RoPE_arithmetic_and_layout": [
+          "0.0%/0.0%/0.0%",
+          "100.0%/0.0%/0.0%",
+          "34.0%/34.0%/32.1%"
+        ],
+        "SDPA": [
+          "100.0%/0.0%/0.0%"
+        ],
+        "FC1": [
+          "100.0%/0.0%/0.0%"
+        ],
+        "FC2": [
+          "34.4%/34.4%/31.3%"
+        ]
+      },
+      "core0_only_reported_operator_us": 416132,
+      "CPU_internal_operator_count": 0
+    }
+  },
+  "artifact_ledger": [
+    {
+      "group": 0,
+      "input": "v53",
+      "operator_rows": 257,
+      "operator_us": 64001,
+      "profile_sha256": "b916ff19da5ff4308c86089ac05d842eb4631f470e3e95fe66d9519529b525a0",
+      "NPZ_sha256": "bb59a6901a35b00b3875019fe05dd9e2b148992f41d21ffa2b47b4d978ba2187",
+      "output_raw_sha256": [
+        "628ddfef9b9d2e8994a87feb7877ace56f62c0311f4ee14169d8c188073263e9",
+        "cf9c861af66aa288dd433043f393b1426b9557eb1cec488a8674ccf1f82eb113"
+      ]
+    },
+    {
+      "group": 0,
+      "input": "v56-calib00",
+      "operator_rows": 257,
+      "operator_us": 102073,
+      "profile_sha256": "488915cc885f51fa305b62b014a8a5cd648aa85cb0f51cc94613cb0335543cc9",
+      "NPZ_sha256": "ae333ab749c87a1c97b8cb84a2cf24fb3aef2128a5a3ecc0eaa0c02d613a27c2",
+      "output_raw_sha256": [
+        "20a8b47a926036e4ef94ce6b45bffb63f1108041199f1a95b81aaa2f6d223b7e",
+        "8128cb3405d8f7f82ea84e3d459f96685ea86429167b72c4493f848873bb6461"
+      ]
+    },
+    {
+      "group": 1,
+      "input": "v53",
+      "operator_rows": 357,
+      "operator_us": 113787,
+      "profile_sha256": "0f27f179fb89d7f9b0e1e3f5f964fd25521f72da03033524969901de947e2f7b",
+      "NPZ_sha256": "210b5f7197b8c87799e86d738e83c78fbbe6ffcb2fb09019c0514372c6d059be",
+      "output_raw_sha256": [
+        "881dda976a57ec850815ecfb4317427bd0cee9a929af10db845c6366db13734a",
+        "18be7a3d70a72c063929d1954bbfa9bca43f8eea4f18405aae8c7c019a550f61"
+      ]
+    },
+    {
+      "group": 1,
+      "input": "v56-calib00",
+      "operator_rows": 357,
+      "operator_us": 140842,
+      "profile_sha256": "39ad23ccfed93cbe29fe7d98783c4245c3af477a57a68fe5edf9aa2c9ec90146",
+      "NPZ_sha256": "4bc954aab16c9ddb2a9de004b63eaebcc48cb76e5e814fbbe9f1e884632e9f5f",
+      "output_raw_sha256": [
+        "2f9b2c2850a6c94f44bde8fff749110f5423c80665a0a4a7c5cf7838bcccc287",
+        "4edf90f1fdb9d6ae1ecb22e5db18704e63eb518132a8260a40687c855d684ff5"
+      ]
+    },
+    {
+      "group": 2,
+      "input": "v53",
+      "operator_rows": 307,
+      "operator_us": 92802,
+      "profile_sha256": "96fd73da44f71ccbeaa8c04ddd8c16a029eb57523fb5a535e1259d856c032c40",
+      "NPZ_sha256": "70476017455e2ad9f55cf7b86fab1e8f01e27316e5564bd67bdd9e7e95c6d80e",
+      "output_raw_sha256": [
+        "b5e88234b3c4a8e4618ce0890ab9f378f18899e1972ffbcd34c814e847d3faa7",
+        "1380e8cd454c5f96572351f091b67a530a8a5cb659d1ea4db05b95c83693eefa"
+      ]
+    },
+    {
+      "group": 2,
+      "input": "v56-calib00",
+      "operator_rows": 307,
+      "operator_us": 131508,
+      "profile_sha256": "5987ace8b4fdc7fd6367400dca0e6595c4a129309705d43d631bdc7a92a24cdc",
+      "NPZ_sha256": "4772d4548ce8c8a6046735ed9153c03a74673b4373f9f74b64e0ac4123048d1d",
+      "output_raw_sha256": [
+        "ea16f07e293000975c08bd93a88da4c0517d19f8801bee045a286b59f351c4ef",
+        "463f0e3b6ec4db533930a32dc865958ac045c3ac049cd2c49bcc626715e4904e"
+      ]
+    },
+    {
+      "group": 3,
+      "input": "v53",
+      "operator_rows": 310,
+      "operator_us": 94451,
+      "profile_sha256": "83dca4da4a04a1d04a4f0ac97e0b1ac1f577d83b90514fc656aadecaf12e5cb2",
+      "NPZ_sha256": "be02a8ead4ca4f57c020de0b67dff582c3e9e1a5ab10378589da41e119295977",
+      "output_raw_sha256": [
+        "cca4585f88a27d4156b6a1ecc6e23825a88e604f6793de7d06616991d4f06ced",
+        "87ed0ae2eb6014ea372ef1999b4c16ad01b749a13378b9b31d1d1d058d84a57e",
+        "68c194d4db94d42409e1e7cb479d2493c24d8813758af4fbbc8a6e25f48df2d7"
+      ]
+    },
+    {
+      "group": 3,
+      "input": "v56-calib00",
+      "operator_rows": 310,
+      "operator_us": 137061,
+      "profile_sha256": "be10a417a0852f006bd2f99707f64d2c48db1fd69bdadeeed5485abd5c53a6ac",
+      "NPZ_sha256": "3da4f28443197491c1464648314c94cdaaf62929fc530be58848cd5d6cf9e261",
+      "output_raw_sha256": [
+        "1bd59d64275418420aaa5313250398fb634cac49ed9dd1be1e376ecca7886be2",
+        "1072f21b9b330b476f48f3242d496fe46d7b6208b03c37d69e78765348259262",
+        "b30105c63521d1253738e9012e27d88ccaefea1b6caf017c508d7b529d981568"
+      ]
+    }
+  ],
+  "next_bounded_candidate": {
+    "name": "Onboard Mali fused original QK LayerNorm + RoPE + complete SDPA tail",
+    "scope": "One original frame0 attention tail first; [2,16,53,64], all 32 batch-head groups and all 53 query/key tokens. A later global case is [1,16,106,64]. Preserve original gamma/beta/eps/positions/RoPE frequency and scaling, QK scale, exact standard softmax and complete V product. No trained model substitution.",
+    "why": "After W8A8, exNorm is the largest type. QK64 norms alone cost 51.229/63.261 ms across four independent profiles; accompanying QK RoPE/layout and SDPA remain substantial. Fuse the entire tail to amortize GPU import/coherence/layout; do not repeat isolated GELU or previously rejected bare RoPE/QKV layout rewrites.",
+    "input_requirements": [
+      "Two original real saved pre-QK-normalization QKV operands, with original frame0 Q/K/V ordering, full shapes, FP32 raw hashes and original Torch CPU tail outputs; existing post-RoPE SDPA Q/K captures alone cannot test QK norm or RoPE.",
+      "Original q_norm/k_norm gamma/beta and exact eps, original positions and RoPE cosine/sine or source table hashes; preserve head/token ordering.",
+      "For an actual v80 integration comparison, capture or query the actual producer/consumer ABI: QKV, Q/K-normalized, RoPE and SDPA input/output dtype, native layout, stride/offset, scale/zero-point. Current group descriptors give only public group boundaries.",
+      "Retain NPU DMA allocations until OpenCL imports/events are released; use fd imports and explicit CPU/NPU/GPU coherence, never assert zero-copy from pointer identity alone."
+    ],
+    "missing_measurement": "Fresh flags0 A/B with identical original operands, complete SDK and GPU bridge timings including conversions/import/synchronization/output ownership, original CPU strict comparisons plus intermediate numerical gates. Need a successful complete original block comparison before graph or full-model deployment.",
+    "implementation_boundary": "No GPU implementation written in this turn. SDK2.3.2 custom compute supports FP32 NCHW, compute_native is reserved; native INT8 callback support and unchanged quantization boundaries are not assumed.",
+    "confidence": {
+      "hotspot_identification": "high for these saved diagnostic inputs",
+      "candidate_worth_bounded_operator_test": "moderate",
+      "actual_speed_gain": "unknown"
+    }
+  },
+  "primary_SDK_boundary": {
+    "header_url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/v2.3.2/rknpu2/runtime/Linux/librknn_api/include/rknn_custom_op.h",
+    "guide_url": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/v2.3.2/doc/02_Rockchip_RKNPU_User_Guide_RKNN_SDK_V2.3.2_EN.pdf",
+    "cached_guide": "/home/frank/.local/share/edge-vggt-private/v55/sdk-static/user-guide-2.3.2-en.txt",
+    "locators": "lines5050\u20135080: target CPU/GPU, compute FP32 NCHW, compute_native reserved; lines9890\u20139897: custom GPU profile includes import/layout/dtype/kernel callback costs."
+  },
+  "limits": [
+    "Each summed input set uses four independently captured original group inputs, not one live full-model activation chain. One flags8 call per input/group is not normal flags0 warm latency or a speed benchmark.",
+    "SDK explicitly reports all 1,231 rows INT8. That label does not prove that exNorm, softmax inside exSDPAttention or fused Erf arithmetic is implemented entirely with integer math.",
+    "SDK reports core0-only WorkLoad for exNorm/SDPA/FC1; this is operator allocation information, not measured whole-device utilization. CPU rows are only input/output shims; no internal CPU mathematical or layout fallback is observed.",
+    "The v76 inherited worker false model-execution field means absence of Torch/ORT/compiler execution; eight actual SDK model inferences did execute on the RK3588S. Auditor executed only saved-data NumPy/JSON reads.",
+    "No same-input flags0 normal outputs were available for these current calibrated profile calls; no profile/normal equality or new numerical acceptance is asserted.",
+    "One Split took 7,576 us in only the v56-calib00 group1 diagnostic; this isolated outlier does not establish a normal-latency bottleneck.",
+    "No host GPU use, new checkpoint/model, quality acceptance, full-model acceleration, 20Hz/100ms, 8GB or long-run acceptance."
+  ]
+}

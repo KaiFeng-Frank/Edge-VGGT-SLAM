@@ -1,0 +1,198 @@
+{
+  "schema": "v82_original_CameraHead_FP16_INT8_saved_audit",
+  "status": "passed_saved_artifact_math_lifecycle_and_controller_audit",
+  "original_model_only": true,
+  "actual_model_Torch_ORT_SDK_or_board_execution_by_auditor": false,
+  "auditor_sha256": "5b5025e73f954d43e0fc3ac2e412658632301ee8797814f224fd19156689e199",
+  "probe_source_sha256": "a88c2d07a26d2ac6abb1f26a9e707e199a0d2572ef82b1d05ee62162ee6248a5",
+  "probe_result_sha256": "e44b94a2c32dc9a75678cc6606eb0c55f7d41391d19235d3bc26ac38309611ee",
+  "controller_sha256": "9750bb6621e723da195eaf3c4a1309ff76a452a3e0b29ce2816f176d7b8c3946",
+  "original_reference_NPZ_sha256": "a2fcdd89a49ce2f5e02df7ba57e38b993ebb5cb0229d18a8b824df5d967beb9b",
+  "original_CPU_comparison_recomputed": true,
+  "original_empty_seed_hash_independently_checked": true,
+  "NPZ_files_checked": 14,
+  "tensor_arrays_checked": 238,
+  "file_and_raw_hash_shape_dtype_finite_passed": true,
+  "original_unactivated_FP32_recurrence_and_linear_linear_ReLU_passed": true,
+  "contexts_created": 2,
+  "contexts_destroyed": 2,
+  "live_contexts": 0,
+  "SDK_steps": 56,
+  "outputs_acquired": 56,
+  "outputs_released": 56,
+  "source_and_inputs_unchanged": true,
+  "affinity_and_process_environment_restored": true,
+  "cleanup_errors": [],
+  "controls": {
+    "observations": 24,
+    "call_before_after_samples": 28,
+    "all_observed_NPU_hz": 1000000000,
+    "max_temperature_c": 66.538,
+    "worker_elapsed_seconds": 11.689222174987663,
+    "baseline_equals_restored": true,
+    "restored": {
+      "governor": "userspace",
+      "cur_freq": "300000000",
+      "min_freq": "300000000",
+      "max_freq": "1000000000",
+      "userspace/set_freq": "300000000"
+    },
+    "restore_errors": []
+  },
+  "summaries": {
+    "A": {
+      "calls": 7,
+      "warm_count": 6,
+      "first_seconds": 0.09554446800029837,
+      "warm_head_mean_seconds": 0.14478511167302108,
+      "warm_SDK_mean_seconds": 0.14044438199683404,
+      "warm_head_min_seconds": 0.13144376300624572,
+      "warm_head_max_seconds": 0.149406557000475,
+      "all_17_outputs_bitwise_stable": true
+    },
+    "B": {
+      "calls": 7,
+      "warm_count": 6,
+      "first_seconds": 0.09531755102216266,
+      "warm_head_mean_seconds": 0.10496398967613156,
+      "warm_SDK_mean_seconds": 0.1006713851626652,
+      "warm_head_min_seconds": 0.08836830101790838,
+      "warm_head_max_seconds": 0.11312496900791302,
+      "all_17_outputs_bitwise_stable": true
+    }
+  },
+  "B_over_A_warm_head_ratio": 0.7249639722154547,
+  "first_B_vs_first_A_final_pose": {
+    "bitwise_equal": false,
+    "strict_pass": false,
+    "outside": 18,
+    "elements": 18,
+    "max_abs": 0.016427159309387207,
+    "relative_l2": 0.015559795881689344
+  },
+  "first_routes_vs_original_CPU_final_pose": {
+    "A": {
+      "bitwise_equal": false,
+      "strict_pass": false,
+      "outside": 18,
+      "elements": 18,
+      "max_abs": 0.006485286168754101,
+      "relative_l2": 0.007874472220088287
+    },
+    "B": {
+      "bitwise_equal": false,
+      "strict_pass": false,
+      "outside": 18,
+      "elements": 18,
+      "max_abs": 0.013816475868225098,
+      "relative_l2": 0.012376876142161342
+    }
+  },
+  "artifact_ledger": [
+    {
+      "call": 0,
+      "route": "A",
+      "NPZ_sha256": "0948455b924a3fcbfaa77946dfc051bdc2824c038223fda434b3ef5539581ec5",
+      "tensors": 17,
+      "final_raw_sha256": "5ab42a2f8e2c6e065dddaee49aa37c726d5a284dbf89d8ed6569d0f8fc7180fe"
+    },
+    {
+      "call": 1,
+      "route": "B",
+      "NPZ_sha256": "eee89ad7422c8ecaf20b59a1382a99a06da474e196cec1a74f615528324fa381",
+      "tensors": 17,
+      "final_raw_sha256": "0bd1f987dc04f5f38b12ecd02c4f515854d3e4457a290d4758c6a2efce025e35"
+    },
+    {
+      "call": 2,
+      "route": "A",
+      "NPZ_sha256": "0948455b924a3fcbfaa77946dfc051bdc2824c038223fda434b3ef5539581ec5",
+      "tensors": 17,
+      "final_raw_sha256": "5ab42a2f8e2c6e065dddaee49aa37c726d5a284dbf89d8ed6569d0f8fc7180fe"
+    },
+    {
+      "call": 3,
+      "route": "B",
+      "NPZ_sha256": "eee89ad7422c8ecaf20b59a1382a99a06da474e196cec1a74f615528324fa381",
+      "tensors": 17,
+      "final_raw_sha256": "0bd1f987dc04f5f38b12ecd02c4f515854d3e4457a290d4758c6a2efce025e35"
+    },
+    {
+      "call": 4,
+      "route": "B",
+      "NPZ_sha256": "eee89ad7422c8ecaf20b59a1382a99a06da474e196cec1a74f615528324fa381",
+      "tensors": 17,
+      "final_raw_sha256": "0bd1f987dc04f5f38b12ecd02c4f515854d3e4457a290d4758c6a2efce025e35"
+    },
+    {
+      "call": 5,
+      "route": "A",
+      "NPZ_sha256": "0948455b924a3fcbfaa77946dfc051bdc2824c038223fda434b3ef5539581ec5",
+      "tensors": 17,
+      "final_raw_sha256": "5ab42a2f8e2c6e065dddaee49aa37c726d5a284dbf89d8ed6569d0f8fc7180fe"
+    },
+    {
+      "call": 6,
+      "route": "A",
+      "NPZ_sha256": "0948455b924a3fcbfaa77946dfc051bdc2824c038223fda434b3ef5539581ec5",
+      "tensors": 17,
+      "final_raw_sha256": "5ab42a2f8e2c6e065dddaee49aa37c726d5a284dbf89d8ed6569d0f8fc7180fe"
+    },
+    {
+      "call": 7,
+      "route": "B",
+      "NPZ_sha256": "eee89ad7422c8ecaf20b59a1382a99a06da474e196cec1a74f615528324fa381",
+      "tensors": 17,
+      "final_raw_sha256": "0bd1f987dc04f5f38b12ecd02c4f515854d3e4457a290d4758c6a2efce025e35"
+    },
+    {
+      "call": 8,
+      "route": "B",
+      "NPZ_sha256": "eee89ad7422c8ecaf20b59a1382a99a06da474e196cec1a74f615528324fa381",
+      "tensors": 17,
+      "final_raw_sha256": "0bd1f987dc04f5f38b12ecd02c4f515854d3e4457a290d4758c6a2efce025e35"
+    },
+    {
+      "call": 9,
+      "route": "A",
+      "NPZ_sha256": "0948455b924a3fcbfaa77946dfc051bdc2824c038223fda434b3ef5539581ec5",
+      "tensors": 17,
+      "final_raw_sha256": "5ab42a2f8e2c6e065dddaee49aa37c726d5a284dbf89d8ed6569d0f8fc7180fe"
+    },
+    {
+      "call": 10,
+      "route": "A",
+      "NPZ_sha256": "0948455b924a3fcbfaa77946dfc051bdc2824c038223fda434b3ef5539581ec5",
+      "tensors": 17,
+      "final_raw_sha256": "5ab42a2f8e2c6e065dddaee49aa37c726d5a284dbf89d8ed6569d0f8fc7180fe"
+    },
+    {
+      "call": 11,
+      "route": "B",
+      "NPZ_sha256": "eee89ad7422c8ecaf20b59a1382a99a06da474e196cec1a74f615528324fa381",
+      "tensors": 17,
+      "final_raw_sha256": "0bd1f987dc04f5f38b12ecd02c4f515854d3e4457a290d4758c6a2efce025e35"
+    },
+    {
+      "call": 12,
+      "route": "B",
+      "NPZ_sha256": "eee89ad7422c8ecaf20b59a1382a99a06da474e196cec1a74f615528324fa381",
+      "tensors": 17,
+      "final_raw_sha256": "0bd1f987dc04f5f38b12ecd02c4f515854d3e4457a290d4758c6a2efce025e35"
+    },
+    {
+      "call": 13,
+      "route": "A",
+      "NPZ_sha256": "0948455b924a3fcbfaa77946dfc051bdc2824c038223fda434b3ef5539581ec5",
+      "tensors": 17,
+      "final_raw_sha256": "5ab42a2f8e2c6e065dddaee49aa37c726d5a284dbf89d8ed6569d0f8fc7180fe"
+    }
+  ],
+  "limits": [
+    "Only the frozen v15 real-token CameraHead component is compared; this does not establish full-model/trajectory/map/realtime quality.",
+    "Each route completes four refinements, and later deltas use that route's own accumulated unactivated output; original fixed-conditioning deltas do not independently isolate single-step quantization error.",
+    "Original CPU metric recomputation is conditional on the separately pinned original reference NPZ; otherwise those CPU metrics are recorded from the frozen board receipt, not independently recalculated here.",
+    "SDK DataType/quantization labels do not prove every internal operator integer math; flags0 timings include complete four-step API ownership and CPU head_act, excluding file hashes/saves/comparisons.",
+    "Short seven-call/six-warm measurements do not establish 8GB, 30-minute stability, 20Hz fresh pose, P95 input-to-pose, camera streaming or quality acceptance."
+  ]
+}
