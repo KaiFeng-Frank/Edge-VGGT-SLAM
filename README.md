@@ -1,55 +1,55 @@
 # Edge-VGGT-SLAM
 
-将 **VGGT-SLAM2 的原始预训练 VGGT** 移植到 RK3588S，输出相机位姿和稠密地图。模型执行与原有子地图构建、SL4 图优化分离，便于实现和验证嵌入式执行后端。
+Ports **VGGT-SLAM2's original pretrained VGGT** to RK3588S for camera poses and dense maps. Model execution is separated from the original submap construction and SL4 graph optimization so embedded backends can be implemented and validated.
 
-当前只支持原 VGGT checkpoint；其内部 DINO、frame/global attention、CameraHead 和 DPT 均保留。没有额外模型或传统位姿前端。推理、校准与模型验证全部在 RK3588S 板端完成。
+Only the original VGGT checkpoint is supported. Its internal DINO, frame/global attention, CameraHead and DPT are retained, with no additional model or traditional pose frontend. All inference, calibration and model validation run on the RK3588S board.
 
-## 当前能做到什么
+## Current status
 
-已完成原模型的 CPU 参考路径和实验性 RKNN 全链路，并在真实 TUM 数据集上按原时间戳回放。当前实验链路的 aggregator 与 CameraHead 采用 W8A8 编译配置，DINO 与 DPT 保留 FP16；原预处理、位姿解码、子地图和 SL4 保持原实现。
+The original CPU reference path and an experimental complete RKNN path have run on real TUM data with timestamp-paced replay. The current experimental configuration requests W8A8 for the aggregator and CameraHead, with FP16 DINO and DPT. Original preprocessing, pose decoding, submaps and SL4 remain in place.
 
-最近一次完整回放的实测如下；这是 16 GB RK3588S 上、NPU 1 GHz 的短时实验，输入为两帧 `84×112` 图像：
+The latest complete replay used a **16 GB RK3588S**, a **1 GHz NPU** and two-frame `84×112` inputs. It was a short recorded-dataset experiment:
 
-| 指标 | 实测 |
+| Metric | Measured |
 | --- | ---: |
-| 数据集输入 / 新观测位姿更新 | 798 帧 / 31 次 |
-| 新观测位姿平均更新率 | **1.1167 Hz** |
-| 完整输入到位姿发布 P95 | **1.0688 s** |
-| 回放时长，含 EOF 排空 | 27.7595 s |
-| 启动时间，另计 | 57.3481 s |
-| 峰值进程 RSS | 3380.19 MiB |
+| Dataset frames / fresh pose updates | 798 / 31 |
+| Average fresh pose rate | **1.1167 Hz** |
+| Complete input-to-pose P95 | **1.0688 s** |
+| Replay duration, including EOF drain | 27.7595 s |
+| Startup, measured separately | 57.3481 s |
+| Peak process RSS | 3380.19 MiB |
 
-**尚未达到实时目标：新观测位姿至少 20 Hz，完整延迟 P95 不超过 100 ms。** 30 个发布间隔中仍有 1 个超过一秒，最大 1.0414 s；平均更新率不代表每秒都有新位姿。
+**The real-time targets remain unmet: at least 20 Hz fresh poses and complete input-to-pose P95 at most 100 ms.** One of 30 publication gaps exceeded one second; the maximum was 1.0414 s. An average rate does not guarantee a fresh update every second.
 
-精度仍处于实验验证阶段。17 帧固定短序列经 Sim3 对齐后的 ATE / RPE RMSE 相对原 CPU 参考的变化在 10% 以内，但旋转 RPE RMSE 上升 7.30%，最差旋转段达到 27.24°；严格 FP32 张量比较未通过。这不建立普遍轨迹或地图质量结论，也不能把固定输入的质量结果直接用于另一次不同选帧的回放。
+Quality remains experimental. On a fixed 17-frame sequence with Sim3 alignment, ATE and RPE RMSE changes relative to the original CPU reference were within 10%, but rotation RPE RMSE increased 7.30% and the worst rotation interval reached 27.24°. Strict FP32 tensor comparisons failed. These results establish neither broad trajectory/map quality nor quality for a separate replay that selects different frames.
 
-物理相机测试暂缓；30 分钟稳定性和物理 8 GB 板运行尚未验收。当前没有已验证的回环实现，Solver 只支持 `max_loops=0`。
+Physical-camera tests are deferred. Thirty-minute stability and operation on physical 8 GB hardware remain unvalidated. No loop-closure implementation is validated; the Solver supports only `max_loops=0`.
 
-[完整测量、精度边界与复现步骤](deploy/rk3588/validation/original_calibrated_camera/README.md) · [机器可读结果](results/original_calibrated_camera_v82.json)
+[Measurements, quality limits and reproduction](deploy/rk3588/validation/original_calibrated_camera/README.md) · [Machine-readable results](results/original_calibrated_camera_v82.json)
 
-## 准备板端环境
+## Prepare the board
 
-已测试的环境是 Linux aarch64、Python 3.11.17、CPU PyTorch 2.3.1、torchvision 0.18.1，以及提供 SL4 的 GTSAM 构建。NPU 路径使用 RKNN SDK / runtime 2.3.2。
+The tested environment is Linux aarch64, Python 3.11.17, CPU PyTorch 2.3.1, torchvision 0.18.1 and a GTSAM build with SL4 support. The NPU path uses RKNN SDK/runtime 2.3.2.
 
-按照[部署指南](deploy/rk3588/README.md)准备原模型源码和[外部依赖](deploy/rk3588/dependencies/README.md)。以下沿用已验证的板端目录 `/mnt/vggt-data/vggt-slam2`；仓库位于其中的 `src/`。将所需的 `python/`、`wheelhouse/` 等文件准备好后，运行离线安装器：
+Follow the [deployment guide](deploy/rk3588/README.md) to prepare the original source and [external dependencies](deploy/rk3588/dependencies/README.md). Commands below use the validated board directory `/mnt/vggt-data/vggt-slam2`, with this repository under `src/`. Prepare the required `python/`, `wheelhouse/` and other files, then run the offline installer:
 
 ```sh
 sh /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/install-offline.sh
 . /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/env.sh
 ```
 
-原权重单独下载，不随仓库分发：
+Download the original weights separately; they are not distributed in this repository:
 
 ```sh
 python /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/download_weights.py \
   --output /mnt/vggt-data/vggt-slam2/weights/model.pt
 ```
 
-唯一支持的权重为原 `facebook/VGGT-1B/model.pt`，大小 **5,026,874,952 bytes**。下载器及加载器会校验固定完整 SHA256，加载前必须通过；[固定源码、权重版本和哈希](UPSTREAMS.json)。ONNX / RKNN 文件需要在授权环境中自行生成，构建入口见对应复现目录。
+The only supported checkpoint is the original `facebook/VGGT-1B/model.pt`, **5,026,874,952 bytes**. The downloader and loader require its pinned full SHA256 before loading; see [source, checkpoint versions and hashes](UPSTREAMS.json). Generate ONNX/RKNN artifacts in an authorized environment using the relevant reproduction directory.
 
-## 运行时间戳回放
+## Run timestamp replay
 
-准备好 TUM 数据集的 `rgb.txt` 和图像后，在板端运行默认的原 CPU FP32 参考路径：
+Prepare the TUM dataset's `rgb.txt` and images, then run the original CPU FP32 reference path on the board:
 
 ```sh
 . /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/env.sh
@@ -59,20 +59,20 @@ python -B -u /mnt/vggt-data/vggt-slam2/src/scripts/replay_original_vggt.py \
   --output /mnt/vggt-data/vggt-slam2/experiments/original-replay-new-run
 ```
 
-使用新的输出目录。默认图像宽度为 112；该数据集的实际输入高度为 84。解码器使用 CPU0，模型默认使用 CPU4–7，不要把整个进程的亲和性限制到 CPU4–7。完整参数见 `python scripts/replay_original_vggt.py --help`。
+Use a new output directory. Image width defaults to 112; this dataset produces height 84. The decoder uses CPU0 and the model defaults to CPU4–7, so keep CPU0 available to the process. See `python scripts/replay_original_vggt.py --help` for all options.
 
-输出包括 `poses.tum`、`map.json`、`map_chunks/` 和 `results.json`，位姿与地图在真实新观测计算及原 SL4 完成后发布，输入队列容量为 1。
+Outputs include `poses.tum`, `map.json`, `map_chunks/` and `results.json`. Each fresh pose and map is published after the new observation's model computation and original SL4 processing. The input queue has capacity 1.
 
-上表的 NPU 实验需要原模型的固定编译产物及实验 wrapper；按[当前 NPU 全链路复现说明](deploy/rk3588/validation/original_calibrated_camera/README.md)构建和启动。普通回放命令保持 CPU 参考默认配置。频率实验使用有界温控控制器并恢复原频率；回放入口本身不修改系统时钟或 governor。
+The NPU experiment above requires pinned compiled artifacts and experimental wrappers; follow the [current complete NPU reproduction guide](deploy/rk3588/validation/original_calibrated_camera/README.md). The regular replay command defaults to the CPU reference. Authorized frequency tests use a bounded thermal controller and restore the prior clock state; the replay entrypoint does not change clocks or governors.
 
-## 开发与证据
+## Development and evidence
 
-- [执行架构](ARCHITECTURE.md)：原模型输出契约、缓存和 SL4 的边界。
-- [项目约束](AGENTS.md)：唯一原模型、板端执行及验收要求。
-- [测量索引](MEASUREMENTS.json)与[结果目录](results/)：完整链路、组件实验及失败记录。
-- [工程笔记](docs/ENGINEERING_NOTES.md)：有价值的问题、原因证据和后续验证条件。
+- [Architecture](ARCHITECTURE.md): original prediction contract, caching and SL4 boundaries.
+- [Project constraints](AGENTS.md): original-model-only scope, board execution and acceptance targets.
+- [Measurement index](MEASUREMENTS.json) and [results](results/): complete runs, component experiments and failure records.
+- [Engineering notes](docs/ENGINEERING_NOTES.md): useful findings, supporting evidence and remaining validation conditions.
 
-已配置开发依赖时，可运行现有轻量回归检查：
+With development dependencies installed, run the existing lightweight regression checks:
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -p no:cacheprovider \
@@ -80,10 +80,10 @@ PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -p no:cacheprovider \
   tests/test_solver_execution.py tests/test_patch_cache.py
 ```
 
-这些检查使用生成数据或 fake 服务，不代替原模型板端推理、轨迹质量或实时验收。实验的组件计时与端到端回放结果分开记录。
+These checks use generated data or fake services. Board inference, trajectory quality and real-time acceptance require separate validation. Component timings and end-to-end replay results are reported separately.
 
-## 许可与致谢
+## Licensing and attribution
 
-基于 MIT-SPARK 的 [VGGT-SLAM](https://github.com/MIT-SPARK/VGGT-SLAM) 和固定版本的 [VGGT_SPARK](https://github.com/MIT-SPARK/VGGT_SPARK)。保留 MIT-SPARK 版权及仓库的 [BSD-2-Clause 许可](LICENSE)。
+Based on MIT-SPARK's [VGGT-SLAM](https://github.com/MIT-SPARK/VGGT-SLAM) and the pinned [VGGT_SPARK](https://github.com/MIT-SPARK/VGGT_SPARK) revision. MIT-SPARK copyright notices and the repository's [BSD-2-Clause license](LICENSE) are retained.
 
-**仓库代码许可不等于模型权重许可。** 本项目使用的原 VGGT 权重及固定实现有独立的非商业使用条款；编译产物中的权重仍受原条款约束。详见[模型来源与许可](MODEL_LICENSES.md)、[第三方声明](THIRD_PARTY_NOTICES.md)和[上游版本记录](UPSTREAMS.json)。仓库不分发权重、捕获数组、含权重的导出图或 SDK 二进制。
+**The repository code license does not grant rights to the model weights.** The original VGGT weights and pinned implementation have separate noncommercial terms, which also apply to weights embedded in compiled artifacts. See [model provenance and licenses](MODEL_LICENSES.md), [third-party notices](THIRD_PARTY_NOTICES.md) and [upstream revisions](UPSTREAMS.json). This repository distributes no weights, captured arrays, weight-bearing exports or SDK binaries.

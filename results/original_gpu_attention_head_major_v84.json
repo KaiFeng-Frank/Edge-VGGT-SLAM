@@ -1,0 +1,225 @@
+{
+  "schema": "v84_original_VGGT_head_major_GPU_attention_public_result",
+  "status": "SDK_generated_layout_conversion_failed_then_SIGSEGV",
+  "candidate_accepted": false,
+  "original_model_only": true,
+  "all_actual_execution_on_RK3588S": true,
+  "host_GPU_used": false,
+  "route_stopped": true,
+  "last_verified_complete_pipeline": "original_calibrated_camera_v82.json",
+  "goal": {
+    "fresh_pose_hz": 20,
+    "full_input_to_pose_p95_seconds": 0.1,
+    "achieved": false
+  },
+  "original_checkpoint": {
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "bytes": 5026874952
+  },
+  "scope": {
+    "pair": "Original frame0/global0 pair; no full-model installation or trajectory/replay experiment.",
+    "all_original_tokens_and_parameters_retained": true,
+    "custom_outputs": {
+      "frame": [
+        2,
+        16,
+        53,
+        64
+      ],
+      "global_shape": [
+        1,
+        16,
+        106,
+        64
+      ]
+    },
+    "original_downstream_head_transpose_and_flatten_retained": true,
+    "full_GPU_runtime_math_or_performance_validated": false
+  },
+  "export": {
+    "receipt_sha256": "e563cfcef6934da57e1f9a5c63cc6ded346661bc81e9966160ed3de78f200402",
+    "status": "exported_not_compiled_or_runtime_validated",
+    "source_sha256": "deaa04cccf731c98db987bec26e7d69bd73c29d46d1e5f463c997208c379b225",
+    "original_parent_manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42",
+    "original_pair_onnx_sha256": "efbbaee8f3d6326565930e5a045eac0d500fdb35453fdf85ddac7481ec2fac65",
+    "candidate_graph_sha256": "7387c5e461caf42083c0d605a22a80036197b55ce7af48111f4ed21b1d8c2636",
+    "candidate_graph_bytes": 100910346,
+    "original_parameter_tensors": 36,
+    "original_initializer_count": 63,
+    "original_node_count": 87,
+    "candidate_node_count": 55,
+    "original_tail_nodes_per_role": 17,
+    "all_original_initializers_protobuf_unchanged": true,
+    "all_unrelated_nodes_and_original_IO_protobuf_unchanged": true
+  },
+  "compilation": {
+    "receipt_sha256": "09c6342dc31c8ece8a7f8640c7aa8bbde8cbaa175edb0e1f8502c42ffc684f38",
+    "status": "compiled_custom_callbacks_not_runtime_validated",
+    "compiler_source_sha256": "f6a480ba36f2291ed42ed99c9b575203f7b0d693f53a9b751878b0fcceff80c2",
+    "configuration": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "mean_values": null,
+      "std_values": null,
+      "quant_img_RGB2BGR": false,
+      "model_pruning": false,
+      "remove_reshape": false,
+      "quantize_weight": false,
+      "enable_flash_attention": false
+    },
+    "build_options": {
+      "do_quantization": false,
+      "dataset": null,
+      "auto_hybrid": false
+    },
+    "operations": [
+      {
+        "name": "config",
+        "status": "completed",
+        "code": 0,
+        "seconds": 0.00010966701665893197
+      },
+      {
+        "name": "reg_custom_op_frame",
+        "status": "completed",
+        "code": 0,
+        "seconds": 0.00014408401330001652
+      },
+      {
+        "name": "reg_custom_op_global",
+        "status": "completed",
+        "code": 0,
+        "seconds": 8.108399924822152e-05
+      },
+      {
+        "name": "load_onnx",
+        "status": "completed",
+        "code": 0,
+        "seconds": 0.6395390229881741
+      },
+      {
+        "name": "build",
+        "status": "completed",
+        "code": 0,
+        "seconds": 6.577821911021601
+      },
+      {
+        "name": "export_rknn",
+        "status": "completed",
+        "code": 0,
+        "seconds": 0.0398387540190015
+      }
+    ],
+    "original_tail_conversion_reference": "Board CPU ORT conversion callbacks, two calls per role; not GPU runtime validation.",
+    "conversion_compute_calls_by_role": {
+      "frame": {
+        "attempted": 2,
+        "completed": 2
+      },
+      "global": {
+        "attempted": 2,
+        "completed": 2
+      }
+    },
+    "artifact_bytes": 51163047,
+    "artifact_sha256": "629ab2a562d1bd86d7bbf22a6d02beb9c05c5ac94e6cc85b1a644a6e33410e06",
+    "compiler_released": true,
+    "compiler_release_code": null,
+    "compiler_cleanup_errors": [],
+    "sources_environment_affinity_restored": true
+  },
+  "export_and_compile_controls": [
+    {
+      "stage": "v84-head-major-export",
+      "receipt_sha256": "0f2afc124d36d507ab77b790b96cc94833acdc81b25b184592c1b8ca512278a8",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 1.8220163910009433,
+      "sampled_NPU_hz": [
+        300000000
+      ],
+      "sampled_max_temperature_c": 56.384,
+      "frequency_written": false,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "v84-head-major-compile",
+      "receipt_sha256": "974d4fa3bafb47a8addfbcebdca4612218212b93855239ec98472848a1720727",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 9.997426671005087,
+      "sampled_NPU_hz": [
+        300000000
+      ],
+      "sampled_max_temperature_c": 60.076,
+      "frequency_written": false,
+      "cleanup_errors": []
+    }
+  ],
+  "runtime_failure": {
+    "child_returncode": -11,
+    "termination_signal": "SIGSEGV",
+    "first_visible_failure": "SDK OpenCL layout-conversion program build during custom GPU initialization/registration",
+    "internal_kernel_file": "buffer/pack_nchw_to_nchwc8_buf.cl",
+    "internal_kernel_name": "pack_nchw_to_nchwc8",
+    "reported_build_options": "-D Ti=float -D Ti4=float4 -D To=half -D To4=half4",
+    "undeclared_identifier": "To8",
+    "reported_undeclared_identifier_occurrences": 8,
+    "reported_op": "cstOriginalFrameHeadMajorAttentionTail:frame0/cstOriginalFrameHeadMajorAttentionTail",
+    "custom_init_reported_returncode": -1,
+    "whole_pair_call_or_output_receipt_available": false,
+    "saved_runtime_result_json_count": 0,
+    "saved_runtime_array_file_count": 0,
+    "speed_accuracy_or_determinism_evaluable": false,
+    "runtime_context_or_GPU_resource_cleanup_verified": false,
+    "runtime_created_destroyed_live_counts": null,
+    "Python_finally_completion_verified": false
+  },
+  "runtime_controller": {
+    "status": "failed",
+    "seconds": 1.0406546459998935,
+    "requested_NPU_hz": 1000000000,
+    "frequency_sample_count": 3,
+    "all_saved_frequency_samples_hz": 1000000000,
+    "max_saved_sample_temperature_c": 51.769,
+    "temperature_limit_c": 75.0,
+    "timeout_seconds": 180.0,
+    "restored_NPU_hz": 300000000,
+    "effective_frequency_governor_limits_and_raw_request_match_baseline": true,
+    "restore_errors": [],
+    "frequency_restore_is_not_GPU_or_SDK_cleanup_evidence": true
+  },
+  "evidence_receipts": [
+    {
+      "file": "export.json",
+      "bytes": 21219,
+      "sha256": "e563cfcef6934da57e1f9a5c63cc6ded346661bc81e9966160ed3de78f200402"
+    },
+    {
+      "file": "compile.json",
+      "bytes": 29413,
+      "sha256": "09c6342dc31c8ece8a7f8640c7aa8bbde8cbaa175edb0e1f8502c42ffc684f38"
+    },
+    {
+      "file": "vggt-v84-head-major-pair-control-r1/control.json",
+      "bytes": 2426,
+      "sha256": "3ae5b6fcd0faadede0c09823b8d9d39674c187ad6baae2709ec4bfd807a6e654"
+    },
+    {
+      "file": "vggt-v84-head-major-pair-control-r1/worker.log",
+      "bytes": 2751,
+      "sha256": "2678635260c0c0527e25f6c5885eb81d754bcaab323a8caca631a4521f99a240"
+    }
+  ],
+  "independent_failure_audit_sha256": "ffe40edc21fde4e16b3567872f214170b6fd6c1d0b775076c9b49b366daf7f38",
+  "source_copy_list": "source-copy-list.json",
+  "boundaries": [
+    "The observed SDK-generated layout-conversion program failed to compile, followed by SIGSEGV; exclusive crash root cause or a fix is not established.",
+    "No complete-pair result or array exists, so accuracy, determinism, latency and speedup cannot be evaluated.",
+    "Offline compiler release and NPU clock restoration do not prove SDK/GPU runtime resource cleanup after the crash.",
+    "Same pinned private Mali userspace library as v83; earlier stable GPU arithmetic controls do not prove this SDK layout handoff.",
+    "No new full-model, ATE/RPE, map, 20 Hz/100 ms, physical-camera, 8 GB or 30-minute acceptance claim.",
+    "Original source and checkpoint retain separate licenses; no weight-bearing artifact or vendor library is distributed."
+  ]
+}

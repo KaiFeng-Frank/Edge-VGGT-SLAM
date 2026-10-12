@@ -1,0 +1,47 @@
+{
+  "schema": "v84_public_executed_authored_source_copy_list",
+  "files": [
+    {
+      "file": "build_pair_attention_head_major_board.py",
+      "bytes": 18684,
+      "sha256": "deaa04cccf731c98db987bec26e7d69bd73c29d46d1e5f463c997208c379b225"
+    },
+    {
+      "file": "compile_pair_attention_head_major_board.py",
+      "bytes": 10513,
+      "sha256": "f6a480ba36f2291ed42ed99c9b575203f7b0d693f53a9b751878b0fcceff80c2"
+    },
+    {
+      "file": "rknn_original_attention_head_major_custom.py",
+      "bytes": 20342,
+      "sha256": "c340616af508e61946a95b085df5ade9e143952ea59e969d1bb84be332ed0928"
+    },
+    {
+      "file": "probe_attention_head_major_pair_board.py",
+      "bytes": 14582,
+      "sha256": "22ae9e7592562d6f45e2a0074a187b7bbfb948dd161a830baa204edb5423e904"
+    },
+    {
+      "file": "original_attention_tail_borrowed_headmajor.py",
+      "bytes": 23440,
+      "sha256": "10f4754dec99e24e0aa64c28ee88cb4e045240e7c4e5bbf350d5c30af2c5380f"
+    },
+    {
+      "file": "run_export_head_major.sh",
+      "bytes": 542,
+      "sha256": "aa1ce480995f3fb4738f555c6c1e50e64d874abe9ccff364ffc23c0ca8df7570"
+    },
+    {
+      "file": "run_compile_head_major.sh",
+      "bytes": 854,
+      "sha256": "d0c9ebff358152171643362d383a634c8e4e1202960fa7a08d98e332f508e5e7"
+    },
+    {
+      "file": "run_head_major_pair_1ghz.sh",
+      "bytes": 1257,
+      "sha256": "da074ecedd0f89645d85a93d2a4608dd44402f1547390e9f950941aa4367631a"
+    }
+  ],
+  "execution_identity": "Five frozen Python sources plus three exact root board-staged launchers.",
+  "excluded": "Unexecuted launchers/drafts and inaccurate source-freeze.json; no arrays, weights, graphs, headers, libraries or firmware."
+}

@@ -518,3 +518,9 @@ FC2只切输出通道352/352/320，完整K=4096由cores1/2/4分别计算。三�
 角色源/名称分离、自建严格 program、入口 queue finish+FROM_DEVICE、额外 output TO 与 SDK 示例 import 属性对照仍未解决。SDK 实际 options 追加 fast-relaxed-math/mad-enable/CL_DTYPE_half；不能由相同 kernel 文本推断实际算术相同，严格 program 仍失败也不能确定根因。四个回调按同一 GPU 侧输入复测的 norm/RoPE/输出 strict 全过，输出 L2 为 9.218e-8–1.006e-7，GPU 输出与 FROM 后 CPU 输出逐字节相同；两次 frame 回调的 11 个 GPU 保存数组相同，后续完整 frame 出口却有 13,326 个元素变化。这定位了所观察的边界差异，未证明来源。
 
 最后改用 SDK CPU callback，ready CPU QKV 经私有板端 GPU 执行全部原 tail 并复制回 SDK。独立保存复核 16 NPZ/32 输出与四原 CPU 参考，两路线每输入/出口均四次重复逐字节相同；同轮暖6 A/B 为 27.153/72.639 ms，B 原 CPU L2 为 .4250–.4756%，固定 strict 仍全部失败，2 contexts/32 buffers/80 GPU events 全闭。这条稳定路径更慢，未采用。所有结论仅是局部 pair；未接入现有整网/SL4/真实回放，不新增轨迹、20 Hz/100 ms、8 GB 或长期验收。公开仅已执行原创源码与紧凑统计，见[GPU 注意力诊断](../deploy/rk3588/validation/original_gpu_attention/README.md)。
+
+## 161. 原 head-major 注意力接入停在 SDK 布局转换初始化
+
+在 v83 原 pair 上，只把两处 GPU tail 出口移到原 `attention_values[B,16,S,64]`，原 head transpose/flatten 留在图中；两处各17原节点委托、87→55节点，36参数与63原initializers保留。板端非量化FP16编译成功，产物51,163,047字节；转换期frame/global各两次原CPU ORT回调不等同GPU运行或完整pair验证。
+
+有界1GHz启动时，保存日志首先显示SDK生成的 `pack_nchw_to_nchwc8_buf.cl` 编译出现8次未声明 `To8`（Ti=float、To=half），custom init返回−1，进程随后SIGSEGV/−11。未产生完整pair结果或输出数组，不能评价数值、重复性或速度，也不确定崩溃的唯一根因。3个保存频率样本均1GHz、最高51.769°C，控制器恢复原300MHz/governor/limits/request；没有运行资源清理收据，不能把频率恢复或离线compiler释放当成SDK/GPU关闭证明。这条GPU接入路线停止，当前生产整机仍为v82，不新增任何实时或质量验收。见[复现与失败证据](../deploy/rk3588/validation/original_gpu_attention_head_major/README.md)。
