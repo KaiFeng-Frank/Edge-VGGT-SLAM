@@ -68,6 +68,14 @@ NPU outputs change and the original FP32 strict checks fail. This pair-only
 diagnostic is not installed in the full-model runtime.
 [Evidence and reproduction](deploy/rk3588/validation/original_pair_partition/README.md).
 
+A separate **FC2 input-channel partition** diagnostic reduces the complete
+original pair from **39.067 to 35.766 ms (8.45%)** using four K parts, with
+38 warm calls per graph across two real inputs at 300 MHz. Its FP32 graph passes
+the existing tolerance but changes reduction order and is not byte-identical.
+FP16 outputs change and the original FP32 strict checks still fail. The result
+is a component measurement; full-model integration and quality remain untested.
+[Evidence and reproduction](deploy/rk3588/validation/original_pair_fc2_partition/README.md).
+
 The additional-model retrieval and semantic paths have been removed. **Loop closure has no replacement implementation:** `max_loops=0` is the supported Solver configuration. Requests to enable loops or supply legacy auxiliary-model arguments must fail before loading or inference. The original VGGT model's numerical similarity capability does not itself implement loop retrieval.
 
 The original checkpoint is `facebook/VGGT-1B`, `model.pt`, **5,026,874,952 bytes**, SHA256 `d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0`. Source-code and checkpoint licensing are separate; see [model provenance](MODEL_LICENSES.md) and [upstream pins](UPSTREAMS.json). No weights, captured arrays, weight-bearing exports or SDK binaries are distributed. The loader verifies this exact byte size and full SHA256 before deserialization, including explicit local paths and cached downloads. Automatic downloads use the recorded immutable revision; there is no runtime identity-check bypass.

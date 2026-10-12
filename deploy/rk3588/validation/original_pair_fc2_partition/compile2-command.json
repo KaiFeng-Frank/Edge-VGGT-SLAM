@@ -1,0 +1,7 @@
+[
+  "/home/frank/.claude/jobs/cded844f/tmp/platform-tools/adb",
+  "-s",
+  "0123456789ABCDEF",
+  "shell",
+  "/usr/bin/python3 /mnt/vggt-data/vggt-slam2/experiments/v72-run-board-stage.py --stage compile2 --timeout 180 -- env -u PYTHONPATH -u PYTHONHOME -u VIRTUAL_ENV LD_LIBRARY_PATH=/mnt/vggt-data/vggt-slam2/sysroot/usr/lib/aarch64-linux-gnu OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 taskset -c 4-7 /mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/bin/python /mnt/vggt-data/vggt-slam2/experiments/v72-build-pair-fc2-k-splits.py --chunks 2 --output-dir /mnt/vggt-data/vggt-slam2/experiments/vggt-v72-pair-fc2-k-split2-r1"
+]

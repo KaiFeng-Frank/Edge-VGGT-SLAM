@@ -1,0 +1,47 @@
+{
+  "source": {
+    "file": "build_pair_fc2_k_splits_board.py",
+    "bytes": 17781,
+    "sha256": "a339f234e6fae5bd3ce92627342c2805a41d0018bd2dd978b48ba1722827040b"
+  },
+  "AST_passed": true,
+  "generated_slice_checks": [
+    {
+      "shape": [
+        2,
+        3,
+        8
+      ],
+      "chunks": 2,
+      "generated_exact_fixture_passed": true
+    },
+    {
+      "shape": [
+        2,
+        3,
+        8
+      ],
+      "chunks": 4,
+      "generated_exact_fixture_passed": true
+    },
+    {
+      "shape": [
+        1,
+        6,
+        8
+      ],
+      "chunks": 2,
+      "generated_exact_fixture_passed": true
+    },
+    {
+      "shape": [
+        1,
+        6,
+        8
+      ],
+      "chunks": 4,
+      "generated_exact_fixture_passed": true
+    }
+  ],
+  "actual_model_ORT_ONNX_SDK_execution": false
+}

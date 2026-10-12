@@ -1,0 +1,1190 @@
+{
+  "schema": "original_VGGT_pair00_FC2_K_partition_v72",
+  "status": "measured_component_benefit_not_integrated",
+  "original_model_only": true,
+  "checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "additional_learned_models_used": false,
+  "traditional_pose_frontend_added": false,
+  "all_actual_ORT_SDK_and_compilation_on_RK3588S": true,
+  "host_actual_model_execution": false,
+  "production_runtime_changed": false,
+  "default_backend_changed": false,
+  "candidate_quality_accepted": false,
+  "full_model_speedup_measured": false,
+  "timestamp_replay_run": false,
+  "real_time_validated": false,
+  "original_parent_manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42",
+  "original_pair_onnx_sha256": "efbbaee8f3d6326565930e5a045eac0d500fdb35453fdf85ddac7481ec2fac65",
+  "input_scope": "Original pair00 on two distinct saved real inputs; original Torch references available only for v53.",
+  "original_input_shape": [
+    2,
+    53,
+    1024
+  ],
+  "original_output_shapes": [
+    [
+      2,
+      53,
+      1024
+    ],
+    [
+      1,
+      106,
+      1024
+    ]
+  ],
+  "original_FC2_K": 4096,
+  "original_FC2_N": 1024,
+  "all_original_tokens_layers_and_parameter_values_preserved": true,
+  "FP32_reduction_order_changed": true,
+  "partial_sum_order": "left_associative_in_increasing_K_chunk_order",
+  "original_bias_added_once_after_partial_sum": true,
+  "no_extra_SDK_outputs": true,
+  "actual_frequency_hz": 300000000,
+  "core_mask": 7,
+  "cpu_affinity": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "clock_or_governor_writes": false,
+  "compiled_candidates": [
+    {
+      "chunks": 2,
+      "receipt": {
+        "private_evidence": "split2-r1/result.json",
+        "sha256": "82a7d3b21511b6f6ec8b2fe053b245aeeff7f4b052d3edb3dd84314d922f5e0e"
+      },
+      "check_receipt": {
+        "private_evidence": "split2-r1/check.json",
+        "sha256": "25714014bce0172b04d71a7e8be08ce63ca26b3b22d2310eabf19bab48116e27"
+      },
+      "onnx": {
+        "file": "pair-fc2-k-split2.onnx",
+        "bytes": 100916842,
+        "sha256": "51ef6c51c0cff4e1036140ae279a4179e72a2464ba1818f83e02a81ab03acea2"
+      },
+      "rknn": {
+        "file": "pair-fc2-k-split2.rknn",
+        "bytes": 52705319,
+        "sha256": "1a6d5b43365fda9ba0a09deb6372618eb64ca1afb054d71d661c56de13b0ddd6"
+      },
+      "graph_proof": {
+        "replacements": [
+          {
+            "role": "frame",
+            "chunks": 2,
+            "weight_raw_sha256": "54d6b46a5a7f6bdfe8160d762be3173cc97ea018ea1d77f45382992dd288e694",
+            "bias_raw_sha256": "8fd2847a2d2413518964aa0a0b3a406e310d461712885c22a935ff225b03c36e",
+            "input_channel_ranges": [
+              [
+                0,
+                2048
+              ],
+              [
+                2048,
+                4096
+              ]
+            ],
+            "activation_slice_axis": -1,
+            "original_bias_Add_name": "frame0/mlp.fc2",
+            "final_sum_output": "frame0/mlp.fc2.matmul",
+            "bias_added_once_after_partial_sum": true
+          },
+          {
+            "role": "global",
+            "chunks": 2,
+            "weight_raw_sha256": "dc18bf7cc6e03da2814a99b4d29dc94090279ec81613198dab49320b94828e3b",
+            "bias_raw_sha256": "358138555a909528fa0fab6ac8f9c2e22816253a66f8acca937ef6dc8f2510b0",
+            "input_channel_ranges": [
+              [
+                0,
+                2048
+              ],
+              [
+                2048,
+                4096
+              ]
+            ],
+            "activation_slice_axis": -1,
+            "original_bias_Add_name": "global0/mlp.fc2",
+            "final_sum_output": "global0/mlp.fc2.matmul",
+            "bias_added_once_after_partial_sum": true
+          }
+        ],
+        "all_other_original_nodes_protobuf_unchanged": true,
+        "all_other_original_initializers_protobuf_unchanged": true,
+        "original_FC1_nodes_protobuf_unchanged": true,
+        "original_GELU_nodes_protobuf_unchanged": true,
+        "original_FC2_bias_Add_nodes_protobuf_unchanged": true,
+        "original_LayerScale_and_residual_nodes_protobuf_unchanged": true,
+        "original_IO_protobuf_unchanged": true,
+        "all_original_FC2_parameter_values_preserved": true,
+        "FC2_weights_not_duplicated": true,
+        "FC2_bias_added_once_after_partial_sum": true,
+        "FP32_reduction_order_changed": true,
+        "partial_sum_order": "left_associative_in_increasing_K_chunk_order",
+        "original_nodes": 87,
+        "candidate_nodes": 95,
+        "original_initializers": 63,
+        "candidate_initializers": 77
+      },
+      "FP32_checks": [
+        {
+          "input": "v53",
+          "checks": [
+            {
+              "name": "frame_output",
+              "byte_equal_to_baseline": false,
+              "versus_baseline_FP32_ONNX": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 9.5367431640625e-07,
+                "relative_l2": 7.00075763192986e-08
+              },
+              "versus_original_FP32": {
+                "baseline": {
+                  "strict_rtol": 0.0001,
+                  "strict_atol": 1e-05,
+                  "strict_pass": true,
+                  "outside_tolerance": 0,
+                  "elements": 108544,
+                  "max_abs": 1.4781951904296875e-05,
+                  "relative_l2": 8.874554983280384e-07
+                },
+                "candidate": {
+                  "strict_rtol": 0.0001,
+                  "strict_atol": 1e-05,
+                  "strict_pass": true,
+                  "outside_tolerance": 0,
+                  "elements": 108544,
+                  "max_abs": 1.3828277587890625e-05,
+                  "relative_l2": 8.915670986069893e-07
+                }
+              }
+            },
+            {
+              "name": "global_output",
+              "byte_equal_to_baseline": false,
+              "versus_baseline_FP32_ONNX": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 9.5367431640625e-07,
+                "relative_l2": 9.024654385178798e-08
+              },
+              "versus_original_FP32": {
+                "baseline": {
+                  "strict_rtol": 0.0001,
+                  "strict_atol": 1e-05,
+                  "strict_pass": true,
+                  "outside_tolerance": 0,
+                  "elements": 108544,
+                  "max_abs": 1.71661376953125e-05,
+                  "relative_l2": 1.1357558240076958e-06
+                },
+                "candidate": {
+                  "strict_rtol": 0.0001,
+                  "strict_atol": 1e-05,
+                  "strict_pass": true,
+                  "outside_tolerance": 0,
+                  "elements": 108544,
+                  "max_abs": 1.621246337890625e-05,
+                  "relative_l2": 1.1402774913077843e-06
+                }
+              }
+            }
+          ]
+        },
+        {
+          "input": "v56-calib00",
+          "checks": [
+            {
+              "name": "frame_output",
+              "byte_equal_to_baseline": false,
+              "versus_baseline_FP32_ONNX": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 9.5367431640625e-07,
+                "relative_l2": 7.16567804841557e-08
+              },
+              "versus_original_FP32": null
+            },
+            {
+              "name": "global_output",
+              "byte_equal_to_baseline": false,
+              "versus_baseline_FP32_ONNX": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.1920928955078125e-06,
+                "relative_l2": 9.602884189096962e-08
+              },
+              "versus_original_FP32": null
+            }
+          ]
+        }
+      ],
+      "source_and_inputs_unchanged": true,
+      "environment_restored": true,
+      "SDK_released": true,
+      "cleanup_errors": []
+    },
+    {
+      "chunks": 4,
+      "receipt": {
+        "private_evidence": "split4-r1/result.json",
+        "sha256": "71641275e5501bcf3967c62a96e09706589e55c7088ed43f8587708b287c0622"
+      },
+      "check_receipt": {
+        "private_evidence": "split4-r1/check.json",
+        "sha256": "38ab16cb877f6696194559c3f9055f1179f7e8ebf5fc8ddf46ee7d621ed2dceb"
+      },
+      "onnx": {
+        "file": "pair-fc2-k-split4.onnx",
+        "bytes": 100919294,
+        "sha256": "b077bf670efaf6db3e65d7f5e3d85f4bfff75345987f08beb14ff8321e32c918"
+      },
+      "rknn": {
+        "file": "pair-fc2-k-split4.rknn",
+        "bytes": 52723303,
+        "sha256": "3d19687b420ef7fb33578f9450bb03aac07213622cfd953e76714088423b497e"
+      },
+      "graph_proof": {
+        "replacements": [
+          {
+            "role": "frame",
+            "chunks": 4,
+            "weight_raw_sha256": "54d6b46a5a7f6bdfe8160d762be3173cc97ea018ea1d77f45382992dd288e694",
+            "bias_raw_sha256": "8fd2847a2d2413518964aa0a0b3a406e310d461712885c22a935ff225b03c36e",
+            "input_channel_ranges": [
+              [
+                0,
+                1024
+              ],
+              [
+                1024,
+                2048
+              ],
+              [
+                2048,
+                3072
+              ],
+              [
+                3072,
+                4096
+              ]
+            ],
+            "activation_slice_axis": -1,
+            "original_bias_Add_name": "frame0/mlp.fc2",
+            "final_sum_output": "frame0/mlp.fc2.matmul",
+            "bias_added_once_after_partial_sum": true
+          },
+          {
+            "role": "global",
+            "chunks": 4,
+            "weight_raw_sha256": "dc18bf7cc6e03da2814a99b4d29dc94090279ec81613198dab49320b94828e3b",
+            "bias_raw_sha256": "358138555a909528fa0fab6ac8f9c2e22816253a66f8acca937ef6dc8f2510b0",
+            "input_channel_ranges": [
+              [
+                0,
+                1024
+              ],
+              [
+                1024,
+                2048
+              ],
+              [
+                2048,
+                3072
+              ],
+              [
+                3072,
+                4096
+              ]
+            ],
+            "activation_slice_axis": -1,
+            "original_bias_Add_name": "global0/mlp.fc2",
+            "final_sum_output": "global0/mlp.fc2.matmul",
+            "bias_added_once_after_partial_sum": true
+          }
+        ],
+        "all_other_original_nodes_protobuf_unchanged": true,
+        "all_other_original_initializers_protobuf_unchanged": true,
+        "original_FC1_nodes_protobuf_unchanged": true,
+        "original_GELU_nodes_protobuf_unchanged": true,
+        "original_FC2_bias_Add_nodes_protobuf_unchanged": true,
+        "original_LayerScale_and_residual_nodes_protobuf_unchanged": true,
+        "original_IO_protobuf_unchanged": true,
+        "all_original_FC2_parameter_values_preserved": true,
+        "FC2_weights_not_duplicated": true,
+        "FC2_bias_added_once_after_partial_sum": true,
+        "FP32_reduction_order_changed": true,
+        "partial_sum_order": "left_associative_in_increasing_K_chunk_order",
+        "original_nodes": 87,
+        "candidate_nodes": 107,
+        "original_initializers": 63,
+        "candidate_initializers": 89
+      },
+      "FP32_checks": [
+        {
+          "input": "v53",
+          "checks": [
+            {
+              "name": "frame_output",
+              "byte_equal_to_baseline": false,
+              "versus_baseline_FP32_ONNX": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 9.5367431640625e-07,
+                "relative_l2": 7.041417756072246e-08
+              },
+              "versus_original_FP32": {
+                "baseline": {
+                  "strict_rtol": 0.0001,
+                  "strict_atol": 1e-05,
+                  "strict_pass": true,
+                  "outside_tolerance": 0,
+                  "elements": 108544,
+                  "max_abs": 1.4781951904296875e-05,
+                  "relative_l2": 8.874554983280384e-07
+                },
+                "candidate": {
+                  "strict_rtol": 0.0001,
+                  "strict_atol": 1e-05,
+                  "strict_pass": true,
+                  "outside_tolerance": 0,
+                  "elements": 108544,
+                  "max_abs": 1.3828277587890625e-05,
+                  "relative_l2": 8.935325404887171e-07
+                }
+              }
+            },
+            {
+              "name": "global_output",
+              "byte_equal_to_baseline": false,
+              "versus_baseline_FP32_ONNX": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.1920928955078125e-06,
+                "relative_l2": 9.252048716440085e-08
+              },
+              "versus_original_FP32": {
+                "baseline": {
+                  "strict_rtol": 0.0001,
+                  "strict_atol": 1e-05,
+                  "strict_pass": true,
+                  "outside_tolerance": 0,
+                  "elements": 108544,
+                  "max_abs": 1.71661376953125e-05,
+                  "relative_l2": 1.1357558240076958e-06
+                },
+                "candidate": {
+                  "strict_rtol": 0.0001,
+                  "strict_atol": 1e-05,
+                  "strict_pass": true,
+                  "outside_tolerance": 0,
+                  "elements": 108544,
+                  "max_abs": 1.5974044799804688e-05,
+                  "relative_l2": 1.1369067303545868e-06
+                }
+              }
+            }
+          ]
+        },
+        {
+          "input": "v56-calib00",
+          "checks": [
+            {
+              "name": "frame_output",
+              "byte_equal_to_baseline": false,
+              "versus_baseline_FP32_ONNX": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.430511474609375e-06,
+                "relative_l2": 8.241970283370069e-08
+              },
+              "versus_original_FP32": null
+            },
+            {
+              "name": "global_output",
+              "byte_equal_to_baseline": false,
+              "versus_baseline_FP32_ONNX": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.430511474609375e-06,
+                "relative_l2": 1.0598350380393692e-07
+              },
+              "versus_original_FP32": null
+            }
+          ]
+        }
+      ],
+      "source_and_inputs_unchanged": true,
+      "environment_restored": true,
+      "SDK_released": true,
+      "cleanup_errors": []
+    }
+  ],
+  "normal_benchmark": {
+    "receipt": {
+      "private_evidence": "normal-r1/result.json",
+      "sha256": "44682fef1a9a47551038841ce157a57fc5ef04c89bcefb464b0d050190197dc3"
+    },
+    "schedule": [
+      "A",
+      "B",
+      "C",
+      "C",
+      "B",
+      "A",
+      "A",
+      "B",
+      "C",
+      "C",
+      "B",
+      "A",
+      "A",
+      "B",
+      "C",
+      "C",
+      "B",
+      "A",
+      "A",
+      "B",
+      "C",
+      "C",
+      "B",
+      "A",
+      "A",
+      "B",
+      "C",
+      "C",
+      "B",
+      "A",
+      "A",
+      "B",
+      "C",
+      "C",
+      "B",
+      "A",
+      "A",
+      "B",
+      "C",
+      "C",
+      "B",
+      "A",
+      "A",
+      "B",
+      "C",
+      "C",
+      "B",
+      "A",
+      "A",
+      "B",
+      "C",
+      "C",
+      "B",
+      "A",
+      "A",
+      "B",
+      "C",
+      "C",
+      "B",
+      "A"
+    ],
+    "first_exclusion_scope": "First call per input per graph; all subsequent calls in normal mode are warm",
+    "timing_scope": "One complete two-output pair per call; NEON conversion, SDK run, owned half copy, release, widening and finite checks included; platform reads/hash/NPZ save/profile queries excluded",
+    "summary": {
+      "A": {
+        "warm_count": 38,
+        "mean_component_seconds": 0.039067203551224484,
+        "per_input": {
+          "v53": 0.038369751737551076,
+          "v56-calib00": 0.039764655364897886
+        }
+      },
+      "B": {
+        "warm_count": 38,
+        "mean_component_seconds": 0.03834713118205974,
+        "per_input": {
+          "v53": 0.03760108731129501,
+          "v56-calib00": 0.03909317505282448
+        }
+      },
+      "C": {
+        "warm_count": 38,
+        "mean_component_seconds": 0.035766445395941114,
+        "per_input": {
+          "v53": 0.0347648038449207,
+          "v56-calib00": 0.03676808694696152
+        }
+      }
+    },
+    "reduction_percent": {
+      "B": 1.8431633280856508,
+      "C": 8.448923534942686
+    },
+    "SDK_queries": [
+      {
+        "role": "A",
+        "model_sha256": "309a95a7467cce404161db3ed674b1ff1ca8cf7806776c40b21b195b2619cbd9",
+        "input": {
+          "index": 0,
+          "name": "input",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "n_elems": 108544,
+          "size": 217088,
+          "format": 3,
+          "type": 1,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 0,
+          "pass_through": 0,
+          "scale": 1.0,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 217088
+        },
+        "outputs": [
+          {
+            "index": 0,
+            "name": "frame_output",
+            "shape": [
+              2,
+              53,
+              1024
+            ],
+            "n_elems": 108544,
+            "size": 217088,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 217088
+          },
+          {
+            "index": 1,
+            "name": "global_output",
+            "shape": [
+              1,
+              106,
+              1024
+            ],
+            "n_elems": 108544,
+            "size": 217088,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 217088
+          }
+        ],
+        "SDK_version": "2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+        "driver_version": "0.7.2",
+        "memory": {
+          "weight_bytes": 50579264,
+          "internal_bytes": 4000576,
+          "dma_bytes": 109600768
+        }
+      },
+      {
+        "role": "B",
+        "model_sha256": "1a6d5b43365fda9ba0a09deb6372618eb64ca1afb054d71d661c56de13b0ddd6",
+        "input": {
+          "index": 0,
+          "name": "input",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "n_elems": 108544,
+          "size": 217088,
+          "format": 3,
+          "type": 1,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 0,
+          "pass_through": 0,
+          "scale": 1.0,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 217088
+        },
+        "outputs": [
+          {
+            "index": 0,
+            "name": "frame_output",
+            "shape": [
+              2,
+              53,
+              1024
+            ],
+            "n_elems": 108544,
+            "size": 217088,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 217088
+          },
+          {
+            "index": 1,
+            "name": "global_output",
+            "shape": [
+              1,
+              106,
+              1024
+            ],
+            "n_elems": 108544,
+            "size": 217088,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 217088
+          }
+        ],
+        "SDK_version": "2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+        "driver_version": "0.7.2",
+        "memory": {
+          "weight_bytes": 50583488,
+          "internal_bytes": 4442944,
+          "dma_bytes": 110137344
+        }
+      },
+      {
+        "role": "C",
+        "model_sha256": "3d19687b420ef7fb33578f9450bb03aac07213622cfd953e76714088423b497e",
+        "input": {
+          "index": 0,
+          "name": "input",
+          "shape": [
+            2,
+            53,
+            1024
+          ],
+          "n_elems": 108544,
+          "size": 217088,
+          "format": 3,
+          "type": 1,
+          "quantization_type": 2,
+          "fractional_length": 0,
+          "zero_point": 0,
+          "pass_through": 0,
+          "scale": 1.0,
+          "w_stride": 0,
+          "h_stride": 0,
+          "size_with_stride": 217088
+        },
+        "outputs": [
+          {
+            "index": 0,
+            "name": "frame_output",
+            "shape": [
+              2,
+              53,
+              1024
+            ],
+            "n_elems": 108544,
+            "size": 217088,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 217088
+          },
+          {
+            "index": 1,
+            "name": "global_output",
+            "shape": [
+              1,
+              106,
+              1024
+            ],
+            "n_elems": 108544,
+            "size": 217088,
+            "format": 3,
+            "type": 1,
+            "quantization_type": 2,
+            "fractional_length": 0,
+            "zero_point": 0,
+            "pass_through": 0,
+            "scale": 1.0,
+            "w_stride": 0,
+            "h_stride": 0,
+            "size_with_stride": 217088
+          }
+        ],
+        "SDK_version": "2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+        "driver_version": "0.7.2",
+        "memory": {
+          "weight_bytes": 50583488,
+          "internal_bytes": 4221760,
+          "dma_bytes": 109948928
+        }
+      }
+    ],
+    "counters": {
+      "sdk_run_attempts": 120,
+      "sdk_runs_succeeded": 120,
+      "outputs_acquired": 240,
+      "outputs_released": 240
+    },
+    "contexts_created": 3,
+    "contexts_destroyed": 3,
+    "live_contexts": 0,
+    "cleanup_errors": [],
+    "all_repeated_outputs_byte_equal_per_input_and_graph": true,
+    "first_outputs": [
+      {
+        "input": "v53",
+        "role": "A",
+        "original_FP32": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891238,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 55865,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510707,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 63240,
+            "strict_pass": false
+          }
+        ],
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ]
+      },
+      {
+        "input": "v53",
+        "role": "B",
+        "original_FP32": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004224729641368898,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 56200,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.02991548180580139,
+            "relative_l2": 0.0047427869507870955,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 63465,
+            "strict_pass": false
+          }
+        ],
+        "same_input_first_A": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 0.0003602399751365929,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 13921,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.00537109375,
+            "relative_l2": 0.0005148976175617171,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 19659,
+            "strict_pass": false
+          }
+        ]
+      },
+      {
+        "input": "v53",
+        "role": "C",
+        "original_FP32": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.0042230867215725144,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 56255,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.03015962243080139,
+            "relative_l2": 0.00474677671114211,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 63464,
+            "strict_pass": false
+          }
+        ],
+        "same_input_first_A": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 0.00036670430792753815,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 14429,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.00537109375,
+            "relative_l2": 0.0005136855474567624,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 20564,
+            "strict_pass": false
+          }
+        ]
+      },
+      {
+        "input": "v56-calib00",
+        "role": "A",
+        "original_FP32": null,
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ]
+      },
+      {
+        "input": "v56-calib00",
+        "role": "B",
+        "original_FP32": null,
+        "same_input_first_A": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 0.00036897205040376034,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 13852,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.0089111328125,
+            "relative_l2": 0.0005754193074365035,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 19967,
+            "strict_pass": false
+          }
+        ]
+      },
+      {
+        "input": "v56-calib00",
+        "role": "C",
+        "original_FP32": null,
+        "same_input_first_A": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.00390625,
+            "relative_l2": 0.00040834265454954246,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 14376,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.0093994140625,
+            "relative_l2": 0.0006283344124379646,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 20944,
+            "strict_pass": false
+          }
+        ]
+      }
+    ]
+  },
+  "profile": {
+    "receipt": {
+      "private_evidence": "profile-r1/result.json",
+      "sha256": "c4a534059642b588775f520c6d9a84ec64c5b343b683d73646b1e7ce627fee18"
+    },
+    "init_flags": 8,
+    "normal_benchmark_timing": false,
+    "counters": {
+      "sdk_run_attempts": 6,
+      "sdk_runs_succeeded": 6,
+      "outputs_acquired": 12,
+      "outputs_released": 12
+    },
+    "contexts_created": 3,
+    "contexts_destroyed": 3,
+    "live_contexts": 0,
+    "cleanup_errors": [],
+    "saved_analysis": {
+      "public_receipt": "deploy/rk3588/validation/original_pair_fc2_partition/profile_saved_analysis.json",
+      "sha256": "cfcd318878ddcca695745bab8bfad1c37a6922a6c102f0f67b89a814b55a46df"
+    }
+  },
+  "control_receipts": [
+    {
+      "receipt": {
+        "private_evidence": "vggt-v72-compile2-control-r1.json",
+        "sha256": "a141634503579a6b59859099a2c6aa9a24cd6cf14784eb2709386c54483b696e"
+      },
+      "stage": "compile2",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 22.180531812016852,
+      "samples": 46,
+      "frequency_hz": [
+        300000000
+      ],
+      "max_temperature_c": 61.0,
+      "frequency_written": false,
+      "error": null,
+      "cleanup_errors": []
+    },
+    {
+      "receipt": {
+        "private_evidence": "vggt-v72-compile4-control-r1.json",
+        "sha256": "c5587bea3685f5446b5834323937b31dc3d198f33b45fd4f5071fd6e114450c4"
+      },
+      "stage": "compile4",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 19.558737632003613,
+      "samples": 41,
+      "frequency_hz": [
+        300000000
+      ],
+      "max_temperature_c": 62.846,
+      "frequency_written": false,
+      "error": null,
+      "cleanup_errors": []
+    },
+    {
+      "receipt": {
+        "private_evidence": "vggt-v72-normal-control-r1.json",
+        "sha256": "9de1eb12541866feae2fc1c2844aa3818287be1eb4524e6b8dda0682dcb3059a"
+      },
+      "stage": "normal",
+      "status": "failed",
+      "returncode": null,
+      "seconds": 0.0027291250007692724,
+      "samples": 2,
+      "frequency_hz": [
+        300000000
+      ],
+      "max_temperature_c": 53.615,
+      "frequency_written": false,
+      "error": "FileNotFoundError: [Errno 2] No such file or directory: '/mnt/vggt-data/vggt-slam2/venv/bin/python3.11.17'",
+      "cleanup_errors": []
+    },
+    {
+      "receipt": {
+        "private_evidence": "vggt-v72-normalretry-control-r1.json",
+        "sha256": "7c71874a1c62ca0fb764d8b856aa817587585f2322dc08acde2880a44b916a3c"
+      },
+      "stage": "normalretry",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 11.200947083998471,
+      "samples": 24,
+      "frequency_hz": [
+        300000000
+      ],
+      "max_temperature_c": 56.384,
+      "frequency_written": false,
+      "error": null,
+      "cleanup_errors": []
+    },
+    {
+      "receipt": {
+        "private_evidence": "vggt-v72-profile-control-r1.json",
+        "sha256": "6b916c0d1919a2af515a5bd738f419a2566c320205cf6f0c40faeddd139b0b0b"
+      },
+      "stage": "profile",
+      "status": "completed",
+      "returncode": 0,
+      "seconds": 2.0177547030034475,
+      "samples": 6,
+      "frequency_hz": [
+        300000000
+      ],
+      "max_temperature_c": 57.307,
+      "frequency_written": false,
+      "error": null,
+      "cleanup_errors": []
+    }
+  ],
+  "launch_failure": {
+    "stage": "normal",
+    "reason": "Nonexistent interpreter pathname mistakenly included patch version; no child or SDK call started.",
+    "corrected_stage": "normalretry",
+    "raw_failure_preserved": true
+  },
+  "limitations": [
+    "Two inputs from one frame/global pair and fixed interleaving; no full-backbone or statistical generalization.",
+    "FP32 reduction order differs; strict FP32 ONNX gate is not byte identity.",
+    "All SDK routes still fail available original FP32 tensor strict checks; no new trajectory or map-quality acceptance.",
+    "No new complete model, timestamp replay, camera, 30-minute, loop closure or physical 8 GB result."
+  ],
+  "saved_audit": {
+    "public_receipt": "deploy/rk3588/validation/original_pair_fc2_partition/audit_saved.json",
+    "sha256": "061dbf9c3b91d8c34ec09cbdaff91656b1fccd042dc9c89f8bc5951ccf735000",
+    "auditor_sha256": "f667375322ace4a9c398f890cc693a923f90c05b01d494f17675af3408c47075",
+    "status": "passed_saved_evidence_audit",
+    "arrays_verified": 278,
+    "artifact_files_verified": 148,
+    "SDK_runs": 126,
+    "SDK_outputs_released": 252,
+    "contexts_closed": 6,
+    "original_FP16_A_unchanged_since_v70": {
+      "receipt_sha256": "2ace34b958b0bd062f36887b6975e12569cd87895709117884a073173a78d5ef",
+      "original_artifacts": [
+        {
+          "input": "v53",
+          "artifact": {
+            "file": "v53-00-A.npz",
+            "bytes": 868866,
+            "sha256": "ffcf74558e280b4d6a38356a30ea41ad01d281e7aacf22c5f0fc7422f9a0dd86"
+          }
+        },
+        {
+          "input": "v56-calib00",
+          "artifact": {
+            "file": "v56-calib00-00-A.npz",
+            "bytes": 868866,
+            "sha256": "53a90abc7aa7261594eabc6c1e43ccf7814dd8358a95bcd3efeb05e4e97025bf"
+          }
+        }
+      ],
+      "compared_outputs": 84,
+      "bitwise_equal": true
+    },
+    "original_Torch_SDK_strict": {
+      "covered_outputs": 126,
+      "passed": 0,
+      "reference_case": "v53",
+      "missing_case": "v56-calib00"
+    }
+  },
+  "post_board": {
+    "private_receipt": "post-board.json",
+    "sha256": "a1c2283182742a18b1296d877418e6b3c506a3c670f32e860ac23931d9f62e7e",
+    "npu_hz": 300000000,
+    "governor": "userspace",
+    "temperatures_c": {
+      "bigcore1-thermal": 49.923,
+      "soc-thermal": 49.923,
+      "gpu-thermal": 49.0,
+      "littlecore-thermal": 49.923,
+      "bigcore0-thermal": 49.923,
+      "npu-thermal": 49.0,
+      "center-thermal": 49.923
+    },
+    "other_python_workers": [],
+    "active_model_directories": [
+      "vggt"
+    ],
+    "weight_files": [
+      "model.pt"
+    ]
+  }
+}
