@@ -24,6 +24,8 @@ python -B -u /mnt/vggt-data/vggt-slam2/src/scripts/replay_original_vggt.py \
 
 Use a new output directory. Default image size is 112; `--no-patch-cache` disables the original DINO tail cache. Do not restrict the outer process to CPUs 4–7: the decoder uses CPU0 and the model uses CPUs 4–7.
 
+`--model-cpus 6 7 --model-threads 1` can set model-process affinity independently of the thread count. The matched complete-model comparator accepts the same options. This leaves the decoder on CPU0 and changes no system clocks or governors. The default affinity remains unchanged: a matched 16-pair check measured 1.952 s with CPUs 4–7 and 1.956 s with CPUs 6–7, with identical outputs and no observed improvement. [Measured CPU-affinity comparison](results/original_cpu_affinity_v60.json).
+
 The first full timestamp replay served **7 new pose/map updates from 798 input frames**, at **0.195 Hz** over 35.900 s including the EOF drain. Complete software-arrival-to-published-pose **P95 was 8.160 s**; 790 frames were skipped or overwritten. Peak process RSS was 4,977.2 MiB on the 16 GB board. These measurements include decoding, queuing, original model execution, SL4 and pose/map publication. They do **not** meet the real-time target. Resolution quality, trajectory accuracy, 30-minute operation and 8 GB deployment remain unvalidated. [Measured record](results/original_timestamp_replay_v52.json).
 
 The experimental complete-model path now executes **all 48 original aggregator blocks, all 24 original DINO blocks, all four original CameraHead refinements and original DPT logits through RKNN**. Original preprocessing, boundary operations, activations and SL4 remain on CPU. On 17 identical TUM frames, 16 complete overlapping pairs per configuration measured:

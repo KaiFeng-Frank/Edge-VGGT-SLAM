@@ -36,7 +36,8 @@ def load_replay():
 
 
 def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=False,
-                  half_io=False, grouped_dino=False, no_cache=False, fail=None, model_threads=None):
+                  half_io=False, grouped_dino=False, no_cache=False, fail=None, model_threads=None,
+                  model_cpus=None):
     replay = load_replay()
     events = []
     modules = {name: ModuleType(name) for name in (
@@ -283,6 +284,8 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
                          '--rknn-depth-manifest-sha256', 'c'*64]
             if model_threads is not None:
                 args += ['--model-threads', str(model_threads)]
+            if model_cpus is not None:
+                args += ['--model-cpus', *map(str, model_cpus)]
             with patch.dict(sys.modules, modules), patch.object(sys, 'argv', args), \
                     patch.object(replay.platform, 'machine', return_value='aarch64'), \
                     patch.object(replay.sys, 'platform', 'linux'), \
@@ -344,9 +347,10 @@ def test_generated_lifecycle_and_complete_metrics(npu, camera, no_cache):
         assert 'camera_rknn' not in report and 'install_camera_rknn' not in events
 
 
-@pytest.mark.parametrize('threads,cpus', [(1, [4, 5, 6, 7]), (2, [6, 7])])
-def test_generated_model_threads_preserve_decoder_and_restore_affinity(threads, cpus):
-    code, report, events = generated_run(npu=True, camera=True, model_threads=threads)
+@pytest.mark.parametrize('threads,model_cpus,cpus', [
+    (1, None, [4, 5, 6, 7]), (2, None, [6, 7]), (1, [6, 7], [6, 7])])
+def test_generated_model_threads_preserve_decoder_and_restore_affinity(threads, model_cpus, cpus):
+    code, report, events = generated_run(npu=True, camera=True, model_threads=threads, model_cpus=model_cpus)
     assert code == 0 and report['status'] == 'completed'
     assert report['model_threads'] == threads and report['cpu_affinity'] == cpus
     assert report['decoder_cpu_affinity'] == [0]
@@ -354,6 +358,23 @@ def test_generated_model_threads_preserve_decoder_and_restore_affinity(threads, 
     assert events.count('set_num_interop_threads=1') == 1
     affinity_calls = [event for event in events if event.startswith('set_affinity=')]
     assert affinity_calls == ['set_affinity=' + ','.join(map(str, cpus)), 'set_affinity=0,1,2,3,4,5,6,7']
+
+
+@pytest.mark.parametrize('args,message', [
+    (['--model-threads', '1', '--model-cpus', '6', '6'], 'duplicate CPUs'),
+    (['--model-threads', '4', '--model-cpus', '6', '7'], 'at least --model-threads CPUs'),
+    (['--model-cpus', '0'], 'invalid choice'),
+])
+def test_invalid_model_cpus_reject_before_board_or_model(args, message):
+    replay = load_replay()
+    base = ['generated-replay', '--rgb-index', 'generated', '--checkpoint', 'generated', '--output', 'generated']
+    stderr = io.StringIO()
+    with patch.object(sys, 'argv', base + args), contextlib.redirect_stderr(stderr), \
+            patch.object(Path, 'is_file', side_effect=AssertionError('must reject before board check')), \
+            patch.object(replay.os, 'sched_setaffinity', side_effect=AssertionError('must reject before affinity change')):
+        with pytest.raises(SystemExit) as exc:
+            replay.main()
+    assert exc.value.code == 2 and message in stderr.getvalue()
 
 
 @pytest.mark.parametrize('fail', ['install_rknn', 'predict', 'close_cache'])

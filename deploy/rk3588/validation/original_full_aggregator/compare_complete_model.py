@@ -21,6 +21,8 @@ def main():
     p.add_argument('--half-io-library', type=Path)
     p.add_argument('--half-io-library-sha256')
     p.add_argument('--model-threads', type=int, choices=(1, 2, 4), default=4)
+    p.add_argument('--model-cpus', nargs='+', type=int, choices=(4, 5, 6, 7),
+                   help='Model CPU affinity; defaults to 6,7 for two threads and 4,5,6,7 otherwise')
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--dino-manifest', type=Path)
     p.add_argument('--dino-manifest-sha256')
@@ -31,6 +33,12 @@ def main():
     p.add_argument('--reference-run', type=Path,
                    help='Reuse a completed matched CPU FP32 run; run only the new DINO branch')
     args = p.parse_args()
+    cpus = (set(args.model_cpus) if args.model_cpus is not None else
+            {6, 7} if args.model_threads == 2 else {4, 5, 6, 7})
+    if args.model_cpus is not None and len(args.model_cpus) != len(cpus):
+        p.error('--model-cpus must not contain duplicate CPUs')
+    if len(cpus) < args.model_threads:
+        p.error('--model-cpus must contain at least --model-threads CPUs')
     if args.grouped_dino and (args.dino_manifest is None or args.half_io_library is None):
         p.error('--grouped-dino requires --dino-manifest and --half-io-library')
     if (args.half_io_library is None) != (args.half_io_library_sha256 is None):
@@ -50,7 +58,8 @@ def main():
         p.error('The complete depth comparison requires the DINO candidate')
     assert b'rockchip,rk3588' in Path('/proc/device-tree/compatible').read_bytes()
     args.output.mkdir(parents=True, exist_ok=False)
-    os.sched_setaffinity(0, {6, 7} if args.model_threads == 2 else {4, 5, 6, 7})
+    os.sched_setaffinity(0, cpus)
+    cpu_affinity = sorted(os.sched_getaffinity(0))
     import numpy as np
     import torch
     from vggt_slam.runtime import load_model
@@ -78,6 +87,7 @@ def main():
                   quality_accepted=False, realtime_validated=False,
                   paired_aggregator=args.paired_aggregator,
                   model_threads=args.model_threads,
+                  cpu_affinity=cpu_affinity,
                   timing_scope='offline complete original model + SL4; not paced input latency',
                   manifest_sha256=args.manifest_sha256, script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
     report['grouped_dino'] = args.grouped_dino

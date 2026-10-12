@@ -1,0 +1,723 @@
+{
+  "schema": "original_VGGT_complete_CPU_affinity_v60",
+  "status": "completed_no_observed_service_improvement",
+  "original_model_only": true,
+  "actual_execution": "sequential root-owned RK3588S runs",
+  "model_threads": 1,
+  "system_clocks_or_governors_modified": false,
+  "candidate_accepted": false,
+  "real_time_validated": false,
+  "quality_accepted": false,
+  "new_paced_replay_executed": false,
+  "decision": "Keep default affinity; no additional replay of the slower affinity candidate. Global NPU frequency test remains unexecuted pending explicit authorization.",
+  "summary": {
+    "timings": {
+      "baseline": {
+        "mean_seconds": 1.9524844593070156,
+        "subsequent_mean_seconds": 1.9072542167288096,
+        "affinity": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "npu_frequency": {
+          "300000000": 59
+        },
+        "cpu_frequency": {
+          "cpu_policy4_khz": {
+            "min": 408000,
+            "max": 2352000,
+            "last": 2352000
+          },
+          "cpu_policy6_khz": {
+            "min": 408000,
+            "max": 2352000,
+            "last": 408000
+          }
+        },
+        "guard_seconds_per_pair": 0.13381358113110764,
+        "temperature_max_c": 61.923
+      },
+      "cpu67": {
+        "mean_seconds": 1.9563134256932244,
+        "subsequent_mean_seconds": 1.9138802061381284,
+        "affinity": [
+          6,
+          7
+        ],
+        "npu_frequency": {
+          "300000000": 58
+        },
+        "cpu_frequency": {
+          "cpu_policy4_khz": {
+            "min": 408000,
+            "max": 600000,
+            "last": 408000
+          },
+          "cpu_policy6_khz": {
+            "min": 408000,
+            "max": 2352000,
+            "last": 1008000
+          }
+        },
+        "guard_seconds_per_pair": 0.13696168057140312,
+        "temperature_max_c": 65.615
+      }
+    },
+    "mean_reduction_fraction": -0.00196107393734013,
+    "arrays_bitwise_equal": 80,
+    "poses_bitwise_equal": true,
+    "runs_sequential_not_interleaved": true,
+    "root_actual_board_only": true,
+    "realtime_validated": false
+  },
+  "runs": {
+    "baseline": {
+      "result_sha256": "d94a5957ab08e47ae7f79a1fcc4b6cb5248626186a366b1875be84b4c08de562",
+      "status": "completed_not_quality_acceptance",
+      "input_indices": [
+        32,
+        80,
+        128,
+        176,
+        224,
+        272,
+        320,
+        368,
+        416,
+        464,
+        512,
+        560,
+        608,
+        656,
+        704,
+        752,
+        797
+      ],
+      "input_timestamps": [
+        1305031103.243216,
+        1305031104.843258,
+        1305031106.443278,
+        1305031108.043418,
+        1305031109.643229,
+        1305031111.243236,
+        1305031112.843286,
+        1305031114.443345,
+        1305031116.043164,
+        1305031117.643252,
+        1305031119.247399,
+        1305031120.847921,
+        1305031122.451257,
+        1305031124.051505,
+        1305031125.650575,
+        1305031127.247374,
+        1305031128.747363
+      ],
+      "image_shape": [
+        2,
+        3,
+        84,
+        112
+      ],
+      "cpu_affinity": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "model_threads": 1,
+      "script_sha256": "db9523ee9c43737c8e17233ed1145c6a3eb8cf0c297d5c616a0092a9276fb08a",
+      "runtime_source_sha256": {
+        "patch_cache.py": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b",
+        "rknn_aggregator_blocks.py": "4fea665334e9d12a3d55839c3150680e269bab9794074d698bed2ad0a6e41c93",
+        "rknn_camera_head.py": "89c77fdb67348160b6d55676da22528cc1cb121985276cb1ae1970b2aa8a9fdc",
+        "rknn_dino_blocks.py": "6cf230ea3ae6c65b9a3c7ec0b31e9abb346edb2fc0413b6b77a3a3b510b495de",
+        "rknn_depth_head.py": "7efacdb27be4aeb134fd2b64e2819136320fc45d25973517584522d314ba7894",
+        "rknn_aggregator_pairs.py": "08270da911213d0d22c21c9a7f001aaa7e16d7f7b32220f8a2b0c1ddc4b09b88",
+        "rknn_half_io_pairs.py": "53b573f494f2598183659ba4e8dcb7503c770d9e2ac7b95cae9016279805d9a4",
+        "native/fp16_neon.c": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3",
+        "rknn_half_io_dino.py": "e39469432aa5663f0a15756be0067ec92a0fb7127e6702a794298c3e902f3cd7",
+        "rknn_grouped_dino.py": "e0e5664dc231a9960db12ae6c690d3f0604417a4d74991dcbd0ca2ca765ef6ac"
+      },
+      "manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42",
+      "dino_manifest_sha256": "a602bcdaab3f2e1ab51d49feb300ff3af76c07fe334489c983d647859f3f9493",
+      "depth_manifest_sha256": "9a6e5435df543b8484a4fc50da4b065995f32153233548829234dd149fbc7135",
+      "half_io_library_sha256": "d08147c438461669ad8ebd3c6483e0a7908053e95cc6f83d0fe7eb7a5cd668c9",
+      "pair_count": 16,
+      "complete_service_seconds": [
+        2.6309380979801062,
+        1.901449858007254,
+        1.8938819820177741,
+        1.9044653580058366,
+        1.8945849409792572,
+        1.9074964839965105,
+        1.9073804839863442,
+        1.900014023995027,
+        1.9174126510042697,
+        1.913666775013553,
+        1.9026889829838183,
+        1.8953086489927955,
+        1.9167990669957362,
+        1.9167489009851124,
+        1.9094820669852197,
+        1.9274330269836355
+      ],
+      "mean_phase_seconds": {
+        "DINO": 0.26161223475719453,
+        "aggregator_including_DINO": 1.454342828505105,
+        "camera_head": 0.21392234718769032,
+        "depth_head": 0.16396469869141583
+      },
+      "peak_RSS_MiB": 7173.3671875,
+      "strict_original_FP32_arrays_passed": 0,
+      "strict_original_FP32_arrays_total": 80,
+      "strict_rtol": 0.0001,
+      "strict_atol": 1e-05,
+      "context_cleanup": {
+        "depth_rknn": {
+          "contexts_created": 1,
+          "contexts_destroyed": 1,
+          "live_contexts": 0,
+          "cleanup_errors": [],
+          "closed": true,
+          "failed": false
+        },
+        "dino_rknn": {
+          "contexts_created": 6,
+          "contexts_destroyed": 6,
+          "live_contexts": 0,
+          "cleanup_errors": [],
+          "closed": true,
+          "failed": false
+        },
+        "camera_rknn": {
+          "contexts_created": 1,
+          "contexts_destroyed": 1,
+          "live_contexts": 0,
+          "cleanup_errors": [],
+          "closed": true,
+          "failed": false
+        },
+        "rknn": {
+          "contexts_created": 24,
+          "contexts_destroyed": 24,
+          "live_contexts": 0,
+          "cleanup_errors": [],
+          "closed": true,
+          "failed": false
+        }
+      },
+      "platform_summary_sha256": "1478511da043f304a85287ff51914dae2f51519d74c86e57f2b9387c0d8ab92e",
+      "platform_summary": {
+        "status": "target_exited",
+        "target_pid": 228763,
+        "target_start_ticks": "18266634",
+        "sampler_cpu_affinity": [
+          0
+        ],
+        "interval_seconds": 1.0,
+        "samples": 59,
+        "first_monotonic": 182666.460709706,
+        "last_monotonic": 182724.519088165,
+        "duration_seconds": 59.06319893497857,
+        "npu_active_samples": 32,
+        "npu_frequency_sample_counts": {
+          "300000000": 59
+        },
+        "npu_active_frequency_sample_counts": {
+          "300000000": 32
+        },
+        "ranges": {
+          "npu_load_core0_percent": {
+            "min": 0,
+            "max": 70,
+            "last": 0
+          },
+          "npu_load_core1_percent": {
+            "min": 0,
+            "max": 24,
+            "last": 0
+          },
+          "npu_load_core2_percent": {
+            "min": 0,
+            "max": 24,
+            "last": 0
+          },
+          "cpu_policy4_khz": {
+            "min": 408000,
+            "max": 2352000,
+            "last": 2352000
+          },
+          "cpu_policy6_khz": {
+            "min": 408000,
+            "max": 2352000,
+            "last": 408000
+          },
+          "temperature_bigcore1-thermal_c": {
+            "min": 50.846,
+            "max": 61.923,
+            "last": 59.153
+          },
+          "temperature_soc-thermal_c": {
+            "min": 49.923,
+            "max": 60.076,
+            "last": 59.153
+          },
+          "temperature_gpu-thermal_c": {
+            "min": 49.0,
+            "max": 58.23,
+            "last": 57.307
+          },
+          "temperature_littlecore-thermal_c": {
+            "min": 50.846,
+            "max": 61.0,
+            "last": 59.153
+          },
+          "temperature_bigcore0-thermal_c": {
+            "min": 50.846,
+            "max": 61.923,
+            "last": 59.153
+          },
+          "temperature_npu-thermal_c": {
+            "min": 49.0,
+            "max": 59.153,
+            "last": 57.307
+          },
+          "temperature_center-thermal_c": {
+            "min": 49.923,
+            "max": 60.076,
+            "last": 59.153
+          }
+        },
+        "frequency_or_thermal_causality_validated": false,
+        "limitations": "Driver-reported load and instantaneous frequency sampled sequentially; load averaging period not independently verified; no hardware kernel timing or thermal-throttling cause inferred"
+      },
+      "monitor_control": {
+        "child_returncode": 0,
+        "sampler_returncode": 0,
+        "system_settings_changed": false
+      },
+      "poses_sha256": "cb768b2ed3f10e4ed758528ebba3e4e440b80cdd09bb82143a180128ec19c31e"
+    },
+    "cpu67": {
+      "result_sha256": "b502c1109054fa611f784fbc43115a3ee582835822b8491bfdcf700c6b1e329e",
+      "status": "completed_not_quality_acceptance",
+      "input_indices": [
+        32,
+        80,
+        128,
+        176,
+        224,
+        272,
+        320,
+        368,
+        416,
+        464,
+        512,
+        560,
+        608,
+        656,
+        704,
+        752,
+        797
+      ],
+      "input_timestamps": [
+        1305031103.243216,
+        1305031104.843258,
+        1305031106.443278,
+        1305031108.043418,
+        1305031109.643229,
+        1305031111.243236,
+        1305031112.843286,
+        1305031114.443345,
+        1305031116.043164,
+        1305031117.643252,
+        1305031119.247399,
+        1305031120.847921,
+        1305031122.451257,
+        1305031124.051505,
+        1305031125.650575,
+        1305031127.247374,
+        1305031128.747363
+      ],
+      "image_shape": [
+        2,
+        3,
+        84,
+        112
+      ],
+      "cpu_affinity": [
+        6,
+        7
+      ],
+      "model_threads": 1,
+      "script_sha256": "db9523ee9c43737c8e17233ed1145c6a3eb8cf0c297d5c616a0092a9276fb08a",
+      "runtime_source_sha256": {
+        "patch_cache.py": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b",
+        "rknn_aggregator_blocks.py": "4fea665334e9d12a3d55839c3150680e269bab9794074d698bed2ad0a6e41c93",
+        "rknn_camera_head.py": "89c77fdb67348160b6d55676da22528cc1cb121985276cb1ae1970b2aa8a9fdc",
+        "rknn_dino_blocks.py": "6cf230ea3ae6c65b9a3c7ec0b31e9abb346edb2fc0413b6b77a3a3b510b495de",
+        "rknn_depth_head.py": "7efacdb27be4aeb134fd2b64e2819136320fc45d25973517584522d314ba7894",
+        "rknn_aggregator_pairs.py": "08270da911213d0d22c21c9a7f001aaa7e16d7f7b32220f8a2b0c1ddc4b09b88",
+        "rknn_half_io_pairs.py": "53b573f494f2598183659ba4e8dcb7503c770d9e2ac7b95cae9016279805d9a4",
+        "native/fp16_neon.c": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3",
+        "rknn_half_io_dino.py": "e39469432aa5663f0a15756be0067ec92a0fb7127e6702a794298c3e902f3cd7",
+        "rknn_grouped_dino.py": "e0e5664dc231a9960db12ae6c690d3f0604417a4d74991dcbd0ca2ca765ef6ac"
+      },
+      "manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42",
+      "dino_manifest_sha256": "a602bcdaab3f2e1ab51d49feb300ff3af76c07fe334489c983d647859f3f9493",
+      "depth_manifest_sha256": "9a6e5435df543b8484a4fc50da4b065995f32153233548829234dd149fbc7135",
+      "half_io_library_sha256": "d08147c438461669ad8ebd3c6483e0a7908053e95cc6f83d0fe7eb7a5cd668c9",
+      "pair_count": 16,
+      "complete_service_seconds": [
+        2.5928117190196645,
+        1.9129064840089995,
+        1.9268910679966211,
+        1.919364317000145,
+        1.8967067320190836,
+        1.9086516500101425,
+        1.920624650985701,
+        1.905991317005828,
+        1.9119444010138977,
+        1.9128962760150898,
+        1.927813069021795,
+        1.9180124010017607,
+        1.9244121100055054,
+        1.926326443994185,
+        1.8775373130047228,
+        1.918124858988449
+      ],
+      "mean_phase_seconds": {
+        "DINO": 0.26103110443909827,
+        "aggregator_including_DINO": 1.4599223733748659,
+        "camera_head": 0.21654844087424863,
+        "depth_head": 0.16051243537367554
+      },
+      "peak_RSS_MiB": 7261.21875,
+      "strict_original_FP32_arrays_passed": 0,
+      "strict_original_FP32_arrays_total": 80,
+      "strict_rtol": 0.0001,
+      "strict_atol": 1e-05,
+      "context_cleanup": {
+        "depth_rknn": {
+          "contexts_created": 1,
+          "contexts_destroyed": 1,
+          "live_contexts": 0,
+          "cleanup_errors": [],
+          "closed": true,
+          "failed": false
+        },
+        "dino_rknn": {
+          "contexts_created": 6,
+          "contexts_destroyed": 6,
+          "live_contexts": 0,
+          "cleanup_errors": [],
+          "closed": true,
+          "failed": false
+        },
+        "camera_rknn": {
+          "contexts_created": 1,
+          "contexts_destroyed": 1,
+          "live_contexts": 0,
+          "cleanup_errors": [],
+          "closed": true,
+          "failed": false
+        },
+        "rknn": {
+          "contexts_created": 24,
+          "contexts_destroyed": 24,
+          "live_contexts": 0,
+          "cleanup_errors": [],
+          "closed": true,
+          "failed": false
+        }
+      },
+      "platform_summary_sha256": "08541ca184fbfbbd108f527dbd758f3c55017dcf2ffdba8424a457aea355e7f1",
+      "platform_summary": {
+        "status": "target_exited",
+        "target_pid": 228893,
+        "target_start_ticks": "18273939",
+        "sampler_cpu_affinity": [
+          0
+        ],
+        "interval_seconds": 1.0,
+        "samples": 58,
+        "first_monotonic": 182739.51473188,
+        "last_monotonic": 182796.574256071,
+        "duration_seconds": 58.06896220901399,
+        "npu_active_samples": 32,
+        "npu_frequency_sample_counts": {
+          "300000000": 58
+        },
+        "npu_active_frequency_sample_counts": {
+          "300000000": 32
+        },
+        "ranges": {
+          "npu_load_core0_percent": {
+            "min": 0,
+            "max": 71,
+            "last": 0
+          },
+          "npu_load_core1_percent": {
+            "min": 0,
+            "max": 24,
+            "last": 0
+          },
+          "npu_load_core2_percent": {
+            "min": 0,
+            "max": 24,
+            "last": 0
+          },
+          "cpu_policy4_khz": {
+            "min": 408000,
+            "max": 600000,
+            "last": 408000
+          },
+          "cpu_policy6_khz": {
+            "min": 408000,
+            "max": 2352000,
+            "last": 1008000
+          },
+          "temperature_bigcore1-thermal_c": {
+            "min": 54.538,
+            "max": 65.615,
+            "last": 60.076
+          },
+          "temperature_soc-thermal_c": {
+            "min": 54.538,
+            "max": 64.692,
+            "last": 60.076
+          },
+          "temperature_gpu-thermal_c": {
+            "min": 52.692,
+            "max": 61.923,
+            "last": 59.153
+          },
+          "temperature_littlecore-thermal_c": {
+            "min": 54.538,
+            "max": 64.692,
+            "last": 60.076
+          },
+          "temperature_bigcore0-thermal_c": {
+            "min": 54.538,
+            "max": 65.615,
+            "last": 60.076
+          },
+          "temperature_npu-thermal_c": {
+            "min": 53.615,
+            "max": 62.846,
+            "last": 59.153
+          },
+          "temperature_center-thermal_c": {
+            "min": 54.538,
+            "max": 63.769,
+            "last": 60.076
+          }
+        },
+        "frequency_or_thermal_causality_validated": false,
+        "limitations": "Driver-reported load and instantaneous frequency sampled sequentially; load averaging period not independently verified; no hardware kernel timing or thermal-throttling cause inferred"
+      },
+      "monitor_control": {
+        "child_returncode": 0,
+        "sampler_returncode": 0,
+        "system_settings_changed": false
+      },
+      "poses_sha256": "cb768b2ed3f10e4ed758528ebba3e4e440b80cdd09bb82143a180128ec19c31e"
+    }
+  },
+  "validation": {
+    "validation": "generated_only_no_model_or_SDK",
+    "command": "/home/frank/miniconda3/envs/ctvggt/bin/python -B -m pytest -q -p no:cacheprovider tests/test_replay_original_vggt.py tests/test_compare_complete_model.py",
+    "passed": 63,
+    "seconds": 0.31,
+    "executed_by": "source agent; result reviewed by root",
+    "sha256": {
+      "scripts/replay_original_vggt.py": "8814d6602600db17d8c8da480080a5a8f6bf7f626e609c05140c1de7b3ad992b",
+      "deploy/rk3588/validation/original_full_aggregator/compare_complete_model.py": "db9523ee9c43737c8e17233ed1145c6a3eb8cf0c297d5c616a0092a9276fb08a",
+      "tests/test_replay_original_vggt.py": "fb12da71fa424afbd514b4a1fcb29af374d07ab8ebc96902fa11c73b3660dc9b",
+      "tests/test_compare_complete_model.py": "d4b63a9d8cc0855aa23e24c348fed8531da4eadcd844eff971629d3b74bbc91c"
+    }
+  },
+  "baseline_vs_previous_FP16": {
+    "saved_analysis_sha256": "95605ea9d67079b934edce48bec7338719bf49e608b680aee7c9fce40f9d9f30",
+    "arrays_count": 80,
+    "bitwise_equal_arrays": 80,
+    "artifacts": [
+      {
+        "file": "pair-01.npz",
+        "actual_sha256": "d98c772bf9aa492938b0ebf2cfbd2ad21657f1568ac1e064b669546e2ae5fe1d",
+        "reference_sha256": "d98c772bf9aa492938b0ebf2cfbd2ad21657f1568ac1e064b669546e2ae5fe1d"
+      },
+      {
+        "file": "pair-02.npz",
+        "actual_sha256": "e5afc03342fd4bc03ee44a18cc79c6ed6b3fe46e0a19e025b061567f58814f54",
+        "reference_sha256": "e5afc03342fd4bc03ee44a18cc79c6ed6b3fe46e0a19e025b061567f58814f54"
+      },
+      {
+        "file": "pair-03.npz",
+        "actual_sha256": "311e72ed2cb9b9f10b97d81dccc93995ec28d0144184a8c416d3d7bde8355c9e",
+        "reference_sha256": "311e72ed2cb9b9f10b97d81dccc93995ec28d0144184a8c416d3d7bde8355c9e"
+      },
+      {
+        "file": "pair-04.npz",
+        "actual_sha256": "ba53d982658fe6a0e489e64954be4427bdb4d8f1f3eaf71dfa2e5f6a9a6338c0",
+        "reference_sha256": "ba53d982658fe6a0e489e64954be4427bdb4d8f1f3eaf71dfa2e5f6a9a6338c0"
+      },
+      {
+        "file": "pair-05.npz",
+        "actual_sha256": "8a40ad0f6b6665388917816fc8c2ca1f4161e0d51147243d8d0cb05686206198",
+        "reference_sha256": "8a40ad0f6b6665388917816fc8c2ca1f4161e0d51147243d8d0cb05686206198"
+      },
+      {
+        "file": "pair-06.npz",
+        "actual_sha256": "d8a2d0fa1b61b2a764a0eef83f68d1e615b1fee25d1ad9e590a2e7719881d151",
+        "reference_sha256": "d8a2d0fa1b61b2a764a0eef83f68d1e615b1fee25d1ad9e590a2e7719881d151"
+      },
+      {
+        "file": "pair-07.npz",
+        "actual_sha256": "1d48fe36ba749c34b8038845ff728ec8bbf054f5c13f1eadd3f60beef719cc3c",
+        "reference_sha256": "1d48fe36ba749c34b8038845ff728ec8bbf054f5c13f1eadd3f60beef719cc3c"
+      },
+      {
+        "file": "pair-08.npz",
+        "actual_sha256": "0067938ef4844d30221c74bc2f0635ad48c6b0b5fab1a0f0e074f1a809533f33",
+        "reference_sha256": "0067938ef4844d30221c74bc2f0635ad48c6b0b5fab1a0f0e074f1a809533f33"
+      },
+      {
+        "file": "pair-09.npz",
+        "actual_sha256": "a1a8ef4fb8d8ff4018ba2a1a729045b44fbd049f931eea37a5f5f8efc18632fc",
+        "reference_sha256": "a1a8ef4fb8d8ff4018ba2a1a729045b44fbd049f931eea37a5f5f8efc18632fc"
+      },
+      {
+        "file": "pair-10.npz",
+        "actual_sha256": "ebe7a414056971a69d5390dd8a572694ca553b8ffa9791755fa4eaf93d76e6e5",
+        "reference_sha256": "ebe7a414056971a69d5390dd8a572694ca553b8ffa9791755fa4eaf93d76e6e5"
+      },
+      {
+        "file": "pair-11.npz",
+        "actual_sha256": "98c1ebeffe364a4c3e4a19c39aff52f14ef014d8895a41d549b5d8b2fdd8cb69",
+        "reference_sha256": "98c1ebeffe364a4c3e4a19c39aff52f14ef014d8895a41d549b5d8b2fdd8cb69"
+      },
+      {
+        "file": "pair-12.npz",
+        "actual_sha256": "6f5d75165f7b4e52bd796846954a6ac44cefdb5497f4193f5ba4d9b6e869bfe8",
+        "reference_sha256": "6f5d75165f7b4e52bd796846954a6ac44cefdb5497f4193f5ba4d9b6e869bfe8"
+      },
+      {
+        "file": "pair-13.npz",
+        "actual_sha256": "c4400348b0df92146ef9c3ac1eaf5fd03867792a4765df77a81ca05406f58850",
+        "reference_sha256": "c4400348b0df92146ef9c3ac1eaf5fd03867792a4765df77a81ca05406f58850"
+      },
+      {
+        "file": "pair-14.npz",
+        "actual_sha256": "a4c4ec13fe758ae2cea291a470e2f3990aa5901611ea684e1c36d4fc40bfe190",
+        "reference_sha256": "a4c4ec13fe758ae2cea291a470e2f3990aa5901611ea684e1c36d4fc40bfe190"
+      },
+      {
+        "file": "pair-15.npz",
+        "actual_sha256": "a939223b08a88521e9afe9aa43194e8deb8514cbe33c6adcb0af7921bd1e566d",
+        "reference_sha256": "a939223b08a88521e9afe9aa43194e8deb8514cbe33c6adcb0af7921bd1e566d"
+      },
+      {
+        "file": "pair-16.npz",
+        "actual_sha256": "3489ae94f5c9d994c184c2f5606cb2364ced6c8ce81bba4bfa842a4b499428c1",
+        "reference_sha256": "3489ae94f5c9d994c184c2f5606cb2364ced6c8ce81bba4bfa842a4b499428c1"
+      }
+    ]
+  },
+  "candidate_vs_baseline": {
+    "saved_analysis_sha256": "95605ea9d67079b934edce48bec7338719bf49e608b680aee7c9fce40f9d9f30",
+    "arrays_count": 80,
+    "bitwise_equal_arrays": 80,
+    "artifacts": [
+      {
+        "file": "pair-01.npz",
+        "actual_sha256": "d98c772bf9aa492938b0ebf2cfbd2ad21657f1568ac1e064b669546e2ae5fe1d",
+        "reference_sha256": "d98c772bf9aa492938b0ebf2cfbd2ad21657f1568ac1e064b669546e2ae5fe1d"
+      },
+      {
+        "file": "pair-02.npz",
+        "actual_sha256": "e5afc03342fd4bc03ee44a18cc79c6ed6b3fe46e0a19e025b061567f58814f54",
+        "reference_sha256": "e5afc03342fd4bc03ee44a18cc79c6ed6b3fe46e0a19e025b061567f58814f54"
+      },
+      {
+        "file": "pair-03.npz",
+        "actual_sha256": "311e72ed2cb9b9f10b97d81dccc93995ec28d0144184a8c416d3d7bde8355c9e",
+        "reference_sha256": "311e72ed2cb9b9f10b97d81dccc93995ec28d0144184a8c416d3d7bde8355c9e"
+      },
+      {
+        "file": "pair-04.npz",
+        "actual_sha256": "ba53d982658fe6a0e489e64954be4427bdb4d8f1f3eaf71dfa2e5f6a9a6338c0",
+        "reference_sha256": "ba53d982658fe6a0e489e64954be4427bdb4d8f1f3eaf71dfa2e5f6a9a6338c0"
+      },
+      {
+        "file": "pair-05.npz",
+        "actual_sha256": "8a40ad0f6b6665388917816fc8c2ca1f4161e0d51147243d8d0cb05686206198",
+        "reference_sha256": "8a40ad0f6b6665388917816fc8c2ca1f4161e0d51147243d8d0cb05686206198"
+      },
+      {
+        "file": "pair-06.npz",
+        "actual_sha256": "d8a2d0fa1b61b2a764a0eef83f68d1e615b1fee25d1ad9e590a2e7719881d151",
+        "reference_sha256": "d8a2d0fa1b61b2a764a0eef83f68d1e615b1fee25d1ad9e590a2e7719881d151"
+      },
+      {
+        "file": "pair-07.npz",
+        "actual_sha256": "1d48fe36ba749c34b8038845ff728ec8bbf054f5c13f1eadd3f60beef719cc3c",
+        "reference_sha256": "1d48fe36ba749c34b8038845ff728ec8bbf054f5c13f1eadd3f60beef719cc3c"
+      },
+      {
+        "file": "pair-08.npz",
+        "actual_sha256": "0067938ef4844d30221c74bc2f0635ad48c6b0b5fab1a0f0e074f1a809533f33",
+        "reference_sha256": "0067938ef4844d30221c74bc2f0635ad48c6b0b5fab1a0f0e074f1a809533f33"
+      },
+      {
+        "file": "pair-09.npz",
+        "actual_sha256": "a1a8ef4fb8d8ff4018ba2a1a729045b44fbd049f931eea37a5f5f8efc18632fc",
+        "reference_sha256": "a1a8ef4fb8d8ff4018ba2a1a729045b44fbd049f931eea37a5f5f8efc18632fc"
+      },
+      {
+        "file": "pair-10.npz",
+        "actual_sha256": "ebe7a414056971a69d5390dd8a572694ca553b8ffa9791755fa4eaf93d76e6e5",
+        "reference_sha256": "ebe7a414056971a69d5390dd8a572694ca553b8ffa9791755fa4eaf93d76e6e5"
+      },
+      {
+        "file": "pair-11.npz",
+        "actual_sha256": "98c1ebeffe364a4c3e4a19c39aff52f14ef014d8895a41d549b5d8b2fdd8cb69",
+        "reference_sha256": "98c1ebeffe364a4c3e4a19c39aff52f14ef014d8895a41d549b5d8b2fdd8cb69"
+      },
+      {
+        "file": "pair-12.npz",
+        "actual_sha256": "6f5d75165f7b4e52bd796846954a6ac44cefdb5497f4193f5ba4d9b6e869bfe8",
+        "reference_sha256": "6f5d75165f7b4e52bd796846954a6ac44cefdb5497f4193f5ba4d9b6e869bfe8"
+      },
+      {
+        "file": "pair-13.npz",
+        "actual_sha256": "c4400348b0df92146ef9c3ac1eaf5fd03867792a4765df77a81ca05406f58850",
+        "reference_sha256": "c4400348b0df92146ef9c3ac1eaf5fd03867792a4765df77a81ca05406f58850"
+      },
+      {
+        "file": "pair-14.npz",
+        "actual_sha256": "a4c4ec13fe758ae2cea291a470e2f3990aa5901611ea684e1c36d4fc40bfe190",
+        "reference_sha256": "a4c4ec13fe758ae2cea291a470e2f3990aa5901611ea684e1c36d4fc40bfe190"
+      },
+      {
+        "file": "pair-15.npz",
+        "actual_sha256": "a939223b08a88521e9afe9aa43194e8deb8514cbe33c6adcb0af7921bd1e566d",
+        "reference_sha256": "a939223b08a88521e9afe9aa43194e8deb8514cbe33c6adcb0af7921bd1e566d"
+      },
+      {
+        "file": "pair-16.npz",
+        "actual_sha256": "3489ae94f5c9d994c184c2f5606cb2364ced6c8ce81bba4bfa842a4b499428c1",
+        "reference_sha256": "3489ae94f5c9d994c184c2f5606cb2364ced6c8ce81bba4bfa842a4b499428c1"
+      }
+    ]
+  },
+  "limitations": [
+    "Two sequential runs, not interleaved or controlled thermal testing.",
+    "No new paced latency or fresh-pose-rate measurement; complete service excludes source queue and file publication.",
+    "Instantaneous CPU frequencies and driver NPU load are sampled, not a proof of clock residency or thermal cause.",
+    "No model change, no new trajectory quality acceptance, 30-minute stability, physical-camera or 8GB validation.",
+    "NPU frequency test is still awaiting explicit authorization; no permission is inferred from silence."
+  ]
+}

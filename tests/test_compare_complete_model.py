@@ -38,11 +38,12 @@ def test_invalid_half_io_arguments_reject_before_board_or_loading(args, message)
     assert exc.value.code == 2 and message in error.getvalue()
 
 
-@pytest.mark.parametrize('half_io,grouped,fail', [
-    (False, False, 'aggregator'), (True, False, 'aggregator'),
-    (True, True, 'grouped'), (True, True, 'predict'), (True, True, 'close_grouped'),
+@pytest.mark.parametrize('half_io,grouped,fail,model_cpus', [
+    (False, False, 'aggregator', None), (True, False, 'aggregator', None),
+    (True, True, 'grouped', None), (True, True, 'predict', None), (True, True, 'close_grouped', None),
+    (True, True, 'predict', [6, 7]),
 ])
-def test_backend_dispatch_and_failure_cleanup_remove_phase_hooks(tmp_path, half_io, grouped, fail):
+def test_backend_dispatch_and_failure_cleanup_remove_phase_hooks(tmp_path, half_io, grouped, fail, model_cpus):
     runner = load_runner()
     runner.BASE = tmp_path
     indices = list(range(32, 798, 48)) + [797]
@@ -64,6 +65,11 @@ def test_backend_dispatch_and_failure_cleanup_remove_phase_hooks(tmp_path, half_
     for i in range(1, 17):
         (reference / 'cpu_fp32' / f'pair-{i:02d}.npz').write_bytes(b'generated unopened reference placeholder')
     events = []
+    generated_affinity = set(range(8))
+    def set_affinity(pid, cpus):
+        assert pid == 0
+        generated_affinity.clear(); generated_affinity.update(cpus)
+        events.append(('affinity', sorted(cpus)))
     def phase():
         return SimpleNamespace(register_forward_pre_hook=lambda _: SimpleNamespace(remove=lambda: events.append('remove')),
                                register_forward_hook=lambda _: SimpleNamespace(remove=lambda: events.append('remove')))
@@ -120,6 +126,8 @@ def test_backend_dispatch_and_failure_cleanup_remove_phase_hooks(tmp_path, half_
         '--paired-aggregator', '--model-threads', '1', '--output', str(tmp_path / 'out'),
         '--dino-manifest', 'generated', '--dino-manifest-sha256', 'b' * 64,
         '--reference-run', str(reference)]
+    if model_cpus is not None:
+        arguments += ['--model-cpus', *map(str, model_cpus)]
     if half_io:
         arguments += ['--half-io-library', str(tmp_path / 'neon.placeholder'), '--half-io-library-sha256', 'd' * 64]
     if grouped:
@@ -128,7 +136,8 @@ def test_backend_dispatch_and_failure_cleanup_remove_phase_hooks(tmp_path, half_
     def read_bytes(path):
         return b'rockchip,rk3588s' if str(path) == '/proc/device-tree/compatible' else original_read_bytes(path)
     with patch.dict(sys.modules, modules), patch.object(sys, 'argv', arguments), \
-            patch.object(Path, 'read_bytes', read_bytes), patch.object(runner.os, 'sched_setaffinity'), \
+            patch.object(Path, 'read_bytes', read_bytes), patch.object(runner.os, 'sched_setaffinity', set_affinity), \
+            patch.object(runner.os, 'sched_getaffinity', lambda _: generated_affinity.copy()), \
             contextlib.redirect_stdout(io.StringIO()):
         message = ('Backend cleanup failed' if fail == 'close_grouped' else
                    'generated prediction failure' if fail == 'predict' else 'generated installer failure')
@@ -141,6 +150,9 @@ def test_backend_dispatch_and_failure_cleanup_remove_phase_hooks(tmp_path, half_
     assert events.count('remove') == 8
     report = json.loads((tmp_path / 'out/result.json').read_text())
     assert report['status'] == 'failed'
+    expected_cpus = [4, 5, 6, 7] if model_cpus is None else [6, 7]
+    assert report['cpu_affinity'] == expected_cpus and report['model_threads'] == 1
+    assert events.index(('affinity', expected_cpus)) < events.index(('threads', 1))
     assert bool(report['cleanup_errors']) is (fail == 'close_grouped')
     assert report['quality_accepted'] is False and report['realtime_validated'] is False
     assert report.get('half_io_experiment', False) is half_io
@@ -157,6 +169,23 @@ def test_backend_dispatch_and_failure_cleanup_remove_phase_hooks(tmp_path, half_
         assert ('predict' in events) is (fail != 'grouped')
     else:
         assert 'rknn_grouped_dino.py' not in report['runtime_source_sha256']
+
+
+@pytest.mark.parametrize('args,message', [
+    (['--model-threads', '1', '--model-cpus', '6', '6'], 'duplicate CPUs'),
+    (['--model-threads', '4', '--model-cpus', '6', '7'], 'at least --model-threads CPUs'),
+    (['--model-cpus', '0'], 'invalid choice'),
+])
+def test_invalid_model_cpus_reject_before_board_or_model(args, message):
+    runner = load_runner()
+    base = ['generated', '--manifest', 'generated', '--manifest-sha256', 'a' * 64, '--output', 'generated']
+    stderr = io.StringIO()
+    with patch.object(sys, 'argv', base + args), contextlib.redirect_stderr(stderr), \
+            patch.object(Path, 'read_bytes', side_effect=AssertionError('must reject before board read')), \
+            patch.object(runner.os, 'sched_setaffinity', side_effect=AssertionError('must reject before affinity change')):
+        with pytest.raises(SystemExit) as exc:
+            runner.main()
+    assert exc.value.code == 2 and message in stderr.getvalue()
 
 
 @pytest.mark.parametrize('args,message', [

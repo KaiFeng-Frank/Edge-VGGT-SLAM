@@ -23,6 +23,8 @@ def main():
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--image-size', type=int, default=112)
     p.add_argument('--model-threads', type=int, choices=(1, 2, 4), default=4)
+    p.add_argument('--model-cpus', nargs='+', type=int, choices=(4, 5, 6, 7),
+                   help='Model CPU affinity; defaults to 6,7 for two threads and 4,5,6,7 otherwise')
     p.add_argument('--no-patch-cache', action='store_true')
     p.add_argument('--rknn-manifest', type=Path)
     p.add_argument('--rknn-manifest-sha256')
@@ -38,6 +40,12 @@ def main():
     p.add_argument('--rknn-depth-manifest', type=Path)
     p.add_argument('--rknn-depth-manifest-sha256')
     args = p.parse_args()
+    cpus = (set(args.model_cpus) if args.model_cpus is not None else
+            {6, 7} if args.model_threads == 2 else {4, 5, 6, 7})
+    if args.model_cpus is not None and len(args.model_cpus) != len(cpus):
+        p.error('--model-cpus must not contain duplicate CPUs')
+    if len(cpus) < args.model_threads:
+        p.error('--model-cpus must contain at least --model-threads CPUs')
     if args.rknn_grouped_dino and (args.rknn_dino_manifest is None or args.half_io_library is None):
         p.error('--rknn-grouped-dino requires --rknn-dino-manifest and --half-io-library')
     if (args.half_io_library is None) != (args.half_io_library_sha256 is None):
@@ -128,7 +136,6 @@ def main():
     affinity = os.sched_getaffinity(0)
     setup = time.monotonic()
     try:
-        cpus = {6, 7} if args.model_threads == 2 else {4, 5, 6, 7}
         if not (cpus | {0}) <= affinity:
             raise RuntimeError(f'Decoder CPU0 or selected model CPUs {sorted(cpus)} are unavailable')
         os.sched_setaffinity(0, cpus)
