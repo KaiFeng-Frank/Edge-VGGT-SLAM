@@ -1,0 +1,518 @@
+{
+  "schema": "original_VGGT_guard_cost_diagnostic_v62",
+  "status": "diagnosed_no_production_change",
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "real_time_validated": false,
+  "production_runtime_changed": false,
+  "baseline": {
+    "private_result_sha256": "3a5c50ab46ffa87131b6f71833d5934c3821977d8b2d658d9d5d8c2a9b89b97e",
+    "complete_service_mean_seconds": 1.9682500493727275,
+    "updates": 16,
+    "guard_mean_seconds_per_pair": 0.13808963893097825,
+    "image_shape": [
+      2,
+      3,
+      84,
+      112
+    ],
+    "input_indices": [
+      32,
+      80,
+      128,
+      176,
+      224,
+      272,
+      320,
+      368,
+      416,
+      464,
+      512,
+      560,
+      608,
+      656,
+      704,
+      752,
+      797
+    ],
+    "peak_RSS_MiB": 7260.07421875,
+    "cleanup_errors": [],
+    "owners": {
+      "rknn": {
+        "contexts_created": 24,
+        "contexts_destroyed": 24,
+        "sdk_runs_succeeded": 384,
+        "cleanup_errors": [],
+        "live_contexts": 0,
+        "closed": true,
+        "failed": false
+      },
+      "dino_rknn": {
+        "contexts_created": 6,
+        "contexts_destroyed": 6,
+        "sdk_runs_succeeded": 102,
+        "cleanup_errors": [],
+        "live_contexts": 0,
+        "closed": true,
+        "failed": false
+      },
+      "camera_rknn": {
+        "contexts_created": 1,
+        "contexts_destroyed": 1,
+        "npu_run_api_call_count": 64,
+        "completed_refinements": 64,
+        "cleanup_errors": [],
+        "live_contexts": 0,
+        "closed": true,
+        "failed": false
+      },
+      "depth_rknn": {
+        "contexts_created": 1,
+        "contexts_destroyed": 1,
+        "sdk_runs_succeeded": 32,
+        "cleanup_errors": [],
+        "live_contexts": 0,
+        "closed": true,
+        "failed": false
+      }
+    },
+    "monitor": {
+      "samples": 72,
+      "npu_frequency_sample_counts": {
+        "300000000": 72
+      },
+      "npu_active_frequency_sample_counts": {
+        "300000000": 32
+      }
+    },
+    "strict_original_FP32_arrays_passed": 0
+  },
+  "profile": {
+    "status": "original_comparator_completed_with_guard_profiling",
+    "candidate_accepted": false,
+    "real_time_validated": false,
+    "profiler_overhead_included": true,
+    "use_timings_for_performance_claim": false,
+    "original_cache_source_sha256": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b",
+    "script_sha256": "08712bb4bfeee4e92e349432c555d274c3319ee6529c0c98e1a5fc39868f2dd3",
+    "fingerprint_calls": 33,
+    "profiled_calls": 5,
+    "profiled_wall_seconds": [
+      0.07756642400636338,
+      0.07609438200597651,
+      0.1526992660074029,
+      0.08430555000086315,
+      0.1519227660028264
+    ],
+    "source_unchanged": true,
+    "method_restored": true,
+    "functions": [
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 154,
+        "function": "_fingerprint",
+        "primitive_calls": 5,
+        "calls": 5,
+        "own_seconds": 0.067289598,
+        "cumulative_seconds": 0.542420388
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/venv/lib/python3.11/site-packages/torch/nn/modules/module.py",
+        "line": 2369,
+        "function": "named_modules",
+        "primitive_calls": 23220,
+        "calls": 156675,
+        "own_seconds": 0.106714735,
+        "cumulative_seconds": 0.11465217800000001
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 190,
+        "function": "<genexpr>",
+        "primitive_calls": 6710,
+        "calls": 6710,
+        "own_seconds": 0.00557175,
+        "cumulative_seconds": 0.11326546300000001
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/venv/lib/python3.11/site-packages/torch/nn/modules/module.py",
+        "line": 2193,
+        "function": "_named_members",
+        "primitive_calls": 6725,
+        "calls": 6725,
+        "own_seconds": 0.021900809,
+        "cumulative_seconds": 0.103961911
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 174,
+        "function": "<genexpr>",
+        "primitive_calls": 9445,
+        "calls": 9445,
+        "own_seconds": 0.035942214,
+        "cumulative_seconds": 0.091370745
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 76,
+        "function": "_instance_presence_lookup",
+        "primitive_calls": 7735,
+        "calls": 7735,
+        "own_seconds": 0.028392297,
+        "cumulative_seconds": 0.078337211
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/venv/lib/python3.11/site-packages/torch/nn/modules/module.py",
+        "line": 2232,
+        "function": "named_parameters",
+        "primitive_calls": 6710,
+        "calls": 6710,
+        "own_seconds": 0.002389305,
+        "cumulative_seconds": 0.068386714
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 87,
+        "function": "_has_module_field",
+        "primitive_calls": 77350,
+        "calls": 77350,
+        "own_seconds": 0.061189556000000006,
+        "cumulative_seconds": 0.061189556000000006
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 164,
+        "function": "<genexpr>",
+        "primitive_calls": 23205,
+        "calls": 23205,
+        "own_seconds": 0.043379150000000005,
+        "cumulative_seconds": 0.058915642000000004
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 37,
+        "function": "_tensor_state",
+        "primitive_calls": 6715,
+        "calls": 6715,
+        "own_seconds": 0.032436332000000005,
+        "cumulative_seconds": 0.039418417000000004
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 191,
+        "function": "<genexpr>",
+        "primitive_calls": 15,
+        "calls": 15,
+        "own_seconds": 1.7204e-05,
+        "cumulative_seconds": 0.038114127000000005
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/venv/lib/python3.11/site-packages/torch/nn/modules/module.py",
+        "line": 2287,
+        "function": "named_buffers",
+        "primitive_calls": 15,
+        "calls": 15,
+        "own_seconds": 2.1003000000000002e-05,
+        "cumulative_seconds": 0.037985505
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method builtins.any>",
+        "primitive_calls": 9275,
+        "calls": 9275,
+        "own_seconds": 0.013246882000000001,
+        "cumulative_seconds": 0.030845739
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 80,
+        "function": "<genexpr>",
+        "primitive_calls": 30940,
+        "calls": 30940,
+        "own_seconds": 0.016181944,
+        "cumulative_seconds": 0.024445136000000003
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 32,
+        "function": "_forward_identity",
+        "primitive_calls": 7735,
+        "calls": 7735,
+        "own_seconds": 0.011178687000000001,
+        "cumulative_seconds": 0.018578315
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 82,
+        "function": "<genexpr>",
+        "primitive_calls": 30940,
+        "calls": 30940,
+        "own_seconds": 0.015024318000000002,
+        "cumulative_seconds": 0.015024318000000002
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 57,
+        "function": "_class_presence_plan",
+        "primitive_calls": 140,
+        "calls": 140,
+        "own_seconds": 0.0014282930000000002,
+        "cumulative_seconds": 0.011748914000000001
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method builtins.getattr>",
+        "primitive_calls": 32650,
+        "calls": 32650,
+        "own_seconds": 0.011539825,
+        "cumulative_seconds": 0.011539825
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<method 'add' of 'set' objects>",
+        "primitive_calls": 29920,
+        "calls": 29920,
+        "own_seconds": 0.007232749,
+        "cumulative_seconds": 0.010060457
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method builtins.id>",
+        "primitive_calls": 51140,
+        "calls": 51140,
+        "own_seconds": 0.009979709,
+        "cumulative_seconds": 0.009979709
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<method 'items' of 'collections.OrderedDict' objects>",
+        "primitive_calls": 54145,
+        "calls": 54145,
+        "own_seconds": 0.00985188,
+        "cumulative_seconds": 0.00985188
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<method 'get' of 'dict' objects>",
+        "primitive_calls": 23205,
+        "calls": 23205,
+        "own_seconds": 0.008263192,
+        "cumulative_seconds": 0.008263192
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 72,
+        "function": "<genexpr>",
+        "primitive_calls": 140,
+        "calls": 140,
+        "own_seconds": 0.0016377030000000001,
+        "cumulative_seconds": 0.0069836640000000005
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/venv/lib/python3.11/site-packages/torch/nn/modules/module.py",
+        "line": 2260,
+        "function": "<lambda>",
+        "primitive_calls": 7735,
+        "calls": 7735,
+        "own_seconds": 0.005413618,
+        "cumulative_seconds": 0.006502711
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/venv/lib/python3.11/site-packages/torch/_tensor.py",
+        "line": 1059,
+        "function": "__hash__",
+        "primitive_calls": 13430,
+        "calls": 13430,
+        "own_seconds": 0.003950582,
+        "cumulative_seconds": 0.005848446
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/venv/lib/python3.11/site-packages/torch/nn/modules/module.py",
+        "line": 2309,
+        "function": "<lambda>",
+        "primitive_calls": 7735,
+        "calls": 7735,
+        "own_seconds": 0.0045278490000000005,
+        "cumulative_seconds": 0.005371318
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<method 'stride' of 'torch._C.TensorBase' objects>",
+        "primitive_calls": 6715,
+        "calls": 6715,
+        "own_seconds": 0.003013846,
+        "cumulative_seconds": 0.003013846
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<method 'data_ptr' of 'torch._C.TensorBase' objects>",
+        "primitive_calls": 6715,
+        "calls": 6715,
+        "own_seconds": 0.002978871,
+        "cumulative_seconds": 0.002978871
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 64,
+        "function": "first",
+        "primitive_calls": 420,
+        "calls": 420,
+        "own_seconds": 0.0009791230000000001,
+        "cumulative_seconds": 0.002867076
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 73,
+        "function": "<genexpr>",
+        "primitive_calls": 6545,
+        "calls": 6545,
+        "own_seconds": 0.0025745390000000003,
+        "cumulative_seconds": 0.0025745390000000003
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<method 'append' of 'list' objects>",
+        "primitive_calls": 7735,
+        "calls": 7735,
+        "own_seconds": 0.0016091570000000002,
+        "cumulative_seconds": 0.0016091570000000002
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 65,
+        "function": "<genexpr>",
+        "primitive_calls": 840,
+        "calls": 840,
+        "own_seconds": 0.001318637,
+        "cumulative_seconds": 0.001318637
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<built-in method builtins.next>",
+        "primitive_calls": 420,
+        "calls": 420,
+        "own_seconds": 0.000569316,
+        "cumulative_seconds": 0.000981165
+      },
+      {
+        "file": "/mnt/vggt-data/vggt-slam2/src/vggt_slam/patch_cache.py",
+        "line": 61,
+        "function": "<genexpr>",
+        "primitive_calls": 595,
+        "calls": 595,
+        "own_seconds": 0.000469881,
+        "cumulative_seconds": 0.000469881
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<method 'is_floating_point' of 'torch._C.TensorBase' objects>",
+        "primitive_calls": 10,
+        "calls": 10,
+        "own_seconds": 1.8376e-05,
+        "cumulative_seconds": 1.8376e-05
+      },
+      {
+        "file": "~",
+        "line": 0,
+        "function": "<method 'disable' of '_lsprof.Profiler' objects>",
+        "primitive_calls": 5,
+        "calls": 5,
+        "own_seconds": 7.001e-06,
+        "cumulative_seconds": 7.001e-06
+      }
+    ]
+  },
+  "profiled_full_run": {
+    "private_result_sha256": "b33f34bf61f3ae6ec586ce1430896ea4261b4b0b0aed1576004cdeb613715752",
+    "cleanup_errors": [],
+    "owners": {
+      "rknn": {
+        "contexts_created": 24,
+        "contexts_destroyed": 24,
+        "sdk_runs_succeeded": 384,
+        "cleanup_errors": [],
+        "live_contexts": 0,
+        "closed": true,
+        "failed": false
+      },
+      "dino_rknn": {
+        "contexts_created": 6,
+        "contexts_destroyed": 6,
+        "sdk_runs_succeeded": 102,
+        "cleanup_errors": [],
+        "live_contexts": 0,
+        "closed": true,
+        "failed": false
+      },
+      "camera_rknn": {
+        "contexts_created": 1,
+        "contexts_destroyed": 1,
+        "npu_run_api_call_count": 64,
+        "completed_refinements": 64,
+        "cleanup_errors": [],
+        "live_contexts": 0,
+        "closed": true,
+        "failed": false
+      },
+      "depth_rknn": {
+        "contexts_created": 1,
+        "contexts_destroyed": 1,
+        "sdk_runs_succeeded": 32,
+        "cleanup_errors": [],
+        "live_contexts": 0,
+        "closed": true,
+        "failed": false
+      }
+    },
+    "do_not_use_profiled_complete_timings_as_speed_result": true
+  },
+  "saved_arrays": {
+    "baseline_vs_profiled_arrays_bitwise_equal": 80,
+    "baseline_vs_v60_arrays_bitwise_equal": 80,
+    "trajectory_files_bitwise_equal": true
+  },
+  "decision": "Do not merge a cached module-list traversal into production: eligibility checks reduce the synthetic benefit and concurrent structural-change equivalence is not established. Preserve the two complete guards. No credible order-of-magnitude execution gain is established.",
+  "source": {
+    "patch_cache_sha256": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b",
+    "profile_script_sha256": "08712bb4bfeee4e92e349432c555d274c3319ee6529c0c98e1a5fc39868f2dd3"
+  },
+  "next_board_test": {
+    "status": "prepared_not_executed_pending_explicit_frequency_authorization",
+    "controller_sha256": "285a077e9a7415ddedc044df1ab848d32858dabdb1c0c4e53c4fe28f4cfc2769",
+    "controller_generated_tests": 8,
+    "generated_tests_log_sha256": "d536ca1ce20f08b16510e923503d81100575a68732140b5088e1d5423f47d645",
+    "current_frequency_hz": 300000000,
+    "current_governor": "userspace",
+    "current_limits_hz": [
+      300000000,
+      1000000000
+    ],
+    "current_userspace_request": "undefined",
+    "requested_test_frequency_hz": 1000000000,
+    "sequential_workers": [
+      "complete_original_model_comparison",
+      "paced_real_dataset_replay"
+    ],
+    "maximum_seconds_each": 180,
+    "stop_temperature_c": 75,
+    "restore": "Original actual frequency, governor and limits; undefined request becomes explicit300MHz, not byte-identical state.",
+    "system_settings_changed_so_far": false
+  },
+  "limitations": [
+    "cProfile adds overhead; function times overlap and are diagnostic, not additive costs or ordinary latency.",
+    "Generated traversal microbenchmarks are not model inference, not a production change and not proof of end-to-end speedup.",
+    "No current primary evidence establishes a ready original-VGGT GPU path or 20Hz feasibility. This is not proof of physical impossibility.",
+    "Latest paced replay remains v58: 0.5425 freshHz and full P95 2.4716s. No new camera, closure, map-quality,8GB or30-minute acceptance."
+  ]
+}

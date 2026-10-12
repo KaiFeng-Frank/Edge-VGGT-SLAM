@@ -1,0 +1,13 @@
+test_75c_stops_worker_and_restores (__main__.FrequencySafetyTests.test_75c_stops_worker_and_restores) ... ok
+test_completion_restores_actual_frequency_and_records_undefined_difference (__main__.FrequencySafetyTests.test_completion_restores_actual_frequency_and_records_undefined_difference) ... ok
+test_disappearing_known_thermal_sensor_must_fail_and_restore (__main__.FrequencySafetyTests.test_disappearing_known_thermal_sensor_must_fail_and_restore) ... ok
+test_exited_leader_with_live_descendant_is_killed_before_restore (__main__.FrequencySafetyTests.test_exited_leader_with_live_descendant_is_killed_before_restore) ... ok
+test_monitoring_read_failure_stops_worker_and_restores (__main__.FrequencySafetyTests.test_monitoring_read_failure_stops_worker_and_restores) ... ok
+test_nonzero_launcher_does_not_report_completion (__main__.FrequencySafetyTests.test_nonzero_launcher_does_not_report_completion) ... ok
+test_restore_failure_cannot_report_success (__main__.FrequencySafetyTests.test_restore_failure_cannot_report_success) ... ok
+test_timeout_stops_worker_and_restores (__main__.FrequencySafetyTests.test_timeout_stops_worker_and_restores) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.017s
+
+OK
