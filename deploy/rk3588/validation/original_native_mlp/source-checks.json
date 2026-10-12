@@ -1,0 +1,36 @@
+{
+  "status": "passed_source_identity_and_AST",
+  "actual_model_OR_ORT_SDK_compiler_executed_by_host_check": false,
+  "files": [
+    {
+      "file": "check_mlp_rank3_onnx_board.py",
+      "sha256": "d32f8b4b775f6dfeb71ed7676a96ad2178d19c9349c544f5476e72dd8280a79c",
+      "AST_pass": true,
+      "byte_equal_to_board_executed_source": true
+    },
+    {
+      "file": "compile_mlp_board.py",
+      "sha256": "cf1bf06932e7675076a318295c7e8ffb856786c7c6b2e9663128fd33e8e81a49",
+      "AST_pass": true,
+      "byte_equal_to_board_executed_source": true
+    },
+    {
+      "file": "compile_mlp_rank3_board.py",
+      "sha256": "b03595e14a1221a9de4eea5b06c54ce8be9010ac6cada14806d07874436a9a7f",
+      "AST_pass": true,
+      "byte_equal_to_board_executed_source": true
+    },
+    {
+      "file": "compiled_mlp_rank3.py",
+      "sha256": "f055e45eec073557e85f00f6ce3fab30e6ee212c1f32d928d9ac0c40e6055bc3",
+      "AST_pass": true,
+      "byte_equal_to_board_executed_source": true
+    },
+    {
+      "file": "native_mlp_rank3_probe_board.py",
+      "sha256": "17be747bf865268c3e6182abe9d4852f7f0199ddead1e3c2218dfb55111b395b",
+      "AST_pass": true,
+      "byte_equal_to_board_executed_source": true
+    }
+  ]
+}

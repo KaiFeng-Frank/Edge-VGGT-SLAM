@@ -32,6 +32,14 @@ experimental path with `--rknn-retained-aggregator` and its compiled manifest.
 [Measured results and limits](results/original_retained_groups_v67.json),
 [reproduction](deploy/rk3588/validation/original_retained_groups/README.md).
 
+The subsequent original-MLP native MatMul diagnostic is **not adopted**:
+at 300 MHz on one NPU core, the matched fused rank3 compiled MLP takes
+15.139 ms and the native route takes 33.878 ms. Both fail the strict original
+FP32 tensor gate; this is one component on one real input, with no new full-model
+or replay improvement. An initially unfused rank2 comparison is preserved as
+a compiler-layout pitfall, not a speedup claim.
+[Measurement and reproduction](deploy/rk3588/validation/original_native_mlp/README.md).
+
 The additional-model retrieval and semantic paths have been removed. **Loop closure has no replacement implementation:** `max_loops=0` is the supported Solver configuration. Requests to enable loops or supply legacy auxiliary-model arguments must fail before loading or inference. The original VGGT model's numerical similarity capability does not itself implement loop retrieval.
 
 The original checkpoint is `facebook/VGGT-1B`, `model.pt`, **5,026,874,952 bytes**, SHA256 `d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0`. Source-code and checkpoint licensing are separate; see [model provenance](MODEL_LICENSES.md) and [upstream pins](UPSTREAMS.json). No weights, captured arrays, weight-bearing exports or SDK binaries are distributed. The loader verifies this exact byte size and full SHA256 before deserialization, including explicit local paths and cached downloads. Automatic downloads use the recorded immutable revision; there is no runtime identity-check bypass.
