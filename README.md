@@ -18,6 +18,12 @@ with 7,261.66 MiB peak process RSS. It remains below the real-time target.
 [Measured results and timing records](results/original_1ghz_v63.json),
 [bounded test and restoration](deploy/rk3588/validation/original_clock_test/README.md).
 
+A subsequent original pair0+pair1 graph-composition diagnostic measured
+**81.196 → 77.027 ms** for those four blocks, with all four outputs byte-identical
+to the separate FP16 path on two real inputs. This **5.13% component reduction
+has not been integrated or measured in the full model**; the replay result
+above remains current. [Diagnostic and limitations](results/original_pair_group_v64.json).
+
 The additional-model retrieval and semantic paths have been removed. **Loop closure has no replacement implementation:** `max_loops=0` is the supported Solver configuration. Requests to enable loops or supply legacy auxiliary-model arguments must fail before loading or inference. The original VGGT model's numerical similarity capability does not itself implement loop retrieval.
 
 The original checkpoint is `facebook/VGGT-1B`, `model.pt`, **5,026,874,952 bytes**, SHA256 `d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0`. Source-code and checkpoint licensing are separate; see [model provenance](MODEL_LICENSES.md) and [upstream pins](UPSTREAMS.json). No weights, captured arrays, weight-bearing exports or SDK binaries are distributed. The loader verifies this exact byte size and full SHA256 before deserialization, including explicit local paths and cached downloads. Automatic downloads use the recorded immutable revision; there is no runtime identity-check bypass.

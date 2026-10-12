@@ -1,0 +1,15 @@
+{
+  "scope": "Generated NumPy/fake ABI/API/NEON/ORT only; no actual model or SDK",
+  "probe_checks": 4,
+  "checker_checks": 5,
+  "all_passed": true,
+  "checker_pytest_stdout": "5 passed in 0.26s",
+  "test_source_sha256": {
+    "test_probe_original_pair_group.py": "5b20c89ab75a3207502e3a9ed9b720050ed4df1325d0dc8c55ca8beab712bee5",
+    "test_check_compile_pair_group_generated.py": "13204777c8373a8d1355056a19156cbc204a35fd07106ecfd133d301c04a0d3c"
+  },
+  "actual_executed_source_sha256": {
+    "probe_original_pair_group.py": "f3801ba5b92c1043aab2d3ebc6c0ad3258b8633c25e216b1298fbb1e0c9c38a0",
+    "check_compile_pair_group.py": "4094e393d0504954a67993c24e82c5534862393930f60db3ec64c2c3e4098b76"
+  }
+}

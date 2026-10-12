@@ -1,0 +1,3114 @@
+{
+  "schema": "original_VGGT_two_pair_group_v64",
+  "status": "measured_component_improvement_not_integrated",
+  "original_model_only": true,
+  "production_runtime_changed": false,
+  "candidate_accepted": false,
+  "quality_accepted": false,
+  "real_time_validated": false,
+  "parent_source_commit": "307245258033e845054108c6d5daf95fbeeec282",
+  "previous_goal_turn": "progress: authorized 1 GHz complete-model and timestamp replay measured, published and clocks restored",
+  "checkpoint": {
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "bytes": 5026874952
+  },
+  "parent_manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42",
+  "fixed_scope": {
+    "original_pair_indices": [
+      0,
+      1
+    ],
+    "original_block_order": [
+      "frame0",
+      "global0",
+      "frame1",
+      "global1"
+    ],
+    "input_shape": [
+      2,
+      53,
+      1024
+    ],
+    "output_bindings": [
+      {
+        "index": 0,
+        "name": "pair0_frame_output",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "index": 1,
+        "name": "pair0_global_output",
+        "shape": [
+          1,
+          106,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "index": 2,
+        "name": "pair1_frame_output",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "index": 3,
+        "name": "pair1_global_output",
+        "shape": [
+          1,
+          106,
+          1024
+        ],
+        "dtype": "float32"
+      }
+    ],
+    "original_parameters": 72,
+    "original_nodes": 174,
+    "original_initializers": 126,
+    "added_operations": "One original C-order global0-to-frame1 Reshape and its shape initializer",
+    "all_parent_nodes_attributes_and_initializer_payloads_retained": true,
+    "reverse_namespaces_recover_original_node_and_initializer_protobuf_bytes": true,
+    "all_four_original_outputs_retained": true,
+    "FC1_taps_added": false,
+    "mathematical_layers_or_tokens_omitted": false,
+    "precision_change_from_parent": false,
+    "graph_sha256": "fa41f8743f0d03615bd1189c15402661e046bad2ac388aff4e5508bf778dead1"
+  },
+  "board_FP32_check": {
+    "ORT": {
+      "optimization": "ORT_DISABLE_ALL",
+      "intra_op_num_threads": 1,
+      "inter_op_num_threads": 1,
+      "providers": [
+        "CPUExecutionProvider"
+      ],
+      "timing_is_not_NPU_performance": true
+    },
+    "seconds": 3.7325155830185395,
+    "cases": [
+      {
+        "tag": "v53",
+        "input_origin": "original full FP32 model frame0 input",
+        "checks": [
+          {
+            "name": "pair0_frame_output",
+            "byte_equal_to_two_separate_FP32_ONNX": true,
+            "versus_separate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 0.0,
+              "relative_l2": 0.0
+            },
+            "versus_original_FP32": {
+              "group": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.4781951904296875e-05,
+                "relative_l2": 8.874554983280384e-07
+              },
+              "chain": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.4781951904296875e-05,
+                "relative_l2": 8.874554983280384e-07
+              }
+            }
+          },
+          {
+            "name": "pair0_global_output",
+            "byte_equal_to_two_separate_FP32_ONNX": true,
+            "versus_separate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 0.0,
+              "relative_l2": 0.0
+            },
+            "versus_original_FP32": {
+              "group": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.71661376953125e-05,
+                "relative_l2": 1.1357558240076958e-06
+              },
+              "chain": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.71661376953125e-05,
+                "relative_l2": 1.1357558240076958e-06
+              }
+            }
+          },
+          {
+            "name": "pair1_frame_output",
+            "byte_equal_to_two_separate_FP32_ONNX": true,
+            "versus_separate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 0.0,
+              "relative_l2": 0.0
+            },
+            "versus_original_FP32": {
+              "group": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 1,
+                "elements": 108544,
+                "max_abs": 1.5735626220703125e-05,
+                "relative_l2": 1.2468574094036227e-06
+              },
+              "chain": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": false,
+                "outside_tolerance": 1,
+                "elements": 108544,
+                "max_abs": 1.5735626220703125e-05,
+                "relative_l2": 1.2468574094036227e-06
+              }
+            }
+          },
+          {
+            "name": "pair1_global_output",
+            "byte_equal_to_two_separate_FP32_ONNX": true,
+            "versus_separate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 0.0,
+              "relative_l2": 0.0
+            },
+            "versus_original_FP32": {
+              "group": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.5132129192352295e-05,
+                "relative_l2": 1.2966343320253867e-06
+              },
+              "chain": {
+                "strict_rtol": 0.0001,
+                "strict_atol": 1e-05,
+                "strict_pass": true,
+                "outside_tolerance": 0,
+                "elements": 108544,
+                "max_abs": 1.5132129192352295e-05,
+                "relative_l2": 1.2966343320253867e-06
+              }
+            }
+          }
+        ]
+      },
+      {
+        "tag": "v56-calib00",
+        "input_origin": "saved original full FP32 model activation; no original four-output Torch reference saved",
+        "checks": [
+          {
+            "name": "pair0_frame_output",
+            "byte_equal_to_two_separate_FP32_ONNX": true,
+            "versus_separate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 0.0,
+              "relative_l2": 0.0
+            },
+            "versus_original_FP32": null
+          },
+          {
+            "name": "pair0_global_output",
+            "byte_equal_to_two_separate_FP32_ONNX": true,
+            "versus_separate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 0.0,
+              "relative_l2": 0.0
+            },
+            "versus_original_FP32": null
+          },
+          {
+            "name": "pair1_frame_output",
+            "byte_equal_to_two_separate_FP32_ONNX": true,
+            "versus_separate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 0.0,
+              "relative_l2": 0.0
+            },
+            "versus_original_FP32": null
+          },
+          {
+            "name": "pair1_global_output",
+            "byte_equal_to_two_separate_FP32_ONNX": true,
+            "versus_separate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 0.0,
+              "relative_l2": 0.0
+            },
+            "versus_original_FP32": null
+          }
+        ]
+      }
+    ],
+    "all_eight_outputs_byte_equal_to_separate_ONNX": true,
+    "original_FP32_gate_passed_where_reference_available": false,
+    "second_input_has_original_Torch_four_output_reference": false,
+    "cleanup_errors": []
+  },
+  "board_compile": {
+    "configuration": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "mean_values": null,
+      "std_values": null,
+      "quant_img_RGB2BGR": false,
+      "model_pruning": false,
+      "remove_reshape": false,
+      "quantize_weight": false,
+      "enable_flash_attention": false
+    },
+    "build_options": {
+      "do_quantization": false,
+      "dataset": null,
+      "auto_hybrid": false
+    },
+    "operations": [
+      {
+        "name": "config",
+        "status": "returned",
+        "code": 0,
+        "seconds": 0.0017290000105276704
+      },
+      {
+        "name": "load_onnx",
+        "status": "returned",
+        "code": 0,
+        "seconds": 0.9701521389943082
+      },
+      {
+        "name": "build",
+        "status": "returned",
+        "code": 0,
+        "seconds": 25.136941275995923
+      },
+      {
+        "name": "export_rknn",
+        "status": "returned",
+        "code": 0,
+        "seconds": 0.07985484201344661
+      }
+    ],
+    "seconds": 30.326591713994276,
+    "rknn": {
+      "file": "group.rknn",
+      "bytes": 105298267,
+      "sha256": "8890651619bac8d14c381ae812240a82cb2db5a409ec81599d2653220d409ca6"
+    },
+    "released": true,
+    "cleanup_errors": []
+  },
+  "component_measurement": {
+    "scope": "Two original pair SDK routes vs one complete four-output group, including NEON FP16 I/O, finite checks and owned copies; excludes hash/NPZ save; no profiler",
+    "cpu_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "core_mask": 7,
+    "normal_init_flags": 0,
+    "order": [
+      "A",
+      "B",
+      "B",
+      "A",
+      "A",
+      "B",
+      "B",
+      "A"
+    ],
+    "hidden_warmup_calls": 0,
+    "summary": {
+      "A": {
+        "excluding_first_per_input_count": 6,
+        "mean_component_seconds": 0.08119607082820342
+      },
+      "B": {
+        "excluding_first_per_input_count": 6,
+        "mean_component_seconds": 0.07702679266124808
+      }
+    },
+    "calls": [
+      {
+        "input": "v53",
+        "sequence": 0,
+        "role": "A",
+        "first_for_input_role": true,
+        "component_seconds": 0.06467146499198861,
+        "routes": [
+          {
+            "inputs_set_seconds": 0.0005515420052688569,
+            "run_seconds": 0.02932212798623368,
+            "outputs_get_seconds": 8.487500599585474e-05,
+            "outputs_release_seconds": 5.250010872259736e-06,
+            "route_seconds": 0.03138450300320983,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          },
+          {
+            "inputs_set_seconds": 0.0005500840197782964,
+            "run_seconds": 0.031085169990547,
+            "outputs_get_seconds": 0.0001219160039909184,
+            "outputs_release_seconds": 8.749979315325618e-06,
+            "route_seconds": 0.0332394200086128,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 55.461,
+            "soc-thermal": 53.615,
+            "gpu-thermal": 52.692,
+            "littlecore-thermal": 54.538,
+            "bigcore0-thermal": 55.461,
+            "npu-thermal": 52.692,
+            "center-thermal": 53.615
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 53.615,
+            "soc-thermal": 53.615,
+            "gpu-thermal": 52.692,
+            "littlecore-thermal": 53.615,
+            "bigcore0-thermal": 53.615,
+            "npu-thermal": 52.692,
+            "center-thermal": 54.538
+          }
+        },
+        "original_FP32": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891238,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 55865,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510707,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 63240,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.03485174477100372,
+            "relative_l2": 0.006338800970072832,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 102925,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.027084022760391235,
+            "relative_l2": 0.006925102174612062,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 104979,
+            "strict_pass": false
+          }
+        ],
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v53-00-A.npz",
+          "bytes": 1737710,
+          "sha256": "5bd3fa39614377b429492d51db360b3932d19d76a572a7254e9b07cead86530c"
+        }
+      },
+      {
+        "input": "v53",
+        "sequence": 1,
+        "role": "B",
+        "first_for_input_role": true,
+        "component_seconds": 0.07083284101099707,
+        "routes": [
+          {
+            "inputs_set_seconds": 0.001054374995874241,
+            "run_seconds": 0.06590804900042713,
+            "outputs_get_seconds": 0.0006626659887842834,
+            "outputs_release_seconds": 1.7499987734481692e-05,
+            "route_seconds": 0.07077771500917152,
+            "output_count": 4,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 53.615,
+            "soc-thermal": 53.615,
+            "gpu-thermal": 52.692,
+            "littlecore-thermal": 53.615,
+            "bigcore0-thermal": 53.615,
+            "npu-thermal": 52.692,
+            "center-thermal": 53.615
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 53.615,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 52.692,
+            "littlecore-thermal": 53.615,
+            "bigcore0-thermal": 53.615,
+            "npu-thermal": 52.692,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891238,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 55865,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510707,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 63240,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.03485174477100372,
+            "relative_l2": 0.006338800970072832,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 102925,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.027084022760391235,
+            "relative_l2": 0.006925102174612062,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 104979,
+            "strict_pass": false
+          }
+        ],
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v53-01-B.npz",
+          "bytes": 1737710,
+          "sha256": "5bd3fa39614377b429492d51db360b3932d19d76a572a7254e9b07cead86530c"
+        }
+      },
+      {
+        "input": "v53",
+        "sequence": 2,
+        "role": "B",
+        "first_for_input_role": false,
+        "component_seconds": 0.07497321598930284,
+        "routes": [
+          {
+            "inputs_set_seconds": 6.533300620503724e-05,
+            "run_seconds": 0.07080238201888278,
+            "outputs_get_seconds": 0.0006687919958494604,
+            "outputs_release_seconds": 1.662501017563045e-05,
+            "route_seconds": 0.07492013199953362,
+            "output_count": 4,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 53.615,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 53.615,
+            "npu-thermal": 52.692,
+            "center-thermal": 53.615
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 52.692,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891238,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 55865,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510707,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 63240,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.03485174477100372,
+            "relative_l2": 0.006338800970072832,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 102925,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.027084022760391235,
+            "relative_l2": 0.006925102174612062,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 104979,
+            "strict_pass": false
+          }
+        ],
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v53-02-B.npz",
+          "bytes": 1737710,
+          "sha256": "5bd3fa39614377b429492d51db360b3932d19d76a572a7254e9b07cead86530c"
+        }
+      },
+      {
+        "input": "v53",
+        "sequence": 3,
+        "role": "A",
+        "first_for_input_role": false,
+        "component_seconds": 0.08025179998367094,
+        "routes": [
+          {
+            "inputs_set_seconds": 7.379098678939044e-05,
+            "run_seconds": 0.03512308601057157,
+            "outputs_get_seconds": 0.00031966701499186456,
+            "outputs_release_seconds": 1.6332982340827584e-05,
+            "route_seconds": 0.03798608799115755,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          },
+          {
+            "inputs_set_seconds": 0.00012337497901171446,
+            "run_seconds": 0.03812317000119947,
+            "outputs_get_seconds": 0.0003164589870721102,
+            "outputs_release_seconds": 1.6041012713685632e-05,
+            "route_seconds": 0.04216129501583055,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 53.615,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 52.692,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891238,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 55865,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510707,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 63240,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.03485174477100372,
+            "relative_l2": 0.006338800970072832,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 102925,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.027084022760391235,
+            "relative_l2": 0.006925102174612062,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 104979,
+            "strict_pass": false
+          }
+        ],
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v53-03-A.npz",
+          "bytes": 1737710,
+          "sha256": "5bd3fa39614377b429492d51db360b3932d19d76a572a7254e9b07cead86530c"
+        }
+      },
+      {
+        "input": "v53",
+        "sequence": 4,
+        "role": "A",
+        "first_for_input_role": false,
+        "component_seconds": 0.080993509007385,
+        "routes": [
+          {
+            "inputs_set_seconds": 7.262500002980232e-05,
+            "run_seconds": 0.03590621202602051,
+            "outputs_get_seconds": 0.00031733300420455635,
+            "outputs_release_seconds": 1.6332982340827584e-05,
+            "route_seconds": 0.03877387900138274,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          },
+          {
+            "inputs_set_seconds": 0.00012425001477822661,
+            "run_seconds": 0.03814767100266181,
+            "outputs_get_seconds": 0.0003115000145044178,
+            "outputs_release_seconds": 1.6041012713685632e-05,
+            "route_seconds": 0.04211171201313846,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 52.692,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891238,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 55865,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510707,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 63240,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.03485174477100372,
+            "relative_l2": 0.006338800970072832,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 102925,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.027084022760391235,
+            "relative_l2": 0.006925102174612062,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 104979,
+            "strict_pass": false
+          }
+        ],
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v53-04-A.npz",
+          "bytes": 1737710,
+          "sha256": "5bd3fa39614377b429492d51db360b3932d19d76a572a7254e9b07cead86530c"
+        }
+      },
+      {
+        "input": "v53",
+        "sequence": 5,
+        "role": "B",
+        "first_for_input_role": false,
+        "component_seconds": 0.07682121699326672,
+        "routes": [
+          {
+            "inputs_set_seconds": 7.29160092305392e-05,
+            "run_seconds": 0.07257950698840432,
+            "outputs_get_seconds": 0.000667041982524097,
+            "outputs_release_seconds": 1.7792015569284558e-05,
+            "route_seconds": 0.07675909201498143,
+            "output_count": 4,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891238,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 55865,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510707,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 63240,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.03485174477100372,
+            "relative_l2": 0.006338800970072832,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 102925,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.027084022760391235,
+            "relative_l2": 0.006925102174612062,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 104979,
+            "strict_pass": false
+          }
+        ],
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v53-05-B.npz",
+          "bytes": 1737710,
+          "sha256": "5bd3fa39614377b429492d51db360b3932d19d76a572a7254e9b07cead86530c"
+        }
+      },
+      {
+        "input": "v53",
+        "sequence": 6,
+        "role": "B",
+        "first_for_input_role": false,
+        "component_seconds": 0.07762125800945796,
+        "routes": [
+          {
+            "inputs_set_seconds": 7.175002247095108e-05,
+            "run_seconds": 0.07338975701713935,
+            "outputs_get_seconds": 0.0007279999845195562,
+            "outputs_release_seconds": 1.86669931281358e-05,
+            "route_seconds": 0.07756059101666324,
+            "output_count": 4,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891238,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 55865,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510707,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 63240,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.03485174477100372,
+            "relative_l2": 0.006338800970072832,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 102925,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.027084022760391235,
+            "relative_l2": 0.006925102174612062,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 104979,
+            "strict_pass": false
+          }
+        ],
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v53-06-B.npz",
+          "bytes": 1737710,
+          "sha256": "5bd3fa39614377b429492d51db360b3932d19d76a572a7254e9b07cead86530c"
+        }
+      },
+      {
+        "input": "v53",
+        "sequence": 7,
+        "role": "A",
+        "first_for_input_role": false,
+        "component_seconds": 0.08165121701313183,
+        "routes": [
+          {
+            "inputs_set_seconds": 7.379197631962597e-05,
+            "run_seconds": 0.036145669990219176,
+            "outputs_get_seconds": 0.00031908301752991974,
+            "outputs_release_seconds": 1.633301144465804e-05,
+            "route_seconds": 0.03904571299790405,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          },
+          {
+            "inputs_set_seconds": 0.00013825000496581197,
+            "run_seconds": 0.036475253000389785,
+            "outputs_get_seconds": 0.00030741700902581215,
+            "outputs_release_seconds": 1.4874996850267053e-05,
+            "route_seconds": 0.040994045994011685,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": [
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891238,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 55865,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510707,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 63240,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.03485174477100372,
+            "relative_l2": 0.006338800970072832,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 102925,
+            "strict_pass": false
+          },
+          {
+            "bitwise_equal": false,
+            "max_abs": 0.027084022760391235,
+            "relative_l2": 0.006925102174612062,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 104979,
+            "strict_pass": false
+          }
+        ],
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v53-07-A.npz",
+          "bytes": 1737710,
+          "sha256": "5bd3fa39614377b429492d51db360b3932d19d76a572a7254e9b07cead86530c"
+        }
+      },
+      {
+        "input": "v56-calib00",
+        "sequence": 0,
+        "role": "A",
+        "first_for_input_role": true,
+        "component_seconds": 0.07921217399416491,
+        "routes": [
+          {
+            "inputs_set_seconds": 7.350000669248402e-05,
+            "run_seconds": 0.034086086991010234,
+            "outputs_get_seconds": 0.00031616698834113777,
+            "outputs_release_seconds": 1.6915990272536874e-05,
+            "route_seconds": 0.036981752986321226,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          },
+          {
+            "inputs_set_seconds": 0.0001236660173162818,
+            "run_seconds": 0.03816546199959703,
+            "outputs_get_seconds": 0.00030945902108214796,
+            "outputs_release_seconds": 1.633301144465804e-05,
+            "route_seconds": 0.04212279600324109,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": null,
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v56-calib00-00-A.npz",
+          "bytes": 1737710,
+          "sha256": "dbf35c3fc107e2ad7e484632d465da0c81d613daa756d1166b5ae28714602e75"
+        }
+      },
+      {
+        "input": "v56-calib00",
+        "sequence": 1,
+        "role": "B",
+        "first_for_input_role": true,
+        "component_seconds": 0.07468009099829942,
+        "routes": [
+          {
+            "inputs_set_seconds": 8.720802725292742e-05,
+            "run_seconds": 0.07023479801137,
+            "outputs_get_seconds": 0.000665291998302564,
+            "outputs_release_seconds": 1.604200224392116e-05,
+            "route_seconds": 0.07462613200186752,
+            "output_count": 4,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": null,
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v56-calib00-01-B.npz",
+          "bytes": 1737710,
+          "sha256": "dbf35c3fc107e2ad7e484632d465da0c81d613daa756d1166b5ae28714602e75"
+        }
+      },
+      {
+        "input": "v56-calib00",
+        "sequence": 2,
+        "role": "B",
+        "first_for_input_role": false,
+        "component_seconds": 0.07573359098751098,
+        "routes": [
+          {
+            "inputs_set_seconds": 0.00011666698264889419,
+            "run_seconds": 0.0712101320095826,
+            "outputs_get_seconds": 0.0006641250220127404,
+            "outputs_release_seconds": 1.7792015569284558e-05,
+            "route_seconds": 0.07567613298306242,
+            "output_count": 4,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": null,
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v56-calib00-02-B.npz",
+          "bytes": 1737710,
+          "sha256": "dbf35c3fc107e2ad7e484632d465da0c81d613daa756d1166b5ae28714602e75"
+        }
+      },
+      {
+        "input": "v56-calib00",
+        "sequence": 3,
+        "role": "A",
+        "first_for_input_role": false,
+        "component_seconds": 0.08173346699913964,
+        "routes": [
+          {
+            "inputs_set_seconds": 8.808300481177866e-05,
+            "run_seconds": 0.03650208699400537,
+            "outputs_get_seconds": 0.0003109170065727085,
+            "outputs_release_seconds": 1.5458004781976342e-05,
+            "route_seconds": 0.039535129006253555,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          },
+          {
+            "inputs_set_seconds": 0.00011812502634711564,
+            "run_seconds": 0.03804792001028545,
+            "outputs_get_seconds": 0.00030800001695752144,
+            "outputs_release_seconds": 1.575000351294875e-05,
+            "route_seconds": 0.042098003992578015,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "original_FP32": null,
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v56-calib00-03-A.npz",
+          "bytes": 1737710,
+          "sha256": "dbf35c3fc107e2ad7e484632d465da0c81d613daa756d1166b5ae28714602e75"
+        }
+      },
+      {
+        "input": "v56-calib00",
+        "sequence": 4,
+        "role": "A",
+        "first_for_input_role": false,
+        "component_seconds": 0.08060559097793885,
+        "routes": [
+          {
+            "inputs_set_seconds": 8.779199561104178e-05,
+            "run_seconds": 0.035547752981074154,
+            "outputs_get_seconds": 0.00031383300665766,
+            "outputs_release_seconds": 1.4874996850267053e-05,
+            "route_seconds": 0.03856621199520305,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          },
+          {
+            "inputs_set_seconds": 0.00011550000635907054,
+            "run_seconds": 0.03791462900699116,
+            "outputs_get_seconds": 0.00030595899443142116,
+            "outputs_release_seconds": 1.4582998119294643e-05,
+            "route_seconds": 0.04188275398337282,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": null,
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v56-calib00-04-A.npz",
+          "bytes": 1737710,
+          "sha256": "dbf35c3fc107e2ad7e484632d465da0c81d613daa756d1166b5ae28714602e75"
+        }
+      },
+      {
+        "input": "v56-calib00",
+        "sequence": 5,
+        "role": "B",
+        "first_for_input_role": false,
+        "component_seconds": 0.07863888298743404,
+        "routes": [
+          {
+            "inputs_set_seconds": 8.516601519659162e-05,
+            "run_seconds": 0.07418221599073149,
+            "outputs_get_seconds": 0.0006658750062342733,
+            "outputs_release_seconds": 1.6041012713685632e-05,
+            "route_seconds": 0.07857413298916072,
+            "output_count": 4,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "original_FP32": null,
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v56-calib00-05-B.npz",
+          "bytes": 1737710,
+          "sha256": "dbf35c3fc107e2ad7e484632d465da0c81d613daa756d1166b5ae28714602e75"
+        }
+      },
+      {
+        "input": "v56-calib00",
+        "sequence": 6,
+        "role": "B",
+        "first_for_input_role": false,
+        "component_seconds": 0.07837259100051597,
+        "routes": [
+          {
+            "inputs_set_seconds": 8.545798482373357e-05,
+            "run_seconds": 0.07387713299249299,
+            "outputs_get_seconds": 0.0007172089826781303,
+            "outputs_release_seconds": 1.6915990272536874e-05,
+            "route_seconds": 0.07831134198931977,
+            "output_count": 4,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": null,
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v56-calib00-06-B.npz",
+          "bytes": 1737710,
+          "sha256": "dbf35c3fc107e2ad7e484632d465da0c81d613daa756d1166b5ae28714602e75"
+        }
+      },
+      {
+        "input": "v56-calib00",
+        "sequence": 7,
+        "role": "A",
+        "first_for_input_role": false,
+        "component_seconds": 0.08194084098795429,
+        "routes": [
+          {
+            "inputs_set_seconds": 8.516697562299669e-05,
+            "run_seconds": 0.036621086997911334,
+            "outputs_get_seconds": 0.0003578749892767519,
+            "outputs_release_seconds": 1.5458004781976342e-05,
+            "route_seconds": 0.0396862119960133,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          },
+          {
+            "inputs_set_seconds": 0.00012541699106805027,
+            "run_seconds": 0.0380951709812507,
+            "outputs_get_seconds": 0.0003056660061702132,
+            "outputs_release_seconds": 1.5166006051003933e-05,
+            "route_seconds": 0.04214992097695358,
+            "output_count": 2,
+            "input_api_type": 1,
+            "output_want_float": 0,
+            "outputs_released": true
+          }
+        ],
+        "platform_before": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 52.692
+          }
+        },
+        "platform_after": {
+          "actual_frequency_hz": 300000000,
+          "governor": "userspace",
+          "temperatures_c": {
+            "bigcore1-thermal": 52.692,
+            "soc-thermal": 52.692,
+            "gpu-thermal": 51.769,
+            "littlecore-thermal": 52.692,
+            "bigcore0-thermal": 52.692,
+            "npu-thermal": 51.769,
+            "center-thermal": 53.615
+          }
+        },
+        "original_FP32": null,
+        "same_input_first_A": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "repeat_first_role": [
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          },
+          {
+            "bitwise_equal": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "failed_elements": 0,
+            "strict_pass": true
+          }
+        ],
+        "artifact": {
+          "file": "v56-calib00-07-A.npz",
+          "bytes": 1737710,
+          "sha256": "dbf35c3fc107e2ad7e484632d465da0c81d613daa756d1166b5ae28714602e75"
+        }
+      }
+    ],
+    "saved_data_audit": {
+      "schema": "v64_original_two_pair_group_saved_audit",
+      "status": "passed_saved_data_checks",
+      "scope": "Saved NumPy/JSON only; no model/SDK/compiler/board execution",
+      "receipt_sha256": "38ee08c6804d779335a4bb37582a6805f929bb180b9b546ed5ccf2cf07f12eae",
+      "probe_sha256": "f3801ba5b92c1043aab2d3ebc6c0ad3258b8633c25e216b1298fbb1e0c9c38a0",
+      "parent_manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42",
+      "export_manifest_sha256": "57c5dd1bcf1cad4d258d1b9c91ccdf23e4e19c71f58975022b48ad3ca8c6cf55",
+      "compile_receipt_sha256": "8943f56ee991893d2b1bdb726e9d499d3c3e91145ff35672a8d0324755c93935",
+      "check_receipt_sha256": "5d86ce49dad23858b21e1e8c35ebfaf5d8f3e23af00dfad6daf2b67ae84f3603",
+      "inputs": [
+        "v53",
+        "v56-calib00"
+      ],
+      "component_route_calls": 16,
+      "SDK_runs": 24,
+      "outputs_acquired_released": 64,
+      "NPZ_files_checked": 16,
+      "NPZ_files_byte_equal_to_same_input_first_A": 16,
+      "arrays_checked": 64,
+      "all_outputs_finite": true,
+      "all_four_outputs_AB_and_repeats_byte_equal": true,
+      "original_FP32_recorded_checks": 32,
+      "original_FP32_recorded_strict_passes": 0,
+      "second_input_original_FP32_reference_available": false,
+      "per_input": {
+        "v53": {
+          "A": {
+            "first_per_input_route_seconds": 0.06467146499198861,
+            "subsequent": {
+              "inputs_set_seconds": 0.00020202765396485725,
+              "run_seconds": 0.07330702067702077,
+              "outputs_get_seconds": 0.0006304863491095603,
+              "outputs_release_seconds": 3.198533280131718e-05,
+              "route_seconds": 0.08035757767114167,
+              "count": 3,
+              "component_mean_seconds": 0.08096550866806258,
+              "component_min_seconds": 0.08025179998367094,
+              "component_max_seconds": 0.08165121701313183,
+              "route_non_API_mean_seconds": 0.0061860576582451615,
+              "outside_route_mean_seconds": 0.0006079309969209135,
+              "component_non_run_mean_seconds": 0.00765848799104181
+            },
+            "all_four_mean_seconds": 0.0768919977490441,
+            "subsequent_component_seconds": [
+              0.08025179998367094,
+              0.080993509007385,
+              0.08165121701313183
+            ]
+          },
+          "B": {
+            "first_per_input_route_seconds": 0.07083284101099707,
+            "subsequent": {
+              "inputs_set_seconds": 6.999967930217584e-05,
+              "run_seconds": 0.07225721534147549,
+              "outputs_get_seconds": 0.0006879446542977045,
+              "outputs_release_seconds": 1.7694672957683604e-05,
+              "route_seconds": 0.07641327167705943,
+              "count": 3,
+              "component_mean_seconds": 0.07647189699734251,
+              "component_min_seconds": 0.07497321598930284,
+              "component_max_seconds": 0.07762125800945796,
+              "route_non_API_mean_seconds": 0.0033804173290263723,
+              "outside_route_mean_seconds": 5.8625320283084426e-05,
+              "component_non_run_mean_seconds": 0.004214681655867025
+            },
+            "all_four_mean_seconds": 0.07506213300075615,
+            "subsequent_component_seconds": [
+              0.07497321598930284,
+              0.07682121699326672,
+              0.07762125800945796
+            ]
+          },
+          "subsequent_reduction_percent": 5.5500320378924615,
+          "subsequent_delta_seconds": -0.004493611670720071
+        },
+        "v56-calib00": {
+          "A": {
+            "first_per_input_route_seconds": 0.07921217399416491,
+            "subsequent": {
+              "inputs_set_seconds": 0.00020669466660668453,
+              "run_seconds": 0.0742428823238394,
+              "outputs_get_seconds": 0.0006340833400220921,
+              "outputs_release_seconds": 3.0430004699155688e-05,
+              "route_seconds": 0.08130607731679144,
+              "count": 3,
+              "component_mean_seconds": 0.08142663298834425,
+              "component_min_seconds": 0.08060559097793885,
+              "component_max_seconds": 0.08194084098795429,
+              "route_non_API_mean_seconds": 0.006191986981624126,
+              "outside_route_mean_seconds": 0.00012055567155280777,
+              "component_non_run_mean_seconds": 0.0071837506645048566
+            },
+            "all_four_mean_seconds": 0.08087301823979942,
+            "subsequent_component_seconds": [
+              0.08173346699913964,
+              0.08060559097793885,
+              0.08194084098795429
+            ]
+          },
+          "B": {
+            "first_per_input_route_seconds": 0.07468009099829942,
+            "subsequent": {
+              "inputs_set_seconds": 9.57636608897398e-05,
+              "run_seconds": 0.07308982699760236,
+              "outputs_get_seconds": 0.0006824030036417147,
+              "outputs_release_seconds": 1.6916339518502355e-05,
+              "route_seconds": 0.07752053598718096,
+              "count": 3,
+              "component_mean_seconds": 0.07758168832515366,
+              "component_min_seconds": 0.07573359098751098,
+              "component_max_seconds": 0.07863888298743404,
+              "route_non_API_mean_seconds": 0.0036356259855286482,
+              "outside_route_mean_seconds": 6.115233797270025e-05,
+              "component_non_run_mean_seconds": 0.004491861327551305
+            },
+            "all_four_mean_seconds": 0.0768562889934401,
+            "subsequent_component_seconds": [
+              0.07573359098751098,
+              0.07863888298743404,
+              0.07837259100051597
+            ]
+          },
+          "subsequent_reduction_percent": 4.7219742755923235,
+          "subsequent_delta_seconds": -0.0038449446631905887
+        }
+      },
+      "subsequent_aggregate": {
+        "A": {
+          "inputs_set_seconds": 0.0002043611602857709,
+          "run_seconds": 0.07377495150043008,
+          "outputs_get_seconds": 0.0006322848445658261,
+          "outputs_release_seconds": 3.120766875023643e-05,
+          "route_seconds": 0.08083182749396656,
+          "count": 6,
+          "component_mean_seconds": 0.08119607082820342,
+          "component_min_seconds": 0.08025179998367094,
+          "component_max_seconds": 0.08194084098795429,
+          "route_non_API_mean_seconds": 0.006189022319934637,
+          "outside_route_mean_seconds": 0.0003642433342368606,
+          "component_non_run_mean_seconds": 0.00742111932777334
+        },
+        "B": {
+          "inputs_set_seconds": 8.288167009595782e-05,
+          "run_seconds": 0.07267352116953892,
+          "outputs_get_seconds": 0.0006851738289697096,
+          "outputs_release_seconds": 1.7305506238092978e-05,
+          "route_seconds": 0.0769669038321202,
+          "count": 6,
+          "component_mean_seconds": 0.07702679266124808,
+          "component_min_seconds": 0.07497321598930284,
+          "component_max_seconds": 0.07863888298743404,
+          "route_non_API_mean_seconds": 0.003508021657277524,
+          "outside_route_mean_seconds": 5.98888291278854e-05,
+          "component_non_run_mean_seconds": 0.004353271491709165
+        }
+      },
+      "component_mean_reduction_percent": 5.134827491562732,
+      "component_savings_seconds": 0.004169278166955337,
+      "run_API_savings_seconds": 0.0011014303308911622,
+      "remaining_scope_savings_seconds": 0.0030678478360641748,
+      "run_API_savings_fraction_of_component_savings": 0.2641777033782071,
+      "freq_before_after_sample_count": 32,
+      "frequency_sample_counts": {
+        "300000000": 32
+      },
+      "temperature_max_c": 55.461,
+      "npu_temperature_max_c": 52.692,
+      "contexts_created_destroyed": 3,
+      "live_contexts": 0,
+      "cleanup_errors": [],
+      "frozen_pins_unchanged": true,
+      "system_clocks_changed": false,
+      "candidate_accepted": false,
+      "full_model_or_trajectory_or_realtime_validated": false,
+      "interpretation": "Both input-specific subsequent means improve modestly; most saved wall time is outside run API, consistent with fewer conversion/validation/SDK-boundary invocations. Four output payloads remain, and gains cannot be extrapolated to every pair or full-model service.",
+      "limitations": [
+        "Two fixed real inputs, only three subsequent calls per input/role; no confidence interval or complete-model trial.",
+        "First-per-input calls on the second input reuse existing contexts and are not new-context cold starts.",
+        "Within recorded timers, route_non_API combines conversions, allocations, owned copies and finite checks; no isolated causality is proven.",
+        "The baseline includes the actual A0-global-to-A1 reshape and an additional complete execute boundary; this is legitimate complete-route scope, not an isolated NPU kernel comparison.",
+        "Original FP32 reference arrays were not reloaded; first-input rejection is retained from receipt, while second input has no such reference.",
+        "Thirty-two instantaneous frequency/temperature observations do not prove behavior between samples."
+      ]
+    },
+    "input_payload_reduction_bytes_per_group": 217088,
+    "output_payload_reduction_bytes": 0,
+    "numerical_equal_to_previous_FP16_component": true,
+    "strict_original_FP32_acceptance": false
+  },
+  "unchanged_latest_whole_replay": {
+    "source": "results/original_1ghz_v63.json",
+    "new_whole_model_or_replay_measurement_in_v64": false,
+    "fresh_pose_hz": 0.675747566724416,
+    "complete_input_to_pose_P95_seconds": 2.0282739539761687,
+    "temporary_NPU_frequency_hz": 1000000000,
+    "actual_current_frequency_hz": 300000000
+  },
+  "checks": {
+    "generated_probe_checks_passed": 4,
+    "generated_checker_checks_passed": 5,
+    "actual_model_or_SDK_executed_by_host_generated_checks": false,
+    "actual_ORT_compile_and_SDK_execution_on_RK3588S_only": true,
+    "sources_unchanged_during_actual_runs": true,
+    "system_clocks_changed": false
+  },
+  "sources": {
+    "compose_original_pair_group.py": "d87cbe84f4fe783d57b12d1236164ef9210c8e43843b0f864bb3f64b26fe838c",
+    "check_compile_pair_group.py": "4094e393d0504954a67993c24e82c5534862393930f60db3ec64c2c3e4098b76",
+    "probe_original_pair_group.py": "f3801ba5b92c1043aab2d3ebc6c0ad3258b8633c25e216b1298fbb1e0c9c38a0"
+  },
+  "weight_only_support_review": {
+    "scope": "Static fixed SDK 2.3.2 documentation/header review; not a runtime experiment",
+    "header_source": "https://raw.githubusercontent.com/airockchip/rknn-toolkit2/v2.3.2/rknpu2/runtime/Linux/librknn_api/include/rknn_matmul_api.h",
+    "header_sha256": "aaadd9a7118de30a06b222996b6731db77095d00f5931a7a98c83a67f14a4d42",
+    "header_mixed_type_enums": [
+      {
+        "value": 5,
+        "name": "RKNN_FLOAT16_MM_INT8_TO_FLOAT32",
+        "A": "FP16",
+        "B": "INT8",
+        "C": "FP32"
+      },
+      {
+        "value": 6,
+        "name": "RKNN_FLOAT16_MM_INT8_TO_FLOAT16",
+        "A": "FP16",
+        "B": "INT8",
+        "C": "FP16"
+      },
+      {
+        "value": 7,
+        "name": "RKNN_FLOAT16_MM_INT4_TO_FLOAT32",
+        "A": "FP16",
+        "B": "INT4",
+        "C": "FP32"
+      },
+      {
+        "value": 8,
+        "name": "RKNN_FLOAT16_MM_INT4_TO_FLOAT16",
+        "A": "FP16",
+        "B": "INT4",
+        "C": "FP16"
+      }
+    ],
+    "SDK_user_guide": "https://github.com/airockchip/rknn-toolkit2/blob/v2.3.2/doc/02_Rockchip_RKNPU_User_Guide_RKNN_SDK_V2.3.2_EN.pdf",
+    "SDK_user_guide_locator": "Section 3.5.4.1, Table 3-6, printed page 52; local text lines 3101-3117",
+    "RK3588_documented_MatMul_types": [
+      "RKNN_FLOAT16_MM_FLOAT16_TO_FLOAT16",
+      "RKNN_FLOAT16_MM_FLOAT16_TO_FLOAT32",
+      "RKNN_INT8_MM_INT8_TO_INT32",
+      "RKNN_INT8_MM_INT8_TO_FLOAT32",
+      "RKNN_INT8_MM_INT8_TO_INT8",
+      "RKNN_INT4_MM_INT4_TO_INT16"
+    ],
+    "W8A16_or_W4A16_documented_for_RK3588": false,
+    "Toolkit_API_reference": "https://github.com/airockchip/rknn-toolkit2/blob/v2.3.2/doc/03_Rockchip_RKNPU_API_Reference_RKNN_Toolkit2_V2.3.2_EN.pdf",
+    "quantize_weight_scope": {
+      "locator": "config quantize_weight, printed page 9; local text lines 464-467",
+      "documented_effect": "Quantize some weights to reduce RKNN model size",
+      "documented_weight_bitwidth": null,
+      "guarantees_RK3588_W8A16_or_W4A16_execution": false,
+      "guarantees_runtime_speedup": false,
+      "actual_performance_test_located": false
+    },
+    "earlier_INT4_test_was_W4A4_type10": true,
+    "actual_mixed_type_test_performed": false,
+    "private_review_sha256": "6fa2c336d7b0b7bddbefd2d65807398ae36ecfe0ed4e2cb049678052ba8f59d3"
+  },
+  "evidence_sha256": {
+    "group-export.json": "57c5dd1bcf1cad4d258d1b9c91ccdf23e4e19c71f58975022b48ad3ca8c6cf55",
+    "check/check.json": "5d86ce49dad23858b21e1e8c35ebfaf5d8f3e23af00dfad6daf2b67ae84f3603",
+    "compile-result.json": "8943f56ee991893d2b1bdb726e9d499d3c3e91145ff35672a8d0324755c93935",
+    "probe-r1/result.json": "38ee08c6804d779335a4bb37582a6805f929bb180b9b546ed5ccf2cf07f12eae",
+    "pair-group-audit.json": "643c5fcc466791ee2ed89087c1912f8c0576736cc45782da75429266094878a9",
+    "pair-group-static-review.json": "93b75a45f1b3261551fc19fde4e834fcd9e87e3e0bc4355d6e2931f6a657bea4",
+    "vggt-v64-check-r1.log": "e55f1c3f7f267effbf8520a964a7ad53c563d9408951eec6de57db40ab4c9a2e",
+    "vggt-v64-compile-r1.log": "a596d91d4d8dd44d1556aa4fe0a112af1d28972ae9b0858c91bacd07519e5a56",
+    "vggt-v64-probe-r1.log": "ec4298c370fd8ec7bda52d3b1905ee8a9ad7fe993e3edf6c1a099e8b112c74eb"
+  },
+  "reproduction": "deploy/rk3588/validation/original_pair_group/README.md",
+  "next_evidence_needed": "A bounded larger-group or complete original-model integration comparison before any claim of whole-model service improvement; retain all original outputs and mutation/order guards.",
+  "limitations": [
+    "Two fixed real inputs with three subsequent calls per input/route; no confidence interval or broad performance acceptance.",
+    "First calls per input are reported; the second input reuses initialized contexts and is not a new-context cold start.",
+    "Saving 5.13% on this component cannot be extrapolated to every pair or to full-model latency.",
+    "Most observed savings are outside run API; both routes include FP16 conversion, allocations, finite checks, owned copies and release.",
+    "All strict original Torch FP32 checks on the input with references still fail; reference coverage differs between the two inputs.",
+    "No new complete-model, paced replay, trajectory, map-quality, camera, 30-minute or 8 GB validation.",
+    "The original 20 Hz / P95 100 ms objective remains unachieved. No model substitution or added traditional pose frontend.",
+    "Private tensors, weight-bearing graphs, checkpoints and SDK binaries are not distributed."
+  ]
+}
