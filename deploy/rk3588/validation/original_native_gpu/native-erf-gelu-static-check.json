@@ -1,0 +1,16 @@
+{
+  "AST_syntax_passed": true,
+  "GPU_erf_numerical_accuracy_or_DMA_coherence_validated": false,
+  "actual_SDK_model_board_or_GPU_execution": false,
+  "channels": 4096,
+  "failed_release_handle_visible_and_retryable_source_mock": true,
+  "kernel_C4_to_A8_mapping_all_elements_checked": 434176,
+  "kernel_sha256": "0296f6f7abb3a116ff24ac85ba089ce644b4f4e73f30a11b6356d9707a65864a",
+  "module_sha256": "f06486299101fb233c68abc9908e8c2629c4cb1f7dca6241133e6e222634acc2",
+  "pack_A8_and_unpack_C4_helpers_passed": true,
+  "rows": 106,
+  "schema": "v81_native_erf_gelu_static_layout_audit",
+  "source_mapping_bijective": true,
+  "source_same_original_Erf_equation_no_relaxed_math": true,
+  "status": "passed_source_and_generated_NumPy_only"
+}

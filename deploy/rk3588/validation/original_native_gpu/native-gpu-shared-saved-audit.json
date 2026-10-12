@@ -1,0 +1,107 @@
+{
+  "schema": "v81_original_MLP_GPU_shared_A_saved_audit",
+  "status": "passed_saved_evidence_audit_candidate_slower_not_adopted",
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "actual_inference_executed_by_audit": false,
+  "source_sha256": "9c1b142781a7c99b6760a4effb100f59c7fab0b212d031b38b5151c5b534c097",
+  "result_sha256": "8c2e538a096715671564887236c71296c40e6a7ba7c01978bc21c88ca55c8b4e",
+  "control_sha256": "88fb533f16e60484b774dc7ac52acfb534b288979647130f1753595219fee0db",
+  "previous_GPU_D_result_sha256": "9f9c1b9aea21c47665836e0a256827553222b315b73f9ae4c253a972a3f0b93b",
+  "timings_seconds": {
+    "A": {
+      "all_count": 13,
+      "warm_count": 12,
+      "warm_mean_seconds": 0.007493743837888663,
+      "all_mean_seconds": 0.0074584558516597515
+    },
+    "E": {
+      "all_count": 13,
+      "warm_count": 12,
+      "warm_mean_seconds": 0.011840713001826467,
+      "all_mean_seconds": 0.011707337694063496,
+      "warm_stage_mean_seconds": {
+        "FC1_conversion_pack_sync_run_seconds": 0.0029422850008510673,
+        "GPU_bias_Erf_native_A8_and_sync_seconds": 0.0031457224176847376,
+        "FC2_owner_A_post_GPU_TO_DEVICE_seconds": 4.50383280015861e-05,
+        "FC2_dispatch_run_owned_bias_concat_seconds": 0.005574545582931023
+      },
+      "warm_GPU_bridge_mean_seconds": {
+        "FC1_C_FROM_DEVICE_seconds": 9.192374758034323e-05,
+        "FC2_A_prewrite_TO_DEVICE_seconds": 6.440983512826885e-05,
+        "enqueue_seconds": 5.709358568613728e-05,
+        "finish_seconds": 0.002782014249532949,
+        "FC2_A_postwrite_FROM_DEVICE_seconds": 8.300350115556891e-05,
+        "GPU_kernel_seconds": 0.0012023696666666668,
+        "profiling_and_event_release_seconds": 4.0249998467819147e-05,
+        "complete_bridge_seconds": 0.0031194482507999055
+      },
+      "warm_FC2_worker_run_mean_seconds": [
+        0.002680097498038473,
+        0.002975240000523627,
+        0.0028163443300096938
+      ]
+    }
+  },
+  "within_this_run_E_vs_A_warm_slowdown_percent": 58.00797649312961,
+  "outputs": {
+    "current_saved_NPY_verified": 31,
+    "timed_outputs_verified": 26,
+    "diagnostic_arrays_verified": 5,
+    "each_route_all_13_byte_equal": true,
+    "all_13_E_byte_equal_previous_D_saved_first_output": true,
+    "E_raw_sha256": "37eb111a1e5b8344a0fa7af0d4ea5f6f71a1304f76a615879160403f26dff397",
+    "A_raw_sha256": "de3d21db92435fdfea80b5853a7e73b752500a2f2c9aebb9118f4215693806fa",
+    "original_CPU_strict_pass_count_reported": 0,
+    "original_CPU_reference_reread": false
+  },
+  "same_FC1_GPU_vs_CPU_once_FP16_recomputed": {
+    "elements": 434176,
+    "outside_fixed_tolerance": 637,
+    "max_abs": 0.0001220703125,
+    "relative_l2": 1.09764798614112e-05,
+    "strict_pass": false,
+    "native_A8_unpacks_byte_equal_to_saved_GPU_GELU_half": true
+  },
+  "shared_A_and_concurrency": {
+    "all_39_part_bindings_successful": true,
+    "no_CPU_write_during_concurrent_runs_source_receipt": true,
+    "part_contexts_closed_before_owner": true,
+    "unused_part_A_allocations_retained": 3,
+    "E_calls_with_all_three_host_run_intervals_overlapping": 13,
+    "scope": "Host blocking SDK intervals, not proof of hardware utilization."
+  },
+  "resources": {
+    "native_contexts_created_destroyed": 5,
+    "native_memories_created_destroyed": 15,
+    "native_successful_runs": 52,
+    "compiled_contexts_created_destroyed": 1,
+    "compiled_outputs_acquired_released": 13,
+    "GPU_events_created_released": 13,
+    "GPU_DMA_imports_not_staging_copies": true,
+    "all_contexts_memory_OpenCL_and_owned_FDs_final_zero": true,
+    "cleanup_errors": [],
+    "affinity_restored": true,
+    "sources_and_inputs_unchanged": true
+  },
+  "platform": {
+    "call_samples": 52,
+    "controller_samples": 8,
+    "all_sampled_NPU_hz": 1000000000,
+    "GPU_sampled_hz": [
+      300000000
+    ],
+    "GPU_governors": [
+      "simple_ondemand"
+    ],
+    "restored_NPU_hz": 300000000,
+    "controller_peak_temperature_c": 56.384,
+    "call_sample_peak_temperature_c": 55.461,
+    "frequency_samples_not_continuous_proof": true
+  },
+  "limits": [
+    "Complete MLP comparison is only this run A/E. Previous D is used solely for byte comparison; no speed gain is inferred across runs.",
+    "Shared FC2 component benefit did not translate to winning this complete MLP comparison. No original-model, map, trajectory or 20 Hz acceptance.",
+    "GPU once-FP16 comparison retains the original fixed tolerance failure; native A/B or E/D byte equality does not replace original-FP32 quality validation."
+  ]
+}

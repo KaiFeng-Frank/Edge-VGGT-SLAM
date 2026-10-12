@@ -6,6 +6,18 @@ The current tree contains only this model's execution path and relevant componen
 
 **The real-time target remains unachieved.** The target is at least 20 fresh-observation poses per second with complete input-to-pose P95 latency at most 100 ms. Map cadence, bounded queues, trajectory quality, 30-minute stability and operation within 8 GB each need separate validation. A component's timing, repeated prediction or offline reconstruction does not satisfy those targets. Current measurements use dataset files on a 16 GB RK3588S; physical-camera validation is deferred.
 
+**Latest component experiment: the original MLP now executes through native
+NPU MatMul, GPU Erf and shared DMA buffers.** The missing, matching GPU firmware
+was added with explicit user approval; GPU clocks and the kernel driver were
+unchanged. GPU activation reduces the native MLP from 36.962 to 12.182 ms,
+but the existing compiled MLP is still faster at 6.634 ms in the same trial.
+A separate original FC2 trial shares one input among three single-core NPU
+contexts: 10.297 to 8.156 ms (20.79% less time), with all 26 saved outputs
+byte-identical. Combining GPU activation with this shared-input FC2 takes
+11.841 ms versus 7.494 ms for the compiled MLP in a new matched trial, so
+the combination is not adopted. These are component measurements, not a
+whole-model or SLAM speedup. [Measurements, failures and reproduction](deploy/rk3588/validation/original_native_gpu/README.md).
+
 **Latest original-model experiment: four retained aggregator groups compiled
 with W8A8, while DINO, CameraHead, DPT and SL4 retain the current baseline.**
 At 1 GHz, the same 16-pair complete comparison improves from **1.211 to

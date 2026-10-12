@@ -1,0 +1,92 @@
+{
+  "schema": "v81_original_frame0_MLP_SDK_wall_saved_audit",
+  "status": "passed_saved_evidence_audit_not_quality_acceptance",
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "actual_inference_executed_by_this_audit": false,
+  "source_receipts_sha256": {
+    "profile": "1138aa2e9f1686d8fc7344c4c4a84e2caa932ab4ab05ddef7b9920512c4c6282",
+    "ABC2": "81631ff8504b81de171cb2916c9ec564faae171802b8fce0457f87e86e08ed57",
+    "GPU1": "9f9c1b9aea21c47665836e0a256827553222b315b73f9ae4c253a972a3f0b93b",
+    "control": "81ea8219638286fe6351ae9c2374193fa3b257a7c2b5d56fe5319548b783e73c",
+    "profile_source": "ce389eb9a76a0eef153f35ed6482468a1908e12d4f03dfb9374a587957ffb911"
+  },
+  "timings_seconds": {
+    "A": {
+      "all_count": 13,
+      "warm_count": 12,
+      "complete_all_mean_seconds": 0.006482135459709053,
+      "complete_warm_mean_seconds": 0.006379139747878071
+    },
+    "B": {
+      "all_count": 13,
+      "warm_count": 12,
+      "complete_all_mean_seconds": 0.027027653386959664,
+      "complete_warm_mean_seconds": 0.026939624253524624,
+      "FC1_SDK_warm_mean_seconds": 0.0011821494990726933,
+      "FC2_SDK_warm_mean_seconds": 0.005538507663004566,
+      "both_SDK_run_warm_mean_seconds": 0.006720657162077259,
+      "FC2_fraction_of_two_SDK_runs": 0.8241020973747591
+    },
+    "C": {
+      "all_count": 13,
+      "warm_count": 12,
+      "complete_all_mean_seconds": 0.033686448922918104,
+      "complete_warm_mean_seconds": 0.033695937415662534,
+      "FC1_SDK_warm_mean_seconds": 0.0016303198256840308,
+      "FC2_SDK_warm_mean_seconds": 0.006133677661030863,
+      "both_SDK_run_warm_mean_seconds": 0.007763997486714895,
+      "FC2_fraction_of_two_SDK_runs": 0.7900154104282364
+    }
+  },
+  "output_hash_checks": {
+    "B": {
+      "profile_receipt_output_count": 13,
+      "unique_raw_sha256": "2ba1bbc9b250625e3c1f196367d8805c8f86e94540146f9ac8970c7badcd7d3a",
+      "matches_13_ABC2_and_13_GPU1_saved_arrays": true
+    },
+    "C": {
+      "profile_receipt_output_count": 13,
+      "unique_raw_sha256": "2ba1bbc9b250625e3c1f196367d8805c8f86e94540146f9ac8970c7badcd7d3a",
+      "matches_13_ABC2_and_13_GPU1_saved_arrays": true
+    }
+  },
+  "array_scope": {
+    "prior_B_C_saved_NPY_verified": 52,
+    "profile_B_C_output_metadata_bound_to_receipt": 26,
+    "profile_NPY_read": false,
+    "limit": "Profile arrays were not pulled into this audit; profile output hashes are receipt evidence, compared with independently hashed saved ABC2/GPU1 arrays."
+  },
+  "resources": {
+    "native_contexts_created_destroyed": 4,
+    "native_memories_created_destroyed": 12,
+    "native_SDK_runs_succeeded": 52,
+    "compiled_contexts_created_destroyed": 1,
+    "compiled_SDK_runs_succeeded": 13,
+    "compiled_outputs_acquired_released": 13,
+    "all_contexts_final_zero": true,
+    "cleanup_errors": [],
+    "affinity_restored": true,
+    "sources_and_inputs_unchanged": true
+  },
+  "platform": {
+    "call_before_after_samples": 78,
+    "controller_samples": 9,
+    "sampled_NPU_hz": 1000000000,
+    "restored_NPU_hz": 300000000,
+    "controller_max_temperature_c": 54.538,
+    "call_sample_max_temperature_c": 55.461,
+    "samples_are_not_continuous_proof": true
+  },
+  "same_GPU_trial": {
+    "compiled_A_warm_mean_seconds": 0.006633861749529994,
+    "GPU_D_all_mean_seconds": 0.01218240184467644,
+    "GPU_D_warm_mean_seconds": 0.012181629664458645
+  },
+  "interpretation": [
+    "The observed two native SDK runs alone exceed the compiled complete-route mean in this profile trial. Removing only CPU Erf/conversions while holding these observed run means fixed cannot beat that baseline. This is a conditional measured comparison, not a hardware impossibility bound.",
+    "FC2 accounts for 82.41% normal/core1 and 79.00% native/core1 of the two SDK run means, making FC2 execution the next component target.",
+    "A concrete next diagnostic can partition only FC2 output N=1024 into aligned channel spans [352,352,320] on independent masks 1/2/4, keeping K=4096 and each original dot reduction/bias unchanged. Full synchronization, joins and owned output assembly must be included; neither threefold speed nor quality equivalence is assumed.",
+    "All routes remain component diagnostics. Original-FP32 tensor gates still fail and no model/trajectory/20 Hz acceptance follows."
+  ]
+}

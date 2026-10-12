@@ -1,0 +1,266 @@
+{
+  "B_and_C_bitwise_equal": true,
+  "D_over_compiled_warm_latency_ratio": 1.8362803031464603,
+  "D_vs_C": {
+    "elements": 108544,
+    "max_abs": 2.09808349609375e-05,
+    "outside": 1,
+    "relative_l2": 7.484776020616598e-07,
+    "strict_pass": false
+  },
+  "D_warm_GPU_bridge_mean_ms": 2.432330082228873,
+  "D_warm_GPU_kernel_mean_ms": 1.2069893333333335,
+  "audit_script_sha256": "5d1480b2a101263b23f152edaf6ea977328b89794d52a7ce93f9f3932c8be566",
+  "audited_inputs_unchanged": true,
+  "candidate_accepted": false,
+  "full_outputs": {
+    "A": {
+      "all_outputs_bitwise_stable": true,
+      "calls": 13,
+      "output_raw_sha256": "de3d21db92435fdfea80b5853a7e73b752500a2f2c9aebb9118f4215693806fa",
+      "vs_original_FP32": {
+        "elements": 108544,
+        "max_abs": 0.35901856422424316,
+        "outside": 96404,
+        "relative_l2": 0.005113175504893546,
+        "strict_pass": false
+      },
+      "warm_mean_ms": 6.633861749529994
+    },
+    "B": {
+      "all_outputs_bitwise_stable": true,
+      "calls": 13,
+      "output_raw_sha256": "2ba1bbc9b250625e3c1f196367d8805c8f86e94540146f9ac8970c7badcd7d3a",
+      "vs_original_FP32": {
+        "elements": 108544,
+        "max_abs": 0.005519866943359375,
+        "outside": 60040,
+        "relative_l2": 0.00013938222486255684,
+        "strict_pass": false
+      },
+      "warm_mean_ms": 29.363107251507852
+    },
+    "C": {
+      "all_outputs_bitwise_stable": true,
+      "calls": 13,
+      "output_raw_sha256": "2ba1bbc9b250625e3c1f196367d8805c8f86e94540146f9ac8970c7badcd7d3a",
+      "vs_original_FP32": {
+        "elements": 108544,
+        "max_abs": 0.005519866943359375,
+        "outside": 60040,
+        "relative_l2": 0.00013938222486255684,
+        "strict_pass": false
+      },
+      "warm_mean_ms": 36.961548915617946
+    },
+    "D": {
+      "all_outputs_bitwise_stable": true,
+      "calls": 13,
+      "output_raw_sha256": "37eb111a1e5b8344a0fa7af0d4ea5f6f71a1304f76a615879160403f26dff397",
+      "vs_original_FP32": {
+        "elements": 108544,
+        "max_abs": 0.005519866943359375,
+        "outside": 60023,
+        "relative_l2": 0.0001393798886790053,
+        "strict_pass": false
+      },
+      "warm_mean_ms": 12.181629664458645
+    }
+  },
+  "general_model_trajectory_or_realtime_accuracy_validated": false,
+  "input_files_count": 63,
+  "input_sha256": {
+    "/dev/shm/edge-vggt-v81/native-gpu-control-r1/control.json": "93515055920b4619e195968c12146fd9f9f33c7dc196d317b3d8eb90b1cc6ed1",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-00-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-01-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-02-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-03-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-04-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-05-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-06-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-07-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-08-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-09-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-10-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-11-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-12-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-13-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-14-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-15-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-16-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-17-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-18-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-19-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-20-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-21-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-22-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-23-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-24-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-25-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-26-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-27-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-28-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-29-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-30-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-31-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-32-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-33-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-34-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-35-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-36-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-37-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-38-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-39-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-40-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-41-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-42-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-43-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-44-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-45-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-46-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-47-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-48-D.npy": "e342cedd8cf8ce5c00b0d2a960274a4acff7b532ac850063149e48241c80e7c4",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-49-C.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-50-B.npy": "3681738e9307d136b386d3e29f724f1ad905e6ed5737e377429232f6d8922e4b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/call-51-A.npy": "4a22dabfa45da5c96c276ee5f62d56811234af253d3ee6967034a8f052a32b69",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/result.json": "9f9c1b9aea21c47665836e0a256827553222b315b73f9ae4c253a972a3f0b93b",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/same-fc1-biased.npy": "95e7d884e3da3121b8a84ecb33656a32a5cc225156608bc4be26793d9474891f",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/same-fc1-cpu-gelu.npy": "0205f64b49eb54b0b8d3cba73261752f4b3f007bc6e65c1285039479db1496b2",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/same-fc1-gpu-a8.npy": "fdd06a122c87a11ce4df08150d6a4c51a5ae318631bbbf85f4b27a70e50576a6",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/same-fc1-gpu-gelu-half.npy": "ce12f1b305a16d741760288df91e16a229bb106a6da8ade0dab2a1a1ade304a2",
+    "/dev/shm/edge-vggt-v81/native-gpu-r1/same-fc1-matmul.npy": "e2bbec2f1e8ae9738f01643ba501a5545b0ec1aec1fc2c4de48dad4084369da6",
+    "/home/frank/.local/share/edge-vggt-private/v68/native-compiled-rank3-ab-r1/result.json": "b3918176bd02002831b92158b148bbd36fc208132c00ac8e0f44723db1af00a3",
+    "/home/frank/.local/share/edge-vggt-private/v68/native-compiled-rank3-ab-r1/torch-fc1.npy": "4e39ef7a71adc9a0f798356f8f72df7f1bae94032afafac671271c41868daecb",
+    "/home/frank/.local/share/edge-vggt-private/v68/native-compiled-rank3-ab-r1/torch-fc2-input.npy": "08d98a828a6cf23a5439d59d2daf7280da2c89357bbd59c33dfa1bab8e0e6c39",
+    "/home/frank/.local/share/edge-vggt-private/v68/native-compiled-rank3-ab-r1/torch-output.npy": "e5cb717511cbb485a316999da695e5d6cbf61de21f5929512ab7c30f206e5130"
+  },
+  "interpretation": "Inference: scale rounding accounts for a minority of disputed scalar points; standard GPU Erf vs CPU float Erf accuracy and negative 1+erf cancellation are consistent with the remaining half-boundary differences. GPU FP32 scaled/erf values were not saved, so the exact cause is unproven.",
+  "next_source_fix": {
+    "first": "Match torch 2.3.1 scalar scaling: x * FP32(1/sqrt(2)), then (x * 0.5) * (1 + erf); keep original bias and one half_rte conversion.",
+    "limits": "Changing scale alone is not predicted to remove all 637 failures. This GPU native route is slower than compiled MLP and does not justify full-model expansion or accuracy/SLAM acceptance.",
+    "proposal_only_not_applied": true,
+    "second": "If needed capture GPU FP32 scaled input and Erf on the same saved diagnostic input before choosing an original-Erf implementation; do not assume the optional ARM NEON polynomial is the active wheel path."
+  },
+  "primary_source_evidence": [
+    {
+      "supports": "FP32 original GELU uses multiply-by-alpha scaling and x*half grouping",
+      "url": "https://github.com/pytorch/pytorch/blob/v2.3.1/aten/src/ATen/native/cpu/Activation.cpp#L408-L425"
+    },
+    {
+      "supports": "generic vector Erf maps std::erf",
+      "url": "https://github.com/pytorch/pytorch/blob/v2.3.1/aten/src/ATen/cpu/vec/vec_base.h#L384-L386"
+    },
+    {
+      "supports": "optional NEON Erf has a distinct polynomial/FMA implementation; active build path unverified",
+      "url": "https://github.com/pytorch/pytorch/blob/v2.3.1/aten/src/ATen/cpu/vec/vec256/vec256_float_neon.h#L829-L858"
+    },
+    {
+      "supports": "standard single-precision Erf permits a 16-ULP error bound; no-relaxed-math is not CPU bit equality",
+      "url": "https://registry.khronos.org/OpenCL/specs/unified/html/OpenCL_C.html#relative-error-as-ulps"
+    }
+  ],
+  "resources": {
+    "GPU_calls_events_created_released": 13,
+    "cleanup_errors": [],
+    "compiled_contexts_created_destroyed": 1,
+    "compiled_runs_outputs_acquired_released": 13,
+    "exact_baseline_restored": {
+      "cur_freq": "300000000",
+      "governor": "userspace",
+      "max_freq": "1000000000",
+      "min_freq": "300000000",
+      "userspace/set_freq": "300000000"
+    },
+    "live_contexts_OpenCL_objects_and_owned_DMA_fds": 0,
+    "maximum_observed_temperature_c": 54.538,
+    "native_allocations_created_destroyed": 12,
+    "native_contexts_created_destroyed": 4,
+    "native_runs": 78,
+    "observed_1GHz_controller_samples": 10
+  },
+  "same_FC1": {
+    "CPU_GELU_vs_original_FP32_GELU": {
+      "elements": 434176,
+      "max_abs": 0.0005922317504882812,
+      "outside": 135215,
+      "relative_l2": 0.00019814223113678487,
+      "strict_pass": false
+    },
+    "FP16_ULP_histogram": {
+      "0": 432491,
+      "1": 1676,
+      "2": 6,
+      "3": 2,
+      "4": 1
+    },
+    "FP16_numeric_and_bitwise_differences": 1685,
+    "GPU_half_vs_original_FP32_GELU": {
+      "elements": 434176,
+      "max_abs": 0.0017552375793457031,
+      "outside": 190249,
+      "relative_l2": 0.0002892049432594589,
+      "strict_pass": false
+    },
+    "GPU_vs_same_FC1_CPU_once_FP16": {
+      "elements": 434176,
+      "max_abs": 0.0001220703125,
+      "outside": 637,
+      "relative_l2": 1.09764798614112e-05,
+      "strict_pass": false
+    },
+    "all_637_strict_failures_have_ULP_distance": 1,
+    "all_differences_have_negative_FC1": true,
+    "disputed_FC1_range": [
+      -4.291225910186768,
+      -0.5751742720603943
+    ],
+    "elements": 434176,
+    "maximum_FP16_ULP_distance": 4,
+    "native_A8_unpacked_bits_match": true,
+    "strict_fail_FC1_range": [
+      -2.4967195987701416,
+      -0.5751742720603943
+    ],
+    "vs_original_FP32_FC1": {
+      "elements": 434176,
+      "max_abs": 0.0012464523315429688,
+      "outside": 153049,
+      "relative_l2": 0.00010260586341738014,
+      "strict_pass": false
+    }
+  },
+  "scalar_rounding_diagnostic": {
+    "FP32_mul_vs_div_scaled_input_differences": 184582,
+    "comparisons": {
+      "GPU_scale_div": {
+        "all_1685_disputed": {
+          "matches_saved_CPU_half": 1612,
+          "matches_saved_GPU_half": 73
+        },
+        "strict_637": {
+          "matches_saved_CPU_half": 582,
+          "matches_saved_GPU_half": 55
+        }
+      },
+      "Torch_scale_mul": {
+        "all_1685_disputed": {
+          "matches_saved_CPU_half": 1666,
+          "matches_saved_GPU_half": 19
+        },
+        "strict_637": {
+          "matches_saved_CPU_half": 619,
+          "matches_saved_GPU_half": 18
+        }
+      }
+    },
+    "half_multiply_order_changes_in_disputed_points": 0,
+    "maximum_scaled_input_absolute_difference": 2.384185791015625e-07,
+    "precision_caveat": "double math.erf then FP32; not the exact board float std::erf or GPU erf implementation",
+    "scalar_inputs_checked": 1685,
+    "scale_choice_half_changes_in_637_strict_points": 37,
+    "scale_choice_half_changes_in_disputed_points": 54
+  },
+  "schema": "v81_original_MLP_GPU_saved_numeric_audit",
+  "scope": "Saved NumPy arrays and scalar arithmetic diagnostics only; no Torch/model/SDK/board execution",
+  "status": "saved_consistency_passed_precision_gate_failed"
+}

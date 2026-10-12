@@ -1,0 +1,82 @@
+{
+  "schema": "v81_original_FC2_three_single_core_saved_audit",
+  "status": "passed_saved_evidence_audit_not_quality_acceptance",
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "source_sha256": "9bc7bb3de84179d0af4210959e03215839c07c0812abd19f83b2d7e0f6ddd271",
+  "result_sha256": "a9110e1dc0920e75fee1e7b03b29f197695e669b37c1f5e5cdde2ef97d24ff4d",
+  "control_sha256": "a2c509273ed12053d5e8c64db314d27e97c910bce1fd2e931e3675c21d387d37",
+  "actual_inference_executed_by_audit": false,
+  "timing_seconds": {
+    "A": {
+      "all_count": 13,
+      "warm_count": 12,
+      "warm_mean_seconds": 0.01124826849748691,
+      "all_mean_seconds": 0.011121831227613326,
+      "warm_input_conversion_seconds": 0.0022932432524006194,
+      "warm_worker_MatMul_run_mean_seconds": [
+        0.0062606809951830655
+      ]
+    },
+    "B": {
+      "all_count": 13,
+      "warm_count": 12,
+      "warm_mean_seconds": 0.010229785584670026,
+      "all_mean_seconds": 0.010199238078292603,
+      "warm_input_conversion_seconds": 0.0019766250018922924,
+      "warm_worker_MatMul_run_mean_seconds": [
+        0.0025379135016313135,
+        0.0024991947454206334,
+        0.0023019479995127767
+      ]
+    }
+  },
+  "warm_complete_improvement_percent": 9.054575048990287,
+  "warm_complete_speed_ratio": 1.0995605337362246,
+  "outputs": {
+    "NPY_read_hashed_shape_dtype_finite": 26,
+    "all_26_byte_equal_to_first_unsplit": true,
+    "raw_sha256": "44e4865cd40e513edf40b19b322dd316ce8f61a2004272500f315dc4265bea6e",
+    "file_sha256": "f5b298c52106d9ef69685b3df5e47e52c1779babc87afef5a787f5d019192610",
+    "shape": [
+      106,
+      1024
+    ],
+    "dtype": "float32",
+    "original_CPU_strict_pass_count_reported": 0,
+    "original_CPU_tolerance_outside_per_array_reported": 29360,
+    "limit": "Original CPU reference was not reread by this concise audit; its strict results remain separately reported, not replaced by native A/B byte equality."
+  },
+  "blocking_SDK_run_interval_overlap": {
+    "B_calls": 13,
+    "B_warm_calls": 12,
+    "all_B_calls_with_any_run_overlap": 13,
+    "all_B_calls_with_three_run_overlap": 3,
+    "warm_mean_run_span_seconds": 0.005255170743718433,
+    "warm_mean_worker_span_seconds": 0.007613160254550166,
+    "warm_mean_all_three_run_overlap_seconds": 0.00033259733269611996,
+    "scope": "Host blocking rknn_matmul_run call intervals overlap; this does not measure simultaneous device execution or prove threefold hardware utilization."
+  },
+  "resources": {
+    "native_contexts_created_destroyed": 4,
+    "native_memories_created_destroyed": 12,
+    "successful_MatMul_runs": 52,
+    "all_contexts_final_zero": true,
+    "all_memory_handles_released": true,
+    "cleanup_errors": [],
+    "affinity_restored": true,
+    "sources_and_inputs_unchanged": true
+  },
+  "platform": {
+    "call_samples": 52,
+    "controller_samples": 7,
+    "all_sampled_NPU_hz": 1000000000,
+    "restored_NPU_hz": 300000000,
+    "controller_peak_temperature_c": 54.538,
+    "call_sample_peak_temperature_c": 55.461
+  },
+  "limits": [
+    "Complete component timing retains three A copies, synchronization, worker dispatch/join and output concatenation. Shared-A must be measured in a separate receipt.",
+    "This original FC2 experiment is not full VGGT or SLAM, and establishes no 20 Hz or trajectory-quality acceptance."
+  ]
+}

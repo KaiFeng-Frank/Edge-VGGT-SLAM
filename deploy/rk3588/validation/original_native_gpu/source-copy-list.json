@@ -1,0 +1,118 @@
+{
+  "schema": "v81_original_native_GPU_frozen_sources_and_executed_parents",
+  "files": {
+    "probe_native_gpu_mlp_board.py": {
+      "bytes": 24209,
+      "sha256": "db08bd6ea0014b4cd2a136d65ca113bf79bb4ce3077c0cfc3a29f31a38095523",
+      "role": "executed_source_or_launcher"
+    },
+    "probe_native_ac_mlp_core1_board.py": {
+      "bytes": 24194,
+      "sha256": "a29433e1a8e76655f5e865c74cce834eecc6c665b0fb9ccb0dc0c7b73e8bc91c",
+      "role": "executed_source_or_launcher"
+    },
+    "probe_native_ac_profile_board.py": {
+      "bytes": 26760,
+      "sha256": "ce389eb9a76a0eef153f35ed6482468a1908e12d4f03dfb9374a587957ffb911",
+      "role": "executed_source_or_launcher"
+    },
+    "probe_native_gpu_mlp_board_r2.py": {
+      "bytes": 29479,
+      "sha256": "b53521e8db68d5f46467364cd2712f7498834569beee7ee39c7eef5539540abf",
+      "role": "frozen_parent_of_executed_observed_runner"
+    },
+    "probe_native_gpu_mlp_observed_board.py": {
+      "bytes": 29636,
+      "sha256": "08d9b84af256c91b60a2f6dcd8100bf68d2a2d0209fdde1ff90fd9e4fbb09c6d",
+      "role": "executed_source_or_launcher"
+    },
+    "native_erf_gelu_opencl.py": {
+      "bytes": 21255,
+      "sha256": "f06486299101fb233c68abc9908e8c2629c4cb1f7dca6241133e6e222634acc2",
+      "role": "executed_source_or_launcher"
+    },
+    "probe_opencl_capability_board.py": {
+      "bytes": 9623,
+      "sha256": "0f9661b878aa59e536128ddcea827def2925ef2deb072b3f605d27c4d864175e",
+      "role": "executed_source_or_launcher"
+    },
+    "probe_opencl_capability_board_r2.py": {
+      "bytes": 10149,
+      "sha256": "82c6266f8f9027fbc98c8136fe152dd8c265e122a3211bf08e4cacb466aa2ffa",
+      "role": "executed_source_or_launcher"
+    },
+    "install_prepared_gpu_firmware.py": {
+      "bytes": 1830,
+      "sha256": "0614974320b5b486e621b48c4662ca44b8a3b719d140680a90aaf2f2c19b0e1c",
+      "role": "executed_source_or_launcher"
+    },
+    "install_prepared_gpu_firmware_r2.py": {
+      "bytes": 2057,
+      "sha256": "9d3115143a5bcf0a7805ee375b62aad7cc6e266ff5031bf632a047d9cbeb31d9",
+      "role": "executed_source_or_launcher"
+    },
+    "run_native_abc_1ghz.sh": {
+      "bytes": 359,
+      "sha256": "7be9bd76f3331deb859dddba7602e9375d8f96ac5eebb53ffb4cbc46ea445f18",
+      "role": "executed_source_or_launcher"
+    },
+    "run_native_abc2_1ghz.sh": {
+      "bytes": 364,
+      "sha256": "cf8fa5a0857443f74bdec2aa34edf5d0e23af38ce188f2318b086e3f95b99c42",
+      "role": "executed_source_or_launcher"
+    },
+    "run_native_profile_1ghz.sh": {
+      "bytes": 366,
+      "sha256": "4e8aa4c05dd837c9245509deafd2a02c1d5227fe4ce7f2caccae7df2f03bde9f",
+      "role": "executed_source_or_launcher"
+    },
+    "run_native_gpu_1ghz.sh": {
+      "bytes": 750,
+      "sha256": "0bb12d3ffaef200ed34cf25019bdf9cb318093938e8c6b21f6dcbf6a0520828b",
+      "role": "executed_source_or_launcher"
+    },
+    "probe_fc2_three_cores_board.py": {
+      "bytes": 16685,
+      "sha256": "9bc7bb3de84179d0af4210959e03215839c07c0812abd19f83b2d7e0f6ddd271",
+      "role": "executed_source_or_launcher"
+    },
+    "run_fc2_three_cores_1ghz.sh": {
+      "bytes": 471,
+      "sha256": "ebae24ab2bd04903f3010a6adb9754719b29c9baa08d1460a7d5873b6c3e3bbd",
+      "role": "executed_source_or_launcher"
+    },
+    "audit_native_gpu_saved.py": {
+      "bytes": 16624,
+      "sha256": "5d1480b2a101263b23f152edaf6ea977328b89794d52a7ce93f9f3932c8be566",
+      "role": "executed_source_or_launcher"
+    },
+    "test_probe_native_gpu_mlp_generated.py": {
+      "bytes": 6806,
+      "sha256": "a0176b4e88edf80b471ec224456e20d67fa0db6e2c4ff691de374f9374ee756f",
+      "executed_private_source_sha256": "c4e26d5ff471c68ebf009f49a1e4afef138bb41ffe34298e500ec7a9ee5eb763",
+      "publication_change": "Find repository via ancestors; generated-only tests",
+      "role": "generated_arrays_and_fake_API_test"
+    },
+    "probe_fc2_three_cores_shared_a_board.py": {
+      "bytes": 18862,
+      "sha256": "4a7e8da5c981e68ed577f7dc9f774e9c4b48eea40bc7066ce30da3a23786b9d9",
+      "role": "executed_source_or_launcher"
+    },
+    "run_fc2_shared_a_1ghz.sh": {
+      "bytes": 477,
+      "sha256": "7a628c8020e1e5a60576f59ae39702a9c5785bb6318add9efeb3c652c39bc779",
+      "role": "executed_source_or_launcher"
+    },
+    "probe_native_gpu_mlp_shared_fc2_board.py": {
+      "bytes": 25169,
+      "sha256": "9c1b142781a7c99b6760a4effb100f59c7fab0b212d031b38b5151c5b534c097",
+      "role": "executed_source_or_launcher"
+    },
+    "run_native_gpu_shared_1ghz.sh": {
+      "bytes": 377,
+      "sha256": "e8d5e4040b8a48595a030573397bbbb88592fa65548ea5212a43d78f7b33ca04",
+      "role": "executed_source_or_launcher"
+    }
+  },
+  "private_model_weights_arrays_runtime_libraries_or_firmware_published": false
+}

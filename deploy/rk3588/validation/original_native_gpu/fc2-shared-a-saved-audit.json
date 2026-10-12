@@ -1,0 +1,98 @@
+{
+  "schema": "v81_original_FC2_shared_A_saved_audit",
+  "status": "passed_saved_evidence_audit_not_quality_acceptance",
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "source_sha256": "4a7e8da5c981e68ed577f7dc9f774e9c4b48eea40bc7066ce30da3a23786b9d9",
+  "result_sha256": "4ea08efac606cf5b7a9dde3ae832cd85a16e0358151691914664d1eed8e7d262",
+  "control_sha256": "7298f7cf2f5f319c03605ea630befddb1cdd3ea1cfbd0f2e85a947aae37da793",
+  "previous_three_copy_result_sha256": "a9110e1dc0920e75fee1e7b03b29f197695e669b37c1f5e5cdde2ef97d24ff4d",
+  "actual_inference_executed_by_audit": false,
+  "timing_seconds": {
+    "A": {
+      "all_count": 13,
+      "warm_count": 12,
+      "warm_mean_seconds": 0.01029650083364686,
+      "all_mean_seconds": 0.01024650730855333,
+      "warm_input_conversion_seconds": 0.0017793020791335341,
+      "warm_shared_A_copy_seconds": 0.0,
+      "warm_shared_A_TO_DEVICE_sync_seconds": 0.0,
+      "warm_worker_MatMul_run_mean_seconds": [
+        0.006178129168498951
+      ]
+    },
+    "B": {
+      "all_count": 13,
+      "warm_count": 12,
+      "warm_mean_seconds": 0.008155712663816908,
+      "all_mean_seconds": 0.008167930381694952,
+      "warm_input_conversion_seconds": 0.0017659445851071116,
+      "warm_shared_A_copy_seconds": 0.0008395628343957166,
+      "warm_shared_A_TO_DEVICE_sync_seconds": 8.555550448363647e-05,
+      "warm_worker_MatMul_run_mean_seconds": [
+        0.0027521981658840864,
+        0.0027359620022859112,
+        0.0035968890855050026
+      ]
+    }
+  },
+  "within_this_run_warm_improvement_percent": 20.791414524381846,
+  "within_this_run_warm_speed_ratio": 1.262489405656434,
+  "outputs": {
+    "NPY_file_raw_SHA_shape_dtype_finite_verified": 26,
+    "all_26_byte_equal": true,
+    "all_26_byte_equal_to_previous_three_copy_first_unsplit_saved_array": true,
+    "raw_sha256": "44e4865cd40e513edf40b19b322dd316ce8f61a2004272500f315dc4265bea6e",
+    "original_CPU_strict_pass_count_reported": 0,
+    "original_CPU_tolerance_outside_per_array_reported": 29360,
+    "original_CPU_reference_reread": false
+  },
+  "shared_A_binding": {
+    "descriptor": {
+      "shape": [
+        512,
+        106,
+        8
+      ],
+      "type": 1,
+      "size": 868352,
+      "logical_bytes": 868352
+    },
+    "each_B_call_owner_copy_count": 1,
+    "each_B_call_owner_TO_DEVICE_sync_count": 1,
+    "part_workers_copy_and_TO_DEVICE_count": 0,
+    "successful_part_bindings_during_B_calls": 39,
+    "part_contexts_closed_before_owner": true,
+    "unused_part_owned_A_allocations_retained": true,
+    "physical_memory_reduction_claimed": false,
+    "evidence": "Frozen source binds the same owner pointer after its sole copy/flush; receipt reports all 39 part bindings successful and arrays are independently byte-equal. This does not establish general support for arbitrary cross-context buffers."
+  },
+  "blocking_run_interval_overlap": {
+    "B_calls": 13,
+    "calls_with_all_three_host_run_intervals_overlapping": 13,
+    "warm_mean_run_span_seconds": 0.003880826749082189,
+    "warm_mean_worker_span_seconds": 0.0049283478389649344,
+    "scope": "Host blocking SDK intervals only, not device utilization."
+  },
+  "resources": {
+    "contexts_created_destroyed": 4,
+    "memories_created_destroyed": 12,
+    "successful_MatMul_runs": 52,
+    "all_contexts_and_memory_handles_final_zero": true,
+    "cleanup_errors": [],
+    "affinity_restored": true,
+    "sources_and_inputs_unchanged": true
+  },
+  "platform": {
+    "call_samples": 52,
+    "controller_samples": 7,
+    "all_sampled_NPU_hz": 1000000000,
+    "restored_NPU_hz": 300000000,
+    "controller_peak_temperature_c": 53.615,
+    "call_sample_peak_temperature_c": 53.615
+  },
+  "limits": [
+    "Performance comparison uses only this run A/B; no paired speed inference is drawn across the earlier three-copy run.",
+    "This is an original FC2 component experiment, not full original VGGT or SLAM. Strict CPU failures remain separate; no 20 Hz or trajectory-quality acceptance."
+  ]
+}

@@ -1,0 +1,850 @@
+{
+  "schema": "v81_original_VGGT_native_NPU_GPU_MLP_experiments",
+  "status": "completed_component_evidence_not_realtime_acceptance",
+  "original_model_only": true,
+  "other_models_used": false,
+  "traditional_pose_frontend_added": false,
+  "production_backend_changed": false,
+  "checkpoint": {
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "bytes": 5026874952
+  },
+  "original_scope": "frame0 MLP, all 106 rows, original 1024->4096->1024 weights and biases",
+  "frequency_scope": "NPU 1GHz in bounded authorized tests, restored300MHz; GPU governor unchanged, sampled300MHz",
+  "initial_native_core7_rejection": {
+    "error": "RKNNError: matmul_set_core_mask returned -1; NPU execution aborted",
+    "result_sha256": "a320e814b65847290c763b444aa68994499ddcc20272cae9608035b5ea108292",
+    "completed_inference_calls": 0,
+    "created_destroyed_native_contexts": 3,
+    "allocated_destroyed_native_memories": 6,
+    "cleanup_errors": [],
+    "original_lifecycle_fixed_success_gate": false,
+    "gate_false_is_not_a_leak_claim": "Expected successful4contexts/12mem plus all returncodes0; failed setmask was preserved"
+  },
+  "native_layout_ABC": {
+    "result_sha256": "81631ff8504b81de171cb2916c9ec564faae171802b8fce0457f87e86e08ed57",
+    "timings_seconds": {
+      "A": {
+        "all_count": 13,
+        "warm_count": 12,
+        "all_mean": 0.006479218615613018,
+        "warm_mean": 0.006408695083033915,
+        "warm_median": 0.0064115635032067075
+      },
+      "B": {
+        "all_count": 13,
+        "warm_count": 12,
+        "all_mean": 0.027186207997146994,
+        "warm_mean": 0.02654361391372125,
+        "warm_median": 0.025971752489567734
+      },
+      "C": {
+        "all_count": 13,
+        "warm_count": 12,
+        "all_mean": 0.03337530784819347,
+        "warm_mean": 0.03338300333416555,
+        "warm_median": 0.033259336996707134
+      }
+    },
+    "B_C_all_outputs_byte_identical": true,
+    "controller": {
+      "sha256": "d48c117667da463b1d4c89503c60cdf5ce828a8a8246aca49ec398e08fa9c424",
+      "status": "worker_completed_pending_result_review",
+      "child_returncode": 0,
+      "observations": 8,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "max_temperature_c": 55.461,
+      "restored": {
+        "governor": "userspace",
+        "cur_freq": "300000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "300000000"
+      },
+      "restore_errors": []
+    }
+  },
+  "GPU_MLP_ABCD": {
+    "result_sha256": "9f9c1b9aea21c47665836e0a256827553222b315b73f9ae4c253a972a3f0b93b",
+    "routes": {
+      "A": "original_rank3_compiled_FP16_core7",
+      "B": "native_B_normal_AC_core1_original_CPU_GELU",
+      "C": "native_B_native_AC1_core1_original_CPU_GELU",
+      "D": "native_B_native_AC1_core1_GPU_original_Erf_GELU"
+    },
+    "timings_seconds": {
+      "A": {
+        "all_count": 13,
+        "warm_count": 12,
+        "all_mean": 0.0066998532297125515,
+        "warm_mean": 0.006633861749529994,
+        "warm_median": 0.0064949799998430535
+      },
+      "B": {
+        "all_count": 13,
+        "warm_count": 12,
+        "all_mean": 0.029298346001619045,
+        "warm_mean": 0.029363107251507852,
+        "warm_median": 0.02971077401889488
+      },
+      "C": {
+        "all_count": 13,
+        "warm_count": 12,
+        "all_mean": 0.036692737691247694,
+        "warm_mean": 0.036961548915617946,
+        "warm_median": 0.03750469151418656
+      },
+      "D": {
+        "all_count": 13,
+        "warm_count": 12,
+        "all_mean": 0.01218240184467644,
+        "warm_mean": 0.012181629664458645,
+        "warm_median": 0.012180876510683447
+      }
+    },
+    "GPU_vs_same_native_CPU_warm_reduction_percent": 67.04242646251399,
+    "GPU_over_compiled_warm_latency_ratio": 1.8362803031464603,
+    "GPU_full_outputs": {
+      "A": {
+        "all_outputs_bitwise_stable": true,
+        "calls": 13,
+        "output_raw_sha256": "de3d21db92435fdfea80b5853a7e73b752500a2f2c9aebb9118f4215693806fa",
+        "vs_original_FP32": {
+          "elements": 108544,
+          "max_abs": 0.35901856422424316,
+          "outside": 96404,
+          "relative_l2": 0.005113175504893546,
+          "strict_pass": false
+        },
+        "warm_mean_ms": 6.633861749529994
+      },
+      "B": {
+        "all_outputs_bitwise_stable": true,
+        "calls": 13,
+        "output_raw_sha256": "2ba1bbc9b250625e3c1f196367d8805c8f86e94540146f9ac8970c7badcd7d3a",
+        "vs_original_FP32": {
+          "elements": 108544,
+          "max_abs": 0.005519866943359375,
+          "outside": 60040,
+          "relative_l2": 0.00013938222486255684,
+          "strict_pass": false
+        },
+        "warm_mean_ms": 29.363107251507852
+      },
+      "C": {
+        "all_outputs_bitwise_stable": true,
+        "calls": 13,
+        "output_raw_sha256": "2ba1bbc9b250625e3c1f196367d8805c8f86e94540146f9ac8970c7badcd7d3a",
+        "vs_original_FP32": {
+          "elements": 108544,
+          "max_abs": 0.005519866943359375,
+          "outside": 60040,
+          "relative_l2": 0.00013938222486255684,
+          "strict_pass": false
+        },
+        "warm_mean_ms": 36.961548915617946
+      },
+      "D": {
+        "all_outputs_bitwise_stable": true,
+        "calls": 13,
+        "output_raw_sha256": "37eb111a1e5b8344a0fa7af0d4ea5f6f71a1304f76a615879160403f26dff397",
+        "vs_original_FP32": {
+          "elements": 108544,
+          "max_abs": 0.005519866943359375,
+          "outside": 60023,
+          "relative_l2": 0.0001393798886790053,
+          "strict_pass": false
+        },
+        "warm_mean_ms": 12.181629664458645
+      }
+    },
+    "GPU_vs_same_native_CPU_output": {
+      "elements": 108544,
+      "max_abs": 2.09808349609375e-05,
+      "outside": 1,
+      "relative_l2": 7.484776020616598e-07,
+      "strict_pass": false
+    },
+    "same_FC1_intermediate": {
+      "CPU_GELU_vs_original_FP32_GELU": {
+        "elements": 434176,
+        "max_abs": 0.0005922317504882812,
+        "outside": 135215,
+        "relative_l2": 0.00019814223113678487,
+        "strict_pass": false
+      },
+      "FP16_ULP_histogram": {
+        "0": 432491,
+        "1": 1676,
+        "2": 6,
+        "3": 2,
+        "4": 1
+      },
+      "FP16_numeric_and_bitwise_differences": 1685,
+      "GPU_half_vs_original_FP32_GELU": {
+        "elements": 434176,
+        "max_abs": 0.0017552375793457031,
+        "outside": 190249,
+        "relative_l2": 0.0002892049432594589,
+        "strict_pass": false
+      },
+      "GPU_vs_same_FC1_CPU_once_FP16": {
+        "elements": 434176,
+        "max_abs": 0.0001220703125,
+        "outside": 637,
+        "relative_l2": 1.09764798614112e-05,
+        "strict_pass": false
+      },
+      "all_637_strict_failures_have_ULP_distance": 1,
+      "all_differences_have_negative_FC1": true,
+      "disputed_FC1_range": [
+        -4.291225910186768,
+        -0.5751742720603943
+      ],
+      "elements": 434176,
+      "maximum_FP16_ULP_distance": 4,
+      "native_A8_unpacked_bits_match": true,
+      "strict_fail_FC1_range": [
+        -2.4967195987701416,
+        -0.5751742720603943
+      ],
+      "vs_original_FP32_FC1": {
+        "elements": 434176,
+        "max_abs": 0.0012464523315429688,
+        "outside": 153049,
+        "relative_l2": 0.00010260586341738014,
+        "strict_pass": false
+      }
+    },
+    "GPU_bridge_mean_ms": 2.432330082228873,
+    "GPU_kernel_mean_ms": 1.2069893333333335,
+    "resources": {
+      "GPU_calls_events_created_released": 13,
+      "cleanup_errors": [],
+      "compiled_contexts_created_destroyed": 1,
+      "compiled_runs_outputs_acquired_released": 13,
+      "exact_baseline_restored": {
+        "cur_freq": "300000000",
+        "governor": "userspace",
+        "max_freq": "1000000000",
+        "min_freq": "300000000",
+        "userspace/set_freq": "300000000"
+      },
+      "live_contexts_OpenCL_objects_and_owned_DMA_fds": 0,
+      "maximum_observed_temperature_c": 54.538,
+      "native_allocations_created_destroyed": 12,
+      "native_contexts_created_destroyed": 4,
+      "native_runs": 78,
+      "observed_1GHz_controller_samples": 10
+    },
+    "controller": {
+      "sha256": "93515055920b4619e195968c12146fd9f9f33c7dc196d317b3d8eb90b1cc6ed1",
+      "status": "worker_completed_pending_result_review",
+      "child_returncode": 0,
+      "observations": 10,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "max_temperature_c": 54.538,
+      "restored": {
+        "governor": "userspace",
+        "cur_freq": "300000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "300000000"
+      },
+      "restore_errors": []
+    },
+    "saved_audit": "deploy/rk3588/validation/original_native_gpu/native-gpu-saved-audit.json"
+  },
+  "native_SDK_profile": {
+    "timings_seconds": {
+      "A": {
+        "all_count": 13,
+        "warm_count": 12,
+        "complete_all_mean_seconds": 0.006482135459709053,
+        "complete_warm_mean_seconds": 0.006379139747878071
+      },
+      "B": {
+        "all_count": 13,
+        "warm_count": 12,
+        "complete_all_mean_seconds": 0.027027653386959664,
+        "complete_warm_mean_seconds": 0.026939624253524624,
+        "FC1_SDK_warm_mean_seconds": 0.0011821494990726933,
+        "FC2_SDK_warm_mean_seconds": 0.005538507663004566,
+        "both_SDK_run_warm_mean_seconds": 0.006720657162077259,
+        "FC2_fraction_of_two_SDK_runs": 0.8241020973747591
+      },
+      "C": {
+        "all_count": 13,
+        "warm_count": 12,
+        "complete_all_mean_seconds": 0.033686448922918104,
+        "complete_warm_mean_seconds": 0.033695937415662534,
+        "FC1_SDK_warm_mean_seconds": 0.0016303198256840308,
+        "FC2_SDK_warm_mean_seconds": 0.006133677661030863,
+        "both_SDK_run_warm_mean_seconds": 0.007763997486714895,
+        "FC2_fraction_of_two_SDK_runs": 0.7900154104282364
+      }
+    },
+    "source_receipts_sha256": {
+      "profile": "1138aa2e9f1686d8fc7344c4c4a84e2caa932ab4ab05ddef7b9920512c4c6282",
+      "ABC2": "81631ff8504b81de171cb2916c9ec564faae171802b8fce0457f87e86e08ed57",
+      "GPU1": "9f9c1b9aea21c47665836e0a256827553222b315b73f9ae4c253a972a3f0b93b",
+      "control": "81ea8219638286fe6351ae9c2374193fa3b257a7c2b5d56fe5319548b783e73c",
+      "profile_source": "ce389eb9a76a0eef153f35ed6482468a1908e12d4f03dfb9374a587957ffb911"
+    },
+    "scope": {
+      "prior_B_C_saved_NPY_verified": 52,
+      "profile_B_C_output_metadata_bound_to_receipt": 26,
+      "profile_NPY_read": false,
+      "limit": "Profile arrays were not pulled into this audit; profile output hashes are receipt evidence, compared with independently hashed saved ABC2/GPU1 arrays."
+    },
+    "audit": "deploy/rk3588/validation/original_native_gpu/v81-profile-audit.json"
+  },
+  "FC2_three_cores": {
+    "status": "completed_original_FC2_component_not_quality_accepted",
+    "result_sha256": "a9110e1dc0920e75fee1e7b03b29f197695e669b37c1f5e5cdde2ef97d24ff4d",
+    "input": "Frozen original Torch FP32 frame0 FC2 input, not the previous GPU intermediate",
+    "shape": [
+      106,
+      4096,
+      1024
+    ],
+    "output_partitions": [
+      352,
+      352,
+      320
+    ],
+    "K_reduction_partitioned": false,
+    "single_core_masks": [
+      1,
+      2,
+      4
+    ],
+    "complete_timing_seconds": {
+      "A": {
+        "all_count": 13,
+        "warm_count": 12,
+        "warm_mean": 0.01124826849748691,
+        "warm_median": 0.01146987649553921,
+        "all_mean": 0.011121831227613326
+      },
+      "B": {
+        "all_count": 13,
+        "warm_count": 12,
+        "warm_mean": 0.010229785584670026,
+        "warm_median": 0.010436813507112674,
+        "all_mean": 0.010199238078292603
+      }
+    },
+    "warm_reduction_percent": 9.054575048990287,
+    "all_B_vs_A_bitwise_equal": true,
+    "vs_original_CPU": {
+      "A": {
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "strict_pass": false,
+        "outside": 29360,
+        "elements": 108544,
+        "max_abs": 0.0006320476531982422,
+        "relative_l2": 2.2105291561452464e-05,
+        "bitwise_equal": false
+      },
+      "B": {
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "strict_pass": false,
+        "outside": 29360,
+        "elements": 108544,
+        "max_abs": 0.0006320476531982422,
+        "relative_l2": 2.2105291561452464e-05,
+        "bitwise_equal": false
+      }
+    },
+    "cleanup_errors": [],
+    "controller": {
+      "sha256": "a2c509273ed12053d5e8c64db314d27e97c910bce1fd2e931e3675c21d387d37",
+      "status": "worker_completed_pending_result_review",
+      "child_returncode": 0,
+      "observations": 7,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "max_temperature_c": 54.538,
+      "restored": {
+        "governor": "userspace",
+        "cur_freq": "300000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "300000000"
+      },
+      "restore_errors": []
+    },
+    "whole_MLP_or_model_improvement_not_measured": true,
+    "saved_audit": "deploy/rk3588/validation/original_native_gpu/fc2-three-cores-saved-audit.json"
+  },
+  "GPU_environment": {
+    "library": {
+      "source_url": "https://github.com/JeffyCN/mirrors/blob/81443fc320542322f1504270b676669ceaf11366/lib/aarch64-linux-gnu/libmali-valhall-g610-g6p0-dummy.so",
+      "commit": "81443fc320542322f1504270b676669ceaf11366",
+      "git_blob_sha1": "2ed0495985a8d2afed2ab6f7f4dc2c4ec403d13e",
+      "sha256": "d57e53240b5078eee5cfbc79e103544c090a7825c09fdf3877fee45084897dda",
+      "bytes": 44206000,
+      "license_sha256": "a78acc73de9909efb879800d4daa4640c4aaa55cd751238a133954aba15e4285",
+      "private_experiment_only": true,
+      "system_library_driver_firmware_or_config_changed": false
+    },
+    "firmware_prepared": {
+      "source_url": "https://github.com/JeffyCN/mirrors/blob/b35e1b288bdac91a7d401edd04c71ec9fa573040/firmware/g610/mali_csffw.bin",
+      "source_commit": "b35e1b288bdac91a7d401edd04c71ec9fa573040",
+      "vendor_commit_subject": "GPU: 3588: mali_csffw.bin from DDK g11p0-01eac0",
+      "git_blob_sha1": "386923e0d447ed5604d0f1a3e66cb280d8024c1a",
+      "sha256": "7bd66578c787a9f0e373ba4e9eb3db309bcde91e5451be5ee12e2e90007e60f6",
+      "bytes": 266240,
+      "board_kernel_DDK": "g11p0-01eac0",
+      "installed": false,
+      "requested_target": "/lib/firmware/mali_csffw.bin",
+      "prior_target_exists": false,
+      "kernel_driver_replacement_required": false,
+      "GPU_frequency_change_requested": false
+    },
+    "firmware_installed_after_explicit_user_authorization": {
+      "status": "installed_absent_matching_g11p0_GPU_firmware",
+      "source": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v81-source-r1/mali_csffw-g11p0.bin",
+      "target": "/lib/firmware/mali_csffw.bin",
+      "bytes": 266240,
+      "sha256": "7bd66578c787a9f0e373ba4e9eb3db309bcde91e5451be5ee12e2e90007e60f6",
+      "previous_target_absent": true,
+      "firmware_parent_created": true,
+      "driver_kernel_governor_or_frequency_writes": false,
+      "existing_GPU_observation": {
+        "/sys/class/devfreq/fb000000.gpu/cur_freq": "300000000",
+        "/sys/class/devfreq/fb000000.gpu/governor": "simple_ondemand"
+      },
+      "GPU_context_or_model_started_by_installer": false
+    },
+    "capability_receipt_sha256": "726839000264992e24a689283b2e0375f54520984bca4f64e44c36e74c259cdc",
+    "capability": {
+      "gpu_device_count": 1,
+      "library": "/mnt/vggt-data/vggt-slam2/experiments/libmali-valhall-g610-g6p0-dummy.so",
+      "platforms": [
+        {
+          "gpu_devices": [
+            {
+              "DMA_buf_import_or_kernel_compilation_actually_tested": false,
+              "arm_import_function_address_available": true,
+              "arm_import_library_symbol_available": true,
+              "available": 1,
+              "compiler_available": 1,
+              "compute_units": 4,
+              "device_version": "OpenCL 2.1 v1.g6p0-01eac0.6ca8b6352363eedab729e019f8bd76b9",
+              "driver_version": "2.1",
+              "extensions": [
+                "cl_arm_controlled_kernel_termination",
+                "cl_arm_core_id",
+                "cl_arm_import_memory",
+                "cl_arm_import_memory_dma_buf",
+                "cl_arm_import_memory_host",
+                "cl_arm_integer_dot_product_accumulate_int8",
+                "cl_arm_integer_dot_product_accumulate_saturate_int8",
+                "cl_arm_integer_dot_product_int8",
+                "cl_arm_non_uniform_work_group_size",
+                "cl_arm_printf",
+                "cl_arm_scheduling_controls",
+                "cl_ext_cxx_for_opencl",
+                "cl_khr_3d_image_writes",
+                "cl_khr_byte_addressable_store",
+                "cl_khr_create_command_queue",
+                "cl_khr_depth_images",
+                "cl_khr_device_uuid",
+                "cl_khr_egl_image",
+                "cl_khr_extended_versioning",
+                "cl_khr_fp16",
+                "cl_khr_global_int32_base_atomics",
+                "cl_khr_global_int32_extended_atomics",
+                "cl_khr_icd",
+                "cl_khr_il_program",
+                "cl_khr_image2d_from_buffer",
+                "cl_khr_int64_base_atomics",
+                "cl_khr_int64_extended_atomics",
+                "cl_khr_local_int32_base_atomics",
+                "cl_khr_local_int32_extended_atomics",
+                "cl_khr_priority_hints",
+                "cl_khr_spirv_no_integer_wrap_decoration",
+                "cl_khr_subgroup_ballot",
+                "cl_khr_subgroup_extended_types",
+                "cl_khr_subgroup_non_uniform_vote",
+                "cl_khr_subgroups"
+              ],
+              "global_mem_bytes": 16460161024,
+              "has_arm_dma_buf_import_extension": true,
+              "has_arm_import_memory_extension": true,
+              "has_fp16_extension": true,
+              "host_unified_memory": 1,
+              "max_allocation_bytes": 16460161024,
+              "max_work_group_size": 1024,
+              "memory_base_alignment_bits": 1024,
+              "name": "Mali-LODX r0p0",
+              "opencl_c_version": "OpenCL C 2.0 v1.g6p0-01eac0.6ca8b6352363eedab729e019f8bd76b9",
+              "reported_max_clock_MHz": 1000,
+              "vendor": "ARM"
+            }
+          ],
+          "name": "ARM Platform",
+          "vendor": "ARM",
+          "version": "OpenCL 2.1 v1.g6p0-01eac0.6ca8b6352363eedab729e019f8bd76b9"
+        }
+      ],
+      "status": "discovered"
+    },
+    "initial_missing_library_no_platform_missing_firmware_preserved": true,
+    "system_driver_kernel_or_GPU_governor_changed": false,
+    "firmware_or_library_binary_published": false
+  },
+  "acceptance": {
+    "real_time_20Hz_100ms": false,
+    "whole_model_new_speedup": false,
+    "trajectory_or_map_quality": false,
+    "thirty_minute_stability": false,
+    "physical8GB": false,
+    "physical_camera": false
+  },
+  "source_manifest": "deploy/rk3588/validation/original_native_gpu/source-copy-list.json",
+  "FC2_shared_A": {
+    "status": "completed_original_FC2_component_not_quality_accepted",
+    "result_sha256": "4ea08efac606cf5b7a9dde3ae832cd85a16e0358151691914664d1eed8e7d262",
+    "source_sha256": "4a7e8da5c981e68ed577f7dc9f774e9c4b48eea40bc7066ce30da3a23786b9d9",
+    "input": "Frozen original Torch FP32 frame0 FC2 input; this is a separate paired trial",
+    "shape": [
+      106,
+      4096,
+      1024
+    ],
+    "output_partitions": [
+      352,
+      352,
+      320
+    ],
+    "K_reduction_partitioned": false,
+    "single_core_masks": [
+      1,
+      2,
+      4
+    ],
+    "complete_timing_seconds": {
+      "A": {
+        "all_count": 13,
+        "warm_count": 12,
+        "warm_mean": 0.01029650083364686,
+        "warm_median": 0.010104354994837195,
+        "all_mean": 0.01024650730855333
+      },
+      "B": {
+        "all_count": 13,
+        "warm_count": 12,
+        "warm_mean": 0.008155712663816908,
+        "warm_median": 0.008427125998423435,
+        "all_mean": 0.008167930381694952
+      }
+    },
+    "warm_reduction_percent": 20.791414524381846,
+    "all_B_vs_A_bitwise_equal": true,
+    "vs_original_CPU": {
+      "A": {
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "strict_pass": false,
+        "outside": 29360,
+        "elements": 108544,
+        "max_abs": 0.0006320476531982422,
+        "relative_l2": 2.2105291561452464e-05,
+        "bitwise_equal": false
+      },
+      "B": {
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "strict_pass": false,
+        "outside": 29360,
+        "elements": 108544,
+        "max_abs": 0.0006320476531982422,
+        "relative_l2": 2.2105291561452464e-05,
+        "bitwise_equal": false
+      }
+    },
+    "shared_A_descriptor": {
+      "shape": [
+        512,
+        106,
+        8
+      ],
+      "type": 1,
+      "size": 868352,
+      "logical_bytes": 868352
+    },
+    "shared_A_input_copy_count_per_B_call": 1,
+    "shared_A_input_TO_DEVICE_sync_count_per_B_call": 1,
+    "cleanup_errors": [],
+    "controller": {
+      "sha256": "7298f7cf2f5f319c03605ea630befddb1cdd3ea1cfbd0f2e85a947aae37da793",
+      "status": "worker_completed_pending_result_review",
+      "child_returncode": 0,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "restored": {
+        "governor": "userspace",
+        "cur_freq": "300000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "300000000"
+      },
+      "restore_errors": []
+    },
+    "whole_MLP_or_model_improvement_not_measured": true,
+    "saved_audit": "deploy/rk3588/validation/original_native_gpu/fc2-shared-a-saved-audit.json",
+    "saved_audit_sha256": "e16b6f46bdc7574516ddeb872e122a5eec5577bc099e5957952dacd1f104e426"
+  },
+  "GPU_MLP_shared_FC2_AE": {
+    "status": "completed_original_MLP_component_not_quality_accepted",
+    "result_sha256": "8c2e538a096715671564887236c71296c40e6a7ba7c01978bc21c88ca55c8b4e",
+    "source_sha256": "9c1b142781a7c99b6760a4effb100f59c7fab0b212d031b38b5151c5b534c097",
+    "routes": {
+      "A": "original_rank3_compiled_FP16_core7",
+      "E": "native_AC1_FC1_core1_GPU_original_Erf_shared_A_FC2_parts_cores1_2_4"
+    },
+    "timings_seconds": {
+      "A": {
+        "all_count": 13,
+        "warm_count": 12,
+        "all_mean": 0.0074584558516597515,
+        "warm_mean": 0.007493743837888663,
+        "warm_median": 0.007705250987783074
+      },
+      "E": {
+        "all_count": 13,
+        "warm_count": 12,
+        "all_mean": 0.011707337694063496,
+        "warm_mean": 0.011840713001826467,
+        "warm_median": 0.01185504300519824
+      }
+    },
+    "E_over_compiled_warm_latency_ratio": 1.580079764931296,
+    "E_warm_stages_ms": {
+      "FC1_conversion_pack_sync_run_seconds": 2.9422850008510673,
+      "GPU_bias_Erf_native_A8_and_sync_seconds": 3.1457224176847376,
+      "FC2_owner_A_post_GPU_TO_DEVICE_seconds": 0.0450383280015861,
+      "FC2_dispatch_run_owned_bias_concat_seconds": 5.574545582931023
+    },
+    "vs_original_CPU": {
+      "A": {
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "strict_pass": false,
+        "outside": 96404,
+        "elements": 108544,
+        "max_abs": 0.35901856422424316,
+        "relative_l2": 0.005113175504893551,
+        "bitwise_equal": false
+      },
+      "E": {
+        "rtol": 0.0001,
+        "atol": 1e-05,
+        "strict_pass": false,
+        "outside": 60023,
+        "elements": 108544,
+        "max_abs": 0.005519866943359375,
+        "relative_l2": 0.0001393798886790018,
+        "bitwise_equal": false
+      }
+    },
+    "GPU_metrics_after_close": {
+      "calls_attempted": 13,
+      "calls_completed": 13,
+      "events_created": 13,
+      "events_released": 13,
+      "cleanup_errors": [],
+      "original_bias_raw_sha256": "30d0012ba8c401ccd4c8a64dedafaaacc3e47efed6dd4d3083f7af76e6ae0520",
+      "kernel_sha256": "0296f6f7abb3a116ff24ac85ba089ce644b4f4e73f30a11b6356d9707a65864a",
+      "build_options": "-cl-std=CL1.2",
+      "library": "/mnt/vggt-data/vggt-slam2/experiments/libmali-valhall-g610-g6p0-dummy.so",
+      "rows": 106,
+      "channels": 4096,
+      "input_layout": [
+        1024,
+        106,
+        4
+      ],
+      "output_layout": [
+        512,
+        106,
+        8
+      ],
+      "output_dtype": "float16",
+      "managed_host_consistency": true,
+      "model_or_trajectory_accuracy_validated": false,
+      "zero_copy_performance_validated": false,
+      "device_name": "Mali-LODX r0p0",
+      "driver_version": "2.1",
+      "required_extensions": [
+        "cl_arm_import_memory",
+        "cl_arm_import_memory_dma_buf",
+        "cl_khr_fp16"
+      ],
+      "FC1_C": {
+        "offset_bytes": 0,
+        "RKNN_size_bytes": 1736704,
+        "DMA_allocation_bytes": 1736704,
+        "import_span_bytes": 1736704,
+        "imported_via_dma_fd": true,
+        "copied_to_GPU_staging_buffer": false
+      },
+      "FC2_A": {
+        "offset_bytes": 0,
+        "RKNN_size_bytes": 868352,
+        "DMA_allocation_bytes": 868352,
+        "import_span_bytes": 868352,
+        "imported_via_dma_fd": true,
+        "copied_to_GPU_staging_buffer": false
+      },
+      "initialization_seconds": 0.03885729500325397,
+      "last_timing": {
+        "FC1_C_FROM_DEVICE_seconds": 0.00014670900418423116,
+        "FC2_A_prewrite_TO_DEVICE_seconds": 9.420799324288964e-05,
+        "enqueue_seconds": 7.320800796151161e-05,
+        "finish_seconds": 0.003413958998862654,
+        "FC2_A_postwrite_FROM_DEVICE_seconds": 0.00012629199773073196,
+        "GPU_kernel_seconds": 0.001201975,
+        "profiling_and_event_release_seconds": 5.891598993912339e-05,
+        "complete_bridge_seconds": 0.0039141669985838234
+      },
+      "closed": true,
+      "failed": false,
+      "live_OpenCL_objects": 0,
+      "live_owned_DMA_fds": 0,
+      "fully_released": true
+    },
+    "compiled_metrics_after_close": {
+      "core_mask": 7,
+      "init_flags": 0,
+      "input_api_type": 1,
+      "input_pass_through": 0,
+      "output_want_float": 0,
+      "model_sha256": "b5ab086ce279ac1543d5e9a3070c10c6e8ca7ab795db0dd8610d407411f38e8e",
+      "runtime_sha256": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+      "abi_sha256": "37e4a59c2c5191e9cb75d6e6081b0760d943a36bb9f18e545890193fa5db9608",
+      "neon_library_sha256": "d08147c438461669ad8ebd3c6483e0a7908053e95cc6f83d0fe7eb7a5cd668c9",
+      "neon_source_sha256": "77707b735a6291c417a997ed64acbe4e1cd60cc5f9dd150d83fe1836868bd5e3",
+      "contexts_created": 1,
+      "contexts_destroyed": 1,
+      "outputs_acquired": 13,
+      "outputs_released": 13,
+      "calls_attempted": 13,
+      "calls_completed": 13,
+      "sdk_run_attempts": 13,
+      "sdk_runs_succeeded": 13,
+      "cleanup_errors": [],
+      "precision": "original_FP16_compiled_MLP_explicit_FP16_IO",
+      "full_model_or_SLAM_acceptance": false,
+      "seconds": {
+        "input_conversion": 0.0008353349985554814,
+        "rknn_inputs_set": 0.0013241669803392142,
+        "rknn_run": 0.07849175899173133,
+        "rknn_outputs_get": 0.0010222909913863987,
+        "rknn_outputs_release": 7.78780085965991e-05,
+        "owned_half_copy": 0.001367625081911683,
+        "output_conversion": 0.0006477940187323838,
+        "complete_route": 0.09581075893947855
+      },
+      "input": {
+        "index": 0,
+        "name": "input",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "n_elems": 108544,
+        "size": 217088,
+        "format": 3,
+        "type": 1,
+        "quantization_type": 2,
+        "fractional_length": 0,
+        "zero_point": 0,
+        "pass_through": 0,
+        "scale": 1.0,
+        "w_stride": 0,
+        "h_stride": 0,
+        "size_with_stride": 217088
+      },
+      "output": {
+        "index": 0,
+        "name": "output",
+        "shape": [
+          2,
+          53,
+          1024
+        ],
+        "n_elems": 108544,
+        "size": 217088,
+        "format": 3,
+        "type": 1,
+        "quantization_type": 2,
+        "fractional_length": 0,
+        "zero_point": 0,
+        "pass_through": 0,
+        "scale": 1.0,
+        "w_stride": 0,
+        "h_stride": 0,
+        "size_with_stride": 217088
+      },
+      "sdk_dma_bytes": 37425152,
+      "SDK_version": "2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+      "driver_version": "0.7.2",
+      "last_call_seconds": {
+        "input_conversion": 8.020899258553982e-05,
+        "rknn_inputs_set": 7.9624995123595e-05,
+        "rknn_run": 0.00628425000468269,
+        "rknn_outputs_get": 9.391698404215276e-05,
+        "rknn_outputs_release": 7.292022928595543e-06,
+        "owned_half_copy": 0.00011579200509004295,
+        "output_conversion": 6.183297955431044e-05,
+        "complete_route": 0.0081305009953212
+      },
+      "closed": true,
+      "failed": false,
+      "live_contexts": 0
+    },
+    "native_lifecycle_balanced": true,
+    "native_contexts_created_and_destroyed": 5,
+    "native_memories_allocated_and_destroyed": 15,
+    "native_runs": 52,
+    "cleanup_errors": [],
+    "controller": {
+      "sha256": "88fb533f16e60484b774dc7ac52acfb534b288979647130f1753595219fee0db",
+      "status": "worker_completed_pending_result_review",
+      "child_returncode": 0,
+      "observed_NPU_hz": [
+        1000000000
+      ],
+      "restored": {
+        "governor": "userspace",
+        "cur_freq": "300000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "300000000"
+      },
+      "restore_errors": []
+    },
+    "adopted": false,
+    "full_model_or_SLAM_validated": false,
+    "cross_trial_speedup_not_claimed": true,
+    "saved_audit": "deploy/rk3588/validation/original_native_gpu/native-gpu-shared-saved-audit.json",
+    "saved_audit_sha256": "46885c788e2c12e9eee75e9529315b8885fd0627be156beecd9cb2b230e57dfd",
+    "all_E_byte_identical_to_previous_single_core_FC2_D": true,
+    "same_FC1_GPU_vs_CPU_half_strict_failing_count": 637
+  },
+  "execution_device_scope": "All native SDK, Torch operator reference and GPU kernel execution occurred on RK3588S; no host GPU used.",
+  "frequency_restore_audit": "deploy/rk3588/validation/original_native_gpu/final-clock-restoration-audit.json"
+}
