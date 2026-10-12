@@ -1,0 +1,58 @@
+{
+  "schema": "v75_original_complete_and_replay_1GHz_saved_frequency_audit",
+  "status": "passed_saved_frequency_and_restore_checks",
+  "saved_data_only": true,
+  "board_OR_model_OR_SDK_executed_by_auditor": false,
+  "candidate_accepted": false,
+  "runs": [
+    {
+      "control_file": "complete-1ghz-control-r1/control.json",
+      "control_sha256": "daf007662d24932d39766595b906c1f4285fac527eec91dca4e72601b546f53e",
+      "sample_count": 143,
+      "all_sampled_NPU_frequencies_hz": 1000000000,
+      "maximum_sampled_temperature_c": 63.769,
+      "monitored_thermal_zones": [
+        "bigcore0-thermal",
+        "bigcore1-thermal",
+        "center-thermal",
+        "gpu-thermal",
+        "littlecore-thermal",
+        "npu-thermal",
+        "soc-thermal"
+      ],
+      "requested_frequency_hz": 1000000000,
+      "worker_returncode": 0,
+      "restore_errors": [],
+      "original_effective_frequency_restored_hz": 300000000,
+      "governor_limits_restored": true,
+      "userspace_raw_request_restored_byte_equal": true,
+      "userspace_request_was_undefined": false,
+      "elapsed_seconds": 73.45417583899689
+    },
+    {
+      "control_file": "replay-1ghz-control-r1/control.json",
+      "control_sha256": "36bb4f50eaf0998cf65cc4d1df1ad2e8c198510d8aed8614d2664c5f8e82abc8",
+      "sample_count": 153,
+      "all_sampled_NPU_frequencies_hz": 1000000000,
+      "maximum_sampled_temperature_c": 66.538,
+      "monitored_thermal_zones": [
+        "bigcore0-thermal",
+        "bigcore1-thermal",
+        "center-thermal",
+        "gpu-thermal",
+        "littlecore-thermal",
+        "npu-thermal",
+        "soc-thermal"
+      ],
+      "requested_frequency_hz": 1000000000,
+      "worker_returncode": 0,
+      "restore_errors": [],
+      "original_effective_frequency_restored_hz": 300000000,
+      "governor_limits_restored": true,
+      "userspace_raw_request_restored_byte_equal": true,
+      "userspace_request_was_undefined": false,
+      "elapsed_seconds": 78.11396055700607
+    }
+  ],
+  "limitation": "Saved sampled frequency and post-worker restoration are verified; unsampled intervals and long-term thermal stability are not established."
+}

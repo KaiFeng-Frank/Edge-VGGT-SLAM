@@ -1,0 +1,326 @@
+{
+  "schema": "v75_original_frame_QKV_head_major_saved_runtime_audit",
+  "status": "passed_saved_identity_lifecycle_timing_audit_not_quality_acceptance",
+  "saved_data_only": true,
+  "actual_model_ORT_SDK_board_execution": false,
+  "candidate_accepted": false,
+  "sources": {
+    "rewrite_frame_qkv_head_major.py": {
+      "bytes": 8792,
+      "sha256": "cd6db3cd589b383050d4f63a1087340b5d5acf20116f811fc12fd9e1d3e3b194"
+    },
+    "build_pair_qkv_board.py": {
+      "bytes": 12950,
+      "sha256": "01d7802986be1059af0e44fcd4f23b5e4557077a99849925beb4595f1d7bfdb4"
+    },
+    "probe_pair_qkv_board.py": {
+      "bytes": 15223,
+      "sha256": "9807dfda3dfcfccbcfd05f581d9d81ebafc6c799d3b4cf50ae981bc7049c5d47"
+    },
+    "run_board_stage.py": {
+      "bytes": 3907,
+      "sha256": "4516760b5878c11ac08d8595b92b295437ff8fee6eedd99cadc9e9f7c1bf3ce1"
+    }
+  },
+  "source_review_sha256": "454b1d0d14fca531abab018b591857f293982051fa7516e04603ba37cfa8349b",
+  "compile": {
+    "receipt_sha256": "59934b02139a14a96ace5bf9329ec32f0c12dea9443782126217e5209f19835c",
+    "check_receipt_sha256": "f22c785a57de467bd951689b0908976385101bd9efa671a6fdbfa4b07bcc396e",
+    "original_parent_manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42",
+    "original_pair_ONNX_sha256": "efbbaee8f3d6326565930e5a045eac0d500fdb35453fdf85ddac7481ec2fac65",
+    "candidate_ONNX": {
+      "file": "pair-frame-qkv-head-major.onnx",
+      "bytes": 100914761,
+      "sha256": "30c803cb441589b9643eb76bcec8ed273652def9c827794f1465c937f2ae9b2c"
+    },
+    "candidate_RKNN": {
+      "file": "pair-frame-qkv-head-major.rknn",
+      "bytes": 52658727,
+      "sha256": "21ca2e9094d05b431b676874b8c7c6decfe2187d7b90b8f3329dd2dc81b324f5"
+    },
+    "operations_all_returned0": true,
+    "toolkit_version": "2.3.2",
+    "release_success": true,
+    "release_code": null,
+    "source_and_inputs_unchanged": true,
+    "environment_and_affinity_restored": true,
+    "source_and_input_pin_count": 14,
+    "original_and_candidate_nodes": 87,
+    "original_parameter_values_reconstructed": true,
+    "global0_and_original_public_IO_unchanged": true,
+    "candidate_is_nonquantized_FP16": true
+  },
+  "FP32_check_receipt_gates": [
+    {
+      "tag": "v53",
+      "input_file_sha256": "3ffb061f849b7b9b9b9cfb6cf646b940941e6d58fc97396193047c476ad116f9",
+      "input_raw_sha256": "2e1defbdacd2b2ffc13ca171888953d402009f4dcb78a3799199236a65f548d1",
+      "capture_manifest_sha256": "4b723e499763bb90565f6e11e16c551664634aaf72da46c7cdc493b84208ef67",
+      "source_images": [
+        {
+          "name": "1305031103.243216.png",
+          "bytes": 478978,
+          "sha256": "dffe2b7b0efb05d9a3cb9d7d938efee092d16436d6fc9a29432b1c447cd20333"
+        },
+        {
+          "name": "1305031103.511333.png",
+          "bytes": 495949,
+          "sha256": "04c6b5a3018a8c8faf6a713466a4257360e1c9dd844c4dfb8237640a56a820b2"
+        }
+      ],
+      "gates": [
+        {
+          "name": "frame_output",
+          "FP32_ONNX_byte_equal": true,
+          "strict_pass": true,
+          "outside_tolerance": 0,
+          "original_Torch": {
+            "baseline": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.4781951904296875e-05,
+              "relative_l2": 8.874554983280384e-07
+            },
+            "candidate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.4781951904296875e-05,
+              "relative_l2": 8.874554983280384e-07
+            }
+          }
+        },
+        {
+          "name": "global_output",
+          "FP32_ONNX_byte_equal": true,
+          "strict_pass": true,
+          "outside_tolerance": 0,
+          "original_Torch": {
+            "baseline": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.71661376953125e-05,
+              "relative_l2": 1.1357558240076958e-06
+            },
+            "candidate": {
+              "strict_rtol": 0.0001,
+              "strict_atol": 1e-05,
+              "strict_pass": true,
+              "outside_tolerance": 0,
+              "elements": 108544,
+              "max_abs": 1.71661376953125e-05,
+              "relative_l2": 1.1357558240076958e-06
+            }
+          }
+        }
+      ]
+    },
+    {
+      "tag": "v56-calib00",
+      "input_file_sha256": "e036989c2e6b529bda51e1502dbb977b66ea113b5449f640d9430bb5d02028c6",
+      "input_raw_sha256": "443a1c32584e1786995fbd28bb0eac0253127b7974a99242e1a85d24f6201f51",
+      "capture_manifest_sha256": "a1e6f1b2a89e1a96987befdea4f0a048aaf06066efa9fff72a370ac77d45507c",
+      "source_images": [
+        {
+          "name": "1305031102.175304.png",
+          "index": 0,
+          "timestamp": 1305031102.175304,
+          "bytes": 506503,
+          "sha256": "331c3fd7a3d5eefb19e3da2026625aa221ca1991f5ae30ff96060e2e3e45e368"
+        },
+        {
+          "name": "1305031103.775342.png",
+          "index": 48,
+          "timestamp": 1305031103.775342,
+          "bytes": 499894,
+          "sha256": "965eefeeb53c411760fdcf86f588b4d6bdca31c914a3fbcbcc9debf97543ac87"
+        }
+      ],
+      "gates": [
+        {
+          "name": "frame_output",
+          "FP32_ONNX_byte_equal": true,
+          "strict_pass": true,
+          "outside_tolerance": 0,
+          "original_Torch": null
+        },
+        {
+          "name": "global_output",
+          "FP32_ONNX_byte_equal": true,
+          "strict_pass": true,
+          "outside_tolerance": 0,
+          "original_Torch": null
+        }
+      ]
+    }
+  ],
+  "runtime": {
+    "normal": {
+      "result_sha256": "bc8a525a908d3f257c4004526189d1bb52366f54ecca8c3169f4bd94ce365cd4",
+      "calls": 80,
+      "owned_output_artifacts": 160,
+      "NPZ_file_SHA_and_size_checks": 80,
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "live_contexts": 0,
+      "outputs_acquired": 160,
+      "outputs_released": 160,
+      "cleanup_errors": [],
+      "source_inputs_compile_receipts_and_model_SHA_bound": true,
+      "typed_FP16_ABI_verified": true,
+      "source_and_inputs_unchanged": true,
+      "affinity_restored": true,
+      "normal_and_profile_contexts_separate": true,
+      "before_after_frequency_samples": 160,
+      "all_before_after_samples_300MHz": true,
+      "max_before_after_temperature_c": 54.538,
+      "synchronous_frame_id_equality_enforced_by_frozen_execute_helper": true,
+      "per_call_numeric_frame_ids_not_saved": true,
+      "per_input_warm": {
+        "v53": {
+          "A": {
+            "warm_count": 19,
+            "mean_component_seconds": 0.037937054473379826
+          },
+          "B": {
+            "warm_count": 19,
+            "mean_component_seconds": 0.03827136779191757
+          }
+        },
+        "v56-calib00": {
+          "A": {
+            "warm_count": 19,
+            "mean_component_seconds": 0.038892624525990536
+          },
+          "B": {
+            "warm_count": 19,
+            "mean_component_seconds": 0.03950981963211425
+          }
+        }
+      },
+      "per_route": {
+        "A": {
+          "warm_count": 38,
+          "mean_component_seconds": 0.03841483949968518,
+          "mean_SDK_run_seconds": 0.0352355386582387
+        },
+        "B": {
+          "warm_count": 38,
+          "mean_component_seconds": 0.03889059371201591,
+          "mean_SDK_run_seconds": 0.035749742552166265
+        }
+      },
+      "B_vs_A_wall_clock_change_percent": 1.2384646624246098
+    },
+    "profile": {
+      "result_sha256": "35e3f595af169580c857cdcf38676495f63f2141764e7d293e0689219883f4be",
+      "calls": 4,
+      "owned_output_artifacts": 8,
+      "NPZ_file_SHA_and_size_checks": 4,
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "live_contexts": 0,
+      "outputs_acquired": 8,
+      "outputs_released": 8,
+      "cleanup_errors": [],
+      "source_inputs_compile_receipts_and_model_SHA_bound": true,
+      "typed_FP16_ABI_verified": true,
+      "source_and_inputs_unchanged": true,
+      "affinity_restored": true,
+      "normal_and_profile_contexts_separate": true,
+      "before_after_frequency_samples": 8,
+      "all_before_after_samples_300MHz": true,
+      "max_before_after_temperature_c": 53.615,
+      "synchronous_frame_id_equality_enforced_by_frozen_execute_helper": true,
+      "per_call_numeric_frame_ids_not_saved": true
+    }
+  },
+  "profile_raw_SHA_checks": [
+    {
+      "input": "v53",
+      "role": "A",
+      "bytes": 16706,
+      "sha256": "0dc2f0038e1555ea45a76cf506f18886530caee29376f16bd97675c464e48537"
+    },
+    {
+      "input": "v53",
+      "role": "B",
+      "bytes": 16706,
+      "sha256": "478040405360816bc078127225b7f390ce8eeb0848a5c9feb6c6817d08818881"
+    },
+    {
+      "input": "v56-calib00",
+      "role": "A",
+      "bytes": 16706,
+      "sha256": "5f4e51434d4bc90041fa3a6554e697c47eaf379c78ddf7f3ca8884b791a9ced3"
+    },
+    {
+      "input": "v56-calib00",
+      "role": "B",
+      "bytes": 16706,
+      "sha256": "3f1bfb780861a8cd42638d9a6a732511bd9b798f95a8fa9c89426df3dd67db8e"
+    }
+  ],
+  "monitors": [
+    {
+      "stage": "compile",
+      "receipt_sha256": "a46effc9b45497c0e88725b37bf117252f0368a48a31a01626c23b5325f4d4a8",
+      "status": "completed",
+      "child_returncode": 0,
+      "sample_count": 41,
+      "all_samples_300MHz": true,
+      "seven_sensor_set_present_in_every_saved_sample": true,
+      "peak_sampled_temperature_c": 61.0,
+      "elapsed_seconds": 21.568428917002166,
+      "timeout_seconds": 300.0,
+      "frequency_written": false,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "normal",
+      "receipt_sha256": "bfc6582a1c4334759b19c90fbd77524050c178d2a68e2deff22e252a1b63d7ea",
+      "status": "completed",
+      "child_returncode": 0,
+      "sample_count": 16,
+      "all_samples_300MHz": true,
+      "seven_sensor_set_present_in_every_saved_sample": true,
+      "peak_sampled_temperature_c": 55.461,
+      "elapsed_seconds": 7.41210624499945,
+      "timeout_seconds": 180.0,
+      "frequency_written": false,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "profile",
+      "receipt_sha256": "e9d0ecebc2e05c0090ee918688ecb1ee47072006630159f61e3bd7cd78a1fa4f",
+      "status": "completed",
+      "child_returncode": 0,
+      "sample_count": 5,
+      "all_samples_300MHz": true,
+      "seven_sensor_set_present_in_every_saved_sample": true,
+      "peak_sampled_temperature_c": 53.615,
+      "elapsed_seconds": 1.5367671119747683,
+      "timeout_seconds": 180.0,
+      "frequency_written": false,
+      "cleanup_errors": []
+    }
+  ],
+  "all_NPZ_file_hashes_verified": 84,
+  "array_numerical_recomputation": "Assigned independently to original_pair_ab_v48; not duplicated here.",
+  "limitations": [
+    "FP32 ONNX byte equality is distinct from original-Torch equivalence of compiled FP16; all v53 SDK output comparisons still fail the fixed original-FP32 gate.",
+    "Original Torch reference exists only for v53; the second real case has none.",
+    "Normal and profile timing scopes are kept separate; this is pair00 component evidence, not full-model or fresh-pose rate evidence.",
+    "Frequency assertions describe before/after call samples and monitor samples, not continuous clock instrumentation.",
+    "Per-call SDK frame IDs were checked by the frozen helper but not recorded as numeric IDs in the saved JSON.",
+    "Monitors do not include their own source SHA in their JSON; local frozen monitor SHA is verified, and actual staging attribution relies on root stage records."
+  ]
+}

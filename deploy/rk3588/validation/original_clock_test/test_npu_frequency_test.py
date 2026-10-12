@@ -55,7 +55,7 @@ class FakeBoard:
         self.compatible.write_bytes(b'rockchip,rk3588\x00')
         self.launcher = root / 'launcher.sh'
         self.launcher.write_text('# Test fixture only; never executed.\n')
-        self.child = FakeChild(None if scenario in ('thermal', 'read-error', 'timeout')
+        self.child = FakeChild(None if scenario in ('thermal', 'read-error', 'timeout', 'frequency-drop')
                                else 7 if scenario == 'nonzero' else 0)
         self.group_alive = self.child.returncode is None or scenario == 'leader-exited'
         self.now, self.cur_reads = 0., 0
@@ -75,6 +75,8 @@ class FakeBoard:
                     self.real_write(self.sensors[0], '75000')
                 if self.scenario == 'missing-sensor':
                     self.sensors[-1].unlink()
+                if self.scenario == 'frequency-drop':
+                    self.real_write(self.dev / 'cur_freq', '600000000')
         return self.real_read(path, *args, **kwargs)
 
     def write_text(self, path, text, *args, **kwargs):
@@ -180,6 +182,18 @@ class FrequencySafetyTests(unittest.TestCase):
         code, report, board = self.run_case('read-error')
         self.assertEqual(code, 1)
         self.assertIn('Generated monitoring read failure', report['error'])
+        self.assert_restored(report, board)
+
+    def test_frequency_drop_stops_worker_and_restores(self):
+        code, report, board = self.run_case('frequency-drop')
+        self.assertEqual(code, 1)
+        self.assertEqual(report['status'], 'failed')
+        self.assertIn('Frequency changed during run', report['error'])
+        self.assertIn('expected 1000000000, observed 600000000', report['error'])
+        self.assertEqual(report['observations'][0]['actual_frequency_hz'], 600000000)
+        self.assertIn(signal.SIGTERM, board.kill_calls)
+        self.assertLess(board.events.index(('signal', signal.SIGTERM)),
+                        board.events.index(('frequency', '300000000')))
         self.assert_restored(report, board)
 
     def test_timeout_stops_worker_and_restores(self):

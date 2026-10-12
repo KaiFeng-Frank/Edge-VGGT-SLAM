@@ -76,6 +76,7 @@ def main():
    while True:
     state=dict(seconds=time.monotonic()-begin,actual_frequency_hz=int(read('cur_freq')),temperatures_c=temps(thermal_zones))
     report['observations'].append(state);record(a.output/'control.json',report)
+    if state['actual_frequency_hz']!=a.frequency_hz:raise RuntimeError(f"Frequency changed during run: expected {a.frequency_hz}, observed {state['actual_frequency_hz']}")
     if max(state['temperatures_c'].values())>=a.temperature_limit_c:raise RuntimeError('Thermal stop threshold reached')
     if time.monotonic()-begin>a.timeout_seconds:raise RuntimeError('Bounded test timeout reached')
     code=child.poll()

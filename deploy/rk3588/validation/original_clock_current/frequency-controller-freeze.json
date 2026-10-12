@@ -1,0 +1,20 @@
+{
+  "schema": "v75_frequency_controller_source_and_fake_test_freeze",
+  "previous_controller_sha256": "285a077e9a7415ddedc044df1ab848d32858dabdb1c0c4e53c4fe28f4cfc2769",
+  "controller": {
+    "file": "npu_frequency_test.py",
+    "sha256": "cb991cf03abc872e3590dd92f26fd0f5ac548d620c5ca791f9354537a9f793b9",
+    "bytes": 6754
+  },
+  "tests": {
+    "file": "test_npu_frequency_test.py",
+    "sha256": "1b1dbb06ae5051873cc22be825ee5b7bb3601b80fbf8ba54861a87fe8fc05677",
+    "passed": 9,
+    "failed": 0,
+    "real_sysfs_subprocess_model_ORT_SDK_used": false,
+    "log_file": "frequency-safety-tests.log",
+    "log_sha256": "5dba660cffa89fff0fc2244110f80c43c52a72cf4d9f1df0c952367933a8162e"
+  },
+  "source_review_sha256": "f2f95490b861c07dfdc258ba1f1bb897038832c6f14ce911f8a167c8207a9da1",
+  "authorization_sha256": "11a89f6227a0e70614a08310c9a6bf281a382c178f74350c6ff81288b95f93b4"
+}

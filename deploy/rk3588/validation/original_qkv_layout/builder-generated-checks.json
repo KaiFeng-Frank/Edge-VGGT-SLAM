@@ -1,0 +1,19 @@
+{
+  "schema": "v75_QKV_builder_generated_gate_checks",
+  "checks": [
+    {
+      "case": "byte_equal_gate_passes_without_relabeling_original_reference_failure",
+      "passed": true
+    },
+    {
+      "case": "strict_pass_but_byte_difference_blocks_compile",
+      "passed": true
+    }
+  ],
+  "generated_only": true,
+  "actual_model_ORT_SDK_executed": false,
+  "tested_builder_sha256": "f13f69c1b1dcb3fdea1aa210c1bb06acddb5e561d0741f4107125988d4b722ef",
+  "final_builder_sha256": "01d7802986be1059af0e44fcd4f23b5e4557077a99849925beb4595f1d7bfdb4",
+  "final_source_delta": "Only REWRITE_SHA placeholder replaced with verified frozen helper SHA after generated checks; check function bytes unchanged.",
+  "final_AST": "passed"
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "v75_original_frame_QKV_folded_static_source_review",
+  "status": "no_blocking_source_issue_identified",
+  "source_only": true,
+  "actual_model_ORT_SDK_compiler_board_execution": false,
+  "candidate_accepted": false,
+  "frozen_sources": {
+    "rewrite_frame_qkv_fold_heads.py": {
+      "bytes": 7330,
+      "sha256": "2bc71dcb1b7c277681cb6121250d7255cb18c499ab7d2bd5e6c7a7a35c8608e3"
+    },
+    "build_pair_qkv_folded_board.py": {
+      "bytes": 13241,
+      "sha256": "1e3b1a7b4aaf8b240865ead4eccaa2255f2e31b709245ad7dfc521d2346fa7e6"
+    },
+    "probe_pair_qkv_folded_board.py": {
+      "bytes": 15368,
+      "sha256": "d0a1d18ec1a184383c1f6a7d494dec33f7d3184f5984a40f764835d93b9e775e"
+    }
+  },
+  "freeze_sha256": "169da183ae09cd2e0d8d575c8579c04ee8496ca5084bf1583a1c2d7182b75f3a",
+  "base_head_major_helper_sha256": "cd6db3cd589b383050d4f63a1087340b5d5acf20116f811fc12fd9e1d3e3b194",
+  "base_source_review_sha256": "454b1d0d14fca531abab018b591857f293982051fa7516e04603ba37cfa8349b",
+  "all_three_source_hashes_and_AST_verified": true,
+  "base_rewrite_build_probe_constant_binding_verified": true,
+  "attention_contract": {
+    "scope": "frame0 only; original global0 and public frame/global outputs preserved",
+    "before": [
+      3,
+      2,
+      16,
+      53,
+      64
+    ],
+    "folded": [
+      3,
+      1,
+      32,
+      53,
+      64
+    ],
+    "index_mapping": "folded[q,0,b*16+h,n,d] = original[q,b,h,n,d]",
+    "independent_attention_groups": 32,
+    "original_per_head_query_key_dimensions": [
+      53,
+      64
+    ],
+    "norm_and_Gather_axes_unchanged": true,
+    "original_Softmax_and_MatMul_nodes_and_axes_unchanged": true,
+    "original_qkv_checkpoint_parameter_values_inverse_permutation_preserved": true,
+    "restore_shape_before_original_attention_heads_transpose": [
+      2,
+      16,
+      53,
+      64
+    ],
+    "no_omitted_tokens_heads_layers_or_parameters": true,
+    "no_extra_public_outputs": true
+  },
+  "RoPE_contract": {
+    "original_shape": [
+      2,
+      1,
+      53,
+      64
+    ],
+    "new_shape": [
+      1,
+      1,
+      53,
+      64
+    ],
+    "original_two_frame_tables_byte_equal_required": true,
+    "broadcast_reconstruction_byte_equal_required": true,
+    "broadcast_applies_same_original_grid_to_all_folded_heads": true,
+    "only_duplicate_nonparameter_storage_compacted": true
+  },
+  "shape_contract": {
+    "two_additional_Reshape_nodes": true,
+    "only_two_nonparameter_shape_initializers_added": true,
+    "affected_rank4_frame_ValueInfos_updated_to_1x32": true,
+    "original_frame_and_head_order_restored_before_output_projection": true,
+    "original_learned_parameter_values_preserved_not_total_initializer_storage_count": true
+  },
+  "gates_and_runtime": {
+    "two_real_input_tags": [
+      "v53",
+      "v56-calib00"
+    ],
+    "four_original_FP32_ONNX_output_pairs_must_be_byte_equal_before_compile": true,
+    "strict_rtol": 0.0001,
+    "strict_atol": 1e-05,
+    "original_Torch_reference_only_first_case_and_result_recorded_separately": true,
+    "original_FP16_nonquantized_compile_options_preserved": true,
+    "normal_ABBA10_per_case_total_SDK_calls": 80,
+    "warm_per_route": 38,
+    "profile_fresh_contexts_total_SDK_calls": 4,
+    "half_IO_ownedcopy_release_widen_and_failed_destroy_handle_retention_unchanged": true,
+    "all_model_input_source_and_artifact_provenance_pins_preserved": true
+  },
+  "limits": [
+    "Pure axis folding preserves independent original per-head computation; static review does not establish actual compiler layout, fusion, rounding or performance.",
+    "Two real-input FP32 byte-equality gates and subsequent compiled original-output comparisons remain mandatory.",
+    "First head-major variant had no speed benefit; this review does not claim the follow-up improves full-model latency or meets fresh-pose acceptance.",
+    "Original two frame RoPE grids are required to be byte-identical; the helper refuses other positions."
+  ],
+  "generated_checks_not_rerun": true,
+  "saved_actual_folded_results_not_yet_audited": true
+}

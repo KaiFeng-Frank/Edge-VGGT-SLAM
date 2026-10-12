@@ -1,0 +1,128 @@
+{
+  "schema": "v75_original_frame_QKV_head_major_static_source_review",
+  "status": "reviewed_model_paths_no_blocking_issue_monitor_limitations_recorded",
+  "source_freeze_sha256": "29ad481b8fad1256c87d76545f6d7af32b76d338b527aba4ee7b431726ac2cb6",
+  "sources": {
+    "rewrite_frame_qkv_head_major.py": {
+      "bytes": 8792,
+      "sha256": "cd6db3cd589b383050d4f63a1087340b5d5acf20116f811fc12fd9e1d3e3b194",
+      "matches_source_freeze": true,
+      "AST_parse_passed": true
+    },
+    "build_pair_qkv_board.py": {
+      "bytes": 12950,
+      "sha256": "01d7802986be1059af0e44fcd4f23b5e4557077a99849925beb4595f1d7bfdb4",
+      "matches_source_freeze": true,
+      "AST_parse_passed": true
+    },
+    "probe_pair_qkv_board.py": {
+      "bytes": 15223,
+      "sha256": "9807dfda3dfcfccbcfd05f581d9d81ebafc6c799d3b4cf50ae981bc7049c5d47",
+      "matches_source_freeze": true,
+      "AST_parse_passed": true
+    },
+    "run_board_stage.py": {
+      "bytes": 3907,
+      "sha256": "4516760b5878c11ac08d8595b92b295437ff8fee6eedd99cadc9e9f7c1bf3ce1",
+      "matches_source_freeze": true,
+      "AST_parse_passed": true
+    }
+  },
+  "source_only": true,
+  "frozen_constants_bound": true,
+  "rewrite_boundary": {
+    "role": "frame0_only",
+    "original_global0_unchanged": true,
+    "changed_initializers": [
+      "frame0/attn.qkv.weight_transposed",
+      "frame0/attn.qkv.bias",
+      "frame0/qkv_shape"
+    ],
+    "changed_nodes": [
+      "frame0/qkv_transpose"
+    ],
+    "changed_value_info": [
+      "frame0/qkv_reshape"
+    ],
+    "old_qkv_shape": [
+      2,
+      53,
+      3,
+      16,
+      64
+    ],
+    "new_qkv_shape": [
+      2,
+      53,
+      16,
+      3,
+      64
+    ],
+    "old_transpose_perm": [
+      2,
+      0,
+      3,
+      1,
+      4
+    ],
+    "new_transpose_perm": [
+      3,
+      0,
+      2,
+      1,
+      4
+    ],
+    "Q_K_V_axis_order_restored": true,
+    "dot_K_axis_and_reduction_order_unchanged": true,
+    "weight_and_bias_inverse_permutation_raw_SHA_checked_against_original_parent": true,
+    "other_nodes_initializers_value_info_and_public_IO_protobuf_checked": true,
+    "no_extra_outputs_no_omitted_layers_or_tokens_no_other_model": true,
+    "compiled_precision_placement_and_performance_not_established_by_static_review": true
+  },
+  "compile_gate": {
+    "two_frozen_real_inputs": [
+      "v53",
+      "v56-calib00"
+    ],
+    "two_original_public_outputs_required": true,
+    "candidate_vs_original_FP32_ONNX_byte_equal_required_for_all_four_outputs": true,
+    "fixed_strict_rtol": 0.0001,
+    "fixed_strict_atol": 1e-05,
+    "original_Torch_reference_available_for_v53_only": true,
+    "original_Torch_gate_recorded_separately_not_replaced_by_ONNX_or_FP16_reference": true,
+    "FP16_compile_configuration_unchanged_nonquantized": true,
+    "compile_source_graph_input_environment_and_release_identity_gates_preserved": true,
+    "quality_and_realtime_acceptance_not_claimed": true
+  },
+  "probe_boundary": {
+    "normal_schedule_per_input": "ABBA * rounds",
+    "default_rounds": 10,
+    "two_inputs_total_normal_SDK_calls_at_default": 80,
+    "default_warm_count_per_route": 38,
+    "first_call_per_route_per_input_excluded_from_warm_summary": true,
+    "profile_separate_process_contexts_flags8_AB_per_input_total4calls": true,
+    "normal_context_count": 2,
+    "normal_init_flags": 0,
+    "core_mask": 7,
+    "all_logical_input_and_two_output_descriptors_queried": true,
+    "explicit_FP16_input_and_output_NEON_conversion": true,
+    "owned_half_copies_before_release_and_owned_FP32_widening": true,
+    "partial_outputs_get_buffers_release_and_failed_destroy_handle_retention_preserved": true,
+    "component_wall_clock_includes_conversion_SDK_both_outputs_release_widening_and_finite": true,
+    "platform_reads_hash_saves_and_profile_queries_outside_normal_clock": true,
+    "source_input_SHA_and_original_affinity_rechecked_in_finally": true,
+    "clock_scope": "Before/after SDK-call samples, not proof of continuously fixed frequency"
+  },
+  "monitor_boundary": {
+    "read_only_frequency_and_thermal_observation_no_sysfs_write": true,
+    "timeout_and_75C_stop_present": true,
+    "limitations": [
+      "Final sample() is not protected; a final sensor-read error can prevent control JSON from being saved.",
+      "TERM/KILL group cleanup runs only while the child leader is live; descendants of an exited leader are not independently confirmed absent.",
+      "Thermal zones are dynamically enumerated rather than frozen to the initial sensor set."
+    ]
+  },
+  "generated_tests_not_rerun": true,
+  "saved_actual_receipts_not_yet_audited": true,
+  "actual_model_ORT_SDK_compiler_board_execution": false
+}

@@ -11,7 +11,7 @@ Explicit authorization for a system-wide NPU clock change is required by
 [AGENTS.md](../../../../AGENTS.md). The two authorized tests are complete;
 publishing these scripts does not authorize further clock changes.
 
-The two launchers use the current original-model graphs: first the fixed 16-pair
+The two historical launchers use the original-model graphs measured in v63: first the fixed 16-pair
 complete-model comparison, then the real timestamp replay. Run them separately
 and sequentially under `npu_frequency_test.py`. Each test requests a supported
 1 GHz NPU frequency, runs at most 180 seconds and stops if any known thermal
@@ -40,8 +40,11 @@ confirm frequency restoration after the first worker before starting it.
 Existing result directories must not be overwritten.
 
 `test_npu_frequency_test.py` uses fake sysfs, signals and processes only.
-The controller is unchanged from its eight passing v59 generated checks;
-the saved log is included. The v63 actual runs recorded 97 and 107 samples,
+The v63 executions used the controller with eight passing generated checks.
+The current controller additionally rejects a frequency change during the run;
+all nine generated checks pass, including the new drop-and-restore case.
+The current-runtime test and launchers are recorded in
+[original_clock_current](../original_clock_current/README.md). The v63 actual runs recorded 97 and 107 samples,
 all at 1 GHz, with maximum sampled temperatures 61.923 and 63.769 C. Each
 finished within 55 seconds, with no restoration errors. The original launchers
 retain their prepared v59 worker-directory names; new v63 control directories

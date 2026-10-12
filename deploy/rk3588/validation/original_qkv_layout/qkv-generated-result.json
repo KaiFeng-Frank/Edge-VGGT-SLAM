@@ -1,0 +1,19 @@
+{
+  "source_file": "rewrite_frame_qkv_head_major.py",
+  "source_bytes": 8792,
+  "source_sha256": "cd6db3cd589b383050d4f63a1087340b5d5acf20116f811fc12fd9e1d3e3b194",
+  "AST_passed": true,
+  "generated_checks_passed": true,
+  "checks": [
+    "bijective_permutation",
+    "weight_inverse_byte_equal",
+    "bias_inverse_byte_equal",
+    "generated_FP32_dot_channel_permutation_byte_equal",
+    "original_QKV_layout_recovery_byte_equal",
+    "three_component_extractions_byte_equal",
+    "3072_channel_bijection",
+    "four_invalid_dimension_rejections"
+  ],
+  "real_model_OR_ORT_OR_SDK_OR_ONNX_executed": false,
+  "public_files_changed": false
+}

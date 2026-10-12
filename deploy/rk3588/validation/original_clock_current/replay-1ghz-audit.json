@@ -1,0 +1,316 @@
+{
+  "schema": "v75_original_VGGT_1GHz_timestamp_replay_saved_audit",
+  "status": "passed_saved_data_checks",
+  "scope": "Saved JSON, original RGB index, poses and map NPZ only; no model, ORT, SDK, board or trajectory-quality execution.",
+  "auditor_source_sha256": "6b9dcc00ba48dd6a2b023670d618e9736ac1bf7b08a2fed76bb07b695e1ee5fb",
+  "results_sha256": "bd58320083104077f10f7dba5b83f5a082f454617a796cfcd83f81d2b4c57f2e",
+  "complete_result_sha256": "fd97453561cd258f69684953bb8993f709cb7f79c95f7e463ed98acfe0586358",
+  "replay_source_sha256": "eb793e40e126753c4c4714547b0cae9e102c4f3da7f93d6071dbb8474f3821e4",
+  "source_runtime_and_manifests_match_complete_candidate": true,
+  "rgb_index_sha256": "532884d60bef0c9a05e14bf311998883baf59a2fa47009d1021f2c7937bd69a3",
+  "original_index_timestamps_independently_matched": true,
+  "fresh_pose_count": 22,
+  "unique_sequence_count": 22,
+  "sequences": [
+    1,
+    47,
+    84,
+    123,
+    160,
+    199,
+    237,
+    275,
+    313,
+    349,
+    388,
+    426,
+    464,
+    501,
+    539,
+    577,
+    615,
+    653,
+    692,
+    730,
+    767,
+    797
+  ],
+  "source": {
+    "source": "original_timestamp_rgb_replay",
+    "queue_capacity": 1,
+    "original_frames": 798,
+    "generated": 798,
+    "delivered": 23,
+    "overwritten": 775,
+    "skipped_before_decode": 0,
+    "decode_policy": "first_then_latest_due_original_timestamp",
+    "start_monotonic": 228683.661455491,
+    "end_monotonic": 228710.283550749,
+    "last_capture_monotonic": 228710.23351454735,
+    "physical_sensor_latency_validated": false,
+    "error": null
+  },
+  "fresh_wall_seconds_including_EOF_drain": 28.3509400979965,
+  "fresh_pose_hz": 0.7759883772444884,
+  "input_to_pose_p95_seconds": 1.5705221903845084,
+  "last_input_to_pose_seconds": 1.7788810416532215,
+  "EOF_drain_seconds_after_source_end": 1.7288448399922345,
+  "segment_mean_seconds": {
+    "arrival_to_decode_seconds": 0.0011984278839504855,
+    "decode_seconds": 0.02761522427053106,
+    "queue_seconds": 0.03575748859227381,
+    "prediction_seconds": 1.237412807998639,
+    "SL4_and_points_seconds": 0.031488061910336415,
+    "publication_seconds": 0.015341421909397468
+  },
+  "full_model_mean_seconds": 1.1835358292274494,
+  "processing_mean_seconds": 1.284242291818373,
+  "input_to_pose_segment_max_residual_seconds": 0.0,
+  "processing_segment_max_residual_seconds": 0.0,
+  "full_model_nested_in_prediction_not_added_twice": true,
+  "map_sha256": "70b3b74c86db444e70301224204a8c939893c2c018e4af2fa6623fc58c3d861a",
+  "map_chunk_count": 22,
+  "graph_node_count": 44,
+  "map_arrays_checked": 88,
+  "point_count_total": 310430,
+  "map_chunks_finite_and_shape_counts_match": true,
+  "map_artifact_rows": [
+    {
+      "file": "map_chunks/submap_000000.npz",
+      "bytes": 212694,
+      "sha256": "c7577479f64f1fad1b880cfa9efa7ab4dc7793677b5811c649467b589d139f04"
+    },
+    {
+      "file": "map_chunks/submap_000002.npz",
+      "bytes": 212679,
+      "sha256": "f1cdc5f45fe06e9a2c54db2f4122d235f79075d629323814a0f4dfb45ca8eb69"
+    },
+    {
+      "file": "map_chunks/submap_000004.npz",
+      "bytes": 212664,
+      "sha256": "3ac90253656c994e3a6d9ce997840fad7ab651d9e24e9eda4ccc3f59636f49fc"
+    },
+    {
+      "file": "map_chunks/submap_000006.npz",
+      "bytes": 212679,
+      "sha256": "9d901d77157073b0a4e2ee8bc5cca0c88456c10c92544889996a742750a279d4"
+    },
+    {
+      "file": "map_chunks/submap_000008.npz",
+      "bytes": 212694,
+      "sha256": "fbd9b5c36b4f4210f814d01efbdb96295167266b843ae5932801fb43a5575efe"
+    },
+    {
+      "file": "map_chunks/submap_000010.npz",
+      "bytes": 212694,
+      "sha256": "9cabc05a6e1df5c9ba4047b3fe9ec8f259796b1b36dc7da71ce8a81de2380a3c"
+    },
+    {
+      "file": "map_chunks/submap_000012.npz",
+      "bytes": 212679,
+      "sha256": "e71fd06ab137baff5b7443e4124e62281ada5ccf8e4026c0959d61d1be7246b0"
+    },
+    {
+      "file": "map_chunks/submap_000014.npz",
+      "bytes": 212694,
+      "sha256": "ee4a77e60fac8304cd7e6daa532b8863ec7fa21d342ae2a113e2d47c947c2897"
+    },
+    {
+      "file": "map_chunks/submap_000016.npz",
+      "bytes": 212694,
+      "sha256": "8895a97d7b6fad3b914eb260c2e29b8d4f67e0695616ebb31ffe2563afcca04a"
+    },
+    {
+      "file": "map_chunks/submap_000018.npz",
+      "bytes": 212694,
+      "sha256": "7f7c36d691dc4a98370ed3822a5531f458aed840fc72f20a79b4c4af11f9d80d"
+    },
+    {
+      "file": "map_chunks/submap_000020.npz",
+      "bytes": 212679,
+      "sha256": "f1aaa1ea3a200d52e5770cb41719b0c2fec8d03063a219cb8da5a86346d02f43"
+    },
+    {
+      "file": "map_chunks/submap_000022.npz",
+      "bytes": 212604,
+      "sha256": "cf6cc6d43347833777e9bd262128aceff4bb0b88f14482d8b5487fc295e241f4"
+    },
+    {
+      "file": "map_chunks/submap_000024.npz",
+      "bytes": 212679,
+      "sha256": "c0b26f639c1c6a1af3075fef5b2d9d239308e902ea6749ad2b58d479652d8021"
+    },
+    {
+      "file": "map_chunks/submap_000026.npz",
+      "bytes": 212679,
+      "sha256": "cf7b6d26c3f3b17bcdb9ca1b14d33951862db01c99f281120a49cf13e6e8872d"
+    },
+    {
+      "file": "map_chunks/submap_000028.npz",
+      "bytes": 212694,
+      "sha256": "8fe732332c1452eb6337a1bca1654566004eca712117d60f7d76aa33993d0156"
+    },
+    {
+      "file": "map_chunks/submap_000030.npz",
+      "bytes": 212694,
+      "sha256": "9d2697569f7c80f7b69abb2fde640112b59aeaa794d424ec0c15bb0dbb28159a"
+    },
+    {
+      "file": "map_chunks/submap_000032.npz",
+      "bytes": 212694,
+      "sha256": "2fa7101dee7a69f0db1ec5c4e4d5b2b9145cd06deccd6f299f26f3e7bb9958a6"
+    },
+    {
+      "file": "map_chunks/submap_000034.npz",
+      "bytes": 212634,
+      "sha256": "41f97f19cfd4dc60380443eb48fa35f07cc7059d180cff783293569615562856"
+    },
+    {
+      "file": "map_chunks/submap_000036.npz",
+      "bytes": 212694,
+      "sha256": "e877d949e3f03494c708254acebe59257f7bdec25edd67d1ed72f053c2a0fc7a"
+    },
+    {
+      "file": "map_chunks/submap_000038.npz",
+      "bytes": 212664,
+      "sha256": "6837ceceed8f46810dff7ce3ee1ca6ef5d862ea221c1c98a56e264de76a0caf1"
+    },
+    {
+      "file": "map_chunks/submap_000040.npz",
+      "bytes": 212559,
+      "sha256": "3fbc287fe2544a994d90bc4969c70793f62a4f69e71684d2d4abc55313ed9766"
+    },
+    {
+      "file": "map_chunks/submap_000042.npz",
+      "bytes": 212619,
+      "sha256": "e1a3620e4b01d5481a1f087838bb0ed8b9a8f16617122cf81cdd7cceccb74cb9"
+    }
+  ],
+  "poses_count": 23,
+  "poses_timestamps_match_updates_and_seed": true,
+  "poses_sha256": "309c792e09eb2682e2119bcab129c0a2f2da0b66dfd0a5a3f62ea87841278be6",
+  "quaternion_unit_length_max_error": 5.1169970483044835e-09,
+  "lifecycle": {
+    "rknn": {
+      "contexts_created_destroyed": 4,
+      "successful_SDK_runs": 88,
+      "live_contexts": 0,
+      "cleanup_errors": []
+    },
+    "dino_rknn": {
+      "contexts_created_destroyed": 6,
+      "successful_SDK_runs": 138,
+      "live_contexts": 0,
+      "cleanup_errors": []
+    },
+    "camera_rknn": {
+      "contexts_created_destroyed": 1,
+      "successful_SDK_runs": 88,
+      "live_contexts": 0,
+      "cleanup_errors": []
+    },
+    "depth_rknn": {
+      "contexts_created_destroyed": 1,
+      "successful_SDK_runs": 44,
+      "live_contexts": 0,
+      "cleanup_errors": []
+    }
+  },
+  "total_contexts_created_destroyed": 12,
+  "total_successful_SDK_runs": 358,
+  "aggregator_outputs_acquired_released": 198,
+  "patch_cache_closed_restored": true,
+  "candidate_accepted": false,
+  "trajectory_quality_validated": false,
+  "physical_sensor_latency_validated": false,
+  "real_time_validated": false,
+  "limitations": [
+    "New selected timestamps are not the fixed-input complete comparison; no baseline trajectory quality is projected to this replay.",
+    "Software scheduled RGB arrival includes decode, queue, full prediction, SL4/points and dense map/pose publication; EOF drain is included.",
+    "Saved lifecycle counters and frozen finally paths support cleanup; this audit does not independently observe SDK frees.",
+    "Only aggregator buffers have full acquired/released counters; DINO completed owned conversions and camera last_steps are additional recorded evidence, not complete buffer instrumentation.",
+    "Finite poses and maps do not establish trajectory/map quality, metric scale, physical-camera latency, 30-minute stability or 8GB operation.",
+    "Frequency evidence is sampled; complete and replay controls each restore effective300MHz. New selected observations are not the 300MHz replay input set."
+  ],
+  "pageout": {
+    "receipts": [
+      {
+        "stage": "aggregator_installed",
+        "sha256": "b0d443ace60f03b83242666c115e80647f901fb01e3aaeb1f38f25f75d41a23d",
+        "advice_calls": 1,
+        "tensor_count": 1343,
+        "checkpoint_backed_storage_count": 1341,
+        "original_parameter_storage_VA_and_version_unchanged": true,
+        "VMA_layout_unchanged": true
+      },
+      {
+        "stage": "camera_installed",
+        "sha256": "dcf7e9e3d07f2cc1e73470f132ac5b677aa82e27acec59d0cda824abcf385630",
+        "advice_calls": 1,
+        "tensor_count": 1343,
+        "checkpoint_backed_storage_count": 1341,
+        "original_parameter_storage_VA_and_version_unchanged": true,
+        "VMA_layout_unchanged": true
+      },
+      {
+        "stage": "DINO_installed",
+        "sha256": "eec9cf138878889139c62fd1ea90b036bee8b7802f1d2158118fc1e643f22c2a",
+        "advice_calls": 1,
+        "tensor_count": 1343,
+        "checkpoint_backed_storage_count": 1341,
+        "original_parameter_storage_VA_and_version_unchanged": true,
+        "VMA_layout_unchanged": true
+      },
+      {
+        "stage": "depth_installed",
+        "sha256": "0025b43b50016473bfdc084103583198c80eb6450ce46f3ecff170851a415ee4",
+        "advice_calls": 1,
+        "tensor_count": 1343,
+        "checkpoint_backed_storage_count": 1341,
+        "original_parameter_storage_VA_and_version_unchanged": true,
+        "VMA_layout_unchanged": true
+      }
+    ],
+    "snapshot_count": 10,
+    "tensor_metadata_all_stages_unchanged": true,
+    "tensor_metadata_sha256": "8512d55bd6be9e4bc98560355b35dbc7293f0421e88e31f334f9384af0b2fcdf",
+    "checkpoint_stat_and_VMA_layout_continuous": true,
+    "process_starttime_and_fault_counters_continuous": true,
+    "startup_RSS_MiB": 2705.80078125,
+    "precleanup_RSS_MiB": 2762.0234375,
+    "startup_peak_is_not_active_or_postcleanup_RSS": true,
+    "addresses_PID_inode_and_absolute_checkpoint_path_omitted": true
+  },
+  "frequency_controls": [
+    {
+      "receipt_sha256": "daf007662d24932d39766595b906c1f4285fac527eec91dca4e72601b546f53e",
+      "observation_count": 143,
+      "all_running_samples_1GHz": true,
+      "max_running_sample_temperature_c": 63.769,
+      "child_returncode": 0,
+      "effective300MHz_governor_and_limits_restored": true,
+      "original_userspace_request_was_undefined": false,
+      "explicit_restore_request_hz": 300000000,
+      "elapsed_seconds": 73.45417583899689,
+      "restore_errors": []
+    },
+    {
+      "receipt_sha256": "36bb4f50eaf0998cf65cc4d1df1ad2e8c198510d8aed8614d2664c5f8e82abc8",
+      "observation_count": 153,
+      "all_running_samples_1GHz": true,
+      "max_running_sample_temperature_c": 66.538,
+      "child_returncode": 0,
+      "effective300MHz_governor_and_limits_restored": true,
+      "original_userspace_request_was_undefined": false,
+      "explicit_restore_request_hz": 300000000,
+      "elapsed_seconds": 78.11396055700607,
+      "restore_errors": []
+    }
+  ],
+  "controller_source_sha256": "cb991cf03abc872e3590dd92f26fd0f5ac548d620c5ca791f9354537a9f793b9",
+  "platform_sample_count": 23,
+  "platform_max_temperature_c": 66.538,
+  "startup_seconds": 47.10221477498999,
+  "peak_rss_mib": 3921.5703125,
+  "eight_GB_hardware_validated": false
+}

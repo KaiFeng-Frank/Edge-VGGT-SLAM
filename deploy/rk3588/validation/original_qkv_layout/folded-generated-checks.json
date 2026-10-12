@@ -1,0 +1,24 @@
+{
+  "status": "passed_generated_views_only",
+  "actual_model_OR_ONNX_OR_ORT_OR_SDK_run": false,
+  "checks": [
+    "full_QKV_index_order_fold_restore",
+    "tiny_per_head_QK_dot_order",
+    "tiny_attention_value_product_order",
+    "original_head_concat_restore"
+  ],
+  "sources": {
+    "rewrite_frame_qkv_fold_heads.py": {
+      "bytes": 7330,
+      "sha256": "2bc71dcb1b7c277681cb6121250d7255cb18c499ab7d2bd5e6c7a7a35c8608e3"
+    },
+    "build_pair_qkv_folded_board.py": {
+      "bytes": 13241,
+      "sha256": "1e3b1a7b4aaf8b240865ead4eccaa2255f2e31b709245ad7dfc521d2346fa7e6"
+    },
+    "probe_pair_qkv_folded_board.py": {
+      "bytes": 15368,
+      "sha256": "d0a1d18ec1a184383c1f6a7d494dec33f7d3184f5984a40f764835d93b9e775e"
+    }
+  }
+}

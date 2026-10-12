@@ -1,0 +1,505 @@
+{
+  "FP32_checks": [
+    {
+      "input": "v53",
+      "output": "frame_output",
+      "versus_baseline_FP32_ONNX": {
+        "bitwise_equal": true,
+        "elements": 108544,
+        "failed_elements": 0,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "strict_atol": 1e-05,
+        "strict_pass": true,
+        "strict_rtol": 0.0001
+      },
+      "versus_original_Torch_FP32": {
+        "baseline": {
+          "bitwise_equal": false,
+          "elements": 108544,
+          "failed_elements": 0,
+          "max_abs": 1.4781951904296875e-05,
+          "relative_l2": 8.874554983280547e-07,
+          "strict_atol": 1e-05,
+          "strict_pass": true,
+          "strict_rtol": 0.0001
+        },
+        "candidate": {
+          "bitwise_equal": false,
+          "elements": 108544,
+          "failed_elements": 0,
+          "max_abs": 1.4781951904296875e-05,
+          "relative_l2": 8.874554983280547e-07,
+          "strict_atol": 1e-05,
+          "strict_pass": true,
+          "strict_rtol": 0.0001
+        }
+      }
+    },
+    {
+      "input": "v53",
+      "output": "global_output",
+      "versus_baseline_FP32_ONNX": {
+        "bitwise_equal": true,
+        "elements": 108544,
+        "failed_elements": 0,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "strict_atol": 1e-05,
+        "strict_pass": true,
+        "strict_rtol": 0.0001
+      },
+      "versus_original_Torch_FP32": {
+        "baseline": {
+          "bitwise_equal": false,
+          "elements": 108544,
+          "failed_elements": 0,
+          "max_abs": 1.71661376953125e-05,
+          "relative_l2": 1.1357558240077205e-06,
+          "strict_atol": 1e-05,
+          "strict_pass": true,
+          "strict_rtol": 0.0001
+        },
+        "candidate": {
+          "bitwise_equal": false,
+          "elements": 108544,
+          "failed_elements": 0,
+          "max_abs": 1.71661376953125e-05,
+          "relative_l2": 1.1357558240077205e-06,
+          "strict_atol": 1e-05,
+          "strict_pass": true,
+          "strict_rtol": 0.0001
+        }
+      }
+    },
+    {
+      "input": "v56-calib00",
+      "output": "frame_output",
+      "versus_baseline_FP32_ONNX": {
+        "bitwise_equal": true,
+        "elements": 108544,
+        "failed_elements": 0,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "strict_atol": 1e-05,
+        "strict_pass": true,
+        "strict_rtol": 0.0001
+      },
+      "versus_original_Torch_FP32": null
+    },
+    {
+      "input": "v56-calib00",
+      "output": "global_output",
+      "versus_baseline_FP32_ONNX": {
+        "bitwise_equal": true,
+        "elements": 108544,
+        "failed_elements": 0,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "strict_atol": 1e-05,
+        "strict_pass": true,
+        "strict_rtol": 0.0001
+      },
+      "versus_original_Torch_FP32": null
+    }
+  ],
+  "NPU_runs": [
+    {
+      "calls": 80,
+      "first_output_comparisons": [
+        {
+          "input": "v53",
+          "output": "frame_output",
+          "raw_sha256": "3369bcaa6c923325f53566f0affe070d156046b8d7fa67526f23523e94e496d1",
+          "route": "A",
+          "versus_original_Torch_FP32": {
+            "bitwise_equal": false,
+            "elements": 108544,
+            "failed_elements": 55865,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891439,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "strict_rtol": 0.0001
+          },
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v53",
+          "output": "global_output",
+          "raw_sha256": "457d0ff8d8870a76a97cbd4e8e3186b93c7beb7d5f22ea10fb509179394b6da9",
+          "route": "A",
+          "versus_original_Torch_FP32": {
+            "bitwise_equal": false,
+            "elements": 108544,
+            "failed_elements": 63240,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510962,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "strict_rtol": 0.0001
+          },
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v53",
+          "output": "frame_output",
+          "raw_sha256": "3369bcaa6c923325f53566f0affe070d156046b8d7fa67526f23523e94e496d1",
+          "route": "B",
+          "versus_original_Torch_FP32": {
+            "bitwise_equal": false,
+            "elements": 108544,
+            "failed_elements": 55865,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891439,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "strict_rtol": 0.0001
+          },
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v53",
+          "output": "global_output",
+          "raw_sha256": "457d0ff8d8870a76a97cbd4e8e3186b93c7beb7d5f22ea10fb509179394b6da9",
+          "route": "B",
+          "versus_original_Torch_FP32": {
+            "bitwise_equal": false,
+            "elements": 108544,
+            "failed_elements": 63240,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510962,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "strict_rtol": 0.0001
+          },
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v56-calib00",
+          "output": "frame_output",
+          "raw_sha256": "9c1db6d95a2651862b5b31d36148d30ded1742638558d5bb4c303afcae7861ca",
+          "route": "A",
+          "versus_original_Torch_FP32": null,
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v56-calib00",
+          "output": "global_output",
+          "raw_sha256": "456dc57a0181ee28c7168afb2b55b27fc959f91949dbc4f1a8128015c2e2b737",
+          "route": "A",
+          "versus_original_Torch_FP32": null,
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v56-calib00",
+          "output": "frame_output",
+          "raw_sha256": "9c1db6d95a2651862b5b31d36148d30ded1742638558d5bb4c303afcae7861ca",
+          "route": "B",
+          "versus_original_Torch_FP32": null,
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v56-calib00",
+          "output": "global_output",
+          "raw_sha256": "456dc57a0181ee28c7168afb2b55b27fc959f91949dbc4f1a8128015c2e2b737",
+          "route": "B",
+          "versus_original_Torch_FP32": null,
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        }
+      ],
+      "run": "normal-folded-r1"
+    },
+    {
+      "calls": 4,
+      "first_output_comparisons": [
+        {
+          "input": "v53",
+          "output": "frame_output",
+          "raw_sha256": "3369bcaa6c923325f53566f0affe070d156046b8d7fa67526f23523e94e496d1",
+          "route": "A",
+          "versus_original_Torch_FP32": {
+            "bitwise_equal": false,
+            "elements": 108544,
+            "failed_elements": 55865,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891439,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "strict_rtol": 0.0001
+          },
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v53",
+          "output": "global_output",
+          "raw_sha256": "457d0ff8d8870a76a97cbd4e8e3186b93c7beb7d5f22ea10fb509179394b6da9",
+          "route": "A",
+          "versus_original_Torch_FP32": {
+            "bitwise_equal": false,
+            "elements": 108544,
+            "failed_elements": 63240,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510962,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "strict_rtol": 0.0001
+          },
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v53",
+          "output": "frame_output",
+          "raw_sha256": "3369bcaa6c923325f53566f0affe070d156046b8d7fa67526f23523e94e496d1",
+          "route": "B",
+          "versus_original_Torch_FP32": {
+            "bitwise_equal": false,
+            "elements": 108544,
+            "failed_elements": 55865,
+            "max_abs": 0.07805871963500977,
+            "relative_l2": 0.004222512956891439,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "strict_rtol": 0.0001
+          },
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v53",
+          "output": "global_output",
+          "raw_sha256": "457d0ff8d8870a76a97cbd4e8e3186b93c7beb7d5f22ea10fb509179394b6da9",
+          "route": "B",
+          "versus_original_Torch_FP32": {
+            "bitwise_equal": false,
+            "elements": 108544,
+            "failed_elements": 63240,
+            "max_abs": 0.02930513024330139,
+            "relative_l2": 0.004732235017510962,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "strict_rtol": 0.0001
+          },
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v56-calib00",
+          "output": "frame_output",
+          "raw_sha256": "9c1db6d95a2651862b5b31d36148d30ded1742638558d5bb4c303afcae7861ca",
+          "route": "A",
+          "versus_original_Torch_FP32": null,
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v56-calib00",
+          "output": "global_output",
+          "raw_sha256": "456dc57a0181ee28c7168afb2b55b27fc959f91949dbc4f1a8128015c2e2b737",
+          "route": "A",
+          "versus_original_Torch_FP32": null,
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v56-calib00",
+          "output": "frame_output",
+          "raw_sha256": "9c1db6d95a2651862b5b31d36148d30ded1742638558d5bb4c303afcae7861ca",
+          "route": "B",
+          "versus_original_Torch_FP32": null,
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        },
+        {
+          "input": "v56-calib00",
+          "output": "global_output",
+          "raw_sha256": "456dc57a0181ee28c7168afb2b55b27fc959f91949dbc4f1a8128015c2e2b737",
+          "route": "B",
+          "versus_original_Torch_FP32": null,
+          "versus_same_input_A": {
+            "bitwise_equal": true,
+            "elements": 108544,
+            "failed_elements": 0,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "strict_rtol": 0.0001
+          }
+        }
+      ],
+      "run": "profile-folded-r1"
+    }
+  ],
+  "NPY_files_with_recorded_raw_SHA_verified": 12,
+  "NPZ_files_with_recorded_file_SHA_verified": 84,
+  "NPZ_individual_raw_SHA_present_in_runtime_receipt": false,
+  "NPZ_output_raw_SHA_recomputed": true,
+  "all_NPU_first_outputs_byte_equal_to_same_input_A": true,
+  "arrays_shape_dtype_finite_verified": 180,
+  "artifact_files_verified": 96,
+  "artifact_identity_ledger_sha256": "551f64a7560a00406d36f2e6eb92861a66bcae1bf0b79b9871bcc0106214be54",
+  "auditor_sha256": "ece84efbfe15b818760be75a7d96ab0696b8c0661b50d99b04e6269011137347",
+  "candidate_accepted": false,
+  "fixed_strict_atol": 1e-05,
+  "fixed_strict_rtol": 0.0001,
+  "limitations": [
+    "Only saved numerical outputs are checked; component timings and SDK lifecycle are audited separately.",
+    "The second real input has no original Torch reference; NPU strict failures remain failures."
+  ],
+  "model_OR_ORT_OR_SDK_executed": false,
+  "nonfirst_repeat_arrays_byte_equal": 152,
+  "original_Torch_NPU_strict_checks": 84,
+  "original_Torch_NPU_strict_checks_passed": 0,
+  "original_Torch_reference_case_count": 1,
+  "original_Torch_references_cover_all_cases": false,
+  "original_model_only": true,
+  "original_pair_onnx_sha256": "efbbaee8f3d6326565930e5a045eac0d500fdb35453fdf85ddac7481ec2fac65",
+  "original_parent_manifest_sha256": "1872f2ed730f4b6d139562d831661126a088b1ac758249d6a1688cd7e9bfae42",
+  "profile_vs_normal_arrays_byte_equal": 8,
+  "receipt_sha256": {
+    "compile-folded-r1/check.json": "da50dc65e6104944455e63fd0536ed0ff6dbc481c507215077ac36fc0362dc27",
+    "compile-folded-r1/result.json": "083f279af1d98bfa9857ad053842e46ad28cd8667cd4fdf49851e783f5837fef",
+    "normal-folded-r1/result.json": "9ad66d1b10f4c84401c16faebce19bd3983215398fe3bd469ee2903cd900a6f6",
+    "profile-folded-r1/result.json": "2483ef8b5adbdd806e6bebe1274e58fa7f1c303153c121708fe763a6dc03f4b4"
+  },
+  "saved_data_only": true,
+  "schema": "v75_original_QKV_head_major_folded_saved_array_audit",
+  "source_sha256": {
+    "builder": "1e3b1a7b4aaf8b240865ead4eccaa2255f2e31b709245ad7dfc521d2346fa7e6",
+    "probe": "d0a1d18ec1a184383c1f6a7d494dec33f7d3184f5984a40f764835d93b9e775e",
+    "rewrite": "2bc71dcb1b7c277681cb6121250d7255cb18c499ab7d2bd5e6c7a7a35c8608e3"
+  },
+  "status": "passed_saved_array_audit",
+  "timing_and_lifecycle_audited_here": false
+}

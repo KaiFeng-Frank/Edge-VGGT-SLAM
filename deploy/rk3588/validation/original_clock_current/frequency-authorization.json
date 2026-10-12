@@ -1,0 +1,28 @@
+{
+  "user_authorization": "1GHZ",
+  "scope": "Two sequential bounded tests of current original-VGGT runtime: full same-input model and paced upstream dataset replay; 1 GHz NPU, at most 180 s each, thermal stop 75 C, restore measured prior frequency; no CPU/governor/model changes.",
+  "new_authorization": true,
+  "parent_commit": "063b75565f3936721f0c9cbd9a1bdd7cb5aacc24",
+  "controller_sha256": "cb991cf03abc872e3590dd92f26fd0f5ac548d620c5ca791f9354537a9f793b9",
+  "launchers": {
+    "run_complete_1ghz.sh": {
+      "sha256": "15549568a4cc2e3528c162ae1631a4376f389969b7125ad7891a132bf8c1e58f",
+      "bytes": 1304
+    },
+    "run_replay_1ghz.sh": {
+      "sha256": "18ecd853320b2541afc16465c200a0ee43ea0050261bf915cdefb11574c76e99",
+      "bytes": 1378
+    }
+  },
+  "previous_controller_sha256": "285a077e9a7415ddedc044df1ab848d32858dabdb1c0c4e53c4fe28f4cfc2769",
+  "controller_delta": "Stop and restore when any saved running actual-frequency sample differs from the requested frequency.",
+  "controller_generated_tests": {
+    "file": "test_npu_frequency_test.py",
+    "sha256": "1b1dbb06ae5051873cc22be825ee5b7bb3601b80fbf8ba54861a87fe8fc05677",
+    "passed": 9,
+    "failed": 0,
+    "real_sysfs_subprocess_model_ORT_SDK_used": false,
+    "log_file": "frequency-safety-tests.log",
+    "log_sha256": "5dba660cffa89fff0fc2244110f80c43c52a72cf4d9f1df0c952367933a8162e"
+  }
+}

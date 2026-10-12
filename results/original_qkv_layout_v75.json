@@ -1,0 +1,99 @@
+{
+  "schema": "v75_original_VGGT_QKV_layout_diagnostic",
+  "status": "two_candidates_rejected_no_speedup",
+  "original_model_only": true,
+  "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+  "original_pair_ONNX_sha256": "efbbaee8f3d6326565930e5a045eac0d500fdb35453fdf85ddac7481ec2fac65",
+  "variants": [
+    {
+      "variant": "QKV_head_major",
+      "accepted": false,
+      "normal_summary": {
+        "A": {
+          "warm_count": 38,
+          "mean_component_seconds": 0.03841483949968518,
+          "per_input": {
+            "v53": 0.037937054473379826,
+            "v56-calib00": 0.038892624525990536
+          }
+        },
+        "B": {
+          "warm_count": 38,
+          "mean_component_seconds": 0.03889059371201591,
+          "per_input": {
+            "v53": 0.03827136779191757,
+            "v56-calib00": 0.03950981963211425
+          }
+        }
+      },
+      "candidate_slowdown_percent": 1.2384646624246098,
+      "FP32_two_inputs_four_outputs_byte_equal": true,
+      "NPU_A_B_outputs_byte_equal": true,
+      "original_Torch_NPU_strict_passes": 0,
+      "original_Torch_NPU_strict_checks": 84,
+      "compiled": true,
+      "full_model_integrated": false,
+      "all_sampled_frequency_hz": [
+        300000000
+      ],
+      "max_sampled_temperature_c": 61.0,
+      "source_and_inputs_unchanged": true,
+      "cleanup_errors": [],
+      "evidence_sha256": {
+        "compile": "59934b02139a14a96ace5bf9329ec32f0c12dea9443782126217e5209f19835c",
+        "normal": "bc8a525a908d3f257c4004526189d1bb52366f54ecca8c3169f4bd94ce365cd4",
+        "profile": "35e3f595af169580c857cdcf38676495f63f2141764e7d293e0689219883f4be"
+      }
+    },
+    {
+      "variant": "QKV_head_major_fold_frame_heads",
+      "accepted": false,
+      "normal_summary": {
+        "A": {
+          "warm_count": 38,
+          "mean_component_seconds": 0.038994156344223915,
+          "per_input": {
+            "v53": 0.038671240688448676,
+            "v56-calib00": 0.039317071999999155
+          }
+        },
+        "B": {
+          "warm_count": 38,
+          "mean_component_seconds": 0.046240780946008225,
+          "per_input": {
+            "v53": 0.04430279163276091,
+            "v56-calib00": 0.04817877025925554
+          }
+        }
+      },
+      "candidate_slowdown_percent": 18.583873280432517,
+      "FP32_two_inputs_four_outputs_byte_equal": true,
+      "NPU_A_B_outputs_byte_equal": true,
+      "original_Torch_NPU_strict_passes": 0,
+      "original_Torch_NPU_strict_checks": 84,
+      "compiled": true,
+      "full_model_integrated": false,
+      "all_sampled_frequency_hz": [
+        300000000
+      ],
+      "max_sampled_temperature_c": 62.846,
+      "source_and_inputs_unchanged": true,
+      "cleanup_errors": [],
+      "evidence_sha256": {
+        "compile": "083f279af1d98bfa9857ad053842e46ad28cd8667cd4fdf49851e783f5837fef",
+        "normal": "9ad66d1b10f4c84401c16faebce19bd3983215398fe3bd469ee2903cd900a6f6",
+        "profile": "2483ef8b5adbdd806e6bebe1274e58fa7f1c303153c121708fe763a6dc03f4b4"
+      }
+    }
+  ],
+  "comparison_scope": "Original frame0 + global0 complete pair, 2 real saved activations; ABBA x 10 per input; first call per route per input excluded, 38 warm calls per route. Separately 1 profile per input/route.",
+  "interpretation": [
+    "Channel packing preserved both FP32 outputs bitwise but did not remove the target RKNN reshape.",
+    "Folding independent frame/head views removed the target reshape but introduced an explicit CPU FP16 five-dimensional transpose. Fewer operators did not mean less wall time.",
+    "Each candidate NPU output remains bitwise equal to its NPU baseline on these two inputs, while original FP32 strict differences remain."
+  ],
+  "production_runtime_changed": false,
+  "real_time_validated": false,
+  "quality_accepted": false,
+  "published_artifact_policy": "Source, metadata, hashes and saved-output audit summaries only; no weights, arrays, compiled graphs or SDK binaries."
+}

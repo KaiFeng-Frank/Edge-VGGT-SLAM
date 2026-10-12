@@ -1,0 +1,40 @@
+{
+  "schema": "v75_authorized_frequency_controller_source_review",
+  "status": "no_blocking_source_issue_identified",
+  "source_only_and_fake_filesystem_tests": true,
+  "actual_board_sysfs_subprocess_model_ORT_SDK_execution": false,
+  "old_controller_sha256": "285a077e9a7415ddedc044df1ab848d32858dabdb1c0c4e53c4fe28f4cfc2769",
+  "controller_sha256": "cb991cf03abc872e3590dd92f26fd0f5ac548d620c5ca791f9354537a9f793b9",
+  "controller_bytes": 6754,
+  "tests": {
+    "file": "test_npu_frequency_test.py",
+    "sha256": "1b1dbb06ae5051873cc22be825ee5b7bb3601b80fbf8ba54861a87fe8fc05677",
+    "passed": 9,
+    "failed": 0,
+    "real_sysfs_subprocess_model_ORT_SDK_used": false,
+    "log_file": "frequency-safety-tests.log",
+    "log_sha256": "5dba660cffa89fff0fc2244110f80c43c52a72cf4d9f1df0c952367933a8162e"
+  },
+  "AST_only_runtime_change_is_requested_frequency_guard": true,
+  "public_controller_unchanged": true,
+  "authorization_sha256": "11a89f6227a0e70614a08310c9a6bf281a382c178f74350c6ff81288b95f93b4",
+  "launchers_preserve_v74_argv_except_output": true,
+  "launcher_sha256": {
+    "run_complete_1ghz.sh": "15549568a4cc2e3528c162ae1631a4376f389969b7125ad7891a132bf8c1e58f",
+    "run_replay_1ghz.sh": "18ecd853320b2541afc16465c200a0ee43ea0050261bf915cdefb11574c76e99"
+  },
+  "reviewed_safety": [
+    "Kernel-advertised frequency and existing userspace governor/limits are checked; no governor/CPU/voltage/driver changes.",
+    "Every saved running observation must equal requested frequency; a mismatch is recorded before failure/worker stop/restore.",
+    "All seven initial thermal nodes remain required; unreadable nodes stop the run, temperature limit is at most 75 C, timeout at most 180 s.",
+    "Saved PGID cleanup applies after leader exit; TERM and KILL group polls are bounded before restoring frequency.",
+    "Repeated termination signals are ignored during finally cleanup; restore errors cannot yield a successful status.",
+    "Original actual frequency/governor/min/max are restored and checked; undefined userspace request is explicitly converted to the original measured frequency.",
+    "New complete/replay launchers retain original retained aggregator/grouped DINO/camera split4/depth/half IO/cache/pageout settings, with fixed manifest hashes and fresh output directories."
+  ],
+  "limits": [
+    "Clock evidence consists of sampled observations; intervals between samples are not continuously instrumented.",
+    "Restoration verification is one final sampled read; abrupt power loss or SIGKILL cannot execute Python finally.",
+    "These source/fake checks do not establish actual-board speed, trajectory quality, stability or physical-memory acceptance."
+  ]
+}

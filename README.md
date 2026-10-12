@@ -6,17 +6,16 @@ The current tree contains only this model's execution path and relevant componen
 
 **The real-time target remains unachieved.** The target is at least 20 fresh-observation poses per second with complete input-to-pose P95 latency at most 100 ms. Map cadence, bounded queues, trajectory quality, 30-minute stability and operation within 8 GB each need separate validation. A component's timing, repeated prediction or offline reconstruction does not satisfy those targets. Current measurements use dataset files on a 16 GB RK3588S; physical-camera validation is deferred.
 
-**Latest authorized 1 GHz NPU test:** the original-model timestamp replay
-delivered **20 fresh poses at 0.676 Hz, complete input-to-pose P95 2.028 s**
-from 798 source frames. A separate comparison on identical inputs reduced
-mean complete-model service from **1.968 s at 300 MHz to 1.586 s at 1 GHz**
-(19.43%); all 80 saved arrays and poses remained byte-identical to the FP16
-baseline. The strict original FP32 checks still fail. Maximum sampled
-temperature across both runs was 63.769 C; both workers finished and the NPU
-was restored to 300 MHz. This was a 29.60-second replay on the 16 GB board,
-with 7,261.66 MiB peak process RSS. It remains below the real-time target.
-[Measured results and timing records](results/original_1ghz_v63.json),
-[bounded test and restoration](deploy/rk3588/validation/original_clock_test/README.md).
+**Latest authorized 1 GHz NPU test (current runtime):** 798 original timestamp
+frames produced **22 fresh poses at 0.776 Hz, complete input-to-pose P95 1.571 s**.
+A separate identical-input full-model comparison measured **1.590 s at 300 MHz
+versus 1.379 s at 1 GHz** (13.24% lower in sequential runs); all 160 saved arrays
+and poses remained byte-identical. Original FP32 strict checks still fail.
+Replay startup was 47.102 s and peak process RSS 3921.57 MiB on the 16 GB board.
+Maximum sampled temperature was 66.538°C; both jobs restored 300 MHz.
+The real-time target remains unmet.
+[Current measurements and reproduction](deploy/rk3588/validation/original_clock_current/README.md).
+The [earlier v63 frequency result](results/original_1ghz_v63.json) used the preceding configuration.
 
 The subsequent **300 MHz retained-group path** reduces mean complete-model
 service on the same 16 pairs from **1.958 s to 1.797 s (8.23%)**. All 80

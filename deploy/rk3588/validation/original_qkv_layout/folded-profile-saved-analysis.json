@@ -1,0 +1,628 @@
+{
+  "schema": "v75_original_VGGT_folded_QKV_saved_profile_analysis",
+  "status": "completed_saved_receipt_analysis",
+  "original_model_only": true,
+  "actual_model_ORT_SDK_board_executed_by_this_auditor": false,
+  "artifacts": {
+    "normal-folded-r1/result.json": "9ad66d1b10f4c84401c16faebce19bd3983215398fe3bd469ee2903cd900a6f6",
+    "profile-folded-r1/result.json": "2483ef8b5adbdd806e6bebe1274e58fa7f1c303153c121708fe763a6dc03f4b4",
+    "compile-folded-r1/result.json": "083f279af1d98bfa9857ad053842e46ad28cd8667cd4fdf49851e783f5837fef",
+    "compile-folded-r1/check.json": "da50dc65e6104944455e63fd0536ed0ff6dbc481c507215077ac36fc0362dc27"
+  },
+  "sources": {
+    "build_script_sha256": "1e3b1a7b4aaf8b240865ead4eccaa2255f2e31b709245ad7dfc521d2346fa7e6",
+    "rewrite_helper_sha256": "2bc71dcb1b7c277681cb6121250d7255cb18c499ab7d2bd5e6c7a7a35c8608e3",
+    "probe_script_sha256": "d0a1d18ec1a184383c1f6a7d494dec33f7d3184f5984a40f764835d93b9e775e"
+  },
+  "normal_summary_recomputed": {
+    "A": {
+      "warm_count": 38,
+      "all_calls": 40,
+      "excluded_first_count": 2,
+      "mean_component_seconds": 0.038994156344223915,
+      "phase_mean_seconds": {
+        "inputs_set_seconds": 9.739365640071858e-05,
+        "run_seconds": 0.03580379855166508,
+        "outputs_get_seconds": 0.00031082468769071917,
+        "outputs_release_seconds": 1.589584050969662e-05
+      },
+      "per_input": {
+        "v53": {
+          "warm_count": 19,
+          "mean_component_seconds": 0.038671240688448676
+        },
+        "v56-calib00": {
+          "warm_count": 19,
+          "mean_component_seconds": 0.039317071999999155
+        }
+      }
+    },
+    "B": {
+      "warm_count": 38,
+      "all_calls": 40,
+      "excluded_first_count": 2,
+      "mean_component_seconds": 0.046240780946008225,
+      "phase_mean_seconds": {
+        "inputs_set_seconds": 9.668755228631198e-05,
+        "run_seconds": 0.043028386897946656,
+        "outputs_get_seconds": 0.00031364142073710496,
+        "outputs_release_seconds": 1.4821367681418595e-05
+      },
+      "per_input": {
+        "v53": {
+          "warm_count": 19,
+          "mean_component_seconds": 0.04430279163276091
+        },
+        "v56-calib00": {
+          "warm_count": 19,
+          "mean_component_seconds": 0.04817877025925554
+        }
+      }
+    }
+  },
+  "candidate_minus_original_mean_seconds": 0.00724662460178431,
+  "candidate_mean_slowdown_percent": 18.583873280432517,
+  "profile_samples": [
+    {
+      "input": "v53",
+      "route": "A",
+      "raw_profile_sha256": "e187f4c0757015da549efd38046d49f22024ad52b1c3ea7c8f2943ca34e3da1a",
+      "raw_bytes": 16706,
+      "operator_count": 57,
+      "operator_total_us": 30767,
+      "operator_type_counts": {
+        "InputOperator": 1,
+        "Reshape": 11,
+        "Transpose": 9,
+        "exNorm": 8,
+        "Conv": 2,
+        "Split": 2,
+        "Mul": 8,
+        "Gather": 2,
+        "Add": 2,
+        "exSDPAttention": 2,
+        "ConvAdd": 6,
+        "ConvExGelu": 2,
+        "OutputOperator": 2
+      },
+      "layout_total_us": 6195,
+      "frame_named_operator_total_us": 15405,
+      "global_named_operator_total_us": 12440,
+      "frame_QKV_rows": [
+        {
+          "id": 5,
+          "op_type": "Conv",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(2,1024,1,53),(3072,1024,1,1),(3072)",
+          "output_shape": "(2,3072,1,53)",
+          "cycles": "303209/786432/786432",
+          "time_us": 730,
+          "workload": "33.3%/33.3%/33.3%",
+          "rw_kb": 6368.0,
+          "name": "Conv:frame0/attn.qkv.matmul#2"
+        },
+        {
+          "id": 6,
+          "op_type": "Reshape",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(2,3072,1,53),(4)",
+          "output_shape": "(2,64,48,53)",
+          "cycles": "0/0/0",
+          "time_us": 1297,
+          "workload": "100.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Reshape:frame0/qkv_transpose_rs_swap_tp#1"
+        },
+        {
+          "id": 7,
+          "op_type": "Split",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(2,64,48,53),(3)",
+          "output_shape": "(2,64,16,53),...",
+          "cycles": "0/0/0",
+          "time_us": 240,
+          "workload": "100.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Split:frame0/qkv_transpose_swap_split"
+        }
+      ],
+      "internal_CPU_rows": []
+    },
+    {
+      "input": "v53",
+      "route": "B",
+      "raw_profile_sha256": "1a64191d66b758ceec6d7377c9ace88a59da1762b3088f77b92e7acf2a197fd7",
+      "raw_bytes": 15178,
+      "operator_count": 51,
+      "operator_total_us": 33375,
+      "operator_type_counts": {
+        "InputOperator": 1,
+        "Reshape": 9,
+        "Transpose": 7,
+        "exNorm": 8,
+        "Conv": 2,
+        "Split": 2,
+        "Mul": 8,
+        "ConvAdd": 8,
+        "exSDPAttention": 2,
+        "ConvExGelu": 2,
+        "OutputOperator": 2
+      },
+      "layout_total_us": 8074,
+      "frame_named_operator_total_us": 17497,
+      "global_named_operator_total_us": 12707,
+      "frame_QKV_rows": [
+        {
+          "id": 5,
+          "op_type": "Conv",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(2,1024,1,53),(3072,1024,1,1),(3072)",
+          "output_shape": "(2,3072,1,53)",
+          "cycles": "303209/786432/786432",
+          "time_us": 683,
+          "workload": "33.3%/33.3%/33.3%",
+          "rw_kb": 6368.0,
+          "name": "Conv:frame0/attn.qkv.matmul#2"
+        },
+        {
+          "id": 6,
+          "op_type": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(2,3072,1,53)",
+          "output_shape": "(2,53,1,3072)",
+          "cycles": "0/0/0",
+          "time_us": 1833,
+          "workload": "100.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Transpose:frame0/attn.qkv.matmul_mm_tp"
+        },
+        {
+          "id": 7,
+          "op_type": "Reshape",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(2,53,1,3072),(5)",
+          "output_shape": "(2,53,16,3,64)",
+          "cycles": "0/0/0",
+          "time_us": 439,
+          "workload": "100.0%/0.0%/0.0%",
+          "rw_kb": 672.0,
+          "name": "Reshape:frame0/qkv_reshape"
+        },
+        {
+          "id": 8,
+          "op_type": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "input_shape": "(2,53,16,3,64)",
+          "output_shape": "(3,2,16,53,64)",
+          "cycles": "0/0/0",
+          "time_us": 2170,
+          "workload": "0.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Transpose:frame0/qkv_transpose"
+        },
+        {
+          "id": 9,
+          "op_type": "Reshape",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(3,2,16,53,64),(4)",
+          "output_shape": "(3,32,53,64)",
+          "cycles": "0/0/0",
+          "time_us": 0,
+          "workload": "0.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Reshape:frame0/qkv_fold_frame_heads_rs#2"
+        },
+        {
+          "id": 10,
+          "op_type": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(3,32,53,64)",
+          "output_shape": "(32,64,3,53)",
+          "cycles": "0/0/0",
+          "time_us": 489,
+          "workload": "100.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Transpose:frame0/qkv_fold_frame_heads_rs#2_tp"
+        }
+      ],
+      "internal_CPU_rows": [
+        {
+          "id": 8,
+          "op_type": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "input_shape": "(2,53,16,3,64)",
+          "output_shape": "(3,2,16,53,64)",
+          "cycles": "0/0/0",
+          "time_us": 2170,
+          "workload": "0.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Transpose:frame0/qkv_transpose"
+        }
+      ]
+    },
+    {
+      "input": "v56-calib00",
+      "route": "A",
+      "raw_profile_sha256": "1d03c67e3cf8e5ff84d0f3cb165732019e20af16860b71de77a7fbe16a00686d",
+      "raw_bytes": 16706,
+      "operator_count": 57,
+      "operator_total_us": 32944,
+      "operator_type_counts": {
+        "InputOperator": 1,
+        "Reshape": 11,
+        "Transpose": 9,
+        "exNorm": 8,
+        "Conv": 2,
+        "Split": 2,
+        "Mul": 8,
+        "Gather": 2,
+        "Add": 2,
+        "exSDPAttention": 2,
+        "ConvAdd": 6,
+        "ConvExGelu": 2,
+        "OutputOperator": 2
+      },
+      "layout_total_us": 6629,
+      "frame_named_operator_total_us": 15633,
+      "global_named_operator_total_us": 14060,
+      "frame_QKV_rows": [
+        {
+          "id": 5,
+          "op_type": "Conv",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(2,1024,1,53),(3072,1024,1,1),(3072)",
+          "output_shape": "(2,3072,1,53)",
+          "cycles": "303209/786432/786432",
+          "time_us": 764,
+          "workload": "33.3%/33.3%/33.3%",
+          "rw_kb": 6368.0,
+          "name": "Conv:frame0/attn.qkv.matmul#2"
+        },
+        {
+          "id": 6,
+          "op_type": "Reshape",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(2,3072,1,53),(4)",
+          "output_shape": "(2,64,48,53)",
+          "cycles": "0/0/0",
+          "time_us": 1308,
+          "workload": "100.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Reshape:frame0/qkv_transpose_rs_swap_tp#1"
+        },
+        {
+          "id": 7,
+          "op_type": "Split",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(2,64,48,53),(3)",
+          "output_shape": "(2,64,16,53),...",
+          "cycles": "0/0/0",
+          "time_us": 258,
+          "workload": "100.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Split:frame0/qkv_transpose_swap_split"
+        }
+      ],
+      "internal_CPU_rows": []
+    },
+    {
+      "input": "v56-calib00",
+      "route": "B",
+      "raw_profile_sha256": "602633be76c710d43c0045d4fd8a402d027f39bf5d164c36ecbde5c3fab76815",
+      "raw_bytes": 15178,
+      "operator_count": 51,
+      "operator_total_us": 40550,
+      "operator_type_counts": {
+        "InputOperator": 1,
+        "Reshape": 9,
+        "Transpose": 7,
+        "exNorm": 8,
+        "Conv": 2,
+        "Split": 2,
+        "Mul": 8,
+        "ConvAdd": 8,
+        "exSDPAttention": 2,
+        "ConvExGelu": 2,
+        "OutputOperator": 2
+      },
+      "layout_total_us": 12138,
+      "frame_named_operator_total_us": 21777,
+      "global_named_operator_total_us": 14631,
+      "frame_QKV_rows": [
+        {
+          "id": 5,
+          "op_type": "Conv",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(2,1024,1,53),(3072,1024,1,1),(3072)",
+          "output_shape": "(2,3072,1,53)",
+          "cycles": "303209/786432/786432",
+          "time_us": 779,
+          "workload": "33.3%/33.3%/33.3%",
+          "rw_kb": 6368.0,
+          "name": "Conv:frame0/attn.qkv.matmul#2"
+        },
+        {
+          "id": 6,
+          "op_type": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(2,3072,1,53)",
+          "output_shape": "(2,53,1,3072)",
+          "cycles": "0/0/0",
+          "time_us": 1932,
+          "workload": "100.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Transpose:frame0/attn.qkv.matmul_mm_tp"
+        },
+        {
+          "id": 7,
+          "op_type": "Reshape",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(2,53,1,3072),(5)",
+          "output_shape": "(2,53,16,3,64)",
+          "cycles": "0/0/0",
+          "time_us": 493,
+          "workload": "100.0%/0.0%/0.0%",
+          "rw_kb": 672.0,
+          "name": "Reshape:frame0/qkv_reshape"
+        },
+        {
+          "id": 8,
+          "op_type": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "input_shape": "(2,53,16,3,64)",
+          "output_shape": "(3,2,16,53,64)",
+          "cycles": "0/0/0",
+          "time_us": 5095,
+          "workload": "0.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Transpose:frame0/qkv_transpose"
+        },
+        {
+          "id": 9,
+          "op_type": "Reshape",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(3,2,16,53,64),(4)",
+          "output_shape": "(3,32,53,64)",
+          "cycles": "0/0/0",
+          "time_us": 0,
+          "workload": "0.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Reshape:frame0/qkv_fold_frame_heads_rs#2"
+        },
+        {
+          "id": 10,
+          "op_type": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "input_shape": "(3,32,53,64)",
+          "output_shape": "(32,64,3,53)",
+          "cycles": "0/0/0",
+          "time_us": 544,
+          "workload": "100.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Transpose:frame0/qkv_fold_frame_heads_rs#2_tp"
+        }
+      ],
+      "internal_CPU_rows": [
+        {
+          "id": 8,
+          "op_type": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "input_shape": "(2,53,16,3,64)",
+          "output_shape": "(3,2,16,53,64)",
+          "cycles": "0/0/0",
+          "time_us": 5095,
+          "workload": "0.0%/0.0%/0.0%",
+          "rw_kb": 636.0,
+          "name": "Transpose:frame0/qkv_transpose"
+        }
+      ]
+    }
+  ],
+  "profile_comparisons": [
+    {
+      "input": "v53",
+      "old_target_NPU_reshape_removed": true,
+      "new_internal_CPU_5D_transpose_time_us": 2170,
+      "new_QKV_front_layout_rows_total_us": 4931,
+      "old_QKV_front_NPU_reshape_us": 1297,
+      "QK_norm_total_us": {
+        "A": 1006,
+        "B": 1537
+      },
+      "removed_operator_names": [
+        "Add:frame0/key_rope",
+        "Add:frame0/query_rope",
+        "Gather:frame0/key_rope_permuted",
+        "Gather:frame0/query_rope_permuted",
+        "Mul:frame0/attn.k_norm_mul",
+        "Mul:frame0/attn.k_norm_mul#1",
+        "Mul:frame0/attn.q_norm_mul",
+        "Mul:frame0/attn.q_norm_mul#1",
+        "Reshape:frame0/key_transpose_rs",
+        "Reshape:frame0/qkv_transpose_rs_swap_tp#1",
+        "Reshape:frame0/query_rope_tp_rs",
+        "Reshape:frame0/value_tp_rs",
+        "Split:frame0/qkv_transpose_swap_split",
+        "Transpose:frame0/attn.k_norm#1_rs_tp",
+        "Transpose:frame0/attn.q_norm#1_rs_tp",
+        "Transpose:frame0/key_transpose",
+        "Transpose:frame0/query_rope_tp",
+        "Transpose:frame0/value_tp"
+      ],
+      "added_operator_names": [
+        "Conv:frame0/key_rope_permuted_2conv_ConvAdd",
+        "Conv:frame0/query_rope_permuted_2conv_ConvAdd",
+        "Mul:frame0/key_rope_cosine",
+        "Mul:frame0/key_rope_sine",
+        "Mul:frame0/query_rope_cosine",
+        "Mul:frame0/query_rope_sine",
+        "Reshape:frame0/qkv_fold_frame_heads_rs#2",
+        "Reshape:frame0/qkv_reshape",
+        "Split:frame0/value_2sl_2sp",
+        "Transpose:frame0/attn.qkv.matmul_mm_tp",
+        "Transpose:frame0/qkv_fold_frame_heads_rs#2_tp",
+        "Transpose:frame0/qkv_transpose"
+      ],
+      "global_compiled_structure_cycles_and_workloads_unchanged": true,
+      "profile_samples_per_input_route": 1
+    },
+    {
+      "input": "v56-calib00",
+      "old_target_NPU_reshape_removed": true,
+      "new_internal_CPU_5D_transpose_time_us": 5095,
+      "new_QKV_front_layout_rows_total_us": 8064,
+      "old_QKV_front_NPU_reshape_us": 1308,
+      "QK_norm_total_us": {
+        "A": 1041,
+        "B": 1639
+      },
+      "removed_operator_names": [
+        "Add:frame0/key_rope",
+        "Add:frame0/query_rope",
+        "Gather:frame0/key_rope_permuted",
+        "Gather:frame0/query_rope_permuted",
+        "Mul:frame0/attn.k_norm_mul",
+        "Mul:frame0/attn.k_norm_mul#1",
+        "Mul:frame0/attn.q_norm_mul",
+        "Mul:frame0/attn.q_norm_mul#1",
+        "Reshape:frame0/key_transpose_rs",
+        "Reshape:frame0/qkv_transpose_rs_swap_tp#1",
+        "Reshape:frame0/query_rope_tp_rs",
+        "Reshape:frame0/value_tp_rs",
+        "Split:frame0/qkv_transpose_swap_split",
+        "Transpose:frame0/attn.k_norm#1_rs_tp",
+        "Transpose:frame0/attn.q_norm#1_rs_tp",
+        "Transpose:frame0/key_transpose",
+        "Transpose:frame0/query_rope_tp",
+        "Transpose:frame0/value_tp"
+      ],
+      "added_operator_names": [
+        "Conv:frame0/key_rope_permuted_2conv_ConvAdd",
+        "Conv:frame0/query_rope_permuted_2conv_ConvAdd",
+        "Mul:frame0/key_rope_cosine",
+        "Mul:frame0/key_rope_sine",
+        "Mul:frame0/query_rope_cosine",
+        "Mul:frame0/query_rope_sine",
+        "Reshape:frame0/qkv_fold_frame_heads_rs#2",
+        "Reshape:frame0/qkv_reshape",
+        "Split:frame0/value_2sl_2sp",
+        "Transpose:frame0/attn.qkv.matmul_mm_tp",
+        "Transpose:frame0/qkv_fold_frame_heads_rs#2_tp",
+        "Transpose:frame0/qkv_transpose"
+      ],
+      "global_compiled_structure_cycles_and_workloads_unchanged": true,
+      "profile_samples_per_input_route": 1
+    }
+  ],
+  "resources": [
+    {
+      "stage": "normal",
+      "SDK_calls": 80,
+      "outputs_acquired_and_released": 160,
+      "contexts_created_and_destroyed": 2,
+      "live_contexts": 0,
+      "cleanup_errors": [],
+      "source_and_inputs_unchanged": true,
+      "affinity_restored": true,
+      "saved_platform_samples": 160,
+      "sampled_NPU_frequencies_hz": [
+        300000000
+      ],
+      "sampled_max_temperature_c": 57.307
+    },
+    {
+      "stage": "profile",
+      "SDK_calls": 4,
+      "outputs_acquired_and_released": 8,
+      "contexts_created_and_destroyed": 2,
+      "live_contexts": 0,
+      "cleanup_errors": [],
+      "source_and_inputs_unchanged": true,
+      "affinity_restored": true,
+      "saved_platform_samples": 8,
+      "sampled_NPU_frequencies_hz": [
+        300000000
+      ],
+      "sampled_max_temperature_c": 56.384
+    }
+  ],
+  "monitors": [
+    {
+      "stage": "compile",
+      "control_sha256": "46cf9d6f43b6afdaf7556c4d9f7ddf006c09d5fee16fe85e199aeaa1ba34b3cc",
+      "samples": 37,
+      "status": "completed",
+      "child_returncode": 0,
+      "frequency_written": false,
+      "sampled_NPU_frequencies_hz": [
+        300000000
+      ],
+      "sampled_max_temperature_c": 62.846,
+      "elapsed_seconds": 19.368198070995277,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "normal",
+      "control_sha256": "ff1bac3a9803400ab794803d7d48ce40042dc506d176af0a9017c700f499d7de",
+      "samples": 16,
+      "status": "completed",
+      "child_returncode": 0,
+      "frequency_written": false,
+      "sampled_NPU_frequencies_hz": [
+        300000000
+      ],
+      "sampled_max_temperature_c": 57.307,
+      "elapsed_seconds": 7.472171125991736,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "profile",
+      "control_sha256": "80c5940fbc75f2bbfa370303b15912434ca41026b140199dc7541eec27bdf9aa",
+      "samples": 5,
+      "status": "completed",
+      "child_returncode": 0,
+      "frequency_written": false,
+      "sampled_NPU_frequencies_hz": [
+        300000000
+      ],
+      "sampled_max_temperature_c": 56.384,
+      "elapsed_seconds": 1.5215519859921187,
+      "cleanup_errors": []
+    }
+  ],
+  "compile_receipt_checks": {
+    "released": true,
+    "cleanup_errors": [],
+    "source_and_inputs_unchanged": true,
+    "environment_restored": true,
+    "FP32_ONNX_byte_gate_reported_passed": true
+  },
+  "conclusion": {
+    "route_stopped_without_production_installation": true,
+    "text": "The folded graph removes the old roughly 1.3 ms NPU QKV Reshape, but introduces an internal CPU FLOAT16 five-dimensional Transpose and additional front-end NPU layout conversions. The saved CPU Transpose takes 2170 us / 5095 us, and all Reshape plus Transpose rows increase from 6195 to 8074 us / 6629 to 12138 us for the two inputs. Q/K norm costs also increase. Fewer compiled operators (57 to 51) do not establish lower cost. The normal candidate is 18.58% slower, so this route offers no production performance benefit.",
+    "scope": "One profile per real input and route identifies the CPU fallback and layout costs; it cannot provide statistical inference or an exact causal decomposition of the normal timing delta. Monitors and before/after samples are discrete observations, not continuous clock/thermal verification.",
+    "numeric_audit_limit": "Only saved profile and timing/lifecycle receipts were checked here. Saved prediction arrays are independently audited by the other auditor; FP32 ONNX gate is not full-model FP16 numerical or trajectory acceptance."
+  },
+  "candidate_accepted": false,
+  "full_model_or_realtime_validated": false
+}
