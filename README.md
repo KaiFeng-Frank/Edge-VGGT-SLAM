@@ -6,18 +6,26 @@ The current tree contains only this model's execution path and relevant componen
 
 **The real-time target remains unachieved.** The target is at least 20 fresh-observation poses per second with complete input-to-pose P95 latency at most 100 ms. Map cadence, bounded queues, trajectory quality, 30-minute stability and operation within 8 GB each need separate validation. A component's timing, repeated prediction or offline reconstruction does not satisfy those targets. Current measurements use dataset files on a 16 GB RK3588S; physical-camera validation is deferred.
 
-**Latest authorized 1 GHz NPU test (current runtime):** 798 original timestamp
-frames produced **22 fresh poses at 0.776 Hz, complete input-to-pose P95 1.571 s**.
-A separate identical-input full-model comparison measured **1.590 s at 300 MHz
-versus 1.379 s at 1 GHz** (13.24% lower in sequential runs); all 160 saved arrays
-and poses remained byte-identical. Original FP32 strict checks still fail.
-Replay startup was 47.102 s and peak process RSS 3921.57 MiB on the 16 GB board.
-Maximum sampled temperature was 66.538°C; both jobs restored 300 MHz.
-The real-time target remains unmet.
-[Current measurements and reproduction](deploy/rk3588/validation/original_clock_current/README.md).
-The [earlier v63 frequency result](results/original_1ghz_v63.json) used the preceding configuration.
+**Latest authorized 1 GHz test with explicit immutable execution:** 798 original
+timestamp frames produced **26 fresh poses at 0.900 Hz, complete input-to-pose
+P95 1.367 s**. The prior run produced 22 poses at 0.776 Hz / P95 1.571 s;
+the new run remains below both 1 Hz and the project target. Startup was
+38.752 s and peak process RSS 3920.42 MiB on the 16 GB board.
 
-Further original-model execution diagnostics found no production improvement: FC2 output-channel partition and native tensor metadata checks were slower; a five-pair FC2 K4 comparison at 1 GHz gave only a small, variable component difference. Profiles of all four current groups confirm that their main residual stream already retains its channel layout. These diagnostics do not change the full-runtime figures above. [Evidence and reproduction](deploy/rk3588/validation/original_execution_diagnostics/README.md).
+On the same fixed 16 image pairs at 1 GHz, complete-model service falls from
+**1.390 to 1.248 s (10.20%)**, or **1.357 to 1.227 s (9.56%)** excluding first
+calls. All 160 saved arrays and poses remain byte-identical to the preceding
+FP16 path; original FP32 strict checks still fail. These are sequential runs.
+The optional `--immutable-execution` session reduces repeated model-tree
+inspection under an explicit exclusive-owner contract that forbids model
+mutation. It retains per-call tensor versions, ownership and I/O checks, with
+full validation at session start and close. It does **not** preserve arbitrary
+live model-mutation detection. Model arithmetic and checkpoint are unchanged;
+the flag defaults off. All jobs restored 300 MHz.
+[Measurements, contract and reproduction](deploy/rk3588/validation/original_immutable_execution/README.md).
+[Earlier current-runtime frequency comparison](deploy/rk3588/validation/original_clock_current/README.md).
+
+Further original-model execution diagnostics found no production improvement: FC2 output-channel partition and native tensor metadata checks were slower; a five-pair FC2 K4 comparison at 1 GHz gave only a small, variable component difference. Profiles of all four current groups confirm that their main residual stream already retains its channel layout. Those component diagnostics were not adopted; the later session improvement above changes only execution checks. [Evidence and reproduction](deploy/rk3588/validation/original_execution_diagnostics/README.md).
 
 The subsequent **300 MHz retained-group path** reduces mean complete-model
 service on the same 16 pairs from **1.958 s to 1.797 s (8.23%)**. All 80

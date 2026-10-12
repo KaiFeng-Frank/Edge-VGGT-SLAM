@@ -45,6 +45,8 @@ def main():
     p.add_argument('--rknn-depth-manifest-sha256')
     p.add_argument('--checkpoint-pageout', action='store_true',
                    help='Explicit clean original checkpoint residency experiment after each NPU backend installation')
+    p.add_argument('--immutable-execution', action='store_true',
+                   help='Exclusive immutable model contract; omit repeated guards inside this owned session')
     args = p.parse_args()
     cpus = (set(args.model_cpus) if args.model_cpus is not None else
             {6, 7} if args.model_threads == 2 else {4, 5, 6, 7})
@@ -52,6 +54,14 @@ def main():
         p.error('--model-cpus must not contain duplicate CPUs')
     if len(cpus) < args.model_threads:
         p.error('--model-cpus must contain at least --model-threads CPUs')
+    if args.immutable_execution and not (
+            args.rknn_retained_aggregator and args.rknn_paired_aggregator and
+            args.rknn_manifest is not None and args.half_io_library is not None and
+            args.rknn_grouped_dino and args.rknn_dino_manifest is not None and
+            args.rknn_camera_head and args.rknn_camera_split4 and
+            args.rknn_depth_manifest is not None and not args.no_patch_cache):
+        p.error('--immutable-execution requires retained and paired aggregator, half I/O, '
+                'grouped DINO, camera split4, depth and patch cache')
     if args.checkpoint_pageout and not (
             args.rknn_retained_aggregator and args.rknn_paired_aggregator and
             args.rknn_manifest is not None and args.half_io_library is not None and
@@ -135,6 +145,10 @@ def main():
     report['rknn_retained_aggregator'] = args.rknn_retained_aggregator
     report['rknn_camera_split4'] = args.rknn_camera_split4
     report['checkpoint_pageout'] = args.checkpoint_pageout
+    report['immutable_execution'] = args.immutable_execution
+    if args.immutable_execution:
+        report.update(immutable_execution_contract='exclusive_immutable_model',
+                      arbitrary_model_mutation_detection_preserved=False)
     report['runtime_source_sha256'] = {
         name: hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
         for name in ('patch_cache.py', 'rknn_aggregator_blocks.py', 'rknn_camera_head.py',
@@ -168,7 +182,11 @@ def main():
                       checkpoint_pageout_timing_scope='Four advice calls and startup snapshot are included in startup_seconds; '
                       'no per-frame memory reads; precleanup snapshot is separate diagnostic work after the final publication',
                       eight_GB_hardware_validated=False)
-    replay = cache = depth_rknn = dino_rknn = camera_rknn = rknn = None
+    if args.immutable_execution:
+        name = 'immutable_execution_session.py'
+        report['runtime_source_sha256'][name] = hashlib.sha256((BASE / 'src/vggt_slam' / name).read_bytes()).hexdigest()
+        report['immutable_execution_source_sha256'] = report['runtime_source_sha256'][name]
+    replay = immutable_session = cache = depth_rknn = dino_rknn = camera_rknn = rknn = None
     hooks = []
     affinity = os.sched_getaffinity(0)
     setup = time.monotonic()
@@ -271,6 +289,10 @@ def main():
         if not args.no_patch_cache:
             from vggt_slam.patch_cache import install_patch_cache
             cache = install_patch_cache(model)
+        if args.immutable_execution:
+            from vggt_slam.immutable_execution_session import install_immutable_session
+            immutable_session = install_immutable_session(
+                model, cache, rknn, dino_rknn, contract='exclusive_immutable_model')
         solver = Solver(init_conf_threshold=25., device='cpu', image_size=args.image_size,
                         max_loops=0, offline=True, enable_viewer=False)
         chunks = args.output / 'map_chunks'
@@ -364,8 +386,8 @@ def main():
     except BaseException as exc:
         report.update(status='failed', error=f'{type(exc).__name__}: {exc}', traceback=traceback.format_exc())
     finally:
-        # Stop arrivals, then restore cache before any model backend.
-        for handle in (replay, cache, depth_rknn, dino_rknn, camera_rknn, rknn):
+        # Stop arrivals, validate/restore the owned session, then restore cache and backends.
+        for handle in (replay, immutable_session, cache, depth_rknn, dino_rknn, camera_rknn, rknn):
             if handle is not None:
                 try:
                     handle.close()
@@ -375,6 +397,11 @@ def main():
             hook.remove()
         if replay is not None:
             report['source'] = replay.metrics()
+        if immutable_session is not None:
+            try:
+                report['immutable_session'] = immutable_session.metrics()
+            except BaseException as exc:
+                report['cleanup_errors'].append(f'immutable session metrics: {type(exc).__name__}: {exc}')
         if cache is not None:
             report['cache'] = cache.metrics()
         if camera_rknn is not None:

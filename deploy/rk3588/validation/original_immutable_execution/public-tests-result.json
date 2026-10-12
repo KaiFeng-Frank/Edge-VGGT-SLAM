@@ -1,0 +1,45 @@
+{
+  "schema": "v77_public_immutable_execution_generated_test_receipt",
+  "status": "passed_generated_checks_only",
+  "command": "python3 -m pytest -q tests/test_immutable_execution_session.py tests/test_immutable_replay.py tests/test_checkpoint_residency_replay.py tests/test_replay_original_vggt.py",
+  "pytest_exit_code": 0,
+  "pytest_passed": 87,
+  "pytest_subtests_passed": 7,
+  "new_immutable_tests": 22,
+  "pytest_seconds": 0.22,
+  "actual_board_model_Torch_ORT_SDK_execution": false,
+  "service_doubles_only": true,
+  "public_edits_by_this_agent": [
+    "tests/test_immutable_execution_session.py",
+    "tests/test_immutable_replay.py"
+  ],
+  "source_files": {
+    "scripts/replay_original_vggt.py": {
+      "bytes": 27644,
+      "sha256": "ed7ae7ba73d4e54d17a1be9bcc0c9213776371cbe90c5921210779ca6d252d3e"
+    },
+    "vggt_slam/immutable_execution_session.py": {
+      "bytes": 8442,
+      "sha256": "a731fb1f26ea82f31fa7123792625e1731e19d3e35723930aef18e331dbe6897"
+    },
+    "tests/test_immutable_execution_session.py": {
+      "bytes": 8925,
+      "sha256": "c058f5caf192d3ec1dccae73013783cf0ae3dc41ba22a64bc3bad8939b9b7320"
+    },
+    "tests/test_immutable_replay.py": {
+      "bytes": 7683,
+      "sha256": "81535bc74d31d253c45c24f983caf6d33094d1f21635ebfb7b58b9185597f3b3"
+    },
+    "tests/test_checkpoint_residency_replay.py": {
+      "bytes": 16969,
+      "sha256": "b53c850204e42b64b112e608ecbfa02c2807ec60c0338d2d36788cfc2443881b"
+    },
+    "tests/test_replay_original_vggt.py": {
+      "bytes": 30493,
+      "sha256": "25dfd96b201d8a69e59015de3755feeee46199e66974b115f9404b6ab7d49c28"
+    }
+  },
+  "test_logic_unchanged_from_private_checks": true,
+  "path_changes": "ROOT derived from test directory; replay ROOT/scripts, helper ROOT/vggt_slam, existing service fixture ROOT/tests. Replay test docstring loses the private label.",
+  "source_frozen": true
+}

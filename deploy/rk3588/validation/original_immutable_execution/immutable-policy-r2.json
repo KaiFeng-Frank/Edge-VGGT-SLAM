@@ -1,0 +1,41 @@
+{
+  "schema": "v77_original_immutable_execution_entrypoint",
+  "status": "completed_original_entrypoint_pending_saved_output_review",
+  "mode": "immutable",
+  "original_model_only": true,
+  "model_graph_or_weights_changed": false,
+  "full_mutable_model_guard_semantics_preserved": false,
+  "exclusive_immutable_model_contract": true,
+  "entrypoint": "deploy/rk3588/validation/original_full_aggregator/compare_complete_model.py",
+  "entrypoint_sha256": "75b81c6b8dd2c9fcb96f76bdb5fecb5d15e5c7794a161deee8aa4f323d020e7c",
+  "script_sha256": "86889853ef656dd915067358083052f9c56117a11448879e906958998e95fff0",
+  "policy_source_sha256": "a731fb1f26ea82f31fa7123792625e1731e19d3e35723930aef18e331dbe6897",
+  "cache_source_sha256": "3a8cc8c5a68c3bb934969e86053538f0d2026da1846274f4e6085297474a1e4b",
+  "cleanup_errors": [],
+  "sessions": [
+    {
+      "contract": "exclusive_immutable_model",
+      "full_seal_validated": true,
+      "final_full_validated": true,
+      "seal_seconds": 0.05959129799157381,
+      "final_full_validation_seconds": 0.052613464009482414,
+      "version_checks": 32,
+      "version_check_seconds": 0.18608422894612886,
+      "method_checks": 64,
+      "method_check_seconds": 0.009088625927688554,
+      "fixed_tensors": 1343,
+      "invalidations": 0,
+      "restored_overrides": 3,
+      "cleanup_errors": [],
+      "arbitrary_live_module_scalar_registry_mutation_detection": false,
+      "original_mutable_model_guard_semantics_equivalent": false,
+      "closed": true,
+      "failed": false
+    }
+  ],
+  "installer_restored": true,
+  "entrypoint_unchanged": true,
+  "policy_source_unchanged": true,
+  "cache_source_unchanged": true,
+  "seconds": 71.27356545301154
+}
