@@ -1,0 +1,491 @@
+{
+  "schema": "original_VGGT_FC1_fusion_layout_diagnostic_v61",
+  "status": "both_all_output_candidates_rejected_for_latency",
+  "original_model_only": true,
+  "production_runtime_changed": false,
+  "candidate_accepted": false,
+  "quality_accepted": false,
+  "real_time_validated": false,
+  "checkpoint": {
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "bytes": 5026874952
+  },
+  "scope": "Original frame0/global0 pair00, one real captured input. Root-only board ORT/compilation/SDK execution; no complete-model or paced replay in this experiment.",
+  "image_shape": [
+    2,
+    3,
+    84,
+    112
+  ],
+  "input_shape": [
+    2,
+    53,
+    1024
+  ],
+  "original_graph_sha256": "efbbaee8f3d6326565930e5a045eac0d500fdb35453fdf85ddac7481ec2fac65",
+  "raw_tap": {
+    "status": "completed_component_diagnostic_not_adopted",
+    "script_sha256": "36e65a3003b404277807209778fba0e8dd9fb5fa6d990578dc0eb90f6f740ca7",
+    "normal_summary": {
+      "A": {
+        "cold_io_seconds": 0.03233475299202837,
+        "all_count": 4,
+        "all_mean_io_seconds": 0.0378003475125297,
+        "excluding_first_count": 3,
+        "excluding_first_mean_io_seconds": 0.039622212352696806,
+        "excluding_first_mean_tap_copy_seconds": 0.0
+      },
+      "B": {
+        "cold_io_seconds": 0.04630921201896854,
+        "all_count": 4,
+        "all_mean_io_seconds": 0.05472117175668245,
+        "excluding_first_count": 3,
+        "excluding_first_mean_io_seconds": 0.05752515833592042,
+        "excluding_first_mean_tap_copy_seconds": 0.004170736656912292
+      }
+    },
+    "contexts_created": 4,
+    "contexts_destroyed": 4,
+    "live_contexts": 0,
+    "cleanup_errors": [],
+    "counters": {
+      "sdk_run_attempts": 10,
+      "sdk_runs_succeeded": 10,
+      "output_sets_get_attempts": 10,
+      "output_sets_acquired": 10,
+      "output_sets_release_attempts": 10,
+      "output_sets_released": 10,
+      "outputs_acquired": 30,
+      "outputs_released": 30
+    },
+    "frozen_pins_unchanged": true,
+    "affinity_restored": true,
+    "timing_scope": "Normal SDK input/run/output retrieval, all owned output copies and release; excludes diagnostics/NPZ/profile",
+    "core_mask": 7,
+    "cpu_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "candidate_manifest_sha256": "4a371083f3728cb849ede2bf23a5825a98d51dd842fbe135662ceeacb4043516",
+    "private_result_sha256": "a696df8fa8b3b1d7214aaace167427a35f2b8f5ed687441a6b7c69aaa4406b98",
+    "normal_per_call_seconds": {
+      "A": [
+        0.03233475299202837,
+        0.03678375401068479,
+        0.039930337021360174,
+        0.042152546026045457
+      ],
+      "B": [
+        0.04630921201896854,
+        0.04715542099438608,
+        0.06405613099923357,
+        0.06136392301414162
+      ]
+    },
+    "excluding_first_mean_run_api_seconds": {
+      "A": 0.03451804500461245,
+      "B": 0.03914762866528084
+    },
+    "candidate_vs_baseline_io_change_percent": 45.184114970311825,
+    "candidate_vs_baseline_original_outputs": [
+      {
+        "bitwise_equal": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 7.362954532823532e-05,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "failed_elements": 2020,
+        "strict_pass": false
+      },
+      {
+        "bitwise_equal": false,
+        "max_abs": 0.001953125,
+        "relative_l2": 0.00013600292097799745,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "failed_elements": 4477,
+        "strict_pass": false
+      }
+    ],
+    "vs_original_FP32": {
+      "A": [
+        {
+          "bitwise_equal": false,
+          "max_abs": 0.07805871963500977,
+          "relative_l2": 0.004222512956891238,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "failed_elements": 55865,
+          "strict_pass": false
+        },
+        {
+          "bitwise_equal": false,
+          "max_abs": 0.02930513024330139,
+          "relative_l2": 0.004732235017510707,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "failed_elements": 63240,
+          "strict_pass": false
+        }
+      ],
+      "B": [
+        {
+          "bitwise_equal": false,
+          "max_abs": 0.07854700088500977,
+          "relative_l2": 0.004226871160931733,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "failed_elements": 55869,
+          "strict_pass": false
+        },
+        {
+          "bitwise_equal": false,
+          "max_abs": 0.02906098961830139,
+          "relative_l2": 0.004735283984540463,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "failed_elements": 63292,
+          "strict_pass": false
+        }
+      ]
+    },
+    "raw_profiles_sha256": {
+      "A": "e9fed2dccd8034880fb4e50493630a20315c4d25ee7d8ffe6fc4d4f949d9cbef",
+      "B": "94ee406bc70ffa40acc5fa843331b2554098ac3019241def9becd4e4f2d8f10f"
+    },
+    "monitor": {
+      "samples": 3,
+      "npu_active_samples": 1,
+      "npu_frequency_sample_counts": {
+        "300000000": 3
+      },
+      "npu_active_frequency_sample_counts": {
+        "300000000": 1
+      },
+      "frequency_or_thermal_causality_validated": false,
+      "max_sampled_temperature_c": 52.692
+    },
+    "profile_diagnostic": {
+      "baseline_ConvExGelu_us": [
+        2830,
+        3074
+      ],
+      "candidate_FC1_Conv_us": [
+        892,
+        1137
+      ],
+      "candidate_exGelu_us": [
+        814,
+        1081
+      ],
+      "candidate_FC1_workload_percent_each": [
+        33.6,
+        33.2,
+        33.2
+      ],
+      "candidate_FC1_Conv_count": 2,
+      "candidate_ConvExGelu_count": 0,
+      "tap_Transpose_us": [
+        3305,
+        2269
+      ],
+      "tap_Reshape_us": [
+        558,
+        870
+      ],
+      "total_profile_us": {
+        "A": 32963,
+        "B": 37770
+      },
+      "profile_not_ordinary_wall_time": true
+    }
+  },
+  "transposed_tap_all_outputs": {
+    "status": "completed_component_diagnostic_not_adopted",
+    "script_sha256": "b1e029504421d74567616dcf77d1f972c18c5ab428d78b1434492c32c8499ce6",
+    "normal_summary": {
+      "A": {
+        "cold_io_seconds": 0.03245696201338433,
+        "all_count": 4,
+        "all_mean_io_seconds": 0.037122837245988194,
+        "excluding_first_count": 3,
+        "excluding_first_mean_io_seconds": 0.038678128990189485,
+        "excluding_first_mean_tap_copy_seconds": 0.0
+      },
+      "B": {
+        "cold_io_seconds": 0.04004437901312485,
+        "all_count": 4,
+        "all_mean_io_seconds": 0.05062210949836299,
+        "excluding_first_count": 3,
+        "excluding_first_mean_io_seconds": 0.054148019660109036,
+        "excluding_first_mean_tap_copy_seconds": 0.003644569330693533
+      }
+    },
+    "contexts_created": 4,
+    "contexts_destroyed": 4,
+    "live_contexts": 0,
+    "cleanup_errors": [],
+    "counters": {
+      "sdk_run_attempts": 10,
+      "sdk_runs_succeeded": 10,
+      "output_sets_get_attempts": 10,
+      "output_sets_acquired": 10,
+      "output_sets_release_attempts": 10,
+      "output_sets_released": 10,
+      "outputs_acquired": 30,
+      "outputs_released": 30
+    },
+    "frozen_pins_unchanged": true,
+    "affinity_restored": true,
+    "timing_scope": "Normal SDK input/run/output retrieval, all owned output copies and release; excludes diagnostics/NPZ/profile",
+    "core_mask": 7,
+    "cpu_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "candidate_manifest_sha256": "4e10c183dcbb23e990af45c96571ba58026ef5c75bbf59a5fe9ad286119d8f81",
+    "private_result_sha256": "7a32ecb2bdd6896017150ffd8275eac908c3107f77eebe489bf3b0dac8937e48",
+    "normal_per_call_seconds": {
+      "A": [
+        0.03245696201338433,
+        0.036573377990862355,
+        0.04086104599991813,
+        0.03859996297978796
+      ],
+      "B": [
+        0.04004437901312485,
+        0.041724129987414926,
+        0.06344554800307378,
+        0.05727438098983839
+      ]
+    },
+    "excluding_first_mean_run_api_seconds": {
+      "A": 0.033671086663768314,
+      "B": 0.03665268398860159
+    },
+    "candidate_vs_baseline_io_change_percent": 39.99648140643879,
+    "candidate_vs_baseline_original_outputs": [
+      {
+        "bitwise_equal": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 7.362954532823532e-05,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "failed_elements": 2020,
+        "strict_pass": false
+      },
+      {
+        "bitwise_equal": false,
+        "max_abs": 0.001953125,
+        "relative_l2": 0.00013600292097799745,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "failed_elements": 4477,
+        "strict_pass": false
+      }
+    ],
+    "vs_original_FP32": {
+      "A": [
+        {
+          "bitwise_equal": false,
+          "max_abs": 0.07805871963500977,
+          "relative_l2": 0.004222512956891238,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "failed_elements": 55865,
+          "strict_pass": false
+        },
+        {
+          "bitwise_equal": false,
+          "max_abs": 0.02930513024330139,
+          "relative_l2": 0.004732235017510707,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "failed_elements": 63240,
+          "strict_pass": false
+        }
+      ],
+      "B": [
+        {
+          "bitwise_equal": false,
+          "max_abs": 0.07854700088500977,
+          "relative_l2": 0.004226871160931733,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "failed_elements": 55869,
+          "strict_pass": false
+        },
+        {
+          "bitwise_equal": false,
+          "max_abs": 0.02906098961830139,
+          "relative_l2": 0.004735283984540463,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "failed_elements": 63292,
+          "strict_pass": false
+        }
+      ]
+    },
+    "raw_profiles_sha256": {
+      "A": "ad6a36402042cdee96c1b51be9b78510314deca31cc919ed6a9a0f19987033ff",
+      "B": "ce594ac1bb74e5d3ec721499477e7495bf238fc1b4ce1f1e9cbbc3ccd394720d"
+    },
+    "monitor": {
+      "samples": 3,
+      "npu_active_samples": 2,
+      "npu_frequency_sample_counts": {
+        "300000000": 3
+      },
+      "npu_active_frequency_sample_counts": {
+        "300000000": 2
+      },
+      "frequency_or_thermal_causality_validated": false,
+      "max_sampled_temperature_c": 55.461
+    },
+    "profile_diagnostic": {
+      "baseline_ConvExGelu_us": [
+        2776,
+        2935
+      ],
+      "candidate_FC1_Conv_us": [
+        889,
+        886
+      ],
+      "candidate_exGelu_us": [
+        814,
+        897
+      ],
+      "candidate_FC1_workload_percent_each": [
+        33.6,
+        33.2,
+        33.2
+      ],
+      "candidate_FC1_Conv_count": 2,
+      "candidate_ConvExGelu_count": 0,
+      "tap_Transpose_count": 0,
+      "tap_CPU_Reshape_us": [
+        728,
+        934
+      ],
+      "total_profile_us": {
+        "A": 31130,
+        "B": 30355
+      },
+      "profile_not_ordinary_wall_time": true
+    }
+  },
+  "subset_output_request": {
+    "status": "failed",
+    "error": "RuntimeError: rknn_outputs_get returned -5",
+    "contexts_created": 2,
+    "contexts_destroyed": 2,
+    "live_contexts": 0,
+    "cleanup_errors": [],
+    "counters": {
+      "sdk_run_attempts": 2,
+      "sdk_runs_succeeded": 2,
+      "output_sets_get_attempts": 2,
+      "output_sets_acquired": 1,
+      "output_sets_release_attempts": 1,
+      "output_sets_released": 1,
+      "outputs_acquired": 2,
+      "outputs_released": 2
+    },
+    "output_subset_support_validated": false,
+    "fallback_used": false,
+    "frozen_pins_unchanged": true,
+    "affinity_restored": true,
+    "private_result_sha256": "d4762b862a3ee97c45a682fef0848ca9df763a22b76efd6bcd5d14e5be6e5739",
+    "sdk_log": "rknn_outputs_get, param output index(-1) is out of range(4)"
+  },
+  "builds": {
+    "raw": {
+      "compiled_manifest_sha256": "4a371083f3728cb849ede2bf23a5825a98d51dd842fbe135662ceeacb4043516",
+      "check_receipt_sha256": "500c432c7064fdbaa71d9c9606fa5129a87e430ff7ee60a4566d65c47bb64be6",
+      "rknn_sha256": "b0819fb8c417a5d74bee5157c111328593f584f4f22e45286551033f86ca67d3",
+      "first_two_ORT_outputs_bytewise_equal": true,
+      "strict_original_FP32_ORT_passed": true,
+      "tap_inverse_transpose_bytewise_equal": null,
+      "configuration": {
+        "target_platform": "rk3588",
+        "float_dtype": "float16",
+        "optimization_level": 3,
+        "mean_values": null,
+        "std_values": null,
+        "quant_img_RGB2BGR": false,
+        "model_pruning": false,
+        "remove_reshape": false,
+        "quantize_weight": false,
+        "enable_flash_attention": false
+      },
+      "released": true,
+      "cleanup_errors": []
+    },
+    "transposed": {
+      "compiled_manifest_sha256": "4e10c183dcbb23e990af45c96571ba58026ef5c75bbf59a5fe9ad286119d8f81",
+      "check_receipt_sha256": "364883aecbec59a5e0b52b11cd938851bb0db88049e85e69623290d7f5898540",
+      "rknn_sha256": "bd3a0d765f15f74e7b2d220e9ffe773ffbb4a4f8acc99dfd4c78203db1ff76fe",
+      "first_two_ORT_outputs_bytewise_equal": true,
+      "strict_original_FP32_ORT_passed": true,
+      "tap_inverse_transpose_bytewise_equal": [
+        true,
+        true
+      ],
+      "configuration": {
+        "target_platform": "rk3588",
+        "float_dtype": "float16",
+        "optimization_level": 3,
+        "mean_values": null,
+        "std_values": null,
+        "quant_img_RGB2BGR": false,
+        "model_pruning": false,
+        "remove_reshape": false,
+        "quantize_weight": false,
+        "enable_flash_attention": false
+      },
+      "released": true,
+      "cleanup_errors": []
+    }
+  },
+  "saved_array_audit": {
+    "first_two_equal_to_raw_tap": [
+      true,
+      true
+    ],
+    "inverse_transposed_taps_equal_to_raw_tap": [
+      true,
+      true
+    ],
+    "artifacts_verified": 10,
+    "arrays_verified": 30,
+    "repeat_original_outputs_all_equal": true,
+    "profiles_original_equal_to_normal": true
+  },
+  "source_sha256": {
+    "build_fc1_tap.py": "8f7d3ba49efd22148acbaef554bc2fb512ebda1cb6a339fb8e8e9e091fdf7f1b",
+    "build_fc1_tap_transposed.py": "45d8c01d80ca96c3eab76cfc234c40f86a316bb1fd1b6842b2af37024a827f49",
+    "probe_fc1_tap.py": "36e65a3003b404277807209778fba0e8dd9fb5fa6d990578dc0eb90f6f740ca7",
+    "probe_fc1_tap_transposed.py": "0f09cc81806b822169cf7aa35b873b8c8f902b8fa5239c2580f93bb914828ba4",
+    "probe_fc1_tap_transposed_all.py": "b1e029504421d74567616dcf77d1f972c18c5ab428d78b1434492c32c8499ce6",
+    "test_probe_fc1_tap.py": "703a3b0a1ce5d884c7cd6f318bf4947bca3800125af6e594823591ec957ecb73"
+  },
+  "generated_tests": {
+    "tests": 4,
+    "passed": true,
+    "seconds": 0.012,
+    "scope": "Generated ctypes output ownership, including release and failure paths; no SDK/model."
+  },
+  "decision": "Do not integrate either tap graph into the full model. Stop this diagnostic branch: both complete ordinary calls lose latency; no whole-model gain or quality acceptance.",
+  "limitations": [
+    "Normal order ABBAABBA, four calls per route with first and subsequent three reported separately; one captured input, no confidence interval.",
+    "Original nodes/weights are unchanged; extra diagnostic output branches can change FP16 fusion and rounding. Both candidates fail the original FP32 strict numerical test.",
+    "All-output measurements include extra FP32 payload 3473408 bytes per call and all owned output copies/release. No measured cost is subtracted.",
+    "Subset request of output indices 0/1 fails on the recorded RKNN runtime 2.3.2 / driver0.7.2; no universal claim about other SDK versions.",
+    "Sampled NPU frequency is 300MHz. Clocks/governors unchanged. Profile and normal timings use different contexts; profile savings are not wall-time gains.",
+    "No new trajectory, map cadence, complete latency, camera, 8GB, closure or 30-minute validation. Latest paced replay remains v58: 0.5425449316Hz and P95 2.4715603889s."
+  ]
+}
