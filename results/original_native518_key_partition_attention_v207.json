@@ -1,0 +1,453 @@
+{
+  "schema": "original_native518_key_partition_attention_v207",
+  "record": 207,
+  "status": "two_isolated_full_key_attention_partition_experiments_audited_CPU_gates_pass_NPU_precision_gates_fail_not_adopted",
+  "scope": {
+    "board": "16 GB RK3588S",
+    "operator": "Original global0 SDPA on one frozen actual original-QKV capture; not a fresh-pixel or whole-model run.",
+    "original_QKV_shape": [
+      1,
+      16,
+      2082,
+      64
+    ],
+    "original_scale": 0.125,
+    "partition_key_ranges": [
+      [
+        0,
+        694
+      ],
+      [
+        694,
+        1388
+      ],
+      [
+        1388,
+        2082
+      ]
+    ],
+    "original_queries_heads_keys_and_all64_value_channels_retained": true,
+    "learned_parameters_in_isolated_graph": 0,
+    "learned_weights_layers_or_resolution_reduced": false,
+    "added_internal_dummy_keys_per_partition": 1,
+    "dummy_key_is_zero_and_removed_by_exact_real_denominator_identity": true,
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "capture_receipt": {
+      "bytes": 12587,
+      "sha256": "e4ffaea2b11df9ac558c119cb4854d490b0030c02b7706eee344b8894cefa686"
+    },
+    "same_actual_original_Torch_FP32_reference": {
+      "shape": [
+        1,
+        16,
+        2082,
+        64
+      ],
+      "bytes": 8528000,
+      "sha256": "77793f5ae5841d1646fdb7e4b1680d259a7a48e990ce15d2e5e4ac8ec0667dec"
+    }
+  },
+  "mathematical_construction": {
+    "definitions": "For each original-key partition i, s=qk^T/8, Z_i=sum(exp(s)), N_i=sum(exp(s)*V). The appended zero key has score zero.",
+    "V65": {
+      "original_value_extension": "[V64,0]",
+      "dummy_value": "[zero64,1]",
+      "output": "[u64,p]",
+      "identity": "u_i=N_i/(Z_i+1); p_i=1/(Z_i+1); Y=sum_i(u_i/p_i)/sum_i(1/p_i-1)"
+    },
+    "CIP_V66": {
+      "original_value_extension": "[V64,1,0]",
+      "dummy_value": "[zero64,0,1]",
+      "output": "[u64,m,p]",
+      "identity": "m_i=Z_i/(Z_i+1); Y=sum_i(u_i/p_i)/sum_i(m_i/p_i)"
+    },
+    "completion": "FLOAT32 division and ordered sums over partitions 0,1,2 on CPU; no clamping, fitted scalar, CPU Exp or explicit full score matrix.",
+    "domain": "All raw values finite; 0<p<1; CIP m>0 without an upper bound; merged denominator finite and positive. m+p is diagnostic only.",
+    "proof_scope": "Each new static graph has an exact serialized inverse to the original isolated baseline. Real-number identities do not imply identical finite-precision execution.",
+    "common_row_factor_cancellation": "CIP ratios cancel a common finite positive multiplier only if the same multiplier affects every u component, m and p in a row. This does not prove an actual kernel error cause."
+  },
+  "evaluation_policy": {
+    "thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "CPU": "Two sequential ORT sessions, four calls: baseline once and one reusable partition graph three times. Five full FLOAT32 outputs saved before numeric verdicts.",
+    "NPU": "Four persistent contexts; baseline core mask7, three partition actors with masks1/2/4. ABBA phases each have one warmup and two measured complete calls.",
+    "CPU_affinity_for_these_experiments": "Main thread and all three actors inherit CPU4; no actor-affinity intervention is included.",
+    "complete_timer": "Input NHWC packing/slices, submit/drain, ordinary SDK IO, owned output copies/release, finite checks and FLOAT32 merge. Hashes, saves, initialization, close and reference metrics are outside measured calls.",
+    "SDK_duration_scope": "The candidate SDK duration is the sum of three concurrent branch durations, not concurrent latency.",
+    "run_control": {
+      "NPU_hz": 1000000000,
+      "timeout_seconds": 180,
+      "temperature_limit_c": 75,
+      "DMA_reserve_bytes": 268435456,
+      "MemAvailable_floor_bytes": 2684354560
+    }
+  },
+  "experiments": {
+    "V65": {
+      "CPU_fixed_and_strict_comparisons_passed": 3,
+      "CPU_comparisons": [
+        {
+          "name": "baseline_vs_original_Torch",
+          "relative_l2": 2.444472140222465e-07,
+          "max_abs": 4.5299530029296875e-06,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "byte_equal": false
+        },
+        {
+          "name": "merged_vs_original_Torch",
+          "relative_l2": 1.6617557087943857e-07,
+          "max_abs": 2.86102294921875e-06,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "byte_equal": false
+        },
+        {
+          "name": "merged_vs_baseline",
+          "relative_l2": 2.327063581368194e-07,
+          "max_abs": 3.0994415283203125e-06,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "byte_equal": false
+        }
+      ],
+      "compiled_candidate": {
+        "bytes": 1593743,
+        "sha256": "09e887ac5422e53d00d2f455bb64df83ca792ad6733e28db51138028fac7ed16",
+        "one_fused_FLOAT16_NPU_SDPA": true,
+        "Q_tokens": 2082,
+        "K_tokens_including_dummy": 695,
+        "V_output_channels": 65,
+        "three_indicator_Concats_on_NPU": true,
+        "public_output_CPU_transpose": true,
+        "internal_CPU_layout_fallback": false
+      },
+      "NPU_complete_mean_seconds": {
+        "baseline": 0.4072249262499099,
+        "key_partition": 0.36448771374489297
+      },
+      "within_run_descriptive_mean_reduction_percent": 10.494743752200852,
+      "measured_complete_seconds": {
+        "baseline": [
+          0.406307999001001,
+          0.40837829100200906,
+          0.40636654099216685,
+          0.40784687400446273
+        ],
+        "key_partition": [
+          0.35887491099128965,
+          0.3590024529985385,
+          0.36382687000150327,
+          0.37624662098824047
+        ]
+      },
+      "mean_candidate_CPU_merge_seconds": 0.027156210999237373,
+      "NPU_original_reference_comparisons": [
+        {
+          "name": "baseline_vs_original_Torch",
+          "relative_l2": 0.0013111764193871386,
+          "max_abs": 0.04167795181274414,
+          "outside_count": 816777,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false
+        },
+        {
+          "name": "merged_vs_original_Torch",
+          "relative_l2": 0.0006152472056005246,
+          "max_abs": 0.018680572509765625,
+          "outside_count": 573647,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false
+        },
+        {
+          "name": "merged_vs_baseline",
+          "relative_l2": 0.0007762846916238475,
+          "max_abs": 0.02341318130493164,
+          "outside_count": 803888,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false
+        }
+      ],
+      "NPU_fixed_and_strict_comparisons_passed": 0,
+      "NPU_comparisons_total": 8,
+      "NPU_saved_full_FLOAT32_files": 5,
+      "NPU_saved_NPY_bytes": 43039744,
+      "all_first_raws_saved_before_indicator_verdict": true,
+      "full_saved_merge_independently_recreated_byte_equal": true,
+      "same_policy_repeat_outputs_byte_equal": true,
+      "complete_calls": 12,
+      "measured_calls": 8,
+      "warmup_calls": 4,
+      "resource_totals": {
+        "contexts_created": 4,
+        "contexts_destroyed": 4,
+        "runs_completed": 24,
+        "output_buffers_acquired": 24,
+        "output_buffers_released": 24
+      },
+      "maximum_sampled_temperature_c": 57.307,
+      "minimum_sampled_DMA_free_bytes": 1594109952,
+      "all_resources_closed_and_controller_restored": true,
+      "evidence": {
+        "static_receipt": {
+          "bytes": 14546,
+          "sha256": "7c28b3d659d6a9c5a3c481ab6474140d07e05ea753ae82c57d5f493c160320fc"
+        },
+        "CPU_receipt": {
+          "bytes": 24264,
+          "sha256": "789d111f23cce3e06cad4407a3466397497ae68b4f9594d5ff25d35365f99cfc"
+        },
+        "CPU_saved_audit": {
+          "bytes": 7194,
+          "sha256": "be032d9ef4519635b3158c958cfd308f289ed301b95716bfc678f7db80b613e3"
+        },
+        "compile_receipt": {
+          "bytes": 6343,
+          "sha256": "fd951503ac2ee7ff92dd3408449655d470a7eeb1a216ed33a8717577346b034f"
+        },
+        "placement_saved_audit": {
+          "bytes": 26365,
+          "sha256": "a78d567eedd5397057f502a8312891931de3d1e9135eb6d7080661360bd02625"
+        },
+        "NPU_receipt": {
+          "bytes": 231020,
+          "sha256": "84d503e120d91102dd63a0c2525ed8e87336db7208c3c7c5592f1a9b71d9c9b1"
+        },
+        "NPU_numeric_saved_audit": {
+          "bytes": 15898,
+          "sha256": "0012c35e83be24dca90170f18f5f53af7157b1e73c1c0587583c884e5fb092a3"
+        },
+        "NPU_runtime_saved_audit": {
+          "bytes": 6460,
+          "sha256": "980f35ad1972c1485989166bcb0960c6e5f3f34ce9768f4fe85918294c708886"
+        },
+        "controller": {
+          "bytes": 6776,
+          "sha256": "ea30e2737bbad95b0821e3bdd5f6ffd9c46aaeadf00bc053ceaa6b48c6f867fd"
+        },
+        "transport": {
+          "bytes": 31385,
+          "sha256": "ab09439a3c7cb7b85803e0018748a65db15dc0b5d6e324dc305ec688c799d796"
+        },
+        "manifest": {
+          "bytes": 11844,
+          "sha256": "e96fb40aca8cbc2d99b2bb3eb6d878700af526a76a20cd89083435b84bc41264"
+        }
+      },
+      "executed_worker_source_sha256": "6dce6ffb0d8ff0075bb0f75830e371fbce53acf5cbf5f6c8362b7ca46da6bad5",
+      "numeric_auditor_source_sha256": "fb2c39bef1ba418a4657c2e5f04cc56d3b819cd85af64110c50e3633760c553c",
+      "runtime_auditor_source_sha256": "15b85277b130e1e4ec50f7b810327ed4ea9ebf8a53d2bbf2790f9f7814b33c39"
+    },
+    "CIP_V66": {
+      "CPU_fixed_and_strict_comparisons_passed": 3,
+      "CPU_comparisons": [
+        {
+          "name": "baseline_vs_original_Torch",
+          "relative_l2": 2.444472140222465e-07,
+          "max_abs": 4.5299530029296875e-06,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "byte_equal": false
+        },
+        {
+          "name": "merged_vs_original_Torch",
+          "relative_l2": 1.593903583146285e-07,
+          "max_abs": 2.86102294921875e-06,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "byte_equal": false
+        },
+        {
+          "name": "merged_vs_baseline",
+          "relative_l2": 2.2943081187349472e-07,
+          "max_abs": 3.814697265625e-06,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "byte_equal": false
+        }
+      ],
+      "compiled_candidate": {
+        "bytes": 1638351,
+        "sha256": "cacd87c3692e845fdf3d42b6cd5924080e20db4d6ec4fc9b008acc6c567dbafa",
+        "one_fused_FLOAT16_NPU_SDPA": true,
+        "Q_tokens": 2082,
+        "K_tokens_including_dummy": 695,
+        "V_output_channels": 66,
+        "three_indicator_Concats_on_NPU": true,
+        "public_output_CPU_transpose": true,
+        "internal_CPU_layout_fallback": false
+      },
+      "NPU_complete_mean_seconds": {
+        "baseline": 0.4085168324963888,
+        "key_partition": 0.3685908389998076
+      },
+      "within_run_descriptive_mean_reduction_percent": 9.77340229840692,
+      "measured_complete_seconds": {
+        "baseline": [
+          0.40674762400158215,
+          0.4131464579986641,
+          0.4059837489912752,
+          0.4081894989940338
+        ],
+        "key_partition": [
+          0.36265953599649947,
+          0.3643994529993506,
+          0.3704085369972745,
+          0.3768958300061058
+        ]
+      },
+      "mean_candidate_CPU_merge_seconds": 0.028888492248370312,
+      "NPU_original_reference_comparisons": [
+        {
+          "name": "baseline_vs_original_Torch",
+          "relative_l2": 0.0013111764193871386,
+          "max_abs": 0.04167795181274414,
+          "outside_count": 816777,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false
+        },
+        {
+          "name": "merged_vs_original_Torch",
+          "relative_l2": 0.0005971723129627321,
+          "max_abs": 0.01900506019592285,
+          "outside_count": 482950,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false
+        },
+        {
+          "name": "merged_vs_baseline",
+          "relative_l2": 0.0007801501663721259,
+          "max_abs": 0.02350592613220215,
+          "outside_count": 789396,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false
+        }
+      ],
+      "NPU_fixed_and_strict_comparisons_passed": 0,
+      "NPU_comparisons_total": 8,
+      "NPU_saved_full_FLOAT32_files": 5,
+      "NPU_saved_NPY_bytes": 43439488,
+      "all_first_raws_saved_before_indicator_verdict": true,
+      "full_saved_merge_independently_recreated_byte_equal": true,
+      "same_policy_repeat_outputs_byte_equal": true,
+      "complete_calls": 12,
+      "measured_calls": 8,
+      "warmup_calls": 4,
+      "resource_totals": {
+        "contexts_created": 4,
+        "contexts_destroyed": 4,
+        "runs_completed": 24,
+        "output_buffers_acquired": 24,
+        "output_buffers_released": 24
+      },
+      "maximum_sampled_temperature_c": 57.307,
+      "minimum_sampled_DMA_free_bytes": 1593868288,
+      "all_resources_closed_and_controller_restored": true,
+      "evidence": {
+        "static_receipt": {
+          "bytes": 16216,
+          "sha256": "2d376d052d571a37c1e9cb20341da9b4edc72e5e96012037e4260cd26e021add"
+        },
+        "CPU_receipt": {
+          "bytes": 26123,
+          "sha256": "d457e5f1ec16b85e91841c89e8dc521736320bf0b901fd4f3ad6ab4325b13005"
+        },
+        "CPU_saved_audit": {
+          "bytes": 10651,
+          "sha256": "79ea8eac8cdfdd143092a088b282e0bd93f749220bc69e8d4b20b14a2fecb430"
+        },
+        "compile_receipt": {
+          "bytes": 6445,
+          "sha256": "9026337980df2ba217dc780a99771c3f401667a1ca74848bc470eb9a0b8b3727"
+        },
+        "placement_saved_audit": {
+          "bytes": 31761,
+          "sha256": "e56c8090e496275c47d4ad96e60fc0c43582e172d569d6f14e1674a014d3366c"
+        },
+        "NPU_receipt": {
+          "bytes": 242625,
+          "sha256": "308cd4967aa5cda2949a2dee207187879dc71ff4dfbdde07c778ba911fc72ebc"
+        },
+        "NPU_numeric_saved_audit": {
+          "bytes": 30464,
+          "sha256": "5c75f8613713b9bce46bdf9ada25494b07ddcb7054214e10487ea9df233a023c"
+        },
+        "NPU_runtime_saved_audit": {
+          "bytes": 7335,
+          "sha256": "c84b7ef37223bd6d79afff731d578ab72313b7addb8f53d6fb0ddc3ed275d9a9"
+        },
+        "controller": {
+          "bytes": 6779,
+          "sha256": "09f61d8263c396e61c7716834aca6af7f1fbdebefe370674782e6bd7a13507ce"
+        },
+        "transport": {
+          "bytes": 32184,
+          "sha256": "7fd39a2f7f2ce8b6646ccf4593544865740245cb65dbb8c61a332d79c46532f1"
+        },
+        "manifest": {
+          "bytes": 11923,
+          "sha256": "dd6869bb31f4f301a599b3e9ef73c56bbc3374d1f8fbe5dc06e4115871692965"
+        }
+      },
+      "executed_worker_source_sha256": "928f66f2ddd9df0ce9b29a43d900687f7a134146e4da4b09188785794f3f1980",
+      "numeric_auditor_source_sha256": "8cbf1ca2f68780056f51ff36b9de3a7047793b07df0a00acdc13c3c14917390f",
+      "runtime_auditor_source_sha256": "bc1d7dcfb0175d04640ea1942e4a6007df3683a4b4f2daab369fd2de33d972bd"
+    }
+  },
+  "CIP_same_raw_formula_control": {
+    "new_baseline_byte_equal_V65_baseline": true,
+    "all3_V66_projected_u64_p_byte_equal_V65_raws": true,
+    "legacy_completion_from_same_V66_raws_byte_equal_V65_merged": true,
+    "legacy_formula": "sum(u/p)/sum(1/p-1)",
+    "complementary_formula": "sum(u/p)/sum(m/p)",
+    "legacy_vs_original_FP32": {
+      "relative_l2": 0.0006152472056005246,
+      "max_abs": 0.018680572509765625
+    },
+    "complementary_vs_original_FP32": {
+      "relative_l2": 0.0005971723129627321,
+      "max_abs": 0.01900506019592285
+    },
+    "same_raw_relative_L2_reduction_percent": 2.937826043460068,
+    "maximum_absolute_error_improved": false,
+    "new_attention_or_SDK_forward_for_legacy_control": false,
+    "maximum_abs_m_plus_p_minus_one": 0.0007605552673339844,
+    "interpretation": "The completion-formula effect is isolated on unchanged u/p bytes. Neither a common hardware row multiplier nor accurate internal Softmax mass is established."
+  },
+  "decision": "Both isolated candidates remain unaccepted because fixed and strict NPU gates fail. Retain the algebra, measured within-run component timings and numerical failure evidence; no default whole-model route is changed.",
+  "limits": [
+    "One saved global0 QKV case is not a fresh observation, full-network execution, trajectory, map update, sustained rate, P95, thirty-minute stability or physical8GB test.",
+    "V65 and CIP timings come from separate bounded trials. Only each trial's own baseline/candidate comparison is reported; no cross-trial speed effect is inferred.",
+    "Four measured calls per route provide descriptive means, not a broad statistical performance claim. CPU packing, dispatch and merge costs are included.",
+    "Valid positive indicators do not establish accurate recovered mass or internal accumulator precision.",
+    "Per-call actual packed-input hash telemetry is absent; source-bound deterministic packing and immutable canonical input checks support feed lineage.",
+    "Publication covers the V65 and CIP graph experiments only; a separate thread-affinity experiment is outside this record."
+  ],
+  "acceptance": {
+    "independent_saved_numeric_and_runtime_audits_passed": true,
+    "both_board_FP32_operator_gates_passed": true,
+    "NPU_precision_accepted": false,
+    "candidate_adopted": false,
+    "full_model_trajectory_realtime_or_physical8GB_accepted": false
+  },
+  "publication": "Sanitized numerical metadata and provenance hashes only. Original weights, captures, ONNX/RKNN payloads, SDKs, raw private receipts and private absolute paths are excluded. Repository and original-model licenses remain separate; see MODEL_LICENSES.md."
+}

@@ -574,5 +574,26 @@
     "full_pipeline_unchanged": true,
     "last_verified_complete_pipeline": "results/original_calibrated_camera_v82.json",
     "real_time_validated": false
+  },
+  "original_native518_key_partition_attention_v207": {
+    "record": "results/original_native518_key_partition_attention_v207.json",
+    "scope": "Isolated original global0 full-query/all-key attention; separate V65 and CIP V66 ABBA trials, not full-network latency.",
+    "V65_component_complete_mean_seconds": {
+      "baseline": 0.4072249262499099,
+      "key_partition": 0.36448771374489297
+    },
+    "CIP_V66_component_complete_mean_seconds": {
+      "baseline": 0.4085168324963888,
+      "key_partition": 0.3685908389998076
+    },
+    "merged_relative_L2_vs_original_FP32": {
+      "V65": 0.0006152472056005246,
+      "CIP_V66": 0.0005971723129627321
+    },
+    "same_raw_CIP_vs_legacy_L2_reduction_percent": 2.937826043460068,
+    "NPU_fixed_and_strict_comparisons_passed_per_trial": 0,
+    "NPU_comparisons_per_trial": 8,
+    "candidate_accepted": false,
+    "real_time_or_full_model_quality_validated": false
   }
 }
