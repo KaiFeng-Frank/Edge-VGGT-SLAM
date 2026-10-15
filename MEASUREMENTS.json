@@ -607,5 +607,29 @@
     "affinity_only_causal_speedup_established": false,
     "candidate_accepted": false,
     "real_time_or_full_model_quality_validated": false
+  },
+  "original_native518_bare_query_partition_input_dtype_v209": {
+    "record": "results/original_native518_bare_query_partition_input_dtype_v209.json",
+    "scope": "Two separate isolated original-attention trials; each timing compared only to its own control.",
+    "bare_query_partition_complete_mean_seconds": {
+      "baseline": 0.41044808274818934,
+      "query_partition": 0.2754152779998549
+    },
+    "bare_query_partition_mean_reduction_percent": 32.898875746771935,
+    "merged_byte_equal_NPU_baseline": true,
+    "BQP_fixed_and_strict_passed": 1,
+    "BQP_comparisons": 8,
+    "same_three_owner_complete_mean_seconds": {
+      "A_F32": 0.2853060804991401,
+      "B_F16": 0.352799014748598
+    },
+    "F16_input_slowdown_percent": 23.656325210938267,
+    "all4_F32_F16_endpoints_byte_equal": true,
+    "input_dtype_paired_comparisons_passed": 4,
+    "input_dtype_original_and_CPU_comparisons_passed": 0,
+    "input_dtype_comparisons": 14,
+    "F16_route_adopted": false,
+    "original_FP32_precision_accepted": false,
+    "real_time_or_full_model_quality_validated": false
   }
 }

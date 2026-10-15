@@ -221,16 +221,17 @@
     "results/original_native518_checkpoint_cache_io_v203.json",
     "results/original_native518_original_model_cache_io_v204.json",
     "results/original_native518_fresh_pixel_persistent_v205.json",
-    "results/original_native518_original_group2_compute_profile_v206.json"
+    "results/original_native518_original_group2_compute_profile_v206.json",
+    "results/original_native518_bare_query_partition_input_dtype_v209.json"
   ],
   "file_sha256": {
     ".gitignore": "5c914f3ced73f7a831f890a98f771bde1e11fdcf288b87f45a9fb538bef93b2e",
     "AGENTS.md": "5f341d96c5a6a17d849a3087eca18ed015eb82e638f166daefc6e7dab2dbc47e",
     "ARCHITECTURE.md": "933d175121556ccec1053d17414965ad6eaad07f11e978bf55c02100618d6695",
     "LICENSE": "dc493d7ac51f587fd71184315999c792ead523bf46da0f0cbf3e26a577b1a580",
-    "MEASUREMENTS.json": "6b65e2e1220207926ec1b7e835aa15b6278d402268fa0ef5d2a434d935da5d96",
+    "MEASUREMENTS.json": "facdd41ae563aec5ecabc95075d82da621da1d57bbef25fa083423b032434b1f",
     "MODEL_LICENSES.md": "a5750f37f5bcaa28912eaf3a1ab26cde0f570644a01077a81ff0ac4e8ab54a4e",
-    "README.md": "466141eecb2c0ea4a3685a0fbb0374eb5d9ac4db7b9a41b38652bb9997351a78",
+    "README.md": "83e7c632900bc2240c2e10f2c86bf13dbd74694120e363826fd325e0a0bc2899",
     "THIRD_PARTY_NOTICES.md": "99176fb73e78ba0950493b942dfc6c6198a4b6ce432bb0904926edb31bc631ee",
     "UPSTREAMS.json": "9325cc1d2c33794ea3361d0884a5796b9b22b119b9a9822113e7b726e2d88a0a",
     "assets/office_loop_figure.png": "5d20d0acb81d3fb38e14235499ba67a22441cfe835e899f3e224a99e514c28e9",
@@ -1181,7 +1182,7 @@
     "deploy/rk3588/validation/vggt-v16-camera-step-compile112-r1.json": "c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a",
     "deploy/rk3588/validation/vggt-v16-camera-step-export112-r1.json": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
     "deploy/rk3588/vggt-spark.patch": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864",
-    "docs/ENGINEERING_NOTES.md": "65598cae8d43d79367c19e65ca21204c478c760cc49185c05951d71c49da1e6d",
+    "docs/ENGINEERING_NOTES.md": "26be96279f4a380fba77337cc784338957cdf175bf6b641df79902fa417cd7e9",
     "docs/GRAPH_OPTIMIZATION_REVIEW.md": "5c87954f156b25bbf3353b0edf3e60c497743de2e1ea8ac9e6ab3fa75bedd493",
     "docs/PUBLICATION_SOURCE_ADAPTATIONS.json": "c379873854a5cec3d9d1a9285f63bf3093bb33884230aaf378cd141800c50d80",
     "evals/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -1468,12 +1469,13 @@
     "vggt_slam/submap.py": "fddccafee4e9f32452ce044b80669bd48f5fe5f331a980986a6091e7fce92e63",
     "vggt_slam/timestamp_replay.py": "14b168028a6f7722f4bea036285b4f9cd8119fed59230b7e3e07c4b7af07addc",
     "vggt_slam/viewer.py": "49c77ebd3b8faf58b579528a900b129fae676fe8f72e02a151dc53f0b7d3b397",
-    "vggt_slam/xnnpack_linear.py": "4a8884e756a0200345bcdf58f316f74d89edd4e6f82f528ff944118a2ef9c5ac"
+    "vggt_slam/xnnpack_linear.py": "4a8884e756a0200345bcdf58f316f74d89edd4e6f82f528ff944118a2ef9c5ac",
+    "results/original_native518_bare_query_partition_input_dtype_v209.json": "145e0ba2a57cca9d97d7da41591be522dab5982a322f228663cce6884e8c2317"
   },
-  "latest_completed_public_result": 208,
+  "latest_completed_public_result": 209,
   "publication_date": "2026-10-16",
   "publication_validation": {
-    "scope": "Existing source validation plus curated JSON, unchanged notes prefix, local links, public-artifact privacy, source-index hashes and audited R206 diagnostic evidence consistency. No new inference or SDK execution for publication.",
+    "scope": "Existing source validation plus curated R209 CPU/placement/NPU and same-owner input-type evidence, unchanged notes prefix, JSON/local links/privacy and source-index hashes. No inference or SDK execution for publication.",
     "focused_generated_tests_passed": 123,
     "actual_NN_SDK_or_board_execution_performed_for_publication": false,
     "published_source_path_adaptations": "docs/PUBLICATION_SOURCE_ADAPTATIONS.json",

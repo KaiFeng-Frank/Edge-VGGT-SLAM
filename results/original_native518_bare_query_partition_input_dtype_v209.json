@@ -1,0 +1,570 @@
+{
+  "schema": "original_native518_bare_query_partition_input_dtype_v209",
+  "record": 209,
+  "status": "isolated_bare_query_partition_output_equivalence_verified_F16_input_slowdown_rejected_original_FP32_precision_still_failed",
+  "scope": {
+    "board": "16 GB RK3588S",
+    "source": "One original global0 attention capture; all 2082 queries/keys, 16 heads, 64 value components.",
+    "original_QKV_shape": [
+      1,
+      16,
+      2082,
+      64
+    ],
+    "scale": 0.125,
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "original_checkpoint_weights_layers_tokens_and_resolution_changed": false,
+    "fresh_pixels_full_model_or_trajectory_executed": false,
+    "earlier_attention_records": [
+      "results/original_native518_key_partition_attention_v207.json",
+      "results/original_native518_key_partition_thread_affinity_v208.json"
+    ]
+  },
+  "bare_query_partition": {
+    "representation": "Three independent contiguous query ranges; each keeps all 2082 original K/V. FLOAT32 concatenation on query axis2 restores the complete output.",
+    "query_ranges": [
+      [
+        0,
+        694
+      ],
+      [
+        694,
+        1388
+      ],
+      [
+        1388,
+        2082
+      ]
+    ],
+    "per_partition_Q_shape": [
+      1,
+      16,
+      694,
+      64
+    ],
+    "each_partition_KV_shape": [
+      1,
+      16,
+      2082,
+      64
+    ],
+    "original_five_NodeProtos_and_one_eighth_scale_preserved": true,
+    "full_ModelProto_inverse_byte_equal": true,
+    "dummy_centering_indicator_or_denominator_added": false,
+    "CPU": {
+      "sequential_sessions": 2,
+      "calls": 4,
+      "full_saved_FLOAT32_files": 5,
+      "saved_NPY_bytes": 25584256,
+      "all3_fixed_and_strict_comparisons_passed": true,
+      "merged_byte_equal_current_CPU_baseline": true,
+      "merged_vs_original_FP32_relative_l2": 2.444472140222465e-07,
+      "merged_vs_original_FP32_max_abs": 4.5299530029296875e-06
+    },
+    "actual_compile": {
+      "noncalibrating_FP16": true,
+      "one_fused_NPU_SDPA_per_partition": true,
+      "Q_tokens": 694,
+      "K_tokens": 2082,
+      "V_components": 64,
+      "unfused_score_arithmetic_or_internal_CPU_layout": false,
+      "NPU_output_transpose": true,
+      "CPU_public_input_and_output_operators": true
+    },
+    "NPU_trial": {
+      "schedule": "ABBA; one explicit warmup and two measured complete calls per phase.",
+      "complete_calls": 12,
+      "warmup_calls": 4,
+      "measured_calls": 8,
+      "measured_calls_per_route": 4,
+      "baseline_core_mask": 7,
+      "partition_core_masks": [
+        1,
+        2,
+        4
+      ],
+      "main_and_baseline_CPU": 4,
+      "actor_CPUs": [
+        5,
+        6,
+        7
+      ],
+      "baseline_complete_mean_seconds": 0.41044808274818934,
+      "query_partition_complete_mean_seconds": 0.2754152779998549,
+      "within_trial_descriptive_reduction_percent": 32.898875746771935,
+      "measured_complete_seconds": {
+        "baseline": [
+          0.4172784170077648,
+          0.40930870799638797,
+          0.407692581997253,
+          0.4075126239913516
+        ],
+        "query_partition": [
+          0.27215523600170854,
+          0.27354519499931484,
+          0.27488315300433896,
+          0.28107752799405716
+        ]
+      },
+      "saved_FLOAT32_files": 5,
+      "saved_NPY_bytes": 25584256,
+      "resource_totals": {
+        "contexts_created": 4,
+        "contexts_destroyed": 4,
+        "runs_completed": 24,
+        "output_buffers_acquired": 24,
+        "output_buffers_released": 24
+      },
+      "merged_byte_equal_actual_NPU_baseline": true,
+      "original_comparisons": [
+        {
+          "name": "baseline_vs_original_Torch",
+          "relative_l2": 0.0013111764193871386,
+          "max_abs": 0.04167795181274414,
+          "outside_count": 816777,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false
+        },
+        {
+          "name": "merged_vs_original_Torch",
+          "relative_l2": 0.0013111764193871386,
+          "max_abs": 0.04167795181274414,
+          "outside_count": 816777,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false
+        },
+        {
+          "name": "merged_vs_baseline",
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "byte_equal": true
+        }
+      ],
+      "CPU_comparisons": [
+        {
+          "name": "baseline_vs_CPU_baseline",
+          "relative_l2": 0.0013111767118061998,
+          "max_abs": 0.041678428649902344,
+          "outside_count": 816811,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "reference_file": "baseline-raw-F32.npy"
+        },
+        {
+          "name": "partition0_vs_CPU_partition0",
+          "relative_l2": 0.0013206153104836985,
+          "max_abs": 0.034601688385009766,
+          "outside_count": 271976,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "reference_file": "partition0-raw-F32.npy"
+        },
+        {
+          "name": "partition1_vs_CPU_partition1",
+          "relative_l2": 0.001797512456675526,
+          "max_abs": 0.041678428649902344,
+          "outside_count": 273169,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "reference_file": "partition1-raw-F32.npy"
+        },
+        {
+          "name": "partition2_vs_CPU_partition2",
+          "relative_l2": 0.0003247424271739217,
+          "max_abs": 0.0005753636360168457,
+          "outside_count": 271666,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "reference_file": "partition2-raw-F32.npy"
+        },
+        {
+          "name": "merged_vs_CPU_merged",
+          "relative_l2": 0.0013111767118061998,
+          "max_abs": 0.041678428649902344,
+          "outside_count": 816811,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "reference_file": "merged-F32.npy"
+        }
+      ],
+      "fixed_gate_pass_count": 1,
+      "strict_gate_pass_count": 1,
+      "numeric_comparison_count": 8,
+      "only_passing_comparison": "merged_vs_baseline is internal NPU output equivalence; both original-FP32 and all five CPU comparisons fail.",
+      "all12_raw_and_merged_repeats_verified": true,
+      "per_call_actual_feed_hash_telemetry_present": false,
+      "input_proof": "Immutable full captured QKV and frozen partial-Q/full-KV packing source were independently verified. Serialized query ranges and shared readonly KV are observed; actual per-call input hashes were not saved.",
+      "maximum_sampled_temperature_c": 57.307,
+      "minimum_sampled_DMA_free_bytes": 1575030784,
+      "minimum_sampled_MemAvailable_bytes": 4809375744
+    }
+  },
+  "same_owner_input_dtype": {
+    "control": "A_F32: ordinary FLOAT32 NHWC/type0/pass0",
+    "candidate": "B_F16: explicitly rounded FLOAT16 NHWC/type1/pass0",
+    "same_compiled_query_partition_model_and_same_three_persistent_contexts": true,
+    "no_full_baseline_owner_constructed": true,
+    "NPU_core_masks": [
+      1,
+      2,
+      4
+    ],
+    "actor_CPUs": [
+      5,
+      6,
+      7
+    ],
+    "main_CPU": 4,
+    "logical_packet_shapes": [
+      [
+        1,
+        694,
+        64,
+        16
+      ],
+      [
+        1,
+        2082,
+        64,
+        16
+      ],
+      [
+        1,
+        2082,
+        64,
+        16
+      ]
+    ],
+    "output_API": "Unchanged ordinary want_float1; owned FLOAT32 copies and release.",
+    "schedule": "ABBA; every phase has one warmup and two measured calls on the same three owners.",
+    "complete_calls": 12,
+    "warmup_calls": 4,
+    "measured_calls": 8,
+    "runs_per_owner": 12,
+    "A_F32_complete_mean_seconds": 0.2853060804991401,
+    "B_F16_complete_mean_seconds": 0.352799014748598,
+    "descriptive_slowdown_percent": 23.656325210938267,
+    "measured_complete_seconds": {
+      "A_F32": [
+        0.291630071005784,
+        0.29381627900875174,
+        0.2835047359985765,
+        0.2722732359834481
+      ],
+      "B_F16": [
+        0.35180636899895035,
+        0.3583752860140521,
+        0.35020645198528655,
+        0.35080795199610293
+      ]
+    },
+    "component_means_seconds": {
+      "A_F32": {
+        "mean_input_layout_pack_seconds": 0.014815137001278345,
+        "mean_CPU_completion_seconds": 0.00866323026275495,
+        "mean_dispatch_and_collect_seconds": 0.2618217347553582
+      },
+      "B_F16": {
+        "mean_input_layout_pack_seconds": 0.058257651755411644,
+        "mean_CPU_completion_seconds": 0.010798741001053713,
+        "mean_dispatch_and_collect_seconds": 0.283733726500941
+      }
+    },
+    "saved_FLOAT32_files": 8,
+    "saved_NPY_bytes": 34112512,
+    "all4_A_F32_B_F16_endpoint_pairs_byte_equal": true,
+    "original_comparisons": [
+      {
+        "name": "A_F32_merged_vs_original_Torch",
+        "relative_l2": 0.001311176419387162,
+        "max_abs": 0.04167795181274414,
+        "outside_count": 816777,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false,
+        "route": "A_F32"
+      },
+      {
+        "name": "B_F16_merged_vs_original_Torch",
+        "relative_l2": 0.001311176419387162,
+        "max_abs": 0.04167795181274414,
+        "outside_count": 816777,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false,
+        "route": "B_F16"
+      }
+    ],
+    "CPU_comparison_metrics_for_each_byte_identical_route": [
+      {
+        "name": "A_F32_partition0_vs_CPU",
+        "relative_l2": 0.001320615310483708,
+        "max_abs": 0.034601688385009766,
+        "outside_count": 271976,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false,
+        "reference_file": "partition0-raw-F32.npy"
+      },
+      {
+        "name": "A_F32_partition1_vs_CPU",
+        "relative_l2": 0.0017975124566755394,
+        "max_abs": 0.041678428649902344,
+        "outside_count": 273169,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false,
+        "reference_file": "partition1-raw-F32.npy"
+      },
+      {
+        "name": "A_F32_partition2_vs_CPU",
+        "relative_l2": 0.00032474242717392464,
+        "max_abs": 0.0005753636360168457,
+        "outside_count": 271666,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false,
+        "reference_file": "partition2-raw-F32.npy"
+      },
+      {
+        "name": "A_F32_merged_vs_CPU",
+        "relative_l2": 0.0013111767118062236,
+        "max_abs": 0.041678428649902344,
+        "outside_count": 816811,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false,
+        "reference_file": "merged-F32.npy"
+      }
+    ],
+    "CPU_metric_table_scope": "Fresh audit recomputes eight CPU comparisons. Because A/B outputs are byte-identical, this four-row A table applies to both routes.",
+    "paired_comparisons": 4,
+    "paired_fixed_and_strict_passed": 4,
+    "original_and_CPU_comparisons": 10,
+    "original_and_CPU_fixed_and_strict_passed": 0,
+    "total_comparisons": 14,
+    "numerical_equivalence_rejected": false,
+    "actual_after_clock_packet_fingerprints_independently_reconstructed": true,
+    "actual_input_set_call_histories_verified": 36,
+    "actual_typed_buffer_requests_verified": 108,
+    "packet_proof": "Full original F32 QKV were independently transposed/sliced and rounded to F16, then matched to all 12 complete-call packet records and 36 owner input-set histories.",
+    "affinity_events_verified": 87,
+    "resource_totals": {
+      "contexts_created": 3,
+      "contexts_destroyed": 3,
+      "runs_completed": 36,
+      "output_buffers_acquired": 36,
+      "output_buffers_released": 36
+    },
+    "maximum_sampled_temperature_c": 59.153,
+    "minimum_sampled_DMA_free_bytes": 1687023616,
+    "minimum_sampled_MemAvailable_bytes": 4898435072,
+    "performance_decision": "Reject this NumPy F16 ordinary-input route: output equivalence holds, complete component latency increases 23.656%, and precision is unchanged.",
+    "both_routes_match_prior_four_audited_BQP_NPU_output_hashes": true
+  },
+  "timing_and_validation": {
+    "complete_timer_includes": "Fresh query slices, all dtype casts and NHWC packs, ordinary inputs_set/run/outputs_get, owned copies/release, finite/nonzero checks, three-actor dispatch/drain and FLOAT32 query-axis concat.",
+    "complete_timer_excludes": "Context initialization/destruction, hashes, saves, reference metrics and expected-packet fingerprint preparation.",
+    "owner_request_history_construction_is_timed": true,
+    "worker_packet_hash_and_request_extraction_after_clock": true,
+    "first_raws_saved_before_concat_verdict_and_all_outputs_before_numeric_verdict": true,
+    "full_KV_packed_once_per_complete_call_and_shared_readonly_Python_buffers": true,
+    "readonly_Python_sharing_is_not_shared_SDK_memory": true,
+    "concurrent_SDK_duration_sum_is_not_latency": true,
+    "unchanged_thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "report_consistency_tolerance_only": {
+      "rtol": 1e-12,
+      "atol": 1e-15,
+      "BQP_maximum_absolute_scalar_drift": 1.71954464556201e-16,
+      "input_dtype_maximum_absolute_scalar_drift": 1.953732314818879e-16,
+      "raw_hashes_outlier_counts_and_acceptance_gates_compared_exactly": true
+    },
+    "all_owners_futures_outputs_and_affinities_closed_or_restored": true,
+    "controller_NPU_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "temperature_limit_c": 75,
+    "prior_clock_policy_restored": true,
+    "physical_memory_samples_are_not_continuous_minima_or_unique_allocation_totals": true
+  },
+  "engineering_lessons": [
+    "Full-key attention rows are independent across queries. The bare partition uses the original five-node operator and a byte-preserving concat; no softmax normalization reconstruction is needed.",
+    "Same-output byte parity verifies this input-type conversion on this tested graph and input. It does not establish original-FP32 precision or the SDK internal conversion algorithm.",
+    "Include cast, layout, finite checks and IO in component timing. F16 packets halve input bytes but do not guarantee lower complete latency; the tested conversion/pack mean rises from 14.815 ms to 58.258 ms.",
+    "Neither a fused NPU label nor requested multiple cores measures utilization. Isolated externally materialized QKV do not prove an in-graph or whole-group gain."
+  ],
+  "acceptance": {
+    "independent_numeric_and_runtime_audits_passed": true,
+    "original_FP32_precision_accepted": false,
+    "F16_input_route_adopted": false,
+    "whole_model_default_changed": false,
+    "fresh_pose_20Hz_input_to_pose_P95_100ms_trajectory_or_physical8GB_accepted": false
+  },
+  "limits": [
+    "These are separate bounded component trials, with four measured samples per route. Compare each only against its own control; no cross-trial causal speed claim or statistical significance.",
+    "The BQP merged-versus-NPU-baseline pass and the four F32/F16 passes are self-equivalence checks. Seven of eight BQP and ten of fourteen input-dtype comparisons fail the unchanged fixed and strict gates.",
+    "No fresh images, full network, trajectory, map cadence, endurance, sustained rate or physical 8 GB operation was validated by these operator trials."
+  ],
+  "evidence": {
+    "bare_query_partition": {
+      "static": {
+        "bytes": 13984,
+        "sha256": "055dd7c4cb8ffdd1039c8d58a3f614c08d817cc5234e1317ecf0cf1be42f07d6"
+      },
+      "CPU": {
+        "bytes": 23472,
+        "sha256": "f17f3c375d87bb70cdbea13bbd8913a421c2aa94dceed90ffd9600fba2808930"
+      },
+      "CPU_saved_audit": {
+        "bytes": 6891,
+        "sha256": "73ac688fa948f8bf55f0c151350204e5e3cb925f0d3158e053a346d238e27945"
+      },
+      "compile": {
+        "bytes": 6283,
+        "sha256": "8eddb869a462fec1a4f9a7fec3a1006544cd513b07a1d3d59fd229ee318daf1d"
+      },
+      "compile_placement_audit": {
+        "bytes": 22010,
+        "sha256": "cf7cb82df678479e42899aa61a8fe3a14c982b7959bd1d1ab142c2744e65f4dc"
+      },
+      "NPU": {
+        "bytes": 266857,
+        "sha256": "1037b55d2df1a9ba62cf8f26ab353b0439818e4aa90dd9f30a765aadb046bb84"
+      },
+      "NPU_manifest": {
+        "bytes": 12285,
+        "sha256": "9b49f4892d790c9fed542cc35c6d09c80fa92a385a679bfb2317d226b9095967"
+      },
+      "NPU_controller": {
+        "bytes": 6422,
+        "sha256": "8c7e25e93584375f97a72eb1ab45a0861d50d339b7344b8aefeed0b6c84290ae"
+      },
+      "NPU_transport": {
+        "bytes": 33161,
+        "sha256": "1b3f5426725c4937b9c5976376d44b8c6a2cbd713003261bd232f940648e20aa"
+      },
+      "NPU_saved_numeric_audit": {
+        "bytes": 16391,
+        "sha256": "c049d1126a74776e8e3e410cf1d4aa5398eeade39a7d5a91be13970272860ce2"
+      },
+      "NPU_saved_runtime_audit": {
+        "bytes": 19361,
+        "sha256": "67f768e719b5304dd5c284e070297e1c8d93a9a42ede906d753ad2a672668645"
+      }
+    },
+    "input_dtype": {
+      "worker": {
+        "bytes": 51894,
+        "sha256": "5d8b6df71ac3cc530ffafe128999207f78bbe3d1898bb9629f35047ed917f8d6"
+      },
+      "owner": {
+        "bytes": 6690,
+        "sha256": "fddd984691c986bc082882d8b799881c6de53c6a3f2b599bd731a523c560c9ea"
+      },
+      "transport_source": {
+        "bytes": 18637,
+        "sha256": "01690e604b02653eb82ae4138e37cb370ac2e50909387e2b0eeda8587a68cc3f"
+      },
+      "result": {
+        "bytes": 411097,
+        "sha256": "517155cf0cdff5b0b086efd2df8da22264dbbcbbfbee2325b002030b89dab0f6"
+      },
+      "manifest": {
+        "bytes": 4731,
+        "sha256": "849e896c36be409ef599bf05c968757fd22e2eb9a7cbeac16fc9c6455da363f6"
+      },
+      "controller": {
+        "bytes": 6419,
+        "sha256": "b25464ea27827f38e5132c887ecce5f41dd5c65f044c088b12735445f7f87ca7"
+      },
+      "transport": {
+        "bytes": 24869,
+        "sha256": "c69dbff1011d3bbc029492a181e9d973858e0b3f3f4a5b09fdb835bb9776d7a0"
+      },
+      "numeric_audit": {
+        "bytes": 31236,
+        "sha256": "f711537687e4be6f098f5a0db812e27d326f1283cd29f4067cfab7e9347ca46b"
+      },
+      "numeric_auditor": {
+        "bytes": 27808,
+        "sha256": "139b1442e52ce7135f0626f49c9b148325689985cce016839991e6571088168f"
+      },
+      "runtime_audit": {
+        "bytes": 17007,
+        "sha256": "6fe1eee1d2db444b159d73e0639e6d50a1e2748c411368fba17e12e03754c7f1"
+      },
+      "runtime_auditor": {
+        "bytes": 32062,
+        "sha256": "047329822b41473135d7789197f00c6c5c50d8637395783b4ab68e5cc07b9437"
+      },
+      "owner_generated_peer": {
+        "bytes": 4790,
+        "sha256": "2a5a1524516dc32274aa09d611b62b5b2e9aaffe107c6aff9b8cdfc3e4c2020b"
+      }
+    },
+    "BQP_exporter_source_sha256": "1f916cd75f5905618d04251653c0ab4e816bd766f8048a02961a3c9b9edb4547",
+    "BQP_executed_worker_source_sha256": "66a9a1008a65cec60381a25934ae3af71cc2ced4c5cdadafc3e986930856526f",
+    "BQP_numeric_auditor_source_sha256": "1d383ca6e9e3102895d685ce6922983a3b277d9f49b3853bb8d22ec03d8df30c",
+    "BQP_runtime_auditor_source_sha256": "2a356dc6c8db57ff4887077130672be86c3b8cd140a9ac709520fa06baa8dcf2",
+    "BQP_executed_and_audit_sources": {
+      "export_bare_query_partition_static.py": {
+        "bytes": 17338,
+        "sha256": "1f916cd75f5905618d04251653c0ab4e816bd766f8048a02961a3c9b9edb4547"
+      },
+      "check_bare_query_partition_CPU_board.py": {
+        "bytes": 25739,
+        "sha256": "716f7c48fe1d305197fde2dfb1164ffe5c1e97f56ede28986ef898c94a54afae"
+      },
+      "execute_bare_query_partition_CPU_host.py": {
+        "bytes": 15211,
+        "sha256": "006ee61a39a431c8360a26fad4a0dc7904c23c11231fb7527fccc4e57c07737e"
+      },
+      "compile_bare_query_partition_FP16_host.py": {
+        "bytes": 20667,
+        "sha256": "ae817a68fe0680d74db826e629a3004d91b55561c2605d29f32aa6567a700f9d"
+      },
+      "audit_bare_query_partition_compile_saved_r1.py": {
+        "bytes": 16196,
+        "sha256": "97222ee0a5e72411699f46dd6dd2ada15860d42e08d8814f58d9ca0b52c772fb"
+      },
+      "run_bare_query_partition_paired_board.py": {
+        "bytes": 56380,
+        "sha256": "66a9a1008a65cec60381a25934ae3af71cc2ced4c5cdadafc3e986930856526f"
+      },
+      "execute_bare_query_partition_paired_host.py": {
+        "bytes": 16390,
+        "sha256": "b6d6211315ffccf1d98b4dcc4efb65a66c2d9e0136ad9a3785650239204718fe"
+      },
+      "audit_bare_query_partition_CPU_saved_r2.py": {
+        "bytes": 15320,
+        "sha256": "192a40a9ba1d326ad66bf41e26eff6f3aa14f2d0a2bc4587d2daa0194aad30d6"
+      },
+      "audit_bare_query_partition_NPU_saved_r2.py": {
+        "bytes": 20260,
+        "sha256": "1d383ca6e9e3102895d685ce6922983a3b277d9f49b3853bb8d22ec03d8df30c"
+      },
+      "audit_bare_query_partition_runtime_saved_r1.py": {
+        "bytes": 26866,
+        "sha256": "2a356dc6c8db57ff4887077130672be86c3b8cd140a9ac709520fa06baa8dcf2"
+      }
+    }
+  },
+  "publication": "Sanitized numerical metadata and immutable source/receipt hashes only. Original weights, captured arrays, exports, SDK binaries and private absolute paths are excluded. Repository and original-model licenses remain separate; see MODEL_LICENSES.md."
+}
