@@ -1,0 +1,446 @@
+{
+  "schema": "original_native518_fresh_pixel_persistent_v205",
+  "record": 205,
+  "status": "two_fresh_PNG_pairs_complete_original_pipeline_current_AB_outputs_identical_original_FP32_tensor_gates_failed",
+  "scope": {
+    "board": "16 GB RK3588S",
+    "inputs": "Four real dataset PNGs in two pairs; each route decodes and preprocesses them afresh.",
+    "source_indices": [
+      [
+        96,
+        104
+      ],
+      [
+        112,
+        120
+      ]
+    ],
+    "prepared_pair_shape": [
+      2,
+      3,
+      392,
+      518
+    ],
+    "preserved_computation": [
+      "All 24 original internal DINO layers for each image.",
+      "All 48 original aggregation blocks, original retained4/11/17/23 and global20 normalization.",
+      "Four original camera refinements, both complete DPT frames and the original pose codec."
+    ],
+    "previous_image_activation_reuse": false,
+    "reference_intermediate_injection": false,
+    "algorithm_weight_layer_token_or_resolution_changes": false,
+    "boundary": "PNG decode/preprocess through complete prediction tensors; excludes subsequent SL4/map processing.",
+    "schedule": "A pair4,pair5 in one process; then B pair4,pair5 in a fresh process. Not ABBA.",
+    "requested_core_mask": 7,
+    "core_mask_proves_actual_utilization": false
+  },
+  "routes": {
+    "A": "Original serial flags0 upstream and continuation; each model context closes before the next.",
+    "B": "Same serial original upstream. Original continuation groups1/2 persist between cases; group3/camera/depth borrow one internal arena serially.",
+    "shared_loading_policy": "Both routes use startup full SHA for ten original RKNN files, full checkpoint SHA before mmap, identity-checked known-model digest reuse, model-only post-init/close cache advice, and terminal full ten-model SHA after true native closure."
+  },
+  "source_and_output_fidelity": {
+    "current_prediction_files": 20,
+    "current_NPY_bytes": 12999104,
+    "all_files_FLOAT32_finite_and_independently_rehashed": true,
+    "same_input_B_vs_A_complete_tensor_pairs": 10,
+    "all_B_vs_A_output_bytes_equal": true,
+    "B_vs_A_relative_L2_max_abs_and_strict_outliers": 0,
+    "current_intermediate_hash_pairs_equal": 50,
+    "original_capture_prepared_DINO_through_frame0_matches_per_route": 22,
+    "intermediate_evidence_scope": "Hashes rather than separate saved payloads. Original PNG/prepared-pixel/source identities also match the complete original FP32 reference authority.",
+    "old_R200_seeds_used": false
+  },
+  "timing_per_case": [
+    {
+      "case": "pair4",
+      "source_indices": [
+        96,
+        104
+      ],
+      "A": {
+        "PNG_to_prediction_seconds": 36.79967148900323,
+        "PNG_preprocess_seconds": 0.07284288200025912,
+        "original_token_preparation_seconds": 0.2403091490123188,
+        "DINO24_lifecycle_seconds": 9.643564926998806,
+        "original_finalnorm_role_concat_seconds": 0.07721175800543278,
+        "group0_lifecycle_seconds": 4.762514519999968,
+        "first_candidate_open_seconds": 0.0,
+        "remaining19_pairs_heads_codec_seconds": 21.992079292991548,
+        "DINO_SDK_seconds": 5.73359653200896,
+        "group0_SDK_seconds": 3.118034604995046,
+        "tail_SDK_seconds": 13.087367107000318,
+        "SDK_fraction_of_full_pair_wall": 0.5961737525445114,
+        "SDK_run_sum_seconds": 21.938998244004324
+      },
+      "B": {
+        "PNG_to_prediction_seconds": 36.01607811899157,
+        "PNG_preprocess_seconds": 0.05189129700011108,
+        "original_token_preparation_seconds": 0.1378311810112791,
+        "DINO24_lifecycle_seconds": 9.50268903801043,
+        "original_finalnorm_role_concat_seconds": 0.03366854500200134,
+        "group0_lifecycle_seconds": 4.759001853002701,
+        "first_candidate_open_seconds": 3.4834018080000533,
+        "remaining19_pairs_heads_codec_seconds": 18.03699726999912,
+        "DINO_SDK_seconds": 5.735146575985709,
+        "group0_SDK_seconds": 3.1189821470034076,
+        "tail_SDK_seconds": 12.9773662200314,
+        "SDK_fraction_of_full_pair_wall": 0.6061596954252659,
+        "SDK_run_sum_seconds": 21.831494943020516
+      }
+    },
+    {
+      "case": "pair5",
+      "source_indices": [
+        112,
+        120
+      ],
+      "A": {
+        "PNG_to_prediction_seconds": 36.724713357005385,
+        "PNG_preprocess_seconds": 0.048974630000884645,
+        "original_token_preparation_seconds": 0.12316530400130432,
+        "DINO24_lifecycle_seconds": 9.333920313001727,
+        "original_finalnorm_role_concat_seconds": 0.016897125999093987,
+        "group0_lifecycle_seconds": 4.758363978005946,
+        "first_candidate_open_seconds": 0.0,
+        "remaining19_pairs_heads_codec_seconds": 22.432651962997625,
+        "DINO_SDK_seconds": 5.738288619017112,
+        "group0_SDK_seconds": 3.118933562989696,
+        "tail_SDK_seconds": 13.095837857021252,
+        "SDK_fraction_of_full_pair_wall": 0.5977734890840319,
+        "SDK_run_sum_seconds": 21.95306003902806
+      },
+      "B": {
+        "PNG_to_prediction_seconds": 32.83938130000024,
+        "PNG_preprocess_seconds": 0.04441208801290486,
+        "original_token_preparation_seconds": 0.13963163900189102,
+        "DINO24_lifecycle_seconds": 9.517518288994324,
+        "original_finalnorm_role_concat_seconds": 0.022622544012847356,
+        "group0_lifecycle_seconds": 4.840954778002924,
+        "first_candidate_open_seconds": 0.0,
+        "remaining19_pairs_heads_codec_seconds": 18.263352002002648,
+        "DINO_SDK_seconds": 5.752139787000488,
+        "group0_SDK_seconds": 3.1181787719979184,
+        "tail_SDK_seconds": 13.002897808008129,
+        "SDK_fraction_of_full_pair_wall": 0.6660666401472787,
+        "SDK_run_sum_seconds": 21.873216367006535
+      }
+    }
+  ],
+  "timing_totals": {
+    "A": {
+      "PNG_to_prediction_call_sum_seconds": 73.52438484600862,
+      "calls_plus_close_excluding_terminal_model_SHA_seconds": 73.56753430901153,
+      "constructor_calls_and_total_close_subtotal_seconds": 124.11721901402052,
+      "common_constructor_seconds": 38.15866112599906,
+      "model_startup_SHA_seconds": 12.530016384000191,
+      "checkpoint_SHA_seconds": 22.4923104269983,
+      "total_final_close_seconds": 12.43272783300199,
+      "model_terminal_SHA_seconds": 12.391023579009925,
+      "final_close_excluding_terminal_SHA_seconds": 0.04170425399206579,
+      "SDK_run_sum_seconds": 43.892058283032384,
+      "controller_seconds": 128.2759792630095,
+      "worker_terminal_elapsed_seconds": 126.67981006200716
+    },
+    "B": {
+      "PNG_to_prediction_call_sum_seconds": 68.85545941899181,
+      "calls_plus_close_excluding_terminal_model_SHA_seconds": 69.29576529700716,
+      "constructor_calls_and_total_close_subtotal_seconds": 119.73929590600892,
+      "common_constructor_seconds": 38.212530589007656,
+      "model_startup_SHA_seconds": 12.469644794997294,
+      "checkpoint_SHA_seconds": 23.271363337989897,
+      "total_final_close_seconds": 12.671266523000668,
+      "model_terminal_SHA_seconds": 12.231000019994099,
+      "final_close_excluding_terminal_SHA_seconds": 0.4402665030065691,
+      "SDK_run_sum_seconds": 43.70471131002705,
+      "controller_seconds": 122.98043364899058,
+      "worker_terminal_elapsed_seconds": 121.69686447799904
+    }
+  },
+  "descriptive_reduction_percent": {
+    "PNG_to_prediction_call_sum_seconds": 6.3501727172495475,
+    "calls_plus_close_excluding_terminal_model_SHA_seconds": 5.806595330572484,
+    "constructor_calls_and_total_close_subtotal_seconds": 3.527248791738613,
+    "SDK_run_sum_seconds": 0.42683569723992454
+  },
+  "timing_scope": [
+    "Calls include PNG decode/preprocessing, token preparation, all original SDK IO/run/copy/release, checks, retained construction, heads and pose decoding. B first open is inside its first call.",
+    "Constructor/full startup-model and checkpoint SHA, final close/terminal SHA, evidence writes and outer verification are separately accounted.",
+    "Calls plus close excluding terminal SHA retain the measured native cleanup cost. Constructor/calls/total-close is a subtotal, not total controller or evidence time.",
+    "Two inputs and fixed A-then-B order do not establish order-balanced or statistically accepted speedup, fresh-pose rate or P95. R200 uses different group0 seeds; its timings are not a matched fresh-pixel comparison."
+  ],
+  "original_FP32_comparison": {
+    "reference": "Existing complete original FP32 model on exactly the same four PNGs and prepared pixels; provenance and all ten saved references independently verified. No reference feeds enter inference.",
+    "A_and_B_have_identical_metrics": true,
+    "unchanged_thresholds": {
+      "relative_L2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "strict_rtol": 0.0001,
+      "strict_atol": 1e-05
+    },
+    "gate_summary_per_route": {
+      "A": {
+        "fixed_pass_count": 0,
+        "strict_pass_count": 0,
+        "total": 10,
+        "all_fixed_and_strict_passed": false
+      },
+      "B": {
+        "fixed_pass_count": 0,
+        "strict_pass_count": 0,
+        "total": 10,
+        "all_fixed_and_strict_passed": false
+      }
+    },
+    "same_metrics_for_both_routes": [
+      {
+        "case_id": "pair4",
+        "key": "pose_enc",
+        "relative_L2": 0.006853456377849208,
+        "max_abs": 0.009551525115966797,
+        "strict_outside_count": 17,
+        "fixed_pass": false,
+        "strict_pass": false
+      },
+      {
+        "case_id": "pair4",
+        "key": "extrinsic",
+        "relative_L2": 0.0023652083128812736,
+        "max_abs": 0.003506176173686981,
+        "strict_outside_count": 19,
+        "fixed_pass": false,
+        "strict_pass": false
+      },
+      {
+        "case_id": "pair4",
+        "key": "intrinsic",
+        "relative_L2": 0.00829502736539472,
+        "max_abs": 4.682220458984375,
+        "strict_outside_count": 4,
+        "fixed_pass": false,
+        "strict_pass": false
+      },
+      {
+        "case_id": "pair4",
+        "key": "depth",
+        "relative_L2": 0.02613001630772144,
+        "max_abs": 0.7999241352081299,
+        "strict_outside_count": 403704,
+        "fixed_pass": false,
+        "strict_pass": false
+      },
+      {
+        "case_id": "pair4",
+        "key": "depth_conf",
+        "relative_L2": 0.05483465980190546,
+        "max_abs": 1.7506529092788696,
+        "strict_outside_count": 363694,
+        "fixed_pass": false,
+        "strict_pass": false
+      },
+      {
+        "case_id": "pair5",
+        "key": "pose_enc",
+        "relative_L2": 0.007358645706322266,
+        "max_abs": 0.012555480003356934,
+        "strict_outside_count": 18,
+        "fixed_pass": false,
+        "strict_pass": false
+      },
+      {
+        "case_id": "pair5",
+        "key": "extrinsic",
+        "relative_L2": 0.004197438997373361,
+        "max_abs": 0.007755167782306671,
+        "strict_outside_count": 18,
+        "fixed_pass": false,
+        "strict_pass": false
+      },
+      {
+        "case_id": "pair5",
+        "key": "intrinsic",
+        "relative_L2": 0.008089949277345248,
+        "max_abs": 6.041748046875,
+        "strict_outside_count": 4,
+        "fixed_pass": false,
+        "strict_pass": false
+      },
+      {
+        "case_id": "pair5",
+        "key": "depth",
+        "relative_L2": 0.03736354203768501,
+        "max_abs": 0.7672941088676453,
+        "strict_outside_count": 402064,
+        "fixed_pass": false,
+        "strict_pass": false
+      },
+      {
+        "case_id": "pair5",
+        "key": "depth_conf",
+        "relative_L2": 0.07477262865252149,
+        "max_abs": 2.764273166656494,
+        "strict_outside_count": 340530,
+        "fixed_pass": false,
+        "strict_pass": false
+      }
+    ],
+    "interpretation": "All ten original-FP32 fixed and strict tensor gates fail for each route. Current route parity is not original-FP32 equivalence or a trajectory metric."
+  },
+  "runtime_ownership": {
+    "A": {
+      "contexts_created_and_destroyed": 20,
+      "SDK_runs": 36,
+      "outputs_acquired_and_released": 46,
+      "registered_ledger_owners": 20,
+      "post_init_close_advice_records": 40,
+      "unused_candidate_SDK_resources": 0
+    },
+    "B": {
+      "contexts_created_and_destroyed": 18,
+      "SDK_runs": 36,
+      "outputs_acquired_and_released": 46,
+      "registered_ledger_owners": 18,
+      "post_init_close_advice_records": 36,
+      "unused_baseline_SDK_resources": 0,
+      "persistent_groups_between_cases": 2,
+      "maximum_live_contexts": 3,
+      "internal_pool_bytes": 120938496,
+      "pools": 1,
+      "imported_views_and_binds": 8,
+      "destroyed_memory_wrappers": 9,
+      "decoded_native_attributes": 60,
+      "replayed_lifetime_events": 86,
+      "saved_shared_guard_checks_recomputed": 71
+    },
+    "all_resources_closed": true,
+    "unknown_or_failed_runtime_stage": false,
+    "all_private_IO_hooks_passed": true,
+    "full_model_SHA_records_per_route": 20,
+    "terminal_hash_after_true_all_owner_and_arena_closure": true,
+    "concurrent_forwards_on_shared_arena": false
+  },
+  "memory_and_controller": {
+    "B_minimum_serialized_DMA_free_bytes": 406556672,
+    "DMA_reserve_bytes": 268435456,
+    "B_minimum_serialized_MemAvailable_bytes": 3615522816,
+    "MemAvailable_floor_bytes": 2684354560,
+    "B_tightest_upstream_preinit_margin_bytes": 136728576,
+    "B_tightest_arena_preinit_margin_bytes": 147480576,
+    "A_saved_downstream_guard_samples_complete": false,
+    "A_guard_limit": "Frozen original continuation runs its guarded owner class but does not serialize the ten A downstream initialization guard samples; those checks cannot be independently replayed from the receipt.",
+    "sampling_limit": "Recorded samples and SDK arena requests are not continuous minima, unique physical totals or allocation guarantees.",
+    "data_free_floor_bytes": 3221225472,
+    "root_free_floor_bytes": 536870912,
+    "timeout_seconds_per_route": 180,
+    "temperature_limit_c": 75,
+    "sampled_peak_c": {
+      "A": 64.692,
+      "B": 65.615
+    },
+    "NPU_hz_during_guard": 1000000000,
+    "prior_policy_and_environment_restored": true,
+    "final_readonly_health": {
+      "active_worker_or_controller": false,
+      "DMA_free_bytes": 1874075648,
+      "MemAvailable_bytes": 5600419840,
+      "maximum_temperature_c": 51.769,
+      "original_NPU_policy_unchanged": true
+    }
+  },
+  "decision": "Retain this bounded full-pixel execution and ownership result. Two persistent groups preserve all current compiled outputs and reduce repeated lifecycle work, while complete calls remain 32.84–36.80 seconds and original-FP32 tensor gates fail. No deployment acceptance or default-path change follows.",
+  "acceptance": {
+    "fresh_pixel_complete_original_computation_observed": true,
+    "current_AB_full_output_identity_verified": true,
+    "original_FP32_equivalence_accepted": false,
+    "new_trajectory_or_map_quality_accepted": false,
+    "20Hz_or_100ms_P95_or_30minute_stability_accepted": false,
+    "physical_8GB_accepted": false
+  },
+  "evidence": {
+    "A_worker_receipt": {
+      "bytes": 1054718,
+      "sha256": "4633f690329fa11fe0cc356be0883e6255c2f114fd9a20535e153a1ae576aa65"
+    },
+    "A_manifest": {
+      "bytes": 16751,
+      "sha256": "e1f87b3885e700b526992e8785025c35ef6322f1cf80aef9e33a4f5cb63ef901"
+    },
+    "A_controller": {
+      "bytes": 88930,
+      "sha256": "0bed91e602784956b8b2d615c8b0a3c7beca6f2c1f0a24fcf3bb3e41b081f33c"
+    },
+    "A_transport": {
+      "bytes": 27389,
+      "sha256": "07d406dbe25f210cf31b7a8124ddeca083dda75bd30d883c1830f399da253ba7"
+    },
+    "A_runtime_audit": {
+      "bytes": 32188,
+      "sha256": "ad92fc1813a2dc7a5e3b0df39cc5cd69be4892a4c394ed28fc4af8e82d44d95e"
+    },
+    "B_worker_receipt": {
+      "bytes": 1264939,
+      "sha256": "83f417eafbcc68320ec86cd0697484736dd657730088144445c5c11e3206bd83"
+    },
+    "B_manifest": {
+      "bytes": 16751,
+      "sha256": "bf6fe30071af0cfc7f1853383ce631a31feef9a61db923e4ac0e03c44fab5cca"
+    },
+    "B_controller": {
+      "bytes": 85557,
+      "sha256": "7fdb88e448b97f7793e9c143cc06cad24b76152542abf289a8e8ec3c2397650d"
+    },
+    "B_transport": {
+      "bytes": 27388,
+      "sha256": "c13490bb9f504d22b87495291baf8b851607841f6386b5af3f8e044ed468ca8e"
+    },
+    "B_runtime_audit": {
+      "bytes": 92231,
+      "sha256": "d1ea725e4ac189e49878c77bd0c07747cc4cef301f50a5a7b43ba642ac81e6da"
+    },
+    "runtime_phase_comparison": {
+      "bytes": 27031,
+      "sha256": "3c9e8a4fde5fdab142e83cc8b7f8a9b3d63710ec5a6f32d97bcbab5cd34166e8"
+    },
+    "independent_current_array_audit": {
+      "bytes": 48285,
+      "sha256": "af537571ad688dea2192a940dea04d9d91c29b9242e87d6ce38ef5b2b068035c"
+    },
+    "original_full_FP32_reference_authority": {
+      "bytes": 18105,
+      "sha256": "601f172412178e69b652b6819e604110ff853668b5fdc30147c2d17ee37e3e0d"
+    },
+    "independent_three_way_FP32_audit": {
+      "bytes": 31867,
+      "sha256": "db07a04ec5c6eaf462b3f7658ea4879c86f9fb65cd200bef552f9d37e34dfaea"
+    },
+    "three_way_FP32_auditor_source": {
+      "bytes": 11572,
+      "sha256": "7906b11a1040f049ab742588c89e3776b35d3afe0aad47c6881cf4d44e75653b"
+    },
+    "pipeline_source": {
+      "bytes": 41028,
+      "sha256": "9e5144a7a53e00596e582d2da5b47ee82c1be5eba934cb551f35ea997a9cc148"
+    },
+    "persistent_IO_runtime_source": {
+      "bytes": 39627,
+      "sha256": "4f414388cb7e6149d3c7a8c9ea86dc35ac169ad2157a4adf1dd37e77f8ff23ea"
+    },
+    "private_model_IO_hooks_source": {
+      "bytes": 9842,
+      "sha256": "95e8a6ce49e12dc18026c90724ce4d0bd25d33c49771805aa357fb2b9ea47827"
+    },
+    "model_cache_helper_source": {
+      "bytes": 19787,
+      "sha256": "4c463f298b87d4d8581f6dd3fd961f6fd90a67a0785b1d25b1e52b13020a3992"
+    },
+    "checkpoint_cache_helper_source": {
+      "bytes": 8488,
+      "sha256": "24bd6af0c9e9666df0f444afa1f1c09db256fa976b848bd79afec94f79fa54a8"
+    },
+    "final_readonly_board_health": {
+      "bytes": 1013,
+      "sha256": "3a5f21c6ac7409d9e9882a6a057c69cb9f11eac3ce6f71240c635c90f8cbe1ff"
+    }
+  },
+  "publication": "Metadata and hashes only. Private model/runtime archives, PNGs, tensors, SDKs and absolute private paths are not published."
+}

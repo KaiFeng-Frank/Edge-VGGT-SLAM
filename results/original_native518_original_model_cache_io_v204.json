@@ -1,0 +1,136 @@
+{
+  "schema": "original_native518_original_model_cache_io_v204",
+  "record": 204,
+  "status": "ten_original_model_files_verified_with_scoped_cache_advice_and_complete_transport_no_inference",
+  "scope": {
+    "original_models": 10,
+    "model_roles": {
+      "six_layer_DINO_groups": 4,
+      "aggregation_groups": 4,
+      "camera": 1,
+      "depth": 1
+    },
+    "original_model_file_bytes": 2795115035,
+    "operation": "Read-only full SHA verification with file-scoped POSIX_FADV_DONTNEED before and after consumed page-aligned chunks.",
+    "full_SHA_passes": 2,
+    "full_SHA_records": 20,
+    "total_hashed_bytes": 5590230070,
+    "identity_only_known_digest_lookups": 40,
+    "SDK_contexts": 0,
+    "NN_forwards": 0,
+    "saved_arrays": 0
+  },
+  "verification": {
+    "all_expected_sizes_and_full_digests_passed": true,
+    "all_resolved_file_and_approved_alias_identities_verified": true,
+    "all_NOATIME_FDs_and_residency_mappings_closed": true,
+    "payload_stat_metadata_and_original_paths_unchanged": true,
+    "helper_events": 772,
+    "memory_samples": 153,
+    "nonfaulting_residency_views": 80,
+    "whole_transport_controller_and_source_integrity_passed": true,
+    "global_cache_clock_mount_driver_or_model_changes": false
+  },
+  "observed_phases": [
+    {
+      "phase": "before_all_models",
+      "resident_model_file_byte_sum": 2795115035,
+      "DMA_free_bytes": 489549824,
+      "Normal_zone_free_bytes": 2144796672,
+      "MemAvailable_bytes": 5590953984,
+      "Shmem_bytes": 10478194688
+    },
+    {
+      "phase": "after_startup_all_models",
+      "resident_model_file_byte_sum": 0,
+      "DMA_free_bytes": 1871429632,
+      "Normal_zone_free_bytes": 3550187520,
+      "MemAvailable_bytes": 5577736192,
+      "Shmem_bytes": 10478194688
+    },
+    {
+      "phase": "after_terminal_all_models",
+      "resident_model_file_byte_sum": 0,
+      "DMA_free_bytes": 1871429632,
+      "Normal_zone_free_bytes": 3546173440,
+      "MemAvailable_bytes": 5574479872,
+      "Shmem_bytes": 10478194688
+    }
+  ],
+  "observations": {
+    "DMA_free_increase_bytes": 1381879808,
+    "resident_byte_sum_scope": "Sum of per-file mincore snapshots, not a simultaneous whole-machine snapshot.",
+    "final_DMA_meets_upstream_preinit_screen": true,
+    "upstream_preinit_screen_bytes": 715878400,
+    "final_DMA_meets_R200_candidate_open_screen": true,
+    "R200_candidate_open_screen_bytes": 1727107072,
+    "numeric_screen_pass_proves_NN_capacity": false
+  },
+  "timing_and_controller": {
+    "startup_full_SHA_seconds": 13.175993406999623,
+    "terminal_full_SHA_seconds": 14.504323831992224,
+    "worker_seconds": 28.017969565000385,
+    "controller_seconds": 28.3808448100026,
+    "CPU_core": 4,
+    "timeout_seconds": 900,
+    "temperature_limit_c": 75,
+    "maximum_sampled_temperature_c": 57.307,
+    "frequency_written": false,
+    "prior_policy_unchanged": true,
+    "category": "File IO only; not inference latency."
+  },
+  "decision": "Retain the exact-model loading ledger for separately guarded complete execution in R205. This record verifies file IO and recovered observed DMA headroom without executing a model.",
+  "limits": [
+    "Successful advice and sampled zero residency do not guarantee future cache state or contiguous allocations. Zone changes include background effects.",
+    "All full SHA records are source/receipt audited; the independent saved audit did not reread model payloads.",
+    "No global cache flush, payload write, pathname replacement, model change or system policy change occurs.",
+    "This complete transport passes; the distinct R203 postrun host-source integrity failure remains preserved."
+  ],
+  "acceptance": {
+    "saved_audit_and_whole_transport_passed": true,
+    "inference_speed_precision_trajectory_realtime_or_physical8GB_accepted": false
+  },
+  "evidence": {
+    "output_result.json": {
+      "bytes": 711535,
+      "sha256": "08547d39b0e121e25fdf7d2942a40dd406839464a2e278ea223192f646c520fc"
+    },
+    "control.json": {
+      "bytes": 116385,
+      "sha256": "c37b65a8519b27d116881c8398b6188ab2147e8ff5fdf8a4891eb354c236e46c"
+    },
+    "transport.json": {
+      "bytes": 6543,
+      "sha256": "8600d5d2ea38789ee96efec08c0ed75d21f0b4d60076b5738692c3e235c4da6c"
+    },
+    "source_probe_original_model_cache_io_board.py": {
+      "bytes": 13001,
+      "sha256": "2ee7bc83cd967b3f53d87cbeaccacbed80dfa79d35d3667ce47df62f6c706250"
+    },
+    "source_original_model_cache_io.py": {
+      "bytes": 19787,
+      "sha256": "4c463f298b87d4d8581f6dd3fd961f6fd90a67a0785b1d25b1e52b13020a3992"
+    },
+    "source_execute_original_model_cache_io_host.py": {
+      "bytes": 9415,
+      "sha256": "b4963e59e488429892c3b7f8983e1013f3a9e57c1fd7569314a784e23355b241"
+    },
+    "source_original-model-residency-inventory-r1.json": {
+      "bytes": 6156,
+      "sha256": "948e7d98a58be125750e109507a90503899eaf9ff734b8ded19c07523a40aca1"
+    },
+    "source_run_sampled_cpu_stage_r126.py": {
+      "bytes": 9763,
+      "sha256": "700ec5b12b6f15cf9907cfacbff3a63258ef70a14cf5efe06ba5470991de1b89"
+    },
+    "independent_saved_audit": {
+      "bytes": 6617,
+      "sha256": "3c478f6a373acace9683a49f73ce4df4de963cb6122a23c66e385b18e734c9f5"
+    },
+    "saved_auditor_source": {
+      "bytes": 21684,
+      "sha256": "1d411650e06ec17bad9b37ae12acaad7fa314f70cfa9f4f0e4774fb22aadf04f"
+    }
+  },
+  "publication": "Metadata and hashes only; private paths, model bytes, captured arrays, SDKs and raw receipts are excluded."
+}
