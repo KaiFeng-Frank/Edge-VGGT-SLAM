@@ -1,0 +1,266 @@
+{
+  "schema": "original_native518_global_sdpa_float16_v151",
+  "status": "actual_global_only_SDPA_FLOAT16_policy_rejected_for_worse_original_FP32_feature_error",
+  "summary": "FLOAT16 only at the global SDPA output reproduces the earlier feature-error regression while both frame SDPA remain INT8. Two-sample component means fall about 5.05%, but original FP32 error rises 2.07x/1.98x; reject this complete precision policy.",
+  "scope": {
+    "board": "RK3588S",
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "original_aggregator_blocks": 2,
+    "original_learned_parameter_records": 36,
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "global_output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "original_heads": 16,
+    "frame_keys": 1041,
+    "global_keys": 2082,
+    "original_Vmean_parent_retained": true,
+    "encoder_represented_by_captured_features": true,
+    "full_model_heads_or_SLAM_executed": false
+  },
+  "precision_change": {
+    "only1_global_SDPA_output_FLOAT16_request_added": true,
+    "additional_request": "__global_value_mean/centered_PV_sdpa",
+    "two_frame_SDPA_outputs_remain_unselected": true,
+    "parent_FLOAT16_requests": 24,
+    "candidate_FLOAT16_requests": 25,
+    "original_source_model_data_learned_parameters_and_numeric_cfg_body_unchanged": true,
+    "new_calibration": false,
+    "new_source_forward": false,
+    "diagnostic_arrays_excluded_from_calibration": true,
+    "original_tokens_layers_and_dense_work_unchanged": true
+  },
+  "actual_compilation": {
+    "worker_seconds": 39.07028780100518,
+    "SDK_step2_seconds": 34.77834412000084,
+    "offline_peak_rss_MiB": 1213.88671875,
+    "preparation_memory_not_inference_memory": true,
+    "rknn": {
+      "file": "pair-A-global-sdpa-output-float16.rknn",
+      "bytes": 46074621,
+      "sha256": "bd18fca28db2a88d0bad8d088ed768a40b30e31f8a40108c2ce6ee49e29a03e7"
+    }
+  },
+  "actual_placement": {
+    "operators": 99,
+    "consumer_buffer_rows": 247,
+    "all_explicit_rows_consumed": true,
+    "precision_target_counts": {
+      "FLOAT16/CPU": 2,
+      "FLOAT16/NPU": 31,
+      "INT8/NPU": 66
+    },
+    "global_SDPA_FLOAT16_NPU": 1,
+    "frame_SDPA_INT8_NPU": 2,
+    "learned_weighted_products_INT8_NPU": 15,
+    "residual_highways_FLOAT16_NPU": 6,
+    "original_Vmean_path_bridge_and_public_output_FLOAT16": true,
+    "no_internal_CPU_GPU_fallback": true,
+    "primary_Q_K_V_query_auxiliary_and_output_consumer_domains_verified": true,
+    "upstream_global_post_RoPE_Q_K_remain_INT8_with_explicit_FLOAT16_conversion": true,
+    "SDPA_label_does_not_prove_hidden_probability_or_accumulator_precision": true
+  },
+  "matched_ABBA": {
+    "calibration_excluded_input_ids": [
+      "pair4",
+      "pair5"
+    ],
+    "input_role": "Reused engineering diagnostic inputs, not a fresh independent final generalization test.",
+    "per_input_schedule": [
+      "VM_parent",
+      "global_SDPA_FLOAT16",
+      "global_SDPA_FLOAT16",
+      "VM_parent"
+    ],
+    "flags": 0,
+    "core_mask": 7,
+    "owners": 2,
+    "owned_calls": 8,
+    "saved_owned_outputs": 8,
+    "all8_outputs_finite": true,
+    "all4_parent_controls_match_frozen_core7_bytes": true,
+    "all_same_case_model_repeats_byte_equal": true,
+    "original_references_comparison_only": true,
+    "hidden_warmup_calls": 0,
+    "resource_counts": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 8,
+      "output_buffers_acquired": 8,
+      "output_buffers_released": 8
+    },
+    "all_contexts_and_buffers_closed": true,
+    "worker_seconds": 7.15813567800069,
+    "controller_seconds": 7.641619852001895,
+    "maximum_controller_temperature_c": 57.307,
+    "requested_NPU_hz": 1000000000,
+    "timeout_seconds": 180,
+    "temperature_limit_c": 75,
+    "exact_prior_clock_governor_limits_restored": true,
+    "timer_scope": "Outer owner.run and inner SDK complete boundary include input finite/preparation,SDK IO,owned copies,release and output finite;init/destruction,saves,hashes and comparisons are outside.",
+    "results": [
+      {
+        "input_id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "sample_count_per_policy": 2,
+        "parent_owned_seconds": [
+          0.704120321002847,
+          0.691050195004209
+        ],
+        "candidate_owned_seconds": [
+          0.6619988169986755,
+          0.6627605250032502
+        ],
+        "parent_mean_seconds": 0.697585258003528,
+        "candidate_mean_seconds": 0.6623796710009628,
+        "descriptive_mean_latency_reduction_fraction": 0.05046779099564502,
+        "parent_mean_SDK_run_seconds": 0.635768543001177,
+        "candidate_mean_SDK_run_seconds": 0.592641288498271,
+        "parent_original_FP32_relative_l2": 0.04487364811276139,
+        "candidate_original_FP32_relative_l2": 0.09281756485802188,
+        "candidate_error_ratio_to_parent": 2.068420303711076,
+        "candidate_max_abs": 0.8622111678123474,
+        "candidate_strict_outside_count": 1473542,
+        "parent_and_candidate_fixed_and_strict_gates_passed": false
+      },
+      {
+        "input_id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "sample_count_per_policy": 2,
+        "parent_owned_seconds": [
+          0.6912463609987753,
+          0.6902981940002064
+        ],
+        "candidate_owned_seconds": [
+          0.6635740249985247,
+          0.6481618149991846
+        ],
+        "parent_mean_seconds": 0.6907722774994909,
+        "candidate_mean_seconds": 0.6558679199988546,
+        "descriptive_mean_latency_reduction_fraction": 0.05052947061944302,
+        "parent_mean_SDK_run_seconds": 0.6363752724973892,
+        "candidate_mean_SDK_run_seconds": 0.5936332475030213,
+        "parent_original_FP32_relative_l2": 0.04734105631904161,
+        "candidate_original_FP32_relative_l2": 0.09369751280535112,
+        "candidate_error_ratio_to_parent": 1.9792019885214078,
+        "candidate_max_abs": 1.0089740604162216,
+        "candidate_strict_outside_count": 1476464,
+        "parent_and_candidate_fixed_and_strict_gates_passed": false
+      }
+    ]
+  },
+  "ablation_interpretation": {
+    "previous_record": "original_native518_three_sdpa_float16_v150.json",
+    "regression_reproduced_without_frame_SDPA_promotion": true,
+    "complete_precision_policy_is_comparison_unit": true,
+    "hidden_SDPA_arithmetic_or_single_conversion_root_cause_established": false,
+    "cross_run_timings_not_pooled": true,
+    "full_group_expansion_justified": false
+  },
+  "quality_gates": {
+    "relative_l2_max": 1e-05,
+    "max_abs_max": 0.001,
+    "strict_atol": 1e-05,
+    "strict_rtol": 0.0001,
+    "thresholds_unchanged": true,
+    "numeric_feature_error_is_not_ATE_or_RPE": true,
+    "policy_rejected_for_accuracy": true
+  },
+  "limits": [
+    "Each policy/input has two complete calls, including one first and one subsequent sample; no sustained rate or P95 is established.",
+    "These calibration-excluded cases have been reused across engineering decisions, so they are not a new final generalization test.",
+    "Keeping frame SDPA INT8 shows that frame promotion is not required to reproduce this regression; it does not identify a hidden SDK arithmetic cause.",
+    "Original FP32 feature error is not trajectory ATE/RPE or depth-map accuracy.",
+    "No original quality, full-model, trajectory, realtime, fresh-pose 20 Hz, stability or physical 8 GB acceptance follows.",
+    "BSD-2-Clause repository code and original VGGT weight terms remain separate; code permission does not grant commercial rights to the weights."
+  ],
+  "evidence": [
+    {
+      "role": "actual_compile_receipt",
+      "file": "result.json",
+      "bytes": 71348,
+      "sha256": "4429eba6f0065014a45824ab68080100ffd863daec9aa51c4de740f14169ee81"
+    },
+    {
+      "role": "compile_worker_source",
+      "file": "compile_global_sdpa_output_board.py",
+      "bytes": 18337,
+      "sha256": "4b47cb7f8b52dcbeda9f5c6dcac52ec186f6002c407269a2917865ec26dfde27"
+    },
+    {
+      "role": "output_selector_source",
+      "file": "select_global_sdpa_output_precision_policy.py",
+      "bytes": 3786,
+      "sha256": "3dd15063b388bec81b631f1ca65882934c849add2a6be16b8d6102d069a09bd7"
+    },
+    {
+      "role": "actual_full_compiler_log",
+      "file": "vggt-v83-native518firstpairglobalsdpaoutputr1-r1.log",
+      "bytes": 92360,
+      "sha256": "78f271d7c4bf4f6209b41d7f8a58f81e79a843a315263b64834ffc2ec5aad8c1"
+    },
+    {
+      "role": "actual_placement_saved_audit",
+      "file": "compile-r1-saved-precision-audit-r1.json",
+      "bytes": 94639,
+      "sha256": "21faa10dba3ab983ac47e477a6a832fe36cf0aff136f56e580c2e08781262ad9"
+    },
+    {
+      "role": "runtime_worker_source",
+      "file": "run_global_sdpa_float16_ABBA_board.py",
+      "bytes": 22139,
+      "sha256": "5a41c2d5dd9e5e7114c68e1d6f6f325678b5535ff67b5a4d897cc4df9f139295"
+    },
+    {
+      "role": "runtime_transport_source",
+      "file": "execute_global_sdpa_float16_ABBA_host.py",
+      "bytes": 16696,
+      "sha256": "c89d4672941cd4c178f5ca752a6867af46f32d2bdcd8e297cf785b244c7b66da"
+    },
+    {
+      "role": "actual_runtime_receipt",
+      "file": "result.json",
+      "bytes": 61957,
+      "sha256": "58d96872a13cf3d18920a26addc3dda0751f367e3e5204aff29308065ef92b10"
+    },
+    {
+      "role": "actual_runtime_controller",
+      "file": "control.json",
+      "bytes": 6780,
+      "sha256": "0effd4eac574d651d721ab5236e5d87e692bf14df8332b55f988d858b97ce38c"
+    },
+    {
+      "role": "actual_runtime_transport",
+      "file": "normal-r1-transport.json",
+      "bytes": 24345,
+      "sha256": "3c05545f3e2112cfd35ac4d9157c83943449a9d91933a96d056c91574633280b"
+    },
+    {
+      "role": "independent_saved_runtime_audit",
+      "file": "normal-r1-saved-audit.json",
+      "bytes": 11702,
+      "sha256": "47e8f4d366cc303b309bcbbcb891e6adad4bc46896bdccbea0c1bc893c162732"
+    },
+    {
+      "role": "same_originalA_FP32_reference_receipt",
+      "file": "originalA-FP32-references.json",
+      "bytes": 91088,
+      "sha256": "17f9aec6d7c93189c7ba74c33c3101160c4170f0a38e2b6ae91d77eeb4fdc250"
+    }
+  ]
+}

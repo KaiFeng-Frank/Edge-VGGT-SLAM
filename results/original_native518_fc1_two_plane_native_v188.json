@@ -1,0 +1,424 @@
+{
+  "schema": "original_native518_fc1_two_plane_native_v188",
+  "status": "matched_actual_native_two_plane_FC1_is_slower_and_has_larger_MLP_error_current_route_rejected",
+  "scope": {
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "source_pair_indices": [
+      32,
+      40
+    ],
+    "original_boundary": "Saved original native518 frame0 FC1 input, same original FC1/FC2 weights and biases, original exact GELU.",
+    "matrices": {
+      "FC1": [
+        2082,
+        1024,
+        4096
+      ],
+      "FC2": [
+        2082,
+        4096,
+        1024
+      ]
+    },
+    "all2082_rows_and_all_original_K_output_channels_retained": true,
+    "bias_once_after_each_affine": true,
+    "full_model_forward_or_checkpoint_deserialization": false,
+    "new_graph_compilation_or_calibration": false,
+    "heldout_pair4_5_inputs_used": false,
+    "one_reused_engineering_image_pair": true,
+    "baseline": "Native MatMul type1 F16 operands/FLOAT32 output for FC1 and FC2, with original CPU FLOAT32 exact GELU.",
+    "candidate": "Two native type2 INT8 x INT8 -> INT32 FC1 products, FLOAT32 shared-scale reconstruction and original bias, same CPU GELU and type1 FC2.",
+    "comparison_scope": "Eight matched calls in this native API/CPU-GELU schedule, including first calls; not a fused compiled MLP benchmark."
+  },
+  "arithmetic": {
+    "A_scale": "One full2082x1024 maxabs/127 scale.",
+    "W_scale": "Original FC1 per output-channel maxabs/127.",
+    "code_range": [
+      -127,
+      127
+    ],
+    "zero_points": 0,
+    "residual_digit_base": 254,
+    "plane0": "A0=round(A/sa)",
+    "plane1": "A1=round((A/sa-A0)*254)",
+    "coarse_weight": "W0=round(W/sw)",
+    "reconstruction": "F32(c0)*(sa*sw) + F32(c1)*(sa*sw/254) + original bias, in the frozen declared operation order.",
+    "original_GELU_approximation": "none",
+    "FC2_input": "Actual current GELU converted to F16 once inside each complete timer.",
+    "no_original_reference_intermediate_feed": true,
+    "quantized_FC1_is_approximate": true,
+    "candidate_actual_full_FC1_raw_hash_matches_R187_CPU_integer_reconstruction": true,
+    "candidate_FC1_raw_sha256": "890b8965712d20ba3120c50206d3798b4c2ed9aded500acfc2794483e7338c2b"
+  },
+  "independently_verified_saved_data": {
+    "actual_new_arrays": 4,
+    "actual_new_NPY_bytes": 85279232,
+    "FC1_arrays": 2,
+    "MLP_arrays": 2,
+    "dtype": "float32",
+    "all_file_raw_shape_and_finite_checks": true,
+    "all4_FC1_MLP_errors_against_original_FP32_recomputed": true,
+    "candidate_vs_baseline_FC1_MLP_errors_recomputed": true,
+    "recorded_8_call_FC1_MLP_repeat_hashes_match_independently_loaded_first_arrays": true,
+    "original_capture_sha256": "3cdfa55556896b0f5356f710c65069b8b5e53f37a0f8cb6f550439f6dfb06730"
+  },
+  "numeric_results": {
+    "vs_original_FP32": {
+      "A_F16": {
+        "fc1": {
+          "relative_l2": 0.00010391599479358787,
+          "max_abs": 0.0010724067687988281,
+          "strict_outside_count": 3020013,
+          "fixed_pass": false,
+          "strict_pass": false,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05
+        },
+        "mlp_output": {
+          "relative_l2": 0.0001429747567796727,
+          "max_abs": 0.0057010650634765625,
+          "strict_outside_count": 1195039,
+          "fixed_pass": false,
+          "strict_pass": false,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05
+        }
+      },
+      "B_two_INT8": {
+        "fc1": {
+          "relative_l2": 0.001796637839753366,
+          "max_abs": 0.029764890670776367,
+          "strict_outside_count": 8127305,
+          "fixed_pass": false,
+          "strict_pass": false,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05
+        },
+        "mlp_output": {
+          "relative_l2": 0.0005336811214182907,
+          "max_abs": 0.00588226318359375,
+          "strict_outside_count": 1980192,
+          "fixed_pass": false,
+          "strict_pass": false,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05
+        }
+      }
+    },
+    "candidate_vs_baseline": {
+      "fc1": {
+        "relative_l2": 0.0017981196668509828,
+        "max_abs": 0.029532670974731445,
+        "strict_outside_count": 8128504,
+        "fixed_pass": false,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05
+      },
+      "mlp_output": {
+        "relative_l2": 0.0005510813604698617,
+        "max_abs": 0.009714126586914062,
+        "strict_outside_count": 1990035,
+        "fixed_pass": false,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05
+      }
+    },
+    "candidate_over_baseline_MLP_relative_L2_ratio": 3.7326947318449037,
+    "all4_original_fixed_and_strict_tensor_checks_fail": true,
+    "fixed_relative_l2_max": 1e-05,
+    "fixed_max_abs_max": 0.001,
+    "strict_rtol": 0.0001,
+    "strict_atol": 1e-05,
+    "GELU_metrics_receipt_only": {
+      "A_F16": {
+        "relative_l2": 0.00021476583687742368,
+        "max_abs": 0.0006529688835144043,
+        "strict_outside_count": 2670296,
+        "fixed_pass": false,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05
+      },
+      "B_two_INT8": {
+        "relative_l2": 0.00821884115716001,
+        "max_abs": 0.021448731422424316,
+        "strict_outside_count": 7980196,
+        "fixed_pass": false,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05
+      }
+    },
+    "GELU_full_array_saved": false,
+    "GELU_errors_independently_recomputed": false,
+    "integer_dot_samples": {
+      "reported_count": 128,
+      "all_source_bound_INT64_sample_reports_exact": true,
+      "raw_integer_planes_saved": false,
+      "expected_values_independently_recomputed_by_auditor": false
+    },
+    "measured_native_F16_control_is_separate_from_R187_operand_rounding_proxy": true
+  },
+  "descriptive_timing": {
+    "schedule": [
+      "A_F16",
+      "B_two_INT8",
+      "B_two_INT8",
+      "A_F16",
+      "A_F16",
+      "B_two_INT8",
+      "B_two_INT8",
+      "A_F16"
+    ],
+    "calls_per_route": 4,
+    "includes_first_calls": true,
+    "requested_NPU_core_mask": 1,
+    "requested_mask_is_not_measured_core_utilization": true,
+    "NPU_frequency_hz": 1000000000,
+    "CPU_core": 4,
+    "CPU_NumPy_Torch_threads": 1,
+    "route_means_seconds": {
+      "A_F16": {
+        "complete": 0.6465380750014447,
+        "SDK_run_sum": 0.1389317122520879,
+        "FC1_SDK_run_sum": 0.034985493246495025,
+        "FC2_SDK_run": 0.10394621900559287
+      },
+      "B_two_INT8": {
+        "complete": 0.7356219382527343,
+        "SDK_run_sum": 0.1561526617661002,
+        "FC1_SDK_run_sum": 0.052261880511650816,
+        "FC2_SDK_run": 0.1038907812544494
+      }
+    },
+    "candidate_minus_baseline": {
+      "complete_seconds": 0.08908386325128959,
+      "complete_increase_percent": 13.778595058162747,
+      "SDK_run_seconds": 0.017220949514012318,
+      "other_components_and_bookkeeping_seconds": 0.07186291373727727
+    },
+    "complete_timer": "Original input scan/halfcast or quantization; native validate/copy/sync/bind/run/owned output; scale/bias reconstruction; original exact GELU; FC2 halfcast/native call/bias and output finite.",
+    "excluded": "Static weight preparation and context setup/close, saved-array IO, hashes, numeric comparisons and fixed integer samples.",
+    "lifecycle_seconds": {
+      "initialization": 0.36194378600339405,
+      "close": 0.049960463991737925
+    },
+    "scope": "One original captured image pair repeated four times per policy; no fresh full-model or sustained-rate inference."
+  },
+  "native_resources": {
+    "contexts_created": 3,
+    "contexts_destroyed": 3,
+    "native_runs_completed": 20,
+    "memories_created": 9,
+    "memories_destroyed": 9,
+    "official_B_layout_conversions": 3,
+    "memory_sync_calls": 43,
+    "IO_bindings": 29,
+    "all_API_attempts_equal_successes": true,
+    "all_native_return_codes_zero": true,
+    "all_contexts_memories_closed": true,
+    "original_parent_ABI_source_unchanged": true,
+    "official_header_sha256": "aaadd9a7118de30a06b222996b6731db77095d00f5931a7a98c83a67f14a4d42",
+    "A_C_layout": "normal",
+    "B_layout": "Queried native layout populated by official [K,N] converter.",
+    "actual_ports": [
+      {
+        "name": "baseline_fc1",
+        "kind": "fp16_fc1",
+        "shape": [
+          2082,
+          1024,
+          4096
+        ],
+        "matmul_type": 1,
+        "descriptors": {
+          "A": {
+            "shape": [
+              2082,
+              1024
+            ],
+            "type": 1,
+            "bytes": 4263936,
+            "logical_bytes": 4263936,
+            "dtype": "float16",
+            "allocation_bytes": 4263936
+          },
+          "B": {
+            "shape": [
+              256,
+              32,
+              16,
+              32
+            ],
+            "type": 1,
+            "bytes": 8388608,
+            "logical_bytes": 8388608,
+            "dtype": "float16",
+            "allocation_bytes": 8388608
+          },
+          "C": {
+            "shape": [
+              2082,
+              4096
+            ],
+            "type": 0,
+            "bytes": 34111488,
+            "logical_bytes": 34111488,
+            "dtype": "float32",
+            "allocation_bytes": 34111488
+          }
+        }
+      },
+      {
+        "name": "candidate_fc1",
+        "kind": "int8_fc1",
+        "shape": [
+          2082,
+          1024,
+          4096
+        ],
+        "matmul_type": 2,
+        "descriptors": {
+          "A": {
+            "shape": [
+              2082,
+              1024
+            ],
+            "type": 2,
+            "bytes": 2131968,
+            "logical_bytes": 2131968,
+            "dtype": "int8",
+            "allocation_bytes": 2131968
+          },
+          "B": {
+            "shape": [
+              128,
+              32,
+              32,
+              32
+            ],
+            "type": 2,
+            "bytes": 4194304,
+            "logical_bytes": 4194304,
+            "dtype": "int8",
+            "allocation_bytes": 4194304
+          },
+          "C": {
+            "shape": [
+              2082,
+              4096
+            ],
+            "type": 6,
+            "bytes": 34111488,
+            "logical_bytes": 34111488,
+            "dtype": "int32",
+            "allocation_bytes": 34111488
+          }
+        }
+      },
+      {
+        "name": "shared_fc2",
+        "kind": "fp16_fc2",
+        "shape": [
+          2082,
+          4096,
+          1024
+        ],
+        "matmul_type": 1,
+        "descriptors": {
+          "A": {
+            "shape": [
+              2082,
+              4096
+            ],
+            "type": 1,
+            "bytes": 17055744,
+            "logical_bytes": 17055744,
+            "dtype": "float16",
+            "allocation_bytes": 17055744
+          },
+          "B": {
+            "shape": [
+              64,
+              128,
+              16,
+              32
+            ],
+            "type": 1,
+            "bytes": 8388608,
+            "logical_bytes": 8388608,
+            "dtype": "float16",
+            "allocation_bytes": 8388608
+          },
+          "C": {
+            "shape": [
+              2082,
+              1024
+            ],
+            "type": 0,
+            "bytes": 8527872,
+            "logical_bytes": 8527872,
+            "dtype": "float32",
+            "allocation_bytes": 8527872
+          }
+        }
+      }
+    ],
+    "controller_restored": true,
+    "peak_controller_temperature_c": 61.0,
+    "worker_peak_RSS_MiB": 928.05859375,
+    "RSS_is_physical_unique_model_memory": false
+  },
+  "decision": {
+    "current_two_plane_route_adopted": false,
+    "reason": "Complete calls are 13.78 percent slower; summed FC1 SDK run calls are 52.262 ms versus 34.985 ms, and full MLP relative L2 is 3.73 times larger than the actual native F16 control.",
+    "scope": "Reject this two-activation-plane/coarse-weight schedule for progression. Other decompositions or implementations are not evaluated by this result.",
+    "precision_accepted": false,
+    "full_model_or_trajectory_quality_accepted": false,
+    "sustained_or_realtime_accepted": false
+  },
+  "evidence": {
+    "worker_receipt": {
+      "file": "fc1-two-plane-native-r1/output/result.json",
+      "bytes": 68341,
+      "sha256": "cbdc6618333bd67319498ba21cbd302f5e0818c8ae9e59fdcd6295603bcd45f3"
+    },
+    "controller": {
+      "file": "fc1-two-plane-native-r1/control/control.json",
+      "bytes": 9648,
+      "sha256": "feab07aa71a1c9a59b4debc2a09de36befca4786c9ebc8657a0f22fb99180037"
+    },
+    "transport": {
+      "file": "fc1-two-plane-native-r1/transport.json",
+      "bytes": 8906,
+      "sha256": "a2628cb23408fe79d87a2c366823ad01df07e7ed5767415e2f30d90f48e537c9"
+    },
+    "independent_saved_array_audit": {
+      "file": "fc1-two-plane-native-r1/saved-array-audit-r1.json",
+      "bytes": 19677,
+      "sha256": "540036a21fd73ab494b3d67f05c37949439b5465760205978c14198d1de63e8d"
+    },
+    "auditor_source": {
+      "file": "fc1_quantization_floor_probe/audit_fc1_two_plane_native_saved.py",
+      "sha256": "c9d3a00d8f087e2b48b4dbb8f870bf452b4c2cdd88e27882d453883b6626cb8f"
+    },
+    "worker_source": {
+      "file": "fc1_quantization_floor_probe/probe_fc1_two_plane_native_board.py",
+      "sha256": "c63ae58a2567c36c725424b783702e9f2bb73b84a61066adac3171f47233e819"
+    },
+    "module_source": {
+      "file": "fc1_quantization_floor_probe/native_fc1_two_plane.py",
+      "sha256": "301ab05a6625f8dc4a703462ef5cdc5519477606787dda3718565b66e819d801"
+    },
+    "transport_source": {
+      "file": "fc1_quantization_floor_probe/execute_fc1_native_host.py",
+      "sha256": "b88a132d53ddd42dfacec9a4a0bcd6d9b08c7679d121dd1bdcb8dec18d0de2ca"
+    },
+    "prior_CPU_floor_receipt_sha256": "19f77f51849d504c37889b2c1ada847687bc4263f3d6054e06752c86896b4c59"
+  }
+}

@@ -1,0 +1,289 @@
+{
+  "schema": "original_native518_current_compute_profile_v167",
+  "status": "saved_six_current_profiles_verified_no_new_speed_or_quality_acceptance",
+  "scope": {
+    "board": "RK3588S",
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "graphs": [
+      "original_pair0_frame0_branch",
+      "original_pair0_heads0_6",
+      "original_pair0_global_suffix"
+    ],
+    "cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "inputs": "Saved actual flags0 stage inputs from the audited four-block native route; no reference intermediate injection.",
+    "frame_attention_heads": 16,
+    "frame_keys": 1041,
+    "selected_global_head_interval": [
+      0,
+      6
+    ],
+    "global_keys": 2082,
+    "all_original_nodes_and_models_unchanged": true,
+    "connected_four_block_or_full_model_execution": false
+  },
+  "execution": {
+    "init_flags": 8,
+    "core_masks": {
+      "frame0_branch": 1,
+      "heads0_6": 1,
+      "global_suffix": 7
+    },
+    "maximum_live_contexts": 1,
+    "ordinary_original_OwnedContext_IO": true,
+    "comparison_route": "Actual native-IO flags0 stage outputs; output parity does not make the IO/timing paths identical.",
+    "calls": 6,
+    "calls_per_graph": 2,
+    "hidden_warmups": 0,
+    "PERF_DETAIL_queries": 6,
+    "PERF_RUN_queries": 6
+  },
+  "saved_verification": {
+    "independent_saved_audit_passed": true,
+    "all6_owned_FLOAT32_outputs_byte_equal_actual_native_flags0": true,
+    "all6_saved_FLOAT16_snapshots_losslessly_reconstruct_original_owned_FLOAT32": true,
+    "saved_output_file_bytes": 21320448,
+    "raw_profile_files": 6,
+    "all170_actual_operator_rows_consumed": true,
+    "all_actual_internal_operator_labels_FLOAT16_NPU": true,
+    "no_internal_CPU_GPU_fallback_in_actual_profile": true,
+    "resource_totals": {
+      "contexts_created": 3,
+      "contexts_destroyed": 3,
+      "runs_completed": 6,
+      "output_buffers_acquired": 6,
+      "output_buffers_released": 6
+    },
+    "all_resources_closed": true,
+    "external_frequency_policy_restored": true
+  },
+  "diagnostic_rows": [
+    {
+      "stage": "frame0_branch",
+      "case_id": "pair4",
+      "operator_rows": 25,
+      "operator_sum_us": 179773,
+      "SDPA_us": 64823,
+      "FC1_fused_GELU_kernel_us": 15474,
+      "FC2_product_kernel_us": 56921,
+      "FC2_output_transpose_us": 0,
+      "other_reshape_and_transpose_us": 12496,
+      "split_slice_concat_expand_us": 1970,
+      "normalization_us": 10905,
+      "remaining_QKV_projection_pointwise_fixed_kernel_and_IO_us": 17184
+    },
+    {
+      "stage": "frame0_branch",
+      "case_id": "pair5",
+      "operator_rows": 25,
+      "operator_sum_us": 182227,
+      "SDPA_us": 64923,
+      "FC1_fused_GELU_kernel_us": 15581,
+      "FC2_product_kernel_us": 56904,
+      "FC2_output_transpose_us": 0,
+      "other_reshape_and_transpose_us": 12889,
+      "split_slice_concat_expand_us": 2107,
+      "normalization_us": 11588,
+      "remaining_QKV_projection_pointwise_fixed_kernel_and_IO_us": 18235
+    },
+    {
+      "stage": "heads0_6",
+      "case_id": "pair4",
+      "operator_rows": 27,
+      "operator_sum_us": 147733,
+      "SDPA_us": 98365,
+      "FC1_fused_GELU_kernel_us": 0,
+      "FC2_product_kernel_us": 0,
+      "FC2_output_transpose_us": 0,
+      "other_reshape_and_transpose_us": 24196,
+      "split_slice_concat_expand_us": 1398,
+      "normalization_us": 9432,
+      "remaining_QKV_projection_pointwise_fixed_kernel_and_IO_us": 14342
+    },
+    {
+      "stage": "heads0_6",
+      "case_id": "pair5",
+      "operator_rows": 27,
+      "operator_sum_us": 151128,
+      "SDPA_us": 98530,
+      "FC1_fused_GELU_kernel_us": 0,
+      "FC2_product_kernel_us": 0,
+      "FC2_output_transpose_us": 0,
+      "other_reshape_and_transpose_us": 24936,
+      "split_slice_concat_expand_us": 1728,
+      "normalization_us": 9843,
+      "remaining_QKV_projection_pointwise_fixed_kernel_and_IO_us": 16091
+    },
+    {
+      "stage": "global_suffix",
+      "case_id": "pair4",
+      "operator_rows": 33,
+      "operator_sum_us": 121209,
+      "SDPA_us": 0,
+      "FC1_fused_GELU_kernel_us": 30458,
+      "FC2_product_kernel_us": 12966,
+      "FC2_output_transpose_us": 27921,
+      "other_reshape_and_transpose_us": 28892,
+      "split_slice_concat_expand_us": 3668,
+      "normalization_us": 4799,
+      "remaining_QKV_projection_pointwise_fixed_kernel_and_IO_us": 12505
+    },
+    {
+      "stage": "global_suffix",
+      "case_id": "pair5",
+      "operator_rows": 33,
+      "operator_sum_us": 120076,
+      "SDPA_us": 0,
+      "FC1_fused_GELU_kernel_us": 30464,
+      "FC2_product_kernel_us": 13127,
+      "FC2_output_transpose_us": 27534,
+      "other_reshape_and_transpose_us": 28783,
+      "split_slice_concat_expand_us": 3639,
+      "normalization_us": 4805,
+      "remaining_QKV_projection_pointwise_fixed_kernel_and_IO_us": 11724
+    }
+  ],
+  "interpretation": {
+    "frame": "Unsplit frame FC2 ConvAdd remains a major kernel: 56.921/56.904 ms, alongside 64.823/64.923 ms SDPA.",
+    "head_shard": "Six-head full-key SDPA accounts for 98.365/98.530 ms of 147.733/151.128 ms operator sums.",
+    "suffix": "Four FC2 product kernels total 12.966/13.127 ms, while their four separate output transposes total 27.921/27.534 ms. FC1 ConvExGelu is 30.458/30.464 ms; other reshapes/transposes are 28.892/28.783 ms.",
+    "category_rule": "Classify by actual operator type before semantic name: FC2-named transposes and sums are not GEMM kernels.",
+    "fused_kernel_limit": "ConvExGelu and ConvAdd durations include fused arithmetic and are not isolated GEMM costs."
+  },
+  "raw_WorkLoad": {
+    "frame_SDPA_and_selected_head_SDPA_both_cases": "100.0%/0.0%/0.0%",
+    "suffix_FC1_both_cases": "100.0%/0.0%/0.0%",
+    "suffix_all_four_FC2_products_both_cases": "34.4%/32.8%/32.8%",
+    "meaning": "Literal SDK-reported flags8 distribution, not measured utilization or occupancy; FLOAT16 labels do not establish accumulator precision."
+  },
+  "preserved_first_attempt": {
+    "status": "failed_before_context_initialization",
+    "error": "KeyError('checkpoint')",
+    "contexts_created": 0,
+    "calls": 0,
+    "cleanup_and_controller_restoration_verified": true,
+    "fix": "R2 removes the unsupported optional checkpoint field; pinned normal receipt and model hashes retain provenance."
+  },
+  "acceptance": {
+    "new_graph_or_kernel_optimization_measured": false,
+    "normal_speedup_accepted": false,
+    "original_FP32_quality_accepted": false,
+    "sustained_rate_P95_full_SLAM_or_physical8GB_accepted": false
+  },
+  "limits": [
+    "Two reused engineering inputs, one profile call per graph/case; not a fresh independent generalization test.",
+    "Flags8 operator sums and SDK run counters are diagnostic, not normal connected latency or independent parallel critical paths.",
+    "Parity preserves existing NPU outputs and their FP32 discrepancies; it does not establish full-model or trajectory accuracy.",
+    "No layers, tokens or learned computations were removed, and no new calibration, compilation or optimization was executed in this profile."
+  ],
+  "evidence": [
+    {
+      "role": "successful_worker_receipt",
+      "file": "result.json",
+      "bytes": 195223,
+      "sha256": "7ea6d45333e06143fe2de3677bf8c966cab2e0adda08f0cc790773237b13d099"
+    },
+    {
+      "role": "successful_transport_receipt",
+      "file": "transport.json",
+      "bytes": 31665,
+      "sha256": "424a7c68eb2fe8e968d44c276c750dc514bd0d6d6b5254590fdf7271d7ba3279"
+    },
+    {
+      "role": "successful_controller_receipt",
+      "file": "control.json",
+      "bytes": 3902,
+      "sha256": "8349d11634f98db8ec48a5df7a99f58bfcd8f12d27250cf3490b45004ce5ae43"
+    },
+    {
+      "role": "executed_worker_source",
+      "file": "profile_current_compute_board_r2.py",
+      "bytes": 21997,
+      "sha256": "6e6d19c0ed6668a24c3a9bb2aa9c264b169a1b09e3a3a6fa1855ba416a583a6e"
+    },
+    {
+      "role": "executed_transport_source",
+      "file": "execute_current_compute_profile_host_r2.py",
+      "bytes": 13382,
+      "sha256": "49d2caffb924f67c020d4a92dea1f37c60ac5f196bedf20e04ffe62cddb5255e"
+    },
+    {
+      "role": "independent_saved_audit",
+      "file": "current-compute-profile-r2-saved-audit-r1.json",
+      "bytes": 19071,
+      "sha256": "cf6733bb02ed1117fe65ac3b7c156161aed84a88a9f608bc280be710e63f2201"
+    },
+    {
+      "role": "independent_saved_auditor_source",
+      "file": "audit_current_compute_profile_saved.py",
+      "bytes": 13342,
+      "sha256": "208fbf7ec12e27cef3cd32e0871bbcde54d63184b31f3085f926344a288ea175"
+    },
+    {
+      "role": "preserved_preinit_failure_receipt",
+      "file": "result.json",
+      "bytes": 2559,
+      "sha256": "1a1de485042f0aaa249cfcab87bf40a99624dc78190667e96393f1d0b78f7681"
+    },
+    {
+      "role": "preserved_preinit_failure_controller",
+      "file": "control.json",
+      "bytes": 2069,
+      "sha256": "fa73036e867ae4242947284117163bdbbdaca4d798adcac05cabb7a44caf3a3a"
+    },
+    {
+      "role": "frame0_branch_pair4_raw_PERF_DETAIL",
+      "file": "pair4-frame0_branch-perf-detail.txt",
+      "bytes": 9457,
+      "sha256": "d2737c2dc97b5f9a7863486e3bdff513b97cf97a9f6f45fd25dfcaf8a6db8b0b"
+    },
+    {
+      "role": "frame0_branch_pair5_raw_PERF_DETAIL",
+      "file": "pair5-frame0_branch-perf-detail.txt",
+      "bytes": 9457,
+      "sha256": "e6e0df468c2f8d4a6d5a483a1fede9070b4f217442bcd860d03baf3e55be3ae9"
+    },
+    {
+      "role": "heads0_6_pair4_raw_PERF_DETAIL",
+      "file": "pair4-heads0_6-perf-detail.txt",
+      "bytes": 9965,
+      "sha256": "a34c2eae77a8a1c6eb36163863484dcbce9ba26d7e49648547a5d63c721fb1fc"
+    },
+    {
+      "role": "heads0_6_pair5_raw_PERF_DETAIL",
+      "file": "pair5-heads0_6-perf-detail.txt",
+      "bytes": 9965,
+      "sha256": "42a541b0591cb402cfea063043f50ba39f46b1bdfeff90d1ef3e6bd32362acc6"
+    },
+    {
+      "role": "global_suffix_pair4_raw_PERF_DETAIL",
+      "file": "pair4-global_suffix-perf-detail.txt",
+      "bytes": 10844,
+      "sha256": "d35c9cfbd257dde95be670d8ee7c0feed4226f0cfb80ed289aa51f0b02df62b9"
+    },
+    {
+      "role": "global_suffix_pair5_raw_PERF_DETAIL",
+      "file": "pair5-global_suffix-perf-detail.txt",
+      "bytes": 10844,
+      "sha256": "0c80cf0d188e8504865dcf685f9654e782b4b809b1f1ac575d04b2ebd9e5fb41"
+    }
+  ],
+  "publication": "Metadata only. Original checkpoint/model, repository code and vendor SDK terms remain separate; no private paths, arrays, weights, graphs or SDK binaries are included."
+}

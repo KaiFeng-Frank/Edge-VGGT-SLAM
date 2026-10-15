@@ -1,0 +1,462 @@
+{
+  "schema": "original_native518_stage4_retained_view_boundary_diagnosis_and_repair_v144",
+  "status": "one_input_internal_layout_repaired_heldout_feature_errors_reduced_original_gates_still_failed_not_deployment_accepted",
+  "original_model_only": true,
+  "preceding_record": "original_native518_stage4_public_precision_v139.json",
+  "preceding_record_preserved": true,
+  "scope": {
+    "component": "Original first group: ten aggregation blocks and two original B1 depth project0 prefixes; captured original encoder inputs",
+    "source_resolution": 518,
+    "tokens_per_frame": 1041,
+    "global_keys": 2082,
+    "heads": 16,
+    "complete_original_encoder_executed_in_this_screen": false,
+    "full_model_or_complete_heads_executed": false,
+    "SLAM_or_trajectory_executed": false
+  },
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "calibration": {
+    "stage4_original_step1_receipt_sha256": "93869370a02cedf7fcfa62de87787e2c8d880b8ab4572f4f59cdac744e5d404e",
+    "input_ids": [
+      "pair0",
+      "pair1",
+      "pair2",
+      "pair3"
+    ],
+    "source_indices": [
+      [
+        0,
+        8
+      ],
+      [
+        16,
+        24
+      ],
+      [
+        48,
+        56
+      ],
+      [
+        64,
+        72
+      ]
+    ],
+    "heldouts_excluded": true,
+    "new_calibration_or_range_tuning_for_r5_r6_r7": false,
+    "original_data_and_numerical_catalogue_unchanged_in_r7": true,
+    "offline_calibration_memory_is_not_inference_or_8GB_evidence": true
+  },
+  "r3_dump_diagnosis": {
+    "conditional_input": "pair4 original pair3_global_output",
+    "context_flags": 0,
+    "core_mask": 7,
+    "contexts": 1,
+    "runs": 1,
+    "owned_outputs": 2,
+    "both_final_outputs_byte_equal_normal_r3": true,
+    "dump_arrays": 126,
+    "dump_total_file_bytes": 952651424,
+    "first_nonfinite_operator": {
+      "index": 101,
+      "op": "Reshape",
+      "role": "retained global frame view",
+      "NaN_count": 851,
+      "negative_infinity_count": 7
+    },
+    "public_global_and_earlier_frame_global_residual_dumps_finite": true,
+    "nonfinite_view_propagates_through_concat_transpose_slices_and_both_original_FLOAT16_DPT_norms": true,
+    "following_INT8_conversions_and_final_owned_outputs_finite": true,
+    "actual_public_and_view_primary_input_dtype": "INT8",
+    "actual_concat_retained_input_dtype": "FLOAT16",
+    "concat_does_not_directly_alias_the_original_INT8_primary_span": true,
+    "partial_byte_interpretation_witness": {
+      "values": 532480,
+      "frame": 0,
+      "rows": 520,
+      "features": 1024,
+      "all_public_INT8_grid_dequantized_bytes_match": true,
+      "finite_values_signed_zeros_and_signed_infinities_exact": true,
+      "NaN_positions_match": true,
+      "predicted_NaN_count": 293,
+      "interpretation": "This bounded saved region matches Half interpretations of pairs of recovered public INT8 bytes; it does not establish the whole view, padding or an internal kernel bitcast."
+    },
+    "concat_NaN_payloads": {
+      "changed_values": 843,
+      "distinct_XOR_masks": 250,
+      "changes_are_not_only_one_quiet_bit": true,
+      "all_non_NaN_bits_and_NaN_positions_preserved": true
+    },
+    "original_norm_parameters_and_node_protos_not_changed_in_r7": true,
+    "complete_norm_algorithm_or_driver_root_cause_established": false
+  },
+  "preserved_negative_compiles": {
+    "r5": {
+      "change": "Only quantize_parameters['global_output_int8']['dtype']: int8 to float16",
+      "numeric_min_max_scale_zero_point_and_other_catalogue_entries_unchanged": true,
+      "SDK_rejection": "The quantize_parameters['global_output_int8']['dtype'] is not allowed to be modified!",
+      "hybrid_step2_raised_before_return": true,
+      "export_invoked": false,
+      "actual_operator_table_or_NPU_runtime": false,
+      "worker_seconds": 10.145972520000214
+    },
+    "r6": {
+      "change": "One internal retained-view input edge applied to the prior r3 precision IR",
+      "inherited_terminal_converter_i_dtype": "float16",
+      "SDK_rejection": "o_dtype_0 'int8' != i_dtype_1 'float16' in 'global_output_int8__cvt_float16_int8'",
+      "hybrid_step2_raised_before_return": true,
+      "export_invoked": false,
+      "actual_operator_table_or_NPU_runtime": false,
+      "worker_seconds": 24.2942879000002
+    },
+    "all_failed_sources_receipts_logs_and_raw_evidence_preserved": true,
+    "no_failed_hybrid_returncode_invented": true,
+    "no_SDK_rule_disabled": true
+  },
+  "r7_source_change": {
+    "parent": "Original stage4 step1 generated model, not the r3 converter override",
+    "original_generated_model_sha256": "da21c930d904cc2436c6c89a49560d8801f198cc74f290e13d445cec88350edd",
+    "derived_model_sha256": "c0df22143da82ac3f93c01a7b0d9d9285bccfd834e2010790cb3e03d14654cf4",
+    "derived_model_bytes": 159802310,
+    "generated_nodes": 107,
+    "generated_initializers": 105,
+    "only_changed_node": "__canonical_group0_project0/global_frame_view_rs",
+    "only_changed_input_index": 0,
+    "original_input": "global_output_int8",
+    "new_input": "global_output-rs",
+    "unchanged_public_terminal_converter": {
+      "i_dtype": "int8",
+      "o_dtype": "float32"
+    },
+    "old_reshape_sequence": [
+      [
+        1,
+        2082,
+        1,
+        1024
+      ],
+      [
+        1,
+        2082,
+        1024
+      ],
+      [
+        2,
+        1041,
+        1,
+        1024
+      ]
+    ],
+    "new_reshape_sequence": [
+      [
+        1,
+        2082,
+        1,
+        1024
+      ],
+      [
+        2,
+        1041,
+        1,
+        1024
+      ]
+    ],
+    "all2131968_generated_integer_positions_equal": true,
+    "whole_original_generated_ModelProto_inverse_byte_equal": true,
+    "all_other_node_and_initializer_protos_byte_equal": true,
+    "learned_parameters_layers_heads_tokens_or_dense_MACs_removed": false,
+    "whole_r3_34_request_cfg_bytes_unchanged": true,
+    "cfg_sha256": "094320dc9820f6dbe5ee48323ea0292fa270f7304c43ed3d2b1920bf030f1302"
+  },
+  "actual_r7_placement": {
+    "operator_count": 115,
+    "consumer_buffer_rows": 290,
+    "precision_target_counts": {
+      "FLOAT16/CPU": 3,
+      "FLOAT16/NPU": 42,
+      "INT8/CPU": 1,
+      "INT8/NPU": 69
+    },
+    "public_global_output": "FLOAT16",
+    "retained_view_input": "FLOAT16 from separate global_output-rs producer",
+    "both_original_DPT_norms": "FLOAT16 on NPU",
+    "six_original_residual_adds_and_value_mean_Sub_restore_path": "FLOAT16 on NPU",
+    "three_SDPA_and_original_learned_update_precision_checks": "INT8 on NPU",
+    "known_internal_CPU_operation": "FLOAT16 Transpose of concatenated retained depth features",
+    "all_internal_operations_on_NPU": false,
+    "original_compiler_expected_public_INT8": true,
+    "public_precision_change_was_unplanned": true,
+    "one_factor_internal_branch_attribution": false,
+    "original_expected_INT8_gate_preserved": true,
+    "original_gate_failures": [
+      "Public global operator is FLOAT16 instead of expected INT8",
+      "Public global consumer domain is FLOAT16 instead of expected INT8"
+    ],
+    "observed_FLOAT16_gate_passed": true,
+    "rknn_bytes": 47401547,
+    "rknn_sha256": "065ea64391488f134b5e7619102cd02bdd4123e9025c568e1c81ab3f4336e7ed",
+    "accumulator_or_probability_precision_established": false
+  },
+  "actual_r7_normal_screen": {
+    "input_ids": [
+      "pair4",
+      "pair5"
+    ],
+    "source_indices": [
+      [
+        96,
+        104
+      ],
+      [
+        112,
+        120
+      ]
+    ],
+    "flags": 0,
+    "core_mask": 7,
+    "resident_contexts": 5,
+    "runs_strictly_sequential": true,
+    "resource_counts": {
+      "contexts_created": 5,
+      "contexts_destroyed": 5,
+      "runs_completed": 16,
+      "output_buffers_acquired": 20,
+      "output_buffers_released": 20
+    },
+    "saved_owned_outputs": 20,
+    "all_outputs_finite": true,
+    "all_previous12_earlier_stage_outputs_byte_equal": true,
+    "conditional_inputs_are_original_stage3_references": true,
+    "connected_inputs_are_actual_previous_owned_outputs": true,
+    "matched_r3_and_r7_stage4_inputs_byte_equal_on_all_four_calls": true,
+    "conditional_comparisons": [
+      {
+        "input_id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "route": "conditional",
+        "same_actual_stage4_input_bytes_verified": true,
+        "endpoints": {
+          "global_output": {
+            "original_r2_relative_l2": 0.16102873345440394,
+            "r3_relative_l2": 0.16102873345435728,
+            "r7_relative_l2": 0.07209239266075806,
+            "r7_max_abs": 0.15817372500896454,
+            "r7_strict_outside_count": 2128020,
+            "fixed_gate_passed": false,
+            "strict_gate_passed": false,
+            "relative_error_reduction_vs_r3_percent": 55.23010638272687,
+            "byte_equal_r3": false
+          },
+          "projected_output": {
+            "original_r2_relative_l2": 0.6642285139045728,
+            "r3_relative_l2": 1.1097657020803502,
+            "r7_relative_l2": 0.07956777790574854,
+            "r7_max_abs": 0.12115883827209473,
+            "r7_strict_outside_count": 529723,
+            "fixed_gate_passed": false,
+            "strict_gate_passed": false,
+            "relative_error_reduction_vs_r3_percent": 92.830218328374,
+            "byte_equal_r3": false
+          }
+        }
+      },
+      {
+        "input_id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "route": "conditional",
+        "same_actual_stage4_input_bytes_verified": true,
+        "endpoints": {
+          "global_output": {
+            "original_r2_relative_l2": 0.16020288423930626,
+            "r3_relative_l2": 0.16020288423925816,
+            "r7_relative_l2": 0.07177880668110596,
+            "r7_max_abs": 0.1689380407333374,
+            "r7_strict_outside_count": 2128087,
+            "fixed_gate_passed": false,
+            "strict_gate_passed": false,
+            "relative_error_reduction_vs_r3_percent": 55.19505967576308,
+            "byte_equal_r3": false
+          },
+          "projected_output": {
+            "original_r2_relative_l2": 0.6631871056833144,
+            "r3_relative_l2": 1.2199928325447331,
+            "r7_relative_l2": 0.07913778292393928,
+            "r7_max_abs": 0.13671588897705078,
+            "r7_strict_outside_count": 529724,
+            "fixed_gate_passed": false,
+            "strict_gate_passed": false,
+            "relative_error_reduction_vs_r3_percent": 93.5132583722751,
+            "byte_equal_r3": false
+          }
+        }
+      }
+    ],
+    "connected_comparisons": [
+      {
+        "input_id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "route": "connected",
+        "same_actual_stage4_input_bytes_verified": true,
+        "endpoints": {
+          "global_output": {
+            "original_r2_relative_l2": 0.1938457543185764,
+            "r3_relative_l2": 0.1938457543185256,
+            "r7_relative_l2": 0.1298813627812858,
+            "r7_max_abs": 0.502324104309082,
+            "r7_strict_outside_count": 2129762,
+            "fixed_gate_passed": false,
+            "strict_gate_passed": false,
+            "relative_error_reduction_vs_r3_percent": 32.997571580615634,
+            "byte_equal_r3": false
+          },
+          "projected_output": {
+            "original_r2_relative_l2": 0.6712448722471532,
+            "r3_relative_l2": 1.1594434376565594,
+            "r7_relative_l2": 0.13296826220980956,
+            "r7_max_abs": 0.16210156679153442,
+            "r7_strict_outside_count": 529960,
+            "fixed_gate_passed": false,
+            "strict_gate_passed": false,
+            "relative_error_reduction_vs_r3_percent": 88.5317163484437,
+            "byte_equal_r3": false
+          }
+        }
+      },
+      {
+        "input_id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "route": "connected",
+        "same_actual_stage4_input_bytes_verified": true,
+        "endpoints": {
+          "global_output": {
+            "original_r2_relative_l2": 0.1942036815847284,
+            "r3_relative_l2": 0.194203681584676,
+            "r7_relative_l2": 0.13103587070110842,
+            "r7_max_abs": 0.5725374221801758,
+            "r7_strict_outside_count": 2129709,
+            "fixed_gate_passed": false,
+            "strict_gate_passed": false,
+            "relative_error_reduction_vs_r3_percent": 32.526577440822294,
+            "byte_equal_r3": false
+          },
+          "projected_output": {
+            "original_r2_relative_l2": 0.6735913901713504,
+            "r3_relative_l2": 1.0778957297951859,
+            "r7_relative_l2": 0.13284935099232514,
+            "r7_max_abs": 0.1442594677209854,
+            "r7_strict_outside_count": 530000,
+            "fixed_gate_passed": false,
+            "strict_gate_passed": false,
+            "relative_error_reduction_vs_r3_percent": 87.67512039243645,
+            "byte_equal_r3": false
+          }
+        }
+      }
+    ],
+    "complete_connected_chain_seconds": [
+      3.8315170099995157,
+      3.7843205890021636
+    ],
+    "timing_scope": "Sequential complete owned calls including SDK IO, original finite guard/release and the known CPU layout; initialization, comparisons and saves excluded.",
+    "one_complete_chain_interval_per_heldout_is_not_sustained_throughput_P95_or_pose_latency": true,
+    "controller": {
+      "npu_hz": 1000000000,
+      "timeout_seconds": 180,
+      "temperature_limit_c": 75,
+      "original_policy_restored": true
+    }
+  },
+  "actual_r7_dump_validation": {
+    "input_id": "pair4",
+    "route": "conditional",
+    "flags": 0,
+    "core_mask": 7,
+    "contexts": 1,
+    "runs": 1,
+    "owned_outputs": 2,
+    "both_final_outputs_byte_equal_normal_r7": true,
+    "dump_arrays": 125,
+    "dump_total_file_bytes": 944123472,
+    "all_dump_arrays_finite": true,
+    "all125_file_raw_shape_dtype_and_counts_verified": true,
+    "complete_retained_view_positions": 2131968,
+    "all_upstream_to_view_concat_transpose_slice_and_reshape_FP32_export_bits_equal": true,
+    "both_original_DPT_norm_inputs_and_outputs_finite": true,
+    "actual_public_and_retained_upstream_FLOAT16_primary_spans_separate": true,
+    "logical_FP16_payload_bytes": 4263936,
+    "observed_primary_span_bytes": 4276224,
+    "extra_allocation_bytes": 12288,
+    "physical_stride_or_padding_rule_inferred": false,
+    "first_saved_auditor_exact_allocation_size_assumption_failed_and_preserved": true,
+    "corrected_saved_auditor_checks_capacity_and_records_extra_bytes": true,
+    "board_rerun_for_auditor_correction": false,
+    "normal_debug_duration_not_a_performance_measurement": true,
+    "all_input_or_full_kernel_correctness_established": false
+  },
+  "evidence": {
+    "r3_dump_receipt_sha256": "a55eb8b6398620c7b833b237daa921e4368f3f7e3172e9e914551c2ad5bfb3b7",
+    "r3_dump_saved_audit_sha256": "e848709dd9fac40e0925d3008ed1a985194c819199d07ee88c0414c71629443a",
+    "r3_partial_witness_sha256": "2276569cadde1ef3985e7ac0e619d1d2a71890f26de198d2bcaa04dc3a5b31e0",
+    "r3_partial_independent_peer_sha256": "9d2aa111b63cb64e0f05a7df3801ad6bd702463687e7ba089ee57c31e072df4f",
+    "r5_compile_receipt_sha256": "a81e321bfd5c58a52042d131002deef5b5517187853659c389c38eb76323f2b0",
+    "r5_failure_saved_audit_sha256": "84401a26d8bdf751fec9dbccc022a8b06bc0efe009bbe7a3f99836531ed6cd4b",
+    "r6_compile_receipt_sha256": "6205fe3b2fa02db3938bb4cb2f26f6b6d40135a6a55ed6fd3c93684ce7fedc64",
+    "r6_failure_saved_audit_sha256": "fffdb83dabfdf0d8bd71ec8b8b7e58a27fcdb3f3f321007ad0b0662083e5350c",
+    "r7_static_proof_sha256": "006d489731c704cdbc2d85164d16877cd7ee8ef7733ee7997b89810dae97a1f8",
+    "r7_compile_receipt_sha256": "bea6b1ae0caa5ce67f773edacd89869d422e233581745789fc7d83f3ad6ddfee",
+    "r7_original_expected_INT8_audit_sha256": "bebbf07a53930761fef79d514a468c45468e725d396b7bb9692506b4f82c205e",
+    "r7_observed_FLOAT16_audit_sha256": "1cd079ec158103c401933631fc19bc034349a622edadf4a9594207883948e966",
+    "r7_normal_receipt_sha256": "9ab1887db3369afe926208c93d9b4d4441c7ba0e2eb3f8d530f48663b006a1d4",
+    "r7_normal_saved_audit_sha256": "20a0d5c50f053c69f05b8da8c3b230d3a4610497f58ade1a9e7aea954f0850e0",
+    "r7_dump_receipt_sha256": "a8649ded726a08be865ba27528a1e416dbfad13af0b9a27407b26bbff3f60c39",
+    "r7_dump_controller_sha256": "67152bd8dbac9dae64cfeb92a9f2148f3e1546ea1307f0afceeaabb8ce7df505",
+    "r7_dump_initial_auditor_assumption_failure_sha256": "23ea830158a85ac4b466ca71e670e1e3996235d11529e3e8579b9f456fc55fa4",
+    "r7_dump_saved_audit_r2_sha256": "1c550a6ba7cbab5108d943308e956373c208fd4ec174623ab53c7f899e752ecd",
+    "r7_dump_saved_auditor_r2_source_sha256": "f8e95b2e4a0f12c470a2bb8168ea5c4905fba2e60e0feb6259a3e8140e01cc01",
+    "r7_complete_layout_witness_sha256": "719e20813cce65b3abf2cc1aceb84d4f0573b70096ea245cdacc1b3addea463e"
+  },
+  "acceptance": {
+    "fixed_original_FP32_tensor_gate": false,
+    "strict_original_FP32_tensor_gate": false,
+    "full_model": false,
+    "trajectory": false,
+    "fresh_pose_rate": false,
+    "realtime": false,
+    "sustained_throughput_or_P95": false,
+    "stability": false,
+    "physical_8GB": false,
+    "deployment": false
+  },
+  "limits": [
+    "The original r3 nonfinite evidence is from SDK dequantized debug exports. The bounded byte-pair witness is not a whole-view packing or internal kernel bitcast proof.",
+    "The successful r7 validation covers one conditional heldout dump and two heldout normal inputs. It does not establish all-input absence of defects.",
+    "The compiler changed both public and internal precision. The measured benefit belongs to the complete r7 configuration and cannot isolate one branch or one compiler mechanism.",
+    "All heldout original fixed and strict FP32 endpoint gates still fail; feature error is not trajectory or map-quality evidence.",
+    "The screen uses captured original encoder features and excludes remaining aggregation blocks, complete heads and SLAM. Chain intervals are not complete input-to-pose latency.",
+    "Only identities and aggregate metrics are public. Arrays, weight-bearing generated/compiled models, SDK binaries and private storage paths remain private."
+  ],
+  "license_scope": {
+    "repository_code": "BSD-2-Clause",
+    "pinned_original_VGGT_source_and_checkpoint": "Separate CC-BY-NC-4.0 and attribution terms; repository BSD terms grant no commercial weight rights.",
+    "details": "MODEL_LICENSES.md",
+    "SDK_and_vendor_binaries_have_separate_terms": true
+  },
+  "candidate_accepted": false,
+  "production_defaults_changed": false,
+  "README_changed": false,
+  "commit_or_GitHub_push_performed": false
+}

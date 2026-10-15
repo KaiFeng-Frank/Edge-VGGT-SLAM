@@ -1,0 +1,2 @@
+#!/bin/sh
+exec env -u PYTHONPATH -u PYTHONHOME -u VIRTUAL_ENV LD_LIBRARY_PATH=/mnt/vggt-data/vggt-slam2/sysroot/usr/lib/aarch64-linux-gnu OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 CUDA_VISIBLE_DEVICES= /mnt/vggt-data/vggt-slam2/venv/bin/python -B -u /mnt/vggt-data/vggt-slam2/experiments/vggt-v110-source-r1/run_native518_tail_reuse_chain.py --executor-sha256 e153a5f71ef0b10119207b2e43589b628a2e85ab1abeaeb72d2df2a7dd6fb638 --core-mask 7 --output-dir /dev/shm/edge-vggt-v110-native/tail-reuse-core7-r1 --timeout-seconds 170

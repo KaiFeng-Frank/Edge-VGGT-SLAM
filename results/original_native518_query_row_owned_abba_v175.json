@@ -1,0 +1,313 @@
+{
+  "schema": "original_native518_query_row_owned_abba_v175",
+  "status": "same_graph_parallel_query_rows_reduce_descriptive_component_latency_with_byte_equal_stages_original_precision_gates_fail",
+  "original_model_only": true,
+  "scope": {
+    "component": "original global0 block represented by R174 producer plus three full-key694-query consumers",
+    "input_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "all16_heads_and2082queries_and2082keys_preserved": true,
+    "original_frame_prefix_or_other_blocks_executed": false,
+    "conditional_original_FP32_references": true,
+    "reused_engineering_cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "fresh_final_accuracy_holdout": false,
+    "not_a_complete_original_pair_or_full_model_measurement": true
+  },
+  "original_checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "model_hashes": {
+    "qkv_producer": "96ebefdfe05301938d09a975157435eeaefa07dcc872c907992ee50a473e9749",
+    "query_consumer": "50c388839cadae27936969c112d5251f61fc122b930a4e2c37762419c7b8b530"
+  },
+  "static_and_gate_record": "R174",
+  "compared_policies": {
+    "A_serial": "Same producer followed by consumer actors one at a time on masks1,2,4.",
+    "B_parallel": "Same producer followed by all three consumer actors submitted before collection.",
+    "same_four_persistent_owners_models_inputs_and_core_masks": true,
+    "producer_core_mask": 7,
+    "consumer_core_masks": [
+      1,
+      2,
+      4
+    ],
+    "init_flags": 0,
+    "native_IO_or_FD_handoff_used": false,
+    "shared_internal_scratch_or_shared_weight_flags_used": false,
+    "older_head_shard_or_unsplit_fused_architecture_compared_in_this_run": false
+  },
+  "actual_data_flow": {
+    "original_input_FLOAT32_finite_check": true,
+    "producer_input_readonly_original_frame_GLOBAL_view": true,
+    "full_key_QKV_mean_computed_once_per_call": true,
+    "consumer_readonly_Q_and_X_rows": true,
+    "complete_same_case_K_Vc_mu_reused": true,
+    "output_references_injected_as_inputs": false,
+    "all_three_actual_row_outputs_concatenated_in_order": true,
+    "standard_API_FLOAT32_input_and_owned_output_boundaries": true,
+    "timed_operations": [
+      "Original input reshape and producer ordinary API input checks/conversion, run, owned copies, release and finite checks.",
+      "Actual consumer input rows with complete K/Vc/mu, serial or parallel dispatch/collection and each ordinary API boundary.",
+      "Ordered final FLOAT32 concatenation and finite validation."
+    ],
+    "outside_timing": [
+      "Owner initialization and teardown.",
+      "Snapshots, hashing and original-reference numerical comparisons."
+    ]
+  },
+  "matched_screen": {
+    "schedule": [
+      "A_serial",
+      "B_parallel",
+      "B_parallel",
+      "A_serial"
+    ],
+    "case_order_per_phase": [
+      "pair4",
+      "pair5"
+    ],
+    "complete_calls": 8,
+    "samples_per_route_case": 2,
+    "first_calls_included": true,
+    "NPU_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "controller_temperature_limit_c": 75,
+    "initialization_seconds": 0.3594010360102402,
+    "destruction_seconds": 0.2290183139994042,
+    "route_timing_means_seconds": {
+      "A_serial": {
+        "samples": 4,
+        "public_call_wall_seconds": 1.0958941520002554,
+        "producer_owned_boundary_seconds": 0.3150680732469482,
+        "consumer_dispatch_collect_wall_seconds": 0.7740545257511258,
+        "other_complete_call_seconds": 0.006771553002181463,
+        "producer_SDK_run_seconds": 0.24752107699896442,
+        "consumer_SDK_run_sum_seconds_diagnostic": 0.4781349442455394,
+        "consumer_SDK_run_max_seconds_diagnostic": 0.1627702142468479,
+        "consumer_owned_boundary_sum_seconds_diagnostic": 0.7724675152458076,
+        "actual_actor_interval_span_seconds": 0.7735938382502354
+      },
+      "B_parallel": {
+        "samples": 4,
+        "public_call_wall_seconds": 0.6015992997527064,
+        "producer_owned_boundary_seconds": 0.2666525994973199,
+        "consumer_dispatch_collect_wall_seconds": 0.3294306997486274,
+        "other_complete_call_seconds": 0.0055160005067591555,
+        "producer_SDK_run_seconds": 0.22240253275231225,
+        "consumer_SDK_run_sum_seconds_diagnostic": 0.5919322049994662,
+        "consumer_SDK_run_max_seconds_diagnostic": 0.20288091600014013,
+        "consumer_owned_boundary_sum_seconds_diagnostic": 0.8652219932555454,
+        "actual_actor_interval_span_seconds": 0.32896979349970934
+      }
+    },
+    "per_case": [
+      {
+        "id": "pair4",
+        "A_serial_mean_seconds": 1.1097614239988616,
+        "B_parallel_mean_seconds": 0.6040630604984472,
+        "reduction_percent": 45.56820525245912,
+        "comparison_vs_original_FP32": {
+          "relative_l2": 0.01649676654863681,
+          "max_abs": 0.5255874693393707,
+          "outside_count": 1162990,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        }
+      },
+      {
+        "id": "pair5",
+        "A_serial_mean_seconds": 1.0820268800016493,
+        "B_parallel_mean_seconds": 0.5991355390069657,
+        "reduction_percent": 44.62840525680356,
+        "comparison_vs_original_FP32": {
+          "relative_l2": 0.018332577498384035,
+          "max_abs": 0.6136840581893921,
+          "outside_count": 1167524,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        }
+      }
+    ],
+    "overall_reduction_percent": 45.10425129519569,
+    "complete_call_reduction_seconds": 0.494294852247549,
+    "producer_timing_changed_despite_same_producer_policy": true,
+    "entire_difference_attributed_only_to_consumer_concurrency": false,
+    "summed_parallel_SDK_or_actor_intervals_are_route_latency": false,
+    "hardware_occupancy_proven": false,
+    "steady_state_or_P95_or_sustained_rate_measured": false
+  },
+  "actual_numerical_checks": {
+    "saved_first_A_phase_FLOAT16_arrays": 14,
+    "saved_snapshot_total_NPY_bytes": 34117376,
+    "all14_lossless_to_actual_owned_FLOAT32_outputs": true,
+    "all56_stage_hashes_equal_same_case_first_serial": true,
+    "all8_own_concat_endpoints_same_case_byte_equal": true,
+    "all24_consumer_full_key_feed_fingerprints_verified": true,
+    "first_snapshot_payloads_preserved": true,
+    "later_stage_payloads_independently_saved": false,
+    "original_FP32_gate": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "strict_rtol": 0.0001,
+      "strict_atol": 1e-05
+    },
+    "original_FP32_comparisons": [
+      {
+        "id": "pair4",
+        "A_serial_and_B_parallel_identical_comparison": {
+          "relative_l2": 0.01649676654863681,
+          "max_abs": 0.5255874693393707,
+          "outside_count": 1162990,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        }
+      },
+      {
+        "id": "pair5",
+        "A_serial_and_B_parallel_identical_comparison": {
+          "relative_l2": 0.018332577498384035,
+          "max_abs": 0.6136840581893921,
+          "outside_count": 1167524,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        }
+      }
+    ],
+    "all_fixed_and_strict_gates_passed": false,
+    "quality_equivalent_to_original_FP32_proven": false
+  },
+  "resources": {
+    "contexts_created": 4,
+    "contexts_destroyed": 4,
+    "maximum_live_contexts": 4,
+    "SDK_runs": 32,
+    "producer_runs": 8,
+    "consumer_runs": 24,
+    "output_buffers_acquired": 56,
+    "output_buffers_released": 56,
+    "all_three_actor_create_run_close_threads_preserved": true,
+    "all_futures_drained_and_pools_shutdown": true,
+    "all_sources_models_original_payloads_and_environment_unchanged": true,
+    "controller_frequency_policy_restored": true,
+    "cleanup_errors": [],
+    "root_f_bfree_hard_floor_bytes": 3221225472,
+    "independent_storage_checks": 29,
+    "minimum_observed_f_bfree_bytes": 3289530368,
+    "process_peak_RSS_mib": 415.3984375,
+    "RSS_is_not_physical_unique_memory_budget": true,
+    "maximum_controller_temperature_c": 57.307
+  },
+  "acceptance": {
+    "same_graph_scheduling_component_result_verified": true,
+    "precision_or_deployment_accepted": false,
+    "original_model_trajectory_quality_accepted": false,
+    "full_model_or_SLAM20Hz_or_input_to_pose_P95_accepted": false,
+    "physical8GB_or_30minute_stability_accepted": false,
+    "matched_speedup_over_older_head_shard_or_unsplit_fused_graph_established": false
+  },
+  "evidence": [
+    {
+      "role": "frozen standard owned runtime worker",
+      "basename": "run_query_row_fusion_owned_ABBA_board.py",
+      "bytes": 29577,
+      "sha256": "95616a215505aa916c75165a0d8b5442b0a895f783fc2b1434840927a84adacd"
+    },
+    {
+      "role": "frozen ordinary owned API owner",
+      "basename": "profile_owned_context_r2.py",
+      "bytes": 28808,
+      "sha256": "5aa75a7630ecb9793773553da1f7351a97ca5bac728d4f01f9b74d83d3ca2426"
+    },
+    {
+      "role": "frozen dedicated actor helper",
+      "basename": "owned_head_shard_workers.py",
+      "bytes": 6813,
+      "sha256": "78ccf0b6c57929dc84f0b3c3b43dc64de8a6d15c107da4bd830f17bea3a0a916"
+    },
+    {
+      "role": "frozen host transport source",
+      "basename": "execute_query_row_fusion_owned_ABBA_host.py",
+      "bytes": 14105,
+      "sha256": "9c0fb6266320118e363cd43722ab3dfefe1373bbc57658fb4ab440a593d0d9b2"
+    },
+    {
+      "role": "executed manifest",
+      "basename": "manifest.json",
+      "bytes": 5165,
+      "sha256": "98da44f0e05107cb02d8286f31d1baa18b29086730c85cea4a76e71157078dc1"
+    },
+    {
+      "role": "actual eight-call result",
+      "basename": "result.json",
+      "bytes": 137415,
+      "sha256": "cdc56884f77fc1bddf4e74cd628d449ac9af5bc04dc7ae6edcbc929abb2eb47e"
+    },
+    {
+      "role": "completed pull and hash transport",
+      "basename": "owned-ABBA-r1-transport.json",
+      "bytes": 19426,
+      "sha256": "a4d0efb761ce878aecede0aa9a05db6b2bd3c103f44b9f7bb30c73ffada04877"
+    },
+    {
+      "role": "restoring controller",
+      "basename": "control.json",
+      "bytes": 8580,
+      "sha256": "7191fe525efbca8a1515244eafd59d8992eeac66d5a00075beff4ed3375736f7"
+    },
+    {
+      "role": "independent saved-data audit",
+      "basename": "owned-ABBA-r1-saved-audit-r1.json",
+      "bytes": 23145,
+      "sha256": "82e8d85be1c2b93fe5254af69f353bc82ee3288785a4f823d51462bd4d0279aa"
+    },
+    {
+      "role": "independent saved-data auditor",
+      "basename": "audit_query_row_owned_ABBA_saved.py",
+      "bytes": 24787,
+      "sha256": "2bc0bf0741655d37f988a7a93a9c9422f82712dea82d2e51a80a5eab7afce356"
+    }
+  ],
+  "limits": [
+    "This compares two schedules of the same newly partitioned global0 graph, not matched performance against the old head-shard architecture or unsplit fused model.",
+    "The producer boundary mean also differs between schedules; the full495ms difference is not causally isolated to consumer parallelism, and parallel SDK sums are not elapsed latency.",
+    "Identical serial/parallel bytes do not imply original FP32 quality. Both cases fail unchanged fixed/strict tensor gates with relative L2 about1.65% and1.83%.",
+    "Two reused engineering cases with two calls per route/case do not establish fresh generalization, trajectory improvement, full-model/SLAM20Hz, sustained rate, or physical8GB feasibility.",
+    "All raw arrays, weight-bearing graphs/models and SDK payloads remain private; public files contain evidence metadata and hashes only."
+  ]
+}

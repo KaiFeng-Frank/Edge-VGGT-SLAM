@@ -1,0 +1,70 @@
+{
+  "schema": "v129_actual_compiler_schedule_observation",
+  "compile_receipt_sha256": "01f9034d151e0b0388c98b1fbf1ccf81163dace668c4afa13ccce9ecf433388f",
+  "compiler_stdout_sha256": "ab976c433d688482b303e95410151ddbed791d2ad477066756440a838379c01f",
+  "actual_compiled_MLP_rows": [
+    {
+      "index": 62,
+      "op_type": "ConvExGelu",
+      "dtype": "FLOAT16",
+      "target": "NPU",
+      "name": "Conv:global0/joint_mlp_k4/part3/fc1_matmul#2"
+    },
+    {
+      "index": 63,
+      "op_type": "ConvExGelu",
+      "dtype": "FLOAT16",
+      "target": "NPU",
+      "name": "Conv:global0/joint_mlp_k4/part0/fc1_matmul#2"
+    },
+    {
+      "index": 64,
+      "op_type": "ConvExGelu",
+      "dtype": "FLOAT16",
+      "target": "NPU",
+      "name": "Conv:global0/joint_mlp_k4/part2/fc1_matmul#2"
+    },
+    {
+      "index": 65,
+      "op_type": "ConvExGelu",
+      "dtype": "FLOAT16",
+      "target": "NPU",
+      "name": "Conv:global0/joint_mlp_k4/part1/fc1_matmul#2"
+    },
+    {
+      "index": 66,
+      "op_type": "Conv",
+      "dtype": "FLOAT16",
+      "target": "NPU",
+      "name": "Conv:global0/mlp.fc2.matmul.part1#2"
+    },
+    {
+      "index": 67,
+      "op_type": "ConvAdd",
+      "dtype": "FLOAT16",
+      "target": "NPU",
+      "name": "Conv:global0/mlp.fc2.matmul.part0#2_ConvAdd"
+    },
+    {
+      "index": 68,
+      "op_type": "ConvAdd",
+      "dtype": "FLOAT16",
+      "target": "NPU",
+      "name": "Conv:global0/mlp.fc2.matmul.part2#2_ConvAdd"
+    },
+    {
+      "index": 69,
+      "op_type": "ConvAdd",
+      "dtype": "FLOAT16",
+      "target": "NPU",
+      "name": "Conv:global0/mlp.fc2.matmul.part3#2_ConvAdd"
+    }
+  ],
+  "all_four_FC1_before_any_FC2": true,
+  "source_interleaving_preserved": false,
+  "claimed_hidden_lifetime_reduction_established": false,
+  "SDK_reported_internal_memory_KB": 89965.3,
+  "SDK_reported_weight_memory_KB": 56232.4,
+  "memory_scope": "Rounded static SDK compiler fields; not measured physical total or 8GB acceptance",
+  "performance_acceptance": false
+}

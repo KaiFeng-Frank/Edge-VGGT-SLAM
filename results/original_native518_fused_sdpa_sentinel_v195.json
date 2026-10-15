@@ -1,0 +1,579 @@
+{
+  "schema": "original_native518_fused_SDPA_sentinel_v195",
+  "record": 195,
+  "status": "original_global0_fused_sentinel_CPU_and_NPU_saved_audits_complete_tiny_error_gain_with_added_latency_not_adopted",
+  "scope": "One reused original global0 attention capture; isolated full-key SDPA representation probe, not a full-group or full-model result.",
+  "representation": {
+    "query_key_value_shape": [
+      1,
+      16,
+      2082,
+      64
+    ],
+    "heads": 16,
+    "queries": 2082,
+    "keys": 2082,
+    "original_value_components": 64,
+    "known_one_components_added": 1,
+    "scale": 0.125,
+    "mask": null,
+    "dropout_p": 0,
+    "is_causal": false,
+    "baseline": "P = softmax(0.125 Q K^T); O = P V",
+    "candidate": "One shared P computes P[V,1] = [O64,m]; board CPU completion is unclamped FLOAT32 O64/m.",
+    "original64_value_components_replaced": false,
+    "Vmean_or_centering_added": false,
+    "learned_weights_or_fitted_scales_added": false,
+    "NPU_Div_present": false,
+    "original_model_or_checkpoint_modified": false,
+    "original_QK_scale_Softmax_NodeProtos_byte_equal": true,
+    "whole_isolated_original_ModelProto_inverse_byte_equal": true,
+    "ONNX_nodes": {
+      "baseline": 5,
+      "sentinel65": 6
+    },
+    "ONNX_initializers": {
+      "baseline": 1,
+      "sentinel65": 2
+    }
+  },
+  "compile_and_placement": {
+    "noncalibrating": true,
+    "do_quantization": false,
+    "dataset": null,
+    "auto_hybrid": false,
+    "matched_configuration": true,
+    "float_dtype": "float16",
+    "optimization_level": 3,
+    "explicit_host_forward_trace_calibration_GPU_or_ORT_session_invoked": false,
+    "SDK_build_internal_execution_not_independently_observed": true,
+    "SDK_created_released_per_graph": [
+      1,
+      1
+    ],
+    "all_compile_resources_closed": true,
+    "actual_operation_counts": {
+      "baseline": 9,
+      "sentinel65": 10
+    },
+    "one_fused_FLOAT16_NPU_SDPA_per_graph": true,
+    "full_QK64_V64_or65_output64_or65_verified": true,
+    "known_ones_Concat_FLOAT16_NPU": true,
+    "full_public_output_transpose_CPU_per_graph": true,
+    "full_public_output_transpose_scope": "Complete canonical output tensor; public CPU layout remains in both compiled graphs.",
+    "explicit_unfused_full_score_CPU_arithmetic_or_layout": false,
+    "actual_fused_V_feature_bytes": {
+      "baseline": 4268032,
+      "sentinel65": 4801536,
+      "increase_percent": 12.5
+    },
+    "compiler_printed_internal_KB": {
+      "baseline": 90149.3,
+      "sentinel65": 94444.4
+    },
+    "compiler_printed_memory_is_not_measured_process_RSS_or_unique_physical_memory": true,
+    "logical_PV_MAC_increase_percent": 1.5625,
+    "logical_QK_plus_PV_MAC_increase_percent": 0.78125,
+    "actual_padding_cycles_or_latency_cannot_be_inferred_from_logical_MACs": true,
+    "historical_compile_CPU_pending_flags_retained": true,
+    "later_actual_CPU_gate_is_bound_separately": true
+  },
+  "CPU_gate": {
+    "execution_location": "RK3588 board",
+    "numpy": "1.26.4",
+    "onnxruntime": "1.16.0",
+    "provider": "CPUExecutionProvider",
+    "CPU_core": 4,
+    "ORT_threads": 1,
+    "ORT_optimization": "ORT_DISABLE_ALL",
+    "sessions_created": 2,
+    "sessions_dropped": 2,
+    "calls": 2,
+    "maximum_live_sessions": 1,
+    "fresh_Torch_or_learned_forward": false,
+    "original_captured_Torch_SDPA_reference_reused": true,
+    "saved_full_FLOAT32_arrays": 3,
+    "saved_NPY_bytes": 25717248,
+    "all3_saved_before_numeric_verdict": true,
+    "actual_unclamped_FLOAT32_normalization_byte_reproduced_from_saved_raw65": true,
+    "fixed_gate": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001
+    },
+    "strict_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "comparisons": [
+      {
+        "name": "baseline_vs_original_Torch",
+        "relative_l2": 2.444472140222465e-07,
+        "max_abs": 4.5299530029296875e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true
+      },
+      {
+        "name": "normalized_vs_original_Torch",
+        "relative_l2": 1.7243114138293722e-07,
+        "max_abs": 3.5762786865234375e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true
+      },
+      {
+        "name": "normalized_vs_baseline",
+        "relative_l2": 2.2861531784620796e-07,
+        "max_abs": 2.86102294921875e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true
+      },
+      {
+        "name": "raw_original64_vs_baseline",
+        "relative_l2": 1.232796701449853e-07,
+        "max_abs": 2.1457672119140625e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true
+      },
+      {
+        "name": "known_one_response_vs_one",
+        "relative_l2": 1.8978420693328275e-07,
+        "max_abs": 8.344650268554688e-07,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true
+      }
+    ],
+    "all5_fixed_and_strict_gates_passed": true,
+    "known_one_response": {
+      "minimum": 0.9999992251396179,
+      "maximum": 1.0000008344650269,
+      "all_positive": true
+    },
+    "saved_numeric_audit_scope": "Three file/raw/shape/dtype/finite checks, exact FLOAT32 completion reconstruction and five independently recomputed comparisons.",
+    "source_and_inputs_unchanged": true,
+    "all_resources_closed": true,
+    "cleanup_errors": [],
+    "controller_completed": true,
+    "controller_returncode": 0,
+    "controller_frequency_written": false,
+    "controller_process_group_gone": true,
+    "all3_transport_pull_returncodes_zero": true,
+    "process_environment_and_affinity_restored": true
+  },
+  "original_input_and_reference_pins": {
+    "q_post_rope": {
+      "file": "q_post_rope.npy",
+      "bytes": 8528000,
+      "sha256": "357bc16070e7cfe40b5f89f3ba53ef82f022a10e4674cfb91b706e493eae3713",
+      "shape": [
+        1,
+        16,
+        2082,
+        64
+      ],
+      "dtype": "float32",
+      "raw_sha256": "3a99bbb9c95758634b3b883aa2797ee1c25c04a203b2fca1cf3701da18eb1141"
+    },
+    "k_post_rope": {
+      "file": "k_post_rope.npy",
+      "bytes": 8528000,
+      "sha256": "88878ec4083f1464c68f098d07031d1569bb1cfea4f939dd1e5cc90b49734943",
+      "shape": [
+        1,
+        16,
+        2082,
+        64
+      ],
+      "dtype": "float32",
+      "raw_sha256": "afc5c404caf557393ed9dc051121bcb968a01fd9c77bf034c66698fac89d2209"
+    },
+    "v": {
+      "file": "v.npy",
+      "bytes": 8528000,
+      "sha256": "176188288cc92c529fd4d296c0121aa48b0aa5fc7c6492c1bede6e3c47d226f8",
+      "shape": [
+        1,
+        16,
+        2082,
+        64
+      ],
+      "dtype": "float32",
+      "raw_sha256": "7f5f91f6e0c1b6111c32cd8f7bd8c3984e2faf6179c3f342bdcceb4134350c6a"
+    },
+    "attention_tail": {
+      "file": "attention_tail.npy",
+      "bytes": 8528000,
+      "sha256": "77793f5ae5841d1646fdb7e4b1680d259a7a48e990ce15d2e5e4ac8ec0667dec",
+      "shape": [
+        1,
+        16,
+        2082,
+        64
+      ],
+      "dtype": "float32",
+      "raw_sha256": "c45bdff3da96e675052f5ece9d1594cac80bd2ee15656a6a138d32810eaa3b43"
+    }
+  },
+  "evidence": {
+    "original_capture": {
+      "artifact": "capture.json",
+      "bytes": 12587,
+      "sha256": "e4ffaea2b11df9ac558c119cb4854d490b0030c02b7706eee344b8894cefa686"
+    },
+    "static_receipt": {
+      "artifact": "result.json",
+      "bytes": 10483,
+      "sha256": "a812bd94282a5ee8637067af8c50a7988971d4acffe5f86ed174d190d66e48bc"
+    },
+    "exporter": {
+      "artifact": "export_fused_sdpa_sentinel_static.py",
+      "bytes": 14130,
+      "sha256": "de69a1c6664289d4521ad8e5708d7811dc26512fe7dbc4f8a36a1ffa2d1835b6"
+    },
+    "baseline_graph": {
+      "artifact": "baseline.onnx",
+      "bytes": 731,
+      "sha256": "e4fc72d22fa06fa220972567d2f2d74c217f2853ae7001a39acb95aa648991d9"
+    },
+    "sentinel65_graph": {
+      "artifact": "sentinel65.onnx",
+      "bytes": 134329,
+      "sha256": "4f71426e4eee7421f4e135efb0a2f6ae2ddad079d2daf1012ebfb23854e1bc48"
+    },
+    "baseline_compile": {
+      "artifact": "result.json",
+      "bytes": 4628,
+      "sha256": "24b3e0907e86d7828a10edc2e4d5066b537bc33a18df744607f35b5d22bbe990"
+    },
+    "sentinel65_compile": {
+      "artifact": "result.json",
+      "bytes": 4653,
+      "sha256": "33e4c2db25f0e8506b1db9e617b3f742dc0ab0e67936663db267039292dc36d7"
+    },
+    "baseline_model": {
+      "artifact": "baseline.rknn",
+      "bytes": 2785991,
+      "sha256": "e1280782b35d7333c89da5a2dabd4e94dff1d237abb4ad8e829dd8c1830dff58"
+    },
+    "sentinel65_model": {
+      "artifact": "sentinel65.rknn",
+      "bytes": 2940753,
+      "sha256": "fca207d7470ab8a442dbd3772f8953169abc5936eae6fec7c03c16589be2d8a2"
+    },
+    "placement_audit": {
+      "artifact": "compile-placement-audit-r1.json",
+      "bytes": 36158,
+      "sha256": "1ff667ed5eb59941462a1c01110cddca1a8d13f70f203d98af0330060c2d16c5"
+    },
+    "CPU_worker": {
+      "artifact": "check_fused_sdpa_sentinel_CPU_board.py",
+      "bytes": 22580,
+      "sha256": "b60f9d0930c04c95dec5d6c666fba3952d1062a4199737d24fa521a0cf1ea771"
+    },
+    "CPU_launcher": {
+      "artifact": "execute_fused_sdpa_sentinel_CPU_host.py",
+      "bytes": 13533,
+      "sha256": "a261ac307fe5b31faa463435088dce731ded5de821b328a94929c50dc238e30f"
+    },
+    "CPU_manifest": {
+      "artifact": "manifest.json",
+      "bytes": 4009,
+      "sha256": "cb56ecb85c8985d6986574c7497f42116477495459ac71db631233172a791edb"
+    },
+    "CPU_receipt": {
+      "artifact": "result.json",
+      "bytes": 10475,
+      "sha256": "53f86d6aed7effb3812e16bba0013c3bee816843ac7823f72e240754537a2632"
+    },
+    "CPU_control": {
+      "artifact": "control.json",
+      "bytes": 16277,
+      "sha256": "e637082558bb5659d1230ef29bca9865714b4c3dbd3be3368647e3ac41849a7f"
+    },
+    "CPU_transport": {
+      "artifact": "transport.json",
+      "bytes": 18783,
+      "sha256": "7204f79f7cfc9d312b6ce0e1fd8b808b53f1fb80007b879539060c3f646d5742"
+    },
+    "CPU_saved_audit": {
+      "artifact": "CPU-r1-saved-audit-r1.json",
+      "bytes": 1941,
+      "sha256": "18375e5018a13cac4ad2e7a47f6b3bbd1654bb8077745e5e490776263f653a40"
+    },
+    "CPU_auditor": {
+      "artifact": "audit_fused_sdpa_sentinel_CPU_saved.py",
+      "bytes": 5474,
+      "sha256": "f6ec3f22f20cc190408d1c98bbd999753301ffc9be4cb826fd14c3a70c92ec47"
+    },
+    "NPU_worker": {
+      "artifact": "run_fused_sdpa_sentinel_paired_board_r3.py",
+      "bytes": 32630,
+      "sha256": "e5a225b7974d00e2370587bd1bc3867ccfebb391d705aa79fe4472bdbde14633"
+    },
+    "NPU_launcher": {
+      "artifact": "execute_fused_sdpa_sentinel_paired_host_r3.py",
+      "bytes": 16728,
+      "sha256": "90404c8b93a7c1e8af53fedad6b8ed181c020833828484c3c00dfbad78c1e0b9"
+    },
+    "NPU_manifest": {
+      "artifact": "manifest.json",
+      "bytes": 7691,
+      "sha256": "a780ebd8058bcc4a21c21d25353138301c7b3ff0d0fb7d1a3604dbda7383a261"
+    },
+    "NPU_receipt": {
+      "artifact": "result.json",
+      "bytes": 122599,
+      "sha256": "5558922bdd7b6c5e0e14711a0e1d0a396fda8c4a193951c13525d9a0a7381a4e"
+    },
+    "NPU_controller": {
+      "artifact": "control.json",
+      "bytes": 6782,
+      "sha256": "7ba8de5cea83aca32ebecff5f66c48eabf4f6e0e7d968cc371d96f7b816a0f65"
+    },
+    "NPU_transport": {
+      "artifact": "transport.json",
+      "bytes": 27131,
+      "sha256": "a595c12839c7c76696025a2e8c2a88193689fad962a388f8d70f1b50f1fac2d1"
+    },
+    "NPU_worker_log": {
+      "artifact": "worker.log",
+      "bytes": 233,
+      "sha256": "8b6050dee4bbe2cd215461fb727fe7317fac332a3e096019759375fff366e29a"
+    },
+    "NPU_saved_audit": {
+      "artifact": "paired-NPU-r3-saved-audit-r1.json",
+      "bytes": 4150,
+      "sha256": "13bae7de96bd0bcd1941e9088479a09733c613275f9fe0fae59b3a10a22772c2"
+    },
+    "NPU_auditor": {
+      "artifact": "audit_fused_sdpa_sentinel_NPU_saved.py",
+      "bytes": 11763,
+      "sha256": "81f64ce4ece60e9a700c4a64e938a9a8ee7a95fe9d5d7eeebca5b1697c86f21a"
+    },
+    "failed_r1_receipt": {
+      "artifact": "result.json",
+      "bytes": 7445,
+      "sha256": "6d50a700b2122759786236878dab68ae6cabbe00aa2be9a36a8711aa1b90f2af"
+    },
+    "failed_r1_controller": {
+      "artifact": "control.json",
+      "bytes": 2457,
+      "sha256": "a68bc3a9bfa01f31a67d76ed5d0332e8e17f07c2f01a762f8536d6447f68e898"
+    },
+    "invalid_r2_receipt": {
+      "artifact": "result.json",
+      "bytes": 115429,
+      "sha256": "c6042eeb94beae8b8731b3d08c247d41c59a3768c32f027bd8e588649327a2a5"
+    },
+    "invalid_r2_controller": {
+      "artifact": "control.json",
+      "bytes": 6419,
+      "sha256": "d915f54c1cb6b29624aff31fd4f9986ae67e385a504622e15d684c63c4d50bfe"
+    },
+    "invalid_r2_worker_log": {
+      "artifact": "worker.log",
+      "bytes": 6353,
+      "sha256": "62d54be8b18e868f42ede732e85c3288e9ab5c0524ce953e80788c25713fe1fc"
+    },
+    "invalid_r2_review": {
+      "artifact": "paired-NPU-r2-IO-rejection-r1.json",
+      "bytes": 4105,
+      "sha256": "3f214a1daa88466e65879e55f52dd1817a42565de41c55e37c48b9ded9f415bc"
+    }
+  },
+  "NPU_runtime": {
+    "status": "actual_original_nonzero_outputs_verified_with_explicit_NHWC_input_packing",
+    "execution_location": "RK3588S",
+    "frequency_hz": 1000000000,
+    "core_mask": 7,
+    "init_flags": 0,
+    "maximum_live_contexts": 1,
+    "schedule": "ABBA; one explicit warmup and two measured calls per context",
+    "measured_calls_per_route": 4,
+    "total_runs": 12,
+    "saved_full_FLOAT32_arrays": 3,
+    "saved_NPY_bytes": 25717248,
+    "comparisons": [
+      {
+        "name": "baseline_vs_original",
+        "relative_l2": 0.001311176419387162,
+        "max_abs": 0.04167795181274414,
+        "outside_count": 816777,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "name": "raw64_vs_original",
+        "relative_l2": 0.001311176419387162,
+        "max_abs": 0.04167795181274414,
+        "outside_count": 816777,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "name": "normalized_vs_original",
+        "relative_l2": 0.001296586382141817,
+        "max_abs": 0.04167795181274414,
+        "outside_count": 744046,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "name": "raw64_vs_baseline",
+        "relative_l2": 0.0,
+        "max_abs": 0.0,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": true
+      },
+      {
+        "name": "normalized_vs_baseline",
+        "relative_l2": 0.00022568961398472607,
+        "max_abs": 0.0011153221130371094,
+        "outside_count": 291050,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "name": "known_one_response_vs_one",
+        "relative_l2": 0.00022264397000962527,
+        "max_abs": 0.00048828125,
+        "outside_count": 6926,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "measured_call_count": 4,
+        "explicit_warmups": 2,
+        "mean_complete_seconds": 0.40686475949405576,
+        "mean_SDK_seconds": 0.33180892924792715,
+        "mean_CPU_completion_seconds": 6.565023795701563e-07,
+        "mean_input_layout_pack_seconds": 0.01076031350021367,
+        "measured_complete_seconds": [
+          0.4086466239969013,
+          0.40650899898901116,
+          0.4063759989949176,
+          0.40592741599539295
+        ],
+        "measured_SDK_seconds": [
+          0.3318851999938488,
+          0.33190678400569595,
+          0.33199369999056216,
+          0.3314500330016017
+        ],
+        "initialization_seconds": 0.18778055999428034,
+        "close_seconds": 0.09376063500531018
+      },
+      "sentinel65": {
+        "measured_call_count": 4,
+        "explicit_warmups": 2,
+        "mean_complete_seconds": 0.4273864177521318,
+        "mean_SDK_seconds": 0.34399395099899266,
+        "mean_CPU_completion_seconds": 0.005204427499847952,
+        "mean_input_layout_pack_seconds": 0.010094220000610221,
+        "measured_complete_seconds": [
+          0.4342905020021135,
+          0.4292531679966487,
+          0.42335070901026484,
+          0.42265129199950024
+        ],
+        "measured_SDK_seconds": [
+          0.3479536599916173,
+          0.3439774090074934,
+          0.34229595099168364,
+          0.3417487840051763
+        ],
+        "initialization_seconds": 0.204021729005035,
+        "close_seconds": 0.09892925998428836
+      }
+    },
+    "complete_call_timing_includes": "All three canonical-to-NHWC input copies, ordinary set/run/get/owned-copy/release, finite and nonzero checks, and sentinel FLOAT32 division.",
+    "complete_call_timing_excludes": "Initialization, close, raw saves, hashes and comparisons; warmups are separately identified.",
+    "complete_latency_change_percent": 5.0438524790387795,
+    "relative_L2_reduction_percent": 1.1127440235818353,
+    "actual_augmented_original64_byte_equal_baseline": true,
+    "known_one_response": {
+      "minimum": 0.99951171875,
+      "maximum": 1.0,
+      "mean": 0.9998984799490424,
+      "all_positive": true,
+      "raw_sha256": "543ada1d181ecb3ed437c0f0971f51c5314943eebfae7c99929d564ad60326b5",
+      "not_direct_internal_probability_mass": true
+    },
+    "all_NPU_original_reference_fixed_and_strict_gates_passed": false,
+    "SDK_error_log_lines": 0,
+    "recorded_repeats_byte_equal": true,
+    "later_repeats_have_hash_telemetry_not_separate_full_payloads": true,
+    "resource_totals": {
+      "contexts_created": 4,
+      "contexts_destroyed": 4,
+      "runs_completed": 12,
+      "output_buffers_acquired": 12,
+      "output_buffers_released": 12
+    },
+    "all_resources_closed": true,
+    "controller_policy_restored": true,
+    "controller_peak_temperature_C": 58.23,
+    "worker_seconds": 7.121237548999488,
+    "controller_seconds": 7.652899435008294,
+    "peak_process_RSS_MiB": 283.40625,
+    "physical_8GB_feasibility": false,
+    "all3_transport_pull_returncodes_zero": true
+  },
+  "acceptance": {
+    "candidate_accepted": false,
+    "full_group_or_full_model_accepted": false,
+    "trajectory_or_SLAM_accepted": false,
+    "realtime_or_20Hz_accepted": false,
+    "physical_8GB_feasibility_accepted": false
+  },
+  "limits": [
+    "The known-one output is a weighted-value response, not a direct internal probability-row-mass observation.",
+    "The original64 augmented output is byte-identical to the unaugmented control in this valid test; this establishes parity here, not universal kernel identity.",
+    "One reused original global0 capture; neither fresh observation rate nor a complete group/model or trajectory test.",
+    "The motivating R117 scalar diagnostic concerns a different original DINO0 operator; this global0 result does not determine its correction benefit.",
+    "Both original-reference NPU gates still fail; a 1.11% relative error reduction is not a trajectory accuracy result.",
+    "Process RSS and compiler memory fields do not establish unique physical memory or an 8GB deployment."
+  ],
+  "preserved_attempts": [
+    {
+      "revision": 1,
+      "status": "failed_before_input_set_or_run",
+      "reason": "Original owner rejects queried NHWC input geometry.",
+      "contexts_created_destroyed": [
+        1,
+        1
+      ],
+      "runs": 0,
+      "policy_restored": true
+    },
+    {
+      "revision": 2,
+      "status": "invalid_IO_not_a_quality_or_performance_result",
+      "reason": "Runtime logs unsupported NCHW source layout and normalization failures while inputs_set returns zero; all original64 outputs are zero.",
+      "SDK_normalize_error_count": 36,
+      "SDK_error_line_count": 72,
+      "contexts_created_destroyed": [
+        4,
+        4
+      ],
+      "runs": 12,
+      "saved_full_FLOAT32_bytes": 25717248,
+      "policy_restored": true,
+      "remedy": "Explicit lossless NHWC packing in r3 and mandatory fatal SDK error-log screening. The generic header conversion description did not establish support for this concrete runtime path."
+    }
+  ],
+  "decision": "Do not expand this CPU-normalized sentinel to full global attention or adopt it in the deployment path on this evidence.",
+  "publication": "Local metadata record only; no GitHub commit or push. No private arrays, graphs, checkpoints, SDK binaries or filesystem paths are published. Code and model/checkpoint licenses remain separate."
+}

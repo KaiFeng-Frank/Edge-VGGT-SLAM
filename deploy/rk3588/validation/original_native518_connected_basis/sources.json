@@ -1,0 +1,102 @@
+{
+  "schema": "original_native518_connected_basis_public_sources_v130",
+  "board_sources_and_launchers": {
+    "export_retained_basis_groups_board.py": {
+      "bytes": 27400,
+      "sha256": "da34d47ad391e8e30a4162b2d1d3cedc992221b8d6c84e59dbd94c2f385f8443",
+      "scope": "tested board source; copied byte-identically"
+    },
+    "check_retained_basis_group_board.py": {
+      "bytes": 12826,
+      "sha256": "869aa1be6d3f448e208409daebae26185dcbff2cc6813524b6d22fb66e0787ce",
+      "scope": "tested board source; copied byte-identically"
+    },
+    "check_connected_basis_groups_board.py": {
+      "bytes": 25094,
+      "sha256": "1736fd537e627ec15f91b20f1685deaad1e41db654345506b60b1c28ffb9ab93",
+      "scope": "tested board source; copied byte-identically"
+    },
+    "export_depth_basis_board.py": {
+      "bytes": 28953,
+      "sha256": "57d888a469581af4c41af58ee858835ba216c98e9c26154a014812e8aeb9bdf7",
+      "scope": "tested board source; copied byte-identically"
+    },
+    "run_sampled_cpu_stage_r126.py": {
+      "bytes": 9763,
+      "sha256": "700ec5b12b6f15cf9907cfacbff3a63258ef70a14cf5efe06ba5470991de1b89",
+      "scope": "tested board source; copied byte-identically"
+    },
+    "export_native_retained_groups.py": {
+      "bytes": 21963,
+      "sha256": "b0ac4e8070db7f0cfdd3f2713e2ce43c28fc7847b8da79e64cc6b73108f5c269",
+      "scope": "tested board source; copied byte-identically"
+    },
+    "check_native_retained_group.py": {
+      "bytes": 20747,
+      "sha256": "b58c7c83bfc652d859c2472517b8162457f79951a8f5a9773a519e9c2171c616",
+      "scope": "tested board source; copied byte-identically"
+    },
+    "export_basis_pair_board.py": {
+      "bytes": 29668,
+      "sha256": "73affeb0b78a794ed214cadcf0307d164ef74f79d52b779bc579e906a1089b70",
+      "scope": "tested board source; copied byte-identically"
+    },
+    "run_connected_r1.sh": {
+      "bytes": 2644,
+      "sha256": "67fc6973e2eb139eb757e34af0f8f1c3ffac1df11ad2fdacff1de6f842eeee28",
+      "scope": "recorded board launcher, originally staged as run.sh"
+    },
+    "run_group0_export_r1.sh": {
+      "bytes": 722,
+      "sha256": "08437548396901f12dbc82a94ce0b5e27fa3ade28ec8f1b6a253180d5cb09fcb",
+      "scope": "recorded board launcher, originally staged as run.sh"
+    },
+    "run_group0_check_r1.sh": {
+      "bytes": 1049,
+      "sha256": "b704e261316d5f9fedcb57ca80d6d2899baf7341cf3bb90776e96f24c7fb0392",
+      "scope": "recorded board launcher, originally staged as run.sh"
+    },
+    "run_group1_export_r1.sh": {
+      "bytes": 722,
+      "sha256": "6f63b174abaed83abc4606c6ea1f90ddc1edef37cf7a57cf2deca812cc368a62",
+      "scope": "recorded board launcher, originally staged as run.sh"
+    },
+    "run_group1_check_r1.sh": {
+      "bytes": 1049,
+      "sha256": "903915a76b8955acdd7d6a7edcddfa35b41551941c1b3b157d22170763e7484b",
+      "scope": "recorded board launcher, originally staged as run.sh"
+    },
+    "run_group2_export_r1.sh": {
+      "bytes": 722,
+      "sha256": "11901241ac4f6ff5871b67b26b0a0f72d15bacc607ad125115d477392033c4f0",
+      "scope": "recorded board launcher, originally staged as run.sh"
+    },
+    "run_group2_check_r1.sh": {
+      "bytes": 1049,
+      "sha256": "ad667f0b27b9abe0c3e91bf13fc9e847f3484ff1b5cdd7aebc6a6377266bb7b3",
+      "scope": "recorded board launcher, originally staged as run.sh"
+    },
+    "run_group3_export_r1.sh": {
+      "bytes": 722,
+      "sha256": "fc008e5ffb62763d2dc9f725a293695ffe91c5c67b320e96655935fbc13a2e4f",
+      "scope": "recorded board launcher, originally staged as run.sh"
+    },
+    "run_group3_check_r1.sh": {
+      "bytes": 1049,
+      "sha256": "299a020468e9727c272b1f673fcec0f2563ff22cf5435c55524c86ffb5ed4b8b",
+      "scope": "recorded board launcher, originally staged as run.sh"
+    }
+  },
+  "executed_saved_audits": {
+    "conditional": {
+      "source_sha256": "b6ee22956fb9e088e28b42b9e5becb9200e284cb1ea540b531b38501ecd45260",
+      "report_sha256": "db442ea2e98e62451a83670295b3a6ece55626178b7b8451eb81516a3106dbc1"
+    },
+    "connected": {
+      "source_sha256": "ad98d1e976507cf45010d16be5614c7360aff3f0fb5f56d50bbe83fef2906e25",
+      "report_sha256": "cba63293dba1ed1911ea5abcd6bc4fc4aff7f6f210e1d77edeb7eb59cd4d1ca9"
+    }
+  },
+  "original_graphs_captures_arrays_weights_or_vendor_binaries_shipped": false,
+  "public_sources_reproduction_requires_private_pinned_artifacts": true
+}

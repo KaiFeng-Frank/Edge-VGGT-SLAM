@@ -1,0 +1,348 @@
+{
+  "schema": "original_native518_head_shard_native_io_v163",
+  "date": "2026-10-15",
+  "status": "native_FD_handoff_byte_invariance_verified_small_complete_call_gain_below_predeclared_screen",
+  "conclusion": "Native FD IO preserves every tested stage output. Matched complete-call means fall 3.28 percent, below the predeclared 10 percent progression screen; no deployment, sustained-speed, precision or realtime acceptance follows.",
+  "scope": {
+    "original_model_only": true,
+    "same_six_frozen_R162_FLOAT16_graphs": true,
+    "full_original_first_frame_global_pair": true,
+    "original36_learned_values_and_all16_heads_2082queries_keys_preserved": true,
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "final_global_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "model_hashes": {
+      "whole_pair": "d280ebc160d6eaa18f5cd5b8fe628141aa956559b65555b6917b6d1b2260aa02",
+      "frame_prefix": "7e892abc8a71d07b6ec25bd37813f2ac874006e19a41a942bf80e294f782a1f4",
+      "heads0_6": "3abbb308d6d11ce79cd565cdada2ebaa5f1c9a7c3e02637957514050e7598a5e",
+      "heads6_11": "b2c86c010d6c76a9eeebb58b26ec8b55f5703a67ce9a41e521d86f585b0979ed",
+      "heads11_16": "fe3f1377c2c9097daaeb9add02461a21f41ff8a1d3204d542fe4534cebdfaa98",
+      "global_suffix": "947e965c5ab709a4a16faaba7467500c6340234793845f97fcb6c6992c67eb3a"
+    },
+    "reference": "Same-case prior R162 public owned FP32 outputs from the unchanged FLOAT16 models.",
+    "reused_engineering_inputs_not_untouched_final_generalization": true,
+    "no_new_model_graph_calibration_or_learned_values": true
+  },
+  "native_IO": {
+    "actual_descriptor_queries": 30,
+    "frozen_models": 6,
+    "native_input8_equals10_before_binding": true,
+    "input_only_pass_through_set_to1": true,
+    "output_native11_attribute_unmodified": true,
+    "logical_rank3_FLOAT16_identity_quantization": true,
+    "logical_FP16_payload_bytes": 4263936,
+    "separate_importing_wrapper_for_each_consumer": true,
+    "actual_original_producer_FD_base_offset_and_span_verified": true,
+    "all_import_offsets_zero": true,
+    "actual_prefix_to_three_heads_then_partials_and_prefix_to_suffix": true,
+    "no_reference_reset_at_internal_boundaries": true,
+    "consumer_imports_closed_before_producer_allocations": true,
+    "cache_sync_and_finite_guards_retained": true,
+    "model_buffer_zero_copy_init_flag_used": false,
+    "SDK_inputs_set_outputs_get_outputs_release_used": false,
+    "validation_is_specific_to_pinned_models_descriptors_and_RKNN_runtime": true
+  },
+  "four_call_gate": {
+    "calls": 4,
+    "saved_canonical_arrays": 12,
+    "saved_raw_capacity_arrays": 12,
+    "all_same_case_R162_stage_file_and_raw_bytes_equal": true,
+    "all12_FP16_capacity_prefixes_convert_to_identical_FP32_canonical_arrays": true,
+    "unknown_trailing_capacity_padding_preserved_uninterpreted": true,
+    "contexts_created_destroyed_runs": [
+      6,
+      6,
+      12
+    ],
+    "memories_allocated_imported_destroyed": [
+      8,
+      7,
+      15
+    ],
+    "native_IO_bindings": 15,
+    "SDK_outputs_get_release": 0,
+    "all_owned_imported_resources_and_threads_closed": true,
+    "no_speed_or_new_original_FP32_precision_acceptance": true
+  },
+  "finite_guard": {
+    "source_sha256": "05061c445d2e98dc015f12ddff1535caeed8cc7edc3d1b1ec2efeccd53dd6948",
+    "generated_check_sha256": "d491bf431f3ac5b770f987a562647347c7838144a4620772f1f4da951c3ea55d",
+    "all65536_binary16_patterns_equivalent_to_numpy_isfinite": true,
+    "predicate": "(logical_FP16_bits & 0x7c00) != 0x7c00; every logical element is checked.",
+    "finite_guard_not_removed_or_relaxed": true,
+    "unknown_padding_excluded_from_logical_finite_test": true,
+    "final_canonical_FP32_copy_and_np_isfinite_check_inside_complete_call_timer": true,
+    "generated_pointer_lifetime_and_nonfinite_evidence_checks_passed": true
+  },
+  "ordinary_ABBA": {
+    "phase_order": [
+      "A_fused",
+      "B_shards",
+      "B_shards",
+      "A_fused"
+    ],
+    "cases_per_phase": [
+      "pair4",
+      "pair5"
+    ],
+    "calls_per_policy_case": 2,
+    "complete_calls": 8,
+    "NPU_runs": 24,
+    "flags": 0,
+    "main_core_mask": 7,
+    "head_core_masks": [
+      1,
+      2,
+      4
+    ],
+    "NPU_hz": 1000000000,
+    "maximum_live_owners": 5,
+    "three_dedicated_actor_threads_per_candidate_phase": true,
+    "timer_includes": "Native IO chain, input/output synchronization and finite guards, concurrent shard dispatch/drain, final owned FP32 copy and final FP32 finite check.",
+    "timer_excludes": "Initialization/destruction, intermediate/capacity evidence copies, saving, hashes, reference and repeat comparisons.",
+    "cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "policies": {
+          "A_fused": {
+            "complete_call_seconds": [
+              0.7010004039984779,
+              0.6974994029951631
+            ],
+            "mean_complete_call_seconds": 0.6992499034968205,
+            "inherited_unchanged_R162_global_error": {
+              "relative_l2": 0.005860724218305399,
+              "max_abs": 0.029351115226745605,
+              "outside_count": 1262862,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            }
+          },
+          "B_shards": {
+            "complete_call_seconds": [
+              0.6808194859986543,
+              0.6777406510009314
+            ],
+            "mean_complete_call_seconds": 0.6792800684997928,
+            "inherited_unchanged_R162_global_error": {
+              "relative_l2": 0.0058607663379989785,
+              "max_abs": 0.029229044914245605,
+              "outside_count": 1263202,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            }
+          }
+        },
+        "complete_call_change_percent": -2.855893850991209
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "policies": {
+          "A_fused": {
+            "complete_call_seconds": [
+              0.6984568199986825,
+              0.6968617370002903
+            ],
+            "mean_complete_call_seconds": 0.6976592784994864,
+            "inherited_unchanged_R162_global_error": {
+              "relative_l2": 0.005924104619950151,
+              "max_abs": 0.029600977897644043,
+              "outside_count": 1263618,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            }
+          },
+          "B_shards": {
+            "complete_call_seconds": [
+              0.6714708590006921,
+              0.6722061929976917
+            ],
+            "mean_complete_call_seconds": 0.6718385259991919,
+            "inherited_unchanged_R162_global_error": {
+              "relative_l2": 0.005920301160992604,
+              "max_abs": 0.028258204460144043,
+              "outside_count": 1264137,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            }
+          }
+        },
+        "complete_call_change_percent": -3.7010548409575073
+      }
+    ],
+    "mean_complete_call_seconds": {
+      "A_fused": 0.6984545909981534,
+      "B_shards": 0.6755592972494924
+    },
+    "mean_complete_call_change_percent": -3.277993164300297,
+    "predeclared_minimum10percent_complete_call_gain_passed": false,
+    "both_cases_mean_faster": true,
+    "repeats_byte_equal_per_policy_and_case": true,
+    "different_case_byte_parity_asserted": false,
+    "all48_saved_array_files_raw_shape_dtype_and_finiteness_verified": true,
+    "all24_FP16_capacity_prefix_canonical_and_same_case_R162_mappings_byte_equal": true,
+    "every_B_call_has_seven_actual_current_generation_FD_handoff_edges": true,
+    "serial_sum_of_parallel_SDK_durations_used_as_route_time": false,
+    "prior_R162_timing_difference_is_cross_run_only": true,
+    "original_precision_errors_inherited_unchanged_because_final_bytes_are_identical": true,
+    "new_original_FP32_precision_gate_performed": false,
+    "original_fixed_and_strict_tensor_diagnostics_still_fail": true
+  },
+  "resources": {
+    "contexts_created_destroyed_runs": [
+      12,
+      12,
+      24
+    ],
+    "native_memories_allocated_imported_destroyed": [
+      16,
+      14,
+      30
+    ],
+    "native_IO_bindings": 30,
+    "SDK_outputs_get_or_release_calls": 0,
+    "saved_canonical_arrays": 24,
+    "saved_raw_capacity_arrays": 24,
+    "unknown_padding_preserved_uninterpreted": true,
+    "all_native_owner_actor_future_pool_and_import_lifetimes_closed": true,
+    "final_readers_importing_consumers_live_contexts_live_native_memories_zero": true,
+    "source_reference_environment_cwd_affinity_unchanged_or_restored": true,
+    "controller_timeout_seconds": 180,
+    "controller_temperature_limit_c": 75,
+    "prior_frequency_governor_limits_restored": true,
+    "maximum_controller_temperature_c": 58.23,
+    "maximum_worker_temperature_c": 59.153,
+    "peak_worker_rss_mib": 398.6796875,
+    "RSS_does_not_establish_total_NPU_or_physical8GB_memory": true
+  },
+  "evidence": [
+    {
+      "role": "Actual 30 native-descriptor queries",
+      "basename": "result.json",
+      "bytes": 80000,
+      "sha256": "0128571b12cb620d1b9e0990f934172b31d98b5e900c76f4d30a06b0253b38f8"
+    },
+    {
+      "role": "Actual original-data binding smoke",
+      "basename": "result.json",
+      "bytes": 8453,
+      "sha256": "843102aa6820fbca07df0a2d2e7a29e9362a14572cc5378f67c4bd2cf995027b"
+    },
+    {
+      "role": "Board four-call native equality gate",
+      "basename": "result.json",
+      "bytes": 146334,
+      "sha256": "71f698cb2f129b4a63237bf8c7361da81c6420f22efb21a1c6f5935afbffd762"
+    },
+    {
+      "role": "Saved four-call auditor",
+      "basename": "audit_native_io_gate_saved.py",
+      "bytes": 15965,
+      "sha256": "2b176d3d60539bb5e3b32088398d04519525d618cbbe107e7c1c4d6680ebf36f"
+    },
+    {
+      "role": "Independent raw-capacity and canonical gate audit",
+      "basename": "native-io-gate-r1-saved-audit.json",
+      "bytes": 11463,
+      "sha256": "1558f55315fb4b2914d59d5cdf30fc3e42a4d55b0a0b8b4e75d029c81ed78663"
+    },
+    {
+      "role": "Executed native FD adapter and exact finite predicate",
+      "basename": "native_io_context_half_bits.py",
+      "bytes": 23849,
+      "sha256": "05061c445d2e98dc015f12ddff1535caeed8cc7edc3d1b1ec2efeccd53dd6948"
+    },
+    {
+      "role": "Exhaustive binary16 predicate and generated lifetime proof",
+      "basename": "native-half-bits-generated-check-r1.json",
+      "bytes": 1377,
+      "sha256": "d491bf431f3ac5b770f987a562647347c7838144a4620772f1f4da951c3ea55d"
+    },
+    {
+      "role": "Executed eight-call ABBA worker",
+      "basename": "run_native_io_abba_board.py",
+      "bytes": 30833,
+      "sha256": "f0c9ef6236a05cec241fb2fd575db48f9e350b2548ebe5121e2279b50f948247"
+    },
+    {
+      "role": "Executed runtime transport source",
+      "basename": "execute_native_io_abba_host.py",
+      "bytes": 13259,
+      "sha256": "96816ce8a1290b28e1faca54b76717dbe4a8ef680ac25ddad37f1b3b32d08c41"
+    },
+    {
+      "role": "Actual launch manifest",
+      "basename": "manifest.json",
+      "bytes": 9583,
+      "sha256": "2d5b25d9ed4acd78b654a9ec37a903305d37e12cad527e7df08188e6ffab47e1"
+    },
+    {
+      "role": "Board eight-call native runtime receipt",
+      "basename": "result.json",
+      "bytes": 307489,
+      "sha256": "14526583f81a76484f53f4ca1c7274cec8587751158f0065515fe88e65ccd699"
+    },
+    {
+      "role": "Complete raw pull and identity receipt",
+      "basename": "native-io-abba-r1-transport.json",
+      "bytes": 28917,
+      "sha256": "98cda6dccffe283db37a4b0be806c6f99e4607b3ebfd7530a8be765c65c09b67"
+    },
+    {
+      "role": "Restoring 1 GHz / 180 s / 75 C controller",
+      "basename": "control.json",
+      "bytes": 9302,
+      "sha256": "123b147f293733628abf7e17496394fa8f81cb83d191b130d34dfb007dc64a48"
+    },
+    {
+      "role": "Saved 48-array native timing/resource auditor",
+      "basename": "audit_native_io_abba_saved.py",
+      "bytes": 21466,
+      "sha256": "87cc236921edf2bf743da52d9a7a2dcfe2ac23cf2668c96cc37693f0421ab30e"
+    },
+    {
+      "role": "Independent final ABBA audit",
+      "basename": "native-io-abba-r1-saved-audit.json",
+      "bytes": 10428,
+      "sha256": "00cd540539ecf336be8ef2ea5c0a809be440e12987ae2cbbcfa288d2f22fcf9e"
+    },
+    {
+      "role": "Frozen R162 prior-stage bytes and original FP32 diagnostics",
+      "basename": "runtime-r1-saved-audit.json",
+      "bytes": 72786,
+      "sha256": "db84d7cb1e28e365a5e7a27ef2ae75dce80f0d9bcb9430f46b2fe6d3f829ea2b"
+    }
+  ],
+  "decision": {
+    "native_IO_invariance_verified_for_tested_models": true,
+    "predeclared10percent_progression_screen_passed": false,
+    "current_route_accepted_as_deployment_or_realtime_solution": false,
+    "new_model_precision_accepted": false,
+    "sustained_speed_full_model_trajectory_final_generalization_accepted": false
+  },
+  "limits": [
+    "Two samples per policy/case are descriptive matched component timings; no sustained rate, P95 or causal allocation of the gain is established.",
+    "R162 public-IO timing and this native-IO run use different execution paths and occur in separate runs; their difference is not a matched before/after attribution.",
+    "Byte equality preserves prior original-model tensor-error results; it does not turn strict/fixed diagnostics into trajectory thresholds or establish decoded pose quality.",
+    "The first original frame/global pair is measured; all remaining model groups, SLAM, map cadence, physical 8 GB and 30-minute stability remain unaccepted."
+  ],
+  "licensing": {
+    "original_checkpoint_terms_separate_from_repository_BSD_2_Clause": true,
+    "raw_capacity_model_arrays_weight_bearing_exports_and_SDK_binaries_remain_private": true
+  }
+}

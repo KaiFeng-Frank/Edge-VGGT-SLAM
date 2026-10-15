@@ -1,0 +1,390 @@
+{
+  "schema": "original_native518_DINO_key_center_v197",
+  "record": 197,
+  "status": "dynamic_all_key_mean_translation_CPU_valid_NPU_error_and_latency_worse_rejected_no_expansion",
+  "scope": "One reused original DINO0 actual-QKV capture and same-QKV original FP32 SDPA oracle. This is an isolated operator test, not a connected DINO or model run.",
+  "representation": {
+    "input_output_shape": [
+      1,
+      16,
+      1041,
+      64
+    ],
+    "heads": 16,
+    "queries": 1041,
+    "keys": 1041,
+    "QKV_components": 64,
+    "scale": 0.125,
+    "mask": null,
+    "dropout_p": 0,
+    "is_causal": false,
+    "operation": "K_centered = K - ReduceMean(K, axes=[2], keepdims=1); unchanged Q, V and full-key scaled softmax attention then use K_centered.",
+    "real_arithmetic_identity": "The same key translation subtracts one query-dependent constant from every score in each softmax row, preserving the original real-arithmetic attention.",
+    "mean_shape": [
+      1,
+      16,
+      1,
+      64
+    ],
+    "mean_uses_all1041_keys_per_head_component": true,
+    "mean_is_dynamic_not_test_fitted": true,
+    "ONNX_nodes": {
+      "baseline": 5,
+      "key_centered": 7
+    },
+    "ONNX_initializers": {
+      "baseline": 1,
+      "key_centered": 1
+    },
+    "original_initializer_protos_byte_preserved": true,
+    "whole_isolated_original_ModelProto_inverse_byte_equal": true,
+    "inverse_is_not_whole_learned_model_inverse": true,
+    "original_Q_V_scale_Softmax_and_PV_preserved": true,
+    "learned_model_weights_checkpoint_or_token_computation_replaced": false,
+    "FP32_or_FP16_bit_equivalence_assumed": false,
+    "sentinel_or_CPU_output_correction_added": false
+  },
+  "compile_and_placement": {
+    "original_FP16_configuration": true,
+    "do_quantization": false,
+    "candidate_noncalibrating_compile": true,
+    "candidate_SDK_created_released": [
+      1,
+      1
+    ],
+    "candidate_compile_resources_closed": true,
+    "baseline_recompiled": false,
+    "baseline_exact_graph_configuration_toolchain_and_case_reuse_verified": true,
+    "candidate_actual_operation_feature_constant_counts": [
+      13,
+      18,
+      2
+    ],
+    "all_actual_candidate_rows_consumed": true,
+    "dynamic_mean_Conv_Expand_Sub_FLOAT16_NPU": true,
+    "one_full1041_QKV64_FLOAT16_NPU_fused_SDPA_retained": true,
+    "full_public_output_CPU_transpose_remains": true,
+    "no_unfused_full_score_CPU_arithmetic_or_layout": true,
+    "explicit_host_forward_trace_calibration_GPU_or_ORT_session_invoked": false,
+    "SDK_build_internal_execution_not_independently_observed": true,
+    "historical_compile_pending_fields_preserved_later_CPU_and_runtime_evidence_separate": true
+  },
+  "CPU_gate": {
+    "location": "RK3588S",
+    "provider": "CPUExecutionProvider",
+    "numpy": "1.26.4",
+    "onnxruntime": "1.16.0",
+    "process_core": 4,
+    "ORT_threads": 1,
+    "ORT_optimization": "ORT_DISABLE_ALL",
+    "sequential_sessions_created_closed": 2,
+    "calls": 2,
+    "fresh_QKV_Torch_or_learned_forward": false,
+    "full_FLOAT32_output_files": 2,
+    "saved_NPY_bytes": 8528128,
+    "both_outputs_saved_before_numerical_verdict": true,
+    "comparisons": [
+      {
+        "name": "baseline_vs_original",
+        "relative_l2": 7.147281245284012e-07,
+        "max_abs": 1.4543533325195312e-05,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      },
+      {
+        "name": "centered_vs_original",
+        "relative_l2": 7.957523556458325e-07,
+        "max_abs": 1.6450881958007812e-05,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      },
+      {
+        "name": "centered_vs_baseline",
+        "relative_l2": 3.51158154515508e-07,
+        "max_abs": 7.510185241699219e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      }
+    ],
+    "all3_original_fixed_and_strict_gates_passed": true,
+    "fixed_gate": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001
+    },
+    "strict_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "all_resources_closed": true,
+    "source_and_inputs_unchanged": true,
+    "all3_transport_pulls_succeeded": true
+  },
+  "NPU_runtime": {
+    "location": "RK3588S",
+    "core_mask": 1,
+    "init_flags": 0,
+    "frequency_hz": 1000000000,
+    "maximum_live_contexts": 1,
+    "schedule": "ABBA; one warmup and two measured calls in each sequential context, four measured calls per route and twelve total SDK runs.",
+    "all6_A_calls_byte_equal_previous_R196_control": true,
+    "fresh_baseline_file_sha256": "0785c770adf0a6ec94507c9be6f5c2dd342ef5d527a270c716b49f12186094a6",
+    "previous_full_context_parity_is_prior_R196_evidence_not_a_new_full_block_forward": true,
+    "same_original_QKV_unpack_and_explicit_NHWC_packing": true,
+    "derived_input_array_or_reference_push": false,
+    "comparisons": [
+      {
+        "name": "baseline_vs_original",
+        "relative_l2": 0.04549297162036855,
+        "max_abs": 0.22858142852783203,
+        "outside_count": 1002829,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "name": "centered_vs_original",
+        "relative_l2": 0.045522810625236595,
+        "max_abs": 0.22858142852783203,
+        "outside_count": 1002245,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "name": "centered_vs_baseline",
+        "relative_l2": 0.0007749581842391399,
+        "max_abs": 0.015625,
+        "outside_count": 430649,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      }
+    ],
+    "timings": {
+      "baseline": {
+        "measured_call_count": 4,
+        "explicit_warmups": 2,
+        "mean_complete_seconds": 0.1395892222499242,
+        "mean_SDK_seconds": 0.10116957249920233,
+        "mean_CPU_completion_seconds": 0.0,
+        "mean_input_layout_pack_seconds": 0.005652865002048202,
+        "measured_complete_seconds": [
+          0.15039797300414648,
+          0.13760184700367972,
+          0.13307759699819144,
+          0.13727947199367918
+        ],
+        "measured_SDK_seconds": [
+          0.11045771899807733,
+          0.09891342699120287,
+          0.09550800900615286,
+          0.09979913500137627
+        ],
+        "initialization_seconds": 0.09646963499835692,
+        "close_seconds": 0.03688300400972366
+      },
+      "key_centered": {
+        "measured_call_count": 4,
+        "explicit_warmups": 2,
+        "mean_complete_seconds": 0.14522250425216043,
+        "mean_SDK_seconds": 0.10539971875186893,
+        "mean_CPU_completion_seconds": 0.0,
+        "mean_input_layout_pack_seconds": 0.005885760998353362,
+        "measured_complete_seconds": [
+          0.14810372299689334,
+          0.14615184800641146,
+          0.13996793099795468,
+          0.14666651500738226
+        ],
+        "measured_SDK_seconds": [
+          0.10731880301318597,
+          0.10402088500268292,
+          0.10225571799674071,
+          0.10800346899486613
+        ],
+        "initialization_seconds": 0.0914783429907402,
+        "close_seconds": 0.03692529500403907
+      }
+    },
+    "relative_L2_error_reduction_percent": -0.06559036221474024,
+    "relative_L2_error_increase_percent": 0.06559036221474024,
+    "complete_latency_change_percent": 4.035613861470089,
+    "complete_latency_increase_ms": 5.633282002236228,
+    "maximum_error_unchanged": 0.22858142852783203,
+    "all_original_reference_and_cross_route_fixed_and_strict_gates_passed": false,
+    "no_CPU_output_correction": true,
+    "complete_timer_includes": "Three exact NHWC input copies, ordinary SDK input/run/output handling, owned copies/release and finite/nonzero checks; dynamic mean/Sub is inside the candidate SDK call.",
+    "complete_timer_excludes": "Initialization, close, raw saves, hashes including the previous-control guards, metrics and JSON.",
+    "two_full_outputs_saved_before_numeric_comparisons": true,
+    "saved_NPY_bytes": 8528128,
+    "later_repeats_have_hash_telemetry_not_separate_payloads": true,
+    "resource_totals": {
+      "contexts_created": 4,
+      "contexts_destroyed": 4,
+      "runs_completed": 12,
+      "output_buffers_acquired": 12,
+      "output_buffers_released": 12
+    },
+    "all_resources_closed": true,
+    "source_inputs_and_process_state_restored": true,
+    "controller_policy_restored": true,
+    "controller_sampled_peak_temperature_C": 53.615,
+    "worker_seconds": 2.705885354997008,
+    "controller_seconds": 3.018584428005852,
+    "peak_process_RSS_MiB": 139.2734375,
+    "fatal_SDK_error_log_rows": 0,
+    "all3_transport_pulls_succeeded": true
+  },
+  "independent_saved_validation": {
+    "root_saved_audit_passed": true,
+    "additional_whole_output_review_passed": true,
+    "full_output_files": 2,
+    "full_output_NPY_bytes": 8528128,
+    "all3_full_tensor_metrics_recomputed": true,
+    "all_other_metrics_byte_checks_and_original_gate_verdicts_exact": true,
+    "relative_L2_scalar_report_consistency_only": {
+      "rtol": 1e-12,
+      "atol": 1e-15,
+      "maximum_observed_absolute_delta": 5.592748486549226e-15
+    },
+    "original_array_thresholds_changed": false
+  },
+  "decision": "Reject the current dynamic key-centering route and stop its expansion: it provides neither an accuracy nor a speed gain. These results do not support proceeding to a constant-K-bias full-block transform; none was implemented or executed.",
+  "acceptance": {
+    "candidate_accepted": false,
+    "full_DINO_or_model_accepted": false,
+    "decoded_pose_or_trajectory_accepted": false,
+    "fresh_observation_20Hz_or_realtime_accepted": false,
+    "physical8GB_accepted": false
+  },
+  "limits": [
+    "Real-arithmetic invariance and passing CPU gates do not establish FLOAT16 NPU equivalence.",
+    "Slightly fewer strict outliers do not imply improved tensor accuracy when relative L2 increases and every NPU comparison still fails the original gates.",
+    "One reused actual-QKV capture does not establish generalization, model/trajectory quality or sustained full-chain rate.",
+    "This negative result does not locate an exact fused-kernel error mechanism. Process RSS is not unique physical memory."
+  ],
+  "evidence": {
+    "static_receipt": {
+      "artifact": "result.json",
+      "bytes": 15092,
+      "sha256": "d49f17eee1b7fbacf5831d14bb3830c9a88ffd42b3f6e0e8124d1065e7ef9b5c"
+    },
+    "exporter": {
+      "artifact": "export_dino_key_center_static.py",
+      "bytes": 12587,
+      "sha256": "a731f079298a7d59aab722c576d9e06c7de2aa353bc88f6adee23009774a2f6b"
+    },
+    "candidate_compile": {
+      "artifact": "result.json",
+      "bytes": 6825,
+      "sha256": "dded2822e8991bca003f0bcde897ee93a112aa97ca94065e902dc325a5da9505"
+    },
+    "placement_audit": {
+      "artifact": "compile-placement-audit-r1.json",
+      "bytes": 27296,
+      "sha256": "42c3269b122ff4312b9de942dcab71ae43d6991b565009286fbba7492f2efb21"
+    },
+    "case_inventory": {
+      "artifact": "dino-same-QKV-case-inventory-r2.json",
+      "bytes": 14696,
+      "sha256": "fb057a294f48566ce0cd161e629ae026d6e6d0acd0359b87f8386ded685cd941"
+    },
+    "CPU_worker": {
+      "artifact": "check_dino_key_center_CPU_board.py",
+      "bytes": 23069,
+      "sha256": "f73dbd0ac59b23fe4e684bea1af52a526e588ca213382081eeab6c493c5719e1"
+    },
+    "CPU_launcher": {
+      "artifact": "execute_dino_key_center_CPU_host.py",
+      "bytes": 14046,
+      "sha256": "875398ee160296d34041007863f7c2105fa584ab8705bc615d0e04e9d4ef512f"
+    },
+    "CPU_receipt": {
+      "artifact": "result.json",
+      "bytes": 13192,
+      "sha256": "e053b31bb9998a914b54fc4ee15166c497f9522fbab1939ceb2dba7050fbbc5e"
+    },
+    "CPU_saved_audit": {
+      "artifact": "CPU-r1-saved-audit-r1.json",
+      "bytes": 2120,
+      "sha256": "a59399752cd8c8098659f624e0488520829d332d00233f6562e8de5ea16cef27"
+    },
+    "CPU_transport": {
+      "artifact": "transport.json",
+      "bytes": 17783,
+      "sha256": "7fd7ff66cf30acb44d9a195952fc629095226830deb0c07a1fafa58f881397ea"
+    },
+    "NPU_worker": {
+      "artifact": "run_dino_key_center_paired_board.py",
+      "bytes": 35239,
+      "sha256": "a43d6c0cf6e686f800111c1f460706848287188bfea75bdf861a19afe79b86f0"
+    },
+    "NPU_launcher": {
+      "artifact": "execute_dino_key_center_paired_host.py",
+      "bytes": 17999,
+      "sha256": "fd0afbfa48c96f1d464a82f23519b7c4ece357adaf73dc7668bfe443c7a3b4cf"
+    },
+    "NPU_receipt": {
+      "artifact": "result.json",
+      "bytes": 123612,
+      "sha256": "87d0cda4e17e3411b9b420da874ed8448f2b20c410ac19957a12a1fe18674339"
+    },
+    "NPU_saved_audit": {
+      "artifact": "paired-NPU-r1-saved-audit-r1.json",
+      "bytes": 3113,
+      "sha256": "8ea5cb2af475855e023f588a79fcaa4bb0c52a2ee54b03e850b2207097ebb0a4"
+    },
+    "NPU_controller": {
+      "artifact": "control.json",
+      "bytes": 3537,
+      "sha256": "c055e0a13b2f44e70552606874615a5b457fb81fdbdedde3997941c8585a2788"
+    },
+    "NPU_transport": {
+      "artifact": "transport.json",
+      "bytes": 28152,
+      "sha256": "1914b8d0f70f1ab51388a4b78b5fb46cc8a2b86ff2682358856cb9536f1e9098"
+    },
+    "independent_full_output_review": {
+      "artifact": "paired-NPU-r1-independent-saved-review-r1.json",
+      "bytes": 2408,
+      "sha256": "836dabffdff9923bf46119710e318cbbf9787583468b66485e1702c2123d613e"
+    },
+    "independent_review_source": {
+      "artifact": "audit_key_center_independent_saved.py",
+      "bytes": 6847,
+      "sha256": "dc5761c044c768767583e72623c820d0090275d45a9b572b14d3b4cf61995b4b"
+    },
+    "prior_R196_context_record": {
+      "artifact": "original_native518_dino_fused_sdpa_sentinel_v196.json",
+      "bytes": 20778,
+      "sha256": "17469d835d884e97b92562f30542b2f852b8b0cd5ba66e51c1888736ce06ea12"
+    },
+    "baseline_graph": {
+      "bytes": 731,
+      "sha256": "814e477bf9ada5c5b1b039a00dd7dd24f5ef0e473f56672dbfaaa879f5aefed3"
+    },
+    "key_centered_graph": {
+      "bytes": 1097,
+      "sha256": "c4f06e1a83f425e534e9cb9f2f38c2539ed82add9923d7ab2ea894697a4cf25c"
+    },
+    "candidate_model": {
+      "bytes": 1666695,
+      "sha256": "6f49856f6fe15337c61c2408e09c9b30f614238e61b0c2c91dce18c58c28c057"
+    },
+    "reused_baseline_compile": {
+      "bytes": 4655,
+      "sha256": "38c086581e48a6088eb8e9fc1bbbc1fbdbad44aa93d457b2a39184faa3d12426"
+    },
+    "reused_baseline_model": {
+      "bytes": 1312263,
+      "sha256": "e9a68f4ce6275b689165b5781250cf65507a805109da206e924297087d312932"
+    }
+  },
+  "publication": "Local metadata record only; no README changes, commit or push. No private paths, model/checkpoint payloads, captured arrays, SDK binaries or credentials are published. Code, checkpoint and dependency licenses remain separate."
+}

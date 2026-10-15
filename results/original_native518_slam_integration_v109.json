@@ -1,0 +1,200 @@
+{
+  "schema": "original_native518_fresh_pair_SL4_integration_v109",
+  "status": "two_real_overlapping_pairs_complete_not_quality_or_realtime_accepted",
+  "original_model_only": true,
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "executor": "ModelExecutor: fresh prepared RGB -> original native518 baseline -> owned canonical arrays",
+  "original_solver_equations_pose_codec_submaps_and_SL4_unchanged": true,
+  "input_shape": [
+    2,
+    3,
+    392,
+    518
+  ],
+  "DINO_layers_per_frame": 24,
+  "aggregator_blocks_per_pair": 48,
+  "camera_refinements_per_pair": 4,
+  "depth_frames_per_pair": 2,
+  "source_sequence": "TUM RGB-D freiburg1_xyz",
+  "source_indices": [
+    32,
+    40,
+    48
+  ],
+  "source_image_names": [
+    "1305031103.243216.png",
+    "1305031103.511333.png",
+    "1305031103.775342.png"
+  ],
+  "source_image_sha256": [
+    "dffe2b7b0efb05d9a3cb9d7d938efee092d16436d6fc9a29432b1c447cd20333",
+    "04c6b5a3018a8c8faf6a713466a4257360e1c9dd844c4dfb8237640a56a820b2",
+    "965eefeeb53c411760fdcf86f588b4d6bdca31c914a3fbcbcc9debf97543ac87"
+  ],
+  "overlapping_pairs": [
+    [
+      32,
+      40
+    ],
+    [
+      40,
+      48
+    ]
+  ],
+  "new_tail_observations_committed": 2,
+  "fixed_reference_pixel_substitution": false,
+  "image_feature_or_prediction_cache_used": false,
+  "traditional_pose_frontend_executed": false,
+  "max_loops": 0,
+  "timestamp_paced": false,
+  "first_pair_five_outputs_byte_equal_frozen_v100": {
+    "pose_enc": true,
+    "extrinsic": true,
+    "intrinsic": true,
+    "depth": true,
+    "depth_conf": true
+  },
+  "pairs": [
+    {
+      "index": 0,
+      "source_indices": [
+        32,
+        40
+      ],
+      "timestamps": [
+        1305031103.243216,
+        1305031103.511333
+      ],
+      "prepared_frame_raw_sha256": [
+        "138f58588950368153115be9da5827640ca5cfc77318aefd443742593691f2a7",
+        "d5f7fff006d286d89b6ba69ff01437085cf42ecac87a13f55d48afada1035c22"
+      ],
+      "prediction_seconds": 36.64127926505171,
+      "identity_parity_and_prediction_save_seconds": 0.013750625948887318,
+      "points_scale_factors_LM_seconds": 0.0644481320050545,
+      "publication_seconds": 0.0156738770310767,
+      "image_read_to_original_pose_publication_seconds": 36.735151900036726,
+      "graph_nodes": 2,
+      "graph_factors": 2,
+      "graph_error": 5.377796253314174e-28,
+      "map_submaps": 1,
+      "current_filtered_points": [
+        145115,
+        159469
+      ],
+      "published_unique_timestamps": 2
+    },
+    {
+      "index": 1,
+      "source_indices": [
+        40,
+        48
+      ],
+      "timestamps": [
+        1305031103.511333,
+        1305031103.775342
+      ],
+      "prepared_frame_raw_sha256": [
+        "d5f7fff006d286d89b6ba69ff01437085cf42ecac87a13f55d48afada1035c22",
+        "65a8ec1d284d3ba0753e3e08837240347c08e6be5286460f70b6966ea388de45"
+      ],
+      "prediction_seconds": 34.30940078099957,
+      "identity_parity_and_prediction_save_seconds": 0.01281933399150148,
+      "points_scale_factors_LM_seconds": 0.06462925701634958,
+      "publication_seconds": 0.0027690830174833536,
+      "image_read_to_original_pose_publication_seconds": 34.3896184550249,
+      "graph_nodes": 4,
+      "graph_factors": 4,
+      "graph_error": 2.754559498330834e-27,
+      "map_submaps": 2,
+      "current_filtered_points": [
+        160011,
+        144573
+      ],
+      "published_unique_timestamps": 3
+    }
+  ],
+  "pair_timing_scope": "Original file read/preprocessing, complete native model and pose codec, five prediction saves before backend mutation, original points/scale/factors/LM and pose-file publication. First-pair parity checks are included. Final whole-map PLY/homography/metadata export is recorded separately.",
+  "startup_seconds": 10.966077977034729,
+  "final_original_map_export_seconds": 0.19370926899136975,
+  "final_map": {
+    "submaps": 2,
+    "SL4_nodes": 4,
+    "SL4_factors": 4,
+    "unique_timestamps": 3,
+    "PLY_vertices": 609168,
+    "PLY_bytes": 16447745,
+    "PLY_sha256": "4e19b490e2cd752b26d4c8e64b6cc299586ae76ebd6b5e50de92904c4baf5677",
+    "units": "Original model gauge; metric scale unvalidated",
+    "graph_error_scope": "Near-zero tree-factor residual measures internal consistency, not trajectory accuracy"
+  },
+  "resources": {
+    "contexts_created": 20,
+    "contexts_destroyed": 20,
+    "runs_completed": 36,
+    "output_buffers_acquired": 46,
+    "output_buffers_released": 46
+  },
+  "resources_balanced": true,
+  "controller": {
+    "seconds": 83.68351536698174,
+    "requested_NPU_hz": 1000000000,
+    "maximum_sampled_temperature_c": 64.692,
+    "restored_NPU_hz": 300000000,
+    "frequency_governor_limits_restored": true,
+    "restore_errors": []
+  },
+  "peak_process_RSS_MiB": 1137.48046875,
+  "physical_8GB_accepted": false,
+  "interpretation": "The native full-model input boundary now accepts new observations and feeds the original SL4/map pipeline. Approximately34s prediction, rather than approximately65ms points/SL4 work, remains the dominant cost. This integration does not improve model speed.",
+  "not_validated": [
+    "matched original FP32 trajectory ATE/RPE and failure rate",
+    "map geometric quality",
+    "20Hz fresh observed poses",
+    "100ms input-to-pose P95 including queues",
+    "2-5s map cadence",
+    "30-minute bounded-queue operation",
+    "loop closure",
+    "physical8GB deployment"
+  ],
+  "publication": {
+    "local_validation_sources_added": true,
+    "production_backend_default_changed": false,
+    "github_push_performed": false,
+    "raw_predictions_map_images_and_compiled_models_private": true,
+    "code_and_checkpoint_licenses_separate": true
+  },
+  "evidence_sha256": {
+    "original_native518_executor.py": "8923992b323f805c03d8e70441952b65aefe9f8a70a3cfc2241ac14b704b563f",
+    "run_native518_slam_pair_chain.py": "d42ccc8d26c6f56e0abdd23c2e509a5c9355d3008c8d9f9fdfc735857f252d15",
+    "run_pair_chain.sh": "41e0c9c9fe11da3cb5764487f9665bec525d21c828829f75e2cfe29fac65f6fd",
+    "executor-source-review.json": "7d85e5324705579f09473d3af8fcf2e4c02a82eaff2331b0bb859b6efd262155",
+    "root-staging-review.json": "ea0c9bbd8497a5593fad9135bfe09e6bf0581f4bb123368ae2acb647b92b1b72",
+    "owner-retry-synthetic-check.json": "bff90f2289fbc9c13d190457aabcad448d6e0237ff39aebfed566cf5abd6d1b2",
+    "pair-chain-r1/result.json": "966900291273b6f61af151307f2713ede5524e132847bd1b61c372e9ccdb523c",
+    "control-r1/control.json": "179e9b906b7452bd70b667276999653758272282024862f58134e9ec19c0a58e",
+    "original-full-model-reference/result.json": "4af7b9c4cbd38dbfd54c14b1308dd6035da25941f98f858a5ad13b781c3c8af6",
+    "audit_saved_pair_chain.py": "d51136f08a3c4701276b59b12a1c33f24d904acec1109e88c5196f064108f508",
+    "saved-pair-chain-audit.json": "2fe622d51282e0ca36192a352c47e267230e6b02d4e763488a9ded74028f74a5"
+  },
+  "independent_saved_audit": {
+    "status": "passed_independent_saved_native518_SL4_chain_audit",
+    "first_pair_all5_byte_equal": true,
+    "three_original_PNGs_rehashed": true,
+    "PLY_vertices": 609168,
+    "PLY_coordinates_finite": true,
+    "prepared_pixel_SHA_independently_recomputed": false,
+    "limits": [
+      "Two sequential overlapping original native518 pairs; no paced fresh-stream/P95/20Hz or trajectory-quality acceptance.",
+      "Prepared RGB arrays were not saved; rawpixel hashes are checked across board runner/executor receipts, not re-preprocessed on host.",
+      "The no-loop tree graph residual checks internal factor consistency, not pose accuracy or metric map scale."
+    ]
+  },
+  "frozen_baseline_dependency_archive": {
+    "id": "v100-native518-integration-r1",
+    "manifest_sha256": "2c746b622789cba72d86c680ea21aa9f3e1134b159ef39df7b131e06248d8c1d"
+  }
+}

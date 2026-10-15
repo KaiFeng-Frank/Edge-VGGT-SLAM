@@ -1,0 +1,590 @@
+{
+  "schema": "original_native518_full_heads_continuation_v186",
+  "status": "actual_old_new_group0_seeds_complete_original_camera_DPT_continuations_mixed_full_FP32_differences_no_quality_or_rate_acceptance",
+  "scope": {
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "actual_input": "Previously captured original NPU DINO-boundary FLOAT32 on the same original PNG observations.",
+    "baseline": "Fresh unchanged original compiled group0 on that same captured input, followed by original groups1--3 and full camera/DPT/codec.",
+    "candidate": "Actual independently audited R185 saved frame4/global4 half endpoints, widened exactly to FLOAT32, followed by the same original continuation.",
+    "new_DINO_execution": false,
+    "new_candidate_group0_execution": false,
+    "reference_intermediate_injection": false,
+    "continuation_original_pair_indices": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "continuation_frame_global_blocks": 38,
+    "all_original_retained_layers": [
+      4,
+      11,
+      17,
+      23
+    ],
+    "raw_retained_order": "Frame first1024, global second1024; all four branches enter the unchanged full DPT head.",
+    "original_global20_target_clone_and_norm_preserved": true,
+    "camera_refinements_per_route": 4,
+    "complete_DPT_frames_per_route": 2,
+    "original_pose_codec_preserved": true,
+    "original_parameters_and_source_lineage_preserved": true,
+    "no_new_calibration_quantization_or_model_compilation": true,
+    "reused_engineering_cases_not_untouched_generalization": true
+  },
+  "full_FP32_reference": {
+    "new_original_host_CPU_forward_cases": 2,
+    "DINO_blocks_per_forward": 24,
+    "frame_blocks_per_forward": 24,
+    "global_blocks_per_forward": 24,
+    "all_original_camera_and_DPT_computation_retained": true,
+    "pinned_checkpoint_verified_before_deserialization": true,
+    "same_original_PNGs_and_prepared_pixel_hashes_verified": true,
+    "original_reference_outputs": [
+      "pose_enc",
+      "extrinsic",
+      "intrinsic",
+      "depth",
+      "depth_conf"
+    ],
+    "full_forward_intra_op_threads": 4,
+    "inter_op_threads": 1,
+    "host_GPU_execution": false,
+    "host_CPU_timing_is_not_board_timing": true,
+    "discrepancy_scope": "Includes original captured NPU DINO versus full original FP32 DINO, plus all subsequent conditional numerical differences; not an isolated group0 error attribution."
+  },
+  "saved_evidence": {
+    "actual_control_group0_FLOAT32_arrays": 4,
+    "actual_canonical_prediction_FLOAT32_arrays": 20,
+    "total_actual_FLOAT32_arrays": 24,
+    "total_saved_NPY_bytes": 47111104,
+    "all_file_raw_shape_dtype_finite_checks_verified": true,
+    "both_baseline_controls_use_same_actual_captured_DINO_payloads": true,
+    "both_candidate_seed_pairs_match_actual_R185_full_FLOAT32_widened_hashes": true,
+    "all_outputs_saved_before_independent_numeric_comparison": true,
+    "actual_unsaved_intermediates_are_source_constrained_not_new_raw_payloads": true
+  },
+  "numeric_results": {
+    "full_FP32_comparison_count": 20,
+    "fixed_gate_pass_count": 0,
+    "strict_gate_pass_count": 0,
+    "fixed_relative_l2_max": 1e-05,
+    "fixed_max_abs_max": 0.001,
+    "strict_rtol": 0.0001,
+    "strict_atol": 1e-05,
+    "candidate_vs_baseline_comparison_count": 10,
+    "cases": [
+      {
+        "case_id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "baseline_vs_full_FP32": {
+          "pose_enc": {
+            "relative_l2": 0.006853456377849208,
+            "max_abs": 0.009551525115966797,
+            "outside_count": 17,
+            "byte_equal": false
+          },
+          "extrinsic": {
+            "relative_l2": 0.002365208312881273,
+            "max_abs": 0.003506176173686981,
+            "outside_count": 19,
+            "byte_equal": false
+          },
+          "intrinsic": {
+            "relative_l2": 0.00829502736539472,
+            "max_abs": 4.682220458984375,
+            "outside_count": 4,
+            "byte_equal": false
+          },
+          "depth": {
+            "relative_l2": 0.026130016307721337,
+            "max_abs": 0.7999241352081299,
+            "outside_count": 403704,
+            "byte_equal": false
+          },
+          "depth_conf": {
+            "relative_l2": 0.054834659801904995,
+            "max_abs": 1.7506529092788696,
+            "outside_count": 363694,
+            "byte_equal": false
+          }
+        },
+        "candidate_vs_full_FP32": {
+          "pose_enc": {
+            "relative_l2": 0.005648931385613059,
+            "max_abs": 0.007846474647521973,
+            "outside_count": 18,
+            "byte_equal": false
+          },
+          "extrinsic": {
+            "relative_l2": 0.0025325655032302644,
+            "max_abs": 0.00403546541929245,
+            "outside_count": 20,
+            "byte_equal": false
+          },
+          "intrinsic": {
+            "relative_l2": 0.006584744010710633,
+            "max_abs": 3.8564453125,
+            "outside_count": 4,
+            "byte_equal": false
+          },
+          "depth": {
+            "relative_l2": 0.026073384468847206,
+            "max_abs": 0.7990610599517822,
+            "outside_count": 403340,
+            "byte_equal": false
+          },
+          "depth_conf": {
+            "relative_l2": 0.05469878052318155,
+            "max_abs": 1.745684027671814,
+            "outside_count": 363649,
+            "byte_equal": false
+          }
+        },
+        "candidate_vs_same_case_baseline": {
+          "pose_enc": {
+            "relative_l2": 0.0013952286972905496,
+            "max_abs": 0.0020685195922851562,
+            "outside_count": 15,
+            "byte_equal": false
+          },
+          "extrinsic": {
+            "relative_l2": 0.00030116408907388995,
+            "max_abs": 0.0005292892456054688,
+            "outside_count": 18,
+            "byte_equal": false
+          },
+          "intrinsic": {
+            "relative_l2": 0.001783806193692536,
+            "max_abs": 1.007659912109375,
+            "outside_count": 4,
+            "byte_equal": false
+          },
+          "depth": {
+            "relative_l2": 0.0011180998474762365,
+            "max_abs": 0.08876073360443115,
+            "outside_count": 355135,
+            "byte_equal": false
+          },
+          "depth_conf": {
+            "relative_l2": 0.0027310953605014137,
+            "max_abs": 0.14136219024658203,
+            "outside_count": 338141,
+            "byte_equal": false
+          }
+        },
+        "two_view_camera_geometry": [
+          {
+            "route": "baseline",
+            "reference": "fresh_full_original_host_FP32",
+            "rotation_difference_degrees": 0.2336158046050091,
+            "translation_direction_difference_degrees": 0.2898677028974821,
+            "translation_norm_ratio": 0.9523473358087037
+          },
+          {
+            "route": "candidate",
+            "reference": "fresh_full_original_host_FP32",
+            "rotation_difference_degrees": 0.2407261108128689,
+            "translation_direction_difference_degrees": 0.2952575836215134,
+            "translation_norm_ratio": 0.9479633230792188
+          },
+          {
+            "route": "candidate",
+            "reference": "same_case_actual_baseline",
+            "rotation_difference_degrees": 0.02070434928550015,
+            "translation_direction_difference_degrees": 0.04460292111556094,
+            "translation_norm_ratio": 0.995396624146838
+          }
+        ]
+      },
+      {
+        "case_id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "baseline_vs_full_FP32": {
+          "pose_enc": {
+            "relative_l2": 0.007358645706322266,
+            "max_abs": 0.012555480003356934,
+            "outside_count": 18,
+            "byte_equal": false
+          },
+          "extrinsic": {
+            "relative_l2": 0.004197438997373362,
+            "max_abs": 0.007755167782306671,
+            "outside_count": 18,
+            "byte_equal": false
+          },
+          "intrinsic": {
+            "relative_l2": 0.008089949277345248,
+            "max_abs": 6.041748046875,
+            "outside_count": 4,
+            "byte_equal": false
+          },
+          "depth": {
+            "relative_l2": 0.03736354203768486,
+            "max_abs": 0.7672941088676453,
+            "outside_count": 402064,
+            "byte_equal": false
+          },
+          "depth_conf": {
+            "relative_l2": 0.0747726286525211,
+            "max_abs": 2.764273166656494,
+            "outside_count": 340530,
+            "byte_equal": false
+          }
+        },
+        "candidate_vs_full_FP32": {
+          "pose_enc": {
+            "relative_l2": 0.008048007559835965,
+            "max_abs": 0.014064311981201172,
+            "outside_count": 18,
+            "byte_equal": false
+          },
+          "extrinsic": {
+            "relative_l2": 0.00390980968995507,
+            "max_abs": 0.007019229233264923,
+            "outside_count": 18,
+            "byte_equal": false
+          },
+          "intrinsic": {
+            "relative_l2": 0.009239432946829853,
+            "max_abs": 6.75946044921875,
+            "outside_count": 4,
+            "byte_equal": false
+          },
+          "depth": {
+            "relative_l2": 0.03734162143438638,
+            "max_abs": 0.7611555457115173,
+            "outside_count": 401582,
+            "byte_equal": false
+          },
+          "depth_conf": {
+            "relative_l2": 0.0742218946828354,
+            "max_abs": 2.7402615547180176,
+            "outside_count": 340450,
+            "byte_equal": false
+          }
+        },
+        "candidate_vs_same_case_baseline": {
+          "pose_enc": {
+            "relative_l2": 0.0011472143286605087,
+            "max_abs": 0.0015088319778442383,
+            "outside_count": 18,
+            "byte_equal": false
+          },
+          "extrinsic": {
+            "relative_l2": 0.0003798784902078306,
+            "max_abs": 0.000735938549041748,
+            "outside_count": 18,
+            "byte_equal": false
+          },
+          "intrinsic": {
+            "relative_l2": 0.0013991778525558444,
+            "max_abs": 0.78790283203125,
+            "outside_count": 4,
+            "byte_equal": false
+          },
+          "depth": {
+            "relative_l2": 0.0008473787186202063,
+            "max_abs": 0.02117180824279785,
+            "outside_count": 343973,
+            "byte_equal": false
+          },
+          "depth_conf": {
+            "relative_l2": 0.0027627235146536616,
+            "max_abs": 0.1746692657470703,
+            "outside_count": 298044,
+            "byte_equal": false
+          }
+        },
+        "two_view_camera_geometry": [
+          {
+            "route": "baseline",
+            "reference": "fresh_full_original_host_FP32",
+            "rotation_difference_degrees": 0.28470664054271055,
+            "translation_direction_difference_degrees": 3.0374267272751236,
+            "translation_norm_ratio": 1.065663016810004
+          },
+          {
+            "route": "candidate",
+            "reference": "fresh_full_original_host_FP32",
+            "rotation_difference_degrees": 0.27224736703015406,
+            "translation_direction_difference_degrees": 2.8953051797587688,
+            "translation_norm_ratio": 1.0610062246367296
+          },
+          {
+            "route": "candidate",
+            "reference": "same_case_actual_baseline",
+            "rotation_difference_degrees": 0.017137669807944615,
+            "translation_direction_difference_degrees": 0.20460768099829274,
+            "translation_norm_ratio": 0.9956301456465907
+          }
+        ]
+      }
+    ],
+    "camera_geometry_convention": {
+      "source_sha256": "845fc3a46cb851bebf0720b8fc2b9f34334ae8e11f1982376ba59f90ff18f22b",
+      "source_function": "pose_encoding_to_extri_intri",
+      "extrinsics": "OpenCV camera-from-world [R|t]",
+      "relative_transform": "R10=R1@R0.T; t10=t1-R10@t0",
+      "translation_norm_ratio": "Predicted relative-translation norm divided by comparison-reference norm.",
+      "two_view_prediction_differences_not_trajectory_ATE_or_RPE": true,
+      "translation_scale_is_model_relative_not_metric_ground_truth": true
+    },
+    "finding": "Mixed propagation: pair4 decoded relative geometry slightly worsens and pair5 slightly improves; depth/confidence relative errors decrease only slightly. No consistent full-head quality benefit established."
+  },
+  "resources": {
+    "resource_totals": {
+      "contexts_created": 22,
+      "contexts_destroyed": 22,
+      "runs_completed": 38,
+      "output_buffers_acquired": 56,
+      "output_buffers_released": 56
+    },
+    "original_group0_controls": 2,
+    "continuation_routes": 4,
+    "per_control_contexts_runs_outputs": [
+      1,
+      1,
+      2
+    ],
+    "per_continuation_contexts_runs_outputs": [
+      5,
+      9,
+      13
+    ],
+    "maximum_live_SDK_contexts": 1,
+    "group_owners_closed_before_next_group": true,
+    "camera_then_DPT_deferred_contexts": true,
+    "all_owned_output_copies_and_releases_closed": true,
+    "source_inputs_environment_and_affinity_unchanged_or_restored": true,
+    "bounded_1GHz_180second_75C_controller_restored": true,
+    "controller_maximum_sampled_temperature_c": 68.384
+  },
+  "descriptive_timing": {
+    "continuation_calls": [
+      {
+        "case_id": "pair4",
+        "route": "baseline",
+        "complete_continuation_seconds": 19.314740690009785,
+        "SDK_run_sum_seconds": 13.101438274985412,
+        "complete_group_seconds": [
+          5.714170908002416,
+          4.961790373999975,
+          5.048259174000123
+        ],
+        "full_heads_with_lifecycle_seconds": 3.4232402609923156,
+        "original_codec_and_final_owned_validation_seconds": 0.04885008800192736
+      },
+      {
+        "case_id": "pair4",
+        "route": "candidate",
+        "complete_continuation_seconds": 19.007809410002665,
+        "SDK_run_sum_seconds": 13.077482439010055,
+        "complete_group_seconds": [
+          5.785786998007097,
+          5.012981462001335,
+          5.042749047992402
+        ],
+        "full_heads_with_lifecycle_seconds": 3.0838335180014838,
+        "original_codec_and_final_owned_validation_seconds": 0.024592461006250232
+      },
+      {
+        "case_id": "pair5",
+        "route": "baseline",
+        "complete_continuation_seconds": 18.682831127007375,
+        "SDK_run_sum_seconds": 13.060070020001149,
+        "complete_group_seconds": [
+          5.652221026000916,
+          4.904343201007578,
+          4.961622331989929
+        ],
+        "full_heads_with_lifecycle_seconds": 3.108122645004187,
+        "original_codec_and_final_owned_validation_seconds": 0.024727501993766055
+      },
+      {
+        "case_id": "pair5",
+        "route": "candidate",
+        "complete_continuation_seconds": 18.927398026993615,
+        "SDK_run_sum_seconds": 13.058422059984878,
+        "complete_group_seconds": [
+          5.766907455006731,
+          5.003539502999047,
+          5.0479501739901025
+        ],
+        "full_heads_with_lifecycle_seconds": 3.053090722998604,
+        "original_codec_and_final_owned_validation_seconds": 0.02447929400659632
+      }
+    ],
+    "separate_original_group0_controls": [
+      {
+        "case_id": "pair4",
+        "complete_seconds": 4.370156938995933
+      },
+      {
+        "case_id": "pair5",
+        "complete_seconds": 4.159681208999245
+      }
+    ],
+    "per_route_timer": "Includes current seed checks, sequential model hash/init/run/IO/destroy, original retained/target/head/codec math and final owned validation.",
+    "excluded_from_per_route_timer": "Constructor provenance, new DINO execution, new candidate group0 execution, seed file loading, raw saving and independent comparisons.",
+    "runs_per_case_route": 1,
+    "SDK_run_sum_is_diagnostic_not_a_separate_rate": true,
+    "matched_fresh_full_model_or_SLAM_speed_comparison": false,
+    "peak_process_RSS_MiB": 919.58203125,
+    "process_RSS_is_not_total_or_unique_physical_RAM": true
+  },
+  "preserved_attempt_and_restoration": {
+    "r1_failed_during_existing_pin_preflight_before_worker_or_NN": true,
+    "same_archived_original_model_bytes_restored": 1591684839,
+    "restoration_model_count": 4,
+    "original_artifact_pins_verified": 17,
+    "actual_restored_files": 16,
+    "existing_reference_file_unchanged": 1,
+    "restoration_performs_no_NN_or_recompile_and_overwrites_no_existing_file": true,
+    "r2_model_or_array_payload_push": false,
+    "whole_experiment_zero_model_transfer_claim": false,
+    "original_model_bytes_hashes_and_archival_records_preserved": true
+  },
+  "acceptance": {
+    "full_original_camera_DPT_and_codec_interface_verified": true,
+    "conditional_saved_output_diagnostic_completed": true,
+    "original_tensor_precision_accepted": false,
+    "decoded_pose_or_depth_quality_accepted": false,
+    "trajectory_ATE_RPE_or_SLAM_quality_accepted": false,
+    "full_model_or_fresh_observation_speed_accepted": false,
+    "sustained_realtime_rate_accepted": false,
+    "physical_8GB_feasibility_accepted": false,
+    "deployment_accepted": false
+  },
+  "evidence": [
+    {
+      "role": "Actual four-route full-head continuation receipt",
+      "basename": "result.json",
+      "bytes": 96846,
+      "sha256": "904fd707785be9b85715739db7c3c767924dfaed6c916c56262adae0dfab8aad"
+    },
+    {
+      "role": "Actual same-input/seed manifest",
+      "basename": "manifest.json",
+      "bytes": 11412,
+      "sha256": "c7500c17d1abc9d220b671ebdf10d5fae340e051b67d09cb0f550870f02dad22"
+    },
+    {
+      "role": "Closed r2 transport",
+      "basename": "full-heads-continuation-r2-transport.json",
+      "bytes": 32027,
+      "sha256": "69d8b20ea5c539108d63fe2241aaaad0c8174843c6472478fe388a6ec63fc77f"
+    },
+    {
+      "role": "Restored bounded controller",
+      "basename": "control.json",
+      "bytes": 66594,
+      "sha256": "0553f676630d418f7dd704ee4f77206af52a8e2d6d5ea441a79c00132dc2592c"
+    },
+    {
+      "role": "Frozen continuation wrapper source",
+      "basename": "run_full_heads_continuation_board.py",
+      "bytes": 14740,
+      "sha256": "09b330d878e681373021c42a1e9491f4ea85979d1ce0dd95a9dc4161f77bd6ff"
+    },
+    {
+      "role": "Pinned unchanged original continuation source",
+      "basename": "original_groups1_3_continuation.py",
+      "bytes": 25303,
+      "sha256": "5d987af94a54677657495536599dd11c7f3073f6f0bc0daa076a63b119bf8c15"
+    },
+    {
+      "role": "Frozen r2 transport source",
+      "basename": "execute_full_heads_continuation_host_r2.py",
+      "bytes": 17538,
+      "sha256": "0e21db1a5982c131c693da66bc7dfe06c56625ce0c7b4df2b175592cd08cbff4"
+    },
+    {
+      "role": "Independent24-array full-reference and geometry audit",
+      "basename": "full-heads-continuation-r2-saved-audit-r2.json",
+      "bytes": 44010,
+      "sha256": "43cebba9fd8283e669171755a4fd4f454f8aaec34e3f67b08881f59e5dd16dfa"
+    },
+    {
+      "role": "Independent saved auditor source",
+      "basename": "audit_full_heads_continuation_saved.py",
+      "bytes": 22919,
+      "sha256": "150247c17dcad46f74fb8fd0c28c17ecb01f07daa75010c42e305c85de1a4e93"
+    },
+    {
+      "role": "Fresh original complete host FP32 reference receipt",
+      "basename": "result.json",
+      "bytes": 31109,
+      "sha256": "767a2c286926dedd0e0b2362dc550efa6a860d6963fd6732ec9d4cff824588ff"
+    },
+    {
+      "role": "Matched original full FP32 runner source",
+      "basename": "run_matched_original_full_FP32_host.py",
+      "bytes": 15435,
+      "sha256": "00a4d2b749c02476cc36d4202ebd170a005df323554ebc79dccead4990c22a42"
+    },
+    {
+      "role": "Independent10-array full FP32 reference audit",
+      "basename": "full-FP32-reference-r1-saved-audit.json",
+      "bytes": 32354,
+      "sha256": "4f74fa65760086c899476bee6082488f3c5f598680c8e42224f6791a93a77598"
+    },
+    {
+      "role": "Preserved preflight-only r1 transport failure",
+      "basename": "full-heads-continuation-r1-transport.json",
+      "bytes": 23354,
+      "sha256": "df9188067024f061d838ed0b64f10437770c727d2ab453c28816ab63178760d5"
+    },
+    {
+      "role": "Separate same-byte original model restoration receipt",
+      "basename": "original-continuation-restoration-r1.json",
+      "bytes": 13895,
+      "sha256": "1f35a8ed11ae601d799cde2232be5ad109ac8fd7d7612972ec5346abbad68e2f"
+    },
+    {
+      "role": "Independent original restoration audit",
+      "basename": "restoration-saved-audit-r1.json",
+      "bytes": 11601,
+      "sha256": "9be57b9fa6cb0633d59221a53ddc7fd84eb5975c64c2e18fc52d4ca9c700f53b"
+    }
+  ]
+}

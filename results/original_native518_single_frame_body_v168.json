@@ -1,0 +1,156 @@
+{
+  "schema": "original_native518_single_frame_body_v168",
+  "status": "original_role_CPU_and_native_outputs_byte_verified_no_speed_acceptance",
+  "original_model_only": true,
+  "scope": {
+    "original_aggregator_frame_block_index": 0,
+    "same_two_cases_source_indices": [
+      [
+        96,
+        104
+      ],
+      [
+        112,
+        120
+      ]
+    ],
+    "original_prepared_input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "per_role_input_and_output_shape": [
+      1,
+      1041,
+      1024
+    ],
+    "calls_required_for_both_original_roles": 2,
+    "all1041_tokens16_heads_and_original_frame_parameters_preserved": true,
+    "full_model_or_SLAM_execution": false
+  },
+  "change": "Move only the initial frame-selecting Slice outside the graph. Both original frame roles use the same complete 43-node body with their actual prepared readonly input slices.",
+  "static_proof": {
+    "original_body_nodes": 43,
+    "original_required_initializers": 31,
+    "all_body_nodes_and_required_initializers_byte_unchanged": true,
+    "whole_original44_node_branch_ModelProto_inverse_byte_equal": true,
+    "both_role_bodies_canonically_identical": true,
+    "learned_parameters_modified": false
+  },
+  "board_CPU_gate": {
+    "ORT_sessions": 1,
+    "calls": 4,
+    "saved_outputs": 4,
+    "comparisons_including_two_own_concatenated_endpoints": 6,
+    "all_six_byte_equal": true,
+    "maximum_absolute_error": 0.0
+  },
+  "actual_FP16_compilation": {
+    "noncalibrating": true,
+    "learned_products": 4,
+    "full_SDPA_operations": 1,
+    "all_internal_operations_FLOAT16_NPU": true,
+    "internal_CPU_GPU_fallback": false,
+    "model_bytes": 27927378,
+    "model_sha256": "b6dca6503dff41e31c8dbfc4db007307e4abef47642c6ba1b9cf9503bab00c6b"
+  },
+  "board_native_gate": {
+    "init_flags": 0,
+    "core_mask": 1,
+    "query_owners": 1,
+    "runtime_owners": 1,
+    "maximum_live_contexts": 1,
+    "calls": 4,
+    "all_four_outputs_byte_equal_existing_native_branches": true,
+    "maximum_absolute_error": 0.0,
+    "native8_and10_field_and_raw_struct_equality": true,
+    "input_native10_and_output11_logical_bytes": 2131968,
+    "output_native9_capacity_bytes": 2146304,
+    "output_allocation_covers_native9": true,
+    "input_pass_through_only": true,
+    "four_original_readonly_half_role_slices_verified": true,
+    "resource_totals": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 4,
+      "memories_created": 2,
+      "memories_imported": 0,
+      "memories_destroyed": 2,
+      "set_io_mem_attempts": 2,
+      "set_io_mem_successes": 2,
+      "output_buffers_acquired": 0,
+      "output_buffers_released": 0
+    },
+    "all_resources_closed": true,
+    "controller_restored": true
+  },
+  "memory_and_payload": {
+    "old_branch_SDK_internal_bytes": 40648704,
+    "single_body_SDK_internal_bytes": 32071680,
+    "SDK_internal_field_difference_bytes": 8577024,
+    "single_body_SDK_weight_bytes": 25493568,
+    "single_body_SDK_dma_bytes": 88190976,
+    "SDK_fields_are_unique_physical_memory": false,
+    "two_old_full_FRAME_input_payloads_bytes": 8527872,
+    "two_new_SINGLE_input_payloads_bytes": 4263936,
+    "measured_DMA_traffic_or_parallel_speedup": false,
+    "weight_sharing_flag_used": false
+  },
+  "limits": [
+    "Four isolated role calls preserve the current NPU branch outputs; the existing discrepancy from original FP32 is not resolved.",
+    "The new graph has not yet been measured as two concurrent frame owners in a complete pair or full model.",
+    "SDK memory fields and input payload arithmetic do not establish unique physical memory, 8GB feasibility or a measured speedup.",
+    "Original model, code and SDK licenses remain separate."
+  ],
+  "evidence": [
+    {
+      "role": "static",
+      "basename": "result.json",
+      "bytes": 18194,
+      "sha256": "b0192420b79ae39464c117adb5f1099aa24105e9fe9ac17d4493c0669e79e5c6"
+    },
+    {
+      "role": "CPU",
+      "basename": "result.json",
+      "bytes": 22429,
+      "sha256": "b1c163d37550e91ec6ee63ac3a8efb1b74e5a155f1622335928b0738e856a463"
+    },
+    {
+      "role": "CPU_audit",
+      "basename": "CPU-gate-r1-saved-audit-r1.json",
+      "bytes": 5282,
+      "sha256": "d7f79de63d846edf6a19a688057a9f63a6a5b925e27b5638b290ef1ceb5ca162"
+    },
+    {
+      "role": "compile",
+      "basename": "result.json",
+      "bytes": 150391,
+      "sha256": "b57dd08f79f9852329f93eeff2c72be64703470692e9cbd59c45db324aec1783"
+    },
+    {
+      "role": "placement_audit",
+      "basename": "host-compile-r1-saved-audit-r1.json",
+      "bytes": 54000,
+      "sha256": "803a656c5181fa5ed0c9c00a50ce6b9ab0514485f40ed4ed9d1ff66a2f160007"
+    },
+    {
+      "role": "native",
+      "basename": "result.json",
+      "bytes": 29333,
+      "sha256": "c3a57a96f5cdd88782186d4bbe80e3f380b2d4cdbe8fae99d0b47a8bed158b52"
+    },
+    {
+      "role": "native_audit",
+      "basename": "native-gate-r1-saved-audit-r1.json",
+      "bytes": 2715,
+      "sha256": "4b7b7c84698411c411b4ecc55156a909971dd010cdc10047c3262857147c9d60"
+    },
+    {
+      "role": "controller",
+      "basename": "control.json",
+      "bytes": 2820,
+      "sha256": "457d5dcdf1a8593a7216f387afc2a37ca7ba634c54737bac92f733f89da129cc"
+    }
+  ],
+  "realtime_pose_depth_trajectory_or_deployment_accepted": false
+}

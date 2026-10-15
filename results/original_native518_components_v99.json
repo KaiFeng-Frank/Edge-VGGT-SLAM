@@ -1,0 +1,422 @@
+{
+  "schema": "original_VGGT_native518_components_v99",
+  "date": "2026-10-13",
+  "status": "component_speed_and_numerical_gates_not_sufficient_for_full_network_expansion",
+  "scope": "Original VGGT native 518 preprocessing, real TUM pair indices 32 and 40. Component review only.",
+  "identity": {
+    "checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "source_pair_indices": [
+      32,
+      40
+    ],
+    "prepared_image_shape": [
+      2,
+      3,
+      392,
+      518
+    ],
+    "prepared_pixels_raw_sha256": "f4d8b26fd08c995479849eb22035dd383e5a05bdc513a5de50df090cec2d375c",
+    "SDK": "2.3.2",
+    "driver": "0.7.2",
+    "normal_NPU_hz": 1000000000
+  },
+  "new_or_replacement_model_used": false,
+  "traditional_pose_frontend_added": false,
+  "execution": "RK3588S CPU/NPU only; no GPU used. Host reads saved outputs and source only.",
+  "measurement": {
+    "normal_flags": 0,
+    "separate_profile_flags": 8,
+    "npu_hz": 1000000000,
+    "bounded_seconds": 180,
+    "temperature_limit_c": 75,
+    "normal_boundary": "FP32 SDK input conversion/set, synchronous execution, output conversion, owned copy, release and finite checks. DPT also includes original patch preparation and CPU activation. File I/O and init excluded.",
+    "ABBA": "A B B A, fresh process each; one first plus three warm calls per process, six warm per route.",
+    "not_end_to_end_latency": true
+  },
+  "query512": {
+    "core_mask": 1,
+    "steady_calls_per_route": 6,
+    "A_mean_ms": 428.02785550399375,
+    "B_mean_ms": 444.2420794997209,
+    "candidate_change_percent": 3.788123550191669,
+    "strict_original_CPU_pass": false,
+    "decision": "rejected_slower",
+    "all_original_keys_and_values_retained": true,
+    "selected_output_byte_equal": true,
+    "FP32_gate_passed": true
+  },
+  "four_head_groups": {
+    "core1": {
+      "core_mask": 1,
+      "steady_calls_per_route": 6,
+      "A_mean_ms": 430.4686126803669,
+      "B_mean_ms": 426.5156123437919,
+      "candidate_change_percent": -0.9183016415438949,
+      "strict_original_CPU_pass": false
+    },
+    "core7": {
+      "core_mask": 7,
+      "steady_calls_per_route": 6,
+      "A_mean_ms": 413.1293468332539,
+      "B_mean_ms": 416.6858751656643,
+      "candidate_change_percent": 0.8608752584806867,
+      "strict_original_CPU_pass": false
+    },
+    "decision": "no_material_gain_not_adopted",
+    "selected_output_byte_equal": true,
+    "mask7_SDPA_profile_us": [
+      62028,
+      62174,
+      61993,
+      62158
+    ],
+    "SDPA_workload_each": "100% core0 / 0% core1 / 0% core2",
+    "FP32_gate_passed": true
+  },
+  "DINO0_FC2_K4": {
+    "core_mask": 1,
+    "steady_calls_per_route": 6,
+    "A_mean_ms": 190.62026219520098,
+    "B_mean_ms": 148.0898828303907,
+    "candidate_change_percent": -22.311573216313107,
+    "strict_original_CPU_pass": false,
+    "decision": "measured_component_gain_no_whole_encoder_acceptance",
+    "all_weight_values_and_tokens_preserved": true,
+    "floating_reduction_order_changed": true,
+    "FP32_gate_passed": true,
+    "selected_output_byte_equal": false,
+    "FP16_original_relative_l2_A": 0.02548227586596754,
+    "FP16_original_relative_l2_B": 0.025477285709848963
+  },
+  "DINO_six_original_layers": {
+    "indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "FC2_K4_applied": false,
+    "one_RKNN_graph": true,
+    "logical_shape": [
+      1,
+      1041,
+      1024
+    ],
+    "first_seconds": 0.9534156789886765,
+    "warm_count": 3,
+    "warm_mean_seconds": 0.9503033593452225,
+    "warm_range_seconds": [
+      0.9471843449864537,
+      0.9542713880073279
+    ],
+    "all_repeat_byte_equal": true,
+    "FP32_export_gate": {
+      "thresholds": {
+        "relative_l2": 1e-05,
+        "max_abs": 0.001
+      },
+      "relative_l2": 1.6986462388854924e-06,
+      "max_abs": 9.918212890625e-05,
+      "status": "passed_complete_block_FP32_numerical_gate"
+    },
+    "FP16_comparison": {
+      "six_original_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "both_saved_arrays_sha_verified": true,
+      "elements": 1065984,
+      "finite": true,
+      "relative_l2": 0.05041543659464821,
+      "max_abs": 6.0396881103515625,
+      "strict_rtol": 0.0001,
+      "strict_atol": 1e-05,
+      "outside_strict_gate": 1061615
+    },
+    "full24_NPU_encoder_executed": false,
+    "not_quality_accepted": true
+  },
+  "DPT": {
+    "normal_warm_count": 6,
+    "normal_mean_seconds_per_frame": 0.8356568963305714,
+    "sum_two_frame_means_seconds": 1.6713137926611428,
+    "by_frame": [
+      {
+        "frame": 0,
+        "first_recorded_seconds": 0.8440473769442178,
+        "steady_count": 3,
+        "steady_mean_seconds": 0.8360794033311928,
+        "steady_min_seconds": 0.8310513329925016,
+        "steady_max_seconds": 0.8434977509896271,
+        "all_repeat_byte_equal": true,
+        "strict_original_FP32_reference_pass": false
+      },
+      {
+        "frame": 1,
+        "first_recorded_seconds": 0.8387284170021303,
+        "steady_count": 3,
+        "steady_mean_seconds": 0.83523438932995,
+        "steady_min_seconds": 0.8262142079765908,
+        "steady_max_seconds": 0.8399846259853803,
+        "all_repeat_byte_equal": true,
+        "strict_original_FP32_reference_pass": false
+      }
+    ],
+    "FP16_vs_original_CPU": [
+      {
+        "frame": 0,
+        "metrics": {
+          "logits": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "outside_fixed_gate": 317206,
+            "maximum_tolerance_ratio": 1236.464025448325,
+            "byte_equal": false,
+            "max_abs": 0.10211181640625,
+            "rmse": 0.007567041727825222,
+            "relative_L2": 0.0006440588674136058
+          },
+          "depth": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "outside_fixed_gate": 38393,
+            "maximum_tolerance_ratio": 16.26109165105288,
+            "byte_equal": false,
+            "max_abs": 0.0033223628997802734,
+            "rmse": 0.00011854911095300615,
+            "relative_L2": 0.00011973686775112977
+          },
+          "depth_conf": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "outside_fixed_gate": 134969,
+            "maximum_tolerance_ratio": 89.09698488675384,
+            "byte_equal": false,
+            "max_abs": 0.02360081672668457,
+            "rmse": 0.002999860129032169,
+            "relative_L2": 0.0007231980800996692
+          }
+        }
+      },
+      {
+        "frame": 1,
+        "metrics": {
+          "logits": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "outside_fixed_gate": 318467,
+            "maximum_tolerance_ratio": 1212.7316035913634,
+            "byte_equal": false,
+            "max_abs": 0.09299850463867188,
+            "rmse": 0.007607042042061075,
+            "relative_L2": 0.000748369238794156
+          },
+          "depth": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "outside_fixed_gate": 33726,
+            "maximum_tolerance_ratio": 17.530549624938583,
+            "byte_equal": false,
+            "max_abs": 0.003260374069213867,
+            "rmse": 0.0001382385765072083,
+            "relative_L2": 0.00014162104257068787
+          },
+          "depth_conf": {
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "outside_fixed_gate": 145774,
+            "maximum_tolerance_ratio": 97.97364599661874,
+            "byte_equal": false,
+            "max_abs": 0.01772451400756836,
+            "rmse": 0.0031115228418843654,
+            "relative_L2": 0.0007373184655087753
+          }
+        }
+      }
+    ],
+    "FP32_raw_logit_gate": {
+      "status": "numerical_rejected",
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "calls": [
+        {
+          "frame": 0,
+          "outside_count": 18,
+          "elements": 406112,
+          "relative_l2": 8.131178895281904e-07,
+          "max_abs": 0.000118255615234375,
+          "passed": false
+        },
+        {
+          "frame": 1,
+          "outside_count": 18,
+          "elements": 406112,
+          "relative_l2": 9.755354582790829e-07,
+          "max_abs": 0.0001373291015625,
+          "passed": false
+        }
+      ],
+      "gate_remains_failed": true
+    },
+    "FP32_additional_consumer_gate": {
+      "status": "passed_additional_consumer_gate",
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "both_depth_and_confidence_pass_both_frames": true,
+      "raw_gate_overridden": false
+    },
+    "profile_CPU_resize_count": 5,
+    "frame0_profile_CPU_resize_us": 270066,
+    "frame0_profile_all_operators_us": 838686,
+    "profile_share_percent": 32.20108598450433,
+    "CPU_profile_share_is_not_proven_removable_normal_time": true
+  },
+  "reference_checks": {
+    "original24_DINO_CPU_final_normalized_patches_byte_equal_v92": true,
+    "original46_remaining_aggregator_blocks_CPU_continuation": true,
+    "original_CPU_pose_depth_confidence_byte_equal_v92": true,
+    "not_NPU_full_network_validation": true
+  },
+  "canvas_step1_decision": {
+    "kind": "component-based planning estimate, NOT full model measurement or hardware impossibility bound",
+    "assumptions": [
+      "Every original layer assigned measured layer0 component cost",
+      "One new image DINO24, old-frame DINO reused unchanged",
+      "Both frames run all24 frame blocks plus24 global blocks",
+      "Original DPT called separately for both frames at measured original dimensions",
+      "Pose head, backend, acquisition, cache and scheduling omitted",
+      "No fusion gains assumed",
+      "Ideal three-lane scaling is hypothetical;2.3653x was measured only on unchangedglobal0"
+    ],
+    "terms_seconds": {
+      "DINO24": 3.554157187929377,
+      "frame24_for_both_frames": 9.324624271830544,
+      "global24": 10.27266853209585,
+      "DPT_two_frames": 1.6713137926611428
+    },
+    "serial_component_estimate_seconds": 24.822763784516912,
+    "hypothetical_perfect_three_lane_interval_seconds": 8.27425459483897,
+    "hypothetical_apply_global0_scaling_interval_seconds": 10.494394013018686,
+    "gate": "Current measured component route does not support <=5s map plan; no fullnet build for this route this iteration"
+  },
+  "resources": {
+    "normal_and_profile_jobs": 25,
+    "contexts_created": 25,
+    "contexts_destroyed": 25,
+    "runs_completed": 87,
+    "output_buffers_acquired": 87,
+    "output_buffers_released": 87,
+    "all_closed": true,
+    "bounded_NPU_controls": 6,
+    "all_restored_300MHz": true,
+    "maximum_NPU_control_sample_temperature_c": 61.923,
+    "CPU_control_stages": 22,
+    "maximum_CPU_control_sample_temperature_c": 71.153,
+    "CPU_stages_nonzero_exit": [
+      {
+        "stage": "v99depthonnx",
+        "exit": 1,
+        "reason": "Preserved strict raw-logit numerical rejection, not a cleanup failure"
+      }
+    ]
+  },
+  "next_decision": "Do not expand this measured route to all original native518 NPU blocks until a concrete change passes the component budget. Attention scheduling and CPU Resize fallback are identified bottlenecks; no projected optimization is counted as achieved.",
+  "limits": [
+    "No native complete SLAM, map cadence, fresh-pose rate, P95, ATE/RPE, loop closure, physical 8GB or 30-minute acceptance.",
+    "Single real pair and first DINO six layers; tensor differences do not establish trajectory degradation.",
+    "Budget uses first-layer proxies, hypothetical scaling, excludes camera head/backend and does not prove hardware impossibility.",
+    "Native camera NPU head has not been measured in this iteration.",
+    "Original final DINO norm and token preparation are excluded from six-layer NPU component time.",
+    "Original-model weights and weight-bearing exports remain private; repository license does not grant model-weight rights.",
+    "No production backend change, commit or GitHub push."
+  ],
+  "evidence_sha256": {
+    "q512-abba-0.json": "2a8655cd3f8648e8f5ff4a15b947e4398ed41cfc5425bcdb2d2ad12981302b9c",
+    "q512-abba-1.json": "56aaaa56cbaa2d36b4d416e527002f9a7e15235d7d97773d1ceb52f372e51fb8",
+    "q512-abba-2.json": "523910e2e471fc1c86b34071f096d59a2c1f119f30031070270491e7ab08675c",
+    "q512-abba-3.json": "53cb99eec8be25d5f147890a30db0ca898e4cfb9a47f3c0bf2b0037ee1796f0d",
+    "head4-m1-abba-0.json": "14d2faa0ed93c9031496c1b71bb2d14cebbb36fe4a17066c2743e18f39e7f513",
+    "head4-m1-abba-1.json": "eba9dbcfa154fa9ad4e71bb6655d9a52e8aa797ae0da4d175fe6d73c855d8dfc",
+    "head4-m1-abba-2.json": "6269e76556f7d5b606394d8dbac1f34ad4380d4d0dc5feca0c490064aa974ba7",
+    "head4-m1-abba-3.json": "e353d2e6798deeaa7211ed7456ccc6ece91f1f8a07a87cc6df25e5214258060a",
+    "head4-m7-abba-0.json": "70d4fecfc433bd08584fc97c8daea1c2cedaf7fd93029ed36d16cf135207b4ab",
+    "head4-m7-abba-1.json": "671422ddd84ffa8234c3dceacc5e96a358a32b9bbf7284c77d80becbf0f48f64",
+    "head4-m7-abba-2.json": "c20167e4ef16252515b9fa61dfe993ae0a76c7e97c939e5c06dda9bb277eba4c",
+    "head4-m7-abba-3.json": "65b96d89d724f6c11692388f15861bd94d03a2340c681fdcaa12c6051a915ea0",
+    "dino-core1.json": "bea1140766efbe1d0231d10aa0a0dffa46e3cb5f5ccbb9bc3db0366d6579b8bb",
+    "dinok4-abba-0.json": "42492dd2a288d8e50555cad1b9a9078eeb06621d24ef68a8bf882382139c4a24",
+    "dinok4-abba-1.json": "2f842b1fadd2bd5d3868e6ea3ee7dbbc0673cffa6f03ca18a92294b7affd1841",
+    "dinok4-abba-2.json": "d2849bebf11fb51862c995040c44acbd692ef2e9effed9edf0ae6bbc48208cc0",
+    "dinok4-abba-3.json": "b53688daef426b858ee790c720140ebe7aeebc9c98708250f6969c3466c695ea",
+    "depth-core1.json": "3cfca4b7a650381024649d8eb4d55221a62181e9a02cca73911d0d6ce9cd6a81",
+    "dinog0-core1.json": "9b743f9d02363a0742106b0dd9bd85d925ecb56ca402dfd300073321e4ba9153",
+    "q512-profile.json": "d0cdd6733356de623eb848c070242c438e386abdb9e813784baf4245163364be",
+    "head4-m1-profile.json": "76a58924791f6c68d70a9844edc4b9d17bfa850bb0d876d961d019994a40ce0b",
+    "head4-m7-profile.json": "2a8bf5736e2498b6e5878e4432d92f23f5dbcfd5108d2d7991a090afd048bd5c",
+    "dino-profile.json": "e581ee094e03e0836407960cf037ea60ec7756f49dc7be5dd588ee1c2faae6fd",
+    "dinok4-profile.json": "07929f7f1afcdd7aec9268f97c219726f79d97a1b304089cd45e7bcfc173b50f",
+    "depth-profile.json": "e2a70fd9810b71c09c189c8e903702a4a1d1e2eee02d1a12fec86c7e9b14c173",
+    "q512-control.json": "54ced59545d5fef0449891d21e1fe85e8f724db157895b885217e06833f58702",
+    "head4-control.json": "9bb118975aa7414b1cb5b08e61bc4efaec0ab483fd40ea52ad835cd58b96a7b9",
+    "dino-control.json": "0fb4f5df9d06ac3aced4d157fc8b23e1b0031db7f5db8691e1576b68018d408d",
+    "dinok4-control.json": "6dfc250ebfdb9c5fff4ea78f866b7edaeebccf19dcacfb4e07411f676f9852de",
+    "depth-control.json": "1f691f8f8ec80f64987c690ba3b9adfaf16048461a5d487668ba153d335676da",
+    "dinog0-control.json": "6d9d97ce0eeef61f260eb9133959598c6eecb6db2ca123bf9868260815f6adf6",
+    "q512-export.json": "893c51d78e61e41fa003e32f3b6e1cbc24bf598130d643f1f542a5490f7f8a7d",
+    "q512-onnx.json": "2db52eecfd90bf78f4a76ef2ccea84f2e8a7cbf34084d551cd14d583b16e6a11",
+    "q512-compile.json": "85d504f2268cc34db834b7bbb39648d8da238e75e9320d8fe6e1fa0e760a7cbd",
+    "head4-export.json": "15b4ac9b4b4e27866c0ca879ebb6b0a46d3fe8ae77eceb9d9704bc38fb98a3c7",
+    "head4-onnx.json": "19bfe2834859f44bf391dc2c47ad0d9cde05e38f83fc9d7318ee07a3e9c57e65",
+    "head4-compile.json": "5e0fa402b59ff0cfa1fd4a6a74c45b83adbc41b583530fcecc6eff289129b47f",
+    "dino-reference.json": "01931ff710097ce06782de9f99431a20cb5cfdce472ded9e45f398df9c8bc8bb",
+    "dino-export.json": "bd78874ccc7373121696dea581ad88288425cd3878aaadf02a8ae01fd563d532",
+    "dino-onnx.json": "4bd4d2935c8db2f1eb5ac604c39d46d323fcbdd85c4907141e91679ef90c8cf8",
+    "dino-compile.json": "4864b5ac075e75d5c0e2600903792a510d88851c1c8040e22135440d03ec2b4e",
+    "dinok4-export.json": "f64fabafa6b29c36fc8b1a767f29762088ec9338d3e0e4089b34d824c8e0d493",
+    "dinok4-onnx.json": "ba8422a0096cf3337519ca9eaf2fc5cd35804750a5f593e1cbd3144787553971",
+    "dinok4-compile.json": "d1432e111ea7001f217d9f994ee07e008f727c4661a8af1fe466ca6bf0234d28",
+    "head-reference.json": "969ab6f5611efa62d81b5d62625a15815248668e1e079db17ac4d9ed9c96932b",
+    "depth-export.json": "8e3f465242924445348a589d5b589e4176fabde9e272ad0fe7d49950886f6033",
+    "depth-onnx.json": "e54f3c0ad5890567e5abd12d2afaf0e738b2cc571194a8555e3cc89b4ad561db",
+    "depth-consumer.json": "1b62c90de40b0946555ed606c57975925b6d812f03988ef35c4fbdb3ae2ad4a2",
+    "depth-compile.json": "838b608fb73e96d0f2faec68c64a4bb5c1222e0ecfc406f68151171b314ba020",
+    "dino-groups-reference.json": "5910882cd86b849ba7b7054d305bcf9fab5731f25ef95c523f566a6b2711c4e3",
+    "dinog0-export.json": "ff40dc8998f513251d1030259471df9d6991f96ddede061721ea77b8abc820ab",
+    "dinog0-onnx.json": "dbd6a18d3da667106a31c729e1f52ed3d0a5cd0176c5b94ebd75a71c7c9c815f",
+    "dinog0-compile.json": "f22f76e688cb96affc1f9ce79d284c7d2db8d9b33f6c52a7e4caca40d6bcb93e",
+    "dinog0-payload-audit.json": "d9e57cd6f01b4b19a5ff1668f794af569c6d637a22b29fbb6c9981c41233ef21",
+    "selected-payload-audit.json": "867982b6a9e156ee5c9ac532dab4f5b8710e769e2567f1b9852a99c64df3f44b",
+    "component-budget-estimate.json": "db075efb9ab3ddb2f8c44483d5845f50856843802110f2e9303be146bfa49d8a"
+  },
+  "executed_source_sha256": {
+    "capture_native_dino0.py": "3b3bb3cbb7566ec381a3fa6490e85517ae0a261f6598362932178ac361a8565b",
+    "capture_native_dino_groups.py": "6ea7993ae02b656a27bbd638e784fe2b713b502d3f0bc2f17cefc057f1a5b92e",
+    "capture_native_heads.py": "7607c4e7c132e0a7a36b6cb9337e07c90abd703acd0c8a614227d9d047112948",
+    "export_attention_query_tiles.py": "337e567bd1e1ace7f980448cb42a6e5d02e5e85cfee13fd3cc0e29afd57b7e1d",
+    "export_attention_head_groups.py": "9bbdfa150836f0cea2e790fc578467b6828bdf9c24413b85680f760550de89ff",
+    "export_native_dino0.py": "abea44db3785d3e169663c9bcb08bb688df2cdfbb0b3ea0318ef2d794b17c33d",
+    "export_native_dino_groups.py": "2efed49c8a4266c70951f97b790bfec8231adb7a9ee9129b86929105853bc23e",
+    "validate_native_dino_group.py": "ae1dcbb9ec04840d6b05f8b6607a6d243a5765356bcd075f3f434a653f02c302",
+    "native_depth_graph.py": "ad63e746bb76147bc147051a73d5dc0e97200e6cee5d3dc1695a3a0cc5ce8511",
+    "export_native_depth.py": "f5a4a1f695dbf88f8a33676c332b5a0b8c757d4dd114686efe3e325e5c02d3c5",
+    "validate_native_depth.py": "524d06d0857c0c9b69357eaf00b411d76743c5bd6133999759f54d2581698ff9",
+    "validate_depth_consumers.py": "13944085a9243b2f5341bce34248b5478cab7a0a978cea373356b180d4022e2f",
+    "compile_native_depth.py": "dfc69b76e87931c1432cd342fcf21310f481f5574fc63ed0e22f9d18d0a060d9",
+    "run_native_depth.py": "c82e2be4b3a7185de1b7d09886c3959058350d56b01df969b1d75776ec80f595"
+  }
+}

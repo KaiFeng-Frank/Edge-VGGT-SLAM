@@ -1,0 +1,219 @@
+{
+  "schema": "v128_public_text_sources",
+  "files": [
+    {
+      "destination": "capture_frame0_inputs_board.py",
+      "bytes": 20744,
+      "sha256": "ed500643ef333dd824ccab81a126e87ff8616c3cb3ee09e3ec59f2a4b7bbf7e9"
+    },
+    {
+      "destination": "npu_frequency_test.py",
+      "bytes": 6754,
+      "sha256": "cb991cf03abc872e3590dd92f26fd0f5ac548d620c5ca791f9354537a9f793b9"
+    },
+    {
+      "destination": "check_captured_pair_fp32_board.py",
+      "bytes": 23022,
+      "sha256": "b0f4bd489d1e6ec8eb28869f609d7e48469aa9d19b2120d7906cd9284059bc4c"
+    },
+    {
+      "destination": "run_sampled_cpu_stage_r126.py",
+      "bytes": 9763,
+      "sha256": "700ec5b12b6f15cf9907cfacbff3a63258ef70a14cf5efe06ba5470991de1b89"
+    },
+    {
+      "destination": "prepare_hybrid_pair_board.py",
+      "bytes": 17155,
+      "sha256": "a9b6f6b591e7ec7fef39f04ece167115445f445eecd87f996cdb5921035a20f6"
+    },
+    {
+      "destination": "compile_basis_pair_fp16.py",
+      "bytes": 13756,
+      "sha256": "2bbf180a9a70444ba592b7898fa23b96b11f36da3859f07cc5b435f0a25acb11"
+    },
+    {
+      "destination": "compile_hybrid_pair_step2_board.py",
+      "bytes": 14757,
+      "sha256": "f1c94014ad6f7555c32ac0f83d489ade46295cef96362ed7f7c9878f01cf9780"
+    },
+    {
+      "destination": "select_hybrid_precision_policy.py",
+      "bytes": 11625,
+      "sha256": "25db1ca6c66fcea6d84b921c3f8f8382d0d16eeaa9d8f6f75d7ae5b9b804da72"
+    },
+    {
+      "destination": "run_hybrid_pair_board.py",
+      "bytes": 33809,
+      "sha256": "d3157c5d1cecc4de541e9ff9a0d2adbf02e4a0269018892f24cddecbe47fce30"
+    },
+    {
+      "destination": "profile_owned_context_r2.py",
+      "bytes": 28808,
+      "sha256": "5aa75a7630ecb9793773553da1f7351a97ca5bac728d4f01f9b74d83d3ca2426"
+    },
+    {
+      "destination": "profile_calibration_pair_board_r2.py",
+      "bytes": 22586,
+      "sha256": "e5671ade47ca65244c529b3ddb325c6aac1d6234a215e43a4652ae18ce135a79"
+    },
+    {
+      "destination": "dump_mixedA_calibration_board.py",
+      "bytes": 16589,
+      "sha256": "a365611b48844170c2685c18ac31b8e96b05e2b5ae199ecb8298116ef79480ba"
+    },
+    {
+      "destination": "compile_hybrid_pair_remove_reshape_board.py",
+      "bytes": 16361,
+      "sha256": "a63571da0c4d075741331efc9a46f275aab0d65e13bb29269f8c12fcac2d26ba"
+    },
+    {
+      "destination": "audit_saved_frame0_inputs.py",
+      "bytes": 14533,
+      "sha256": "27737f86208c8ac56c551ba08c9f5a7ebf957b9e3dd1602c7a2a0813adcfdb9c"
+    },
+    {
+      "destination": "audit_saved_pair_fp32.py",
+      "bytes": 10438,
+      "sha256": "18a6b275766955cc8abc787b9c78fc160293b86d6e7ae8383de5dafc31f47945"
+    },
+    {
+      "destination": "audit_compiled_precision_paths.py",
+      "bytes": 4238,
+      "sha256": "edc62eb8169e629a8c4eacc039e3f7428828553b8eebab35786ccb8811a57a7d"
+    },
+    {
+      "destination": "audit_calibration_profile_r2_saved.py",
+      "bytes": 17752,
+      "sha256": "4270f2ce4ec741ee6e1a4c3dd6f24524c2eb0d3f3550ec007de4e767130f4552"
+    },
+    {
+      "destination": "audit_calibration_accuracy_saved.py",
+      "bytes": 4387,
+      "sha256": "638fe89f81f29830cf4a7028b69176d5c06f243e96c5b09b1f4773c66c1027c6"
+    },
+    {
+      "destination": "audit_mixedA_dump_saved.py",
+      "bytes": 16379,
+      "sha256": "aa10c35d6f765269bfd3c9e4d4050d57474cdd84519eb29b12237dc59ce3b09c"
+    },
+    {
+      "destination": "run_capture_batch0_r1.sh",
+      "bytes": 619,
+      "sha256": "e550e14e010c810f35c6695c58a99396b0e6c52e007eb3449fe219d1658301be"
+    },
+    {
+      "destination": "run_capture_batch1_r1.sh",
+      "bytes": 619,
+      "sha256": "ff0c068ca8fb3712cd8d409f7ed7bdeae2689098c1d01e32a778d0de61db9055"
+    },
+    {
+      "destination": "run_capture_batch2_r1.sh",
+      "bytes": 619,
+      "sha256": "97dd49835486ec378f2f46d01e8bbf15c1fdb5625b80499d3d4fb20c3600d39a"
+    },
+    {
+      "destination": "run_fp32_batch0_r1.sh",
+      "bytes": 625,
+      "sha256": "2688f60e32b3b0678422762e53a11ae2f163fdc9bd0012455abcb5a2d41f721d"
+    },
+    {
+      "destination": "run_fp32_batch1_r1.sh",
+      "bytes": 625,
+      "sha256": "86b953673b2d37f7e724d4097f60c83fa64013ad6c1b88378a04914c0d2ef268"
+    },
+    {
+      "destination": "run_fp32_batch2_r1.sh",
+      "bytes": 625,
+      "sha256": "18cab12032d398aee83d3c988f9705c5c62c910dfe23aa62ae08b497d1ff222f"
+    },
+    {
+      "destination": "run_hybrid_A_r2.sh",
+      "bytes": 1524,
+      "sha256": "9db9235d56369e86fd096f54954470ef72996fd23e0b6e23cc83a0aa21882a17"
+    },
+    {
+      "destination": "run_hybrid_F_r2.sh",
+      "bytes": 1524,
+      "sha256": "3a7a85efc4d26ba887a784e8a4d3387e29f875a64e384b711fac2e7571782c28"
+    },
+    {
+      "destination": "run_hybrid_B_r3.sh",
+      "bytes": 1524,
+      "sha256": "748dad02bc9351445b350d814ffb018280a39692955259df6246c6a04fc27b32"
+    },
+    {
+      "destination": "run_step2_A_r2.sh",
+      "bytes": 886,
+      "sha256": "eee61cc6ca46771dfbc97c9e04bf0ee0d7282cdc1d32effc37c3edc5d1c79e68"
+    },
+    {
+      "destination": "run_step2_F_r2.sh",
+      "bytes": 886,
+      "sha256": "7b49a35e793a269db186e5747561a973439c744c995ae4818da8d0f7b12bf116"
+    },
+    {
+      "destination": "run_step2_B_r2.sh",
+      "bytes": 886,
+      "sha256": "89b31c6dd2daa2f1ac79d0d5a8363ba0e2b87a51f4d911dc9d32548c4a7d0176"
+    },
+    {
+      "destination": "run_calibration_profile_r2.sh",
+      "bytes": 1536,
+      "sha256": "3abad29d3b6f94b3957901921005e25713d95c77f05e917d37313f6273dd02cc"
+    },
+    {
+      "destination": "run_mixedA_dump_r1.sh",
+      "bytes": 692,
+      "sha256": "27a2f8fa36f9bafcd24b4e2f8c55b32e95acaedd4ce97b6dccb62f78a6f41879"
+    },
+    {
+      "destination": "run_remove_reshape_A_r1.sh",
+      "bytes": 1031,
+      "sha256": "0b212a660feb52ca833d3210e021528f1bf291d26dd8d73045aabc6ee23c8d09"
+    },
+    {
+      "destination": "select_full_attention_precision_policy.py",
+      "bytes": 13909,
+      "sha256": "f4684d9c40d5a2fec133d3fe73d75672de62d4edcc004a7f0b3f1e6b77459509"
+    },
+    {
+      "destination": "compile_B_attention_fp16_board.py",
+      "bytes": 16345,
+      "sha256": "95e2e56c2c090e5f5de389466e704aa39353972044c96c372b320ec8ff47c8dc"
+    },
+    {
+      "destination": "profile_B_attention_calibration_board.py",
+      "bytes": 19534,
+      "sha256": "0e2c56cbcbea97c360051e1c420f4ab912b82c9e94ce74a6a63020b1dacbae69"
+    },
+    {
+      "destination": "audit_B_attention_compiled.py",
+      "bytes": 4471,
+      "sha256": "820ad3f820da79e04abed56f0f1fdef659d6118c69e8bcd6afc407baf2028048"
+    },
+    {
+      "destination": "audit_B_attention_calibration_saved.py",
+      "bytes": 13695,
+      "sha256": "72b1c861fcd81834eee39be59a231bbbad44a9a0ffa82ffc6a8cdfa636cd876a"
+    },
+    {
+      "destination": "run_B_attention_B_r1.sh",
+      "bytes": 1033,
+      "sha256": "aef0f1a75fef952ff25e24e2821107d15954f5e10550613d5d002b3cfde79545"
+    },
+    {
+      "destination": "run_B_attention_calibration_r1.sh",
+      "bytes": 1046,
+      "sha256": "3ebd9725a5ccc1a83a0dd2948139bd5058074628910e803c39606de624708661"
+    }
+  ],
+  "host_transports_with_private_ADB_paths_excluded": [
+    "execute_calibration_profile_host_r2.py",
+    "execute_hybrid_remove_reshape_host.py",
+    "execute_hybrid_step1_host.py",
+    "execute_hybrid_step2_host.py",
+    "execute_mixedA_dump_host.py"
+  ],
+  "frozen_workers_and_launchers_byte_identical": true,
+  "raw_receipts_arrays_graphs_calibrated_models_or_vendor_binaries_shipped": false
+}

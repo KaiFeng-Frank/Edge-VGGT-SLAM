@@ -1,0 +1,254 @@
+{
+  "schema": "v129_original_native518_joint_MLP_public_summary",
+  "status": "completed_FP32_and_FP16_component_acceleration_screen_rejected",
+  "candidate_accepted": false,
+  "scope": {
+    "parent": "Exact original R126 pair-A frame0/global0",
+    "changed_region": "Only global FC1 output-column/bias partition and original Erf GELU producers feeding existing FC2 K4 parts",
+    "input": [
+      2,
+      1041,
+      1024
+    ],
+    "outputs": {
+      "frame_output": [
+        2,
+        1041,
+        1024
+      ],
+      "global_output": [
+        1,
+        2082,
+        1024
+      ]
+    },
+    "hidden_neurons_preserved": 4096,
+    "reference_scope": "Same captured pre-frame0 inputs from original deployed DINO24; conditional two-block references, not full-model Torch or trajectory accuracy",
+    "original_parameter_tensor_count": 36,
+    "all_original_pair_layers_tokens_and_resolution_preserved": true
+  },
+  "graph": {
+    "parent_nodes": 143,
+    "candidate_nodes": 160,
+    "parent_initializers": 79,
+    "candidate_initializers": 75,
+    "all_four_FC1_column_and_bias_slices_reconstruct_original_bytes": true,
+    "original_FC2_parts_sum_order_bias_LayerScale_residual_preserved": true,
+    "whole_parent_inverse_ModelProto_byte_equal": true,
+    "dense_MACs_reduced": false
+  },
+  "FP32_gate": {
+    "actual_board_CPU_calls": 6,
+    "saved_outputs": 12,
+    "independent_saved_audit_passed": true,
+    "all_outputs_byte_equal_to_same_input_original_A": true,
+    "maximum_relative_l2": 0.0,
+    "maximum_abs_error": 0.0,
+    "hard_gate": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001
+    },
+    "strict_allclose": {
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "outside_elements": 0,
+      "is_independent_diagnostic": true
+    }
+  },
+  "compiled_observation": {
+    "nonquant_FP16": true,
+    "configuration_matches_original_R127_A": true,
+    "source_interleaving_preserved": false,
+    "reported_FC1_branch_order": [
+      3,
+      0,
+      2,
+      1
+    ],
+    "all_four_FC1_reported_before_FC2": true,
+    "rows": {
+      "FC1": [
+        62,
+        63,
+        64,
+        65
+      ],
+      "FC2": [
+        66,
+        67,
+        68,
+        69
+      ]
+    },
+    "MLP_compiler_target": "NPU",
+    "MLP_compiler_dtype": "FLOAT16",
+    "actual_hidden_lifetime_reduction_established": false,
+    "compiler_rows_are_not_hardware_counters_or_runtime_latency": true
+  },
+  "normal_runtime": {
+    "core_mask": 1,
+    "init_flags": 0,
+    "schedule": [
+      "originalFP16_A",
+      "joint_MLP",
+      "joint_MLP",
+      "originalFP16_A"
+    ],
+    "heldouts": [
+      "pair4",
+      "pair5"
+    ],
+    "fresh_context_count": 4,
+    "total_calls": 8,
+    "saved_outputs": 16,
+    "timing_scope": "All four calls per route, including both first and second calls in each fresh visit; complete OwnedContext.run input/SDK conversion/set/run/get/owned copies/release/finite. Context init/query/destroy, saves/comparisons and observations are separate.",
+    "original_A_mean_seconds": 0.853103231499972,
+    "joint_mean_seconds": 0.843925449249582,
+    "descriptive_mean_reduction_fraction": 0.010758114506556393,
+    "descriptive_mean_reduction_percent": 1.0758114506556393,
+    "original_A_call_seconds": [
+      0.85800516999916,
+      0.8610797530000127,
+      0.8386206260001927,
+      0.8547073770005227
+    ],
+    "joint_call_seconds": [
+      0.8359057919988118,
+      0.8508544609994715,
+      0.8360394169994834,
+      0.8529021270005614
+    ],
+    "predeclared_minimum_reduction_fraction": 0.1,
+    "predeclared_speed_screen_passed": false,
+    "FP16_all_matching_case_output_raw_hashes_equal_to_original_A": true,
+    "both_routes_unchanged_FP32_numeric_and_strict_gates_passed": false,
+    "errors_vs_same_input_original_A_FP32": [
+      {
+        "input_id": "pair4",
+        "frame": {
+          "relative_l2": 0.0016913258612107575,
+          "max_abs": 0.07266080379486084,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "fixed_numeric_gate_passed": false,
+          "byte_equal": false,
+          "original_tolerances_unchanged": true
+        },
+        "global_output": {
+          "relative_l2": 0.005860203833518523,
+          "max_abs": 0.029351115226745605,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "fixed_numeric_gate_passed": false,
+          "byte_equal": false,
+          "original_tolerances_unchanged": true
+        }
+      },
+      {
+        "input_id": "pair5",
+        "frame": {
+          "relative_l2": 0.0016647397531864615,
+          "max_abs": 0.0791163444519043,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "fixed_numeric_gate_passed": false,
+          "byte_equal": false,
+          "original_tolerances_unchanged": true
+        },
+        "global_output": {
+          "relative_l2": 0.005922238178179937,
+          "max_abs": 0.029234766960144043,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "fixed_numeric_gate_passed": false,
+          "byte_equal": false,
+          "original_tolerances_unchanged": true
+        }
+      }
+    ],
+    "FP16_all16_saved_outputs_byte_equal_A_J_and_repeats": true
+  },
+  "memory": {
+    "SDK_internal_bytes_original_A": 92124480,
+    "SDK_internal_bytes_joint": 92124480,
+    "SDK_dma_bytes_original_A": 225935360,
+    "SDK_dma_bytes_joint": 226267136,
+    "SDK_memory_is_per_context_not_unique_physical_total": true,
+    "worker_peak_rss_mib": 340.84765625,
+    "scratch_or_physical_memory_reduction_measured": false,
+    "physical_8GB_accepted": false
+  },
+  "resources": {
+    "totals": {
+      "contexts_created": 4,
+      "contexts_destroyed": 4,
+      "runs_completed": 8,
+      "output_buffers_acquired": 16,
+      "output_buffers_released": 16
+    },
+    "all_contexts_and_pending_outputs_closed": true,
+    "cleanup_errors": [],
+    "source_and_inputs_unchanged": true,
+    "affinity_restored": true,
+    "environment_restored": true
+  },
+  "runtime_control": {
+    "timeout_seconds": 180.0,
+    "requested_npu_hz": 1000000000,
+    "prior_actual_npu_hz": 1000000000,
+    "restored_actual_npu_hz": 1000000000,
+    "max_observed_temperature_c": 63.769,
+    "elapsed_seconds": 11.209745667998504,
+    "frequency_governor_limits_restored": true,
+    "restore_errors": []
+  },
+  "provenance": {
+    "export_source_sha256": "82f35353bf57b662b95b89cf5472e18e50e832519e8545ab7237994e35e06c07",
+    "compiler_source_sha256": "4edc92073654e88fa73862b0f50e23bc987c1ec54f70b1c756a0a4d5519e41c3",
+    "runtime_source_sha256": "4b9f83cead499cc120cae590bdf48d538a9dae308273dbd65a88b5e73505540e",
+    "export_receipt_sha256": "f8f935e43db97ffb5cee683d8eee2a8fe4ceb728a96f10c37ad8b6772a76ea49",
+    "candidate_ONNX": {
+      "file": "pair-joint-mlp.onnx",
+      "bytes": 102421215,
+      "sha256": "fd684d7b0e3c3b43f61a14125e300f3e06bd806f7d5e8577c48a83e4498251d9"
+    },
+    "compile_receipt_sha256": "01f9034d151e0b0388c98b1fbf1ccf81163dace668c4afa13ccce9ecf433388f",
+    "compiled_RKNN": {
+      "file": "pair-joint-mlp.rknn",
+      "bytes": 66537836,
+      "sha256": "9401562374b463a40523b01ac6a5aaec4e01f581412eb2e2a2e773702a71c610"
+    },
+    "runtime_receipt_sha256": "c6603cef8afcf1b199f892393cb51fd36381b6da023dca273b53be5422090531",
+    "runtime_control_sha256": "6c405ce85dcb6972226f5d497bb4e50b8ce6de7f7db41e4b55e274e20a5ebad3",
+    "FP32_saved_audit_sha256": "10a064fdccf803ea4b527c7a7914ee7beec2c7958536ec5a265206fe41a75a33",
+    "compiler_schedule_observation_sha256": "3c49a48ebd0c356fa0f8f0ebdc256fa166a7b2c638abd6dc28ef6ccdfe467018",
+    "pre_runtime_triage_sha256": "8421935e34be185cfeeecbd066c92b7fd644ee9e42c057d98f3a36e6ceb150a2",
+    "FP16_runtime_independent_saved_audit_passed": true,
+    "FP16_runtime_saved_audit_sha256": "4593672d5646de3304b42b85e05cc88ea8fc0a0cedfec66163f183a8c66d4c44",
+    "FP16_runtime_saved_auditor_sha256": "5cb222560d54c732b6a0cbefaa91c7732317fbeba63824976453a097f95a0c50"
+  },
+  "decision": "Reject the current candidate as an effective acceleration route: the declared 10% component screen failed and the intended producer-consumer interleaving is absent from the compiled table.",
+  "limitations": [
+    "Eight calls are descriptive, not P95 or sustained throughput.",
+    "No hidden-lifetime or physical memory saving established.",
+    "Original FP16 numerical behavior is retained; both routes still fail the fixed FP32 gates.",
+    "Full48 aggregator/full-model integration, trajectory quality, 20Hz and physical8GB acceptance were not tested."
+  ],
+  "reproduction": {
+    "private_pinned_graphs_captured_inputs_references_and_original_RKNN_artifacts_required": true,
+    "automatic_download_claimed": false,
+    "weights_arrays_model_binaries_or_vendor_SDK_shipped": false
+  },
+  "licensing": "Repository code, original VGGT weights and vendor SDK/library licenses remain separate.",
+  "parent_baseline_alignment": {
+    "current_R110_executor_uses_frozen_v100_baseline_not_v105": true,
+    "R126_A_frame_FC2_fullK4096_matches_selected_baseline": true,
+    "prior_frame_FC2_K4_route_already_tested_in_R104_R105_R106": true,
+    "does_not_represent_best_previously_tested_frame_FC2_layout": true,
+    "no_new_frame_K4_implementation_or_acceptance_claim": true
+  }
+}

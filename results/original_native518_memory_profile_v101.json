@@ -1,0 +1,209 @@
+{
+  "schema": "recovered_original_native518_memory_profile_v101",
+  "experiment_version": 101,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "model_buffer_screen": {
+      "status": "passed_saved_evidence_consistency_runtime_failed",
+      "candidate_accepted": false,
+      "ABBA_completed": false,
+      "total_actual_calls": 16,
+      "A_calls": 12,
+      "B_calls": 4,
+      "all16_outputs_byte_equal": true,
+      "memory_interpretation": {
+        "r3_A_DMA_zone_free_decrease_bytes": 200503296,
+        "r3_B_DMA_zone_free_decrease_bytes": 199098368,
+        "difference_bytes": 1404928,
+        "observed_difference_MiB": 1.33984375,
+        "r3_A_SDK_DMA_after_first_bytes": 359309312,
+        "r3_B_SDK_DMA_after_first_bytes": 41672704,
+        "B_external_model_buffer_bytes": 158817142,
+        "SDK_B_DMA_field_excludes_external_buffer": true,
+        "scope": "OS free-zone changes are dynamic whole-system snapshots; SDK DMA fields are accounting fields and cannot prove unique physical savings. No meaningful net saving is established."
+      },
+      "decision": "Stop this zero-copy model-buffer route; no adoption or keeper-context workaround in this experiment.",
+      "limits": [
+        "No run completed ABBA: r1/r2 stopped during B initialization; r3 stopped after A4+B4 at external-buffer release.",
+        "Four cached-buffer B outputs match four same-run A outputs. All sixteen saved outputs match across runs. This is component parity, not full-model quality acceptance.",
+        "The r2 fatal stack locates a direct mapped-memory hash read; it does not identify the exact failing CPU instruction or prove the mapping type.",
+        "SDK context/output cleanup succeeded for r3, but external model-buffer release failed twice with SDK code -7 and one buffer remained live in final metrics. Fatal r1/r2 cleanup is unverified.",
+        "Only first A and first B phases exist; three steady samples per completed phase are descriptive and cannot establish a completed matched ABBA speed result.",
+        "No resident-full-model, SLAM, trajectory, 20Hz, map cadence, 30-minute or 8GB physical-memory acceptance follows."
+      ]
+    },
+    "complete_group_profile": {
+      "status": "saved_profile_verified_and_classified",
+      "init_flags": 8,
+      "core_mask": 1,
+      "input_scope": "Saved actual NPU DINO24 output through original norm/special-token concat from full model call0",
+      "row_time_total_us": 3489806,
+      "profile_outputs_byte_equal_to_saved_flags0": true,
+      "CPU_math_fallback_found": false,
+      "by_function": {
+        "FC1_linear_GELU": {
+          "rows": 15,
+          "time_us": 300551,
+          "profile_fraction": 0.08612255237110601,
+          "min_time_us": 15086,
+          "max_time_us": 29918,
+          "mean_MAC_usage_percent": 56.635999999999996
+        },
+        "FC2_linear_or_split_bias": {
+          "rows": 40,
+          "time_us": 724422,
+          "profile_fraction": 0.20758231259846535,
+          "min_time_us": 1044,
+          "max_time_us": 56701,
+          "mean_MAC_usage_percent": 46.71666666666667
+        },
+        "QKV_linear_or_layout": {
+          "rows": 30,
+          "time_us": 196487,
+          "profile_fraction": 0.05630312974417489,
+          "min_time_us": 0,
+          "max_time_us": 19579,
+          "mean_MAC_usage_percent": 65.00399999999999
+        },
+        "QK_norm_RoPE": {
+          "rows": 120,
+          "time_us": 202755,
+          "profile_fraction": 0.058099218122726594,
+          "min_time_us": 500,
+          "max_time_us": 5683,
+          "mean_MAC_usage_percent": 17.750666666666667
+        },
+        "SDK_IO": {
+          "rows": 3,
+          "time_us": 776,
+          "profile_fraction": 0.00022236193072050424,
+          "min_time_us": 4,
+          "max_time_us": 386,
+          "mean_MAC_usage_percent": null
+        },
+        "SDPA": {
+          "rows": 15,
+          "time_us": 1822860,
+          "profile_fraction": 0.522338491022137,
+          "min_time_us": 59711,
+          "max_time_us": 245304,
+          "mean_MAC_usage_percent": null
+        },
+        "other_LayerNorm": {
+          "rows": 30,
+          "time_us": 88739,
+          "profile_fraction": 0.02542806104408096,
+          "min_time_us": 1965,
+          "max_time_us": 4541,
+          "mean_MAC_usage_percent": null
+        },
+        "other_layout_bridge": {
+          "rows": 56,
+          "time_us": 71655,
+          "profile_fraction": 0.020532659981672332,
+          "min_time_us": 2,
+          "max_time_us": 7284,
+          "mean_MAC_usage_percent": null
+        },
+        "projection_linear": {
+          "rows": 15,
+          "time_us": 69614,
+          "profile_fraction": 0.019947813718011832,
+          "min_time_us": 3463,
+          "max_time_us": 6852,
+          "mean_MAC_usage_percent": 60.81133333333333
+        },
+        "residual_LayerScale_or_other": {
+          "rows": 10,
+          "time_us": 11947,
+          "profile_fraction": 0.003423399466904464,
+          "min_time_us": 1042,
+          "max_time_us": 1339,
+          "mean_MAC_usage_percent": null
+        }
+      },
+      "by_role": {
+        "frame": {
+          "rows": 190,
+          "time_us": 1625949,
+          "profile_fraction": 0.4659138645529293,
+          "min_time_us": 0,
+          "max_time_us": 59901,
+          "mean_MAC_usage_percent": 38.377833333333335
+        },
+        "global": {
+          "rows": 125,
+          "time_us": 1829900,
+          "profile_fraction": 0.52435579513589,
+          "min_time_us": 2,
+          "max_time_us": 245304,
+          "mean_MAC_usage_percent": 52.62488888888889
+        },
+        "shared_bridge_or_IO": {
+          "rows": 19,
+          "time_us": 33957,
+          "profile_fraction": 0.009730340311180622,
+          "min_time_us": 2,
+          "max_time_us": 7284,
+          "mean_MAC_usage_percent": null
+        }
+      },
+      "frame_FC2_downprojection": {
+        "rows": 10,
+        "time_us": 566812,
+        "profile_fraction": 0.16241934365405986,
+        "min_time_us": 56662,
+        "max_time_us": 56701,
+        "mean_MAC_usage_percent": 15.046000000000001
+      },
+      "global_FC2_K4_products": {
+        "rows": 20,
+        "time_us": 136331,
+        "profile_fraction": 0.0390654953312591,
+        "min_time_us": 6792,
+        "max_time_us": 6865,
+        "mean_MAC_usage_percent": 62.552
+      },
+      "resources_balanced": true,
+      "performance_measurement": false,
+      "limits": [
+        "One unchanged original group0, pairs0..4, actual saved NPU prefix input; groups1..3 not profiled.",
+        "Per-operator profile counters and profiling durations cannot substitute for ordinary full-boundary performance.",
+        "Both profile outputs are byte-equal to same-input saved flags0 NPU outputs; this does not establish original FP32 precision acceptance.",
+        "All fifteen attention kernels are NPU and 100% core0 workload in this core1 profile; no CPU arithmetic fallback exists in this original graph."
+      ]
+    },
+    "decision": "Reject model-buffer initialization after SIGBUS failures and cacheable-buffer destruction failure. The flags8 unchanged-group profile identifies attention cost; it is not an ordinary performance or physical-memory-saving result."
+  },
+  "source_evidence": [
+    {
+      "archive": "v101-model-buffer-review-r1",
+      "file": "model-buffer-analysis.json",
+      "bytes": 25351,
+      "sha256": "c514dce0bccf25bb8fb40271d6c24db7fc5a581e71cad7ead55254c534a5c22c"
+    },
+    {
+      "archive": "v101-model-buffer-review-r1",
+      "file": "agg-group0-profile-analysis.json",
+      "bytes": 217314,
+      "sha256": "eb889e27f0a750685524dfd6e4ac895072a5429c417eefd83e0fc5cbe23beb23"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 167. Model-buffer counters do not establish physical savings; attention dominates the complete group",
+    "section_sha256": "f9331e45d3e63fedd233afd8cc7abcf63e3592050f06ab3d41deec6be60aee99"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

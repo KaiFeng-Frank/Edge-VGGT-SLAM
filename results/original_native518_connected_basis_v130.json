@@ -1,0 +1,396 @@
+{
+  "schema": "edge_vggt_original_native518_connected_basis_v130",
+  "status": "connected_board_CPU_FP32_gate_passed_NPU_deployment_not_accepted",
+  "board": "RK3588S",
+  "physical_memory_gib": 16,
+  "image_shape": [
+    2,
+    3,
+    392,
+    518
+  ],
+  "source_pair_indices": [
+    32,
+    40
+  ],
+  "original_checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "original_aggregator_blocks": 48,
+  "original_learned_tensor_identities_verified": 864,
+  "actual_DPT_frame_chunks": 2,
+  "intermediate_reference_activations_injected": false,
+  "coordinate_plan": "Keep residual basis across four original groups; fold DPT consumer weights; restore canonical global20 side branch and only two final camera rows.",
+  "fixed_gate": {
+    "relative_l2_max": 1e-05,
+    "max_abs_max": 0.001,
+    "rtol": 0.0001,
+    "atol": 1e-05
+  },
+  "all12_fixed_numeric_gates_passed": true,
+  "strict_diagnostics_all_passed": false,
+  "worst_relative_l2": 4.69434526055096e-06,
+  "worst_max_abs": 0.0001773834228515625,
+  "checks": [
+    {
+      "stage": "group",
+      "group_index": 0,
+      "name": "frame_output",
+      "comparison": {
+        "relative_l2": 1.3484654231650619e-06,
+        "max_abs": 1.2695789337158203e-05,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      }
+    },
+    {
+      "stage": "group",
+      "group_index": 0,
+      "name": "global_output",
+      "comparison": {
+        "relative_l2": 1.91488524588519e-06,
+        "max_abs": 1.2516975402832031e-05,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      }
+    },
+    {
+      "stage": "group",
+      "group_index": 1,
+      "name": "frame_output",
+      "comparison": {
+        "relative_l2": 1.6727693480317312e-06,
+        "max_abs": 1.1920928955078125e-05,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      }
+    },
+    {
+      "stage": "group",
+      "group_index": 1,
+      "name": "global_output",
+      "comparison": {
+        "relative_l2": 1.6439948416221746e-06,
+        "max_abs": 1.1920928955078125e-05,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      }
+    },
+    {
+      "stage": "group",
+      "group_index": 2,
+      "name": "frame_output",
+      "comparison": {
+        "relative_l2": 3.2476794685590925e-06,
+        "max_abs": 0.00016641616821289062,
+        "outside_count": 1059,
+        "strict_pass": false,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      }
+    },
+    {
+      "stage": "group",
+      "group_index": 2,
+      "name": "global_output",
+      "comparison": {
+        "relative_l2": 2.664612144763705e-06,
+        "max_abs": 0.00012820959091186523,
+        "outside_count": 741,
+        "strict_pass": false,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      }
+    },
+    {
+      "stage": "group",
+      "group_index": 3,
+      "name": "frame_output",
+      "comparison": {
+        "relative_l2": 2.7828011961877397e-06,
+        "max_abs": 0.0001226663589477539,
+        "outside_count": 6846,
+        "strict_pass": false,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      }
+    },
+    {
+      "stage": "group",
+      "group_index": 3,
+      "name": "global_output",
+      "comparison": {
+        "relative_l2": 1.7802219132557225e-06,
+        "max_abs": 0.00012668967247009277,
+        "outside_count": 4765,
+        "strict_pass": false,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      }
+    },
+    {
+      "stage": "group",
+      "group_index": 3,
+      "name": "target_global_output",
+      "comparison": {
+        "relative_l2": 4.69434526055096e-06,
+        "max_abs": 0.00012791156768798828,
+        "outside_count": 2718,
+        "strict_pass": false,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      }
+    },
+    {
+      "stage": "camera_input_boundary",
+      "comparison": {
+        "relative_l2": 1.299810497545144e-06,
+        "max_abs": 4.9591064453125e-05,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      }
+    },
+    {
+      "stage": "DPT_raw_logits",
+      "frame_index": 0,
+      "comparison": {
+        "relative_l2": 1.4302346181955927e-06,
+        "max_abs": 0.0001773834228515625,
+        "outside_count": 411,
+        "strict_pass": false,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      }
+    },
+    {
+      "stage": "DPT_raw_logits",
+      "frame_index": 1,
+      "comparison": {
+        "relative_l2": 1.438054138243527e-06,
+        "max_abs": 0.0001678466796875,
+        "outside_count": 364,
+        "strict_pass": false,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      }
+    }
+  ],
+  "resource_counts": {
+    "sessions_created": 5,
+    "sessions_dropped": 5,
+    "calls_completed": 6,
+    "maximum_simultaneous_sessions": 1
+  },
+  "control": {
+    "seconds": 294.11337213499974,
+    "timeout_seconds": 900,
+    "maximum_sampled_temperature_c": 70.23,
+    "sample_count": 2781,
+    "frequency_written": false,
+    "observed_npu_hz": 1000000000,
+    "process_group_gone": true,
+    "timings_are_controlled_CPU_gate_not_deployment_performance": true
+  },
+  "receipt_sha256": "f6f3ec2d6b47747198986fe4bf2a450b15d73afa624ccb45393807e7e4feeef7",
+  "saved_audit_sha256": "cba63293dba1ed1911ea5abcd6bc4fc4aff7f6f210e1d77edeb7eb59cd4d1ca9",
+  "worker_source_sha256": "1736fd537e627ec15f91b20f1685deaad1e41db654345506b60b1c28ffb9ab93",
+  "audit_source_sha256": "ad98d1e976507cf45010d16be5614c7360aff3f0fb5f56d50bbe83fef2906e25",
+  "scope_limits": [
+    "One matched captured real-image pair; this run starts at the original DINO output boundary.",
+    "Original DINO/image preprocessing, CameraHead refinements, pose codec, SL4 and depth postactivation are not executed by this gate.",
+    "CPU gate times include validation, model loading, IO and thermal pauses; they are not NPU deployment performance.",
+    "NPU precision/speed, complete trajectory quality, realtime rate and physical8GB operation remain unaccepted."
+  ],
+  "candidate_accepted": false,
+  "public_payload_contains_weights_or_arrays": false,
+  "NPU_compile_attempt": {
+    "scope": "First basis group only; unchanged original nonquant FP16 configuration.",
+    "status": "board_compile_timed_out_no_RKNN_model",
+    "timeout_seconds": 900,
+    "controlled_seconds": 905.4286554339997,
+    "compiler_source_sha256": "7d837c4118b8a84854f9cd6a3ffd3ba8a246dddbdfeb2c034db7dc5cc99953a7",
+    "worker_receipt_sha256": "abd258fb0260d81f4d50a35f196fce59c9fd44cb8b86c8e75b1a111778c3b39d",
+    "control_receipt_sha256": "a6b63625c8f468013f417438652a78bac06a0ad416fabe29f1ce22c57c0443e2",
+    "last_worker_stage": "build_start",
+    "worker_finalization_and_SDK_release_not_confirmed": true,
+    "controller_process_group_cleanup_confirmed": true,
+    "frequency_written": false,
+    "NPU_runtime_executed": false,
+    "available_failure_evidence_preserved": true
+  },
+  "separate_host_CPU_compile": {
+    "status": "compiled_original_retained_basis_group_on_host_not_runtime_or_quality_accepted",
+    "receipt_sha256": "5a7a8a333d8a804b516399d477f194078cab2441551f4d0c30411b813b54479e",
+    "controller_sha256": "ab3c6302924988dbbf3cccadde5397b98821b7e0591c9b7c9e6c88804bf46c20",
+    "compiler_source_sha256": "381ab7f71bec91333f4e1e601ded64ab03fc8d6f35d82f22799e0c5d416146a2",
+    "controller_source_sha256": "e75d0695df0a59b8ac664eab3b26d2cd3bf85a8118499f8f79d1a46193d34866",
+    "group_index": 0,
+    "rknn": {
+      "bytes": 333792876,
+      "sha256": "5c969cc6ab67f1a90faad40249f0ff54605648c5ca6a4b3f73c99dd3544d50c8"
+    },
+    "controller_elapsed_seconds": 62.474713300001895,
+    "sdk_released": true,
+    "source_and_inputs_unchanged": true,
+    "cleanup_errors": [],
+    "process_group_gone": true,
+    "noncalibrating_CPU_compilation": true,
+    "NPU_execution_accepted": false,
+    "scope": "Byte-identical original-board-exported group0; same nonquantizing config/build. Host compilation speed is not board inference speed. The separate earlier bounded ARM compile failure is retained unchanged."
+  },
+  "NPU_group0_normal_diagnostic": {
+    "status": "finite_two_cold_calls_no_useful_precision_or_timing_gain_not_accepted",
+    "scope": "One identical original captured native518 DINO boundary input [32,40]; pairs0..4 contain ten complete original aggregator blocks. No DINO/image preparation, DPT, CameraHead, pose codec, full model or trajectory is executed.",
+    "group_index": 0,
+    "selected_original_blocks": 10,
+    "total_required_blocks": 48,
+    "same_input_raw_sha256": "a2192f0aba3ac6b5c9c9ecce6bd3534ac91ea2fb464ea7409c5ee2309af0839c",
+    "core_mask": 1,
+    "init_flags": 0,
+    "NPU_frequency_hz": 1000000000,
+    "receipt_sha256": "427974b46166977e844fd4717584a170dd9000ae6624733ad853a928df17ed16",
+    "controller_sha256": "ffdd91d21291048a9955b8c506fdec2edc4d532566ed25c403c1f66ac7489d73",
+    "worker_source_sha256": "1846f37015d8b86e471fc6ba8917fbfc6d32d6484c6048fd882fbff1443a8ebb",
+    "transport_source_sha256": "444f0d2a776b1350dde29f3f69d3d77e91294716c0a3d9c67490045d12986d07",
+    "independent_saved_audit_source_sha256": "f294cdc534a9372c99efd2bd8d63722e44ba5ff75eeaa33e5c080446c4b4ad94",
+    "independent_saved_audit_sha256": "800d013bf57585cde387bfe122e0a10d0b60b9f5f14acbf1122b7d3e0ba8c053",
+    "original_model_sha256": "7a7798e26194b58e6981c540aafe36cc088b104b87f495eec3b895faffc60f92",
+    "basis_model_sha256": "5c969cc6ab67f1a90faad40249f0ff54605648c5ca6a4b3f73c99dd3544d50c8",
+    "all_six_file_raw_shape_finite_checks_passed": true,
+    "both_inverse_outputs_recomputed_byte_equal": true,
+    "precision": [
+      {
+        "name": "frame_output",
+        "original_vs_original_FP32": {
+          "relative_l2": 0.006850129194751108,
+          "max_abs": 0.045828819274902344,
+          "outside_count": 2095235,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "restored_basis_vs_original_FP32": {
+          "relative_l2": 0.00686505793735701,
+          "max_abs": 0.049442291259765625,
+          "outside_count": 2095781,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "restored_basis_vs_same_input_original_FP16": {
+          "relative_l2": 0.0015145298854882165,
+          "max_abs": 0.017351388931274414,
+          "byte_equal": false
+        }
+      },
+      {
+        "name": "global_output",
+        "original_vs_original_FP32": {
+          "relative_l2": 0.009884104186999499,
+          "max_abs": 0.04560375213623047,
+          "outside_count": 2096827,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "restored_basis_vs_original_FP32": {
+          "relative_l2": 0.00990430460378766,
+          "max_abs": 0.049248695373535156,
+          "outside_count": 2097231,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "restored_basis_vs_same_input_original_FP16": {
+          "relative_l2": 0.002208514129809592,
+          "max_abs": 0.01590031385421753,
+          "byte_equal": false
+        }
+      }
+    ],
+    "cold_call_timings": [
+      {
+        "route": "original",
+        "complete_ordinary_IO_boundary_seconds": 3.712250997999945,
+        "SDK_run_seconds": 3.6065814460016554,
+        "fresh_init_run_close_seconds": 4.587122501998238,
+        "SDK_memory": {
+          "weight_bytes": 287901376,
+          "internal_bytes": 96392512,
+          "dma_bytes": 764813312,
+          "scope": "SDK per-context fields, not physical unique-byte totals"
+        }
+      },
+      {
+        "route": "basis",
+        "complete_ordinary_IO_boundary_seconds": 3.715937457000109,
+        "SDK_run_seconds": 3.611077445999399,
+        "fresh_init_run_close_seconds": 4.627783256997645,
+        "SDK_memory": {
+          "weight_bytes": 289865408,
+          "internal_bytes": 96392512,
+          "dma_bytes": 769224704,
+          "scope": "SDK per-context fields, not physical unique-byte totals"
+        }
+      }
+    ],
+    "basis_CPU_inverse_seconds_outside_NPU_timers": 0.20082622799964156,
+    "timing_scope": "One cold normal call per route in original,basis order. Ordinary IO includes input prepare/finite, inputs_set, run, get, owned copies, release and output finite checks; saved IO/reference comparisons/CPU inverse excluded. Fresh lifecycle is separate. No repeats, matched ABBA, sustained throughput or causal performance acceptance.",
+    "SDK_resource_totals": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 2,
+      "output_buffers_acquired": 4,
+      "output_buffers_released": 4
+    },
+    "all_contexts_and_output_buffers_released": true,
+    "logical_FP16_endpoints_observed_internal_placement_not_profiled": true,
+    "SDK_memory_fields_not_unique_physical_totals": true,
+    "controller": {
+      "child_returncode": 0,
+      "seconds": 12.228441685998405,
+      "frequency_governor_limits_restored": true,
+      "baseline": {
+        "governor": "userspace",
+        "cur_freq": "1000000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "1000000000"
+      },
+      "restored": {
+        "governor": "userspace",
+        "cur_freq": "1000000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "1000000000"
+      },
+      "sample_count": 25,
+      "maximum_sampled_temperature_c": 61.0
+    },
+    "peak_worker_rss_mib": 588.57421875,
+    "candidate_accepted": false,
+    "numerical_or_performance_acceptance": false,
+    "decision": "Do not extend this FP16 basis schedule to the other three NPU groups: canonical errors are slightly larger and the two cold normal boundaries are essentially unchanged.",
+    "raw_receipts_and_arrays_remain_private": true,
+    "compiler_scope": "The separate host CPU compiler makes zero explicit script inference/calibration calls; SDK compilation may execute ORT internally. Its success is not board inference speed or precision acceptance."
+  }
+}

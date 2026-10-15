@@ -1,0 +1,520 @@
+{
+  "schema": "original_native518_rolling_preload_v123",
+  "status": "completed_full_model_schedule_screen_retained_experimentally_not_realtime_accepted",
+  "decision": {
+    "retain_experimental_schedule": true,
+    "production_defaults_changed": false,
+    "full_model_realtime_or_quality_accepted": false,
+    "further_preload_microtuning_selected": false,
+    "reason": "Observed aggregator lifecycle reduction with exact original NPU outputs; original operator execution remains unresolved. No demonstrated evidence-backed executable route to the realtime goals."
+  },
+  "constraints": {
+    "original_model_only": true,
+    "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "input_shape": [
+      2,
+      3,
+      392,
+      518
+    ],
+    "all_original_layers_and_tokens": true,
+    "original_pose_codec": true,
+    "no_reference_intermediate_substitution": true,
+    "no_other_model_or_pose_frontend": true,
+    "board_only_model_execution": true,
+    "previous_tail_cache": false,
+    "max_loops": 0,
+    "SL4_backend_executed": false,
+    "core_mask": 7
+  },
+  "schedule": {
+    "order": "ABBA",
+    "original_sequential": "A",
+    "rolling_next_group_preload": "B",
+    "original_compiled_groups": 4,
+    "maximum_reserved_or_initializing_contexts": 2,
+    "SDK_runs_serial": true,
+    "same_thread_init_run_destroy": true,
+    "next_group_consumes_actual_previous_global": true,
+    "SDK_contexts_start_after_DINO_close": true,
+    "mathematics_or_weight_artifact_changes": false
+  },
+  "r1": {
+    "status": "interrupted_during_first_B_aggregator_no_B_output",
+    "child_returncode": -7,
+    "A_complete_prediction_seconds": 33.67480984097347,
+    "A_five_outputs_byte_equal_R111": true,
+    "ABBA_complete": false,
+    "worker_SDK_cleanup_verified": false,
+    "controller_clock_policy_restored": true,
+    "allocation_request_bytes": 92124480,
+    "kernel_DMA_free_KiB": 7476,
+    "kernel_DMA_min_KiB": 7900,
+    "kernel_Normal_free_KiB": 1442668,
+    "limitation": "Fresh 346650-second kernel trace establishes low-address allocation pressure despite higher-zone memory; partial worker receipt cannot establish B timing or cleanup."
+  },
+  "storage_fix": {
+    "action": "Moved complete unused aggregator group0 ONNX export directory from tmpfs to board disk, verified every hash, preserved original path with a directory symlink",
+    "model_execution_or_system_policy_change": false,
+    "original_bytes_preserved": true,
+    "relocation": {
+      "schema": "v123_reversible_original_export_storage_relocation",
+      "source": "/dev/shm/edge-vggt-v100-native/agg-group0-export-r1",
+      "destination": "/tmp/vggt-v123-export-storage/agg-group0-export-r1",
+      "files": [
+        {
+          "file": "export.json",
+          "bytes": 69412,
+          "sha256": "6e8a1faa45927757aed95e7a0ee01858b6d5d78d03a78e314c52184efd14cda3"
+        },
+        {
+          "file": "retained-pair-group-00-04-native518.onnx",
+          "bytes": 512086606,
+          "sha256": "8bea9fd0052f390712f41c0349d861c2d4aea33d3b8d9e083a6e55f24395d97d"
+        }
+      ],
+      "before_zone_free_bytes": {
+        "Node 0, zone      DMA": 1017434112,
+        "Node 0, zone    DMA32": 0,
+        "Node 0, zone   Normal": 1863651328,
+        "Node 0, zone  Movable": 0
+      },
+      "model_or_SDK_execution": false,
+      "driver_clock_governor_or_memory_policy_changed": false,
+      "status": "moved_verified_original_path_directory_symlink",
+      "after_verified_reads_zone_free_bytes": {
+        "Node 0, zone      DMA": 1530773504,
+        "Node 0, zone    DMA32": 0,
+        "Node 0, zone   Normal": 1339797504,
+        "Node 0, zone  Movable": 0
+      },
+      "disk_free_bytes": 281354240,
+      "all_original_bytes_preserved": true,
+      "rollback": "Remove only the source directory symlink, then move the complete destination directory back to its original source path; verify the listed hashes."
+    },
+    "page_residency_before": {
+      "schema": "read_only_artifact_page_residency_v123",
+      "page_size": 4096,
+      "rows": [
+        {
+          "file": "/dev/shm/edge-vggt-v100-native/agg-group0-export-r1/retained-pair-group-00-04-native518.onnx",
+          "bytes": 512086606,
+          "pages": 125022,
+          "present_pages": 125022,
+          "zero_or_restricted_PFN_pages": 0,
+          "physical_below_4GiB_bytes": 512090112,
+          "swapped_pages": 0
+        },
+        {
+          "file": "/dev/shm/edge-vggt-v100-native/agg-group1-export-r1/retained-pair-group-05-11-native518.onnx",
+          "bytes": 716923915,
+          "pages": 175031,
+          "present_pages": 175031,
+          "zero_or_restricted_PFN_pages": 0,
+          "physical_below_4GiB_bytes": 716926976,
+          "swapped_pages": 0
+        },
+        {
+          "file": "/dev/shm/edge-vggt-v100-native/agg-group1-hostcompile-r1/group.rknn",
+          "bytes": 464223148,
+          "pages": 113336,
+          "present_pages": 113336,
+          "zero_or_restricted_PFN_pages": 0,
+          "physical_below_4GiB_bytes": 0,
+          "swapped_pages": 0
+        }
+      ]
+    },
+    "page_residency_after": {
+      "schema": "read_only_artifact_page_residency_v123",
+      "page_size": 4096,
+      "rows": [
+        {
+          "file": "/dev/shm/edge-vggt-v100-native/agg-group0-export-r1/retained-pair-group-00-04-native518.onnx",
+          "bytes": 512086606,
+          "pages": 125022,
+          "present_pages": 125022,
+          "zero_or_restricted_PFN_pages": 0,
+          "physical_below_4GiB_bytes": 0,
+          "swapped_pages": 0
+        },
+        {
+          "file": "/dev/shm/edge-vggt-v100-native/agg-group1-export-r1/retained-pair-group-05-11-native518.onnx",
+          "bytes": 716923915,
+          "pages": 175031,
+          "present_pages": 175031,
+          "zero_or_restricted_PFN_pages": 0,
+          "physical_below_4GiB_bytes": 716926976,
+          "swapped_pages": 0
+        },
+        {
+          "file": "/dev/shm/edge-vggt-v100-native/agg-group1-hostcompile-r1/group.rknn",
+          "bytes": 464223148,
+          "pages": 113336,
+          "present_pages": 113336,
+          "zero_or_restricted_PFN_pages": 0,
+          "physical_below_4GiB_bytes": 0,
+          "swapped_pages": 0
+        }
+      ]
+    },
+    "four_frozen_compilation_lineages_verified": "verified_all_four_original_compilation_lineages"
+  },
+  "r2": {
+    "calls": [
+      {
+        "index": 0,
+        "route": "A",
+        "preprocessing_seconds": 0.045332879992201924,
+        "complete_prediction_seconds": 33.696359718975145,
+        "image_read_to_prediction_seconds": 33.74169259896735,
+        "byte_equal_frozen_full_model": {
+          "pose_enc": true,
+          "extrinsic": true,
+          "intrinsic": true,
+          "depth": true,
+          "depth_conf": true
+        },
+        "stage_seconds": {
+          "original_image_token_preparation_seconds": 0.1446771810296923,
+          "original_DINO24_execution_with_lifecycle_seconds": 9.68626868102001,
+          "DINO_group_lifecycle_seconds": [
+            2.338685152004473,
+            2.3525507780141197,
+            2.3956585740088485,
+            2.5989918019622564
+          ],
+          "original_norm_special_concat_seconds": 0.045953837980050594,
+          "all48_aggregator_and_consumers_seconds": 18.6118165779626,
+          "camera_and_depth_heads_with_lifecycle_seconds": 5.148013933969196,
+          "original_pose_codec_seconds": 0.0009989580139517784
+        },
+        "aggregator_SDK_run_sum_seconds": 13.714869503048249,
+        "SDK_totals": {
+          "contexts_created": 10,
+          "contexts_destroyed": 10,
+          "runs_completed": 18,
+          "output_buffers_acquired": 23,
+          "output_buffers_released": 23
+        },
+        "resources_balanced": true
+      },
+      {
+        "index": 1,
+        "route": "B",
+        "preprocessing_seconds": 0.034334128024056554,
+        "complete_prediction_seconds": 27.22178956901189,
+        "image_read_to_prediction_seconds": 27.256123697035946,
+        "byte_equal_frozen_full_model": {
+          "pose_enc": true,
+          "extrinsic": true,
+          "intrinsic": true,
+          "depth": true,
+          "depth_conf": true
+        },
+        "stage_seconds": {
+          "original_image_token_preparation_seconds": 0.11732730397488922,
+          "original_DINO24_execution_with_lifecycle_seconds": 7.463840582990088,
+          "DINO_group_lifecycle_seconds": [
+            1.8572912689996883,
+            1.890551315038465,
+            1.8611851040041074,
+            1.8544541440205649
+          ],
+          "original_norm_special_concat_seconds": 0.02282700198702514,
+          "all48_aggregator_and_consumers_seconds": 16.134987829020247,
+          "camera_and_depth_heads_with_lifecycle_seconds": 3.4250171770108864,
+          "original_pose_codec_seconds": 0.0008490419713780284
+        },
+        "aggregator_SDK_run_sum_seconds": 13.863871184992604,
+        "SDK_totals": {
+          "contexts_created": 10,
+          "contexts_destroyed": 10,
+          "runs_completed": 18,
+          "output_buffers_acquired": 23,
+          "output_buffers_released": 23
+        },
+        "resources_balanced": true,
+        "aggregator_preload_wait_seconds": [
+          0.6887443200103007,
+          1.4583987649530172e-05,
+          1.5457975678145885e-05,
+          1.95419997908175e-05
+        ],
+        "maximum_reserved_or_initializing_contexts_observed": 2,
+        "live_owner_workers": 0,
+        "live_reserved_or_initializing_contexts": 0
+      },
+      {
+        "index": 2,
+        "route": "B",
+        "preprocessing_seconds": 0.034415211994200945,
+        "complete_prediction_seconds": 27.405399921000935,
+        "image_read_to_prediction_seconds": 27.439815132995136,
+        "byte_equal_frozen_full_model": {
+          "pose_enc": true,
+          "extrinsic": true,
+          "intrinsic": true,
+          "depth": true,
+          "depth_conf": true
+        },
+        "stage_seconds": {
+          "original_image_token_preparation_seconds": 0.11759301094571128,
+          "original_DINO24_execution_with_lifecycle_seconds": 7.6609663119888864,
+          "DINO_group_lifecycle_seconds": [
+            1.8871271890238859,
+            1.8925012730178423,
+            1.8793911049724557,
+            2.0015996590373106
+          ],
+          "original_norm_special_concat_seconds": 0.024094003019854426,
+          "all48_aggregator_and_consumers_seconds": 16.130670954007655,
+          "camera_and_depth_heads_with_lifecycle_seconds": 3.414585802005604,
+          "original_pose_codec_seconds": 0.0008560410351492465
+        },
+        "aggregator_SDK_run_sum_seconds": 13.833407264959533,
+        "SDK_totals": {
+          "contexts_created": 10,
+          "contexts_destroyed": 10,
+          "runs_completed": 18,
+          "output_buffers_acquired": 23,
+          "output_buffers_released": 23
+        },
+        "resources_balanced": true,
+        "aggregator_preload_wait_seconds": [
+          0.7814947870210744,
+          1.5749945305287838e-05,
+          1.5459023416042328e-05,
+          7.874972652643919e-06
+        ],
+        "maximum_reserved_or_initializing_contexts_observed": 2,
+        "live_owner_workers": 0,
+        "live_reserved_or_initializing_contexts": 0
+      },
+      {
+        "index": 3,
+        "route": "A",
+        "preprocessing_seconds": 0.03436387801775709,
+        "complete_prediction_seconds": 29.621247976028826,
+        "image_read_to_prediction_seconds": 29.655611854046583,
+        "byte_equal_frozen_full_model": {
+          "pose_enc": true,
+          "extrinsic": true,
+          "intrinsic": true,
+          "depth": true,
+          "depth_conf": true
+        },
+        "stage_seconds": {
+          "original_image_token_preparation_seconds": 0.11755917803384364,
+          "original_DINO24_execution_with_lifecycle_seconds": 7.519671089015901,
+          "DINO_group_lifecycle_seconds": [
+            1.8838313560117967,
+            1.9187594430404715,
+            1.8414198100217618,
+            1.8753241879749112
+          ],
+          "original_norm_special_concat_seconds": 0.021089543995913118,
+          "all48_aggregator_and_consumers_seconds": 18.525748485990334,
+          "camera_and_depth_heads_with_lifecycle_seconds": 3.3798817570204847,
+          "original_pose_codec_seconds": 0.0008335829479619861
+        },
+        "aggregator_SDK_run_sum_seconds": 13.698752042022534,
+        "SDK_totals": {
+          "contexts_created": 10,
+          "contexts_destroyed": 10,
+          "runs_completed": 18,
+          "output_buffers_acquired": 23,
+          "output_buffers_released": 23
+        },
+        "resources_balanced": true
+      }
+    ],
+    "complete_prediction_means_seconds": {
+      "A": 31.658803847501986,
+      "B": 27.313594745006412
+    },
+    "image_read_to_prediction_means_seconds": {
+      "A": 31.698652226506965,
+      "B": 27.34796941501554
+    },
+    "descriptive_mean_reduction_percent": 13.725120896626763,
+    "aggregator_complete_wall_means_seconds": {
+      "A": 18.568782531976467,
+      "B": 16.13282939151395
+    },
+    "aggregator_serial_SDK_run_sum_means_seconds": {
+      "A": 13.706810772535391,
+      "B": 13.848639224976068
+    },
+    "timing_interpretation": "All four calls are reported. First A also has longer DINO/head boundaries; pooled full-model difference is not a pure preload causal effect or sustained throughput estimate. Aggregator wall and serial SDK time are separate observations.",
+    "output_NPYs_checked": 20,
+    "all_output_bytes_equal_original_NPU": true,
+    "final_SDK_totals": {
+      "contexts_created": 40,
+      "contexts_destroyed": 40,
+      "runs_completed": 72,
+      "output_buffers_acquired": 92,
+      "output_buffers_released": 92
+    },
+    "final_workers_and_reservations_zero": true,
+    "peak_process_RSS_MiB": 1094.12890625,
+    "memory_observations": {
+      "sample_count": 496,
+      "min_MemAvailable_KiB": 6908516,
+      "maximum_Shmem_KiB": 8390976,
+      "minimum_zone_free_bytes": {
+        "Node 0, zone      DMA": 62205952,
+        "Node 0, zone    DMA32": 0,
+        "Node 0, zone   Normal": 24567808,
+        "Node 0, zone  Movable": 0
+      }
+    },
+    "external_control": {
+      "child_returncode": 0,
+      "observed_NPU_hz": 1000000000,
+      "restored_NPU_hz": 300000000,
+      "exact_frequency_policy_restored": true,
+      "max_sampled_temperature_c": 69.307,
+      "controller_seconds": 130.142410284956
+    },
+    "diagnostics": {
+      "persisted_memory_file": "memory-samples.jsonl",
+      "rolling_events_in_worker_log": true,
+      "python_faulthandler": true,
+      "original_rolling_runtime_unchanged": true,
+      "note": "Diagnostic logging is included in B wall time; does not change model scheduling or computation"
+    }
+  },
+  "validation": {
+    "frozen_generated_concurrency_check": {
+      "schema": "v123_rolling_native_aggregator_generated_concurrency_check",
+      "status": "passed_generated_checks_only",
+      "runtime_sha256": "99a08a3cb7823e5212a12184e487413318f206a10bedea59fe87110df6065f21",
+      "test_source_sha256": "fbd2b11ed5d303e99e239a2807cd18d74af04a24252d2d1b6339c17aa6a1d524",
+      "tests_run": 4,
+      "model_Torch_OpenCL_RKNN_or_board_executed": false,
+      "actual_precision_performance_or_8GB_accepted": false
+    },
+    "partial_R1_saved_audit_passed": true,
+    "completed_R2_saved_audit_passed": true,
+    "source_AST_and_launcher_syntax_checked": true,
+    "host_NN_SDK_GPU_or_calibration_executed": false,
+    "public_portable_generated_concurrency_check": {
+      "schema": "v123_public_portable_rolling_preload_fake_concurrency_check",
+      "status": "passed_portable_fake_checks_only",
+      "runtime_sha256": "99a08a3cb7823e5212a12184e487413318f206a10bedea59fe87110df6065f21",
+      "test_source_sha256": "0f2cec66f71810a438e1810fa2242fb4d39981c81cdad44ad5a39b9a3c8ae21d",
+      "tests_run": 4,
+      "fake_source_pin_sha256": {
+        "native_sequential_runtime.py": "728cb3d49c8331c1d9a2a1267f49c91040ee31832afc81e0b423e35afaafee2a",
+        "run_native_retained_groups.py": "35b882d49af127319c2185a97dd056bbd7c0e3305f4d68c30f85542f6ac31e43",
+        "native_heads_runtime.py": "b4ae2e5d7cae641d0f992ea24540ed7bc896e3512bd624cf470637985c232e5d"
+      },
+      "temporary_pin_fixtures_cleaned": true,
+      "public_runtime_source_unchanged": true,
+      "private_artifacts_required": false,
+      "model_Torch_OpenCL_RKNN_or_board_executed": false,
+      "actual_precision_performance_or_8GB_accepted": false
+    }
+  },
+  "limitations": [
+    "R111 native NPU byte equality is scheduling equivalence, not original FP32 or trajectory quality acceptance",
+    "Two identical-image cold calls per route; no timestamp pacing, fresh-observation throughput, P95 or sustained thermal measurement",
+    "Original SL4/map backend was not run; no full SLAM, realtime,30min or8GB acceptance",
+    "Overlapped stage times cannot be summed as wall time; B includes diagnostic phase logging",
+    "SDK memory, RSS, reservations and system zone observations are different scopes; not additive physical memory",
+    "Relocation hashes are verified in the saved original relocation receipt; this audit does not rehash its512MB ONNX",
+    "complete_prediction_seconds excludes PNG preprocessing; image_read_to_prediction_seconds includes it. Both exclude startup, output saving/comparison and SL4.",
+    "The pre-existing cached-pair 26.7345-second v111 result has different cache/input conditions and is not the matched R2 baseline.",
+    "Current v111 trajectory ATE/RPE target remains failed; unchanged outputs establish no numerical repair.",
+    "Four repeated calls on a 16 GB board do not validate camera service,20 Hz,100 ms P95,map cadence,30-minute stability or8GB hardware."
+  ],
+  "evidence": [
+    {
+      "file": "executed-source-r1/sources.json",
+      "bytes": 290,
+      "sha256": "9a65445736f7c5a6cfa8c66053c746c05a4e9e3c313b218562ef7f3e72f0f84a"
+    },
+    {
+      "file": "executed-source-r2/sources.json",
+      "bytes": 290,
+      "sha256": "232eb98e124b895fa25d4ba5083bb157d5adac206e923283edb8b86f9073ad77"
+    },
+    {
+      "file": "full-r1/result.json",
+      "bytes": 66777,
+      "sha256": "f0e3e10b3e81521be00496971edfb46719f67f41c7cb3bebea3d60e2d2eef1b0"
+    },
+    {
+      "file": "control-r1/control.json",
+      "bytes": 50439,
+      "sha256": "b9697cd50b0873b9a5e33d8a9a2dd6fd6250686b19bbcd21dc191d8cf3d5ceff"
+    },
+    {
+      "file": "partial-full-r1-saved-audit.json",
+      "bytes": 11003,
+      "sha256": "54334783dfb96cf3acb5f5d106a8131dbfec31ac9927746b7470d86dfd11bbc8"
+    },
+    {
+      "file": "audit_partial_full_saved.py",
+      "bytes": 11499,
+      "sha256": "348ecbd4ee6f330ef73127e10000ebd4e1ceb56e8b2e90eb7d392cc4d414b7ab"
+    },
+    {
+      "file": "full-r2/result.json",
+      "bytes": 587939,
+      "sha256": "39d87dfd682056ddbb5118076059282cd47ed5140e14c7d3ffd7f1452aaf30c2"
+    },
+    {
+      "file": "control-r2/control.json",
+      "bytes": 90459,
+      "sha256": "5103193c0c6a96ed16bfc09e5a2f9fe8a755ccb6b2cbb7c4fc71b152991475b0"
+    },
+    {
+      "file": "full-r2-saved-audit.json",
+      "bytes": 31909,
+      "sha256": "5d11ecb44703e80689b085d3bd71da7bd8642b29dec9eeeede834b1b189a4545"
+    },
+    {
+      "file": "audit_full_r2_saved.py",
+      "bytes": 22438,
+      "sha256": "1f7edec0bb117c15b0653bb2d97c44e13d5e08f340647f2678fafecae1a44d46"
+    },
+    {
+      "file": "export-relocation.json",
+      "bytes": 1317,
+      "sha256": "19772dd198979bc41264f229499eee8da67911517c447ac5f1f7d63875c5d15f"
+    },
+    {
+      "file": "artifact-page-residency-before.json",
+      "bytes": 1039,
+      "sha256": "aa904a25dd175d313aabef5384dbaa1f2c4e51772e15514d7b46c056a57da79e"
+    },
+    {
+      "file": "artifact-page-residency-after.json",
+      "bytes": 1031,
+      "sha256": "163c2fcd0394bded8b757fb8dcc5cb795ae13bea89797552132b17eb766c6115"
+    },
+    {
+      "file": "storage-lineage.json",
+      "bytes": 5746,
+      "sha256": "d60f55ece7cdb3b925ce6dd928d21c4e5970e68881b4bc6591a6ed4df305e387"
+    },
+    {
+      "file": "generated-concurrency-check.json",
+      "bytes": 430,
+      "sha256": "540bfb0810ed497907c63252d8a84e0ab5f04bbb05ed0ed9767970bfea8fbb1b"
+    },
+    {
+      "file": "test_rolling_native_aggregator.py",
+      "bytes": 9682,
+      "sha256": "fbd2b11ed5d303e99e239a2807cd18d74af04a24252d2d1b6339c17aa6a1d524"
+    }
+  ],
+  "private_archive": "v123-native518-rolling-preload-r1-r2",
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "weights_arrays_weight_bearing_graphs_and_SDK_distributed": false
+  }
+}

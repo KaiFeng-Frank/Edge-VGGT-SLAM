@@ -1,0 +1,421 @@
+{
+  "schema": "original_native518_query_row_producer_taps_v177",
+  "status": "instrumented_producer_full_QK_numerics_improved_original_NPU_outputs_changed_no_baseline_causal_or_model_acceptance",
+  "original_model_only": true,
+  "scope": {
+    "component": "Original global0 QKV producer before any query consumer.",
+    "full_Q_K_Vc_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "mu_shape": [
+      1,
+      1,
+      1024
+    ],
+    "heads": 16,
+    "head_dimension": 64,
+    "reused_engineering_cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "input": "Original captured FLOAT32 frame output reshaped to GLOBAL without a halfcast; the same actual input feeds both CPU and NPU.",
+    "reference": "Preserved R174 board CPU full producer outputs on the conditional original-ONNX path; no full Torch or trajectory reference.",
+    "fresh_final_generalization_holdout": false,
+    "consumer_full_attention_or_complete_model_executed": false
+  },
+  "static_identity": {
+    "parent_nodes": 29,
+    "parent_initializers": 18,
+    "parent_outputs": 4,
+    "observer_nodes": 47,
+    "observer_initializers": 20,
+    "observer_outputs": 10,
+    "all_original_node_initializer_and_public_IO_protos_preserved": true,
+    "whole_parent_inverse_ModelProto_byte_equal": true,
+    "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "original_parameters_preserved": true,
+    "all_original_heads_queries_keys_and_learned_values_preserved": true,
+    "added": "18 observer nodes, two nonlearned INT64 constants and six sampled outputs; no reduced original computation.",
+    "sampled_roles": [
+      "raw_Q",
+      "raw_K",
+      "norm_Q",
+      "norm_K",
+      "rope_Q",
+      "rope_K"
+    ],
+    "sample_shape": [
+      1,
+      12,
+      1024
+    ],
+    "token_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      1041,
+      1042,
+      1043,
+      1044,
+      1045,
+      2081
+    ],
+    "full_original_outputs_first": true
+  },
+  "actual_compile": {
+    "noncalibrating_FLOAT16": true,
+    "operators": 51,
+    "features": 73,
+    "constants": 35,
+    "internal_NPU_operations": 35,
+    "internal_CPU_transposes": 5,
+    "public_CPU_IO_operations": 11,
+    "all_operator_and_activation_storage_FLOAT16": true,
+    "learned_QKV_full_norms_and_six_measurement_selectors_NPU": true,
+    "baseline_RoPE": "Two 64x64 fixed ConvAdd branches after channel-first Mul, [1,64,16,2082].",
+    "instrumented_RoPE": "Full norm output CPU transpose precedes NPU Mul/Gather/Mul/Add in [1,2082,16,64].",
+    "instrumentation_changes_actual_RoPE_lowering": true,
+    "identical_NPU_rounding_or_accumulator_precision_established": false
+  },
+  "actual_CPU_and_NPU": {
+    "CPU_sessions_created": 1,
+    "CPU_sessions_dropped": 1,
+    "CPU_calls": 2,
+    "all8_original_full_CPU_outputs_byte_equal_prior": true,
+    "CPU_session_dropped_before_NPU_owner": true,
+    "NPU_core_mask": 1,
+    "init_flags": 0,
+    "saved_arrays": 32,
+    "saved_NPY_bytes": 26476544,
+    "saved_payloads": {
+      "CPU_FLOAT32_sampled_taps": 12,
+      "NPU_lossless_FLOAT16_sampled_taps": 12,
+      "NPU_lossless_FLOAT16_full_original_outputs": 8
+    },
+    "all_file_raw_shape_dtype_finite_and_half_roundtrip_checks_verified": true,
+    "all_full_new_QK_elements_compared_to_original_CPU": true,
+    "all4_CPU_and4_NPU_indexed_post_RoPE_taps_byte_equal_full_QK": true,
+    "cases": [
+      {
+        "id": "pair4",
+        "full_outputs_vs_original_CPU": {
+          "producer_Q": {
+            "relative_l2": 0.0012917610536835522,
+            "max_abs": 0.01085209846496582,
+            "strict_outside": 1975868,
+            "prior_R176_relative_l2": 0.4372035366348778,
+            "byte_equal_prior_NPU": false
+          },
+          "producer_K": {
+            "relative_l2": 0.0016078319756280366,
+            "max_abs": 0.02249729633331299,
+            "strict_outside": 2003089,
+            "prior_R176_relative_l2": 0.41578498640734224,
+            "byte_equal_prior_NPU": false
+          },
+          "producer_Vc": {
+            "relative_l2": 0.0014611748769711487,
+            "max_abs": 0.005684852600097656,
+            "strict_outside": 1664957,
+            "prior_R176_relative_l2": 0.0014611748769711489,
+            "byte_equal_prior_NPU": true
+          },
+          "producer_mu": {
+            "relative_l2": 0.0002624241928764355,
+            "max_abs": 0.0002486705780029297,
+            "strict_outside": 434,
+            "prior_R176_relative_l2": 0.00026242419287643556,
+            "byte_equal_prior_NPU": true
+          }
+        },
+        "sampled_taps_relative_l2": {
+          "raw_Q": 0.000956000865251354,
+          "raw_K": 0.0009016356024049313,
+          "norm_Q": 0.001244026738705233,
+          "norm_K": 0.0014118715657133836,
+          "rope_Q": 0.0012558698924936191,
+          "rope_K": 0.0014159624497273333
+        }
+      },
+      {
+        "id": "pair5",
+        "full_outputs_vs_original_CPU": {
+          "producer_Q": {
+            "relative_l2": 0.0012947659339764405,
+            "max_abs": 0.010613441467285156,
+            "strict_outside": 1977972,
+            "prior_R176_relative_l2": 0.439397035308158,
+            "byte_equal_prior_NPU": false
+          },
+          "producer_K": {
+            "relative_l2": 0.0016232855063343596,
+            "max_abs": 0.01908397674560547,
+            "strict_outside": 2002953,
+            "prior_R176_relative_l2": 0.41390565496925247,
+            "byte_equal_prior_NPU": false
+          },
+          "producer_Vc": {
+            "relative_l2": 0.0015100386108599423,
+            "max_abs": 0.004422664642333984,
+            "strict_outside": 1672758,
+            "prior_R176_relative_l2": 0.0015100386108599425,
+            "byte_equal_prior_NPU": true
+          },
+          "producer_mu": {
+            "relative_l2": 0.0003121948619356034,
+            "max_abs": 0.0003472566604614258,
+            "strict_outside": 468,
+            "prior_R176_relative_l2": 0.0003121948619356034,
+            "byte_equal_prior_NPU": true
+          }
+        },
+        "sampled_taps_relative_l2": {
+          "raw_Q": 0.0007994832837383803,
+          "raw_K": 0.0007713401061940885,
+          "norm_Q": 0.001183977739143855,
+          "norm_K": 0.0013950474739822332,
+          "rope_Q": 0.0011931324825515117,
+          "rope_K": 0.0014002968566285295
+        }
+      }
+    ],
+    "all_full_and_sampled_fixed_and_strict_gates_passed": false
+  },
+  "original_output_invariance": {
+    "CPU_original_full_outputs_byte_equal": true,
+    "NPU_Q_and_K_byte_equal_prior": false,
+    "NPU_Vc_and_mu_byte_equal_prior": true,
+    "baseline_causal_attribution_gate_passed": false,
+    "causal_attribution_eligible": false,
+    "interpretation": "The observer exports much closer full Q/K through an alternate compiled representation. Changed original NPU outputs prevent using its taps to identify the cause of the old producer discrepancy."
+  },
+  "resources_and_controller": {
+    "contexts_created": 1,
+    "contexts_destroyed": 1,
+    "runs_completed": 2,
+    "output_buffers_acquired": 20,
+    "output_buffers_released": 20,
+    "maximum_live_NPU_owners": 1,
+    "all_resources_closed": true,
+    "cleanup_errors": [],
+    "source_input_and_environment_restored": true,
+    "NPU_frequency_hz": 1000000000,
+    "NPU_timeout_seconds": 180,
+    "NPU_temperature_limit_c": 75,
+    "maximum_controller_sample_c": 68.384,
+    "controller_policy_restored": true,
+    "all66_write_floor_checks_verified": true,
+    "output_storage_floor_bytes": 3221225472,
+    "storage_metric": "Root f_bfree, all remaining normal outputs plus one failure snapshot and JSON reserve.",
+    "no_latency_comparison_established": true
+  },
+  "preserved_failed_first_attempt": {
+    "error": "TypeError: save() got multiple values for argument 'name'",
+    "CPU_sessions_created": 1,
+    "CPU_sessions_dropped": 1,
+    "CPU_calls": 1,
+    "NPU_contexts": 0,
+    "NPU_runs": 0,
+    "available_failure_NPY_bytes": 49280,
+    "available_failure_equals_first_r2_CPU_tap": true,
+    "original_success_gate_all_resources_closed": false,
+    "actual_open_resources_after_cleanup": 0,
+    "controller_restored": true,
+    "exact_r2_source_delta": "Rename the local save formal name to filename and its two uses; no graph, run, numerical or cleanup logic changes."
+  },
+  "independent_saved_audit": {
+    "audit_integrity_passed": true,
+    "source_saved_and_hashed": true,
+    "initial_auditor_failure_preserved": "Missing independently recomputed byte_equal metadata in the comparison helper; corrected saved-only audit passes. This is not a board failure."
+  },
+  "compile_only_follow_up": {
+    "source_graph_nodes": 31,
+    "source_graph_initializers": 19,
+    "rewrite": "Two original Gather nodes replaced by Split into four16-channel chunks and Concat order [1,0,3,2]; original weights and full computation unchanged.",
+    "lowered_operators": 29,
+    "lowered_features": 45,
+    "lowered_constants": 23,
+    "original_CPU_transposes": 3,
+    "actual_RoPE_ConvAdd": 2,
+    "compiler_reconstructed_baseline_RoPE": true,
+    "normalized_lowered_nodes_byte_equal_baseline": 26,
+    "renamed_lowered_initializer_protos_byte_equal_baseline": 23,
+    "exact_symbol_renames": 4,
+    "actual_external_input_and_four_output_protos_byte_equal": true,
+    "packed_RKNN_binary_byte_equal": false,
+    "board_run_performed": false,
+    "numerical_or_speed_benefit_established": false,
+    "interpretation": "The intended avoidance of Gather-to-ConvAdd did not survive compilation; static lowered equivalence is not proof of compiled binary or future runtime byte equality."
+  },
+  "acceptance": {
+    "original_fixed_and_strict_tensor_gates_passed": false,
+    "baseline_kernel_cause_established": false,
+    "consumer_or_full_attention_accuracy_validated": false,
+    "component_speed_accepted": false,
+    "model_or_trajectory_quality_accepted": false,
+    "sustained_full_model_or_SLAM_rate_accepted": false,
+    "physical_8GB_operation_verified": false
+  },
+  "evidence": [
+    {
+      "role": "Observer static proof",
+      "basename": "result.json",
+      "bytes": 13442,
+      "sha256": "4fc1e60ae03bb3aa958d5c1c6748254064cfcd4ed939c63103d09b71860a0cbb"
+    },
+    {
+      "role": "Observer exporter source",
+      "basename": "export_producer_taps_static.py",
+      "bytes": 9192,
+      "sha256": "2b065f44ec8cb19ebb7feb71796d679e483f0bf4a23a81a04998027695875a03"
+    },
+    {
+      "role": "Observer original-weight ONNX",
+      "basename": "producer-six-taps.onnx",
+      "bytes": 13679224,
+      "sha256": "3581a4902d873444bfdef1c08b8e20d72dea8d064d88d8b6f1b9d093977fc9f1"
+    },
+    {
+      "role": "Noncalibrating observer compile",
+      "basename": "result.json",
+      "bytes": 6324,
+      "sha256": "a826595cb6b6a35a45acda63e56f63205a95f0e5dcdf829317a9800f1e0aba0f"
+    },
+    {
+      "role": "Observer compiled model",
+      "basename": "compiled.rknn",
+      "bytes": 7777961,
+      "sha256": "fa31af0faee436c02cd0772cb7bd17f71265b84c10e1906774b4da27833dd43d"
+    },
+    {
+      "role": "Observer compile placement audit",
+      "basename": "producer-taps-host-compile-placement-audit-r1.json",
+      "bytes": 15086,
+      "sha256": "70616e5ea8619bd97930e0364fb304af670ac215a624d8c496cfc1a1cce8eda0"
+    },
+    {
+      "role": "Actual observer CPU and NPU r2",
+      "basename": "result.json",
+      "bytes": 81722,
+      "sha256": "2ad1e757ecb1a583c556428d2b4bf0b9b4a8884ebc1ac2abbe9c54455f014335"
+    },
+    {
+      "role": "Actual r2 transport",
+      "basename": "producer-taps-r2-transport.json",
+      "bytes": 38052,
+      "sha256": "dde40263f828b51f617ed9409a88ad92952a30f497c71b577c24299561ee9ddf"
+    },
+    {
+      "role": "Actual r2 restoring controller",
+      "basename": "control.json",
+      "bytes": 3900,
+      "sha256": "870e4e8892fcc05e515185aeca460a2d47563c093609b48654cfad5114e16133"
+    },
+    {
+      "role": "Executed observer r2 worker",
+      "basename": "probe_query_row_producer_taps_board_r2.py",
+      "bytes": 31640,
+      "sha256": "25c4f27f5b926f21df5d0f8959963e3ce79ec78f4d6257d894609450803f5b14"
+    },
+    {
+      "role": "Executed observer r2 transport source",
+      "basename": "execute_query_row_producer_taps_host_r2.py",
+      "bytes": 16451,
+      "sha256": "ee5aaf8ef838f7ac932a9580800967dba292f4ec8db47ee7f665e339b4e8dad1"
+    },
+    {
+      "role": "Independent all32 saved-array audit",
+      "basename": "producer-taps-r2-saved-audit-r2.json",
+      "bytes": 32872,
+      "sha256": "b51fd3a9ca731555a52240f21833412a8da5692759cbd5936c8010c2dd62bf6a"
+    },
+    {
+      "role": "Independent saved auditor source",
+      "basename": "audit_query_row_producer_taps_saved.py",
+      "bytes": 20658,
+      "sha256": "dcea313d3aaf11857912be2de7a6539e0613ff1786c1b79d9a4613f1cab1c124"
+    },
+    {
+      "role": "Preserved pre-NPU r1 worker failure",
+      "basename": "result.json",
+      "bytes": 5373,
+      "sha256": "b95d924397bc4fde1228e4e29b23725ff294e272f52e4474a1acf4e7ab7afda3"
+    },
+    {
+      "role": "Preserved failed r1 transport",
+      "basename": "producer-taps-r1-transport.json",
+      "bytes": 36309,
+      "sha256": "1bf412aa6c578c08184e15532ae57dcb6c40b8153763fd66287df767182d7e5a"
+    },
+    {
+      "role": "Preserved r1 restoring controller",
+      "basename": "control.json",
+      "bytes": 2837,
+      "sha256": "d35c7bad499966fb3a38e0f85b3bb44437d8c0c8e01f35c3f2a875da537dfafa"
+    },
+    {
+      "role": "Preserved initial saved-auditor metadata failure",
+      "basename": "producer-taps-r2-saved-audit-r1.json",
+      "bytes": 861,
+      "sha256": "6053002a49fa28d8294a631166061b6bbde910db80806ddbff35b5c4e21e3408"
+    },
+    {
+      "role": "Preserved initial saved-auditor source",
+      "basename": "producer-taps-r2-saved-audit-r1-source.py",
+      "bytes": 20574,
+      "sha256": "f51f42eb7f0c54d1b90f98dfe061ad45a1b9a30e65699e8054c0d5d5cec924e9"
+    },
+    {
+      "role": "Split-Concat compile-only static proof",
+      "basename": "result.json",
+      "bytes": 12818,
+      "sha256": "162e2455adf396a54088cc50c47a12f0a6637d84d6803ec530d91877aa051b80"
+    },
+    {
+      "role": "Split-Concat compile-only result",
+      "basename": "result.json",
+      "bytes": 5243,
+      "sha256": "11bfcf9470c48b195161317316bfc3a0b294293b67a1426ac9f1831bd29cd6e4"
+    },
+    {
+      "role": "Split-Concat compiled model",
+      "basename": "compiled.rknn",
+      "bytes": 7513713,
+      "sha256": "60435852e95baf54d314b015ac082c1ee65a19a89ffdcc2f6b3896613e08904e"
+    },
+    {
+      "role": "Split-Concat canonical lowered graph audit",
+      "basename": "producer-rope-split-concat-host-compile-placement-audit-r1.json",
+      "bytes": 10668,
+      "sha256": "4eef7929134c3e4a2f18dd264d66b035b751cef631e4bef9d926eb8387cf550a"
+    },
+    {
+      "role": "Split-Concat canonical auditor source",
+      "basename": "audit_rope_split_concat_compile_saved.py",
+      "bytes": 11200,
+      "sha256": "63790ce463ebad99369029bad9afc548e8709063b13c3c41d0a3b07102ba8bd3"
+    }
+  ],
+  "related_public_records": [
+    "original_native518_query_row_fusion_v174.json",
+    "original_native518_query_row_owned_abba_v175.json",
+    "original_native518_query_row_producer_diagnostic_v176.json"
+  ]
+}

@@ -1,0 +1,970 @@
+{
+  "schema": "original_native518_basis_pair_fp16_v127",
+  "status": "actual_board_FP16_pair_screen_completed_current_basis_route_not_promoted",
+  "decision": "Do not promote this FP16 pair route or expand it as a measured acceleration. B is12.27% slower than A with no material final-global error improvement; F has only a0.356% descriptive mean change in a very short sample. Preserve the successful real-input FP32 reparameterization and controlled FP16 negative result.",
+  "original_model_only": true,
+  "production_defaults_changed": false,
+  "deployment_candidate_accepted": false,
+  "scope": {
+    "unit": "Complete original frame0 then global0",
+    "image_size_HW": [
+      392,
+      518
+    ],
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "frame_output_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "global_output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "original_learned_tensor_provenance": 36,
+    "original_qk_norm_RoPE_Erf_and_FC2_K4_structure_kept": true,
+    "original_learned_dense_products_reduced": false,
+    "B_additional_boundary_MatMuls": 3,
+    "B_persistent_internal_basis_frame_to_global": true,
+    "all48_blocks_heads_DINO_image_preprocessing_or_SL4_executed_in_this_runtime": false,
+    "raw_input_source": "Two archived prefixes of the same real TUM pair[32,40], original CPU-derived and actual NPU-derived; not two independent scenes or held-out calibration."
+  },
+  "variants": {
+    "A": "Original pair",
+    "F": "Identity residual basis with original norm affine/LayerScale folding",
+    "B": "Same folding and fixed mean-preserving residual basis; initial rotation plus two canonical restorations"
+  },
+  "FP32_gate": {
+    "prior_result": "original_native518_basis_pair_v126.json",
+    "all6_original_FP32_calls_passed": true,
+    "relative_l2_max": 1e-05,
+    "max_abs_max": 0.001,
+    "elementwise_strict_was_independent_diagnostic": true
+  },
+  "FP16_precision_interpretation": {
+    "hard_acceptance_gate_defined": false,
+    "strict_rtol": 0.0001,
+    "strict_atol": 1e-05,
+    "strict_is_diagnostic": true,
+    "all_primary_canonical_endpoint_strict_diagnostics_passed": false,
+    "no_new_precision_threshold_or_relaxation": true,
+    "primary_reference": "Same-input original R126 A CPU FP32 graph, for both archived prefixes",
+    "own_variant_FP32_and_actual_A_FP16_comparisons_are_secondary": true,
+    "matched_original_Torch_continuity": "Established for cpu_prefix in R126; no new Torch forward in R127 and no matched Torch reference for npu_prefix",
+    "no_internal_mapping_outlier_or_attention_error_cause_proven": true
+  },
+  "compilation": {
+    "device": "RK3588S CPU",
+    "SDK": "RKNN Toolkit2 2.3.2",
+    "same_configuration_all_variants": true,
+    "configuration": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "mean_values": null,
+      "std_values": null,
+      "quant_img_RGB2BGR": false,
+      "model_pruning": false,
+      "remove_reshape": false,
+      "quantize_weight": false,
+      "enable_flash_attention": false
+    },
+    "build_options": {
+      "do_quantization": false,
+      "dataset": null,
+      "auto_hybrid": false
+    },
+    "calibration_or_INT8_quantization_performed": false,
+    "all3_builds_completed": true,
+    "models": [
+      {
+        "variant": "A",
+        "compile_receipt": {
+          "file": "compile-A-r1/result.json",
+          "sha256": "71b8fc05994e15cf3a658d01f57b89f909172617ff513dea97971dc13d18bb5c"
+        },
+        "status": "compiled_not_runtime_accepted",
+        "RKNN": {
+          "file": "pair-A.rknn",
+          "bytes": 66378284,
+          "sha256": "803f7e53c5cf574ccb86e1bdd5b9091332f21ec48aef8864fdee52bc72017666"
+        },
+        "SDK_released": true,
+        "source_and_inputs_unchanged": true
+      },
+      {
+        "variant": "F",
+        "compile_receipt": {
+          "file": "compile-F-r1/result.json",
+          "sha256": "bb75210138bd7ef925f482ad006c05e13d4e794536167cd4923e681de4ab1c94"
+        },
+        "status": "compiled_not_runtime_accepted",
+        "RKNN": {
+          "file": "pair-F.rknn",
+          "bytes": 66344236,
+          "sha256": "c9abdd0c05f93cd5538f8a9ccfcf1790467184838b53fa9b5fe7d87651938387"
+        },
+        "SDK_released": true,
+        "source_and_inputs_unchanged": true
+      },
+      {
+        "variant": "B",
+        "compile_receipt": {
+          "file": "compile-B-r1/result.json",
+          "sha256": "8eb6c075109bba1fe4a39d111b6323ac477fcaf06e400693b8cf53f550874b49"
+        },
+        "status": "compiled_not_runtime_accepted",
+        "RKNN": {
+          "file": "pair-B.rknn",
+          "bytes": 69035820,
+          "sha256": "0101f63d1ecacc6b39411a190b19808aaf6fc50077cb64ccf3c784bedd1a8779"
+        },
+        "SDK_released": true,
+        "source_and_inputs_unchanged": true
+      }
+    ],
+    "compile_duration_is_not_inference_latency": true
+  },
+  "runtime": {
+    "core_mask": 1,
+    "init_flags": 0,
+    "phase_schedule": [
+      "A",
+      "F",
+      "B",
+      "B",
+      "F",
+      "A"
+    ],
+    "contexts_per_variant": 2,
+    "input_order_in_each_context": [
+      "cpu_prefix",
+      "npu_prefix"
+    ],
+    "call_count": 12,
+    "output_array_count": 24,
+    "timing_scope": "Per-call outer OwnedContext.run includes preparation, SDK FP32 conversion/set/run/get, all copies/release/finite. Phase lifecycle includes model rehash, init, two calls and destroy; excludes platform samples, comparison/hash and saving.",
+    "timing_limit": "Two fresh contexts per variant; both inputs are the same image pair with different prefix provenance. No steady-stream rate or P95 claim.",
+    "all_call_mean_seconds": {
+      "A": 0.8527479399998583,
+      "F": 0.8497095644999035,
+      "B": 0.9573976170000833
+    },
+    "B_vs_A_mean_increase_percent": 12.272052747526118,
+    "F_vs_A_mean_decrease_percent": 0.3563040562672315,
+    "short_sample_stable_or_causal_speedup_established": false,
+    "per_input_variant": [
+      {
+        "input_id": "cpu_prefix",
+        "variant": "A",
+        "calls": [
+          0,
+          10
+        ],
+        "phase_indices": [
+          0,
+          5
+        ],
+        "call_seconds": [
+          0.8575857529999666,
+          0.8400047089999134
+        ],
+        "mean_call_seconds": 0.84879523099994,
+        "mean_SDK_run_seconds": 0.7514268670001911,
+        "primary_same_input_original_A_FP32": {
+          "frame_output_vs_original_A_FP32": {
+            "relative_l2": 0.0017033724231062572,
+            "zero_reference_norm": false,
+            "max_abs": 0.08353090286254883,
+            "outside_count": 1105638,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_original_A_FP32": {
+            "relative_l2": 0.006151411176617794,
+            "zero_reference_norm": false,
+            "max_abs": 0.02779218554496765,
+            "outside_count": 1260660,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "own_variant_FP32_reference": {
+          "frame_output_vs_own_FP32": {
+            "relative_l2": 0.0017033724231062572,
+            "zero_reference_norm": false,
+            "max_abs": 0.08353090286254883,
+            "outside_count": 1105638,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_own_FP32": {
+            "relative_l2": 0.006151411176617794,
+            "zero_reference_norm": false,
+            "max_abs": 0.02779218554496765,
+            "outside_count": 1260660,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "actual_original_A_FP16_reference": {
+          "frame_output_vs_first_A_FP16_same_input": {
+            "relative_l2": 0.0,
+            "zero_reference_norm": false,
+            "max_abs": 0.0,
+            "outside_count": 0,
+            "strict_pass": true,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": true
+          },
+          "global_output_vs_first_A_FP16_same_input": {
+            "relative_l2": 0.0,
+            "zero_reference_norm": false,
+            "max_abs": 0.0,
+            "outside_count": 0,
+            "strict_pass": true,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": true
+          }
+        },
+        "saved_audit_residual_diagnostics": {
+          "frame_update": {
+            "relative_l2": 0.0018811361854006933,
+            "reference_norm": 242.3344118075215,
+            "max_abs": 0.08353090286254883,
+            "outside_count": 1424787,
+            "strict_pass": false
+          },
+          "pair_update": {
+            "relative_l2": 0.004042840189345775,
+            "reference_norm": 327.81834331790236,
+            "max_abs": 0.02779218554496765,
+            "outside_count": 1531933,
+            "strict_pass": false
+          },
+          "global_own_input_update": {
+            "relative_l2": 0.011682266061220963,
+            "reference_norm": 109.90628705885398,
+            "max_abs": 0.07801049947738647,
+            "outside_count": 963479,
+            "strict_pass": false
+          }
+        },
+        "repeat_raw_SHA_equal": true
+      },
+      {
+        "input_id": "cpu_prefix",
+        "variant": "F",
+        "calls": [
+          2,
+          8
+        ],
+        "phase_indices": [
+          1,
+          4
+        ],
+        "call_seconds": [
+          0.8523542109996924,
+          0.8390297089999876
+        ],
+        "mean_call_seconds": 0.84569195999984,
+        "mean_SDK_run_seconds": 0.7459275955000066,
+        "primary_same_input_original_A_FP32": {
+          "frame_output_vs_original_A_FP32": {
+            "relative_l2": 0.0016636879659225068,
+            "zero_reference_norm": false,
+            "max_abs": 0.08281981945037842,
+            "outside_count": 1103546,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_original_A_FP32": {
+            "relative_l2": 0.0061539374204410005,
+            "zero_reference_norm": false,
+            "max_abs": 0.02693769335746765,
+            "outside_count": 1259458,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "own_variant_FP32_reference": {
+          "frame_output_vs_own_FP32": {
+            "relative_l2": 0.0016636798517345869,
+            "zero_reference_norm": false,
+            "max_abs": 0.08281993865966797,
+            "outside_count": 1103549,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_own_FP32": {
+            "relative_l2": 0.006153946473312654,
+            "zero_reference_norm": false,
+            "max_abs": 0.026937782764434814,
+            "outside_count": 1259455,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "actual_original_A_FP16_reference": {
+          "frame_output_vs_first_A_FP16_same_input": {
+            "relative_l2": 0.0002910787678875031,
+            "zero_reference_norm": false,
+            "max_abs": 0.013671875,
+            "outside_count": 185973,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_first_A_FP16_same_input": {
+            "relative_l2": 0.00045407299952456633,
+            "zero_reference_norm": false,
+            "max_abs": 0.009765625,
+            "outside_count": 301650,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "saved_audit_residual_diagnostics": {
+          "frame_update": {
+            "relative_l2": 0.001837310260019415,
+            "reference_norm": 242.3344118075215,
+            "max_abs": 0.08281981945037842,
+            "outside_count": 1423093,
+            "strict_pass": false
+          },
+          "pair_update": {
+            "relative_l2": 0.004044500474093897,
+            "reference_norm": 327.81834331790236,
+            "max_abs": 0.02693769335746765,
+            "outside_count": 1530838,
+            "strict_pass": false
+          },
+          "global_own_input_update": {
+            "relative_l2": 0.011641911275863418,
+            "reference_norm": 109.90628705885398,
+            "max_abs": 0.07947534322738647,
+            "outside_count": 963307,
+            "strict_pass": false
+          }
+        },
+        "repeat_raw_SHA_equal": true
+      },
+      {
+        "input_id": "cpu_prefix",
+        "variant": "B",
+        "calls": [
+          4,
+          6
+        ],
+        "phase_indices": [
+          2,
+          3
+        ],
+        "call_seconds": [
+          0.9491103870000188,
+          0.9383885940001164
+        ],
+        "mean_call_seconds": 0.9437494905000676,
+        "mean_SDK_run_seconds": 0.8698296289999234,
+        "primary_same_input_original_A_FP32": {
+          "frame_output_vs_original_A_FP32": {
+            "relative_l2": 0.0016604606445117874,
+            "zero_reference_norm": false,
+            "max_abs": 0.08330810070037842,
+            "outside_count": 1832037,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_original_A_FP32": {
+            "relative_l2": 0.00615069585689744,
+            "zero_reference_norm": false,
+            "max_abs": 0.02693769335746765,
+            "outside_count": 1912506,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "own_variant_FP32_reference": {
+          "frame_output_vs_own_FP32": {
+            "relative_l2": 0.0016604731872675396,
+            "zero_reference_norm": false,
+            "max_abs": 0.08330774307250977,
+            "outside_count": 1832070,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_own_FP32": {
+            "relative_l2": 0.006150702197889003,
+            "zero_reference_norm": false,
+            "max_abs": 0.026937484741210938,
+            "outside_count": 1912477,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "actual_original_A_FP16_reference": {
+          "frame_output_vs_first_A_FP16_same_input": {
+            "relative_l2": 0.001256992685554122,
+            "zero_reference_norm": false,
+            "max_abs": 0.021484375,
+            "outside_count": 1537347,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_first_A_FP16_same_input": {
+            "relative_l2": 0.0014342691734388847,
+            "zero_reference_norm": false,
+            "max_abs": 0.020751953125,
+            "outside_count": 1644811,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "saved_audit_residual_diagnostics": {
+          "frame_update": {
+            "relative_l2": 0.0018337461518709603,
+            "reference_norm": 242.3344118075215,
+            "max_abs": 0.08330810070037842,
+            "outside_count": 1954766,
+            "strict_pass": false
+          },
+          "pair_update": {
+            "relative_l2": 0.004042370014778055,
+            "reference_norm": 327.81834331790236,
+            "max_abs": 0.02693769335746765,
+            "outside_count": 2003287,
+            "strict_pass": false
+          },
+          "global_own_input_update": {
+            "relative_l2": 0.011635272326220247,
+            "reference_norm": 109.90628705885398,
+            "max_abs": 0.07953637838363647,
+            "outside_count": 1671792,
+            "strict_pass": false
+          }
+        },
+        "repeat_raw_SHA_equal": true
+      },
+      {
+        "input_id": "npu_prefix",
+        "variant": "A",
+        "calls": [
+          1,
+          11
+        ],
+        "phase_indices": [
+          0,
+          5
+        ],
+        "call_seconds": [
+          0.8583657119997952,
+          0.855035585999758
+        ],
+        "mean_call_seconds": 0.8567006489997766,
+        "mean_SDK_run_seconds": 0.7510698044998207,
+        "primary_same_input_original_A_FP32": {
+          "frame_output_vs_original_A_FP32": {
+            "relative_l2": 0.0017019562810058502,
+            "zero_reference_norm": false,
+            "max_abs": 0.08890783786773682,
+            "outside_count": 1107709,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_original_A_FP32": {
+            "relative_l2": 0.006359952274339355,
+            "zero_reference_norm": false,
+            "max_abs": 0.026983320713043213,
+            "outside_count": 1262985,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "own_variant_FP32_reference": {
+          "frame_output_vs_own_FP32": {
+            "relative_l2": 0.0017019562810058502,
+            "zero_reference_norm": false,
+            "max_abs": 0.08890783786773682,
+            "outside_count": 1107709,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_own_FP32": {
+            "relative_l2": 0.006359952274339355,
+            "zero_reference_norm": false,
+            "max_abs": 0.026983320713043213,
+            "outside_count": 1262985,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "actual_original_A_FP16_reference": {
+          "frame_output_vs_first_A_FP16_same_input": {
+            "relative_l2": 0.0,
+            "zero_reference_norm": false,
+            "max_abs": 0.0,
+            "outside_count": 0,
+            "strict_pass": true,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": true
+          },
+          "global_output_vs_first_A_FP16_same_input": {
+            "relative_l2": 0.0,
+            "zero_reference_norm": false,
+            "max_abs": 0.0,
+            "outside_count": 0,
+            "strict_pass": true,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": true
+          }
+        },
+        "saved_audit_residual_diagnostics": {
+          "frame_update": {
+            "relative_l2": 0.0018865052724329188,
+            "reference_norm": 241.27389223705916,
+            "max_abs": 0.08890783786773682,
+            "outside_count": 1425992,
+            "strict_pass": false
+          },
+          "pair_update": {
+            "relative_l2": 0.004180691773436927,
+            "reference_norm": 327.068228676496,
+            "max_abs": 0.026983320713043213,
+            "outside_count": 1533450,
+            "strict_pass": false
+          },
+          "global_own_input_update": {
+            "relative_l2": 0.01207994271607609,
+            "reference_norm": 109.46601070137682,
+            "max_abs": 0.07965672016143799,
+            "outside_count": 963883,
+            "strict_pass": false
+          }
+        },
+        "repeat_raw_SHA_equal": true
+      },
+      {
+        "input_id": "npu_prefix",
+        "variant": "F",
+        "calls": [
+          3,
+          9
+        ],
+        "phase_indices": [
+          1,
+          4
+        ],
+        "call_seconds": [
+          0.8546824609998112,
+          0.8527718770001229
+        ],
+        "mean_call_seconds": 0.853727168999967,
+        "mean_SDK_run_seconds": 0.7460853034999673,
+        "primary_same_input_original_A_FP32": {
+          "frame_output_vs_original_A_FP32": {
+            "relative_l2": 0.0016626246476673149,
+            "zero_reference_norm": false,
+            "max_abs": 0.08793127536773682,
+            "outside_count": 1104983,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_original_A_FP32": {
+            "relative_l2": 0.006353325189667057,
+            "zero_reference_norm": false,
+            "max_abs": 0.027837812900543213,
+            "outside_count": 1261227,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "own_variant_FP32_reference": {
+          "frame_output_vs_own_FP32": {
+            "relative_l2": 0.0016626179622712543,
+            "zero_reference_norm": false,
+            "max_abs": 0.0879318118095398,
+            "outside_count": 1104989,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_own_FP32": {
+            "relative_l2": 0.0063533337326015125,
+            "zero_reference_norm": false,
+            "max_abs": 0.02783772349357605,
+            "outside_count": 1261230,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "actual_original_A_FP16_reference": {
+          "frame_output_vs_first_A_FP16_same_input": {
+            "relative_l2": 0.0002933444952111148,
+            "zero_reference_norm": false,
+            "max_abs": 0.015625,
+            "outside_count": 177099,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_first_A_FP16_same_input": {
+            "relative_l2": 0.0004625066161371474,
+            "zero_reference_norm": false,
+            "max_abs": 0.0126953125,
+            "outside_count": 294526,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "saved_audit_residual_diagnostics": {
+          "frame_update": {
+            "relative_l2": 0.0018429087743893951,
+            "reference_norm": 241.27389223705916,
+            "max_abs": 0.08793127536773682,
+            "outside_count": 1423473,
+            "strict_pass": false
+          },
+          "pair_update": {
+            "relative_l2": 0.0041763354684424886,
+            "reference_norm": 327.068228676496,
+            "max_abs": 0.027837812900543213,
+            "outside_count": 1531870,
+            "strict_pass": false
+          },
+          "global_own_input_update": {
+            "relative_l2": 0.012037133773554504,
+            "reference_norm": 109.46601070137682,
+            "max_abs": 0.08014500141143799,
+            "outside_count": 963679,
+            "strict_pass": false
+          }
+        },
+        "repeat_raw_SHA_equal": true
+      },
+      {
+        "input_id": "npu_prefix",
+        "variant": "B",
+        "calls": [
+          5,
+          7
+        ],
+        "phase_indices": [
+          2,
+          3
+        ],
+        "call_seconds": [
+          0.9722983480000948,
+          0.9697931390001031
+        ],
+        "mean_call_seconds": 0.971045743500099,
+        "mean_SDK_run_seconds": 0.8780776720000176,
+        "primary_same_input_original_A_FP32": {
+          "frame_output_vs_original_A_FP32": {
+            "relative_l2": 0.0016744244762998527,
+            "zero_reference_norm": false,
+            "max_abs": 0.08890783786773682,
+            "outside_count": 1833500,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_original_A_FP32": {
+            "relative_l2": 0.006360573585723504,
+            "zero_reference_norm": false,
+            "max_abs": 0.027837812900543213,
+            "outside_count": 1913627,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "own_variant_FP32_reference": {
+          "frame_output_vs_own_FP32": {
+            "relative_l2": 0.0016744323675670569,
+            "zero_reference_norm": false,
+            "max_abs": 0.08890610933303833,
+            "outside_count": 1833543,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_own_FP32": {
+            "relative_l2": 0.006360577492770958,
+            "zero_reference_norm": false,
+            "max_abs": 0.027837485074996948,
+            "outside_count": 1913576,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "actual_original_A_FP16_reference": {
+          "frame_output_vs_first_A_FP16_same_input": {
+            "relative_l2": 0.001252772432172283,
+            "zero_reference_norm": false,
+            "max_abs": 0.021484375,
+            "outside_count": 1537905,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          },
+          "global_output_vs_first_A_FP16_same_input": {
+            "relative_l2": 0.0014373058712706512,
+            "zero_reference_norm": false,
+            "max_abs": 0.018310546875,
+            "outside_count": 1644718,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "strict_is_diagnostic_not_FP16_acceptance": true,
+            "byte_equal": false
+          }
+        },
+        "saved_audit_residual_diagnostics": {
+          "frame_update": {
+            "relative_l2": 0.0018559881444838787,
+            "reference_norm": 241.27389223705916,
+            "max_abs": 0.08890783786773682,
+            "outside_count": 1955969,
+            "strict_pass": false
+          },
+          "pair_update": {
+            "relative_l2": 0.00418110006219091,
+            "reference_norm": 327.068228676496,
+            "max_abs": 0.027837812900543213,
+            "outside_count": 2004369,
+            "strict_pass": false
+          },
+          "global_own_input_update": {
+            "relative_l2": 0.012035727559518582,
+            "reference_norm": 109.46601070137682,
+            "max_abs": 0.08765232563018799,
+            "outside_count": 1672457,
+            "strict_pass": false
+          }
+        },
+        "repeat_raw_SHA_equal": true
+      }
+    ],
+    "phase_lifecycle": [
+      {
+        "phase": 0,
+        "variant": "A",
+        "init_seconds": 0.2210921060000146,
+        "destroy_seconds": 0.09062342500010345,
+        "lifecycle_seconds_excluding_save_compare": 2.0278172040002573
+      },
+      {
+        "phase": 1,
+        "variant": "F",
+        "init_seconds": 0.2149968550002086,
+        "destroy_seconds": 0.09084196699996028,
+        "lifecycle_seconds_excluding_save_compare": 2.0129994519998036
+      },
+      {
+        "phase": 2,
+        "variant": "B",
+        "init_seconds": 0.22083252199990966,
+        "destroy_seconds": 0.0952187180000692,
+        "lifecycle_seconds_excluding_save_compare": 2.2376028919998134
+      },
+      {
+        "phase": 3,
+        "variant": "B",
+        "init_seconds": 0.2199035640001057,
+        "destroy_seconds": 0.09564517699982389,
+        "lifecycle_seconds_excluding_save_compare": 2.223855599000217
+      },
+      {
+        "phase": 4,
+        "variant": "F",
+        "init_seconds": 0.21600806300011755,
+        "destroy_seconds": 0.09522380099997463,
+        "lifecycle_seconds_excluding_save_compare": 2.0031614929998796
+      },
+      {
+        "phase": 5,
+        "variant": "A",
+        "init_seconds": 0.21784381399993435,
+        "destroy_seconds": 0.09516334299996743,
+        "lifecycle_seconds_excluding_save_compare": 2.008168784999725
+      }
+    ]
+  },
+  "repeat_and_resources": {
+    "all_same_variant_input_output_repetitions_byte_equal": true,
+    "resource_totals": {
+      "contexts_created": 6,
+      "contexts_destroyed": 6,
+      "runs_completed": 12,
+      "output_buffers_acquired": 24,
+      "output_buffers_released": 24
+    },
+    "all_contexts_and_pending_outputs_closed": true,
+    "source_and_inputs_unchanged": true,
+    "affinity_restored": true,
+    "environment_restored": true,
+    "cleanup_errors": []
+  },
+  "controller": {
+    "receipt": {
+      "file": "runtime-control-r1/control.json",
+      "bytes": 14589,
+      "sha256": "aa6a3a7b7eea5930fe58fc80f59ce3734e8d26dada791847f95f8d6ab853c491"
+    },
+    "seconds": 18.919202359000337,
+    "maximum_temperature_c": 66.538,
+    "requested_frequency_hz": 1000000000,
+    "prior_current_hz": 1000000000,
+    "restored_current_hz": 1000000000,
+    "prior_governor_and_limits_restored": true,
+    "previous_userspace_request_was_undefined": true,
+    "child_returncode": 0,
+    "restore_errors": []
+  },
+  "independent_saved_audit": {
+    "receipt": {
+      "file": "saved-pair-fp16-audit.json",
+      "bytes": 16785,
+      "sha256": "669429045e554271b9a12f010790e1d8942f5739b6f7997c6547f155ff527369"
+    },
+    "audit_source_sha256": "8303ed94ab1842f8033fb2f0f6acd8dc83aa8849f374ca698f446ac899cec796",
+    "status": "saved_arrays_and_reported_metrics_verified",
+    "output_arrays_verified": 24,
+    "input_arrays_verified": 2,
+    "FP32_reference_arrays_verified": 12,
+    "reported_numeric_comparisons_verified": 72,
+    "canonical_and3_residual_diagnostics_verified": true,
+    "residuals_are_not_additive_error_contributions_or_new_acceptance_gates": true,
+    "NN_or_SDK_execution_by_auditor": false
+  },
+  "evidence": {
+    "runtime_receipt": {
+      "file": "runtime-r1/result.json",
+      "bytes": 98632,
+      "sha256": "3dee54279f62e928903653948e610f7b25e211c5bb7b8846a0f91e8bc02fc0f9"
+    },
+    "source_manifest": {
+      "file": "deploy/rk3588/validation/original_native518_basis_pair_fp16/sources.json",
+      "sha256": "75b57cc69ed34671cccaddb9b8f01032b89c23e291611529df98b2ac0ee08c1f"
+    },
+    "runtime_source_sha256": "5f07e3dce5c3e897216dede513674b25d2fb97538248110a83a291b2b3d112d3",
+    "compiler_source_sha256": "2bbf180a9a70444ba592b7898fa23b96b11f36da3859f07cc5b435f0a25acb11",
+    "checkpoint_lineage": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "exact_source_receipt_and_design_pins_in_linked_source_manifest": true
+  },
+  "next_separate_gate": {
+    "status": "planned_not_executed_in_this_result",
+    "scope": "Keep FP16 residual and exit boundaries in A/F/B while separately screening internal W8A8 with four new calibration and two held-out real frame0 inputs. No repeated FP16 basis kernel tuning or low-precision success is claimed here.",
+    "whole_aggregator_design_unexecuted": "Keep one basis through frame/global blocks and original inter-group dependencies; restore canonical retained and global20 head interfaces. The current pair result is not a measured whole-aggregator prediction."
+  },
+  "limits": {
+    "fresh_observation_20Hz_or_P95_100ms_accepted": false,
+    "full_model_or_trajectory_quality_improvement_established": false,
+    "stability_map_cadence_or_physical8GB_operation_accepted": false,
+    "compiler_operator_placement_or_accumulator_precision_profiled": false,
+    "same_QKV_attention_only_cause_established": false
+  },
+  "publication": "Source/metadata only. Raw arrays, weights, compiled models and SDK binaries remain private. Repository code and original model sources/checkpoint retain separate licenses."
+}

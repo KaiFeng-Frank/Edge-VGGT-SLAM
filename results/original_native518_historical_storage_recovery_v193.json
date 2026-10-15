@@ -1,0 +1,141 @@
+{
+  "schema": "original_native518_historical_storage_recovery_v193",
+  "status": "historical_payloads_and_paths_preserved_capacity_recovered_no_model_execution",
+  "scope": "Storage maintenance for archived original-model engineering artifacts; no graph, model, inference or benchmark change.",
+  "coalescence": {
+    "historical_failed_and_successful_SDK_file_pairs": 6,
+    "original_paths_retained": 12,
+    "retained_unique_inodes": 6,
+    "full_byte_comparisons_before_mutation": 6,
+    "logical_duplicate_payload_bytes": 3938197256,
+    "allocated_data_filesystem_bytes_recovered": 3938234368,
+    "data_free_before_bytes": 3258105856,
+    "data_free_after_bytes": 7196340224,
+    "operation": "Full SHA and byte comparison bound to unchanged source inodes; create a hardlink and atomically replace only the duplicate path entry.",
+    "every_original_path_and_payload_hash_retained": true,
+    "mode_UID_GID_and_xattrs_checked_before_mutation": true,
+    "original_raw_receipts_deleted": 0
+  },
+  "relocation": {
+    "historical_tmpfs_trees": 2,
+    "files": 35,
+    "payload_bytes": 1235900895,
+    "prior_source_allocated_file_bytes": 1235984384,
+    "source_filesystem": "tmpfs",
+    "destination_filesystem": "existing data ext4",
+    "operation": "Copy, fsync and verify every destination before replacing original file entries with atomic data-backed symlinks.",
+    "all35_payload_hashes_match_prior_archived_R161_metadata": true,
+    "all35_original_paths_and_existing_directories_retained": true,
+    "data_free_before_bytes": 6556176384,
+    "data_free_after_bytes": 5320126464,
+    "observed_MemAvailable_before_bytes": 3099795456,
+    "observed_MemAvailable_after_bytes": 4336611328,
+    "observed_MemAvailable_increase_bytes": 1236815872,
+    "observed_Shmem_before_bytes": 12974161920,
+    "observed_Shmem_after_bytes": 11738402816,
+    "observed_Shmem_decrease_bytes": 1235759104,
+    "root_filesystem_payload_writes": false
+  },
+  "budget": {
+    "data_floor_bytes": 3221225472,
+    "conservative_future_gate_reserve_bytes": 1117854112,
+    "candidate_graph_reserve_bytes": 614537632,
+    "compile_model_reserve_bytes": 471859200,
+    "CPU_output_reserve_bytes": 31457280,
+    "surplus_after_data_floor_and_future_reserve_bytes": 981046880,
+    "already_staged_candidate_graph_remains_in_reserve": true
+  },
+  "verification": {
+    "saved_only_independent_audit_passed": true,
+    "all6_byte_comparisons_and12_post_coalescence_hashes_and_topologies_verified": true,
+    "all35_fresh_inventory_and_completion_records_match_prior_R161_archive_hashes": true,
+    "proven_atomic_coalescence_and_all_copy_then_alias_transaction_bodies_retained": true,
+    "new_board_or_large_payload_reads_by_auditor": false
+  },
+  "invariants": {
+    "original_payload_bytes_and_pathnames_preserved": true,
+    "private_raw_records_deleted": 0,
+    "original_model_math_or_defaults_changed": false,
+    "model_or_SDK_execution": false,
+    "mounts_drivers_clocks_or_reserved_blocks_changed": false
+  },
+  "decision": "Retain the recovered storage and RAM headroom for bounded original-model integration. Historical aliases are immutable; all future writers must use fresh output paths.",
+  "limits": [
+    "Hardlinks and symlinks preserve payload bytes and pathnames; inode, file type, device, ctime or alias mtime can change. This is not metadata identity.",
+    "Prior source file-block allocation, observed Shmem change and observed MemAvailable change are different quantities. OS snapshots include allocator and background variation.",
+    "Candidate graph and references were staged between operations. The free-space snapshots are separate operations, not one isolated net-allocation measurement; the candidate reserve is intentionally conservative.",
+    "The independent auditor reads small saved receipts and reviewed source. It makes no new board/stat/FD/alias observations and does not reopen large payloads.",
+    "Storage recovery establishes no inference gain, unique physical model-memory cost, all-model residency, physical8GB feasibility, numerical quality or realtime/full-model acceptance."
+  ],
+  "acceptance": {
+    "storage_integrity_and_budget_audit_passed": true,
+    "inference_speed": false,
+    "precision": false,
+    "all_model_residency": false,
+    "physical8GB": false,
+    "full_model_realtime_or_trajectory": false
+  },
+  "evidence": [
+    {
+      "role": "prior_readonly_hash_and_inode_screen",
+      "basename": "historical-SDK-duplicates-readonly-r193.json",
+      "bytes": 7206,
+      "sha256": "9827e50cf24307a9e1d49d2d27974959c0b02ea45fa872cf48d78472aa1247c8"
+    },
+    {
+      "role": "actual_full_byte_comparison_receipt",
+      "basename": "historical-SDK-bytecmp-r193.json",
+      "bytes": 11414,
+      "sha256": "4488f2f32d1e7d1fd5b320e4f606bfd37b590c671a9f9e1776b3183d3c37e197"
+    },
+    {
+      "role": "executed_full_byte_comparator_source",
+      "basename": "compare_historical_SDK_duplicates_readonly_board.py",
+      "bytes": 2340,
+      "sha256": "dbf7ca5f31165bd64fd7d9dd3ff26516e7f83d956ddebbb1261a17516c591d44"
+    },
+    {
+      "role": "six_atomic_coalescence_transactions",
+      "basename": "historical-SDK-coalescence-r193.jsonl",
+      "bytes": 11353,
+      "sha256": "6127ddfda16744673a2182eb76916838b82f44550f852ff85f1153e3e5ded0ac"
+    },
+    {
+      "role": "executed_coalescence_source",
+      "basename": "coalesce_historical_SDK_duplicates_board.py",
+      "bytes": 8533,
+      "sha256": "fa57b40b1cb2c845ddb0daf27b5b65130347a3a6b1f8dd1779d1931666215e9b"
+    },
+    {
+      "role": "fresh_pre_relocation_file_inventory",
+      "basename": "R161-tmpfs-relocation-inventory-r193.json",
+      "bytes": 9217,
+      "sha256": "13e7ac5efd000e621458fd423c358ab0f56ef81058ab634a6efd76cb2702a32d"
+    },
+    {
+      "role": "all35_relocation_completion_receipt",
+      "basename": "R161-tmpfs-relocation-r193.json",
+      "bytes": 43488,
+      "sha256": "568929779e7ac98033b0742ad3d87b8ccb03ae243c2fbba80ecf5b8b7bce74f0"
+    },
+    {
+      "role": "executed_relocation_source",
+      "basename": "relocate_R161_query_archives_to_disk_board.py",
+      "bytes": 9511,
+      "sha256": "b823cb5b369e056b06e0d0afa0eeb8ba591bbdd2480f3dbafbbd15d1c76812af"
+    },
+    {
+      "role": "independent_saved_storage_audit",
+      "basename": "storage-recovery-r193-saved-audit-r1.json",
+      "bytes": 8196,
+      "sha256": "b29945149925fcfa82e6caa5925297d7b084fc731d1b4574facf0327f6051b95"
+    },
+    {
+      "role": "independent_saved_storage_auditor_source",
+      "basename": "audit_storage_recovery_r193_saved.py",
+      "bytes": 17789,
+      "sha256": "7da3eae78d846858e5d889066708601ca60c001f1c9d724cd92c7d9021482f4a"
+    }
+  ],
+  "publication": "Metadata only; private paths, original payloads, arrays, graphs and binaries remain private."
+}

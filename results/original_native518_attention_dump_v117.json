@@ -1,0 +1,85 @@
+{
+  "schema": "recovered_original_native518_attention_dump_v117",
+  "experiment_version": 117,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "status": "passed_component_diagnostic_only",
+    "exact_bytes_independently_verified": {
+      "input_half_roundtrip_bytes": true,
+      "norm1_old_tap_bytes": true,
+      "qkv_old_tap_bytes": true,
+      "split_rejoin_bytes": true,
+      "sdpa_flatten_bytes": true,
+      "final_untapped_bytes": true
+    },
+    "independent_same_QKV_SDPA_relative_l2": 0.0454929716203681,
+    "debug_controller": {
+      "child_returncode": 0,
+      "restored_exact_policy": true,
+      "sampled_max_temperature_c": 51.769,
+      "seconds": 1.530315278971102
+    },
+    "opt0": {
+      "source_sha256": "759f085b2ee8715de2a341fedd35c7effeb0c54c796deca3153ab3b7d64f8c8a",
+      "compile_seconds": 9.768946107011288,
+      "only_config_delta": {
+        "optimization_level": {
+          "before": 3,
+          "after": 0
+        }
+      },
+      "build_options_unchanged": true,
+      "model_sha256": "fe8acac49eb10b1215edf1d4c348b69da3ddfed53f16c2e202b0e3f6428b32c0",
+      "model_bytes": 26517686,
+      "board_cmp_exit_code": 0,
+      "host_model_hash_matches_baseline_receipt": true,
+      "ABBA_cancelled_because_candidate_artifact_identical": true,
+      "candidate_NPU_calls": 0,
+      "pins_unchanged": true,
+      "cleanup_errors": [],
+      "clock_before_after_hz": 300000000,
+      "thermal_trace_available": false
+    },
+    "limits": [
+      "Single original DINO0, one frozen actual input; no trajectory generalization",
+      "Debug run is not ordinary performance timing",
+      "Same-QKV comparison is CPU FP32 vs compiled FP16/backend; does not prove a same-precision kernel bug",
+      "Fused attention internals unavailable; QK/softmax/PV not individually blamed",
+      "No full-model speed, accuracy, latency or realtime acceptance"
+    ],
+    "saved_audit_status": "passed",
+    "decision": "The unchanged compiled dump pins discrepancy after the same actual QKV, at the fused SDPA output boundary. Output Half storage does not explain it; QK/softmax/PV internals and a same-precision SDK bug are not established. Opt0 produced exactly the original binary, so its candidate ABBA was cancelled.",
+    "debug_timing_is_not_benchmark": true
+  },
+  "source_evidence": [
+    {
+      "archive": "v117-native518-attention-dump-r1",
+      "file": "execution-review.json",
+      "bytes": 2901,
+      "sha256": "e0fa79cfb2ce0c987b0f0ffec49f14b5f57f3382f4b8dfd77bc0511d5ac9ad09"
+    },
+    {
+      "archive": "v117-native518-attention-dump-r1",
+      "file": "debug-dump-saved-audit.json",
+      "bytes": 18179,
+      "sha256": "e7bcf63d247a91a2b6361b3bc839b7c6910000f286f4efcc7fab2922c2870003"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 183. Unchanged runtime dumps localize the attention discrepancy; optimization level zero produces the same binary",
+    "section_sha256": "6b644429ac99a60360d1c134e1e400fd6cbcc949a2aef744634227784446d6b8"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

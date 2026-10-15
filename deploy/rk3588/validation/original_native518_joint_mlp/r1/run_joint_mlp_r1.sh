@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+exec env -u PYTHONPATH -u PYTHONHOME -u VIRTUAL_ENV LD_LIBRARY_PATH=/mnt/vggt-data/vggt-slam2/sysroot/usr/lib/aarch64-linux-gnu OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 CUDA_VISIBLE_DEVICES= taskset -c 4,6 /mnt/vggt-data/vggt-slam2/venv/bin/python -B -u /dev/shm/edge-vggt-v129-joint-mlp-runtime-source-r1/run_joint_mlp_fp16_board.py --joint-compile /dev/shm/edge-vggt-v129-joint-mlp-compile-r1/result.json --joint-compile-sha256 01f9034d151e0b0388c98b1fbf1ccf81163dace668c4afa13ccce9ecf433388f --compiler-source /dev/shm/edge-vggt-v129-joint-mlp-runtime-source-r1/compile_joint_mlp_fp16_board.py --output-dir /dev/shm/edge-vggt-v129-joint-mlp-runtime-r1

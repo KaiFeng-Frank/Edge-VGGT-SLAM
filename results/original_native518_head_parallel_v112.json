@@ -1,0 +1,165 @@
+{
+  "schema": "recovered_original_native518_head_parallel_v112",
+  "experiment_version": 112,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "original_experiment_status": "completed_original_SDPA_head_parallel_ABBA_not_quality_or_integration_accepted",
+    "scope": {
+      "component_only": true,
+      "head_shape": [
+        1,
+        16,
+        2082,
+        64
+      ],
+      "consumer_shape": [
+        1,
+        2082,
+        1024
+      ],
+      "baseline_core_mask": 7,
+      "parts": [
+        {
+          "index": 0,
+          "start": 0,
+          "end": 6,
+          "heads": 6,
+          "model_key": "heads6",
+          "core_mask": 1
+        },
+        {
+          "index": 1,
+          "start": 6,
+          "end": 11,
+          "heads": 5,
+          "model_key": "heads5",
+          "core_mask": 2
+        },
+        {
+          "index": 2,
+          "start": 11,
+          "end": 16,
+          "heads": 5,
+          "model_key": "heads5",
+          "core_mask": 4
+        }
+      ],
+      "maximum_live_contexts": 3,
+      "all2082keys_all2082queries_all16heads_preserved": true,
+      "explicit_CPU_attention_fallback": false,
+      "SDK_internal_operator_mapping_profiled": false,
+      "timing_scope": "Full component boundary: owned input copies/slices, dispatch, input conversion/set, synchronous SDK runs, outputs get/convert/owned copy/release, all worker joins, ordered head concat, original proj-input transpose/reshape/owned copy and finite checks.",
+      "outside_timer": "Pinned model/source/receipt/array hashes, construction and teardown, SDK memory queries, platform reads, numerical comparisons and unique NPY writes.",
+      "logical_format_adapter": "Explicit original BHSD to queried logical NHWC BSDH, and queried NCHW/NHWC output back to BHSD. No packed native format or guessed reshape."
+    },
+    "summary": {
+      "A": {
+        "steady_count": 6,
+        "mean_seconds": 0.39270388665803085,
+        "min_seconds": 0.39063941402127966,
+        "max_seconds": 0.3964736229972914
+      },
+      "B": {
+        "steady_count": 6,
+        "mean_seconds": 0.20864585465945615,
+        "min_seconds": 0.19782826997106895,
+        "max_seconds": 0.2188121890067123
+      }
+    },
+    "observed_percent_lower_boundary": 46.869419491855865,
+    "all_actual_A_vs_B_byte_equal": true,
+    "all_same_route_repeats_byte_equal": true,
+    "original_FP32_graph_gate_passed": true,
+    "original_FP32_runtime_fixed_gate_passed": false,
+    "independent_comparisons": {
+      "A-head": {
+        "relative_L2": 0.0013111764193871494,
+        "max_abs": 0.04167795181274414,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "byte_equal": false,
+        "fixed_gate_passed": false,
+        "strict_outlier_count": 816777
+      },
+      "A-proj": {
+        "relative_L2": 0.0013111764193871414,
+        "max_abs": 0.04167795181274414,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "byte_equal": false,
+        "fixed_gate_passed": false,
+        "strict_outlier_count": 816777
+      },
+      "B-head": {
+        "relative_L2": 0.0013111764193871494,
+        "max_abs": 0.04167795181274414,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "byte_equal": false,
+        "fixed_gate_passed": false,
+        "strict_outlier_count": 816777
+      },
+      "B-proj": {
+        "relative_L2": 0.0013111764193871414,
+        "max_abs": 0.04167795181274414,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "byte_equal": false,
+        "fixed_gate_passed": false,
+        "strict_outlier_count": 816777
+      }
+    },
+    "SDK_totals": {
+      "contexts_created": 8,
+      "contexts_destroyed": 8,
+      "runs_completed": 32,
+      "output_buffers_acquired": 32,
+      "output_buffers_released": 32
+    },
+    "all_contexts_outputs_workers_closed": true,
+    "controller": {
+      "sha256": "347033d1ebf8348006073d46d39fb7239b9c291e95dc8104429a15f9bbea0333",
+      "seconds": 10.662884571996983,
+      "clock_samples": 22,
+      "maximum_temperature_c": 61.0,
+      "all_samples_1GHz": true,
+      "restored_300MHz_and_prior_configuration": true
+    },
+    "decision": "Standalone three-core head splitting is46.87% shorter and preserves baseline FP16 output bytes. It is not the parent fused245ms SDPA boundary; full-block benefit and original CPU precision acceptance were not established."
+  },
+  "source_evidence": [
+    {
+      "archive": "v112-native518-head-parallel-r1",
+      "file": "board-abba-r2/result.json",
+      "bytes": 230277,
+      "sha256": "03844530afb100568ee1fb7f5707e79dab3d76223f6f95e05957e97cc171ecab"
+    },
+    {
+      "archive": "v112-native518-head-parallel-r1",
+      "file": "saved-abba-r2-audit.json",
+      "bytes": 9005,
+      "sha256": "1950a4763d420a02ada7f32f85ae800ca7a5d1e7d68593e9df0c6eba9db35c78"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 178. Independent head contexts shorten standalone attention, pending a complete-block test",
+    "section_sha256": "6cc8380960ad2d71b4f2b5f89766ca3bbf5783ea143d0a27fa0b3bff24eab86f"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

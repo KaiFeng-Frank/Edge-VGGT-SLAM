@@ -1,0 +1,163 @@
+{
+  "schema": "original_native518_standalone_FP32_FMA_GPU_SDPA_v108",
+  "status": "precision_passed_no_useful_speed_gain_not_integrated",
+  "original_model_only": true,
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "original_SDPA_shape": [
+    1,
+    16,
+    2082,
+    64
+  ],
+  "consumer_shape": [
+    1,
+    2082,
+    1024
+  ],
+  "original_capture_parameter_count": 18,
+  "all_keys_heads_channels_and_original_scale_retained": true,
+  "only_math_change": "Eight GEMM accumulation statements use explicit correctly-rounded FP32 fma; matching float4 operands. All tiling, ordering, tails, Softmax and the fixed gate remain unchanged.",
+  "FP_CONTRACT_OFF_for_other_expressions": true,
+  "relaxed_math_or_FP16_used": false,
+  "fixed_gate": {
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "relative_l2_max": 1e-05,
+    "max_abs_max": 0.001
+  },
+  "calls": 4,
+  "first_boundary_seconds": 0.5553738890448585,
+  "warm_boundary_seconds": [
+    0.4273702090140432,
+    0.42472116701537743,
+    0.4171694170217961
+  ],
+  "warm_mean_seconds": 0.42308693101707223,
+  "warm_kernel_mean_seconds": 0.390372853,
+  "warm_kernel_stage_mean_seconds": {
+    "QK_GEMM": 0.19200536066666668,
+    "row_Softmax": 0.034645664666666666,
+    "PV_GEMM": 0.16372182766666665
+  },
+  "all_four_comparisons": [
+    {
+      "relative_l2": 6.998861109795854e-07,
+      "max_abs": 8.821487426757812e-06,
+      "outside_tolerance": 0,
+      "elements": 2131968,
+      "strict_tensor_pass": true,
+      "relative_l2_pass": true,
+      "max_abs_pass": true,
+      "fixed_gate_pass": true,
+      "byte_equal_original_CPU": false
+    },
+    {
+      "relative_l2": 6.998861109795854e-07,
+      "max_abs": 8.821487426757812e-06,
+      "outside_tolerance": 0,
+      "elements": 2131968,
+      "strict_tensor_pass": true,
+      "relative_l2_pass": true,
+      "max_abs_pass": true,
+      "fixed_gate_pass": true,
+      "byte_equal_original_CPU": false
+    },
+    {
+      "relative_l2": 6.998861109795854e-07,
+      "max_abs": 8.821487426757812e-06,
+      "outside_tolerance": 0,
+      "elements": 2131968,
+      "strict_tensor_pass": true,
+      "relative_l2_pass": true,
+      "max_abs_pass": true,
+      "fixed_gate_pass": true,
+      "byte_equal_original_CPU": false
+    },
+    {
+      "relative_l2": 6.998861109795854e-07,
+      "max_abs": 8.821487426757812e-06,
+      "outside_tolerance": 0,
+      "elements": 2131968,
+      "strict_tensor_pass": true,
+      "relative_l2_pass": true,
+      "max_abs_pass": true,
+      "fixed_gate_pass": true,
+      "byte_equal_original_CPU": false
+    }
+  ],
+  "all_four_outputs_byte_equal": true,
+  "independent_audit_status": "passed_saved_data_integrity_and_accounting_audit",
+  "historical_v107_mean_seconds": 0.41836948667575297,
+  "historical_comparison_scope": "Separate runs and three warm calls each, not interleaved ABBA or statistically established regression.",
+  "decision": "Do not integrate. Explicit FMA does not provide useful speed gain in this implementation; current transfer removal alone remains insufficient. Stop expanding this candidate and prioritize native fresh-image model-to-SL4 integration.",
+  "inference_limit": "No measured instruction mix, memory bandwidth or occupancy; this result does not establish a universal fused-arithmetic or GPU limit.",
+  "memory": {
+    "score_bytes": 277422336,
+    "OpenCL_buffer_bytes": 311533824,
+    "reported_local_memory_type": 2,
+    "peak_process_rss_mib": 500.05859375,
+    "physical_8GB_accepted": false
+  },
+  "resources": {
+    "objects_created": {
+      "Context": 1,
+      "CommandQueue": 1,
+      "Program": 1,
+      "Kernel": 3,
+      "MemObject": 5,
+      "Event": 28
+    },
+    "objects_released": {
+      "Context": 1,
+      "CommandQueue": 1,
+      "Program": 1,
+      "Kernel": 3,
+      "MemObject": 5,
+      "Event": 28
+    },
+    "events_created": 28,
+    "events_released": 28,
+    "fully_released": true,
+    "cleanup_errors": []
+  },
+  "controller": {
+    "status": "completed",
+    "seconds": 3.102238728024531,
+    "maximum_sampled_temperature_c": 58.23,
+    "GPU_policy_unchanged": true,
+    "NPU_remained_300MHz": true,
+    "process_group_gone": true
+  },
+  "not_validated": [
+    "actual NPU intermediate numerical parity",
+    "SDK interop",
+    "whole-model speed gain",
+    "native SL4 trajectory quality and ATE/RPE",
+    "fresh pose rate and P95",
+    "dense-map cadence",
+    "30-minute stability",
+    "8GB deployment"
+  ],
+  "publication": {
+    "production_backend_changed": false,
+    "github_push_performed": false,
+    "raw_arrays_private": true,
+    "code_and_weight_licenses_separate": true
+  },
+  "evidence_sha256": {
+    "original_global_sdpa_fma.cl": "7c89cdc33745c96cb7ef2da96dcf29e4e33adfc2311dcdfbe0e1cd77497e08ad",
+    "original_global_sdpa_fma_opencl.py": "042e73e94da4828c02ba58a96e0bf0c370141535cdd8eb6484388a45256a9dd4",
+    "probe_native_global_sdpa_fma_board.py": "ee3fbe1428bbb8b2463245f6f1f19ca777c890a34ab1380e7fb01dd88a3f12e2",
+    "source-diff-proof.json": "8805e006c5c8799cf305d8afbffd98a239cb593a983b05aca9fef886461b7054",
+    "root-source-review.json": "a0d9c7c7aa6d99386c3c902fb91d7dc33c5d74a38a44798dc691b404c9ef65c0",
+    "gpu-r1/result.json": "314d3d19217d614bbdf2655fe2813ffac34dade655ef65a8cfd833498f426d40",
+    "gpu-r1-control.json": "d8c5409c31857e19bbd9334ba1451496f78051f8697d4cf60ba97a7afddf27b6",
+    "audit_saved_sdpa.py": "1cfd116c9e9341807188f8cf2b99db21da8223f6cdf4f7bc2fa09543d5fce1df",
+    "saved-output-audit.json": "f65dc0a7cb7953172cf7b89f34cf0d9ef7ed30c43797792412ee8c70e46552f5",
+    "original-reference/capture.json": "e4ffaea2b11df9ac558c119cb4854d490b0030c02b7706eee344b8894cefa686"
+  },
+  "predecessor_receipt_sha256": "a45070ba7ed199f39b847063d96065d47d72c5b3e533e4394b7fe14ea79e286f"
+}

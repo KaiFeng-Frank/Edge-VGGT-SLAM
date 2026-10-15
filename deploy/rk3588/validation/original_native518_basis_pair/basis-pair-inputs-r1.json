@@ -1,0 +1,117 @@
+{
+  "schema": "v126_original_native518_basis_pair_board_inputs",
+  "source_root": "/mnt/vggt-data/vggt-slam2/src",
+  "original_export": {
+    "file": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v98-export-r1/export.json",
+    "sha256": "b922ca37e4052800c44520ad7826be97ff463c9d6298e695b70f3d1a7d9c115e"
+  },
+  "frame_export": {
+    "file": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v98-frame-b1-export-r1/export.json",
+    "sha256": "54cdac3b68da2f07d1fb53fcda94d4a4f3ac3b0994ebdc0320b7b1fac20ac447"
+  },
+  "global_export": {
+    "file": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v98-global-fc2k4-export-r1/result.json",
+    "sha256": "7ad10c71635233e2056dade6f0b6c769e0ae0c1dfdf192514f1be18e3afdc9ff"
+  },
+  "weights_capture": {
+    "file": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v53-capture-r1/capture.json",
+    "sha256": "4b723e499763bb90565f6e11e16c551664634aaf72da46c7cdc493b84208ef67"
+  },
+  "native_capture": {
+    "file": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v98-reference-r1/capture.json",
+    "sha256": "4ebbc4adaaed5e3c3cf8558b4947ec3fc090d56e82f8c61c9509951eb34dd35d"
+  },
+  "algebra_receipt": {
+    "file": "/dev/shm/edge-vggt-v126-source-r1/mean-preserving-basis-algebra.json",
+    "sha256": "08036d7c9702c4c854752ab98c476af298b2736fae45817d22a71394df3a31e5"
+  },
+  "algebra_source": {
+    "file": "/dev/shm/edge-vggt-v126-source-r1/check_mean_preserving_basis.py",
+    "sha256": "0130df51f4aaa5aa7d43d2bbae470aa8b3525a900bf1417e16d3fb6d2c63acbe"
+  },
+  "frame_onnx": {
+    "file": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v98-frame-b1-export-r1/frame0-native518-batch1-branches.onnx",
+    "bytes": 50942017,
+    "sha256": "683b4ec52a6d4692fa777b2180a143de347b4765edded313717946c5a0a450f9"
+  },
+  "global_onnx": {
+    "file": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v98-global-fc2k4-export-r1/native-block.onnx",
+    "sha256": "c44094793c3b590c6066cbdd634cf0c4d8bd5b75987c8b491db7b17b2201f55d",
+    "bytes": 51469885
+  },
+  "inputs": [
+    {
+      "id": "cpu_prefix",
+      "kind": "original_CPU_DINO24_and_prefix",
+      "source_pair_indices": [
+        32,
+        40
+      ],
+      "source_images": [
+        {
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.243216.png",
+          "bytes": 478978,
+          "sha256": "dffe2b7b0efb05d9a3cb9d7d938efee092d16436d6fc9a29432b1c447cd20333"
+        },
+        {
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.511333.png",
+          "bytes": 495949,
+          "sha256": "04c6b5a3018a8c8faf6a713466a4257360e1c9dd844c4dfb8237640a56a820b2"
+        }
+      ],
+      "input": {
+        "file": "/mnt/vggt-data/vggt-slam2/experiments/vggt-v98-reference-r1/frame0_input.npy",
+        "bytes": 8528000,
+        "sha256": "0da16543ca040e685f7fe895854e90bc70e249e94a9f1fb3fce45f685d7ad955",
+        "shape": [
+          2,
+          1041,
+          1024
+        ],
+        "dtype": "float32",
+        "raw_sha256": "a2192f0aba3ac6b5c9c9ecce6bd3534ac91ea2fb464ea7409c5ee2309af0839c"
+      },
+      "original_Torch_outputs_available": true
+    },
+    {
+      "id": "npu_prefix",
+      "kind": "actual_deployed_NPU_DINO24_and_original_prefix",
+      "source_pair_indices": [
+        32,
+        40
+      ],
+      "source_images": [
+        {
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.243216.png",
+          "bytes": 478978,
+          "sha256": "dffe2b7b0efb05d9a3cb9d7d938efee092d16436d6fc9a29432b1c447cd20333"
+        },
+        {
+          "file": "/mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb/1305031103.511333.png",
+          "bytes": 495949,
+          "sha256": "04c6b5a3018a8c8faf6a713466a4257360e1c9dd844c4dfb8237640a56a820b2"
+        }
+      ],
+      "input": {
+        "file": "/dev/shm/edge-vggt-v100-native/full-model-sequential-core1-r1/actual_aggregator_input.npy",
+        "bytes": 8528000,
+        "sha256": "cf14545b0301078647b795fa75fd610037e9b7683c7a217da9bf6c10bc6581cf",
+        "shape": [
+          2,
+          1041,
+          1024
+        ],
+        "raw_sha256": "3c10121544179cdf4cc89dbdff423a31dc7d82a45f3e0339d1ef3e3a490429f6",
+        "dtype": "float32"
+      },
+      "original_Torch_outputs_available": false,
+      "lineage_receipt": {
+        "file": "/dev/shm/edge-vggt-v100-native/full-model-sequential-core1-r1/result.json",
+        "sha256": "4af7b9c4cbd38dbfd54c14b1308dd6035da25941f98f858a5ad13b781c3c8af6"
+      }
+    }
+  ],
+  "scope": "Two distinct actual frame0 input arrays of one real TUM image pair; different CPU/NPU prefix provenance. Not two independent scenes, not calibration or a held-out quality test.",
+  "planned_output_byte_budget": 524288000,
+  "NN_execution_target": "RK3588S CPU only for original FP32 graph equivalence; no RKNN or GPU execution"
+}

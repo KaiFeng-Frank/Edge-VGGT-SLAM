@@ -1,0 +1,645 @@
+{
+  "schema": "original_native518_global_boundary_v134",
+  "status": "A18_and_single_output_normal_diagnostics_complete_finite_candidates_but_large_precision_error_not_deployed",
+  "original_model_only": true,
+  "scope": "Two original canonical frame0/global0 blocks at native518 on captured original NPU DINO24 inputs. This is a graph-IO discriminator, not full-model precision, performance or SLAM validation.",
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "configuration_constraints": {
+    "original_layer_token_head_and_resolution_computation_retained": true,
+    "no_added_model_or_pose_frontend": true,
+    "host_NN_or_GPU_execution": false,
+    "GitHub_push_performed": false
+  },
+  "original_shared_boundary_issue": {
+    "source_result": "original_native518_basis_quantization_v128.json",
+    "saved_dump_audit_sha256": "aac57906151545ff9f1661dfd67dec335bd8f84d4572b5450ca55c97c68a3f83",
+    "policy_receipt_sha256": "01228e22819bb5d543cb9d714923da65de64dd8977871e2c106b41c13bc6a551",
+    "existing_requested_FLOAT16_boundary_selectors": [
+      "frame_output",
+      "frame_output-rs_tp",
+      "frame_output-rs",
+      "frame_output_int8",
+      "__global_input_rs#1",
+      "__global_input_tp-rs"
+    ],
+    "finite_frame_producer_and_canonical_frame_output_verified": true,
+    "first_saved_nonfinite": {
+      "emitted_dump_index": 57,
+      "tensor": "__global_input_rs#1",
+      "shape": [
+        1,
+        2082,
+        1,
+        1024
+      ],
+      "nan_count": 114745,
+      "negative_inf_count": 1225,
+      "positive_inf_count": 0
+    },
+    "actual_profile_boundary_labels": [
+      "FLOAT16 frame output reshape",
+      "FLOAT16-to-INT8 frame output conversion",
+      "INT8 public frame OutputOperator",
+      "INT8 global input reshape",
+      "FLOAT16 global input transpose"
+    ],
+    "interpretation": "The first invalid saved tensor is not a mathematical reshape of the verified finite predecessor. The existing requested selectors cover the boundary. This localizes the observation before global normalization/attention, without establishing raw backing-storage dtype, bitcast, alias overwrite, buffer lifetime or an SDK root cause.",
+    "emitted_dump_indices_are_not_profile_operator_IDs": true
+  },
+  "graph_change": {
+    "operation": "Remove only the first graph.output ValueInfo named frame_output; retain the public global_output.",
+    "parent_sha256": "57b60feceea0edb57ca4cea38200d6ea47d4e4ee51e4a546357267cbc9f676bb",
+    "candidate_sha256": "7dd7d2f6f75909c033d3e4439608a7993f66ba29458aba6f5454a04cbdb1fc07",
+    "parent_bytes": 102417440,
+    "candidate_bytes": 102417402,
+    "original_and_candidate_nodes": 143,
+    "original_and_candidate_initializers": 79,
+    "all143_node_protos_byte_equal": true,
+    "all79_initializer_protos_byte_equal": true,
+    "all143_nodes_remain_global_output_ancestors": true,
+    "internal_frame_to_global_edges_byte_unchanged": true,
+    "whole_original_parent_inverse_ModelProto_byte_equal": true,
+    "added_runtime_nodes": 0,
+    "added_runtime_MACs": 0,
+    "original36_learned_parameter_tensors_preserved": true,
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "retained_global_output_shape": [
+      1,
+      2082,
+      1024
+    ]
+  },
+  "actual_board_FP32_gate": {
+    "worker_source_sha256": "c44fb1dccd0c05f807042debd2d09ac0b542024aa1f91d0eb38f0a6b2677f7d2",
+    "worker_receipt_sha256": "58b45ec130a363243e4df7ca86f89c4936586565c69741342c96d25a6dadf48a",
+    "transport_source_sha256": "ee62ea2b79d0ac7a30bdae0ee9607f9309cc87d9683950c86012f71e2d00a268",
+    "transport_receipt_sha256": "57097eca7182a297056cf6e5f96c6adefef9f36fd2694e77f52519502410efaa",
+    "independent_saved_audit_sha256": "6e9ea578d3c06d8d7b3df9c71122f375fdc904a947d42546ebe90ee2f0a162cc",
+    "CPU_provider_only": true,
+    "maximum_simultaneous_sessions": 1,
+    "sessions_created": 1,
+    "sessions_dropped": 1,
+    "original_model_baseline_calls_in_this_worker": 0,
+    "candidate_calls": 4,
+    "saved_global_outputs": 4,
+    "calibration_ids": [
+      "pair0",
+      "pair1",
+      "pair2",
+      "pair3"
+    ],
+    "heldout_arrays_accessed": false,
+    "fixed_gate": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "strict_allclose_is_independent_diagnostic": true,
+    "comparisons": [
+      {
+        "input_id": "pair0",
+        "source_pair_indices": [
+          0,
+          8
+        ],
+        "shape": [
+          1,
+          2082,
+          1024
+        ],
+        "file_sha256": "b297c222ff138ed9c13a39b2d3b1e155352af22b491152c3fe82c442589945ed",
+        "raw_sha256": "ab743a4ea06924072d7616f83e15f1089a21e7d1d9f466941d89df3857b1d654",
+        "finite": true,
+        "byte_equal_original_A_global_reference": true,
+        "relative_l2": 0.0,
+        "max_abs": 0.0,
+        "strict_outside_count": 0,
+        "fixed_gate_passed": true
+      },
+      {
+        "input_id": "pair1",
+        "source_pair_indices": [
+          16,
+          24
+        ],
+        "shape": [
+          1,
+          2082,
+          1024
+        ],
+        "file_sha256": "73e9c365991fb7b930de35103a4f48bf8428165e1e8f0bea9755a02fc2514fa5",
+        "raw_sha256": "bddac59bd475e6a19c082ea1af1f6eea79a924798c1c163f9ab2032a2dc5a04d",
+        "finite": true,
+        "byte_equal_original_A_global_reference": true,
+        "relative_l2": 0.0,
+        "max_abs": 0.0,
+        "strict_outside_count": 0,
+        "fixed_gate_passed": true
+      },
+      {
+        "input_id": "pair2",
+        "source_pair_indices": [
+          48,
+          56
+        ],
+        "shape": [
+          1,
+          2082,
+          1024
+        ],
+        "file_sha256": "23fe47dbe1beb2c89580258b17819f6925f49ff06c0d84f1cb5fd994185d2161",
+        "raw_sha256": "bd1830ea27b7f53ff898fdd20939ed82b4f6327c5f89e384f8f79a9501221f6f",
+        "finite": true,
+        "byte_equal_original_A_global_reference": true,
+        "relative_l2": 0.0,
+        "max_abs": 0.0,
+        "strict_outside_count": 0,
+        "fixed_gate_passed": true
+      },
+      {
+        "input_id": "pair3",
+        "source_pair_indices": [
+          64,
+          72
+        ],
+        "shape": [
+          1,
+          2082,
+          1024
+        ],
+        "file_sha256": "12a02f1daa7b310a0582ab183530e94c380af2b671748d3ec0b2c11a258e89e4",
+        "raw_sha256": "a117ca1f2e9f184ec60f5f917c0c013929c79cb83a923953f64b262fc4fb2dd0",
+        "finite": true,
+        "byte_equal_original_A_global_reference": true,
+        "relative_l2": 0.0,
+        "max_abs": 0.0,
+        "strict_outside_count": 0,
+        "fixed_gate_passed": true
+      }
+    ],
+    "elapsed_seconds": 22.132340890000023,
+    "peak_rss_mib": 915.53125,
+    "versions": {
+      "numpy": "1.26.4",
+      "onnx": "1.16.1",
+      "ORT": "1.16.0"
+    },
+    "CPU_control": {
+      "seconds": 22.479142633000038,
+      "sample_count": 219,
+      "maximum_recorded_temperature_c": 62.846,
+      "no_frequency_writes": true,
+      "timeout_seconds": 180,
+      "worker_group_gone": true,
+      "leader_reaped": true
+    },
+    "all6_frozen_sources_and_available_pulls_verified": true
+  },
+  "fresh_calibration": {
+    "started": true,
+    "same_four_original_inputs_required": true,
+    "same_original_SDK_CONFIGURATION_required": true,
+    "old_model_data_or_ranges_not_reused_as_changed_graph_calibration": true,
+    "status": "generated_single_public_output_manual_hybrid_step1_not_compiled_or_accepted",
+    "completed": true,
+    "worker_receipt_sha256": "80afc09b99f1e6c5be98ac412bdc586ae0939adde1dc7954d044612442182796",
+    "worker_source_sha256": "cac13662cbb40201b19070e8208ada6b22d290967cae969cba2329501347bf9f",
+    "elapsed_seconds": 418.4660894629999,
+    "peak_rss_mib": 12453.92578125,
+    "dataset_sha256": "551d4b38fb3202ec8aec3ae085336e1826e7da8f2caf89bcbccf4186c8504171",
+    "graph_sha256": "7dd7d2f6f75909c033d3e4439608a7993f66ba29458aba6f5454a04cbdb1fc07",
+    "calibration_memory_is_not_deployment_or_8GB_evidence": true,
+    "independent_saved_audit_sha256": "612e05e761aa85a8eaffaf2fca45d52983a81f77bbad7877b4b75b9ea4438e1a",
+    "common_quantization_catalogue_entries": 142,
+    "original_only_catalogue_entries": [
+      "__global_input_rs#1",
+      "frame_output",
+      "frame_output-rs",
+      "frame_output_int8"
+    ],
+    "single_output_only_catalogue_entries": [],
+    "calibration_values_not_altered_to_improve_comparison": true,
+    "subsequent_RKNN_build_and_runtime_completed": true,
+    "common_catalogue_entries_value_equal": 142
+  },
+  "decision": "A18 changes the original nonfinite global output to finite output, and removing the public frame exit preserves the internal frame/global residual bridge in FLOAT16. The single-output candidate global relative L2 remains about 21.05%, versus 21.52% for A18: only a 2.20% relative improvement on one calibration pair, with 34.66 times the matched original FP16 error. This boundary change does not resolve the main precision problem; neither candidate is accepted or deployed. All original layers, tokens, parameters and native 518 computation remain. The full real-time SLAM objective is unachieved.",
+  "limitations": [
+    "This compares four already declared calibration inputs and does not establish heldout, full-model, trajectory or map quality.",
+    "CPU FP32 gate time and memory are not deployment NPU performance or 8GB-board evidence.",
+    "No fresh-observation20Hz, input-to-pose latency, map cadence or long-duration acceptance follows.",
+    "No checkpoints, captured arrays, weight-bearing exports or SDK binaries are published in this record.",
+    "A18 tests only one calibration input. Finite output and a changed precision table do not prove an SDK defect was fixed, do not quantify trajectory ATE/RPE loss, and do not establish real-time performance.",
+    "Observed single-output INT8 attention/update labels and FLOAT16 skip-path labels do not identify internal accumulator/Softmax precision or an SDK root cause. Tensor relative L2 must not be treated as an ATE/RPE acceptance threshold."
+  ],
+  "A18_unchanged_graph_bridge_selector_control": {
+    "scope": "Remove only two FLOAT16 bridge overrides from the original A20 requests. Preserve the original graph, parameters, CONFIG and calibration model/data/ranges; this is a placement discriminator on one calibration input.",
+    "unchanged_original_graph_sha256": "57b60feceea0edb57ca4cea38200d6ea47d4e4ee51e4a546357267cbc9f676bb",
+    "compile_worker_source_sha256": "aac18bfee6b89881a97c476d38c350c34b4900e185d58881bd6842066bbe2677",
+    "compile_receipt_sha256": "7aa28b50c3ebd333b4dbf531c8732413333ffa47c400f7a8a28f0d41478209e3",
+    "independent_compile_saved_audit_sha256": "bd76133f8eb53ef28b178d76e6db50413e6dc71ea1b712ae636d9c591420e3df",
+    "rknn_sha256": "6ce727eed6f2074e53d0b5837b0be2dbfd2d6f5762833e3d8acee6137a0267fa",
+    "requested_FLOAT16_selector_count": 18,
+    "removed_FLOAT16_selector_count": 2,
+    "removed_FLOAT16_selector_names": [
+      "__global_input_rs#1",
+      "__global_input_tp-rs"
+    ],
+    "remaining18_original_requests_unchanged": true,
+    "no_added_selectors": true,
+    "original_quantization_parameter_section_byte_equal": true,
+    "original_model_data_graph_and_parameters_unchanged": true,
+    "actual_precision_placement": {
+      "INT8_bridge_and_explicit_INT8_to_FLOAT16_residual_conversion_established": true,
+      "visible_placement_differs_from_A20": true,
+      "operator_rows": [
+        {
+          "id": 57,
+          "op_type": "Reshape",
+          "dtype": "INT8",
+          "target": "NPU",
+          "name": "__global_input_rs#1",
+          "raw": "57 Reshape INT8 NPU (2,1041,1024),(4) (1,2082,1,1024) 0/0/0 2082 Reshape:__global_input_rs#1"
+        },
+        {
+          "id": 58,
+          "op_type": "Transpose",
+          "dtype": "INT8",
+          "target": "NPU",
+          "name": "__global_input_tp",
+          "raw": "58 Transpose INT8 NPU (1,2082,1,1024) (1,1024,1,2082) 0/0/0 2096 Transpose:__global_input_tp"
+        },
+        {
+          "id": 59,
+          "op_type": "exDataConvert",
+          "dtype": "INT8",
+          "target": "NPU",
+          "name": "__global_input_tp-rs__cvt_int8_float16",
+          "raw": "59 exDataConvert INT8 NPU (1,1024,1,2082) (1,1024,1,2082) 0/0/0 2082 exDataConvert:__global_input_tp-rs__cvt_int8_float16"
+        },
+        {
+          "id": 60,
+          "op_type": "exNorm",
+          "dtype": "INT8",
+          "target": "NPU",
+          "name": "global0/norm1#1",
+          "raw": "60 exNorm INT8 NPU (1,1024,1,2082),(1,1024,1,1),... (1,1024,1,2082) 0/0/0 2092 exNorm:global0/norm1#1"
+        },
+        {
+          "id": 76,
+          "op_type": "Add",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "name": "global0/residual1",
+          "raw": "76 Add FLOAT16 NPU (1,1024,1,2082),(1,1024,1,2082) (1,1024,1,2082) 0/0/0 8328 Add:global0/residual1"
+        }
+      ],
+      "buffer_rows": [
+        {
+          "id": 57,
+          "op_type": "Reshape",
+          "tensor": "frame_output",
+          "dtype": "INT8",
+          "layout": "UNDEFINED",
+          "raw": "57 Reshape frame_output INT8 UNDEFINED (2,1041,1024) (2,1041,1024) | 0x00000000 0x00208800 0x00208800"
+        },
+        {
+          "id": 58,
+          "op_type": "Transpose",
+          "tensor": "__global_input_rs#1",
+          "dtype": "INT8",
+          "layout": "NC1HWC2",
+          "raw": "58 Transpose __global_input_rs#1 INT8 NC1HWC2 (1,2082,1,1024) (1,131,1,1024,16) | 0x00620800 0x0082c800 0x0020c000"
+        },
+        {
+          "id": 59,
+          "op_type": "exDataConvert",
+          "tensor": "__global_input_tp-rs",
+          "dtype": "INT8",
+          "layout": "NC1HWC2",
+          "raw": "59 exDataConvert __global_input_tp-rs INT8 NC1HWC2 (1,1024,1,2082) (1,64,1,2082,16) | 0x0082c800 0x00a38800 0x0020c000"
+        },
+        {
+          "id": 60,
+          "op_type": "exNorm",
+          "tensor": "__global_input_tp-rs",
+          "dtype": "INT8",
+          "layout": "NC1HWC2",
+          "raw": "60 exNorm __global_input_tp-rs INT8 NC1HWC2 (1,1024,1,2082) (1,64,1,2082,16) | 0x0082c800 0x00a38800 0x0020c000"
+        },
+        {
+          "id": 76,
+          "op_type": "Add",
+          "tensor": "__global_input_tp-rs__float16",
+          "dtype": "FLOAT16",
+          "layout": "NC1HWC2",
+          "raw": "76 Add __global_input_tp-rs__float16 FLOAT16 NC1HWC2 (1,1024,1,2082) (1,512,1,2082,8) | 0x00208800 0x0061a800 0x00412000"
+        }
+      ],
+      "placement_labels_do_not_establish_raw_storage_dtype_alias_or_SDK_root_cause": true
+    },
+    "actual_board_two_call_normal_diagnostic": {
+      "worker_source_sha256": "b1d72690562a15e296f680bf4f7f35d7853fd11bac7345645523433b1cf3dd9c",
+      "worker_receipt_sha256": "2be531c7dd203ac8acfd86e9acd8e8bddbbdea2726208309a803fedf2b2b3103",
+      "transport_source_sha256": "b82f8221d4b3fa3250187340de9bb83c0ac33207ecafd38817a108152557f8be",
+      "transport_receipt_sha256": "0fb750992555bd063698b8bd8693cc897334a73aec849dcb6e08afcdb7cf7524",
+      "independent_saved_audit_sha256": "85b5eca215e85d9388323b83acda129c29330a28933b1d2b4dac5fdc1106dac2",
+      "input_id": "pair0",
+      "source_pair_indices": [
+        0,
+        8
+      ],
+      "split": "calibration",
+      "heldouts_accessed": false,
+      "flags": 0,
+      "core_mask": 1,
+      "maximum_live_contexts": 1,
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 2,
+      "owned_outputs_saved": 4,
+      "owned_output_buffers_acquired": 4,
+      "owned_output_buffers_released": 4,
+      "all_resources_closed": true,
+      "production_finite_guard_modified": false,
+      "exact_original_finite_guard_exception_preserved": "Nonfinite owned SDK output",
+      "frame_output_A20_A18_byte_equal": true,
+      "reference_scope": "Same-input saved original A two-block board FP32 endpoints; not full-model or trajectory quality.",
+      "fixed_gate": {
+        "relative_l2_max": 1e-05,
+        "max_abs_max": 0.001,
+        "rtol": 0.0001,
+        "atol": 1e-05
+      },
+      "calls": [
+        {
+          "route": "original_A20",
+          "invalid_numeric": true,
+          "outputs": [
+            {
+              "name": "frame_output",
+              "sha256": "a5e88ef3bbd21867d1fd1b3ff07a490141e10028627b4f211c30ba66e40ac163",
+              "raw_sha256": "b078a0b884f711f2dd7801766dabeb26c46cd74fad7b8cf930bcb929338738bf",
+              "shape": [
+                2,
+                1041,
+                1024
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "nan_count": 0,
+              "positive_inf_count": 0,
+              "negative_inf_count": 0
+            },
+            {
+              "name": "global_output",
+              "sha256": "390391186af117a85b1631cc1eaa3d272192684b1e6e498e1778c5430401ec4f",
+              "raw_sha256": "829db26d08ef9344ce0318a4494a8d5099944cf30d9e157b580a1044b622ab9a",
+              "shape": [
+                1,
+                2082,
+                1024
+              ],
+              "dtype": "float32",
+              "finite": false,
+              "nan_count": 114745,
+              "positive_inf_count": 0,
+              "negative_inf_count": 1225
+            }
+          ],
+          "same_input_original_A_FP32_comparisons": {
+            "frame_output": {
+              "numeric_comparison_available": true,
+              "relative_l2": 0.04618649543995591,
+              "max_abs": 0.7631521299481392,
+              "reference_norm": 265.45689148860333,
+              "outside_count": 2128193,
+              "strict_pass": false,
+              "fixed_gate_passed": false
+            },
+            "global_output": {
+              "numeric_comparison_available": false,
+              "relative_l2": null,
+              "max_abs": null,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            }
+          }
+        },
+        {
+          "route": "A18_INT8_bridge",
+          "invalid_numeric": false,
+          "outputs": [
+            {
+              "name": "frame_output",
+              "sha256": "a5e88ef3bbd21867d1fd1b3ff07a490141e10028627b4f211c30ba66e40ac163",
+              "raw_sha256": "b078a0b884f711f2dd7801766dabeb26c46cd74fad7b8cf930bcb929338738bf",
+              "shape": [
+                2,
+                1041,
+                1024
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "nan_count": 0,
+              "positive_inf_count": 0,
+              "negative_inf_count": 0
+            },
+            {
+              "name": "global_output",
+              "sha256": "719d2116c9952153c88d89031f62fac683d8802c593ba6d3b25dad8c4aa3e66d",
+              "raw_sha256": "9c9b821898125b0728f54bcb0b9fd18a0e67534f3207ae9619d7dc75c3334310",
+              "shape": [
+                1,
+                2082,
+                1024
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "nan_count": 0,
+              "positive_inf_count": 0,
+              "negative_inf_count": 0
+            }
+          ],
+          "same_input_original_A_FP32_comparisons": {
+            "frame_output": {
+              "numeric_comparison_available": true,
+              "relative_l2": 0.04618649543995591,
+              "max_abs": 0.7631521299481392,
+              "reference_norm": 265.45689148860333,
+              "outside_count": 2128193,
+              "strict_pass": false,
+              "fixed_gate_passed": false
+            },
+            "global_output": {
+              "numeric_comparison_available": true,
+              "relative_l2": 0.21521676252883268,
+              "max_abs": 0.8821323215961456,
+              "reference_norm": 216.3866966909822,
+              "outside_count": 2128583,
+              "strict_pass": false,
+              "fixed_gate_passed": false
+            }
+          }
+        }
+      ],
+      "controller": {
+        "sha256": "1864b7b45c60761264e466a294c24e3ead6a2f091dc72703f22da63cac6601a5",
+        "seconds": 3.0213043040000684,
+        "observation_count": 7,
+        "maximum_temperature_c": 49.923,
+        "all_observed_NPU_clocks_1GHz": true,
+        "baseline_governor_frequency_limits_restored": true
+      },
+      "no_steady_state_performance_claim": true,
+      "candidate_accepted": false
+    },
+    "interpretation": "Changing only the two bridge precision requests produced finite global output, while frame output remained byte-equal to A20. The finite frame relative L2 is about4.62%, and candidate global relative L2 is about21.52%; both fail the unchanged component FP32 gate. This establishes the observed placement/output change on one calibration pair without identifying an SDK root cause or establishing SLAM quality.",
+    "next_action": "Keep A18 as a finite diagnostic control. Repair or remove the public-frame quantization boundary before heldout evaluation; single-public-global-output fresh calibration is the next graph discriminator.",
+    "candidate_accepted": false,
+    "matched_original_FP16_error_context": {
+      "independent_saved_context_sha256": "1fc7c70ebd8cff2b1065fa4ddfb7952a17bfa96dcfb5b8cc153c9088727ce81e",
+      "same_actual_input_original_parameters_checkpoint": true,
+      "rows": [
+        {
+          "name": "frame_output",
+          "original_FP16_relative_l2": 0.0017253193147639362,
+          "A18_relative_l2": 0.046186495439980234,
+          "A18_error_over_original_FP16": 26.769824602757446
+        },
+        {
+          "name": "global_output",
+          "original_FP16_relative_l2": 0.00607275853928375,
+          "A18_relative_l2": 0.2152167625288755,
+          "A18_error_over_original_FP16": 35.43970357732339
+        }
+      ],
+      "tensor_relative_L2_is_not_ATE_or_RPE_loss": true
+    },
+    "fixed_observed_frame_INT8_grid_floor": {
+      "saved_grid_audit_sha256": "46d8e2f9a7ed52b5ce3dc295450ef764a1c73cc454840286131b6dc2aabaa56b",
+      "input_id": "pair0",
+      "scale": 0.023519478738307953,
+      "zero_point": 4,
+      "actual_frame_relative_l2": 0.046186495439959244,
+      "nearest_grid_relative_l2_floor": 0.03733963573515481,
+      "actual_grid_reconstruction_max_abs": 1.1920928955078125e-07,
+      "interpretation": "The nearest point in the observed fixed output grid is a lower bound on endpoint error for that grid, up to FP32 dequantization rounding. It is neither a causal fraction of upstream error nor a trajectory result."
+    }
+  },
+  "single_public_global_output_actual_compile": {
+    "worker_source_sha256": "c6273c1fe9259687c490171ce8198c0e181a942f34511c2ad5c9f6f2dcc780f6",
+    "worker_receipt_sha256": "79f570edbc6ba8d74299c158756bf1adbed49ddcace6b2e637df7b98235658dc",
+    "independent_saved_audit_sha256": "c4c89b6283460a01aba8ef63b7fe4f333cbe8a12f84214f45a0b1951a6b9390f",
+    "rknn_sha256": "d854bab34cb9d918f454b1993044232ad37da6447f588a58ebeaff6c2e21690f",
+    "requested_selector_count": 16,
+    "mapping_derived_from_actual_generated_single_output_graph": true,
+    "old_A20_or_two_output_mapping_reused": false,
+    "internal_frame_residual_and_global_skip_bridge_FLOAT16_established": true,
+    "norm_update_branch_separately_quantized": true,
+    "SDPA_operations": 3,
+    "SDPA_and_MLP_weighted_updates_INT8_established": true,
+    "SDK_internal_accumulator_dtype_or_root_cause_established": false,
+    "candidate_accepted": false
+  },
+  "single_public_global_output_actual_normal": {
+    "worker_source_sha256": "cf864d804195437a6cea2d1ff147b6631e4018559f48bfad34b183c0a66fb2ac",
+    "worker_receipt_sha256": "fbcf874d61b55e8581576aa03d1b7ca88bde603472115a587fa4e680dceba4bd",
+    "independent_saved_audit_sha256": "01009d615ecd32837ba9ac223d73d48abcf163b5745832f60acd0f97044a5bdd",
+    "audit_source_sha256": "819da60ff717b7e1feec3be9c689827dac76f8a1cc7d5c66d451517cc848ed6f",
+    "controller_receipt_sha256": "bba3344d83b9e97b10dd16ed3fa1642404640734be05d374c77c5ff01162d498",
+    "input_id": "pair0",
+    "split": "calibration",
+    "heldouts_accessed": false,
+    "flags": 0,
+    "core_mask": 1,
+    "contexts_created": 2,
+    "contexts_destroyed": 2,
+    "runs_completed": 2,
+    "owned_outputs_saved": 3,
+    "owned_output_buffers_acquired": 3,
+    "owned_output_buffers_released": 3,
+    "all_resources_closed": true,
+    "finite_guard_unchanged": true,
+    "controller_1GHz_180s_75C_restore_verified": true,
+    "all_outputs_finite": true,
+    "A18_control_outputs_byte_equal_prior_run": true,
+    "comparisons": [
+      {
+        "route": "A18_control",
+        "name": "frame_output",
+        "finite": true,
+        "file_sha256": "a5e88ef3bbd21867d1fd1b3ff07a490141e10028627b4f211c30ba66e40ac163",
+        "nan_count": 0,
+        "positive_inf_count": 0,
+        "negative_inf_count": 0,
+        "byte_equal_prior_A18_run": true,
+        "relative_l2": 0.046186495439959244,
+        "max_abs": 0.7631521299481392
+      },
+      {
+        "route": "A18_control",
+        "name": "global_output",
+        "finite": true,
+        "file_sha256": "719d2116c9952153c88d89031f62fac683d8802c593ba6d3b25dad8c4aa3e66d",
+        "nan_count": 0,
+        "positive_inf_count": 0,
+        "negative_inf_count": 0,
+        "byte_equal_prior_A18_run": true,
+        "relative_l2": 0.21521676252882185,
+        "max_abs": 0.8821323215961456
+      },
+      {
+        "route": "single_global_output",
+        "name": "global_output",
+        "finite": true,
+        "file_sha256": "7958846c901c0b919e589117ccaa93c2901e93ae3697bd5693fad1092f5ee63f",
+        "nan_count": 0,
+        "positive_inf_count": 0,
+        "negative_inf_count": 0,
+        "relative_l2": 0.21048554536236244,
+        "max_abs": 0.8792320489883423,
+        "error_over_same_input_original_FP16": 34.66061494142465,
+        "error_change_relative_to_A18": -0.021983497525318474
+      }
+    ],
+    "global_relative_l2_error_change_relative_to_A18": -0.021983497525318474,
+    "global_error_reduction_percent_on_this_pair": 2.1983497525318474,
+    "global_error_over_matched_original_FP16": 34.66061494142465,
+    "single_run_full_boundary_seconds": {
+      "A18_control_two_outputs": 0.753548,
+      "single_global_output_one_output": 0.707624
+    },
+    "timing_limits": "One normal call per model, different public output counts and copy volumes; these observations are not a steady-state performance benefit or fresh-pose rate.",
+    "fixed_FP32_tensor_gate_passed": false,
+    "candidate_accepted": false,
+    "deployed": false
+  },
+  "saved_single_output_error_shape": {
+    "audit_sha256": "546da333ed26c33468b9e05ccf34bf32c1ddef9a9a913cef84292415e225964a",
+    "input_id": "pair0",
+    "calibration_only": true,
+    "cross_token_mean_fraction_of_error_energy": 0.9610044341085188,
+    "top_two_channel_fraction_of_error_energy": 0.7850184749915,
+    "top_two_channel_indices": [
+      693,
+      597
+    ],
+    "interpretation": "Most error energy is a nearly token-independent offset in a few channels. This localizes the saved endpoint error shape, without establishing V-constant, probability-row-mass, bias, or a particular operator as its cause. Static constant-path comparison is the next discriminator.",
+    "output_correction_or_new_model_inference_performed": false,
+    "single_V_constant_direction_comparison": {
+      "audit_sha256": "5f18222a0af4cd2bbf46a5378c76ffe78480b581732fd47af954a7d0df287559",
+      "mean_error_energy_fraction_explained_by_one_unconstrained_scalar": 0.251807,
+      "scope": "A single common scalar multiplying the saved V projection-bias difference and original LayerScale. This does not test independent per-head row-mass errors or downstream nonlinear amplification.",
+      "V_or_MLP_cause_established": false
+    }
+  },
+  "next_discriminator": "Compare the actual internal global attention residual and final MLP update with matched original FP32 intermediates. Require diagnostic/normal final-output byte parity before using NPU dumps for attribution. Localize the offset before another changed-graph calibration; do not apply an empirical output correction."
+}

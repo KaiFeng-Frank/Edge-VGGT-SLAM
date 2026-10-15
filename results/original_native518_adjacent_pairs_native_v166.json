@@ -1,0 +1,351 @@
+{
+  "schema": "original_native518_adjacent_pairs_native_v166",
+  "date": "2026-10-15",
+  "status": "four_original_blocks_connected_native_byte_causality_and_resources_verified_no_quality_or_rate_acceptance",
+  "conclusion": "Two adjacent original aggregator pairs execute through their own native outputs with an owned FLOAT16 interpair handoff. Two complete calls average 1.208784372 s; original FP32 diagnostics fail for both cases.",
+  "scope": {
+    "original_model_only": true,
+    "original_block_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "ordered_blocks": [
+      "frame0",
+      "global0",
+      "frame1",
+      "global1"
+    ],
+    "pair_indices": [
+      0,
+      1
+    ],
+    "remaining_pair_count_not_executed": 22,
+    "original_input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "final_global_output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "all_original_layers_weights_heads_and_tokens_preserved_within_four_block_scope": true,
+    "global_heads_per_pair": 16,
+    "global_queries_and_keys_per_pair": 2082,
+    "cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "reference": "Conditional original ONNX FP32 on captured original NPU image-encoder outputs; reused engineering cases.",
+    "image_encoder_and_final_heads_executed": false,
+    "full_24_pair_network_executed": false,
+    "init_flags": 0,
+    "original_per_context_internal_allocations": true,
+    "R165_external_shared_internal_scratch_used": false
+  },
+  "source_and_compiler_checks": {
+    "checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "pair0_models_unchanged_from_R164": true,
+    "pair1_parent": {
+      "bytes": 102418661,
+      "sha256": "4a7ee00cba84b4cdafb399c779bffacc6a0277a4dedc4f2bcaefcca8f9682906",
+      "nodes": 147,
+      "initializers": 80
+    },
+    "pair1_all147_original_node_protos_and80_initializer_protos_reconstruct_byte_equal": true,
+    "pair1_whole_parent_ModelProto_inverse_byte_equal": true,
+    "pair1_learned_values_added_or_modified": false,
+    "pair1_graph_keys": [
+      "frame0_branch",
+      "frame1_branch",
+      "frame_bridge",
+      "heads0_6",
+      "heads6_11",
+      "heads11_16",
+      "global_suffix"
+    ],
+    "pair1_seven_graph_node_counts": [
+      44,
+      44,
+      2,
+      31,
+      31,
+      31,
+      27
+    ],
+    "pair1_connected_node_count_including_external_original_view": 211,
+    "pair1_CPU_gate": {
+      "saved_arrays": 16,
+      "sequential_sessions": 8,
+      "original_and_mutual_comparisons": 6,
+      "all_fixed_and_strict_gates_passed": true,
+      "worst_relative_l2": 5.728037144483105e-08,
+      "worst_max_abs": 4.172325134277344e-07,
+      "input_scope": "Original captured FP32 pair0 outputs; connected NPU propagation is tested separately by this runtime."
+    },
+    "pair1_actual_compiler_placement": {
+      "audit_all_eight_models_including_unused_control": {
+        "operator_rows": 247,
+        "feature_rows": 405,
+        "constant_rows": 235
+      },
+      "seven_executed_candidate_graphs_learned_products": 19,
+      "seven_executed_candidate_graphs_SDPA": 5,
+      "all_original_learned_products_and_SDPA_FLOAT16_NPU": true,
+      "all_public_rank3_interfaces_and_activation_storage_FLOAT16": true,
+      "no_internal_CPU_GPU_arithmetic_or_layout": true,
+      "accumulator_precision_inferred_from_storage": false
+    },
+    "model_sha256": {
+      "pair0": {
+        "frame0_branch": "f219f99066088245411b6ecdff3127994c3226d0a14b60ab6cb1643ab8481cd0",
+        "frame1_branch": "d5367ce1595c172ec8bd7c46c5854013b7e8450615e7ab1c8a61a36e5242e0a3",
+        "frame_bridge": "608cdb41194d926992486893aedae844da9d39ec38f4cbf6b6de2db6697af555",
+        "heads0_6": "3abbb308d6d11ce79cd565cdada2ebaa5f1c9a7c3e02637957514050e7598a5e",
+        "heads6_11": "b2c86c010d6c76a9eeebb58b26ec8b55f5703a67ce9a41e521d86f585b0979ed",
+        "heads11_16": "fe3f1377c2c9097daaeb9add02461a21f41ff8a1d3204d542fe4534cebdfaa98",
+        "global_suffix": "947e965c5ab709a4a16faaba7467500c6340234793845f97fcb6c6992c67eb3a"
+      },
+      "pair1": {
+        "frame0_branch": "bf995e57727ab1b7e87956d576a1645906ccb0f09f616b086e7d189a1cbca376",
+        "frame1_branch": "79acaedd79c632e78ab4d605c52ae988f59705ebf6cc822e23474a6692d6f9a5",
+        "frame_bridge": "ec1f1163abe89e0d1bcbdbc23ac9551c89aad75a7bb4078369cb724c3621ad31",
+        "heads0_6": "8d6c37b5f6216848dc57df6eb64c7692739104063733c928037e41c95493b5f6",
+        "heads6_11": "f29da39c6410c7606e920d9f480896323972234881237b82953999f317bda62f",
+        "heads11_16": "8fa2b317f4aa7abf593163166d3c98556029b682a9b1714467e2a87fd8ff06f3",
+        "global_suffix": "08f27329723489ec46c795117f980cd0221b613eb8e8c2718dec837f0ac1ec5c"
+      }
+    }
+  },
+  "connected_execution": {
+    "resident_contexts": 14,
+    "persistent_cases_per_context": 2,
+    "per_pair_core_masks": {
+      "frame0_branch": 1,
+      "frame1_branch": 2,
+      "frame_bridge": 7,
+      "heads0_6": 1,
+      "heads6_11": 2,
+      "heads11_16": 4,
+      "global_suffix": 7
+    },
+    "actual_pair0_global_output_feeds_pair1": true,
+    "interpair_handoff": "Timed owned readonly CPU FLOAT16 copy followed by the original GLOBAL-to-FRAME view; both next frame consumers use that same owned half input.",
+    "interpair_FP32_roundtrip": false,
+    "reference_intermediate_injection": false,
+    "interpair_zero_copy_claimed": false,
+    "each_frame_actor_still_copies_input_into_independent_DMA_memory": true,
+    "current_generation_native_FD_edges_verified": 36,
+    "pair0_prior_R164_stage_byte_equal_checks": 14,
+    "pair1_original_FP32_equality_assumed": false,
+    "interpair_owned_copy_seconds": [
+      0.0012637920008273795,
+      0.0012518340008682571
+    ]
+  },
+  "saved_evidence_checks": {
+    "saved_arrays": 32,
+    "canonical_FLOAT32_stage_arrays": 28,
+    "owned_FLOAT16_input_arrays": 4,
+    "original_half_inputs": 2,
+    "actual_interpair_half_inputs": 2,
+    "saved_file_bytes": 221728768,
+    "raw_native_capacity_or_padding_arrays_saved": false,
+    "all_file_raw_shape_dtype_finite_checks_passed": true,
+    "all28_same_case_canonical_stage_mappings_verified": true,
+    "both_original_halfcasts_and_actual_interpair_handoffs_bit_exact": true
+  },
+  "original_FP32_final_diagnostics": {
+    "comparisons": [
+      {
+        "case_id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "relative_l2": 0.008351449568289433,
+        "max_abs": 0.025471508502960205,
+        "outside_count": 2076721,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "rtol": 0.0001,
+        "atol": 1e-05
+      },
+      {
+        "case_id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "relative_l2": 0.008282458176522458,
+        "max_abs": 0.026634305715560913,
+        "outside_count": 2075490,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "rtol": 0.0001,
+        "atol": 1e-05
+      }
+    ],
+    "fixed_thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001
+    },
+    "all_fixed_and_strict_gates_passed": false,
+    "tensor_error_is_ATE_or_RPE": false
+  },
+  "timing": {
+    "sampling": "One call for pair4 followed by one call for pair5 with all14 owners resident; no same-case repeats or ABBA.",
+    "complete_call_seconds": [
+      1.2232888319995254,
+      1.1942799120006384
+    ],
+    "mean_complete_call_seconds": 1.208784372000082,
+    "initialization_seconds": 1.2188171640009386,
+    "close_seconds": 0.589079725999909,
+    "init_calls_close_subtotal_seconds": 4.2254656340010115,
+    "init_calls_close_amortized_seconds_per_case": 2.1127328170005057,
+    "complete_timer_includes": [
+      "original_FLOAT32_finite",
+      "one_original_input_FLOAT16_cast",
+      "both_complete_pairs",
+      "interpair_owned_FLOAT16_copy_and_original_view",
+      "final_FLOAT32_copy_and_finite"
+    ],
+    "initialization_close_evidence_save_hash_and_reference_comparisons_outside_complete_call": true,
+    "lifecycle_subtotal_is_full_process_elapsed": false,
+    "matched_four_block_monolithic_baseline_measured": false,
+    "speedup_or_sustained_rate_established": false
+  },
+  "resources": {
+    "totals": {
+      "contexts_created": 14,
+      "contexts_destroyed": 14,
+      "runs_completed": 28,
+      "memories_created": 18,
+      "memories_imported": 18,
+      "memories_destroyed": 36,
+      "set_io_mem_attempts": 36,
+      "set_io_mem_successes": 36,
+      "output_buffers_acquired": 0,
+      "output_buffers_released": 0
+    },
+    "all_resources_and_reverse_DAG_cleanup_verified": true,
+    "all_resources_closed": true,
+    "actor_threads_readers_and_importing_consumers_closed": true,
+    "controller_frequency_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "controller_limit_c": 75,
+    "controller_restoration_verified": true,
+    "diagnostic_process_peak_RSS_MiB": 496.359375,
+    "physical_memory_or_8GB_budget_established": false
+  },
+  "evidence": [
+    {
+      "role": "connected four-block runtime",
+      "basename": "result.json",
+      "bytes": 209095,
+      "sha256": "473eb78555a726aacaeb74c215b908bdda5906c22f0cf3f0911f0e4c3e7255d1"
+    },
+    {
+      "role": "runtime transport",
+      "basename": "transport.json",
+      "bytes": 33003,
+      "sha256": "a909b3d7fd1caa0f6c664029215810f8f3d7f88018b16ca470c976f8295b225b"
+    },
+    {
+      "role": "restoring controller",
+      "basename": "control.json",
+      "bytes": 6059,
+      "sha256": "6959f63fcaa384b3f93fd189f271dea76936fd10f2f4d256857b357f1562d0cf"
+    },
+    {
+      "role": "runtime manifest",
+      "basename": "manifest.json",
+      "bytes": 16597,
+      "sha256": "d40c291fbd48e31cf258d825f38a5e6b6abd88e70eaa0d03e07241156bace791"
+    },
+    {
+      "role": "independent saved runtime audit",
+      "basename": "connected-native-r1-saved-audit-r1.json",
+      "bytes": 9863,
+      "sha256": "c15d4b712c7ec2b68a88111441a88fd3c000daaa102e3adbb15d86ef071535a2"
+    },
+    {
+      "role": "saved runtime auditor source",
+      "basename": "audit_adjacent_pairs_native_saved.py",
+      "bytes": 20142,
+      "sha256": "a2af75ee2ba3f822080ec8af158fe6a022e28f6730e25325011b06108dd15556"
+    },
+    {
+      "role": "runtime worker source",
+      "basename": "run_adjacent_pairs_native_board.py",
+      "bytes": 36368,
+      "sha256": "aecd87a699e3d6d2fa1a5b085518fd49b4875567b7a14191ea2e6250b1b146a9"
+    },
+    {
+      "role": "runtime transport source",
+      "basename": "execute_adjacent_pairs_native_host.py",
+      "bytes": 9334,
+      "sha256": "92be054e22958a704b65f0358e67f98ddb3439aba1d146d354115619adabdf80"
+    },
+    {
+      "role": "native IO adapter source",
+      "basename": "native_io_context_adjacent_pairs.py",
+      "bytes": 26506,
+      "sha256": "b8b2d1375acedaa82fdda69a8daf2c9af33699f99a66fddd0ccfe1ff19d19431"
+    },
+    {
+      "role": "pair1 static source and inverse proof",
+      "basename": "result.json",
+      "bytes": 21137,
+      "sha256": "91c1f6d8f93ccb6721470462729ae70b40bfdf403b058e880be63063831971a1"
+    },
+    {
+      "role": "pair1 independent CPU gate audit",
+      "basename": "pair1_CPU_audit.json",
+      "bytes": 21909,
+      "sha256": "03057333b3a3c2107d97fa9c3d4e996b132a3dcc99ba12701b02f0fcf9ca4f7b"
+    },
+    {
+      "role": "pair1 actual compiler placement audit",
+      "basename": "pair1_placement_audit.json",
+      "bytes": 630964,
+      "sha256": "477a615966e7cae4f1f94fd7b13299dd360c4256fbb18c79bc11a4cad7245a4c"
+    }
+  ],
+  "decision": {
+    "four_block_connected_native_causality_and_lifetime_gate_passed": true,
+    "candidate_accepted_for_deployment": false,
+    "original_FP32_tensor_gates_accepted": false,
+    "speed_or_sustained_realtime_accepted": false,
+    "full_model_trajectory_or_final_generalization_accepted": false,
+    "R165_shared_scratch_integrated_or_full_residency_accepted": false
+  },
+  "limits": [
+    "Only four original aggregator blocks execute. The remaining22 pairs, image encoder and final camera/depth heads are outside this run.",
+    "Two reused engineering cases with one call each do not establish a distribution, P95, sustained SLAM observation rate or 30-minute stability.",
+    "No matched four-block monolithic latency baseline was measured, and R164 first-pair latency is a separate scope and run.",
+    "The owned FLOAT16 interpair copy preserves producer bits; it is a CPU copy, not a zero-copy or shared-scratch result.",
+    "Both final original-FP32 fixed and strict diagnostics fail. Tensor errors do not establish decoded pose, ATE/RPE or map quality.",
+    "SDK fields and process RSS do not establish unique physical memory, full24-pair residency or an8GB result."
+  ],
+  "licensing": "Code and original pretrained-weight licenses remain separate. Raw arrays, weight-bearing exports and SDK binaries remain private."
+}

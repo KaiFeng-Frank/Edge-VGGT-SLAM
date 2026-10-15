@@ -1,0 +1,149 @@
+{
+  "schema": "recovered_original_native518_integration_v100",
+  "experiment_version": 100,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "original_experiment_status": "completed_actual_original_native_model_path_not_quality_or_realtime_accepted",
+    "scope": {
+      "prepared_image_HW": [
+        392,
+        518
+      ],
+      "DINO_layers_per_frame": 24,
+      "original_aggregator_blocks": 48,
+      "camera_refinements": 4,
+      "depth_frames": 2,
+      "frame_feature_cache_used": false,
+      "intermediate_reference_substitution": false,
+      "flags": 0,
+      "core_mask": 1,
+      "SDK_lifecycle": "one active model context at a time; initialization/hash/destruction included in timed route",
+      "timing_scope": "Read two real image files, original preprocessing/token preparation, two original24-layer DINO NPU chains, original finalnorm/special tokens, all48 original aggregator NPU blocks, original retained cats and global20 target norm, four original camera updates, two original DPT outputs/activations, original pose codec. Per-stage context creation, model hashing and destruction are included; startup lineage checks, checkpoint loading, reference comparison and output saving are outside this timer.",
+      "full_SLAM_backend_executed": false
+    },
+    "calls": [
+      {
+        "index": 0,
+        "phase": "first_recorded",
+        "complete_image_to_heads_seconds": 38.86479998799041,
+        "stage_seconds": {
+          "original_image_token_preparation_seconds": 0.29273215401917696,
+          "two_original_DINO24_chains_with_lifecycle_seconds": 11.621242001012433,
+          "DINO_group_lifecycle_seconds": [
+            2.854179452988319,
+            2.8615104539785534,
+            2.83483907696791,
+            3.070403849997092
+          ],
+          "original_norm_special_concat_seconds": 0.07322350703179836,
+          "all48_aggregator_and_consumers_seconds": 21.3404940610053,
+          "camera_and_depth_heads_with_lifecycle_seconds": 5.53110663901316,
+          "original_pose_codec_seconds": 0.005896041984669864
+        },
+        "comparisons": {
+          "pose_enc": {
+            "relative_l2": 0.0063260966421882425,
+            "max_abs": 0.00953662395477295,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false
+          },
+          "depth": {
+            "relative_l2": 0.01636689213340246,
+            "max_abs": 0.30479633808135986,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false
+          },
+          "depth_conf": {
+            "relative_l2": 0.06349588782686709,
+            "max_abs": 1.9273326396942139,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false
+          }
+        },
+        "decoded_pose_finite": true
+      },
+      {
+        "index": 1,
+        "phase": "warm_repeat_same_pair",
+        "complete_image_to_heads_seconds": 34.803346871980466,
+        "stage_seconds": {
+          "original_image_token_preparation_seconds": 0.15724947402486578,
+          "two_original_DINO24_chains_with_lifecycle_seconds": 9.520076540007722,
+          "DINO_group_lifecycle_seconds": [
+            2.380423404974863,
+            2.3796901979949325,
+            2.379585613962263,
+            2.380090614024084
+          ],
+          "original_norm_special_concat_seconds": 0.019474293978419155,
+          "all48_aggregator_and_consumers_seconds": 21.231461924966425,
+          "camera_and_depth_heads_with_lifecycle_seconds": 3.874088306038175,
+          "original_pose_codec_seconds": 0.0008811250445432961
+        },
+        "comparisons": {
+          "pose_enc": {
+            "relative_l2": 0.0063260966421882425,
+            "max_abs": 0.00953662395477295,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false
+          },
+          "depth": {
+            "relative_l2": 0.01636689213340246,
+            "max_abs": 0.30479633808135986,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false
+          },
+          "depth_conf": {
+            "relative_l2": 0.06349588782686709,
+            "max_abs": 1.9273326396942139,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false
+          }
+        },
+        "decoded_pose_finite": true
+      }
+    ],
+    "all_five_final_output_raw_hashes_repeat": true,
+    "SDK_totals": {
+      "contexts_created": 20,
+      "contexts_destroyed": 20,
+      "runs_completed": 36,
+      "output_buffers_acquired": 46,
+      "output_buffers_released": 46
+    },
+    "resources_balanced": true,
+    "persistent_context_attempt": "full-model-core1-r1 failed DMA allocation before any inference",
+    "decision": "Complete original native model execution succeeded with one active SDK context. Strict output precision and real-time acceptance failed; this run did not execute SL4 or a fresh-observation service."
+  },
+  "source_evidence": [
+    {
+      "archive": "v100-native518-integration-r1",
+      "file": "full-model-sequential-core1-r1/result.json",
+      "bytes": 98411,
+      "sha256": "4af7b9c4cbd38dbfd54c14b1308dd6035da25941f98f858a5ad13b781c3c8af6"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 166. The complete native original model runs with sequential NPU context lifetimes",
+    "section_sha256": "2748b893093bae699c8a8b41ee9d6f2e4f769af10fd93b783782be7d66f86bf9"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

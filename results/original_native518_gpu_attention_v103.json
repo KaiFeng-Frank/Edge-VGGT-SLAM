@@ -1,0 +1,185 @@
+{
+  "schema": "recovered_original_native518_gpu_attention_v103",
+  "experiment_version": 103,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "status": "both_FP32_candidates_pass_precision_but_rejected_for_performance",
+    "original_SDPA_shape": [
+      1,
+      16,
+      2082,
+      64
+    ],
+    "consumer_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "FP32_only": true,
+    "full_key_online_softmax": true,
+    "original_cpu_capture_whole_block_byte_equal": true,
+    "original_learned_parameters": 18,
+    "fixed_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001
+    },
+    "candidates": {
+      "r2": {
+        "query_tile": 4,
+        "key_tile": 32,
+        "calls": 4,
+        "first_boundary_seconds": 1.3750722630065866,
+        "warm_complete_seconds": [
+          1.138796990038827,
+          1.14622703200439,
+          1.1365698220324703
+        ],
+        "warm_mean_seconds": 1.1405312813585624,
+        "warm_kernel_mean_seconds": 1.110858191,
+        "comparison": {
+          "relative_l2": 7.087436907219308e-07,
+          "max_abs": 5.7220458984375e-06,
+          "outside_tolerance": 0,
+          "elements": 2131968,
+          "strict_tensor_pass": true,
+          "relative_l2_pass": true,
+          "max_abs_pass": true,
+          "fixed_gate_pass": true,
+          "byte_equal_original_CPU": false
+        },
+        "compiled_local_bytes": 18048,
+        "all_same_input_outputs_byte_equal": true,
+        "resources": {
+          "objects_created": {
+            "Context": 1,
+            "CommandQueue": 1,
+            "Program": 1,
+            "Kernel": 1,
+            "MemObject": 4,
+            "Event": 20
+          },
+          "objects_released": {
+            "Context": 1,
+            "CommandQueue": 1,
+            "Program": 1,
+            "Kernel": 1,
+            "MemObject": 4,
+            "Event": 20
+          },
+          "events_created": 20,
+          "events_released": 20,
+          "fully_released": true,
+          "cleanup_errors": []
+        },
+        "max_sampled_temperature_c": 63.769,
+        "automatic_GPU_frequencies_hz": [
+          300000000,
+          1000000000
+        ],
+        "GPU_policy_unchanged": true,
+        "NPU_remained_300MHz": true
+      },
+      "r3": {
+        "query_tile": 32,
+        "key_tile": 32,
+        "calls": 4,
+        "first_boundary_seconds": 0.8653263779706322,
+        "warm_complete_seconds": [
+          0.7925475379452109,
+          0.8050005810218863,
+          0.7916768709546886
+        ],
+        "warm_mean_seconds": 0.7964083299739286,
+        "warm_kernel_mean_seconds": 0.7667066373333333,
+        "comparison": {
+          "relative_l2": 7.087436907219308e-07,
+          "max_abs": 5.7220458984375e-06,
+          "outside_tolerance": 0,
+          "elements": 2131968,
+          "strict_tensor_pass": true,
+          "relative_l2_pass": true,
+          "max_abs_pass": true,
+          "fixed_gate_pass": true,
+          "byte_equal_original_CPU": false
+        },
+        "compiled_local_bytes": 29184,
+        "all_same_input_outputs_byte_equal": true,
+        "resources": {
+          "objects_created": {
+            "Context": 1,
+            "CommandQueue": 1,
+            "Program": 1,
+            "Kernel": 1,
+            "MemObject": 4,
+            "Event": 20
+          },
+          "objects_released": {
+            "Context": 1,
+            "CommandQueue": 1,
+            "Program": 1,
+            "Kernel": 1,
+            "MemObject": 4,
+            "Event": 20
+          },
+          "events_created": 20,
+          "events_released": 20,
+          "fully_released": true,
+          "cleanup_errors": []
+        },
+        "max_sampled_temperature_c": 61.0,
+        "automatic_GPU_frequencies_hz": [
+          300000000,
+          1000000000
+        ],
+        "GPU_policy_unchanged": true,
+        "NPU_remained_300MHz": true
+      }
+    },
+    "all_eight_GPU_outputs_byte_equal": true,
+    "first_compiler_failure": {
+      "error": "OpenCLBridgeError: clBuildProgram returned -11: <source>:119:39: error: expecting lvalue here\n            proj_input[destination] = accumulated[row] / row_sum[row];\n                                      ^~~~~~~~~~~\n\nerror: Compiler frontend failed (error code 62)\n",
+      "actual_kernel_runs": 0,
+      "all_OpenCL_objects_released": true,
+      "fix": "Static vector components replace variable float4 indexing. Original equations unchanged."
+    },
+    "decision": "Do not integrate either GPU implementation. Complete standalone calls remain slower than the existing NPU SDPA profile; further SDK interop would add work. This rejects these two implementations, not all possible GPU attention kernels.",
+    "comparison_scope": "NPU prior profile is about245ms for exSDPAttention on original global0. GPU complete boundary uses CPU FP32 post-RoPE operands and includes copies/uploads/kernel/readback/finite checks/event release. The unmatched boundary/precision/governor comparison is only a rejection screen, not an NPU-vs-GPU speedup benchmark.",
+    "not_validated": [
+      "actual NPU FP16 intermediate parity",
+      "SDK GPU interop",
+      "whole block or model speed gain",
+      "fresh observed pose rate/P95",
+      "ATE/RPE and native SLAM",
+      "dense map cadence",
+      "30-minute stability",
+      "8 GB memory"
+    ]
+  },
+  "source_evidence": [
+    {
+      "archive": "v103-native-attention-review-r1",
+      "file": "native-attention-analysis.json",
+      "bytes": 7047,
+      "sha256": "a79b65efe99311a3a3d2b3deab787f92716d85dfe1d1acbd79beda3752dbc954"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 169. Native GPU attention passes precision but remains slower than the NPU operator",
+    "section_sha256": "c2447d2503e0c93b0ea5b62af08c42216863b01141d595ce9e461378aca8d1cd"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

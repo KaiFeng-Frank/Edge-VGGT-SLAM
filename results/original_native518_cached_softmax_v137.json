@@ -1,0 +1,682 @@
+{
+  "schema": "original_native518_cached_softmax_v137",
+  "status": "cached_R5_one_head_strict_pass_all16_native_frame_block_endpoint_parity_verified_full_model_pending",
+  "original_model_only": true,
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "scope": "One real saved head15 of the original VGGT image-encoder block0 (DINO0), followed by a separate matched complete original image-encoder block0 integration with all16 heads and1041 queries/keys. This is distinct from aggregator frame0, which has Q/K normalization and RoPE. Isolated tests use OpenCL-owned buffers. Complete-block native runs import original RKNN DMA buffers; original FP32 quality and complete-model/SLAM acceptance remain separate.",
+  "original_tokens_heads_resolution_layers_and_parameters_retained": true,
+  "new_learned_models_or_parameters": 0,
+  "original_provenance": {
+    "score_capture_sha256": "35642cebe78eb9e985aefa4fc7d0e0605eac3e6931fc9b871057a2772817aa73",
+    "once_Half_CPU_reference_sha256": "62c577b880f6e597578a245c11ade531d705e3f8ebb0d41e3ec5852022bdcb5c",
+    "archived_GPU_probabilities_sha256": "8bf843970688e3ea2b8ad271f237940a4bc73da52e30d6af477f00d6cde6654c",
+    "original_softmax_source_sha256": "5cbb36e03e09c38db9e6769f067e3168e1cf7f67d719009601c4456e9f2b150a",
+    "related_results": [
+      "original_native518_shared_attention_v119.json",
+      "original_native518_three_core_block_v124.json"
+    ]
+  },
+  "unchanged_numeric_gates": {
+    "fixed": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001
+    },
+    "strict": {
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "outside_count_required": 0
+    },
+    "fixed_and_strict_results_reported_separately": true,
+    "strict_bit_equality_is_not_required": true
+  },
+  "strict_r1_r2": [
+    {
+      "variant": "r1",
+      "strategy": "Three-pass subgroup reductions",
+      "candidate_source_sha256": "734e385e5f56549353a401596218d6f03bb4d1c176d947538ceeb6078596d329",
+      "worker_receipt_sha256": "86060d92b5e487b101016b5bc74320c6216aa82ce38d95085c8e2fad7b0f70d1",
+      "controller_receipt_sha256": "6fbb29f62305fa3bb7b23b89cbfe1d15c7684b72498c79487327a018ca189ca0",
+      "status": "Stopped after first candidate call by the strict gate; both available outputs preserved",
+      "completed_calls": 2,
+      "actual_subgroup_width": 16,
+      "actual_subgroups_per_256_work_item_group": 16,
+      "candidate_local_bytes": 0,
+      "candidate_finite": true,
+      "padding_zero": true,
+      "error_flag_bits": 0,
+      "baseline_byte_equal_archived_GPU": true,
+      "candidate_relative_l2": 2.8721226843847127e-06,
+      "candidate_max_abs": 6.103515625e-05,
+      "fixed_gate_passed": true,
+      "strict_gate_passed": false,
+      "strict_outside_count": 1,
+      "strict_failure_index": [
+        754,
+        1
+      ],
+      "candidate_Half": 0.1009521484375,
+      "reference_Half": 0.10101318359375,
+      "seven_sample_ABBA_timing_available": false,
+      "all_resources_and_events_closed": true,
+      "precision_or_integration_accepted": false
+    },
+    {
+      "variant": "r2",
+      "strategy": "Subgroup reduction with compensated denominator sums",
+      "candidate_source_sha256": "875669f7c48e318eec7df4377ffdeb8f8240d895486ddadaec55e794f44e49fa",
+      "worker_receipt_sha256": "ece2942fa11c83954adfc3e66e0917034844911d97ede4203e29592c518240ed",
+      "controller_receipt_sha256": "73645785cf12412377ed3c13ca41930fc4018c3c2c64bafc50f4181d998003fa",
+      "status": "Stopped after first candidate call by the strict gate; both available outputs preserved",
+      "completed_calls": 2,
+      "actual_subgroup_width": 16,
+      "actual_subgroups_per_256_work_item_group": 16,
+      "candidate_local_bytes": 0,
+      "candidate_finite": true,
+      "padding_zero": true,
+      "error_flag_bits": 0,
+      "baseline_byte_equal_archived_GPU": true,
+      "candidate_relative_l2": 2.871582126606576e-06,
+      "candidate_max_abs": 6.103515625e-05,
+      "fixed_gate_passed": true,
+      "strict_gate_passed": false,
+      "strict_outside_count": 1,
+      "strict_failure_index": [
+        754,
+        1
+      ],
+      "candidate_Half": 0.1009521484375,
+      "reference_Half": 0.10101318359375,
+      "seven_sample_ABBA_timing_available": false,
+      "all_resources_and_events_closed": true,
+      "precision_or_integration_accepted": false
+    }
+  ],
+  "localized_rounding_diagnostic": {
+    "worker_receipt_sha256": "55ed6396bc7ccf3caff309f6914f50766a448ef93da0da0d0789f801c8866ca8",
+    "controller_receipt_sha256": "9ebe2fc23f0c72b3735cb093cf4ba43abad6c5cbb7a92b662ceda95b1e1381b9",
+    "instrumentation_preserved_both_uninstrumented_endpoint_files": true,
+    "saved_score_index": [
+      754,
+      1
+    ],
+    "observed_max_and_scaled_score_equal_between_routes": true,
+    "observed_scalar_and_vector_exp_values_equal_between_routes": true,
+    "observed_weight": 0.14095300436019897,
+    "original_denominator": 1.3958137035369873,
+    "compensated_denominator": 1.3958138227462769,
+    "original_FP32_probability": 0.1009826734662056,
+    "compensated_FP32_probability": 0.100982666015625,
+    "scalar_float64_saved_score_probability": 0.10098267976336378,
+    "adjacent_Half_midpoint": 0.100982666015625,
+    "float64_probability_above_midpoint": 1.3747738780711671e-08,
+    "nearest_FP32_scalar_float64_weight": 0.14095301926136017,
+    "nearest_FP32_scalar_float64_denominator": 1.3958138227462769,
+    "interpretation": "At this saved score, the observed GPU exp is one FP32 ULP below the nearest float64-derived value. The original lower denominator offsets that weight error across the Half midpoint; the compensated denominator reaches the nearer float64-derived sum but does not repair the probability rounding. This localized observation motivates preserving the original sum tree rather than changing gates.",
+    "actual_device_correctly_rounded_FP32_divide_sqrt_bit_present": false,
+    "limits": "Two instrumented samples establish this local rounding behavior, not a universal exp/divide root cause or a performance comparison."
+  },
+  "strict_r3_r4_negative_screens": {
+    "independent_saved_audit_sha256": "bf74e45c6d89c6a6bfd2bcedb44ef2f62f3b62eb98b23311aa3674fddd1f9036",
+    "variants": [
+      {
+        "variant": "r3",
+        "strategy": "Original 256-lane addition tree recreated with subgroup broadcasts",
+        "candidate_source_sha256": "39476e0f58b340036e13a650dea82d2b3416fd05d846a54a4157bc306d0467c7",
+        "worker_receipt_sha256": "47e7a25fbe1335a2f1992da8193a7203be17529d82eeea9f70d6058cfccc4ce4",
+        "controller_receipt_sha256": "bb2636d65f2809ea30064bcbfb0c957d2c3a28a88efefba5af9b5f29a8681082",
+        "saved_outputs": 16,
+        "all_outputs_byte_equal_archived_GPU": true,
+        "unchanged_fixed_gate_passed": true,
+        "unchanged_strict_gate_passed": true,
+        "first_call_per_route_excluded": true,
+        "later_samples_per_route": 7,
+        "timing": {
+          "A": {
+            "kernel_mean_seconds": 0.0026759408571428575,
+            "kernel_median_seconds": 0.0026768760000000003,
+            "outer_mean_seconds": 0.003838167000139947
+          },
+          "B": {
+            "kernel_mean_seconds": 0.0057776394285714286,
+            "kernel_median_seconds": 0.005761698,
+            "outer_mean_seconds": 0.006863500857174846
+          }
+        },
+        "candidate_to_baseline_kernel_ratio": 2.1591058012919992,
+        "descriptive_kernel_latency_increase_fraction": 1.1591058012919992,
+        "GPU_before_after_observation_count": 0,
+        "GPU_observed_hz": null,
+        "continuously_fixed_GPU_clock_established": false,
+        "all_resources_and_events_closed": true,
+        "performance_or_integration_accepted": false
+      },
+      {
+        "variant": "cached-r4",
+        "strategy": "Four queries share a 256-work-item group with dynamically indexed private score caches",
+        "candidate_source_sha256": "d397a84a484d648d47fafa4fb4ae1f2f552cdaee70795cd652fdcd81e6548367",
+        "worker_receipt_sha256": "3d6adf7ebb8f891187626fc97783cbe36d91bba0b9b23fcac6b67aa00268de6b",
+        "controller_receipt_sha256": "6568bdb7d05ab88bde93f25d2cd651c44c5ef48d4cc3b6ee54b591426099e8f2",
+        "saved_outputs": 16,
+        "all_outputs_byte_equal_archived_GPU": true,
+        "unchanged_fixed_gate_passed": true,
+        "unchanged_strict_gate_passed": true,
+        "first_call_per_route_excluded": true,
+        "later_samples_per_route": 7,
+        "timing": {
+          "A": {
+            "kernel_mean_seconds": 0.002673145857142857,
+            "kernel_median_seconds": 0.0026750090000000003,
+            "outer_mean_seconds": 0.0037023338570309405
+          },
+          "B": {
+            "kernel_mean_seconds": 0.003826744285714286,
+            "kernel_median_seconds": 0.003833758,
+            "outer_mean_seconds": 0.004876334000073257
+          }
+        },
+        "candidate_to_baseline_kernel_ratio": 1.43155087309917,
+        "descriptive_kernel_latency_increase_fraction": 0.43155087309916995,
+        "GPU_before_after_observation_count": 32,
+        "GPU_observed_hz": 300000000,
+        "continuously_fixed_GPU_clock_established": false,
+        "all_resources_and_events_closed": true,
+        "performance_or_integration_accepted": false
+      }
+    ]
+  },
+  "cached_r5": {
+    "strategy": "Four queries share a 256-work-item group; each 64-lane query emulates the original 256 logical lanes. Named scalar caches and literal stages load/exp each key once while retaining original five-term partial sums and the 128/64/32/.../1 addition tree.",
+    "candidate_source_sha256": "090365b7f2820c34fbf5c7c3a83b11301776273abd9432766f0a4b1744b3061e",
+    "worker_source_sha256": "5f3f085b2d1388ceac5b4faee9735f9cf9468ceb267660cc085e514ccf71f2c5",
+    "worker_receipt_sha256": "3ec85edd3fa3daa9ec1e2e550962ae85b4a7fde4b6ad45613838ea326d239e9a",
+    "controller_receipt_sha256": "f777a0e432b9e201c420e0259e3cce60568e97f1594143c85da6901e683034a3",
+    "independent_saved_audit_sha256": "6a45e35f62497d2e399f0b2b9a1cbcfb2f1ecae61c1a02bacaccf9015845b81f",
+    "static_source_proof_sha256": "143dd6a2dfc55ed7d81a305bbd9c73a5c39cd76a790697909ed125891483d73c",
+    "global_work_items": 66816,
+    "local_work_items": 256,
+    "queries_per_group": 4,
+    "key_lanes_per_query": 64,
+    "workgroup_barriers": 15,
+    "candidate_reported_local_bytes": 1152,
+    "schedule": "ABBAABBAABBAABBA",
+    "saved_outputs": 16,
+    "all16_outputs_byte_equal_archived_GPU": true,
+    "all16_finite_and_padding_and_flag_checks_passed": true,
+    "fixed_gate_passed": true,
+    "strict_gate_passed": true,
+    "relative_l2_vs_once_Half_CPU": 1.119329399801063e-07,
+    "max_abs_vs_once_Half_CPU": 1.9073486328125e-06,
+    "strict_outside_count": 0,
+    "timing": {
+      "A": {
+        "first_kernel_seconds": 0.00266474,
+        "first_outer_seconds": 0.003705916999024339,
+        "subsequent_count": 7,
+        "kernel": {
+          "count": 7,
+          "mean_seconds": 0.0026733,
+          "median_seconds": 0.002669926,
+          "minimum_seconds": 0.002660125,
+          "maximum_seconds": 0.0026906250000000003,
+          "sample_stdev_seconds": 1.2479796125471542e-05,
+          "coefficient_of_variation": 0.004668311123133035
+        },
+        "outer": {
+          "count": 7,
+          "mean_seconds": 0.0038097504288348966,
+          "median_seconds": 0.0038196669993340038,
+          "minimum_seconds": 0.003782625000894768,
+          "maximum_seconds": 0.0038319169980240986,
+          "sample_stdev_seconds": 1.9739035228993498e-05,
+          "coefficient_of_variation": 0.0051811885312997045
+        }
+      },
+      "B": {
+        "first_kernel_seconds": 0.002035803,
+        "first_outer_seconds": 0.0031231670000124723,
+        "subsequent_count": 7,
+        "kernel": {
+          "count": 7,
+          "mean_seconds": 0.002036826142857143,
+          "median_seconds": 0.002038634,
+          "minimum_seconds": 0.0020235030000000003,
+          "maximum_seconds": 0.002043236,
+          "sample_stdev_seconds": 6.5421752607871726e-06,
+          "coefficient_of_variation": 0.0032119458421768802
+        },
+        "outer": {
+          "count": 7,
+          "mean_seconds": 0.0031570002860722263,
+          "median_seconds": 0.003171291999024106,
+          "minimum_seconds": 0.003038875001948327,
+          "maximum_seconds": 0.0032013339987315703,
+          "sample_stdev_seconds": 5.6113887419337616e-05,
+          "coefficient_of_variation": 0.01777443216172513
+        }
+      }
+    },
+    "candidate_to_baseline_kernel_ratio": 0.7619145411503172,
+    "descriptive_kernel_latency_reduction_fraction": 0.2380854588496828,
+    "candidate_to_baseline_outer_ratio": 0.828663279929784,
+    "descriptive_outer_latency_reduction_fraction": 0.17133672007021605,
+    "robustness": {
+      "all_seven_later_candidate_kernel_samples_faster_than_every_later_baseline_sample": true,
+      "three_later_complete_ABBA_block_kernel_ratios": [
+        0.7642271013362231,
+        0.7579718885765396,
+        0.7618458059782167
+      ],
+      "all49_independent_leave_one_out_mean_ratio_range": [
+        0.7608899285023492,
+        0.763569922873963
+      ],
+      "statistical_independent_replication_established": false
+    }
+  },
+  "exploratory_r1": {
+    "status": "Exploratory timing only; the known strict failure remains recorded and acceptance remains false",
+    "worker_source_sha256": "b8528c01bfc7505bab21a3022d5ad932c004dc37aada9c44890af1cc936fb0e9",
+    "candidate_source_sha256": "734e385e5f56549353a401596218d6f03bb4d1c176d947538ceeb6078596d329",
+    "worker_receipt_sha256": "e6434121a41f3c3487a189dc4b45bd620577e5be8e1c2d166ce86325e82fbfd9",
+    "controller_receipt_sha256": "09361ab20756a82765dac8841e6db48e7b41e201bbe57d8bcd26c842319e313c",
+    "independent_saved_audit_sha256": "d55dcde1c7f4c341632edc80af45a5403c14a09369caf9f6447f33d706b938f1",
+    "schedule": "ABBAABBAABBAABBA",
+    "saved_outputs": 16,
+    "finite_flag_padding_and_unchanged_fixed_gate_enforced_per_call": true,
+    "baseline8_outputs_byte_equal_archived_GPU": true,
+    "candidate8_outputs_byte_equal_original_rejected_R1": true,
+    "candidate_relative_l2": 2.8721226843847127e-06,
+    "candidate_max_abs": 6.103515625e-05,
+    "fixed_gate_passed": true,
+    "strict_gate_passed": false,
+    "strict_outside_indices_per_candidate": [
+      [
+        754,
+        1
+      ]
+    ],
+    "no_numeric_gate_relaxed": true,
+    "strict_failure_diagnostic_does_not_stop_this_separate_exploratory_worker": true,
+    "precision_accepted": false,
+    "performance_accepted": false,
+    "timing": {
+      "A": {
+        "first_kernel_seconds": 0.0026932830000000003,
+        "first_outer_seconds": 0.003551334000803763,
+        "subsequent_count": 7,
+        "kernel": {
+          "count": 7,
+          "mean_seconds": 0.0026748065714285716,
+          "median_seconds": 0.0026708390000000004,
+          "minimum_seconds": 0.002656949,
+          "maximum_seconds": 0.002702125,
+          "sample_stdev_seconds": 1.763587600940332e-05,
+          "coefficient_of_variation": 0.006593327606483439
+        },
+        "outer": {
+          "count": 7,
+          "mean_seconds": 0.003732833714561171,
+          "median_seconds": 0.0037820420002390165,
+          "minimum_seconds": 0.0035011670006497297,
+          "maximum_seconds": 0.003837459000351373,
+          "sample_stdev_seconds": 0.00013101164063457802,
+          "coefficient_of_variation": 0.0350971006620314
+        }
+      },
+      "B": {
+        "first_kernel_seconds": 0.0025025,
+        "first_outer_seconds": 0.0032357499985664617,
+        "subsequent_count": 7,
+        "kernel": {
+          "count": 7,
+          "mean_seconds": 0.002388815714285714,
+          "median_seconds": 0.002396679,
+          "minimum_seconds": 0.002346318,
+          "maximum_seconds": 0.0024136970000000002,
+          "sample_stdev_seconds": 2.4207974207646917e-05,
+          "coefficient_of_variation": 0.010133881011782194
+        },
+        "outer": {
+          "count": 7,
+          "mean_seconds": 0.003522041715249153,
+          "median_seconds": 0.003558917000191286,
+          "minimum_seconds": 0.0032401250027760398,
+          "maximum_seconds": 0.0036423329984245356,
+          "sample_stdev_seconds": 0.00012979209686547877,
+          "coefficient_of_variation": 0.036851379784494445
+        }
+      }
+    },
+    "descriptive_kernel_latency_reduction_fraction": 0.1069202013325824,
+    "descriptive_outer_latency_reduction_fraction": 0.05646969981270611
+  },
+  "timing_scope": {
+    "device_kernel": "OpenCL profiling END minus START",
+    "outer_wall": "Flag reset, enqueue, finish and flag read",
+    "excluded": "Source-score upload, output poison/download, file saves, numerical comparisons, hashes, program build/query and GPU-state reads",
+    "first_call_per_route_reported_separately": true,
+    "later_samples_per_route": 7,
+    "scheduled_ABBA_balances_local_order": true
+  },
+  "frequency_and_resources": {
+    "R5_and_exploratory_R1_GPU_before_after_snapshots_per_attempt": 32,
+    "observed_GPU_hz": 300000000,
+    "GPU_governor": "simple_ondemand",
+    "GPU_min_hz": 300000000,
+    "GPU_max_hz": 1000000000,
+    "continuously_fixed_GPU_clock_established": false,
+    "R3_GPU_frequency_snapshots_available": false,
+    "R5_and_exploratory_R1_each_resources_created_and_released": {
+      "Context": 1,
+      "CommandQueue": 1,
+      "Program": 2,
+      "Kernel": 2,
+      "MemObject": 3
+    },
+    "events_created_and_released_each": 16,
+    "all_ownership_balanced": true,
+    "CPU_180_second_controller_completed_and_groups_gone_and_leaders_reaped": true,
+    "scope": "Isolated one-head R5 and exploratory R1 only; complete-block DVFS and restoring NPU controller are recorded separately below.",
+    "GPU_frequency_or_driver_changes": false
+  },
+  "full16_head_preparation": {
+    "status": "Executed matched complete-block board screen; independently saved-audited",
+    "parent_batch_source_sha256": "9e1fe632dd17e7bd74e5669970333ae4f4d469041ef70bad13519ca957a09680",
+    "candidate_batch_source_sha256": "69a61c822b047ef57c38722aee8446dc1692e764b7f9c459ec75208a76b4b5f0",
+    "candidate_bridge_source_sha256": "9d6d9b2201edc55e30c19c4af8938163edab7b350182af41a78d028fa7ad8895",
+    "independent_static_audit_sha256": "b831d4cc6dc20aee31f023a8ca41fc92c525256084bf675e58f29e02fbf40b71",
+    "only_original_softmax_kernel_and_bridge_hash_dispatch_changed": true,
+    "whole_batch_and_bridge_inverse_byte_equal": true,
+    "all_other_original_kernels_runtime_pack_merge_unchanged": true,
+    "exact_single_head_R5_math_body": true,
+    "original_arguments": 65,
+    "parameter_bytes": 520,
+    "global_work_items": 1069056,
+    "local_work_items": 256,
+    "build_options": "-cl-std=CL1.2",
+    "subgroup_dependency": false,
+    "generated_head_query_key_C4_A8_coverage_verified": true,
+    "all_tail_workgroup_barriers_retained": true,
+    "complete_block_latency_accepted": false,
+    "all16_probabilities_independently_dumped": false,
+    "complete_original_block_endpoint_parity_measured": true,
+    "worker_source_sha256": "bd31a55b8fc4a4e2cf575591a391563fc55585a254764ed763636294af7b0ce5",
+    "transport_source_sha256": "0d17d4d067e4ec6030b86147839f3575e356a7a68bb675300eb6f0334a2ad2e2",
+    "matched_comparison": "Two independent original native owners: current original kernel A and R5 kernel B in eight ABBAABBA calls. Four original fused core7 calls are a separate baseline."
+  },
+  "acceptance": {
+    "isolated_saved_R5_head_fixed_and_strict_gate_passed": true,
+    "imported_DMA_boundary_measured": true,
+    "full_original_model_validated": false,
+    "trajectory_or_SLAM_accuracy_validated": false,
+    "sustained_realtime_target_met": false,
+    "P95_pose_latency_validated": false,
+    "original_8GB_deployment_validated": false,
+    "complete_original_frame_block_native_endpoint_parity_measured": true,
+    "complete_original_frame_block_FP32_quality_accepted": false,
+    "complete_model_latency_or_sustained_realtime_accepted": false
+  },
+  "engineering_conclusions": [
+    "Replacing workgroup sums by mathematically more accurate subgroup sums can change a Half rounding decision; retain original addition order when claiming numerical equivalence.",
+    "Dynamic private cache indexing and subgroup collectives both had negative isolated timing results. Named scalar unrolling with the same four-query geometry gave a positive paired component result.",
+    "The R4-to-R5 source distinction does not prove a register-spill root cause without compiler/register/traffic evidence.",
+    "Keep unchanged fixed and strict gates separate: exploratory timing is allowed to report a fixed pass and strict failure without granting precision or integration acceptance.",
+    "The complete all16-head imported-DMA screen now preserves one original native image-encoder block0 endpoint, but its inherited original FP32 gates still fail. Its observed8.11% complete-call reduction is qualified by variable GPU DVFS, and the separate fused route remains faster."
+  ],
+  "publication": "Metadata only. Repository code is BSD-2-Clause; the original VGGT checkpoint and pinned implementation have separate noncommercial terms. The code license grants no weight rights. No captured arrays, weights, weight-bearing exports or SDK binaries are distributed. See MODEL_LICENSES.md and THIRD_PARTY_NOTICES.md.",
+  "actual_complete_original_frame_block": {
+    "worker_receipt_sha256": "00816fcdac1e4b834a43cd4495321729b3a21f6ccecff549c80fa9cbb10a4ece",
+    "controller_receipt_sha256": "ae7e45efa738a84f87a2a555cd88304e2a1cbc8ad25e459d1054f83259d95fc9",
+    "independent_saved_audit_sha256": "4dcb127ebf638bc0b977a5ede4cedb893ad2ae87b80e0b4e0d3139e90e88ad95",
+    "independent_audit_source_sha256": "4a2d85d236c87a6f871c16be4aeba6d5666307cd21130cc883b8a7a179ba4102",
+    "transport_receipt_sha256": "0ebc3ff8d90946db8a816973e7cdcffe5db2bc38535bb07ae7c195752df61585",
+    "original_input_capture_sha256": "aae907d5105f68d4b6d74bb733871e0971fb2c639ec8be8cb46a82176a706aa8",
+    "original_FP32_output_reference_sha256": "641f0cf05a8e7f6f0fb249442f02face88b80d6f65256d4c3dace4ddc87a0f52",
+    "original_parameters_verified": 14,
+    "original_shape": [
+      1,
+      1041,
+      1024
+    ],
+    "original_heads": 16,
+    "actual_imported_DMA_path": true,
+    "reference_intermediate_substitution": false,
+    "schedule": "ABBAABBA",
+    "matched_routes": {
+      "A": "Current original R124 native kernel, masks1/2/4",
+      "B": "R5 cached native kernel, masks1/2/4"
+    },
+    "native_final_outputs": 8,
+    "all8_native_outputs_byte_equal_independently_loaded_R121_and_R124": true,
+    "separate_fused_final_outputs": 4,
+    "all4_separate_fused_outputs_repeat_prior_bytes": true,
+    "owned_native_A_C_diagnostic_arrays": 8,
+    "all20_saved_array_file_raw_shape_dtype_finite_checks_passed": true,
+    "original_FP32_comparison_same_for_A_and_B": {
+      "relative_l2": 0.00025077124800209895,
+      "max_abs": 0.005247354507446289,
+      "outside_count": 135979
+    },
+    "original_FP32_residual_update_same_for_A_and_B": {
+      "relative_l2": 0.0004456586325252293,
+      "max_abs": 0.005247354507446289,
+      "outside_count": 165275
+    },
+    "original_fixed_and_strict_FP32_gates_passed": false,
+    "matched_later_sample_counts_per_route": 3,
+    "first_complete_call_reported_separately": true,
+    "matched_timings": {
+      "A": {
+        "first_complete_seconds": 0.2674879020014487,
+        "first_softmax_kernel_seconds": 0.056532934,
+        "complete": {
+          "samples_seconds": [
+            0.2858319040024071,
+            0.29611798800033284,
+            0.3052643230003014
+          ],
+          "count": 3,
+          "mean_seconds": 0.29573807166768046,
+          "median_seconds": 0.29611798800033284,
+          "minimum_seconds": 0.2858319040024071,
+          "maximum_seconds": 0.3052643230003014,
+          "sample_stdev_seconds": 0.009721778610022583
+        },
+        "softmax_kernel": {
+          "samples_seconds": [
+            0.048167988,
+            0.055332821,
+            0.056367825
+          ],
+          "count": 3,
+          "mean_seconds": 0.05328954466666667,
+          "median_seconds": 0.055332821,
+          "minimum_seconds": 0.048167988,
+          "maximum_seconds": 0.056367825,
+          "sample_stdev_seconds": 0.00446548601357258
+        },
+        "complete_softmax": {
+          "samples_seconds": [
+            0.08837763299743528,
+            0.099606217998371,
+            0.0954485090005619
+          ],
+          "count": 3,
+          "mean_seconds": 0.09447745333212272,
+          "median_seconds": 0.0954485090005619,
+          "minimum_seconds": 0.08837763299743528,
+          "maximum_seconds": 0.099606217998371,
+          "sample_stdev_seconds": 0.0056769262910676835
+        },
+        "softmax_bridge_wall": {
+          "samples_seconds": [
+            0.07444034099899,
+            0.08600959199975478,
+            0.08265571599986288
+          ],
+          "count": 3,
+          "mean_seconds": 0.08103521633286921,
+          "median_seconds": 0.08265571599986288,
+          "minimum_seconds": 0.07444034099899,
+          "maximum_seconds": 0.08600959199975478,
+          "sample_stdev_seconds": 0.005952428626847964
+        }
+      },
+      "B": {
+        "first_complete_seconds": 0.2725161529997422,
+        "first_softmax_kernel_seconds": 0.039212474,
+        "complete": {
+          "samples_seconds": [
+            0.28042086200002814,
+            0.28327348600214464,
+            0.25156665000031353
+          ],
+          "count": 3,
+          "mean_seconds": 0.2717536660008288,
+          "median_seconds": 0.28042086200002814,
+          "minimum_seconds": 0.25156665000031353,
+          "maximum_seconds": 0.28327348600214464,
+          "sample_stdev_seconds": 0.017540555212938857
+        },
+        "softmax_kernel": {
+          "samples_seconds": [
+            0.039204899,
+            0.038893944,
+            0.039003194
+          ],
+          "count": 3,
+          "mean_seconds": 0.03903401233333333,
+          "median_seconds": 0.039003194,
+          "minimum_seconds": 0.038893944,
+          "maximum_seconds": 0.039204899,
+          "sample_stdev_seconds": 0.00015775164106383703
+        },
+        "complete_softmax": {
+          "samples_seconds": [
+            0.07920638299765415,
+            0.07867738300046767,
+            0.07793671599938534
+          ],
+          "count": 3,
+          "mean_seconds": 0.07860682733250239,
+          "median_seconds": 0.07867738300046767,
+          "minimum_seconds": 0.07793671599938534,
+          "maximum_seconds": 0.07920638299765415,
+          "sample_stdev_seconds": 0.0006377673151979091
+        },
+        "softmax_bridge_wall": {
+          "samples_seconds": [
+            0.06531575699773384,
+            0.06476313099847175,
+            0.06513342299876967
+          ],
+          "count": 3,
+          "mean_seconds": 0.06507077033165842,
+          "median_seconds": 0.06513342299876967,
+          "minimum_seconds": 0.06476313099847175,
+          "maximum_seconds": 0.06531575699773384,
+          "sample_stdev_seconds": 0.00028158993463407223
+        }
+      }
+    },
+    "candidate_to_current_native_ratios": {
+      "complete": 0.9188998375095824,
+      "softmax_kernel": 0.7324891322959575,
+      "complete_softmax": 0.8320167887693872,
+      "softmax_bridge_wall": 0.8029937263863964
+    },
+    "descriptive_latency_reduction_fractions": {
+      "complete": 0.08110016249041763,
+      "softmax_kernel": 0.26751086770404253,
+      "complete_softmax": 0.16798321123061277,
+      "softmax_bridge_wall": 0.19700627361360357
+    },
+    "separate_fused_core7": {
+      "first_complete_seconds": 0.15600947399798315,
+      "subsequent": {
+        "samples_seconds": [
+          0.15182372399794986,
+          0.15142318200014415,
+          0.15564239000013913
+        ],
+        "count": 3,
+        "mean_seconds": 0.1529630986660777,
+        "median_seconds": 0.15182372399794986,
+        "minimum_seconds": 0.15142318200014415,
+        "maximum_seconds": 0.15564239000013913,
+        "sample_stdev_seconds": 0.002328961144498552
+      },
+      "original_FP32_comparison": {
+        "relative_l2": 0.025482275865970384,
+        "max_abs": 0.22928571701049805,
+        "outside_count": 886557
+      },
+      "original_FP32_residual_update_comparison": {
+        "relative_l2": 0.04528588958102344,
+        "max_abs": 0.22928571701049805,
+        "outside_count": 921999
+      },
+      "original_fixed_and_strict_FP32_gates_passed": false,
+      "candidate_native_to_separate_fused_duration_ratio": 1.7765962403394682,
+      "fused_still_faster": true,
+      "pooled_into_native_AB_comparison": false
+    },
+    "clock_observations": {
+      "NPU_requested_and_observed_hz": 1000000000,
+      "NPU_previous_governor_limits_restored": true,
+      "GPU_before_after_observed_hz": [
+        300000000,
+        400000000,
+        1000000000
+      ],
+      "GPU_governor": "simple_ondemand",
+      "GPU_frequency_or_driver_writes": false,
+      "GPU_frequencies_identical_across_routes": false,
+      "continuously_fixed_GPU_clock_established": false,
+      "fixed_clock_causal_speedup_established": false
+    },
+    "resources": {
+      "native_contexts_created_destroyed": 88,
+      "native_memories_created_destroyed": 264,
+      "native_product_runs": 352,
+      "GPU_events_created_released": 56,
+      "independent_DMA_imports": 224,
+      "per_route_native_sync_counts": {
+        "A": 1004,
+        "B": 1020
+      },
+      "all_native_threads_contexts_borrowed_bindings_memories_GPU_objects_fds_events_closed": true,
+      "separate_fused_context_run_buffer_ledger": [
+        1,
+        1,
+        4,
+        4,
+        4
+      ],
+      "worker_peak_rss_mib": 1136.0,
+      "physical_8GB_or_complete_model_memory_accepted": false
+    },
+    "timer_scope": "Complete native call includes original input upload/validation,44 native weighted/head products, all GPU kernels/RKNN synchronizations, final owned output/finite checks, and wrapper timing-detail copying. GPU softmax event duration is nested in bridge and complete-softmax wall intervals. Initialization, destruction, comparisons, saves and first-B diagnostic reads are separate.",
+    "controller": {
+      "requested_NPU_hz": 1000000000,
+      "timeout_seconds": 180,
+      "temperature_limit_c": 75,
+      "maximum_observed_temperature_c": 56.384,
+      "child_returncode_zero": true,
+      "NPU_frequency_governor_limits_restored": true,
+      "worker_elapsed_seconds": 10.308825118998357,
+      "controller_seconds": 11.290510759001336
+    },
+    "limitations": [
+      "This complete original image-encoder block0 uses one saved input; no individual all16 probability dumps, original encoder/global chains, complete-model or SLAM trajectory are covered.",
+      "The complete native mean reduction is descriptive over three later calls. GPU DVFS varies300/400/1000MHz at call boundaries; no fixed-clock causal gain or sustained throughput/P95 follows.",
+      "R5 preserves the original native endpoint bytes. The inherited Half-boundary numerical difference from original FP32 remains above both unchanged gates.",
+      "The separate fused baseline runs after the matched native schedule, is faster and has a different measured numerical error. It is not pooled into the matched A/B ratio.",
+      "No production default changes. Full-model, trajectory, sustained realtime and physical8GB acceptance remain outstanding."
+    ],
+    "original_block_identity": "Original image-encoder block0 (DINO0), not aggregator frame0"
+  }
+}

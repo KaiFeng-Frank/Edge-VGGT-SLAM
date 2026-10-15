@@ -1,0 +1,371 @@
+{
+  "schema": "original_native518_group2_frame_fc2_channel_first_v194",
+  "status": "matched_full_group2_layout_gain_observed_original_precision_full_model_and_realtime_unaccepted",
+  "original_model_only": true,
+  "scope": {
+    "board": "RK3588S",
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "original_pair_indices": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "original_learned_values": 216,
+    "original_attention_paths": 18,
+    "attention_heads": 16,
+    "per_frame_tokens": 1041,
+    "full_global_tokens_and_keys": 2082,
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "output_shapes": {
+      "frame_output": [
+        2,
+        1041,
+        1024
+      ],
+      "global_output": [
+        1,
+        2082,
+        1024
+      ]
+    },
+    "input": "One reused original FLOAT32 GLOBAL11 capture, right1024 channels reshaped to FRAME; identical for all CPU/NPU calls.",
+    "all_original_layers_heads_tokens_channels_and_weights_retained": true,
+    "connected_or_full_model_execution": false
+  },
+  "transformation": {
+    "frame_FC2_layout_rewrites": 12,
+    "original_weight_tensors": 6,
+    "derived_CF_weight_parts": 24,
+    "representation": "Each original frame FC2 uses four full-K 1024-channel 1x1 products in NCHW, left-associated P0+P1+P2+P3, then one return layout before original once-only bias, LayerScale and residual.",
+    "original_global_FC2_K4_unchanged": true,
+    "all18_original_attention_paths_and_exact_GELU_unchanged": true,
+    "original_graph_nodes": 863,
+    "original_graph_initializers": 479,
+    "candidate_graph_nodes": 1031,
+    "candidate_graph_initializers": 509,
+    "whole_original_graph_byte_inverse_verified": true,
+    "all216_original_learned_values_preserved": true,
+    "floating_point_reassociation_or_fusion_bit_identity_claimed": false
+  },
+  "compile_and_placement": {
+    "noncalibrating": true,
+    "do_quantization": false,
+    "calibration_dataset": null,
+    "float_dtype": "float16",
+    "optimization_level": 3,
+    "actual_operators": 483,
+    "internal_FLOAT16_NPU_operators": 480,
+    "public_FLOAT16_CPU_IO_operators": 3,
+    "actual_features": 794,
+    "all_activation_storage": "FLOAT16",
+    "actual_constants": 560,
+    "all126_original_learned_products_and18_full_attention_paths_FLOAT16_NPU": true,
+    "all12_frame_FC2_K4_paths_and36_ordered_fused_sums_FLOAT16_NPU": true,
+    "per_product_frame_FC2_transposes_or_internal_CPU_GPU_fallback": false,
+    "original_model": {
+      "bytes": 397920172,
+      "sha256": "95c39104f44f99328669c8412b8e78ea029abe50ef63add0b48117b093f9bb44"
+    },
+    "candidate_model": {
+      "bytes": 397485164,
+      "sha256": "2765fb977f32669d5de394b74fc21fc4f683227616fd179130f3ed3377dfc0af"
+    }
+  },
+  "CPU_gate": {
+    "original_fixed_thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001
+    },
+    "strict_diagnostic": {
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "required_for_gate": false
+    },
+    "candidate_sessions_created": 1,
+    "candidate_sessions_closed": 1,
+    "candidate_calls": 1,
+    "saved_full_FLOAT32_endpoints": 2,
+    "saved_NPY_bytes": 17056000,
+    "original_parent_ORT_reexecuted": false,
+    "parent_ORT_delta_measured": false,
+    "parent_ORT_payload_status": "Original saved full parent ORT payloads are unavailable; no matched parent delta is claimed.",
+    "original_Torch_full_references_reconstructed_with_exact_historical_file_and_raw_hashes": true,
+    "comparisons": [
+      {
+        "name": "frame_output",
+        "relative_l2": 3.0628804368141292e-06,
+        "max_abs": 0.00018268823623657227,
+        "byte_equal": false,
+        "fixed_gate_pass": true,
+        "strict_outside": 951,
+        "strict_pass": false
+      },
+      {
+        "name": "global_output",
+        "relative_l2": 2.4623350720108508e-06,
+        "max_abs": 0.000171661376953125,
+        "byte_equal": false,
+        "fixed_gate_pass": true,
+        "strict_outside": 657,
+        "strict_pass": false
+      }
+    ],
+    "both_original_fixed_gates_passed": true,
+    "both_strict_diagnostics_passed": false,
+    "CPU_call_seconds": 32.0332680940046,
+    "peak_RSS_MiB": 2314.609375,
+    "MemAvailable_preguard_bytes": 3758096384,
+    "CPU_thread_count": 1,
+    "CPU_core": 4,
+    "ORT_version": "1.16.0",
+    "ORT_graph_optimization": "ORT_DISABLE_ALL"
+  },
+  "matched_NPU_execution": {
+    "init_flags": 0,
+    "requested_core_mask": 7,
+    "core_mask_is_not_utilization_proof": true,
+    "CPU_core": 4,
+    "phase_order": [
+      "A_original",
+      "B_candidate",
+      "B_candidate",
+      "A_original"
+    ],
+    "contexts_sequential": true,
+    "maximum_live_contexts": 1,
+    "explicit_warmups_per_phase": 1,
+    "measured_calls_per_phase": 2,
+    "total_calls": 12,
+    "explicit_warmup_calls": 4,
+    "measured_calls": 8,
+    "measured_scope": "Same full group2 input; four measured calls per route across two separate contexts, after an explicit warmup in each phase.",
+    "timer_includes": "Original FP32 input preparation/finite, inputs_set, synchronous run, outputs_get, owned copies, release and both output finite scans.",
+    "timer_excludes": "Initialization/close, loading, hashes/repeat checks, saves, reference comparisons and JSON."
+  },
+  "timing": {
+    "A_original": {
+      "mean_whole_call_seconds": 3.8364594792510616,
+      "mean_SDK_run_seconds": 3.7345950630042353,
+      "measured_whole_call_seconds": [
+        3.8354046769964043,
+        3.842887468999834,
+        3.8393288030056283,
+        3.82821696800238
+      ],
+      "initialization_seconds": 1.9612362800107803,
+      "close_seconds": 0.44009671099775005
+    },
+    "B_candidate": {
+      "mean_whole_call_seconds": 3.6693970667474787,
+      "mean_SDK_run_seconds": 3.576799495254818,
+      "measured_whole_call_seconds": [
+        3.673294577994966,
+        3.668775284997537,
+        3.6645147020026343,
+        3.6710037019947777
+      ],
+      "initialization_seconds": 1.9274816530087264,
+      "close_seconds": 0.4752078400051687
+    },
+    "lifecycle_totals_scope": "Initialization and close totals are for two phase contexts per route, outside measured calls.",
+    "complete_call_reduction_percent": 4.3545986451079655,
+    "complete_call_reduction_seconds": 0.1670624125035829,
+    "SDK_run_call_reduction_seconds": 0.1577955677494174,
+    "summed_SDK_time_is_not_an_isolated_FC2_kernel_measurement": true
+  },
+  "original_FP32_feature_errors": {
+    "A_original": {
+      "frame_output": {
+        "relative_l2": 0.15489317631699057,
+        "max_abs": 3.071875810623169,
+        "outside_count": 2130967,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      "global_output": {
+        "relative_l2": 0.1298488799574948,
+        "max_abs": 2.6702985763549805,
+        "outside_count": 2131035,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      }
+    },
+    "B_candidate": {
+      "frame_output": {
+        "relative_l2": 0.1545822268180847,
+        "max_abs": 3.1679437160491943,
+        "outside_count": 2131039,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      "global_output": {
+        "relative_l2": 0.12952670050906914,
+        "max_abs": 2.8978376388549805,
+        "outside_count": 2131052,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      }
+    }
+  },
+  "candidate_vs_baseline_NPU_features": {
+    "frame_output": {
+      "relative_l2": 0.009461296155318995,
+      "max_abs": 0.630859375,
+      "outside_count": 2044964,
+      "fixed_gate_passed": false,
+      "strict_pass": false,
+      "byte_equal": false
+    },
+    "global_output": {
+      "relative_l2": 0.0074784102070730085,
+      "max_abs": 0.556640625,
+      "outside_count": 2039188,
+      "fixed_gate_passed": false,
+      "strict_pass": false,
+      "byte_equal": false
+    }
+  },
+  "verification": {
+    "independent_saved_CPU_audit_passed": true,
+    "independent_saved_NPU_audit_passed": true,
+    "independently_rehashed_full_FLOAT32_files": 4,
+    "saved_NPY_bytes": 34112000,
+    "original_and_cross_route_full_comparisons_recomputed": 6,
+    "same_policy_recorded_output_hashes_repeat_byte_equal": true,
+    "later_repeats_have_hash_telemetry_not_separately_saved_full_arrays": true,
+    "resources": {
+      "contexts_created": 4,
+      "contexts_destroyed": 4,
+      "runs_completed": 12,
+      "output_buffers_acquired": 24,
+      "output_buffers_released": 24
+    },
+    "all_resources_closed": true,
+    "all3_transport_pulls_succeeded": true,
+    "original_source_inputs_process_and_frequency_policy_restored": true,
+    "worker_peak_temperature_c": 62.846,
+    "controller_peak_temperature_c": 64.692,
+    "peak_process_RSS_MiB": 633.9296875,
+    "requested_frequency_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "controller_temperature_limit_c": 75,
+    "root_filesystem_floor_bytes": 536870912,
+    "data_filesystem_floor_bytes": 3221225472,
+    "process_RSS_and_SDK_fields_do_not_establish_unique_physical8GB_residency": true
+  },
+  "acceptance": {
+    "CPU_original_fixed_gate": true,
+    "CPU_strict_diagnostic": false,
+    "NPU_original_fixed_or_strict_tensor_precision": false,
+    "NPU_cross_route_fixed_or_strict_tensor_precision": false,
+    "matched_component_timing_observed": true,
+    "candidate_adopted": false,
+    "full_model_quality": false,
+    "trajectory": false,
+    "sustained_or_realtime_pose_rate": false,
+    "physical8GB": false
+  },
+  "decision": "Retain a modest matched full-group2 layout timing result. Large original-feature errors, worse maximum errors and nonidentical outputs prevent precision or deployment acceptance; no full-model speed or realtime breakthrough is claimed.",
+  "limits": [
+    "One reused original group2 input; no new data, fresh DINO/full-model/heads execution, decoded pose or trajectory test.",
+    "The graph inverse and preserved learned values establish original computation lineage, not FP16 numerical identity.",
+    "Original CPU fixed gates pass, while stricter diagnostics remain failed. Missing parent ORT payloads prevent a measured parent delta.",
+    "Candidate original-FP32 relative L2 is slightly lower but both endpoint maximum errors worsen; all NPU fixed and strict checks fail.",
+    "Eight measured calls omit separately reported phase initialization and close; no sustained rate, latency distribution or additive full-chain gain follows."
+  ],
+  "evidence": [
+    {
+      "role": "static_inverse_receipt",
+      "basename": "result.json",
+      "bytes": 16775,
+      "sha256": "ecaa62ea8c25213c21f599a0e1a7d9e8445b6d5bf510f9648200015ee0c57196"
+    },
+    {
+      "role": "static_exporter_source",
+      "basename": "export_group2_frame_fc2_cf_static.py",
+      "bytes": 19422,
+      "sha256": "9a73fcb595d6cfb88adc87f31b395b3e267736dbc049889f2c1394037506b1f4"
+    },
+    {
+      "role": "noncalibrating_compile_receipt",
+      "basename": "result.json",
+      "bytes": 4471,
+      "sha256": "fd4f88e1fb9504c6c78119adeb19b17e246970e951b8f1b491516218c5836172"
+    },
+    {
+      "role": "independent_placement_audit",
+      "basename": "compile-r1-placement-audit-r1.json",
+      "bytes": 1012792,
+      "sha256": "a6749393af56ce5027133a54eba524f029d2e012afbd9f37c89526c0a17cf84e"
+    },
+    {
+      "role": "CPU_worker_receipt",
+      "basename": "result.json",
+      "bytes": 8373,
+      "sha256": "4c315a81308bbf2ebca661bd1e25cd57dce3bc674717570bc14783abffe19421"
+    },
+    {
+      "role": "independent_saved_CPU_audit",
+      "basename": "CPU-r1-saved-audit-r1.json",
+      "bytes": 5990,
+      "sha256": "8d8792d53b8cdc3de702ec14caa3dfecf17c9785583dcaba2be1164d1f4a0120"
+    },
+    {
+      "role": "paired_NPU_worker_receipt",
+      "basename": "result.json",
+      "bytes": 77304,
+      "sha256": "349e94efa4ecb9725b78b7c0330ca3d0cc6edbae10b2890e987510dda232aaa8"
+    },
+    {
+      "role": "paired_NPU_controller",
+      "basename": "control.json",
+      "bytes": 38181,
+      "sha256": "9f6882ddcb0dad7bbfa0d1692017b1772db655c045c04564890fb46dd3c140ad"
+    },
+    {
+      "role": "paired_NPU_transport",
+      "basename": "transport.json",
+      "bytes": 24625,
+      "sha256": "780846c6fcb4949b066d5cd89c0e30bba0c829ea8b36442b7082c7d849a9c76c"
+    },
+    {
+      "role": "executed_NPU_worker_source",
+      "basename": "run_group2_frame_fc2_cf_paired_board.py",
+      "bytes": 28155,
+      "sha256": "32d129bf62e53e0a058929fe7535899654020667245d71246ff9457487af1df5"
+    },
+    {
+      "role": "executed_NPU_transport_source",
+      "basename": "execute_group2_frame_fc2_cf_NPU_host.py",
+      "bytes": 16481,
+      "sha256": "5c7dc952219562083f5e80f00454f2b3079f03f69e79d6a5a5a10480ffe2dfe9"
+    },
+    {
+      "role": "independent_saved_NPU_audit",
+      "basename": "paired-NPU-r1-saved-audit-r1.json",
+      "bytes": 14921,
+      "sha256": "bddc51592cf94c6385385aac53d908c584f4595b0b6ca860749f10e652d8a56c"
+    },
+    {
+      "role": "independent_saved_NPU_auditor_source",
+      "basename": "audit_group2_frame_fc2_cf_paired_saved.py",
+      "bytes": 16601,
+      "sha256": "bd3c69727a7c5129a3e7dd9419592f904142739fa6ebd8cceed9c8ba0f79933b"
+    }
+  ],
+  "publication": "Metadata and hashes only; private paths, input/output payloads, learned tensors, graphs and binaries remain private. Original-weight and SDK licenses remain separate from the repository license."
+}

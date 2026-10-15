@@ -1,0 +1,15 @@
+{
+  "schema": "v124_generated_native_owner_failure_smoke",
+  "status": "passed_fake_only",
+  "runtime_sha256": "bfee2265cd0c8685c45aa04cfbc21f905d54c5f029a63250259606ce59bb0454",
+  "script_sha256": "52cd8bd042115b67e28deb0c5a0043a963b1ce423bb0cbed4d08551ca95d9c16",
+  "checks": [
+    "borrower failure retains leader and workers; same-owner retry and idempotent ledger",
+    "busy timeout preserves GPU/native owners; terminal metrics refuses busy state; retry joins"
+  ],
+  "check_count": 2,
+  "all_fake_owner_threads_joined": true,
+  "model_SDK_OpenCL_board_or_array_execution": false,
+  "deployed_source_unchanged": true,
+  "numerical_or_performance_acceptance": false
+}

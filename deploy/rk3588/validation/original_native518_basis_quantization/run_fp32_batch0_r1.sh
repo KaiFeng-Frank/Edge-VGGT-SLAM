@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+exec env -u PYTHONPATH -u PYTHONHOME -u VIRTUAL_ENV LD_LIBRARY_PATH=/mnt/vggt-data/vggt-slam2/sysroot/usr/lib/aarch64-linux-gnu OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 CUDA_VISIBLE_DEVICES= taskset -c 4-7 /mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/bin/python -B -u /dev/shm/edge-vggt-v128-fp32-source-r1/check_captured_pair_fp32_board.py --capture-receipt /dev/shm/edge-vggt-v128-capture-batch0-r1/result.json --capture-sha256 cc2dd7fbddef8ee12de00b7a5cc88a16ba9d531783ab09ae8e66abe50df43408 --output-dir /dev/shm/edge-vggt-v128-fp32-batch0-r1

@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+exec env -u PYTHONPATH -u PYTHONHOME -u VIRTUAL_ENV LD_LIBRARY_PATH=/mnt/vggt-data/vggt-slam2/sysroot/usr/lib/aarch64-linux-gnu CUDA_VISIBLE_DEVICES= OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 taskset -c 4,6 /mnt/vggt-data/vggt-slam2/venv/bin/python -B -u /dev/shm/edge-vggt-v128-mixedA-dump-source-r1/dump_mixedA_calibration_board.py --profile-receipt /tmp/edge-vggt-v128-calibration-profile-r2/result.json --normal-source /dev/shm/edge-vggt-v128-mixedA-dump-source-r1/run_hybrid_pair_board.py --owned-source /dev/shm/edge-vggt-v128-mixedA-dump-source-r1/profile_owned_context_r2.py --output-dir /dev/shm/edge-vggt-v128-mixedA-dump-r1

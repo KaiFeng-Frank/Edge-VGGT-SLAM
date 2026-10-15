@@ -1,0 +1,375 @@
+{
+  "schema": "original_native518_pre_rope_query_consumers_v179",
+  "status": "fresh_pre_RoPE_producer_fixed_FP32_completion_and_three_full_key_consumers_verified_lower_global_error_original_tensor_gates_still_fail",
+  "original_model_only": true,
+  "scope": {
+    "component": "Complete global0 block from original FLOAT32 frame output to global output; the frame prefix and later blocks are not executed.",
+    "input_and_final_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "heads": 16,
+    "head_dimension": 64,
+    "query_ranges": [
+      [
+        0,
+        694
+      ],
+      [
+        694,
+        1388
+      ],
+      [
+        1388,
+        2082
+      ]
+    ],
+    "keys_per_consumer": 2082,
+    "complete_original_projection_residual_channel_norms_and_MLP_retained": true,
+    "reused_engineering_cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "original_FP32_reference": "Conditional original ONNX global output on the captured original encoder boundary; reused engineering cases.",
+    "fresh_final_generalization_holdout": false
+  },
+  "model_identity": {
+    "pre_rope_producer_sha256": "1167c99f1a0093e8da6e5dddefef00c267a91a60eb88550c186e838df28323f6",
+    "unchanged_R175_full_key_consumer_sha256": "50c388839cadae27936969c112d5251f61fc122b930a4e2c37762419c7b8b530",
+    "producer_original_learned_parameters_unchanged": true,
+    "consumer_original_parameters_and_full_key_source_unchanged": true,
+    "new_calibration_or_host_learned_forward": false,
+    "original_static_and_CPU_authorities_reused": true
+  },
+  "actual_data_flow": {
+    "producer_core_mask": 1,
+    "consumer_core_masks": [
+      1,
+      2,
+      4
+    ],
+    "init_flags": 0,
+    "resident_owners": 4,
+    "fresh_producer_runs": 2,
+    "fresh_consumer_runs": 6,
+    "all8_fresh_raw_producer_uint32_comparisons_equal_corrected_control": true,
+    "all_raw_prefix_guards_precede_consumer_dispatch": true,
+    "no_saved_reference_injected_as_consumer_input": true,
+    "all8_completed_full_FLOAT32_hashes_equal_corrected_control": true,
+    "fixed_CPU_RoPE_uses_only_four_original_nonlearned_coefficients": true,
+    "manual_completed_QK_halfcast": false,
+    "consumer_IO": "Unchanged ordinary FLOAT32 OwnedContext API with its normal SDK input conversion and owned output copies; no native/FD handoff.",
+    "all6_five_input_feed_fingerprints_reconstructed": true,
+    "Q_is_same_case_actual_completed_query_slice": true,
+    "K_Vc_mu_are_actual_complete_same_case_producer_objects": true,
+    "X_is_original_same_case_query_slice": true,
+    "final_is_ordered_concat_of_actual_three_row_outputs": true
+  },
+  "actual_saved_evidence": {
+    "lossless_FLOAT16_row_arrays": 6,
+    "total_NPY_bytes": 8528640,
+    "all_six_rows_saved_before_global_comparisons": true,
+    "all6_file_raw_shape_dtype_finite_and_half_roundtrip_checks_passed": true,
+    "all14_current_stage_hashes_verified": true,
+    "all8_completed_producer_values_and30_consumer_input_fingerprints_reconstructed": true,
+    "fresh_raw_producer_guard_audit_basis": "Frozen source and current uint32 comparison/hash telemetry agree with rehashed R178 raw payloads; duplicate prefix arrays are not saved.",
+    "original_CPU_row_concat_fixed_and_strict_gates_passed": true,
+    "case_results": [
+      {
+        "id": "pair4",
+        "actual_global_FLOAT32_raw_sha256": "ea343a665bd75d8e9c1f604a5064ca8ffab83ce4b76cf7114f4f86682d52291b",
+        "versus_original_FP32": {
+          "relative_l2": 0.0053745972775393405,
+          "max_abs": 0.01711219549179077,
+          "outside_count": 1143124,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        },
+        "versus_original_CPU_consumer_concat": {
+          "relative_l2": 0.0053745970025830606,
+          "max_abs": 0.017112165689468384,
+          "outside_count": 1143123,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        },
+        "original_CPU_concat_vs_original_FP32": {
+          "relative_l2": 4.690300252710771e-08,
+          "max_abs": 7.152557373046875e-07,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        },
+        "row_comparisons_vs_original_CPU": [
+          {
+            "relative_l2": 0.004696942949567257,
+            "max_abs": 0.01661098003387451,
+            "outside_count": 381934,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "byte_equal": false
+          },
+          {
+            "relative_l2": 0.0055218738722452925,
+            "max_abs": 0.0168229341506958,
+            "outside_count": 379694,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "byte_equal": false
+          },
+          {
+            "relative_l2": 0.005842840548692229,
+            "max_abs": 0.017112165689468384,
+            "outside_count": 381495,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "byte_equal": false
+          }
+        ],
+        "prior_R175_same_input_global_relative_l2": 0.01649676654863681,
+        "prior_R175_same_input_global_max_abs": 0.5255874693393707,
+        "diagnostic_seconds": {
+          "case": "pair4",
+          "complete_call_seconds": 0.7751787859888282,
+          "producer_owned_call_seconds": 0.34348040899203625,
+          "prefix_reference_guard_seconds": 0.007233918004203588,
+          "CPU_RoPE_completion_seconds": 0.0537492139992537,
+          "consumer_dispatch_collect_seconds": 0.3648623699991731,
+          "remaining_concat_and_other_seconds": 0.005852874994161539,
+          "consumer_actor_span_seconds": 0.364220411007409,
+          "consumer_SDK_sum_seconds_diagnostic": 0.5983419359981781
+        }
+      },
+      {
+        "id": "pair5",
+        "actual_global_FLOAT32_raw_sha256": "cb6e97cab8559ad0b6c5bfe4c76e1f552ab03979d060694f809256151086fd68",
+        "versus_original_FP32": {
+          "relative_l2": 0.005470486062156494,
+          "max_abs": 0.017483502626419067,
+          "outside_count": 1145557,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        },
+        "versus_original_CPU_consumer_concat": {
+          "relative_l2": 0.005470485706873635,
+          "max_abs": 0.01748347282409668,
+          "outside_count": 1145555,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        },
+        "original_CPU_concat_vs_original_FP32": {
+          "relative_l2": 4.94915776587553e-08,
+          "max_abs": 7.152557373046875e-07,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        },
+        "row_comparisons_vs_original_CPU": [
+          {
+            "relative_l2": 0.004844494358764353,
+            "max_abs": 0.016825109720230103,
+            "outside_count": 383140,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "byte_equal": false
+          },
+          {
+            "relative_l2": 0.005694834311786725,
+            "max_abs": 0.017093434929847717,
+            "outside_count": 381356,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "byte_equal": false
+          },
+          {
+            "relative_l2": 0.005825789410578783,
+            "max_abs": 0.01748347282409668,
+            "outside_count": 381059,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "rtol": 0.0001,
+            "atol": 1e-05,
+            "byte_equal": false
+          }
+        ],
+        "prior_R175_same_input_global_relative_l2": 0.018332577498384035,
+        "prior_R175_same_input_global_max_abs": 0.6136840581893921,
+        "diagnostic_seconds": {
+          "case": "pair5",
+          "complete_call_seconds": 0.6472547310113441,
+          "producer_owned_call_seconds": 0.2718508600082714,
+          "prefix_reference_guard_seconds": 0.007385001008515246,
+          "CPU_RoPE_completion_seconds": 0.04806579599971883,
+          "consumer_dispatch_collect_seconds": 0.31703057400591206,
+          "remaining_concat_and_other_seconds": 0.0029224999889265746,
+          "consumer_actor_span_seconds": 0.31668261499726214,
+          "consumer_SDK_sum_seconds_diagnostic": 0.5906826820137212
+        }
+      }
+    ]
+  },
+  "diagnostic_timing": {
+    "complete_call_mean_seconds": 0.7112167585000861,
+    "includes_first_and_only_call_per_case": true,
+    "complete_scope": "Original input and ordinary producer IO, raw reference byte guard, fixed FLOAT32 CPU completion, parallel ordinary consumer IO, own global concat and final finite check.",
+    "raw_prefix_guard_inside_complete_call": true,
+    "initialization_seconds": 0.37127645399596076,
+    "teardown_seconds": 0.18954335201124195,
+    "snapshots_hashes_and_numeric_comparisons_outside_complete_call": true,
+    "parallel_SDK_sums_are_diagnostic_not_additive_route_latency": true,
+    "prior_R175_timings_are_a_matched_speed_comparison": false,
+    "sustained_distribution_or_P95_established": false
+  },
+  "resources_and_controller": {
+    "contexts_created": 4,
+    "contexts_destroyed": 4,
+    "runs_completed": 8,
+    "output_buffers_acquired": 14,
+    "output_buffers_released": 14,
+    "maximum_live_contexts": 4,
+    "three_dedicated_consumer_threads_verified": true,
+    "submitted_jobs_drained_before_concat_and_close": true,
+    "all_resources_closed": true,
+    "cleanup_errors": [],
+    "native_IO_or_FD_handoff_used": false,
+    "original_sources_inputs_affinity_environment_and_policy_restored": true,
+    "NPU_frequency_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "controller_temperature_limit_c": 75,
+    "maximum_controller_sample_c": 57.307,
+    "controller_baseline_restored": true,
+    "all13_root_f_bfree_write_budget_checks_passed": true,
+    "output_root_filesystem_floor_bytes": 536870912,
+    "peak_process_RSS_MiB": 546.42578125,
+    "process_RSS_is_physical_unique_RAM": false
+  },
+  "acceptance": {
+    "original_FP32_fixed_and_strict_NPU_tensor_gates_passed": false,
+    "precision_equivalent_to_original_FP32_proven": false,
+    "exact_cause_of_old_producer_discrepancy_established": false,
+    "matched_component_speed_accepted": false,
+    "complete_pair_or_full_model_speed_measured": false,
+    "original_model_or_trajectory_quality_accepted": false,
+    "sustained_SLAM_or_realtime_rate_accepted": false,
+    "physical_8GB_operation_verified": false
+  },
+  "evidence": [
+    {
+      "role": "Actual corrected-producer and full-key consumer result",
+      "basename": "result.json",
+      "bytes": 77555,
+      "sha256": "8efa20b937d60144008dfbb79356a3070355e68092ba841be5548283ffbbf00c"
+    },
+    {
+      "role": "Executed producer-consumer worker source",
+      "basename": "run_pre_rope_query_consumers_board.py",
+      "bytes": 37813,
+      "sha256": "ece662e37efaa965267fbec5eaf45892f3bc610c4b4199df013d5ff89dd0da4e"
+    },
+    {
+      "role": "Actual transport and raw payload index",
+      "basename": "pre-rope-consumers-r1-transport.json",
+      "bytes": 53981,
+      "sha256": "8fb3913e411b92e867c652486772cdd9b727248853f1eeb5e0381a5fe6da9df6"
+    },
+    {
+      "role": "Executed transport source",
+      "basename": "execute_pre_rope_query_consumers_host.py",
+      "bytes": 19911,
+      "sha256": "eb1de0a1de4eb7af66954fffc81dc56877d8903f90055a2f796057d4ea5b6b92"
+    },
+    {
+      "role": "Actual restoring controller",
+      "basename": "control.json",
+      "bytes": 4260,
+      "sha256": "119e0a7134b5f3df168779b95b91a89ba9fe9aa91a436d3aa801f42f693f0a2d"
+    },
+    {
+      "role": "Executed source and model manifest",
+      "basename": "manifest.json",
+      "bytes": 31315,
+      "sha256": "0d7630a28c1c4c2e4552cc8799ba7a0a8911eabae7cd9429302818227d548e09"
+    },
+    {
+      "role": "Independent six-row and fresh-prefix saved audit",
+      "basename": "pre-rope-consumers-r1-saved-audit-r1.json",
+      "bytes": 12373,
+      "sha256": "1cb8c674b28eb82801484545d0af29392b07698d8de90967de53d14758651e0f"
+    },
+    {
+      "role": "Independent saved auditor source",
+      "basename": "audit_pre_rope_query_consumers_saved.py",
+      "bytes": 24736,
+      "sha256": "72cf4159e994906767c09904bb7db9b024b2991f47d0cbae6096504fa141f7f4"
+    },
+    {
+      "role": "Corrected producer control and raw boundary authority",
+      "basename": "result.json",
+      "bytes": 54955,
+      "sha256": "69241c44346d0577e52dfa1c6ca05bfa9596e4da76c987dc3c97057090c8f41c"
+    },
+    {
+      "role": "Corrected producer full-FLOAT32 completion audit",
+      "basename": "producer-pre-rope-r1-saved-audit-r1.json",
+      "bytes": 20678,
+      "sha256": "053e38360ea5e79bf757298d7c09bb55bfdecdd38a5991ddd59af5ca4613c1c2"
+    },
+    {
+      "role": "Unchanged dedicated owner actor source",
+      "basename": "owned_head_shard_workers.py",
+      "bytes": 6813,
+      "sha256": "78ccf0b6c57929dc84f0b3c3b43dc64de8a6d15c107da4bd830f17bea3a0a916"
+    },
+    {
+      "role": "Original full-key consumer static source and inverse",
+      "basename": "result.json",
+      "bytes": 23676,
+      "sha256": "d38a0922fcd58a46decbed3a1c9a292badae21e9f554094199ddabb13e3fbd85"
+    }
+  ],
+  "related_public_records": [
+    "original_native518_query_row_fusion_v174.json",
+    "original_native518_query_row_owned_abba_v175.json",
+    "original_native518_query_row_pre_rope_completion_v178.json"
+  ]
+}

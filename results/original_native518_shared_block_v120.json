@@ -1,0 +1,99 @@
+{
+  "schema": "recovered_original_native518_shared_block_v120",
+  "experiment_version": 120,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "review": {
+      "input_integrity": "Candidate prefix receives the original input; suffix receives the same residual input and actual shared attention. No captured QKV, attention or intermediate reset. Both first-B arrays match previously verified same-QKV component bytes.",
+      "numerical_scope": "FP32 cut composition is byte-identical to the original parent graph and passes all five original reference comparisons. Full mixed-device block cuts halve one tensor error but still fail strict FP32 and establish no trajectory acceptance.",
+      "performance_decision": "Reject this cut-graph deployment route. Original fused full block175.830ms versus actual cuts396.803ms. Prefix60.999ms plus suffix151.714ms already exceed the original complete block, before the candidate attention180.693ms. Do not expand the cut route across original layers or describe the earlier component gain as end-to-end acceleration.",
+      "GPU_initial_metrics": "New wrapper deep-copies initial/final nested bridge metrics, correcting the R119 caller snapshot defect without changing its frozen bridge kernel/synchronization implementation.",
+      "cpu_and_compile_limits": "Static export and FP32 check/compilation use board SDK Python with180s subprocess timeout. No NPU clock write, no fabricated thermal trace; runtime ABBA alone uses the existing restoring1GHz/75C controller."
+    },
+    "subsequent_three_means_seconds": {
+      "A": 0.17582987865898758,
+      "B": 0.39680269234425697
+    },
+    "whole_output_vs_original_CPU": {
+      "A": {
+        "relative_l2": 0.02548227586596754,
+        "max_abs": 0.22928571701049805,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 886557,
+        "byte_equal": false
+      },
+      "B": {
+        "relative_l2": 0.012733552657000926,
+        "max_abs": 0.1061205267906189,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 710993,
+        "byte_equal": false
+      }
+    },
+    "residual_update_vs_original_CPU": {
+      "A": {
+        "relative_l2": 0.04528588958101607,
+        "max_abs": 0.22928571701049805,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 921999,
+        "byte_equal": false
+      },
+      "B": {
+        "relative_l2": 0.02262946459352493,
+        "max_abs": 0.1061205267906189,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 761357,
+        "byte_equal": false
+      }
+    },
+    "summed_eight_call_lifecycle_seconds": 2.7840041099698283,
+    "all31_original_nodes_accounted": true,
+    "saved_audit_status": "passed",
+    "decision": "Reject separate prefix/shared-attention/suffix RKNN cuts. The full candidate396.803ms loses to fused175.830ms, despite improved component precision; prefix and suffix already exceed the original whole block."
+  },
+  "source_evidence": [
+    {
+      "archive": "v120-native518-shared-block-r1",
+      "file": "execution-review.json",
+      "bytes": 3186,
+      "sha256": "25301faa3e99b323077152d0c803a8d0d55be4e05dedcc7404e556df0bda63a3"
+    },
+    {
+      "archive": "v120-native518-shared-block-r1",
+      "file": "block-r1/result.json",
+      "bytes": 124981,
+      "sha256": "20db60443e0f542e3b6f8c38df531ba6e1595a91a8c62aedabf9eb5f83397d64"
+    },
+    {
+      "archive": "v120-native518-shared-block-r1",
+      "file": "shared-block-saved-audit.json",
+      "bytes": 40411,
+      "sha256": "807d054120e7e7570c2bedfa6d5c96898ed6f2635058fdc42a63ea9363236c73"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 186. A faster attention component does not make separate RKNN graph cuts a faster original block",
+    "section_sha256": "449009753866bb0acef17f96185a328b6cc4f2fb4510695affe8136a2841fe41"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

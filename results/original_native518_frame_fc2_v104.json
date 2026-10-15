@@ -1,0 +1,111 @@
+{
+  "schema": "recovered_original_native518_frame_fc2_v104",
+  "experiment_version": 104,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "status": "matched_component_speed_gain_ready_for_complete_group_validation",
+    "scope": {
+      "logical_shape": [
+        2,
+        1041,
+        1024
+      ],
+      "original_model_layer_resolution_token_reduction": false,
+      "selected_parent": "Existing two complete B1 branches, each retaining all1041tokens; current full native aggregator frame layout."
+    },
+    "original_FP32_gate": {
+      "status": "passed_complete_block_FP32_numerical_gate",
+      "thresholds": {
+        "relative_l2": 1e-05,
+        "max_abs": 0.001
+      },
+      "relative_l2": 9.235594183147066e-07,
+      "max_abs": 1.5735626220703125e-05,
+      "mean_abs": 2.9521906487507653e-08,
+      "whole_block": true,
+      "device": "CPUExecutionProvider",
+      "shape": [
+        2,
+        1041,
+        1024
+      ]
+    },
+    "matched_normal_ABBA": {
+      "frequency_hz": 1000000000,
+      "core_mask": 1,
+      "init_flags": 0,
+      "first_calls_per_route": 2,
+      "warm_calls_per_route": 6,
+      "A_warm_mean_seconds": 0.39494622734491713,
+      "B_warm_mean_seconds": 0.3067348361752617,
+      "time_reduction_percent": 22.3350383070296,
+      "timing_scope": "Whole single-block call: ctypes preparation, FP32 SDK input conversion/set, synchronous run, get/conversion, owned copy, release, finite check. Excludes saving/hash/reference comparison/platform checks/init/destroy.",
+      "A_reference_comparison": {
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "byte_equal": false,
+        "max_abs": 0.08353376388549805,
+        "relative_L2": 0.0017034232563576759
+      },
+      "B_reference_comparison": {
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "byte_equal": false,
+        "max_abs": 0.08304548263549805,
+        "relative_L2": 0.0017733172062094702
+      },
+      "continuous_rate_or_P95_established": false
+    },
+    "resources": {
+      "contexts_created": 5,
+      "contexts_destroyed": 5,
+      "output_buffers_acquired": 17,
+      "output_buffers_released": 17,
+      "cleanup_errors": []
+    },
+    "independent_saved_array_audit": {
+      "all17_outputs_verified": true,
+      "A_repeat_byte_equal": true,
+      "B_repeat_byte_equal": true,
+      "profile_byte_equal_B": true,
+      "A_byte_equal_prior_B1_baseline": true,
+      "candidate_byte_equal_baseline": false
+    },
+    "decision": "Advance unchanged original FC2 K4 to complete native aggregator-group verification. This one block does not establish whole-model latency, final pose/depth precision, trajectory quality or real-time operation.",
+    "not_validated": [
+      "all24 frame blocks and full model with this change",
+      "fresh-observation 20Hz and P95 <=100ms",
+      "ATE/RPE, SL4 and map quality",
+      "2\u20135s map cadence",
+      "30-minute stability",
+      "physical8GB deployment"
+    ]
+  },
+  "source_evidence": [
+    {
+      "archive": "v104-frame-fc2-review-r1",
+      "file": "frame-b1-fc2-analysis.json",
+      "bytes": 11978,
+      "sha256": "d12fe1de1809b549525a73abaf89182db4df0736e88ccc81e677c1ccd7253cf0"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 170. Frame FC2 K4 reduces complete-block time by 22.34% against the current layout",
+    "section_sha256": "060c7c0181c04067eb2d9a82a644d2d8959d3f4ec1950c671d1bb882ff628dff"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

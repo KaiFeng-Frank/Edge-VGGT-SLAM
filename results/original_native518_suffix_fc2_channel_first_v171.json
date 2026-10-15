@@ -1,0 +1,429 @@
+{
+  "schema": "original_native518_suffix_fc2_channel_first_v171",
+  "status": "reversible_full_suffix_layout_measured_component_gain_nonbyte_NPU_outputs_original_precision_gates_fail",
+  "original_model_only": true,
+  "scope": {
+    "component": "complete pair0 global suffix on the same captured NPU head/bridge outputs",
+    "input_roles": [
+      "part0",
+      "part1",
+      "part2",
+      "__global_input"
+    ],
+    "all_four_input_shapes": [
+      1,
+      2082,
+      1024
+    ],
+    "output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "conditional_original_suffix_CPU_reference": true,
+    "original_full_pair_or_model_executed_in_this_test": false,
+    "CF_connected_integration_measured": false
+  },
+  "original_source": {
+    "checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "parent_graph_sha256": "7e8e0ce93ce6bdc64a5a261124cdb6a85aac579637fad6b0e25c15b2088fbb98",
+    "candidate_graph": {
+      "basename": "suffix-fc2-channel-first.onnx",
+      "bytes": 33601123,
+      "sha256": "5c3e07ecc3d51d3c087ed0957539d96b00c62a43d37bb72a8b23fb0f7def46e7"
+    },
+    "original_nodes": 27,
+    "candidate_nodes": 31,
+    "original_initializers": 25,
+    "candidate_initializers": 27,
+    "whole_parent_ModelProto_inverse_byte_equal": true,
+    "public_IO_byte_unchanged": true,
+    "all2082_tokens_and1024_channels_retained": true,
+    "learned_parameter_values_changed": false,
+    "dense_MACs_changed": false
+  },
+  "rewrite": "Represent the same four original FC2 K4 products as bias-free 1x1 convolutions with reversible original-weight permutations. Keep their original left-associated sum in channel-first layout, then transpose the combined result once. Original FC2 bias, LayerScale and residual nodes remain byte-identical.",
+  "actual_placement": {
+    "operators": 27,
+    "internal_NPU_operators": 22,
+    "public_CPU_IO_operators": 5,
+    "feature_rows": 40,
+    "constant_rows": 18,
+    "all_rows_consumed": true,
+    "all_activation_storage_FLOAT16": true,
+    "FC1_and_four_FC2_learned_products_FLOAT16_NPU": true,
+    "FC2_Conv": 1,
+    "FC2_ConvAdd": 3,
+    "four_per_product_FC2_output_transposes_removed": true,
+    "combined_FC2_output_transposes": 1,
+    "no_internal_CPU_GPU_fallback": true,
+    "original_K4_dependency_order_retained": true,
+    "same_FLOAT16_rounding_boundaries_proven": false,
+    "FC2_bias_packed_dtype": "FLOAT",
+    "parent_FC2_bias_packed_dtype": "FLOAT16",
+    "historical_compile_CPU_pending_and_runtime_ineligible_flags_preserved": true,
+    "later_actual_board_CPU_gate_required_separately": true,
+    "compiled_models": {
+      "A_full": {
+        "bytes": 18113592,
+        "sha256": "947e965c5ab709a4a16faaba7467500c6340234793845f97fcb6c6992c67eb3a"
+      },
+      "B_CF": {
+        "bytes": 18079800,
+        "sha256": "408d4f2367e336f8764315c28d3e415012b7a44f21d60dc2954a119b5de3699b"
+      }
+    }
+  },
+  "board_CPU_gate": {
+    "sessions_created": 1,
+    "sessions_dropped": 1,
+    "calls": 2,
+    "original_FLOAT32_inputs": true,
+    "both_fixed_and_strict_gates_passed": true,
+    "comparisons": [
+      {
+        "id": "pair4",
+        "comparison": {
+          "relative_l2": 4.320506863987485e-08,
+          "max_abs": 5.960464477539062e-07,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        }
+      },
+      {
+        "id": "pair5",
+        "comparison": {
+          "relative_l2": 4.277939001579243e-08,
+          "max_abs": 4.76837158203125e-07,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        }
+      }
+    ]
+  },
+  "matched_native_test": {
+    "schedule": [
+      "A_full",
+      "B_CF",
+      "B_CF",
+      "A_full"
+    ],
+    "case_order_per_phase": [
+      "pair4",
+      "pair5"
+    ],
+    "complete_calls": 8,
+    "samples_per_policy_case": 2,
+    "first_calls_included": true,
+    "init_flags": 0,
+    "both_runtime_core_masks": 7,
+    "NPU_hz": 1000000000,
+    "maximum_live_runtime_owners": 2,
+    "separate_zero_forward_query_owner_closed_first": true,
+    "actual_candidate_native_descriptor_rows": 10,
+    "timer_includes": [
+      "four original FLOAT32 input finite scans and four readonly FLOAT16 casts",
+      "owned native DMA copies, synchronization, execution and finite guards",
+      "final owned FLOAT32 copy and finite check"
+    ],
+    "timer_excludes": [
+      "query, initialization and teardown",
+      "saving, hashing and comparisons"
+    ],
+    "complete_call_seconds": [
+      {
+        "phase_index": 0,
+        "route": "A_full",
+        "case_id": "pair4",
+        "seconds": 0.22080668900161982
+      },
+      {
+        "phase_index": 0,
+        "route": "A_full",
+        "case_id": "pair5",
+        "seconds": 0.20649118701112457
+      },
+      {
+        "phase_index": 1,
+        "route": "B_CF",
+        "case_id": "pair4",
+        "seconds": 0.1752632249990711
+      },
+      {
+        "phase_index": 1,
+        "route": "B_CF",
+        "case_id": "pair5",
+        "seconds": 0.16726393399585504
+      },
+      {
+        "phase_index": 2,
+        "route": "B_CF",
+        "case_id": "pair4",
+        "seconds": 0.167314432997955
+      },
+      {
+        "phase_index": 2,
+        "route": "B_CF",
+        "case_id": "pair5",
+        "seconds": 0.16441709999344312
+      },
+      {
+        "phase_index": 3,
+        "route": "A_full",
+        "case_id": "pair4",
+        "seconds": 0.20095393700466957
+      },
+      {
+        "phase_index": 3,
+        "route": "A_full",
+        "case_id": "pair5",
+        "seconds": 0.20337364499573596
+      }
+    ],
+    "means": {
+      "A_full": {
+        "mean_complete_call_seconds": 0.20790636450328748,
+        "mean_SDK_run_seconds": 0.11968367874578689,
+        "mean_native_boundary_seconds": 0.13244212799691013,
+        "mean_final_FLOAT32_copy_and_finite_seconds": 0.02600901299956604,
+        "mean_four_original_finite_scans_and_halfcasts_seconds": 0.0493769112508744
+      },
+      "B_CF": {
+        "mean_complete_call_seconds": 0.16856467299658107,
+        "mean_SDK_run_seconds": 0.09534483249808545,
+        "mean_native_boundary_seconds": 0.10709462575323414,
+        "mean_final_FLOAT32_copy_and_finite_seconds": 0.012596917498740368,
+        "mean_four_original_finite_scans_and_halfcasts_seconds": 0.04881800474686315
+      }
+    },
+    "overall_complete_reduction_percent": 18.92279324911399,
+    "per_case": [
+      {
+        "case_id": "pair4",
+        "mean_A_seconds": 0.2108803130031447,
+        "mean_B_seconds": 0.17128882899851305,
+        "reduction_percent": 18.774386020586586
+      },
+      {
+        "case_id": "pair5",
+        "mean_A_seconds": 0.20493241600343026,
+        "mean_B_seconds": 0.16584051699464908,
+        "reduction_percent": 19.075507804547055
+      }
+    ],
+    "initialization_seconds": 0.22050089700496756,
+    "close_seconds": 0.08610934199532494,
+    "timing_attribution": "The 39.341692 ms complete-call difference includes 24.338846 ms in SDK runs and 13.412096 ms in final FLOAT32 copy/finite checks. The whole difference is not attributable solely to removed NPU transposes; fusion and CPU/cache effects were not isolated."
+  },
+  "numerical_result": {
+    "four_first_FLOAT16_endpoint_files_losslessly_reconstruct_owned_FLOAT32": true,
+    "all_same_policy_case_repeats_byte_equal": true,
+    "all_A_endpoints_byte_equal_prior_native": true,
+    "all_B_endpoints_byte_equal_current_A": false,
+    "cases": [
+      {
+        "case_id": "pair4",
+        "A_vs_conditional_original_CPU": {
+          "relative_l2": 0.005365009734223984,
+          "max_abs": 0.01770913600921631,
+          "outside_count": 758400,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "B_vs_conditional_original_CPU": {
+          "relative_l2": 0.005366411834112781,
+          "max_abs": 0.016861259937286377,
+          "outside_count": 758296,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "B_vs_current_A": {
+          "relative_l2": 0.00020227123707188381,
+          "max_abs": 0.00390625,
+          "outside_count": 79920,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      {
+        "case_id": "pair5",
+        "A_vs_conditional_original_CPU": {
+          "relative_l2": 0.005455269750983876,
+          "max_abs": 0.017325222492218018,
+          "outside_count": 759883,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "B_vs_conditional_original_CPU": {
+          "relative_l2": 0.005456798356495365,
+          "max_abs": 0.017325222492218018,
+          "outside_count": 759846,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "B_vs_current_A": {
+          "relative_l2": 0.00020625931723672078,
+          "max_abs": 0.00390625,
+          "outside_count": 79349,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      }
+    ],
+    "original_fixed_and_strict_thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "all_original_fixed_and_strict_gates_passed": false,
+    "original_CPU_relative_L2_slightly_higher_for_B": true
+  },
+  "resources": {
+    "runtime": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 8,
+      "memories_created": 10,
+      "memories_imported": 0,
+      "memories_destroyed": 10,
+      "set_io_mem_attempts": 10,
+      "set_io_mem_successes": 10,
+      "output_buffers_acquired": 0,
+      "output_buffers_released": 0
+    },
+    "separate_query_contexts_created": 1,
+    "separate_query_contexts_destroyed": 1,
+    "separate_query_runs": 0,
+    "all_resources_closed": true,
+    "controller_restored": true,
+    "worker_before_call_sample_max_C": 58.23,
+    "controller_sample_max_C": 56.384,
+    "native_methods_unchanged_except_literal_model_allowlist": true,
+    "FD_imports_or_shared_scratch": false
+  },
+  "source_hashes": {
+    "static_exporter": "9c124c237039fa1f6f7b3076ef5a29c565dc38b5531705b705fd4688f16f3d3f",
+    "compiler": "4b05466c6b0097c217faf51a6cf8a3b18ccd91fb8eb551085a6cb406af2a4792",
+    "runtime_worker": "699375170b6e1a77c321ea103b173f9f06eb9e45d0dab337cf986b14971ea6f0",
+    "runtime_transport": "a248fde970fbe38e1cfa17562a6ad037b61c4556987a22cace1a6ab646a24504",
+    "native_adapter": "0027c3c80e7a2e969fa7099e290bfb277763453542206de0aee81664b5e2cd82",
+    "saved_runtime_auditor": "4cb234ac158da69aa6da294ec0b640b857b4e8e0110f3210ab5f4448f4b51ae3",
+    "manifest": "65d0c03fa8d701aa200d6d13f11cacd8a5d5ef8539c25b1c0cb769eb51e63a51"
+  },
+  "evidence": [
+    {
+      "role": "static_proof",
+      "basename": "result.json",
+      "bytes": 3320,
+      "sha256": "bae42fce5fcb9ba80f0776af819e3f2cddf355eaaeebcfceb7fbaa103f2ba4cc"
+    },
+    {
+      "role": "host_noncalibrating_compile",
+      "basename": "result.json",
+      "bytes": 3478,
+      "sha256": "31b0fa9538487f72aaeea3823d42412282248b116e598543971ac2391a243bed"
+    },
+    {
+      "role": "actual_placement_audit",
+      "basename": "host-compile-r1-placement-audit-r1.json",
+      "bytes": 48113,
+      "sha256": "562ba658db3cbd956272576e7485315f6a0b7611f86efe7816cbe870c28e5928"
+    },
+    {
+      "role": "board_CPU_gate",
+      "basename": "result.json",
+      "bytes": 21625,
+      "sha256": "ab22f638f1e56a717047227b29d15a3607dd42714eb0dfce89d61a080150f811"
+    },
+    {
+      "role": "independent_CPU_saved_audit",
+      "basename": "CPU-gate-r1-saved-audit-r1.json",
+      "bytes": 2632,
+      "sha256": "aee750d1b56eda88b280126893519fbf24052ba6d58f05e6441efdb09ba89e48"
+    },
+    {
+      "role": "native_ABBA_runtime",
+      "basename": "result.json",
+      "bytes": 62976,
+      "sha256": "b6c46f0c1a461f99be03a04ca8e5fe632d4b299fabd46f5b1859c64582dda969"
+    },
+    {
+      "role": "independent_native_saved_audit",
+      "basename": "native-ABBA-r1-saved-audit-r1.json",
+      "bytes": 9387,
+      "sha256": "bbbbca87f6d1155bbcb42194c3514b03dc44ac2c4b80a27e0776ff0539b47251"
+    },
+    {
+      "role": "runtime_transport",
+      "basename": "transport.json",
+      "bytes": 25997,
+      "sha256": "6daea5498b175e44172cd91a60139fac1a0d4d2267cb7244e72698e803a45938"
+    },
+    {
+      "role": "restoring_controller",
+      "basename": "control.json",
+      "bytes": 5343,
+      "sha256": "7d684ba2dcf6c0e392e837af0b68f32c249e15c4ae6a5acd90f3348fe3479542"
+    },
+    {
+      "role": "timing_breakdown",
+      "basename": "native-ABBA-r1-timing-breakdown-r1.json",
+      "bytes": 2456,
+      "sha256": "17dee5aa89cb581267f629f1013371c43a3cc87a63d3fc89bc54a2aeed28dfd6"
+    }
+  ],
+  "limits": [
+    "Two reused cases with two calls per policy/case in one ABBA screen establish a descriptive complete-suffix result, not sustained rate or P95.",
+    "The CPU references execute the original complete suffix on identical saved NPU partials/bridge. Both NPU policies fail unchanged original tensor gates; these are not trajectory metrics.",
+    "Three ConvAdd fusions can change numerical behavior; identical rounding boundaries are not proven. B is not byte-identical to A, and the observed difference is not assigned to one fused operation.",
+    "No CF row-partition or connected full-pair/model integration was measured. Full heads, decoded poses, trajectory quality, complete SLAM realtime and physical 8 GB feasibility remain unverified.",
+    "Original code, checkpoint and SDK terms remain separate; raw arrays, models and SDK artifacts stay private."
+  ],
+  "deployment_quality_trajectory_realtime_or_physical8GB_accepted": false
+}

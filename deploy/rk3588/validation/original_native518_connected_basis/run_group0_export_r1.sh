@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+exec env -u PYTHONPATH -u PYTHONHOME -u VIRTUAL_ENV LD_LIBRARY_PATH=/mnt/vggt-data/vggt-slam2/sysroot/usr/lib/aarch64-linux-gnu CUDA_VISIBLE_DEVICES= OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 taskset -c 4-7 /mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/bin/python -B -u /dev/shm/edge-vggt-v130-basis-group0-export-r1-source/export_retained_basis_groups_board.py --basis-source /dev/shm/edge-vggt-v130-basis-group0-export-r1-source/export_basis_pair_board.py --group-index 0 --output-dir /dev/shm/edge-vggt-v130-basis-group0-export-r1 --native-exporter-source /dev/shm/edge-vggt-v130-basis-group0-export-r1-source/export_native_retained_groups.py

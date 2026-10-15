@@ -1,0 +1,323 @@
+{
+  "schema": "recovered_original_native518_camera_precision_v113",
+  "experiment_version": 113,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "original_experiment_status": "completed_original_CameraHead_precision_diagnosis_not_quality_accepted",
+    "scope": {
+      "input_cut": "Original CameraHead reads only last retained tensor[:, :, 0]; supplied raw camera tokens",
+      "image_size_hw": [
+        392,
+        518
+      ],
+      "source_pair_indices": [
+        32,
+        40
+      ],
+      "camera_parameter_count": 69,
+      "counts": {
+        "camera_calls": 2,
+        "camera_refinements": 8,
+        "pose_codec_calls": 8
+      },
+      "timing_scope": "Observed CPU component calls only; wall includes controller cooling pauses if any; excludes file IO and model loading"
+    },
+    "route_definitions": {
+      "p0": "Original CPU head on original CPU tokens",
+      "p1": "Same original CPU head on actual NPU-derived tokens",
+      "p2": "Actual original NPU head on those same NPU-derived tokens"
+    },
+    "original_CPU_control": {
+      "cpu_control_input": {
+        "file_and_raw_sha256_equal_to_pinned_original_reference": true
+      },
+      "cpu_control_normalized_input": {
+        "file_and_raw_sha256_equal_to_pinned_original_reference": true
+      },
+      "cpu_control_pose0": {
+        "file_and_raw_sha256_equal_to_pinned_original_reference": true
+      },
+      "cpu_control_pose1": {
+        "file_and_raw_sha256_equal_to_pinned_original_reference": true
+      },
+      "cpu_control_pose2": {
+        "file_and_raw_sha256_equal_to_pinned_original_reference": true
+      },
+      "cpu_control_pose3": {
+        "file_and_raw_sha256_equal_to_pinned_original_reference": true
+      }
+    },
+    "actual_NPU_raw_token_reconstruction_byte_equal": true,
+    "final_iteration_comparisons": {
+      "pose_enc": {
+        "p1_vs_p0": {
+          "array_equal": false,
+          "raw_sha256_equal": false,
+          "l2_error": 0.015205910346128317,
+          "reference_l2_norm": 2.4337694317164345,
+          "relative_l2_error": 0.006247884515257566,
+          "max_abs_error": 0.00870293378829956,
+          "outside_fixed_element_gate": 16,
+          "strict_rtol_1e_4_atol_1e_5_pass": false
+        },
+        "p2_vs_p1": {
+          "array_equal": false,
+          "raw_sha256_equal": false,
+          "l2_error": 0.0030336321529131852,
+          "reference_l2_norm": 2.4238408490860923,
+          "relative_l2_error": 0.0012515805870905322,
+          "max_abs_error": 0.002016603946685791,
+          "outside_fixed_element_gate": 17,
+          "strict_rtol_1e_4_atol_1e_5_pass": false
+        },
+        "p2_vs_p0": {
+          "array_equal": false,
+          "raw_sha256_equal": false,
+          "l2_error": 0.015396260629841722,
+          "reference_l2_norm": 2.4337694317164345,
+          "relative_l2_error": 0.0063260966421882425,
+          "max_abs_error": 0.00953662395477295,
+          "outside_fixed_element_gate": 18,
+          "strict_rtol_1e_4_atol_1e_5_pass": false
+        }
+      },
+      "extrinsics": {
+        "p1_vs_p0": {
+          "array_equal": false,
+          "raw_sha256_equal": false,
+          "l2_error": 0.009160502037160893,
+          "reference_l2_norm": 2.449639515887722,
+          "relative_l2_error": 0.003739530644304302,
+          "max_abs_error": 0.007060924544930458,
+          "outside_fixed_element_gate": 18,
+          "strict_rtol_1e_4_atol_1e_5_pass": false
+        },
+        "p2_vs_p1": {
+          "array_equal": false,
+          "raw_sha256_equal": false,
+          "l2_error": 0.0031578319441418873,
+          "reference_l2_norm": 2.4496634926295786,
+          "relative_l2_error": 0.001289088053784942,
+          "max_abs_error": 0.0016252901004918385,
+          "outside_fixed_element_gate": 18,
+          "strict_rtol_1e_4_atol_1e_5_pass": false
+        },
+        "p2_vs_p0": {
+          "array_equal": false,
+          "raw_sha256_equal": false,
+          "l2_error": 0.00891995145094894,
+          "reference_l2_norm": 2.449639515887722,
+          "relative_l2_error": 0.003641332283014078,
+          "max_abs_error": 0.006934900768101215,
+          "outside_fixed_element_gate": 19,
+          "strict_rtol_1e_4_atol_1e_5_pass": false
+        }
+      },
+      "intrinsics": {
+        "p1_vs_p0": {
+          "array_equal": false,
+          "raw_sha256_equal": false,
+          "l2_error": 6.965285217015521,
+          "reference_l2_norm": 962.6259077848148,
+          "relative_l2_error": 0.007235713438301246,
+          "max_abs_error": 4.917816162109375,
+          "outside_fixed_element_gate": 4,
+          "strict_rtol_1e_4_atol_1e_5_pass": false
+        },
+        "p2_vs_p1": {
+          "array_equal": false,
+          "raw_sha256_equal": false,
+          "l2_error": 0.6696159140951081,
+          "reference_l2_norm": 968.24968663014,
+          "relative_l2_error": 0.0006915735923712139,
+          "max_abs_error": 0.485198974609375,
+          "outside_fixed_element_gate": 3,
+          "strict_rtol_1e_4_atol_1e_5_pass": false
+        },
+        "p2_vs_p0": {
+          "array_equal": false,
+          "raw_sha256_equal": false,
+          "l2_error": 6.893213729421681,
+          "reference_l2_norm": 962.6259077848148,
+          "relative_l2_error": 0.007160843764619089,
+          "max_abs_error": 4.589752197265625,
+          "outside_fixed_element_gate": 4,
+          "strict_rtol_1e_4_atol_1e_5_pass": false
+        }
+      }
+    },
+    "relative_geometry_diagnostics": {
+      "p1_vs_p0": {
+        "relative_rotation_difference_degrees": 0.23963576783788004,
+        "relative_translation_vector_difference_model_gauge": [
+          0.0011466548193348092,
+          -0.0003739204415759492,
+          -0.0070565937780026405
+        ],
+        "relative_translation_difference_l2_model_gauge": 0.007158920974495924,
+        "camera_center_differences_l2_model_gauge": [
+          4.240677238763377e-05,
+          0.007116298672768472
+        ],
+        "per_camera_rotation_difference_degrees": [
+          0.013485435885191747,
+          0.23110509874989985
+        ]
+      },
+      "p2_vs_p1": {
+        "relative_rotation_difference_degrees": 0.07593522193333327,
+        "relative_translation_vector_difference_model_gauge": [
+          -0.00015786135737823445,
+          -0.0004757424542255022,
+          0.000938001322956343
+        ],
+        "relative_translation_difference_l2_model_gauge": 0.0010635307107806772,
+        "camera_center_differences_l2_model_gauge": [
+          0.0009101324209859514,
+          0.0007203314859275992
+        ],
+        "per_camera_rotation_difference_degrees": [
+          0.10595193721880072,
+          0.05440673237948889
+        ]
+      },
+      "p2_vs_p0": {
+        "relative_rotation_difference_degrees": 0.29757964192909125,
+        "relative_translation_vector_difference_model_gauge": [
+          0.0009887934619565747,
+          -0.0008496628958014514,
+          -0.0061185924550462975
+        ],
+        "relative_translation_difference_l2_model_gauge": 0.0062559422294215005,
+        "camera_center_differences_l2_model_gauge": [
+          0.0009216929877135551,
+          0.006947197317396168
+        ],
+        "per_camera_rotation_difference_degrees": [
+          0.1135472978558472,
+          0.18954221557925774
+        ]
+      }
+    },
+    "all_four_refinements_p1_vs_p0": [
+      {
+        "array_equal": false,
+        "raw_sha256_equal": false,
+        "l2_error": 0.01607667682790548,
+        "reference_l2_norm": 2.4303505545944066,
+        "relative_l2_error": 0.0066149621080439005,
+        "max_abs_error": 0.010062456130981445,
+        "outside_fixed_element_gate": 17,
+        "strict_rtol_1e_4_atol_1e_5_pass": false
+      },
+      {
+        "array_equal": false,
+        "raw_sha256_equal": false,
+        "l2_error": 0.015330287127344997,
+        "reference_l2_norm": 2.433192178953463,
+        "relative_l2_error": 0.006300483480075415,
+        "max_abs_error": 0.008960306644439697,
+        "outside_fixed_element_gate": 14,
+        "strict_rtol_1e_4_atol_1e_5_pass": false
+      },
+      {
+        "array_equal": false,
+        "raw_sha256_equal": false,
+        "l2_error": 0.015209497904978431,
+        "reference_l2_norm": 2.4335992899282237,
+        "relative_l2_error": 0.0062497955057453265,
+        "max_abs_error": 0.008742332458496094,
+        "outside_fixed_element_gate": 16,
+        "strict_rtol_1e_4_atol_1e_5_pass": false
+      },
+      {
+        "array_equal": false,
+        "raw_sha256_equal": false,
+        "l2_error": 0.015205910346128317,
+        "reference_l2_norm": 2.4337694317164345,
+        "relative_l2_error": 0.006247884515257566,
+        "max_abs_error": 0.00870293378829956,
+        "outside_fixed_element_gate": 16,
+        "strict_rtol_1e_4_atol_1e_5_pass": false
+      }
+    ],
+    "actual_component_counts_and_cleanup": {
+      "counts": {
+        "camera_calls": 2,
+        "camera_refinements": 8,
+        "pose_codec_calls": 8
+      },
+      "hooks_removed": true,
+      "original_parameter_storage_identity_unchanged": true,
+      "saved_inputs_unchanged": true,
+      "affinity_restored": true,
+      "environment_restored": true,
+      "cleanup_errors": [],
+      "pinned_source_and_inputs_unchanged": true
+    },
+    "execution_controls": {
+      "root_launch_provenance": {
+        "schema": "v113_root_launch_provenance",
+        "evidence_kind": "root orchestration record; command was inline, not an executed launcher file",
+        "board": "RK3588S",
+        "execution": "board CPU FP32 only",
+        "timeout_seconds": 180,
+        "timeout_signal": "TERM",
+        "outer_adb_session_exit_code": 0,
+        "NPU_clock_policy_modified": false,
+        "NPU_thermal_controller_used": false,
+        "temperature_samples_collected": false,
+        "command": "timeout -s TERM 180 env -u PYTHONPATH -u PYTHONHOME -u VIRTUAL_ENV LD_LIBRARY_PATH=[private artifact path] OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 CUDA_VISIBLE_DEVICES= [private artifact path] -B -u [private artifact path] --output-dir [private artifact path] > [private artifact path] 2>&1",
+        "receipt_sha256": "22869179086da3473d2b945b61a452791f53c50a6e83545dfc5a3ecaba31c914",
+        "log_sha256": "75efe109728b04e5070ab6ad54ff31e426891d6711a81a3f1ab49626e8e25bd9",
+        "source_sha256": "e16e13894f08f89ce9a52a4cdfff4472c3f38e23d3e4e647b8c0d2fb1f0114b2"
+      },
+      "external_thermal_or_NPU_controller": false,
+      "external_temperature_history_available": false,
+      "root_reported_post_run_NPU_hz": 300000000,
+      "NPU_frequency_evidence": "Readonly post-run root check; not a historical sample during this CPU-only run"
+    },
+    "saved_audit_status": "passed_saved_evidence_audit_not_quality_or_deployment_acceptance",
+    "limits": [
+      "One original native518 pair [32,40], not the 16-pair R111 trajectory; no definitive explanation of its trajectory gap.",
+      "p1-p0 describes input perturbations propagated through the original CPU head, not raw input error alone. p2-p1 compares head execution on identical tokens.",
+      "Difference vectors sum; their norms and quality effects do not. Negative dot products reveal cancellation; no additive attribution percentages are assigned.",
+      "Raw pose-vector norms mix translation, quaternion and FoV units; separate components and gauge-invariant relative rotations are reported.",
+      "The 69-parameter original-state identity is checked against pinned metadata and board verification; the 864 MB NPZ is not independently rehashed on this host.",
+      "The audit loads only saved arrays and performs small NumPy statistics/geometry; no neural forward or original model operator executes.",
+      "No deployment, full-model timing, ATE/RPE, realtime, map quality, stability or 8 GB acceptance follows."
+    ],
+    "decision": "Preserve the same-token original-head precision diagnosis. Input-propagated and head-execution difference vectors are distinct, their norms are not additive error contributions, and this one pair does not explain or accept the v111 trajectory gap."
+  },
+  "source_evidence": [
+    {
+      "archive": "v113-native518-camera-precision-r1",
+      "file": "board-r1/result.json",
+      "bytes": 39951,
+      "sha256": "22869179086da3473d2b945b61a452791f53c50a6e83545dfc5a3ecaba31c914"
+    },
+    {
+      "archive": "v113-native518-camera-precision-r1",
+      "file": "camera-precision-saved-audit.json",
+      "bytes": 51281,
+      "sha256": "5801e67dfb3a10d6fb9cd59b60c0708fead1e9db571fb0e80d6781eca430a412"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 179. Same-token CameraHead controls separate upstream propagation from head execution error",
+    "section_sha256": "888b542c8fec9f84abe27648d86dcc75a73c53c40a685e8ad44701af2dce2c1f"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

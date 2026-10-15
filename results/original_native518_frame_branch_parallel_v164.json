@@ -1,0 +1,359 @@
+{
+  "schema": "original_native518_frame_branch_parallel_v164",
+  "date": "2026-10-15",
+  "status": "whole_frame_parallel_native_IO_passes_bounded_full_pair_engineering_screen_not_deployment_accepted",
+  "conclusion": "Two complete original frame branches run on dedicated owners before the unchanged global head-shard route. Matched complete-call means fall 12.02 percent with every tested stage reproducing prior NPU bytes. This passes the engineering progression screen, not original FP32 precision, full-model, trajectory or realtime acceptance.",
+  "scope": {
+    "original_model_only": true,
+    "complete_original_frame0_global0_pair": true,
+    "original_learned_values_preserved": 36,
+    "original_image_size": [
+      392,
+      518
+    ],
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "frame_branch_queries_keys": 1041,
+    "frame_heads": 16,
+    "global_queries_keys": 2082,
+    "global_heads": 16,
+    "final_global_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "reference_scope": "Conditional original ONNX FP32 on captured real NPU image-encoder inputs; not end-to-end original Torch.",
+    "reused_engineering_inputs_not_untouched_final_generalization": true,
+    "remaining_model_groups_heads_and_SLAM_outside_measurement": true
+  },
+  "static_and_CPU_gate": {
+    "original_F7_nodes_initializers": [
+      146,
+      79
+    ],
+    "new_graph_nodes": [
+      44,
+      44,
+      2
+    ],
+    "new_graph_initializers": [
+      33,
+      34,
+      1
+    ],
+    "original_first_and_second_role_Slices_on_full_input_unchanged": true,
+    "each_branch_preserves_norms_QK_RoPE_all_attention_projection_LayerScale_residuals_and_full_MLP": true,
+    "original_concat_axis0_frame_order_and_global_view_unchanged": true,
+    "whole_parent_inverse_ModelProto_byte_equal": true,
+    "existing_global_head_shards_and_suffix_unchanged": true,
+    "learned_values_or_original_operations_omitted": false,
+    "sequential_board_CPU_sessions_calls_saved_arrays": [
+      3,
+      6,
+      6
+    ],
+    "dual_original_frame_and_prior_CPU_prefix_comparisons": 4,
+    "all_four_dual_reference_FP32_comparisons_byte_equal_and_fixed_strict_passed": true,
+    "no_new_whole_pair_CPU_forward_claimed": true
+  },
+  "actual_three_model_compile": {
+    "nonquantized": true,
+    "new_calibration": false,
+    "actual_learned_products_FLOAT16_NPU": 8,
+    "actual_SDPA_FLOAT16_NPU": 2,
+    "all_original_dense_extents_and1041_key_attentions_preserved": true,
+    "all_actual_rows_consumed": true,
+    "public_rank3_FLOAT16": true,
+    "no_internal_CPU_GPU_arithmetic_or_layout": true,
+    "compiled_graphs": {
+      "frame0_branch": {
+        "bytes": 27930052,
+        "sha256": "f219f99066088245411b6ecdff3127994c3226d0a14b60ab6cb1643ab8481cd0"
+      },
+      "frame1_branch": {
+        "bytes": 27930308,
+        "sha256": "d5367ce1595c172ec8bd7c46c5854013b7e8450615e7ab1c8a61a36e5242e0a3"
+      },
+      "frame_bridge": {
+        "bytes": 56834,
+        "sha256": "608cdb41194d926992486893aedae844da9d39ec38f4cbf6b6de2db6697af555"
+      }
+    },
+    "operator_labels_are_not_accumulator_or_physical_core_occupancy_proof": true
+  },
+  "native_IO_and_shared_conversion": {
+    "new_native_descriptor_queries": 14,
+    "all_returned_success": true,
+    "all_actual_input_native8_equals10": true,
+    "only_documented_input_pass_through_changed_to1": true,
+    "output_native11_attrs_unchanged": true,
+    "frame_output_logical_bytes": 2131968,
+    "frame_output_native9_capacity_bytes": 2146304,
+    "bridge_output_logical_bytes": 4263936,
+    "bridge_output_native9_capacity_bytes": 4276224,
+    "max_native9_native11_output_capacity_allocated": true,
+    "trailing_padding_preserved_uninterpreted": true,
+    "two_case_native_gate_contexts_runs": [
+      3,
+      6
+    ],
+    "native_gate_stage_outputs_and_capacity_copies": [
+      6,
+      6
+    ],
+    "all_six_stages_equal_prior_R162_NPU_prefix_slices_or_full_output": true,
+    "one_timed_original_FP32_finite_scan_and_FP32_to_FP16_conversion_per_B_call": true,
+    "same_readonly_C_contiguous_CPU_half_array_fed_to_both_actors": true,
+    "each_actor_retains_its_own_input_DMA_copy_and_sync": true,
+    "all65536_binary16_finite_patterns_and39_generated_guard_lifetime_checks_passed": true,
+    "actual_current_generation_FD_producers_used_between_stages": true,
+    "no_internal_reference_reset": true,
+    "reverse_dependency_import_cleanup": true,
+    "no_model_buffer_zero_copy_flag": true,
+    "no_blanket_zero_copy_or_unknown_padding_interpretation_claim": true
+  },
+  "ordinary_ABBA": {
+    "phase_order": [
+      "A_fused",
+      "B_frame_branches",
+      "B_frame_branches",
+      "A_fused"
+    ],
+    "case_ids": [
+      "pair4",
+      "pair5"
+    ],
+    "complete_calls": 8,
+    "samples_per_policy_case": 2,
+    "init_flags": 0,
+    "NPU_hz": 1000000000,
+    "frame_core_masks": [
+      1,
+      2
+    ],
+    "bridge_and_suffix_core_mask": 7,
+    "global_head_core_masks": [
+      1,
+      2,
+      4
+    ],
+    "maximum_live_contexts": 7,
+    "timer_includes": "Input finite scan/conversion, two complete frame calls, bridge and unchanged global computation, all dispatch/drain/sync/finite work, final owned FP32 copy and final FP32 finite check.",
+    "timer_excludes": "Context initialization/destruction, intermediate/capacity evidence copies, saves, hashes, reference/repeat comparisons.",
+    "cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "policies": {
+          "A_fused": {
+            "complete_call_seconds": [
+              0.694479527999647,
+              0.6986719039996387
+            ],
+            "mean_complete_call_seconds": 0.6965757159996429,
+            "original_FP32_relative_l2": 0.005860724218305399,
+            "original_FP32_max_abs": 0.029351115226745605,
+            "original_fixed_gate_passed": false,
+            "original_strict_gate_passed": false,
+            "regional_relative_l2": {
+              "special10": 0.0318149145022378,
+              "camera2": 0.05368164398050558,
+              "register8": 0.028454095518949975,
+              "patch2072": 0.0057997581783669535
+            }
+          },
+          "B_frame_branches": {
+            "complete_call_seconds": [
+              0.6185875209994265,
+              0.6163983540027402
+            ],
+            "mean_complete_call_seconds": 0.6174929375010834,
+            "original_FP32_relative_l2": 0.0058607663379989785,
+            "original_FP32_max_abs": 0.029229044914245605,
+            "original_fixed_gate_passed": false,
+            "original_strict_gate_passed": false,
+            "regional_relative_l2": {
+              "special10": 0.031801448934751494,
+              "camera2": 0.053667547452674755,
+              "register8": 0.028440289424565553,
+              "patch2072": 0.00579985446069324
+            }
+          }
+        },
+        "complete_call_reduction_percent": 11.35307715760221
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "policies": {
+          "A_fused": {
+            "complete_call_seconds": [
+              0.6955706119988463,
+              0.6965150280011585
+            ],
+            "mean_complete_call_seconds": 0.6960428200000024,
+            "original_FP32_relative_l2": 0.005924104619950151,
+            "original_FP32_max_abs": 0.029600977897644043,
+            "original_fixed_gate_passed": false,
+            "original_strict_gate_passed": false,
+            "regional_relative_l2": {
+              "special10": 0.03336885253359904,
+              "camera2": 0.056096627745929425,
+              "register8": 0.02991562178172165,
+              "patch2072": 0.005858753980263137
+            }
+          },
+          "B_frame_branches": {
+            "complete_call_seconds": [
+              0.6114328939947882,
+              0.6039098940018448
+            ],
+            "mean_complete_call_seconds": 0.6076713939983165,
+            "original_FP32_relative_l2": 0.005920301160992604,
+            "original_FP32_max_abs": 0.028258204460144043,
+            "original_fixed_gate_passed": false,
+            "original_strict_gate_passed": false,
+            "regional_relative_l2": {
+              "special10": 0.033228713958236934,
+              "camera2": 0.05612842471392933,
+              "register8": 0.02973592039163694,
+              "patch2072": 0.005855474399166168
+            }
+          }
+        },
+        "complete_call_reduction_percent": 12.696262853725814
+      }
+    ],
+    "mean_complete_call_seconds": {
+      "A_fused": 0.6963092679998226,
+      "B_frame_branches": 0.6125821657496999
+    },
+    "mean_complete_call_reduction_percent": 12.02441301558893,
+    "all32_same_case_stage_mappings_and_repeated_final_bytes_verified": true,
+    "all66_saved_arrays_verified": true,
+    "all_original_full_and_regional_fixed_and_strict_diagnostics_still_fail": true,
+    "changed_final_numeric_error_vs_R162": false,
+    "previous_R163_timing_is_cross_run_only": true,
+    "no_isolated_causal_attribution_to_frame_scheduling_or_shared_conversion": true,
+    "lifecycle_outside_complete_call_timer": {
+      "A_fused": {
+        "initialization_seconds": [
+          0.23494073199981358,
+          0.28326998699776595
+        ],
+        "destruction_seconds": [
+          0.06474534000153653,
+          0.06502825699863024
+        ],
+        "calls_per_resident_phase": 2,
+        "contexts_per_phase": 1
+      },
+      "B_frame_branches": {
+        "initialization_seconds": [
+          0.6543303150028805,
+          0.7214039469981799
+        ],
+        "destruction_seconds": [
+          0.38786478900146903,
+          0.2754757359944051
+        ],
+        "calls_per_resident_phase": 2,
+        "contexts_per_phase": 7
+      }
+    },
+    "lifecycle_reuse_is_material_to_gain": true
+  },
+  "engineering_screen": {
+    "minimum_mean_complete_call_reduction_fraction": 0.1,
+    "both_cases_mean_faster": true,
+    "maximum_regional_L2_and_maxabs_ratio_to_A": 1.1,
+    "regions": [
+      "global",
+      "special10",
+      "camera2",
+      "register8",
+      "patch2072"
+    ],
+    "all_regional_error_ratios_within_predeclared_bounds": true,
+    "engineering_progression_heuristics_passed": true,
+    "original_fixed_and_strict_tolerances_unchanged": true,
+    "heuristics_are_not_user_trajectory_thresholds": true
+  },
+  "resources": {
+    "contexts_created_destroyed_runs": [
+      16,
+      16,
+      32
+    ],
+    "native_memories_allocated_imported_destroyed": [
+      22,
+      18,
+      40
+    ],
+    "native_IO_bindings": 40,
+    "SDK_outputs_get_release": 0,
+    "saved_canonical_rawcapacity_sharedhalf_arrays": [
+      32,
+      32,
+      2
+    ],
+    "all_contexts_actor_threads_readers_consumers_and_memories_closed": true,
+    "source_reference_environment_cwd_affinity_unchanged_or_restored": true,
+    "controller_frequency_governor_limits_restored": true,
+    "controller_timeout_seconds": 180,
+    "controller_temperature_limit_c": 75,
+    "maximum_worker_temperature_c": 61.0,
+    "maximum_controller_temperature_c": 60.076,
+    "peak_worker_rss_mib": 359.84375,
+    "RSS_does_not_establish_total_native_or_physical8GB_memory": true
+  },
+  "original_checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "evidence_sha256": {
+    "static_exporter_source": "2981be4052c23ee831e9224a0772bda235da6518c44537a5a742f684c0790a5f",
+    "static_inverse_proof": "91a66439f891202152470acd37d8e2d6815eee2e738738270e667ac110f618af",
+    "board_CPU_gate_and_three_compile_receipt": "8385216b7c4871ee34db42bce0fc6b74a956027f7e0498755975e7c920b91d83",
+    "independent_saved_CPU_and_placement_audit": "f59ef7082794572c5eef96c9ff34c2ec5545f0683512e2fb589a693704f458e3",
+    "actual_native_descriptor_receipt": "65ca4d31accf3ea352127e53339f83c47434f56460879052b60b95acd046c39b",
+    "actual_two_case_native_stage_byte_gate": "c48d9e7b7296ca3734757b16a55a50d5882bb87ec06b6cd89d35fea789ca9094",
+    "readonly_half_native_adapter": "1a88876d1e8efab83a37fb6b92bf8436e2df5e934814f84e3ac2778668c3f518",
+    "generated_half_input_guard_proof": "0a670936ec519d18f797a5808c611fdb8c9941d534946979318e2af851e212a0",
+    "executed_runtime_worker": "1461a378902a1aad71ccca7412aacf2946253313adcb476631091aea990765c4",
+    "actual_launch_manifest": "6e097f39b26d275c10256e892a91aa04cca7d22293390fc6247aec9ed776d9bf",
+    "board_ABBA_runtime_receipt": "55dfd9afbcb7128ab6be5760bc606b1ed652945488d51586c024dd4335594742",
+    "raw_pull_and_transport_receipt": "d161cb0d2c2bdea139dc5f49c9c543fc5bd620df4c89ffd278526c29421c8b3b",
+    "restoring_controller": "1e2722fbcfbb492704872a18643b36f83aca119501a6450cd3b5f5456cb8d1b1",
+    "saved_runtime_auditor_source": "9fc6fb89e9fa35270f716ff4db844adeacf1095b35614d6e12a36c3a83d30d44",
+    "independent_saved_runtime_audit": "950366aee6d639cce0e62a7965132320eb40f89251d6d254e2f4e0e987538ee7",
+    "predeclared_progression_screen": "5aa6e2defbf16ca0e6316e4337fb6ab681166d92e780be805366588696ada4ba"
+  },
+  "decision": {
+    "worth_next_bounded_original_model_integration": true,
+    "engineering_progression_screen_passed": true,
+    "deployment_or_new_original_precision_accepted": false,
+    "sustained_speed_or_P95_accepted": false,
+    "full_model_pose_trajectory_realtime_or8GB_accepted": false
+  },
+  "limits": [
+    "Two observations per policy/case support this descriptive matched component result, not sustained rate or endpoint P95.",
+    "The 12 percent call gain requires context reuse. Candidate phase initialization costs 0.654330/0.721404 s and destruction 0.387865/0.275476 s, versus fused 0.234941/0.283270 s and 0.064745/0.065028 s; constructing seven contexts per new inference could erase the gain. Persistent weights/shared scratch and four-layer integration are future source-review work, not measured acceptance.",
+    "Final byte equality preserves prior NPU feature errors; original FP32 fixed/strict diagnostics remain failures and do not establish pose or trajectory quality.",
+    "The full original pair configuration differs from the fused comparator; no component-duration subtraction or physical-core utilization claim identifies the cause of the gain.",
+    "Remaining original model groups, complete heads, SLAM/map cadence, camera, 30-minute stability and physical8GB operation are not measured here."
+  ],
+  "licensing": {
+    "original_checkpoint_terms_separate_from_repository_BSD_2_Clause": true,
+    "raw_model_arrays_weight_bearing_exports_and_SDK_binaries_remain_private": true
+  }
+}

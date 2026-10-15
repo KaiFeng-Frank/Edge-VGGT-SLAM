@@ -1,0 +1,55 @@
+{
+  "schema": "v125_generated_mean_preserving_residual_basis_algebra",
+  "status": "passed_generated_scalar_algebra_only",
+  "script_sha256": "0130df51f4aaa5aa7d43d2bbae470aa8b3525a900bf1417e16d3fb6d2c63acbe",
+  "row_vector_convention": true,
+  "basis": "R = ((J4 - 2 I4)/2) tensor-power k; D=4**k",
+  "integer_base_gram": "S.T*S=4I",
+  "integer_base_row_and_column_sums": 2,
+  "Kronecker_identity": "R.T*R=I, R*ones=ones, R.T=R",
+  "LayerNorm_identity": "LN0(xR;epsilon)=LN0(x;epsilon)R; same epsilon and dimension",
+  "input_linear_fold": "W_in'=R.T*diag(gamma)*W_in; b_in'=beta*W_in+b_in",
+  "output_linear_fold": "W_out'=W_out*diag(layer_scale)*R; b_out'=b_out*diag(layer_scale)*R",
+  "bare_norm_example_count": 40,
+  "affine_and_residual_example_count": 32,
+  "dimensions": [
+    4,
+    16,
+    64,
+    256,
+    1024
+  ],
+  "epsilon_values": [
+    1e-06,
+    1e-05
+  ],
+  "maximum_generated_float64_discrepancies": {
+    "involution": 1.0658141036401503e-14,
+    "mean": 8.881784197001252e-16,
+    "squared_norm_relative": 2.1810718561430206e-16,
+    "bare_LayerNorm_commutation": 1.3322676295501878e-15,
+    "input_affine_fold": 7.105427357601002e-15,
+    "output_LayerScale_fold": 3.552713678800501e-15,
+    "residual_addition": 3.552713678800501e-15
+  },
+  "arbitrary_orthogonal_LayerNorm_counterexample_max_abs": 2.3257776488208846,
+  "synthetic_impulse_only_max_abs_before_after": [
+    1024.0,
+    32.0
+  ],
+  "real_activation_or_quantization_improvement_measured": false,
+  "actual_VGGT_or_model_execution": false,
+  "checkpoint_or_captured_array_access": false,
+  "Torch_ONNX_SDK_GPU_or_board_execution": false,
+  "actual_FP32_or_FP16_equivalence_verified": false,
+  "compiler_placement_performance_trajectory_or_realtime_accepted": false,
+  "limits": [
+    "Algebra is over real arithmetic; finite precision and folded bias rounding change.",
+    "Proof is for LayerNorm with original mean subtraction, not replacing it with RMSNorm.",
+    "QKV internals, q/k normalization, RoPE, softmax and Erf remain in original coordinates.",
+    "Every residual-stream producer/consumer must use the same R or explicit inverse.",
+    "Retained features, final normalization, target-token export and heads require separate boundary handling.",
+    "The dense MAC count is unchanged; benefit would require better measured low-precision behavior.",
+    "A synthetic impulse is not evidence that real VGGT outliers or quantization errors improve."
+  ]
+}

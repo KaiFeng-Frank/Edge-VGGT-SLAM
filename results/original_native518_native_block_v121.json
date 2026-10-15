@@ -1,0 +1,98 @@
+{
+  "schema": "recovered_original_native518_native_block_v121",
+  "experiment_version": 121,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "status": "completed_full_block_screen_rejected_for_deployment",
+    "real_dataset_input": "Original v99/v100 native518 DINO0 input captured from TUM sequence; fresh complete block execution, no intermediate substitution",
+    "warm_means_seconds": {
+      "A": 0.17768853198504075,
+      "B": 0.4372243773347388
+    },
+    "slowdown_ratio": 2.460622373601172,
+    "original_baseline_vs_FP32": {
+      "relative_l2": 0.02548227586596754,
+      "max_abs": 0.22928571701049805,
+      "strict_rtol": 0.0001,
+      "strict_atol": 1e-05,
+      "strict_pass": false,
+      "outside_count": 886557,
+      "fixed_reference_gate_passed": false,
+      "byte_equal": false
+    },
+    "candidate_vs_FP32": {
+      "relative_l2": 0.00025077124800207287,
+      "max_abs": 0.005247354507446289,
+      "strict_rtol": 0.0001,
+      "strict_atol": 1e-05,
+      "strict_pass": false,
+      "outside_count": 135979,
+      "fixed_reference_gate_passed": false,
+      "byte_equal": false
+    },
+    "candidate_residual_update_vs_FP32": {
+      "relative_l2": 0.0004456586325251706,
+      "max_abs": 0.005247354507446289,
+      "strict_rtol": 0.0001,
+      "strict_atol": 1e-05,
+      "strict_pass": false,
+      "outside_count": 165275,
+      "fixed_reference_gate_passed": false,
+      "byte_equal": false
+    },
+    "mean_compute_partition": {
+      "weighted_SDK_seconds": 0.08754949498688802,
+      "attention_SDK_seconds": 0.036772903869859874,
+      "GPU_kernel_seconds": 0.06644762633333334,
+      "summed_serial_compute_seconds": 0.19077002519008124,
+      "remaining_wall_seconds": 0.24645435214465752
+    },
+    "measurement_scope_limit": "Summed measured kernel and SDK times describe this serial implementation only; not a lower bound for all possible implementations, full model, poses, or real-time capacity.",
+    "max_observed_temperature_c": 55.461,
+    "frequency_policy_restored": true,
+    "GPU_frequency_before_after_hz": [
+      300000000,
+      300000000
+    ],
+    "GPU_frequency_written": false,
+    "GPU_continuously_sampled": false,
+    "all14_parameter_raw_hashes_checked": true,
+    "runtime_source_and_inputs_unchanged": true,
+    "device_resources_balanced": true,
+    "precision_use": "Preserve as improved original-operator numerical comparison; neither strict tensor gate nor trajectory acceptance passed.",
+    "decision": "Reject current per-head serial NPU/GPU schedule for deployment; no full-model expansion of this schedule.",
+    "saved_audit_status": "passed",
+    "scope": "One complete original DINO0 at1041tokens: four original dense products,32 attention products, original FP32 norms/bias/LayerScale/residual/Erf and explicit native Half boundaries. Six persistent contexts;52 GPU stages per call."
+  },
+  "source_evidence": [
+    {
+      "archive": "v121-native518-native-block-r1",
+      "file": "execution-review.json",
+      "bytes": 4019,
+      "sha256": "73400b8fbffcadd5e5570a3baa3227d5d6325db9faf51802ac7e6cbcd804a7d6"
+    },
+    {
+      "archive": "v121-native518-native-block-r1",
+      "file": "native-dino-saved-audit.json",
+      "bytes": 31049,
+      "sha256": "15e06c44aa62276b838e418ee5852bf0c14fbf7977fcba4c75e716e6c48c0fea"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 187. Continuous native buffers improve original-block precision, but the serial schedule remains slower",
+    "section_sha256": "09adb58a03d0657b0cf9f38f8b599469ecabf876a0a62a3cb51c0529c154526c"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

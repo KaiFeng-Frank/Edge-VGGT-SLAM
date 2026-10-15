@@ -1,0 +1,176 @@
+{
+  "schema": "original_native518_historical_camera_onnx_coalescence_v181",
+  "status": "four_historical_original_ONNX_pairs_coalesced_all8_paths_payloads_retained_capacity_recovered_no_inference_or_RAM_acceptance",
+  "scope": {
+    "operation": "Four pairs of already byte-identical historical CameraHead compiler ONNX exports, on the same artifact filesystem.",
+    "original_pathnames": 8,
+    "before_independent_inodes": 8,
+    "after_unique_inodes": 4,
+    "hardlink_aliases_per_retained_inode": 2,
+    "new_model_or_math_or_weight_change": false,
+    "original_research_receipts_modified_or_deleted": false,
+    "model_or_SDK_inference_executed": false
+  },
+  "preconditions_and_proof": {
+    "full_board_byte_comparisons": 4,
+    "unchanged_original_inode_stat_tuples_bound_to_proof": true,
+    "both_complete_path_SHA_values_checked_before_and_after_each_pair": true,
+    "all8_original_payload_SHA_values_unchanged": true,
+    "regular_files_on_same_filesystem_with_independent_link_count1_before": true,
+    "source_guards_no_active_board_worker_or_open_FD_to_either_historical_inode": true,
+    "original_mode_uid_gid_and_extended_attributes_match_before_replacement": true,
+    "atomic_link_then_replace_preserves_destination_pathname_without_missing_name_interval": true,
+    "destination_directory_fsynced": true,
+    "all8_original_pathnames_present_afterwards": true,
+    "audit_reads_only_small_captured_evidence": true,
+    "large_ONNX_reopened_or_hashed_on_host": false,
+    "board_access_by_saved_auditor": false
+  },
+  "file_pairs": [
+    {
+      "basename": "check0_base_optimize.onnx",
+      "bytes_per_original_path": 864799590,
+      "original_payload_sha256": "ca0b13585bff5d789c681ab1402f0689a3372cd93f4004f8268913740d0380d1",
+      "old_independent_inode_count": 2,
+      "retained_inode_count": 1,
+      "after_link_count": 2,
+      "allocated_duplicate_blocks_recovered_bytes": 864804864
+    },
+    {
+      "basename": "check1_fold_constant.onnx",
+      "bytes_per_original_path": 864769786,
+      "original_payload_sha256": "3bdae1323919f1dc86bf52d89e8ed821a8d57da714cfeca6decd3c4e4e284cfa",
+      "old_independent_inode_count": 2,
+      "retained_inode_count": 1,
+      "after_link_count": 2,
+      "allocated_duplicate_blocks_recovered_bytes": 864776192
+    },
+    {
+      "basename": "check2_correct_ops.onnx",
+      "bytes_per_original_path": 864770339,
+      "original_payload_sha256": "0aeafe1e385e8430fbd52cc9d3b19e5f0ec24dd3527629670fad08dbf8d9f454",
+      "old_independent_inode_count": 2,
+      "retained_inode_count": 1,
+      "after_link_count": 2,
+      "allocated_duplicate_blocks_recovered_bytes": 864776192
+    },
+    {
+      "basename": "check3_fuse_ops.onnx",
+      "bytes_per_original_path": 864667945,
+      "original_payload_sha256": "38811902048c63c3fd86ba961cf52be297532309b094078fcbb96c647fa3ed9d",
+      "old_independent_inode_count": 2,
+      "retained_inode_count": 1,
+      "after_link_count": 2,
+      "allocated_duplicate_blocks_recovered_bytes": 864673792
+    }
+  ],
+  "filesystem_capacity": {
+    "metric": "Captured statvfs f_bfree multiplied by f_frsize on the artifact filesystem.",
+    "before_bytes": 3240677376,
+    "after_bytes_at_operation_completion": 6699708416,
+    "increase_bytes": 3459031040,
+    "summed_released_duplicate_allocated_file_blocks_bytes": 3459031040,
+    "duplicate_logical_payload_bytes": 3459007660,
+    "free_increase_exactly_equals_original_duplicate_allocated_blocks": true,
+    "free_root_bytes_source_field_refers_to_artifact_filesystem": true,
+    "current_later_available_space_or_nonroot_f_bavail_not_inferred": true,
+    "filesystem_space_is_not_physical_model_RAM": true
+  },
+  "metadata_changes": {
+    "original_pathnames_and_full_payload_bytes_retained": true,
+    "retained_file_inode_preserved": true,
+    "second_path_inode_replaced_with_retained_inode": true,
+    "both_link_counts_change_from1_to2": true,
+    "both_ctimes_change": true,
+    "retained_mtime_unchanged": true,
+    "second_alias_mtime_changes_to_retained_file_mtime": true,
+    "original_permissions_ownership_and_matching_extended_attributes_preserved": true,
+    "all_filesystem_metadata_unchanged": false
+  },
+  "required_future_use": {
+    "both_historical_aliases_are_immutable_archival_inputs": true,
+    "in_place_write_to_either_alias_forbidden": true,
+    "future_compiler_runs_must_use_fresh_output_paths_or_directories": true,
+    "hardlinking_is_not_filesystem_write_protection": true,
+    "original_write_permission_bits_were_not_changed": true
+  },
+  "preserved_first_attempt": {
+    "launcher_returncode": 1,
+    "error": "shell command too long",
+    "actual_coalescer_start": false,
+    "reviewed_pair_mutation_before_r2": false,
+    "original_host_board_execution_true_field_describes_attempt_intent_not_observed_worker_start": true,
+    "failed_attempt_and_diagnostic_retained": true
+  },
+  "system_scope": {
+    "original_model_code_parameters_math_and_licensing_unchanged": true,
+    "raw_experiment_records_and_original_pathnames_deleted": 0,
+    "driver_changes": false,
+    "mount_changes": false,
+    "reserved_block_configuration_changes": false
+  },
+  "acceptance": {
+    "inference_speed_gain_established": false,
+    "quality_or_trajectory_improvement_established": false,
+    "full_model_execution_established": false,
+    "unique_physical_RAM_saving_established": false,
+    "sustained_realtime_rate_established": false,
+    "physical_8GB_deployment_verified": false
+  },
+  "evidence": [
+    {
+      "role": "Successful captured atomic coalescence log",
+      "basename": "historical-camera-ONNX-coalescence-r2.jsonl",
+      "bytes": 7599,
+      "sha256": "904df1743f28c6521af1178c359f4bef58d830f03d528483c2a0a929cd518626"
+    },
+    {
+      "role": "Original read-only full byte and SHA proof",
+      "basename": "historical-camera-ONNX-byte-dedup-candidates-r1.jsonl",
+      "bytes": 4874,
+      "sha256": "6ea4f7ffbb414480e6a02205ac84c31ee6f2e20e8ce78137d28fd8923f4d0028"
+    },
+    {
+      "role": "Exact staged verified-pair argument JSON",
+      "basename": "verified-pairs.json",
+      "bytes": 6709,
+      "sha256": "12267764f20a9ba1606d4af89322832a738e4b3b59720e7a8cbfd1f7b0566a02"
+    },
+    {
+      "role": "Executed storage utility source",
+      "basename": "coalesce_historical_identical_ONNX_board.py",
+      "bytes": 5304,
+      "sha256": "5f685f1ef1bdfacccd3653b6bec39da159120290250a5b9b90996917584b2434"
+    },
+    {
+      "role": "Preserved first inline launch record",
+      "basename": "historical-camera-ONNX-coalescence-r1.jsonl",
+      "bytes": 165,
+      "sha256": "22078b7a675d531ad72ca1d97816a3b659546606b668ce210ab14b08a3f86a68"
+    },
+    {
+      "role": "Preserved oversized-shell-command rejection",
+      "basename": "historical-camera-coalescence-preflight-diagnostic-r1.json",
+      "bytes": 85,
+      "sha256": "d2fbfd577811a0c0b15ae85a01a5389b094a4d9d713c84f1a67f55c3eb0420d4"
+    },
+    {
+      "role": "Successful r2 empty stderr",
+      "basename": "historical-camera-ONNX-coalescence-r2-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "role": "Independent captured-evidence audit",
+      "basename": "historical-camera-ONNX-coalescence-r2-saved-audit-r1.json",
+      "bytes": 11766,
+      "sha256": "2fdda0d622f07f3cbbd92dc4e3b1baca9e8ca6775413afbee417d43151934157"
+    },
+    {
+      "role": "Independent small-evidence auditor source",
+      "basename": "audit_historical_camera_ONNX_coalescence_saved.py",
+      "bytes": 8629,
+      "sha256": "5b475ef2c0f4e27d562cf386cc1011b667f46f4abb8c2af3e7c6055802a97405"
+    }
+  ]
+}

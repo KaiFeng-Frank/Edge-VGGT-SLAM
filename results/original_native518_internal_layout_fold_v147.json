@@ -1,0 +1,299 @@
+{
+  "schema": "original_native518_internal_layout_fold_v147",
+  "status": "actual_layout_fold_and_eight_output_byte_equivalence_verified_small_component_screen_only",
+  "scope": {
+    "board": "RK3588S",
+    "checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "original_aggregator_blocks": 4,
+    "native_input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "original_global_output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "original_heads": 16,
+    "frame_keys": 1041,
+    "global_keys": 2082,
+    "encoder_represented_by_captured_features": true,
+    "remaining_aggregator_heads_and_SLAM_executed": false
+  },
+  "transform": {
+    "parent_generated_nodes": 184,
+    "folded_generated_nodes": 181,
+    "parent_initializers": 172,
+    "folded_initializers": 173,
+    "all172_parent_initializer_protos_byte_unchanged": true,
+    "all180_untouched_node_protos_byte_unchanged": true,
+    "whole_parent_ModelProto_inverse_byte_equal": true,
+    "original_learned_operations_and_MACs_unchanged": true,
+    "layout_nodes_before": 4,
+    "layout_nodes_after": 1,
+    "source_shape": [
+      1,
+      1024,
+      1,
+      2082
+    ],
+    "destination_shape": [
+      1,
+      1024,
+      2,
+      1041
+    ],
+    "distinct_integer_positions_verified": 2131968,
+    "new_initializer_is_shape_only": true,
+    "original_numeric_cfg_body_byte_preserved": true,
+    "only3_dead_FLOAT16_requests_removed": true,
+    "live_FLOAT16_requests": 43,
+    "inherited_fixed_grid_composition_not_fresh_calibration": true
+  },
+  "board_CPU_gate": {
+    "original_calibration_cases": 4,
+    "CPU_sessions_created_and_dropped": 1,
+    "all4_same_input_original_pair1_FP32_fixed_and_strict_gates_passed": true,
+    "heldouts_excluded": true,
+    "worst_relative_l2": 9.714493083026691e-08,
+    "worst_max_abs": 5.960464477539062e-07,
+    "strict_outliers": 0
+  },
+  "actual_compilation": {
+    "worker_including_CPU_gate_seconds": 156.16410927400284,
+    "SDK_step2_seconds": 76.16979286199785,
+    "offline_peak_rss_MiB": 2425.5,
+    "rknn": {
+      "file": "composed-internal-layout-folded-two-pair.rknn",
+      "bytes": 91819651,
+      "sha256": "bb8aa5873152df4f4db48790c93d51e0f0d592c5770b1ab6f7f5e775ce9fe24d"
+    },
+    "original_SDK_inputs_unchanged": true,
+    "no_new_calibration": true
+  },
+  "actual_placement": {
+    "parent_operators": 196,
+    "folded_operators": 193,
+    "precision_target_counts": {
+      "FLOAT16/CPU": 2,
+      "FLOAT16/NPU": 59,
+      "INT8/NPU": 132
+    },
+    "feature_consumer_rows": 295,
+    "constant_rows": 191,
+    "all486_rows_consumed_including_starred_spans": true,
+    "weighted_products_INT8_NPU": 30,
+    "SDPA_INT8_NPU": 6,
+    "residual_highways_FLOAT16_NPU": 12,
+    "all_original_weighted_and_SDPA_types_precisions_targets_equal_parent": true,
+    "compiled_join": "FLOAT16 NPU Reshape96 -> FLOAT16 NPU Split97",
+    "public_output_FLOAT16": true,
+    "no_internal_CPU_GPU_arithmetic_or_layout_fallback": true,
+    "actual_four_to_one_layout_lowering": true,
+    "packed_layout_or_zero_physical_copy_not_proven_by_table": true
+  },
+  "matched_ABBA": {
+    "heldout_ids": [
+      "pair4",
+      "pair5"
+    ],
+    "per_input_schedule": [
+      "Merged_parent",
+      "Layout_folded",
+      "Layout_folded",
+      "Merged_parent"
+    ],
+    "resident_owners": 2,
+    "owned_calls": 8,
+    "logical_saved_outputs": 8,
+    "flags": 0,
+    "core_mask": 7,
+    "all_calls_sequential": true,
+    "all8_outputs_finite": true,
+    "all8_outputs_byte_equal_prior_merged_parent": true,
+    "all_repeated_outputs_byte_equal": true,
+    "all_contexts_and_buffers_closed": true,
+    "resource_counts": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 8,
+      "output_buffers_acquired": 8,
+      "output_buffers_released": 8
+    },
+    "requested_NPU_hz": 1000000000,
+    "timeout_seconds": 180,
+    "temperature_limit_c": 75,
+    "maximum_observed_controller_temperature_c": 58.23,
+    "exact_prior_clock_governor_limits_restored": true,
+    "complete_call_scope": "Includes normal input/final finite checks, SDK IO, owned copies and release; excludes lifecycle, comparisons, hashes, saving and exact-byte hardlink deduplication.",
+    "all_first_and_subsequent_samples_reported": true,
+    "results": [
+      {
+        "input_id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "parent_complete_call_seconds": [
+          1.3403396759968018,
+          1.3228412160024163
+        ],
+        "folded_complete_call_seconds": [
+          1.3162227150023682,
+          1.3072289640040253
+        ],
+        "parent_mean_seconds": 1.331590445999609,
+        "folded_mean_seconds": 1.3117258395031968,
+        "descriptive_mean_latency_reduction_fraction": 0.014917955108562087,
+        "parent_mean_SDK_run_seconds": 1.270339127499028,
+        "folded_mean_SDK_run_seconds": 1.2563403759959328,
+        "unchanged_original_FP32_relative_l2": 0.0626133156434542,
+        "max_abs": 0.4630565941333771,
+        "strict_outside_count": 2123423,
+        "original_fixed_gate_passed": false,
+        "original_strict_gate_passed": false,
+        "all_outputs_byte_equal_prior_merged_parent": true
+      },
+      {
+        "input_id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "parent_complete_call_seconds": [
+          1.3216995490001864,
+          1.3210150489976513
+        ],
+        "folded_complete_call_seconds": [
+          1.3087678809970384,
+          1.3110176740010502
+        ],
+        "parent_mean_seconds": 1.3213572989989188,
+        "folded_mean_seconds": 1.3098927774990443,
+        "descriptive_mean_latency_reduction_fraction": 0.00867632207318958,
+        "parent_mean_SDK_run_seconds": 1.26914575200135,
+        "folded_mean_SDK_run_seconds": 1.257940958996187,
+        "unchanged_original_FP32_relative_l2": 0.06466627334288431,
+        "max_abs": 0.44699132442474365,
+        "strict_outside_count": 2123285,
+        "original_fixed_gate_passed": false,
+        "original_strict_gate_passed": false,
+        "all_outputs_byte_equal_prior_merged_parent": true
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "role": "static_layout_fold_source",
+      "file": "fold_composed_internal_layout_static.py",
+      "bytes": 7971,
+      "sha256": "d7457d6df457c1b3b88022f9bdef4f705fa9de2d76980a9f13e4f4fdab509d29"
+    },
+    {
+      "role": "static_layout_fold_proof",
+      "file": "result.json",
+      "bytes": 2204,
+      "sha256": "a383fb85d7f620c6ae40acf82ac2f1cd2a067071a9447b8d883b8afd1d6d0b40"
+    },
+    {
+      "role": "independent_static_inverse_and_position_peer",
+      "file": "two-pair-internal-layout-static-peer-r1.json",
+      "bytes": 2045,
+      "sha256": "34ab3e03efaaef545bdb1cf2ac2118accc936f3357708c88a721ef9d2b33fc15"
+    },
+    {
+      "role": "board_CPU_gate_and_step2_source",
+      "file": "compile_two_pair_internal_layout_fold_board.py",
+      "bytes": 25599,
+      "sha256": "e51c261b3d2f8b8b1694d929fed977ed2c12b749477b2c86420465d8a40e1161"
+    },
+    {
+      "role": "board_CPU_gate_and_step2_transport",
+      "file": "execute_two_pair_internal_layout_fold_host.py",
+      "bytes": 17344,
+      "sha256": "c4af50c569802210fb604a9edb1efead05f1989b7dd108194b46d21f4dceeb3e"
+    },
+    {
+      "role": "four_CPU_gates_and_actual_compilation",
+      "file": "result.json",
+      "bytes": 13734,
+      "sha256": "ef25ffd972b5b8327c619bcfbfd6f526335810c48b9b0eb2b2b20ce5938eeb7e"
+    },
+    {
+      "role": "actual_full_operator_memory_log",
+      "file": "vggt-v83-native518twopairinternallayoutr1-r1.log",
+      "bytes": 178932,
+      "sha256": "a32a0bba04cb5a25ba8dd37e8c4c76f43762402da4cd5ff3b3fcf7b07157a1a3"
+    },
+    {
+      "role": "actual_domains_and_saved_CPU_gates_audit",
+      "file": "two-pair-internal-layout-fold-saved-precision-audit-r1.json",
+      "bytes": 274609,
+      "sha256": "5c558cbbb85b69b8a91f0984729b5382f534bd7aefe7acc6a0c8aefe5bf0166f"
+    },
+    {
+      "role": "matched_ABBA_worker_source",
+      "file": "run_two_pair_internal_layout_fold_ABBA_board.py",
+      "bytes": 27980,
+      "sha256": "64de09f07a83aed8456cd801e1a688b8593d3a6146754a2b20cb0541653abb56"
+    },
+    {
+      "role": "matched_ABBA_transport_source",
+      "file": "execute_two_pair_internal_layout_fold_ABBA_host.py",
+      "bytes": 19080,
+      "sha256": "0d44c2b54c97685d0be992143f155e64bf5fdc6dc73d3bfa390163c795379861"
+    },
+    {
+      "role": "independent_ABBA_worker_source_peer",
+      "file": "two-pair-internal-layout-ABBA-worker-peer-r1.json",
+      "bytes": 1635,
+      "sha256": "c75ca8bc18bd9d609403cc03a28cfd9c3e4cb6b891dfefdce6d28b72f6e7de0a"
+    },
+    {
+      "role": "actual_eight_owned_ABBA_calls",
+      "file": "result.json",
+      "bytes": 65333,
+      "sha256": "6cd97e3006b8c848250b8bf712d28879ae5e5ff6558fa11c04d03e84e658dd32"
+    },
+    {
+      "role": "actual_restoring_1GHz_controller",
+      "file": "control.json",
+      "bytes": 10742,
+      "sha256": "6eab05e94e5a09326af5a42fbacc123b486a41d096ca5150aea36044d513c064"
+    },
+    {
+      "role": "independent_saved_eight_output_audit",
+      "file": "two-pair-internal-layout-fold-heldout-saved-audit-r1.json",
+      "bytes": 10389,
+      "sha256": "b33794d12d16fe97ba575a0d2a02830c3acf7554c8302d44f7839bbcb01789ff"
+    },
+    {
+      "role": "prior_actual_merged_parent_byte_oracle",
+      "file": "result.json",
+      "bytes": 77501,
+      "sha256": "04e2da4c6a2172b01537a208f04b711dd52a776d7a4da04c34621ad1a78644ac"
+    }
+  ],
+  "acceptance": {
+    "byte_equivalence_to_prior_quantized_merged_parent_on_two_inputs": true,
+    "original_FP32_accuracy_accepted": false,
+    "sustained_speed_or_P95_accepted": false,
+    "full_model_trajectory_SLAM_20Hz_or_8GB_accepted": false
+  },
+  "limits": [
+    "Only two heldouts and two calls per route/input; the 0.87\u20131.49% differences are descriptive small-screen timings.",
+    "Original FP32 error is unchanged at 6.2613%/6.4666%; both fixed and strict gates still fail.",
+    "Endpoint bytes and table counts do not establish zero physical copying or an all-input kernel guarantee.",
+    "The first four original aggregator blocks run from captured encoder features. Later blocks, complete heads, camera-to-pose and SLAM are outside this screen.",
+    "No raw arrays, learned-weight exports, checkpoint, SDK binaries or private paths are included. Original weight terms remain separate from repository code terms."
+  ],
+  "publication": {
+    "metadata_only": true,
+    "README_changed": false,
+    "Git_commit_or_push_performed": false
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "schema": "original_native518_full_DINO0_value_bias_fold_v198",
+  "record": 198,
+  "status": "full_original_DINO0_CPU_valid_NPU_error_worse_without_latency_benefit_not_adopted",
+  "scope": "One complete original DINO0 block on one reused real input and its original full-block Torch FP32 output; this is not an isolated same-QKV attention oracle or a full-model run.",
+  "representation": {
+    "input_output_shape": [
+      1,
+      1041,
+      1024
+    ],
+    "heads": 16,
+    "head_dim": 64,
+    "all1041_tokens_and_original_layers_retained": true,
+    "equations": [
+      "bV_new = 0",
+      "bproj_new = bproj + bV @ stored_Wo"
+    ],
+    "stored_Wo_orientation": "Original ONNX row-vector projection matrix; no additional transpose.",
+    "real_arithmetic_identity": "For row-normalized P, P(V-bV)=PV-bV; moving bV@Wo into the original projection bias preserves the real-valued projection before the unchanged LayerScale, residuals, norms and Erf MLP.",
+    "constant_derivation": "Each projection-bias entry uses one FLOAT32 rounding after math.fsum of the original bias and 1024 original FLOAT32-product terms evaluated in FLOAT64; no input fitting.",
+    "ONNX_nodes_per_graph": 31,
+    "ONNX_initializers_per_graph": 23,
+    "all31_NodeProtos_byte_preserved": true,
+    "unchanged_initializer_protos": 21,
+    "original_parameter_tensors": 14,
+    "unchanged_parameter_tensors": 12,
+    "only_derived_parameters": [
+      "attn.qkv.bias value slice",
+      "attn.proj.bias"
+    ],
+    "original_QK_bias_slices_byte_preserved": true,
+    "whole_original_ModelProto_inverse_byte_equal": true,
+    "extra_runtime_nodes_reductions_or_MACs": 0,
+    "original_checkpoint_unchanged": true,
+    "FP32_or_FP16_bit_equivalence_assumed": false
+  },
+  "compile_and_placement": {
+    "fresh_matched_baseline_and_candidate": true,
+    "original_FP16_configuration": true,
+    "do_quantization": false,
+    "SDK_sessions_created_released_per_graph": [
+      1,
+      1
+    ],
+    "all_resources_closed": true,
+    "actual_operations_features_constants_per_graph": [
+      16,
+      28,
+      17
+    ],
+    "all_actual_rows_consumed": true,
+    "internal_FLOAT16_NPU_operations": 14,
+    "public_CPU_IO_operations": 2,
+    "full1041_key16head_SDPA_four_dense_products_and_original_Erf_fusion_FLOAT16_NPU": true,
+    "original_norms_and_residual_fusions_preserved": true,
+    "no_internal_CPU_fallback": true,
+    "all17_lowered_NodeProtos_byte_equal": true,
+    "all15_other_lowered_initializer_protos_byte_equal": true,
+    "only_two_lowered_bias_initializer_protos_changed": true,
+    "whole_lowered_ModelProto_inverse_byte_equal": true,
+    "historical_compile_pending_fields_preserved_with_later_CPU_and_NPU_evidence_separate": true
+  },
+  "CPU_gate": {
+    "location": "RK3588S",
+    "process_core": 4,
+    "ORT_threads": 1,
+    "provider": "CPUExecutionProvider",
+    "ORT_optimization": "ORT_DISABLE_ALL",
+    "sequential_sessions_created_closed": 2,
+    "complete_learned_graph_calls": 2,
+    "full_FLOAT32_files": 2,
+    "saved_NPY_bytes": 8528128,
+    "both_outputs_saved_before_numeric_verdict": true,
+    "comparisons": [
+      {
+        "name": "baseline_vs_original",
+        "relative_l2": 8.161811342035307e-07,
+        "max_abs": 1.6689300537109375e-05,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      },
+      {
+        "name": "folded_vs_original",
+        "relative_l2": 8.44860496353818e-07,
+        "max_abs": 1.621246337890625e-05,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      },
+      {
+        "name": "folded_vs_baseline",
+        "relative_l2": 2.9397072092632767e-07,
+        "max_abs": 2.9802322387695312e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      }
+    ],
+    "all3_fixed_and_strict_gates_passed": true,
+    "GATE": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    }
+  },
+  "NPU_runtime": {
+    "location": "RK3588S",
+    "core_mask": 7,
+    "init_flags": 0,
+    "frequency_hz": 1000000000,
+    "ordinary_frozen_OwnedContext_without_layout_adapter": true,
+    "logical_input_output_shape": [
+      1,
+      1041,
+      1024
+    ],
+    "queried_model_format": "UNDEFINED",
+    "queried_model_type": "FLOAT16",
+    "ordinary_input_and_owned_output_type": "FLOAT32",
+    "original_full_block_input_and_Torch_reference_reused": true,
+    "historical_R117_byte_guard_applied": false,
+    "historical_guard_reason": "Both graphs are freshly compiled with the same current configuration and run on core7; the historical core1/configuration is a separate control.",
+    "schedule": "Four sequential ABBA contexts, each one explicit warmup plus two measured calls; four measured calls per route, twelve SDK calls, maximum one live context.",
+    "comparisons": [
+      {
+        "name": "baseline_vs_original",
+        "relative_l2": 0.02548227586597038,
+        "max_abs": 0.22928571701049805,
+        "outside_count": 886557,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "name": "folded_vs_original",
+        "relative_l2": 0.025505551599122465,
+        "max_abs": 0.23319196701049805,
+        "outside_count": 886726,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "name": "folded_vs_baseline",
+        "relative_l2": 0.00031130177866398615,
+        "max_abs": 0.01171875,
+        "outside_count": 102898,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      }
+    ],
+    "relative_L2_error_increase_percent": 0.09134087266973179,
+    "complete_latency_change_percent": 1.3235283070825332,
+    "complete_latency_increase_ms": 2.199260747147491,
+    "timings": {
+      "baseline": {
+        "measured_call_count": 4,
+        "explicit_warmups": 2,
+        "mean_complete_seconds": 0.16616650625292095,
+        "mean_SDK_seconds": 0.12795143999755965,
+        "initialization_seconds": 0.21803389699198306,
+        "close_seconds": 0.08219792398449499
+      },
+      "value_bias_fold": {
+        "measured_call_count": 4,
+        "explicit_warmups": 2,
+        "mean_complete_seconds": 0.16836576700006844,
+        "mean_SDK_seconds": 0.12774707549760933,
+        "initialization_seconds": 0.22128877199429553,
+        "close_seconds": 0.08178950799629092
+      }
+    },
+    "timer_includes": "Ordinary input preparation/finite checks, inputs_set, the complete compiled block, outputs_get/owned copy/release/finite checks and the full-output nonzero check.",
+    "timer_excludes": "Initialization, close, raw saves, hashes, comparisons and JSON.",
+    "CPU_output_normalization_or_layout_pack": false,
+    "full_FLOAT32_files": 2,
+    "saved_NPY_bytes": 8528128,
+    "both_first_outputs_saved_before_numeric_comparisons": true,
+    "all12_recorded_same_route_repeat_hashes_match": true,
+    "later_repeats_have_hash_telemetry_not_separate_payloads": true,
+    "resource_totals": {
+      "contexts_created": 4,
+      "contexts_destroyed": 4,
+      "runs_completed": 12,
+      "output_buffers_acquired": 12,
+      "output_buffers_released": 12
+    },
+    "all_resources_closed": true,
+    "all3_evidence_pulls_succeeded": true,
+    "fatal_SDK_log_errors": 0,
+    "controller_policy_restored": true,
+    "peak_controller_sampled_temperature_C": 54.538,
+    "process_peak_RSS_MiB": 140.94921875
+  },
+  "decision": {
+    "adopt": false,
+    "expand": false,
+    "reason": "The complete-block error increases and no latency benefit is observed. Stop expansion of this value-bias-fold route.",
+    "NPU_fixed_and_strict_precision_accepted": false,
+    "full_model_trajectory_realtime_or_physical8GB_accepted": false
+  },
+  "limits": [
+    "One reused engineering input, not a fresh accuracy holdout or all DINO blocks/full VGGT.",
+    "Four measured calls per route describe this run; the 1.3235% latency difference has no statistical significance claim.",
+    "No inference about the exact fused-attention error mechanism follows from these output comparisons.",
+    "Process RSS and SDK per-context memory counters are not physical 8GB validation.",
+    "Relative-L2 scalar report consistency alone uses rtol1e-12/atol1e-15; original array fixed/strict gates and every other metric/hash comparison remain unchanged."
+  ],
+  "evidence": {
+    "case_inventory": {
+      "bytes": 9438,
+      "sha256": "11449d9c7762e719549203e6dbeec731b25affce424cdbfdeefa6d10d1901399"
+    },
+    "static_receipt": {
+      "bytes": 35404,
+      "sha256": "b4e1b12bbacbabf6477876ed11cadf4ec65999b592c3be0fccaf464196199527"
+    },
+    "exporter_source": {
+      "bytes": 16910,
+      "sha256": "3604505fd1453e584e876a1db21ea6c5298875b454302ca3e61551593647eec9"
+    },
+    "parent_graph": {
+      "bytes": 50397502,
+      "sha256": "d8ce26c2f9cb3018b9a24da9f722937569067a5cffde650288f0073743e547e8"
+    },
+    "candidate_graph": {
+      "bytes": 50397502,
+      "sha256": "3491073745aa64f14dcc8cb190c5380d0f662179175e8e86eaa03836332f1ef8"
+    },
+    "fresh_compile_receipts": {
+      "baseline": {
+        "bytes": 4408,
+        "sha256": "ae849e0a63762201296003386fafdfc5c2b7fa1306b512f7330b92a9d4220cf7"
+      },
+      "value_bias_fold": {
+        "bytes": 4445,
+        "sha256": "9cb92fed9d1cb8abec23f3ee41ac01b9666c8fe999c577d819595b1750856816"
+      }
+    },
+    "compiled_models": {
+      "baseline": {
+        "bytes": 26517686,
+        "sha256": "76bf5e43832abd3b35fe8a1959b9d40ca7f44728cbee9c509d62d389bd5a8b4e"
+      },
+      "value_bias_fold": {
+        "bytes": 26517686,
+        "sha256": "b4f3da4684adb5351982956f4c4c1edc1b7df7c7735839ab1bdc7d7a022540c2"
+      }
+    },
+    "placement_audit": {
+      "bytes": 84329,
+      "sha256": "6a14551ad0542838d5ba647c5aec4e7dff110ebfe16fae2e6bf9aab48b575868"
+    },
+    "CPU_receipt": {
+      "bytes": 8481,
+      "sha256": "d91363a140f9f5689e9826eceafdd72221614875cecec45a29cbb1919a9ba547"
+    },
+    "CPU_saved_audit": {
+      "bytes": 2124,
+      "sha256": "6162a3fbd6e2420a9f04ef1a711e5b9065c8ebbb0d5d8288692b1103bb3b3172"
+    },
+    "NPU_worker_source": {
+      "bytes": 30092,
+      "sha256": "73dceb89052100ab3c72787ce802d124273cc4914a8a8dee34b1ae37a30c3536"
+    },
+    "NPU_launcher_source": {
+      "bytes": 17587,
+      "sha256": "84383849ae96bd5c76dcfa7cd3dd0ec3ca5b6b0ceb17ec3f07e1d8b2c83812b3"
+    },
+    "NPU_receipt": {
+      "bytes": 59419,
+      "sha256": "1116ad3496be2538665314611a676efe8a05483874a2ecad19a41d1ee1fe6f9c"
+    },
+    "NPU_saved_audit": {
+      "bytes": 2926,
+      "sha256": "e97e4d85e474b064afd99e1a70dc0d41285cabb2e027b3f46ba44daee6b4483a"
+    },
+    "NPU_transport": {
+      "bytes": 26021,
+      "sha256": "0735122099cde1f89ce5365a6a0eb264c2760a93671a15095879c4556f2f0b12"
+    },
+    "NPU_controller": {
+      "bytes": 4259,
+      "sha256": "c87d908deb26378e91af389d27ccabb687e19541688d6146c7978f204d41467b"
+    },
+    "saved_output_file_sha256s": {
+      "baseline": "2791054582ae168971c98462ce31e2cebffd185e7c17c1f70c6adcd75951f888",
+      "value_bias_fold": "67558706e6dcd73f8c59abf6cbc5e33f204450f4770e79c0ae382196dd3aef44"
+    },
+    "independent_peer_saved_audit": {
+      "bytes": 2968,
+      "sha256": "1afb28c365e35b54987bb905775d20373fa494a00c3af05c08d155e56e99b5f8"
+    },
+    "independent_peer_saved_auditor_source": {
+      "bytes": 12041,
+      "sha256": "1606a743b3619242ebbf367bb1d1382ebb1023cb027196bdde59516767e127b4"
+    }
+  }
+}

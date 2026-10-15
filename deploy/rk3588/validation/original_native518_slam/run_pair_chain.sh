@@ -1,0 +1,2 @@
+#!/bin/sh
+exec env -u PYTHONPATH -u PYTHONHOME -u VIRTUAL_ENV LD_LIBRARY_PATH=/mnt/vggt-data/vggt-slam2/sysroot/usr/lib/aarch64-linux-gnu OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 CUDA_VISIBLE_DEVICES= /mnt/vggt-data/vggt-slam2/venv/bin/python -B -u /mnt/vggt-data/vggt-slam2/experiments/vggt-v109-source-r1/run_native518_slam_pair_chain.py --executor-sha256 8923992b323f805c03d8e70441952b65aefe9f8a70a3cfc2241ac14b704b563f --output-dir /dev/shm/edge-vggt-v109-native/pair-chain-r1 --timeout-seconds 170

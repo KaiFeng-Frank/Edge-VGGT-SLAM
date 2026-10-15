@@ -1,0 +1,325 @@
+{
+  "schema": "original_native518_group0_connected_owned_tail_v185",
+  "status": "two_actual_ten_block_group0_chains_six_lossless_endpoints_and_closed_resources_verified_original_tensor_gates_fail_no_deployment_acceptance",
+  "scope": {
+    "original_pairs": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "original_frame_global_blocks": 10,
+    "all_original_heads_tokens_and_learned_parameters_preserved": true,
+    "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "prefix": "R173 B: two complete channel-first SINGLE frame roles, unchanged original global path with ordered694-row suffix, followed by original pair1 native models.",
+    "tail": "R184 original pairs2--4 nonquantizing FLOAT16 model through unchanged ordinary OwnedContext.",
+    "actual_input": "Original captured NPU image-encoder-boundary FLOAT32 case; no fresh full Torch encoder or reference reset at intermediate boundaries.",
+    "saved_endpoints": [
+      "actual pair1 global",
+      "raw frame4",
+      "global4"
+    ],
+    "raw_frame4_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "global_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "later_raw_retained_contract": {
+      "frame_first_global_second": true,
+      "shape": [
+        1,
+        2,
+        1041,
+        2048
+      ]
+    },
+    "full_DPT_other_retained_branches_and_later_aggregator_groups_not_executed": true,
+    "original_graph_sources": "R172/R173 and R183/R184",
+    "original_allocators_flags0": true,
+    "shared_internal_scratch_from_R165_used": false
+  },
+  "current_data_and_guards": {
+    "all_feeds_actual_same_case_outputs": true,
+    "reference_intermediate_injection": false,
+    "both_current_pair1_half_and_full_FLOAT32_widened_hashes_match_same_case_R173_B_before_tail": true,
+    "prior_snapshots_comparison_and_byte_guards_only": true,
+    "ordinary_tail_input": "Exact FLOAT16 current native pair1 payload widened to independent readonly FLOAT32; normal SDK input copy/conversion remains.",
+    "each_case_three_endpoints_saved_before_its_numeric_comparisons": true,
+    "new_saved_lossless_FLOAT16_arrays": 6,
+    "new_saved_NPY_bytes": 25584384,
+    "all_six_file_raw_shape_finite_and_full_FLOAT32_widening_hash_checks_verified": true,
+    "current_prefix_stage_hash_records_equal_frozen_R173_B": 28,
+    "unsaved_intermediates_are_source_hash_telemetry_not_new_payloads": true,
+    "current_generation_native_FD_edges": 24,
+    "actual_importer_producer_FD_identity_and_capacity_checks": 12,
+    "readonly_row_source_fingerprints": 24,
+    "original_frame_role_views_bridge_and_row_CPU_readers_preserved_until_all_consumers_drained": true
+  },
+  "numeric_results": {
+    "all10_full_CPU_original_comparisons_independently_verified": true,
+    "all10_fixed_gates_passed": false,
+    "all10_strict_gates_passed": false,
+    "fixed_relative_l2_max": 1e-05,
+    "fixed_max_abs_max": 0.001,
+    "strict_rtol": 0.0001,
+    "strict_atol": 1e-05,
+    "selected_reference_metrics": [
+      {
+        "case_id": "pair4",
+        "endpoint": "pair1_global",
+        "reference": "original_pair1_FP32",
+        "full": {
+          "relative_l2": 0.008329079246413107,
+          "max_abs": 0.025715649127960205,
+          "outside_count": 2076648
+        },
+        "camera": {
+          "relative_l2": 0.05259233008439052,
+          "max_abs": 0.02249070256948471,
+          "outside_count": 2032
+        },
+        "register": {
+          "relative_l2": 0.027558200190807437,
+          "max_abs": 0.025715649127960205,
+          "outside_count": 8094
+        }
+      },
+      {
+        "case_id": "pair4",
+        "endpoint": "frame_output",
+        "reference": "observer_frame_reference",
+        "full": {
+          "relative_l2": 0.00670119107998747,
+          "max_abs": 0.03570270538330078,
+          "outside_count": 2094470
+        },
+        "camera": {
+          "relative_l2": 0.006030450937590147,
+          "max_abs": 0.02767324447631836,
+          "outside_count": 2028
+        },
+        "register": {
+          "relative_l2": 0.00487165509576513,
+          "max_abs": 0.03570270538330078,
+          "outside_count": 8095
+        }
+      },
+      {
+        "case_id": "pair4",
+        "endpoint": "global_output",
+        "reference": "original_global_reference",
+        "full": {
+          "relative_l2": 0.009606517977497881,
+          "max_abs": 0.03789663314819336,
+          "outside_count": 2096557
+        },
+        "camera": {
+          "relative_l2": 0.007023241728894478,
+          "max_abs": 0.028077125549316406,
+          "outside_count": 2023
+        },
+        "register": {
+          "relative_l2": 0.005595153268651641,
+          "max_abs": 0.03789663314819336,
+          "outside_count": 8069
+        }
+      },
+      {
+        "case_id": "pair5",
+        "endpoint": "pair1_global",
+        "reference": "original_pair1_FP32",
+        "full": {
+          "relative_l2": 0.008260042731347637,
+          "max_abs": 0.025901883840560913,
+          "outside_count": 2075165
+        },
+        "camera": {
+          "relative_l2": 0.053530928854574764,
+          "max_abs": 0.024932444095611572,
+          "outside_count": 2024
+        },
+        "register": {
+          "relative_l2": 0.02813022650125568,
+          "max_abs": 0.025901883840560913,
+          "outside_count": 8090
+        }
+      },
+      {
+        "case_id": "pair5",
+        "endpoint": "frame_output",
+        "reference": "observer_frame_reference",
+        "full": {
+          "relative_l2": 0.006822027622689879,
+          "max_abs": 0.04678964614868164,
+          "outside_count": 2094611
+        },
+        "camera": {
+          "relative_l2": 0.006451972460038739,
+          "max_abs": 0.030857563018798828,
+          "outside_count": 2034
+        },
+        "register": {
+          "relative_l2": 0.005584204000463871,
+          "max_abs": 0.04678964614868164,
+          "outside_count": 8111
+        }
+      },
+      {
+        "case_id": "pair5",
+        "endpoint": "global_output",
+        "reference": "original_global_reference",
+        "full": {
+          "relative_l2": 0.009737579901846885,
+          "max_abs": 0.04715776443481445,
+          "outside_count": 2096555
+        },
+        "camera": {
+          "relative_l2": 0.007537982007219755,
+          "max_abs": 0.02788686752319336,
+          "outside_count": 2025
+        },
+        "register": {
+          "relative_l2": 0.006364928073200899,
+          "max_abs": 0.04715776443481445,
+          "outside_count": 8105
+        }
+      }
+    ],
+    "frame4_reference_is_fresh_same_source_full_parent_observer_not_independent_original734_frame_capture": true,
+    "global4_reference_is_captured_original_global": true,
+    "camera_FRAME_indices": "[:,0,:]",
+    "register_FRAME_indices": "[:,1:5,:]",
+    "camera_GLOBAL_indices": [
+      0,
+      1041
+    ],
+    "register_GLOBAL_indices": [
+      1,
+      2,
+      3,
+      4,
+      1042,
+      1043,
+      1044,
+      1045
+    ],
+    "layer_specific_token_errors_are_not_decoded_pose_or_ATE_RPE": true
+  },
+  "resources": {
+    "native_contexts": 16,
+    "ordinary_tail_contexts": 1,
+    "persistent_contexts": 17,
+    "resource_totals": {
+      "contexts_created": 17,
+      "contexts_destroyed": 17,
+      "runs_completed": 34,
+      "memories_created": 34,
+      "memories_imported": 12,
+      "memories_destroyed": 46,
+      "set_io_mem_attempts": 46,
+      "set_io_mem_successes": 46,
+      "output_buffers_acquired": 4,
+      "output_buffers_released": 4
+    },
+    "all_owners_futures_reader_leases_importers_and_threads_closed": true,
+    "tail_closes_before_native_reverse_DAG": true,
+    "all_original_inputs_source_affinity_environment_unchanged_or_restored": true,
+    "bounded_1GHz_controller_restored": true
+  },
+  "descriptive_timing": {
+    "cases": [
+      {
+        "case_id": "pair4",
+        "complete_five_pair_seconds": 3.239507991995197,
+        "tail_owned_seconds": 2.0428752879961394,
+        "tail_SDK_seconds": 1.9207351509976434,
+        "native_parallel_and_main_plus_tail_seconds": 3.1472657740087016,
+        "serial_copy_and_guard_seconds": 0.0881513020285638,
+        "unattributed_positive_residual_seconds": 0.004090915957931429
+      },
+      {
+        "case_id": "pair5",
+        "complete_five_pair_seconds": 3.1544050670054276,
+        "tail_owned_seconds": 2.0291362879943335,
+        "tail_SDK_seconds": 1.9193447759898845,
+        "native_parallel_and_main_plus_tail_seconds": 3.0675861019844888,
+        "serial_copy_and_guard_seconds": 0.08250746598059777,
+        "unattributed_positive_residual_seconds": 0.004311499040341005
+      }
+    ],
+    "mean_complete_five_pair_seconds": 3.196956529500312,
+    "initialization_seconds": 1.9242891100002453,
+    "close_seconds": 1.1666089499922236,
+    "timer_includes_both_native_pairs_handoffs_pair1_byte_guard_and_three_pair_owned_tail": true,
+    "saving_postcall_stage_hashes_and_numeric_comparisons_outside_timer": true,
+    "peak_process_RSS_MiB": 872.10546875,
+    "process_RSS_is_not_unique_physical_RAM": true,
+    "calls_per_case": 1,
+    "matched_speed_comparison_performed": false
+  },
+  "acceptance": {
+    "connected_original_group0_feed_and_raw_retained_interface_evidence_verified": true,
+    "NPU_precision_or_deployment_accepted": false,
+    "full_model_or_SLAM_speed_accepted": false,
+    "decoded_pose_or_trajectory_quality_accepted": false,
+    "sustained_or_realtime_rate_accepted": false,
+    "physical_8GB_feasibility_accepted": false,
+    "reused_engineering_cases_not_untouched_generalization": true
+  },
+  "evidence": [
+    {
+      "role": "Actual connected five-pair receipt",
+      "basename": "result.json",
+      "bytes": 260964,
+      "sha256": "b745d77d7ef083d8d2e031b6e2389feda23dba9aff2f4accb195b587d8f9b7d0"
+    },
+    {
+      "role": "Connected manifest",
+      "basename": "manifest.json",
+      "bytes": 3818,
+      "sha256": "9970cfdf2b77b014bea78c586b57d37b6c657f97643fc8b62feb93ce812415c2"
+    },
+    {
+      "role": "Closed connected transport",
+      "basename": "group0-connected-owned-tail-r1-transport.json",
+      "bytes": 40391,
+      "sha256": "f20c4bc305f2303ab625577f6b9c0052f782f8140972717c7710acb842a1fd64"
+    },
+    {
+      "role": "Restored bounded controller",
+      "basename": "control.json",
+      "bytes": 10693,
+      "sha256": "69b75f8690215f054b314a9a015907f9176ff0d026f5d9cb623cc5f291280799"
+    },
+    {
+      "role": "Frozen connected worker",
+      "basename": "run_group0_connected_owned_tail_board.py",
+      "bytes": 54846,
+      "sha256": "25e9ca49c40cb8d7717fd45068801b5b2a2eb6eef22d460d2551dd8f30f0870b"
+    },
+    {
+      "role": "Frozen root-only transport source",
+      "basename": "execute_group0_connected_owned_tail_host.py",
+      "bytes": 16694,
+      "sha256": "92cb08a9cc1352fad0b619a4db7b45f6648170b833b686a1766f68616c3cd7e2"
+    },
+    {
+      "role": "Independent six-endpoint saved audit",
+      "basename": "group0-connected-owned-tail-r1-saved-audit-r1.json",
+      "bytes": 17790,
+      "sha256": "295b8445cd3d6cb266bb88fc791a60e2b5cd2efec4973d60947b9a82e8cae101"
+    },
+    {
+      "role": "Independent saved-auditor source",
+      "basename": "audit_group0_connected_owned_tail_saved.py",
+      "bytes": 24437,
+      "sha256": "a83b3faff76a3284af84cb9858ab2160a9d83544afb32f9010a5d643f1dc4dfc"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+exec env -u PYTHONPATH -u PYTHONHOME -u VIRTUAL_ENV LD_LIBRARY_PATH=/mnt/vggt-data/vggt-slam2/sysroot/usr/lib/aarch64-linux-gnu OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 CUDA_VISIBLE_DEVICES= taskset -c 4-7 /mnt/vggt-data/vggt-slam2/experiments/vggt-v49-toolchain-venv-r1/bin/python -B -u /dev/shm/edge-vggt-v127-source-r1/compile_basis_pair_fp16.py --variant A --onnx /tmp/edge-vggt-v126-basis-export-r2/pair-A.onnx --export-receipt /tmp/edge-vggt-v126-basis-export-r2/result.json --check-receipt /tmp/edge-vggt-v126-basis-check-r2/result.json --output-dir /dev/shm/edge-vggt-v127-compile-A-r1 --cpu-affinity 4 6

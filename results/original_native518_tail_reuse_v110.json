@@ -1,0 +1,311 @@
+{
+  "schema": "original_native518_exact_tail_reuse_and_core_mask_v110",
+  "status": "completed_byte_equal_original_SL4_chain_with_lower_observed_latency_not_realtime_accepted",
+  "original_model_only": true,
+  "image_size": 518,
+  "prepared_image_shape": [
+    2,
+    3,
+    392,
+    518
+  ],
+  "source_indices": [
+    32,
+    40,
+    48
+  ],
+  "pair_indices": [
+    [
+      32,
+      40
+    ],
+    [
+      40,
+      48
+    ]
+  ],
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "original_DINO_layers_per_fresh_image": 24,
+  "original_aggregator_blocks_per_pair": 48,
+  "camera_refinements_per_pair": 4,
+  "depth_frames_per_pair": 2,
+  "model_weights_layers_tokens_resolution_or_original_SL4_equations_changed": false,
+  "host_model_GPU_or_deployment_inference_executed": false,
+  "cache_contract": {
+    "max_entries": 1,
+    "retained_bytes": 6700608,
+    "payload": "Owned original pre-final-norm DINO output plus immutable exact prepared tail-pixel bytes",
+    "identity": "Original checkpoint, configuration, encoder payloads, preparation source, normalization and core mask; hash and exact pixel bytes both checked",
+    "fresh_tail_always_runs_all_24_DINO_layers": true,
+    "role_specific_original_camera_and_register_tokens_recreated_each_pair": true,
+    "aggregator_head_pose_or_prediction_cache": false,
+    "both_CPU_patch_convolutions_still_execute": true,
+    "commit_after_successful_prediction_resource_cleanup_and_source_checks": true,
+    "entry_cleared_on_failed_prediction_or_close": true
+  },
+  "routes": [
+    {
+      "requested_core_mask": 1,
+      "prediction_seconds": [
+        34.80156278901268,
+        30.990952322026715
+      ],
+      "image_read_to_registered_pose_publication_seconds": [
+        34.86409291997552,
+        31.072807705029845
+      ],
+      "full_predict_boundary_seconds": [
+        34.75877995102201,
+        30.953409275971353
+      ],
+      "stage_seconds": [
+        {
+          "original_image_token_preparation_seconds": 0.1282023880048655,
+          "original_DINO24_execution_with_lifecycle_seconds": 9.583953421039041,
+          "DINO_group_lifecycle_seconds": [
+            2.403826449008193,
+            2.3869344900012948,
+            2.3957191990339197,
+            2.396961991034914
+          ],
+          "original_norm_special_concat_seconds": 0.02744671201799065,
+          "all48_aggregator_and_consumers_seconds": 21.11617649695836,
+          "camera_and_depth_heads_with_lifecycle_seconds": 3.853035803011153,
+          "original_pose_codec_seconds": 0.0010415419819764793,
+          "complete_image_to_heads_seconds": 34.70998615497956
+        },
+        {
+          "original_image_token_preparation_seconds": 0.11605651199351996,
+          "original_DINO24_execution_with_lifecycle_seconds": 5.642638108984102,
+          "DINO_group_lifecycle_seconds": [
+            1.411821891029831,
+            1.4100502250366844,
+            1.410529307962861,
+            1.409863933979068
+          ],
+          "original_norm_special_concat_seconds": 0.015528919000644237,
+          "all48_aggregator_and_consumers_seconds": 21.23372105002636,
+          "camera_and_depth_heads_with_lifecycle_seconds": 3.8942308080149814,
+          "original_pose_codec_seconds": 0.0009864169987849891,
+          "complete_image_to_heads_seconds": 30.903280813014135
+        }
+      ],
+      "cache_hits": [
+        false,
+        true
+      ],
+      "cache_bytes_while_retained": [
+        6700608,
+        6700608
+      ],
+      "cache_after_close": {
+        "lookups": 2,
+        "hits": 1,
+        "misses": 1,
+        "commits": 2,
+        "drops": 1,
+        "enabled": true,
+        "cache_entries": 0,
+        "cache_bytes": 0,
+        "policy": "Only the immediately preceding successful pair last frame; exact prepared byte identity",
+        "payload": "Owned FP32 original24-layer DINO output BEFORE original finalnorm and pair-role tokens",
+        "aggregator_head_pose_or_prediction_reuse": false,
+        "new_tail_always_computed": true
+      },
+      "resources": {
+        "contexts_created": 20,
+        "contexts_destroyed": 20,
+        "runs_completed": 32,
+        "output_buffers_acquired": 42,
+        "output_buffers_released": 42
+      },
+      "all_ten_prediction_arrays_byte_equal_to_same_input_uncached_v109": true,
+      "original_SL4_homographies_TUM_poses_and_PLY_byte_equal_to_v109": true,
+      "graph_nodes": 4,
+      "graph_factors": 4,
+      "published_unique_timestamps": 3,
+      "PLY_vertices": 609168,
+      "max_sampled_temperature_c": 64.692,
+      "controller_seconds": 78.37605287495535,
+      "controller_observations": 151,
+      "NPU_baseline": {
+        "governor": "userspace",
+        "cur_freq": "300000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "300000000"
+      },
+      "NPU_restored": {
+        "governor": "userspace",
+        "cur_freq": "300000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "300000000"
+      },
+      "peak_process_RSS_MiB": 1154.8984375,
+      "result_sha256": "547ed32b951f1eeae40492cc01df15051d2088e4f588f33c5dc4a19b03f8a09a",
+      "control_sha256": "2360004d848ddf633fdb36bacb9e2798dab53f15224addee50d9e4899ae5e90e"
+    },
+    {
+      "requested_core_mask": 7,
+      "prediction_seconds": [
+        29.88898116996279,
+        27.08094259601785
+      ],
+      "image_read_to_registered_pose_publication_seconds": [
+        29.950963258976117,
+        27.163079436984845
+      ],
+      "full_predict_boundary_seconds": [
+        29.845610914984718,
+        27.043631717038807
+      ],
+      "stage_seconds": [
+        {
+          "original_image_token_preparation_seconds": 0.13013001304352656,
+          "original_DINO24_execution_with_lifecycle_seconds": 7.577363511023577,
+          "DINO_group_lifecycle_seconds": [
+            1.8952227319823578,
+            1.9041481500025839,
+            1.8749332299921662,
+            1.9026784829911776
+          ],
+          "original_norm_special_concat_seconds": 0.027233503002207726,
+          "all48_aggregator_and_consumers_seconds": 18.74096875800751,
+          "camera_and_depth_heads_with_lifecycle_seconds": 3.3215258750133216,
+          "original_pose_codec_seconds": 0.0010584580013528466,
+          "complete_image_to_heads_seconds": 29.798421285988297
+        },
+        {
+          "original_image_token_preparation_seconds": 0.11660221999045461,
+          "original_DINO24_execution_with_lifecycle_seconds": 4.684719012002461,
+          "DINO_group_lifecycle_seconds": [
+            1.1708400759962387,
+            1.1701613260083832,
+            1.1706459510023706,
+            1.1727009509922937
+          ],
+          "original_norm_special_concat_seconds": 0.015376668015960604,
+          "all48_aggregator_and_consumers_seconds": 18.746789009019267,
+          "camera_and_depth_heads_with_lifecycle_seconds": 3.4257367189857177,
+          "original_pose_codec_seconds": 0.00090562499826774,
+          "complete_image_to_heads_seconds": 26.990238628000952
+        }
+      ],
+      "cache_hits": [
+        false,
+        true
+      ],
+      "cache_bytes_while_retained": [
+        6700608,
+        6700608
+      ],
+      "cache_after_close": {
+        "lookups": 2,
+        "hits": 1,
+        "misses": 1,
+        "commits": 2,
+        "drops": 1,
+        "enabled": true,
+        "cache_entries": 0,
+        "cache_bytes": 0,
+        "policy": "Only the immediately preceding successful pair last frame; exact prepared byte identity",
+        "payload": "Owned FP32 original24-layer DINO output BEFORE original finalnorm and pair-role tokens",
+        "aggregator_head_pose_or_prediction_reuse": false,
+        "new_tail_always_computed": true
+      },
+      "resources": {
+        "contexts_created": 20,
+        "contexts_destroyed": 20,
+        "runs_completed": 32,
+        "output_buffers_acquired": 42,
+        "output_buffers_released": 42
+      },
+      "all_ten_prediction_arrays_byte_equal_to_same_input_uncached_v109": true,
+      "original_SL4_homographies_TUM_poses_and_PLY_byte_equal_to_v109": true,
+      "graph_nodes": 4,
+      "graph_factors": 4,
+      "published_unique_timestamps": 3,
+      "PLY_vertices": 609168,
+      "max_sampled_temperature_c": 68.384,
+      "controller_seconds": 69.16057557397289,
+      "controller_observations": 134,
+      "NPU_baseline": {
+        "governor": "userspace",
+        "cur_freq": "300000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "300000000"
+      },
+      "NPU_restored": {
+        "governor": "userspace",
+        "cur_freq": "300000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "300000000"
+      },
+      "peak_process_RSS_MiB": 1147.01953125,
+      "result_sha256": "893d0e788a3550a680e2499921f89442a09c9698f0ed061aaa43821a499b081c",
+      "control_sha256": "a43eabd07a86243ea50e66f57d1fa2ba8b9aa7129fe599202e7959e3057e8ccb"
+    }
+  ],
+  "observed_separate_run_second_pair_comparison": {
+    "prior_v109_uncached_core1_prediction_seconds": 34.30940078099957,
+    "v110_cached_core1_prediction_seconds": 30.990952322026715,
+    "v110_cached_core7_prediction_seconds": 27.08094259601785,
+    "old_to_cached_core1_time_reduction_percent": 9.672125957998656,
+    "cached_core1_to_core7_time_reduction_percent": 12.616616893149935,
+    "old_to_cached_core7_time_reduction_percent": 21.068447773604994,
+    "sample_scope": "One same-input cache-hit pair per separate short route; not interleaved ABBA or a latency distribution",
+    "three_core_utilization_or_linear_scaling_proven": false
+  },
+  "arithmetic_review": {
+    "current_cache_hit_DINO_plus_aggregator_MAC": 1945960562688,
+    "current_cache_hit_all_counted_full_pair_MAC": 2173410981888,
+    "scope": "Conventional dense product count, not hardware instructions, DDR traffic or an all-algorithms latency lower bound",
+    "no_evidence_supported_20Hz_delivery_route_established": true,
+    "whole_SoC_impossibility_proven": false
+  },
+  "acceptance": {
+    "fresh_pose_20Hz": false,
+    "input_to_pose_P95_100ms": false,
+    "map_every_2_to_5s": false,
+    "trajectory_ATE_RPE_or_map_quality": false,
+    "loop_support": false,
+    "physical_8GB": false,
+    "continuous_30min": false
+  },
+  "limits": [
+    "Sequential TUM short chains, no timestamp-paced stream, queue distribution or camera experiment.",
+    "Byte identity is to the existing FP16 NPU deployment; original CPU FP32 and ground-truth trajectory acceptance remain outstanding.",
+    "Each route uses a 16GB board; process RSS excludes tmpfs artifacts and the physical deployment budget.",
+    "Compiled NPU artifacts and reference arrays remain private prerequisites; this validation folder is not a standalone production installer.",
+    "Repository code and original model weights retain separate licenses; no checkpoint or weight-bearing export is published."
+  ],
+  "source_sha256": {
+    "v110_native518_executor.py": "e153a5f71ef0b10119207b2e43589b628a2e85ab1abeaeb72d2df2a7dd6fb638",
+    "run_native518_tail_reuse_chain.py": "d645622ad58e4a7f291347b902ee5d55e16e12c0252e20f99c772cb32ba85f72",
+    "run_tail_reuse_core1.sh": "8e2a26b6f5a0b020cab17b29944e3da5985388739cbce57298c4b080f9a1a2c5",
+    "run_tail_reuse_core7.sh": "3f86bfcab6cfe01f21c6cf09df4a937bb2524edaa73e16adf4ffc34a70216c93",
+    "test_tail_cache_synthetic.py": "af619d85085bdc34fa59cc1c14647340ec72272a6859edfae12f8066ed4e9543"
+  },
+  "review_sha256": {
+    "root-source-review.json": "11d929ce73336b55cce86ed1ce8777127c1143dc3357137f03def94c85c340f2",
+    "tail-reuse-source-peer-audit.json": "f628d890912b259b0e8b8f0065b9f4293ad7a12807f6ceb9f5b80cbcb5d6666f",
+    "cache-synthetic-check.json": "5e19cecc8e9316b60be69f9a474b6258b2a979ddb3699f455d685869787cf96f",
+    "compute_budget_audit.py": "0e8f929cabc7d1d05185935e7241bfa6bbf3a68145f6f2d1f2c54d99124b710b",
+    "compute_budget_audit.json": "73bef9a5e6f21478c50566190ebcd9a2bf6889ebd829d1b207d90548c4ec28df",
+    "post-run-board-source-check.json": "c90d6c6092757295b7ed79a418d23f6d1fcd86c6e669ebf6d28e3087ef290877",
+    "audit_saved_tail_reuse.py": "d137afb582d3603c965b85da27a36b1644fe35cb5b17da6162f0cea058d9211e",
+    "saved-tail-reuse-audit.json": "a34ac5937e7e9aaff83e3749d45fb4c8093c38e6ac2ec7a5f89e9640349b42c8",
+    "validation-README.md": "6a044cfdfb0773e05d094bd14d4c7572924dce00c23c9c2696edf038f19a42ca"
+  },
+  "independent_saved_data_audit": "passed_independent_saved_tail_DINO_reuse_audit",
+  "baseline_v109_result_sha256": "966900291273b6f61af151307f2713ede5524e132847bd1b61c372e9ccdb523c",
+  "production_default_changed": false,
+  "committed": false,
+  "pushed_to_GitHub": false
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "v123_public_portable_rolling_preload_fake_concurrency_check",
+  "status": "passed_portable_fake_checks_only",
+  "runtime_sha256": "99a08a3cb7823e5212a12184e487413318f206a10bedea59fe87110df6065f21",
+  "test_source_sha256": "0f2cec66f71810a438e1810fa2242fb4d39981c81cdad44ad5a39b9a3c8ae21d",
+  "tests_run": 4,
+  "fake_source_pin_sha256": {
+    "native_sequential_runtime.py": "728cb3d49c8331c1d9a2a1267f49c91040ee31832afc81e0b423e35afaafee2a",
+    "run_native_retained_groups.py": "35b882d49af127319c2185a97dd056bbd7c0e3305f4d68c30f85542f6ac31e43",
+    "native_heads_runtime.py": "b4ae2e5d7cae641d0f992ea24540ed7bc896e3512bd624cf470637985c232e5d"
+  },
+  "temporary_pin_fixtures_cleaned": true,
+  "public_runtime_source_unchanged": true,
+  "private_artifacts_required": false,
+  "model_Torch_OpenCL_RKNN_or_board_executed": false,
+  "actual_precision_performance_or_8GB_accepted": false
+}

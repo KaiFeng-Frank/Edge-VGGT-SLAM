@@ -1,0 +1,84 @@
+{
+  "schema": "recovered_original_native518_attention_layout_v102",
+  "experiment_version": 102,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "status": "equivalent_FP32_graph_compiler_fused_back_no_new_runtime_route",
+    "parent_K4_graph_sha256": "c44094793c3b590c6066cbdd634cf0c4d8bd5b75987c8b491db7b17b2201f55d",
+    "graph_proof": {
+      "whole_parent_K4_inverse_protobuf_equal": true,
+      "all18_original_parameters_checked": true,
+      "all44_initializers_unchanged": true,
+      "all2082keys_16heads_and_original_scale_preserved": true,
+      "other_original_nodes_and_public_IO_unchanged": true
+    },
+    "original_FP32_gate": {
+      "passed": true,
+      "fixed_thresholds": {
+        "relative_l2": 1e-05,
+        "max_abs": 0.001
+      },
+      "relative_l2": 4.3040832325742475e-07,
+      "max_abs": 6.9141387939453125e-06
+    },
+    "compiled_vs_original_CPU": {
+      "strict_rtol": 0.0001,
+      "strict_atol": 1e-05,
+      "strict_pass": false,
+      "byte_equal": false,
+      "max_abs": 0.017194777727127075,
+      "relative_L2": 0.0057064053094198494
+    },
+    "profile_comparison": {
+      "candidate_SDPA_us": 245399,
+      "earlier_baseline_SDPA_us": 247685,
+      "matched_normal_ABBA_performed": false,
+      "normal_speedup_established": false,
+      "kernel_binary_identity_not_established": true
+    },
+    "resources": {
+      "init_attempts": 1,
+      "contexts_created": 1,
+      "destroy_attempts": 1,
+      "contexts_destroyed": 1,
+      "input_set_attempts": 1,
+      "input_set_successes": 1,
+      "run_attempts": 1,
+      "runs_completed": 1,
+      "output_get_attempts": 1,
+      "output_get_successes": 1,
+      "output_buffers_acquired": 1,
+      "output_release_attempts": 1,
+      "output_buffers_released": 1
+    },
+    "resources_balanced": true,
+    "decision": "Stop key-major candidate; SDK profile shows the same fused NPU exSDPAttention family/topology and identical compiled baseline output. No matched ordinary ABBA or model adoption.",
+    "candidate_accepted": false,
+    "mapping_observation": "The specific key-major rewrite maps back to exSDPAttention. Its profile output equals the earlier K4 output; machine-code identity and normal speedup were not established."
+  },
+  "source_evidence": [
+    {
+      "archive": "v102-attention-layout-review-r1",
+      "file": "attention-layout-analysis.json",
+      "bytes": 16747,
+      "sha256": "6de10abf0f8e3dc972760b2ccc94b747978ad5452dfd0cc59db6e02c37099c13"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 168. An exact attention-layout rewrite is compiled back into the existing SDPA mapping",
+    "section_sha256": "aa1dea97d14d9a19923a47202b57d6b01e6c9c153f787bc28984404dcd015f66"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

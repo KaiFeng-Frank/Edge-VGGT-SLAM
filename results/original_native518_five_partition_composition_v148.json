@@ -1,0 +1,388 @@
+{
+  "schema": "original_native518_five_partition_composition_v148",
+  "status": "actual_five_partition_composition_and_both_endpoint_ABBA_parity_verified_component_only",
+  "summary": "Joining five inherited-grid modules retains both measured quantized endpoints and reduces complete-route means by 10.77%/10.04% on two heldouts; original FP32 feature error remains around 13%.",
+  "scope": {
+    "board": "RK3588S",
+    "checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "original_aggregator_blocks": 10,
+    "native_input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "outputs": {
+      "global_output": [
+        1,
+        2082,
+        1024
+      ],
+      "projected_output": [
+        2,
+        256,
+        28,
+        37
+      ]
+    },
+    "original_heads": 16,
+    "frame_keys": 1041,
+    "global_keys": 2082,
+    "original_DPT_project0_prefix_retained": true,
+    "encoder_represented_by_captured_features": true,
+    "remaining_aggregator_complete_heads_and_SLAM_executed": false
+  },
+  "composition": {
+    "original_generated_nodes": 479,
+    "composed_generated_nodes": 471,
+    "original_initializers": 449,
+    "composed_initializers": 449,
+    "SDK_initializer_input_declarations": 449,
+    "total_graph_input_declarations": 450,
+    "external_inputs": [
+      "input"
+    ],
+    "only8_generated_boundary_converters_removed": true,
+    "only4_following_reshape_input_edges_rewired": true,
+    "all5_whole_original_ModelProto_inverses_byte_equal": true,
+    "reversible_per_stage_symbol_namespaces": true,
+    "original_R7_retained_view_and_both_terminal_converters_preserved": true,
+    "optional_internal_layout_fold_applied": false,
+    "original_learned_operations_and_MACs_unchanged": true,
+    "inherited_data_quant_tab_entries": 927,
+    "inherited_numerical_cfg_entries": 758,
+    "live_FLOAT16_requests": 122,
+    "all5_numeric_cfg_bodies_preserved_after_inverse_symbol_renaming": true,
+    "adjacent_unequal_dormant_catalogues_preserved_separately": true,
+    "data_ordered_keys_types_float_bits_Namespace_values_and_mutable_aliases_preserved": true,
+    "repacked_pickle_byte_equality_not_claimed": true,
+    "source_descriptor_binds_real_full749_node_410_initializer_source": true,
+    "full_source_partition_coverage_and_stage0_exact_alpha_default_equivalence_proved": true,
+    "downstream_calibration_is_original_observer_conditional_not_deployed_NPU_input": true,
+    "fixed_grid_composition_is_not_fresh_whole_graph_calibration_equivalence": true
+  },
+  "reused_board_CPU_source_gate": {
+    "policy": "Reuse existing board gates for the exact unchanged full source and input identities.",
+    "calibration_ids": [
+      "pair0",
+      "pair1",
+      "pair2",
+      "pair3"
+    ],
+    "source_indices": [
+      [
+        0,
+        8
+      ],
+      [
+        16,
+        24
+      ],
+      [
+        48,
+        56
+      ],
+      [
+        64,
+        72
+      ]
+    ],
+    "existing_same_input_endpoint_comparisons": 8,
+    "all8_fixed_and_strict_gates_passed": true,
+    "worst_relative_l2": 2.883775086120424e-07,
+    "worst_max_abs": 1.7881393432617188e-06,
+    "strict_outliers": 0,
+    "new_CPU_sessions": 0,
+    "new_CPU_forwards": 0,
+    "new_calibration_requested": false,
+    "heldouts_excluded_from_compile_inputs": true
+  },
+  "actual_compilation": {
+    "configuration": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "mean_values": null,
+      "std_values": null,
+      "quant_img_RGB2BGR": false,
+      "model_pruning": false,
+      "remove_reshape": false,
+      "quantize_weight": false,
+      "enable_flash_attention": false,
+      "quantized_dtype": "w8a8",
+      "quantized_algorithm": "normal",
+      "quantized_method": "channel"
+    },
+    "worker_seconds": 440.3250504919997,
+    "SDK_step2_seconds": 247.7142968900007,
+    "offline_peak_rss_MiB": 5169.26953125,
+    "rknn": {
+      "file": "composed-group0-five-partition-fixed-grid.rknn",
+      "bytes": 231011837,
+      "sha256": "f0e2a2da2dabe1b16c16cd00c45bc111b83b7de66f87521e3bbb86288c57cbb3"
+    },
+    "SDK_released": true,
+    "original_SDK_inputs_unchanged": true,
+    "new_CPU_forwards": 0,
+    "new_calibration": false,
+    "offline_preparation_memory_not_inference_memory": true
+  },
+  "actual_placement": {
+    "operators": 503,
+    "consumer_buffer_rows": 1274,
+    "compact_parameter_rows": 499,
+    "all_explicit_rows_consumed": true,
+    "precision_target_counts": {
+      "FLOAT16/CPU": 3,
+      "FLOAT16/NPU": 166,
+      "INT8/NPU": 333,
+      "INT8/CPU": 1
+    },
+    "original_aggregator_INT8_products": 75,
+    "original_project0_INT8_products": 2,
+    "original_SDPA_INT8_NPU": 15,
+    "FLOAT16_residual_paths": 30,
+    "five_mean_Sub_restore_paths_FLOAT16_NPU": true,
+    "four_internal_joins_FLOAT16": true,
+    "R7_retained_view_and_both_DPT_norms_FLOAT16": true,
+    "public_global_FLOAT16": true,
+    "public_projected_INT8": true,
+    "owned_outputs_FP32_via_original_want_float1_IO": true,
+    "preserved_internal_CPU_Transpose": {
+      "id": 490,
+      "dtype": "FLOAT16"
+    },
+    "unexpected_internal_CPU_GPU_fallback": false,
+    "all_NPU_claim": false,
+    "literal_starred_rows": 1,
+    "preserved_failed_parser_attempts": 2,
+    "compact_int64_shape_rows_parsed_without_invented_native_shapes": true,
+    "zero_copy_or_physical_traffic_claim": false
+  },
+  "matched_ABBA": {
+    "heldout_ids": [
+      "pair4",
+      "pair5"
+    ],
+    "per_input_schedule": [
+      "partitioned",
+      "merged",
+      "merged",
+      "partitioned"
+    ],
+    "resident_owners": 6,
+    "complete_routes": 8,
+    "owned_calls": 24,
+    "logical_saved_owned_outputs": 32,
+    "flags": 0,
+    "core_mask": 7,
+    "all_calls_sequential": true,
+    "all32_outputs_finite": true,
+    "all24_partitioned_outputs_byte_equal_prior_R7_endpoints": true,
+    "all8_merged_final_outputs_byte_equal_current_partitioned": true,
+    "repeated_final_bytes_equal": true,
+    "all_later_partition_inputs_are_actual_previous_owned_global_outputs": true,
+    "original_references_comparison_only": true,
+    "four_merged_midpoints_not_exposed_to_host_owned_finite_checks": true,
+    "guard_counts_not_claimed_equal": true,
+    "resource_counts": {
+      "contexts_created": 6,
+      "contexts_destroyed": 6,
+      "runs_completed": 24,
+      "output_buffers_acquired": 32,
+      "output_buffers_released": 32
+    },
+    "all_contexts_and_buffers_closed": true,
+    "worker_seconds": 34.62137860400253,
+    "controller_seconds": 35.26487616799568,
+    "requested_NPU_hz": 1000000000,
+    "timeout_seconds": 180,
+    "temperature_limit_c": 75,
+    "maximum_controller_temperature_c": 61.923,
+    "exact_prior_clock_governor_limits_restored": true,
+    "timer_scope": "Whole route includes normal SDK IO,owned copies,release,input/final finite guards and per-call bookkeeping; init/destruction,comparison,hashing and array saves are outside valid route timers.",
+    "all_first_and_subsequent_calls_reported": true,
+    "results": [
+      {
+        "input_id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "sample_count_per_route": 2,
+        "partitioned_complete_route_seconds": [
+          3.868039722001413,
+          3.7990094650012907
+        ],
+        "merged_complete_route_seconds": [
+          3.4177436769969063,
+          3.423741302001872
+        ],
+        "partitioned_mean_seconds": 3.8335245935013518,
+        "merged_mean_seconds": 3.420742489499389,
+        "descriptive_mean_latency_reduction_fraction": 0.10767691557312997,
+        "partitioned_mean_SDK_run_seconds": 3.3922023820014147,
+        "merged_mean_SDK_run_seconds": 3.3874089240016474,
+        "original_FP32_comparisons": {
+          "global_output": {
+            "relative_l2": 0.1298813627812813,
+            "max_abs": 0.502324104309082,
+            "outside_count": 2129762,
+            "fixed_gate_passed": false,
+            "strict_pass": false
+          },
+          "projected_output": {
+            "relative_l2": 0.13296826220980834,
+            "max_abs": 0.16210156679153442,
+            "outside_count": 529960,
+            "fixed_gate_passed": false,
+            "strict_pass": false
+          }
+        },
+        "partitioned_mean_complete_minus_SDK_run_seconds": 0.4413222114999371,
+        "merged_mean_complete_minus_SDK_run_seconds": 0.0333335654977418
+      },
+      {
+        "input_id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "sample_count_per_route": 2,
+        "partitioned_complete_route_seconds": [
+          3.7852872969961027,
+          3.8004796319946763
+        ],
+        "merged_complete_route_seconds": [
+          3.4089380930017796,
+          3.4150538009998854
+        ],
+        "partitioned_mean_seconds": 3.7928834644953895,
+        "merged_mean_seconds": 3.4119959470008325,
+        "descriptive_mean_latency_reduction_fraction": 0.10042162409153554,
+        "partitioned_mean_SDK_run_seconds": 3.389764298000955,
+        "merged_mean_SDK_run_seconds": 3.382485110501875,
+        "original_FP32_comparisons": {
+          "global_output": {
+            "relative_l2": 0.13103587070110392,
+            "max_abs": 0.5725374221801758,
+            "outside_count": 2129709,
+            "fixed_gate_passed": false,
+            "strict_pass": false
+          },
+          "projected_output": {
+            "relative_l2": 0.13284935099232392,
+            "max_abs": 0.1442594677209854,
+            "outside_count": 530000,
+            "fixed_gate_passed": false,
+            "strict_pass": false
+          }
+        },
+        "partitioned_mean_complete_minus_SDK_run_seconds": 0.40311916649443447,
+        "merged_mean_complete_minus_SDK_run_seconds": 0.02951083649895736
+      }
+    ],
+    "latency_interpretation": "SDK-run sums are nearly unchanged; the measured reduction is mainly outside SDK run. Changed finite-guard counts prevent attributing it solely to physical copying."
+  },
+  "acceptance": {
+    "inherited_quantized_chain_parity_established": true,
+    "original_FP32_quality_accepted": false,
+    "full_model_or_trajectory_accepted": false,
+    "sustained_speed_or_P95_accepted": false,
+    "fresh_pose20Hz_accepted": false,
+    "complete_SLAM_realtime_accepted": false,
+    "physical8GB_accepted": false
+  },
+  "limitations": [
+    "Exact inherited-grid output parity does not establish original FP32 quality.",
+    "Component latency excludes the encoder, remaining aggregator groups, complete heads and SLAM.",
+    "A small matched ABBA screen does not establish sustained speed, P95 or trajectory accuracy.",
+    "Preserved FLOAT16 public aliases and shared spans are not proof of zero physical copying.",
+    "Code licensing and original-model weight terms remain separate."
+  ],
+  "evidence": [
+    {
+      "role": "static_composition_proof",
+      "file": "group0-five-partition-composition-static-r1.json",
+      "bytes": 156413,
+      "sha256": "3e9c8dd108adf4e812830959bf60e733b3aad8f590cebef0ea76b0744303ed43"
+    },
+    {
+      "role": "independent_static_peer",
+      "file": "group0-five-partition-composition-independent-peer-r1.json",
+      "bytes": 2664,
+      "sha256": "e647b42569aebf345f28ed66d814590cb09301a6bbd0b2fa104a8ab2d377cd7f"
+    },
+    {
+      "role": "existing_source_gate_receipt",
+      "file": "result.json",
+      "bytes": 123250,
+      "sha256": "50ee0c6c749752953c25649334228273200bbe6515b76d43af4ce9664cb25ef8"
+    },
+    {
+      "role": "existing_source_gate_saved_audit",
+      "file": "reference-capture-saved-audit.json",
+      "bytes": 14425,
+      "sha256": "2e245fb8077d7b577b804950940d2ef1aee72cd682ddf7ccb191aaf9529dd8d9"
+    },
+    {
+      "role": "actual_compile_receipt",
+      "file": "result.json",
+      "bytes": 167749,
+      "sha256": "93ac366ec9c6156cf451be8fe987fe64cf943a62efbdf423fa6662fafb0c00cd"
+    },
+    {
+      "role": "actual_compile_full_log",
+      "file": "vggt-v83-group0fivepartitionfixedgridr1-r1.log",
+      "bytes": 490432,
+      "sha256": "0b0b183d02a661bff969d73b26c72e966e78c537eb9cb5ce0b45894a53c22558"
+    },
+    {
+      "role": "actual_compile_controller",
+      "file": "vggt-v83-group0fivepartitionfixedgridr1-control-r1.json",
+      "bytes": 1763340,
+      "sha256": "ed0b9dd49c75d27fc8d1e7a855eba019053841bde9a328a0faf0c2e5395e9a8c"
+    },
+    {
+      "role": "actual_placement_saved_audit",
+      "file": "group0-five-partition-fixed-grid-saved-precision-audit-r3.json",
+      "bytes": 871082,
+      "sha256": "253aa7f3718878d9a33b452e5aec733f3da349b609989341a9f4fe37701d899c"
+    },
+    {
+      "role": "actual_runtime_receipt",
+      "file": "result.json",
+      "bytes": 162801,
+      "sha256": "2a3dd4c061f183ae509d4d9eb5a795ab4be6f2b67fec3023e17fd0d0401b6429"
+    },
+    {
+      "role": "actual_runtime_controller",
+      "file": "control.json",
+      "bytes": 25790,
+      "sha256": "8a414e2b8aeef077e07aefd800def08a24cdb2d4db381af92b0d708906119f85"
+    },
+    {
+      "role": "actual_runtime_transport",
+      "file": "group0-five-partition-ABBA-r1-transport.json",
+      "bytes": 52997,
+      "sha256": "b39925f6821787408e43480d05a26619b3614cad86f103aaf5c98a141a9c7fb8"
+    },
+    {
+      "role": "actual_runtime_saved_audit",
+      "file": "group0-five-partition-ABBA-saved-audit-r1.json",
+      "bytes": 54056,
+      "sha256": "329832e510d99a65477029e0dcc3afd1a11db464ee6e2b20142257655bbf323e"
+    }
+  ],
+  "original_quality_gates": {
+    "relative_l2_max": 1e-05,
+    "max_abs_max": 0.001,
+    "strict_atol": 1e-05,
+    "strict_rtol": 0.0001,
+    "both_final_endpoint_fixed_and_strict_gates_passed": false,
+    "thresholds_unchanged": true,
+    "tensor_gates_not_trajectory_thresholds": true
+  }
+}

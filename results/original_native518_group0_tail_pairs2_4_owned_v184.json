@@ -1,0 +1,316 @@
+{
+  "schema": "original_native518_group0_tail_pairs2_4_owned_v184",
+  "status": "six_original_blocks_nonquant_FP16_compile_and_two_conditional_owned_calls_verified_original_tensor_gates_fail_no_deployment_acceptance",
+  "scope": {
+    "source_and_static_CPU_gates": "R183",
+    "original_pairs": [
+      2,
+      3,
+      4
+    ],
+    "original_aggregator_blocks": 6,
+    "source_nodes": 441,
+    "source_initializers": 240,
+    "all_original108_parameter_values_and_all_heads_tokens_preserved": true,
+    "source_graph_and_numeric_inputs_unchanged": true,
+    "input_scope": "Original captured pair1 global FLOAT32 endpoint, not the output of a newly executed four-block prefix.",
+    "input_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "frame_output_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "global_output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "raw_retained_frame_first_global_second_contract_preserved": true,
+    "full_DPT_and_other_original_retained_branches_still_required": true,
+    "unchanged_core_mask7_requested": true,
+    "init_flags": 0,
+    "ordinary_owned_methods_unchanged": true,
+    "new_calibration_or_host_learned_forward": false
+  },
+  "actual_compile": {
+    "nonquantizing": true,
+    "float_dtype": "float16",
+    "model_bytes": 199266938,
+    "model_sha256": "2120edaf81e6e034948118abe971d9ab7cf3d92d7dacaf051c50740593606f16",
+    "SDK_owners_created_and_released": 1,
+    "operator_rows": 222,
+    "feature_rows": 377,
+    "constant_rows": 257,
+    "all_actual_rows_consumed": true,
+    "original_learned_products_FLOAT16_NPU": 45,
+    "original_SDPA_FLOAT16_NPU": 9,
+    "internal_operations_NPU": 219,
+    "public_CPU_IO_operators": 3,
+    "internal_CPU_or_GPU_fallbacks": [],
+    "all_actual_activation_storage_FLOAT16": true,
+    "all_original_dense_extents_full_key_attention_and_full_width_norms_verified": true,
+    "printed_static_internal_memory_KB": 98301.3,
+    "printed_memory_is_not_measured_physical_peak": true,
+    "no_hidden_accumulator_or_probability_dtype_inference_from_storage_labels": true
+  },
+  "owned_runtime": {
+    "cases": [
+      "pair4",
+      "pair5"
+    ],
+    "owner_count": 1,
+    "runs": 2,
+    "raw_FLOAT32_owned_arrays": 4,
+    "raw_NPY_bytes": 34112000,
+    "all_four_arrays_saved_before_numeric_comparisons": true,
+    "all_eight_local_CPU_and_original_comparisons_independently_verified": true,
+    "logical_names_shapes_floating_formats_and_original_input_hashes_verified": true,
+    "resource_totals": {
+      "contexts_created": 1,
+      "contexts_destroyed": 1,
+      "runs_completed": 2,
+      "output_buffers_acquired": 4,
+      "output_buffers_released": 4
+    },
+    "all_resources_closed": true,
+    "controller_frequency_hz": 1000000000,
+    "controller_restored": true,
+    "source_affinity_and_environment_restored": true,
+    "maximum_controller_temperature_c": 59.153
+  },
+  "numeric_results": {
+    "fixed_relative_l2_max": 1e-05,
+    "fixed_max_abs_max": 0.001,
+    "strict_rtol": 0.0001,
+    "strict_atol": 1e-05,
+    "all_eight_fixed_gates_passed": false,
+    "all_eight_strict_gates_passed": false,
+    "local_tail_CPU_comparisons": [
+      {
+        "case_id": "pair4",
+        "name": "frame_output",
+        "reference": "CPU_frame_reference",
+        "full": {
+          "relative_l2": 0.004065827727837151,
+          "max_abs": 0.019767284393310547,
+          "outside_count": 2057033
+        },
+        "camera": {
+          "relative_l2": 0.0013949041851981248,
+          "max_abs": 0.010898828506469727,
+          "outside_count": 1963
+        },
+        "register": {
+          "relative_l2": 0.0013696006412174564,
+          "max_abs": 0.013058185577392578,
+          "outside_count": 7826
+        }
+      },
+      {
+        "case_id": "pair4",
+        "name": "global_output",
+        "reference": "CPU_global_reference",
+        "full": {
+          "relative_l2": 0.005948729521291379,
+          "max_abs": 0.015972256660461426,
+          "outside_count": 2066520
+        },
+        "camera": {
+          "relative_l2": 0.0016703765175847716,
+          "max_abs": 0.01221776008605957,
+          "outside_count": 1965
+        },
+        "register": {
+          "relative_l2": 0.0015891204149361602,
+          "max_abs": 0.012979507446289062,
+          "outside_count": 7830
+        }
+      },
+      {
+        "case_id": "pair5",
+        "name": "frame_output",
+        "reference": "CPU_frame_reference",
+        "full": {
+          "relative_l2": 0.004207373678055944,
+          "max_abs": 0.01757335662841797,
+          "outside_count": 2059228
+        },
+        "camera": {
+          "relative_l2": 0.001444165874153704,
+          "max_abs": 0.008709430694580078,
+          "outside_count": 1953
+        },
+        "register": {
+          "relative_l2": 0.0015306279431119149,
+          "max_abs": 0.01666879653930664,
+          "outside_count": 7811
+        }
+      },
+      {
+        "case_id": "pair5",
+        "name": "global_output",
+        "reference": "CPU_global_reference",
+        "full": {
+          "relative_l2": 0.006044133742859795,
+          "max_abs": 0.016923576593399048,
+          "outside_count": 2067090
+        },
+        "camera": {
+          "relative_l2": 0.0017010964231358842,
+          "max_abs": 0.008290290832519531,
+          "outside_count": 1964
+        },
+        "register": {
+          "relative_l2": 0.0016753919333325946,
+          "max_abs": 0.01672220230102539,
+          "outside_count": 7817
+        }
+      }
+    ],
+    "additional_full_source_comparisons": [
+      {
+        "case_id": "pair4",
+        "name": "frame_output",
+        "reference": "observer_frame_reference",
+        "relative_l2": 0.00406582663900884,
+        "max_abs": 0.019766569137573242,
+        "outside_count": 2057055
+      },
+      {
+        "case_id": "pair4",
+        "name": "global_output",
+        "reference": "original_global_reference",
+        "relative_l2": 0.005948729202332991,
+        "max_abs": 0.015972375869750977,
+        "outside_count": 2066522
+      },
+      {
+        "case_id": "pair5",
+        "name": "frame_output",
+        "reference": "observer_frame_reference",
+        "relative_l2": 0.0042073745238697694,
+        "max_abs": 0.01757335662841797,
+        "outside_count": 2059218
+      },
+      {
+        "case_id": "pair5",
+        "name": "global_output",
+        "reference": "original_global_reference",
+        "relative_l2": 0.006044133745682896,
+        "max_abs": 0.01692366600036621,
+        "outside_count": 2067086
+      }
+    ],
+    "frame_observer_reference_is_fresh_same_source_parent_not_independent_original734_frame_capture": true,
+    "camera_FRAME_indices": "[:,0,:]",
+    "register_FRAME_indices": "[:,1:5,:]",
+    "camera_GLOBAL_indices": [
+      0,
+      1041
+    ],
+    "register_GLOBAL_indices": [
+      1,
+      2,
+      3,
+      4,
+      1042,
+      1043,
+      1044,
+      1045
+    ],
+    "token_errors_are_not_decoded_pose_or_ATE_RPE": true
+  },
+  "descriptive_timing": {
+    "calls": [
+      {
+        "case_id": "pair4",
+        "complete_owned_call_seconds": 2.0228355370054487,
+        "SDK_run_seconds": 1.917650817995309
+      },
+      {
+        "case_id": "pair5",
+        "complete_owned_call_seconds": 2.025888953998219,
+        "SDK_run_seconds": 1.9200779429957038
+      }
+    ],
+    "mean_complete_owned_call_seconds": 2.024362245501834,
+    "mean_SDK_run_seconds": 1.9188643804955063,
+    "initialization_seconds": 0.5727458909968846,
+    "close_seconds": 0.1273332209966611,
+    "peak_process_RSS_MiB": 522.453125,
+    "complete_call_includes_input_finite_IO_owned_copies_release_and_output_finite": true,
+    "saving_hashing_comparisons_initialization_and_close_outside_call": true,
+    "one_call_per_case_no_repeats_or_matched_comparison": true,
+    "not_complete_model_or_SLAM_FPS": true,
+    "process_RSS_not_unique_physical_RAM": true
+  },
+  "acceptance": {
+    "component_evidence_preserved": true,
+    "NPU_precision_accepted": false,
+    "deployment_accepted": false,
+    "connected_prefix_or_full_network_execution_established": false,
+    "trajectory_accuracy_accepted": false,
+    "sustained_realtime_or_physical_8GB_accepted": false,
+    "reused_engineering_cases_not_untouched_generalization": true
+  },
+  "evidence": [
+    {
+      "role": "Actual noncalibrating compile receipt",
+      "basename": "result.json",
+      "bytes": 175347,
+      "sha256": "27ad5c744d42e10e9735aed5b4fb2651a8f363172f65b72533e98a8d56aae989"
+    },
+    {
+      "role": "Independent complete actual placement audit",
+      "basename": "host-compile-r1-saved-placement-audit-r1.json",
+      "bytes": 612724,
+      "sha256": "8f4fa143bb6eee533e1fad2ec56410ae7b252cf7aadff3a3bba85b0d7b9d27c8"
+    },
+    {
+      "role": "Actual two-case owned receipt",
+      "basename": "result.json",
+      "bytes": 22144,
+      "sha256": "093493b363b925bb538c3a1731da55913f9daba6efc2d8018e1cb439d18156ff"
+    },
+    {
+      "role": "Closed owned transport",
+      "basename": "owned-gate-r1-transport.json",
+      "bytes": 28229,
+      "sha256": "f33f257f6c87227a05c4b1e8fbbc6275a013ded5f036cb302766c4f49ffc2a95"
+    },
+    {
+      "role": "Restored bounded controller",
+      "basename": "control.json",
+      "bytes": 6420,
+      "sha256": "6061160046b78cddf428d2f4f1efb9f374bd63caad747ee8ae2353436ae9c354"
+    },
+    {
+      "role": "Frozen owned worker",
+      "basename": "run_tail_pairs2_4_owned_board.py",
+      "bytes": 20367,
+      "sha256": "0833a21b3dcd0c2e1b68cedae4a5e0c78b4908db28b6d28458977dac1ccaa595"
+    },
+    {
+      "role": "Frozen owned transport source",
+      "basename": "execute_tail_pairs2_4_owned_host.py",
+      "bytes": 14202,
+      "sha256": "d412d4954d5a5216d6524a2fab381bfe737ce7a2f6d30fd50161ee3bab6d0fe4"
+    },
+    {
+      "role": "Independent four-array saved audit",
+      "basename": "owned-gate-r1-saved-audit-r1.json",
+      "bytes": 14721,
+      "sha256": "afb7f68a1e35404e663b99eff38c3d24cba88c02c070bf8274489b4ad8869788"
+    },
+    {
+      "role": "Independent saved auditor source",
+      "basename": "audit_tail_pairs2_4_owned_saved.py",
+      "bytes": 14362,
+      "sha256": "ebfa3f469cca57c3e1433d988677ccf31386426b890baa359a5ed37adfdd4c9d"
+    }
+  ]
+}

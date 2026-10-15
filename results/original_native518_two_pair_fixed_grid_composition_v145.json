@@ -1,0 +1,416 @@
+{
+  "schema": "original_native518_two_pair_fixed_grid_composition_v145",
+  "status": "actual_source_FP32_placement_and_ABBA_component_result_verified_full_model_not_accepted",
+  "summary": "Joining two already calibrated original pair modules removes one public SDK crossing; both heldout finals retain identical bytes while complete-route means fall by 6.70\u20137.25%.",
+  "scope": {
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "board": "RK3588S",
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "original_aggregator_blocks": 4,
+    "frame_attention_keys": 1041,
+    "global_attention_keys": 2082,
+    "original_heads": 16,
+    "original_layers_tokens_and_learned_operations_retained": true,
+    "original_encoder_represented_by_captured_inputs": true,
+    "remaining_aggregator_heads_and_SLAM_executed": false
+  },
+  "composition": {
+    "joined_original_source": {
+      "nodes": 293,
+      "initializers": 159,
+      "both_whole_original_source_inverses_byte_equal": true,
+      "artifact": {
+        "file": "composed-original-two-pair-source.onnx",
+        "bytes": 204835899,
+        "sha256": "da5d7088fb5f40368ee94bdcbea9b1479d59da40bc77d44376778694bd005ec7"
+      }
+    },
+    "generated_model": {
+      "nodes": 184,
+      "initializers": 172,
+      "all172_original_initializer_protos_unchanged": true,
+      "all183_untouched_node_protos_unchanged": true,
+      "both_original_generated_ModelProto_inverses_byte_equal": true,
+      "removed_generated_IO_converters": [
+        "global_output__cvt_int8_to_float16",
+        "pair0_global_output__cvt_float32_to_int8"
+      ],
+      "rewired_generated_stage1_input_only": true,
+      "artifact": {
+        "file": "composed-fixed-grid.model",
+        "bytes": 311126999,
+        "sha256": "829195b64e4411553d2b0026ad7f82f68d15364bbd2a6bfb75f1565a1e52af7b"
+      }
+    },
+    "learned_dense_and_attention_MACs_unchanged": true,
+    "original_numerical_cfg_bodies_byte_preserved": true,
+    "original_quantization_catalogue_entries": 362,
+    "original_numerical_cfg_entries": 296,
+    "live_FLOAT16_requests": 46,
+    "original_numeric_grids_inherited_without_new_calibration": true,
+    "repacked_data_ordered_keys_types_float_bits_Namespace_and_mutable_alias_topology_verified": true,
+    "repacked_data_byte_equality_not_claimed": true,
+    "untouched_stage1_pickle_repack_size_delta_bytes": 13,
+    "immutable_scalar_string_intern_identity_not_a_serialization_contract": true,
+    "real_joined_original_source_descriptor_used": true,
+    "stage1_calibration_was_conditional_original_observer_input_not_deployed_NPU_stage0_output": true,
+    "fixed_grid_composition_is_not_fresh_whole_graph_calibration_equivalence": true
+  },
+  "board_CPU_source_gate": {
+    "calibration_ids": [
+      "pair0",
+      "pair1",
+      "pair2",
+      "pair3"
+    ],
+    "source_indices": [
+      [
+        0,
+        8
+      ],
+      [
+        16,
+        24
+      ],
+      [
+        48,
+        56
+      ],
+      [
+        64,
+        72
+      ]
+    ],
+    "heldouts_excluded": true,
+    "CPU_sessions_created": 1,
+    "CPU_sessions_dropped_before_SDK": 1,
+    "CPU_calls": 4,
+    "all4_saved_before_verdict": true,
+    "same_input_original_full_capture_pair1_global_reference": true,
+    "all4_fixed_and_strict_gates_passed": true,
+    "worst_relative_l2": 9.714493083026691e-08,
+    "worst_max_abs": 5.960464477539062e-07,
+    "strict_outliers": 0
+  },
+  "actual_compilation": {
+    "configuration": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "mean_values": null,
+      "std_values": null,
+      "quant_img_RGB2BGR": false,
+      "model_pruning": false,
+      "remove_reshape": false,
+      "quantize_weight": false,
+      "enable_flash_attention": false,
+      "quantized_dtype": "w8a8",
+      "quantized_algorithm": "normal",
+      "quantized_method": "channel"
+    },
+    "combined_CPU_gate_and_step2_worker_seconds": 143.02526166199823,
+    "combined_worker_peak_rss_MiB": 2421.296875,
+    "offline_preparation_memory_not_inference_memory": true,
+    "SDK_released": true,
+    "original_SDK_inputs_unchanged": true,
+    "rknn": {
+      "file": "composed-fixed-grid-two-pair.rknn",
+      "bytes": 91831107,
+      "sha256": "c09eb7f2e98ccf0aa6cd49f1e78d65f0dcc876b87ded696dce4225becc3e58eb"
+    }
+  },
+  "actual_placement": {
+    "operators": 196,
+    "feature_consumer_rows": 301,
+    "constant_rows": 192,
+    "all_memory_rows": 493,
+    "all_explicit_table_rows_consumed": true,
+    "precision_target_counts": {
+      "FLOAT16/CPU": 2,
+      "FLOAT16/NPU": 62,
+      "INT8/NPU": 132
+    },
+    "derived_original_weighted_products_INT8_NPU": 30,
+    "original_SDPA_INT8_NPU": 6,
+    "residual_highways_FLOAT16_NPU": 12,
+    "mean_Sub_restore_FLOAT16_NPU": true,
+    "internal_join_actual_FLOAT16_NPU": true,
+    "sole_final_public_output_FLOAT16": true,
+    "internal_CPU_GPU_arithmetic_or_layout_fallback": false,
+    "global_output_int8_alias_name_does_not_establish_INT8": true,
+    "one_exact_starred_address_row_preserved": true,
+    "unchanged_frozen_parser_rows": 492,
+    "star_marker_semantics_not_inferred": true,
+    "buffer_address_overlap_not_zero_copy_or_physical_traffic_proof": true
+  },
+  "matched_ABBA": {
+    "heldout_ids": [
+      "pair4",
+      "pair5"
+    ],
+    "per_input_schedule": [
+      "partitioned",
+      "merged",
+      "merged",
+      "partitioned"
+    ],
+    "route_count": 8,
+    "normal_owned_calls": 12,
+    "saved_owned_outputs": 12,
+    "resident_contexts": 3,
+    "flags": 0,
+    "core_mask": 7,
+    "all_runs_sequential": true,
+    "all12_owned_outputs_finite": true,
+    "all8_partitioned_owned_outputs_byte_equal_latest_same_model_baseline": true,
+    "all4_merged_final_outputs_byte_equal_current_partitioned": true,
+    "all_stage1_connected_inputs_are_actual_stage0_owned_outputs": true,
+    "original_references_never_substituted": true,
+    "merged_midpoint_not_exposed_to_host_owned_finite_check": true,
+    "finite_check_counts_not_claimed_equal": true,
+    "resource_counts": {
+      "contexts_created": 3,
+      "contexts_destroyed": 3,
+      "runs_completed": 12,
+      "output_buffers_acquired": 12,
+      "output_buffers_released": 12
+    },
+    "all_contexts_and_buffers_closed": true,
+    "worker_seconds": 14.340178565995302,
+    "controller_seconds": 14.823520697995264,
+    "requested_NPU_hz": 1000000000,
+    "timeout_seconds": 180,
+    "temperature_limit_c": 75,
+    "maximum_observed_controller_temperature_c": 63.769,
+    "original_clock_governor_limits_exactly_restored": true,
+    "timer_scope": "Complete route includes SDK IO, owned copies, release, input/final finite checks and wrapper bookkeeping. Initialization/destruction, all saves, hashes and reference comparisons are excluded.",
+    "first_and_subsequent_calls_all_reported": true,
+    "results": [
+      {
+        "input_id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "partitioned_complete_route_seconds": [
+          1.4535550210057409,
+          1.4270820599995204
+        ],
+        "merged_complete_route_seconds": [
+          1.3480794690040057,
+          1.3237862579990178
+        ],
+        "partitioned_mean_complete_route_seconds": 1.4403185405026306,
+        "merged_mean_complete_route_seconds": 1.3359328635015117,
+        "descriptive_complete_route_reduction_fraction": 0.07247402159017635,
+        "partitioned_mean_SDK_run_seconds": 1.2731726485035324,
+        "merged_mean_SDK_run_seconds": 1.2687512315023923,
+        "partitioned_original_FP32_relative_l2": 0.0626133156434724,
+        "merged_original_FP32_relative_l2": 0.0626133156434724,
+        "max_abs": 0.4630565941333771,
+        "strict_outside_count": 2123423,
+        "original_fixed_gate_passed": false,
+        "original_strict_gate_passed": false,
+        "all_merged_final_bytes_equal_current_partitioned": true,
+        "both_case_route_repeats_byte_equal": true
+      },
+      {
+        "input_id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "partitioned_complete_route_seconds": [
+          1.421475641996949,
+          1.4236692260019481
+        ],
+        "merged_complete_route_seconds": [
+          1.3335348430045997,
+          1.3209503830003086
+        ],
+        "partitioned_mean_complete_route_seconds": 1.4225724339994485,
+        "merged_mean_complete_route_seconds": 1.3272426130024542,
+        "descriptive_complete_route_reduction_fraction": 0.06701227910692897,
+        "partitioned_mean_SDK_run_seconds": 1.2710386899998412,
+        "merged_mean_SDK_run_seconds": 1.2680977105010243,
+        "partitioned_original_FP32_relative_l2": 0.06466627334290648,
+        "merged_original_FP32_relative_l2": 0.06466627334290648,
+        "max_abs": 0.44699132442474365,
+        "strict_outside_count": 2123285,
+        "original_fixed_gate_passed": false,
+        "original_strict_gate_passed": false,
+        "all_merged_final_bytes_equal_current_partitioned": true,
+        "both_case_route_repeats_byte_equal": true
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "role": "generated_graph_and_inherited_grid_static_proof",
+      "file": "two-pair-fixed-grid-composition-static-r1.json",
+      "bytes": 10082,
+      "sha256": "f545ff9e54f278f62e68ab728fd5b160d823e231d4107078b0d5f121f33953b7"
+    },
+    {
+      "role": "independent_generated_graph_and_metadata_peer",
+      "file": "two-pair-fixed-grid-independent-static-peer.json",
+      "bytes": 1822,
+      "sha256": "b06fff6703cfe7acafeaa51942cd2cd6e041a6c4b9daa735b5b46ca578a84155"
+    },
+    {
+      "role": "independent_board_worker_and_transport_peer",
+      "file": "two-pair-fixed-grid-worker-transport-peer-r1.json",
+      "bytes": 2316,
+      "sha256": "6d4e129487558030404a026fd56425b19af988f7f42454b8054d2ce22e7cb329"
+    },
+    {
+      "role": "board_CPU_gate_and_step2_worker_source",
+      "file": "compile_two_pair_fixed_grid_board.py",
+      "bytes": 22826,
+      "sha256": "4a0bec24579b9c607c0a3f99c1c27ecb0c3e9309183727688c61f54d89c64df9"
+    },
+    {
+      "role": "board_CPU_gate_and_step2_transport_source",
+      "file": "execute_two_pair_fixed_grid_host.py",
+      "bytes": 15878,
+      "sha256": "1a121d81bc32ebcd01411add2622bfa2c3e2c75d7a870250d408c76ade0f0427"
+    },
+    {
+      "role": "four_source_FP32_gates_and_step2_actual_receipt",
+      "file": "result.json",
+      "bytes": 12250,
+      "sha256": "eacc959b0e20ac80543ab07fbbd7d9085f8b5b802bdda16278d5e9af7459bd69"
+    },
+    {
+      "role": "CPU_gate_and_step2_no_clock_controller",
+      "file": "vggt-v83-native518twopairfixedgridr1-control-r1.json",
+      "bytes": 580770,
+      "sha256": "3bb8726926367e740099e76b7fcb5180988724bc395566698e3f4f7b622276ea"
+    },
+    {
+      "role": "full_actual_SDK_operator_and_memory_log",
+      "file": "vggt-v83-native518twopairfixedgridr1-r1.log",
+      "bytes": 182122,
+      "sha256": "10da65eae5055cec74038a2c56602e2401ea6065c0c6cef0a7ae28deda81941b"
+    },
+    {
+      "role": "preserved_first_saved_parser_coverage_failure",
+      "file": "two-pair-fixed-grid-saved-precision-audit-r1.json",
+      "bytes": 3579,
+      "sha256": "abe7a2dd5c4529c9eebf5420e645ec283a9f156975c2d46f6a9819f4b87d4749"
+    },
+    {
+      "role": "actual_table_and_CPU_saved_auditor_source",
+      "file": "audit_two_pair_fixed_grid_saved_r2.py",
+      "bytes": 17860,
+      "sha256": "32279c299e7e124eae7f8233ba78dfc6269c465d8b3a8c151b754b8b54dd0d64"
+    },
+    {
+      "role": "actual_table_and_four_CPU_saved_gates_audit",
+      "file": "two-pair-fixed-grid-saved-precision-audit-r2.json",
+      "bytes": 274081,
+      "sha256": "01fb248b34db82250984d2efcefa5ddd87a75bb1eb7a17fcd7572640e371dbfd"
+    },
+    {
+      "role": "matched_ABBA_board_worker_source",
+      "file": "run_two_pair_fixed_grid_ABBA_board.py",
+      "bytes": 25095,
+      "sha256": "e0e12b94d9d97dedd0b0f1a8bcd138b5964b5a85485da59382bf9d0db52182f3"
+    },
+    {
+      "role": "matched_ABBA_transport_source",
+      "file": "execute_two_pair_fixed_grid_ABBA_host.py",
+      "bytes": 21282,
+      "sha256": "12e4bbfe3bda2d28392d9f589d7ba9f2ed45c3ee37abcda0383a78e76391c6d7"
+    },
+    {
+      "role": "actual_eight_routes_twelve_owned_calls_receipt",
+      "file": "result.json",
+      "bytes": 77501,
+      "sha256": "04e2da4c6a2172b01537a208f04b711dd52a776d7a4da04c34621ad1a78644ac"
+    },
+    {
+      "role": "actual_ABBA_restoring_1GHz_controller",
+      "file": "control.json",
+      "bytes": 11743,
+      "sha256": "25c74518eb313209dd7ff900d35912158e8aa6d71282062f7ed70818902113d2"
+    },
+    {
+      "role": "independent_saved_runtime_auditor_source",
+      "file": "audit_two_pair_fixed_grid_ABBA_saved.py",
+      "bytes": 20913,
+      "sha256": "7c6bd44a3431f2b370d61a857acd843589d77051a6e83fc2d2636cb87d119ccc"
+    },
+    {
+      "role": "independent_saved_twelve_array_runtime_audit",
+      "file": "two-pair-fixed-grid-ABBA-saved-audit-r1.json",
+      "bytes": 32105,
+      "sha256": "4bcaf8ab9ef2f6813429d984fe111c16f379b03734bcdc252b724097814a4297"
+    },
+    {
+      "role": "original_stage0_calibration",
+      "file": "result.json",
+      "bytes": 52236,
+      "sha256": "47160d3d206761c9399e7599eb6c289257389edd740353973e89b0b5f9527645"
+    },
+    {
+      "role": "original_stage1_calibration",
+      "file": "result.json",
+      "bytes": 68960,
+      "sha256": "1117a9fb8207e06197b5e6f29985709a1337ee14fe3e5fd300f868fc12bf3019"
+    },
+    {
+      "role": "original_stage0_compilation",
+      "file": "result.json",
+      "bytes": 34242,
+      "sha256": "3bebf41a20603a2d6c30e6b2755a42293e5b96ff87b5a9140fee7f633dd55fa8"
+    },
+    {
+      "role": "original_stage1_compilation",
+      "file": "result.json",
+      "bytes": 67073,
+      "sha256": "5b36e195cbdc664e2041bf99d2eb92148452c02fe4cc109897e8248c36d63b69"
+    },
+    {
+      "role": "latest_same_model_connected_byte_baseline",
+      "file": "result.json",
+      "bytes": 57131,
+      "sha256": "9ab1887db3369afe926208c93d9b4d4441c7ba0e2eb3f8d530f48663b006a1d4"
+    }
+  ],
+  "acceptance": {
+    "local_descriptive_complete_route_reduction_observed": true,
+    "full_original_model_precision_accepted": false,
+    "trajectory_quality_accepted": false,
+    "sustained_rate_or_P95_accepted": false,
+    "fresh_pose_20Hz_accepted": false,
+    "full_SLAM_realtime_accepted": false,
+    "physical_8GB_accepted": false
+  },
+  "limits": [
+    "Only the first four original aggregator blocks execute from captured native518 encoder features; this is not a full-model or SLAM run.",
+    "The two heldouts share the original replay sequence and each route has only two intervals per input. No sustained throughput or endpoint P95 follows.",
+    "Original FP32 relative L2 remains 6.2613%/6.4666%; both unchanged fixed and strict gates fail. Equality to the existing quantized baseline is not original-model accuracy acceptance.",
+    "Merged and partitioned execution expose different numbers of owned host boundaries and finite checks. The measured gain does not isolate a physical copy or internal kernel mechanism.",
+    "The inherited numerical grids preserve conditional-original calibration lineage; new deployment input effects require actual connected evaluation, not a fresh-calibration equivalence claim.",
+    "This metadata record includes no captured arrays, learned-weight exports, checkpoint or SDK binaries. Code and original weight terms remain separate."
+  ],
+  "publication": {
+    "metadata_only": true,
+    "private_paths_and_raw_payloads_included": false,
+    "README_changed": false,
+    "Git_commit_or_push_performed": false
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "generated_basis_consumer_algebra_v130_design_check",
+  "status": "generated_algebra_passed_original_graph_not_exported_or_accepted",
+  "original_model_values_or_saved_captures_loaded": false,
+  "NN_or_SDK_executed": false,
+  "generated_fixture_dimensions": {
+    "frame_channels": 64,
+    "combined_channels": 128,
+    "tokens": 7,
+    "frames": 2
+  },
+  "generated_fixture_is_not_original_model_execution": true,
+  "orthogonality_symmetry_and_mean_preservation_exact": true,
+  "DPT_projection_checks": [
+    {
+      "epsilon": 1e-06,
+      "fixture": "random",
+      "max_abs_error": 4.263256414560601e-14
+    },
+    {
+      "epsilon": 1e-06,
+      "fixture": "constant",
+      "max_abs_error": 1.4210854715202004e-14
+    },
+    {
+      "epsilon": 1e-06,
+      "fixture": "near_constant",
+      "max_abs_error": 2.049826974825919e-11
+    },
+    {
+      "epsilon": 1e-05,
+      "fixture": "random",
+      "max_abs_error": 4.973799150320701e-14
+    },
+    {
+      "epsilon": 1e-05,
+      "fixture": "constant",
+      "max_abs_error": 1.4210854715202004e-14
+    },
+    {
+      "epsilon": 1e-05,
+      "fixture": "near_constant",
+      "max_abs_error": 6.4863669990700146e-12
+    }
+  ],
+  "camera_original_token_selection_commutes_with_inverse": true,
+  "camera_selection_float64_max_abs_error": 1.1102230246251565e-15,
+  "camera_selection_float64_byte_equal": false,
+  "selection_check_note": "The initial byte-equality assertion failed for the different matrix batch shapes; the selected numerical kernels were not inspected. This generated check establishes bounded error, not bitwise execution equivalence.",
+  "camera_channelwise_modulation_noncommutation_max_abs": 7.032577421858345,
+  "decisions": [
+    "Carry the existing basis into DPT LayerNorm plus projection; fold its affine parameters and inverse basis into the original projection weights and bias.",
+    "Restore only the original camera consumer tokens before its token_norm; keep adaptive modulation and the camera trunk in canonical coordinates."
+  ],
+  "required_next_evidence": [
+    "Board transformation and provenance proof for all original consumer parameters.",
+    "Same-input original FP32 consumer outputs, then actual compiled placement.",
+    "Complete model precision, latency and trajectory validation."
+  ],
+  "full_model_speed_quality_or_realtime_accepted": false,
+  "script_sha256": "cdf7e3032aaa8153e4f3ea50f5a61f595d7376eed6bb1ae5140027cbb5fbdc2c"
+}

@@ -1,0 +1,338 @@
+{
+  "schema": "original_native518_fused_erf_epilogue_v190",
+  "status": "matched_native_MLP_cost_reduced_original_Erf_formula_retained_half_bits_and_two_strict_outliers_differ_no_compiled_path_replacement",
+  "scope": {
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "source_pair_indices": [
+      32,
+      40
+    ],
+    "one_reused_engineering_pair": true,
+    "original_boundary": "Saved original native518 frame0 Norm2 output and original FC1/FC2 parameters.",
+    "FC1_M_K_N": [
+      2082,
+      1024,
+      4096
+    ],
+    "FC2_M_K_N": [
+      2082,
+      4096,
+      1024
+    ],
+    "all_original_rows_and_channels_retained": true,
+    "same_original_F16_weights_and_type1_products": true,
+    "original_bias_once_per_affine": true,
+    "new_learned_values": false,
+    "full_model_or_SLAM_executed": false,
+    "heldout_pair4_5_inputs_used": false,
+    "baseline": "Original native F16 products with owned FLOAT32 FC1 copy, original Torch approximate=none GELU, FLOAT16 cast and FC2 input copy.",
+    "candidate": "Same products; one CPU pass borrows completed FC1 normal-C and writes original bias, R89 Arm vector Erf GELU and explicit ties-even half bits into owned FC2 normal-A.",
+    "candidate_Erf_implementation_is_not_Torch_bitwise_equivalence": true
+  },
+  "change": {
+    "original_Erf_formula": "(x * FLOAT32(0.5)) * (FLOAT32(1) + erff(x * FLOAT32(1/sqrt(2))))",
+    "x": "Completed FLOAT32 FC1 product plus original FLOAT32 bias, separately added once.",
+    "immutable_R89_helper_SHA256": "114b5ecdcb21e4c876d2ddf1102c36c3ca2b5ea6e9f43335a1374ec8056df3a1",
+    "fast_math": false,
+    "FP_contraction_off_except_original_Arm_intrinsics": true,
+    "half_conversion": "Integer IEEE binary32 to binary16 round to nearest, ties to even, including subnormals.",
+    "original_native_Runtime_and_Context_methods_unchanged": true,
+    "CPU_mapped_buffer_access": true,
+    "device_only": false,
+    "GPU_or_FD_import": false,
+    "full_FC1_owned_copy_bytes_removed_from_candidate_route": 34111488,
+    "full_FLOAT32_GELU_and_separate_CPU_half_staging_removed_from_candidate_route": true,
+    "borrow_contract": "Both context locks held; blocking FC1 and FROM sync before C read; owned normal-A write then TO sync, bind and blocking FC2; unknown runs retain owners."
+  },
+  "saved_data_verification": {
+    "audit_integrity_passed": true,
+    "normal_arrays": 6,
+    "normal_NPY_bytes": 119390976,
+    "arrays": "First A/B FLOAT32 GELU, actual native FC2-A FLOAT16 input, and final FLOAT32 MLP output.",
+    "all6_file_raw_shape_dtype_finite_checks_verified": true,
+    "all8_recorded_repeat_hashes_match_independently_loaded_first_arrays": true,
+    "both_actual_FC2_A_arrays_bit_equal_to_once_half_of_their_saved_route_GELU": true,
+    "all8_recorded_FC1_affine_hashes_match_saved_R188_native_control": true,
+    "native_FC1_C_arrays_saved": false,
+    "native_FC1_C_hash_and_borrow_order_evidence": "Frozen source and actual receipt; full C hashes agree across all8 calls. The common affine hash binds the independently loaded R188 saved array.",
+    "original_FP32_GELU_and_MLP_metrics_independently_recomputed": true
+  },
+  "numerical_results": {
+    "strict_rule": "abs(candidate-reference) <= 1e-5 + 1e-4*abs(reference)",
+    "fixed_rule": "relative L2 <= 1e-5 and max abs <= 1e-3",
+    "thresholds_changed": false,
+    "candidate_vs_same_native_Torch": {
+      "gelu": {
+        "relative_l2": 2.9393662722131556e-07,
+        "max_abs": 4.76837158203125e-07,
+        "fixed_pass": true,
+        "strict_pass": true,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "outside_strict": 0
+      },
+      "mlp_output": {
+        "relative_l2": 3.957124615541482e-07,
+        "max_abs": 2.5510787963867188e-05,
+        "fixed_pass": true,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "outside_strict": 2
+      }
+    },
+    "actual_FC2_half_input": {
+      "total_elements": 8527872,
+      "differing_bit_patterns": 8004,
+      "differing_numeric_values": 8004,
+      "ULP_histogram_all_elements": {
+        "0": 8519868,
+        "1": 7999,
+        "2": 4,
+        "3": 1
+      },
+      "maximum_ULP_distance": 3,
+      "numeric": {
+        "relative_l2": 6.501283852182577e-06,
+        "max_abs": 0.000244140625,
+        "fixed_pass": true,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "outside_strict": 3668
+      },
+      "changed_affine_negative": 8000,
+      "changed_affine_nonnegative": 4,
+      "changed_affine_range": [
+        -4.3000102043151855,
+        0.6639465689659119
+      ]
+    },
+    "all_final_same_native_control_strict_outliers": [
+      {
+        "row": 189,
+        "channel": 1012,
+        "original_coordinate": [
+          0,
+          189,
+          1012
+        ],
+        "A": 0.016910575330257416,
+        "B": 0.016922615468502045,
+        "original_FP32": 0.017233956605196,
+        "signed_difference": 1.2040138244628906e-05,
+        "absolute_error": 1.2040138244628906e-05,
+        "original_strict_tolerance": 1.1691057533025743e-05,
+        "tolerance_ratio": 1.029858779722626
+      },
+      {
+        "row": 1436,
+        "channel": 828,
+        "original_coordinate": [
+          1,
+          395,
+          828
+        ],
+        "A": 0.0001006114762276411,
+        "B": 8.915993385016918e-05,
+        "original_FP32": 1.2439675629138947e-05,
+        "signed_difference": -1.1451542377471924e-05,
+        "absolute_error": 1.1451542377471924e-05,
+        "original_strict_tolerance": 1.0010061147622765e-05,
+        "tolerance_ratio": 1.144003239200141
+      }
+    ],
+    "original_FP32_GELU_and_MLP": {
+      "A_Torch": {
+        "gelu": {
+          "relative_l2": 0.00021476583687742368,
+          "max_abs": 0.0006529688835144043,
+          "fixed_pass": false,
+          "strict_pass": false,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "outside_strict": 2670296
+        },
+        "mlp_output": {
+          "relative_l2": 0.0001429747567796727,
+          "max_abs": 0.0057010650634765625,
+          "fixed_pass": false,
+          "strict_pass": false,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "outside_strict": 1195039
+        }
+      },
+      "B_fused": {
+        "gelu": {
+          "relative_l2": 0.00021476592077955697,
+          "max_abs": 0.0006529688835144043,
+          "fixed_pass": false,
+          "strict_pass": false,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "outside_strict": 2670417
+        },
+        "mlp_output": {
+          "relative_l2": 0.0001429707281447237,
+          "max_abs": 0.005706787109375,
+          "fixed_pass": false,
+          "strict_pass": false,
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "outside_strict": 1195002
+        }
+      }
+    },
+    "both_original_FP32_MLP_fixed_and_strict_gates_fail": true,
+    "interpretation": "The saved GELU fixed/strict gate passes, but actual half inputs differ and the complete MLP has two unchanged strict-gate outliers. Fixed-gate passage is not bitwise or strict equivalence."
+  },
+  "matched_native_measurement": {
+    "schedule": [
+      "A_Torch",
+      "B_fused",
+      "B_fused",
+      "A_Torch",
+      "A_Torch",
+      "B_fused",
+      "B_fused",
+      "A_Torch"
+    ],
+    "calls_per_route": 4,
+    "first_calls_included": true,
+    "NPU_hz": 1000000000,
+    "requested_core_mask": 1,
+    "requested_mask_is_not_measured_core_utilization": true,
+    "CPU_core": 4,
+    "CPU_Torch_NumPy_threads": 1,
+    "complete_seconds": {
+      "A_Torch": 0.6466393562513986,
+      "B_fused": 0.3192113649965904
+    },
+    "summed_SDK_run_seconds": {
+      "A_Torch": 0.13889865950113744,
+      "B_fused": 0.13921759774893872
+    },
+    "complete_reduction_percent": 50.63533298575036,
+    "candidate_minus_baseline_complete_seconds": -0.32742799125480815,
+    "candidate_minus_baseline_SDK_run_seconds": 0.00031893824780127034,
+    "A_Torch_GELU_and_finite_seconds": 0.3341943249979522,
+    "A_FC2_halfcast_and_finite_seconds": 0.06918713199775084,
+    "B_bias_Erf_half_pack_and_finite_seconds": 0.14273957750265254,
+    "complete_timer": "Input scan/halfcast, native IO/sync/bind/run, owned output/finite, bias and actual GELU/half path; candidate borrow locks and buffer work included.",
+    "excluded": "Initialization/close, saving/hash/reference checks and four separate original-helper diagnostic calls.",
+    "lifecycle_seconds": {
+      "initialization": 0.2832917780033313,
+      "close": 0.03370296199864242
+    },
+    "interpretation": "The 327.428ms reduction is a matched result for this native control. It is not an NPU MatMul speed gain or an isolated measurement of allocation/cast removal."
+  },
+  "ownership": {
+    "contexts_created": 2,
+    "contexts_destroyed": 2,
+    "native_runs": 16,
+    "memories_created": 6,
+    "memories_destroyed": 6,
+    "mem_sync_calls": 34,
+    "IO_bindings": 22,
+    "B_conversions": 2,
+    "SDK_get_release_calls": 0,
+    "all_resources_closed": true,
+    "source_and_inputs_unchanged": true,
+    "controller_restored": true,
+    "controller_seconds": 11.151552495997748,
+    "peak_temperature_C": 59.153,
+    "process_peak_RSS_MiB": 821.90234375,
+    "physical8GB_feasibility_established": false,
+    "normal_raws_saved_on_root_ext4_and_failures_JSON_on_separate_data_ext4": true,
+    "final_root_floor_bytes": 536870912,
+    "final_data_floor_bytes": 3221225472
+  },
+  "decision": {
+    "existing_compiled_main_path_replaced": false,
+    "current_native_route_adopted": false,
+    "further_native_epilogue_microtuning_stopped": true,
+    "reason": "The gain is versus the slow native CPU-GELU control. Historical compiled full-suffix paths cover more operations at approximately135-169ms, and this candidate has not beaten or replaced them.",
+    "historical_context_is_not_a_matched_comparison": true,
+    "historical_context": {
+      "R169_complete_suffix_rows_seconds": 0.13546563849740778,
+      "R171_complete_suffix_channel_first_seconds": 0.16856467299658107,
+      "differences": "Different captured inputs, frame/global weights, operator boundaries and core policies; no speed ratio or additive full-chain gain is claimed."
+    },
+    "priorities": [
+      "Retain measured original compiled/main-path work in R167/R169/R171/R173.",
+      "Preserve this buffer/Erf evidence without expanding the native epilogue branch."
+    ],
+    "private_R2_review": {
+      "status": "source_design_frozen_unimplemented",
+      "C_source_created": false,
+      "compiled": false,
+      "benchmarked": false,
+      "numerical_or_speed_claim": false
+    },
+    "precision_accepted": false,
+    "full_model_trajectory_sustained_realtime_or_physical8GB_accepted": false
+  },
+  "evidence": {
+    "worker_receipt": {
+      "file": "fused-erf-epilogue-r1/native-r1/output/result.json",
+      "bytes": 39749,
+      "sha256": "ea9b3cff759ed6e5962d22d8323d8262373ab21c17f207b9c6a51a8c872edf04"
+    },
+    "controller": {
+      "file": "fused-erf-epilogue-r1/native-r1/control/control.json",
+      "bytes": 9301,
+      "sha256": "e1fd901f08d19a702e8f23cb6607716603a8a917752d1964fab210afeeecceea"
+    },
+    "transport": {
+      "file": "fused-erf-epilogue-r1/native-r1/transport.json",
+      "bytes": 21989,
+      "sha256": "165c6ee61f56757607b5c8c88eb4adc52db59a4d4250362b91be2791e1a964b5"
+    },
+    "saved_array_audit": {
+      "file": "fused-erf-epilogue-r1/native-r1/saved-array-audit-r1.json",
+      "bytes": 29488,
+      "sha256": "d064439e8974556edf67df02fa06214ccb2e8e7ad7701cbf0d7bf075fa35ca64"
+    },
+    "auditor_source": {
+      "file": "fc1_quantization_floor_probe/fused_erf_epilogue_probe/audit_fused_erf_epilogue_saved.py",
+      "bytes": 27853,
+      "sha256": "a8a4b8c0cce617d88eddf2b9b10a6cae73d538cc1733141efec82212d2dd702a"
+    },
+    "worker_source": {
+      "file": "fc1_quantization_floor_probe/fused_erf_epilogue_probe/probe_fused_erf_epilogue_board.py",
+      "bytes": 29576,
+      "sha256": "58d5c39f775c9292b8a18768bce2759c3a5e1fa852dfb6e6b852278e45659050"
+    },
+    "adapter_source": {
+      "file": "fc1_quantization_floor_probe/fused_erf_epilogue_probe/native_fc1_fused_epilogue.py",
+      "bytes": 12640,
+      "sha256": "8e3549bd7ac939ec9b01cfe3b42a17f386d455202f3dee67cdc6f057aca1ec32"
+    },
+    "C_source": {
+      "file": "fc1_quantization_floor_probe/fused_erf_epilogue_probe/original_erf_bias_half_epilogue.c",
+      "bytes": 3809,
+      "sha256": "881a40ae44eab9544cd9f33693c6572842d777f9c4acfc44cad95f831d99b741"
+    },
+    "CPU_library_build": {
+      "file": "fused-erf-epilogue-r1/build-r1/output/build.json",
+      "bytes": 4057,
+      "sha256": "1668af2227928909ef8daca1210b0990cf5f5e44448a735bf4f8c40f69fb5917"
+    },
+    "unimplemented_R2_source_review": {
+      "file": "fc1_quantization_floor_probe/fused_erf_epilogue_probe/integer-half-pack-source-review-r2-frozen.json",
+      "bytes": 3938,
+      "sha256": "1d66852bc893bbc7975647626ea1ba86f3793e63cfdf10d9a2fdbcbe74d97d80"
+    }
+  },
+  "related_public_results": [
+    "original_native518_current_compute_profile_v167.json",
+    "original_native518_suffix_token_rows_v169.json",
+    "original_native518_suffix_fc2_channel_first_v171.json",
+    "original_native518_connected_single_frame_cf_v173.json",
+    "original_native518_fc1_two_plane_native_v188.json"
+  ]
+}

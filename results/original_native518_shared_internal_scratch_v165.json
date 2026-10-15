@@ -1,0 +1,312 @@
+{
+  "schema": "original_native518_shared_internal_scratch_v165",
+  "date": "2026-10-15",
+  "status": "serial_shared_internal_scratch_byte_and_lifetime_gate_passed_not_speed_or_full_model_accepted",
+  "conclusion": "Two persistent original frame contexts share one externally allocated internal workspace when run strictly serially; descriptor queries and native IO construction must follow internal-memory binding.",
+  "scope": {
+    "original_model_only": true,
+    "original_checkpoint_unchanged": true,
+    "models": [
+      {
+        "role": "frame0_branch",
+        "bytes": 27930052,
+        "sha256": "f219f99066088245411b6ecdff3127994c3226d0a14b60ab6cb1643ab8481cd0"
+      },
+      {
+        "role": "frame1_branch",
+        "bytes": 27930308,
+        "sha256": "d5367ce1595c172ec8bd7c46c5854013b7e8450615e7ab1c8a61a36e5242e0a3"
+      }
+    ],
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "output_shape_per_branch": [
+      1,
+      1041,
+      1024
+    ],
+    "cases": [
+      "pair4",
+      "pair5"
+    ],
+    "reference": "Exact same-case original NPU frame-branch outputs already verified in R164; no new original FP32 forward.",
+    "not_a_complete_global_pair_or_full_model_run": true
+  },
+  "initialization_order_diagnosis": {
+    "r1_error": "RuntimeError('Native8/9 physical capacity is unsupported')",
+    "r1_contexts_created": 1,
+    "r1_contexts_destroyed": 1,
+    "r1_NPU_runs": 0,
+    "r1_explicit_IO_and_scratch_allocations": 0,
+    "r1_actual_owner_balanced_and_closed": true,
+    "r1_nominal_all_resources_closed_false_reason": "The original gate required two owners; its sole actually created owner was destroyed.",
+    "capacity_guard_preserved": true,
+    "zero_forward_query_count": 8,
+    "native9_before_bind": {
+      "size": 0,
+      "size_with_stride": 0
+    },
+    "native9_after_bind": {
+      "size": 2146304,
+      "size_with_stride": 2146304
+    },
+    "all_four_post_bind_native_rows_exact_flags0": true,
+    "other_before_bind_native_fields_unchanged": true
+  },
+  "corrected_lifecycle": {
+    "init_flags": 512,
+    "flag_name": "RKNN_FLAG_INTERNAL_ALLOC_OUTSIDE",
+    "core_masks": {
+      "frame0_branch": 1,
+      "frame1_branch": 2
+    },
+    "strictly_serial": true,
+    "order": [
+      "initialize both raw original contexts",
+      "allocate one internal pool",
+      "create and bind two context-specific FD views",
+      "adopt each bound initializer exactly once into native IO",
+      "eight strictly serial original forwards",
+      "close both native IO buffer owners",
+      "destroy borrower view and borrower context",
+      "destroy allocator view",
+      "destroy pool while allocator context remains valid",
+      "destroy allocator context last"
+    ],
+    "overall_closed_metrics_require_actual_raw_context_closed": true,
+    "original_native_run_IO_capacity_finite_sync_AST_unchanged": true,
+    "initializer_cleanup_intentionally_changed_to_explicit_external_ownership": true,
+    "copied_owner_and_native_IO_parent_sources_reconstructible_by_static_inverse": true,
+    "native_constructor_uses_explicit_external_initializer_cleanup": true
+  },
+  "serial_byte_gate": {
+    "schedule_per_case": [
+      "frame0_branch",
+      "frame1_branch",
+      "frame1_branch",
+      "frame0_branch"
+    ],
+    "runs": 8,
+    "saved_arrays": 16,
+    "canonical_FLOAT32_arrays": 8,
+    "native_capacity_arrays": 8,
+    "all_file_raw_shape_dtype_finite_checks_passed": true,
+    "all_native_FLOAT16_prefixes_reproduce_canonical_FLOAT32": true,
+    "all8_outputs_byte_equal_same_case_reference": true,
+    "all4_same_case_model_repeat_pairs_byte_equal": true,
+    "unknown_native_padding_saved_without_interpretation": true,
+    "no_reference_reset_or_context_reinitialization_during_runs": true
+  },
+  "shared_internal_memory": {
+    "pool_allocations": 1,
+    "pool_requested_and_SDK_reported_bytes": 40648704,
+    "context_specific_FD_views": 2,
+    "each_view_required_internal_bytes": 40648704,
+    "all_views_same_actual_pool_FD_and_base": true,
+    "pool_disjoint_from_four_native_IO_allocations": true,
+    "scratch_CPU_reads_writes_zeroing_or_sync_calls": 0,
+    "SDK_per_context_observations": [
+      {
+        "model": "frame0_branch",
+        "flags0_reference": {
+          "weight_bytes": 25493696,
+          "internal_bytes": 40648704,
+          "dma_bytes": 96768000
+        },
+        "flags512_before_bind": {
+          "weight_bytes": 25493696,
+          "internal_bytes": 40648704,
+          "dma_bytes": 56119296
+        },
+        "flags512_after_bind": {
+          "weight_bytes": 25493696,
+          "internal_bytes": 40648704,
+          "dma_bytes": 56119296
+        },
+        "flags512_after_eight_runs": {
+          "weight_bytes": 25493696,
+          "internal_bytes": 40648704,
+          "dma_bytes": 56119296
+        }
+      },
+      {
+        "model": "frame1_branch",
+        "flags0_reference": {
+          "weight_bytes": 25493760,
+          "internal_bytes": 40648704,
+          "dma_bytes": 96768000
+        },
+        "flags512_before_bind": {
+          "weight_bytes": 25493760,
+          "internal_bytes": 40648704,
+          "dma_bytes": 56119296
+        },
+        "flags512_after_bind": {
+          "weight_bytes": 25493760,
+          "internal_bytes": 40648704,
+          "dma_bytes": 56119296
+        },
+        "flags512_after_eight_runs": {
+          "weight_bytes": 25493760,
+          "internal_bytes": 40648704,
+          "dma_bytes": 56119296
+        }
+      }
+    ],
+    "scope": "SDK per-context fields are not unique physical-memory totals. The external pool is inventoried separately; these fields do not establish physical savings or an 8 GB budget."
+  },
+  "resources": {
+    "totals": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 8,
+      "memories_created": 5,
+      "memories_imported": 2,
+      "memories_destroyed": 7,
+      "set_io_mem_attempts": 4,
+      "set_io_mem_successes": 4,
+      "output_buffers_acquired": 0,
+      "output_buffers_released": 0,
+      "set_internal_mem_attempts": 2,
+      "set_internal_mem_successes": 2
+    },
+    "IO_allocations_created_and_destroyed": 4,
+    "scratch_pool_plus_views_created_and_destroyed": 3,
+    "actual_serial_lifecycle_events": 33,
+    "all_destroy_calls_used_valid_context": true,
+    "all_resources_closed": true,
+    "controller_frequency_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "controller_limit_c": 75,
+    "prior_policy_restored": true,
+    "maximum_worker_temperature_c": 54.538,
+    "maximum_controller_temperature_c": 54.538,
+    "diagnostic_process_peak_RSS_MiB": 190.40625
+  },
+  "original_checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "SDK_documentation": [
+    {
+      "role": "pinned SDK header",
+      "basename": "rknn_api_v2.3.2.h",
+      "sha256": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a",
+      "locators": "flags59-63; memory349-356; FD import655-668; internal bind736-746"
+    },
+    {
+      "role": "runtime_api",
+      "basename": "runtime-api-2.3.2-en.txt",
+      "bytes": 124276,
+      "sha256": "aa97f937dce9e8cf8f2a719ba223cfa2433fe4acf27fb0641be961f51e530bbc",
+      "locators": "lines933-964; lines1001-1003; lines1937-1961"
+    },
+    {
+      "role": "user_guide",
+      "basename": "user-guide-2.3.2-en.txt",
+      "bytes": 416287,
+      "sha256": "58c88309980c386d9bec7eaeb779260fcc0ac34346492842c6254422491d0670",
+      "locators": "section9.3 lines8138-8181"
+    }
+  ],
+  "evidence": [
+    {
+      "role": "r1 failed gate",
+      "basename": "result.json",
+      "bytes": 13506,
+      "sha256": "e8b5d69d09ad5385d21fce97089fc21cb350b5da5c8cee5f55802a99c1347bd2"
+    },
+    {
+      "role": "r1 restoring controller",
+      "basename": "control.json",
+      "bytes": 2431,
+      "sha256": "822a110c1d467f7f2b9bf5aa0b74b04df062fa2d18a15d9f5766c18d6ee0f14c"
+    },
+    {
+      "role": "zero-forward native descriptor query",
+      "basename": "result.json",
+      "bytes": 32807,
+      "sha256": "5540cf0d5e611ad82eebafa33a1b3d3db1d31927ee797b925f9efd02f7a22901"
+    },
+    {
+      "role": "descriptor query transport",
+      "basename": "transport.json",
+      "bytes": 6460,
+      "sha256": "3d5249c7748b17b0c4ee017c631b922126940346861c4f06ced970be9d1956b2"
+    },
+    {
+      "role": "r2 byte and lifetime gate",
+      "basename": "result.json",
+      "bytes": 58713,
+      "sha256": "7f79d34237ea01459a66223448c0eb09641433a1075b49c9dd76ce9b7d4b01af"
+    },
+    {
+      "role": "r2 transport",
+      "basename": "board-r2-transport.json",
+      "bytes": 18354,
+      "sha256": "712829bd2d1701ded6bd089827e6c7736c2f2fa02ad11de12a110984960c1070"
+    },
+    {
+      "role": "r2 restoring controller",
+      "basename": "control.json",
+      "bytes": 3541,
+      "sha256": "effa016d4e200d6b5ef197e36e8003d49e60b444ae41f5f649930392829bd157"
+    },
+    {
+      "role": "independent saved r2 audit",
+      "basename": "board-r2-saved-audit-r1.json",
+      "bytes": 26039,
+      "sha256": "5e3e1087d5184192b30b96d3d98172ba320ca11c01e28ffb83908d626626974e"
+    },
+    {
+      "role": "r2 worker source",
+      "basename": "check_shared_internal_scratch_board_r2.py",
+      "bytes": 32990,
+      "sha256": "114c9a85f08724c0ae9a53840b297b00b32510ede32e2205a12fdcaad03f08e6"
+    },
+    {
+      "role": "r2 native IO source",
+      "basename": "native_io_context_internal_scratch_r2.py",
+      "bytes": 25084,
+      "sha256": "e19bffda3b9f8e2813980fb6de14489d66c534b767fe785daf08f2d7531681bd"
+    },
+    {
+      "role": "copied flag512 initializer",
+      "basename": "owned_context_internal_scratch.py",
+      "bytes": 28798,
+      "sha256": "58f915a718201cf3aa06c569ff46df6615e1ebc066e9c3592e858974d5802a54"
+    },
+    {
+      "role": "source inverse proof",
+      "basename": "source-inverse-r2.json",
+      "bytes": 5567,
+      "sha256": "1970d676f8d3b3191ea6b2b722d02d453a832bdde2e5c80652d8744b57a79c0f"
+    },
+    {
+      "role": "saved auditor source",
+      "basename": "audit_shared_internal_scratch_saved_r2.py",
+      "bytes": 23491,
+      "sha256": "70697a48a951c5735445a8cb95ab2b4084f65836737e5751ee949590f8eea5ca"
+    }
+  ],
+  "decision": {
+    "serial_mechanism_byte_and_lifetime_gate_passed": true,
+    "engineering_residency_integration_may_be_investigated": true,
+    "speed_accepted": false,
+    "new_original_FP32_precision_accepted": false,
+    "parallel_shared_pool_accepted": false,
+    "full_24_pair_residency_or_physical_8GB_accepted": false,
+    "deployment_trajectory_or_sustained_realtime_accepted": false
+  },
+  "limits": [
+    "A single internal pool is proven only for strictly serial users. Concurrent original branches or head actors require distinct active scratch regions.",
+    "Weights remain separately owned by the two contexts; neither weight sharing nor model-buffer zero-copy was introduced.",
+    "No complete-call performance comparison, sustained observation rate, P95, full-model residency, physical-memory saving or 8 GB result was measured here.",
+    "Exact prior NPU bytes preserve existing numerical errors; this does not repair original FP32 tensor diagnostics or establish ATE/RPE.",
+    "Only the two original frame branches are exercised; later original groups, global pair integration and complete SLAM validation remain pending."
+  ],
+  "licensing": "Code and original pretrained-weight licenses remain separate. Weight-bearing exports, raw captured arrays and SDK binaries remain private."
+}

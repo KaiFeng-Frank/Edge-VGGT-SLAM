@@ -1,0 +1,250 @@
+{
+  "schema": "original_native518_merged_group0_profile_v149",
+  "status": "current503_operator_profiles_and_flags0_output_parity_verified_diagnostic_only",
+  "scope": {
+    "board": "RK3588S",
+    "original_aggregator_blocks": 10,
+    "original_project0_prefix_retained": true,
+    "original_heads": 16,
+    "frame_keys": 1041,
+    "global_keys": 2082,
+    "original_encoder_represented_by_captured_features": true,
+    "complete_model_or_SLAM_executed": false,
+    "checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "outputs": {
+      "global_output": [
+        1,
+        2082,
+        1024
+      ],
+      "projected_output": [
+        2,
+        256,
+        28,
+        37
+      ]
+    }
+  },
+  "configuration": {
+    "flags": 8,
+    "core_mask": 7,
+    "heldouts": [
+      "pair4",
+      "pair5"
+    ],
+    "owned_calls": 2,
+    "saved_owned_outputs": 4,
+    "new_CPU_forward_or_calibration_or_compilation": false,
+    "compiled_model_sha256": "f0e2a2da2dabe1b16c16cd00c45bc111b83b7de66f87521e3bbb86288c57cbb3",
+    "compiled_model_bytes": 231011837,
+    "hidden_warmups": false
+  },
+  "attribution": {
+    "current_compiled_operators": 503,
+    "both_raw_profiles_match_all_current_compiled_IDs_names_ops_dtypes_targets": true,
+    "all4_outputs_byte_equal_current_flags0": true,
+    "profile_query_commands": {
+      "PERF_DETAIL": 3,
+      "PERF_RUN": 4
+    },
+    "query_counts": {
+      "PERF_DETAIL_command3": 2,
+      "PERF_RUN_command4": 2
+    },
+    "profile_pointers_copied_before_next_query": true,
+    "queries_after_owned_output_release": true,
+    "raw_WorkLoad_all15_SDPA_verified": true,
+    "all15_SDPA_SDK_reported_WorkLoad_percent": [
+      100.0,
+      0.0,
+      0.0
+    ],
+    "distribution_is_not_hardware_occupancy_measurement": true
+  },
+  "diagnostic_results": [
+    {
+      "input_id": "pair4",
+      "diagnostic_operator_sum_us": 3473462,
+      "SDPA15_us": 2295972,
+      "SDPA_fraction_of_operator_sum": 0.6610039205841319,
+      "weighted77_us": 246860,
+      "weighted_fraction": 0.07107030392156298,
+      "CPU_Transpose_us": 196788,
+      "attention_by_stage": {
+        "0": {
+          "frame_us": 153895,
+          "global_us": 305256
+        },
+        "1": {
+          "frame_us": 153703,
+          "global_us": 305271
+        },
+        "2": {
+          "frame_us": 153845,
+          "global_us": 305222
+        },
+        "3": {
+          "frame_us": 154212,
+          "global_us": 305430
+        },
+        "4": {
+          "frame_us": 153882,
+          "global_us": 305256
+        }
+      },
+      "SDK_PERF_RUN_duration_us": 3517078,
+      "frame_attention_rows": 10,
+      "global_attention_rows": 5,
+      "frame_attention_time_us_range": [
+        76788,
+        77116
+      ],
+      "global_attention_time_us_range": [
+        305222,
+        305430
+      ],
+      "CPU_Transpose_profile_ID": 491,
+      "CPU_Transpose_compiled_ID": 490
+    },
+    {
+      "input_id": "pair5",
+      "diagnostic_operator_sum_us": 3475149,
+      "SDPA15_us": 2296024,
+      "SDPA_fraction_of_operator_sum": 0.6606980017259692,
+      "weighted77_us": 248524,
+      "weighted_fraction": 0.07151463145896766,
+      "CPU_Transpose_us": 187718,
+      "attention_by_stage": {
+        "0": {
+          "frame_us": 153928,
+          "global_us": 305010
+        },
+        "1": {
+          "frame_us": 153928,
+          "global_us": 305481
+        },
+        "2": {
+          "frame_us": 153888,
+          "global_us": 305216
+        },
+        "3": {
+          "frame_us": 154175,
+          "global_us": 305223
+        },
+        "4": {
+          "frame_us": 153707,
+          "global_us": 305468
+        }
+      },
+      "SDK_PERF_RUN_duration_us": 3518916,
+      "frame_attention_rows": 10,
+      "global_attention_rows": 5,
+      "frame_attention_time_us_range": [
+        76781,
+        77121
+      ],
+      "global_attention_time_us_range": [
+        305010,
+        305481
+      ],
+      "CPU_Transpose_profile_ID": 491,
+      "CPU_Transpose_compiled_ID": 490
+    }
+  ],
+  "resource_counts": {
+    "contexts_created": 1,
+    "contexts_destroyed": 1,
+    "runs_completed": 2,
+    "output_buffers_acquired": 4,
+    "output_buffers_released": 4
+  },
+  "controller": {
+    "restored": true,
+    "maximum_temperature_c": 57.307,
+    "requested_NPU_hz": 1000000000,
+    "timeout_seconds": 180,
+    "temperature_limit_c": 75,
+    "worker_seconds": 8.739262752998911,
+    "controller_seconds": 9.179271004999464
+  },
+  "limits": [
+    "SDK flags8 profiling durations are diagnostic, not normal complete-route latency or an independent critical path.",
+    "No new speedup was measured; R148 normal merged-route means remain about 3.42/3.41 seconds.",
+    "Four exact flags0 output matches do not establish original FP32 quality; R148 feature relative L2 remains around 13%.",
+    "SDK reported WorkLoad is not proof of hardware utilization or a proposed parallel execution speedup.",
+    "Full-model trajectory, fresh-pose 20 Hz, P95, stability and physical 8 GB acceptance remain unfinished.",
+    "The original_weighted category contains full compiled weighted rows, including fused ConvExGelu or ConvAdd operations; it is not an isolated GEMM timing."
+  ],
+  "evidence": [
+    {
+      "role": "profile_worker",
+      "file": "profile_merged_group0_board.py",
+      "bytes": 21490,
+      "sha256": "8236dc7d2ef216020a69a294d5a264ef449c06364a07be1307d7c308bac2b2eb"
+    },
+    {
+      "role": "profile_receipt",
+      "file": "result.json",
+      "bytes": 963568,
+      "sha256": "4b058f603234e34a38b0d3e8429e60357d7e8f39b90d94db69b49ab61f4d6511"
+    },
+    {
+      "role": "profile_controller",
+      "file": "control.json",
+      "bytes": 7861,
+      "sha256": "1b5e64c5643ae3338cbda6613fe68b95058e2451be8e8f22a7c09c53231b8292"
+    },
+    {
+      "role": "profile_transport",
+      "file": "transport-r1.json",
+      "bytes": 22245,
+      "sha256": "9147638ca402536eaf4f590a1863fd591a4466da0ff2383ea83ca46b8ce944e7"
+    },
+    {
+      "role": "pair4_raw_profile",
+      "file": "pair4-perf-detail.txt",
+      "bytes": 133142,
+      "sha256": "47988285dee825c90c2705f82f454e734e004b318b960de16a7272b35495d346"
+    },
+    {
+      "role": "pair5_raw_profile",
+      "file": "pair5-perf-detail.txt",
+      "bytes": 133142,
+      "sha256": "e7529f62c90844ee20f98136030caa66844b4dd62d60bfb7e69c36e0d377a91f"
+    },
+    {
+      "role": "saved_profile_audit",
+      "file": "saved-profile-audit-r1.json",
+      "bytes": 36585,
+      "sha256": "dda1482e79ab9794e7601c0b82b65b2538655920387b13e1950e6aa3e4ccf62e"
+    },
+    {
+      "role": "saved_profile_auditor",
+      "file": "audit_current_merged_profile_saved.py",
+      "bytes": 12017,
+      "sha256": "4099c11a18212baf35c211dc107e486b14df0cd6eef09c29edd81fa99adb745a"
+    },
+    {
+      "role": "current_normal_ABBA_receipt",
+      "file": "result.json",
+      "bytes": 162801,
+      "sha256": "2a3dd4c061f183ae509d4d9eb5a795ab4be6f2b67fec3023e17fd0d0401b6429"
+    },
+    {
+      "role": "current_actual_placement_audit",
+      "file": "group0-five-partition-fixed-grid-saved-precision-audit-r3.json",
+      "bytes": 871082,
+      "sha256": "253aa7f3718878d9a33b452e5aec733f3da349b609989341a9f4fe37701d899c"
+    }
+  ],
+  "no_new_speedup_or_normal_latency_measurement": true,
+  "code_and_original_model_weight_terms_remain_separate": true
+}

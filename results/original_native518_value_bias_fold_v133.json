@@ -1,0 +1,200 @@
+{
+  "schema": "edge_vggt_original_native518_value_bias_fold_v133",
+  "status": "board_four_pair_FP32_gate_passed_not_quantization_or_performance_accepted",
+  "objective": "Original VGGT only; native518, all layers/tokens retained; no alternative model or pose frontend",
+  "scope": "Complete original canonical frame0 and global0 blocks, not a full-model or trajectory evaluation",
+  "transformation": {
+    "formula": "c = norm1.bias @ Wv + bv; bv_new = -(norm1.bias @ Wv); bproj_new = bproj + c @ Wo",
+    "derivation_dtype": "float64 constants, explicitly cast to float32 biases",
+    "invariant": "Per-head Softmax rows sum to one: P(V-c) + c = PV in real arithmetic",
+    "changed_initializer_count": 4,
+    "original_node_count": 143,
+    "unchanged_node_count": 143,
+    "unchanged_other_initializer_count": 75,
+    "Q_K_bias_prefix_and_all_weight_matrices_byte_preserved": true,
+    "original_checkpoint_unchanged": true,
+    "added_runtime_nodes": 0,
+    "runtime_MAC_reduction_established": false,
+    "purpose": "Remove the constant V component from attention so probability-row-mass rounding need not multiply it inside PV",
+    "risks": [
+      "FP32 reassociation is not byte-equivalent",
+      "Shared QKV activation quantizers may change although Q/K parameter bytes do not",
+      "Derived projection bias range and cancellation can worsen quantized error"
+    ]
+  },
+  "board_FP32": {
+    "input_ids": [
+      "pair0",
+      "pair1",
+      "pair2",
+      "pair3"
+    ],
+    "split": "original predeclared calibration set",
+    "heldout_inputs_used": false,
+    "original_DINO_capture_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "CPU_ORT_sessions": 1,
+    "candidate_calls": 4,
+    "saved_outputs": 8,
+    "fixed_gate": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "all_eight_fixed_gates_passed": true,
+    "all_eight_strict_allclose_passed": true,
+    "maximum_relative_l2": 1.1201209925704509e-07,
+    "maximum_abs_error": 1.9073486328125e-06,
+    "worker_seconds": 23.108062864000033,
+    "worker_peak_rss_mib": 971.1875,
+    "timing_is_CPU_validation_not_deployment": true,
+    "per_input": [
+      {
+        "input_id": "pair0",
+        "outputs": {
+          "frame_output": {
+            "numeric_comparison_available": true,
+            "relative_l2": 6.392262571603393e-08,
+            "max_abs": 1.430511474609375e-06,
+            "reference_norm": 265.45689148861806,
+            "zero_reference_norm": false,
+            "byte_equal": false,
+            "strict_pass": true,
+            "outside_count": 0,
+            "fixed_gate_passed": true
+          },
+          "global_output": {
+            "numeric_comparison_available": true,
+            "relative_l2": 1.0701826879155468e-07,
+            "max_abs": 1.5497207641601562e-06,
+            "reference_norm": 216.38669669099667,
+            "zero_reference_norm": false,
+            "byte_equal": false,
+            "strict_pass": true,
+            "outside_count": 0,
+            "fixed_gate_passed": true
+          }
+        }
+      },
+      {
+        "input_id": "pair1",
+        "outputs": {
+          "frame_output": {
+            "numeric_comparison_available": true,
+            "relative_l2": 6.187247157447717e-08,
+            "max_abs": 1.9073486328125e-06,
+            "reference_norm": 268.55060040719184,
+            "zero_reference_norm": false,
+            "byte_equal": false,
+            "strict_pass": true,
+            "outside_count": 0,
+            "fixed_gate_passed": true
+          },
+          "global_output": {
+            "numeric_comparison_available": true,
+            "relative_l2": 1.1059097852416094e-07,
+            "max_abs": 1.9073486328125e-06,
+            "reference_norm": 217.55816432235397,
+            "zero_reference_norm": false,
+            "byte_equal": false,
+            "strict_pass": true,
+            "outside_count": 0,
+            "fixed_gate_passed": true
+          }
+        }
+      },
+      {
+        "input_id": "pair2",
+        "outputs": {
+          "frame_output": {
+            "numeric_comparison_available": true,
+            "relative_l2": 6.313465747141958e-08,
+            "max_abs": 1.9073486328125e-06,
+            "reference_norm": 266.4509787713295,
+            "zero_reference_norm": false,
+            "byte_equal": false,
+            "strict_pass": true,
+            "outside_count": 0,
+            "fixed_gate_passed": true
+          },
+          "global_output": {
+            "numeric_comparison_available": true,
+            "relative_l2": 1.1201209925704509e-07,
+            "max_abs": 1.9073486328125e-06,
+            "reference_norm": 215.4262387653056,
+            "zero_reference_norm": false,
+            "byte_equal": false,
+            "strict_pass": true,
+            "outside_count": 0,
+            "fixed_gate_passed": true
+          }
+        }
+      },
+      {
+        "input_id": "pair3",
+        "outputs": {
+          "frame_output": {
+            "numeric_comparison_available": true,
+            "relative_l2": 6.12817569538029e-08,
+            "max_abs": 1.9073486328125e-06,
+            "reference_norm": 264.59836616989384,
+            "zero_reference_norm": false,
+            "byte_equal": false,
+            "strict_pass": true,
+            "outside_count": 0,
+            "fixed_gate_passed": true
+          },
+          "global_output": {
+            "numeric_comparison_available": true,
+            "relative_l2": 1.0485918483484052e-07,
+            "max_abs": 1.6689300537109375e-06,
+            "reference_norm": 215.76955987660645,
+            "zero_reference_norm": false,
+            "byte_equal": false,
+            "strict_pass": true,
+            "outside_count": 0,
+            "fixed_gate_passed": true
+          }
+        }
+      }
+    ]
+  },
+  "independent_saved_audit": {
+    "receipt_sha256": "d947b97f4872299352df06773339a31b0a61641783fb2aa20c3081aa4c79e6fd",
+    "eight_saved_arrays_rehashed_and_recompared": true,
+    "four_derived_biases_independently_recomputed": true,
+    "unchanged_nodes_and_other_initializers_verified": true,
+    "original_ModelProto_restored_byte_equal": true
+  },
+  "provenance": {
+    "worker_sha256": "0596bab254147a3693c364dbaa8afe5cb628f4de91279f758c7e4aae184b42ce",
+    "board_receipt_sha256": "92a663821864bf430863ea38f75a4b3944f268abd1e64bb9a56ae8c28414a611",
+    "transport_sha256": "193f4919ee5b10fef5fe8b5606d462419369970ae0cd400906b6323e0fccbcc1",
+    "controller_receipt_sha256": "d4d709ffaeb991dd48bc9f06ce50541067b5f6115bb179c3a84a7e6f4fa6dc80",
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "original_graph_sha256": "57b60feceea0edb57ca4cea38200d6ea47d4e4ee51e4a546357267cbc9f676bb",
+    "derived_graph_sha256": "32d9b2401b6ce37f088a5dfb2b410598eaaf48825043898297dc6c3f8c2b59f4"
+  },
+  "acceptance": {
+    "candidate_accepted": false,
+    "fresh_quantization_required": true,
+    "NPU_precision_unverified": true,
+    "speedup_unverified": true,
+    "full_model_accuracy_unverified": true,
+    "trajectory_ATE_RPE_unverified": true,
+    "fresh_pose_20Hz_unverified": true,
+    "latency_P95_100ms_unverified": true,
+    "map_cadence_unverified": true,
+    "thirty_minute_queues_unverified": true,
+    "physical_8GB_unverified": true
+  },
+  "artifacts": "Raw arrays, derived weights, original checkpoints and SDK files remain private; only evidence metadata is recorded here",
+  "next_action": "Resolve the canonical two-output frame-to-global boundary failure before calibrating this two-output V-fold graph. V-fold calibration has not run."
+}

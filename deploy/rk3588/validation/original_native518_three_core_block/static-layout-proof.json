@@ -1,0 +1,132 @@
+{
+  "schema": "v124_original_DINO0_sharded_C4_static_source_layout_check",
+  "status": "passed_static_indices_and_inverse_source_only",
+  "generator_sha256": "74ea5274490e3f6529ac132e6613f2d2da58b536814a88fd2a048365fded32cd",
+  "parent_source_sha256": {
+    "native_dino_bridge_opencl.py": "d3eb7dca3f9370ae54f089ca63c00d0e1c7bbf69442bf99ad0c142a45e6607de",
+    "dino0_native_bridge.cl": "da7e8d3c15bd4f67732b6d4a727f065eef0349635ad7b81770b08ecf9719dc47",
+    "dino0_batched_bridge.cl": "34a216960e61f7a895e92341cf93f4332cc3db0c5db16740fe8a3a586aebd822",
+    "attention_softmax.cl": "5cbb36e03e09c38db9e6769f067e3168e1cf7f67d719009601c4456e9f2b150a"
+  },
+  "only_buffer_selection_integer_addressing_and_argument_lists_changed": true,
+  "original_floating_point_statements_barriers_and_launches_preserved": true,
+  "core_whole_source_inverse_byte_equal": true,
+  "batch_whole_source_inverse_byte_equal": true,
+  "bridge_whole_source_inverse_byte_equal": true,
+  "softmax_and_merge_whole_source_unchanged": true,
+  "substitutions": {
+    "core": 11,
+    "batch": 4,
+    "bridge": 14
+  },
+  "generated_integer_layout": {
+    "qkv": {
+      "channel_splits": [
+        1024,
+        1024,
+        1024
+      ],
+      "all_rows": 1041,
+      "all_channels": 3072,
+      "elements_checked": 3197952,
+      "nonzero_import_offsets": [
+        3,
+        11,
+        19
+      ],
+      "complete_native_C4_inverse_passed": true,
+      "every_selected_read_passed": true
+    },
+    "proj": {
+      "channel_splits": [
+        352,
+        352,
+        320
+      ],
+      "all_rows": 1041,
+      "all_channels": 1024,
+      "elements_checked": 1065984,
+      "nonzero_import_offsets": [
+        3,
+        11,
+        19
+      ],
+      "complete_native_C4_inverse_passed": true,
+      "every_selected_read_passed": true
+    },
+    "fc1": {
+      "channel_splits": [
+        1376,
+        1376,
+        1344
+      ],
+      "all_rows": 1041,
+      "all_channels": 4096,
+      "elements_checked": 4263936,
+      "nonzero_import_offsets": [
+        3,
+        11,
+        19
+      ],
+      "complete_native_C4_inverse_passed": true,
+      "every_selected_read_passed": true
+    },
+    "fc2": {
+      "channel_splits": [
+        352,
+        352,
+        320
+      ],
+      "all_rows": 1041,
+      "all_channels": 1024,
+      "elements_checked": 1065984,
+      "nonzero_import_offsets": [
+        3,
+        11,
+        19
+      ],
+      "complete_native_C4_inverse_passed": true,
+      "every_selected_read_passed": true
+    }
+  },
+  "DMA_imports": 112,
+  "weighted_C_gather_buffers_or_kernels": false,
+  "expected_active_kernel_arguments": {
+    "norm1": 5,
+    "pack_all": 103,
+    "softmax_all": 65,
+    "merge_all": 34,
+    "proj_norm": 14,
+    "gelu": 9,
+    "final": 10
+  },
+  "expected_active_kernel_parameter_bytes": {
+    "norm1": 40,
+    "pack_all": 824,
+    "softmax_all": 520,
+    "merge_all": 272,
+    "proj_norm": 112,
+    "gelu": 72,
+    "final": 80
+  },
+  "FP32_equivalence_or_hardware_precision_proven": false,
+  "model_Torch_ONNX_RKNN_OpenCL_or_board_executed": false,
+  "output_sources": {
+    "dino0_native_bridge.cl": {
+      "bytes": 11148,
+      "sha256": "5f4a9ffc008aec7a608262c4810496332aa6ac4689cb046967c387513bf30c6b"
+    },
+    "dino0_batched_bridge.cl": {
+      "bytes": 17879,
+      "sha256": "9e1fe632dd17e7bd74e5669970333ae4f4d469041ef70bad13519ca957a09680"
+    },
+    "native_dino_bridge_opencl.py": {
+      "bytes": 26224,
+      "sha256": "ded8d841dd58986147abd02496e7c78a6f7714d06c167a95be1d02b94692eca5"
+    },
+    "attention_softmax.cl": {
+      "bytes": 3364,
+      "sha256": "5cbb36e03e09c38db9e6769f067e3168e1cf7f67d719009601c4456e9f2b150a"
+    }
+  }
+}

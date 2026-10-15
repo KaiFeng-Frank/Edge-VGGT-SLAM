@@ -1,0 +1,54 @@
+{
+  "schema": "v126_restored_validation_source_identities",
+  "original_version": 117,
+  "archive": "v117-native518-attention-dump-r1",
+  "archive_manifest_sha256": "738f012544b09cecf60079efdcafec56cee07122536904c90e84505e062045a1",
+  "source_bytes_equal_frozen_archive": true,
+  "README_reconstructed_not_original_hash": true,
+  "source_files": [
+    {
+      "file": "audit_dino0_debug_dump_saved.py",
+      "bytes": 11874,
+      "sha256": "dc506fdf0ff0b6dad439da50f83c8b7b170562610d25205af2cab1d64409cd3e",
+      "archive_files": [
+        "audit_dino0_debug_dump_saved.py"
+      ]
+    },
+    {
+      "file": "compile_dino0_opt0_board.py",
+      "bytes": 10946,
+      "sha256": "759f085b2ee8715de2a341fedd35c7effeb0c54c796deca3153ab3b7d64f8c8a",
+      "archive_files": [
+        "compile_dino0_opt0_board.py"
+      ]
+    },
+    {
+      "file": "run_debug_dump_r1.sh",
+      "bytes": 472,
+      "sha256": "ad5206a5d43f68fc961b1da186829d81668d9405d98bc00da16f93f0295fa28c",
+      "archive_files": [
+        "run_debug_dump_r1.sh"
+      ]
+    },
+    {
+      "file": "run_dino0_debug_dump.py",
+      "bytes": 13642,
+      "sha256": "1084270777ce931147f29fc39510ef6ff19563fa24ae367e4c689434ff351fab",
+      "archive_files": [
+        "run_dino0_debug_dump.py",
+        "run_dino0_debug_dump_executed_r1.py"
+      ]
+    },
+    {
+      "file": "run_dino0_debug_dump_executed_r1.py",
+      "bytes": 13642,
+      "sha256": "1084270777ce931147f29fc39510ef6ff19563fa24ae367e4c689434ff351fab",
+      "archive_files": [
+        "run_dino0_debug_dump.py",
+        "run_dino0_debug_dump_executed_r1.py"
+      ]
+    }
+  ],
+  "NN_or_SDK_execution": false,
+  "raw_artifacts_published": false
+}

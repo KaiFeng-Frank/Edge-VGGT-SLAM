@@ -1,0 +1,226 @@
+{
+  "schema": "recovered_original_native518_global_w8a8_v115",
+  "experiment_version": 115,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "original_experiment_status": "completed_original_global0_W8A8_component_ABBA_not_quality_accepted",
+    "scope": {
+      "graph_sha256": "c44094793c3b590c6066cbdd634cf0c4d8bd5b75987c8b491db7b17b2201f55d",
+      "schedule": [
+        "A",
+        "B",
+        "B",
+        "A"
+      ],
+      "heldout_order": [
+        "heldout00",
+        "heldout01"
+      ],
+      "init_flags": 0,
+      "core_mask": 7,
+      "original_layers_tokens_and_resolution_preserved": true,
+      "input_API": "Contiguous FP32/pass0; conversion performed by SDK",
+      "output_API": "want_float1; owned FP32 copy before release",
+      "manual_input_quantization": false,
+      "all_INT8_or_all_NPU_placement_verified": false,
+      "profile_collected": false,
+      "timing_scope": "Complete fresh-context lifecycle: frozen constructor source/model/library hashes, init/query, normal FP32 SDK IO/conversions/run, owned output copy/release, finite checks and destruction.",
+      "sample_policy": "First invocation of each route separate; remaining three pooled. Each heldout has two calls/route; every call creates/destroys its context."
+    },
+    "calibration_evaluation": {
+      "calibration_cases": 4,
+      "heldout_cases": 2,
+      "capture_status": "completed_original_native518_global0_input_capture",
+      "capture_source_sha256": "2fd3f55672de3a76376a712e707b202cad57e5b2dfbc2f2f605de4f57324857b",
+      "original_FP32_gate_status": "verified_original_global0_FP32_heldout_not_quantized",
+      "compile_status": "compiled_original_global0_W8A8_not_quality_accepted"
+    },
+    "summary": {
+      "A": {
+        "first_seconds": 0.6417562730493955,
+        "subsequent_count": 3,
+        "subsequent_mean_seconds": 0.6238134793238714,
+        "all_call_mean_seconds": 0.6282991777552525
+      },
+      "B": {
+        "first_seconds": 0.524521344981622,
+        "subsequent_count": 3,
+        "subsequent_mean_seconds": 0.5166794406832196,
+        "all_call_mean_seconds": 0.5186399167578202
+      }
+    },
+    "subsequent_SDK_run_mean_seconds": {
+      "A": 0.34693100668179494,
+      "B": 0.3280712969911595
+    },
+    "same_input_original_CPU_comparisons": {
+      "A/heldout00": {
+        "whole_output_vs_CPU": {
+          "relative_l2": 0.0060456337145521335,
+          "l2_error": 1.2808255553674253,
+          "reference_l2_norm": 211.85960245729345,
+          "max_abs": 0.016896039247512817,
+          "cosine": 0.9999817326180332,
+          "outside": 764180,
+          "strict_allclose": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "residual_update_vs_CPU": {
+          "relative_l2": 0.01177009918977002,
+          "l2_error": 1.2808255553674253,
+          "reference_l2_norm": 108.82028559968761,
+          "max_abs": 0.016896039247512817,
+          "cosine": 0.999937236786377,
+          "outside": 958443,
+          "strict_allclose": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      "A/heldout01": {
+        "whole_output_vs_CPU": {
+          "relative_l2": 0.005960991758158061,
+          "l2_error": 1.2675382684803829,
+          "reference_l2_norm": 212.63882251567657,
+          "max_abs": 0.01740787923336029,
+          "cosine": 0.9999822385710382,
+          "outside": 760889,
+          "strict_allclose": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "residual_update_vs_CPU": {
+          "relative_l2": 0.011719051416292757,
+          "l2_error": 1.2675382684803829,
+          "reference_l2_norm": 108.16048359666298,
+          "max_abs": 0.01740787923336029,
+          "cosine": 0.9999375927357793,
+          "outside": 953426,
+          "strict_allclose": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      "B/heldout00": {
+        "whole_output_vs_CPU": {
+          "relative_l2": 0.2393126413613152,
+          "l2_error": 50.70068106181308,
+          "reference_l2_norm": 211.85960245729345,
+          "max_abs": 0.9657287150621414,
+          "cosine": 0.9734423430519069,
+          "outside": 2128235,
+          "strict_allclose": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "residual_update_vs_CPU": {
+          "relative_l2": 0.46591203820511407,
+          "l2_error": 50.70068106181308,
+          "reference_l2_norm": 108.82028559968761,
+          "max_abs": 0.9657287150621414,
+          "cosine": 0.8863418484242321,
+          "outside": 2129978,
+          "strict_allclose": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      },
+      "B/heldout01": {
+        "whole_output_vs_CPU": {
+          "relative_l2": 0.2296137931398055,
+          "l2_error": 48.82480660660638,
+          "reference_l2_norm": 212.63882251567657,
+          "max_abs": 0.9345370233058929,
+          "cosine": 0.9753637933164236,
+          "outside": 2128304,
+          "strict_allclose": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        },
+        "residual_update_vs_CPU": {
+          "relative_l2": 0.45141076466223146,
+          "l2_error": 48.82480660660638,
+          "reference_l2_norm": 108.16048359666298,
+          "max_abs": 0.9345370233058929,
+          "cosine": 0.8937172787743483,
+          "outside": 2130055,
+          "strict_allclose": false,
+          "rtol": 0.0001,
+          "atol": 1e-05
+        }
+      }
+    },
+    "all_repetitions_byte_equal": true,
+    "SDK_totals": {
+      "contexts_created": 8,
+      "contexts_destroyed": 8,
+      "runs_completed": 8,
+      "output_buffers_acquired": 8,
+      "output_buffers_released": 8
+    },
+    "controller": {
+      "seconds": 8.646792453015223,
+      "observed_samples": 18,
+      "maximum_temperature_c": 61.923,
+      "exact_frequency_policy_restored": true
+    },
+    "resources_balanced": true,
+    "decision": "Reject naive whole-global0 W8A8: complete lifecycle decreases17.17%, but SDK execution only5.44%; held-out whole-output relative L2 rises to about0.239/0.230 from0.006. Do not compile all48 blocks or claim all-INT8/NPU placement. Float output conversion does not recover precision."
+  },
+  "source_evidence": [
+    {
+      "archive": "v115-native518-global-w8a8-r1",
+      "file": "abba-r1/result.json",
+      "bytes": 88659,
+      "sha256": "8bd9478295d05a6147879c38834a8bda7479e5b782587f0bc6798eaadd4f642e"
+    },
+    {
+      "archive": "v115-native518-global-w8a8-r1",
+      "file": "saved-global0-w8a8-audit.json",
+      "bytes": 7550,
+      "sha256": "b3abba8509fc796c5ba534ae4a5827b25a7064fd0a6fe2be243029e28d716a71"
+    },
+    {
+      "archive": "v115-native518-global-w8a8-r1",
+      "file": "capture-r2/result.json",
+      "bytes": 76818,
+      "sha256": "ea62a14c2bf219021d6d3b14647a4201773d3a05bc03c705cb0c0e87b7ac9ee3"
+    },
+    {
+      "archive": "v115-native518-global-w8a8-r1",
+      "file": "check-r3/result.json",
+      "bytes": 21347,
+      "sha256": "8a3b0c795758c9183c48795e421ee04a721547dcc4f3c1f81945edfe2df50f16"
+    },
+    {
+      "archive": "v115-native518-global-w8a8-r1",
+      "file": "compile-r1/result.json",
+      "bytes": 22413,
+      "sha256": "42084beb6302cd4dc2d2cc8e04799658875c45d03781f2e11f7522b419d1c16e"
+    },
+    {
+      "archive": "v115-native518-global-w8a8-r1",
+      "file": "output-grid-bound.json",
+      "bytes": 1824,
+      "sha256": "d82d8e92f13a87eee1d3c040b51dab3e8581a8a5c9c3a247e7fe1c7b3542e254"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 181. Calibrated native whole-block INT8 trades a small speed gain for large numerical error",
+    "section_sha256": "d0d8e8cef3962c452b656bbbe117153b121179d33853c3a95f064a8ffcc6bfac"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

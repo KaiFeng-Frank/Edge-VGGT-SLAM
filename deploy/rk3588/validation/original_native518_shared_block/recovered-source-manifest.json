@@ -1,0 +1,68 @@
+{
+  "schema": "v126_restored_validation_source_identities",
+  "original_version": 120,
+  "archive": "v120-native518-shared-block-r1",
+  "archive_manifest_sha256": "301cdf1a49c5df0787ad8c370ed835b0aebd48e42d234f3794bfbca00cc2a571",
+  "source_bytes_equal_frozen_archive": false,
+  "README_reconstructed_not_original_hash": true,
+  "source_files": [
+    {
+      "file": "audit_dino0_shared_block_saved.py",
+      "bytes": 21291,
+      "sha256": "c390494e5515d83539a65545e19b6bccaa0ad08907a1cd63759e84a8cb39fc71",
+      "archive_files": [
+        "audit_dino0_shared_block_saved.py"
+      ],
+      "archive_bytes": 21321,
+      "archive_sha256": "67424215747b36d495e27ffc31448c53bdb2a1660523393c9c9465f39da3a7a9",
+      "publication_adaptation": "Portable host artifact path defaults only; frozen historical execution identity remains archive_sha256."
+    },
+    {
+      "file": "check_compile_dino0_cuts_board.py",
+      "bytes": 21100,
+      "sha256": "7b673fdb2c4336773611d02be25a9eccb884310fbcda0beca759d46511a67312",
+      "archive_files": [
+        "check_compile_dino0_cuts_board.py"
+      ]
+    },
+    {
+      "file": "export_dino0_cuts.py",
+      "bytes": 12970,
+      "sha256": "3b61eddfd7cae104d0ad716b2b06b24d234dcea8f3ef94be0230e528d277752c",
+      "archive_files": [
+        "export_dino0_cuts.py"
+      ]
+    },
+    {
+      "file": "run_dino0_shared_block_board.py",
+      "bytes": 21089,
+      "sha256": "b62356ad5f3256b0f6c447965fe61e7fb158f3c7748db2d83756341599226140",
+      "archive_files": [
+        "run_dino0_shared_block_board.py"
+      ]
+    },
+    {
+      "file": "run_dino0_shared_block_r1.sh",
+      "bytes": 886,
+      "sha256": "e4a75bc1b15880dee03bd5c7ac23a1d2a308baadff8d4664402005484c9d4f7c",
+      "archive_files": [
+        "run_dino0_shared_block_r1.sh"
+      ]
+    },
+    {
+      "file": "shared_attention_runtime.py",
+      "bytes": 6851,
+      "sha256": "82ec9d4ad838c84dcd02309a9da7d73db68b77d30525d1308f3e482907844968",
+      "archive_files": [
+        "shared_attention_runtime.py"
+      ]
+    }
+  ],
+  "NN_or_SDK_execution": false,
+  "raw_artifacts_published": false,
+  "original_recovery_bytes_equal_frozen_archive_before_publication_adaptation": true,
+  "publication_adapted_paths": [
+    "audit_dino0_shared_block_saved.py"
+  ],
+  "publication_identity_scope": "Current bytes/sha256 identify the published file; archive/executed_source fields retain the frozen historical source identity. No new model or device execution is claimed."
+}

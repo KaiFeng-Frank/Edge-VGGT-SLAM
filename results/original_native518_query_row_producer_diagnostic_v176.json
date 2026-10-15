@@ -1,0 +1,389 @@
+{
+  "schema": "original_native518_query_row_producer_diagnostic_v176",
+  "status": "large_exported_producer_QK_discrepancy_persists_on_mask1_no_causal_kernel_or_quality_acceptance",
+  "original_model_only": true,
+  "scope": {
+    "component": "R174/R175 global0 QKV producer exported boundaries before the consumer SDPA.",
+    "original_input_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "packed_Q_K_Vc_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "mu_shape": [
+      1,
+      1,
+      1024
+    ],
+    "heads": 16,
+    "head_dimension": 64,
+    "original_prepared_FRAME_FLOAT32_reshape_used": true,
+    "reused_engineering_cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "CPU_reference": "Saved outputs of the R174 board CPU graph gate; that complete own path separately passes the conditional original FP32 comparisons.",
+    "fresh_capture_or_final_generalization_holdout": false
+  },
+  "original_parameters_and_graph_unchanged": true,
+  "producer_model_sha256": "96ebefdfe05301938d09a975157435eeaefa07dcc872c907992ee50a473e9749",
+  "saved_tensor_diagnostic": {
+    "saved_arrays_compared": 28,
+    "tensor_pairs": 14,
+    "new_inference_or_graph_weights_softmax_AV_or_full_attention_executed": false,
+    "Q_K_differences_already_observed_before_consumers": true,
+    "producer_port_indices_names_shapes_and_source_assignment_verified": true,
+    "Q_and_K_are_distinct_saved_payloads": true,
+    "CPU_endpoint_half_rounding_is_a_saved_arithmetic_comparator_not_NPU_kernel_simulation": true,
+    "tested_layouts": [
+      "logical_BTHD",
+      "flat_BHSD_to_BTHD",
+      "flat_BHDS_to_BTHD"
+    ],
+    "tested_within64_permutations": [
+      "identity",
+      "even_then_odd",
+      "interleave_two_halves",
+      "swap_halves",
+      "swap_adjacent_pairs"
+    ],
+    "view_channel_combinations_per_Q_or_K": 15,
+    "cross_Q_K_ports_and_frame_half_swaps_checked": true,
+    "tested_transformations_restore_CPU_tensors": false,
+    "exhaustive_layout_or_basis_search_performed": false,
+    "fixed_sample_tokens": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      520,
+      1040,
+      1041,
+      1042,
+      1043,
+      1044,
+      1045,
+      1046,
+      1561,
+      2081
+    ],
+    "sample_dot_products_per_case": 4096,
+    "sampled_unscaled_Q_dot_K_is_not_full_attention": true,
+    "common_orthogonal_basis_alone_explains_sampled_changes": false,
+    "cases": [
+      {
+        "id": "pair4",
+        "producer": [
+          {
+            "stage": "producer_Q",
+            "NPU_vs_CPU": {
+              "relative_l2": 0.4372035366348778,
+              "max_abs": 6.374856472015381,
+              "outside_count": 2130260,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            },
+            "CPU_endpoint_rounded_to_FLOAT16_only_relative_l2": 0.00020646200805999598
+          },
+          {
+            "stage": "producer_K",
+            "NPU_vs_CPU": {
+              "relative_l2": 0.41578498640734224,
+              "max_abs": 6.538157224655151,
+              "outside_count": 2130162,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            },
+            "CPU_endpoint_rounded_to_FLOAT16_only_relative_l2": 0.00020988367015383624
+          },
+          {
+            "stage": "producer_Vc",
+            "NPU_vs_CPU": {
+              "relative_l2": 0.0014611748769711489,
+              "max_abs": 0.005684852600097656,
+              "outside_count": 1664957,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            },
+            "CPU_endpoint_rounded_to_FLOAT16_only_relative_l2": 0.00020664022689846097
+          },
+          {
+            "stage": "producer_mu",
+            "NPU_vs_CPU": {
+              "relative_l2": 0.00026242419287643556,
+              "max_abs": 0.0002486705780029297,
+              "outside_count": 434,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            },
+            "CPU_endpoint_rounded_to_FLOAT16_only_relative_l2": 0.00019170835101909342
+          }
+        ],
+        "layout_channel_tests_per_Q_or_K": 15,
+        "best_tested_Q_view": {
+          "layout": "logical_BTHD",
+          "within64": "identity",
+          "relative_l2": 0.4372035366348778
+        },
+        "best_tested_K_view": {
+          "layout": "logical_BTHD",
+          "within64": "identity",
+          "relative_l2": 0.41578498640734224
+        },
+        "cross_port_or_frame_swap_restores_CPU": false,
+        "sampled_saved_cross_inner_products": {
+          "count": 4096,
+          "channels_summed": 64,
+          "heads": 16,
+          "query_tokens": 16,
+          "key_tokens": 16,
+          "relative_l2": 0.7447418893598202,
+          "max_abs": 42.941440780655455,
+          "NPU_float64_raw_sha256": "35a4998d457a96bd0d3c19bc8205ef42b7387ae53b5ac1a831249710d6dbf57a",
+          "CPU_float64_raw_sha256": "9851b7294e22f497e0f290e5d3f60597164153256f90d281fce2d13397b3e392"
+        }
+      },
+      {
+        "id": "pair5",
+        "producer": [
+          {
+            "stage": "producer_Q",
+            "NPU_vs_CPU": {
+              "relative_l2": 0.439397035308158,
+              "max_abs": 6.36813759803772,
+              "outside_count": 2130230,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            },
+            "CPU_endpoint_rounded_to_FLOAT16_only_relative_l2": 0.00020660109203955693
+          },
+          {
+            "stage": "producer_K",
+            "NPU_vs_CPU": {
+              "relative_l2": 0.41390565496925247,
+              "max_abs": 6.311834335327148,
+              "outside_count": 2130185,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            },
+            "CPU_endpoint_rounded_to_FLOAT16_only_relative_l2": 0.00021005056447789944
+          },
+          {
+            "stage": "producer_Vc",
+            "NPU_vs_CPU": {
+              "relative_l2": 0.0015100386108599425,
+              "max_abs": 0.004422664642333984,
+              "outside_count": 1672758,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            },
+            "CPU_endpoint_rounded_to_FLOAT16_only_relative_l2": 0.00020636499598063323
+          },
+          {
+            "stage": "producer_mu",
+            "NPU_vs_CPU": {
+              "relative_l2": 0.0003121948619356034,
+              "max_abs": 0.0003472566604614258,
+              "outside_count": 468,
+              "fixed_gate_passed": false,
+              "strict_pass": false
+            },
+            "CPU_endpoint_rounded_to_FLOAT16_only_relative_l2": 0.00021136363991023258
+          }
+        ],
+        "layout_channel_tests_per_Q_or_K": 15,
+        "best_tested_Q_view": {
+          "layout": "logical_BTHD",
+          "within64": "identity",
+          "relative_l2": 0.439397035308158
+        },
+        "best_tested_K_view": {
+          "layout": "logical_BTHD",
+          "within64": "identity",
+          "relative_l2": 0.41390565496925247
+        },
+        "cross_port_or_frame_swap_restores_CPU": false,
+        "sampled_saved_cross_inner_products": {
+          "count": 4096,
+          "channels_summed": 64,
+          "heads": 16,
+          "query_tokens": 16,
+          "key_tokens": 16,
+          "relative_l2": 0.7481189765778918,
+          "max_abs": 42.73300127137604,
+          "NPU_float64_raw_sha256": "2ec64cda31c429db6130ab9e26e7ee907baee391b32a4e7750443725b6ffc3b5",
+          "CPU_float64_raw_sha256": "7abec2e3ae2de18c66b2beb8094af1985aae0147ebd81da06da1a477a8910e73"
+        }
+      }
+    ],
+    "independent_saved_recomputation_verified": true
+  },
+  "actual_producer_core_mask_control": {
+    "init_flags": 0,
+    "baseline_core_mask": 7,
+    "control_core_mask": 1,
+    "prior_baseline": "Preserved core7 producer outputs from R175, with unchanged model/input lineage and lossless saved FLOAT16 payloads.",
+    "current_control": "One isolated ordinary OwnedContext, same original producer model, two original FLOAT32 cases; no consumers execute.",
+    "prior_R175_owners_resident": 4,
+    "current_control_owners_resident": 1,
+    "current_calls": 2,
+    "current_output_ports_compared": 8,
+    "current_recorded_output_raw_hashes_equal_rehashed_prior_payloads": true,
+    "source_bitwise_comparison_before_deduplication": true,
+    "all_eight_outputs_byte_equal_prior_core7": true,
+    "new_NPY_payloads_saved": 0,
+    "equal_existing_payload_files_preserved": true,
+    "changed_output_would_require_all_eight_new_payloads": true,
+    "original_model_graph_weights_or_native_IO_changed": false,
+    "control_call_wall_seconds_not_a_matched_speed_comparison": [
+      0.30035257199779153,
+      0.27869948600709904
+    ],
+    "control_SDK_run_seconds_not_a_matched_speed_comparison": [
+      0.22699548199307173,
+      0.22510660599800758
+    ],
+    "initialization_seconds": 0.06132408999837935,
+    "destruction_seconds": 0.0294040870066965,
+    "NPU_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "controller_temperature_limit_c": 75,
+    "maximum_observed_controller_temperature_c": 55.461
+  },
+  "independent_verification": {
+    "all28_diagnostic_files_and14_tensor_pairs_rehashed_and_recomputed": true,
+    "all15_view_channel_alternatives_per_port_cross_swaps_heads_and_regions_recomputed": true,
+    "all4096_fixed_sample_cross_inner_products_per_case_and_float64_raw_hashes_recomputed": true,
+    "saved_mu_Vc_residual_and_own_endpoint_metrics_recomputed": true,
+    "two_original_control_inputs_immutable": true,
+    "all8_current_raw_hashes_link_to_preserved_core7_endpoint_bytes": true,
+    "contexts_created": 1,
+    "contexts_destroyed": 1,
+    "SDK_runs": 2,
+    "output_buffers_acquired": 8,
+    "output_buffers_released": 8,
+    "no_native_IO_allocation_import_or_FD_handoff": true,
+    "all_resources_closed": true,
+    "controller_frequency_policy_restored": true,
+    "original_sources_inputs_and_environment_unchanged": true,
+    "cleanup_errors": []
+  },
+  "conclusion": {
+    "producer_mask7_to_mask1_switch_removes_observed_discrepancy": false,
+    "upstream_exported_Q_K_discrepancy_requires_diagnosis_before_quality_acceptance": true,
+    "pure_shared_orthogonal_basis_explanation_sufficient": false,
+    "internal_failure_boundary_or_exact_SDK_RoPE_norm_transpose_kernel_cause_proven": false,
+    "universal_cross_core_equivalence_proven": false,
+    "matched_latency_or_speedup_proven": false,
+    "quality_or_deployment_accepted": false,
+    "full_model_trajectory_SLAM20Hz_sustained_rate_or_physical8GB_accepted": false,
+    "prior_R174_R175_results_rewritten": false
+  },
+  "evidence": [
+    {
+      "role": "existing saved NPU versus CPU diagnostic",
+      "basename": "owned-vs-CPU-saved-diagnostic-r1.json",
+      "bytes": 88452,
+      "sha256": "d3b8132195a8c145b2df6ddeb9293ae1878e6ca88307654fb498e04abe4d9c16"
+    },
+    {
+      "role": "saved arithmetic diagnostic source",
+      "basename": "diagnose_query_row_owned_vs_CPU_saved.py",
+      "bytes": 13616,
+      "sha256": "3a0196a90200b71879621c58394eaedcf1eed041123818e2168d1e4513f90cf2"
+    },
+    {
+      "role": "R174 CPU endpoint authority",
+      "basename": "result.json",
+      "bytes": 44562,
+      "sha256": "e2252492083cbe99ffb956631626fac54f1b4e8344a085de86997ac2ce3175d7"
+    },
+    {
+      "role": "R175 core7 output authority",
+      "basename": "result.json",
+      "bytes": 137415,
+      "sha256": "cdc56884f77fc1bddf4e74cd628d449ac9af5bc04dc7ae6edcbc929abb2eb47e"
+    },
+    {
+      "role": "R175 independent saved audit",
+      "basename": "owned-ABBA-r1-saved-audit-r1.json",
+      "bytes": 23145,
+      "sha256": "82e8d85be1c2b93fe5254af69f353bc82ee3288785a4f823d51462bd4d0279aa"
+    },
+    {
+      "role": "frozen mask1 producer control source",
+      "basename": "probe_query_row_producer_core1_board.py",
+      "bytes": 19808,
+      "sha256": "adbbe343baad7d3022eebffb6c4c509600cf37a7532d15daca6af42fc989f88a"
+    },
+    {
+      "role": "frozen mask1 transport source",
+      "basename": "execute_query_row_producer_core1_host.py",
+      "bytes": 15139,
+      "sha256": "7f2970a9db6375dcc061865e403b447e5520bce5d486291f171e287b5db06fe4"
+    },
+    {
+      "role": "executed control manifest",
+      "basename": "manifest.json",
+      "bytes": 7245,
+      "sha256": "948990f18aba26675a3afd3aabff4185d1d2a41776eac602f537b11d6a7e383b"
+    },
+    {
+      "role": "actual mask1 producer control result",
+      "basename": "result.json",
+      "bytes": 17502,
+      "sha256": "64ef35beb1d599af7ab9b92989ff2f55e14446415e212c2778d2fe766ee4217a"
+    },
+    {
+      "role": "actual control transport",
+      "basename": "producer-core1-r1-transport.json",
+      "bytes": 21377,
+      "sha256": "c4934c41b69efa74d010a62c2ace56e03872975d1f93b98efe43d11f715594ad"
+    },
+    {
+      "role": "restoring control policy",
+      "basename": "control.json",
+      "bytes": 2460,
+      "sha256": "79c8f3c3b61765da57c28ed47080b4fa42e4b1d89a078b830d4c5ff8045c24ba"
+    },
+    {
+      "role": "independent saved control and diagnostic audit",
+      "basename": "producer-core1-r1-saved-audit-r1.json",
+      "bytes": 8124,
+      "sha256": "db126f63f70d5e054b9f4cd2be0979a6e8248a3f855cd65bc0008c8f1565729c"
+    },
+    {
+      "role": "independent saved audit source",
+      "basename": "audit_query_row_producer_core1_saved.py",
+      "bytes": 23906,
+      "sha256": "d89a0b26e2e2a8dd9baf505897ad462cf0542822b79d38766773dad862ad683c"
+    }
+  ],
+  "limits": [
+    "The diagnostic locates large differences at exported producer Q/K; it does not observe internal LN/QKV/QK-norm/RoPE boundaries or identify a kernel defect.",
+    "The tested layout/channel permutations and cross-port/frame swaps are bounded saved-data alternatives, not an exhaustive layout proof or a corrected model.",
+    "A common orthogonal transform would preserve Q/K inner products; the fixed changed samples reject that explanation alone, without proving the actual underlying representation or precision mechanism.",
+    "The core-mask control performs one call per reused case in a separate isolated context and compares existing core7 bytes. Its timings are not a matched scheduling, speed or sustained-rate experiment.",
+    "No duplicate current payloads are created when source-level bitwise comparisons and current hashes match preserved prior files; the audit explicitly records that evidence form.",
+    "R175 serial/parallel byte equality and descriptive timing remain historical facts; they do not imply original precision, model/trajectory quality, realtime or physical8GB acceptance.",
+    "Public artifacts contain hashes and metadata only; original arrays, learned exports and SDK binaries remain private."
+  ]
+}

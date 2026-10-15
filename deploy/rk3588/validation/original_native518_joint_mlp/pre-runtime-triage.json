@@ -1,0 +1,23 @@
+{
+  "schema": "v129_pre_runtime_component_triage",
+  "status": "declared_before_R129_NPU_inference",
+  "heldout_inputs": [
+    "pair4",
+    "pair5"
+  ],
+  "fidelity": {
+    "reference": "same-input original A CPU FP32",
+    "comparison": "candidate relative L2 per canonical endpoint <= 1.2 times first matched original A FP16 error",
+    "factor": 1.2,
+    "zero_baseline_error_requires_zero_candidate_error": true
+  },
+  "speed": {
+    "reference": "interleaved original A FP16 all four complete OwnedContext.run calls",
+    "minimum_mean_time_reduction_fraction": 0.1
+  },
+  "actual_compiler_scheduling_and_memory_evidence_required": true,
+  "four_calls_per_route_are_descriptive_not_P95_or_sustained_throughput": true,
+  "full_model_or_trajectory_acceptance": false,
+  "source_graph_order_is_not_compiled_order": true,
+  "candidate_accepted": false
+}

@@ -1,0 +1,117 @@
+{
+  "schema": "recovered_original_native518_batched_block_v122",
+  "experiment_version": 122,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "scope": "Original complete DINO0, all1041tokens/16heads/14 original parameters,36 persistent native contexts and7 GPU stages. Original products remain serial core1.",
+    "r1": {
+      "status": "complete_batched_block_byte_parity_verified_not_deployment_accepted",
+      "complete_warm_means_seconds": {
+        "A": 0.18098515731981024,
+        "B": 0.277819180317844
+      },
+      "GPU_kernel_mean_seconds": {
+        "norm1": 0.00193511,
+        "pack_all": 0.0057228646666666666,
+        "softmax_all": 0.05658012366666667,
+        "merge_all": 0.0018873713333333333,
+        "proj_residual_norm": 0.002510737,
+        "erf_gelu": 0.00837512,
+        "final_residual": 0.00152139
+      },
+      "all4_B_byte_equal_previous_native": true,
+      "original_FP32_precision": {
+        "relative_l2": 0.00025077124800207287,
+        "max_abs": 0.005247354507446289,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 135979,
+        "fixed_reference_gate_passed": false,
+        "byte_equal": false
+      },
+      "init_seconds": {
+        "baseline": 0.09584896801970899,
+        "candidate": 0.5972514349850826
+      },
+      "destroy_seconds": 0.12716084596468136,
+      "peak_rss_mib": 797.76171875,
+      "max_observed_temperature_c": 56.384,
+      "frequency_policy_restored": true,
+      "GPU_clocks_written": false,
+      "GPU_continuously_sampled": false,
+      "decision": "Retain proven batched scheduling improvement as operator evidence, not deployment; complete matched fused baseline still faster."
+    },
+    "r2": {
+      "status": "rejected_for_deployment_no_speed_gain_established",
+      "subsequent_three_means_seconds": {
+        "A": 0.17914276797091588,
+        "B": 0.2841533479707626
+      },
+      "softmax_GPU_event_mean_seconds": 0.065968047,
+      "softmax_complete_mean_seconds": 0.09432731497023876,
+      "all_B_byte_equal_R121": true,
+      "B_vs_original_CPU": {
+        "relative_l2": 0.00025077124800207287,
+        "max_abs": 0.005247354507446289,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 135979,
+        "fixed_reference_gate_passed": false,
+        "byte_equal": false
+      },
+      "GPU_frequency_limit": "Automatic GPU governor unchanged; endpoint samples do not establish kernel-time clock stability. R1/R2 timing comparison is cross-run, not a controlled matched comparison.",
+      "peak_rss_mib": 797.98046875,
+      "max_sampled_temperature_c": 55.461
+    },
+    "saved_audit_status": {
+      "r1": "passed",
+      "r2": "passed"
+    },
+    "decision": "Reject deployment/full-model expansion of both schedules. R1 fused180.985ms versus277.819ms candidate; R2 fused179.143ms versus284.153ms candidate. Four-row1024-lane softmax also increased kernel time; preserve byte parity and original precision evidence without claiming a generic performance limit."
+  },
+  "source_evidence": [
+    {
+      "archive": "v122-native518-batched-block-r1-r2",
+      "file": "r1-execution-review.json",
+      "bytes": 2315,
+      "sha256": "364734dd91a2c9c63b5bc0c77b63997a49b457c6dec7c0601ca1583d9673f6b7"
+    },
+    {
+      "archive": "v122-native518-batched-block-r1-r2",
+      "file": "r2-execution-review.json",
+      "bytes": 1671,
+      "sha256": "22d03ae804a1b724947a69b7f10bc7221a54b767fe96a795382d21fc24f0cb04"
+    },
+    {
+      "archive": "v122-native518-batched-block-r1-r2",
+      "file": "native-dino-r1-saved-audit.json",
+      "bytes": 41050,
+      "sha256": "f7e0eba6e22c59d137452b9f54b6f3328c830bade8a0f7097800dade0d29ab55"
+    },
+    {
+      "archive": "v122-native518-batched-block-r1-r2",
+      "file": "native-dino-r2-saved-audit.json",
+      "bytes": 47801,
+      "sha256": "30dc838fbc669bbd6310eee953298609e5e65a80a1219e04f40786ced77fa2b9"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 188. Batching native GPU stages preserves output bytes, but still loses to the fused original block",
+    "section_sha256": "b1760f9932cd59695ab6837f160775a897efebc60b7be3773f3db000a25b0636"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

@@ -1,0 +1,231 @@
+{
+  "schema": "original_native518_suffix_token_rows_v169",
+  "status": "three_complete_row_partitions_byte_equal_original_NPU_suffix_with_descriptive_component_speedup",
+  "original_model_only": true,
+  "scope": {
+    "original_aggregator_global_block_index": 0,
+    "source_indices": [
+      [
+        96,
+        104
+      ],
+      [
+        112,
+        120
+      ]
+    ],
+    "full_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "ordered_row_ranges": [
+      [
+        0,
+        694
+      ],
+      [
+        694,
+        1388
+      ],
+      [
+        1388,
+        2082
+      ]
+    ],
+    "full_model_or_SLAM_execution": false
+  },
+  "change": "Execute the entire original row-local global suffix as three complete 694-row graphs with NPU core masks 1, 2 and 4, then concatenate all 2082 rows in original order.",
+  "static_proof": {
+    "original_nodes": 27,
+    "original_initializers": 25,
+    "only_five_public_row_dimensions_changed": true,
+    "whole_original_ModelProto_inverse_byte_equal": true,
+    "normalization_width": 1024,
+    "original_FC2_product_and_add_order_preserved": true,
+    "parameters_or_tokens_or_layers_removed": false
+  },
+  "board_CPU_gate": {
+    "original_full_calls": 2,
+    "partition_calls": 6,
+    "ordered_concatenated_outputs_byte_equal": true
+  },
+  "compiled_placement": {
+    "all_51_activation_features_FLOAT16": true,
+    "original_learned_dense_products": 5,
+    "internal_CPU_GPU_fallback": false,
+    "model_bytes": 17418547,
+    "model_sha256": "55074b59de6a929847458ec8a02f64feb401f87e38ab76eeef21ef7a2f4a34b5",
+    "all28_internal_operations_NPU": true,
+    "public_CPU_IO_operators": 5
+  },
+  "measurement": {
+    "NPU_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "temperature_limit_C": 75,
+    "route_order": [
+      "A_full",
+      "B_rows",
+      "B_rows",
+      "A_full"
+    ],
+    "case_order_per_phase": [
+      "pair4",
+      "pair5"
+    ],
+    "first_calls_included": true,
+    "flags": 0,
+    "baseline_core_mask": 7,
+    "candidate_core_masks": [
+      1,
+      2,
+      4
+    ],
+    "runtime_resident_contexts": 4,
+    "separate_zero_forward_query_contexts": 1,
+    "timer_includes": [
+      "four actual FLOAT32 input finite scans and FLOAT16 casts",
+      "owned input DMA copies and synchronization",
+      "all original suffix operations",
+      "owned FLOAT32 output copy or ordered concatenation and final finite check"
+    ],
+    "timer_excludes": [
+      "context initialization and teardown",
+      "saving evidence and comparing reference arrays"
+    ],
+    "complete_call_seconds": {
+      "A_full": {
+        "complete_call_seconds": [
+          0.2330986059969291,
+          0.20027289500285406,
+          0.20682193800166715,
+          0.20026860399229918
+        ],
+        "mean_complete_call_seconds": 0.21011551074843737
+      },
+      "B_rows": {
+        "complete_call_seconds": [
+          0.15392214100575075,
+          0.1284035549906548,
+          0.13042555400170386,
+          0.1291113039915217
+        ],
+        "mean_complete_call_seconds": 0.13546563849740778
+      }
+    },
+    "mean_latency_reduction_percent": 35.52801598755116,
+    "case_means": [
+      {
+        "case_id": "pair4",
+        "mean_A_seconds": 0.21996027199929813,
+        "mean_B_seconds": 0.1421738475037273,
+        "reduction_percent": 35.363851748564414
+      },
+      {
+        "case_id": "pair5",
+        "mean_A_seconds": 0.20027074949757662,
+        "mean_B_seconds": 0.12875742949108826,
+        "reduction_percent": 35.70831995480883
+      }
+    ],
+    "initialization_seconds": 0.3913510389975272,
+    "close_seconds": 0.2212075220013503
+  },
+  "numerical_result": {
+    "all_B_outputs_byte_equal_current_A_and_prior_native": true,
+    "all_same_case_repeats_byte_equal": true,
+    "conditional_original_CPU_relative_l2": [
+      0.005365009734224046,
+      0.005455269750983937
+    ],
+    "conditional_original_CPU_max_abs": [
+      0.01770913600921631,
+      0.017325222492218018
+    ],
+    "conditional_FP32_errors_unchanged_by_partition": true,
+    "original_fixed_and_strict_gates_passed": false,
+    "thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    }
+  },
+  "ownership": {
+    "runtime_resource_totals": {
+      "contexts_created": 4,
+      "contexts_destroyed": 4,
+      "runs_completed": 16,
+      "memories_created": 20,
+      "memories_imported": 0,
+      "memories_destroyed": 20,
+      "set_io_mem_attempts": 20,
+      "set_io_mem_successes": 20,
+      "output_buffers_acquired": 0,
+      "output_buffers_released": 0
+    },
+    "all_resources_closed": true,
+    "native_input_8_and_10_raw_equal": true,
+    "imported_FD_subviews_used": false,
+    "shared_weights_or_scratch_used": false,
+    "controller_restored": true
+  },
+  "limits": [
+    "These eight component calls are one ABBA experiment on two actual cases; no sustained speed, P95 or complete-model improvement is inferred.",
+    "The CPU reference runs the original full suffix on saved actual NPU head and bridge outputs. It is a conditional component comparison, not full original FP32 SLAM.",
+    "The existing FLOAT16 discrepancy from original FP32 remains. Tensor parity with the old NPU route does not establish trajectory accuracy.",
+    "The connected four-block path, full model, fresh-observation pose rate, 30-minute stability and physical 8GB operation need separate measurements.",
+    "Code, original model weights and SDK retain separate licenses."
+  ],
+  "evidence": [
+    {
+      "role": "static",
+      "basename": "result.json",
+      "bytes": 14364,
+      "sha256": "ac8f0b9a3026a760befb682be13fb9e67b34caf81b298ee6bb27b9dc79b89f83"
+    },
+    {
+      "role": "CPU",
+      "basename": "result.json",
+      "bytes": 36325,
+      "sha256": "29a601b3e34e5bca76d748bcecc7a796db63318971480da12b6dbb74de95a6e3"
+    },
+    {
+      "role": "CPU_audit",
+      "basename": "CPU-gate-r1-saved-audit-r1.json",
+      "bytes": 2930,
+      "sha256": "9d5e681b5755da1e0f125e2cafe5f2fa6dd70f7f78472d89130328c36f2c4819"
+    },
+    {
+      "role": "compile",
+      "basename": "result.json",
+      "bytes": 3528,
+      "sha256": "eebd4245a7ca2caffe47ea5be797b04b0a07f6f5a4b3be8cbb3b944d4e89a74e"
+    },
+    {
+      "role": "placement",
+      "basename": "host-compile-r1-saved-audit-r1.json",
+      "bytes": 65708,
+      "sha256": "ca2d53f32e19ccf523c4950e4199aabb491f1b5c7bb36fce116f51a04d4daff7"
+    },
+    {
+      "role": "native_ABBA",
+      "basename": "result.json",
+      "bytes": 140700,
+      "sha256": "d821773102f0d5805e722e21e2c69d44dced364caf17be492bc030466f56f675"
+    },
+    {
+      "role": "native_audit",
+      "basename": "native-ABBA-r1-saved-audit-r1.json",
+      "bytes": 9251,
+      "sha256": "e09dd312146058737740076cf27f6700eabd30db20befac26975350a2e4d1ca3"
+    },
+    {
+      "role": "controller",
+      "basename": "control.json",
+      "bytes": 5341,
+      "sha256": "314555a21daec48135759c2cb59dadbf7d63a5da33df3ecbfc991f4e5f76bb40"
+    }
+  ],
+  "realtime_pose_depth_trajectory_or_deployment_accepted": false
+}

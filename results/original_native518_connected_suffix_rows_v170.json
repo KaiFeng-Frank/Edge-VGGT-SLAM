@@ -1,0 +1,225 @@
+{
+  "schema": "original_native518_connected_suffix_rows_v170",
+  "status": "four_original_blocks_connected_with_byte_parity_and_descriptive_ABBA_gain",
+  "original_model_only": true,
+  "scope": {
+    "original_aggregator_pairs": [
+      0,
+      1
+    ],
+    "original_transformer_blocks": 4,
+    "source_indices": [
+      [
+        96,
+        104
+      ],
+      [
+        112,
+        120
+      ]
+    ],
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "original_full_model_executed": false
+  },
+  "change": "Only pair0 global suffix executes as three complete 694-row partitions with core masks 1,2,4. All frame models and all pair1 models remain unchanged. Each route recomputes the original four-block prefix from its original input.",
+  "actual_data_flow": {
+    "current_head_and_bridge_NATIVE_outputs_feed_candidate": true,
+    "readonly_FLOAT16_CPU_row_views_into_actual_producer_storage": true,
+    "producer_reader_leases_held_until_every_row_run_completed": true,
+    "owned_DMA_inputs": true,
+    "FD_offset_or_descriptor_reinterpretation": false,
+    "three_ordered_native_FLOAT16_outputs_copied_once_to_pair1_FRAME": true,
+    "reference_intermediate_injection": false
+  },
+  "matched_test": {
+    "schedule": [
+      "A_full",
+      "B_rows",
+      "B_rows",
+      "A_full"
+    ],
+    "case_order_per_phase": [
+      "pair4",
+      "pair5"
+    ],
+    "complete_calls": 8,
+    "first_calls_included": true,
+    "init_flags": 0,
+    "NPU_hz": 1000000000,
+    "CPU_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "resident_contexts": 17,
+    "timer_includes": [
+      "original input finite check and one FLOAT16 cast",
+      "all four original transformer blocks",
+      "actual producer row views and DMA copies",
+      "ordered interpair FLOAT16 handoff",
+      "final owned FLOAT32 copy and finite validation"
+    ],
+    "timer_excludes": [
+      "initialization and teardown",
+      "hashing, evidence saving and reference comparisons"
+    ],
+    "calls": [
+      {
+        "phase_index": 0,
+        "route": "A_full",
+        "case_id": "pair4",
+        "complete_call_seconds": 1.2710758780012839
+      },
+      {
+        "phase_index": 0,
+        "route": "A_full",
+        "case_id": "pair5",
+        "complete_call_seconds": 1.1990234950062586
+      },
+      {
+        "phase_index": 1,
+        "route": "B_rows",
+        "case_id": "pair4",
+        "complete_call_seconds": 1.156762950005941
+      },
+      {
+        "phase_index": 1,
+        "route": "B_rows",
+        "case_id": "pair5",
+        "complete_call_seconds": 1.135623238995322
+      },
+      {
+        "phase_index": 2,
+        "route": "B_rows",
+        "case_id": "pair4",
+        "complete_call_seconds": 1.118990446004318
+      },
+      {
+        "phase_index": 2,
+        "route": "B_rows",
+        "case_id": "pair5",
+        "complete_call_seconds": 1.112240237009246
+      },
+      {
+        "phase_index": 3,
+        "route": "A_full",
+        "case_id": "pair4",
+        "complete_call_seconds": 1.1773767010017764
+      },
+      {
+        "phase_index": 3,
+        "route": "A_full",
+        "case_id": "pair5",
+        "complete_call_seconds": 1.1833282020088518
+      }
+    ],
+    "summary": {
+      "per_case_mean_seconds": {
+        "pair4": {
+          "A_full": 1.2242262895015301,
+          "B_rows": 1.1378766980051296
+        },
+        "pair5": {
+          "A_full": 1.1911758485075552,
+          "B_rows": 1.123931738002284
+        }
+      },
+      "overall_mean_seconds": {
+        "A_full": 1.2077010690045427,
+        "B_rows": 1.1309042180037068
+      },
+      "per_case_reduction_percent": {
+        "pair4": 7.053401175656804,
+        "pair5": 5.645187533773665
+      },
+      "overall_reduction_percent": 6.358928792216467,
+      "initialization_seconds": 1.538881237996975,
+      "close_seconds": 0.8661995040019974,
+      "all_17_owners_persistent": true,
+      "diagnostic_hashes_saves_and_comparisons_excluded": true
+    }
+  },
+  "numerical_result": {
+    "all112_logical_stage_hashes_equal_existing_native_route": true,
+    "all_four_first_final_endpoints_byte_equal_prior_native": true,
+    "repeats_byte_equal": true,
+    "ordered_native_row_input_hashes_verified": 48,
+    "current_FD_edges_verified": 128,
+    "conditional_original_FP32_relative_l2": [
+      0.00835144956827218,
+      0.008282458176505147
+    ],
+    "conditional_original_FP32_max_abs": [
+      0.025471508502960205,
+      0.026634305715560913
+    ],
+    "original_FP32_error_unchanged": true,
+    "original_fixed_and_strict_gates_passed": false
+  },
+  "resources": {
+    "contexts_created": 17,
+    "contexts_destroyed": 17,
+    "runs_completed": 120,
+    "memories_created": 33,
+    "memories_imported": 18,
+    "memories_destroyed": 51,
+    "set_io_mem_attempts": 51,
+    "set_io_mem_successes": 51,
+    "output_buffers_acquired": 0,
+    "output_buffers_released": 0
+  },
+  "all_resources_closed": true,
+  "controller_restored": true,
+  "preserved_failure": "The first host transport failed while copying a source file because a Path and string were concatenated incorrectly. It had staged no board files and started no board model calls. The corrected transport used fresh r2 paths; the failed host receipt is retained.",
+  "limits": [
+    "Two actual cases and two calls per route/case in one ABBA screen establish a descriptive component-chain result, not sustained rate or P95.",
+    "Four original transformer blocks run from captured original encoder features; the full encoder, remaining aggregator blocks, camera/depth heads and SLAM backend are outside this timer.",
+    "Only pair0 uses row partitioning. Applying it to another pair requires that pair's original parameters and fresh verification.",
+    "Byte parity preserves the previous NPU route, whose conditional original FP32 discrepancy remains. This is not trajectory accuracy acceptance.",
+    "17 resident contexts include both competing suffix policies for comparison. Physical 8GB deployment memory has not been established.",
+    "Original code, model weight and SDK licenses are separate."
+  ],
+  "evidence": [
+    {
+      "role": "runtime",
+      "basename": "result.json",
+      "bytes": 414268,
+      "sha256": "40a49ce6da75515ead71b9257725cc8c2695fd0524967207395796d791ece349"
+    },
+    {
+      "role": "saved_audit",
+      "basename": "connected-ABBA-r2-saved-audit-r1.json",
+      "bytes": 7823,
+      "sha256": "6be701a7689dffbf336f4a49b43f6ce0c9ba55761511e2c115978f7f0acf9ffc"
+    },
+    {
+      "role": "controller",
+      "basename": "control.json",
+      "bytes": 13245,
+      "sha256": "0c83ca207de4e557a60c255e069f0c66c211c4e75298372e1a2ccf2ae598335d"
+    },
+    {
+      "role": "transport",
+      "basename": "transport.json",
+      "bytes": 18957,
+      "sha256": "2cf0f1829079355237d319354b59779b0f4b8dc86c15253afb56790aa7b8ac59"
+    },
+    {
+      "role": "failed_host_preflight",
+      "basename": "transport.json",
+      "bytes": 12189,
+      "sha256": "86fd2a10e128aab05187288ffcf94e0826c0c0a4e005d7222ee5991d4b4833ef"
+    }
+  ],
+  "realtime_pose_depth_trajectory_or_deployment_accepted": false
+}

@@ -1,0 +1,368 @@
+{
+  "schema": "original_native518_single_frame_fc2_channel_first_v172",
+  "status": "complete_original_SINGLE_component_gain_with_nonidentical_NPU_outputs_original_precision_gates_fail",
+  "original_model_only": true,
+  "scope": {
+    "component": "complete original single-frame transformer body",
+    "input_shape": [
+      1,
+      1041,
+      1024
+    ],
+    "output_shape": [
+      1,
+      1041,
+      1024
+    ],
+    "heads": 16,
+    "all1041_queries_and_keys": true,
+    "all1024_channels": true,
+    "roles": [
+      "frame0_branch",
+      "frame1_branch"
+    ],
+    "cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "conditional_original_CPU_references": true,
+    "reused_engineering_inputs": true,
+    "original_full_model_or_SLAM_executed": false
+  },
+  "graph_change": {
+    "historical_K4_origin": "Reuse of the R104 four-way contiguous FC2 K split; this split is not a new method.",
+    "original_nodes": 43,
+    "original_initializers": 31,
+    "K4_parent_nodes": 53,
+    "K4_parent_initializers": 44,
+    "channel_first_nodes": 57,
+    "channel_first_initializers": 46,
+    "FC2_full_K": 4096,
+    "FC2_parts": 4,
+    "FC2_part_K": 1024,
+    "representation": "Four bias-free 1x1 convolutions and the original K4 left-associated sum in channel-first layout, followed by one combined transpose; original bias remains once.",
+    "both_rewrite_parent_ModelProto_inverses_byte_exact": true,
+    "original_weight_values_reassemble_exactly": true,
+    "learned_parameter_values_changed": false,
+    "dense_MACs_changed": false,
+    "original_public_IO_norms_RoPE_attention_exact_GELU_LayerScale_and_residuals_preserved": true,
+    "full_K_to_K4_floating_reduction_grouping_changes": true,
+    "identical_FP16_rounding_or_accumulator_precision_proven": false,
+    "checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "original_SINGLE_graph_sha256": "f6248ef310b22465397ceef4ca5ee51b4b834b4b2e8f79ec5ec2bba1aafc004b",
+    "K4_graph_sha256": "38bde00287ffba0a319fd603b3f30c66e192fe54aa159ea643649570f20b447e",
+    "channel_first_graph_sha256": "23c4e0b0fdc2dab5a539107b4c5ef7a65805cb29849c72062b388e32e0b02b9c"
+  },
+  "placement": {
+    "operators": 31,
+    "internal_NPU_operators": 29,
+    "public_CPU_IO_operators": 2,
+    "feature_rows": 50,
+    "constant_rows": 32,
+    "all_rows_consumed": true,
+    "all_activation_storage_FLOAT16": true,
+    "weighted_products_FLOAT16_NPU": 7,
+    "weighted_product_roles": "QKV, attention output projection, FC1, and four original FC2 parts",
+    "full16head_1041query_1041key_attention_FLOAT16_NPU": true,
+    "FC2_Conv": 1,
+    "FC2_ConvAdd": 3,
+    "per_product_FC2_output_transposes_absent": true,
+    "one_terminal_layout_transpose_after_residual": true,
+    "no_internal_CPU_GPU_arithmetic_or_layout": true,
+    "FC2_bias_packed_dtype": "FLOAT",
+    "historical_CPU_pending_compile_and_placement_records_unchanged": true,
+    "later_actual_CPU_gate_bound_separately": true,
+    "models": {
+      "A_single": {
+        "bytes": 27927378,
+        "sha256": "b6dca6503dff41e31c8dbfc4db007307e4abef47642c6ba1b9cf9503bab00c6b"
+      },
+      "B_CF": {
+        "bytes": 27892562,
+        "sha256": "dfb753e27e79f800f3e88162c112667d354c3b5cb534003e6de4448cbd888579"
+      }
+    }
+  },
+  "board_CPU_gate": {
+    "sessions_created": 1,
+    "sessions_dropped": 1,
+    "calls": 4,
+    "saved_FLOAT32_outputs": 4,
+    "comparisons": 6,
+    "all_fixed_and_strict_passed": true,
+    "max_relative_l2": 9.747336946751952e-08,
+    "max_abs": 1.9073486328125e-06,
+    "candidate_outputs_byte_equal_original": false,
+    "original_FLOAT32_role_slices_used_without_halfcast": true,
+    "in_memory_K4_and_CF_graph_bytes_match_host_static": true,
+    "no_additional_candidate_graph_file_staged_or_written": true
+  },
+  "matched_native_test": {
+    "schedule": [
+      "A_single",
+      "B_CF",
+      "B_CF",
+      "A_single"
+    ],
+    "case_role_order_per_phase": [
+      [
+        "pair4",
+        "frame0_branch"
+      ],
+      [
+        "pair4",
+        "frame1_branch"
+      ],
+      [
+        "pair5",
+        "frame0_branch"
+      ],
+      [
+        "pair5",
+        "frame1_branch"
+      ]
+    ],
+    "calls": 16,
+    "samples_per_policy_case_role": 2,
+    "first_calls_included": true,
+    "init_flags": 0,
+    "both_core_masks": 1,
+    "NPU_hz": 1000000000,
+    "timer_includes": [
+      "original role FLOAT32 finite scan and readonly FLOAT16 cast",
+      "native input DMA copy, sync, run and output finite checks",
+      "final owned FLOAT32 copy and finite check"
+    ],
+    "timer_excludes": [
+      "descriptor query, initialization and teardown",
+      "evidence saves, hashes and comparisons"
+    ],
+    "means": {
+      "A_single": {
+        "mean_complete_seconds": 0.19510453000293637,
+        "mean_SDK_seconds": 0.1754841163765377,
+        "mean_original_F32_finite_and_halfcast_seconds": 0.008775209127634298,
+        "mean_final_F32_copy_and_finite_seconds": 0.008068464374446194
+      },
+      "B_CF": {
+        "mean_complete_seconds": 0.15312111437560816,
+        "mean_SDK_seconds": 0.13519230512611102,
+        "mean_original_F32_finite_and_halfcast_seconds": 0.0068372768746485235,
+        "mean_final_F32_copy_and_finite_seconds": 0.008326740377015085
+      }
+    },
+    "complete_call_reduction_percent": 21.51842175407016,
+    "complete_call_seconds_by_policy": {
+      "A_single": [
+        0.18936593500257004,
+        0.19501785300963093,
+        0.19439876999240369,
+        0.19097797801077832,
+        0.19987243600189686,
+        0.20215447900409345,
+        0.19163626900990494,
+        0.19741251999221276
+      ],
+      "B_CF": [
+        0.16109043300093617,
+        0.1514333070081193,
+        0.15143251599511132,
+        0.1508418480079854,
+        0.15432297300139908,
+        0.15063764099613763,
+        0.15365047399245668,
+        0.1515597230027197
+      ]
+    },
+    "initialization_seconds": 0.21005106301163323,
+    "close_seconds": 0.05240521299128886,
+    "isolated_cause_of_gain_established": false
+  },
+  "numerical_result": {
+    "four_new_candidate_FLOAT16_files_losslessly_represent_eight_candidate_owned_FLOAT32_calls": true,
+    "all_eight_A_calls_byte_equal_existing_native_references": true,
+    "all_same_policy_case_role_repeats_byte_equal": true,
+    "all_B_outputs_byte_equal_A": false,
+    "all_original_CPU_fixed_and_strict_gates_passed": false,
+    "B_original_CPU_relative_l2_higher_in_all_four_roles": true,
+    "role_metrics": [
+      {
+        "case_id": "pair4",
+        "role": "frame0_branch",
+        "A_relative_l2": 0.001630097596040827,
+        "B_relative_l2": 0.001701052072652881,
+        "A_max_abs": 0.07266080379486084,
+        "B_max_abs": 0.07217252254486084,
+        "A_strict_outside": 556019,
+        "B_strict_outside": 558200,
+        "B_vs_A_relative_l2": 0.0004184892754875248,
+        "B_vs_A_max_abs": 0.0068359375,
+        "B_byte_equal_A": false
+      },
+      {
+        "case_id": "pair4",
+        "role": "frame1_branch",
+        "A_relative_l2": 0.0017503468529701685,
+        "B_relative_l2": 0.0018146453755187465,
+        "A_max_abs": 0.06899034976959229,
+        "B_max_abs": 0.06850206851959229,
+        "A_strict_outside": 555229,
+        "B_strict_outside": 557196,
+        "B_vs_A_relative_l2": 0.00042017401577994776,
+        "B_vs_A_max_abs": 0.005859375,
+        "B_byte_equal_A": false
+      },
+      {
+        "case_id": "pair5",
+        "role": "frame0_branch",
+        "A_relative_l2": 0.0016082251165133012,
+        "B_relative_l2": 0.0016747202956089906,
+        "A_max_abs": 0.06477057933807373,
+        "B_max_abs": 0.06428229808807373,
+        "A_strict_outside": 554656,
+        "B_strict_outside": 556704,
+        "B_vs_A_relative_l2": 0.00041464566926598426,
+        "B_vs_A_max_abs": 0.005859375,
+        "B_byte_equal_A": false
+      },
+      {
+        "case_id": "pair5",
+        "role": "frame1_branch",
+        "A_relative_l2": 0.00171930885025973,
+        "B_relative_l2": 0.0017762500283285923,
+        "A_max_abs": 0.0791163444519043,
+        "B_max_abs": 0.0791163444519043,
+        "A_strict_outside": 554863,
+        "B_strict_outside": 556830,
+        "B_vs_A_relative_l2": 0.00039685805988597437,
+        "B_vs_A_max_abs": 0.005859375,
+        "B_byte_equal_A": false
+      }
+    ],
+    "original_thresholds": {
+      "fixed_relative_l2_max": 1e-05,
+      "fixed_max_abs_max": 0.001,
+      "strict_rtol": 0.0001,
+      "strict_atol": 1e-05
+    }
+  },
+  "resources": {
+    "runtime": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 16,
+      "memories_created": 4,
+      "memories_imported": 0,
+      "memories_destroyed": 4,
+      "set_io_mem_attempts": 4,
+      "set_io_mem_successes": 4,
+      "output_buffers_acquired": 0,
+      "output_buffers_released": 0
+    },
+    "separate_query_contexts_created": 1,
+    "separate_query_contexts_destroyed": 1,
+    "separate_query_runs": 0,
+    "candidate_native_descriptor_rows": 4,
+    "all_resources_closed": true,
+    "controller_restored": true,
+    "worker_before_call_sample_max_C": 57.307,
+    "controller_sample_max_C": 56.384,
+    "shared_weights_or_internal_scratch": false,
+    "FD_imports_or_descriptor_reinterpretation": false
+  },
+  "source_sha256": {
+    "K4_exporter": "9679e70674ff090b81f84e913bb9814a136083059ef8e3e4caa62e815b93e340",
+    "channel_first_exporter": "2a4214d6fe91f2edb282bed2f147ef5f290b17494a843a1bae7aac2e0191e863",
+    "host_compiler": "6476625938f1e11ce10b16e052823f433ee0dd8169cd0813350249eb78447faf",
+    "board_CPU_worker": "4fefbff9251f0485f47c18f71302b83f01dbbae2216f82baa7c2f2a8ab901f1a",
+    "native_worker": "1c4eb1f0354385e8a315c92660f195771948817f820755b2e514eaeb68a7998e",
+    "native_transport": "a0cb22b1e85c1c9b3b1492ef3bfdf94301fdad1aa91810d3597218c57faad872",
+    "native_adapter": "11fee2a76d09e797b424bbb089a743b66573a8c701fb211e09e31b5a06738b53",
+    "independent_native_auditor": "cec2f020162d0759779c788381f90ab2da8af8b3e7c6c7c91b5cfd94f43dcd26"
+  },
+  "evidence": [
+    {
+      "role": "K4_static_inverse",
+      "basename": "result.json",
+      "bytes": 15729,
+      "sha256": "4a22d2e8484b8e85efbf9abb28dc29345d915fd1b3fa9f65d28889905e19f66c"
+    },
+    {
+      "role": "channel_first_static_inverse",
+      "basename": "result.json",
+      "bytes": 14206,
+      "sha256": "fffe4444e86f7f5f1a9259201ebbed0e0a4572a413aa40f9422a88958f43d77a"
+    },
+    {
+      "role": "noncalibrating_host_compile",
+      "basename": "result.json",
+      "bytes": 3493,
+      "sha256": "7f8851ef77351a86d62609135e2db75bb14c428dc37d0ba8e720ddc91626efea"
+    },
+    {
+      "role": "actual_placement_audit",
+      "basename": "host-compile-r1-placement-audit-r1.json",
+      "bytes": 67143,
+      "sha256": "6d0e8b6f302c3b0fc48eba9d81cc0035ce66c8c1666152635a2567c4a09ec147"
+    },
+    {
+      "role": "board_CPU_gate",
+      "basename": "result.json",
+      "bytes": 23561,
+      "sha256": "a4656f2eac6fc2d5d76cdcb05a048b12f65a6d7e1a63069ec1afed15b18f5f94"
+    },
+    {
+      "role": "independent_CPU_saved_audit",
+      "basename": "CPU-gate-r1-saved-audit-r1.json",
+      "bytes": 6666,
+      "sha256": "1f70a2eefe0b3e226e4f7228c2ed0d2631fac9de91bc6b53f283af1225ecb89e"
+    },
+    {
+      "role": "native_ABBA_runtime",
+      "basename": "result.json",
+      "bytes": 68300,
+      "sha256": "fb9f663a5b022d60bf5cbb428102cc1585c7a8b0d622b110731941cf0a1669d4"
+    },
+    {
+      "role": "independent_native_saved_audit",
+      "basename": "native-ABBA-r1-saved-audit-r1.json",
+      "bytes": 25636,
+      "sha256": "3ddc3a238d20080dc357f1e27b4fc89a6e58cbf6237b6a5bd5b4123d5824457c"
+    },
+    {
+      "role": "runtime_transport",
+      "basename": "transport.json",
+      "bytes": 23980,
+      "sha256": "4559ae1d0fc05c6fe8a48f7840c7dee66bd675f19884932bd1d18c14ced06bfd"
+    },
+    {
+      "role": "restoring_controller",
+      "basename": "control.json",
+      "bytes": 6065,
+      "sha256": "4479fcdf9be620cfc909bb7c00f7bc7a11c2223c53ec1784528979099c7b14f2"
+    }
+  ],
+  "limits": [
+    "Two reused cases and two prepared roles with two samples per policy/case/role give descriptive component means, not sustained rate or P95.",
+    "K4 regrouping, MatMul-to-Conv lowering, fusion and packing differ; this run does not isolate one cause or prove identical rounding boundaries.",
+    "The original CPU reference uses the same saved image-encoder boundary. Both NPU policies fail original fixed/strict tensor checks; these checks are not trajectory metrics.",
+    "No connected full-frame pair, complete aggregator/model, camera/depth heads, decoded poses, SLAM realtime or physical 8 GB deployment has been validated by this test.",
+    "Original code, checkpoint and SDK licenses remain separate; private raw arrays, models and SDK artifacts are not published."
+  ],
+  "deployment_precision_trajectory_realtime_or_physical8GB_accepted": false
+}

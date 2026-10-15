@@ -1,0 +1,82 @@
+{
+  "schema": "v132_original_native518_reciprocal_QK_calibration_FP32_screen",
+  "status": "identity_scale_outcome_no_NPU_expansion",
+  "scope": "Original canonical frame0-to-global0 pair on four saved calibration inputs at native resolution; not a complete model, trajectory or performance test.",
+  "original_checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "input_shape": [2, 1041, 1024],
+  "output_shapes": [[2, 1041, 1024], [1, 2082, 1024]],
+  "original_parameter_tensor_count": 36,
+  "method": {
+    "RoPE_compatible_D": "diag(a,a,b,b), with16 entries per a/b, shared across16 heads and all token positions in each block",
+    "fold": "Q gamma/beta multiplied by c; K gamma/beta divided by c; original LayerNorm statistics and all other operators retained",
+    "predeclared_selection": "e=round_ties_even(0.5*(log2(K_pair_absmax)-log2(Q_pair_absmax))); c=2**e; either zero maximum selects e=0",
+    "selection_data": "Original FP32 post-RoPE Q/K observations, pooled over all heads/tokens and the four calibration pairs; frame branches share one scale vector",
+    "calibration_pairs": [[0, 8], [16, 24], [48, 56], [64, 72]],
+    "heldout_arrays_accessed": false,
+    "quantized_dump_values_used_to_select_scales": false,
+    "original_checkpoint_deserialized_or_modified": false,
+    "original_upstream_DINO_reexecuted": false,
+    "added_nodes": 0,
+    "added_MACs": 0,
+    "selection_formula_changed_after_observation": false
+  },
+  "actual_scale_outcome": {
+    "frame_pair_exponents": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "global_pair_exponents": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "nonzero_pair_exponent_count": 0,
+    "exponent_range_each_block": [0, 0],
+    "D_each_block": "identity",
+    "affine_vectors_considered": 8,
+    "actually_changed_initializers": 0,
+    "actual_candidate_GraphProto_byte_equal_original_A": true,
+    "graph_file_hash_difference": "Only model producer/documentation metadata changes; the graph payload remains original A."
+  },
+  "board_FP32_screen": {
+    "execution": "RK3588S CPUExecutionProvider, one ORT session at a time, one intra/inter-op thread",
+    "calibration_observation_calls": 4,
+    "candidate_calls": 4,
+    "sessions_created_and_dropped": 2,
+    "saved_candidate_endpoints": 8,
+    "fixed_gate": {"relative_l2_max": 0.00001, "max_abs_max": 0.001},
+    "strict_elementwise_diagnostic": {"rtol": 0.0001, "atol": 0.00001},
+    "strict_diagnostic_is_not_an_additional_hard_gate": true,
+    "all8_saved_candidate_endpoints_byte_equal_matched_original_A": true,
+    "all_frame_and_global_relative_L2": 0.0,
+    "all_frame_and_global_max_abs": 0.0,
+    "all_frame_and_global_residual_update_relative_L2": 0.0,
+    "all8_fixed_and_strict_comparisons_passed": true,
+    "observer_graph_inverse_restores_original_GraphProto": true,
+    "original_nodes_initializers_tokens_positions_and_IO_preserved": true,
+    "streamed_observation_limit": "Full Q/K arrays and augmented endpoints were not saved. Their original endpoint byte equality is board-receipt evidence; the independent audit rederived scales from saved min/max/absmax metadata and rechecked all eight candidate payloads."
+  },
+  "CPU_execution_observations_only": {
+    "worker_seconds": 45.333580554994114,
+    "controller_seconds": 45.747333012994204,
+    "worker_peak_rss_mib": 1148.98828125,
+    "timeout_seconds": 180,
+    "maximum_sampled_temperature_c": 68.384,
+    "frequency_writes": false,
+    "source_and_inputs_unchanged": true,
+    "affinity_and_environment_restored": true,
+    "process_group_gone": true,
+    "cleanup_errors": []
+  },
+  "provenance": {
+    "worker_source_sha256": "9a7543dfd7eb13e27b1dbc4045e029c04ed41d852d05dcf55d81645276b7582d",
+    "transport_source_sha256": "e70489281115e4d5441e6f671671d8a73cb4d75bf81dc72f54fae17af45e4029",
+    "execution_receipt_sha256": "d39ae6b3672fbd26392b19175ff3419fb9129c7837105f2f0fe639e1b4b405bc",
+    "controller_receipt_sha256": "f08dcc784973f0bf2bc92cbf2651a2b1bf08d106710b60441c6b891aacb5ebad",
+    "original_A_graph_sha256": "57b60feceea0edb57ca4cea38200d6ea47d4e4ee51e4a546357267cbc9f676bb",
+    "observer_graph_sha256": "c9b8ef78699dec46f68b33dff7c73bdbcb5fbfdb6348b4acbb17862f43ccb936",
+    "generated_graph_sha256": "48e87d6a70989d3bf389adcd30185f7829d93b0ab4daf22fcbcbc945d4c6e6d8",
+    "saved_auditor_source_sha256": "0524be8b2e5126378f62130b309bdef3f7e9ca772ceb7da24c24a402907db402",
+    "saved_audit_sha256": "80c7073d2b45aca71ad321cb0b9da42ce1e40b17e94f5d1b41c2459fe6c3d8b2"
+  },
+  "decision": "Skip NPU compilation of this identity candidate. The prescribed four-pair formula supplies no nontrivial fold to measure; do not retune it after seeing the outcome. This does not reject reciprocal balancing generally or establish nontrivial-fold precision, quantization or speed benefits. Ideal score ranges remain unchanged.",
+  "NPU_calibration_compilation_or_runtime_in_this_screen": false,
+  "candidate_or_full_model_quality_real_time_acceptance": false,
+  "raw_evidence": "Private sources, receipts, graphs, calibration statistics and saved arrays. No learned tensors or weight-bearing artifacts are distributed in this record."
+}

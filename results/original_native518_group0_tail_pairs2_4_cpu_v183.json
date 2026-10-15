@@ -1,0 +1,293 @@
+{
+  "schema": "original_native518_group0_tail_pairs2_4_cpu_v183",
+  "status": "original_six_block_raw_retained_tail_static_inverse_and_all_original_FP32_CPU_gates_verified_NPU_pending",
+  "source_scope": {
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "selected_pairs": [
+      2,
+      3,
+      4
+    ],
+    "original_aggregator_blocks": 6,
+    "tail_nodes": 441,
+    "tail_initializers": 240,
+    "original_checkpoint_parameter_values": 108,
+    "full_parent_nodes": 749,
+    "full_parent_initializers": 410,
+    "source_full_half_open_node_interval": [
+      293,
+      734
+    ],
+    "all441_node_protos_and240_initializer_protos_byte_equal": true,
+    "all_three_partition_inverses_and_whole_parent_ModelProto_inverse_byte_equal": true,
+    "original_dense_K4_slices_left_associated_sums_once_biases_and_dynamic_full_key_Vmeans_preserved": true,
+    "original_all_heads_tokens_channels_and_both_full_frame_branches_preserved": true,
+    "input": {
+      "name": "pair1_global_output",
+      "shape": [
+        1,
+        2082,
+        1024
+      ],
+      "dtype": "float32"
+    },
+    "outputs": [
+      {
+        "name": "frame_output",
+        "shape": [
+          2,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "global_output",
+        "shape": [
+          1,
+          2082,
+          1024
+        ],
+        "dtype": "float32"
+      }
+    ],
+    "raw_retained_contract": {
+      "frame_first_global_second": true,
+      "shape": [
+        1,
+        2,
+        1041,
+        2048
+      ],
+      "projected_output_is_not_raw_retained": true
+    },
+    "original_DPT_project0_nodes_deferred_to_unchanged_full_DPT_head": 15,
+    "original_DPT_project0_initializers_deferred": 11,
+    "deferred_protos_preserved_in_static_inverse_and_full_DPT_with_all_other_retained_branches_still_required": true
+  },
+  "CPU_gate": {
+    "cases": [
+      "pair4",
+      "pair5"
+    ],
+    "reference_scope": "Original ONNX FP32 conditioned on captured NPU encoder inputs; no end-to-end original Torch or NPU acceptance.",
+    "inputs": "Unchanged captured original FLOAT32 full-parent inputs and original pair1 global outputs; no halfcast.",
+    "maximum_live_sessions": 1,
+    "provider": "CPUExecutionProvider",
+    "intra_op_threads": 1,
+    "inter_op_threads": 1,
+    "sessions_created": 2,
+    "sessions_dropped": 2,
+    "calls": 4,
+    "new_saved_FLOAT32_arrays": 6,
+    "new_saved_NPY_bytes": 51168000,
+    "parent_observer": "Append only the existing raw frame4 port to the full749-node parent; the global/projected endpoints pass four same-source historical candidate byte guards.",
+    "same_source_byte_guard_does_not_assert_byte_equality_to_separate_original_FP32_reference": true,
+    "same_source_byte_guards_passed": 4,
+    "original_fixed_and_strict_comparisons_passed": 8,
+    "fixed_relative_l2_max": 1e-05,
+    "fixed_max_abs_max": 0.001,
+    "strict_rtol": 0.0001,
+    "strict_atol": 1e-05,
+    "parent_original_reference_comparisons": {
+      "count": 4,
+      "all_fixed_and_strict_passed": true,
+      "all_outside_counts_zero": true,
+      "maximum_relative_l2": 2.860222322364733e-07,
+      "maximum_absolute_error": 1.6689300537109375e-06
+    },
+    "tail_comparisons": [
+      {
+        "id": "pair4",
+        "name": "frame_output",
+        "relative_l2": 1.5095088829027107e-07,
+        "max_abs": 1.9073486328125e-06,
+        "outside_count": 0,
+        "byte_equal": false,
+        "fixed_gate_passed": true,
+        "strict_pass": true
+      },
+      {
+        "id": "pair4",
+        "name": "global_output",
+        "relative_l2": 1.83461198316401e-07,
+        "max_abs": 1.5497207641601562e-06,
+        "outside_count": 0,
+        "byte_equal": false,
+        "fixed_gate_passed": true,
+        "strict_pass": true
+      },
+      {
+        "id": "pair5",
+        "name": "frame_output",
+        "relative_l2": 1.5183969932867235e-07,
+        "max_abs": 1.430511474609375e-06,
+        "outside_count": 0,
+        "byte_equal": false,
+        "fixed_gate_passed": true,
+        "strict_pass": true
+      },
+      {
+        "id": "pair5",
+        "name": "global_output",
+        "relative_l2": 1.8222661269401311e-07,
+        "max_abs": 1.7881393432617188e-06,
+        "outside_count": 0,
+        "byte_equal": false,
+        "fixed_gate_passed": true,
+        "strict_pass": true
+      }
+    ],
+    "all_six_arrays_saved_before_tail_numeric_verdict": true,
+    "observer_unsaved_global_projected_metrics_recomputed_from_byte_guard_bound_historical_payloads": true,
+    "original_inputs_source_affinity_environment_and_controller_cleanup_verified": true,
+    "SDK_calibration_NPU_or_GPU_execution": false,
+    "tail_frame_reference": "Fresh same-source749-node value-mean observer frame4; not a separately saved original734-node frame4 tensor.",
+    "tail_global_reference": "Previously captured original observer global4 on the same original full-parent input."
+  },
+  "preserved_r2_memory_guard_failure": {
+    "parent_CPU_calls": 2,
+    "parent_session_created_and_dropped": 1,
+    "same_source_byte_guards_passed": 4,
+    "original_parent_fixed_strict_comparisons_passed": 4,
+    "tail_session_created": false,
+    "tail_calls": 0,
+    "MemAvailable_before_tail_bytes": 3380547584,
+    "unchanged_required_MemAvailable_bytes": 3758096384,
+    "parent_peak_RSS_MiB": 2622.046875,
+    "available_outputs_source_receipts_and_clean_controller_exit_preserved": true,
+    "explanation": "The session became unreachable, but unused process allocator pages remained. The reserve guard stopped before tail model loading; this is not a tail numerical failure."
+  },
+  "process_local_allocator_step": {
+    "function": "libc.malloc_trim",
+    "argument": 0,
+    "after_gc_and_unreachable_session_only": true,
+    "ordered_events": [
+      {
+        "after_closed_session": 1,
+        "function": "libc.malloc_trim",
+        "argument": 0,
+        "returncode": 1,
+        "before": {
+          "VmRSS": 987590656,
+          "RssAnon": 964947968,
+          "MemAvailable": 3388862464
+        },
+        "after": {
+          "VmRSS": 154120192,
+          "RssAnon": 131342336,
+          "MemAvailable": 4224294912
+        },
+        "process_local_only": true
+      },
+      {
+        "after_closed_session": 2,
+        "function": "libc.malloc_trim",
+        "argument": 0,
+        "returncode": 1,
+        "before": {
+          "VmRSS": 950034432,
+          "RssAnon": 927256576,
+          "MemAvailable": 3421605888
+        },
+        "after": {
+          "VmRSS": 177664000,
+          "RssAnon": 154886144,
+          "MemAvailable": 4194988032
+        },
+        "process_local_only": true
+      }
+    ],
+    "unchanged_before_each_session_MemAvailable_guard_bytes": 3758096384,
+    "system_driver_mount_reserved_block_or_memory_policy_changes": false,
+    "process_peak_RSS_MiB": 2633.16796875,
+    "RSS_is_not_unique_physical_model_RAM": true
+  },
+  "limits": {
+    "static_and_conditional_CPU_equivalence_only": true,
+    "reused_engineering_cases_not_fresh_generalization": true,
+    "full_original_Torch_or_trajectory_not_executed": true,
+    "no_reference_feed_substitution_permitted_in_future_connected_execution": true,
+    "NPU_placement_runtime_or_precision_acceptance": false,
+    "connected_full_network_or_SLAM_speed_acceptance": false,
+    "sustained_or_realtime_acceptance": false,
+    "physical_8GB_deployment_verified": false
+  },
+  "evidence": [
+    {
+      "role": "Static tail and full observer proof",
+      "basename": "result.json",
+      "bytes": 45577,
+      "sha256": "d1e968d8b9c41b35f86051e1d1855e88d3690976a07a8f2d753f8f955da0d573"
+    },
+    {
+      "role": "Static exporter source",
+      "basename": "export_tail_pairs2_4_static.py",
+      "bytes": 21111,
+      "sha256": "56255ddd75a1021c8e5a07f91117773d592e41d9b5c0d94899a261998866c6d6"
+    },
+    {
+      "role": "Successful CPUr3 receipt",
+      "basename": "result.json",
+      "bytes": 35400,
+      "sha256": "16d1d2c094ef5191ef1415b6c9a4a6efe5e4137ffcad29019a9bd5f28781147a"
+    },
+    {
+      "role": "Successful CPUr3 transport",
+      "basename": "CPU-gate-r3-transport.json",
+      "bytes": 32460,
+      "sha256": "6a72f123984071be907cc4e476f63c5cd77b2c2953bc7763caf9d52fe622d440"
+    },
+    {
+      "role": "Successful CPUr3 controller",
+      "basename": "vggt-v83-native518tailpairs2to4cpur3-control-r1.json",
+      "bytes": 510837,
+      "sha256": "f181220be8e75c33a380fc74eed559f86f5d787f595bfe23194a308cc3393789"
+    },
+    {
+      "role": "Executed local-allocator CPU worker",
+      "basename": "check_tail_pairs2_4_CPU_board_r2.py",
+      "bytes": 27962,
+      "sha256": "506a2d978d08aa723541b486b21916eaa65766cde4e562809ef60b546a223fb9"
+    },
+    {
+      "role": "CPUr3 transport source",
+      "basename": "execute_tail_pairs2_4_CPU_gate_host_r3.py",
+      "bytes": 15435,
+      "sha256": "37794f3727c17e11f879cd83f6794d349c122f7c9bd960038451d031a25b6952"
+    },
+    {
+      "role": "Independent six-array saved audit",
+      "basename": "CPU-gate-r3-saved-audit-r1.json",
+      "bytes": 13415,
+      "sha256": "ca1b386eff6b4fd6e55a3824cadfa073259acdcafc6c4cfbf023f3f3a31695d1"
+    },
+    {
+      "role": "Frozen independent auditor source",
+      "basename": "audit_tail_pairs2_4_CPU_saved_r2.py",
+      "bytes": 15884,
+      "sha256": "ef351a4ed495145ab34e2a173157dcaf2fba9968065e7ddd33f0fa02112ca38e"
+    },
+    {
+      "role": "Preserved CPUr2 parent-pass tail-reserve abort",
+      "basename": "result.json",
+      "bytes": 28195,
+      "sha256": "e4780f611f1c8aac4e7be80fc566c1416c66a0f09acbe5287f98aa806a77c722"
+    },
+    {
+      "role": "Preserved CPUr2 failed transport",
+      "basename": "CPU-gate-r2-transport.json",
+      "bytes": 30330,
+      "sha256": "aeb23358b7d33a129dd8a653bb80fca6c1e6ee8f9442ffc6776abb70712fb578"
+    },
+    {
+      "role": "Preserved CPUr2 controller and clean process-group exit",
+      "basename": "vggt-v83-native518tailpairs2to4cpur2-control-r1.json",
+      "bytes": 311014,
+      "sha256": "d64d7878aa74ac43b38c5626ecd39addb75d95b454c39e1671f50999b56f16f5"
+    }
+  ]
+}

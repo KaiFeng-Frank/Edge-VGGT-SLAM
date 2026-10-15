@@ -1,0 +1,229 @@
+{
+  "schema": "original_native518_heterogeneous_query_two_heldout_v160",
+  "date": "2026-10-15",
+  "status": "two_conditional_original_heldout_component_tradeoffs_verified_deployment_pending",
+  "conclusion": "The unchanged query-routing model lowers attention-output relative L2 by 78.17 and 77.44 percent on two original engineering heldouts, at a descriptive 4.39 percent complete-call latency cost. Full-block and trajectory validation remain pending.",
+  "scope": {
+    "original_model_only": true,
+    "component_only": true,
+    "heads": 16,
+    "queries": 2082,
+    "keys": 2082,
+    "head_dim": 64,
+    "checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "reference_scope": "Conditional original ONNX FP32 on real NPU DINO boundary; not full-Torch end-to-end FP32.",
+    "reused_engineering_heldouts_not_untouched_final_generalization": true,
+    "unchanged_frozen_A_and_H_models": true,
+    "new_calibration": false,
+    "research_candidate_retained": true,
+    "deployment_accepted": false,
+    "sustained_rate_or_speed_accepted": false,
+    "full_model_trajectory_realtime_or_final_generalization_accepted": false
+  },
+  "original_capture": {
+    "original_nodes": 143,
+    "original_initializers": 79,
+    "original36_learned_values_verified": true,
+    "only_four_existing_output_ValueInfos_appended": true,
+    "whole_original_ModelProto_inverse_verified": true,
+    "CPU_sessions_created": 1,
+    "CPU_sessions_dropped": 1,
+    "CPU_calls": 2,
+    "saved_finite_arrays": 12,
+    "all4_original_parent_final_endpoints_byte_equal": true,
+    "all_original_inputs_and_sources_unchanged": true,
+    "independent_static_and_saved_array_audit_passed": true
+  },
+  "frozen_models": {
+    "A_fused": {
+      "bytes": 2840440,
+      "sha256": "62f5170aaa7ecbe84a1cb5f3e8494a561d8abfa2376ff7564f156bedf8bdc593"
+    },
+    "B_candidate": {
+      "bytes": 4607800,
+      "sha256": "209186b10d7f3404f1e8114c0f373889af5b13f852d561a9dacfa6ae4027d5ea"
+    }
+  },
+  "ordinary_runtime": {
+    "schedule": [
+      {
+        "route": "A_fused",
+        "case_id": "pair4"
+      },
+      {
+        "route": "A_fused",
+        "case_id": "pair5"
+      },
+      {
+        "route": "B_candidate",
+        "case_id": "pair4"
+      },
+      {
+        "route": "B_candidate",
+        "case_id": "pair5"
+      }
+    ],
+    "calls_per_route_and_case": 1,
+    "flags": 0,
+    "core_mask": 7,
+    "NPU_hz": 1000000000,
+    "maximum_live_contexts": 1,
+    "public_timer_scope": "public_call_wall_seconds includes canonical input layout packing, unchanged OwnedContext.run and output canonicalization. owned_call_wall_seconds covers only inherited run with original finite/copy/release guards. Init/destroy, saves, hashes, comparisons and platform samples are separate.",
+    "cases": [
+      {
+        "id": "pair4",
+        "split": "heldout",
+        "source_indices": [
+          96,
+          104
+        ],
+        "metrics": {
+          "A_fused": {
+            "comparison_vs_conditional_original_FP32": {
+              "relative_l2": 0.0013575525731711142,
+              "max_abs": 0.041422367095947266,
+              "outside_count": 746544
+            },
+            "special10": {
+              "relative_l2": 0.013559013397268886,
+              "max_abs": 0.041422367095947266,
+              "outside_count": 3995
+            },
+            "public_call_seconds": 0.4734243390048505,
+            "SDK_run_seconds": 0.37756370499846525
+          },
+          "B_candidate": {
+            "comparison_vs_conditional_original_FP32": {
+              "relative_l2": 0.00029639034312699736,
+              "max_abs": 0.0034058094024658203,
+              "outside_count": 746573
+            },
+            "special10": {
+              "relative_l2": 0.0007102573648444933,
+              "max_abs": 0.0034058094024658203,
+              "outside_count": 4024
+            },
+            "public_call_seconds": 0.4896959660036373,
+            "SDK_run_seconds": 0.4016330399972503
+          }
+        },
+        "full_tensor_relative_L2_reduction_percent": 78.16730276348285,
+        "patch2072_comparison_identical_metrics_for_both_policies": {
+          "relative_l2": 0.00028951766858797495,
+          "max_abs": 0.000615239143371582,
+          "outside_count": 742549
+        }
+      },
+      {
+        "id": "pair5",
+        "split": "heldout",
+        "source_indices": [
+          112,
+          120
+        ],
+        "metrics": {
+          "A_fused": {
+            "comparison_vs_conditional_original_FP32": {
+              "relative_l2": 0.001306960718594807,
+              "max_abs": 0.04252362251281738,
+              "outside_count": 782388
+            },
+            "special10": {
+              "relative_l2": 0.013489949694681841,
+              "max_abs": 0.04252362251281738,
+              "outside_count": 4276
+            },
+            "public_call_seconds": 0.4500653369977954,
+            "SDK_run_seconds": 0.3754380380050861
+          },
+          "B_candidate": {
+            "comparison_vs_conditional_original_FP32": {
+              "relative_l2": 0.00029481331474103916,
+              "max_abs": 0.004802227020263672,
+              "outside_count": 782313
+            },
+            "special10": {
+              "relative_l2": 0.0009123437328648327,
+              "max_abs": 0.004802227020263672,
+              "outside_count": 4201
+            },
+            "public_call_seconds": 0.474290172001929,
+            "SDK_run_seconds": 0.3964326639979845
+          }
+        },
+        "full_tensor_relative_L2_reduction_percent": 77.44283278398673,
+        "patch2072_comparison_identical_metrics_for_both_policies": {
+          "relative_l2": 0.0002831658970424753,
+          "max_abs": 0.0006553828716278076,
+          "outside_count": 778112
+        }
+      }
+    ],
+    "route_summary": {
+      "A_fused": {
+        "mean_public_call_seconds": 0.46174483800132293,
+        "mean_SDK_run_seconds": 0.3765008715017757
+      },
+      "B_candidate": {
+        "mean_public_call_seconds": 0.48199306900278316,
+        "mean_SDK_run_seconds": 0.3990328519976174
+      }
+    },
+    "candidate_public_mean_change_percent": 4.385155898895454,
+    "all8_physical_canonical_outputs_and8_fresh_QKV_reference_arrays_verified": true,
+    "case_specific_original_references_and_exact_layouts_verified": true,
+    "cross_case_repeat_or_byte_parity_asserted": false,
+    "resource_totals": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 4,
+      "output_buffers_acquired": 4,
+      "output_buffers_released": 4
+    },
+    "all_resources_closed": true,
+    "original_clock_governor_limits_restored": true,
+    "limits": "A4,A5 then B4,B5, one call per case/policy including first calls. Per-case timings and two-case means are descriptive; no causal speed, steady rate or P95 claim."
+  },
+  "validation_status": {
+    "all_full_tensor_fixed_and_strict_diagnostics_passed": false,
+    "lower_relative_L2_does_not_imply_lower_strict_outlier_count": true,
+    "tensor_diagnostics_are_not_ATE_or_RPE": true,
+    "full_original_block": "pending",
+    "downstream_pose_and_trajectory": "pending",
+    "deployment": "not_accepted",
+    "research_architecture_permanently_rejected": false,
+    "all_full_and_query_region_tensor_diagnostics_failed": true,
+    "fixed_gate": {
+      "relative_l2_at_most": 1e-05,
+      "max_abs_at_most": 0.001
+    },
+    "strict_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "outside_count_required": 0
+    }
+  },
+  "evidence_sha256": {
+    "original_heldout_contract": "0a1e1a3261ecfc1ac81488ecea3414dbbeec781926afcf736484d3bdf93a75b7",
+    "original_CPU_capture_source": "91bacb24b94f29b4fe75d36ce77ccf8483cc373f9c575bfb2e48f9061fd579c5",
+    "original_CPU_capture": "08e27212b1c97bff4efc5fd8a4eb6b6c228d045574286fcbccf8f3bb81fb0fc2",
+    "original_CPU_capture_saved_audit": "9915269c1324862f21e5f4bac0c82955061eeaa01d42354fd1ef4aa101bc186d",
+    "original_CPU_capture_audit_source": "a76993b1dcc80dbd8a9e599ae7dc773b69b0e7b7d44a4ff2f97b4551221ec040",
+    "fused_model_compile": "7c01b478cae363bd50bcb3484ca6a2fb45567a16f7f1c56a35540e0012accaa4",
+    "unchanged_H_static_proof": "9f218e1c02589fb484302541e9001c9a1964c64a9a58384fe1162a2cb1f8418f",
+    "unchanged_H_compile": "af66ba6b1610de8ab8e22b28a24e301d9795934ea8f067c4726a2970fb883113",
+    "unchanged_H_actual_placement_audit": "fb27915149a065e94c62becfe3aea47142ba61303a198c24c23bebc6f3846a89",
+    "frozen_H_layout_factory": "0ce7aaa67e84b676ac0d26542a60f05ed4094281c4c85b496f8d8ca5c8f2ee2c",
+    "heldout_runtime_worker": "2e7aff2af899deac8ca5ab381951e7c9e3da32ea8bcc80ddf0c8e32f011bd6ac",
+    "heldout_runtime_transport_source": "80ad53e1afa77b9dd3ecf277bd8f8233f15b52eb95b541ddd92ee89de0d0a541",
+    "heldout_runtime_manifest": "17a77c26552547239720f35e6b3056da4c00f363cf509c472cb20f2a72b7711e",
+    "heldout_runtime_receipt": "66d4503caa6959cc4e0c7c7ea8a290a66325680f268043c07084c3ca18df92b3",
+    "heldout_runtime_saved_audit": "8b55fd807f92626c713bdf4842dccd4c425fc5c7b4fc435583167d5bcc2fcec2",
+    "heldout_runtime_saved_audit_source": "d2aacdcb522e17a55855188f8f5c78edfde32194eff3eaf629c81dc3f280201b",
+    "heldout_runtime_transport_receipt": "368a186dc4b6c65ac9b6256536a75e3f9c615da0bbcc05ccf4c293fd294f4cfe",
+    "restoring_NPU_controller": "d2cdf570bd579b6260004254a1e947827a2bc6986e2911ee846b067fbd9657f3"
+  }
+}

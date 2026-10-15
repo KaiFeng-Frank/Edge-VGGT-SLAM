@@ -1,0 +1,405 @@
+{
+  "schema": "original_native518_global0_QKV_column_split_v141",
+  "status": "fresh_calibration_and_visible_placement_passed_no_material_matched_heldout_gain_not_accepted",
+  "original_model_only": true,
+  "scope": "Complete original frame0/global0 pair at native392x518 with all1041 tokens per frame and2082 global keys. Captured encoder inputs; not complete model or SLAM.",
+  "source_graph": {
+    "nodes": 149,
+    "initializers": 81,
+    "sha256": "b79a4d3bd522a83199bfdf1389a8d44e8f6bb94ab09f2a83301fea8502e8f452",
+    "parent_nodes": 146,
+    "parent_initializers": 79,
+    "original_weight_and_bias_column_merge_byte_equal": true,
+    "whole_parent_inverse_ModelProto_byte_equal": true,
+    "original_QKV_MACs": 6549405696,
+    "candidate_QK_plus_V_MACs": 6549405696,
+    "new_learned_values": false,
+    "V_basis_scaling_applied": false
+  },
+  "fresh_step1": {
+    "calibration_ids": [
+      "pair0",
+      "pair1",
+      "pair2",
+      "pair3"
+    ],
+    "heldout_ids": [
+      "pair4",
+      "pair5"
+    ],
+    "heldout_arrays_accessed": false,
+    "CONFIG_unchanged": true,
+    "explicit_NN_forwards_before_SDK": 0,
+    "same_four_original_input_bytes": true,
+    "dataset_only_absolute_paths_relocated": true,
+    "original_checkpoint_and36_parameter_records_verified": true,
+    "old_model_data_or_ranges_reused": false,
+    "minimum_pre_SDK_MemAvailable_bytes": 13958643712,
+    "actual_pre_SDK_MemAvailable_bytes": 14150500352,
+    "worker_elapsed_seconds": 540.4583063459977,
+    "SDK_step1_seconds": 537.7126634020024,
+    "peak_rss_mib": 12392.25,
+    "calibration_memory_is_not_inference_or_physical8GB_evidence": true,
+    "SDK_and_controller_cleanup_verified": true
+  },
+  "actual_step2": {
+    "same_fresh_model_data_and_numerical_calibration_section_preserved": true,
+    "requested_selectors": 24,
+    "generated_nodes": 95,
+    "generated_initializers": 89,
+    "actual_operator_count": 99,
+    "actual_consumer_rows": 251,
+    "actual_precision_target_counts": {
+      "FLOAT16/CPU": 2,
+      "FLOAT16/NPU": 29,
+      "INT8/NPU": 68
+    },
+    "all16_original_learned_products_INT8_NPU": true,
+    "original_QK_INT8_operator_id": 56,
+    "original_V_INT8_operator_id": 57,
+    "explicit_V_INT8_to_FLOAT16_converter_id": 58,
+    "full_key_mean_Sub_restore_FLOAT16_NPU": true,
+    "three_full_original_SDPA_INT8_NPU": true,
+    "centered_V_converts_to_INT8_for_SDPA": true,
+    "restored_PV_requantizes_before_original_INT8_projection": true,
+    "sole_global_output_FLOAT16": true,
+    "no_internal_CPU_GPU_arithmetic_or_layout_fallback": true,
+    "fused_probability_and_accumulator_precision_established": false,
+    "complete_memory_table_parser": {
+      "original99_operator_and250_memory_rows_unchanged": true,
+      "one_additional_literal_star_separated_memory_row_verified": true,
+      "literal_marker": "*",
+      "address_end_minus_start_equals_size": true,
+      "marker_meaning_not_inferred": true,
+      "prior_failed_audit_preserved": true
+    }
+  },
+  "matched_heldouts": {
+    "schedule": "Per input ABBA; A=existing Vmean parent, B=QKV-column split",
+    "cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "flags": 0,
+    "core_mask": 7,
+    "NPU_frequency_hz": 1000000000,
+    "two_resident_owners": true,
+    "runs_strictly_sequential": true,
+    "calls": 8,
+    "owned_outputs": 8,
+    "resource_counts": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 8,
+      "output_buffers_acquired": 8,
+      "output_buffers_released": 8
+    },
+    "all8_file_and_raw_hashes_shapes_finiteness_verified": true,
+    "all4_parent_outputs_byte_equal_prior_core7": true,
+    "all_same_case_model_repeats_byte_equal": true,
+    "original_finite_release_guard_unchanged": true,
+    "original_clock_policy_exactly_restored": true,
+    "comparisons": [
+      {
+        "call_index": 1,
+        "input_id": "pair4",
+        "route": "VM_parent",
+        "file_sha256": "60e1923882cf4d67aaf758f1c6ec778caa50f196faedfe02d36e303b86505b0d",
+        "raw_sha256": "c9b1fed56e72e2eaaddbdfc09ddba5e27ebd4767bf4b011ecdfc3456b0c5ba0b",
+        "finite": true,
+        "relative_l2": 0.04487364811276288,
+        "max_abs": 0.6293010115623474,
+        "outside_count": 1473420,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "owned_run_outer_seconds": 0.705260487000487
+      },
+      {
+        "call_index": 2,
+        "input_id": "pair4",
+        "route": "QKV_split",
+        "file_sha256": "12556f9e02e0b41358e9d38f84bcdd654e536dafc172c86256a81b13d844746a",
+        "raw_sha256": "4fbcf0f05a842e9aeb7605f5ceaf212266782a2aefbf879c7c41d7f1d05ce666",
+        "finite": true,
+        "relative_l2": 0.04474022161436914,
+        "max_abs": 0.6293010115623474,
+        "outside_count": 1473418,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "owned_run_outer_seconds": 0.7006771120031772
+      },
+      {
+        "call_index": 3,
+        "input_id": "pair4",
+        "route": "QKV_split",
+        "file_sha256": "12556f9e02e0b41358e9d38f84bcdd654e536dafc172c86256a81b13d844746a",
+        "raw_sha256": "4fbcf0f05a842e9aeb7605f5ceaf212266782a2aefbf879c7c41d7f1d05ce666",
+        "finite": true,
+        "relative_l2": 0.04474022161436914,
+        "max_abs": 0.6293010115623474,
+        "outside_count": 1473418,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "owned_run_outer_seconds": 0.6928121529999771
+      },
+      {
+        "call_index": 4,
+        "input_id": "pair4",
+        "route": "VM_parent",
+        "file_sha256": "60e1923882cf4d67aaf758f1c6ec778caa50f196faedfe02d36e303b86505b0d",
+        "raw_sha256": "c9b1fed56e72e2eaaddbdfc09ddba5e27ebd4767bf4b011ecdfc3456b0c5ba0b",
+        "finite": true,
+        "relative_l2": 0.04487364811276288,
+        "max_abs": 0.6293010115623474,
+        "outside_count": 1473420,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "owned_run_outer_seconds": 0.6863611110020429
+      },
+      {
+        "call_index": 5,
+        "input_id": "pair5",
+        "route": "VM_parent",
+        "file_sha256": "af54011f901cb7664c5954e11f856da10d9116e8790d93ef93c53b40013350f4",
+        "raw_sha256": "2368db1757f3121bd4224b1f4dfccf2a0c7a84f9742c8edec91170de04b5398e",
+        "finite": true,
+        "relative_l2": 0.04734105631904325,
+        "max_abs": 0.7575092166662216,
+        "outside_count": 1476368,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "owned_run_outer_seconds": 0.6887793599998986
+      },
+      {
+        "call_index": 6,
+        "input_id": "pair5",
+        "route": "QKV_split",
+        "file_sha256": "186e062031cf2f4685bf765f59b33ee2d3fb734bf3b599678f0957242e193f80",
+        "raw_sha256": "7a4f4cb57bcef38ee92af37fe33cb369e2bf8ef320e1f0c04ea713edc16f8dae",
+        "finite": true,
+        "relative_l2": 0.047189846306477656,
+        "max_abs": 0.7477435916662216,
+        "outside_count": 1476363,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "owned_run_outer_seconds": 0.6787556519993814
+      },
+      {
+        "call_index": 7,
+        "input_id": "pair5",
+        "route": "QKV_split",
+        "file_sha256": "186e062031cf2f4685bf765f59b33ee2d3fb734bf3b599678f0957242e193f80",
+        "raw_sha256": "7a4f4cb57bcef38ee92af37fe33cb369e2bf8ef320e1f0c04ea713edc16f8dae",
+        "finite": true,
+        "relative_l2": 0.047189846306477656,
+        "max_abs": 0.7477435916662216,
+        "outside_count": 1476363,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "owned_run_outer_seconds": 0.6829184019989043
+      },
+      {
+        "call_index": 8,
+        "input_id": "pair5",
+        "route": "VM_parent",
+        "file_sha256": "af54011f901cb7664c5954e11f856da10d9116e8790d93ef93c53b40013350f4",
+        "raw_sha256": "2368db1757f3121bd4224b1f4dfccf2a0c7a84f9742c8edec91170de04b5398e",
+        "finite": true,
+        "relative_l2": 0.04734105631904325,
+        "max_abs": 0.7575092166662216,
+        "outside_count": 1476368,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "owned_run_outer_seconds": 0.6896021950014983
+      }
+    ],
+    "timing_summaries": [
+      {
+        "input_id": "pair4",
+        "route": "VM_parent",
+        "all_complete_call_seconds": [
+          0.705260487000487,
+          0.6863611110020429
+        ],
+        "all_complete_call_mean_seconds": 0.695810799001265,
+        "first_call_seconds": 0.705260487000487,
+        "single_subsequent_call_seconds": 0.6863611110020429
+      },
+      {
+        "input_id": "pair4",
+        "route": "QKV_split",
+        "all_complete_call_seconds": [
+          0.7006771120031772,
+          0.6928121529999771
+        ],
+        "all_complete_call_mean_seconds": 0.6967446325015771,
+        "first_call_seconds": 0.7006771120031772,
+        "single_subsequent_call_seconds": 0.6928121529999771
+      },
+      {
+        "input_id": "pair5",
+        "route": "VM_parent",
+        "all_complete_call_seconds": [
+          0.6887793599998986,
+          0.6896021950014983
+        ],
+        "all_complete_call_mean_seconds": 0.6891907775006985,
+        "first_call_seconds": 0.6887793599998986,
+        "single_subsequent_call_seconds": 0.6896021950014983
+      },
+      {
+        "input_id": "pair5",
+        "route": "QKV_split",
+        "all_complete_call_seconds": [
+          0.6787556519993814,
+          0.6829184019989043
+        ],
+        "all_complete_call_mean_seconds": 0.6808370269991428,
+        "first_call_seconds": 0.6787556519993814,
+        "single_subsequent_call_seconds": 0.6829184019989043
+      }
+    ],
+    "descriptive_changes": [
+      {
+        "input_id": "pair4",
+        "parent_relative_l2": 0.04487364811276288,
+        "candidate_relative_l2": 0.04474022161436914,
+        "descriptive_relative_l2_reduction_fraction": 0.002973382018293891,
+        "descriptive_complete_call_mean_latency_reduction_fraction": -0.001342079630917814
+      },
+      {
+        "input_id": "pair5",
+        "parent_relative_l2": 0.04734105631904325,
+        "candidate_relative_l2": 0.047189846306477656,
+        "descriptive_relative_l2_reduction_fraction": 0.0031940565826531486,
+        "descriptive_complete_call_mean_latency_reduction_fraction": 0.012121100244332772
+      }
+    ],
+    "original_fixed_and_strict_FP32_gates_passed": false,
+    "material_quality_or_acceleration_gain_established": false,
+    "comparisons_cover_complete_precision_configurations": true,
+    "parent_shared_Split_FLOAT16_and_candidate_weighted_V_INT8_boundary_differ": true,
+    "timing_includes": "Complete owner.run with input finite/preparation, SDK IO, owned copies, release and output finite checks.",
+    "timing_excludes": "Context lifecycle, saved-array evidence, hashes and FP32 comparisons."
+  },
+  "evidence": [
+    {
+      "role": "step1_worker",
+      "file": "prepare_global0_qkv_column_split_hybrid_board.py",
+      "bytes": 24010,
+      "sha256": "40eb79cda3f79a6f0db17e0105f5ee7c18b3d5f828a274f132160b9ce5c318cf"
+    },
+    {
+      "role": "step1_receipt",
+      "file": "result.json",
+      "bytes": 90765,
+      "sha256": "53bf82b6b01d285e2e7a46ac3c9ff0865028e663d7ebc501a690ff1d095e5ce6"
+    },
+    {
+      "role": "step1_saved_audit",
+      "file": "qkv-column-split-hybrid-r1-saved-audit.json",
+      "bytes": 5520,
+      "sha256": "b0ea020cedc9acb9e94a0c634fe934ce7d08e525c2c2ecc00531de76543aaf12"
+    },
+    {
+      "role": "mapper",
+      "file": "select_global0_qkv_column_split_precision_policy.py",
+      "bytes": 24366,
+      "sha256": "d161126a59b95ddb877982b21666c4c78a0e6202d99a4a69e801f51bc2865003"
+    },
+    {
+      "role": "mapping",
+      "file": "qkv-column-split-precision-mapping-r1.json",
+      "bytes": 36124,
+      "sha256": "294896988323bfc79750ebe1478585093be521b55b295564848a804bb1286a5a"
+    },
+    {
+      "role": "mapper_peer_audit",
+      "file": "qkv-column-split-mapper-peer-r1.json",
+      "bytes": 1478,
+      "sha256": "91c5ac3374e02a9ee523976465b4734cc9ebc02b9fdf569336fca7d39693d151"
+    },
+    {
+      "role": "step2_worker",
+      "file": "compile_global0_qkv_column_split_hybrid_board.py",
+      "bytes": 20406,
+      "sha256": "d4835523df51db0a2a867ac5aab74b89dc35d1aab9de782520216643a36b6abb"
+    },
+    {
+      "role": "step2_receipt",
+      "file": "result.json",
+      "bytes": 46698,
+      "sha256": "6b3d3d674a18a109266519b02f13e30a20b0f2f881d125fde277e84d77e76502"
+    },
+    {
+      "role": "step2_actual_table_audit",
+      "file": "qkv-column-split-step2-precision-audit-r2.json",
+      "bytes": 94702,
+      "sha256": "3c83f219c75de6323193eb0b41a1471cad305a75fe5b4ef9ee080e3850a4b271"
+    },
+    {
+      "role": "step2_actual_table_auditor",
+      "file": "audit_global0_qkv_column_split_precision_saved.py",
+      "bytes": 15602,
+      "sha256": "65fea166c0eb7057d785926d07933b45748a752d2f6a967425d693da82e00e4b"
+    },
+    {
+      "role": "heldout_worker",
+      "file": "run_global0_qkv_column_split_heldout_board.py",
+      "bytes": 26627,
+      "sha256": "17b530d59286407205671751997f8f5152737925b1ac83b6d458c46e3bb6dfd3"
+    },
+    {
+      "role": "heldout_transport",
+      "file": "execute_global0_qkv_column_split_heldout_host.py",
+      "bytes": 15700,
+      "sha256": "cb9fc329ca9255519bb3a85f43f3de29b9057e1be1e94405478f7995b70b2fe1"
+    },
+    {
+      "role": "heldout_receipt",
+      "file": "result.json",
+      "bytes": 69832,
+      "sha256": "39913ea567694f01d2b435a25524cdf846e3626248ab6124b7150262063a66b4"
+    },
+    {
+      "role": "heldout_controller",
+      "file": "control.json",
+      "bytes": 7140,
+      "sha256": "3270ea4af5177be283f0001892ee5aa72c09c05cd1e0819a8c2942f01a24152f"
+    },
+    {
+      "role": "heldout_saved_audit",
+      "file": "qkv-column-split-heldout-saved-audit.json",
+      "bytes": 8113,
+      "sha256": "1299a3db7a0e93cbab28554c340cc1743af06580ea0d2d75d0b96ee741c8a71d"
+    },
+    {
+      "role": "heldout_saved_auditor",
+      "file": "audit_global0_qkv_column_split_heldout_saved.py",
+      "bytes": 12680,
+      "sha256": "bb1b30978f4b40c5ecc18022136f0160d09e7fa6f31f69293d9ccaf8f1a1461f"
+    }
+  ],
+  "candidate_accepted": false,
+  "production_defaults_changed": false,
+  "GitHub_push_performed": false,
+  "limits": [
+    "Separate source branches and catalogue grids do not prove a single precision-error mechanism or fused internal arithmetic.",
+    "The matched comparison covers the entire configuration, including different V producer boundary precision.",
+    "Two calls per model/input are descriptive, not sustained throughput, P95 or trajectory evidence.",
+    "Both unchanged original FP32 fixed/strict gates fail; tensor error is not a trajectory-loss acceptance threshold.",
+    "No complete-model, full-heads, SLAM, fresh-pose, realtime or physical8GB acceptance."
+  ]
+}

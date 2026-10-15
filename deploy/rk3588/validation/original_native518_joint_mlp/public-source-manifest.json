@@ -1,0 +1,153 @@
+{
+  "schema": "v129_local_public_safe_source_manifest",
+  "git_commit_or_push_performed": false,
+  "files": [
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/export_joint_mlp_board.py",
+      "bytes": 34707,
+      "sha256": "82f35353bf57b662b95b89cf5472e18e50e832519e8545ab7237994e35e06c07",
+      "kind": "executed_board_source"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/check_captured_pair_fp32_board.py",
+      "bytes": 23022,
+      "sha256": "b0f4bd489d1e6ec8eb28869f609d7e48469aa9d19b2120d7906cd9284059bc4c",
+      "kind": "executed_pinned_dependency"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/run_sampled_cpu_stage_r126.py",
+      "bytes": 9763,
+      "sha256": "700ec5b12b6f15cf9907cfacbff3a63258ef70a14cf5efe06ba5470991de1b89",
+      "kind": "executed_CPU_controller"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/run_export_r1.sh",
+      "bytes": 584,
+      "sha256": "cc19622f354fbda55f42211212087301b94a30fa298ff64bca44e155bdb23bb6",
+      "kind": "executed_launcher"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/run_check0_r1.sh",
+      "bytes": 1056,
+      "sha256": "57920c9488d74ef49bc8eb21a69afc4458dfe4f32d4ca8aef80fb78eae6871e7",
+      "kind": "executed_launcher"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/run_check1_r1.sh",
+      "bytes": 1056,
+      "sha256": "885cdd7ca2581877f111604cc8a320f0069641f87cade932504648645418268b",
+      "kind": "executed_launcher"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/run_check2_r1.sh",
+      "bytes": 1056,
+      "sha256": "d6b12db6ed2a157f8e4132e5d7d895947df2a68089880e5308b307599f58d10a",
+      "kind": "executed_launcher"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/compile_joint_mlp_fp16_board.py",
+      "bytes": 15912,
+      "sha256": "4edc92073654e88fa73862b0f50e23bc987c1ec54f70b1c756a0a4d5519e41c3",
+      "kind": "executed_board_source"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/compile_basis_pair_fp16.py",
+      "bytes": 13756,
+      "sha256": "2bbf180a9a70444ba592b7898fa23b96b11f36da3859f07cc5b435f0a25acb11",
+      "kind": "executed_pinned_dependency"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/run_joint_mlp_fp16_r1.sh",
+      "bytes": 919,
+      "sha256": "4db752da503a7dfff77e834e0d862c98f41b60c15ad467998f3defa9fd1ee47c",
+      "kind": "executed_launcher"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/run_joint_mlp_fp16_board.py",
+      "bytes": 19299,
+      "sha256": "4b9f83cead499cc120cae590bdf48d538a9dae308273dbd65a88b5e73505540e",
+      "kind": "executed_board_source"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/npu_frequency_test.py",
+      "bytes": 6754,
+      "sha256": "cb991cf03abc872e3590dd92f26fd0f5ac548d620c5ca791f9354537a9f793b9",
+      "kind": "executed_bounded_NPU_controller"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/run_joint_mlp_r1.sh",
+      "bytes": 713,
+      "sha256": "6a80171afa4e8e8aacb17bcad51db6e0582b5ddfb9071ed4be28ec2e139e5a07",
+      "kind": "executed_launcher"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/execute_joint_mlp_host.py",
+      "bytes": 6185,
+      "sha256": "5888437e4dd57c34d8369b39836909910cfc192edeecaf5a1c628b860f508849",
+      "kind": "portable_publication_copy_of_executed_host_transport",
+      "executed_source_bytes": 6238,
+      "executed_source_sha256": "ef0cf751a889a7293992b06e66b179f51ed7488ffa4f32068346d82583251e5b"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/execute_joint_mlp_fp16_host.py",
+      "bytes": 7688,
+      "sha256": "661d87043f880a6e8df3c5518ec148e3de81a051b0cdccd3aa04b68afb9bd20b",
+      "kind": "portable_publication_copy_of_executed_host_transport",
+      "executed_source_bytes": 7741,
+      "executed_source_sha256": "83cc9f39c4e9c8444ca888ecaed761b3a278bd0b100a56da573e94c604e32e6e"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/execute_joint_mlp_runtime_host.py",
+      "bytes": 8129,
+      "sha256": "710c4c64e7f39a70f9b98164e92156b90baa12da7b9b306f4720f03d0939b556",
+      "kind": "portable_publication_copy_of_executed_host_transport",
+      "executed_source_bytes": 8182,
+      "executed_source_sha256": "d6f8856f71d68f6346cd0ca762f65ab08afba7d18be064c66036fb193c4afc8d"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/audit_joint_mlp_saved.py",
+      "bytes": 14182,
+      "sha256": "bcc4751d7ea5f036d1b52b401e0d359e631b4e8d14952c664972cee7eaeae6c6",
+      "kind": "portable_publication_copy_of_executed_saved_data_auditor",
+      "executed_source_bytes": 14197,
+      "executed_source_sha256": "0adee65bc57501525e490fae1c2224828d6a1cb2b353b9881a4cd4721050d2ec"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/audit_joint_mlp_NPU_saved.py",
+      "bytes": 14368,
+      "sha256": "5cb222560d54c732b6a0cbefaa91c7732317fbeba63824976453a097f95a0c50",
+      "kind": "executed_saved_data_auditor"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/pre-runtime-triage.json",
+      "bytes": 855,
+      "sha256": "8421935e34be185cfeeecbd066c92b7fd644ee9e42c057d98f3a36e6ceb150a2",
+      "kind": "public_safe_predeclared_screen"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/compiled-schedule-observation.json",
+      "bytes": 2012,
+      "sha256": "3c49a48ebd0c356fa0f8f0ebdc256fa166a7b2c638abd6dc28ef6ccdfe467018",
+      "kind": "public_safe_compiler_metadata"
+    },
+    {
+      "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/README.md",
+      "bytes": 3226,
+      "sha256": "1f712f84b8f720e86669dbd0f84d55605b08cf7eaff14577034832c8f629047b",
+      "kind": "documentation"
+    },
+    {
+      "destination_relative": "results/original_native518_joint_mlp_v129.json",
+      "bytes": 9323,
+      "sha256": "ae0ad65a6c9dd02e60e3328b4e421f49c6ba54338bd1b3b5da23f8f47db83ee9",
+      "kind": "public_safe_result_summary"
+    }
+  ],
+  "publication_adapted_paths": [
+    "deploy/rk3588/validation/original_native518_joint_mlp/r1/execute_joint_mlp_host.py",
+    "deploy/rk3588/validation/original_native518_joint_mlp/r1/execute_joint_mlp_fp16_host.py",
+    "deploy/rk3588/validation/original_native518_joint_mlp/r1/execute_joint_mlp_runtime_host.py",
+    "deploy/rk3588/validation/original_native518_joint_mlp/r1/audit_joint_mlp_saved.py"
+  ],
+  "publication_identity_scope": "Current bytes/sha256 identify the published file; archive/executed_source fields retain the frozen historical source identity. No new model or device execution is claimed."
+}

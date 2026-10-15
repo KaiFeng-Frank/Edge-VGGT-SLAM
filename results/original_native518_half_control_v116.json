@@ -1,0 +1,96 @@
+{
+  "schema": "recovered_original_native518_half_control_v116",
+  "experiment_version": 116,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "status": "all_three_original_CPU_controls_completed",
+    "actual_worker_elapsed_seconds": 20.060279306955636,
+    "board_wall_clock": {
+      "start_UTC_label": "2026-06-09T12:50:04Z",
+      "end_UTC_label": "2026-06-09T12:50:25Z",
+      "unreliable_for_calendar_time": true,
+      "reason": "Board labels are 2026-06-09; host actual execution is 2026-10-13 UTC. Preserve raw labels; use worker monotonic elapsed duration. No system clock change."
+    },
+    "NPU_Hz_before": 300000000,
+    "NPU_Hz_after": 300000000,
+    "frequency_writes": false,
+    "temperature_history_collected": false,
+    "original_FP32_all_five_points_byte_equal": true,
+    "controls": [
+      {
+        "route": "original_FP32",
+        "tensor_dtype": "torch.float32",
+        "forward_attempts": 1,
+        "forward_completed": true,
+        "observed_forward_wall_seconds": 1.8431298940558918,
+        "observed_forward_process_cpu_seconds": 1.7950679970000003,
+        "model_parameter_state_unchanged": true,
+        "input_unchanged": true
+      },
+      {
+        "route": "storage_rounding_only_FP32",
+        "tensor_dtype": "torch.float32",
+        "forward_attempts": 1,
+        "forward_completed": true,
+        "observed_forward_wall_seconds": 1.8244346830178984,
+        "observed_forward_process_cpu_seconds": 1.824204367,
+        "model_parameter_state_unchanged": true,
+        "input_unchanged": true
+      },
+      {
+        "route": "CPU_float16",
+        "tensor_dtype": "torch.float16",
+        "forward_attempts": 1,
+        "forward_completed": true,
+        "observed_forward_wall_seconds": 12.20874118496431,
+        "observed_forward_process_cpu_seconds": 12.199342121,
+        "model_parameter_state_unchanged": true,
+        "input_unchanged": true
+      }
+    ],
+    "point_scope": "Unchanged original DINO block0 on one pinned real native518 input [1,1041,1024].",
+    "finding": "Storage-only Half rounding then original FP32 gives whole-output relativeL2 0.00050662; CPU Half tensor execution gives 0.00071059, versus saved actual NPU 0.0254823. Precision of this NPU artifact is not explained by unavoidable Half storage rounding; CPU Half demonstrates a much more accurate half-tensor execution on this case.",
+    "limits": [
+      "Does not isolate an individual NPU kernel, internal accumulator dtype, or error contributions additively.",
+      "Observed CPU times include observation/hashes/saves and do not establish a performance improvement.",
+      "No change to production full-model speed, trajectory quality, fresh-pose rate, latency, map cadence, memory acceptance or sustained service."
+    ],
+    "decision": "Keep production unchanged. Reject naive wholeblock INT8 based on R115; investigate original NPU downstream arithmetic rather than replace models or cache context-dependent layers. No evidenced realtime delivery route is claimed.",
+    "cleanup_errors": [],
+    "source_inputs_parameters_and_process_settings_restored": true,
+    "saved_array_audit_status": "passed",
+    "storage_and_execution_controls_are_distinct": true,
+    "CPU_half_route_completed_without_hidden_FP32_fallback": true
+  },
+  "source_evidence": [
+    {
+      "archive": "v116-native518-half-control-r1",
+      "file": "execution-review.json",
+      "bytes": 3461,
+      "sha256": "7e43331d9d19165b8129e5091344337140c7a60503a20dfaa0d7425c3f603cd1"
+    },
+    {
+      "archive": "v116-native518-half-control-r1",
+      "file": "saved-array-audit.json",
+      "bytes": 11410,
+      "sha256": "d6d9d1945c9d35a9b4a560367b351909dda1966b0210f29c90939176f79c38ea"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 182. Original CPU Half control separates storage rounding from the larger NPU error",
+    "section_sha256": "59be3cee0475f3ada563d6190ad4ffb7a95491893728d5c49bbe9a7dfe8c2760"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

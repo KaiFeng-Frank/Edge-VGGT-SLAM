@@ -1,0 +1,650 @@
+{
+  "schema": "original_native518_original_groups_external_scratch_v191",
+  "status": "five_original_models_sequential_flags512_external_scratch_bind_and_descriptor_queries_verified_without_forward",
+  "scope": {
+    "original_models": [
+      "aggregator_group1",
+      "aggregator_group2",
+      "aggregator_group3",
+      "original_CameraHead_step",
+      "original_full_DPT"
+    ],
+    "immutable_R186_continuation_manifest_SHA256": "c7500c17d1abc9d220b671ebdf10d5fae340e051b67d09cb0f550870f02dad22",
+    "original_models_or_graphs_or_weights_modified": false,
+    "models_recompiled_or_quantization_changed": false,
+    "model_payload_hash_evidence": "Frozen original manifest and source-bound pre/post board SHA checks; the saved auditor does not reopen model payloads.",
+    "init_flags": 512,
+    "requested_core_mask": 7,
+    "requested_mask_is_not_measured_utilization": true,
+    "CPU_core": 4,
+    "maximum_live_contexts": 1,
+    "maximum_live_internal_pools": 1,
+    "one_new_pool_and_context_specific_FD_view_per_model": true,
+    "common_cross_model_pool_tested": false,
+    "persistent_five_model_residency_tested": false,
+    "forward_or_IO_execution": false
+  },
+  "query_and_binding": {
+    "sequence": "Init one flags512 context; query actual internal request; budget and allocate aligned pool; import same FD/base at offset0; bind internal view; query native attributes; destroy view, pool and valid owner context.",
+    "raw_queries": 74,
+    "native_attribute_queries": 36,
+    "SDK_memory_size_queries": 10,
+    "native_commands": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "all_actual_query_returncodes": 0,
+    "all_raw_struct_hashes_and_native_fields_independently_decoded": true,
+    "all5_pool_view_FD_identities_bases_offsets_capacities_and_raw_structs_verified": true,
+    "all_native_queries_follow_actual_internal_bind": true,
+    "descriptor_query_success_is_not_native_IO_layout_or_numerical_acceptance": true
+  },
+  "models": [
+    {
+      "model": "group1",
+      "original_model_bytes": 464223148,
+      "original_model_sha256": "9827e019589fcbb54c50e65767315dbe4bf76dcbe35688108fd27e2c3aeb89c4",
+      "SDK_before_pool": {
+        "weight_bytes": 403061056,
+        "internal_bytes": 92124480,
+        "dma_bytes": 935727104,
+        "total_sram_bytes": 0,
+        "free_sram_bytes": 0,
+        "scope": "Actual flags512 SDK context fields; not unique physical bytes"
+      },
+      "SDK_after_bind": {
+        "weight_bytes": 403061056,
+        "internal_bytes": 92124480,
+        "dma_bytes": 935727104,
+        "total_sram_bytes": 0,
+        "free_sram_bytes": 0,
+        "scope": "Actual flags512 SDK context fields; not unique physical bytes"
+      },
+      "requested_internal_bytes": 92124480,
+      "aligned_owned_pool_bytes": 92127232,
+      "each_context_FD_view_matches_its_own_pool_identity_base_and_capacity": true,
+      "pool_and_view_offset_bytes": 0,
+      "native_shapes": {
+        "8": [
+          [
+            2,
+            1041,
+            1024
+          ]
+        ],
+        "9": [
+          [
+            2,
+            1041,
+            1024
+          ],
+          [
+            1,
+            2082,
+            1024
+          ]
+        ],
+        "10": [
+          [
+            2,
+            1041,
+            1024
+          ]
+        ],
+        "11": [
+          [
+            2,
+            1041,
+            1024
+          ],
+          [
+            1,
+            2082,
+            1024
+          ]
+        ]
+      },
+      "signed_system_snapshot_deltas": {
+        "initialization": {
+          "DMA_free_bytes": -472518656,
+          "MemAvailable_bytes": -473767936,
+          "Shmem_bytes": 471502848
+        },
+        "arena": {
+          "DMA_free_bytes": -92385280,
+          "MemAvailable_bytes": -92385280,
+          "Shmem_bytes": 92119040
+        },
+        "FD_view": {
+          "DMA_free_bytes": 0,
+          "MemAvailable_bytes": 0,
+          "Shmem_bytes": 0
+        },
+        "whole_model_cleanup": {
+          "DMA_free_bytes": -1105920,
+          "MemAvailable_bytes": -2355200,
+          "Shmem_bytes": 258048
+        }
+      },
+      "DMA_zone_free_before_init": 1015332864,
+      "DMA_zone_free_after_context_close": 1014226944
+    },
+    {
+      "model": "group2",
+      "original_model_bytes": 397920172,
+      "original_model_sha256": "95c39104f44f99328669c8412b8e78ea029abe50ef63add0b48117b093f9bb44",
+      "SDK_before_pool": {
+        "weight_bytes": 345481216,
+        "internal_bytes": 92124480,
+        "dma_bytes": 802086912,
+        "total_sram_bytes": 0,
+        "free_sram_bytes": 0,
+        "scope": "Actual flags512 SDK context fields; not unique physical bytes"
+      },
+      "SDK_after_bind": {
+        "weight_bytes": 345481216,
+        "internal_bytes": 92124480,
+        "dma_bytes": 802086912,
+        "total_sram_bytes": 0,
+        "free_sram_bytes": 0,
+        "scope": "Actual flags512 SDK context fields; not unique physical bytes"
+      },
+      "requested_internal_bytes": 92124480,
+      "aligned_owned_pool_bytes": 92127232,
+      "each_context_FD_view_matches_its_own_pool_identity_base_and_capacity": true,
+      "pool_and_view_offset_bytes": 0,
+      "native_shapes": {
+        "8": [
+          [
+            2,
+            1041,
+            1024
+          ]
+        ],
+        "9": [
+          [
+            2,
+            1041,
+            1024
+          ],
+          [
+            1,
+            2082,
+            1024
+          ]
+        ],
+        "10": [
+          [
+            2,
+            1041,
+            1024
+          ]
+        ],
+        "11": [
+          [
+            2,
+            1041,
+            1024
+          ],
+          [
+            1,
+            2082,
+            1024
+          ]
+        ]
+      },
+      "signed_system_snapshot_deltas": {
+        "initialization": {
+          "DMA_free_bytes": -404062208,
+          "MemAvailable_bytes": -404062208,
+          "Shmem_bytes": 403886080
+        },
+        "arena": {
+          "DMA_free_bytes": -92643328,
+          "MemAvailable_bytes": -92643328,
+          "Shmem_bytes": 92119040
+        },
+        "FD_view": {
+          "DMA_free_bytes": 0,
+          "MemAvailable_bytes": 0,
+          "Shmem_bytes": 0
+        },
+        "whole_model_cleanup": {
+          "DMA_free_bytes": 917504,
+          "MemAvailable_bytes": 917504,
+          "Shmem_bytes": 0
+        }
+      },
+      "DMA_zone_free_before_init": 1014226944,
+      "DMA_zone_free_after_context_close": 1015144448
+    },
+    {
+      "model": "group3",
+      "original_model_bytes": 397933475,
+      "original_model_sha256": "5b5c5611de4db14a139ace7da72f5f934e33adc2cfa12c1205fac395560377fb",
+      "SDK_before_pool": {
+        "weight_bytes": 345481280,
+        "internal_bytes": 104953152,
+        "dma_bytes": 802111488,
+        "total_sram_bytes": 0,
+        "free_sram_bytes": 0,
+        "scope": "Actual flags512 SDK context fields; not unique physical bytes"
+      },
+      "SDK_after_bind": {
+        "weight_bytes": 345481280,
+        "internal_bytes": 104953152,
+        "dma_bytes": 802111488,
+        "total_sram_bytes": 0,
+        "free_sram_bytes": 0,
+        "scope": "Actual flags512 SDK context fields; not unique physical bytes"
+      },
+      "requested_internal_bytes": 104953152,
+      "aligned_owned_pool_bytes": 104955904,
+      "each_context_FD_view_matches_its_own_pool_identity_base_and_capacity": true,
+      "pool_and_view_offset_bytes": 0,
+      "native_shapes": {
+        "8": [
+          [
+            2,
+            1041,
+            1024
+          ]
+        ],
+        "9": [
+          [
+            2,
+            1041,
+            1024
+          ],
+          [
+            1,
+            2082,
+            1024
+          ],
+          [
+            1,
+            2082,
+            1024
+          ]
+        ],
+        "10": [
+          [
+            2,
+            1041,
+            1024
+          ]
+        ],
+        "11": [
+          [
+            2,
+            1041,
+            1024
+          ],
+          [
+            1,
+            2082,
+            1024
+          ],
+          [
+            1,
+            2082,
+            1024
+          ]
+        ]
+      },
+      "signed_system_snapshot_deltas": {
+        "initialization": {
+          "DMA_free_bytes": -404910080,
+          "MemAvailable_bytes": -404533248,
+          "Shmem_bytes": 403894272
+        },
+        "arena": {
+          "DMA_free_bytes": -105287680,
+          "MemAvailable_bytes": -105287680,
+          "Shmem_bytes": 104898560
+        },
+        "FD_view": {
+          "DMA_free_bytes": 0,
+          "MemAvailable_bytes": 0,
+          "Shmem_bytes": 0
+        },
+        "whole_model_cleanup": {
+          "DMA_free_bytes": -933888,
+          "MemAvailable_bytes": -557056,
+          "Shmem_bytes": -258048
+        }
+      },
+      "DMA_zone_free_before_init": 1015332864,
+      "DMA_zone_free_after_context_close": 1014398976
+    },
+    {
+      "model": "camera",
+      "original_model_bytes": 434656165,
+      "original_model_sha256": "0c216630b608ddd72ae288385c886d20d5e002b85fad3f741ed1308360bd7f51",
+      "SDK_before_pool": {
+        "weight_bytes": 432555136,
+        "internal_bytes": 315584,
+        "dma_bytes": 869523456,
+        "total_sram_bytes": 0,
+        "free_sram_bytes": 0,
+        "scope": "Actual flags512 SDK context fields; not unique physical bytes"
+      },
+      "SDK_after_bind": {
+        "weight_bytes": 432555136,
+        "internal_bytes": 315584,
+        "dma_bytes": 869523456,
+        "total_sram_bytes": 0,
+        "free_sram_bytes": 0,
+        "scope": "Actual flags512 SDK context fields; not unique physical bytes"
+      },
+      "requested_internal_bytes": 315584,
+      "aligned_owned_pool_bytes": 319488,
+      "each_context_FD_view_matches_its_own_pool_identity_base_and_capacity": true,
+      "pool_and_view_offset_bytes": 0,
+      "native_shapes": {
+        "8": [
+          [
+            1,
+            2,
+            2048
+          ],
+          [
+            1,
+            2,
+            9
+          ]
+        ],
+        "9": [
+          [
+            1,
+            2,
+            9
+          ]
+        ],
+        "10": [
+          [
+            1,
+            2,
+            2048
+          ],
+          [
+            1,
+            2,
+            9
+          ]
+        ],
+        "11": [
+          [
+            1,
+            2,
+            9
+          ]
+        ]
+      },
+      "signed_system_snapshot_deltas": {
+        "initialization": {
+          "DMA_free_bytes": -435470336,
+          "MemAvailable_bytes": -435523584,
+          "Shmem_bytes": 434659328
+        },
+        "arena": {
+          "DMA_free_bytes": -258048,
+          "MemAvailable_bytes": -258048,
+          "Shmem_bytes": 266240
+        },
+        "FD_view": {
+          "DMA_free_bytes": 0,
+          "MemAvailable_bytes": 0,
+          "Shmem_bytes": 0
+        },
+        "whole_model_cleanup": {
+          "DMA_free_bytes": -757760,
+          "MemAvailable_bytes": -811008,
+          "Shmem_bytes": 155648
+        }
+      },
+      "DMA_zone_free_before_init": 1015201792,
+      "DMA_zone_free_after_context_close": 1014444032
+    },
+    {
+      "model": "depth",
+      "original_model_bytes": 133505463,
+      "original_model_sha256": "e7219a4e612fcff26f0a76ea7a24536188a0567cbd3941ba58774a32d42fb8c6",
+      "SDK_before_pool": {
+        "weight_bytes": 123152064,
+        "internal_bytes": 120938496,
+        "dma_bytes": 267501568,
+        "total_sram_bytes": 0,
+        "free_sram_bytes": 0,
+        "scope": "Actual flags512 SDK context fields; not unique physical bytes"
+      },
+      "SDK_after_bind": {
+        "weight_bytes": 123152064,
+        "internal_bytes": 120938496,
+        "dma_bytes": 267501568,
+        "total_sram_bytes": 0,
+        "free_sram_bytes": 0,
+        "scope": "Actual flags512 SDK context fields; not unique physical bytes"
+      },
+      "requested_internal_bytes": 120938496,
+      "aligned_owned_pool_bytes": 120938496,
+      "each_context_FD_view_matches_its_own_pool_identity_base_and_capacity": true,
+      "pool_and_view_offset_bytes": 0,
+      "native_shapes": {
+        "8": [
+          [
+            1,
+            1036,
+            2048
+          ],
+          [
+            1,
+            1036,
+            2048
+          ],
+          [
+            1,
+            1036,
+            2048
+          ],
+          [
+            1,
+            1036,
+            2048
+          ]
+        ],
+        "9": [
+          [
+            1,
+            2,
+            392,
+            518,
+            8
+          ]
+        ],
+        "10": [
+          [
+            1,
+            1036,
+            2048
+          ],
+          [
+            1,
+            1036,
+            2048
+          ],
+          [
+            1,
+            1036,
+            2048
+          ],
+          [
+            1,
+            1036,
+            2048
+          ]
+        ],
+        "11": [
+          [
+            1,
+            392,
+            518,
+            2
+          ]
+        ]
+      },
+      "signed_system_snapshot_deltas": {
+        "initialization": {
+          "DMA_free_bytes": -133070848,
+          "MemAvailable_bytes": -133070848,
+          "Shmem_bytes": 133652480
+        },
+        "arena": {
+          "DMA_free_bytes": -121544704,
+          "MemAvailable_bytes": -121544704,
+          "Shmem_bytes": 120872960
+        },
+        "FD_view": {
+          "DMA_free_bytes": 0,
+          "MemAvailable_bytes": 0,
+          "Shmem_bytes": 0
+        },
+        "whole_model_cleanup": {
+          "DMA_free_bytes": -286720,
+          "MemAvailable_bytes": -286720,
+          "Shmem_bytes": 0
+        }
+      },
+      "DMA_zone_free_before_init": 1015246848,
+      "DMA_zone_free_after_context_close": 1014960128
+    }
+  ],
+  "resources": {
+    "contexts_created": 5,
+    "contexts_destroyed": 5,
+    "owned_pool_allocations": 5,
+    "imported_FD_view_wrappers": 5,
+    "memory_destroy_calls": 10,
+    "internal_memory_bind_calls": 5,
+    "run_calls": 0,
+    "IO_input_set_calls": 0,
+    "IO_output_get_release_calls": 0,
+    "IO_set_mem_calls": 0,
+    "scratch_CPU_read_write_zero_or_sync_calls": 0,
+    "one_serial_owner_thread": true,
+    "ordered_lifecycle_events": 45,
+    "view_then_pool_then_valid_context_cleanup_verified": true,
+    "all_resources_closed": true,
+    "source_models_environment_affinity_cwd_and_NPU_policy_restored_or_unchanged": true
+  },
+  "budget_and_observations": {
+    "minimum_initial_MemAvailable_bytes": 2684354560,
+    "DMA_reserve_per_init_or_pool_bytes": 268435456,
+    "pool_alignment_bytes": 4096,
+    "clean_budget_skips": 0,
+    "preinit_rule": "Pinned historical per-context weight field plus256MiB DMA-free screening; not a total physical allocation prediction.",
+    "pool_rule": "Actual aligned request plus256MiB free DMA reserve after context initialization.",
+    "SDK_memory_fields_unchanged_after_external_bind": true,
+    "memory_interpretation": "Per-context SDK fields are not unique physical bytes. DMA-free/MemAvailable phase snapshots include allocator, cache and background variation; signed deltas are not exact physical attribution or additive full-model costs.",
+    "root_storage_hard_floor_bytes": 536870912,
+    "data_storage_hard_floor_bytes": 3221225472,
+    "JSON_reserve_bytes": 4194304,
+    "storage_snapshots": {
+      "storage_before": {
+        "root_free_bytes": 547631104,
+        "data_free_bytes": 3269091328,
+        "MemAvailable_bytes": 3091701760
+      },
+      "storage_after": {
+        "root_free_bytes": 547631104,
+        "data_free_bytes": 3268698112,
+        "MemAvailable_bytes": 3091709952
+      }
+    }
+  },
+  "controller": {
+    "NPU_hz": 1000000000,
+    "timeout_seconds": 180,
+    "temperature_limit_C": 75,
+    "restored": true,
+    "peak_temperature_C": 60.076,
+    "controller_seconds_not_forward_latency": 7.542260175003321,
+    "worker_seconds_not_forward_latency": 6.909635944990441,
+    "process_peak_RSS_MiB": 476.078125,
+    "RSS_is_not_physical8GB_evidence": true
+  },
+  "preserved_r1_failure": {
+    "failure": "DMA-BUF SEEK_CUR returned EINVAL while recording the first owned pool.",
+    "reached_internal_bind": false,
+    "reached_native_queries": false,
+    "forwards": 0,
+    "contexts_closed": 1,
+    "pools_closed": 1,
+    "FD_views_created": 0,
+    "all_registered_resources_closed": true,
+    "guard_policy_restored": true,
+    "r2_change": "Only use established SEEK_END then SEEK_SET0 instead of unsupported SEEK_CUR/current-position restoration. FD capacity/base/span guards are unchanged.",
+    "r2_source_inverse_to_r1_byte_equal": true
+  },
+  "decision": {
+    "sequential_external_scratch_and_descriptor_feasibility_verified": true,
+    "simultaneous_contexts_or_common_cross_model_arena_not_yet_tested": true,
+    "full_residency_physical8GB_forward_precision_speed_or_realtime_accepted": false,
+    "original_execution_or_default_backend_changed": false,
+    "interpretation": "This zero-forward prerequisite verifies five separate sequential pool/view lifetimes. It establishes neither simultaneous residency, cross-model sharing nor speed for a complete original-model run."
+  },
+  "evidence": {
+    "worker_receipt": {
+      "file": "original-groups-external-scratch-r2/output/result.json",
+      "bytes": 270696,
+      "sha256": "79103fa6dd9eb6987a832ffc3eede619d317b9dbc7cb3354498f5fef4aa5f288"
+    },
+    "controller": {
+      "file": "original-groups-external-scratch-r2/control/control.json",
+      "bytes": 6758,
+      "sha256": "60234c59dcd3cc6c97c23ecd8ce9ce4b420878a025b0c1521bb68159cd4fe152"
+    },
+    "transport": {
+      "file": "original-groups-external-scratch-r2/transport.json",
+      "bytes": 18407,
+      "sha256": "fcf8280cb5cd5912a7d58c1b8fe31d4b034ec4108dae23df79702e845a444d56"
+    },
+    "saved_source_receipt_audit": {
+      "file": "original-groups-external-scratch-r2/saved-source-receipt-audit-r1.json",
+      "bytes": 107806,
+      "sha256": "8f0747698bd8bbcece5daba751ca7313e1486ba95adae68b02caa99d7c2730fe"
+    },
+    "auditor_source": {
+      "file": "persistent_shared_scratch_probe/audit_original_groups_external_scratch_saved.py",
+      "bytes": 20533,
+      "sha256": "b48fabf315f3554c34dcbb3b600de2e3bcdca64a20540b2fce2726dd51b20831"
+    },
+    "worker_source": {
+      "file": "persistent_shared_scratch_probe/query_original_groups_external_scratch_board_r2.py",
+      "bytes": 35779,
+      "sha256": "5de5eae5186f8c9d1757995d1b1520fd9efe1fac96c09210ccc91bbf4075b904"
+    },
+    "transport_source": {
+      "file": "persistent_shared_scratch_probe/execute_original_groups_external_scratch_host_r2.py",
+      "bytes": 11231,
+      "sha256": "df5ef4d529a47f9a5830c5de799633c6640cd7b72a0ccb80502f0ca67f113142"
+    },
+    "r1_worker_receipt": {
+      "file": "original-groups-external-scratch-r1/output/result.json",
+      "bytes": 27272,
+      "sha256": "df43ebf969e2b1f5f49eda25d214af8ff13d77ce7f08512e9e3fba9363604444"
+    },
+    "r1_controller": {
+      "file": "original-groups-external-scratch-r1/control/control.json",
+      "bytes": 5331,
+      "sha256": "0f97c44fe8ae8ee2c2038fa355dc06fde4a040d67d7002c52537ccd2aae21bfe"
+    },
+    "r1_transport": {
+      "file": "original-groups-external-scratch-r1/transport.json",
+      "bytes": 18149,
+      "sha256": "7917ef933668739e36fafa2652942fe7b836d279fddec605da751525d68f247c"
+    }
+  }
+}

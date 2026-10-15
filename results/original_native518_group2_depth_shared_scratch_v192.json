@@ -1,0 +1,385 @@
+{
+  "schema": "original_native518_group2_depth_shared_scratch_v192",
+  "status": "two_original_models_share_one_internal_pool_in_serial_forward_gate_no_speed_or_precision_acceptance",
+  "original_model_only": true,
+  "scope": {
+    "board": "RK3588S",
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "original_source_image_basenames": [
+      "1305031103.243216.png",
+      "1305031103.511333.png"
+    ],
+    "prepared_image_shape": [
+      1,
+      2,
+      3,
+      392,
+      518
+    ],
+    "group2_input": "Captured original CPU retained layer11, FRAME-first/GLOBAL-second channels; select the right1024 GLOBAL channels and reshape to [2,1041,1024].",
+    "DPT_inputs": "Each original frame uses its four captured [1,1036,2048] branches from retained layers4/11/17/23.",
+    "group2_all_six_original_pairs_and_full_DPT_unchanged": true,
+    "connected_group2_to_DPT_execution": false,
+    "complete_model_or_SLAM_execution": false,
+    "reused_capture_inputs": true
+  },
+  "execution": {
+    "baseline_init_flags": 0,
+    "shared_init_flags": 512,
+    "requested_core_mask": 7,
+    "core_mask_is_not_utilization_proof": true,
+    "cpu_core": 4,
+    "baseline_control_calls": 3,
+    "shared_calls": 6,
+    "total_calls": 9,
+    "shared_schedule": [
+      {
+        "model": "group2",
+        "case": "global11"
+      },
+      {
+        "model": "depth",
+        "case": "frame0"
+      },
+      {
+        "model": "group2",
+        "case": "global11"
+      },
+      {
+        "model": "depth",
+        "case": "frame1"
+      },
+      {
+        "model": "group2",
+        "case": "global11"
+      },
+      {
+        "model": "depth",
+        "case": "frame0"
+      }
+    ],
+    "maximum_live_shared_contexts": 2,
+    "concurrent_runs": 0,
+    "original_ordinary_OwnedContext_run_close_metrics_AST_unchanged": true,
+    "normal_IO_used": true,
+    "native_IO_adapter_or_descriptor_reinterpretation": false,
+    "scratch_CPU_read_write_zero_or_sync_calls": 0,
+    "different_model_weights_separately_owned": true,
+    "models_or_input_arrays_pushed_by_this_transport": false
+  },
+  "shared_arena": {
+    "actual_internal_requests_bytes": {
+      "group2": 92124480,
+      "depth": 120938496
+    },
+    "independent_page_rounded_pool_requests_bytes": {
+      "group2": 92127232,
+      "depth": 120938496,
+      "total": 213065728
+    },
+    "one_actual_shared_pool_bytes": 120938496,
+    "logical_duplicate_request_avoided_bytes": 92127232,
+    "logical_request_reduction_percent": 43.238878849628975,
+    "reduction_scope": "Page-rounded logical arena requests only; not measured unique physical-memory saving.",
+    "owned_allocations": 1,
+    "context_specific_FD_views": 2,
+    "same_FD_identity_base_and_zero_offset_verified": true,
+    "group2_view_bind_bytes": 92124480,
+    "depth_view_bind_bytes": 120938496,
+    "FD_capacity_bytes": 120938496,
+    "lifetime": "Depth view destroyed, then depth context; group2 view, then pool while allocator context is valid, then group2 context.",
+    "scratch_destroy_attempts_not_retried_after_unknown_outcome": true
+  },
+  "per_context_SDK_fields": [
+    {
+      "model": "group2",
+      "original_model_sha256": "95c39104f44f99328669c8412b8e78ea029abe50ef63add0b48117b093f9bb44",
+      "requested_core_mask": 7,
+      "SDK_weight_bytes": 345481216,
+      "SDK_internal_bytes": 92124480,
+      "SDK_DMA_bytes_flags0": 894214144,
+      "SDK_DMA_bytes_flags512": 802086912,
+      "shared_forward_calls": 3,
+      "original_pair_indices": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "model": "depth",
+      "original_model_sha256": "e7219a4e612fcff26f0a76ea7a24536188a0567cbd3941ba58774a32d42fb8c6",
+      "requested_core_mask": 7,
+      "SDK_weight_bytes": 123152064,
+      "SDK_internal_bytes": 120938496,
+      "SDK_DMA_bytes_flags0": 388440064,
+      "SDK_DMA_bytes_flags512": 267501568,
+      "shared_forward_calls": 3,
+      "original_DPT_branches": [
+        4,
+        11,
+        17,
+        23
+      ],
+      "original_frames": [
+        0,
+        1
+      ]
+    }
+  ],
+  "native_query_and_IO_budget": {
+    "postbind_native_attribute_records": 16,
+    "group2_records": 6,
+    "DPT_records": 10,
+    "all_raw_struct_hashes_and_fields_independently_decoded": true,
+    "all_returncodes_zero": true,
+    "descriptors_equal_prior_R191": true,
+    "query_commands": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "page_rounded_native8_9_budget_bytes": {
+      "group2": 12832768,
+      "depth": 23474176,
+      "total": 36306944
+    },
+    "group2_native9_output_capacity_bytes": {
+      "frame_output": 4292608,
+      "global_output": 4276224
+    },
+    "group2_native11_each_logical_output_bytes": 4263936,
+    "DPT_native9_output_shape": [
+      1,
+      2,
+      392,
+      518,
+      8
+    ],
+    "DPT_native9_output_capacity_bytes": 6497792,
+    "DPT_native11_output_shape": [
+      1,
+      392,
+      518,
+      2
+    ],
+    "DPT_native11_logical_bytes": 812224,
+    "interpretation": "Native8/9 capacity informs a conservative first-use reserve; ordinary IO performs output conversion and no packed-layout reinterpretation is attempted."
+  },
+  "memory_observations": {
+    "initial_MemAvailable_bytes": 3075719168,
+    "minimum_observed_MemAvailable_bytes": 2294886400,
+    "pool_preflight_DMA_free_bytes": 476233728,
+    "pool_plus_IO_plus_DMA_reserve_required_bytes": 425680896,
+    "common_pool_allocation_signed_DMA_free_change_bytes": -121286656,
+    "first_shared_group2_complete_run_signed_DMA_free_change_bytes": -12984320,
+    "first_shared_DPT_complete_run_signed_DMA_free_change_bytes": -23564288,
+    "minimum_observed_DMA_free_bytes": 318365696,
+    "DMA_reserve_bytes": 268435456,
+    "DMA_reserve_margin_bytes": 49930240,
+    "phase_scope": "Before/after complete-run snapshots; allocator, driver and background changes are not isolated from IO.",
+    "per_call_observations": [
+      {
+        "route": "flags0_control",
+        "model": "group2",
+        "case": "global11",
+        "remaining_first_use_IO_budget_bytes": 12832768,
+        "signed_DMA_free_change_bytes": -12951552
+      },
+      {
+        "route": "flags0_control",
+        "model": "depth",
+        "case": "frame0",
+        "remaining_first_use_IO_budget_bytes": 23474176,
+        "signed_DMA_free_change_bytes": -23564288
+      },
+      {
+        "route": "flags0_control",
+        "model": "depth",
+        "case": "frame1",
+        "remaining_first_use_IO_budget_bytes": 23474176,
+        "signed_DMA_free_change_bytes": -57344
+      },
+      {
+        "route": "shared_flags512",
+        "model": "group2",
+        "case": "global11",
+        "remaining_first_use_IO_budget_bytes": 36306944,
+        "signed_DMA_free_change_bytes": -12984320
+      },
+      {
+        "route": "shared_flags512",
+        "model": "depth",
+        "case": "frame0",
+        "remaining_first_use_IO_budget_bytes": 23474176,
+        "signed_DMA_free_change_bytes": -23564288
+      },
+      {
+        "route": "shared_flags512",
+        "model": "group2",
+        "case": "global11",
+        "remaining_first_use_IO_budget_bytes": 0,
+        "signed_DMA_free_change_bytes": -32768
+      },
+      {
+        "route": "shared_flags512",
+        "model": "depth",
+        "case": "frame1",
+        "remaining_first_use_IO_budget_bytes": 0,
+        "signed_DMA_free_change_bytes": 0
+      },
+      {
+        "route": "shared_flags512",
+        "model": "group2",
+        "case": "global11",
+        "remaining_first_use_IO_budget_bytes": 0,
+        "signed_DMA_free_change_bytes": 0
+      },
+      {
+        "route": "shared_flags512",
+        "model": "depth",
+        "case": "frame0",
+        "remaining_first_use_IO_budget_bytes": 0,
+        "signed_DMA_free_change_bytes": 0
+      }
+    ],
+    "SDK_DMA_fields_are_not_additive_unique_physical_bytes": true,
+    "physical_unique_memory_saving_established": false,
+    "initial_MemAvailable_guard_bytes": 2684354560,
+    "root_storage_floor_bytes": 536870912,
+    "data_storage_floor_bytes": 3221225472,
+    "all_recorded_budgets_and_storage_floors_passed": true
+  },
+  "saved_verification": {
+    "independent_array_input_audit_passed": true,
+    "independent_lifetime_budget_audit_passed": true,
+    "fresh_flags0_lossless_FLOAT16_files": 4,
+    "saved_NPY_bytes": 10152832,
+    "all_saved_files_independently_reconstruct_exact_flags0_FLOAT32_raw_hashes": true,
+    "original_GLOBAL11_slice_and_all8_DPT_input_NPY_bytes_independently_reconstructed": true,
+    "shared_canonical_outputs": 9,
+    "all_shared_outputs_byte_equal_fresh_flags0_and_repeats": true,
+    "separately_saved_shared_payloads": false,
+    "shared_output_evidence": "Nine current canonical output hashes plus frozen-source equality checks against the four independently verified fresh flags0 controls.",
+    "original_FP32_accuracy_gates_run": false
+  },
+  "resources": {
+    "totals": {
+      "contexts_created": 4,
+      "contexts_destroyed": 4,
+      "runs_completed": 9,
+      "output_buffers_acquired": 13,
+      "output_buffers_released": 13,
+      "memories_created": 1,
+      "memories_imported": 2,
+      "memories_destroyed": 3,
+      "set_internal_mem_attempts": 2,
+      "set_internal_mem_successes": 2
+    },
+    "all_resources_closed": true,
+    "fresh_controls_saved_and_closed_before_shared_initialization": true,
+    "original_artifact_and_input_hashes_unchanged": true,
+    "affinity_environment_cwd_and_frequency_policy_restored": true,
+    "controller_frequency_hz": 1000000000,
+    "controller_temperature_limit_c": 75,
+    "controller_timeout_seconds": 180,
+    "sampled_controller_max_C": 61.0,
+    "worker_seconds": 24.199682555990876,
+    "controller_seconds": 24.73213702600333,
+    "process_peak_RSS_MiB": 854.88671875,
+    "timing_scope": "Diagnostic task and ordinary run observations only; no matched lifecycle or sustained inference speed screen."
+  },
+  "decision": "Advance source-level scheduling and budget work for persistent original contexts. This gate establishes one shared scratch backing across two different serially executed models, not full-model residency or deployment acceptance.",
+  "limits": [
+    "One reused capture: one group2 input and two original DPT frames; group2 outputs do not feed DPT in this component gate.",
+    "Shared forwards run strictly serially. Concurrent consumers of the same scratch pool were not tested or authorized by this result.",
+    "SDK per-context memory fields and OS phase deltas do not establish unique physical costs, an allocator capacity guarantee, or physical8GB operation.",
+    "Parity preserves the fresh flags0 numerical outputs; it does not establish original FP32, pose/depth, trajectory or SLAM quality.",
+    "No matching ABBA latency screen, full-chain rate/P95, stability or all-original-model residency was tested."
+  ],
+  "acceptance": {
+    "two_distinct_original_contexts_shared_pool_serial_forward_gate_passed": true,
+    "physical_unique_memory_saving": false,
+    "all_model_residency": false,
+    "speed": false,
+    "original_FP32_precision": false,
+    "full_model_trajectory_realtime_or_physical8GB": false,
+    "production_defaults_changed": false
+  },
+  "evidence": [
+    {
+      "role": "successful_worker_receipt",
+      "basename": "result.json",
+      "bytes": 94696,
+      "sha256": "fe0eb9646db2e46b5a6f77bf7e694b7eb3761594fbc16fb12db21c5f72ffdb4b"
+    },
+    {
+      "role": "transport_receipt",
+      "basename": "transport.json",
+      "bytes": 20444,
+      "sha256": "c138e84082d8b1f651c196179b5a97a7458037461ed02ffe6d6bff1e8999a351"
+    },
+    {
+      "role": "restoring_controller",
+      "basename": "control.json",
+      "bytes": 18646,
+      "sha256": "7548fe966a540c30ad0299cd1f7e2ba538e74c1d131dad2bd5132bffdc5489a4"
+    },
+    {
+      "role": "executed_worker_source",
+      "basename": "check_group2_depth_shared_scratch_board.py",
+      "bytes": 34605,
+      "sha256": "a069c6ddc9002e69f79cc4d3fcd4bdf70ca003ea0dd250a4c7a62b1a2a14b853"
+    },
+    {
+      "role": "executed_transport_source",
+      "basename": "execute_group2_depth_shared_scratch_host.py",
+      "bytes": 12413,
+      "sha256": "b7c7506fa6c65839dfcf47f3899ea2707c0170dea382743864ec819319777b7b"
+    },
+    {
+      "role": "executed_manifest",
+      "basename": "manifest.json",
+      "bytes": 9250,
+      "sha256": "8873ea569ee72591852a76ac4d07cbdf65af14f7670e0c8fd04beea6ae80b233"
+    },
+    {
+      "role": "original_reference_receipt",
+      "basename": "reference_receipt.json",
+      "bytes": 90625,
+      "sha256": "969ab6f5611efa62d81b5d62625a15815248668e1e079db17ac4d9ed9c96932b"
+    },
+    {
+      "role": "independent_saved_array_and_input_audit",
+      "basename": "saved-audit-r1.json",
+      "bytes": 39498,
+      "sha256": "9b14ad833c2be2ce330e8d8fe7b078342c45c87051918486f619c0ebb6f6e80c"
+    },
+    {
+      "role": "independent_saved_array_auditor_source",
+      "basename": "audit_group2_depth_shared_scratch_saved.py",
+      "bytes": 24552,
+      "sha256": "4060a17e42e8885caac5024e319a1711f5643e4ab3fa32fcdfc0b4dfc3db157f"
+    },
+    {
+      "role": "independent_source_lifetime_budget_audit",
+      "basename": "saved-lifetime-budget-audit-r1.json",
+      "bytes": 17472,
+      "sha256": "685de6cd3fe2f2d1e142e6b222f720a0d2e4e7017e4ce8a9c338e7810348b352"
+    },
+    {
+      "role": "independent_source_lifetime_budget_auditor",
+      "basename": "audit_group2_depth_shared_lifetime_saved.py",
+      "bytes": 15974,
+      "sha256": "766de4f0609738b05bdd6d238628dc8ae258a72af3f33b1cc418d40ee14da0a8"
+    }
+  ],
+  "publication": "Metadata only; no private paths, raw arrays, original weights, graphs or vendor libraries published."
+}

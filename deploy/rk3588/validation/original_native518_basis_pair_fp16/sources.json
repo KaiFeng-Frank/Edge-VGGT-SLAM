@@ -1,0 +1,86 @@
+{
+  "schema": "v127_public_executed_source_manifest",
+  "frozen_actual_executed_sources": [
+    {
+      "file": "compile_basis_pair_fp16.py",
+      "bytes": 13756,
+      "sha256": "2bbf180a9a70444ba592b7898fa23b96b11f36da3859f07cc5b435f0a25acb11",
+      "source_stage": "executed-source-r1"
+    },
+    {
+      "file": "run_compile_A_r1.sh",
+      "bytes": 671,
+      "sha256": "a1ba553532caac433cdd6885e03a95630e0d0fa173de990b62bebf784d9daf57",
+      "source_stage": "executed-source-r1"
+    },
+    {
+      "file": "run_compile_B_r1.sh",
+      "bytes": 671,
+      "sha256": "c619c0b6b6d162e303d5e590fd1c3b809275451b9250098a5e6439c405055275",
+      "source_stage": "executed-source-r1"
+    },
+    {
+      "file": "run_compile_F_r1.sh",
+      "bytes": 671,
+      "sha256": "7de31eb8020688faf3678ea1c5ff1596cc16ceea49f6f2b972a2dea59d5c360b",
+      "source_stage": "executed-source-r1"
+    },
+    {
+      "file": "run_sampled_cpu_stage_r126.py",
+      "bytes": 9763,
+      "sha256": "700ec5b12b6f15cf9907cfacbff3a63258ef70a14cf5efe06ba5470991de1b89",
+      "source_stage": "executed-source-r1"
+    },
+    {
+      "file": "npu_frequency_test.py",
+      "bytes": 6754,
+      "sha256": "cb991cf03abc872e3590dd92f26fd0f5ac548d620c5ca791f9354537a9f793b9",
+      "source_stage": "runtime-source-r1"
+    },
+    {
+      "file": "run_basis_pair_fp16.py",
+      "bytes": 19337,
+      "sha256": "5f07e3dce5c3e897216dede513674b25d2fb97538248110a83a291b2b3d112d3",
+      "source_stage": "runtime-source-r1"
+    },
+    {
+      "file": "run_runtime_r1.sh",
+      "bytes": 908,
+      "sha256": "d6bcc226e4de797fb565d3d48d7bf9f146825a4e91b8ca0ecb91efd562a6350f",
+      "source_stage": "runtime-source-r1"
+    }
+  ],
+  "no_weight_or_array_or_SDK_payloads": true,
+  "pins_only_not_payload": [
+    {
+      "file": "runtime-r1/result.json",
+      "bytes": 98632,
+      "sha256": "3dee54279f62e928903653948e610f7b25e211c5bb7b8846a0f91e8bc02fc0f9"
+    },
+    {
+      "file": "runtime-control-r1/control.json",
+      "bytes": 14589,
+      "sha256": "aa6a3a7b7eea5930fe58fc80f59ce3734e8d26dada791847f95f8d6ab853c491"
+    },
+    {
+      "file": "saved-pair-fp16-audit.json",
+      "bytes": 16785,
+      "sha256": "669429045e554271b9a12f010790e1d8942f5739b6f7997c6547f155ff527369"
+    },
+    {
+      "file": "mixed_precision_boundary_design.json",
+      "bytes": 7209,
+      "sha256": "fad42daf567a1ca3d0064d932e3890f1de19367fcc54c7e4b1480e8ca89c0e61"
+    },
+    {
+      "file": "whole-aggregator-design-review.json",
+      "bytes": 10527,
+      "sha256": "a8f211ef10cdfbd042328f9ea8b5f5badd5c83b569b61c987fc4e65a4e69a18b"
+    },
+    {
+      "file": "basis-boundary-source-review.json",
+      "bytes": 7932,
+      "sha256": "dd5880d101de6ecf7ce77c34e679d70bd028289a9faa681c9c9b17b2752acfeb"
+    }
+  ]
+}

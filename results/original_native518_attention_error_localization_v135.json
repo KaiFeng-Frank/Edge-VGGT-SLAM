@@ -1,0 +1,382 @@
+{
+  "schema": "original_native518_attention_error_localization_v135",
+  "status": "global_attention_update_DC_error_localized_on_pair0_no_precision_or_realtime_acceptance",
+  "original_model_only": true,
+  "scope": "Same real calibration pair0 [0,8], original native518 frame0/global0 graph. Conditional tensor diagnostic, not full-model or trajectory validation.",
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "constraints": {
+    "no_added_model_or_pose_frontend": true,
+    "all_original_layers_tokens_heads_and_resolution_preserved": true,
+    "host_model_forward_or_GPU_execution": false,
+    "heldout_access": false,
+    "output_correction": false,
+    "GitHub_push": false
+  },
+  "related_boundary_result": "original_native518_global_boundary_v134.json",
+  "original_FP32_observer": {
+    "worker_source_sha256": "ac4a28261a029895b80cd9fdc537522d5a6463819f46f6333db523101700d6fb",
+    "worker_receipt_sha256": "7221fc999bffbae4b4108ddf61a5193c4b8013414b6301e4d3f933954e48c388",
+    "transport_source_sha256": "f60bda6310f23e72b8bac521697d91114d03085a106afbf813837f444ee61bc6",
+    "controller_receipt_sha256": "37de7a930818453f80b1a01e3c47a0162dcd5d69cabccb3774191b479726d077",
+    "independent_saved_audit_sha256": "265d7d035a4545c2e2b7c17364eeb982713271d5cf43b40b30145af1f26f0622",
+    "graph_proof": {
+      "original_nodes": 143,
+      "observer_nodes": 143,
+      "original_initializers": 79,
+      "observer_initializers": 79,
+      "only_four_public_original_ValueInfos_appended": true,
+      "whole_original_parent_inverse_ModelProto_byte_equal": true
+    },
+    "observed_original_tensors": [
+      "global0/attn.proj",
+      "global0/ls1",
+      "global0/residual1",
+      "global0/ls2"
+    ],
+    "CPU_calls": 1,
+    "sessions_created": 1,
+    "sessions_dropped": 1,
+    "saved_arrays": 6,
+    "final_comparisons": {
+      "frame_output": {
+        "relative_l2": 0.0,
+        "max_abs": 0.0,
+        "byte_equal": true,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_gate_passed": true
+      },
+      "global_output": {
+        "relative_l2": 0.0,
+        "max_abs": 0.0,
+        "byte_equal": true,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_gate_passed": true
+      }
+    },
+    "CPU_forward_seconds": 5.094883719999416,
+    "peak_rss_mib": 927.89453125,
+    "CPU_timing_is_not_deployment_inference": true,
+    "controller_timeout_seconds": 180,
+    "clock_writes": false
+  },
+  "unchanged_NPU_dump": {
+    "worker_source_sha256": "10e0915c4c4c250bbeb57b18ceda4a368acb9d9301a15aab9564fbdfde3c1d31",
+    "worker_receipt_sha256": "d7d3c5a65aa8049fd18ce9aaa662707d21dc656872f37fe4ecccd5f398b75a7f",
+    "transport_source_sha256": "5faca9e02aa6c0d9b4ab5523eec322774638d36d81ee855950ea963e6b67ebb6",
+    "controller_receipt_sha256": "9331759cedc3d1bf1830c61885c9e2c757a4c7fcafe0a208cd96dbe179ecfc65",
+    "model_sha256": "d854bab34cb9d918f454b1993044232ad37da6447f588a58ebeaff6c2e21690f",
+    "model_recompiled": false,
+    "public_outputs_appended": false,
+    "init_flags": 0,
+    "core_mask": 1,
+    "NPU_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "temperature_limit_c": 75,
+    "original_clock_policy_restored": true,
+    "forward_calls": 1,
+    "contexts_created": 1,
+    "contexts_destroyed": 1,
+    "output_buffers_acquired": 1,
+    "output_buffers_released": 1,
+    "valid_NPY_dump_count": 97,
+    "all_saved_dump_arrays_finite": true,
+    "dump_file_bytes": 716350512,
+    "final_owned_output_byte_equal_normal": true,
+    "original_finite_guard_unchanged": true,
+    "debug_duration_not_normal_performance": true
+  },
+  "root_saved_audit": {
+    "source_sha256": "94f4717b694de3d76320eeea33fd5d4ab59f48195403a9d5030966d3d5095645",
+    "receipt_sha256": "546894a62a0b46486e9e89653cd19311f739242c0cc315fc72e24f4e0a38488d",
+    "final_logical_layout_byte_parity": true,
+    "FP16_Add_closures": {
+      "NPU_residual1": {
+        "float32_sum_then_round_FP16_byte_equal": true,
+        "differing_elements": 0,
+        "max_abs": 0.0
+      },
+      "NPU_final": {
+        "float32_sum_then_round_FP16_byte_equal": true,
+        "differing_elements": 0,
+        "max_abs": 0.0
+      }
+    },
+    "additive_identity_max_abs": 2.220446049250313e-16
+  },
+  "stage_comparisons": {
+    "frame_skip": {
+      "relative_l2": 0.02715791783963286,
+      "error_l2": 7.20925644901152,
+      "max_abs": 0.7530184984207153,
+      "squared_error": 51.973378547616264,
+      "DC_energy_fraction": 0.09619274440854238,
+      "DC_693_597": [
+        5.3659428132914445e-05,
+        0.0009313828878169101
+      ],
+      "top_two_channel_energy_fraction": 0.004628790411553406
+    },
+    "attention_update": {
+      "relative_l2": 0.7946060103921034,
+      "error_l2": 46.99706597188442,
+      "max_abs": 0.8852143287658691,
+      "squared_error": 2208.7242099656714,
+      "DC_energy_fraction": 0.9857250126488349,
+      "DC_693_597": [
+        0.8014731000353806,
+        0.4434690990920942
+      ],
+      "top_two_channel_energy_fraction": 0.7926337226743292
+    },
+    "residual1": {
+      "relative_l2": 0.1891717304548999,
+      "error_l2": 47.48897044180101,
+      "max_abs": 0.8881779909133911,
+      "squared_error": 2255.2023136222224,
+      "DC_energy_fraction": 0.9651819924825313,
+      "DC_693_597": [
+        0.8015408163154847,
+        0.44440257826982843
+      ],
+      "top_two_channel_energy_fraction": 0.777260956610203
+    },
+    "MLP_update": {
+      "relative_l2": 0.06681693674456365,
+      "error_l2": 5.687467627764946,
+      "max_abs": 0.5886897146701813,
+      "squared_error": 32.3472880168744,
+      "DC_energy_fraction": 0.5983704759764549,
+      "DC_693_597": [
+        -0.008727885942320782,
+        -0.055301952666353536
+      ],
+      "top_two_channel_energy_fraction": 0.20544623641968937
+    },
+    "final": {
+      "relative_l2": 0.21048554536236244,
+      "error_l2": 45.54627186215939,
+      "max_abs": 0.8792320489883423,
+      "squared_error": 2074.4628805417087,
+      "DC_energy_fraction": 0.9610044341085189,
+      "DC_693_597": [
+        0.7929233258671067,
+        0.3891064815677695
+      ],
+      "top_two_channel_energy_fraction": 0.7850184749915
+    }
+  },
+  "additive_error_terms": {
+    "frame_skip_error": {
+      "l2": 7.20925644901152,
+      "DC_693_597": [
+        5.3659428132914445e-05,
+        0.0009313828878169101
+      ],
+      "signed_projection_onto_final_error": 0.021816538979874008
+    },
+    "attention_update_error": {
+      "l2": 46.99706597188442,
+      "DC_693_597": [
+        0.8014731000353806,
+        0.4434690990920942
+      ],
+      "signed_projection_onto_final_error": 1.013924125549573
+    },
+    "MLP_update_error": {
+      "l2": 5.687467627764946,
+      "DC_693_597": [
+        -0.008727885942320782,
+        -0.055301952666353536
+      ],
+      "signed_projection_onto_final_error": -0.035866143964207835
+    },
+    "NPU_Add1_rounding": {
+      "l2": 0.03387255309987651,
+      "DC_693_597": [
+        1.4056847945184919e-05,
+        2.096068046049472e-06
+      ],
+      "signed_projection_onto_final_error": 2.7144986605845987e-05
+    },
+    "NPU_Add2_rounding": {
+      "l2": 0.029851976766842432,
+      "DC_693_597": [
+        0.00011039536006168948,
+        5.855798492285062e-06
+      ],
+      "signed_projection_onto_final_error": 9.833427728949585e-05
+    },
+    "negative_FP32_Add1_rounding": {
+      "l2": 6.475548101309745e-06,
+      "DC_693_597": [
+        4.025890091997746e-12,
+        2.218712761812091e-10
+      ],
+      "signed_projection_onto_final_error": -1.766169219298789e-11
+    },
+    "negative_FP32_Add2_rounding": {
+      "l2": 5.4820395319717456e-06,
+      "DC_693_597": [
+        1.338811584809387e-10,
+        1.658023693791155e-10
+      ],
+      "signed_projection_onto_final_error": 1.885272867627487e-10
+    }
+  },
+  "signed_projection_sum": 1.0000000000000002,
+  "interpretation": [
+    "The large constant offset is already present in the global attention update before its residual Add. The later MLP update partly opposes this offset.",
+    "Both residual Adds exactly reproduce float32 summation followed by float16 rounding on their saved input values; the final layout matches the public output bytes.",
+    "Attention update includes upstream normalization/QKV/SDPA/projection/LayerScale effects and propagated frame differences. This evidence does not identify fused Softmax row mass, an accumulator, or one SDK operator as the root cause.",
+    "Signed projections decompose the observed final error vector; they are not causal shares or independent squared-error fractions."
+  ],
+  "next_experiment": {
+    "status": "quantized_calibration_and_heldout_error_reduced_original_gates_failed_full_group_pending",
+    "operation": "Global attention only: mu = mean(V over all 2082 original keys), original PV consumes V-mu, then add mu before the original projection. Three added nodes; original weights unchanged.",
+    "mathematical_identity": "P(V-mu) + mu = PV when original Softmax rows sum to one in real arithmetic.",
+    "rationale": "Preserve the value mean outside the potentially lossy weighted-sum path. This is an exact-arithmetic graph representation hypothesis, not measured-output bias subtraction.",
+    "requirements": [
+      "Matched original board FP32 gate on the four existing calibration inputs.",
+      "Fresh calibration for the changed graph; actual compiler placement of mean, subtraction, restoration and original attention/projection.",
+      "Quantized shared-QKV input and any restored-output requantization remain error boundaries to measure.",
+      "Normal full-block numerical and timing comparison before any integration."
+    ],
+    "result": "original_native518_global_value_mean_v136.json",
+    "current_interpretation": "The complete Vmean and precision configuration reduces pair0 and both reserved heldout errors after fresh calibration and actual compiler inspection, without recalibration for heldouts. No V-leaf-FLOAT16-only control isolates the algebra; probability row mass and Softmax root cause remain unobserved. Fixed/strict gates still fail. Complete original-group integration must preserve retained features for the original depth and other heads."
+  },
+  "acceptance": {
+    "candidate_deployed": false,
+    "numerical_gate_passed": false,
+    "heldout_accuracy": false,
+    "trajectory_quality": false,
+    "fresh_pose_20Hz": false,
+    "P95_100ms": false,
+    "mapping_cadence": false,
+    "sustained_30min": false,
+    "physical_8GB": false
+  },
+  "privacy": "Raw tensors, weight-bearing exports, checkpoints and SDK binaries remain private; public record contains metadata only.",
+  "independent_saved_audit_sha256": "91f5ed1ff326f3e7022ee764cd51ae6cf4ee18dcef24cfe746824e2e423213f0",
+  "saved_V_and_PV_observation": {
+    "audit_sha256": "0afe1438e8de789b67bef8b802f1d9104500c88c7141e1a3ecfafd78b0b7d0ae",
+    "scope": "Only saved-array vector/reduction arithmetic on unchanged native518 calibration pair0 [0,8] S RKNN flags0/core1",
+    "axes": {
+      "dump_order": "head,component,spatial_height,key_or_query",
+      "head_count": 16,
+      "head_components": 64,
+      "keys_and_queries": 2082,
+      "mean_reduction_dump_axis": 3,
+      "all_two_frame_patch_and_special_tokens_included": true,
+      "semantic_ONNX_V_shape": [
+        1,
+        16,
+        2082,
+        64
+      ],
+      "semantic_mean_axes": [
+        2
+      ],
+      "semantic_mean_shape": [
+        1,
+        16,
+        1,
+        64
+      ],
+      "head_indexing": "0-based group index on actual dump axis0 [0..15]; no inferred probability-head behavior"
+    },
+    "aggregate_statistics": {
+      "V_l2": 283.687181803598,
+      "V_DC_energy_fraction": 0.42570985482658935,
+      "V_center_l2_fraction": 0.7578193354444123,
+      "PV_l2": 125.67311660607444,
+      "PV_DC_energy_fraction": 0.6623927697541306,
+      "V_mean_l2": 4.056544105642366,
+      "PV_mean_l2": 2.2416087567244825,
+      "PV_to_V_mean_norm_ratio": 0.5525907517205504,
+      "mean_cosine": 0.5034434777552667,
+      "PV_minus_V_mean_l2": 3.5106339528504087
+    },
+    "zero_PV_groups": [
+      1,
+      13
+    ],
+    "sparse_PV_groups": [
+      {
+        "head": 2,
+        "nonzero_count": 206,
+        "element_count": 133248
+      },
+      {
+        "head": 10,
+        "nonzero_count": 160,
+        "element_count": 133248
+      }
+    ],
+    "PV_saved_grid": {
+      "unique_value_count_including_zero": 144,
+      "unique_nonzero_value_count": 143,
+      "minimum_positive_gap_between_distinct_nonzero_saved_values": 0.020817279815673828,
+      "minimum_positive_nonzero_value": 0.02081736922264099,
+      "nearest_negative_nonzero_value": -0.02081736922264099,
+      "minimum_saved_value": -2.20664119720459,
+      "maximum_saved_value": 2.185823678970337,
+      "nonzero_element_count": 819613,
+      "total_element_count": 2131968,
+      "not_an_internal_probability_scale_measurement": true,
+      "calibrated_output_grid_comparison": {
+        "catalogue_scale": 0.02081736957325655,
+        "catalogue_zero_point": 0.0,
+        "nearest_integer_levels_range": [
+          -106,
+          105
+        ],
+        "all_levels_in_INT8_range": true,
+        "float32_level_times_float32_catalogue_scale_byte_equal_to_all_unique_saved_values": true,
+        "maximum_saved_value_vs_reconstructed_grid_abs_difference": 0.0,
+        "internal_P_or_PV_accumulation_precision_proven": false
+      }
+    },
+    "conditional_uniform_probability_calculation": {
+      "source_file": "single-output-hybrid-r1/pair-A-single-global-output.quantization.cfg",
+      "source_sha256": "1409b299c11ca54ca3bfbbc5f5fbf424ffae284aecd61f0a46171f7008b6c0f7",
+      "entries": {
+        "global0/attention_values_sdpa": {
+          "min": -2.660352945327759,
+          "max": 2.648076295852661,
+          "scale": 0.02081736957325655,
+          "zero_point": 0.0
+        },
+        "global0/attention_values_2sdpa_q_softmax": {
+          "min": 0.0,
+          "max": 0.25837868452072144,
+          "scale": 0.0010132497432185155,
+          "zero_point": -128.0
+        }
+      },
+      "original_key_count": 2082,
+      "uniform_probability": 0.0004803073967339097,
+      "nearest_grid_zero_interval_upper_edge": 0.0005066248716092578,
+      "uniform_probability_less_than_half_catalogue_step": true,
+      "conditional_nearest_integer_code_offset_above_zero_point": 0,
+      "conditional_dequantized_uniform_probability": 0.0,
+      "conditional_uniform_row_mass": 0.0,
+      "assumptions": "Only if fused execution uses this reported probability grid with ordinary nearest rounding and no extra normalization or higher-precision probability path",
+      "actual_probability_row_mass_measured": false,
+      "calibration_catalogue_is_not_fused_internal_execution_proof": true
+    },
+    "limitations": [
+      "The float32 snapshots represent compiled INT8 V and fused SDPA output, not original FP32 V or PV. Original FP32 PV and fused P are not saved; no PV accuracy or probability row sum is measured.",
+      "Row-normalized P can have nonuniform column sums, so mean_queries(PV) need not equal mean_keys(V). Their mismatch, norm ratio and cosine cannot diagnose P row mass.",
+      "Zero or sparse fused output heads are real snapshot observations; they do not distinguish probability quantization, PV accumulation or output-grid effects.",
+      "Shared-QKV quantization remains upstream. Dynamic subtract-and-restore cannot remove a constant V bias already introduced there.",
+      "Dynamic centering minimizes V squared energy over constant head/component offsets but does not guarantee a narrower per-tensor range.",
+      "Exact rewrite assumes mathematical P1=1; actual mean/Sub/restore placement and later requantization must be measured in the derived graph.",
+      "Conditional uniform-row rounding uses the saved calibration catalogue only; actual P, rounding/re-normalization and fused internal arithmetic remain unobserved."
+    ]
+  }
+}

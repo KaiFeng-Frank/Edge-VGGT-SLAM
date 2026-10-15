@@ -1,0 +1,572 @@
+{
+  "schema": "original_native518_query_row_fusion_v174",
+  "status": "full_key_query_row_graph_CPU_gate_mixed_placement_and_descriptors_verified_native_handoff_not_accepted",
+  "original_model_only": true,
+  "scope": {
+    "component": "original global0 transformer block after the original frame0 output",
+    "input_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "original_heads": 16,
+    "head_dimension": 64,
+    "queries": 2082,
+    "keys_per_consumer": 2082,
+    "query_ranges": [
+      [
+        0,
+        694
+      ],
+      [
+        694,
+        1388
+      ],
+      [
+        1388,
+        2082
+      ]
+    ],
+    "original_frame_prefix_executed_in_this_component_gate": false,
+    "conditional_original_FP32_references": true,
+    "reused_engineering_cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "new_final_accuracy_holdout": false
+  },
+  "original_checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "original_parent_graph": {
+    "bytes": 102417959,
+    "sha256": "f7ad01cd93f11b83ee90437811d88a04d96276d50bf98b3f4913fe208db8a457"
+  },
+  "computation": {
+    "producer": "Original full LN1, QKV, Q/K normalization and absolute RoPE once, with one full-key V mean and centered V.",
+    "consumer": "Three ordered694-query calls receive their actual Q/X rows plus full same-case K, Vc and mean; each retains complete attention, WO, norms, residuals and MLP.",
+    "packed_layout_identity": "packed[0,q,h*64+d] = original[0,h,q,d]; unpack(slice(packed,lo:hi))[0,h,j,d] = original[0,h,lo+j,d]",
+    "mean_layout_identity": "packed_mu[0,0,h*64+d] = original_mu[0,h,0,d]",
+    "original_learned_values_unchanged": true,
+    "added_learned_values": false,
+    "original_global_node_count": 56,
+    "original_global_initializer_count": 44,
+    "original_parent_inverse": {
+      "nodes": 146,
+      "initializers": 79,
+      "unchanged_frame_prefix_nodes_retained_for_inverse_only": 90
+    },
+    "source_inverse_proofs": {
+      "all56_original_global_NodeProtos_reconstructed_byte_equal": true,
+      "all44_original_global_initializer_protos_reconstructed_byte_equal": true,
+      "whole146_node79_initializer_parent_ModelProto_inverse_byte_equal": true,
+      "original_QKV_full_Q_then_K_then_V_weights_and_bias_unchanged": true,
+      "original_QK_norm64_and_full_absolute_RoPE_unchanged": true,
+      "full2082_key_mean_computed_once_in_producer": true,
+      "all16_heads_and64_channels_and2082_keys_in_every_consumer": true,
+      "all2082_queries_in_three_ordered_nonoverlapping694_row_calls": true,
+      "original_scale0125_and_full_key_softmax_axis_unchanged": true,
+      "original_full_WO_and_bias_once_per_query_row": true,
+      "original_LayerScale_residual_full1024_channel_norm2_and_exact_GELU_unchanged": true,
+      "original_four_FC2_K1024_products_left_associated_three_sums_and_single_bias_unchanged": true,
+      "query_row_partition_does_not_recompute_KV_or_mean": true,
+      "no_new_learned_values": true
+    },
+    "exact_NPU_rounding_or_accumulator_precision_proven": false
+  },
+  "graphs": [
+    {
+      "key": "qkv_producer",
+      "source_graph": {
+        "nodes": 29,
+        "initializers": 18,
+        "bytes": 13675862,
+        "sha256": "1e0dd256fd93a221ed96d389836df30a3b1bb198276ff56953d1b67cc959f471",
+        "inputs": [
+          {
+            "name": "__global_input",
+            "shape": [
+              1,
+              2082,
+              1024
+            ],
+            "dtype": "float32"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "__query_row_fusion/Q",
+            "shape": [
+              1,
+              2082,
+              1024
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "__query_row_fusion/K",
+            "shape": [
+              1,
+              2082,
+              1024
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "__query_row_fusion/Vc",
+            "shape": [
+              1,
+              2082,
+              1024
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "__query_row_fusion/mu",
+            "shape": [
+              1,
+              1,
+              1024
+            ],
+            "dtype": "float32"
+          }
+        ]
+      },
+      "compiled_model": {
+        "bytes": 7505073,
+        "sha256": "96ebefdfe05301938d09a975157435eeaefa07dcc872c907992ee50a473e9749"
+      },
+      "actual_placement": {
+        "operator_rows": 29,
+        "feature_rows": 45,
+        "constant_rows": 23,
+        "public_CPU_IO_operators": 5,
+        "internal_NPU_operations": 21,
+        "internal_CPU_layouts": [
+          {
+            "id": 7,
+            "op": "Transpose",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "name": "Transpose:global0/value_rs",
+            "input_shape": "(1,64,16,2082)",
+            "output_shape": "(1,2082,16,64)"
+          },
+          {
+            "id": 15,
+            "op": "Transpose",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "name": "Transpose:__query_row_fusion/Q/to_BTHD",
+            "input_shape": "(1,64,16,2082)",
+            "output_shape": "(1,2082,16,64)"
+          },
+          {
+            "id": 20,
+            "op": "Transpose",
+            "dtype": "FLOAT16",
+            "target": "CPU",
+            "name": "Transpose:__query_row_fusion/K/to_BTHD",
+            "input_shape": "(1,64,16,2082)",
+            "output_shape": "(1,2082,16,64)"
+          }
+        ]
+      }
+    },
+    {
+      "key": "query_consumer",
+      "source_graph": {
+        "nodes": 41,
+        "initializers": 31,
+        "bytes": 37796720,
+        "sha256": "43172f13e04c970ca4b723d4b3f19ec5f99d2e536431873b422a8e58b7197e0c",
+        "inputs": [
+          {
+            "name": "__query_row_fusion/Q_rows",
+            "shape": [
+              1,
+              694,
+              1024
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "__query_row_fusion/K",
+            "shape": [
+              1,
+              2082,
+              1024
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "__query_row_fusion/Vc",
+            "shape": [
+              1,
+              2082,
+              1024
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "__query_row_fusion/mu",
+            "shape": [
+              1,
+              1,
+              1024
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "__global_input",
+            "shape": [
+              1,
+              694,
+              1024
+            ],
+            "dtype": "float32"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "global_output",
+            "shape": [
+              1,
+              694,
+              1024
+            ],
+            "dtype": "float32"
+          }
+        ]
+      },
+      "compiled_model": {
+        "bytes": 20049371,
+        "sha256": "50c388839cadae27936969c112d5251f61fc122b930a4e2c37762419c7b8b530"
+      },
+      "actual_placement": {
+        "operator_rows": 31,
+        "feature_rows": 49,
+        "constant_rows": 20,
+        "public_CPU_IO_operators": 6,
+        "internal_NPU_operations": 25,
+        "internal_CPU_layouts": []
+      }
+    }
+  ],
+  "compiler_configuration": {
+    "target_platform": "rk3588",
+    "float_dtype": "float16",
+    "optimization_level": 3,
+    "mean_values": null,
+    "std_values": null,
+    "quant_img_RGB2BGR": false,
+    "model_pruning": false,
+    "remove_reshape": false,
+    "quantize_weight": false,
+    "enable_flash_attention": false,
+    "quantized_dtype": "w8a8",
+    "quantized_algorithm": "normal",
+    "quantized_method": "channel"
+  },
+  "do_quantization": false,
+  "dataset": null,
+  "new_calibration": false,
+  "historical_compile_and_placement_pending_flags_preserved": {
+    "CPU_numerical_gate_pending": true,
+    "NPU_runtime_eligible": false,
+    "later_actual_CPU_gate_recorded_separately": true
+  },
+  "actual_CPU_gate": {
+    "provider": "CPUExecutionProvider",
+    "intra_threads": 4,
+    "inter_threads": 1,
+    "sessions_created": 2,
+    "sessions_dropped": 2,
+    "maximum_live_sessions": 1,
+    "producer_calls": 2,
+    "consumer_calls": 6,
+    "saved_FLOAT32_arrays": 14,
+    "saved_NPY_bytes": 68232960,
+    "original_frame_input_storage_dtype": "float32",
+    "frame_to_global_readonly_reshape": true,
+    "half_cast_invoked": false,
+    "actual_producer_full_K_Vc_mu_used": true,
+    "reference_arrays_used_as_feeds": false,
+    "all_arrays_saved_before_both_own_concat_verdicts": true,
+    "comparisons": [
+      {
+        "id": "pair4",
+        "raw_sha256": "b4a53157453a8e9b46d2df86a34c64569bf66712403452dcde8f25adfdb69027",
+        "comparison": {
+          "relative_l2": 4.690300252710771e-08,
+          "max_abs": 7.152557373046875e-07,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        }
+      },
+      {
+        "id": "pair5",
+        "raw_sha256": "6fbe5130af766422784dcd1a11dfb184d40b9889c4f8f27ae7b1afe2c74075cb",
+        "comparison": {
+          "relative_l2": 4.949157765875529e-08,
+          "max_abs": 7.152557373046875e-07,
+          "outside_count": 0,
+          "fixed_gate_passed": true,
+          "strict_pass": true,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        }
+      }
+    ],
+    "all_fixed_and_strict_gates_passed": true,
+    "gate": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "strict_rtol": 0.0001,
+      "strict_atol": 1e-05
+    },
+    "original_byte_parity_required": false,
+    "runtime_versions": {
+      "numpy": "1.26.4",
+      "onnx": "1.16.1",
+      "onnxruntime": "1.16.0"
+    },
+    "controller_timeout_seconds": 900,
+    "controller_frequency_writes": false,
+    "CPU_sessions_and_controller_closed": true,
+    "root_f_bfree_floor_bytes": 3221225472
+  },
+  "actual_placement": {
+    "all_operator_and_activation_storage_FLOAT16": true,
+    "original_learned_dense_products_on_NPU": 7,
+    "full_channel_norms_and_full_key_mean_FLOAT16_NPU": true,
+    "full_16head_694query_2082key_SDPA_FLOAT16_NPU": true,
+    "consumer_all_internal_operations_NPU": true,
+    "producer_internal_CPU_transposes": 3,
+    "no_CPU_GPU_arithmetic": true,
+    "no_GPU_fallback": true,
+    "strict_all_internal_NPU_placement_passed": false,
+    "printed_ConvAdd_fusions_observed": true,
+    "identical_rounding_boundaries_proven": false
+  },
+  "actual_native_descriptor_query": {
+    "init_flags": 0,
+    "core_masks": {
+      "qkv_producer": 1,
+      "query_consumer": 1
+    },
+    "contexts_created": 2,
+    "contexts_destroyed": 2,
+    "maximum_live_contexts": 1,
+    "runs": 0,
+    "outputs_get_or_release": 0,
+    "IO_memory_allocated_or_bound": false,
+    "required_native8_9_records": 11,
+    "optional_native10_11_records": 11,
+    "all22_returncodes_zero_and_raw_structs_independently_decoded": true,
+    "local_tensor_attr_bytes": 376,
+    "consumer_mu": {
+      "logical_shape": [
+        1,
+        1,
+        1024
+      ],
+      "native8_shape": [
+        1,
+        1,
+        1024,
+        1,
+        1
+      ],
+      "native10_shape": [
+        1,
+        1,
+        1024,
+        1,
+        1
+      ],
+      "native_capacity_bytes": 2048,
+      "rank3_adapter_compatibility_proven": false
+    },
+    "output_capacity_comparison": [
+      {
+        "model": "qkv_producer",
+        "ports": [
+          "Q",
+          "K",
+          "Vc"
+        ],
+        "native9_bytes": 4276224,
+        "native11_bytes": 4263936
+      },
+      {
+        "model": "qkv_producer",
+        "ports": [
+          "mu"
+        ],
+        "native9_bytes": 16384,
+        "native11_bytes": 2048
+      },
+      {
+        "model": "query_consumer",
+        "ports": [
+          "global_output"
+        ],
+        "native9_bytes": 1425408,
+        "native11_bytes": 1421312
+      }
+    ],
+    "descriptor_extent_is_not_payload_layout_or_FD_handoff_proof": true,
+    "resource_and_controller_restoration_verified": true,
+    "transport_bookkeeping": {
+      "original_transport_terminal_status": "failed_preserved_query_row_descriptor_evidence",
+      "error": "KeyError('compile_receipt_sha256')",
+      "actual_worker_field": "compile_receipts_sha256",
+      "location": "Post-pull metadata check, after source/model post-hashes and controller restoration checks.",
+      "hardware_query_failed": false,
+      "original_failure_record_preserved": true,
+      "board_rerun_performed": false,
+      "independent_saved_completion_verified": true
+    }
+  },
+  "acceptance": {
+    "native_adapter_or_FD_handoff_accepted": false,
+    "quality_accepted": false,
+    "deployment_accepted": false,
+    "full_model_trajectory_realtime_or_physical8GB_accepted": false,
+    "later_standard_API_runtime_record": "R175"
+  },
+  "evidence": [
+    {
+      "role": "static exporter",
+      "basename": "export_query_row_fusion_static.py",
+      "bytes": 18219,
+      "sha256": "5bc053155853bd1fcce5ea85a811da467ca26d7be655e63dff22a6637719051e"
+    },
+    {
+      "role": "static graph inverse receipt",
+      "basename": "result.json",
+      "bytes": 23676,
+      "sha256": "d38a0922fcd58a46decbed3a1c9a292badae21e9f554094199ddabb13e3fbd85"
+    },
+    {
+      "role": "static independent peer",
+      "basename": "query-row-fusion-static-peer-r1.json",
+      "bytes": 4052,
+      "sha256": "f95b0dfe1e61042322e9e1e5965d02d4619b346ac2c9857e044487b960b5b0a3"
+    },
+    {
+      "role": "producer noncalibrating compile",
+      "basename": "result.json",
+      "bytes": 4049,
+      "sha256": "e8b65e5a9e7fd1f62f0ac1e6b0ab2ef7badf9b5bc6fa3302fbe5858478aa42aa"
+    },
+    {
+      "role": "consumer noncalibrating compile",
+      "basename": "result.json",
+      "bytes": 4192,
+      "sha256": "da76b798f4301f044ca91b81bceb66d39186ee6539275bab1fbe20348d5b56f0"
+    },
+    {
+      "role": "actual placement audit",
+      "basename": "host-compile-placement-audit-r1.json",
+      "bytes": 31781,
+      "sha256": "9e54823ebc0edfccc1b0a4907bf48442fa748c943badf971209adcd2b4a1c8d0"
+    },
+    {
+      "role": "CPU gate worker",
+      "basename": "check_query_row_fusion_CPU_board.py",
+      "bytes": 26363,
+      "sha256": "d2884da1e23d0492c64674b4f9cdb2c6b0e97f014ad0eba062b400fd520a2cfe"
+    },
+    {
+      "role": "actual CPU gate",
+      "basename": "result.json",
+      "bytes": 44562,
+      "sha256": "e2252492083cbe99ffb956631626fac54f1b4e8344a085de86997ac2ce3175d7"
+    },
+    {
+      "role": "CPU controller",
+      "basename": "vggt-v83-native518queryrowfusioncpur1-control-r1.json",
+      "bytes": 28295,
+      "sha256": "4ba3a83ad59ee0bfe693a867c2e2b86b13fe767007566300a5460719edc1992e"
+    },
+    {
+      "role": "CPU saved-data audit",
+      "basename": "CPU-gate-r1-saved-audit-r1.json",
+      "bytes": 22285,
+      "sha256": "6f69f53e7b7f2e6f8eb7e4d9f706b73090e3301df605543957d1d1641bb84e7c"
+    },
+    {
+      "role": "CPU saved-data auditor",
+      "basename": "audit_query_row_fusion_CPU_saved.py",
+      "bytes": 18809,
+      "sha256": "54fe0f79584c1efc5e030880d9b95d98d6b70b0990295d7f8727ab39656f259f"
+    },
+    {
+      "role": "native descriptor worker",
+      "basename": "query_query_row_fusion_native_io_board.py",
+      "bytes": 24343,
+      "sha256": "b5236a228c08e76f495c8f397ddaab97f6a3a802ca00142d8277361f3c62665d"
+    },
+    {
+      "role": "actual native descriptor query",
+      "basename": "result.json",
+      "bytes": 60708,
+      "sha256": "d41feb8a656d4ce93b9819c56a2e0d723dd915fd6bbd661c9686d92cf6531deb"
+    },
+    {
+      "role": "preserved failed query transport bookkeeping",
+      "basename": "native-io-descriptors-r1-transport.json",
+      "bytes": 10691,
+      "sha256": "7bb1a36ded91aa4c3f2f8ca89b44d664da6a5173e836f55879adf40a0d99a5be"
+    },
+    {
+      "role": "native query restoring controller",
+      "basename": "control.json",
+      "bytes": 2098,
+      "sha256": "2c2cf09bbaa19fe7376c512dd8c602db542b9d3846be3825ee19b9286352ac82"
+    },
+    {
+      "role": "independent saved query completion",
+      "basename": "native-io-descriptors-r1-saved-audit-r1.json",
+      "bytes": 27012,
+      "sha256": "8d796c6aabfddb1edde66005b2d76750535cbecc9f1dc022190fa7a9d69027cf"
+    },
+    {
+      "role": "saved query auditor",
+      "basename": "audit_query_row_native_io_saved.py",
+      "bytes": 19418,
+      "sha256": "17b467dc56c6adc4dfe6226edc315cbacbb7f260334da8340dec0c8cd9211365"
+    }
+  ],
+  "limits": [
+    "Only the original global0 component is exercised on conditional original frame0 CPU endpoints; the frame prefix is not silently substituted or rerun.",
+    "Real-arithmetic/source inversion and the CPU gate do not prove the compiled FLOAT16 numerical behavior or eliminate the three observed producer CPU layouts.",
+    "Native attribute rank/capacity records alone do not prove safe native payload mapping, adjacent FD views, cache coherence or zero-copy compatibility.",
+    "Original model/source/checkpoint licenses remain unchanged. Public evidence contains metadata and hashes only; captured arrays, learned exports and SDK binaries remain private."
+  ]
+}

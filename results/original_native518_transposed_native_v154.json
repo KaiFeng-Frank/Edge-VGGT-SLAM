@@ -1,0 +1,367 @@
+{
+  "schema": "original_native518_transposed_native_v154",
+  "status": "FP32_gates_passed_full_score_CPU_transpose_relocated_runtime_ineligible_no_NPU_forward",
+  "summary": "Transposing the score/value contraction preserves the original FP32 output and removes the old PV-input CPU transpose. The compiler inserts a full-score CPU transpose before the key-maximum tree instead; runtime eligibility remains false. Static allocation decreases, without a measured speed result.",
+  "scope": {
+    "board": "RK3588S",
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "component": "One genuine captured original global0 attention tail",
+    "heads": 16,
+    "queries": 2082,
+    "complete_keys": 2082,
+    "head_dim": 64,
+    "QKV_and_output_shape": [
+      1,
+      16,
+      2082,
+      64
+    ],
+    "learned_parameters_in_probe": 0,
+    "original_Vmean_and_complete_denominator_retained": true,
+    "full_model_or_SLAM_executed": false
+  },
+  "exact_source_change": {
+    "parent_record": "original_native518_pool_sigmoid_v153.json",
+    "original_nodes": 27,
+    "candidate_nodes": 40,
+    "original_initializers": 5,
+    "candidate_initializers": 17,
+    "unchanged_original_node_protos": 8,
+    "all_original_initializer_protos_byte_equal": true,
+    "whole_R153B_inverse_ModelProto_byte_equal": true,
+    "public_IO_byte_equal": true,
+    "algebra": "S_T=.125 KQ^T; m_T=max_keys(S_T); s=Sigmoid(S_T-m_T); E_T=s/(1-s); Z_T=sum_keys(E_T); mu=mean_keys(V); O_T=(V-mu)^T E_T/Z_T+mu^T; transpose O_T back to the unchanged public output.",
+    "key_maximum": {
+      "Split_nodes": 11,
+      "elementwise_Max_nodes": 13,
+      "key_axis": 2,
+      "main_fold_original_keys": 2048,
+      "carried_tail_original_key_counts": [
+        2,
+        32
+      ],
+      "all2082_original_keys_contribute_exactly_once": true,
+      "tails_are_current_reduced_values_not_original_score_indices": true
+    },
+    "denominator_axis": -2,
+    "mean_value_axis_unchanged": 2,
+    "transposed_numerator_shape": [
+      1,
+      16,
+      64,
+      2082
+    ],
+    "transposed_denominator_shape": [
+      1,
+      16,
+      1,
+      2082
+    ],
+    "original_QK_and_PV_MACs_unchanged": 8877514752,
+    "augmented65_row_PV_used": false,
+    "added_nonlearned_initializers": "Eleven INT64 Split-size vectors and one INT64 key-sum axis; all original five bytes remain unchanged."
+  },
+  "board_FP32_gate": {
+    "CPU_provider": "CPUExecutionProvider",
+    "one_thread": true,
+    "sequential_sessions": 2,
+    "forward_calls": 2,
+    "saved_finite_outputs": 2,
+    "raw_outputs_saved_before_verdict": true,
+    "original_arrays_read_only_and_raw_hashes_unchanged_after_each_call": true,
+    "unchanged_thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "strict_atol": 1e-05,
+      "strict_rtol": 0.0001
+    },
+    "comparisons": {
+      "A_pool_sigmoid_baseline": {
+        "relative_l2": 1.6143474604723137e-07,
+        "max_abs": 4.5299530029296875e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      },
+      "B_transposed_native_candidate": {
+        "relative_l2": 3.290563211000122e-07,
+        "max_abs": 1.0013580322265625e-05,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      },
+      "candidate_vs_pool_sigmoid": {
+        "relative_l2": 2.9966215740846466e-07,
+        "max_abs": 6.67572021484375e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      }
+    }
+  },
+  "noncalibrating_compile": {
+    "toolkit": "2.3.2",
+    "float_dtype": "float16",
+    "do_quantization": false,
+    "new_calibration": false,
+    "NPU_inference_calls": 0,
+    "worker_wall_seconds": 28.00916873099777,
+    "CPU_controller_wall_seconds": 28.860576107996167,
+    "offline_peak_worker_RSS_MiB": 1500.8515625,
+    "compiled_graphs": {
+      "A_pool_sigmoid_baseline": {
+        "file": "A-pool-sigmoid.rknn",
+        "bytes": 3142584,
+        "sha256": "c08483eb92a3ca0c1ecb5f805e30d5f31b70d4b853928dd3eebb66e45faab7ea",
+        "do_quantization": false
+      },
+      "B_transposed_native_candidate": {
+        "file": "B-transposed-native.rknn",
+        "bytes": 2370232,
+        "sha256": "9f0e84790103524275d23556937433a0aeda662b30d50a0b9fdefdfd9b84b4cd",
+        "do_quantization": false
+      }
+    }
+  },
+  "actual_placement": {
+    "A_pool_sigmoid_baseline": {
+      "operators": 37,
+      "feature_rows": 49,
+      "constant_rows": 7,
+      "precision_target_counts": {
+        "FLOAT16/CPU": 6,
+        "FLOAT16/NPU": 30,
+        "FLOAT/NPU": 1
+      },
+      "all_explicit_rows_and_starred_spans_consumed": true,
+      "internal_CPU_operations": [
+        {
+          "id": 27,
+          "op": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "name": "Transpose:__deferred_softmax/exponentials_tp#1_rs"
+        },
+        {
+          "id": 35,
+          "op": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "name": "Transpose:global0/attention_values_tp"
+        }
+      ],
+      "SDK_reported_static_memory": {
+        "internal_memory_KB_as_printed": 979871.0,
+        "weight_memory_KB_as_printed": 10.5625
+      }
+    },
+    "B_transposed_native_candidate": {
+      "operators": 49,
+      "feature_rows": 74,
+      "constant_rows": 18,
+      "precision_target_counts": {
+        "FLOAT16/CPU": 6,
+        "FLOAT16/NPU": 42,
+        "FLOAT/NPU": 1
+      },
+      "all_explicit_rows_and_starred_spans_consumed": true,
+      "internal_CPU_operations": [
+        {
+          "id": 11,
+          "op": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "name": "Transpose:global0/attention_scores_mm_rs"
+        },
+        {
+          "id": 46,
+          "op": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "name": "Transpose:__global_value_mean/centered_PV_tp"
+        }
+      ],
+      "SDK_reported_static_memory": {
+        "internal_memory_KB_as_printed": 695102.0,
+        "weight_memory_KB_as_printed": 11.25
+      }
+    }
+  },
+  "actual_candidate_findings": {
+    "all13_Max_and11_Split_NPU": true,
+    "QK_and_PV_NPU": true,
+    "complete_denominator_sum": {
+      "id": 42,
+      "op": "Conv",
+      "dtype": "FLOAT16",
+      "target": "NPU",
+      "name": "Conv:__deferred_softmax/sum_all_keys_2conv"
+    },
+    "no_internal_CPU_arithmetic": true,
+    "full_score_CPU_Transpose": {
+      "id": 11,
+      "name": "Transpose:global0/attention_scores_mm_rs",
+      "input_logical_shape": [
+        16,
+        2082,
+        1,
+        2082
+      ],
+      "output_logical_shape": [
+        1,
+        16,
+        2082,
+        2082
+      ],
+      "logical_elements": 69355584,
+      "observed_input_span_bytes": 139277888,
+      "position": "After the QK product, before the key-channel maximum tree"
+    },
+    "previous_R153_full_score_CPU_Transpose": {
+      "id": 27,
+      "name": "Transpose:__deferred_softmax/exponentials_tp#1_rs",
+      "position": "Before the original unnormalized PV product"
+    },
+    "old_PV_input_transpose_absent": true,
+    "full_score_CPU_transpose_eliminated": false,
+    "small_public_layout_CPU_Transpose": {
+      "id": 46,
+      "name": "Transpose:__global_value_mean/centered_PV_tp",
+      "component_runtime_policy": "May be allowlisted separately; it does not excuse the full-score CPU conversion."
+    },
+    "literal_FLOAT_NPU_operator": {
+      "id": 39,
+      "op": "Sub",
+      "name": "Sub:__pool_sigmoid/positive_sigmoid_denominator",
+      "observed_activation_storage": "FLOAT16",
+      "observed_scalar_one_constant": "FLOAT",
+      "hidden_arithmetic_or_accumulator_precision_established": false
+    },
+    "current_R153B_baseline_op_native_shape_dtype_and_size_signatures_unchanged": true,
+    "SDK_reported_static_internal_memory_KB": {
+      "baseline": 979871.0,
+      "candidate": 695102.0
+    },
+    "SDK_reported_static_internal_memory_ratio": 0.7093811328225859,
+    "memory_scope": "Printed SDK static allocations, not measured runtime RSS, traffic, occupancy, or a physical 8 GB result.",
+    "all_internal_operations_NPU": false
+  },
+  "runtime_gate": {
+    "runtime_diagnostic_eligible": false,
+    "conditions": {
+      "saved_FP32_gates_independently_verified": true,
+      "all_actual_rows_consumed": true,
+      "unchanged_R153B_baseline_actual_lowering_verified": true,
+      "closed_CPU_SDK_and_controller_resources_verified": true,
+      "candidate_QK_and_PV_NPU": true,
+      "candidate_all_Max_and_Split_NPU": true,
+      "candidate_sum_NPU": true,
+      "candidate_has_no_internal_CPU_arithmetic": true,
+      "candidate_has_no_full_score_CPU_transpose": false,
+      "candidate_only_allowlisted_small_public_CPU_transpose": false,
+      "candidate_no_internal_GPU_fallback": true,
+      "sole_public_output_FLOAT16": true
+    },
+    "rejection_reasons": [
+      "candidate_has_no_full_score_CPU_transpose",
+      "candidate_only_allowlisted_small_public_CPU_transpose"
+    ],
+    "NPU_runtime_attempted": false,
+    "candidate_accepted": false,
+    "decision": "Stop before NPU inference. Preserve the result and investigate an explicit packed native shape representation separately."
+  },
+  "cleanup": {
+    "CPU_sessions_created": 2,
+    "CPU_sessions_dropped": 2,
+    "CPU_sessions_dropped_before_SDK": true,
+    "SDK_sessions_created": 2,
+    "SDK_sessions_released": 2,
+    "successful_compiler_API_calls": 8,
+    "all_original_inputs_and_sources_unchanged": true,
+    "CPU_controller_timeout_seconds": 900,
+    "frequency_written": false,
+    "process_group_gone_and_leader_reaped": true,
+    "cwd_affinity_environment_and_tempfile_cache_restored": true
+  },
+  "limits": [
+    "The exact real-arithmetic transformation and original captured FP32 gate do not establish the noncalibrating FLOAT16 NPU result.",
+    "A whole-score CPU conversion was relocated, not removed. A smaller SDK allocation is not an observed speedup.",
+    "The same one-capture attention component is not the current merged INT8 whole group, complete VGGT model, or SLAM.",
+    "No NPU inference, runtime latency, speedup, sustained rate, P95, trajectory quality, fresh-pose 20 Hz, full SLAM realtime, camera, stability, or physical 8 GB acceptance follows.",
+    "Repository code and original VGGT weights have separate terms; BSD-2-Clause does not grant commercial rights to the weights."
+  ],
+  "evidence": [
+    {
+      "role": "static_exporter_source",
+      "file": "export_transposed_native_graphs.py",
+      "bytes": 16186,
+      "sha256": "4b57a7fbc2f26bc1ea37cefd1c2eec69566387ea05d79c98b1a24840590aac1e"
+    },
+    {
+      "role": "static_inverse_receipt",
+      "file": "result.json",
+      "bytes": 13894,
+      "sha256": "a65401ace24b6b46cf5ea4bbf6661711e935c6ae9b5ddedd69df327b730682e0"
+    },
+    {
+      "role": "independent_static_peer",
+      "file": "static-independent-peer-r1.json",
+      "bytes": 4041,
+      "sha256": "0204a17de755bcccc52e626e30e8ba2c168ac6ebef854447986464a11c447273"
+    },
+    {
+      "role": "board_gate_compile_worker_source",
+      "file": "compile_transposed_native_board.py",
+      "bytes": 20459,
+      "sha256": "fa833e745424d9371bd606c7f4b4dceff80ff46af790863a5344e0b401f08f5a"
+    },
+    {
+      "role": "board_gate_compile_transport_source",
+      "file": "execute_transposed_native_host.py",
+      "bytes": 12866,
+      "sha256": "cef6929bb73ea5e0f54e99c3f3c7ed13c2af0537ca46a1dc29ff5489e15486ab"
+    },
+    {
+      "role": "actual_gate_compile_receipt",
+      "file": "result.json",
+      "bytes": 22990,
+      "sha256": "351cfba45dd5225b935bee8fca7590a71f9f7b3055e5388f2ef9b89fabe4012a"
+    },
+    {
+      "role": "actual_full_compiler_log",
+      "file": "vggt-v83-native518transposednativeprober1-r1.log",
+      "bytes": 82615,
+      "sha256": "c3b94c5f48cdf7924464d620a40cfdf9e05d55d17b23d4be72376c35d49fdeee"
+    },
+    {
+      "role": "actual_CPU_controller",
+      "file": "vggt-v83-native518transposednativeprober1-control-r1.json",
+      "bytes": 116924,
+      "sha256": "f9a36b24c8264c90c1fb3f879cf34437665eaa659e546440d2d3d5d20eab80bf"
+    },
+    {
+      "role": "actual_transport_pull_receipt",
+      "file": "board-r1-transport.json",
+      "bytes": 15241,
+      "sha256": "c807e636af47d74a1fc373ac011d41167ae3fefa786b636c392a726cbecfb8ff"
+    },
+    {
+      "role": "independent_saved_array_and_table_audit",
+      "file": "board-r1-saved-audit-r2.json",
+      "bytes": 134673,
+      "sha256": "3c91121dc60006330219777c12d04732741eba39a121cbadd49d6809845e01c6"
+    },
+    {
+      "role": "saved_auditor_source",
+      "file": "audit_transposed_native_saved.py",
+      "bytes": 21588,
+      "sha256": "784d1fe33f9b6f4af91ffd55cbc338585cb8ad2d53e4a3ea75e0b3f5ba9f6c8c"
+    }
+  ]
+}

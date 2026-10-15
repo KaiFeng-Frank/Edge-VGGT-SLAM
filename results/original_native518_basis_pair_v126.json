@@ -1,0 +1,837 @@
+{
+  "schema": "original_native518_basis_pair_v126",
+  "status": "board_original_FP32_basis_pair_passed_independent_saved_audit_verified",
+  "decision": "The real-input frame0/global0 FP32 gate supports testing the same residual basis in a larger original graph. It does not adopt a low-precision configuration or establish an NPU/full-model speedup.",
+  "original_model_only": true,
+  "production_defaults_changed": false,
+  "deployment_candidate_accepted": false,
+  "execution": {
+    "board": "RK3588S",
+    "backend": "CPU ONNX Runtime 1.16.0",
+    "CPU_threads": 1,
+    "CPU_affinity": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "maximum_simultaneous_ORT_sessions": 1,
+    "graphs_executed": 6,
+    "canonical_saved_outputs": 12,
+    "Torch_RKNN_GPU_or_host_NN_execution_in_this_experiment": false,
+    "checkpoint_deserialized": false
+  },
+  "graph_scope": {
+    "unit": "Complete original frame0 then global0; native B1 frame branches share their original learned weights",
+    "original_image_shape": [
+      2,
+      3,
+      392,
+      518
+    ],
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "frame_output_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "global_output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "original_learned_tensors_verified": 36,
+    "all_original_tokens_and_keys_kept": true,
+    "original_qk_normalization_RoPE_softmax_and_Erf_nodes_unchanged": true,
+    "global_FC2_K4_slices_partitions_and_sum_order_preserved": true,
+    "dense_MAC_count_reduced": false,
+    "internal_QKV_FC1_separately_observed": false
+  },
+  "variants": {
+    "A": "Pinned original B1 frame0 plus original global0 FC2K4",
+    "F": "Identity residual basis; original norm affine and LayerScale folded into adjacent original linear weights/biases",
+    "B": "Fixed mean-preserving R=((J4-2I4)/2) tensor-power5; same folds and persistent residual coordinates through both blocks"
+  },
+  "basis": {
+    "dimension": 1024,
+    "learned_or_external_rotation": false,
+    "fold_arithmetic": "Offline float64 factorized R then float32 derived weights; original checkpoint unchanged",
+    "LayerNorm_core": "Original bare mean/variance normalization and epsilon 1e-5; affine folded exactly once",
+    "online_gate_boundary": "One initial R and two canonical inverse-R MatMuls; no canonical restoration between frame and global",
+    "weight_storage": "Within each transformed graph, derived weights replace original linear payloads rather than retaining duplicate obsolete large tensors. The three separately saved comparison graphs each contain weights."
+  },
+  "input_cases": [
+    {
+      "id": "cpu_prefix",
+      "provenance": "original_CPU_DINO24_and_prefix",
+      "source_pair_indices": [
+        32,
+        40
+      ],
+      "input_metadata": {
+        "bytes": 8528000,
+        "sha256": "0da16543ca040e685f7fe895854e90bc70e249e94a9f1fb3fce45f685d7ad955",
+        "raw_sha256": "a2192f0aba3ac6b5c9c9ecce6bd3534ac91ea2fb464ea7409c5ee2309af0839c",
+        "shape": [
+          2,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      "matched_original_Torch_same_input_reference_available": true
+    },
+    {
+      "id": "npu_prefix",
+      "provenance": "actual_deployed_NPU_DINO24_and_original_prefix",
+      "source_pair_indices": [
+        32,
+        40
+      ],
+      "input_metadata": {
+        "bytes": 8528000,
+        "sha256": "cf14545b0301078647b795fa75fd610037e9b7683c7a217da9bf6c10bc6581cf",
+        "raw_sha256": "3c10121544179cdf4cc89dbdff423a31dc7d82a45f3e0339d1ef3e3a490429f6",
+        "shape": [
+          2,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      "matched_original_Torch_same_input_reference_available": false
+    }
+  ],
+  "input_scope": "Two different prefix tensors from the same real TUM pair [32,40], CPU-derived and actual NPU-derived. Not independent images/scenes, calibration or held-out evaluation. Only cpu_prefix has matched original Torch endpoints; both cases compare F/B with A on their own exact input.",
+  "fixed_gate": {
+    "relative_l2_max": 1e-05,
+    "max_abs_max": 0.001,
+    "scope": "Unchanged original R98 B1 numeric gate"
+  },
+  "independent_elementwise_diagnostic": {
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "is_hard_gate": false,
+    "all_compared_endpoints_passed": true,
+    "total_outside_count": 0
+  },
+  "FP32_numeric_gate_passed": true,
+  "canonical_transformed_outputs_byte_equal_to_A": false,
+  "candidate_B_worst_vs_A_same_input": {
+    "relative_l2": 8.670498893487247e-07,
+    "max_abs": 7.62939453125e-06,
+    "strict_outside_count": 0
+  },
+  "candidate_B_worst_vs_matched_original_Torch_cpu_prefix": {
+    "relative_l2": 1.3609994490360942e-06,
+    "max_abs": 1.633167266845703e-05,
+    "strict_outside_count": 0
+  },
+  "checks": [
+    {
+      "input_id": "cpu_prefix",
+      "variant": "A",
+      "fixed_numeric_gate_passed": true,
+      "outputs": [
+        {
+          "file": "cpu_prefix-A-frame_output.npy",
+          "bytes": 8528000,
+          "sha256": "5530141057500081f4b9447906db36a1ff58c17a30cc6e1b9dd317e32de50add",
+          "shape": [
+            2,
+            1041,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 8527872,
+          "raw_sha256": "c6d557cd3f56e297484be06e08d778fcb51a595b32829b377c6ce674b22f4084",
+          "finite": true
+        },
+        {
+          "file": "cpu_prefix-A-global_output.npy",
+          "bytes": 8528000,
+          "sha256": "06b09363179862dc272af689c035291b8846f453f14cd694a23d282034a77250",
+          "shape": [
+            1,
+            2082,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 8527872,
+          "raw_sha256": "bcd0290866c793b3a99a8189b74e63f9fce00efe52ca180c561be8eb4c212488",
+          "finite": true
+        }
+      ],
+      "comparisons": {
+        "frame_output_vs_original_A_same_input": {
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": true
+        },
+        "frame_output_vs_original_Torch_same_input": {
+          "relative_l2": 9.251926281541744e-07,
+          "max_abs": 1.5735626220703125e-05,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "global_output_vs_original_A_same_input": {
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": true
+        },
+        "global_output_vs_original_Torch_same_input": {
+          "relative_l2": 1.1570987452254038e-06,
+          "max_abs": 1.6570091247558594e-05,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        }
+      },
+      "session_dropped": true
+    },
+    {
+      "input_id": "cpu_prefix",
+      "variant": "F",
+      "fixed_numeric_gate_passed": true,
+      "outputs": [
+        {
+          "file": "cpu_prefix-F-frame_output.npy",
+          "bytes": 8528000,
+          "sha256": "3e9492d73e0c7dfc7911cc8b6fddf127a8794c1c7fa8253c1f0def2032278df5",
+          "shape": [
+            2,
+            1041,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 8527872,
+          "raw_sha256": "7c61a11fe60403c86a7b41db75075b563dddc216190a98fe9c0669ab99e31ef1",
+          "finite": true
+        },
+        {
+          "file": "cpu_prefix-F-global_output.npy",
+          "bytes": 8528000,
+          "sha256": "dcc88c6d14c311cd575e12692f220b777e830c56d90a97b977b3fee4c0bf7937",
+          "shape": [
+            1,
+            2082,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 8527872,
+          "raw_sha256": "aeca596a2620411d24ecb71e194a177c4e02aba1741437b1334a34daceb3dae4",
+          "finite": true
+        }
+      ],
+      "comparisons": {
+        "frame_output_vs_original_A_same_input": {
+          "relative_l2": 1.3019730375490477e-07,
+          "max_abs": 2.384185791015625e-06,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "frame_output_vs_original_Torch_same_input": {
+          "relative_l2": 9.246705041630761e-07,
+          "max_abs": 1.621246337890625e-05,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "global_output_vs_original_A_same_input": {
+          "relative_l2": 1.7976894980902425e-07,
+          "max_abs": 2.2649765014648438e-06,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "global_output_vs_original_Torch_same_input": {
+          "relative_l2": 1.1564905670147232e-06,
+          "max_abs": 1.6570091247558594e-05,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        }
+      },
+      "session_dropped": true
+    },
+    {
+      "input_id": "cpu_prefix",
+      "variant": "B",
+      "fixed_numeric_gate_passed": true,
+      "outputs": [
+        {
+          "file": "cpu_prefix-B-frame_output.npy",
+          "bytes": 8528000,
+          "sha256": "35dacba5b663342aa8308f087d0077b9c8d040da1e1c05fdf053dfe4a6ade6a6",
+          "shape": [
+            2,
+            1041,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 8527872,
+          "raw_sha256": "6a1da8421f7f55a78d91d25afb0aa6c9e6168b1f532fe00a448829e11267631a",
+          "finite": true
+        },
+        {
+          "file": "cpu_prefix-B-global_output.npy",
+          "bytes": 8528000,
+          "sha256": "4efc7150b4929405a4000ba74ad6ffbc3d958f9a3440f651559958a536b07172",
+          "shape": [
+            1,
+            2082,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 8527872,
+          "raw_sha256": "8b1c159207ea852ca14c3e8a61dd71c5cfe74dd6b1096a8f780cf30e01b03557",
+          "finite": true
+        }
+      ],
+      "comparisons": {
+        "frame_output_vs_original_A_same_input": {
+          "relative_l2": 7.412206331931495e-07,
+          "max_abs": 6.67572021484375e-06,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "frame_output_vs_original_Torch_same_input": {
+          "relative_l2": 1.098592294199806e-06,
+          "max_abs": 1.5735626220703125e-05,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "global_output_vs_original_A_same_input": {
+          "relative_l2": 8.647517872797276e-07,
+          "max_abs": 5.900859832763672e-06,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "global_output_vs_original_Torch_same_input": {
+          "relative_l2": 1.3609994490360942e-06,
+          "max_abs": 1.633167266845703e-05,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        }
+      },
+      "session_dropped": true
+    },
+    {
+      "input_id": "npu_prefix",
+      "variant": "A",
+      "fixed_numeric_gate_passed": true,
+      "outputs": [
+        {
+          "file": "npu_prefix-A-frame_output.npy",
+          "bytes": 8528000,
+          "sha256": "276b06d03ab2522142c0196048c3aed34613fced4b0992a53986d44b87d13ef7",
+          "shape": [
+            2,
+            1041,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 8527872,
+          "raw_sha256": "b29225f7221b211d79d23f0905368d8f2ad8458fdd37736c03d823b8464bd8ec",
+          "finite": true
+        },
+        {
+          "file": "npu_prefix-A-global_output.npy",
+          "bytes": 8528000,
+          "sha256": "e9868af594ccfa7e533a1afc958bf43342321d91abe4ea7e3b41d316a7761f1d",
+          "shape": [
+            1,
+            2082,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 8527872,
+          "raw_sha256": "4070be440af060a2603b0e5f293d8765583681acb8ad8416eccaaf1e3660a6f1",
+          "finite": true
+        }
+      ],
+      "comparisons": {
+        "frame_output_vs_original_A_same_input": {
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": true
+        },
+        "global_output_vs_original_A_same_input": {
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": true
+        }
+      },
+      "session_dropped": true
+    },
+    {
+      "input_id": "npu_prefix",
+      "variant": "F",
+      "fixed_numeric_gate_passed": true,
+      "outputs": [
+        {
+          "file": "npu_prefix-F-frame_output.npy",
+          "bytes": 8528000,
+          "sha256": "03bfad9fbef2c68b78a2516f2a2ae1da63e3ff895e5703a0ac944f46dc3cbd38",
+          "shape": [
+            2,
+            1041,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 8527872,
+          "raw_sha256": "373e2c584016be5da537919441a03b41995bbec263615b79706f782d577e4af3",
+          "finite": true
+        },
+        {
+          "file": "npu_prefix-F-global_output.npy",
+          "bytes": 8528000,
+          "sha256": "02598593846d4a14be2aa3974ce631c581405b1191d3c435789483ba74fbe618",
+          "shape": [
+            1,
+            2082,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 8527872,
+          "raw_sha256": "05a4c9f01cb92b0c32a569d72e08013842be91b48b2c18661b232ea85eb8af43",
+          "finite": true
+        }
+      ],
+      "comparisons": {
+        "frame_output_vs_original_A_same_input": {
+          "relative_l2": 1.2873612333557234e-07,
+          "max_abs": 2.384185791015625e-06,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "global_output_vs_original_A_same_input": {
+          "relative_l2": 1.775867824148766e-07,
+          "max_abs": 2.2649765014648438e-06,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        }
+      },
+      "session_dropped": true
+    },
+    {
+      "input_id": "npu_prefix",
+      "variant": "B",
+      "fixed_numeric_gate_passed": true,
+      "outputs": [
+        {
+          "file": "npu_prefix-B-frame_output.npy",
+          "bytes": 8528000,
+          "sha256": "fa4156346a4d360ac94a38a104ccfff09d6aa4faba8cc69a95d1227ddafab804",
+          "shape": [
+            2,
+            1041,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 8527872,
+          "raw_sha256": "83ca580e6e6a91a3f4d178787b19082be1c6d2ccdcb300e0398c9b8dcb10cbf6",
+          "finite": true
+        },
+        {
+          "file": "npu_prefix-B-global_output.npy",
+          "bytes": 8528000,
+          "sha256": "a53766ed927932051f1f1aae05fa7894623e93829253b0251faaa99f57000af1",
+          "shape": [
+            1,
+            2082,
+            1024
+          ],
+          "dtype": "float32",
+          "tensor_bytes": 8527872,
+          "raw_sha256": "92246f60de74b00782085f3345af1fd0b3d5376bcbdae6b44e4e8563efbea1a4",
+          "finite": true
+        }
+      ],
+      "comparisons": {
+        "frame_output_vs_original_A_same_input": {
+          "relative_l2": 7.430907179597915e-07,
+          "max_abs": 7.62939453125e-06,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "global_output_vs_original_A_same_input": {
+          "relative_l2": 8.670498893487247e-07,
+          "max_abs": 5.4836273193359375e-06,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        }
+      },
+      "session_dropped": true
+    }
+  ],
+  "graphs": [
+    {
+      "key": "A",
+      "onnx": {
+        "file": "pair-A.onnx",
+        "bytes": 102417440,
+        "sha256": "57b60feceea0edb57ca4cea38200d6ea47d4e4ee51e4a546357267cbc9f676bb"
+      },
+      "nodes": 143,
+      "initializers": 79,
+      "basis_persistent_frame_to_global": false,
+      "canonical_outputs_restored": true,
+      "original_K4_partition_and_sum_node_order_preserved": true,
+      "original36_learned_values_verified": true
+    },
+    {
+      "key": "F",
+      "onnx": {
+        "file": "pair-F.onnx",
+        "bytes": 102384508,
+        "sha256": "dd1e9d5c7baffac7390523c1dabab2877372073a07179654287e9c70edf91a57"
+      },
+      "nodes": 143,
+      "initializers": 71,
+      "basis_persistent_frame_to_global": false,
+      "canonical_outputs_restored": true,
+      "original_K4_partition_and_sum_node_order_preserved": true,
+      "original36_learned_values_verified": true
+    },
+    {
+      "key": "B",
+      "onnx": {
+        "file": "pair-B.onnx",
+        "bytes": 106579200,
+        "sha256": "dacaec9a1dee72b83460c3109540c11c67683ba8e5ccc97428ed3f8bb1da719e"
+      },
+      "nodes": 146,
+      "initializers": 72,
+      "basis_persistent_frame_to_global": true,
+      "canonical_outputs_restored": true,
+      "original_K4_partition_and_sum_node_order_preserved": true,
+      "original36_learned_values_verified": true
+    }
+  ],
+  "graph_and12_output_bytes": 413717148,
+  "planned_byte_budget": 524288000,
+  "sources": {
+    "export_basis_pair_board.py": {
+      "bytes": 29668,
+      "sha256": "73affeb0b78a794ed214cadcf0307d164ef74f79d52b779bc579e906a1089b70"
+    },
+    "basis-pair-inputs-r1.json": {
+      "bytes": 4850,
+      "sha256": "442e22d5f8aaa033604610c92d5ce6a8b889005601f3d9f1cf78394c4f41842a"
+    },
+    "check_mean_preserving_basis.py": {
+      "bytes": 8421,
+      "sha256": "0130df51f4aaa5aa7d43d2bbae470aa8b3525a900bf1417e16d3fb6d2c63acbe"
+    },
+    "mean-preserving-basis-algebra.json": {
+      "bytes": 2453,
+      "sha256": "08036d7c9702c4c854752ab98c476af298b2736fae45817d22a71394df3a31e5"
+    },
+    "run_sampled_cpu_stage_r126.py": {
+      "bytes": 9763,
+      "sha256": "700ec5b12b6f15cf9907cfacbff3a63258ef70a14cf5efe06ba5470991de1b89"
+    },
+    "run_export_r2.sh": {
+      "bytes": 738,
+      "sha256": "466101fc445883ee67bc1754a169c96ae84767723e719954cf53d0fc1af228e9"
+    },
+    "run_check_r2.sh": {
+      "bytes": 882,
+      "sha256": "035146ebc540d10df46b8428634d8baab457d6c4fc59620b5228fd0e898e4581"
+    }
+  },
+  "checkpoint_lineage": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "original_source_sha256": {
+    "vggt_slam/runtime.py": "f36bb5b87fbdbf03984ea3e1466e6ee27865a540ae3e5abd4ee07a45538e23f5",
+    "vggt_slam/checkpoint_identity.py": "9fc0b927f6a68ac6ca55194616104febb1c488370593d4be60e8dba5bc336461",
+    "third_party/vggt/vggt/models/vggt.py": "64ce0625effa8569cac5da527532defa22bb3d3f1e4facfaf54fbd329740bde6",
+    "third_party/vggt/vggt/models/aggregator.py": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd",
+    "third_party/vggt/vggt/layers/block.py": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17",
+    "third_party/vggt/vggt/layers/attention.py": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00",
+    "third_party/vggt/vggt/layers/rope.py": "c56b073724f4d56cc531e381835a2c3dc348f192aefd9e855e3e59ab3c7d6641",
+    "third_party/vggt/vggt/layers/mlp.py": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa",
+    "third_party/vggt/vggt/layers/layer_scale.py": "83586eaa81ef11828b1001f3dd85747ba362df23ddb57c8454b2eba279f5a558",
+    "third_party/vggt/vggt/utils/load_fn.py": "b0fe762f65497dca9a22069a3e4a37fd3508398c55383a8c1cb85c403fb3e9dd",
+    "third_party/vggt/vggt/layers/__init__.py": "e3c28c7b775165b6844000eb69f44d104d6c3803ac7da5d59f6ac3ecfb46d9d8",
+    "third_party/vggt/vggt/layers/vision_transformer.py": "f781186de8e9a52acc4dfc07820cde01bb182a3eb6835f630b863eaf2cde6bde",
+    "third_party/vggt/vggt/layers/patch_embed.py": "c2543ec293951d081db662b2125027625f6e632971630facaa7f911c2377d335",
+    "third_party/vggt/vggt/layers/drop_path.py": "b9f8236e86054b9d9a71275efcad2a9ecaa1f86b529d4b8d6109ddb5e806f67a",
+    "third_party/vggt/vggt/layers/swiglu_ffn.py": "af287ee5b7e6a2a5608ed78cf8d392a00191718825a3889c224ccaa0fd914089",
+    "third_party/vggt/vggt/heads/camera_head.py": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2",
+    "third_party/vggt/vggt/heads/dpt_head.py": "72e9ed26196113eb71e26b641b4262606b5aacc797accafc6c975f5db0d2ace2",
+    "third_party/vggt/vggt/heads/head_act.py": "428bdb087f457b809a66e22d7d01147c1cb4dab43bb0d98bc61c7f05d8383a1e",
+    "third_party/vggt/vggt/heads/utils.py": "2dce4c0dca1974a5250cc5d5d95bd3417e3ba9494978437a12d5ab6bbff4d4df",
+    "third_party/vggt/vggt/heads/track_head.py": "5838f10401ad4c614e5608314f7b27b9195af8839e8bbb3321bfb6aad41a3e59"
+  },
+  "parent_artifact_sha256": {
+    "original_export": "b922ca37e4052800c44520ad7826be97ff463c9d6298e695b70f3d1a7d9c115e",
+    "frame_export": "54cdac3b68da2f07d1fb53fcda94d4a4f3ac3b0994ebdc0320b7b1fac20ac447",
+    "global_export": "7ad10c71635233e2056dade6f0b6c769e0ae0c1dfdf192514f1be18e3afdc9ff",
+    "weights_capture": "4b723e499763bb90565f6e11e16c551664634aaf72da46c7cdc493b84208ef67",
+    "native_capture": "4ebbc4adaaed5e3c3cf8558b4947ec3fc090d56e82f8c61c9509951eb34dd35d",
+    "frame_onnx": "683b4ec52a6d4692fa777b2180a143de347b4765edded313717946c5a0a450f9",
+    "global_onnx": "c44094793c3b590c6066cbdd634cf0c4d8bd5b75987c8b491db7b17b2201f55d"
+  },
+  "authoritative_receipts": {
+    "export": {
+      "file": "export-r2/result.json",
+      "bytes": 64520,
+      "sha256": "e23c8f7cdf6faa895a8bde34a41806bf2022e630f5361529d0271374742d740e"
+    },
+    "check": {
+      "file": "check-r2/result.json",
+      "bytes": 78444,
+      "sha256": "48a7d5034b9eea0afa139e4a69cdb5b393c694dcec2b8e874a1c1f380f5f42b1"
+    }
+  },
+  "controls": {
+    "export": {
+      "receipt": {
+        "file": "export-control-r2.json",
+        "bytes": 28800,
+        "sha256": "647021a5026261f044fcc1b65f21c8597fc154b0a920107c57f7e97397e121c7"
+      },
+      "status": "completed",
+      "total_seconds": 6.520784571999911,
+      "maximum_temperature_c": 59.153,
+      "expected_observed_npu_hz": 1000000000,
+      "observed_npu_hz": [
+        1000000000
+      ],
+      "frequency_written": false,
+      "cooling_events": [],
+      "returncode": 0,
+      "live_process_group_gone": true,
+      "cleanup_errors": [],
+      "timing_scope": "Whole board CPU process stage and controller, including imports, checks, serialization and cooling pauses. Not NPU or isolated forward performance."
+    },
+    "check": {
+      "receipt": {
+        "file": "check-control-r2.json",
+        "bytes": 153029,
+        "sha256": "0b59a9165c21a1528e9fd67811fe3f50fd15a01fdd3bf52625d01fcfa10b0b48"
+      },
+      "status": "completed",
+      "total_seconds": 37.395847757999945,
+      "maximum_temperature_c": 70.23,
+      "expected_observed_npu_hz": 1000000000,
+      "observed_npu_hz": [
+        1000000000
+      ],
+      "frequency_written": false,
+      "cooling_events": [
+        {
+          "event": "pause_compiler",
+          "elapsed_seconds": 27.64660973599996,
+          "temperature_c": 70.23
+        },
+        {
+          "event": "resume_compiler",
+          "elapsed_seconds": 28.069623987,
+          "temperature_c": 62.846
+        },
+        {
+          "event": "pause_compiler",
+          "elapsed_seconds": 30.540079985000034,
+          "temperature_c": 70.23
+        },
+        {
+          "event": "resume_compiler",
+          "elapsed_seconds": 31.110765458999936,
+          "temperature_c": 62.846
+        },
+        {
+          "event": "pause_compiler",
+          "elapsed_seconds": 32.45050667700002,
+          "temperature_c": 70.23
+        },
+        {
+          "event": "resume_compiler",
+          "elapsed_seconds": 32.96605743800001,
+          "temperature_c": 62.846
+        },
+        {
+          "event": "pause_compiler",
+          "elapsed_seconds": 34.68152952699995,
+          "temperature_c": 70.23
+        },
+        {
+          "event": "resume_compiler",
+          "elapsed_seconds": 35.29718871299997,
+          "temperature_c": 62.846
+        }
+      ],
+      "returncode": 0,
+      "live_process_group_gone": true,
+      "cleanup_errors": [],
+      "timing_scope": "Whole board CPU process stage and controller, including imports, checks, serialization and cooling pauses. Not NPU or isolated forward performance."
+    }
+  },
+  "source_input_and_parameter_proofs": {
+    "all36_original_learned_values_recovered_and_verified": true,
+    "source_and_inputs_unchanged": true,
+    "affinity_and_environment_restored": true,
+    "all6_calls_completed": true,
+    "all_ORT_sessions_dropped": true,
+    "cleanup_errors": []
+  },
+  "recovery": {
+    "host_and_board_restarted": true,
+    "restart_cause_established": false,
+    "initial_tmpfs_graphs_arrays_and_full_receipts_lost_before_durable_archive": true,
+    "initial_controls_and_logs_preserved": true,
+    "exact_exporter_and_config_SHA_recovered": true,
+    "R2_graph_SHA_match_original_tool_observations": true,
+    "R2_saved_outputs_authoritative": true,
+    "NPU_post_reboot_existing_observed_hz": 1000000000,
+    "clock_written_by_recovery": false,
+    "outputs_moved_to_rootfs_tmp_then_archived_on_persistent_host_storage": true
+  },
+  "independent_saved_audit": {
+    "status": "saved_outputs_verified_not_deployment_or_quality_acceptance",
+    "receipt": {
+      "file": "basis-pair-saved-audit.json",
+      "bytes": 40564,
+      "sha256": "c5cc7219eeacaf7a128aa0c601aa76834bb2bfcd062eeb94c8366a89d99bfecc"
+    },
+    "audit_source": {
+      "file": "audit_basis_pair_saved.py",
+      "bytes": 16976,
+      "sha256": "708a7161ba3f35921f82e383148ce22a1dbd8595cc2d7ff80a01a1c9383648d1"
+    },
+    "source_recreated_after_tmpfs_loss_not_old_identity": true,
+    "fixed_gate_independently_recomputed": true,
+    "output_NPY_count": 12,
+    "input_NPY_count": 2,
+    "matched_original_Torch_NPY_count": 2,
+    "original_parameter_metadata_count": 36,
+    "file_bytes_raw_hash_shape_dtype_finiteness_verified": true,
+    "complete_call_count": 6,
+    "worker_cleanup_flags_consistent": true,
+    "internal_continuity_evidence": "Pinned worker compose() wires actual frame output through the original Reshape into global0 within one graph/run; no teacher forcing. Graph bytes and binding metadata verified; no intermediate boundary dump or host graph parsing.",
+    "NN_SDK_or_GPU_execution": false,
+    "residual_diagnostics_do_not_create_new_acceptance_gate": true
+  },
+  "limits": {
+    "NPU_compile_or_operator_mapping_measured": false,
+    "FP16_or_INT8_accuracy_gain_established": false,
+    "all48_aggregator_or_original_heads_integrated": false,
+    "full_model_speedup_or_trajectory_improvement_established": false,
+    "20Hz_or_input_to_pose_P95_100ms_accepted": false,
+    "stability_map_cadence_or_physical8GB_accepted": false
+  },
+  "licensing": "Repository code, original model sources/checkpoint and third-party tools retain separate licenses. No weights, captured arrays, weight-bearing graphs or SDK binaries are distributed.",
+  "candidate_B_residual_diagnostics_vs_A": {
+    "cpu_prefix": {
+      "frame_update_vs_A": {
+        "relative_l2": 8.192758904049732e-07,
+        "relative_l2_available": true,
+        "reference_l2_norm": 242.3344118075215,
+        "max_abs": 6.67572021484375e-06
+      },
+      "two_block_total_update_vs_A": {
+        "relative_l2": 5.689173871107259e-07,
+        "relative_l2_available": true,
+        "reference_l2_norm": 327.81834331790236,
+        "max_abs": 6.198883056640625e-06
+      },
+      "global_local_update_on_own_frame_output_vs_A": {
+        "relative_l2": 1.0233888050102258e-06,
+        "relative_l2_available": true,
+        "reference_l2_norm": 109.90628705885398,
+        "max_abs": 3.0994415283203125e-06
+      }
+    },
+    "npu_prefix": {
+      "frame_update_vs_A": {
+        "relative_l2": 8.240714082202225e-07,
+        "relative_l2_available": true,
+        "reference_l2_norm": 241.27389223705916,
+        "max_abs": 7.62939453125e-06
+      },
+      "two_block_total_update_vs_A": {
+        "relative_l2": 5.711552725959638e-07,
+        "relative_l2_available": true,
+        "reference_l2_norm": 327.068228676496,
+        "max_abs": 5.7220458984375e-06
+      },
+      "global_local_update_on_own_frame_output_vs_A": {
+        "relative_l2": 1.0265223189829105e-06,
+        "relative_l2_available": true,
+        "reference_l2_norm": 109.46601070137682,
+        "max_abs": 2.86102294921875e-06
+      }
+    }
+  },
+  "residual_metric_scope": "FP32 y-x before FP64 norms; frame, total pair, and global update on each variant own frame output. Last metric includes upstream perturbation. No new residual acceptance gate or denominator floor.",
+  "private_raw_evidence_manifest": {
+    "file": "RAW_EVIDENCE_MANIFEST.json",
+    "bytes": 7171,
+    "sha256": "d1c68f2a63ffcc60ba9661f70c6003352aedabceb6c73d88b5f8e9fd11e8795a",
+    "artifact_file_count": 40,
+    "artifact_total_bytes": 414368793,
+    "raw_graphs_and_arrays_are_not_distributed": true
+  }
+}

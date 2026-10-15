@@ -1,0 +1,145 @@
+{
+  "schema": "original_native518_graph_basis_review_v125",
+  "status": "source_review_and_generated_algebra_passed_no_VGGT_candidate_executed",
+  "original_model_only": true,
+  "production_changed": false,
+  "neural_execution_in_this_review": false,
+  "decision": "Prioritize a fixed mean-preserving residual-basis transformation as a new graph-wide numerical representation hypothesis. Keep all original computations. Test original FP32 equivalence before any quantization or performance claim. Do not repeat failed flag, query-tile or per-operator scheduling candidates.",
+  "hypothesis": "Redistribute isolated residual-channel magnitudes before low-precision storage, so quantization of the same original graph may incur less error. This is unmeasured on VGGT and does not reduce dense arithmetic.",
+  "basis": {
+    "dimension": 1024,
+    "definition": "R=((J4-2I4)/2) tensor-power5",
+    "properties": [
+      "orthogonal",
+      "symmetric",
+      "R*ones=ones",
+      "every entry is +1/32 or -1/32"
+    ],
+    "learned_or_external_parameters": false,
+    "new_checkpoint": false
+  },
+  "row_vector_equations": {
+    "residual_coordinates": "z=xR",
+    "bare_LayerNorm": "LN0(xR;eps)=LN0(x;eps)R; same mean subtraction, channel count and epsilon",
+    "incoming_linear": "W_new=R.T @ diag(original_norm_gamma) @ W; b_new=original_norm_beta @ W + b",
+    "outgoing_linear": "W_new=W @ diag(original_LayerScale) @ R; b_new=(b * original_LayerScale) @ R",
+    "residual": "(x+branch)R=xR+branchR",
+    "internal_original_coordinates": "QKV and FC1 outputs are unchanged in real arithmetic, so q/k normalization, RoPE, attention softmax and original Erf retain their original coordinates and formulas"
+  },
+  "Torch_out_in_weight_equations": {
+    "incoming": "W_new=W @ diag(norm_gamma) @ R; b_new=norm_beta @ W.T + b",
+    "outgoing": "W_new=R.T @ diag(LayerScale) @ W; b_new=(b * LayerScale) @ R"
+  },
+  "graph_obligations": [
+    "Use bare original LayerNorm after folding its affine parameters; retaining the original channelwise gamma/beta in rotated coordinates is wrong.",
+    "Fold LayerScale before the output basis; channelwise LayerScale does not generally commute with R.",
+    "Keep the same basis across all frame/global residual producers and consumers; avoid adding R and inverse at every block.",
+    "Retained frame/global concatenation has basis diag(R,R). Unrotate or prove corresponding downstream consumer folding before original CameraHead/DPT/target interfaces.",
+    "Do not rotate through q/k LayerNorm, positional RoPE or nonlinear Erf by assuming commutation.",
+    "Record original checkpoint/source identities and exact derivation of transformed constants; original stored checkpoint remains unchanged.",
+    "Real-arithmetic equivalence is not byte equality or measured FP32/FP16 accuracy; observe new rounding, folded bias precision and possible underflow.",
+    "No original layer, token, key, frame, refinement or active head is removed."
+  ],
+  "generated_algebra_evidence": {
+    "script": {
+      "bytes": 8421,
+      "sha256": "0130df51f4aaa5aa7d43d2bbae470aa8b3525a900bf1417e16d3fb6d2c63acbe"
+    },
+    "receipt": {
+      "bytes": 2453,
+      "sha256": "08036d7c9702c4c854752ab98c476af298b2736fae45817d22a71394df3a31e5"
+    },
+    "status": "passed_generated_scalar_algebra_only",
+    "maximum_discrepancies": {
+      "involution": 1.0658141036401503e-14,
+      "mean": 8.881784197001252e-16,
+      "squared_norm_relative": 2.1810718561430206e-16,
+      "bare_LayerNorm_commutation": 1.3322676295501878e-15,
+      "input_affine_fold": 7.105427357601002e-15,
+      "output_LayerScale_fold": 3.552713678800501e-15,
+      "residual_addition": 3.552713678800501e-15
+    },
+    "synthetic_only": true,
+    "real_activation_improvement_measured": false
+  },
+  "original_sources": {
+    "vggt/models/aggregator.py": {
+      "bytes": 28283,
+      "sha256": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd"
+    },
+    "vggt/layers/block.py": {
+      "bytes": 9866,
+      "sha256": "d8b8cb1bfe5f084d33810b9cc96626fa494a4beea2c3c175da197841070bbf17"
+    },
+    "vggt/layers/attention.py": {
+      "bytes": 3018,
+      "sha256": "9d80ff6c6f562efc29d806125fe47bd9b504a6356ce2d9b5d61e8ee4ea770a00"
+    },
+    "vggt/layers/layer_scale.py": {
+      "bytes": 781,
+      "sha256": "83586eaa81ef11828b1001f3dd85747ba362df23ddb57c8454b2eba279f5a558"
+    },
+    "vggt/heads/camera_head.py": {
+      "bytes": 5876,
+      "sha256": "78b870018b20821d27587122003e68afd4f6b977bc13e0952fe507c31d6d3da2"
+    },
+    "vggt/heads/dpt_head.py": {
+      "bytes": 17338,
+      "sha256": "72e9ed26196113eb71e26b641b4262606b5aacc797accafc6c975f5db0d2ace2"
+    }
+  },
+  "next_decisive_experiment": {
+    "unit": "Original complete frame0 -> global0 pair at native518, then a retained multi-block group if the initial gate succeeds",
+    "reference": "Exact same original FP32 graph and original checkpoint on identical real captured inputs; board-only deployment transform/export/validation",
+    "first_gate": "Compare canonical inverse-transformed complete outputs and original internal QKV/FC1 boundaries before quantization; preserve original fixed FP32 gates.",
+    "next_gate": "Inspect compiled operator placement, actual floating boundary types and whether folded transforms introduce extra runtime operators; profile separately from normal timing.",
+    "quantization": "Only after equivalence, assess derived original weights with disjoint calibration/held-out observations, floating residual exits and unchanged original nonlinear formulas; no imported model or learned rotation.",
+    "performance": "Matched complete multi-block/full-model timing, memory, source/output ownership and later original SL4 trajectory; component gains alone cannot promote the route.",
+    "stop_conditions": [
+      "Fails original FP32 equivalence",
+      "Required inverse/basis conversions reappear at each block",
+      "No useful quality/performance improvement at the complete measured boundary"
+    ],
+    "isolation_control": "Include R=I with the same affine/LayerScale folding, so any difference from the original graph is separated from the effect of changing residual coordinates. This is a control, not a separate speed route."
+  },
+  "scope_limits": {
+    "dense_MAC_reduction": false,
+    "dominant_SDPA_speedup_established": false,
+    "actual_VGGT_FP32_gate": false,
+    "actual_NPU_build_or_mapping": false,
+    "quantized_accuracy_gain": false,
+    "full_model_speedup": false,
+    "trajectory_improvement": false,
+    "fresh_pose_20Hz_or_P95_acceptance": false,
+    "known_layout_scope": "Existing aggregator already has four internal NPU chains. The 52.23% SDPA observation is a separate core1 group0 profile, not a measured full48 flags0 time fraction.",
+    "not_a_new_supported_hardware_capability": true
+  },
+  "prior_negative_evidence": {
+    "native_query512_tiling": "Already tested in R99: complete A428.0279ms/B444.2421ms; all keys retained, candidate slower. Not repeated.",
+    "Flash_flag": "Earlier v50 option-only comparison did not improve ordinary timing; compiler acceptance does not prove hardware support.",
+    "native_three_core_schedule": "R124 complete DINO0 A151.464ms/B293.912ms; rejected.",
+    "unbalanced_low_precision": "v50 mixed precision and v115 whole-global W8A8 worsened error. A floating external output alone did not fix internal quantization.",
+    "affine_folding_alone": "Earlier compiler already folded some LayerScale/residual operations. The new hypothesis is the same residual coordinate system across the chain, not claiming those folds as a new speedup."
+  },
+  "related_primary_source": {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/b5b939436789f76f08b9d0da5e81af7c-Abstract-Conference.html",
+    "use": "General precedent for rotation-assisted quantization; no code, kernels, checkpoints or performance results imported. The mean-preserving LayerNorm-specific adaptation requires its own proof and board validation."
+  },
+  "independent_source_reviews": {
+    "aggregator-whole-graph-routes.json": {
+      "bytes": 12646,
+      "sha256": "aafa5a52e57d2b30bd8807eb49b24af9510973f63248387625d22d9dbb18b885",
+      "private_static_review_only": true
+    },
+    "heads-contract-review.json": {
+      "bytes": 16000,
+      "sha256": "2408a9189e522aa37f9511e72e7456ae114f34fcf90cc79d43be8efa4713afa5",
+      "private_static_review_only": true
+    },
+    "residual-basis-source-review.json": {
+      "bytes": 9019,
+      "sha256": "601185f5377a01da69033b70f902b52ec2ca609163a670868d1cfff531e777e5",
+      "private_static_review_only": true
+    }
+  }
+}

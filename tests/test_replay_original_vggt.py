@@ -263,6 +263,8 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
                     source_hashes[name] = hashlib.sha256(content).hexdigest()
             args = ['generated-replay', '--rgb-index', str(root/'rgb.txt'),
                     '--checkpoint', str(root/'checkpoint.placeholder'), '--output', str(root/'out')]
+            if npu or dino or depth:
+                args += ['--image-size', '112']  # Fixed historical RKNN fixtures.
             if npu:
                 args += ['--rknn-manifest', str(root/'manifest.placeholder'), '--rknn-manifest-sha256', 'a'*64]
             if paired:
@@ -316,6 +318,7 @@ def generated_run(*, npu=False, paired=False, camera=False, dino=False, depth=Fa
 def test_generated_lifecycle_and_complete_metrics(npu, camera, no_cache):
     code, report, events = generated_run(npu=npu, camera=camera, no_cache=no_cache)
     assert code == 0 and report['status'] == 'completed' and report['fresh_pose_count'] == 2
+    assert report['image_size'] == (112 if npu else 518)
     assert report['candidate_accepted'] is False and report['trajectory_quality_validated'] is False
     expected = ('NPU_FP16_aggregator_camera_CPU_FP32_DINO_depth' if camera else
                 'NPU_FP16_aggregator_CPU_FP32_DINO_heads' if npu else 'CPU_FP32')
@@ -450,9 +453,10 @@ def test_generated_paired_aggregator_lifecycle_with_all_backends(fail):
     (['--rknn-paired-aggregator'], 'requires --rknn-manifest'),
     (['--rknn-manifest-sha256', 'a'*64], 'supplied together'),
     (['--rknn-manifest', 'generated', '--rknn-manifest-sha256', 'BAD'], 'lowercase SHA256'),
+    (['--rknn-manifest', 'generated', '--rknn-manifest-sha256', 'a'*64], 'image-size 112'),
     (['--rknn-manifest', 'generated', '--rknn-manifest-sha256', 'a'*64, '--image-size', '336'], 'image-size 112'),
 ], ids=['missing-hash', 'camera-without-manifest', 'pair-without-manifest',
-        'missing-manifest', 'malformed-hash', 'wrong-image-size'])
+        'missing-manifest', 'malformed-hash', 'original-default-rejects-fixed-artifact', 'wrong-image-size'])
 def test_generated_invalid_backend_arguments_rejected_before_loading(args, message):
     base = ['generated-replay', '--rgb-index', 'generated', '--checkpoint', 'generated', '--output', 'generated']
     replay = load_replay()

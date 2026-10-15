@@ -1,0 +1,505 @@
+{
+  "schema": "original_native518_fc1_quantization_floor_v187",
+  "status": "bounded_CPU_oracle_reports_show_remaining_weight_quantization_error_no_RKNN_precision_speed_or_model_acceptance",
+  "scope": {
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "source_pair_indices": [
+      32,
+      40
+    ],
+    "image_shape": [
+      2,
+      3,
+      392,
+      518
+    ],
+    "original_boundary": "Original frame0 norm2/FC1 input and original FC1/GELU/MLP outputs captured in a complete native518 FLOAT32 forward.",
+    "FC1": {
+      "rows": 2082,
+      "reduction_channels": 1024,
+      "output_channels": 4096,
+      "MAC_per_full_product": 8732540928
+    },
+    "all_rows_and_K_channels_used": true,
+    "bias_applied_once": true,
+    "original_exact_Erf_GELU_and_same_FC2_parameters": true,
+    "new_full_model_forward": false,
+    "new_checkpoint_deserialization": false,
+    "SDK_ORt_GPU_NPU_or_RKNN_build": false,
+    "sample_scope": "One old two-frame engineering capture, not two independent test cases; no pair4/5 inputs used.",
+    "channel_selection_is_exploratory_same_sample": true
+  },
+  "arithmetic": {
+    "activation_scale": "One symmetric maxabs/127 scale over the full activation tensor.",
+    "weight_scale": "Symmetric per original FC1 output channel maxabs/127.",
+    "code_range": [
+      -127,
+      127
+    ],
+    "residual_digit_base": 254,
+    "zero_points": 0,
+    "rounding": "ties to even",
+    "product_and_reconstruction": "FP32 CPU oracle and reconstruction; no measured INT8 kernel. Integer-plane products are bounded below2^24 and sampled against INT64.",
+    "corrected_operand": "activation",
+    "selection": "Larger activation-only versus weight-only FC1 relative L2 on the same old capture; activation on ties; no optimality claim.",
+    "two_plane_oracle": "Two activation digits with untouched original FLOAT32 weights; this is not RK3588 W8A16.",
+    "legal_two_INT8_product_reconstruction": "Two activation digits times the same coarse INT8 weights, shared scales, FLOAT32 sum and once-only original bias.",
+    "channel_partition": "32 selected K channels plus the remaining 992 retain all original channels. High-product + low-product + bias changes FP32 reduction grouping.",
+    "quantized_routes_are_approximations": true
+  },
+  "FP16_proxy": {
+    "definition": "F16-rounded operands widened to F32, F32 accumulation and original F32 bias; not actual RKNN FP16",
+    "actual_measured_same_input_RKNN_FP16_floor_available": false,
+    "comparison_is_device_precision_or_acceptance_gate": false
+  },
+  "numeric_evidence": {
+    "classification": "Source-bound worker receipt reports; new normal full output arrays are absent, so independent numerical recomputation is unavailable.",
+    "fixed_relative_l2_max": 1e-05,
+    "fixed_max_abs_max": 0.001,
+    "worker_strict_rtol": 1e-05,
+    "worker_strict_atol": 1e-05,
+    "reported_routes": [
+      {
+        "route": "original_FP32_recompute_control",
+        "reported_FC1_vs_original_FP32": {
+          "relative_l2": 3.3824739618081827e-07,
+          "max_abs": 7.152557373046875e-06,
+          "strict_outside_count": 0,
+          "fixed_pass": true,
+          "strict_pass": true
+        },
+        "reported_GELU_vs_original_FP32": {
+          "relative_l2": 7.734822831421377e-07,
+          "max_abs": 7.152557373046875e-06,
+          "strict_outside_count": 0,
+          "fixed_pass": true,
+          "strict_pass": true
+        },
+        "reported_MLP_vs_original_FP32": {
+          "relative_l2": 2.1906418702176298e-07,
+          "max_abs": 1.33514404296875e-05,
+          "strict_outside_count": 0,
+          "fixed_pass": true,
+          "strict_pass": true
+        },
+        "full_output_raw_hashes_recorded_in_private_receipt": true,
+        "full_output_arrays_saved": false,
+        "metrics_independently_recomputed_from_new_output_arrays": false
+      },
+      {
+        "route": "FP16_rounded_operands_FP32_accumulation_PROXY",
+        "reported_FC1_vs_original_FP32": {
+          "relative_l2": 0.00010391603720942823,
+          "max_abs": 0.0010738372802734375,
+          "strict_outside_count": 7488544,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_GELU_vs_original_FP32": {
+          "relative_l2": 0.00021476577562470068,
+          "max_abs": 0.0006533265113830566,
+          "strict_outside_count": 3901150,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_MLP_vs_original_FP32": {
+          "relative_l2": 0.00014143129421401315,
+          "max_abs": 0.005680084228515625,
+          "strict_outside_count": 1427796,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "full_output_raw_hashes_recorded_in_private_receipt": true,
+        "full_output_arrays_saved": false,
+        "metrics_independently_recomputed_from_new_output_arrays": false
+      },
+      {
+        "route": "activation_INT8_only_float_other_oracle",
+        "reported_FC1_vs_original_FP32": {
+          "relative_l2": 0.009193462641114617,
+          "max_abs": 0.13127627968788147,
+          "strict_outside_count": 8515943,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_GELU_vs_original_FP32": {
+          "relative_l2": 0.04428531306993513,
+          "max_abs": 0.1246911883354187,
+          "strict_outside_count": 8447350,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_MLP_vs_original_FP32": {
+          "relative_l2": 0.011123370786258458,
+          "max_abs": 0.5613899230957031,
+          "strict_outside_count": 2127864,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "full_output_raw_hashes_recorded_in_private_receipt": true,
+        "full_output_arrays_saved": false,
+        "metrics_independently_recomputed_from_new_output_arrays": false
+      },
+      {
+        "route": "weight_INT8_only_float_other_oracle",
+        "reported_FC1_vs_original_FP32": {
+          "relative_l2": 0.001796283003930144,
+          "max_abs": 0.029717445373535156,
+          "strict_outside_count": 8469644,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_GELU_vs_original_FP32": {
+          "relative_l2": 0.008217162512726228,
+          "max_abs": 0.021474778652191162,
+          "strict_outside_count": 8119782,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_MLP_vs_original_FP32": {
+          "relative_l2": 0.0005314792645203916,
+          "max_abs": 0.005613207817077637,
+          "strict_outside_count": 2090171,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "full_output_raw_hashes_recorded_in_private_receipt": true,
+        "full_output_arrays_saved": false,
+        "metrics_independently_recomputed_from_new_output_arrays": false
+      },
+      {
+        "route": "both_INT8_shared_scale_FP32_reconstruction",
+        "reported_FC1_vs_original_FP32": {
+          "relative_l2": 0.00936774129470899,
+          "max_abs": 0.12792258709669113,
+          "strict_outside_count": 8516261,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_GELU_vs_original_FP32": {
+          "relative_l2": 0.04511760220588255,
+          "max_abs": 0.13085943460464478,
+          "strict_outside_count": 8448961,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_MLP_vs_original_FP32": {
+          "relative_l2": 0.01115504567651809,
+          "max_abs": 0.5600814819335938,
+          "strict_outside_count": 2127915,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "full_output_raw_hashes_recorded_in_private_receipt": true,
+        "full_output_arrays_saved": false,
+        "metrics_independently_recomputed_from_new_output_arrays": false
+      },
+      {
+        "route": "chosen_two_plane_float_other_ORACLE",
+        "reported_FC1_vs_original_FP32": {
+          "relative_l2": 3.633318835196038e-05,
+          "max_abs": 0.0005311965942382812,
+          "strict_outside_count": 5652071,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_GELU_vs_original_FP32": {
+          "relative_l2": 0.00017613283453887823,
+          "max_abs": 0.0004508495330810547,
+          "strict_outside_count": 1291254,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_MLP_vs_original_FP32": {
+          "relative_l2": 4.373570919277389e-05,
+          "max_abs": 0.0017299652099609375,
+          "strict_outside_count": 1231202,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "full_output_raw_hashes_recorded_in_private_receipt": true,
+        "full_output_arrays_saved": false,
+        "metrics_independently_recomputed_from_new_output_arrays": false
+      },
+      {
+        "route": "chosen_two_plane_other_coarse_INT8",
+        "reported_FC1_vs_original_FP32": {
+          "relative_l2": 0.001796637839753366,
+          "max_abs": 0.029764890670776367,
+          "strict_outside_count": 8469751,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_GELU_vs_original_FP32": {
+          "relative_l2": 0.00821884115716001,
+          "max_abs": 0.021448731422424316,
+          "strict_outside_count": 8120325,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_MLP_vs_original_FP32": {
+          "relative_l2": 0.0005330087935548197,
+          "max_abs": 0.0057659149169921875,
+          "strict_outside_count": 2089873,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "full_output_raw_hashes_recorded_in_private_receipt": true,
+        "full_output_arrays_saved": false,
+        "metrics_independently_recomputed_from_new_output_arrays": false
+      },
+      {
+        "route": "exact_all_K_channel_partition_control",
+        "reported_FC1_vs_original_FP32": {
+          "relative_l2": 3.481642347946924e-07,
+          "max_abs": 6.198883056640625e-06,
+          "strict_outside_count": 0,
+          "fixed_pass": true,
+          "strict_pass": true
+        },
+        "reported_GELU_vs_original_FP32": {
+          "relative_l2": 7.80838650433817e-07,
+          "max_abs": 5.7220458984375e-06,
+          "strict_outside_count": 0,
+          "fixed_pass": true,
+          "strict_pass": true
+        },
+        "reported_MLP_vs_original_FP32": {
+          "relative_l2": 2.2174217551832943e-07,
+          "max_abs": 1.33514404296875e-05,
+          "strict_outside_count": 0,
+          "fixed_pass": true,
+          "strict_pass": true
+        },
+        "full_output_raw_hashes_recorded_in_private_receipt": true,
+        "full_output_arrays_saved": false,
+        "metrics_independently_recomputed_from_new_output_arrays": false
+      },
+      {
+        "route": "low_INT8_plus_high_original_FLOAT32_ORACLE",
+        "reported_FC1_vs_original_FP32": {
+          "relative_l2": 0.0011263840653188838,
+          "max_abs": 0.01622837781906128,
+          "strict_outside_count": 8430038,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_GELU_vs_original_FP32": {
+          "relative_l2": 0.005517026373881553,
+          "max_abs": 0.014373481273651123,
+          "strict_outside_count": 7899983,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_MLP_vs_original_FP32": {
+          "relative_l2": 0.0012293009360262357,
+          "max_abs": 0.050655364990234375,
+          "strict_outside_count": 2097248,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "full_output_raw_hashes_recorded_in_private_receipt": true,
+        "full_output_arrays_saved": false,
+        "metrics_independently_recomputed_from_new_output_arrays": false
+      },
+      {
+        "route": "low_INT8_plus_high_FP16_operand_PROXY",
+        "reported_FC1_vs_original_FP32": {
+          "relative_l2": 0.0011310977733178726,
+          "max_abs": 0.016326606273651123,
+          "strict_outside_count": 8430951,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_GELU_vs_original_FP32": {
+          "relative_l2": 0.005520827588935057,
+          "max_abs": 0.01445704698562622,
+          "strict_outside_count": 7905451,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "reported_MLP_vs_original_FP32": {
+          "relative_l2": 0.0012366535740485057,
+          "max_abs": 0.051128387451171875,
+          "strict_outside_count": 2097338,
+          "fixed_pass": false,
+          "strict_pass": false
+        },
+        "full_output_raw_hashes_recorded_in_private_receipt": true,
+        "full_output_arrays_saved": false,
+        "metrics_independently_recomputed_from_new_output_arrays": false
+      }
+    ],
+    "reported_original_F32_control_all_three_fixed_and_strict_pass": true,
+    "reported_exact_all_K_partition_control_all_three_fixed_and_strict_pass": true,
+    "reported_all_approximate_routes_fixed_and_strict_fail": true,
+    "observation": "Activation-only error is larger. Two activation planes improve the float-weight oracle, while the legal two-product version remains near the weight-only error. A small high-channel correction reduces FC1 error but retains material MLP error.",
+    "reported_untouched_operand": {
+      "operand": "weight",
+      "single_operand_oracle": {
+        "relative_l2": 0.001796283003930144,
+        "max_abs": 0.029717445373535156,
+        "strict_outside_count": 8469644,
+        "fixed_pass": false,
+        "strict_pass": false
+      },
+      "chosen_side_two_product_result": {
+        "relative_l2": 0.001796637839753366,
+        "max_abs": 0.029764890670776367,
+        "strict_outside_count": 8469751,
+        "fixed_pass": false,
+        "strict_pass": false
+      },
+      "interpretation": "Measures the remaining coarse other-operand error; no claim that an error norm is a strict lower bound under possible cancellation.",
+      "measured_RKNN_FP16_comparator_available": false,
+      "FP16_proxy_not_used_as_go_no_go_gate": true
+    }
+  },
+  "high_channel_diagnostic": {
+    "high_count": 32,
+    "low_count": 992,
+    "fraction": 0.03125,
+    "selection": "Top 32 per-channel activation maximum magnitude on oldpair[32,40], original-index tie break; all selected channels sorted in original order.",
+    "independent_saved_input_ranking_check": true,
+    "high_indices": [
+      1,
+      22,
+      78,
+      79,
+      126,
+      150,
+      188,
+      190,
+      239,
+      268,
+      291,
+      298,
+      313,
+      342,
+      346,
+      369,
+      484,
+      493,
+      519,
+      525,
+      542,
+      555,
+      558,
+      597,
+      600,
+      616,
+      619,
+      660,
+      761,
+      766,
+      799,
+      1017
+    ],
+    "original_max_abs": 10.096667289733887,
+    "remaining_low_max_abs": 1.1840413808822632,
+    "policy_frozen_for_deployment": false,
+    "untouched_generalization_test": false
+  },
+  "independent_audit": {
+    "kind": "Saved source/receipt and original-payload integrity audit, not new-output numerical audit.",
+    "checks": {
+      "source_receipt_integrity_passed": true,
+      "frozen_original_input_array_and_weight_file_raw_hashes_verified": true,
+      "ten_reported_route_metric_structures_and_fixed_gate_flags_verified": true,
+      "dominant_operand_and_all_K_partition_policy_source_verified": true,
+      "single_core_thread_policy_and_controller_cleanup_verified": true,
+      "prior_thermal_failure_and_saved_failure_array_preserved_and_verified": true,
+      "activation_channel_selection_recomputed_from_frozen_input": true
+    },
+    "new_full_output_numeric_metrics_independently_recomputed": false,
+    "original_saved_arrays_raw_checks": 4,
+    "original_FC1_FC2_parameter_raw_checks": 4,
+    "first_thermal_attempt_failure_tensor_raw_verified": true
+  },
+  "runtime_diagnostic": {
+    "execution": "Board CPU core4, NumPy/BLAS and Torch intra/inter-op threads1; no frequency writes.",
+    "completed_routes": 10,
+    "normal_large_array_files": 0,
+    "worker_seconds": 22.488294510010746,
+    "worker_peak_RSS_MiB": 684.59375,
+    "controller_seconds": 23.28526092300308,
+    "peak_controller_temperature_c": 68.384,
+    "thermal_pause_events": 0,
+    "all_process_group_resources_closed": true,
+    "source_inputs_and_environment_restored": true,
+    "timings_are_inference_speed_or_INT8_kernel_speed": false,
+    "physical_8GB_memory_acceptance": false
+  },
+  "preserved_attempt": {
+    "attempt": "r1, four CPU cores/threads; r2 worker source was used.",
+    "outcome": "Existing75C thermal guard stopped the incomplete run; not a numerical failure.",
+    "completed_reported_routes": 5,
+    "temperature_transition": [
+      {
+        "before_seconds": 9.157694337001885,
+        "after_seconds": 9.260899430999416,
+        "interval_seconds": 0.10320509399753064,
+        "before_c": 69.307,
+        "after_c": 75.769
+      }
+    ],
+    "worker_seconds": 9.613035798989586,
+    "one_available_failure_NPY_bytes": 34111616,
+    "original_failure_and_source_records_preserved": true,
+    "process_group_and_worker_cleanup_verified": true,
+    "mitigation": "Fresh r2 attempt uses single-core r3 worker; mathematical routes and numerical gates are unchanged.",
+    "thread_change_is_model_performance_optimization": false
+  },
+  "acceptance": {
+    "precision_accepted": false,
+    "measured_RKNN_speed_gain": false,
+    "full_model_or_trajectory_quality_accepted": false,
+    "sustained_or_realtime_accepted": false,
+    "quantization_policy_generalized": false
+  },
+  "evidence": {
+    "successful_worker_receipt": {
+      "file": "fc1-quantization-floor-r2/output/result.json",
+      "bytes": 50206,
+      "sha256": "19f77f51849d504c37889b2c1ada847687bc4263f3d6054e06752c86896b4c59"
+    },
+    "successful_controller": {
+      "file": "fc1-quantization-floor-r2/control.json",
+      "bytes": 95343,
+      "sha256": "98a5e8a2c15761a41b5901aa4caa7818e9c1bfae789369a303d45514a09066d5"
+    },
+    "successful_transport": {
+      "file": "fc1-quantization-floor-r2/transport.json",
+      "bytes": 15389,
+      "sha256": "f8747c393616527674fbd3031d7ce12c7f29c5cbf3c61bcc172bbef926ef96c2"
+    },
+    "saved_source_receipt_audit": {
+      "file": "fc1-quantization-floor-r2/source-receipt-audit-r1.json",
+      "bytes": 23699,
+      "sha256": "0e07fb05162dbcb5cf54b9829022511fa20543b09ee304ea37cbc105e19c3a34"
+    },
+    "auditor_source": {
+      "file": "fc1_quantization_floor_probe/audit_fc1_floor_source_receipts_saved.py",
+      "sha256": "8e656e85dff389445123367a93e30be10df7753a0f7fbdd18e772feb6027a2ab"
+    },
+    "worker_source": {
+      "file": "fc1_quantization_floor_probe/probe_fc1_quantization_floor_board_r3.py",
+      "sha256": "93e39650543db79965399a94772713df659288e72b00274a4ecabd2ca5d79317"
+    },
+    "transport_source": {
+      "file": "fc1_quantization_floor_probe/execute_fc1_floor_host_r2.py",
+      "sha256": "0b31722144a117796c9876cb8a4b1bb25ab34c6cac960209c13e011569f91335"
+    },
+    "preserved_attempt": {
+      "root": "artifact-archive/fc1-quantization-floor-r1",
+      "receipt_sha256": "7b7fd8b4b480b6122a854f7264a36c2f3fbc1e104045785db2210d25fedd9be7",
+      "controller_sha256": "dd4bcef261c113b609d0775a5d5fdd6f210b2d77023a34672b3e5812667e8ca0",
+      "transport_sha256": "cdd8967326e00322cfcc358df86fa36e3a493988af457027adc19e1bfeb68a30",
+      "source_sha256": "4f4644a972796cb31a09abf9ba51d05095a16d7de3c0df750cd9e73fb788e3d5"
+    }
+  },
+  "publication_path_locators": "Artifact locators are relative publication labels; original private artifact bytes and all historical artifact SHA256 values are unchanged."
+}

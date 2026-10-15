@@ -1,0 +1,356 @@
+{
+  "schema": "original_native518_frame_token_rows_v146",
+  "status": "original_row_coalescing_FP32_gates_and_half_frame_weight_packing_verified_heldout_latency_regressed_not_accepted",
+  "original_model_only": true,
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "scope": {
+    "original_aggregator_block_types": [
+      "frame0",
+      "global0"
+    ],
+    "native_image_size": 518,
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "global_output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "frame_attention_branches": 2,
+    "keys_per_frame_attention": 1041,
+    "global_keys": 2082,
+    "heads": 16,
+    "captured_original_pre_frame0_features": true,
+    "image_encoder_complete_heads_and_SLAM_executed": false
+  },
+  "transformation": {
+    "parent_graph_sha256": "f7ad01cd93f11b83ee90437811d88a04d96276d50bf98b3f4913fe208db8a457",
+    "candidate_graph_sha256": "111830998dd03f7bc98dbf4a240525ea52ecb65d64b3ec69d87eda75366a3099",
+    "source_nodes_before_after": [
+      146,
+      130
+    ],
+    "source_initializers_before_after": [
+      79,
+      82
+    ],
+    "all79_original_initializer_protos_unchanged": true,
+    "untouched_original_nodes": 105,
+    "row_node_inverse_checks": 38,
+    "whole_parent_ModelProto_inverse_byte_equal": true,
+    "merged_only_token_independent_frame_norm_affine_and_MLP_rows": true,
+    "separate_frame_attentions_unchanged": true,
+    "original_frame_weighted_MACs": 26197622784,
+    "additional_MACs": 0,
+    "source_frame_weighted_operator_invocations_before_after": [
+      8,
+      4
+    ],
+    "original_weights_layers_tokens_resolution_and_global_work_omitted": false
+  },
+  "board_FP32_gate": {
+    "calibration_source_indices": [
+      [
+        0,
+        8
+      ],
+      [
+        16,
+        24
+      ],
+      [
+        48,
+        56
+      ],
+      [
+        64,
+        72
+      ]
+    ],
+    "CPU_sessions": 1,
+    "CPU_calls": 4,
+    "all4_fixed_and_strict_gates_passed": true,
+    "all4_previous_value_mean_parent_outputs_byte_equal": true,
+    "worst_original_A_relative_l2": 4.887387424019907e-08,
+    "worst_original_A_max_abs": 7.152557373046875e-07,
+    "strict_outliers": 0,
+    "scope": "These four calibration cases; static algebraic inverse is distinct from all-input floating-point equivalence."
+  },
+  "fresh_calibration": {
+    "original_CONFIG_unchanged": true,
+    "original36_learned_parameter_records_unchanged": true,
+    "original_four_input_file_and_raw_bytes_unchanged": true,
+    "heldout_arrays_loaded": false,
+    "old_per_frame_calibration_grids_reused": false,
+    "explicit_NN_forwards_before_SDK": 0,
+    "dataset_change_only_absolute_path_relocation": true,
+    "minimum_pre_SDK_MemAvailable_bytes": 13958643712,
+    "observed_pre_SDK_MemAvailable_bytes": 14093160448,
+    "worker_seconds_including_possible_controller_pauses": 528.7315124590023,
+    "peak_worker_RSS_MiB": 12351.046875,
+    "calibration_RSS_is_not_inference_peak_or_physical_8GB_acceptance": true,
+    "SDK_and_controller_cleanup_verified": true
+  },
+  "actual_step2": {
+    "requested_FP16_selector_count": 18,
+    "original_generated_model_and_data_byte_unchanged": true,
+    "entire_quantization_numeric_section_byte_unchanged": true,
+    "configuration_unchanged": true,
+    "operator_count": 84,
+    "all_raw_memory_rows_accounted_for": 210,
+    "precision_target_counts": {
+      "FLOAT16/CPU": 2,
+      "FLOAT16/NPU": 24,
+      "INT8/NPU": 58
+    },
+    "residual_Add_count": 4,
+    "residual_and_direct_frame_bridge_dtype": "FLOAT16/NPU",
+    "original_SDPA_count": 3,
+    "original_SDPA_dtype": "INT8/NPU",
+    "learned_weighted_product_count": 11,
+    "learned_weighted_product_dtype": "INT8/NPU",
+    "mean_Sub_restore_dtype": "FLOAT16/NPU",
+    "global_shared_QKV_Split_dtype": "FLOAT16/NPU",
+    "sole_global_public_output_dtype": "FLOAT16/CPU IO",
+    "internal_CPU_GPU_arithmetic_or_layout_fallback": false,
+    "explicit_conversion_edges": [
+      "Centered V FLOAT16 to INT8 before global SDPA",
+      "Centered PV INT8 to FLOAT16 before mean restoration",
+      "Restored/layout PV FLOAT16 to INT8 before original output projection"
+    ],
+    "QK_norm_input_conversion_back_to_INT8_retained": true,
+    "fused_probability_or_accumulator_precision_established": false,
+    "worker_seconds": 36.98709109099582,
+    "peak_worker_RSS_MiB": 968.86328125
+  },
+  "matched_parent_weight_storage": {
+    "parent_RKNN": {
+      "file": "pair-A-global-value-mean-residual-protected.rknn",
+      "bytes": 45933629,
+      "sha256": "2c362def6d7a6638f492457fed48f5cae13f5697f87c78b179db1a5751cad30d"
+    },
+    "candidate_RKNN": {
+      "file": "pair-A-frame-token-rows-residual-protected.rknn",
+      "bytes": 33306237,
+      "sha256": "695554c9b02bef5db3fbaadddf82b6bafc841818758ac08bcc41b5421db5891e"
+    },
+    "parent_operator_count": 99,
+    "parent_all_raw_memory_rows": 247,
+    "frame_weight_operator_entries_before_after": [
+      8,
+      4
+    ],
+    "frame_weight_INT8_span_count_before_after": [
+      8,
+      4
+    ],
+    "frame_weight_INT8_span_bytes_before_after": [
+      25165824,
+      12582912
+    ],
+    "frame_weight_span_reduction_percent": 50,
+    "serialized_RKNN_bytes_before_after": [
+      45933629,
+      33306237
+    ],
+    "serialized_RKNN_reduction_percent": 27.49051680632506,
+    "comparison_uses_actual_matched_unchanged_value_mean_parent_log": true,
+    "equal_packed_weight_contents_DDR_DMA_traffic_or_unique_physical_peak_memory_saving_proven": false
+  },
+  "heldout_ABBA": {
+    "core_mask": 7,
+    "flags": 0,
+    "resident_contexts": 2,
+    "sequence_per_heldout": [
+      "VM_parent",
+      "Frame_rows",
+      "Frame_rows",
+      "VM_parent"
+    ],
+    "calls": 8,
+    "saved_owned_outputs": 8,
+    "all_outputs_finite": true,
+    "all4_parent_outputs_byte_equal_prior_core7": true,
+    "all_same_case_model_repeats_byte_equal": true,
+    "unchanged_original_fixed_and_strict_gates_passed": false,
+    "comparisons": [
+      {
+        "input_id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "original_FP32_global_comparison": {
+          "VM_parent": {
+            "relative_l2": 0.04487364811276288,
+            "max_abs": 0.6293010115623474,
+            "outside_count": 1473420,
+            "fixed_gate_passed": false,
+            "strict_pass": false
+          },
+          "Frame_rows": {
+            "relative_l2": 0.0451758238728314,
+            "max_abs": 0.611404612660408,
+            "outside_count": 1473386,
+            "fixed_gate_passed": false,
+            "strict_pass": false
+          }
+        },
+        "relative_L2_increase_percent": 0.6733924536493907,
+        "whole_owner_run_seconds": {
+          "VM_parent": {
+            "all_complete_call_seconds": [
+              0.7038069879999966,
+              0.686647611000808
+            ],
+            "all_complete_call_mean_seconds": 0.6952272995004023,
+            "first_call_seconds": 0.7038069879999966,
+            "single_subsequent_call_seconds": 0.686647611000808
+          },
+          "Frame_rows": {
+            "all_complete_call_seconds": [
+              0.7112714460017742,
+              0.7015201120011625
+            ],
+            "all_complete_call_mean_seconds": 0.7063957790014683,
+            "first_call_seconds": 0.7112714460017742,
+            "single_subsequent_call_seconds": 0.7015201120011625
+          }
+        },
+        "descriptive_mean_latency_increase_percent": 1.606450078857935,
+        "descriptive_single_subsequent_latency_increase_percent": 2.1659583113785796,
+        "mean_sample_count_per_route": 2,
+        "subsequent_sample_count_per_route": 1
+      },
+      {
+        "input_id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "original_FP32_global_comparison": {
+          "VM_parent": {
+            "relative_l2": 0.04734105631904325,
+            "max_abs": 0.7575092166662216,
+            "outside_count": 1476368,
+            "fixed_gate_passed": false,
+            "strict_pass": false
+          },
+          "Frame_rows": {
+            "relative_l2": 0.047746543520860704,
+            "max_abs": 0.713807225227356,
+            "outside_count": 1476336,
+            "fixed_gate_passed": false,
+            "strict_pass": false
+          }
+        },
+        "relative_L2_increase_percent": 0.8565233506510284,
+        "whole_owner_run_seconds": {
+          "VM_parent": {
+            "all_complete_call_seconds": [
+              0.6865381940006046,
+              0.6878608609986259
+            ],
+            "all_complete_call_mean_seconds": 0.6871995274996152,
+            "first_call_seconds": 0.6865381940006046,
+            "single_subsequent_call_seconds": 0.6878608609986259
+          },
+          "Frame_rows": {
+            "all_complete_call_seconds": [
+              0.7017369460008922,
+              0.7023849039978813
+            ],
+            "all_complete_call_mean_seconds": 0.7020609249993868,
+            "first_call_seconds": 0.7017369460008922,
+            "single_subsequent_call_seconds": 0.7023849039978813
+          }
+        },
+        "descriptive_mean_latency_increase_percent": 2.162602985750728,
+        "descriptive_single_subsequent_latency_increase_percent": 2.111479780688441,
+        "mean_sample_count_per_route": 2,
+        "subsequent_sample_count_per_route": 1
+      }
+    ],
+    "resource_counts": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 8,
+      "output_buffers_acquired": 8,
+      "output_buffers_released": 8
+    },
+    "all_contexts_and_owned_buffers_closed": true,
+    "normal_finite_and_release_guards_unchanged": true,
+    "timer_name": "owned_run_outer_seconds",
+    "timer_scope": "Complete owner.run boundary including normal input preparation/finite checks, SDK IO, owned copies, release and final finite check; initialization, destruction, comparisons, hashing, saving and exact-byte deduplication excluded.",
+    "first_call_per_case_and_model_separated": true,
+    "timing_statistics_are_descriptive_only": true,
+    "sustained_speed_P95_or_trajectory_gain_established": false,
+    "maximum_sampled_temperature_C": 59.153,
+    "controller": {
+      "requested_NPU_hz": 1000000000,
+      "timeout_seconds": 180,
+      "temperature_limit_C": 75,
+      "exact_prior_policy_restored": true
+    }
+  },
+  "decision": "Preserve the demonstrated packing and serialization savings. Do not deploy or expand this configuration for speed on the present latency screen.",
+  "numerical_attribution": "Row coalescing required fresh calibration and changes the complete compiled precision configuration. The heldout L2 increase is not isolated to a single operation or quantization mechanism.",
+  "acceptance": {
+    "quantized_original_FP32_tensor_gates": false,
+    "complete_model": false,
+    "trajectory_or_depth_map_quality": false,
+    "fresh_pose_20Hz": false,
+    "input_to_pose_P95_100ms": false,
+    "map_cadence": false,
+    "sustained_30min": false,
+    "physical_8GB": false,
+    "physical_camera": false
+  },
+  "evidence_sha256": {
+    "static_source": "f6734bbb4463bd9a15bbfc19aaba3107e35f62553ce766f5f54ad6bde75fd236",
+    "static_receipt": "17458178e399b06cf1924f01ece3131c055a3f0ec01a9475ec6df293b0d234a2",
+    "independent_static_peer": "0ef4be500467161beb7829e77518edd37a17ce6820ef1b593d47e722a0b1d666",
+    "FP32_gate_worker": "0f45ed2c073a37973df7ab5b4d8f225e2d687447506fa2afa95931af65e30a12",
+    "FP32_gate_receipt": "3855e97e4c90006c0ee8dd16451b261a34b030c3529c80f8f86988dd42945348",
+    "independent_saved_FP32_gate_audit": "b326c2d6ac956003720a5be1188a191347a7956f2ea03170e8632d200327095c",
+    "fresh_step1_worker": "0707ef13ae9ed3553fda9f00e344399320fe33f48748c3c52a0e8ce912c6b6b4",
+    "fresh_step1_transport": "ef30da01895de3df15ba936157163cf3a2295c0b105494261fc574e3dbf4c2bd",
+    "fresh_step1_receipt": "05dc705abd63d52341f3dfd4c29400a81249d66f74b882056db3601206d72d35",
+    "fresh_step1_controller": "4d54671875af441c76b2e8662caac1503ccfc6906c19c56e505065975af49986",
+    "independent_saved_step1_audit": "2610e7377771e06d4e2099a241b9e34a52c3f7284a112354e4ecbf689b3f06e5",
+    "actual_generated_mapper": "e6f89a3fd04c27579d72b363fade1673ab453417f81c9dc657346c8b67f2a3a1",
+    "actual_generated_mapping": "17535c081be8b6c4faebf12bb7eb2b5f4de563e089826c19128e065fc11d9cd2",
+    "mapper_independent_peer": "cef758b01702b03b735b84ec3d9de58db5de2d7cabfa4defd3f8a72c1021c46a",
+    "step2_worker": "7e94285e924e31a4968da82aeb32301c3fceac876fcd7e357eee1959d62d03bb",
+    "step2_transport": "03076bbf87b97d9625e12daac2154ff2c8093a73c3a6024fc0cc6aac93fe9dd0",
+    "step2_receipt": "a035b3a84e2e3aef46fd72f1e6dbf98215cb60b832fee7b122d25aac6ef53788",
+    "step2_controller": "0ac370a38ab1e7a1c239f93559f724fc1e168d5be53ea172be395afb63532211",
+    "actual_full_compiler_log": "c17bd70336edbd6021c200633f7cf0e1ce31c8890477255fbf43aaec9c75d8e1",
+    "independent_saved_placement_and_matched_parent_packing_audit": "86c82672d8fab1479f45270de95879b35bc76c1a63b5d14500b5092f638e0cde",
+    "placement_audit_source": "359555f8764e2b78c73f08a651dcd05f1a6060e0f3c517c33eda06f9eb71d8ec",
+    "matched_parent_compile_receipt": "3bebf41a20603a2d6c30e6b2755a42293e5b96ff87b5a9140fee7f633dd55fa8",
+    "matched_parent_full_compiler_log": "d80dc28034cd5b9c780a0d9c42957343464fd75d9cfc58a75b72952135175cd9",
+    "runtime_worker": "394a6d039387c25664040c1d090a63ca42a1ecc97fd2029e8df7b6dd1a954e5c",
+    "runtime_transport": "28c0b71a4c7f1a164a3a6677e892b77d53d07ecd40ffdc1fd7c09eec5ba6fee4",
+    "runtime_receipt": "1f7ac44d46d5468ec5511c087bc53ae1741d3fcc605709001600cecea5a2463e",
+    "runtime_controller": "411be5739c162b0e8c5660f049a4486627e7b41ea11e33dc1efcdb2aca8941a0",
+    "independent_saved_runtime_audit": "dcbc1dd5cfb9abad0470a0e6877528098f5137dfbf99dc309cf92d218cca211e",
+    "runtime_saved_audit_source": "3a5836a31a1ba1736452148f9476653ce676666f1758c5bad5dca7d873dd3a3a"
+  },
+  "licensing": {
+    "repository_code": "BSD-2-Clause",
+    "original_VGGT_source_and_checkpoint": "Pinned CC-BY-NC-4.0 terms remain separate; see MODEL_LICENSES.md.",
+    "SDK_and_vendor_binary_terms_separate": true,
+    "weights_captured_arrays_weight_bearing_exports_and_vendor_binaries_published": false
+  },
+  "production_default_changed": false,
+  "README_changed": false,
+  "committed": false,
+  "pushed_to_GitHub": false
+}

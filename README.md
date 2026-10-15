@@ -2,30 +2,21 @@
 
 Ports **VGGT-SLAM2's original pretrained VGGT** to RK3588S for camera poses and dense maps. Model execution is separated from the original submap construction and SL4 graph optimization so embedded backends can be implemented and validated.
 
-Only the original VGGT checkpoint is supported. Its internal DINO, frame/global attention, CameraHead and DPT are retained, with no additional model or traditional pose frontend. All inference, calibration and model validation run on the RK3588S board.
+Only the original VGGT checkpoint is supported. Its internal DINO, frame/global attention, CameraHead and DPT are retained, with no additional model or traditional pose frontend. Deployment inference, calibration and performance measurements run on the RK3588S board. Matched original FP32 references may run on the host CPU; the host GPU is unused.
 
 ## Current status
 
-The original CPU reference path and an experimental complete RKNN path have run on real TUM data with timestamp-paced replay. The current experimental configuration requests W8A8 for the aggregator and CameraHead, with FP16 DINO and DPT. Original preprocessing, pose decoding, submaps and SL4 remain in place.
+The experimental complete native518 route has run on a **16 GB RK3588S**, preserving two `392×518` frames, all 24 internal DINO layers per new image, all 48 aggregator blocks, four CameraHead refinements, both DPT frames and the original pose codec. In the v111 16-pair TUM evaluation, the 12 pairs with exact previous-image DINO reuse averaged **26.7345 s per prediction**. All computation for each new image, aggregator and heads remained active. This offline prediction boundary includes checks and SDK lifecycles; subsequent SL4 replay is measured separately. See the [native execution and cache guide](deploy/rk3588/validation/original_native518_tail_reuse/README.md).
 
-The latest complete replay used a **16 GB RK3588S**, a **1 GHz NPU** and two-frame `84×112` inputs. It was a short recorded-dataset experiment:
+**Native-size trajectory quality has been measured and fails the current quality goal.** The matched 17-observation comparison used the complete original CPU FP32 model and unchanged original SL4 on identical frames. With Sim3 alignment, translation ATE RMSE increased **24.4%** and translation RPE RMSE increased **41.6%**; rotation RPE RMSE decreased 9.7%. These increases exceed the 20% limit on this short clip. Map comparisons measure agreement with the CPU reference, without establishing ground-truth map accuracy. See [quality and reproduction](deploy/rk3588/validation/original_native518_trajectory/README.md) and the [v111 results](results/original_native518_trajectory_quality_v111.json).
 
-| Metric | Measured |
-| --- | ---: |
-| Dataset frames / fresh pose updates | 798 / 31 |
-| Average fresh pose rate | **1.1167 Hz** |
-| Complete input-to-pose P95 | **1.0688 s** |
-| Replay duration, including EOF drain | 27.7595 s |
-| Startup, measured separately | 57.3481 s |
-| Peak process RSS | 3380.19 MiB |
+The latest three-core native DINO0 trial averages **293.912 ms**, versus **151.464 ms** for its matched fused core7 baseline. Its output bytes and **0.025077%** relative L2 error are unchanged from the preceding native candidate; strict precision still fails. **The schedule is rejected for deployment** and defaults remain unchanged; see the [experiment](deploy/rk3588/validation/original_native518_three_core_block/README.md) and [v124 results](results/original_native518_three_core_block_v124.json).
 
-**The real-time targets remain unmet: at least 20 Hz fresh poses and complete input-to-pose P95 at most 100 ms.** One of 30 publication gaps exceeded one second; the maximum was 1.0414 s. An average rate does not guarantee a fresh update every second.
+The [residual-basis FP16 screen](deploy/rk3588/validation/original_native518_basis_pair_fp16/README.md) was 12.3% slower without material precision improvement. [Mixed-precision screening](deploy/rk3588/validation/original_native518_basis_quantization/README.md) produced nonfinite A/F outputs; even B with full FP16 attention has 8.64% global relative L2 on one calibration input, so the tested policies are rejected. The [original DPT basis consumer](deploy/rk3588/validation/original_native518_depth_basis/README.md) passes its two captured-frame FP32 logits gate, without a measured NPU or complete-model gain.
 
-Quality remains experimental. On a fixed 17-frame sequence with Sim3 alignment, ATE and RPE RMSE changes relative to the original CPU reference were within 10%, but rotation RPE RMSE increased 7.30% and the worst rotation interval reached 27.24°. Strict FP32 tensor comparisons failed. These results establish neither broad trajectory/map quality nor quality for a separate replay that selects different frames.
+**The real-time targets remain unmet: at least 20 Hz fresh poses and complete input-to-pose P95 at most 100 ms.** Acceptance requires original 518-width preprocessing and all original layers and tokens. Physical-camera tests are deferred; 2–5 s map cadence, thirty-minute stability and operation on physical 8 GB hardware remain unvalidated. The Solver supports only `max_loops=0`.
 
-Physical-camera tests are deferred. Thirty-minute stability and operation on physical 8 GB hardware remain unvalidated. No loop-closure implementation is validated; the Solver supports only `max_loops=0`.
-
-[Measurements, quality limits and reproduction](deploy/rk3588/validation/original_calibrated_camera/README.md) · [Machine-readable results](results/original_calibrated_camera_v82.json)
+Historical v82 timestamp-paced replay achieved 1.1167 Hz with input-to-pose P95 1.0688 s using two-frame `84×112` inputs. Its reduced-resolution performance, memory and quality results do not establish native518 acceptance. The [historical reproduction guide](deploy/rk3588/validation/original_calibrated_camera/README.md), [v82 results](results/original_calibrated_camera_v82.json) and [first native integration record](results/original_native518_integration_v100.json) remain available.
 
 ## Prepare the board
 
@@ -56,14 +47,15 @@ Prepare the TUM dataset's `rgb.txt` and images, then run the original CPU FP32 r
 python -B -u /mnt/vggt-data/vggt-slam2/src/scripts/replay_original_vggt.py \
   --rgb-index /mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb.txt \
   --checkpoint /mnt/vggt-data/vggt-slam2/weights/model.pt \
+  --image-size 518 \
   --output /mnt/vggt-data/vggt-slam2/experiments/original-replay-new-run
 ```
 
-Use a new output directory. Image width defaults to 112; this dataset produces height 84. The decoder uses CPU0 and the model defaults to CPU4–7, so keep CPU0 available to the process. See `python scripts/replay_original_vggt.py --help` for all options.
+Use a new output directory. The CPU replay defaults to the original preprocessing width of 518. These `640×480` TUM images become `392×518` (height × width) in original crop mode. Explicit `--image-size 112` is reserved for reproducing historical reduced-resolution diagnostics; it does not satisfy original-size acceptance. The decoder uses CPU0 and the model defaults to CPU4–7, so keep CPU0 available to the process. See `python scripts/replay_original_vggt.py --help` for all options.
 
 Outputs include `poses.tum`, `map.json`, `map_chunks/` and `results.json`. Each fresh pose and map is published after the new observation's model computation and original SL4 processing. The input queue has capacity 1.
 
-The NPU experiment above requires pinned compiled artifacts and experimental wrappers; follow the [current complete NPU reproduction guide](deploy/rk3588/validation/original_calibrated_camera/README.md). The regular replay command defaults to the CPU reference. Authorized frequency tests use a bounded thermal controller and restore the prior clock state; the replay entrypoint does not change clocks or governors.
+The historical `112` NPU timestamp-replay wrappers require that size explicitly and pinned compiled artifacts; follow their [reproduction guide](deploy/rk3588/validation/original_calibrated_camera/README.md). The separate [native518 harness](deploy/rk3588/validation/original_native518_trajectory/README.md) supplies complete offline board predictions and matched saved-prediction SL4 quality evaluation. It does not establish a real-time timestamp-paced native518 service. The regular command above defaults to the original-size CPU reference. Authorized frequency tests use a bounded thermal controller and restore the prior clock state; the replay entrypoint does not change clocks or governors.
 
 ## Development and evidence
 

@@ -1,0 +1,105 @@
+{
+  "schema": "recovered_original_native518_shared_attention_v119",
+  "experiment_version": 119,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "review": {
+      "scope": "Original DINO0 full16-head attention component from the same frozen actual NPU QKV; no model weights deserialized and no complete block/model/SLAM run.",
+      "timing": "Reported full call includes all32 MatMul runs, layout/upload/sync/bind, Half conversion, GPU status/profile/event handling, owned final output and finite tests. Init/destroy reported separately. GPU event duration is a nested subset, never added again.",
+      "numerical_scope": "Same-score last-head P passes existing strict tolerance. Full native attention versus original same-QKV CPU FP32 still fails elementwise strict tolerance; no exact-FP32 or trajectory acceptance claim.",
+      "decision": "Shared-memory softmax removes a measured major component overhead and merits complete original-block integration. It does not yet establish an improvement over the fused complete block, full-model speed or real-time acceptance.",
+      "initial_metrics_alias_erratum": "bridge.metrics() uses a shallow dict copy. bridge_initial.objects_released aliases mutable internal counters and shows final releases. It is not an independent initial ledger snapshot. Final ledger, scalar live counts and execution counts remain separately checked. Future reusable API must snapshot nested counters."
+    },
+    "subsequent_three_means_seconds": {
+      "A": 0.527049428007255,
+      "B": 0.16191854401646802
+    },
+    "original_CPU_same_QKV_comparisons": {
+      "A": {
+        "relative_l2": 0.00011223745704784013,
+        "max_abs": 0.001636505126953125,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 132868
+      },
+      "B": {
+        "relative_l2": 0.00011223952864720134,
+        "max_abs": 0.001636505126953125,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 132881
+      }
+    },
+    "same_scores_validation": {
+      "same_score_probabilities_GPU_vs_saved_CPU_Half": {
+        "relative_l2": 1.119329399801063e-07,
+        "max_abs": 1.9073486328125e-06,
+        "cosine": 0.9999999999999939,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": true,
+        "outside_count": 0,
+        "byte_equal": false
+      },
+      "saved_CPU_probability_formula_recomputed": {
+        "relative_l2": 9.184925944689489e-08,
+        "max_abs": 9.5367431640625e-07,
+        "cosine": 0.9999999999999959,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": true,
+        "outside_count": 0,
+        "byte_equal": false
+      },
+      "all15_probability_padding_columns_positive_zero": true,
+      "all15_native_score_padding_columns_zero": true
+    },
+    "resource_counts_balanced": true,
+    "summed_eight_call_lifecycle_seconds": 2.9138055031071417,
+    "saved_audit_status": "passed",
+    "limits": [
+      "Original16-head attention component, not complete original block or full model.",
+      "The same-score P comparison is a final-head diagnostic, not strict whole-attention or trajectory acceptance.",
+      "No improved original fused complete-block latency or 20Hz result established."
+    ]
+  },
+  "source_evidence": [
+    {
+      "archive": "v119-native518-shared-attention-r1",
+      "file": "execution-review.json",
+      "bytes": 2808,
+      "sha256": "38f5b7784beb92c058b2507e74403cf05f6445f95e5fc844ec3cc8917f46cf38"
+    },
+    {
+      "archive": "v119-native518-shared-attention-r1",
+      "file": "shared-attention-r1/result.json",
+      "bytes": 146337,
+      "sha256": "552cf6bb4e7a18448a9f34095105957ef6fd310674e81fa461c44d796a2d4dc0"
+    },
+    {
+      "archive": "v119-native518-shared-attention-r1",
+      "file": "saved-shared-attention-audit.json",
+      "bytes": 22758,
+      "sha256": "a8a8084f1870a1c55ca7acdf657d3c661656ad95b56ac1c6188751073cb75f9b"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 185. Sharing native attention buffers removes a measured CPU boundary cost",
+    "section_sha256": "503a1c05390dda10c8e63acbe5d960fcdd984a5dcdb86ca65ca3f91ca3c0c6d0"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

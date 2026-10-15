@@ -1,0 +1,154 @@
+{
+  "schema": "recovered_original_native518_group0_frame_fc2_v105",
+  "experiment_version": 105,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "status": "matched_complete_group_speed_gain_pending_full_model_and_trajectory_validation",
+    "scope": {
+      "group_index": 0,
+      "original_pairs": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "original_blocks_per_call": 10,
+      "original_parameter_value_count": 180,
+      "original_resolution_tokens_layers_and_other_group_operations_preserved": true
+    },
+    "board_original_FP32_gate": {
+      "device": "RK3588S CPU",
+      "thresholds": {
+        "relative_l2_max": 1e-05,
+        "max_abs_max": 0.001
+      },
+      "checks": [
+        {
+          "index": 0,
+          "name": "frame_output",
+          "relative_l2": 1.1797339998164617e-06,
+          "max_abs": 1.245737075805664e-05,
+          "fixed_gate_pass": true
+        },
+        {
+          "index": 1,
+          "name": "global_output",
+          "relative_l2": 1.655041780322578e-06,
+          "max_abs": 1.2159347534179688e-05,
+          "fixed_gate_pass": true
+        }
+      ],
+      "one_continuous_ten_block_call": true,
+      "no_intermediate_substitution": true,
+      "sealed_memfd": true,
+      "memfd_closed": true,
+      "sessions_dropped": true
+    },
+    "matched_normal_ABBA": {
+      "frequency_hz": 1000000000,
+      "core_mask": 1,
+      "init_flags": 0,
+      "first_calls_per_route": 2,
+      "warm_calls_per_route": 6,
+      "summary": {
+        "A": {
+          "steady_count": 6,
+          "mean_seconds": 3.5125962071761023,
+          "min_seconds": 3.502408894011751,
+          "max_seconds": 3.5234318540315144
+        },
+        "B": {
+          "steady_count": 6,
+          "mean_seconds": 3.1083114788246653,
+          "min_seconds": 3.0958414360065944,
+          "max_seconds": 3.1213826470193453
+        }
+      },
+      "mean_time_reduction_percent": 11.509570258189616,
+      "timing_scope": "Outer full-group call: original dense FP32 input preparation/finite checks, inputs_set and conversion, blocking SDK run, both outputs get/convert/owned copy, release and finite validation. No original group layers/operations are skipped.",
+      "outside_timer": "Model/receipt/source/array hashes; constructor pinning/init and teardown; platform reads, SDK memory queries, reference/repeat comparisons, raw/file hashes and saved unique output files."
+    },
+    "output_checks": {
+      "all_A_byte_equal_saved_v100_same_input": true,
+      "all_same_route_repeats_byte_equal": true,
+      "B_versus_A": [
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "byte_equal": false,
+          "max_abs": 0.021484375,
+          "relative_L2": 0.0008912444884580979
+        },
+        {
+          "strict_rtol": 0.0001,
+          "strict_atol": 1e-05,
+          "strict_pass": false,
+          "byte_equal": false,
+          "max_abs": 0.015777587890625,
+          "relative_L2": 0.001270896460993769
+        }
+      ],
+      "original_CPU_FP32_reference_for_actual_NPU_input_available": false,
+      "CPU_input_gate_and_NPU_input_runtime_are_distinct_cases": true,
+      "strict_elementwise_B_to_A_pass": false,
+      "trajectory_quality_accepted": false
+    },
+    "resources": {
+      "contexts_created": 4,
+      "contexts_destroyed": 4,
+      "runs_completed": 16,
+      "output_buffers_acquired": 32,
+      "output_buffers_released": 32,
+      "balanced": true,
+      "maximum_live_contexts": 1
+    },
+    "controls": {
+      "NPU_test_seconds": 62.33226992998971,
+      "NPU_max_sampled_temperature_c": 65.615,
+      "frequency_governor_limits_restored": true,
+      "restored": {
+        "governor": "userspace",
+        "cur_freq": "300000000",
+        "min_freq": "300000000",
+        "max_freq": "1000000000",
+        "userspace/set_freq": "300000000"
+      },
+      "CPU_gate_max_sampled_temperature_c": 68.384
+    },
+    "saved_audit_status": "passed_saved_original_group0_matched_ABBA_audit",
+    "decision": "The complete ten-block group improved by 11.51% in this component screen. This was not full-model adoption or a same-input CPU precision claim for the NPU-derived input; later whole-model evidence remains separately recorded in v106."
+  },
+  "source_evidence": [
+    {
+      "archive": "v105-aggregator-fc2-review-r1",
+      "file": "group0-analysis.json",
+      "bytes": 11947,
+      "sha256": "1775b4d4e0015f2fa49fdb0a201ffff185fd5aed0d0af40f1769c3def8851872"
+    },
+    {
+      "archive": "v105-aggregator-fc2-review-r1",
+      "file": "saved-group0-abba-r1-audit.json",
+      "bytes": 11053,
+      "sha256": "a2b29f4af6c623e1fc4dd0b3ede1f1df0a25c79749f29e8202f52b3e62fffde0"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 171. Frame FC2 K4 retains an 11.51% gain across the complete first aggregator group",
+    "section_sha256": "01bee734ab66a67ca25c6fdfc2fb96354ecf30f2b6320a79b74875ec799389c6"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

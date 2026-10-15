@@ -1,0 +1,161 @@
+{
+  "schema": "recovered_original_native518_native_attention_v118",
+  "experiment_version": 118,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "review": {
+      "status": "component_screens_completed_not_deployment_accepted",
+      "actual_board_runs": {
+        "CPU_same_QKV_control": {
+          "source_sha256": "e9a64c20658e3c5a25ba9026d06d3a4d6904ab938b154e6008dcfd026435a0d1",
+          "receipt_sha256": "8b80f21983236d12bfe0ec01544d977b2f51b3357fd30301842ab85fd59f8808",
+          "elapsed_seconds": 8.239360452978872,
+          "original_FP32_byte_gate": true,
+          "forward_calls": 2,
+          "clock_before_after_hz": 300000000,
+          "thermal_trace_collected": false
+        },
+        "native_attention": {
+          "source_sha256": "6302f2f2efa236b317ce5985923a21897945906b1d68cd21006c9422618c92d2",
+          "receipt_sha256": "43f5fc00035d110f9dd5fcbc2713a210763f9f33b47703a2bf03da9e94d5e76e",
+          "SDK_products": 128,
+          "contexts_created_destroyed": 2,
+          "buffers_created_destroyed": 6
+        },
+        "copy_ABBA": {
+          "source_sha256": "422903841eda6a4dcd83dda8b9a13aad2406d49bd1504ff8c975d7b557d45425",
+          "receipt_sha256": "0e60bf8fb304ca6c97e8e730b4d4b829b98d36bbb8863a74d2197b0dbc717dc6",
+          "SDK_products": 256,
+          "contexts_created_destroyed": 2,
+          "buffers_created_destroyed": 6
+        }
+      },
+      "saved_audit_passed": true,
+      "source_review_passed": true,
+      "decision": {
+        "native_attention_precision": "Much smaller same-QKV error; strict FP32 gate still fails, no integrated trajectory claim",
+        "native_attention_performance": "Complete boundary roughly517ms; raw MatMul products around24ms do not count as complete attention speed",
+        "copy_order": "About0.8% small observed reduction, no practical speed acceptance or production change",
+        "next_new_hypothesis": "Use already-supported independent Mali DMA import to keep QK scores and probability layout transfers off the CPU; new softmax bridge not yet executed in this record"
+      },
+      "system_changes": {
+        "NPU_policy_restored": true,
+        "GPU_clocks_drivers_firmware_changed": false
+      }
+    },
+    "same_QKV_CPU_control": {
+      "status": "completed_original_CPU_same_actual_QKV_SDPA_controls_not_quality_accepted",
+      "original_FP32_reference_byte_gate_passed": true,
+      "actual_QKV_Half_roundtrip_byte_equal": true,
+      "NPU_vs_same_QKV_CPU_FP32": {
+        "relative_l2": 0.04549297162037414,
+        "max_abs": 0.22858142852783203,
+        "cosine": 0.9996575294279935,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 1002829,
+        "byte_equal": false
+      },
+      "precision_scope": "Identical QKV values in FP32/Half tensors; Torch CPU and RKNN internal accumulation/approximations need not match",
+      "calls": [
+        {
+          "name": "original_CPU_FP32",
+          "tensor_dtype": "torch.float32",
+          "completed": true,
+          "versus_same_QKV_original_CPU_FP32": {
+            "relative_l2": 0.0,
+            "max_abs": 0.0,
+            "cosine": 0.99999999999997,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": true,
+            "outside_count": 0,
+            "byte_equal": true
+          }
+        },
+        {
+          "name": "original_CPU_float16",
+          "tensor_dtype": "torch.float16",
+          "completed": true,
+          "versus_same_QKV_original_CPU_FP32": {
+            "relative_l2": 0.0004443830099294223,
+            "max_abs": 0.01117396354675293,
+            "cosine": 0.9999999012699743,
+            "strict_rtol": 0.0001,
+            "strict_atol": 1e-05,
+            "strict_pass": false,
+            "outside_count": 513214,
+            "byte_equal": false
+          }
+        }
+      ]
+    },
+    "native_attention": {
+      "scope": "Full16 heads and all1041 queries/keys; type1 FP16 operands/FP32 output, stable CPU softmax and explicit Half P before PV. Fifteen storage columns are excluded/zero-padded.",
+      "subsequent_three_mean_seconds": 0.5174802050072079,
+      "original_CPU_comparison": {
+        "relative_l2": 0.00011223745704784013,
+        "max_abs": 0.001636505126953125,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 132868
+      },
+      "complete_four_call_lifecycle_seconds": 2.096163921058178,
+      "resource_counts_balanced": true
+    },
+    "QK_copy_ABBA": {
+      "subsequent_three_means_seconds": {
+        "A": 0.5209262466523796,
+        "B": 0.5167833156883717
+      },
+      "complete_eight_call_lifecycle_seconds": 4.172617293952499,
+      "resource_counts_balanced": true,
+      "scope": "Only direct native strided QK copy versus contiguous owned copy then transpose; mathematical products and PV unchanged. About0.795% observed change is not a practical speed acceptance."
+    }
+  },
+  "source_evidence": [
+    {
+      "archive": "v118-native518-native-attention-r1",
+      "file": "execution-review.json",
+      "bytes": 2217,
+      "sha256": "abaa7eac0a146375e945c4d49507a7c9930e9ab814097877a7870300b584f488"
+    },
+    {
+      "archive": "v118-native518-native-attention-r1",
+      "file": "native-attention-r1/result.json",
+      "bytes": 51527,
+      "sha256": "43f5fc00035d110f9dd5fcbc2713a210763f9f33b47703a2bf03da9e94d5e76e"
+    },
+    {
+      "archive": "v118-native518-native-attention-r1",
+      "file": "copy-abba-r1/result.json",
+      "bytes": 100147,
+      "sha256": "0e60bf8fb304ca6c97e8e730b4d4b829b98d36bbb8863a74d2197b0dbc717dc6"
+    },
+    {
+      "archive": "v118-native518-native-attention-r1",
+      "file": "same-qkv-r1/result.json",
+      "bytes": 7188,
+      "sha256": "8b80f21983236d12bfe0ec01544d977b2f51b3357fd30301842ab85fd59f8808"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 184. Native attention sharply reduces one precision error, but matrix execution is only a small part of its cost",
+    "section_sha256": "173b736f824e16bb4dcc218ffa7694eaaba616c5034230504d23974381406b72"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

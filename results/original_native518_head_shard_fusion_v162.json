@@ -1,0 +1,502 @@
+{
+  "schema": "original_native518_head_shard_fusion_v162",
+  "date": "2026-10-15",
+  "status": "negative_complete_pair_public_IO_screen_verified_current_route_not_adopted",
+  "conclusion": "Three concurrent 6/5/5-head shards preserve the original complete pair, but mean complete-call latency rises 26.98 percent. The current public-IO route fails the predeclared latency screen; the smaller SDK-only estimate is not route latency or an acceleration claim.",
+  "scope": {
+    "original_model_only": true,
+    "complete_original_first_frame_global_pair": true,
+    "original_learned_values_preserved": 36,
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "final_global_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "heads": 16,
+    "queries": 2082,
+    "keys": 2082,
+    "reference_scope": "Conditional original ONNX FP32 on real NPU DINO boundary; not full-Torch end-to-end FP32.",
+    "reused_engineering_inputs_not_untouched_final_generalization": true,
+    "new_calibration_or_inherited_ranges": false,
+    "full_model_pose_depth_trajectory_realtime_or_final_generalization_accepted": false
+  },
+  "static_and_FP32": {
+    "original_nodes": 146,
+    "original_initializers": 79,
+    "exported_nodes": {
+      "frame_prefix": 90,
+      "heads0_6": 31,
+      "heads6_11": 31,
+      "heads11_16": 31,
+      "global_suffix": 27
+    },
+    "joined_source_only_nodes": 210,
+    "joined_source_only_initializers": 117,
+    "joined_source_runtime_or_export_claimed": false,
+    "all79_original_initializer_protos_reconstructed_byte_equal": true,
+    "whole_parent_ModelProto_inverse_byte_equal": true,
+    "QKV_Q_K_V_column_and_WO_head_row_order_preserved": true,
+    "all_original_global_norm1_channels_retained": 1024,
+    "original_QK_norm64_RoPE_all_key_Vmean_preserved": true,
+    "original_projection_bias_once_after_three_partial_sum": true,
+    "original_LayerScale_residual_Norm2_full_MLP_preserved": true,
+    "additional_original_norm1_evaluations": 2,
+    "additional_scalar_Adds": 2,
+    "floating_reduction_order_changed": true,
+    "learned_values_added_or_modified": false,
+    "CPU_created_dropped_calls_saved_outputs": [
+      5,
+      5,
+      10,
+      10
+    ],
+    "SDK_created_released": [
+      5,
+      5
+    ],
+    "maximum_live_CPU_or_SDK_compile_owners": 1,
+    "all_four_original_prefix_and_final_fixed_strict_FP32_gates_passed": true,
+    "both_original_prefix_outputs_byte_equal": true,
+    "worst_final_original_relative_l2": 7.217007620066298e-08,
+    "worst_final_original_max_abs": 8.344650268554688e-07,
+    "all_ten_CPU_outputs_saved_before_SDK": true,
+    "only_own_computed_intermediates_feed_later_stages": true
+  },
+  "actual_placement": {
+    "models": {
+      "frame_prefix": {
+        "file": "frame_prefix.rknn",
+        "bytes": 36639358,
+        "sha256": "7e892abc8a71d07b6ec25bd37813f2ac874006e19a41a942bf80e294f782a1f4"
+      },
+      "heads0_6": {
+        "file": "heads0_6.rknn",
+        "bytes": 5409937,
+        "sha256": "3abbb308d6d11ce79cd565cdada2ebaa5f1c9a7c3e02637957514050e7598a5e"
+      },
+      "heads6_11": {
+        "file": "heads6_11.rknn",
+        "bytes": 4317521,
+        "sha256": "b2c86c010d6c76a9eeebb58b26ec8b55f5703a67ce9a41e521d86f585b0979ed"
+      },
+      "heads11_16": {
+        "file": "heads11_16.rknn",
+        "bytes": 4317521,
+        "sha256": "fe3f1377c2c9097daaeb9add02461a21f41ff8a1d3204d542fe4534cebdfaa98"
+      },
+      "global_suffix": {
+        "file": "global_suffix.rknn",
+        "bytes": 18113592,
+        "sha256": "947e965c5ab709a4a16faaba7467500c6340234793845f97fcb6c6992c67eb3a"
+      }
+    },
+    "matched_fused_A_model": {
+      "bytes": 66443325,
+      "sha256": "d280ebc160d6eaa18f5cd5b8fe628141aa956559b65555b6917b6d1b2260aa02"
+    },
+    "actual_learned_dense_products_FLOAT16_NPU": 19,
+    "actual_SDPA_FLOAT16_NPU": 5,
+    "frame_two1041_query_SDPA16heads_preserved": true,
+    "three_global_SDPA_head_counts": [
+      6,
+      5,
+      5
+    ],
+    "all_actual_rows_consumed": true,
+    "no_internal_CPU_GPU_arithmetic_or_layout": true,
+    "all_public_rank3_interfaces_FLOAT16": true,
+    "all_actual_activation_storage_FLOAT16": true,
+    "FLOAT_labels_are_not_hidden_accumulator_precision_proof": true
+  },
+  "ordinary_runtime": {
+    "phase_order": [
+      "A_fused",
+      "B_shards",
+      "B_shards",
+      "A_fused"
+    ],
+    "cases_per_phase": [
+      "pair4",
+      "pair5"
+    ],
+    "calls_per_policy_case": 2,
+    "public_complete_pair_calls": 8,
+    "SDK_calls": 24,
+    "flags": 0,
+    "baseline_prefix_suffix_core_mask": 7,
+    "head_core_masks": [
+      1,
+      2,
+      4
+    ],
+    "three_dedicated_actor_threads_per_candidate_phase": true,
+    "SDK_init_run_close_on_each_actor_owner_thread": true,
+    "maximum_live_owners": 5,
+    "NPU_hz": 1000000000,
+    "timer_includes": "All original owned input/output, finite guards, copies/release, concurrent shard dispatch/drain and suffix; initialization/close, saving/hash/comparisons are separate.",
+    "original_owned_run_release_close_and_descriptors_unmodified": true,
+    "actual_prefix_and_head_owned_outputs_feed_successors": true,
+    "reference_inputs_never_injected_at_internal_cuts": true,
+    "cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "policies": {
+          "A_fused": {
+            "mean_complete_call_seconds": 0.7018113830017683,
+            "metrics": {
+              "global": {
+                "relative_l2": 0.005860724218305399,
+                "max_abs": 0.029351115226745605,
+                "outside_count": 1262862,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "special10": {
+                "relative_l2": 0.0318149145022378,
+                "max_abs": 0.029351115226745605,
+                "outside_count": 5060,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "camera2": {
+                "relative_l2": 0.05368164398050558,
+                "max_abs": 0.02199879288673401,
+                "outside_count": 993,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "register8": {
+                "relative_l2": 0.028454095518949975,
+                "max_abs": 0.029351115226745605,
+                "outside_count": 4067,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "patch2072": {
+                "relative_l2": 0.0057997581783669535,
+                "max_abs": 0.021298646926879883,
+                "outside_count": 1257802,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              }
+            }
+          },
+          "B_shards": {
+            "mean_complete_call_seconds": 0.9064174244995229,
+            "metrics": {
+              "global": {
+                "relative_l2": 0.0058607663379989785,
+                "max_abs": 0.029229044914245605,
+                "outside_count": 1263202,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "special10": {
+                "relative_l2": 0.031801448934751494,
+                "max_abs": 0.029229044914245605,
+                "outside_count": 5059,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "camera2": {
+                "relative_l2": 0.053667547452674755,
+                "max_abs": 0.02199879288673401,
+                "outside_count": 996,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "register8": {
+                "relative_l2": 0.028440289424565553,
+                "max_abs": 0.029229044914245605,
+                "outside_count": 4063,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "patch2072": {
+                "relative_l2": 0.00579985446069324,
+                "max_abs": 0.021298646926879883,
+                "outside_count": 1258143,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "policies": {
+          "A_fused": {
+            "mean_complete_call_seconds": 0.6922312775059254,
+            "metrics": {
+              "global": {
+                "relative_l2": 0.005924104619950151,
+                "max_abs": 0.029600977897644043,
+                "outside_count": 1263618,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "special10": {
+                "relative_l2": 0.03336885253359904,
+                "max_abs": 0.029600977897644043,
+                "outside_count": 5065,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "camera2": {
+                "relative_l2": 0.056096627745929425,
+                "max_abs": 0.025163859128952026,
+                "outside_count": 998,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "register8": {
+                "relative_l2": 0.02991562178172165,
+                "max_abs": 0.029600977897644043,
+                "outside_count": 4067,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "patch2072": {
+                "relative_l2": 0.005858753980263137,
+                "max_abs": 0.021296977996826172,
+                "outside_count": 1258553,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              }
+            }
+          },
+          "B_shards": {
+            "mean_complete_call_seconds": 0.8636861075028719,
+            "metrics": {
+              "global": {
+                "relative_l2": 0.005920301160992604,
+                "max_abs": 0.028258204460144043,
+                "outside_count": 1264137,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "special10": {
+                "relative_l2": 0.033228713958236934,
+                "max_abs": 0.028258204460144043,
+                "outside_count": 5056,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "camera2": {
+                "relative_l2": 0.05612842471392933,
+                "max_abs": 0.025407999753952026,
+                "outside_count": 996,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "register8": {
+                "relative_l2": 0.02973592039163694,
+                "max_abs": 0.028258204460144043,
+                "outside_count": 4060,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              },
+              "patch2072": {
+                "relative_l2": 0.005855474399166168,
+                "max_abs": 0.020180106163024902,
+                "outside_count": 1259081,
+                "fixed_gate_passed": false,
+                "strict_pass": false
+              }
+            }
+          }
+        }
+      }
+    ],
+    "mean_complete_call_seconds": {
+      "A_fused": 0.6970213302538468,
+      "B_shards": 0.8850517660011974
+    },
+    "mean_complete_call_change_percent": 26.976281440178028,
+    "diagnostic_SDK_estimate_seconds": {
+      "A_fused": 0.639533095749357,
+      "B_shards": 0.5760987142457452
+    },
+    "diagnostic_estimate_definition": "Prefix SDK-run + maximum of concurrent head SDK-run durations + suffix SDK-run; fused control uses its single SDK-run.",
+    "SDK_estimate_is_not_measured_route_latency_or_parallel_core_occupancy": true,
+    "serial_sum_of_parallel_SDK_durations_used": false,
+    "logical_public_IO_bytes_per_candidate_call": 110862336,
+    "logical_public_IO_bytes_per_baseline_call": 17055744,
+    "IO_counts_are_logical_not_measured_DMA_traffic": true,
+    "all24_saved_file_raw_shape_finite_verified": true,
+    "original_case_arrays_verified": 6,
+    "original_baseline_final_R161_byte_parity": true,
+    "same_policy_case_repeat_byte_equal": true,
+    "different_case_byte_parity_asserted": false,
+    "original_fixed_relative_l2_max": 1e-05,
+    "original_fixed_max_abs_max": 0.001,
+    "original_strict_rtol": 0.0001,
+    "original_strict_atol": 1e-05,
+    "all8_original_fixed_tensor_gates_passed": false,
+    "all8_original_strict_tensor_gates_passed": false,
+    "all_global_special_camera_register_patch_tensor_gates_passed": false
+  },
+  "predeclared_engineering_screen": {
+    "contract_sha256": "d595497b8fe0a4b8835da365f068820e7a7f22ff507bcc3189d9524f99934a71",
+    "minimum_mean_complete_call_gain_fraction": 0.1,
+    "maximum_each_region_L2_and_maxabs_ratio_to_matched_A": 1.1,
+    "mean_latency_criterion_passed": false,
+    "both_cases_mean_faster": false,
+    "all_regional_error_ratios_within_bound": true,
+    "overall_progression_passed": false,
+    "heuristics_are_not_user_trajectory_thresholds": true,
+    "original_fixed_strict_tolerances_unchanged": true
+  },
+  "resources": {
+    "contexts_created_destroyed_SDKruns_outputs_acquired_released": [
+      12,
+      12,
+      24,
+      24,
+      24
+    ],
+    "owned_output_arrays": 24,
+    "canonical_finals": 8,
+    "intermediate_arrays": 16,
+    "all_actor_futures_drained_before_close": true,
+    "all_actor_pools_closed_and_threads_preserved": true,
+    "all_resources_closed": true,
+    "source_raw_inputs_environment_cwd_affinity_unchanged_or_restored": true,
+    "controller_timeout_seconds": 180,
+    "controller_temperature_limit_c": 75,
+    "prior_frequency_governor_limits_restored": true,
+    "worker_clock_writes": false,
+    "maximum_controller_temperature_c": 59.153,
+    "maximum_worker_temperature_c": 60.076,
+    "peak_worker_rss_mib": 754.15234375,
+    "RSS_does_not_include_all_NPU_or_system_memory": true
+  },
+  "original_checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "evidence": [
+    {
+      "role": "Static exporter",
+      "basename": "export_head_shard_fusion.py",
+      "bytes": 18265,
+      "sha256": "649d2776d0258805eb140f735ca607e304b0d8b727df8adace540f1745f261ef"
+    },
+    {
+      "role": "Exact source/static inverse",
+      "basename": "result.json",
+      "bytes": 21384,
+      "sha256": "82a67328eb0b30f8a4d0c74234b56c9a05e2531a8203d419c6d506c542e4da6b"
+    },
+    {
+      "role": "Executed CPU-gate/nonquant compiler",
+      "basename": "compile_head_shard_fusion_board.py",
+      "bytes": 30134,
+      "sha256": "68573c482ab5fec90c938fdc3f826d48c585b131ab5e5f9d5106d1e9ac2c5dca"
+    },
+    {
+      "role": "Board CPU-gate and five compiled models",
+      "basename": "result.json",
+      "bytes": 46920,
+      "sha256": "ac837f8379d2048ac01a81eec07b4b74560d2cbb9f7f70e6735efc52c0d096b3"
+    },
+    {
+      "role": "Independent saved CPU-gate and complete actual-placement audit",
+      "basename": "board-r1-saved-audit-r1.json",
+      "bytes": 298424,
+      "sha256": "b5f3eef5f98bc478ab95fae2ef9753b27cfbdc0ad0b0ee88870d22746cf1a126"
+    },
+    {
+      "role": "Dedicated-thread owner and drain helper",
+      "basename": "owned_head_shard_workers.py",
+      "bytes": 6813,
+      "sha256": "78ccf0b6c57929dc84f0b3c3b43dc64de8a6d15c107da4bd830f17bea3a0a916"
+    },
+    {
+      "role": "Predeclared diagnostic screen",
+      "basename": "screen-contract-r1.json",
+      "bytes": 3255,
+      "sha256": "d595497b8fe0a4b8835da365f068820e7a7f22ff507bcc3189d9524f99934a71"
+    },
+    {
+      "role": "Executed ABBA runtime worker",
+      "basename": "run_head_shard_fusion_board.py",
+      "bytes": 45756,
+      "sha256": "831cf0e20116aefd9c0decaf3ae54f58a658e8aebbcdda248b6fe73119fc8354"
+    },
+    {
+      "role": "Executed runtime transport source",
+      "basename": "execute_head_shard_runtime_host.py",
+      "bytes": 18225,
+      "sha256": "4dcc396e584d24f26c582c75a860cd1a997ea7c11600142c51a8243646680f2f"
+    },
+    {
+      "role": "Actual runtime launch manifest",
+      "basename": "manifest.json",
+      "bytes": 8938,
+      "sha256": "c7150305f0a41872567fafacf7f76c70e6d2adbc775996e84ce93412ba92cebe"
+    },
+    {
+      "role": "Board eight-route runtime receipt",
+      "basename": "result.json",
+      "bytes": 230573,
+      "sha256": "dbd1acffe7c17ad09116f53f853f15f0d99ec83d36e1a2a5d03abab6ecc1f212"
+    },
+    {
+      "role": "Complete pull/hash transport receipt",
+      "basename": "runtime-r1-transport.json",
+      "bytes": 21639,
+      "sha256": "ac79440c64da22b4c98e621784c8da8d8eb125bdec88dbd98548dbb995181fc4"
+    },
+    {
+      "role": "Restoring NPU controller",
+      "basename": "control.json",
+      "bytes": 9652,
+      "sha256": "be3c8f48ace3d903c65c9561bcf0979d416ce01b66d03ec914184fe9cf47df1d"
+    },
+    {
+      "role": "Saved-only numeric/resource/parallel-timer auditor",
+      "basename": "audit_head_shard_runtime_saved.py",
+      "bytes": 31291,
+      "sha256": "4c5b5ff11b308aec3a4aa4802801d56aae53d796f02e8199c01b5448bdfc9fed"
+    },
+    {
+      "role": "Independent 24-output saved runtime audit",
+      "basename": "runtime-r1-saved-audit.json",
+      "bytes": 72786,
+      "sha256": "db84d7cb1e28e365a5e7a27ef2ae75dce80f0d9bcb9430f46b2fe6d3f829ea2b"
+    }
+  ],
+  "decision": {
+    "current_public_IO_head_shard_route_adopted": false,
+    "deployment_accepted": false,
+    "speed_accepted": false,
+    "tensor_precision_accepted": false,
+    "full_model_trajectory_realtime_or_final_generalization_accepted": false,
+    "reason": "Complete route is 26.98 percent slower and fails the predeclared speed screen; original tensor gates still fail. Any future native-I/O route requires separate ownership, numerical and complete-route evidence."
+  },
+  "limitations": [
+    "Two complete calls per policy/case, including first calls, do not establish sustained rate or P95.",
+    "SDK timing estimates do not identify a unique causal contribution from IO, scheduling or arithmetic.",
+    "Camera-token errors are tensor diagnostics, not decoded pose accuracy or ATE/RPE.",
+    "Only the original first frame/global pair is measured; full model, SLAM, map cadence, physical 8 GB and 30-minute stability remain unverified."
+  ],
+  "licensing": {
+    "original_checkpoint_terms_separate_from_repository_BSD_2_Clause": true,
+    "captured_arrays_weight_bearing_graphs_and_SDK_binaries_remain_private": true
+  }
+}

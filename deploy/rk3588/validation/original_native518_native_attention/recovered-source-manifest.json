@@ -1,0 +1,76 @@
+{
+  "schema": "v126_restored_validation_source_identities",
+  "original_version": 118,
+  "archive": "v118-native518-native-attention-r1",
+  "archive_manifest_sha256": "159766c53ede825efc54295cea649d4f2eebb9eda2f9383fbe3bc6e1d83d6796",
+  "source_bytes_equal_frozen_archive": false,
+  "README_reconstructed_not_original_hash": true,
+  "source_files": [
+    {
+      "file": "audit_same_qkv_native_saved.py",
+      "bytes": 17401,
+      "sha256": "480ea456c56d79c1f9660a3f1d34bc063c86f4000bd819e1c50cc2b726d9d12b",
+      "archive_files": [
+        "audit_same_qkv_native_saved.py"
+      ],
+      "archive_bytes": 17431,
+      "archive_sha256": "a27e7a1c48b9babe63e801cc5c3d210da3855fcb2435e2db53e7385d00847b61",
+      "publication_adaptation": "Portable host artifact path defaults only; frozen historical execution identity remains archive_sha256."
+    },
+    {
+      "file": "cpu_sdpa_same_qkv_board.py",
+      "bytes": 15454,
+      "sha256": "e9a64c20658e3c5a25ba9026d06d3a4d6904ab938b154e6008dcfd026435a0d1",
+      "archive_files": [
+        "cpu_sdpa_same_qkv_board.py"
+      ]
+    },
+    {
+      "file": "run_copy_abba_r1.sh",
+      "bytes": 487,
+      "sha256": "fec079f41dd85b79508397d14e15fea607a66021e7cc46df6e5b40a8791aa1d9",
+      "archive_files": [
+        "run_copy_abba_r1.sh"
+      ]
+    },
+    {
+      "file": "run_cpu_same_qkv_r1.sh",
+      "bytes": 610,
+      "sha256": "6f780b5ae8bc82db16975547bec41e0fffba0bedefc5dff1629988419e5d7ec6",
+      "archive_files": [
+        "run_cpu_same_qkv_r1.sh"
+      ]
+    },
+    {
+      "file": "run_native_attention_board.py",
+      "bytes": 18164,
+      "sha256": "6302f2f2efa236b317ce5985923a21897945906b1d68cd21006c9422618c92d2",
+      "archive_files": [
+        "run_native_attention_board.py"
+      ]
+    },
+    {
+      "file": "run_native_attention_copy_abba.py",
+      "bytes": 19297,
+      "sha256": "422903841eda6a4dcd83dda8b9a13aad2406d49bd1504ff8c975d7b557d45425",
+      "archive_files": [
+        "run_native_attention_copy_abba.py"
+      ]
+    },
+    {
+      "file": "run_native_attention_r1.sh",
+      "bytes": 490,
+      "sha256": "af8a365263760bd942167ef7541b58fa41898f9298da40a2cd8b8b72628fe8b2",
+      "archive_files": [
+        "run_native_attention_r1.sh"
+      ]
+    }
+  ],
+  "NN_or_SDK_execution": false,
+  "raw_artifacts_published": false,
+  "original_recovery_bytes_equal_frozen_archive_before_publication_adaptation": true,
+  "publication_adapted_paths": [
+    "audit_same_qkv_native_saved.py"
+  ],
+  "publication_identity_scope": "Current bytes/sha256 identify the published file; archive/executed_source fields retain the frozen historical source identity. No new model or device execution is claimed."
+}

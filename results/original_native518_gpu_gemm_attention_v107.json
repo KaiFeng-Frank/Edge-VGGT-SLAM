@@ -1,0 +1,91 @@
+{
+  "schema": "recovered_original_native518_gpu_gemm_attention_v107",
+  "experiment_version": 107,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "original_experiment_status": "completed_GPU_component_fixed_gate_passed",
+    "scope": {
+      "input_shape": [
+        1,
+        16,
+        2082,
+        64
+      ],
+      "output_shape": [
+        1,
+        2082,
+        1024
+      ],
+      "original_full_GEMM_SDPA": true,
+      "GPU_kernels_per_call": 3,
+      "materialized_score_bytes": 277422336,
+      "score_in_place_Softmax": true,
+      "score_readback_or_saved": false,
+      "performance_scope": "Complete standalone GPU SDPA call: input validation/packing, three uploads, full QK GEMM, stable row Softmax and PV GEMM, consumer-layout readback, owned finite validation and per-call event release. Init, hash/reference comparison/save/platform reads are outside.",
+      "frequency_scope": "Automatic GPU frequency snapshots under unchanged governor/min/max; between-call GPU samples belong to the external controller, not a fixed/sustained-clock claim.",
+      "timing_limit": "CPU wall durations include host scheduling; the external GPU controller does not pause submitted work. Event durations are recorded separately. Standalone original CPU operands are not the compiled whole-block boundary."
+    },
+    "summary": {
+      "recorded_calls": 4,
+      "first_boundary_seconds": 0.6470619819592685,
+      "steady_count": 3,
+      "steady_mean_seconds": 0.41836948667575297,
+      "steady_min_seconds": 0.4115054170251824,
+      "steady_max_seconds": 0.4230619590380229,
+      "three_steady_calls_do_not_establish_latency_P95_or_stream_rate": true
+    },
+    "vs_original_CPU": {
+      "relative_l2": 6.999199537000769e-07,
+      "max_abs": 9.059906005859375e-06,
+      "outside_tolerance": 0,
+      "elements": 2131968,
+      "strict_tensor_pass": true,
+      "relative_l2_pass": true,
+      "max_abs_pass": true,
+      "fixed_gate_pass": true,
+      "byte_equal_original_CPU": false
+    },
+    "all4_same_input_outputs_byte_equal": true,
+    "fixed_original_FP32_gate_passed_all_calls": true,
+    "resources_balanced": true,
+    "saved_audit_status": "passed_saved_data_integrity_and_accounting_audit",
+    "decision": "Reject production integration: approximately418ms full boundary and385ms device kernels are slower than the earlier approximately245ms fused NPU attention profile. The numerical/execution boundaries differ; this is a rejection screen, not a matched speed ratio. No measured DDR bandwidth or occupancy claim."
+  },
+  "source_evidence": [
+    {
+      "archive": "v107-attention-gemm-review-r1",
+      "file": "gpu-r1/result.json",
+      "bytes": 72735,
+      "sha256": "a45070ba7ed199f39b847063d96065d47d72c5b3e533e4394b7fe14ea79e286f"
+    },
+    {
+      "archive": "v107-attention-gemm-review-r1",
+      "file": "saved-output-audit.json",
+      "bytes": 6921,
+      "sha256": "b0786135733dfdd60c5f13bc80e1514a69d1afe466fbd240a00914ce97073393"
+    },
+    {
+      "archive": "v107-attention-gemm-review-r1",
+      "file": "engineering-conclusion.json",
+      "bytes": 2666,
+      "sha256": "124aee1b6cedc54ff45c2f45be0238f599fded8ec9049f02b644e12e47080236"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 173. Original GPU attention: faster GEMM structure, still rejected for integration",
+    "section_sha256": "e8d1fa46c3b3f7f78869330bf2b4856f3c940226302f958ab14b1b2d3ca7ce4b"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}

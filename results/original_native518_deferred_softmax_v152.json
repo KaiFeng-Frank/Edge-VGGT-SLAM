@@ -1,0 +1,300 @@
+{
+  "schema": "original_native518_deferred_softmax_v152",
+  "status": "original_FP32_gates_passed_deferred_normalization_lowering_rejected_as_all_NPU_acceleration",
+  "summary": "Deferring Softmax normalization until after the centered value product passes the original FP32 gates, but this RKNN representation loses SDPA fusion, places ReduceMax/Exp on CPU and increases static internal memory about 7.85x. No NPU forward or runtime latency was measured.",
+  "scope": {
+    "board": "RK3588S",
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "component": "Isolated original global0 attention on one frozen genuine original Q/K/V capture",
+    "original_heads": 16,
+    "queries": 2082,
+    "complete_keys": 2082,
+    "head_dim": 64,
+    "input_and_output_shape": [
+      1,
+      16,
+      2082,
+      64
+    ],
+    "original_Vmean_retained": true,
+    "learned_parameters_in_probe": 0,
+    "full_original_model_or_SLAM_executed": false
+  },
+  "exact_graph_change": {
+    "algebra": "S=.125 Q K^T; m=max_keys(S); E=exp(S-m); Z=sum_keys(E); mu=mean_keys(V); O=(E@(V-mu))/Z+mu",
+    "equality": "Real-arithmetic identity relative to original Softmax(S)@(V-mu)+mu; FP32 operation order changes.",
+    "original_isolated_nodes": 8,
+    "candidate_isolated_nodes": 12,
+    "full_parent_nodes": 146,
+    "full_candidate_nodes": 150,
+    "original_initializers": 79,
+    "candidate_initializers": 80,
+    "unchanged_original_node_protos": 144,
+    "all79_original_initializer_protos_byte_equal": true,
+    "whole_original_parent_inverse_byte_equal": true,
+    "new_nonlearned_INT64_axis": [
+      -1
+    ],
+    "full_candidate_exported": false,
+    "original_QK_and_PV_MACs_unchanged": 8877514752,
+    "explicit_normalized_elements_before": 69355584,
+    "explicit_normalized_elements_after": 2131968,
+    "existing_fused_hardware_division_count_or_speedup_claimed": false,
+    "history": "R103 GPU code already used unnormalized exponential/value accumulation followed by division; this experiment tests a new inline RKNN graph representation of that algebra."
+  },
+  "board_FP32_gate": {
+    "CPU_provider": "CPUExecutionProvider",
+    "one_thread": true,
+    "sequential_sessions": 2,
+    "forward_calls": 2,
+    "saved_finite_outputs": 2,
+    "all_raw_outputs_saved_before_numeric_verdict": true,
+    "original_capture_arrays_read_only_and_raw_hashes_unchanged_after_each_call": true,
+    "sessions_dropped_before_SDK": true,
+    "unchanged_thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "strict_atol": 1e-05,
+      "strict_rtol": 0.0001
+    },
+    "comparisons": {
+      "A_current_Vmean": {
+        "relative_l2": 1.5957379433718123e-07,
+        "max_abs": 3.814697265625e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      },
+      "B_deferred_normalization": {
+        "relative_l2": 1.5041139309969425e-07,
+        "max_abs": 4.5299530029296875e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      },
+      "candidate_vs_current_Vmean_CPU": {
+        "relative_l2": 1.239492510966359e-07,
+        "max_abs": 3.337860107421875e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      }
+    }
+  },
+  "noncalibrating_compilation": {
+    "toolkit": "2.3.2",
+    "float_dtype": "float16",
+    "optimization_level": 3,
+    "enable_flash_attention": false,
+    "do_quantization": false,
+    "SDK_owners_created": 2,
+    "SDK_owners_released": 2,
+    "NPU_inference_calls": 0,
+    "new_calibration": false,
+    "worker_wall_seconds": 20.079275684001914,
+    "CPU_controller_wall_seconds": 20.918171643999813,
+    "compiled_graphs": {
+      "A_current_Vmean": {
+        "file": "A-current-Vmean.rknn",
+        "bytes": 2840440,
+        "sha256": "62f5170aaa7ecbe84a1cb5f3e8494a561d8abfa2376ff7564f156bedf8bdc593",
+        "do_quantization": false
+      },
+      "B_deferred_normalization": {
+        "file": "B-deferred-normalization.rknn",
+        "bytes": 2993272,
+        "sha256": "01da54accf164be74c6841a2929af613aa88b5c7985602fc09563bfff96fb1bb",
+        "do_quantization": false
+      }
+    }
+  },
+  "actual_placement": {
+    "A_current_Vmean": {
+      "operators": 15,
+      "feature_rows": 22,
+      "constant_rows": 2,
+      "precision_target_counts": {
+        "FLOAT16/CPU": 6,
+        "FLOAT16/NPU": 9
+      },
+      "all_explicit_rows_and_starred_spans_consumed": true,
+      "internal_CPU_operations": [
+        {
+          "id": 3,
+          "op": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "name": "Transpose:global0/value_rs"
+        },
+        {
+          "id": 12,
+          "op": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "name": "Transpose:__global_value_mean/centered_PV_sdpa_tp"
+        }
+      ],
+      "SDK_reported_static_memory": {
+        "internal_memory_KB_as_printed": 90197.3,
+        "weight_memory_KB_as_printed": 6.1875
+      }
+    },
+    "B_deferred_normalization": {
+      "operators": 24,
+      "feature_rows": 35,
+      "constant_rows": 7,
+      "precision_target_counts": {
+        "FLOAT16/CPU": 8,
+        "FLOAT16/NPU": 16
+      },
+      "all_explicit_rows_and_starred_spans_consumed": true,
+      "internal_CPU_operations": [
+        {
+          "id": 10,
+          "op": "ReduceMax",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "name": "ReduceMax:__deferred_softmax/max_all_keys"
+        },
+        {
+          "id": 13,
+          "op": "Exp",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "name": "Exp:__deferred_softmax/exp_all_keys"
+        },
+        {
+          "id": 14,
+          "op": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "name": "Transpose:__deferred_softmax/exponentials_tp#1_rs"
+        },
+        {
+          "id": 22,
+          "op": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "name": "Transpose:global0/attention_values_tp"
+        }
+      ],
+      "SDK_reported_static_memory": {
+        "internal_memory_KB_as_printed": 707909.0,
+        "weight_memory_KB_as_printed": 10.5625
+      }
+    }
+  },
+  "outcome": {
+    "current_fused_SDPA_FLOAT16_NPU": true,
+    "candidate_fused_SDPA_present": false,
+    "candidate_QK_and_PV_FLOAT16_NPU": true,
+    "candidate_ReduceSum_lowered_to_FLOAT16_NPU_Conv": true,
+    "candidate_PV_normalization_Div_FLOAT16_NPU": true,
+    "candidate_ReduceMax_and_Exp_FLOAT16_CPU": true,
+    "complete_score_and_E_logical_elements": 69355584,
+    "SDK_reported_internal_memory_ratio": 7.848450009035747,
+    "memory_scope": "SDK-reported static internal allocation in printed KB; not measured runtime peak RSS, bandwidth or traffic.",
+    "candidate_all_NPU": false,
+    "NPU_runtime_accuracy_or_latency_measured": false,
+    "speed_or_quality_acceptance": false
+  },
+  "cleanup": {
+    "CPU_sessions_created": 2,
+    "CPU_sessions_dropped": 2,
+    "SDK_sessions_created": 2,
+    "SDK_sessions_released": 2,
+    "all_original_inputs_and_sources_unchanged": true,
+    "CPU_controller_timeout_seconds": 900,
+    "frequency_written": false,
+    "process_group_gone_and_leader_reaped": true,
+    "cwd_affinity_environment_and_tempfile_cache_restored": true
+  },
+  "limits": [
+    "The FP32 gate covers one original capture and the isolated attention tail; it does not establish complete-model, trajectory or map quality.",
+    "The no-calibration FLOAT16 probe does not establish current INT8 graph accuracy, accumulator precision or core occupancy.",
+    "Explicit normalization count falls by 32x, but fused SDPA may already amortize normalization; there is no hardware division-count or speedup result.",
+    "The new representation contains CPU arithmetic and full attention buffers; no NPU inference, latency, sustained rate or P95 was measured.",
+    "No fresh-pose 20 Hz, full SLAM realtime, camera, stability or physical 8 GB acceptance follows.",
+    "BSD-2-Clause repository code and original VGGT weight terms remain separate; code permission does not grant commercial rights to the weights."
+  ],
+  "evidence": [
+    {
+      "role": "static_exporter_source",
+      "file": "export_deferred_softmax_graphs.py",
+      "bytes": 14648,
+      "sha256": "c71954a311ca7d780220ab5ff9e25782b52310e9eff7a06a5fe0c309fc126568"
+    },
+    {
+      "role": "static_inverse_receipt",
+      "file": "result.json",
+      "bytes": 8125,
+      "sha256": "37c58b8e6ff676940891b8235527bc8a61e72cbc5f6749463d78bfd09aac6697"
+    },
+    {
+      "role": "independent_static_peer",
+      "file": "static-independent-peer-r1.json",
+      "bytes": 2388,
+      "sha256": "ce238272f8380cb282bb498ba12932f6fedbdd834a6a1e757ea926f455183060"
+    },
+    {
+      "role": "board_gate_compile_worker_source",
+      "file": "compile_deferred_softmax_board.py",
+      "bytes": 19778,
+      "sha256": "bbd721bf79effff30a749de64259c928aa41b92fcce4476f7f4281146f6ac4c4"
+    },
+    {
+      "role": "board_gate_compile_transport_source",
+      "file": "execute_deferred_softmax_host.py",
+      "bytes": 12816,
+      "sha256": "061d6d2b06c3496781131d8beadaff008bf0dc752fb83924626d41587f13a42c"
+    },
+    {
+      "role": "board_gate_compile_receipt",
+      "file": "result.json",
+      "bytes": 20445,
+      "sha256": "7c01b478cae363bd50bcb3484ca6a2fb45567a16f7f1c56a35540e0012accaa4"
+    },
+    {
+      "role": "actual_full_compiler_log",
+      "file": "vggt-v83-native518deferredsoftmaxprober1-r1.log",
+      "bytes": 50909,
+      "sha256": "699e5010ed874131af04246bd2a3fdec20d74fd8ebe714dbfeeac48c71cbea42"
+    },
+    {
+      "role": "actual_CPU_controller",
+      "file": "vggt-v83-native518deferredsoftmaxprober1-control-r1.json",
+      "bytes": 85842,
+      "sha256": "a01417a6d7532f8b50987dc27f5ee184f9e273f5cfb6d9ba934ada0d7b41fe1d"
+    },
+    {
+      "role": "actual_transport_receipt",
+      "file": "board-r1-transport.json",
+      "bytes": 14962,
+      "sha256": "62f66707afdc933a1cbe3dead147f522c8263c79d5752bad93d4f41179d05dec"
+    },
+    {
+      "role": "independent_saved_array_and_table_audit",
+      "file": "board-r1-saved-audit-r1.json",
+      "bytes": 61783,
+      "sha256": "6b3479bd35163d3c8151cff07474a73e607bf4a125b626b78018af0ed514d2ed"
+    },
+    {
+      "role": "saved_auditor_source",
+      "file": "audit_deferred_softmax_saved.py",
+      "bytes": 16435,
+      "sha256": "354c40c4999d9cbde73af7637e6d9d461d20a9f41554971d420a2261bd0328c1"
+    },
+    {
+      "role": "original_real_QKV_capture_receipt",
+      "file": "capture.json",
+      "bytes": 12587,
+      "sha256": "e4ffaea2b11df9ac558c119cb4854d490b0030c02b7706eee344b8894cefa686"
+    }
+  ]
+}

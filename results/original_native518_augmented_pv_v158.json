@@ -1,0 +1,248 @@
+{
+  "schema": "original_native518_augmented_PV_normalizer_fusion_v158",
+  "date": "2026-10-15",
+  "status": "normalizer_fusion_preserves_quarter_NPU_output_but_latency_and_precision_gates_not_accepted",
+  "conclusion": "Folding the key sum into a sixty-fifth PV row removes its independent Conv and preserves the prior quarter-exponential NPU output byte for byte. It remains 48.92 percent slower than the unchanged fused control and fails fixed/strict FP32 gates.",
+  "scope": {
+    "original_model_only": true,
+    "component_only": true,
+    "heads": 16,
+    "queries": 2082,
+    "keys": 2082,
+    "one_repeated_original_capture_sha256": "e4ffaea2b11df9ac558c119cb4854d490b0030c02b7706eee344b8894cefa686",
+    "candidate_accepted": false,
+    "new_calibration": false,
+    "whole_model_trajectory_or_realtime_acceptance": false
+  },
+  "static_rewrite": {
+    "original_nodes": 48,
+    "candidate_nodes": 50,
+    "original_initializers": 24,
+    "candidate_initializers": 31,
+    "all24_original_initializer_protos_byte_equal": true,
+    "whole_parent_inverse_ModelProto_byte_equal": true,
+    "all_heads_queries_keys_preserved": true,
+    "exact_real_identity": "[Vc.T;ones.T] @ E_T = [Vc.T @ E_T; sum_keys(E_T)]; Slice restores original numerator and denominator tensor names.",
+    "packed_product_shape": [
+      16,
+      65,
+      1,
+      2082
+    ],
+    "added_denominator_MACs": 69355584,
+    "logical_PV_MAC_growth_fraction": 0.015625,
+    "learned_parameters_added": 0,
+    "original64_PV_rows_preserved": true
+  },
+  "board_FP32_gate": {
+    "independently_verified": true,
+    "original_FP32_comparison": {
+      "relative_l2": 1.438947085011023e-07,
+      "max_abs": 3.0994415283203125e-06,
+      "outside_count": 0,
+      "fixed_gate_passed": true,
+      "strict_pass": true,
+      "byte_equal": false
+    },
+    "parent_quarter_FP32_comparison": {
+      "relative_l2": 2.779923082505148e-07,
+      "max_abs": 2.86102294921875e-06,
+      "outside_count": 0,
+      "fixed_gate_passed": true,
+      "strict_pass": true,
+      "byte_equal": false
+    },
+    "ledger": {
+      "CPU_created": 1,
+      "CPU_dropped": 1,
+      "CPU_calls": 1,
+      "SDK_created": 1,
+      "SDK_released": 1
+    }
+  },
+  "actual_placement": {
+    "model": {
+      "file": "augmented-pv.rknn",
+      "bytes": 2864888,
+      "sha256": "1fd8c772b8da887119784bfc9b3602851a7fc2ee2593912dd7fba11eb438e0f9"
+    },
+    "operators": 50,
+    "feature_rows": 77,
+    "constant_rows": 19,
+    "all_actual_rows_consumed": true,
+    "all_arithmetic_NPU": true,
+    "no_full_score_CPU_layout": true,
+    "two_source_Slices_lowered_to_one_NPU_Split": true,
+    "independent_E_sum_operation_absent": true,
+    "printed_PV_cycles": {
+      "column_label": "Cycles(DDR/NPU/Total)",
+      "quarter_64_rows": {
+        "DDR": 6242119,
+        "NPU": 8853504,
+        "Total": 8853504,
+        "reported_RW_KB": 140026
+      },
+      "augmented_65_rows": {
+        "DDR": 6267477,
+        "NPU": 11066880,
+        "Total": 11066880,
+        "reported_RW_KB": 140091
+      },
+      "reported_NPU_cycle_change_percent": 25.0,
+      "logical_PV_MAC_change_percent": 1.5625,
+      "limits": "SDK compiler estimates, not measured operator duration or proof of the hidden padding mechanism."
+    },
+    "known_small_public_CPU_layout": [
+      {
+        "id": 47,
+        "op": "Transpose",
+        "dtype": "FLOAT16",
+        "target": "CPU",
+        "name": "Transpose:__global_value_mean/centered_PV_tp"
+      }
+    ]
+  },
+  "ordinary_runtime": {
+    "control": "Unchanged R152 fused SDPA",
+    "schedule": [
+      "A_fused",
+      "A_fused",
+      "B_candidate",
+      "B_candidate"
+    ],
+    "calls_per_route": 2,
+    "maximum_live_contexts": 1,
+    "flags": 0,
+    "core_mask": 7,
+    "NPU_hz": 1000000000,
+    "public_timer_includes": "All canonical packing, unchanged owned SDK IO/finite/copy/release and output canonicalization; init/close/saves/comparisons excluded",
+    "metrics": {
+      "A_fused": {
+        "mean_public_call_seconds": 0.4605307125020772,
+        "mean_SDK_run_seconds": 0.37507047500184854,
+        "comparison_vs_original_FP32": {
+          "relative_l2": 0.0012975616213954692,
+          "max_abs": 0.04167795181274414,
+          "outside_count": 756588,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        },
+        "physical_and_canonical_repeats_byte_equal": true
+      },
+      "B_candidate": {
+        "mean_public_call_seconds": 0.6858079854973766,
+        "mean_SDK_run_seconds": 0.6025439775003179,
+        "comparison_vs_original_FP32": {
+          "relative_l2": 0.0002924840822354545,
+          "max_abs": 0.005660057067871094,
+          "outside_count": 782583,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        },
+        "physical_and_canonical_repeats_byte_equal": true
+      }
+    },
+    "candidate_public_mean_change_percent_vs_current_fused_control": 48.91688369085336,
+    "both_candidate_outputs_byte_equal_prior_quarter_NPU_output": true,
+    "prior_fused_output_byte_parity_verified": true,
+    "all8_saved_arrays_and4_original_arrays_verified": true,
+    "resource_totals": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 4,
+      "output_buffers_acquired": 4,
+      "output_buffers_released": 4
+    },
+    "all_resources_closed": true,
+    "original_governor_frequency_limits_restored": true,
+    "limits": "AA then BB on one repeated capture, two calls per route with first calls included. No sustained, causal speed, P95 or whole-model conclusion."
+  },
+  "prior_quarter_cross_run_context": {
+    "prior_receipt_sha256": "d3c975c48d6a45bc422320860bee494a9f00972b6d12a4762027ee405a2f7067",
+    "same_frozen_input_and_byte_equal_NPU_output": true,
+    "prior_quarter_public_mean_seconds": 0.692130236500816,
+    "current_augmented_public_mean_seconds": 0.6858079854973766,
+    "descriptive_mean_change_percent": -0.9134481734828559,
+    "matched_old_vs_new_timing_or_causal_speed_gain_established": false
+  },
+  "evidence": [
+    {
+      "role": "augmented exporter source",
+      "basename": "export_augmented_pv.py",
+      "bytes": 11095,
+      "sha256": "1022ce5bd9c04c2aad7196e844ba744eefcb5321c317a9487774537f9aec3266"
+    },
+    {
+      "role": "augmented static proof",
+      "basename": "result.json",
+      "bytes": 6602,
+      "sha256": "2e39f661f0c5139de5c4a16ce25a1a19482ac04ecf11b0ec59f7cade4023faa5"
+    },
+    {
+      "role": "compiler source",
+      "basename": "compile_augmented_pv_board.py",
+      "bytes": 11456,
+      "sha256": "df5ba74158b40f39d054b05c68d48f85357619c5bdf63ea8218f3ddfb7081d51"
+    },
+    {
+      "role": "actual gate and compile receipt",
+      "basename": "result.json",
+      "bytes": 5529,
+      "sha256": "351ddb18bf8f9cf40c9f07b68a54028aeb098c9da5359227591903bc54dd5b09"
+    },
+    {
+      "role": "actual placement saved audit",
+      "basename": "board-r1-saved-audit-r1.json",
+      "bytes": 64134,
+      "sha256": "5787c1b7c14d0e835aa9a37ab1388c6ce17d6663a3c8579416aa80149a072e19"
+    },
+    {
+      "role": "actual augmented compiler table",
+      "basename": "vggt-v83-native518augmentedpvprober1-r1.log",
+      "bytes": 49472,
+      "sha256": "b548c3e16258307fd53934a10e8036951254d6e4d3c2fb2451d9dc0b2dc86f27"
+    },
+    {
+      "role": "prior quarter compiler table",
+      "basename": "vggt-v83-native518quarterexpprober1-r1.log",
+      "bytes": 47120,
+      "sha256": "7b7c3ba5ed1a79c6f29ed24af63e656b5c6a1d2804048e1368819686f323cc6d"
+    },
+    {
+      "role": "ordinary owned runtime source",
+      "basename": "run_augmented_pv_board.py",
+      "bytes": 31459,
+      "sha256": "7fd4a7401d43822f67ee440e43212eaee539908a5676d8b43f316ba8cc49b565"
+    },
+    {
+      "role": "ordinary runtime receipt",
+      "basename": "result.json",
+      "bytes": 68617,
+      "sha256": "0c27f158a2eef0d2588bd490a8e1cee1de637d23192e71dea5238c1af3977414"
+    },
+    {
+      "role": "restoring runtime controller",
+      "basename": "control.json",
+      "bytes": 4258,
+      "sha256": "01abae7e7cfdbe796a4cdadc9e638965bd5c80a399151766ada759c765fd2684"
+    },
+    {
+      "role": "independent runtime saved audit source",
+      "basename": "audit_augmented_pv_runtime_saved.py",
+      "bytes": 24101,
+      "sha256": "fb02dcaac03cf656d383f1be65931d4b674d566d1b6d4510ceb767ecaa426090"
+    },
+    {
+      "role": "independent runtime saved audit",
+      "basename": "runtime-r1-saved-audit.json",
+      "bytes": 20323,
+      "sha256": "ca0c6a9df1f8587ed729ab994b1ee41f3c254f3b8fea35001e81b028a3a9bd98"
+    }
+  ]
+}

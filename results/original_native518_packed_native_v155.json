@@ -1,0 +1,425 @@
+{
+  "schema": "original_native518_packed_native_attention_v155",
+  "date": "2026-10-15",
+  "status": "rejected_after_original_capture_normal_runtime_slower_and_less_accurate",
+  "conclusion": "Explicit native views remove the full-score CPU layout conversion, but ordinary runtime is slower and substantially less accurate than the unchanged fused SDPA control. Do not integrate or expand this route.",
+  "scope": {
+    "original_model_only": true,
+    "single_repeated_original_R103_global_attention_capture": true,
+    "original_qk_norm_and_RoPE_already_applied_in_capture": true,
+    "learned_parameters_in_isolated_probe": 0,
+    "new_calibration": false,
+    "whole_group_or_SLAM_measurement": false,
+    "candidate_accepted": false,
+    "speed_accepted": false,
+    "precision_accepted": false,
+    "realtime_accepted": false
+  },
+  "static_rewrite": {
+    "original_isolated_nodes": 40,
+    "candidate_isolated_nodes": 45,
+    "original_initializers": 17,
+    "candidate_initializers": 23,
+    "unchanged_original_node_protos": 23,
+    "all_original_initializer_protos_byte_equal": true,
+    "whole_R154B_inverse_ModelProto_byte_equal": true,
+    "original_public_IO_byte_equal": true,
+    "head_count": 16,
+    "queries": 2082,
+    "complete_key_count": 2082,
+    "head_dim": 64,
+    "packed_score_and_E_shape": [
+      16,
+      2082,
+      1,
+      2082
+    ],
+    "added_Reshape_nodes": [
+      "__packed_native/pack_QK_scores",
+      "__packed_native/PV_right_operand_view",
+      "__packed_native/pack_PV_numerator",
+      "__packed_native/pack_mean",
+      "__packed_native/public_transposed_output_view"
+    ],
+    "all_five_row_major_views_preserve_each_flat_position": true,
+    "unchanged_QK_and_PV_MACs": 8877514752,
+    "augmented_PV_used": false,
+    "all2082_original_keys_contribute_exactly_once": true
+  },
+  "board_FP32_gate": {
+    "original_reference": {
+      "capture_receipt_sha256": "e4ffaea2b11df9ac558c119cb4854d490b0030c02b7706eee344b8894cefa686",
+      "shape": [
+        1,
+        16,
+        2082,
+        64
+      ],
+      "dtype": "float32"
+    },
+    "candidate_relative_l2": 3.2905632110001474e-07,
+    "candidate_max_abs": 1.0013580322265625e-05,
+    "original_fixed_and_strict_passed": true,
+    "strict_outside_count": 0,
+    "candidate_byte_equal_to_R154_transposed_CPU_output": true,
+    "session_counts": {
+      "CPU_created": 2,
+      "CPU_dropped": 2,
+      "CPU_calls": 2,
+      "SDK_created": 2,
+      "SDK_released": 2
+    }
+  },
+  "actual_noncalibrating_compile": {
+    "comparison_control": "R154 transposed-native graph, not the fused runtime control",
+    "receipt_sha256": "c38994c45b288128fafc0c3415da4fe676ba8fda96b686f380033c30321c9d91",
+    "model": {
+      "file": "B-packed-native.rknn",
+      "bytes": 2987448,
+      "sha256": "c81237d8477e0c6f2965f1835ede621bd88c6e83b95cc05f2a69827407678cb5",
+      "do_quantization": false
+    },
+    "operator_count": 46,
+    "feature_rows": 71,
+    "constant_rows": 17,
+    "all_actual_rows_consumed": true,
+    "precision_target_counts": {
+      "FLOAT16/CPU": 5,
+      "FLOAT16/NPU": 40,
+      "FLOAT/NPU": 1
+    },
+    "all13_Max_and11_Split_NPU": true,
+    "QK_PV_NPU": true,
+    "sum_NPU": true,
+    "no_internal_CPU_arithmetic": true,
+    "no_full_score_CPU_layout": true,
+    "remaining_small_public_CPU_layout": {
+      "id": 43,
+      "op": "Transpose",
+      "dtype": "FLOAT16",
+      "target": "CPU",
+      "name": "Transpose:__global_value_mean/centered_PV_tp"
+    },
+    "static_internal_memory_KB_as_printed": {
+      "R154_transposed_control": 695102.0,
+      "R155_packed_candidate": 560684.0
+    },
+    "allocation_scope": "SDK static reported allocation, not measured traffic, process RSS or unique physical bytes",
+    "mixed_Sub_label_and_storage": {
+      "operator_id": 38,
+      "operator_label": "FLOAT/NPU",
+      "observed_activation_storage": "FLOAT16",
+      "one_constant_storage": "FLOAT"
+    },
+    "hidden_accumulator_and_activation_accuracy_established": false,
+    "component_runtime_diagnostic_eligible_at_placement_gate": true
+  },
+  "ordinary_runtime": {
+    "runtime_control": "Unchanged R152 current-Vmean fused SDPA, model 62f5170aaa7ecbe84a1cb5f3e8494a561d8abfa2376ff7564f156bedf8bdc593",
+    "control_compile_receipt_sha256": "7c01b478cae363bd50bcb3484ca6a2fb45567a16f7f1c56a35540e0012accaa4",
+    "schedule": [
+      "A_fused",
+      "A_fused",
+      "B_candidate",
+      "B_candidate"
+    ],
+    "captures": 1,
+    "calls_per_route": 2,
+    "maximum_live_contexts": 1,
+    "init_flags": 0,
+    "core_mask": 7,
+    "NPU_hz": 1000000000,
+    "input_layout": "Canonical [1,16,2082,64] to strictly queried NHWC [1,2082,64,16] by (0,2,3,1); FP32/pass0 SDK IO",
+    "output_layout": "Queried NCHW; SDK want_float1 output is copied and released by the unchanged owner; physical and canonical files are both saved",
+    "owned_run_release_close_inherited_unchanged": true,
+    "public_call_timer_includes": "Input layout packing, unchanged OwnedContext.run (finite checks, SDK input/run/get, owned copies and release), and output canonicalization",
+    "outside_call_timer": "Initialization, destruction, saves, hashes, original-reference comparisons and platform samples",
+    "route_summary": {
+      "A_fused": {
+        "comparison_vs_original_FP32": {
+          "relative_l2": 0.0012975616213954692,
+          "max_abs": 0.04167795181274414,
+          "outside_count": 756588,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        },
+        "physical_and_canonical_repeats_byte_equal": true,
+        "mean_owned_call_seconds": 0.45012546150246635,
+        "mean_public_call_seconds": 0.4624892124993494,
+        "mean_SDK_run_seconds": 0.3771224544980214,
+        "first_public_call_seconds": 0.474393880002026,
+        "subsequent_public_call_seconds": 0.4505845449966728,
+        "SDK_memory": {
+          "weight_bytes": 6336,
+          "internal_bytes": 92362048,
+          "dma_bytes": 99151872,
+          "scope": "SDK per-context fields, not physical unique-byte totals"
+        }
+      },
+      "B_candidate": {
+        "comparison_vs_original_FP32": {
+          "relative_l2": 0.022513160037512015,
+          "max_abs": 0.7118773460388184,
+          "outside_count": 764324,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        },
+        "physical_and_canonical_repeats_byte_equal": true,
+        "mean_owned_call_seconds": 0.5818407040023885,
+        "mean_public_call_seconds": 0.5929568510036916,
+        "mean_SDK_run_seconds": 0.5101487810024992,
+        "first_public_call_seconds": 0.5998554350007907,
+        "subsequent_public_call_seconds": 0.5860582670065924,
+        "SDK_memory": {
+          "weight_bytes": 44736,
+          "internal_bytes": 574140416,
+          "dma_bytes": 581165056,
+          "scope": "SDK per-context fields, not physical unique-byte totals"
+        }
+      }
+    },
+    "candidate_public_mean_change_percent": 28.209877112436587,
+    "candidate_to_fused_original_reference_relative_l2_ratio": 17.350359062947717,
+    "all8_physical_and_canonical_saved_arrays_verified": true,
+    "all4_original_captured_arrays_verified_unchanged": true,
+    "physical_to_canonical_byte_parity_verified": true,
+    "resource_totals": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 4,
+      "output_buffers_acquired": 4,
+      "output_buffers_released": 4
+    },
+    "all_resources_closed": true,
+    "NPU_governor_frequency_and_limits_restored": true,
+    "maximum_worker_temperature_c": 57.307,
+    "maximum_controller_temperature_c": 56.384,
+    "saved_array_identities": [
+      {
+        "file": "A_fused_physical_call1.npy",
+        "role": "physical_owned",
+        "bytes": 8528000,
+        "sha256": "6a04d70d483918a2f8896ab0bbf8e59bfa95bbd420a5352a93913db9f5ae9a91",
+        "raw_sha256": "9379eead497e58528d9deeeb76d23648d22302e5a35d56a575e4026e02349742",
+        "shape": [
+          1,
+          16,
+          2082,
+          64
+        ],
+        "dtype": "float32"
+      },
+      {
+        "file": "A_fused_call1.npy",
+        "role": "canonical_output",
+        "bytes": 8528000,
+        "sha256": "6a04d70d483918a2f8896ab0bbf8e59bfa95bbd420a5352a93913db9f5ae9a91",
+        "raw_sha256": "9379eead497e58528d9deeeb76d23648d22302e5a35d56a575e4026e02349742",
+        "shape": [
+          1,
+          16,
+          2082,
+          64
+        ],
+        "dtype": "float32"
+      },
+      {
+        "file": "A_fused_physical_call2.npy",
+        "role": "physical_owned",
+        "bytes": 8528000,
+        "sha256": "6a04d70d483918a2f8896ab0bbf8e59bfa95bbd420a5352a93913db9f5ae9a91",
+        "raw_sha256": "9379eead497e58528d9deeeb76d23648d22302e5a35d56a575e4026e02349742",
+        "shape": [
+          1,
+          16,
+          2082,
+          64
+        ],
+        "dtype": "float32"
+      },
+      {
+        "file": "A_fused_call2.npy",
+        "role": "canonical_output",
+        "bytes": 8528000,
+        "sha256": "6a04d70d483918a2f8896ab0bbf8e59bfa95bbd420a5352a93913db9f5ae9a91",
+        "raw_sha256": "9379eead497e58528d9deeeb76d23648d22302e5a35d56a575e4026e02349742",
+        "shape": [
+          1,
+          16,
+          2082,
+          64
+        ],
+        "dtype": "float32"
+      },
+      {
+        "file": "B_candidate_physical_call1.npy",
+        "role": "physical_owned",
+        "bytes": 8528000,
+        "sha256": "31fcee31cefb3271bcaab6eb6d05d17d35cd2dbf8732980f0b350618876d917c",
+        "raw_sha256": "472955e9037869c3e416e2ec9f48fb6673ee92bf13ad26c656fa3b1c246eb1ff",
+        "shape": [
+          1,
+          16,
+          2082,
+          64
+        ],
+        "dtype": "float32"
+      },
+      {
+        "file": "B_candidate_call1.npy",
+        "role": "canonical_output",
+        "bytes": 8528000,
+        "sha256": "31fcee31cefb3271bcaab6eb6d05d17d35cd2dbf8732980f0b350618876d917c",
+        "raw_sha256": "472955e9037869c3e416e2ec9f48fb6673ee92bf13ad26c656fa3b1c246eb1ff",
+        "shape": [
+          1,
+          16,
+          2082,
+          64
+        ],
+        "dtype": "float32"
+      },
+      {
+        "file": "B_candidate_physical_call2.npy",
+        "role": "physical_owned",
+        "bytes": 8528000,
+        "sha256": "31fcee31cefb3271bcaab6eb6d05d17d35cd2dbf8732980f0b350618876d917c",
+        "raw_sha256": "472955e9037869c3e416e2ec9f48fb6673ee92bf13ad26c656fa3b1c246eb1ff",
+        "shape": [
+          1,
+          16,
+          2082,
+          64
+        ],
+        "dtype": "float32"
+      },
+      {
+        "file": "B_candidate_call2.npy",
+        "role": "canonical_output",
+        "bytes": 8528000,
+        "sha256": "31fcee31cefb3271bcaab6eb6d05d17d35cd2dbf8732980f0b350618876d917c",
+        "raw_sha256": "472955e9037869c3e416e2ec9f48fb6673ee92bf13ad26c656fa3b1c246eb1ff",
+        "shape": [
+          1,
+          16,
+          2082,
+          64
+        ],
+        "dtype": "float32"
+      }
+    ],
+    "limits": "AA then BB, two calls per route on one repeated capture. Means include first calls. This is a component screen, not a sustained benchmark, causal latency attribution, trajectory assessment or whole-model speed."
+  },
+  "preserved_failed_attempt": {
+    "runtime_r1_status": "Descriptor preflight rejected the fused control NHWC input before any inference",
+    "contexts_created": 1,
+    "contexts_destroyed": 1,
+    "runs_completed": 0,
+    "controller_restoration_verified": true,
+    "fixed_by": "New r2 strict descriptor/permutation adapter; original owner run/release/close remain unchanged"
+  },
+  "numerical_causality": {
+    "identified": false,
+    "observed_difference": "Fused SDPA is replaced by separately materialized FLOAT16 score/E/sum/PV paths",
+    "unresolved": "QK/E storage rounding, Sigmoid implementation precision, and sum/PV hidden accumulation precision cannot be distinguished from final outputs alone",
+    "exact_math_bounds": "For x<=0, sigmoid ratio denominator is in [0.5,1]; exact E<=1 and 1<=Z<=2082. These bounds do not establish low-precision implementation accuracy."
+  },
+  "evidence": [
+    {
+      "role": "packed exporter source",
+      "basename": "export_packed_native_graphs.py",
+      "bytes": 15925,
+      "sha256": "a3e15670c3e04b5cc04490263e1f0f133376051e1ff2f55169d006572740de02"
+    },
+    {
+      "role": "static graph proof",
+      "basename": "result.json",
+      "bytes": 15193,
+      "sha256": "08db9dd62ff9db4b955305c05f29ef09d18630a998a22e7da7750258bc1d4039"
+    },
+    {
+      "role": "independent source/proto peer",
+      "basename": "static-independent-source-and-proto-peer-r1.json",
+      "bytes": 1154,
+      "sha256": "50ee470e70fdce8841dd4b0d9d24c17830d99ff51674c6dbbe53e87f60559bb8"
+    },
+    {
+      "role": "noncalibrating compiler source",
+      "basename": "compile_packed_native_board.py",
+      "bytes": 20658,
+      "sha256": "46ff06229844f52a1c97f6fdbe071eac6f60402b82707cbca908d6b28f10000a"
+    },
+    {
+      "role": "actual compile receipt",
+      "basename": "result.json",
+      "bytes": 23895,
+      "sha256": "c38994c45b288128fafc0c3415da4fe676ba8fda96b686f380033c30321c9d91"
+    },
+    {
+      "role": "actual placement audit",
+      "basename": "board-r1-saved-audit-r1.json",
+      "bytes": 155152,
+      "sha256": "6ad33ed3a4e8dc5ebbf67a8531f8d4abb50c60453de4b79af9337f565e7e962e"
+    },
+    {
+      "role": "r1 preserved pre-inference failure",
+      "basename": "result.json",
+      "bytes": 12274,
+      "sha256": "ff5ec8db7810800902f40353f6089d2029fd36962d71d03f12954ea3499dd712"
+    },
+    {
+      "role": "r2 strict layout worker source",
+      "basename": "run_transposed_native_attention_board_r2.py",
+      "bytes": 31557,
+      "sha256": "76b85a4a43f7c01fce9e41243457182d6e5cda11a5a011566937905eb6a7d200"
+    },
+    {
+      "role": "r2 transport source",
+      "basename": "execute_transposed_native_attention_runtime_host_r2.py",
+      "bytes": 14953,
+      "sha256": "35e675e1d2be04ae6e540892fd1dff30a67b88a73c5048d67878c02264b65ac0"
+    },
+    {
+      "role": "r2 generated descriptor/layout checks",
+      "basename": "runtime-layout-generated-check-r2.json",
+      "bytes": 464,
+      "sha256": "13683954926cf535b8ffca9d526e7646c0d5bf9ab499c5dfa4b7d95bafeae381"
+    },
+    {
+      "role": "r2 runtime receipt",
+      "basename": "result.json",
+      "bytes": 68608,
+      "sha256": "0a205c80da13ec6dbdf973c4f2bebe3e679874e94796eee5d78ab193c859429e"
+    },
+    {
+      "role": "r2 transport receipt",
+      "basename": "runtime-r2-transport.json",
+      "bytes": 13835,
+      "sha256": "a9749893b8bb5ad372007df9ca708cb1470a5b9cf8a647de870218191ffd9dd5"
+    },
+    {
+      "role": "r2 restoring controller receipt",
+      "basename": "control.json",
+      "bytes": 4261,
+      "sha256": "aea0068fe76df5296d1cfcca27213d87104a119d606a988489120b5941215f32"
+    },
+    {
+      "role": "independent runtime saved audit source",
+      "basename": "audit_packed_attention_runtime_r2_saved.py",
+      "bytes": 22060,
+      "sha256": "7e3dd738172e81a2985fd5486fd19c55d27f20c4bb8b6f2b2e39504ed6970bb8"
+    },
+    {
+      "role": "independent runtime saved audit",
+      "basename": "runtime-r2-saved-audit.json",
+      "bytes": 19404,
+      "sha256": "5e33b0a816ba17aed889aa1776aa999ea6f676d264c3907cf785f185063b9808"
+    }
+  ]
+}

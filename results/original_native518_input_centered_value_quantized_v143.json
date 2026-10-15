@@ -1,0 +1,399 @@
+{
+  "schema": "original_native518_input_centered_value_quantized_screen_v143",
+  "status": "input_centered_value_no_material_heldout_gain_output_projected_mean_FP32_gate_only_not_accepted",
+  "original_model_only": true,
+  "preceding_record": "original_native518_value_affine_commutation_v142.json",
+  "preceding_record_preserved": true,
+  "scope": "Original frame0/global0 computation on captured original native392x518 encoder outputs:1041 tokens per frame,2082 global keys,16 heads,all36 original parameter records. Not complete VGGT prediction or SLAM.",
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "all_original_tokens_heads_layers_and_dense_products_retained": true,
+  "input_side_graph": {
+    "sha256": "031db683aa4ba08469cfb9958f7aab39b1a53d2c7b6aed572511e1e37c79d1e9",
+    "nodes": 152,
+    "initializers": 82,
+    "all81_parent_initializer_protos_byte_unchanged": true,
+    "whole_parent_inverse_byte_equal": true,
+    "mean": "mu_V=mean(X)W_V+b_V; V_centered=(X-mean(X))W_V",
+    "original_V_bias_added_once": true,
+    "original_full_V_MACs": 2183135232,
+    "additional_one_row_mean_MACs": 1048576,
+    "fresh_four_calibration_input_bytes_and_original_CONFIG_preserved": true,
+    "old_model_data_or_ranges_reused": false,
+    "heldouts_in_calibration": false
+  },
+  "actual_compilation": {
+    "seconds": 39.70447444800084,
+    "peak_rss_mib": 1238.41796875,
+    "SDK_version": "2.3.2",
+    "SDK_calls": [
+      "config",
+      "hybrid_quantization_step2",
+      "export_rknn"
+    ],
+    "generated_model_data_and_complete_numeric_calibration_section_byte_preserved": true,
+    "requested_selector_count": 28,
+    "actual_operator_count": 103,
+    "complete_consumer_and_parameter_buffer_rows": 260,
+    "actual_precision_target_counts": {
+      "FLOAT16/CPU": 2,
+      "FLOAT16/NPU": 34,
+      "INT8/NPU": 67
+    },
+    "original_learned_dense_operation_count": 16,
+    "all_original_learned_dense_operations_INT8_NPU": true,
+    "full_token_QK": {
+      "id": 56,
+      "op": "Conv",
+      "dtype": "INT8",
+      "target": "NPU",
+      "name": "Conv:__global0_original_column_split/qk_matmul#3"
+    },
+    "full_token_V": {
+      "id": 76,
+      "op": "Conv",
+      "dtype": "INT8",
+      "target": "NPU",
+      "name": "Conv:__global0_original_column_split/v_matmul#2"
+    },
+    "normalized_X_mean_broadcast_Sub_FLOAT16_NPU": true,
+    "one_row_original_V_mean_affine_FLOAT16_NPU": true,
+    "one_row_affine": {
+      "id": 72,
+      "op": "Conv",
+      "dtype": "FLOAT16",
+      "target": "NPU",
+      "name": "Conv:__global0_input_centered_value/mean_product#2"
+    },
+    "all_three_full_SDPA_INT8_NPU": true,
+    "six_original_residuals_and_internal_frame_global_bridge_FLOAT16": true,
+    "no_internal_CPU_GPU_arithmetic_or_layout_fallback": true,
+    "sole_global_public_exit_FLOAT16": true,
+    "explicit_centered_X_FLOAT16_to_full_V_INT8_conversion": true,
+    "full_V_INT8_to_FLOAT16_then_centered_V_FLOAT16_to_SDPA_INT8_conversions": true,
+    "centered_PV_INT8_to_FLOAT16_restore_conversion": true,
+    "restored_PV_still_requantized_before_original_INT8_projection": true,
+    "packed_original_V_weights": {
+      "source_generated_protos_byte_equal_ignoring_only_name": true,
+      "full_token_storage_dtype": "INT8",
+      "full_token_storage_bytes": 1048576,
+      "one_row_storage_dtype": "FLOAT16",
+      "one_row_storage_bytes": 2097152,
+      "original_V_bias_storage_dtype": "FLOAT",
+      "original_V_bias_only_on_one_row_affine": true,
+      "full_V_separate_generated_bias_or_correction_storage_dtype": "INT32",
+      "packed_values_or_accumulator_semantics_not_inferred": true
+    },
+    "compiled_model": {
+      "artifact": "pair-A-global0-input-centered-value-mean-residual-protected.rknn",
+      "bytes": 48135933,
+      "sha256": "b36ba4f94ec39abc6e7009a56e43b5afaa83b7f46ec301916bb55a406b80e076"
+    },
+    "compiler_SDK_released_and_all_process_state_restored": true,
+    "compiler_controller_frequency_written": false
+  },
+  "heldout_screen": {
+    "flags": 0,
+    "core_mask": 7,
+    "inputs": [
+      "pair4",
+      "pair5"
+    ],
+    "order_per_input": [
+      "VM_parent",
+      "Input_centered_V",
+      "Input_centered_V",
+      "VM_parent"
+    ],
+    "complete_calls": 8,
+    "resident_contexts": 2,
+    "all_runs_sequential": true,
+    "all_eight_outputs_finite": true,
+    "all_same_case_model_repeats_byte_equal": true,
+    "all_four_parent_outputs_byte_equal_frozen_prior_core7": true,
+    "unchanged_finite_guard": true,
+    "saved_file_and_raw_hashes_independently_verified": true,
+    "matched_comparisons": [
+      {
+        "input_id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "input_split": "heldout",
+        "parent_relative_l2": 0.04487364811276287,
+        "candidate_relative_l2": 0.044851709420469295,
+        "parent_max_abs": 0.6293010115623474,
+        "candidate_max_abs": 0.611404612660408,
+        "parent_strict_outside_count": 1473420,
+        "candidate_strict_outside_count": 1473427,
+        "both_fixed_gates_passed": false,
+        "both_strict_gates_passed": false,
+        "descriptive_relative_l2_reduction_fraction": 0.0004888992363278888,
+        "parent_complete_call_seconds": [
+          0.7011281119994237,
+          0.6966014450008515
+        ],
+        "candidate_complete_call_seconds": [
+          0.6953351949996431,
+          0.7011491960001877
+        ],
+        "parent_complete_call_mean_seconds": 0.6988647785001376,
+        "candidate_complete_call_mean_seconds": 0.6982421954999154
+      },
+      {
+        "input_id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "input_split": "heldout",
+        "parent_relative_l2": 0.047341056319043257,
+        "candidate_relative_l2": 0.04736728812005709,
+        "parent_max_abs": 0.7575092166662216,
+        "candidate_max_abs": 0.7301654666662216,
+        "parent_strict_outside_count": 1476368,
+        "candidate_strict_outside_count": 1476352,
+        "both_fixed_gates_passed": false,
+        "both_strict_gates_passed": false,
+        "descriptive_relative_l2_reduction_fraction": -0.0005541025708646341,
+        "parent_complete_call_seconds": [
+          0.6848240680010349,
+          0.686091776999092
+        ],
+        "candidate_complete_call_seconds": [
+          0.686486569000408,
+          0.6894804440016742
+        ],
+        "parent_complete_call_mean_seconds": 0.6854579225000634,
+        "candidate_complete_call_mean_seconds": 0.6879835065010411
+      }
+    ],
+    "older_QKV_split_numerical_comparison_receipt_sha256": "39913ea567694f01d2b435a25524cdf846e3626248ab6124b7150262063a66b4",
+    "older_QKV_split_numerical_comparisons": [
+      {
+        "input_id": "pair4",
+        "prior_QKV_split_relative_l2": 0.04474022161436914,
+        "prior_QKV_split_max_abs": 0.6293010115623474,
+        "input_centered_value_relative_l2": 0.044851709420469295,
+        "relative_l2_reduction_fraction": -0.0024918921292143015,
+        "prior_outputs_file_raw_hashes_verified": true,
+        "prior_repeats_and_parent_control_parity_verified": true,
+        "earlier_timing_not_compared_or_mixed": true
+      },
+      {
+        "input_id": "pair5",
+        "prior_QKV_split_relative_l2": 0.04718984630647767,
+        "prior_QKV_split_max_abs": 0.7477435916662216,
+        "input_centered_value_relative_l2": 0.04736728812005709,
+        "relative_l2_reduction_fraction": -0.003760169347172937,
+        "prior_outputs_file_raw_hashes_verified": true,
+        "prior_repeats_and_parent_control_parity_verified": true,
+        "earlier_timing_not_compared_or_mixed": true
+      }
+    ],
+    "older_QKV_split_timings_not_mixed": true,
+    "resource_counts": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 8,
+      "output_buffers_acquired": 8,
+      "output_buffers_released": 8
+    },
+    "all_contexts_and_buffers_closed": true,
+    "original_NPU_frequency_policy_exactly_restored": true,
+    "NPU_frequency_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "controller_temperature_limit_c": 75,
+    "observed_maximum_temperature_c": 55.461,
+    "worker_elapsed_seconds": 7.384411117000127,
+    "timing_scope": "Complete owned normal call includes input preparation/finite validation,SDK IO,owned copy,release and output finite checks; lifecycle,comparison,saving and deduplication are separate.",
+    "sample_statistics_are_not_sustained_rate_or_P95_acceptance": true
+  },
+  "output_side_FP32_addendum": {
+    "separate_from_input_side": true,
+    "candidate_graph_sha256": "db15393256a8c00b0514566c5eece0facfc08493cc71233cd9141db5054717e9",
+    "mean": "H(PV_centered+mu_V)W_O+b_O=H(PV_centered)W_O+[H(mu_V)W_O+b_O]",
+    "nodes": 152,
+    "initializers": 82,
+    "all81_parent_initializer_protos_byte_unchanged": true,
+    "all146_other_node_protos_byte_unchanged": true,
+    "whole_parent_inverse_byte_equal": true,
+    "original_projection_weight_references": 2,
+    "original_projection_bias_occurrences": 1,
+    "unchanged_LayerScale_after_restore": true,
+    "original_full_projection_MACs": 2183135232,
+    "additional_one_row_projection_MACs": 1048576,
+    "original_four_calibration_inputs_only": true,
+    "CPU_sessions": 1,
+    "complete_CPU_forward_calls": 4,
+    "finite_saved_arrays": 4,
+    "all_four_fixed_and_strict_gates_passed_against_original_A_and_previous_Vmean": true,
+    "worst_relative_l2_against_original_A": 8.491853415989872e-08,
+    "worst_max_abs_against_original_A": 9.5367431640625e-07,
+    "worst_relative_l2_against_previous_Vmean": 8.117218692080886e-08,
+    "worst_max_abs_against_previous_Vmean": 8.344650268554688e-07,
+    "strict_outliers": 0,
+    "byte_equality_with_original_FP32_claimed": false,
+    "worker_seconds": 24.687977272002172,
+    "peak_rss_mib": 1050.7109375,
+    "controller_clock_writes": false,
+    "CPU_sessions_and_controller_process_group_closed": true,
+    "actual_transport_change_from_review_is_one_terminal_status_label": true,
+    "fresh_calibration_completed": false,
+    "NPU_compilation_completed": false,
+    "NPU_runtime_completed": false,
+    "quantized_accuracy_or_speed_accepted": false
+  },
+  "evidence": [
+    {
+      "role": "input_actual_mapper_source",
+      "artifact": "select_global0_input_centered_value_precision_policy.py",
+      "bytes": 28795,
+      "sha256": "4d6b9d4cb63219ee074a1cbaf1094b1414ea318237f6ddf2812049269448ebd6"
+    },
+    {
+      "role": "input_step2_compiler_source",
+      "artifact": "compile_global0_input_centered_value_hybrid_board.py",
+      "bytes": 23725,
+      "sha256": "1a6d3860e11d4243be2f0de109e01524dacacf97b8463027b5587387f3c1027c"
+    },
+    {
+      "role": "input_step2_transport_source",
+      "artifact": "execute_global0_input_centered_value_step2_host.py",
+      "bytes": 15658,
+      "sha256": "0b11f0b8a188ec41febe1ca53e2ede44c83676abaa9f563f3bb1164129253532"
+    },
+    {
+      "role": "input_actual_compile_receipt",
+      "artifact": "result.json",
+      "bytes": 52834,
+      "sha256": "c6dc558df53e5e7a182c646ea3b3f1b08fc4ab829bdfc56614dfbe84be0dfea1"
+    },
+    {
+      "role": "input_actual_full_compiler_tables",
+      "artifact": "vggt-v83-native518global0inputcenteredvaluestep2r1-r1.log",
+      "bytes": 99499,
+      "sha256": "85e5a23c8fb58b306db628ff5e4aec114dc9bf6cd9dd6dd83df55f2b9715bf90"
+    },
+    {
+      "role": "input_no_clock_compile_controller",
+      "artifact": "vggt-v83-native518global0inputcenteredvaluestep2r1-control-r1.json",
+      "bytes": 164084,
+      "sha256": "1982c230c1decc27989b63999b95a1906b4eede4e1344c7f03e021fdf70547b1"
+    },
+    {
+      "role": "input_independent_actual_precision_auditor_source",
+      "artifact": "audit_global0_input_centered_value_precision_saved.py",
+      "bytes": 19584,
+      "sha256": "5ce4fae1b391ae8cab33ddcd0594e198c0fe399fcae2ee75d04e6025b97110fc"
+    },
+    {
+      "role": "input_independent_actual_precision_audit",
+      "artifact": "input-centered-value-step2-precision-audit-r1.json",
+      "bytes": 106462,
+      "sha256": "8e74883c1c9ffbf6c8b82c9cd2b3e11bff46695acc642fd91c154e8bd93aea2e"
+    },
+    {
+      "role": "input_fresh_step1_receipt",
+      "artifact": "result.json",
+      "bytes": 94598,
+      "sha256": "6e3c96bbb10e5bd6f325a985fa3639ac65b22d934f35c153b240f6068188aca7"
+    },
+    {
+      "role": "input_independent_fresh_step1_audit",
+      "artifact": "input-centered-value-hybrid-r1-saved-audit.json",
+      "bytes": 5598,
+      "sha256": "9b3391a5ae639c7eeb06621f1a4bb165fae75904b340ca81599739cc298f7126"
+    },
+    {
+      "role": "input_heldout_worker_source",
+      "artifact": "run_global0_input_centered_value_heldout_board.py",
+      "bytes": 27361,
+      "sha256": "f0ce0fcc705dd8001090442e16a7d16b8aaa89268f0dfc31de9aa78a620dce85"
+    },
+    {
+      "role": "input_heldout_transport_source",
+      "artifact": "execute_global0_input_centered_value_heldout_host.py",
+      "bytes": 16038,
+      "sha256": "1a933f136d242f77d4b5b7e9183a613c9253218a5605fd1b0616f45f086a7440"
+    },
+    {
+      "role": "input_actual_eight_ABBA_receipt",
+      "artifact": "result.json",
+      "bytes": 70242,
+      "sha256": "aa2f2ef72832937c8d140fac163fe7b821cc1371089ba04ba4016610277b9c12"
+    },
+    {
+      "role": "input_restoring_heldout_controller",
+      "artifact": "control.json",
+      "bytes": 6784,
+      "sha256": "c0009ccf5deebc45f270e602a9a781d5a265ee7bda8413de79622f941ac50ea3"
+    },
+    {
+      "role": "input_independent_heldout_auditor_source",
+      "artifact": "audit_global0_input_centered_value_heldout_saved.py",
+      "bytes": 15306,
+      "sha256": "044b48150ae0f09060705e761f51db1a2cd0c138e0fcb0df5fb072964bc1d24a"
+    },
+    {
+      "role": "input_independent_heldout_audit",
+      "artifact": "input-centered-value-heldout-saved-audit.json",
+      "bytes": 9236,
+      "sha256": "8be0b5ddf4d4c9f99b4a8d5339515976e7d699e32196aef1bcc77b764c067005"
+    },
+    {
+      "role": "prior_QKV_split_separate_saved_numeric_comparison",
+      "artifact": "result.json",
+      "bytes": 69832,
+      "sha256": "39913ea567694f01d2b435a25524cdf846e3626248ab6124b7150262063a66b4"
+    },
+    {
+      "role": "output_mean_board_FP32_worker",
+      "artifact": "gate_global0_mean_after_projection_board.py",
+      "bytes": 24303,
+      "sha256": "58fee8d8fd24bb080ddc73971e6bb334ab80ebd5057a91590ecdf49f88f97c47"
+    },
+    {
+      "role": "output_mean_board_FP32_transport",
+      "artifact": "execute_global0_mean_after_projection_host.py",
+      "bytes": 14350,
+      "sha256": "57c90017b134dfb371c65ddff3bf4b9a97bbb373bbe759e4d0bc435792c73d06"
+    },
+    {
+      "role": "output_mean_actual_four_FP32_gate",
+      "artifact": "result.json",
+      "bytes": 21900,
+      "sha256": "ec0d1fcd6b044ec11727f193290778c0bffb5202d761b38471e1b1d56c19bd6c"
+    },
+    {
+      "role": "output_mean_independent_saved_FP32_audit",
+      "artifact": "mean-after-projection-gate-r1-saved-audit.json",
+      "bytes": 6234,
+      "sha256": "5d388c7f448bd8eca4ce782ce8d4d23a9d78ea8133a8c29ac7a9af191f80542d"
+    }
+  ],
+  "acceptance": {
+    "input_candidate_accepted": false,
+    "input_quantized_quality_accepted": false,
+    "input_speed_accepted": false,
+    "input_full_group_expansion_justified_by_this_result": false,
+    "output_candidate_quantized_quality_or_speed_accepted": false,
+    "production_defaults_changed": false,
+    "README_changed": false,
+    "Git_commit_or_push_performed": false
+  },
+  "decision": "Close the input-centered candidate without deployment or further full-group expansion on this evidence. Preserve actual mixed-weight precision and negative heldout results. Output-side projection commutation passes only the original FP32 gate; any quantized trial requires its own fresh ranges and actual placement audit.",
+  "limits": [
+    "Near-zero mixed changes against the matched Vmean parent establish no material precision benefit. Both heldouts fail the unchanged fixed and strict tensor gates.",
+    "Prior QKV-split arrays use the same original inputs/references and verified parent bytes; only numerical comparisons are reused, without importing earlier timings.",
+    "The experiment compares complete precision configurations. Input centering, normalized-X precision,one-row F16 storage and conversion boundaries differ; it cannot isolate a single quantization cause.",
+    "Visible operator/parameter dtypes do not independently prove fused probability,row mass,accumulator precision or exact packed numerical values.",
+    "Two calls per model/input do not establish sustained throughput,endpoint P95 or a deployment regression or gain.",
+    "Output-side FP32 reassociation has no fresh calibration or compiled/runtime result and inherits no input-side ranges or acceptance.",
+    "Original encoder,later aggregation,complete heads,trajectory,SLAM,fresh-pose,realtime,stability and physical8GB acceptance remain outside this component screen.",
+    "Only artifact identities and aggregate metrics are public. Raw arrays,weight-bearing exports,SDK binaries and private storage paths remain private."
+  ]
+}

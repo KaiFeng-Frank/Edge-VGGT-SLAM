@@ -1,0 +1,992 @@
+{
+  "schema": "original_native518_dpt_refinenet1_phase_resize_v189",
+  "status": "corrected_phase_CPU_gate_passes_but_complete_DPT_NPU_is_slower_and_raw_errors_increase_current_route_not_adopted",
+  "scope": {
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "original_boundary": "Complete original DPT on the same four original retained patch tensors, layers4/11/17/23, two frames of one reused native518 engineering capture.",
+    "input_names": [
+      "tokens_4",
+      "tokens_11",
+      "tokens_17",
+      "tokens_23"
+    ],
+    "per_frame_input_shape": [
+      1,
+      1036,
+      2048
+    ],
+    "raw_output_shape": [
+      1,
+      2,
+      392,
+      518
+    ],
+    "replaced_original_node": "scratch.refinenet1.resize",
+    "resize_input_shape": [
+      1,
+      256,
+      112,
+      148
+    ],
+    "resize_output_shape": [
+      1,
+      256,
+      224,
+      296
+    ],
+    "all_four_retained_branches_and_full_original_decoder_preserved": true,
+    "all62_original_learned_values_and_all76_initializers_preserved": true,
+    "all_other78_original_nodes_and_other4_original_Resize_nodes_preserved": true,
+    "whole_original_ModelProto_inverse_verified": true,
+    "original_inplace_ReLU_residual_alias_and_positions_preserved": true,
+    "new_learned_parameters": false,
+    "checkpoint_deserialization_or_full_model_forward": false,
+    "R1_ideal_real_identity_does_not_imply_finite_precision_equivalence": true
+  },
+  "static_variants": {
+    "R1": {
+      "static_receipt": {
+        "file": "artifact-archive/DPT-refinenet1-phase-r1/static-r1/result.json",
+        "bytes": 36927,
+        "sha256": "118c87a7b25b8447e5c7ede9bfec8f6f1ce8dd98eec53e12bedd095730f8a565"
+      },
+      "graph": {
+        "file": "DPT-refinenet1-phase.onnx",
+        "bytes": 246299880,
+        "sha256": "87a662404bce65090aad335cf7ef4e1c2e1a5132702e924125978d7811857a8d",
+        "nodes": 97,
+        "initializers": 88,
+        "inputs": [
+          {
+            "name": "tokens_4",
+            "shape": [
+              1,
+              1036,
+              2048
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "tokens_11",
+            "shape": [
+              1,
+              1036,
+              2048
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "tokens_17",
+            "shape": [
+              1,
+              1036,
+              2048
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "tokens_23",
+            "shape": [
+              1,
+              1036,
+              2048
+            ],
+            "dtype": "float32"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "logits",
+            "shape": [
+              1,
+              2,
+              392,
+              518
+            ],
+            "dtype": "float32"
+          }
+        ]
+      },
+      "nodes": 97,
+      "initializers": 88,
+      "original_learned_values": 62,
+      "replacement_nodes": 19,
+      "new_nonlearned_initializers": 12,
+      "new_constant_tensor_bytes": 22592
+    },
+    "R2": {
+      "static_receipt": {
+        "file": "artifact-archive/DPT-refinenet1-phase-r1/static-r2/result.json",
+        "bytes": 52064,
+        "sha256": "79205fd6d44ee0d9da25e9e01a534e8a5bfc28f4f03255b82e855377363b1cbf"
+      },
+      "graph": {
+        "file": "DPT-refinenet1-phase-r2.onnx",
+        "bytes": 246299880,
+        "sha256": "8da725a21641bfa6cec20c0632b8fdbfc67eabcad098062b536f0bed816d4212",
+        "nodes": 97,
+        "initializers": 88,
+        "inputs": [
+          {
+            "name": "tokens_4",
+            "shape": [
+              1,
+              1036,
+              2048
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "tokens_11",
+            "shape": [
+              1,
+              1036,
+              2048
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "tokens_17",
+            "shape": [
+              1,
+              1036,
+              2048
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "tokens_23",
+            "shape": [
+              1,
+              1036,
+              2048
+            ],
+            "dtype": "float32"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "logits",
+            "shape": [
+              1,
+              2,
+              392,
+              518
+            ],
+            "dtype": "float32"
+          }
+        ]
+      },
+      "nodes": 97,
+      "initializers": 88,
+      "original_learned_values": 62,
+      "replacement_nodes": 19,
+      "new_nonlearned_initializers": 12,
+      "new_constant_tensor_bytes": 22592
+    },
+    "R3": {
+      "static_receipt": {
+        "file": "artifact-archive/DPT-refinenet1-phase-r1/static-r3/result.json",
+        "bytes": 54158,
+        "sha256": "edc305fdec856b2b0e6c9a2fa18295c488efc55bb6d397f8ad64b1f79014158d"
+      },
+      "graph": {
+        "file": "DPT-refinenet1-phase-r3.onnx",
+        "bytes": 246300645,
+        "sha256": "75f373317accbdbe85a3bf3a8a14b7afd9b9f656c466f53ea30b2ae788282b68",
+        "nodes": 99,
+        "initializers": 90,
+        "inputs": [
+          {
+            "name": "tokens_4",
+            "shape": [
+              1,
+              1036,
+              2048
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "tokens_11",
+            "shape": [
+              1,
+              1036,
+              2048
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "tokens_17",
+            "shape": [
+              1,
+              1036,
+              2048
+            ],
+            "dtype": "float32"
+          },
+          {
+            "name": "tokens_23",
+            "shape": [
+              1,
+              1036,
+              2048
+            ],
+            "dtype": "float32"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "logits",
+            "shape": [
+              1,
+              2,
+              392,
+              518
+            ],
+            "dtype": "float32"
+          }
+        ]
+      },
+      "nodes": 99,
+      "initializers": 90,
+      "original_learned_values": 62,
+      "replacement_nodes": 21,
+      "new_nonlearned_initializers": 14,
+      "new_constant_tensor_bytes": 22672
+    }
+  },
+  "R1_CPU_rejection": {
+    "coefficient_rule": "Exact rational align_corners phase coefficients independently rounded to FLOAT32.",
+    "all4_saved_raws_verified": true,
+    "actual_saved_NPY_bytes": 6498304,
+    "primary_candidate_parent": [
+      {
+        "frame_index": 0,
+        "relative_l2": 1.8915758341488026e-07,
+        "max_abs": 6.4849853515625e-05,
+        "rmse": 2.2224104946008943e-06,
+        "elements": 406112,
+        "outside_strict": 0,
+        "maximum_tolerance_ratio": 0.808538529581251,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false,
+        "actual_raw_sha256": "36c84a0b5b3da465cb631da28ef4a5288aa96a22527ac56449215065855fdd90",
+        "reference_raw_sha256": "73930ca89649ca3cdf02a0bd2a5fd1263a8a946cea23f175b63191bad8d3a9fc"
+      },
+      {
+        "frame_index": 1,
+        "relative_l2": 2.375695573470888e-07,
+        "max_abs": 0.00015997886657714844,
+        "rmse": 2.414852767005509e-06,
+        "elements": 406112,
+        "outside_strict": 1,
+        "maximum_tolerance_ratio": 1.4284242977028034,
+        "fixed_gate_passed": true,
+        "strict_pass": false,
+        "byte_equal": false,
+        "actual_raw_sha256": "176a0ee72f7c2f3f8d0ded12e4111f789ac9afbbf225ed98b3638469befb4503",
+        "reference_raw_sha256": "4b3610d06db5d5d2a2f02ad5d5715370ad746f5744b92ac70838eb658fcb7dbe"
+      }
+    ],
+    "strict_outlier_examples": [
+      {
+        "frame_index": 1,
+        "coordinate": [
+          0,
+          1,
+          35,
+          288
+        ],
+        "candidate": -0.04790303111076355,
+        "parent": -0.047924160957336426,
+        "absolute_error": 2.1129846572875977e-05,
+        "strict_tolerance": 1.4792416095733644e-05,
+        "tolerance_ratio": 1.4284242977028034
+      }
+    ],
+    "both_fixed_aggregate_gates_passed": true,
+    "both_strict_gates_passed": false,
+    "same_source_original_ORT_vs_Torch_strict_outside_per_frame": [
+      18,
+      18
+    ],
+    "candidate_vs_Torch_strict_outside_per_frame": [
+      26,
+      23
+    ],
+    "controller_status": "failed_child",
+    "controller_returncode": 1,
+    "thermal_interruption": false,
+    "all_resources_closed": true,
+    "NPU_calls": 0,
+    "evidence_and_failed_transport_preserved": true
+  },
+  "R2_CPU_gate": {
+    "coefficient_rule": "Original ORT1.16.0 source-level FLOAT multiply-then-divide coordinates, clamp/truncated neighbor indices, fabs-distance weights and duplicated-endpoint coalescing; separable arithmetic remains a different finite-precision order.",
+    "coefficients_fitted_to_model_inputs_or_errors": false,
+    "coefficient_sources": [
+      {
+        "file": "artifact-sources/v128-basis-quantization-work/global_value_mean_probe/head_shard_fusion_probe/dpt_resize_phase_probe/ort-v1.16.0-upsamplebase.h",
+        "bytes": 21229,
+        "sha256": "309661d378e6dffe9b4f49fad474e3af7444f5a9d42a4f56ad8208a15a504799",
+        "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.16.0/onnxruntime/core/providers/cpu/tensor/upsamplebase.h",
+        "ref": "v1.16.0",
+        "locator": "UpsampleBase::GetOriginalCoordinateFromResizedCoordinate, ALIGN_CORNERS, lines260-263"
+      },
+      {
+        "file": "artifact-sources/v128-basis-quantization-work/global_value_mean_probe/head_shard_fusion_probe/dpt_resize_phase_probe/ort-v1.16.0-upsample.cc",
+        "bytes": 70216,
+        "sha256": "ac8d99600097fa802444c4e2adbb9179f03592964a2668c94f006788b4ed1144",
+        "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.16.0/onnxruntime/core/providers/cpu/tensor/upsample.cc",
+        "ref": "v1.16.0",
+        "locator": "SetupUpsampleBilinear, coordinate clamp/index/fabs and duplicate endpoints, lines465-508"
+      }
+    ],
+    "primary_candidate_parent": [
+      {
+        "frame_index": 0,
+        "relative_l2": 7.678134636880615e-08,
+        "max_abs": 1.52587890625e-05,
+        "rmse": 9.021032457649649e-07,
+        "elements": 406112,
+        "outside_strict": 0,
+        "maximum_tolerance_ratio": 0.03486680242249894,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false,
+        "actual_raw_sha256": "912878599c6304b3326e5828d9b436054afcabda58bfd3bed6c71e4e74b264e2",
+        "reference_raw_sha256": "73930ca89649ca3cdf02a0bd2a5fd1263a8a946cea23f175b63191bad8d3a9fc"
+      },
+      {
+        "frame_index": 1,
+        "relative_l2": 7.712161371668172e-08,
+        "max_abs": 1.1444091796875e-05,
+        "rmse": 7.839276393800143e-07,
+        "elements": 406112,
+        "outside_strict": 0,
+        "maximum_tolerance_ratio": 0.04233744228559867,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false,
+        "actual_raw_sha256": "240ebe47f0625384f94743e3b59ae3f0115ecb69485b0e3ea54a8fc6dcd7eccd",
+        "reference_raw_sha256": "4b3610d06db5d5d2a2f02ad5d5715370ad746f5744b92ac70838eb658fcb7dbe"
+      }
+    ],
+    "both_fixed_and_strict_gates_passed": true,
+    "bit_equality_claimed": false,
+    "original_Torch_raw_gate_not_overridden": true,
+    "original_Torch_raw_strict_discrepancy_preserved": true,
+    "actual_CPU_sessions_created_and_dropped": 2,
+    "actual_CPU_calls": 4,
+    "all4_raws_saved_before_comparison": true,
+    "actual_saved_NPY_bytes": 6498304,
+    "independent_saved_audit": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/CPU-r2/saved-array-audit-r1.json",
+      "bytes": 19714,
+      "sha256": "fe2bcb7a3d70fe377ae0195bff4e53bdb54aa650666b38c4abdc046f6a67f958"
+    },
+    "activated_comparisons_source_and_receipt_only": true
+  },
+  "R2_actual_NPU": {
+    "schedule": [
+      {
+        "frame_index": 0,
+        "route": "A_original"
+      },
+      {
+        "frame_index": 0,
+        "route": "B_phase"
+      },
+      {
+        "frame_index": 0,
+        "route": "B_phase"
+      },
+      {
+        "frame_index": 0,
+        "route": "A_original"
+      },
+      {
+        "frame_index": 1,
+        "route": "B_phase"
+      },
+      {
+        "frame_index": 1,
+        "route": "A_original"
+      },
+      {
+        "frame_index": 1,
+        "route": "A_original"
+      },
+      {
+        "frame_index": 1,
+        "route": "B_phase"
+      }
+    ],
+    "same_models_resident_across_all8calls": true,
+    "hidden_warmup_calls": 0,
+    "requested_core_mask": 1,
+    "init_flags": 0,
+    "original_CPU_Torch_threads": 1,
+    "original_CPU_core": 4,
+    "frequency_hz": 1000000000,
+    "model_hashes": {
+      "A_original": "e7219a4e612fcff26f0a76ea7a24536188a0567cbd3941ba58774a32d42fb8c6",
+      "B_phase": "0a183c00b895ebf2ed373865943a33328af7ed064542ce045b5ee90c28fc1fe1"
+    },
+    "original62_parameter_values_preserved_does_not_imply_NPU_rounding_equivalence": true,
+    "raw_vs_original_Torch": {
+      "A_original": {
+        "0": {
+          "route": "A_original",
+          "frame_index": 0,
+          "relative_l2": 0.0006440588674136492,
+          "max_abs": 0.10211181640625,
+          "rmse": 0.007567041727825222,
+          "elements": 406112,
+          "outside_strict": 317206,
+          "maximum_tolerance_ratio": 1236.464025448325,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "actual_raw_sha256": "d2942872b67c51cfc9ff244f14610396cd68794e8c22969f37e44c16b953d8be",
+          "reference_raw_sha256": "deb0945d7e63a126cec84528dddc84bec20eb7ddb776a2b93669b71789bfe33c"
+        },
+        "1": {
+          "route": "A_original",
+          "frame_index": 1,
+          "relative_l2": 0.0007483692387942049,
+          "max_abs": 0.09299850463867188,
+          "rmse": 0.007607042042061075,
+          "elements": 406112,
+          "outside_strict": 318467,
+          "maximum_tolerance_ratio": 1212.7316035913634,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "actual_raw_sha256": "ad96048a948b9e649cbdd01e8b90aa7d1a13f0e19df8d9d7ab97d63c1d2dbe1d",
+          "reference_raw_sha256": "f09563d0801cd528a923c8fee805ca9e7142d0b044944aa0b675851ff58a2cbb"
+        }
+      },
+      "B_phase": {
+        "0": {
+          "route": "B_phase",
+          "frame_index": 0,
+          "relative_l2": 0.0006696135046992196,
+          "max_abs": 0.10211181640625,
+          "rmse": 0.007867282926981252,
+          "elements": 406112,
+          "outside_strict": 322652,
+          "maximum_tolerance_ratio": 1246.031847560615,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "actual_raw_sha256": "9aadff4b917a469a53669a959e85a97c2ba01233abd753bf3a8c5afd19ddcc2e",
+          "reference_raw_sha256": "deb0945d7e63a126cec84528dddc84bec20eb7ddb776a2b93669b71789bfe33c"
+        },
+        "1": {
+          "route": "B_phase",
+          "frame_index": 1,
+          "relative_l2": 0.0007992363961616183,
+          "max_abs": 0.10922622680664062,
+          "rmse": 0.008124097774172024,
+          "elements": 406112,
+          "outside_strict": 323336,
+          "maximum_tolerance_ratio": 1163.8536670622432,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "byte_equal": false,
+          "actual_raw_sha256": "fc67a93cf13c93b01e28b9741a9adfb52bca082e313c3d36bb22476744588511",
+          "reference_raw_sha256": "f09563d0801cd528a923c8fee805ca9e7142d0b044944aa0b675851ff58a2cbb"
+        }
+      }
+    },
+    "candidate_vs_baseline_raw": [
+      {
+        "frame_index": 0,
+        "relative_l2": 0.00037838293889852026,
+        "max_abs": 0.0625,
+        "rmse": 0.004445504048649438,
+        "elements": 406112,
+        "outside_strict": 131644,
+        "maximum_tolerance_ratio": 200.67462415392745,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false,
+        "actual_raw_sha256": "9aadff4b917a469a53669a959e85a97c2ba01233abd753bf3a8c5afd19ddcc2e",
+        "reference_raw_sha256": "d2942872b67c51cfc9ff244f14610396cd68794e8c22969f37e44c16b953d8be"
+      },
+      {
+        "frame_index": 1,
+        "relative_l2": 0.00037959146572753,
+        "max_abs": 0.0625,
+        "rmse": 0.0038596697528983587,
+        "elements": 406112,
+        "outside_strict": 125138,
+        "maximum_tolerance_ratio": 196.3946622271935,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false,
+        "actual_raw_sha256": "fc67a93cf13c93b01e28b9741a9adfb52bca082e313c3d36bb22476744588511",
+        "reference_raw_sha256": "ad96048a948b9e649cbdd01e8b90aa7d1a13f0e19df8d9d7ab97d63c1d2dbe1d"
+      }
+    ],
+    "all4_original_Torch_raw_fixed_and_strict_gates_failed": true,
+    "both_candidate_baseline_raw_fixed_and_strict_gates_failed": true,
+    "fixed_relative_l2_max": 1e-05,
+    "fixed_max_abs_max": 0.001,
+    "strict_rtol": 0.0001,
+    "strict_atol": 1e-05,
+    "route_means_seconds": {
+      "A_original": {
+        "complete_call_seconds": 0.8672013997565955,
+        "SDK_run_seconds": 0.7557350652459718,
+        "owned_complete_seconds": 0.8533865027566208,
+        "original_activation_copy_finite_seconds": 0.01213956400169991,
+        "other_owned_and_bookkeeping_seconds": 0.11146633451062371
+      },
+      "B_phase": {
+        "complete_call_seconds": 1.056158345505537,
+        "SDK_run_seconds": 0.9414749279967509,
+        "owned_complete_seconds": 1.0462411677508499,
+        "original_activation_copy_finite_seconds": 0.00987991724832682,
+        "other_owned_and_bookkeeping_seconds": 0.11468341750878608
+      }
+    },
+    "candidate_complete_time_increase_percent": 21.78928052952609,
+    "candidate_SDK_run_time_increase_percent": 24.57737787915475,
+    "candidate_minus_baseline_seconds": {
+      "complete": 0.1889569457489415,
+      "SDK_run": 0.18573986275077914,
+      "other_owned_activation_and_bookkeeping": 0.0032170829981623683
+    },
+    "timer_includes": "Original four FP32 input finite/contiguous preparation; ordinary inputs_set/run/outputs_get/owned copy/release/raw finite; pinned original activate_head(exp/expp1), owned contiguous depth/conf copies and finite checks.",
+    "timer_excludes": "Model initialization/closure, file loads, platform reads, saving, output hashes/repeat checks, comparisons and JSON.",
+    "initialization_seconds": 0.787292413006071,
+    "close_seconds": 0.21918168899719603,
+    "resource_totals": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 8,
+      "output_buffers_acquired": 8,
+      "output_buffers_released": 8
+    },
+    "all_resources_closed": true,
+    "controller_restored": true,
+    "controller_peak_temperature_c": 58.23,
+    "worker_peak_RSS_MiB": 830.21484375,
+    "first_raw_saved_arrays": 4,
+    "actual_saved_NPY_bytes": 6498304,
+    "all8_recorded_raw_hashes_match_loaded_first_arrays": true,
+    "raw_errors_independently_recomputed": true,
+    "activated_depth_confidence_arrays_saved": false,
+    "activated_depth_confidence_errors_independently_recomputed": false,
+    "activated_metrics_receipt_only": [
+      {
+        "index": 0,
+        "route": "A_original",
+        "frame_index": 0,
+        "name": "depth",
+        "relative_l2": 0.00011973686775112977,
+        "max_abs": 0.0033223628997802734,
+        "rmse": 0.00011854911095300615,
+        "outside_strict": 38393,
+        "maximum_tolerance_ratio": 16.26109165105288,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "actual_raw_sha256": "736f7a398df901b45c07589d0dda6568193007ef25dd9037c3cd9a78b33d8b7c",
+        "reference_raw_sha256": "9feecd852122f7644efca0af7940e4b2a5767eae5cae76f7d345d32404200d55"
+      },
+      {
+        "index": 0,
+        "route": "A_original",
+        "frame_index": 0,
+        "name": "depth_conf",
+        "relative_l2": 0.0007231980800996692,
+        "max_abs": 0.02360081672668457,
+        "rmse": 0.002999860129032169,
+        "outside_strict": 134969,
+        "maximum_tolerance_ratio": 89.09698488675384,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "actual_raw_sha256": "e5978507f4facee8bab2cdfc42c4704524d1c89eee7471116283a08f29de7f7f",
+        "reference_raw_sha256": "5c25e587738f49a5f3b1c42ac5dabf183f6b0f572ce78e15c978b4bc4177e00c"
+      },
+      {
+        "index": 1,
+        "route": "B_phase",
+        "frame_index": 0,
+        "name": "depth",
+        "relative_l2": 0.00013490510221755972,
+        "max_abs": 0.005262136459350586,
+        "rmse": 0.0001335668807050886,
+        "outside_strict": 43617,
+        "maximum_tolerance_ratio": 22.412860219121832,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "actual_raw_sha256": "419b609529db3605fe100f60de93ab892c8c40bf055a5d0e2f8c1192d2484d0c",
+        "reference_raw_sha256": "9feecd852122f7644efca0af7940e4b2a5767eae5cae76f7d345d32404200d55"
+      },
+      {
+        "index": 1,
+        "route": "B_phase",
+        "frame_index": 0,
+        "name": "depth_conf",
+        "relative_l2": 0.00075727395302434,
+        "max_abs": 0.023546218872070312,
+        "rmse": 0.0031412084751652218,
+        "outside_strict": 136316,
+        "maximum_tolerance_ratio": 91.47587438323016,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "actual_raw_sha256": "685cb1da7927c961370fa4dbfbeb549022875bec5a0acadd6a011190289247e0",
+        "reference_raw_sha256": "5c25e587738f49a5f3b1c42ac5dabf183f6b0f572ce78e15c978b4bc4177e00c"
+      },
+      {
+        "index": 4,
+        "route": "B_phase",
+        "frame_index": 1,
+        "name": "depth",
+        "relative_l2": 0.00015009483722386736,
+        "max_abs": 0.003260374069213867,
+        "rmse": 0.00014650998370211886,
+        "outside_strict": 38607,
+        "maximum_tolerance_ratio": 17.530549624938583,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "actual_raw_sha256": "f551835d6972442d19b70a69f7768a74f8156d0e452051a42f93b973f3164f81",
+        "reference_raw_sha256": "6e7bf7ac3418cc007958531a1679a59e1b94fed5c08bab58b686afcbbc74fd00"
+      },
+      {
+        "index": 4,
+        "route": "B_phase",
+        "frame_index": 1,
+        "name": "depth_conf",
+        "relative_l2": 0.0007763424269493475,
+        "max_abs": 0.020891666412353516,
+        "rmse": 0.0032762060189418774,
+        "outside_strict": 146609,
+        "maximum_tolerance_ratio": 95.21035001283096,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "actual_raw_sha256": "c7f2ddc94965b57b01de1566511aa00e3bab5b9147996abf0af1819489850bf9",
+        "reference_raw_sha256": "1ef03e3d8d87375363dba3b3f269914ffd0c78758e08a8e9c1967908936d8a58"
+      },
+      {
+        "index": 5,
+        "route": "A_original",
+        "frame_index": 1,
+        "name": "depth",
+        "relative_l2": 0.00014162104257068787,
+        "max_abs": 0.003260374069213867,
+        "rmse": 0.0001382385765072083,
+        "outside_strict": 33726,
+        "maximum_tolerance_ratio": 17.530549624938583,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "actual_raw_sha256": "27c6bae240cd27626584f1930247d4488ffe7bb246e34d64283d6873fc7409ad",
+        "reference_raw_sha256": "6e7bf7ac3418cc007958531a1679a59e1b94fed5c08bab58b686afcbbc74fd00"
+      },
+      {
+        "index": 5,
+        "route": "A_original",
+        "frame_index": 1,
+        "name": "depth_conf",
+        "relative_l2": 0.0007373184655087753,
+        "max_abs": 0.01772451400756836,
+        "rmse": 0.0031115228418843654,
+        "outside_strict": 145774,
+        "maximum_tolerance_ratio": 97.97364599661874,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "actual_raw_sha256": "ba781fd057a087943efb7faf1efd7df4e90624ea6f5adbae6ecd4d007da004ee",
+        "reference_raw_sha256": "1ef03e3d8d87375363dba3b3f269914ffd0c78758e08a8e9c1967908936d8a58"
+      }
+    ],
+    "independent_saved_audit": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/native-r2/saved-array-audit-r1.json",
+      "bytes": 31628,
+      "sha256": "a82072a5115f912b164cac42eff82799d46c88aa512d4f4ff73a421d0f7a098d"
+    }
+  },
+  "actual_compile_log_inspection": {
+    "R2": {
+      "source_log": {
+        "file": "artifact-archive/DPT-refinenet1-phase-r1/host-compile-r2/SDK-stdout-stderr.log",
+        "bytes": 77630,
+        "sha256": "0d45b0a050ff069630c332ee6abcb059aa7fe5a6173d78ab70706f7526f3ee52"
+      },
+      "operator_rows_observed": 81,
+      "phase_operator_rows_observed": 19,
+      "all_phase_operators_FLOAT16_NPU": true,
+      "selected_interleave_rows": [
+        {
+          "id": 73,
+          "operation": "ConvTranspose",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "detail": "(1,1024,112,148),(1024,256,2,2)          (1,256,224,296)        2959011/135790592/135790592 35200        ConvTranspose:__dpt_resize_phase_r2/refinenet1/interleave_2deconv"
+        }
+      ],
+      "remaining_original_CPU_Resize_names": [
+        "Resize:scratch.refinenet4.resize",
+        "Resize:scratch.refinenet3.resize",
+        "Resize:scratch.refinenet2.resize",
+        "Resize:final_resize"
+      ],
+      "printed_total_internal_memory": {
+        "line": 551,
+        "text": "118104KB",
+        "value": 118104,
+        "unit_as_printed": "KB",
+        "compiler_report_not_device_RSS_or_unique_physical_bytes": true
+      }
+    },
+    "R3": {
+      "source_log": {
+        "file": "artifact-archive/DPT-refinenet1-phase-r1/host-compile-r3/SDK-stdout-stderr.log",
+        "bytes": 142738,
+        "sha256": "1f3e7d8876785cf5b86a061084fe4c8c94299d9d43973be338f24c7655ba8ae0"
+      },
+      "operator_rows_observed": 83,
+      "phase_operator_rows_observed": 21,
+      "all_phase_operators_FLOAT16_NPU": false,
+      "selected_interleave_rows": [
+        {
+          "id": 73,
+          "operation": "Reshape",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "detail": "(1,1024,112,148),(4)                     (2,2,28672,148)        0/0/0                    33152        Reshape:__dpt_resize_phase_r3/refinenet1/interleave.expose_phases.output_rs_rs"
+        },
+        {
+          "id": 74,
+          "operation": "Transpose",
+          "dtype": "FLOAT16",
+          "target": "NPU",
+          "detail": "(2,2,28672,148)                          (28672,2,148,2)        0/0/0                    132608       Transpose:__dpt_resize_phase_r3/refinenet1/interleave.transpose"
+        },
+        {
+          "id": 75,
+          "operation": "Reshape",
+          "dtype": "FLOAT16",
+          "target": "CPU",
+          "detail": "(28672,2,148,2),(4)                      (1,256,224,296)        0/0/0                    132608       Reshape:__dpt_resize_phase_r3/refinenet1/interleave.restore_original_shape"
+        }
+      ],
+      "remaining_original_CPU_Resize_names": [
+        "Resize:scratch.refinenet4.resize",
+        "Resize:scratch.refinenet3.resize",
+        "Resize:scratch.refinenet2.resize",
+        "Resize:final_resize"
+      ],
+      "printed_total_internal_memory": {
+        "line": 965,
+        "text": "1.79021e+06KB",
+        "value": 1790210,
+        "unit_as_printed": "KB",
+        "compiler_report_not_device_RSS_or_unique_physical_bytes": true
+      }
+    }
+  },
+  "R3_compile_only": {
+    "representation": "Same R2 coefficients; terminal DepthToSpace replaced by two Reshapes and one six-dimensional Transpose.",
+    "compiler_completed_and_SDK_released": true,
+    "CPU_forward_calls": 0,
+    "NPU_forward_calls": 0,
+    "model_staged_for_NPU": false,
+    "two_phase_CPU_Reshapes_observed": true,
+    "large_padded_transpose_storage_observed": true,
+    "printed_internal_memory_comparison": "1.79021e+06 KB versus R2 118104 KB; compiler estimates, not measured device RSS or physical allocation.",
+    "tested_NPU_speedup_claimed": false,
+    "current_candidate_selected": false
+  },
+  "outcome": {
+    "current_phase_DPT_route_adopted": false,
+    "CPU_gate_pass_does_not_establish_NPU_precision_or_speed": true,
+    "no_NPU_or_full_model_precision_acceptance": true,
+    "no_full_model_pose_FPS_trajectory_or_sustained_rate_claim": true,
+    "no_measured_core_utilization_or_physical8GB_claim": true,
+    "model_weight_license_separate_from_repository_code_license": true
+  },
+  "audit_limits": {
+    "primary_and_secondary_raw_errors": "Independently recomputed from four actual saved FLOAT32 logits and two frozen original Torch raw files in each completed audit.",
+    "original_input_arrays": "Exact original file/raw pins and source/receipt feed bindings verified; input arrays are not independently reloaded by the host auditors.",
+    "activated_outputs": "Not saved; original activate_head byte guards and activated depth/confidence metrics are source-bound board reports. No host activation or model execution by auditors.",
+    "timing": "Reaggregated actual call receipts, including first calls and outside-timer provenance/saving intervals; two reused frames, not sustained inference.",
+    "compiler_memory": "Printed compiler internal-memory totals and lowered row/storage shapes only; not device runtime memory."
+  },
+  "private_evidence": {
+    "static-r1/result.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/static-r1/result.json",
+      "bytes": 36927,
+      "sha256": "118c87a7b25b8447e5c7ede9bfec8f6f1ce8dd98eec53e12bedd095730f8a565"
+    },
+    "CPU-r1/output/result.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/CPU-r1/output/result.json",
+      "bytes": 84058,
+      "sha256": "c082617f85aa19c60541a5f50ee5dfee2f40f6ba2668e5e088da63caf78d890d"
+    },
+    "CPU-r1/control.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/CPU-r1/control.json",
+      "bytes": 165550,
+      "sha256": "5c38169345c8b9e91f890876619faa84a42f051ac2225cf84292093edd80d975"
+    },
+    "CPU-r1/transport.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/CPU-r1/transport.json",
+      "bytes": 20952,
+      "sha256": "b1e310af7fa68e5f8e1485ba63708c7d4ba42050240b6b87c0c2b3e2f7d125f1"
+    },
+    "CPU-r1/saved-array-audit-r1.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/CPU-r1/saved-array-audit-r1.json",
+      "bytes": 20039,
+      "sha256": "f1248b919d0895c924c3b21b6fbc490cd5c5f2817d5e3b5a464c685c452965c7"
+    },
+    "host-compile-r1/result.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/host-compile-r1/result.json",
+      "bytes": 50014,
+      "sha256": "333aa45d02d535913a756df51d024fcdc17bebd1f1d5bc8014d79a9b76f3b4bf"
+    },
+    "host-compile-r1/placement-audit-r1.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/host-compile-r1/placement-audit-r1.json",
+      "bytes": 7019,
+      "sha256": "09b2c8d90dbb37915ece368b200bbd8c4bedb1e546f3de9990319538ff629283"
+    },
+    "static-r2/result.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/static-r2/result.json",
+      "bytes": 52064,
+      "sha256": "79205fd6d44ee0d9da25e9e01a534e8a5bfc28f4f03255b82e855377363b1cbf"
+    },
+    "CPU-r2/output/result.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/CPU-r2/output/result.json",
+      "bytes": 96254,
+      "sha256": "8ac7c17c71d75c984c82019973e4eece7d3325de9d5b4f88b939ca80934012de"
+    },
+    "CPU-r2/control.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/CPU-r2/control.json",
+      "bytes": 164726,
+      "sha256": "d01249a5970e8c5982ee1c1f18d674a801af8820213354853b34094b06d2006b"
+    },
+    "CPU-r2/transport.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/CPU-r2/transport.json",
+      "bytes": 20058,
+      "sha256": "fd13ad9dc42314e351684f79743e7c684d1a4236c7ad885e7f956112209e59ec"
+    },
+    "CPU-r2/saved-array-audit-r1.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/CPU-r2/saved-array-audit-r1.json",
+      "bytes": 19714,
+      "sha256": "fe2bcb7a3d70fe377ae0195bff4e53bdb54aa650666b38c4abdc046f6a67f958"
+    },
+    "host-compile-r2/result.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/host-compile-r2/result.json",
+      "bytes": 62157,
+      "sha256": "1573e6f097d67dd0d35686f6afd7d94dbef325dd7642b593f8b5d65863327f63"
+    },
+    "native-r2/output/result.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/native-r2/output/result.json",
+      "bytes": 121317,
+      "sha256": "4911f3c7dbfcb681515cce7efcd4e3034addf38a059ebacc6454343b58bf77c4"
+    },
+    "native-r2/control/control.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/native-r2/control/control.json",
+      "bytes": 10386,
+      "sha256": "00f3f33e41516fba4b1a163e4e43712fece140aef76711c17ffc93aef345d2ed"
+    },
+    "native-r2/transport.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/native-r2/transport.json",
+      "bytes": 26533,
+      "sha256": "4965ab945aa1f5a014a06baca59a569c2c646f4eaa8de82a9a54e707de5886f2"
+    },
+    "native-r2/saved-array-audit-r1.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/native-r2/saved-array-audit-r1.json",
+      "bytes": 31628,
+      "sha256": "a82072a5115f912b164cac42eff82799d46c88aa512d4f4ff73a421d0f7a098d"
+    },
+    "static-r3/result.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/static-r3/result.json",
+      "bytes": 54158,
+      "sha256": "edc305fdec856b2b0e6c9a2fa18295c488efc55bb6d397f8ad64b1f79014158d"
+    },
+    "host-compile-r3/result.json": {
+      "file": "artifact-archive/DPT-refinenet1-phase-r1/host-compile-r3/result.json",
+      "bytes": 64083,
+      "sha256": "f97bc1bca77956290f1fd62d37cee85f49408aa268489ad557dc5ca744d30de3"
+    }
+  },
+  "private_source_pins": {
+    "export_dpt_resize_phase_static.py": {
+      "file": "artifact-sources/v128-basis-quantization-work/global_value_mean_probe/head_shard_fusion_probe/dpt_resize_phase_probe/export_dpt_resize_phase_static.py",
+      "bytes": 25522,
+      "sha256": "af30c6bb8caee0eaaaf1a23d903f0e5397e797452d6b39ac87912f51875f2fb3"
+    },
+    "export_dpt_resize_phase_static_r2.py": {
+      "file": "artifact-sources/v128-basis-quantization-work/global_value_mean_probe/head_shard_fusion_probe/dpt_resize_phase_probe/export_dpt_resize_phase_static_r2.py",
+      "bytes": 32455,
+      "sha256": "b42fcd9e1122af3a31ae012e2f4cced86d48d596129935e53fb1b184f255b455"
+    },
+    "export_dpt_resize_phase_static_r3.py": {
+      "file": "artifact-sources/v128-basis-quantization-work/global_value_mean_probe/head_shard_fusion_probe/dpt_resize_phase_probe/export_dpt_resize_phase_static_r3.py",
+      "bytes": 34395,
+      "sha256": "616b7a05ea11aab1fcc770bb2371ee6b590618b088680877e7051e08c88d2c17"
+    },
+    "check_dpt_resize_phase_CPU_board.py": {
+      "file": "artifact-sources/v128-basis-quantization-work/global_value_mean_probe/head_shard_fusion_probe/dpt_resize_phase_probe/check_dpt_resize_phase_CPU_board.py",
+      "bytes": 31716,
+      "sha256": "6b282c4189e426087cc9fa584354efb6e376106b815997748b74983d1338b974"
+    },
+    "check_dpt_resize_phase_CPU_board_r2.py": {
+      "file": "artifact-sources/v128-basis-quantization-work/global_value_mean_probe/head_shard_fusion_probe/dpt_resize_phase_probe/check_dpt_resize_phase_CPU_board_r2.py",
+      "bytes": 31746,
+      "sha256": "68203e2d0f1e5c469f96cb9a911f60bb6c3b41e7daa52c13ee3724f0f7625d8e"
+    },
+    "audit_DPT_phase_CPU_saved.py": {
+      "file": "artifact-sources/v128-basis-quantization-work/global_value_mean_probe/head_shard_fusion_probe/dpt_resize_phase_probe/audit_DPT_phase_CPU_saved.py",
+      "bytes": 19946,
+      "sha256": "c4506e4453467b837b3714c32ad21e3129ab18e21ca95874a6a6cf6514e2e13f"
+    },
+    "audit_DPT_phase_CPU_saved_r2.py": {
+      "file": "artifact-sources/v128-basis-quantization-work/global_value_mean_probe/head_shard_fusion_probe/dpt_resize_phase_probe/audit_DPT_phase_CPU_saved_r2.py",
+      "bytes": 19958,
+      "sha256": "09875ee3dd34ae1bd19c5541c0d9ad24acd29ece90900488fe3915bcdfd61e03"
+    },
+    "run_DPT_phase_native_ABBA_board.py": {
+      "file": "artifact-sources/v128-basis-quantization-work/global_value_mean_probe/head_shard_fusion_probe/dpt_resize_phase_probe/run_DPT_phase_native_ABBA_board.py",
+      "bytes": 33343,
+      "sha256": "7a2849c276e830011a24885407cdb23761eac584a567212ea0956be515a281e4"
+    },
+    "audit_DPT_phase_native_saved.py": {
+      "file": "artifact-sources/v128-basis-quantization-work/global_value_mean_probe/head_shard_fusion_probe/dpt_resize_phase_probe/audit_DPT_phase_native_saved.py",
+      "bytes": 17592,
+      "sha256": "ab084c564bad618d15914c825afa337f09b33273f7c37a0070a06495739e6358"
+    },
+    "execute_DPT_phase_native_host.py": {
+      "file": "artifact-sources/v128-basis-quantization-work/global_value_mean_probe/head_shard_fusion_probe/dpt_resize_phase_probe/execute_DPT_phase_native_host.py",
+      "bytes": 11104,
+      "sha256": "520750fd14118db3457b2bc7370affbd7532c6b5e2743bd97cd65f94f6c3aca7"
+    }
+  },
+  "engineering_notes_preserved_prefix": {
+    "bytes": 371400,
+    "sha256": "a748d025d0b5b91e0574f73ec2e59c2e18f39653b7d69ed024b9263b42064564"
+  },
+  "publication_path_locators": "Artifact locators are relative publication labels; original private artifact bytes and all historical artifact SHA256 values are unchanged."
+}

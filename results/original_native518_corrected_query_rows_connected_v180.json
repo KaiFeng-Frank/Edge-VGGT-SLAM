@@ -1,0 +1,488 @@
+{
+  "schema": "original_native518_corrected_query_rows_connected_v180",
+  "status": "four_original_blocks_connected_regional_errors_verified_current_shared_QKV_query_row_route_not_expanded",
+  "original_model_only": true,
+  "decision": {
+    "expand_current_shared_QKV_query_row_route": false,
+    "reason": "Final propagated precision changes are tiny and mixed, including camera/register rows; diagnostic complete-call times are unfavorable to the historical route, without a matched causal timing test.",
+    "preserve_R178_RoPE_fix_as_engineering_evidence": true,
+    "original_tensor_gates_still_fail": true
+  },
+  "scope": {
+    "route": "Two actual channel-first SINGLE frame calls, corrected pre-RoPE global0 with fixed CPU completion and three full-key query consumers, then unchanged original pair1 frame/global native route.",
+    "original_blocks": [
+      "frame0",
+      "global0",
+      "frame1",
+      "global1"
+    ],
+    "whole_model_executed": false,
+    "original_full_input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "both_global_endpoint_shapes": [
+      1,
+      2082,
+      1024
+    ],
+    "heads_per_original_attention": 16,
+    "original_frame_keys": 1041,
+    "global0_keys_per_query_consumer": 2082,
+    "global0_query_ranges": [
+      [
+        0,
+        694
+      ],
+      [
+        694,
+        1388
+      ],
+      [
+        1388,
+        2082
+      ]
+    ],
+    "all_original_weights_tokens_heads_and_layers_within_scope_retained": true,
+    "cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "reference": "Original conditional FP32 endpoints on the captured original encoder boundary; repeatedly reused engineering cases.",
+    "fresh_final_generalization_holdout": false
+  },
+  "model_sha256": {
+    "CF_frame": "dfb753e27e79f800f3e88162c112667d354c3b5cb534003e6de4448cbd888579",
+    "pre_rope_producer": "1167c99f1a0093e8da6e5dddefef00c267a91a60eb88550c186e838df28323f6",
+    "query_consumer": "50c388839cadae27936969c112d5251f61fc122b930a4e2c37762419c7b8b530",
+    "pair1": {
+      "frame0_branch": "bf995e57727ab1b7e87956d576a1645906ccb0f09f616b086e7d189a1cbca376",
+      "frame1_branch": "79acaedd79c632e78ab4d605c52ae988f59705ebf6cc822e23474a6692d6f9a5",
+      "frame_bridge": "ec1f1163abe89e0d1bcbdbc23ac9551c89aad75a7bb4078369cb724c3621ad31",
+      "heads0_6": "8d6c37b5f6216848dc57df6eb64c7692739104063733c928037e41c95493b5f6",
+      "heads6_11": "f29da39c6410c7606e920d9f480896323972234881237b82953999f317bda62f",
+      "heads11_16": "8fa2b317f4aa7abf593163166d3c98556029b682a9b1714467e2a87fd8ff06f3",
+      "global_suffix": "08f27329723489ec46c795117f980cd0221b613eb8e8c2718dec837f0ac1ec5c"
+    }
+  },
+  "actual_causality": {
+    "all4_CF_frame_outputs_byte_equal_same_case_R172_references": true,
+    "CF_guards_precede_fresh_producer": true,
+    "producer_input_is_owned_FLOAT32_concat_of_actual_CF_half_outputs": true,
+    "fixed_CPU_RoPE_uses_only_original_four_coefficients": true,
+    "completed_QK_not_precast_to_half": true,
+    "all6_full_key_consumer_feeds_use_current_same_case_outputs": true,
+    "original_X_rows_are_actual_CF_frame_concat_slices": true,
+    "actual_three_query_rows_make_lossless_readonly_half_FRAME_handoff": true,
+    "both_pair1_frames_consume_that_actual_handoff": true,
+    "unchanged_pair1_native_models": 7,
+    "all18_current_generation_pair1_FD_edges_verified": true,
+    "all9_actual_import_FD_identities_and_capacities_match_producers": true,
+    "reference_intermediate_injection": false,
+    "old_R179_conditional_raw_prefix_parity_guard_used": false
+  },
+  "saved_audit_scope": {
+    "new_lossless_FLOAT16_endpoint_files": 4,
+    "new_NPY_bytes": 17056256,
+    "new_full_FLOAT32_endpoint_hashes_reproduced": true,
+    "all4_files_saved_before_numeric_comparisons": true,
+    "independently_verified_prior_CF_final_files": 2,
+    "independently_verified_CF_frame_witnesses": 4,
+    "current_producer_input_query_row_outputs_and_interpair_half_payload_reconstructed": true,
+    "changed_input_raw_and_completed_QRF_intermediate_payloads_saved": false,
+    "changed_input_QRF_intermediate_provenance_basis": "Frozen source, actual current hash/shape/object/slice telemetry and owner lifetimes; no independent full-array reconstruction is claimed.",
+    "pair1_intermediate_payloads_saved": false,
+    "pair1_intermediate_provenance_basis": "Current model/generation/hash and native FD identity telemetry; final payload is independently saved."
+  },
+  "region_metric_definition": {
+    "camera_rows": [
+      0,
+      1041
+    ],
+    "register_rows": [
+      1,
+      2,
+      3,
+      4,
+      1042,
+      1043,
+      1044,
+      1045
+    ],
+    "all1024_channels_in_each_selected_row": true,
+    "relative_l2": "Norm of tensor difference divided by the norm of the same original reference region.",
+    "fixed_gate": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001
+    },
+    "strict_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "camera_token_error_is_decoded_pose_ATE_RPE_or_trajectory_accuracy": false,
+    "prior_R173_final_and_current_final_use_same_original_inputs_and_references": true,
+    "prior_R179_conditional_input_is_a_matched_connected_reference": false
+  },
+  "case_results": [
+    {
+      "id": "pair4",
+      "pair0_vs_original_FP32": {
+        "full": {
+          "relative_l2": 0.00583866259386341,
+          "max_abs": 0.029351115226745605,
+          "outside_count": 1263861,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "camera_tokens": {
+          "relative_l2": 0.053481184134895804,
+          "max_abs": 0.02199879288673401,
+          "outside_count": 994,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "register_tokens": {
+          "relative_l2": 0.028399306955995587,
+          "max_abs": 0.029351115226745605,
+          "outside_count": 4071,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        }
+      },
+      "pair1_vs_original_FP32": {
+        "full": {
+          "relative_l2": 0.008327091277497655,
+          "max_abs": 0.025715649127960205,
+          "outside_count": 2076743,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "camera_tokens": {
+          "relative_l2": 0.052632827983036715,
+          "max_abs": 0.02249070256948471,
+          "outside_count": 2030,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "register_tokens": {
+          "relative_l2": 0.027560099587694762,
+          "max_abs": 0.025715649127960205,
+          "outside_count": 8097,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        }
+      },
+      "prior_R173_CF_pair1_vs_same_original_FP32": {
+        "full": {
+          "relative_l2": 0.008329079246413223,
+          "max_abs": 0.025715649127960205,
+          "outside_count": 2076648,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "camera_tokens": {
+          "relative_l2": 0.05259233008439051,
+          "max_abs": 0.02249070256948471,
+          "outside_count": 2032,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "register_tokens": {
+          "relative_l2": 0.027558200190807437,
+          "max_abs": 0.025715649127960205,
+          "outside_count": 8094,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        }
+      },
+      "pair1_vs_prior_R173_CF": {
+        "full": {
+          "relative_l2": 0.0004883502261740253,
+          "max_abs": 0.0054931640625,
+          "outside_count": 527135,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "camera_tokens": {
+          "relative_l2": 0.0007136296554749639,
+          "max_abs": 0.00048828125,
+          "outside_count": 663,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "register_tokens": {
+          "relative_l2": 0.000671135308335253,
+          "max_abs": 0.0015869140625,
+          "outside_count": 3346,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        }
+      },
+      "diagnostic_timing": {
+        "case_id": "pair4",
+        "complete_call_seconds": 1.6928227949974826,
+        "components": {
+          "original_F32_finite_and_one_halfcast_seconds": 0.012315917992964387,
+          "CF_guard_and_half_to_GLOBAL_F32_seconds": 0.0332981289975578,
+          "producer_owned_call_seconds": 0.3701002870075172,
+          "CPU_RoPE_completion_seconds": 0.06211800599703565,
+          "ordered_actual_rows_to_readonly_FRAME_half_seconds": 0.020078918998478912,
+          "final_owned_F32_copy_and_finite_seconds": 0.03643354600353632,
+          "wave_CF": 0.17681914300192147,
+          "wave_query": 0.40507141599664465,
+          "wave_pair1": 0.22252327199385036,
+          "wave_pair1_heads": 0.20158739500038791,
+          "pair1_bridge": 0.01278854301199317,
+          "pair1_suffix": 0.13919734700175468
+        },
+        "unattributed_within_call_seconds": 0.0004908739938400686
+      }
+    },
+    {
+      "id": "pair5",
+      "pair0_vs_original_FP32": {
+        "full": {
+          "relative_l2": 0.0059001028560628065,
+          "max_abs": 0.028380274772644043,
+          "outside_count": 1264571,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "camera_tokens": {
+          "relative_l2": 0.05605269512124942,
+          "max_abs": 0.025407999753952026,
+          "outside_count": 995,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "register_tokens": {
+          "relative_l2": 0.029836156596610226,
+          "max_abs": 0.028380274772644043,
+          "outside_count": 4057,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        }
+      },
+      "pair1_vs_original_FP32": {
+        "full": {
+          "relative_l2": 0.00825792277343807,
+          "max_abs": 0.026878446340560913,
+          "outside_count": 2075428,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "camera_tokens": {
+          "relative_l2": 0.05349569360428253,
+          "max_abs": 0.024688303470611572,
+          "outside_count": 2026,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "register_tokens": {
+          "relative_l2": 0.02824499689106038,
+          "max_abs": 0.026878446340560913,
+          "outside_count": 8093,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        }
+      },
+      "prior_R173_CF_pair1_vs_same_original_FP32": {
+        "full": {
+          "relative_l2": 0.008260042731347752,
+          "max_abs": 0.025901883840560913,
+          "outside_count": 2075165,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "camera_tokens": {
+          "relative_l2": 0.05353092885457477,
+          "max_abs": 0.024932444095611572,
+          "outside_count": 2024,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "register_tokens": {
+          "relative_l2": 0.028130226501255674,
+          "max_abs": 0.025901883840560913,
+          "outside_count": 8090,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        }
+      },
+      "pair1_vs_prior_R173_CF": {
+        "full": {
+          "relative_l2": 0.0004828486225938036,
+          "max_abs": 0.00494384765625,
+          "outside_count": 526769,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "camera_tokens": {
+          "relative_l2": 0.0007583599273024173,
+          "max_abs": 0.0006103515625,
+          "outside_count": 789,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "register_tokens": {
+          "relative_l2": 0.0006011724299055138,
+          "max_abs": 0.0009765625,
+          "outside_count": 3198,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        }
+      },
+      "diagnostic_timing": {
+        "case_id": "pair5",
+        "complete_call_seconds": 1.570388908003224,
+        "components": {
+          "original_F32_finite_and_one_halfcast_seconds": 0.024840086000040174,
+          "CF_guard_and_half_to_GLOBAL_F32_seconds": 0.03322587900038343,
+          "producer_owned_call_seconds": 0.32272498999373056,
+          "CPU_RoPE_completion_seconds": 0.06075213100120891,
+          "ordered_actual_rows_to_readonly_FRAME_half_seconds": 0.025420418998692185,
+          "final_owned_F32_copy_and_finite_seconds": 0.036891754003590904,
+          "wave_CF": 0.16937951699947007,
+          "wave_query": 0.3267305750050582,
+          "wave_pair1": 0.21754718899319414,
+          "wave_pair1_heads": 0.19804764501168393,
+          "pair1_bridge": 0.017737792994012125,
+          "pair1_suffix": 0.13654113899974618
+        },
+        "unattributed_within_call_seconds": 0.000549791002413258
+      }
+    }
+  ],
+  "diagnostic_timing": {
+    "mean_complete_call_seconds": 1.6316058515003533,
+    "includes_first_and_only_call_per_case": true,
+    "complete_scope": "Original scan/halfcast, actual CF frames/byte guards/F32 copy, ordinary corrected producer, fixed CPU RoPE, parallel query rows, lossless half handoff, all original pair1 native work and final FLOAT32 copy/finite check.",
+    "initialization_seconds": 0.9165513010084396,
+    "close_seconds": 0.6992756120016566,
+    "snapshots_postcall_hashes_and_numeric_comparisons_outside_timer": true,
+    "historical_R173_mean_complete_call_seconds": 1.0743403472515638,
+    "matched_old_new_speed_comparison_performed": false,
+    "individual_parallel_SDK_times_are_not_additive_route_latency": true,
+    "sustained_rate_or_P95_established": false
+  },
+  "resources_and_controller": {
+    "contexts_created": 13,
+    "contexts_destroyed": 13,
+    "runs_completed": 26,
+    "memories_created": 13,
+    "memories_imported": 9,
+    "memories_destroyed": 22,
+    "set_io_mem_attempts": 22,
+    "set_io_mem_successes": 22,
+    "output_buffers_acquired": 14,
+    "output_buffers_released": 14,
+    "maximum_live_contexts": 13,
+    "native_contexts": 9,
+    "ordinary_contexts": 4,
+    "dedicated_actor_threads": 10,
+    "all_contexts_outputs_memories_readers_importers_and_launched_jobs_closed": true,
+    "original_owner_native_and_actor_methods_modified": false,
+    "all9_root_f_bfree_budget_checks_passed": true,
+    "output_root_filesystem_floor_bytes": 536870912,
+    "controller_NPU_frequency_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "controller_temperature_limit_c": 75,
+    "maximum_controller_sample_c": 61.0,
+    "controller_baseline_restored": true,
+    "source_input_affinity_environment_policy_restored": true,
+    "cleanup_errors": [],
+    "peak_process_RSS_MiB": 857.59375,
+    "process_RSS_is_unique_physical_RAM_or_8GB_proof": false
+  },
+  "acceptance": {
+    "original_FP32_fixed_and_strict_tensor_gates_passed": false,
+    "material_propagated_camera_or_register_precision_benefit_established": false,
+    "matched_speed_gain_established": false,
+    "full_model_or_SLAM_speed_measured": false,
+    "decoded_pose_or_ATE_RPE_improvement_established": false,
+    "original_model_quality_accepted": false,
+    "sustained_realtime_rate_accepted": false,
+    "physical_8GB_operation_verified": false
+  },
+  "evidence": [
+    {
+      "role": "Actual connected two-case result",
+      "basename": "result.json",
+      "bytes": 225116,
+      "sha256": "022625ba338599c7d7f36783a44429bab62fc0380918a6171f01340a336e3503"
+    },
+    {
+      "role": "Executed connected worker source",
+      "basename": "run_corrected_query_rows_connected_board.py",
+      "bytes": 46597,
+      "sha256": "3f3a549630ac0f3494a6b1d020bd8b15bb6393606268f9374b301a669d8a16ba"
+    },
+    {
+      "role": "Actual transport and payload index",
+      "basename": "corrected-query-connected-r1-transport.json",
+      "bytes": 46405,
+      "sha256": "cd71165a2824c503d48e604d66b88fe5297a38406e0dd86a0ddf67577dcd8adc"
+    },
+    {
+      "role": "Executed transport source",
+      "basename": "execute_corrected_query_rows_connected_host.py",
+      "bytes": 15076,
+      "sha256": "b0ab7fd2370f88b55416a535763e1f50e87dafc91f32611fd6798f47acd44a7c"
+    },
+    {
+      "role": "Actual restoring controller",
+      "basename": "control.json",
+      "bytes": 6770,
+      "sha256": "0c81970f90c185a8d0897ee4954dd82361d215166ca77d93e399a362fa885485"
+    },
+    {
+      "role": "Executed authority and model manifest",
+      "basename": "manifest.json",
+      "bytes": 3574,
+      "sha256": "1711e2a8c2e3f3ca660d9589ae3b163778cdc3d20b3c26af3ae9fab405b9b51d"
+    },
+    {
+      "role": "Independent four-endpoint and regional saved audit",
+      "basename": "corrected-query-connected-r1-saved-audit-r1.json",
+      "bytes": 16155,
+      "sha256": "c10603339a0e1e07f64e1550dcf0a3e28fac997960507c23e9657edcc3dff603"
+    },
+    {
+      "role": "Independent saved auditor source",
+      "basename": "audit_corrected_query_rows_connected_saved.py",
+      "bytes": 26397,
+      "sha256": "8ee09275cfed81d096a04a097e5a82e6172ff0cd89e38d6a0ba94f0450b36c83"
+    },
+    {
+      "role": "Frozen R179 corrected global-component authority",
+      "basename": "pre-rope-consumers-r1-saved-audit-r1.json",
+      "bytes": 12373,
+      "sha256": "1cb8c674b28eb82801484545d0af29392b07698d8de90967de53d14758651e0f"
+    },
+    {
+      "role": "Frozen R173 connected CF authority",
+      "basename": "connected-ABBA-r1-saved-audit-r1.json",
+      "bytes": 10901,
+      "sha256": "03deca8f0acd86fe7a2e5c306c04a246d51ea6028304c4214e966da85dd2436e"
+    }
+  ],
+  "related_public_records": [
+    "original_native518_single_frame_fc2_channel_first_v172.json",
+    "original_native518_connected_single_frame_cf_v173.json",
+    "original_native518_query_row_pre_rope_completion_v178.json",
+    "original_native518_pre_rope_query_consumers_v179.json"
+  ]
+}

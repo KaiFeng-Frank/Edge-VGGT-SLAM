@@ -1,0 +1,60 @@
+{
+  "schema": "v126_restored_validation_source_identities",
+  "original_version": 119,
+  "archive": "v119-native518-shared-attention-r1",
+  "archive_manifest_sha256": "ef80f2d0b8aaa1cce368b616d6c6221546165ee85461e0ae47236caca1a6b8fd",
+  "source_bytes_equal_frozen_archive": false,
+  "README_reconstructed_not_original_hash": true,
+  "source_files": [
+    {
+      "file": "attention_softmax.cl",
+      "bytes": 3364,
+      "sha256": "5cbb36e03e09c38db9e6769f067e3168e1cf7f67d719009601c4456e9f2b150a",
+      "archive_files": [
+        "attention_softmax.cl"
+      ]
+    },
+    {
+      "file": "audit_shared_attention_saved.py",
+      "bytes": 17216,
+      "sha256": "29a6dd577eac5d9359fd07b5e4838e1ae58ed6728bee4e487cf8bf357314001c",
+      "archive_files": [
+        "audit_shared_attention_saved.py"
+      ],
+      "archive_bytes": 17246,
+      "archive_sha256": "888301236a668050a22272bc89c5d277c299d483359356a2c632596c9644de86",
+      "publication_adaptation": "Portable host artifact path defaults only; frozen historical execution identity remains archive_sha256."
+    },
+    {
+      "file": "native_attention_softmax_opencl.py",
+      "bytes": 17472,
+      "sha256": "73ff0c5ad33e0c334485553e9d8ab0764e6eb816a8f743b399531a58b619155e",
+      "archive_files": [
+        "native_attention_softmax_opencl.py"
+      ]
+    },
+    {
+      "file": "run_shared_attention_board.py",
+      "bytes": 19162,
+      "sha256": "10b15ffa734866283aede7ac865ab698114d204dd4f691d42cb0e0450059b092",
+      "archive_files": [
+        "run_shared_attention_board.py"
+      ]
+    },
+    {
+      "file": "run_shared_attention_r1.sh",
+      "bytes": 490,
+      "sha256": "aac44eb191edd6ebab1f44e0c6c32a5d99a756e59deb6537cdd0ec15eb72c692",
+      "archive_files": [
+        "run_shared_attention_r1.sh"
+      ]
+    }
+  ],
+  "NN_or_SDK_execution": false,
+  "raw_artifacts_published": false,
+  "original_recovery_bytes_equal_frozen_archive_before_publication_adaptation": true,
+  "publication_adapted_paths": [
+    "audit_shared_attention_saved.py"
+  ],
+  "publication_identity_scope": "Current bytes/sha256 identify the published file; archive/executed_source fields retain the frozen historical source identity. No new model or device execution is claimed."
+}

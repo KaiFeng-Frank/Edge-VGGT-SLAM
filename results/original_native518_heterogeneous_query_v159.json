@@ -1,0 +1,207 @@
+{
+  "schema": "original_native518_heterogeneous_query_component_tradeoff_v159",
+  "date": "2026-10-15",
+  "status": "verified_component_tradeoff_research_candidate_retained_deployment_validation_pending",
+  "conclusion": "One connected graph routes the original ten special queries through quarter-exp and 2072 patch queries through fused SDPA, with all 2082 keys on both branches. Actual outputs reproduce the corresponding original component regions byte for byte. Lower tensor error with a measured 5.77 percent complete-call latency cost merits further validation.",
+  "scope": {
+    "original_model_only": true,
+    "component_only": true,
+    "heads": 16,
+    "queries": 2082,
+    "keys": 2082,
+    "head_dim": 64,
+    "one_original_capture_sha256": "e4ffaea2b11df9ac558c119cb4854d490b0030c02b7706eee344b8894cefa686",
+    "research_candidate_retained": true,
+    "deployment_accepted": false,
+    "speed_accepted": false,
+    "trajectory_or_realtime_accepted": false,
+    "new_calibration": false
+  },
+  "static_rewrite": {
+    "original_nodes": 48,
+    "candidate_nodes": 61,
+    "original_initializers": 24,
+    "candidate_initializers": 31,
+    "all43_unchanged_original_node_protos_byte_equal": true,
+    "all24_original_initializer_protos_byte_equal": true,
+    "whole_parent_inverse_ModelProto_byte_equal": true,
+    "special_query_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      1041,
+      1042,
+      1043,
+      1044,
+      1045
+    ],
+    "patch_query_intervals": [
+      [
+        5,
+        1041
+      ],
+      [
+        1046,
+        2082
+      ]
+    ],
+    "query_partition_sizes": [
+      5,
+      1036,
+      5,
+      1036
+    ],
+    "output_restore_order": [
+      "special0",
+      "patch0",
+      "special1",
+      "patch1"
+    ],
+    "every_query_occurs_exactly_once_and_order_is_restored": true,
+    "both_branches_keep_all2082_original_keys_and_values": true,
+    "one_connected_graph": true,
+    "original_QK_and_PV_MACs": 8877514752,
+    "learned_parameters_added": 0
+  },
+  "board_FP32_gate": {
+    "original_reference": {
+      "relative_l2": 1.6843904169179958e-07,
+      "max_abs": 3.814697265625e-06,
+      "outside_count": 0,
+      "fixed_gate_passed": true,
+      "strict_pass": true,
+      "byte_equal": false
+    },
+    "parent_quarter_reference": {
+      "relative_l2": 2.9230686346800085e-07,
+      "max_abs": 1.9669532775878906e-06,
+      "outside_count": 0,
+      "fixed_gate_passed": true,
+      "strict_pass": true,
+      "byte_equal": false
+    },
+    "independently_verified": true
+  },
+  "actual_placement": {
+    "model": {
+      "file": "heterogeneous-query.rknn",
+      "bytes": 4607800,
+      "sha256": "209186b10d7f3404f1e8114c0f373889af5b13f852d561a9dacfa6ae4027d5ea"
+    },
+    "operators": 57,
+    "feature_rows": 93,
+    "constant_rows": 21,
+    "all_actual_rows_consumed": true,
+    "patch2072_fused_SDPA_NPU": {
+      "id": 51,
+      "op": "exSDPAttention",
+      "dtype": "FLOAT16",
+      "target": "NPU",
+      "name": "exSDPAttention:__heterogeneous_query/patch/global0/attention_values_2sdpa"
+    },
+    "special10_quarter_arithmetic_NPU": true,
+    "both_branches_have_all2082_keys_and_values": true,
+    "all_six_query_routing_operations_NPU": true,
+    "no_full_score_CPU_layout": true,
+    "sole_small_public_CPU_layout": [
+      {
+        "id": 54,
+        "op": "Transpose",
+        "dtype": "FLOAT16",
+        "target": "CPU",
+        "name": "Transpose:__heterogeneous_query/all_centered_PV_native_tp"
+      }
+    ],
+    "SDK_static_internal_memory_KB_as_printed": {
+      "heterogeneous_candidate": 94049.6,
+      "prior_full_quarter": 560684.0
+    },
+    "memory_scope": "Compiler allocation estimate, not process RSS or complete-model memory"
+  },
+  "ordinary_runtime": {
+    "control": "Unchanged R152 fused SDPA",
+    "schedule": [
+      "A_fused",
+      "A_fused",
+      "B_candidate",
+      "B_candidate"
+    ],
+    "calls_per_route": 2,
+    "flags": 0,
+    "core_mask": 7,
+    "NPU_hz": 1000000000,
+    "maximum_live_contexts": 1,
+    "public_timer_includes": "All canonical packing, unchanged owned SDK IO/finite/copy/release phases and output canonicalization; init/close/saves/comparisons excluded",
+    "metrics": {
+      "A_fused": {
+        "mean_public_call_seconds": 0.46023575450089993,
+        "mean_SDK_run_seconds": 0.37487059999693884,
+        "comparison_vs_original_FP32": {
+          "relative_l2": 0.0012975616213954692,
+          "max_abs": 0.04167795181274414,
+          "outside_count": 756588,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        }
+      },
+      "B_candidate": {
+        "mean_public_call_seconds": 0.486792403000436,
+        "mean_SDK_run_seconds": 0.40386637399933534,
+        "comparison_vs_original_FP32": {
+          "relative_l2": 0.0002862807724141567,
+          "max_abs": 0.005660057067871094,
+          "outside_count": 756486,
+          "fixed_gate_passed": false,
+          "strict_pass": false,
+          "rtol": 0.0001,
+          "atol": 1e-05,
+          "byte_equal": false
+        }
+      }
+    },
+    "candidate_public_mean_change_percent": 5.770227158542984,
+    "actual_special10_byte_equal_prior_quarter_both_calls": true,
+    "actual_patch2072_byte_equal_frozen_fused_both_calls": true,
+    "comparison_is_actual_NPU_output_not_only_a_saved_proxy": true,
+    "all8_saved_outputs_and4_original_arrays_verified": true,
+    "resource_totals": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 4,
+      "output_buffers_acquired": 4,
+      "output_buffers_released": 4
+    },
+    "all_resources_closed": true,
+    "original_governor_frequency_limits_restored": true,
+    "limits": "AA then BB, two calls per route including first calls, on one repeated capture. No sustained or causal speed, P95 or complete-model conclusion"
+  },
+  "validation_status": {
+    "fixed_and_strict_tensor_diagnostics_passed": false,
+    "tensor_gate_failure_is_not_an_ATE_or_RPE_result": true,
+    "heldout_original_inputs": "pending",
+    "complete_original_block": "pending",
+    "trajectory_and_full_deployment": "pending",
+    "research_architecture_permanently_rejected": false
+  },
+  "evidence_sha256": {
+    "exporter_source": "c41c1b838351160e309a5c1a9e4cd8fe73bf6cbfb7249e28b2355ef52c74a476",
+    "static_proof": "9f218e1c02589fb484302541e9001c9a1964c64a9a58384fe1162a2cb1f8418f",
+    "compiler_source": "0be02c61ef6f4389406a15e8b4d0d0bf46586112450aa49a718ca094875f1d3f",
+    "actual_compile_receipt": "af66ba6b1610de8ab8e22b28a24e301d9795934ea8f067c4726a2970fb883113",
+    "actual_placement_audit": "fb27915149a065e94c62becfe3aea47142ba61303a198c24c23bebc6f3846a89",
+    "actual_placement_audit_source": "2a6a1ab3b3df8c1e9552ad095348476297eaf1e58ea5187ab87819d34c77ddbd",
+    "actual_compiler_table": "15896d88570000f9666f0e3401f3590593393046746774110d0dadd49a4957c9",
+    "ordinary_runtime_worker": "0ce7aaa67e84b676ac0d26542a60f05ed4094281c4c85b496f8d8ca5c8f2ee2c",
+    "ordinary_runtime_receipt": "a79e282d6eb83c3c25c12c76d79009a999eaad682c3add8724b6bf72a81919e7",
+    "ordinary_runtime_saved_audit": "ff447e3cbe3cb3cf6266cfb6f63d5ef4df395e7e3817cdfb39d20f8242c294c7",
+    "ordinary_runtime_saved_audit_source": "79638d6378d30299737dba346f42016182e27f77e85d0b33ce982d7a3ce99a31",
+    "restoring_runtime_controller": "2da42dd64ed8f7e76aaf3f90dadf5bd4776f214ecb181135fc44ad57e173430e",
+    "source_bound_query_region_receipt": "a6a8bd8bdf5f2c14d69c44f4cfb63a616983424f4e6e96c80f235e23093e36a0",
+    "prior_quarter_runtime_receipt": "d3c975c48d6a45bc422320860bee494a9f00972b6d12a4762027ee405a2f7067"
+  }
+}

@@ -1,0 +1,1385 @@
+{
+  "schema": "original_native518_shared_FD_arenas_v140",
+  "status": "original_native_memory_sharing_verified_32measured_fullblock_cost_worse_no_acceleration_accepted",
+  "original_model_only": true,
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "scope": "One complete original VGGT image-encoder block0 (DINO0), all1041 original queries/keys and16heads, four complete original weighted products and32attention products. A is verified R5 native; B changes only SDK FD allocation/import/synchronization layout. No full model or SLAM execution.",
+  "source_resolution": [
+    392,
+    518
+  ],
+  "original_parameters_verified": 14,
+  "original_native_products_per_complete_call": 44,
+  "original_core_masks": [
+    1,
+    2,
+    4
+  ],
+  "all_original_layers_tokens_heads_weight_values_and_formulas_retained": true,
+  "new_learned_models_or_parameters": 0,
+  "original_FP32_reference": {
+    "capture_sha256": "17d77cfe3d8cdb3ff88e15de4a06634683899348b53b24fbadad6eef1584e91d",
+    "input": {
+      "file": "input.npy",
+      "bytes": 4264064,
+      "sha256": "aae907d5105f68d4b6d74bb733871e0971fb2c639ec8be8cb46a82176a706aa8",
+      "shape": [
+        1,
+        1041,
+        1024
+      ],
+      "dtype": "float32",
+      "tensor_bytes": 4263936,
+      "raw_sha256": "706d7e06efb45e7c90d3fc990e3479a4f566e93cb8c44f42ef57622b037f1efd",
+      "finite": true
+    },
+    "output": {
+      "file": "output.npy",
+      "bytes": 4264064,
+      "sha256": "641f0cf05a8e7f6f0fb249442f02face88b80d6f65256d4c3dace4ddc87a0f52",
+      "shape": [
+        1,
+        1041,
+        1024
+      ],
+      "dtype": "float32",
+      "tensor_bytes": 4263936,
+      "raw_sha256": "8df01fb5672f2fdc5eef37261b0c75e39dc8841913c24244e27ecd3df0da4a30",
+      "finite": true
+    },
+    "weights_npz_sha256": "034497947f816fab655c11109d479a7fd94b582f7dd8e81c17977f9b9c593ae2"
+  },
+  "source_and_API_proof": {
+    "original_native_runtime_sha256": "bfee2265cd0c8685c45aa04cfbc21f905d54c5f029a63250259606ce59bb0454",
+    "R5_bridge_sha256": "9d6d9b2201edc55e30c19c4af8938163edab7b350182af41a78d028fa7ad8895",
+    "shared_arena_runtime_sha256": "685c742d90c10e379f913fadfacdd18dab037f081b2e38c4d959fa6a67f6d501",
+    "shared_arena_bridge_sha256": "af843d0fc4c9fe81e987c8390802b6522948e174af952607b9e1af32ab691ab2",
+    "all7_R5_shaders_byte_unchanged": {
+      "dino0_native_bridge.cl": "5f4a9ffc008aec7a608262c4810496332aa6ac4689cb046967c387513bf30c6b",
+      "attention_softmax.cl": "5cbb36e03e09c38db9e6769f067e3168e1cf7f67d719009601c4456e9f2b150a",
+      "dino0_batched_bridge.cl": "69a61c822b047ef57c38722aee8446dc1692e764b7f9c459ec75208a76b4b5f0"
+    },
+    "CL_build_options": "-cl-std=CL1.2",
+    "softmax_argument_count": 65,
+    "softmax_global_size": 1069056,
+    "softmax_local_size": 256,
+    "complete_parent_source_reverse_patch_byte_equal": true,
+    "exact44product_and112boundary_family_check": true,
+    "weighted_QKV_C_remains_independent": true,
+    "preexecution_failure": "A broad qk prefix also selected qkv0/qkv1/qkv2, incorrectly suppressing their original C allocation/sync/import and preventing owner closure. Static root review rejected that draft before execution; corrected exact head-name sets are tested across all44products and112boundaries.",
+    "rejected_prefix_candidate_executed": false,
+    "SDK_version": "2.3.2",
+    "SDK_runtime_sha256": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+    "rknn_API_header_sha256": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a",
+    "MatMul_header_sha256": "aaadd9a7118de30a06b222996b6731db77095d00f5931a7a98c83a67f14a4d42"
+  },
+  "arena_layout": {
+    "QK_C": {
+      "dtype": "float32",
+      "native_shape": [
+        264,
+        1041,
+        4
+      ],
+      "per_head_payload_bytes": 4397184,
+      "stride_bytes": 4403200,
+      "first_offset_bytes": 4096,
+      "backing_bytes": 70455296,
+      "guard_bytes": 100352
+    },
+    "PV_A": {
+      "dtype": "float16",
+      "native_shape": [
+        132,
+        1041,
+        8
+      ],
+      "per_head_payload_bytes": 2198592,
+      "stride_bytes": 2203648,
+      "first_offset_bytes": 4096,
+      "backing_bytes": 35262464,
+      "guard_bytes": 84992
+    },
+    "SDK_true_from_fd_views": 32,
+    "CPU_view_address": "SDK virt_addr + SDK offset",
+    "API_flags_or_private_data_manually_mutated": false,
+    "all3_fixed_owners_retained": true,
+    "entire_writer_phase_joined_before_whole_owner_maintenance": true,
+    "GPU_finish_and_import_release_before_native_storage_destruction": true,
+    "native_arena_views_and_consumers_destroyed_before_backing_owners": true,
+    "original_external_cache_sync_directions_and_managed_host_consistency_preserved": true,
+    "lower_import_count_is_initialization_resource_change_not_steady_speed_proof": true,
+    "same_direction_sync_coalescing_does_not_eliminate_payload_bytes": true
+  },
+  "generated_smoke": {
+    "M": 33,
+    "K": 32,
+    "N": 32,
+    "generated_identity_B": true,
+    "no_learned_forward": true,
+    "core_masks": [
+      1,
+      2
+    ],
+    "sequential_only": true,
+    "nonzero_C_offsets": [
+      4096,
+      16384
+    ],
+    "C_layout": "FP32 C4",
+    "per_view_sync_trial_passed": true,
+    "owner_sync_trial_passed": true,
+    "all9_arrays_verified": true,
+    "guards_per_trial_all_A5_bytes": 20224,
+    "successful_runs": 4,
+    "syncs": 16,
+    "destroyed_memory_wrappers": 7,
+    "SDK_returned_view_flags": 1,
+    "SDK_flags_not_inferred_from_header_enum_name": true,
+    "limits": "This generated two-core sequential smoke alone does not prove original full1041-row three-core concurrency, GPU interoperability or speed."
+  },
+  "initial8call_screen": {
+    "schedule": "ABBAABBA",
+    "subsequent_samples_per_route": 3,
+    "complete_mean_seconds": {
+      "A": 0.2985177523320696,
+      "B": 0.2745933610009767
+    },
+    "softmax_kernel_mean_seconds": {
+      "A": 0.03898718466666667,
+      "B": 0.030332526999999998
+    },
+    "descriptive_B_over_A": 0.9198560516277787,
+    "all8_native_bytes_equal": true,
+    "all8_original_diagnostics_equal": true,
+    "all2_guard_arrays_A5": true,
+    "GPU_observed_hz": [
+      300000000,
+      1000000000
+    ],
+    "fixed_GPU_frequency_or_causal_speedup_established": false,
+    "acceleration_accepted": false
+  },
+  "repeat32": {
+    "warmup_schedule": "ABBAABBA",
+    "measured_schedule": "ABBAABBAABBAABBAABBAABBAABBAABBA",
+    "warmups_per_route": 4,
+    "measured_samples_per_route": 16,
+    "complete_calls_total": 40,
+    "measured_distributions_seconds": {
+      "A": {
+        "complete_block": {
+          "count": 16,
+          "mean_seconds": 0.2972960741251427,
+          "median_seconds": 0.29969638450165803,
+          "minimum_seconds": 0.27103665200047544,
+          "maximum_seconds": 0.3282699909977964,
+          "p95_nearest_rank_seconds": 0.3282699909977964,
+          "q25_seconds": 0.2759384027485794,
+          "q75_seconds": 0.3102734997501102,
+          "IQR_seconds": 0.03433509700153081,
+          "sample_stdev_seconds": 0.018249272995866133
+        },
+        "softmax_kernel": {
+          "count": 16,
+          "mean_seconds": 0.031863021625,
+          "median_seconds": 0.038767495,
+          "minimum_seconds": 0.012856408,
+          "maximum_seconds": 0.039044104,
+          "p95_nearest_rank_seconds": 0.039044104,
+          "q25_seconds": 0.02614139825,
+          "q75_seconds": 0.038914777750000004,
+          "IQR_seconds": 0.012773379500000005,
+          "sample_stdev_seconds": 0.011462917465510961
+        },
+        "complete_softmax": {
+          "count": 16,
+          "mean_seconds": 0.07539129412498369,
+          "median_seconds": 0.0773430079989339,
+          "minimum_seconds": 0.050294421998842154,
+          "maximum_seconds": 0.09288884200213943,
+          "p95_nearest_rank_seconds": 0.09288884200213943,
+          "q25_seconds": 0.06439541275085503,
+          "q75_seconds": 0.08641143575005117,
+          "IQR_seconds": 0.02201602299919614,
+          "sample_stdev_seconds": 0.012241298542626323
+        },
+        "softmax_bridge": {
+          "count": 16,
+          "mean_seconds": 0.05743607599970346,
+          "median_seconds": 0.05950248500084854,
+          "minimum_seconds": 0.03393892000167398,
+          "maximum_seconds": 0.07516484100051457,
+          "p95_nearest_rank_seconds": 0.07516484100051457,
+          "q25_seconds": 0.05193424524895818,
+          "q75_seconds": 0.06251678749777057,
+          "IQR_seconds": 0.010582542248812388,
+          "sample_stdev_seconds": 0.011382645824013798
+        },
+        "softmax_pre_sync": {
+          "count": 16,
+          "mean_seconds": 0.008367839375296171,
+          "median_seconds": 0.008615396998720826,
+          "minimum_seconds": 0.004372667001007358,
+          "maximum_seconds": 0.010635542999807512,
+          "p95_nearest_rank_seconds": 0.010635542999807512,
+          "q25_seconds": 0.008340282499375462,
+          "q75_seconds": 0.0089475320010024,
+          "IQR_seconds": 0.0006072495016269386,
+          "sample_stdev_seconds": 0.0013374409362810447
+        },
+        "softmax_post_sync": {
+          "count": 16,
+          "mean_seconds": 0.009589566062686572,
+          "median_seconds": 0.009098688498852425,
+          "minimum_seconds": 0.0062072510008874815,
+          "maximum_seconds": 0.017041210001480067,
+          "p95_nearest_rank_seconds": 0.017041210001480067,
+          "q25_seconds": 0.008852823749293748,
+          "q75_seconds": 0.009295345000282396,
+          "IQR_seconds": 0.0004425212509886478,
+          "sample_stdev_seconds": 0.002337365945951165
+        }
+      },
+      "B": {
+        "complete_block": {
+          "count": 16,
+          "mean_seconds": 0.322347813624674,
+          "median_seconds": 0.3244383664987254,
+          "minimum_seconds": 0.29914073799955077,
+          "maximum_seconds": 0.34310532699964824,
+          "p95_nearest_rank_seconds": 0.34310532699964824,
+          "q25_seconds": 0.3160542607511161,
+          "q75_seconds": 0.3314886057523836,
+          "IQR_seconds": 0.015434345001267502,
+          "sample_stdev_seconds": 0.012242809677831689
+        },
+        "softmax_kernel": {
+          "count": 16,
+          "mean_seconds": 0.03676901175,
+          "median_seconds": 0.038918772000000004,
+          "minimum_seconds": 0.013104089,
+          "maximum_seconds": 0.039088095,
+          "p95_nearest_rank_seconds": 0.039088095,
+          "q25_seconds": 0.0387897645,
+          "q75_seconds": 0.0389672805,
+          "IQR_seconds": 0.00017751600000000256,
+          "sample_stdev_seconds": 0.006641783259905104
+        },
+        "complete_softmax": {
+          "count": 16,
+          "mean_seconds": 0.07298384318778517,
+          "median_seconds": 0.07334134099983203,
+          "minimum_seconds": 0.0448737959995924,
+          "maximum_seconds": 0.08135109099748661,
+          "p95_nearest_rank_seconds": 0.08135109099748661,
+          "q25_seconds": 0.07092641325198201,
+          "q75_seconds": 0.08047711200106278,
+          "IQR_seconds": 0.009550698749080766,
+          "sample_stdev_seconds": 0.009110118259805107
+        },
+        "softmax_bridge": {
+          "count": 16,
+          "mean_seconds": 0.06171223799969994,
+          "median_seconds": 0.06057917299949622,
+          "minimum_seconds": 0.03359416999956011,
+          "maximum_seconds": 0.07011113200132968,
+          "p95_nearest_rank_seconds": 0.07011113200132968,
+          "q25_seconds": 0.05969520375128923,
+          "q75_seconds": 0.069167079998806,
+          "IQR_seconds": 0.009471876247516775,
+          "sample_stdev_seconds": 0.008990425455126733
+        },
+        "softmax_pre_sync": {
+          "count": 16,
+          "mean_seconds": 0.005602898999768513,
+          "median_seconds": 0.005563541999435984,
+          "minimum_seconds": 0.0029924999980721623,
+          "maximum_seconds": 0.008770126001763856,
+          "p95_nearest_rank_seconds": 0.008770126001763856,
+          "q25_seconds": 0.005516584002180025,
+          "q75_seconds": 0.005615604748527403,
+          "IQR_seconds": 9.902074634737801e-05,
+          "sample_stdev_seconds": 0.0010615478234189404
+        },
+        "softmax_post_sync": {
+          "count": 16,
+          "mean_seconds": 0.005670948438364576,
+          "median_seconds": 0.005669417001627153,
+          "minimum_seconds": 0.005563251001149183,
+          "maximum_seconds": 0.005842957998538623,
+          "p95_nearest_rank_seconds": 0.005842957998538623,
+          "q25_seconds": 0.0056323757526115514,
+          "q75_seconds": 0.005698729750292841,
+          "IQR_seconds": 6.635399768128991e-05,
+          "sample_stdev_seconds": 6.997557254430104e-05
+        }
+      }
+    },
+    "descriptive_mean_B_over_A": {
+      "complete_block": 1.08426528864618,
+      "softmax_kernel": 1.1539712768845096,
+      "complete_softmax": 0.968067255441889,
+      "softmax_bridge": 1.074450803359522,
+      "softmax_pre_sync": 0.6695753525467504,
+      "softmax_post_sync": 0.5913665333023241
+    },
+    "paired_quartets": [
+      {
+        "group": 0,
+        "complete_B_minus_A_seconds": 0.03804610750012216,
+        "complete_B_over_A": 1.1293834588868794,
+        "softmax_kernel_B_over_A": 1.0047239211322954,
+        "GPU_snapshots_hz": [
+          300000000,
+          1000000000
+        ]
+      },
+      {
+        "group": 1,
+        "complete_B_minus_A_seconds": 0.01924800199958554,
+        "complete_B_over_A": 1.0659624705300306,
+        "softmax_kernel_B_over_A": 0.8430811260256138,
+        "GPU_snapshots_hz": [
+          300000000,
+          400000000,
+          1000000000
+        ]
+      },
+      {
+        "group": 2,
+        "complete_B_minus_A_seconds": 0.006204042998433579,
+        "complete_B_over_A": 1.019864172135146,
+        "softmax_kernel_B_over_A": 0.9974996673576034,
+        "GPU_snapshots_hz": [
+          300000000,
+          1000000000
+        ]
+      },
+      {
+        "group": 3,
+        "complete_B_minus_A_seconds": 0.0018341874983889284,
+        "complete_B_over_A": 1.0059732969413493,
+        "softmax_kernel_B_over_A": 1.001571481814282,
+        "GPU_snapshots_hz": [
+          300000000,
+          1000000000
+        ]
+      },
+      {
+        "group": 4,
+        "complete_B_minus_A_seconds": 0.03553812899735931,
+        "complete_B_over_A": 1.1249644901324602,
+        "softmax_kernel_B_over_A": 1.5101404041960225,
+        "GPU_snapshots_hz": [
+          300000000,
+          400000000,
+          1000000000
+        ]
+      },
+      {
+        "group": 5,
+        "complete_B_minus_A_seconds": 0.043388484000388416,
+        "complete_B_over_A": 1.1470939481918332,
+        "softmax_kernel_B_over_A": 1.7814390139364356,
+        "GPU_snapshots_hz": [
+          300000000,
+          400000000,
+          1000000000
+        ]
+      },
+      {
+        "group": 6,
+        "complete_B_minus_A_seconds": 0.03161062800063519,
+        "complete_B_over_A": 1.110273652483785,
+        "softmax_kernel_B_over_A": 1.49448860267966,
+        "GPU_snapshots_hz": [
+          300000000,
+          400000000,
+          1000000000
+        ]
+      },
+      {
+        "group": 7,
+        "complete_B_minus_A_seconds": 0.02454433500133746,
+        "complete_B_over_A": 1.0799207906728503,
+        "softmax_kernel_B_over_A": 1.0038274457828802,
+        "GPU_snapshots_hz": [
+          300000000,
+          1000000000
+        ]
+      }
+    ],
+    "B_slower_complete_block_in_all8_quartets": true,
+    "own_outputs_and_timings_buffered_during_batch": true,
+    "comparisons_hashes_saves_and_diagnostics_outside_measured_batch": true,
+    "individual_complete_call_scope": "Original input upload/validation, all44 native products, all7 GPU stages, external synchronization, owned final output/finite validation. Context lifecycle, saved-array comparisons, file writes and diagnostics are separate. Clock snapshots and in-memory recording occur between timed calls.",
+    "sample_P95_definition": "Nearest rank ceil(0.95*n), n=16 per route; consequently the observed maximum. Descriptive component statistic, not full-model endpoint P95 acceptance.",
+    "measured_GPU_observed_hz": [
+      300000000,
+      400000000,
+      1000000000
+    ],
+    "single_frequency_snapshot_quartets": 0,
+    "continuous_GPU_frequency_established": false,
+    "GPU_frequency_or_policy_writes": false,
+    "kernel_time_confounding": "The same seven shader sources run on both routes; softmax kernel means differ by15.397%. Sparse GPU snapshots cannot separate automatic frequency variation from changed memory layout.",
+    "speedup_or_causal_regression_accepted": false
+  },
+  "numerical_and_resource_verification": {
+    "all50_array_file_raw_shape_dtype_finite_checks_passed": true,
+    "all40_final_outputs_byte_equal_original_R121_R124_and_R5": true,
+    "native_output_raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+    "all8_postbatch_original_diagnostics_byte_equal_R5": true,
+    "guard_bytes_all_A5": {
+      "qkC": 100352,
+      "pvA": 84992
+    },
+    "original_CPU_FP32_error": {
+      "relative_l2": 0.00025077124800209895,
+      "max_abs": 0.005247354507446289,
+      "outside_count": 135979
+    },
+    "original_CPU_FP32_residual_update_error": {
+      "relative_l2": 0.0004456586325252293,
+      "max_abs": 0.005247354507446289,
+      "outside_count": 165275
+    },
+    "original_FP32_fixed_and_strict_gates_passed": false,
+    "actual_native_API": {
+      "A": {
+        "attempts": {
+          "rknn_matmul_create": 44,
+          "rknn_matmul_set_core_mask": 44,
+          "rknn_create_mem": 132,
+          "rknn_matmul_set_io_mem": 1676,
+          "rknn_mem_sync": 4972,
+          "rknn_matmul_run": 880,
+          "rknn_destroy_mem": 132,
+          "rknn_matmul_destroy": 44
+        },
+        "successes": {
+          "rknn_matmul_create": 44,
+          "rknn_matmul_set_core_mask": 44,
+          "rknn_create_mem": 132,
+          "rknn_matmul_set_io_mem": 1676,
+          "rknn_mem_sync": 4972,
+          "rknn_matmul_run": 880,
+          "rknn_destroy_mem": 132,
+          "rknn_matmul_destroy": 44
+        }
+      },
+      "B": {
+        "attempts": {
+          "rknn_matmul_create": 44,
+          "rknn_matmul_set_core_mask": 44,
+          "rknn_create_mem": 102,
+          "rknn_matmul_set_io_mem": 1676,
+          "rknn_mem_sync": 3792,
+          "rknn_create_mem_from_fd": 32,
+          "rknn_matmul_run": 880,
+          "rknn_destroy_mem": 134,
+          "rknn_matmul_destroy": 44
+        },
+        "successes": {
+          "rknn_matmul_create": 44,
+          "rknn_matmul_set_core_mask": 44,
+          "rknn_create_mem": 102,
+          "rknn_matmul_set_io_mem": 1676,
+          "rknn_mem_sync": 3792,
+          "rknn_create_mem_from_fd": 32,
+          "rknn_matmul_run": 880,
+          "rknn_destroy_mem": 134,
+          "rknn_matmul_destroy": 44
+        }
+      }
+    },
+    "per_run_sync_oracle": {
+      "A": 248,
+      "B": 188
+    },
+    "per_call_API_counter_deltas_separately_instrumented": false,
+    "actual_sync_reconstruction": "B:14 init+20*188 forwards+16 original diagnostics+2 guard snapshots=3792; A:12+20*248=4972",
+    "contexts_created_destroyed": 88,
+    "owned_allocations_created": 234,
+    "SDK_FD_views_created": 32,
+    "memory_wrappers_destroyed": 266,
+    "native_product_runs": 1760,
+    "GPU_events_created_released": 280,
+    "persistent_DMA_imports": {
+      "A": 112,
+      "B": 82
+    },
+    "all_contexts_memory_arenas_GPU_imports_fds_events_and_owner_threads_closed": true,
+    "NPU_controller": {
+      "frequency_hz": 1000000000,
+      "timeout_seconds": 180,
+      "temperature_limit_c": 75,
+      "maximum_sampled_temperature_c": 65.615,
+      "exact_prior_policy_restored": true
+    },
+    "worker_elapsed_seconds": 20.41451313399739,
+    "worker_peak_rss_mib": 1330.859375,
+    "RSS_not_full_model_or_8GB_acceptance": true
+  },
+  "prior_separate_fused_comparator": {
+    "receipt_sha256": "00816fcdac1e4b834a43cd4495321729b3a21f6ccecff549c80fa9cbb10a4ece",
+    "three_later_mean_seconds": 0.1529630986660777,
+    "mean_ratio_current_A": 1.9435803583853088,
+    "mean_ratio_current_B": 2.1073567182916935,
+    "simultaneous_or_fixed_GPU_matched_comparison": false
+  },
+  "saved_private_artifacts": {
+    "arrays": [
+      {
+        "phase": "warmup",
+        "route": "A",
+        "index": 0,
+        "file": "warmup0.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "warmup",
+        "route": "B",
+        "index": 1,
+        "file": "warmup1.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "warmup",
+        "route": "B",
+        "index": 2,
+        "file": "warmup2.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "warmup",
+        "route": "A",
+        "index": 3,
+        "file": "warmup3.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "warmup",
+        "route": "A",
+        "index": 4,
+        "file": "warmup4.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "warmup",
+        "route": "B",
+        "index": 5,
+        "file": "warmup5.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "warmup",
+        "route": "B",
+        "index": 6,
+        "file": "warmup6.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "warmup",
+        "route": "A",
+        "index": 7,
+        "file": "warmup7.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 0,
+        "file": "call0.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 1,
+        "file": "call1.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 2,
+        "file": "call2.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 3,
+        "file": "call3.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 4,
+        "file": "call4.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 5,
+        "file": "call5.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 6,
+        "file": "call6.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 7,
+        "file": "call7.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 8,
+        "file": "call8.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 9,
+        "file": "call9.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 10,
+        "file": "call10.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 11,
+        "file": "call11.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 12,
+        "file": "call12.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 13,
+        "file": "call13.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 14,
+        "file": "call14.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 15,
+        "file": "call15.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 16,
+        "file": "call16.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 17,
+        "file": "call17.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 18,
+        "file": "call18.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 19,
+        "file": "call19.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 20,
+        "file": "call20.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 21,
+        "file": "call21.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 22,
+        "file": "call22.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 23,
+        "file": "call23.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 24,
+        "file": "call24.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 25,
+        "file": "call25.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 26,
+        "file": "call26.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 27,
+        "file": "call27.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 28,
+        "file": "call28.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 29,
+        "file": "call29.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "B",
+        "index": 30,
+        "file": "call30.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "measured",
+        "route": "A",
+        "index": 31,
+        "file": "call31.npy",
+        "bytes": 4264064,
+        "sha256": "1ff8d548efede5dedd84267bec1b171dbc8796eb7e5e2689b19118556010b1ae",
+        "raw_sha256": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d",
+        "shape": [
+          1,
+          1041,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "postbatch_original_diagnostic",
+        "name": "qkvA",
+        "file": "native-qkvA.npy",
+        "bytes": 2132096,
+        "sha256": "77187f011f4b587cb10231b28f6029e3a312877fa22aba169c10addd9b761c94",
+        "raw_sha256": "930b37a6df5c9aca3d5e4e3e9a242a033ecf46d6f86f813284bed3565e5b65e3",
+        "shape": [
+          128,
+          1041,
+          8
+        ],
+        "dtype": "float16"
+      },
+      {
+        "phase": "postbatch_original_diagnostic",
+        "name": "qkvC",
+        "file": "native-qkvC.npy",
+        "bytes": 12791936,
+        "sha256": "246f798ba902077dd17027eba99d4bc0e33221b1bc4110984dcc3a092479b375",
+        "raw_sha256": "ebfe6706a7fd801278ef1b2b4972251f159754d84f2cd17e9fc92f1f564755a4",
+        "shape": [
+          768,
+          1041,
+          4
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "postbatch_original_diagnostic",
+        "name": "projA",
+        "file": "native-projA.npy",
+        "bytes": 2132096,
+        "sha256": "28c53a1e0ee519d6f49c9c5beb247a7caa8b7df61691157fe859af1865f6527c",
+        "raw_sha256": "706515dade76c1996e658b911319791cbe5f58dc78064c2c272a128f2ca9158c",
+        "shape": [
+          128,
+          1041,
+          8
+        ],
+        "dtype": "float16"
+      },
+      {
+        "phase": "postbatch_original_diagnostic",
+        "name": "projC",
+        "file": "native-projC.npy",
+        "bytes": 4264064,
+        "sha256": "67919bcba9d7727020af11adb6d77827c02b92bdab6e780b848298e5a5152a57",
+        "raw_sha256": "999a43dc908f9d1578205ca7421f714cb88d4d5c7aec86f8e7c797853200d4ba",
+        "shape": [
+          256,
+          1041,
+          4
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "postbatch_original_diagnostic",
+        "name": "fc1A",
+        "file": "native-fc1A.npy",
+        "bytes": 2132096,
+        "sha256": "614cb08cd010be70013fb227d5cc7b2b6dee8ed57fb005d4c2bd793282894eb4",
+        "raw_sha256": "8bed946282aeafce92a64b0c18da3571b741b2cbe1587935220f3c9f0112f075",
+        "shape": [
+          128,
+          1041,
+          8
+        ],
+        "dtype": "float16"
+      },
+      {
+        "phase": "postbatch_original_diagnostic",
+        "name": "fc1C",
+        "file": "native-fc1C.npy",
+        "bytes": 17055872,
+        "sha256": "dbb42234830b6e72826cb8a85034f5ffa20dfadc4c052aacb0f86e40fe2957a2",
+        "raw_sha256": "8762acf0dd1effa81c7ff07020ac15adaf6b4a0b86c929827cf7442282b5df41",
+        "shape": [
+          1024,
+          1041,
+          4
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "postbatch_original_diagnostic",
+        "name": "fc2A",
+        "file": "native-fc2A.npy",
+        "bytes": 8528000,
+        "sha256": "d57b59962782c61d36125273fb53abbc86d3307321b4fa0fde57d02487074496",
+        "raw_sha256": "1d0e85b7d687ea2be0a4b43b91ab4234d1ed704ac92d5d827fdc931053960f5d",
+        "shape": [
+          512,
+          1041,
+          8
+        ],
+        "dtype": "float16"
+      },
+      {
+        "phase": "postbatch_original_diagnostic",
+        "name": "fc2C",
+        "file": "native-fc2C.npy",
+        "bytes": 4264064,
+        "sha256": "7d41e57d55f7f3c423ba2a692a18ead13bde06a832e308f0568904dc36f1bb48",
+        "raw_sha256": "24a875f0fad6d5ccf976f810a5dfc2d5f41f7c55aaaa29b56224864197d357e7",
+        "shape": [
+          256,
+          1041,
+          4
+        ],
+        "dtype": "float32"
+      },
+      {
+        "phase": "postbatch_guard",
+        "name": "qkC",
+        "file": "arena-qkC-guards.npy",
+        "bytes": 100480,
+        "sha256": "a2ca7c6095b34fdf7f8ad4c7fcbf777850fa86e768e2e391b6ea8a1dadce2ad0",
+        "raw_sha256": "4053fd1cbf22b6d91c222e36d63460a8c37ae7d1dc487e19392f5a0453571c7a",
+        "shape": [
+          100352
+        ],
+        "dtype": "uint8"
+      },
+      {
+        "phase": "postbatch_guard",
+        "name": "pvA",
+        "file": "arena-pvA-guards.npy",
+        "bytes": 85120,
+        "sha256": "867094d9cbb04d08b226f22456a1e17e90d9021aa9c6b3c7042eb4c779453a6a",
+        "raw_sha256": "fbaac4f89bea720e95f5abb8b33cabe33b52a44f32a0a9c238ef6835060ad819",
+        "shape": [
+          84992
+        ],
+        "dtype": "uint8"
+      }
+    ],
+    "retention": "Array payloads remain in private research archives; this record contains only identities and metadata."
+  },
+  "evidence": {
+    "generated_smoke": {
+      "bytes": 8844,
+      "sha256": "29279acab5ff4ea42f3cff60cc177e9338b8216e3d675c16d8ab44feac57a69b",
+      "basename": "result.json"
+    },
+    "generated_smoke_controller": {
+      "bytes": 3181,
+      "sha256": "b5cfdc1aec3a44ee68caf07c577bcaeabe301bee76507a52b5ea8ec2745238e5",
+      "basename": "control.json"
+    },
+    "generated_smoke_saved_audit": {
+      "bytes": 6679,
+      "sha256": "af55cbdb4c843d259957a822bee3329e23039b36bc802e14dd60631d5cc23dc0",
+      "basename": "smoke-r1-saved-audit.json"
+    },
+    "initial8call_worker": {
+      "bytes": 874008,
+      "sha256": "af63369a0d0f3bbe5c1741f90c539fce18568921e9a1d6c471a45f6616f41c5e",
+      "basename": "result.json"
+    },
+    "initial8call_controller": {
+      "bytes": 7864,
+      "sha256": "c4ca10267047328b630fcd4950c4e066f3c1ea4bda861b60d2cd97a4ec029ff1",
+      "basename": "control.json"
+    },
+    "initial8call_saved_audit": {
+      "bytes": 14503,
+      "sha256": "f7c38773ebda455fa518b4f5e59b0100dde7782880e6cd4ee611581ac08299ba",
+      "basename": "fullblock-r1-saved-audit.json"
+    },
+    "exact_family_source_check": {
+      "bytes": 16621,
+      "sha256": "06740f44c153f4701827da19f4044ba8d7b71b955dc5d9b0639323c12bfff0a0",
+      "basename": "core-static-check.json"
+    },
+    "exact_family_checker_source": {
+      "bytes": 8100,
+      "sha256": "39a33c6738f0a26f8814f120d6c6e2388b3fbfd81306873e00da0d2c3ca6dc90",
+      "basename": "check_shared_arena_source_static.py"
+    },
+    "runtime_source_inverse": {
+      "bytes": 1362,
+      "sha256": "add58c3c95fa9e326bac9b10fad9d4fd8d62eab49583d6e59168171c6e0b1ae3",
+      "basename": "runtime-source-inverse-proof-final-r1.json"
+    },
+    "bridge_source_inverse": {
+      "bytes": 1372,
+      "sha256": "a83ecb2e98056115761ca4508f77a5a3e39d9d3dcb0e48133d076564e4a8d4e5",
+      "basename": "bridge-source-inverse-proof-final-r1.json"
+    },
+    "prefix_candidate_static_rejection": {
+      "bytes": 1067,
+      "sha256": "86f50aed9aee0bf56028e3b449f82a585eb26c5bb652831f9f6b18dd7c438ae8",
+      "basename": "result.json"
+    },
+    "repeat_worker": {
+      "bytes": 2140531,
+      "sha256": "4445b75844b008ebb9bcb5efccfda8f447667e6530045ef14e93ed7fc81e55c3",
+      "basename": "result.json"
+    },
+    "repeat_controller": {
+      "bytes": 16767,
+      "sha256": "d13248b6b454ed346b4d5024862fc660ca61ce9db04dae3a8adb0d99197d7c4d",
+      "basename": "control.json"
+    },
+    "repeat_transport": {
+      "bytes": 17613,
+      "sha256": "9056d27af44d529f00ecca0b1aca0104e8474dc2431b1b64469eb04b0cb2d626",
+      "basename": "transport-r1.json"
+    },
+    "repeat_saved_audit": {
+      "bytes": 48934,
+      "sha256": "9a37fa737e1620791111757f7e55e0160fd0a5d9de5920af59441d7dc06d076d",
+      "basename": "repeat-r1-saved-audit.json"
+    },
+    "repeat_audit_source": {
+      "bytes": 18471,
+      "sha256": "731592bbb3a0a9627f93c618db4629a312a70d49aedf11d5c2e8cd8784dfc532",
+      "basename": "audit_shared_arena_repeat_saved.py"
+    },
+    "repeat_worker_source": {
+      "bytes": 29683,
+      "sha256": "e94a87bc48853fed65366033a49f7f76bee3b7319a734dfdac8b862978aa0631",
+      "basename": "run_shared_arena_repeat_board.py"
+    },
+    "repeat_transport_source": {
+      "bytes": 19103,
+      "sha256": "c93b2c1d7ce298c9c24cf532ec7abe43ba2ed7f3de1deb2ec0fbe12d09f9a2b9",
+      "basename": "execute_shared_arena_repeat_host.py"
+    }
+  },
+  "decision": {
+    "shared_memory_mechanics_verified_for_tested_original_input_and_layout": true,
+    "complete_block_acceleration_accepted": false,
+    "deploy_shared_arenas": false,
+    "further_arena_microtuning_stopped": true,
+    "full_model_cost_needs_separate_resolution": true,
+    "rationale": "The longer matched batch contradicts the initial short screen: all8quartets are slower in complete-block time despite shorter synchronization substages. Natural GPU frequency variation prevents a causal regression claim. No complete-block acceleration was established, and the prior separate fused comparator remains materially faster.",
+    "full_model_trajectory_fresh_pose_realtime_sustained_rate_P95_stability_or_8GB_accepted": false
+  },
+  "publication": {
+    "weights_captured_arrays_weight_bearing_exports_SDK_binaries_and_private_pointer_values_published": false,
+    "model_weight_license_separate_from_repository_code_license": true,
+    "production_defaults_changed": false,
+    "README_changed": false,
+    "commit_performed": false,
+    "GitHub_push_performed": false
+  }
+}

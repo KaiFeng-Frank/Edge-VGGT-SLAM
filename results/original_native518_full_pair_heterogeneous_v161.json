@@ -1,0 +1,324 @@
+{
+  "schema": "original_native518_full_pair_heterogeneous_query_v161",
+  "date": "2026-10-15",
+  "status": "negative_complete_pair_tradeoff_verified_current_candidate_rejected_for_deployment",
+  "conclusion": "Final-global relative L2 improves only 0.095 and 0.108 percent, with a 20.43 percent complete-pair latency cost. The isolated attention gain does not establish a useful whole-pair tradeoff; this candidate is not adopted for deployment.",
+  "scope": {
+    "original_model_only": true,
+    "complete_original_first_frame_global_pair": true,
+    "original_learned_values_preserved": 36,
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "global_output_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "heads": 16,
+    "queries": 2082,
+    "keys": 2082,
+    "reference_scope": "Conditional original ONNX FP32 on real NPU DINO boundary; not full-Torch end-to-end FP32.",
+    "reused_engineering_inputs_not_untouched_final_generalization": true,
+    "new_calibration_or_inherited_ranges": false,
+    "full_model_pose_depth_trajectory_or_realtime_accepted": false
+  },
+  "static_and_FP32": {
+    "original_nodes": 146,
+    "candidate_nodes": 199,
+    "original_initializers": 79,
+    "candidate_initializers": 109,
+    "untouched_original_node_protos": 138,
+    "all79_original_initializer_bytes_preserved": true,
+    "all61_frozen_H_node_protos_preserved": true,
+    "exact_whole_parent_inverse": true,
+    "original_frame_branches_and_global_projection_residual_Norm2_MLP_unchanged": true,
+    "all_original_heads_queries_keys_preserved": true,
+    "learned_parameters_added": 0,
+    "CPU_created_dropped_calls_outputs": [
+      2,
+      2,
+      4,
+      4
+    ],
+    "SDK_created_released": [
+      2,
+      2
+    ],
+    "all_six_original_mutual_fixed_strict_gates_passed": true,
+    "worst_original_relative_l2": 5.0259567579648104e-08,
+    "worst_original_max_abs": 7.748603820800781e-07,
+    "worst_mutual_relative_l2": 1.27023517688529e-08,
+    "saved_CPU_gates_independently_verified": true
+  },
+  "actual_placement": {
+    "models": {
+      "A_fused": {
+        "bytes": 66443325,
+        "sha256": "d280ebc160d6eaa18f5cd5b8fe628141aa956559b65555b6917b6d1b2260aa02"
+      },
+      "B_candidate": {
+        "bytes": 68782461,
+        "sha256": "9aa53bc507df75778702b98427fabff4dc5820c5ae772207a519a33762b35a9b"
+      }
+    },
+    "tables": {
+      "A_fused_pair": {
+        "operator_count": 76,
+        "feature_count": 128,
+        "constant_count": 86,
+        "printed_static_internal_memory_KB": 89913.3
+      },
+      "B_heterogeneous_pair": {
+        "operator_count": 119,
+        "feature_count": 199,
+        "constant_count": 105,
+        "printed_static_internal_memory_KB": 93833.6
+      }
+    },
+    "all_actual_rows_consumed": true,
+    "all15_original_dense_products_FLOAT16_NPU": true,
+    "original_two_frame_SDPA_branches_preserved_FLOAT16_NPU": true,
+    "candidate_full_key_query_branches_and_six_routes_NPU": true,
+    "all_actual_activation_storage_FLOAT16": true,
+    "strict_all_internal_NPU_placement_passed": false,
+    "no_internal_CPU_GPU_arithmetic_or_layout": false,
+    "sole_explicit_internal_CPU_layout": {
+      "id": 46,
+      "op": "Transpose",
+      "name": "Transpose:global0/value_rs",
+      "dtype": "FLOAT16",
+      "input_shape": [
+        16,
+        64,
+        1,
+        2082
+      ],
+      "consumer_shape": [
+        16,
+        2082,
+        1,
+        64
+      ],
+      "logical_elements": 2131968,
+      "logical_payload_bytes": 4263936,
+      "input_feature_span_bytes": 4268032,
+      "consumer_feature_span_bytes": 4292608
+    },
+    "no_internal_CPU_GPU_arithmetic": true,
+    "no_full_score_CPU_GPU_layout": true,
+    "root_approved_bounded_CPU_V_layout_diagnostic": true,
+    "printed_memory_is_not_RSS_or_traffic": true
+  },
+  "ordinary_runtime": {
+    "phase_order": [
+      "A_fused",
+      "B_candidate",
+      "B_candidate",
+      "A_fused"
+    ],
+    "cases_each_phase": [
+      "pair4",
+      "pair5"
+    ],
+    "calls_per_policy_case": 2,
+    "maximum_live_contexts": 1,
+    "flags": 0,
+    "core_mask": 7,
+    "NPU_hz": 1000000000,
+    "complete_timer_includes": "Original unmodified owned SDK input/output, finite guards, copies and release; rank3 IO needs no adapter. Init/close, saves, hashes and comparisons are separate.",
+    "cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ],
+        "metrics": {
+          "A_fused": {
+            "global_output": {
+              "relative_l2": 0.005860724218305398,
+              "max_abs": 0.029351115226745605,
+              "outside_count": 1262862
+            },
+            "mean_complete_call_seconds": 0.7127635094984726,
+            "mean_SDK_run_seconds": 0.6393543564990978,
+            "query_region_relative_l2": {
+              "special10": 0.03181491450223781,
+              "camera2": 0.05368164398050558,
+              "register8": 0.028454095518949975
+            },
+            "camera_token_max_abs": 0.02199879288673401,
+            "camera_token_strict_outside_count": 993
+          },
+          "B_candidate": {
+            "global_output": {
+              "relative_l2": 0.005855142591888544,
+              "max_abs": 0.02411186695098877,
+              "outside_count": 1262843
+            },
+            "mean_complete_call_seconds": 0.8557974614996056,
+            "mean_SDK_run_seconds": 0.7842666415017447,
+            "query_region_relative_l2": {
+              "special10": 0.03036731602448802,
+              "camera2": 0.05311049180679049,
+              "register8": 0.026767077843076012
+            },
+            "camera_token_max_abs": 0.022103168070316315,
+            "camera_token_strict_outside_count": 992
+          }
+        },
+        "patch2072_identical_error_metrics_for_both_policies": {
+          "relative_l2": 0.005799758178366952,
+          "max_abs": 0.021298646926879883,
+          "outside_count": 1257802
+        },
+        "global_relative_L2_reduction_percent": 0.09523782742447695,
+        "camera_token_relative_L2_reduction_percent": 1.06396177792637
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ],
+        "metrics": {
+          "A_fused": {
+            "global_output": {
+              "relative_l2": 0.00592410461995015,
+              "max_abs": 0.029600977897644043,
+              "outside_count": 1263618
+            },
+            "mean_complete_call_seconds": 0.6928926950022287,
+            "mean_SDK_run_seconds": 0.6414826475011068,
+            "query_region_relative_l2": {
+              "special10": 0.03336885253359903,
+              "camera2": 0.056096627745929425,
+              "register8": 0.02991562178172165
+            },
+            "camera_token_max_abs": 0.025163859128952026,
+            "camera_token_strict_outside_count": 998
+          },
+          "B_candidate": {
+            "global_output": {
+              "relative_l2": 0.005917724842416479,
+              "max_abs": 0.02426108717918396,
+              "outside_count": 1263596
+            },
+            "mean_complete_call_seconds": 0.8370830214989837,
+            "mean_SDK_run_seconds": 0.7858172035012103,
+            "query_region_relative_l2": {
+              "special10": 0.031742744339837176,
+              "camera2": 0.055314347410726696,
+              "register8": 0.028054474906812635
+            },
+            "camera_token_max_abs": 0.022776126861572266,
+            "camera_token_strict_outside_count": 999
+          }
+        },
+        "patch2072_identical_error_metrics_for_both_policies": {
+          "relative_l2": 0.005858753980263138,
+          "max_abs": 0.021296977996826172,
+          "outside_count": 1258553
+        },
+        "global_relative_L2_reduction_percent": 0.10769184447192437,
+        "camera_token_relative_L2_reduction_percent": 1.3945229270212134
+      }
+    ],
+    "route_means": {
+      "A_fused": {
+        "mean_public_call_seconds": 0.7028281022503506,
+        "mean_SDK_run_seconds": 0.6404185020001023
+      },
+      "B_candidate": {
+        "mean_public_call_seconds": 0.8464402414992946,
+        "mean_SDK_run_seconds": 0.7850419225014775
+      }
+    },
+    "candidate_mean_complete_call_change_percent": 20.43346570649629,
+    "all8_owned_outputs_and4_original_case_arrays_verified": true,
+    "same_policy_case_repeat_bytes_verified": true,
+    "resource_totals": {
+      "contexts_created": 4,
+      "contexts_destroyed": 4,
+      "runs_completed": 8,
+      "output_buffers_acquired": 8,
+      "output_buffers_released": 8
+    },
+    "all_resources_closed": true,
+    "original_clock_governor_limits_restored": true,
+    "maximum_controller_temperature_c": 58.23,
+    "maximum_worker_temperature_c": 57.307,
+    "timing_limits": "Four sequential ABBA contexts, each running both cases; two runs per policy/case including first calls. Descriptive screen, not causal attribution, sustained rate or P95."
+  },
+  "regions": {
+    "axis": 1,
+    "camera2": [
+      0,
+      1041
+    ],
+    "register8": [
+      1,
+      2,
+      3,
+      4,
+      1042,
+      1043,
+      1044,
+      1045
+    ],
+    "patch_intervals": [
+      [
+        5,
+        1041
+      ],
+      [
+        1046,
+        2082
+      ]
+    ],
+    "all2082_queries_partitioned": true,
+    "camera_token_tensor_error_is_not_pose_ATE_RPE": true,
+    "isolated_attention_patch_parity_not_assumed": true
+  },
+  "decision": {
+    "current_full_pair_candidate_rejected_for_deployment": true,
+    "all_full_and_regional_fixed_strict_diagnostics_failed": true,
+    "fixed_gate": {
+      "relative_l2_at_most": 1e-05,
+      "max_abs_at_most": 0.001
+    },
+    "strict_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "outside_count_required": 0
+    },
+    "tensor_gates_are_not_trajectory_thresholds": true,
+    "extra_cost_and_remaining_error_cause_not_isolated": true,
+    "prior_component_results_preserved": true,
+    "speed_full_model_or_realtime_accepted": false
+  },
+  "evidence_sha256": {
+    "exporter_source": "1ce557580ea44dd4588852c2c7668729c2d20fc78b0c352885d03293bbc2c34d",
+    "static_proof": "63e7a74cf4e3d97bbc64f06b2363ac24f321c1b509823a8dd9c2a024159c48bd",
+    "compiler_source": "c38c2fd369f47c2de69cc9cbbb201ae3b77709d895c24511b802279dda58fdb6",
+    "actual_compile": "a039546f5927d51f678cffd4f02e1932a035d68deddfcbbb4ae4f83d7f6bb110",
+    "actual_compiler_table": "ad4b4967edfbe72d5e2c9c69fe82c5e0439dbb6236f33a31acb79f38eae04773",
+    "actual_placement_audit": "7df133ae5c921baec62afb141afd4f9a3497d5a6cfd2872479d2b9dbfdfaceab",
+    "actual_placement_auditor": "c2dc65b26cdc674cea6c324b7d6f4908489aabb9e5e954a8b887c4a274fc55ab",
+    "original_conditional_capture": "08e27212b1c97bff4efc5fd8a4eb6b6c228d045574286fcbccf8f3bb81fb0fc2",
+    "original_conditional_capture_saved_audit": "9915269c1324862f21e5f4bac0c82955061eeaa01d42354fd1ef4aa101bc186d",
+    "runtime_worker": "a01eada7a52be9a6f127ff132a464924eba6e5450060f576e1feb1978b41071b",
+    "runtime_transport_source": "b1f647ea48bf6ab03187b1f8d7d0ac27ae171994a9aa96ce15a33c131f87a470",
+    "runtime_manifest": "1c5a593b776e1a2ff1885f6db7877ffec6553ec0c76d84dc686c1210b8473ae9",
+    "runtime_receipt": "2c586348657448478cdd960cc63d611cc427d5223ee5975db9c138fd6fdcc6fc",
+    "runtime_saved_audit": "7ffacbdd3f7524ec925f51ef1c6e5804871bba554d4f8f97ac042895e9d42006",
+    "runtime_saved_auditor": "4833796a1b49973fff5d16dedc1ea5ec1faecc1f9153125b66614f75c56b0414",
+    "runtime_transport_receipt": "f3bc932b3305966909ac939fe7e98ab089b22182c8dd466bd3f80483fe5b7bc2",
+    "restoring_NPU_controller": "f278acdfc39013432c985d101ea14a85dc2f426420988df61d4441a819c2a544",
+    "original_token_role_authority": "a6a8bd8bdf5f2c14d69c44f4cfb63a616983424f4e6e96c80f235e23093e36a0",
+    "original_aggregator_source": "623a943847a3259292bfd5c8675d8b80b09abc845eefadba7622e6a901cb9cfd"
+  }
+}

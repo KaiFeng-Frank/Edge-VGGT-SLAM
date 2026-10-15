@@ -1,0 +1,180 @@
+{
+  "schema": "v126_restored_validation_source_identities",
+  "original_version": 122,
+  "archive": "v122-native518-batched-block-r1-r2",
+  "archive_manifest_sha256": "337c7f36598c2e10e25a19d5bc72055af1f9ea035e5b41b3bc1802cfaa5161f7",
+  "source_bytes_equal_frozen_archive": false,
+  "README_reconstructed_not_original_hash": true,
+  "source_files": [
+    {
+      "file": "audit_native_dino_r2_saved.py",
+      "bytes": 20132,
+      "sha256": "2c63d33f067e922b9a9d5f7b92d534f5fe6292dd39b22c96713094c843f5fa1a",
+      "archive_files": [
+        "audit_native_dino_r2_saved.py"
+      ],
+      "archive_bytes": 20147,
+      "archive_sha256": "20c49f30b2e49182b55991f48f5adf3e726a6418f6282cc2d12c7aff3df59ba7",
+      "publication_adaptation": "Portable host artifact path defaults only; frozen historical execution identity remains archive_sha256."
+    },
+    {
+      "file": "audit_native_dino_saved.py",
+      "bytes": 18988,
+      "sha256": "bf8727ad32da169295a94dec008f43302451307c437d35583faffebee62e7d9e",
+      "archive_files": [
+        "audit_native_dino_saved.py"
+      ],
+      "archive_bytes": 19003,
+      "archive_sha256": "48aa76efcccd7496329ba903d62d8a50b70dc0670497fbf14efc19fbc3f74ec0",
+      "publication_adaptation": "Portable host artifact path defaults only; frozen historical execution identity remains archive_sha256."
+    },
+    {
+      "file": "r1/attention_softmax.cl",
+      "bytes": 3364,
+      "sha256": "5cbb36e03e09c38db9e6769f067e3168e1cf7f67d719009601c4456e9f2b150a",
+      "archive_files": [
+        "attention_softmax.cl",
+        "four-row-source-r2/attention_softmax.cl"
+      ]
+    },
+    {
+      "file": "r1/dino0_batched_bridge.cl",
+      "bytes": 17716,
+      "sha256": "34a216960e61f7a895e92341cf93f4332cc3db0c5db16740fe8a3a586aebd822",
+      "archive_files": [
+        "dino0_batched_bridge.cl"
+      ]
+    },
+    {
+      "file": "r1/dino0_native_bridge.cl",
+      "bytes": 9418,
+      "sha256": "da7e8d3c15bd4f67732b6d4a727f065eef0349635ad7b81770b08ecf9719dc47",
+      "archive_files": [
+        "dino0_native_bridge.cl",
+        "four-row-source-r2/dino0_native_bridge.cl"
+      ]
+    },
+    {
+      "file": "r1/generate_dino0_batched_bridge.py",
+      "bytes": 9454,
+      "sha256": "922749d8ee98ebe661180d80c5aaecae894e2b79d21e52f92174cec9bced8961",
+      "archive_files": [
+        "generate_dino0_batched_bridge.py"
+      ],
+      "archive_bytes": 9469,
+      "archive_sha256": "996c28faaa8dabc6a8a2653444b88b244f83f06fd0a029813d4b92425fbf0aa3",
+      "publication_adaptation": "Portable host artifact path defaults only; frozen historical execution identity remains archive_sha256."
+    },
+    {
+      "file": "r1/native_dino_bridge_opencl.py",
+      "bytes": 25451,
+      "sha256": "d3eb7dca3f9370ae54f089ca63c00d0e1c7bbf69442bf99ad0c142a45e6607de",
+      "archive_files": [
+        "native_dino_bridge_opencl.py"
+      ]
+    },
+    {
+      "file": "r1/native_dino_runtime.py",
+      "bytes": 8994,
+      "sha256": "d495352a231850889a8970e6e57683333b969e306b6b4c3e1ad1005f020fffef",
+      "archive_files": [
+        "four-row-source-r2/native_dino_runtime.py",
+        "native_dino_runtime.py"
+      ]
+    },
+    {
+      "file": "r1/run_native_dino_board.py",
+      "bytes": 17678,
+      "sha256": "1b53fdde46e2bd8f9980377df8c28595cbcc31ed9328649b83cd703b797dfb54",
+      "archive_files": [
+        "four-row-source-r2/run_native_dino_board.py",
+        "run_native_dino_board.py"
+      ]
+    },
+    {
+      "file": "r1/run_native_dino_r1.sh",
+      "bytes": 622,
+      "sha256": "e59dd5793deddbea167137d3d248d356687980e45996612aae5b870a047cb375",
+      "archive_files": [
+        "run_native_dino_r1.sh"
+      ]
+    },
+    {
+      "file": "r2/attention_softmax.cl",
+      "bytes": 3364,
+      "sha256": "5cbb36e03e09c38db9e6769f067e3168e1cf7f67d719009601c4456e9f2b150a",
+      "archive_files": [
+        "attention_softmax.cl",
+        "four-row-source-r2/attention_softmax.cl"
+      ]
+    },
+    {
+      "file": "r2/dino0_batched_bridge.cl",
+      "bytes": 18055,
+      "sha256": "a6c2c777e09bba46c1edf341acc2d52d545b80e1af5e3e87f5438c690055832d",
+      "archive_files": [
+        "four-row-source-r2/dino0_batched_bridge.cl"
+      ]
+    },
+    {
+      "file": "r2/dino0_native_bridge.cl",
+      "bytes": 9418,
+      "sha256": "da7e8d3c15bd4f67732b6d4a727f065eef0349635ad7b81770b08ecf9719dc47",
+      "archive_files": [
+        "dino0_native_bridge.cl",
+        "four-row-source-r2/dino0_native_bridge.cl"
+      ]
+    },
+    {
+      "file": "r2/generate_dino0_four_row_bridge.py",
+      "bytes": 9356,
+      "sha256": "b47f50fbd7919c116652e913694e04737590d7324cf3b48e4c91bd7d6e5648f1",
+      "archive_files": [
+        "four-row-source-r2/generate_dino0_four_row_bridge.py"
+      ]
+    },
+    {
+      "file": "r2/native_dino_bridge_opencl.py",
+      "bytes": 26114,
+      "sha256": "a475b59c68126813ace8674d1a0feb9ce8e3ea7de85ef33f3245c9d9682140b2",
+      "archive_files": [
+        "four-row-source-r2/native_dino_bridge_opencl.py"
+      ]
+    },
+    {
+      "file": "r2/native_dino_runtime.py",
+      "bytes": 8994,
+      "sha256": "d495352a231850889a8970e6e57683333b969e306b6b4c3e1ad1005f020fffef",
+      "archive_files": [
+        "four-row-source-r2/native_dino_runtime.py",
+        "native_dino_runtime.py"
+      ]
+    },
+    {
+      "file": "r2/run_native_dino_board.py",
+      "bytes": 17678,
+      "sha256": "1b53fdde46e2bd8f9980377df8c28595cbcc31ed9328649b83cd703b797dfb54",
+      "archive_files": [
+        "four-row-source-r2/run_native_dino_board.py",
+        "run_native_dino_board.py"
+      ]
+    },
+    {
+      "file": "r2/run_native_dino_r2.sh",
+      "bytes": 622,
+      "sha256": "9d7e685a4ccdb788d7b6f972a624cce2afbdb850fb7480a4668db7b504faee96",
+      "archive_files": [
+        "four-row-source-r2/run_native_dino_r2.sh"
+      ]
+    }
+  ],
+  "NN_or_SDK_execution": false,
+  "raw_artifacts_published": false,
+  "original_recovery_bytes_equal_frozen_archive_before_publication_adaptation": true,
+  "publication_adapted_paths": [
+    "audit_native_dino_r2_saved.py",
+    "audit_native_dino_saved.py",
+    "r1/generate_dino0_batched_bridge.py"
+  ],
+  "publication_identity_scope": "Current bytes/sha256 identify the published file; archive/executed_source fields retain the frozen historical source identity. No new model or device execution is claimed."
+}

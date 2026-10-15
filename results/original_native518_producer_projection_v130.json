@@ -1,0 +1,440 @@
+{
+  "schema": "original_native518_canonical_producer_projection_v130",
+  "status": "normal_NPU_byte_identity_verified_no_latency_or_precision_acceptance",
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "basis_R_used": false,
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "scope": "Original group0 pairs0..4 (all10 frame/global blocks, all1041 local tokens and2082 global keys), followed by two unchanged original chunk1 DPT normalization/transpose/reshape/project0 prefixes. This is not a complete model or SLAM run.",
+  "real_input": {
+    "source_pair_indices": [
+      32,
+      40
+    ],
+    "image_shape": [
+      2,
+      3,
+      392,
+      518
+    ],
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "origin": "Captured original FP32 DINO boundary from the matched real dataset pair"
+  },
+  "composition": {
+    "original_group_nodes_retained": 719,
+    "original_group_initializers_retained": 399,
+    "original_group_parameter_identities_verified": 180,
+    "original_DPT_parent_parameter_identities_verified": 62,
+    "DPT_prefix_learned_tensors_shared_once": 4,
+    "new_graph_nodes": 732,
+    "new_graph_initializers": 410,
+    "all_original_group_node_and_initializer_protos_unchanged": true,
+    "complete_original_group_inverse_proto_equal": true,
+    "DPT_prefix_node_namespace_inverse_checks": 8,
+    "shared_initializer_namespace_inverse_checks": 5,
+    "output_bindings": [
+      {
+        "index": 0,
+        "name": "global_output",
+        "shape": [
+          1,
+          2082,
+          1024
+        ],
+        "dtype": "float32"
+      },
+      {
+        "index": 1,
+        "name": "projected_output",
+        "shape": [
+          2,
+          256,
+          28,
+          37
+        ],
+        "dtype": "float32"
+      }
+    ]
+  },
+  "FP32_board_check": {
+    "sessions_created_and_dropped": 4,
+    "forward_calls": 4,
+    "maximum_simultaneous_sessions": 1,
+    "actual_baseline_group_outputs_feed_original_projection": true,
+    "saved_teacher_intermediates_injected": false,
+    "fixed_gate": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "all_fixed_gates_passed": true,
+    "all_strict_diagnostics_passed": true,
+    "comparisons": {
+      "baseline_frame_vs_original_CPU": {
+        "relative_l2": 1.1747042258814383e-06,
+        "reference_norm": 233.83176128618882,
+        "zero_reference_norm": false,
+        "max_abs": 1.2755393981933594e-05,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      },
+      "baseline_global_vs_original_CPU": {
+        "relative_l2": 1.650457148062835e-06,
+        "reference_norm": 161.0167153888548,
+        "zero_reference_norm": false,
+        "max_abs": 1.239776611328125e-05,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": false
+      },
+      "fused_global_vs_same_input_baseline": {
+        "relative_l2": 0.0,
+        "reference_norm": 161.0167165361761,
+        "zero_reference_norm": false,
+        "max_abs": 0.0,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": true
+      },
+      "fused_project_vs_same_input_baseline": {
+        "relative_l2": 0.0,
+        "reference_norm": 137.13980824516074,
+        "zero_reference_norm": false,
+        "max_abs": 0.0,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_numeric_gate_passed": true,
+        "fixed_gate_passed": true,
+        "byte_equal": true
+      }
+    },
+    "worker_elapsed_seconds": 78.13049368400243,
+    "peak_process_rss_mib": 1870.5,
+    "timing_is_inference_performance": false,
+    "timing_scope": "Whole controlled CPU verification worker, including original graph validation, loading, calls, comparisons, output saving and possible thermal pauses."
+  },
+  "logical_output_payload": {
+    "original_extra_frame_output_FP32_bytes": 8527872,
+    "new_projected_output_FP32_bytes": 2121728,
+    "unchanged_next_group_global_output_FP32_bytes": 8527872,
+    "measured_DDR_transfer_or_latency_saving": false
+  },
+  "saved_evidence_audit": {
+    "status": "passed",
+    "sha256": "d87f58a9ffd765f0c600361b55772d007fc2ffacb1624e266d74c8f02c6459ce",
+    "new_output_arrays_verified": 7,
+    "original_group_reference_arrays_verified": 2,
+    "all4_comparisons_recomputed": true,
+    "actual_patch_input_hashes_and_projected_concat_verified": true
+  },
+  "controls": [
+    {
+      "mode": "export",
+      "sha256": "05d3eca1469661a1f77d3b9c87edc8d035923d75c2d2b2c6e9ce17a59218d5be",
+      "seconds": 9.070672161000402,
+      "max_observed_temperature_c": 64.692,
+      "sample_count": 91,
+      "frequency_written": false,
+      "process_group_gone": true
+    },
+    {
+      "mode": "check",
+      "sha256": "7a5734db089ce8c46caae5fc056f21aa9248eaa283c1220d247596fb9852fc0a",
+      "seconds": 78.5327648909988,
+      "max_observed_temperature_c": 70.23,
+      "sample_count": 753,
+      "frequency_written": false,
+      "process_group_gone": true
+    }
+  ],
+  "evidence_identities": {
+    "worker_source_sha256": "99ac9d90aa8be69420b5d92ca72acbc1ad81f68755612566d22825d78ba83147",
+    "transport_source_sha256": "07855a2fc7c0b441ae72e46d7d853194edb381e10f08eb9abc4620d0311ebae7",
+    "export_receipt_sha256": "6f0c1fe31ffc4e79d38208eece7e2456871b4c9321d565067e466f1075f2fdfc",
+    "check_receipt_sha256": "7b786e717b33a1530607cc6a71c5f3d91f0c14dcfe2f17753c3b710058eb60e9",
+    "fused_ONNX": {
+      "bytes": 514205441,
+      "sha256": "1cebd1bdfad6a14da7c5c2d43254863c3c5d776468594882e1b1e8292d4cd7f9"
+    },
+    "prefix_ONNX": {
+      "bytes": 2115454,
+      "sha256": "b214be7b272948bcfccfe9ef4bc7f049a4c7898191dae862bb2c7aa4f991a7b0"
+    }
+  },
+  "limits": [
+    "Byte identity is for this real input and these CPU ORT graph executions; it is not a general floating-point equivalence proof.",
+    "The single-axis variant passed the original FP32 composition gate and noncalibrating compilation. Its two NPU outputs equal the actual unfused NPU baseline for this input, but errors versus matched original FP32 remain and the observed normal boundary is longer. This single observation is not latency, precision or quality acceptance.",
+    "Remaining38 aggregator blocks, original DINO, other DPT branches and tail, CameraHead, pose codec and SL4 are outside this gate.",
+    "No trajectory quality, fresh-pose rate, map cadence, sustained30-minute or physical8GB acceptance follows from this component gate."
+  ],
+  "publication": "Metadata only. Original checkpoints, arrays, ONNX/RKNN exports and SDK binaries remain private; original weights and source/dependency licenses remain separate. No GitHub push during review.",
+  "noncalibrating_host_CPU_compilation": {
+    "toolkit_version": "2.3.2",
+    "compiler_source_sha256": "8f818ba3db33f9a9c88f3bf56bce67994351ac84543bb6ec355bb7c7105ce8cb",
+    "explicit_script_inference_calibration_or_GPU_calls": 0,
+    "SDK_internal_execution_note": "The SDK invokes ONNX Runtime internally during compilation; this is not deployment inference or a board performance measurement.",
+    "results": {
+      "prefix": {
+        "receipt_sha256": "54e33a84b7045861ea2d4b8389ea3373835fa46fb8c19deafa8d406e2043ec5a",
+        "status": "compiled_canonical_group0_project0_not_runtime_or_quality_accepted",
+        "controller_elapsed_seconds": 1.6809820989983564,
+        "sdk_released": true,
+        "source_and_inputs_unchanged": true,
+        "cleanup_errors": [],
+        "owned_process_group_gone": true,
+        "rknn": {
+          "bytes": 1416388,
+          "sha256": "e0d3a79e45e2966b2b5215ac4518d9e92cf1a4ec6e3087060739c7cbf74e47e2"
+        }
+      },
+      "fused": {
+        "receipt_sha256": "f5ddad8df24c63138e2be2017b617280768c782cf6f84e7c4ac7333ae12c4ca1",
+        "status": "failed_preserved_available_evidence",
+        "controller_elapsed_seconds": 52.377552354002546,
+        "sdk_released": true,
+        "source_and_inputs_unchanged": true,
+        "cleanup_errors": [],
+        "owned_process_group_gone": true,
+        "failure_stage": "RKNN GraphOptimizer.fold_constant, after loading the valid ONNX graph",
+        "error": "ONNX Runtime rejected compiler-generated input __canonical_group0_project0/chunk0/patch_tokens_tp-rs: axis0 got0 expected1; axis3 got1041 expected1036.",
+        "interpretation": "The existing board FP32 composition gate remains valid. No fused RKNN artifact or board NPU call was produced by this failed representation. The single-axis representation later compiled and ran; the precise internal optimizer defect remains unisolated."
+      }
+    }
+  },
+  "single_axis_graph_representation": {
+    "status": "compiled_and_normal_NPU_component_diagnostic_completed_not_accepted",
+    "change": "Two single-axis batch/token slices replace each multi-axis slice;14 static value_info entries added. Original group nodes/initializers and original B1 DPT prefix math are unchanged.",
+    "exporter_source_sha256": "52fb184640108df11dbed545e0f107f01c17e39f44c8b539c3b288da96c9a88b",
+    "export_receipt_sha256": "5e14338018dd33d8db44a325a6827c6670eb42eba402025f688e764b9cdd97bd",
+    "check_receipt_sha256": "66707ff3b1d70a6852ba9455a9ef323b9d1d5d391b2cb3d70fd3ff78fc00b549",
+    "graph": {
+      "bytes": 514207156,
+      "sha256": "68de7e785aa00ad64e74624ef1b52f3ff3a722d6faf97a5325e26ef657afd8a3",
+      "node_count": 734,
+      "initializer_count": 410,
+      "added_static_value_info_count": 14
+    },
+    "all4_FP32_fixed_and_strict_gates_passed": true,
+    "all7_output_NPYs_identical_to_original_composition": true,
+    "saved_byte_identity_audit_sha256": "9d5a449b1bef69ec5b41cb5dc6bfba8a7adc1e118bf94210f14cee36c2ec6e8f",
+    "fused_vs_unfused_global_and_projection_outputs_byte_equal": true,
+    "compiler_source_sha256": "61290640a907fc954844a955b3e338acbfb9ed6f36a153e84b1e6c582fbbf57e",
+    "compile_results": {
+      "fused": {
+        "receipt_sha256": "4c3e1da319d7e4edaba18862b17307ed93e78c6dcbc444f6424caf6a2cd1f8bc",
+        "status": "compiled_canonical_group0_project0_single_axis_not_runtime_or_quality_accepted",
+        "rknn": {
+          "bytes": 333128368,
+          "sha256": "dd0eb316f15c13d4c393d5208f2fd34864b30baf90e58d926f901b47a5bcdf38"
+        },
+        "controller_elapsed_seconds": 72.40235292500074,
+        "sdk_released": true,
+        "cleanup_errors": [],
+        "owned_process_group_gone": true
+      },
+      "prefix": {
+        "receipt_sha256": "a1a87daa95952e72f687187df03920703855048372ddceb13b06cdb994818fd0",
+        "status": "compiled_canonical_group0_project0_single_axis_not_runtime_or_quality_accepted",
+        "rknn": {
+          "bytes": 1416388,
+          "sha256": "50c3c9f68804a843862d15e32de89dd10d28e8158f51fa7187006ee39d945b31"
+        },
+        "controller_elapsed_seconds": 2.0343767490012397,
+        "sdk_released": true,
+        "cleanup_errors": [],
+        "owned_process_group_gone": true
+      }
+    },
+    "interpretation": "This representation compiles with the same SDK/config while the prior representation failed. The internal optimizer defect is not isolated. Compile success is not board inference, precision, or performance acceptance."
+  },
+  "normal_NPU_diagnostic": {
+    "status": "finite_and_actual_baseline_byte_identity_verified_no_latency_or_precision_acceptance",
+    "receipt_sha256": "c862154776011201157d26b0e1123f42ddecef889761b9d150428ad350c01c57",
+    "controller_receipt_sha256": "274ffcd5e1fcf59775a200b6ccf8678e1d3fa8578c1157e773aba79e6faa4e2f",
+    "worker_source_sha256": "ca1cba7d9530c3e203255f59deba499065e7f32ea915cf1451f7fc35be76ab8b",
+    "transport_source_sha256": "e890de94fbd9e3824065c4867f73e6f255d1fea73e0bcfe21b542c26b89786f2",
+    "compiler_source_sha256": "61290640a907fc954844a955b3e338acbfb9ed6f36a153e84b1e6c582fbbf57e",
+    "export_receipt_sha256": "5e14338018dd33d8db44a325a6827c6670eb42eba402025f688e764b9cdd97bd",
+    "FP32_check_receipt_sha256": "66707ff3b1d70a6852ba9455a9ef323b9d1d5d391b2cb3d70fd3ff78fc00b549",
+    "fused_compile_receipt_sha256": "4c3e1da319d7e4edaba18862b17307ed93e78c6dcbc444f6424caf6a2cd1f8bc",
+    "prefix_compile_receipt_sha256": "a1a87daa95952e72f687187df03920703855048372ddceb13b06cdb994818fd0",
+    "original_model_only": true,
+    "basis_R_used": false,
+    "core_mask": 1,
+    "init_flags": 0,
+    "maximum_simultaneous_contexts": 1,
+    "actual_baseline_NPU_outputs_feed_both_original_prefixes": true,
+    "saved_teacher_intermediates_injected": false,
+    "all7_saved_NPU_arrays_finite": true,
+    "both_fused_outputs_byte_equal_actual_baseline_NPU": true,
+    "original_FP32_numerical_or_strict_gates_passed": false,
+    "comparisons": {
+      "baseline_frame_vs_original_FP32": {
+        "relative_l2": 0.006850129194753482,
+        "max_abs": 0.045828819274902344,
+        "outside_count": 2095235,
+        "strict_pass": false,
+        "fixed_gate_passed": false,
+        "byte_equal": false
+      },
+      "baseline_global_vs_original_FP32": {
+        "relative_l2": 0.009884104187003133,
+        "max_abs": 0.04560375213623047,
+        "outside_count": 2096827,
+        "strict_pass": false,
+        "fixed_gate_passed": false,
+        "byte_equal": false
+      },
+      "baseline_frame_vs_original_graph_FP32": {
+        "relative_l2": 0.0068500291707913625,
+        "max_abs": 0.045830726623535156,
+        "outside_count": 2095226,
+        "strict_pass": false,
+        "fixed_gate_passed": false,
+        "byte_equal": false
+      },
+      "baseline_global_vs_original_graph_FP32": {
+        "relative_l2": 0.009883965672163346,
+        "max_abs": 0.04560565948486328,
+        "outside_count": 2096838,
+        "strict_pass": false,
+        "fixed_gate_passed": false,
+        "byte_equal": false
+      },
+      "fused_global_vs_own_FP32": {
+        "relative_l2": 0.009883965672163346,
+        "max_abs": 0.04560565948486328,
+        "outside_count": 2096838,
+        "strict_pass": false,
+        "fixed_gate_passed": false,
+        "byte_equal": false
+      },
+      "fused_projected_vs_own_FP32": {
+        "relative_l2": 0.009868257794033412,
+        "max_abs": 0.010066247545182705,
+        "outside_count": 524748,
+        "strict_pass": false,
+        "fixed_gate_passed": false,
+        "byte_equal": false
+      },
+      "fused_global_vs_actual_baseline_NPU": {
+        "relative_l2": 0.0,
+        "max_abs": 0.0,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_gate_passed": true,
+        "byte_equal": true
+      },
+      "baseline_projected_vs_original_prefix_FP32": {
+        "relative_l2": 0.009868257794033412,
+        "max_abs": 0.010066247545182705,
+        "outside_count": 524748,
+        "strict_pass": false,
+        "fixed_gate_passed": false,
+        "byte_equal": false
+      },
+      "fused_projected_vs_actual_baseline_NPU": {
+        "relative_l2": 0.0,
+        "max_abs": 0.0,
+        "outside_count": 0,
+        "strict_pass": true,
+        "fixed_gate_passed": true,
+        "byte_equal": true
+      }
+    },
+    "normal_boundary_seconds": {
+      "original_group_then_two_prefix_calls": 3.823854302005202,
+      "canonical_fused": 3.8641046800003096,
+      "ratio": 1.0105261275185093,
+      "difference_seconds": 0.040250377995107556,
+      "observed_longer_percent": 1.0526127518509343,
+      "scope": "Includes actual frame/global concat, special-token crop and contiguous input preparation, inputs_set, SDK run, output_get, owned copies, output release, finite checks and final projected concat. Model hashing/init and destruction are separate; saving, comparisons and observers are outside.",
+      "sample_design": "One fresh-context chain observation per route; no repeats, matched ABBA, steady rate, P95 or causal speed attribution."
+    },
+    "SDK_run_seconds": {
+      "original_chain": 3.6484012000037183,
+      "canonical_fused": 3.814764009002829
+    },
+    "reported_normal_boundary_except_SDK_seconds": {
+      "original_chain": 0.17545310200148378,
+      "canonical_fused": 0.04934067099748063,
+      "scope": "Derived difference includes input preparation, IO, owned copies, release, finite checks and Python overhead; not measured DDR traffic."
+    },
+    "separate_per_context_timings": [
+      {
+        "route": "original_group",
+        "model_hash_init_seconds": 0.7069609870013664,
+        "normal_boundary_seconds": 3.724626082999748,
+        "context_destroy_seconds": 0.1845231440020143,
+        "SDK_run_seconds": 3.6091101960009837
+      },
+      {
+        "route": "original_prefix_chunk0",
+        "model_hash_init_seconds": 0.03829875299925334,
+        "normal_boundary_seconds": 0.05385071400087327,
+        "context_destroy_seconds": 0.012525917001767084,
+        "SDK_run_seconds": 0.019646085002023028
+      },
+      {
+        "route": "original_prefix_chunk1",
+        "model_hash_init_seconds": 0.03651171199817327,
+        "normal_boundary_seconds": 0.04510975500306813,
+        "context_destroy_seconds": 0.012434334999852581,
+        "SDK_run_seconds": 0.019644919000711525
+      },
+      {
+        "route": "canonical_fused",
+        "model_hash_init_seconds": 0.7024812790004944,
+        "normal_boundary_seconds": 3.8641046800003096,
+        "context_destroy_seconds": 0.16884789200048544,
+        "SDK_run_seconds": 3.814764009002829
+      }
+    ],
+    "SDK_totals": {
+      "contexts_created": 4,
+      "contexts_destroyed": 4,
+      "runs_completed": 4,
+      "output_buffers_acquired": 6,
+      "output_buffers_released": 6
+    },
+    "all_owners_closed_and_buffers_released": true,
+    "controller": {
+      "requested_NPU_hz": 1000000000,
+      "seconds": 12.226088227998844,
+      "sampled_max_temperature_c": 61.923,
+      "sample_count": 25,
+      "temperature_limit_c": 75.0,
+      "timeout_seconds": 180.0,
+      "prior_frequency_governor_limits_restored": true,
+      "child_returncode": 0
+    },
+    "decision": "This component preserves both actual NPU outputs, but the complete normal boundary is about1.05% longer in this single observation. The smaller reported non-SDK boundary does not produce a net normal-call gain. No performance adoption or precision improvement follows; full-model integration is not established.",
+    "candidate_accepted": false
+  },
+  "normal_saved_evidence_audit": {
+    "status": "saved_payloads_and_receipts_verified_not_performance_or_quality_acceptance",
+    "source_sha256": "196dc5c6085ac625cbc4d9236647c361db9b2becbc602dd8d5d3818d647c286b",
+    "sha256": "281cf4cb65a15a97e7485a8949fd5298ce5cc6b0c5ff65b386b884aea005a123",
+    "saved_NPU_arrays_verified": 7,
+    "original_input_and_FP32_reference_arrays_verified": 10,
+    "all9_comparison_dictionaries_independently_recomputed": true,
+    "actual_prefix_input_hashes_and_projection_concat_verified": true,
+    "per_owner_ledger_and_timing_sums_verified": true,
+    "host_model_ORT_SDK_GPU_or_board_execution_by_auditor": false
+  }
+}

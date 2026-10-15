@@ -1,0 +1,367 @@
+{
+  "schema": "original_native518_value_affine_commutation_v142",
+  "status": "input_side_four_board_FP32_gates_and_fresh_step1_complete_output_side_static_only_not_accepted",
+  "original_model_only": true,
+  "scope": "Original frame0/global0 pair at native392x518;1041 tokens per frame,2082 global keys,16 heads and64 channels per head. Captured encoder inputs; not complete model or SLAM.",
+  "common_parent": {
+    "sha256": "b79a4d3bd522a83199bfdf1389a8d44e8f6bb94ab09f2a83301fea8502e8f452",
+    "nodes": 149,
+    "initializers": 81,
+    "representation": "Original QKV-column split with existing all-key V-mean centering and restoration.",
+    "identities_relative_to_existing_value_mean_parent": true,
+    "arbitrary_probability_row_mass_requires_no_new_assumption_for_these_commutations": true,
+    "original_or_fused_quantized_probability_row_mass_newly_proven": false,
+    "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "all_original_tokens_heads_layers_and_full_dense_products_retained": true
+  },
+  "input_side": {
+    "graph_sha256": "031db683aa4ba08469cfb9958f7aab39b1a53d2c7b6aed572511e1e37c79d1e9",
+    "nodes": 152,
+    "initializers": 82,
+    "algebra": [
+      "mu_X=mean_over_all2082_keys(X); mu_V=mu_X W_V+b_V",
+      "V_centered=(X-mu_X) W_V",
+      "Existing centered attention P V_centered+mu_V and original output projection retained."
+    ],
+    "all81_parent_weight_and_other_initializer_protos_byte_unchanged": true,
+    "new_initializer_shape_only": true,
+    "whole_parent_inverse_ModelProto_byte_equal": true,
+    "untouched_original_nodes": 143,
+    "QK_softmax_PV_restore_and_original_output_projection_unchanged": true,
+    "original_V_weight_references": 2,
+    "original_V_bias_occurrences": 1,
+    "original_full_V_MACs": 2183135232,
+    "candidate_full_V_MACs": 2183135232,
+    "additional_one_row_V_MACs": 1048576,
+    "board_FP32_gate": {
+      "calls": 4,
+      "sessions_created": 1,
+      "sessions_dropped": 1,
+      "maximum_live_sessions": 1,
+      "cases": [
+        {
+          "id": "pair0",
+          "source_indices": [
+            0,
+            8
+          ],
+          "output_file_sha256": "51023174cce94dce0c5bcbf8393f49b27611b4099d46737b7b6562b54b367972",
+          "output_raw_sha256": "31a28597b17c8d010fe9ff63d842e171aff31432a92ae7e234366619f66cd42c",
+          "finite": true,
+          "vs_original_A_FP32_global": {
+            "relative_l2": 4.7324596004727455e-08,
+            "max_abs": 4.76837158203125e-07,
+            "outside_count": 0,
+            "fixed_gate_passed": true,
+            "strict_pass": true,
+            "byte_equal": false
+          },
+          "vs_existing_value_mean": {
+            "relative_l2": 3.848213215771843e-08,
+            "max_abs": 4.76837158203125e-07,
+            "outside_count": 0,
+            "fixed_gate_passed": true,
+            "strict_pass": true,
+            "byte_equal": false
+          }
+        },
+        {
+          "id": "pair1",
+          "source_indices": [
+            16,
+            24
+          ],
+          "output_file_sha256": "b07e1b239cb85d8a0635f622572f7672306ec57a296aedc59ee8f820db19ecdd",
+          "output_raw_sha256": "5e264dba5c32b701788234a0d39f5adf310025e3c57664a38620157294ac2984",
+          "finite": true,
+          "vs_original_A_FP32_global": {
+            "relative_l2": 5.076632124057488e-08,
+            "max_abs": 4.76837158203125e-07,
+            "outside_count": 0,
+            "fixed_gate_passed": true,
+            "strict_pass": true,
+            "byte_equal": false
+          },
+          "vs_existing_value_mean": {
+            "relative_l2": 4.030609145154022e-08,
+            "max_abs": 4.76837158203125e-07,
+            "outside_count": 0,
+            "fixed_gate_passed": true,
+            "strict_pass": true,
+            "byte_equal": false
+          }
+        },
+        {
+          "id": "pair2",
+          "source_indices": [
+            48,
+            56
+          ],
+          "output_file_sha256": "40fb97cae6ea0fe3cb01ead977710ed30aaf00e458fd25348bab96f3bf0bad68",
+          "output_raw_sha256": "9c3eb127d111225af6a8b98b12e21e90b9eaf379369ef4151931a62bfec659a7",
+          "finite": true,
+          "vs_original_A_FP32_global": {
+            "relative_l2": 5.1219339348086465e-08,
+            "max_abs": 5.960464477539062e-07,
+            "outside_count": 0,
+            "fixed_gate_passed": true,
+            "strict_pass": true,
+            "byte_equal": false
+          },
+          "vs_existing_value_mean": {
+            "relative_l2": 3.9882246606691966e-08,
+            "max_abs": 4.76837158203125e-07,
+            "outside_count": 0,
+            "fixed_gate_passed": true,
+            "strict_pass": true,
+            "byte_equal": false
+          }
+        },
+        {
+          "id": "pair3",
+          "source_indices": [
+            64,
+            72
+          ],
+          "output_file_sha256": "faaefa18db656617f5e268b068fed85364c0631a3fe65b79972478597055e5b1",
+          "output_raw_sha256": "78f710a40a8a1659d43b0ccfdd53667d2a9a50a634367ea8f239bc182915fef4",
+          "finite": true,
+          "vs_original_A_FP32_global": {
+            "relative_l2": 4.863413551443143e-08,
+            "max_abs": 7.152557373046875e-07,
+            "outside_count": 0,
+            "fixed_gate_passed": true,
+            "strict_pass": true,
+            "byte_equal": false
+          },
+          "vs_existing_value_mean": {
+            "relative_l2": 3.949645603810474e-08,
+            "max_abs": 5.960464477539062e-07,
+            "outside_count": 0,
+            "fixed_gate_passed": true,
+            "strict_pass": true,
+            "byte_equal": false
+          }
+        }
+      ],
+      "fixed_thresholds": {
+        "relative_l2_max": 1e-05,
+        "max_abs_max": 0.001,
+        "rtol": 0.0001,
+        "atol": 1e-05
+      },
+      "all_fixed_and_strict_checks_passed": true,
+      "reference_bytes_equal": false,
+      "byte_equality_required_for_reassociation": false,
+      "worst_relative_l2_vs_original": 5.1219339348086465e-08,
+      "worst_max_abs_vs_original": 7.152557373046875e-07,
+      "worst_relative_l2_vs_existing_mean": 4.030609145154022e-08,
+      "strict_outliers_vs_either_reference": 0,
+      "worker_seconds": 23.263228919997346,
+      "peak_rss_mib": 1021.91796875,
+      "all_outputs_saved_before_verdict": true,
+      "source_and_cleanup_verified": true,
+      "controller_no_clock_writes": true,
+      "heldout_arrays_accessed": false,
+      "SDK_or_calibration_in_gate": false
+    },
+    "fresh_step1": {
+      "calibration_ids": [
+        "pair0",
+        "pair1",
+        "pair2",
+        "pair3"
+      ],
+      "source_indices": [
+        [
+          0,
+          8
+        ],
+        [
+          16,
+          24
+        ],
+        [
+          48,
+          56
+        ],
+        [
+          64,
+          72
+        ]
+      ],
+      "same_four_original_input_bytes": true,
+      "heldouts_excluded": true,
+      "CONFIG": {
+        "target_platform": "rk3588",
+        "float_dtype": "float16",
+        "optimization_level": 3,
+        "mean_values": null,
+        "std_values": null,
+        "quant_img_RGB2BGR": false,
+        "model_pruning": false,
+        "remove_reshape": false,
+        "quantize_weight": false,
+        "enable_flash_attention": false,
+        "quantized_dtype": "w8a8",
+        "quantized_algorithm": "normal",
+        "quantized_method": "channel"
+      },
+      "original_CONFIG_and36_parameter_records_verified": true,
+      "old_model_data_or_ranges_reused": false,
+      "dataset_only_absolute_paths_relocated": true,
+      "explicit_NN_forwards_before_SDK": 0,
+      "worker_elapsed_seconds": 541.9568662870006,
+      "SDK_step1_seconds": 539.1743345079994,
+      "peak_rss_mib": 12387.9140625,
+      "minimum_pre_SDK_MemAvailable_bytes": 13958643712,
+      "actual_pre_SDK_MemAvailable_bytes": 14036475904,
+      "fresh_artifacts": {
+        ".model": {
+          "file": "pair-A-global0-input-centered-value.model",
+          "bytes": 159766520,
+          "sha256": "7976072e21df548f34b82c4941217bda06a0c77b55f591ae0680273491ab5bba"
+        },
+        ".data": {
+          "file": "pair-A-global0-input-centered-value.data",
+          "bytes": 3183164,
+          "sha256": "b3756093f7d25052e65477fb36b8b7a376ee744aff47716ace9c6d44691f577c"
+        },
+        ".quantization.cfg": {
+          "file": "pair-A-global0-input-centered-value.quantization.cfg",
+          "bytes": 54900,
+          "sha256": "2ea9e59fc36228db3421312ad8863b1f142d6f631f6005de30f0fb4c156534b7"
+        }
+      },
+      "SDK_and_controller_cleanup_verified": true,
+      "controller_no_clock_writes": true,
+      "SDK_internal_forward_count_not_independently_observed": true,
+      "calibration_memory_is_not_inference_or_physical8GB_evidence": true,
+      "NPU_compilation_actual_placement_and_runtime": "Pending separate checks; not evaluated in this record."
+    }
+  },
+  "output_side": {
+    "graph_sha256": "db15393256a8c00b0514566c5eece0facfc08493cc71233cd9141db5054717e9",
+    "nodes": 152,
+    "initializers": 82,
+    "algebra": "H(A+mu) W_O+b_O = H(A) W_O + [H(mu) W_O+b_O], with original head concatenation H.",
+    "full2082_query_projection_retained": true,
+    "mean_restored_after_projection_before_unchanged_LayerScale": true,
+    "all81_parent_weight_and_other_initializer_protos_byte_unchanged": true,
+    "new_initializer_shape_only": true,
+    "all146_other_node_protos_byte_unchanged": true,
+    "whole_parent_inverse_ModelProto_byte_equal": true,
+    "original_projection_weight_references": 2,
+    "original_projection_bias_occurrences": 1,
+    "original_full_projection_MACs": 2183135232,
+    "candidate_full_projection_MACs": 2183135232,
+    "additional_one_row_projection_MACs": 1048576,
+    "independent_static_peer_passed": true,
+    "head_order_and_broadcast_shapes_checked": true,
+    "generated_exact_rational_identity_passed": true,
+    "board_CPU_FP32_gate_executed": false,
+    "fresh_calibration_executed": false,
+    "actual_NPU_compilation_or_runtime_executed": false,
+    "old_static_constant_bias_fold": false,
+    "target": "Move dynamic mean restoration beyond the observed restored-PV requantization before original projection; effectiveness unmeasured."
+  },
+  "evidence": [
+    {
+      "role": "input_affine_commutation_source",
+      "artifact": "move_global0_value_centering_static.py",
+      "bytes": 10915,
+      "sha256": "caf578ad1fda79c80ba9effd113fd97245407d9926acde4795e1481ba2d85af5"
+    },
+    {
+      "role": "input_static_proof",
+      "artifact": "result.json",
+      "bytes": 2318,
+      "sha256": "0dd43d91f5a9d8ca3fa0896b2f2f9cd6743f47d70a1588d88dc25d2eeba4f36c"
+    },
+    {
+      "role": "input_independent_static_peer",
+      "artifact": "independent-static-peer.json",
+      "bytes": 2585,
+      "sha256": "0fd1f02e2d93868944dfc0a7a85b0d52c16272c18eed8e5975c89ffb6ea506f5"
+    },
+    {
+      "role": "input_board_FP32_worker",
+      "artifact": "gate_global0_input_centered_value_board.py",
+      "bytes": 24122,
+      "sha256": "c20fa6b55a3dbdd99025f310559aebf11b012fe0e881a9de87f93dab597ac2ed"
+    },
+    {
+      "role": "input_board_FP32_receipt",
+      "artifact": "result.json",
+      "bytes": 21873,
+      "sha256": "f3b7e53e5732c711c30d5a7fe1079333c4248e6a231261cca0a8f3fc3dbb5d62"
+    },
+    {
+      "role": "input_board_FP32_controller",
+      "artifact": "vggt-v83-native518global0inputcenteredvaluer1-control-r1.json",
+      "bytes": 98754,
+      "sha256": "01f993306efc0ef9f7b9bc2c9b697d3e0c9629e822527c2fb25a5e7f5ed47692"
+    },
+    {
+      "role": "input_independent_saved_FP32_audit",
+      "artifact": "input-centered-value-gate-r1-saved-audit.json",
+      "bytes": 6163,
+      "sha256": "92bad93e5ac21ce1d98579f71010ca9f23af24ea0188c7d70e9bf0dbbc31d0fc"
+    },
+    {
+      "role": "input_fresh_step1_worker",
+      "artifact": "prepare_global0_input_centered_value_hybrid_board.py",
+      "bytes": 26152,
+      "sha256": "dde97ac0ddef4cb928f85f336be914aa0f0417eae9bae5a8b3dc57e30fc37304"
+    },
+    {
+      "role": "input_fresh_step1_receipt",
+      "artifact": "result.json",
+      "bytes": 94598,
+      "sha256": "6e3c96bbb10e5bd6f325a985fa3639ac65b22d934f35c153b240f6068188aca7"
+    },
+    {
+      "role": "input_fresh_step1_controller",
+      "artifact": "vggt-v83-native518global0inputcenteredvaluestep1r1-control-r1.json",
+      "bytes": 2179658,
+      "sha256": "bf5fcbe0dcae370e3b4392c1ce6f2741eda9c15d64751de7ebb9bbf970a94444"
+    },
+    {
+      "role": "input_independent_saved_step1_audit",
+      "artifact": "input-centered-value-hybrid-r1-saved-audit.json",
+      "bytes": 5598,
+      "sha256": "9b3391a5ae639c7eeb06621f1a4bb165fae75904b340ca81599739cc298f7126"
+    },
+    {
+      "role": "output_affine_commutation_source",
+      "artifact": "move_global0_mean_restore_after_projection_static.py",
+      "bytes": 8461,
+      "sha256": "f807dbdee06503dd6225e28325077ed035c9d156bb5a9736974b94ba258fed05"
+    },
+    {
+      "role": "output_static_proof",
+      "artifact": "result.json",
+      "bytes": 2152,
+      "sha256": "b390b97fe13d9edb244021944ae19b92c1cc54db1341abd805d3fb382e8b226c"
+    },
+    {
+      "role": "output_independent_static_peer",
+      "artifact": "mean-after-projection-static-peer-r1.json",
+      "bytes": 1685,
+      "sha256": "c430ef9b29ec4aec43efe43c0e94bcf89fc2672db3177af71c88f940b6e47ecf"
+    }
+  ],
+  "candidate_accepted": false,
+  "quantized_accuracy_accepted": false,
+  "speed_accepted": false,
+  "production_defaults_changed": false,
+  "limits": [
+    "These are two separate candidates derived from the existing mean-centered parent, not a combined graph or a new proof of probability row sums.",
+    "Both reassociate floating-point reductions and products. The input candidate passes four calibration-case FP32 gates; the output prototype has no board FP32 gate yet.",
+    "Input fresh calibration supplies new ranges for changed internal values; prior parent grids are not silently reused.",
+    "Separate mean-branch precision, original INT8 weighted products, SDPA fusion, downstream conversions and any duplicate weight packing need actual compiler evidence.",
+    "Each retains the full original N-row weighted product and adds one row; disproportionate launch/layout cost is possible, with no speed or quantized-quality gain accepted.",
+    "Original encoder, later aggregation blocks, full heads, trajectory, fresh-pose service, sustained rate, P95, stability and physical8GB acceptance remain outside this record.",
+    "Evidence exports only metadata identities and metrics. Raw arrays, weight-bearing graphs, SDK artifacts and private paths are not published."
+  ]
+}

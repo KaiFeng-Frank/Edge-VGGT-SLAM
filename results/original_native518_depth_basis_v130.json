@@ -1,0 +1,319 @@
+{
+  "schema": "original_native518_depth_basis_v130_public_summary",
+  "status": "original_DPT_basis_consumer_fixed_FP32_gate_passed_not_deployment_accepted",
+  "original_model_only": true,
+  "execution": {
+    "board": "RK3588S",
+    "backend": "CPU ONNX Runtime",
+    "original_checkpoint_deserialized": false,
+    "calibration_RKNN_or_GPU_executed": false,
+    "maximum_simultaneous_ORT_sessions": 1,
+    "actual_ORT_calls": 4,
+    "sessions_created": 4,
+    "sessions_dropped": 4,
+    "saved_output_arrays": 6
+  },
+  "scope": "Complete original native DPT raw logits on two frame chunks from the pinned partial original CPU continuation; not a mixed-precision aggregator integration",
+  "shapes": {
+    "inputs4": [
+      1,
+      1036,
+      2048
+    ],
+    "raw_logits": [
+      1,
+      2,
+      392,
+      518
+    ]
+  },
+  "basis_and_fold": {
+    "basis": "T=diag(R1024,R1024), R=((J4-2I4)/2) tensor-power5",
+    "input_coordinates": "u=zT",
+    "bare_LayerNorm_epsilon": 1e-05,
+    "projection_weight": "(W_original*gamma)T",
+    "projection_bias": "W_original*beta+b_original",
+    "derived_parameter_storage": "float64 transform then float32",
+    "original_learned_values_verified": 62,
+    "changed_initializers": 10,
+    "untouched_original_learned_values": 52,
+    "original_nodes_byte_identical": 79,
+    "untouched_initializers_byte_identical": 66,
+    "initializer_count": 76,
+    "original_position_constants_byte_identical": 5,
+    "full_parent_proto_inverse_proof": true,
+    "explicit_consumer_inverse_basis_operator_added": false,
+    "original_exp_expp1_activation_outside_graph": true
+  },
+  "fixed_numeric_gate": {
+    "relative_l2_max": 1e-05,
+    "max_abs_max": 0.001,
+    "rtol": 0.0001,
+    "atol": 1e-05
+  },
+  "strict_allclose_is_independent_diagnostic": true,
+  "frames": [
+    {
+      "frame_index": 0,
+      "comparisons": {
+        "folded_vs_baseline": {
+          "relative_l2": 2.9353134774399925e-07,
+          "reference_norm": 7487.268850879188,
+          "zero_reference_norm": false,
+          "max_abs": 4.38690185546875e-05,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "baseline_vs_original_Torch_capture": {
+          "relative_l2": 8.267267675412381e-07,
+          "reference_norm": 7487.269680959167,
+          "zero_reference_norm": false,
+          "max_abs": 0.000118255615234375,
+          "outside_count": 15,
+          "strict_pass": false,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "folded_vs_original_Torch_capture": {
+          "relative_l2": 8.370655810920223e-07,
+          "reference_norm": 7487.269680959167,
+          "zero_reference_norm": false,
+          "max_abs": 0.000125885009765625,
+          "outside_count": 11,
+          "strict_pass": false,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        }
+      },
+      "raw_artifacts": [
+        {
+          "route": "original_reference",
+          "file": "original-reference-logits.npy",
+          "bytes": 1624576,
+          "sha256": "552629360751c13604f8729403beb38a21b916aa56b6d3dd3c8e5a6bd0d2d544",
+          "raw_sha256": "deb0945d7e63a126cec84528dddc84bec20eb7ddb776a2b93669b71789bfe33c",
+          "shape": [
+            1,
+            2,
+            392,
+            518
+          ],
+          "dtype": "float32",
+          "finite": true
+        },
+        {
+          "route": "baseline",
+          "file": "baseline-logits.npy",
+          "bytes": 1624576,
+          "sha256": "2b081a025887bb4e1b6c870022af2892f966799b94f08a2e47d5fd787032ac48",
+          "raw_sha256": "43b61e44fa76b7d2e4e4449ef9400285f710bab2093db0a5e4410ccca4807451",
+          "shape": [
+            1,
+            2,
+            392,
+            518
+          ],
+          "dtype": "float32",
+          "finite": true
+        },
+        {
+          "route": "folded",
+          "file": "folded-logits.npy",
+          "bytes": 1624576,
+          "sha256": "8e3d95820e3bedcc9207ac4b08f480c67b837202655d20b15997d4dc19d697fe",
+          "raw_sha256": "42a79167c7dcb8e6f7ebd6844754be388e7d9818feae227d4fa7daa1883fb17f",
+          "shape": [
+            1,
+            2,
+            392,
+            518
+          ],
+          "dtype": "float32",
+          "finite": true
+        }
+      ],
+      "original_input_raw_sha256s": {
+        "tokens_4": "74f8082475d3da7efdcca1a6ab5ff6c71ba5142bf3f5f846cccfecbc77690754",
+        "tokens_11": "96539ecc322925c606dd2830859822bf75ce08e16e9b098b7f15cbbc0ad064ec",
+        "tokens_17": "0b4b282d649ae83a138e2ff3624e3f826c7abf4af067d9deda1b284e13633a19",
+        "tokens_23": "44dafc13cbba6f91ddf836cf2d9630a749070db799319cf255dc1581fa056c09"
+      },
+      "check_receipt_sha256": "f9df012758e6f59c6972ef19b3579cd7e36bdf93dac4eb0c8ebed5649dc998d8"
+    },
+    {
+      "frame_index": 1,
+      "comparisons": {
+        "folded_vs_baseline": {
+          "relative_l2": 3.3240651828849314e-07,
+          "reference_norm": 6477.729086661417,
+          "zero_reference_norm": false,
+          "max_abs": 5.340576171875e-05,
+          "outside_count": 0,
+          "strict_pass": true,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "baseline_vs_original_Torch_capture": {
+          "relative_l2": 9.659706611831647e-07,
+          "reference_norm": 6477.729370275354,
+          "zero_reference_norm": false,
+          "max_abs": 0.000141143798828125,
+          "outside_count": 18,
+          "strict_pass": false,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        },
+        "folded_vs_original_Torch_capture": {
+          "relative_l2": 9.803527037426294e-07,
+          "reference_norm": 6477.729370275354,
+          "zero_reference_norm": false,
+          "max_abs": 0.000118255615234375,
+          "outside_count": 30,
+          "strict_pass": false,
+          "fixed_numeric_gate_passed": true,
+          "fixed_gate_passed": true,
+          "byte_equal": false
+        }
+      },
+      "raw_artifacts": [
+        {
+          "route": "original_reference",
+          "file": "original-reference-logits.npy",
+          "bytes": 1624576,
+          "sha256": "7d540e41910fd4386bd2f443f221b8ae2637856dc9f9811125e531d7d5993eb9",
+          "raw_sha256": "f09563d0801cd528a923c8fee805ca9e7142d0b044944aa0b675851ff58a2cbb",
+          "shape": [
+            1,
+            2,
+            392,
+            518
+          ],
+          "dtype": "float32",
+          "finite": true
+        },
+        {
+          "route": "baseline",
+          "file": "baseline-logits.npy",
+          "bytes": 1624576,
+          "sha256": "25bf544904f48da8ec5ccb93382e5280c1ff28c978868c732c7ebd91d459143d",
+          "raw_sha256": "0f1ab187cde83f69b75b6043b62159b60fab51f585e9aeba51e1a70bd94b63d5",
+          "shape": [
+            1,
+            2,
+            392,
+            518
+          ],
+          "dtype": "float32",
+          "finite": true
+        },
+        {
+          "route": "folded",
+          "file": "folded-logits.npy",
+          "bytes": 1624576,
+          "sha256": "1cc8df42a81693324f0ec19468be74ae50f5abb7f5e98205dfaddbe5c01ede80",
+          "raw_sha256": "f08fae72606ae14751e1656df3ef60f9ad38904e6c0e32d6af2fa53dea03427d",
+          "shape": [
+            1,
+            2,
+            392,
+            518
+          ],
+          "dtype": "float32",
+          "finite": true
+        }
+      ],
+      "original_input_raw_sha256s": {
+        "tokens_4": "765653ccd5a886879edb212396a001a71bf7a2b1b239e27ca8aeaeb9d61c8239",
+        "tokens_11": "bd8283bac5adc78fc0856fc8e31cf21aa1e0b0340bea74ef4970e5d6c82db43f",
+        "tokens_17": "13a291be28f62b681b96a4f79c450a9d648c7d4cb04d1f7038de943edd5956f1",
+        "tokens_23": "b0a23662a354a0bada19977230b46d119a77ca13d6acbf0268035ce394bba7b7"
+      },
+      "check_receipt_sha256": "53e2362dbac6ad6bddfde7ac82c754afa4a98c7c26de7a9689505a7f3e287e49"
+    }
+  ],
+  "worst_folded_vs_baseline_relative_l2": 3.3240651828849314e-07,
+  "worst_folded_vs_baseline_max_abs": 5.340576171875e-05,
+  "all_main_numeric_and_strict_diagnostic_gates_passed": true,
+  "baseline_or_folded_strict_equality_to_Torch_accepted": false,
+  "source_and_evidence": {
+    "worker_sha256": "57d888a469581af4c41af58ee858835ba216c98e9c26154a014812e8aeb9bdf7",
+    "export_receipt_sha256": "0040819ec2418235f4f77b49f13943c53aa8a2704ef403bfb63d6b0a8ce6623f",
+    "original_graph_sha256": "40cb912d096397b2a086bf536b66a3c18e57ed8e392d48c4d7e1079895d2b92e",
+    "derived_graph": {
+      "bytes": 246272013,
+      "sha256": "309ec0c60f0b10346de970b064334d790b196fd708b9863f3b822294cb695396"
+    },
+    "original_export_receipt_sha256": "8e3f465242924445348a589d5b589e4176fabde9e272ad0fe7d49950886f6033",
+    "original_reference_receipt_sha256": "969ab6f5611efa62d81b5d62625a15815248668e1e079db17ac4d9ed9c96932b",
+    "original_checkpoint_metadata": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "audit_source_sha256": "fab4441f775c402ece0cf2d2722f8e621ca0a9b9493e6cde8ac0f97c1c1882b1",
+    "saved_audit_sha256": "006a45d2bad8bf77c3a4851907953e0a91c18932f2f23010a8c3ef0939152331"
+  },
+  "controls": [
+    {
+      "stage": "export",
+      "file": "vggt-v83-native518depthbasis130exportr1-control-r1.json",
+      "bytes": 16570,
+      "sha256": "a7b7f56fcf8ea4479a6833f56fd08cc4c3646ab305a733c325dda63621067cfb",
+      "seconds": 3.413086092999947,
+      "maximum_temperature_c": 59.153,
+      "frequency_written": false,
+      "observed_npu_hz": 1000000000,
+      "process_group_gone": true,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "check0",
+      "file": "vggt-v83-native518depthbasis130check0r1-control-r1.json",
+      "bytes": 90033,
+      "sha256": "d3e59b43955a8d9fdda3bf9c90f0458284bcb40de02ce331f1c2983dca9f8cf2",
+      "seconds": 21.959961497999757,
+      "maximum_temperature_c": 66.538,
+      "frequency_written": false,
+      "observed_npu_hz": 1000000000,
+      "process_group_gone": true,
+      "cleanup_errors": []
+    },
+    {
+      "stage": "check1",
+      "file": "vggt-v83-native518depthbasis130check1r1-control-r1.json",
+      "bytes": 89171,
+      "sha256": "30a6b2460187975bb6cfe9e80636ed49e0703e213c0b1d1d0440fad0a36a46ff",
+      "seconds": 21.786226188998626,
+      "maximum_temperature_c": 67.461,
+      "frequency_written": false,
+      "observed_npu_hz": 1000000000,
+      "process_group_gone": true,
+      "cleanup_errors": []
+    }
+  ],
+  "timing_scope": "CPU imports/loading/preparation/forward/saving/cleanup; no NPU speed comparison",
+  "limitations": [
+    "Two conditional raw-logit frame chunks, not a complete-model or mixed-precision inference.",
+    "Original captured Torch comparisons retain elementwise outliers, independently reported.",
+    "Inputs were rotated for the equivalence screen; this does not measure online conversion cost or persistent-basis full-model execution.",
+    "No activated depth/confidence, NPU compilation or quantization benefit is established.",
+    "No trajectory/map quality, fresh-camera realtime/P95, stability or 8GB acceptance."
+  ],
+  "licensed_artifacts_separate": true,
+  "weights_arrays_or_vendor_binaries_included": false,
+  "full_model_quality_realtime_or_8GB_accepted": false,
+  "public_reproduction": {
+    "source_manifest": "deploy/rk3588/validation/original_native518_depth_basis/sources.json",
+    "public_saved_auditor_is_path_adapter": true,
+    "public_saved_auditor_sha256": "383d5c993e2d5c263b5d2ddd62ed439e71af8819c5b8e02031b62672010f2392",
+    "actual_saved_audit_source_sha256": "fab4441f775c402ece0cf2d2722f8e621ca0a9b9493e6cde8ac0f97c1c1882b1",
+    "adapter_scope": "Require --original-metadata-dir; verification math unchanged. The private frozen audit produced the reported saved result.",
+    "graph_arrays_or_vendor_binaries_shipped": false
+  }
+}

@@ -42,7 +42,7 @@ def arguments(root, *, enabled=True, omit=(), no_cache=False):
                '--rknn-grouped-dino': None, '--rknn-depth-manifest': str(root/'depth'),
                '--rknn-depth-manifest-sha256': 'c'*64}
     args = ['generated', '--rgb-index', str(root/'rgb.txt'), '--checkpoint', str(root/'model.fixture'),
-            '--output', str(root/'output'), '--model-threads', '1']
+            '--output', str(root/'output'), '--model-threads', '1', '--image-size', '112']
     for option, value in options.items():
         if option not in omit:
             args.append(option)

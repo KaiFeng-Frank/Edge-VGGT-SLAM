@@ -1,0 +1,535 @@
+{
+  "schema": "original_native518_key_centering_v131",
+  "status": "board_FP32_and_calibration_complete_INT8_SDPA_placement_verified_normal_global_nonfinite_candidate_rejected",
+  "original_model_only": true,
+  "candidate_accepted": false,
+  "parent_variant": "canonical_A",
+  "basis_R_used": false,
+  "novel_attention_method_claimed": false,
+  "scope": "Original frame0 then global0, native518, two full original blocks; two B1 frame SDPA instances and one global SDPA instance. No full-model or trajectory run.",
+  "input": {
+    "source_pair_indices": [
+      0,
+      8
+    ],
+    "split": "predeclared_calibration_pair0",
+    "shape": [
+      2,
+      1041,
+      1024
+    ],
+    "origin": "Saved actual original NPU DINO24 frame0 boundary; conditional two-block CPU ONNX reference"
+  },
+  "graph_edit": {
+    "position": "After original learned K normalization and RoPE, before key_transpose",
+    "operation": "K_centered=K-ReduceMean(K,axis2,keepdims1)",
+    "original_nodes": 143,
+    "candidate_nodes": 149,
+    "added_Mean_Sub_nodes": 6,
+    "original_and_candidate_initializers": 79,
+    "original_learned_parameter_tensors": 36,
+    "full16_heads_and64_head_channels": true,
+    "frame_key_rows_per_branch": 1041,
+    "global_key_rows_across_both_frames": 2082,
+    "all_original_initializer_protos_unchanged": true,
+    "whole_parent_inverse_proto_equal": true,
+    "Q_V_scale_Softmax_PV_projection_residual_MLP_unchanged": true
+  },
+  "fixed_gate": {
+    "relative_l2_max": 1e-05,
+    "max_abs_max": 0.001
+  },
+  "strict_diagnostic": {
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "independent_from_fixed_gate": true
+  },
+  "comparisons": {
+    "frame_output": {
+      "relative_l2": 4.6341160674572906e-08,
+      "max_abs": 1.430511474609375e-06,
+      "outside_count": 0,
+      "strict_pass": true,
+      "fixed_gate_passed": true,
+      "byte_equal": false
+    },
+    "global_output": {
+      "relative_l2": 6.872831873006267e-08,
+      "max_abs": 1.430511474609375e-06,
+      "outside_count": 0,
+      "strict_pass": true,
+      "fixed_gate_passed": true,
+      "byte_equal": false
+    }
+  },
+  "board_CPU_execution": {
+    "provider": "CPUExecutionProvider",
+    "intra_op_threads": 1,
+    "inter_op_threads": 1,
+    "calls": 2,
+    "sessions_created_and_dropped": 2,
+    "saved_endpoint_arrays": 4,
+    "worker_elapsed_seconds": 11.498794114002521,
+    "worker_peak_rss_mib": 780.4453125,
+    "all_outputs_finite": true,
+    "source_input_environment_affinity_and_session_cleanup_verified": true,
+    "time_is_NPU_or_deployment_performance": false
+  },
+  "controls": [
+    {
+      "mode": "export",
+      "sha256": "cb912b246cd0183379556c2a73f6b7baae0ecda722d5e049dea3bc15ed723b68",
+      "seconds": 1.5260593620005238,
+      "sample_count": 16,
+      "sampled_max_temperature_c": 59.153,
+      "frequency_written": false,
+      "owned_group_gone": true
+    },
+    {
+      "mode": "check",
+      "sha256": "bb01087f4d287296c7386d98152bb3c226a937d75653a69adb3cb377ea4a4a88",
+      "seconds": 11.856858065999404,
+      "sample_count": 116,
+      "sampled_max_temperature_c": 66.538,
+      "frequency_written": false,
+      "owned_group_gone": true
+    }
+  ],
+  "evidence": {
+    "parent_ONNX_sha256": "57b60feceea0edb57ca4cea38200d6ea47d4e4ee51e4a546357267cbc9f676bb",
+    "centered_ONNX": {
+      "bytes": 102418391,
+      "sha256": "85f1618e3e4f4bc8bdbad6480a75c424bfcf58b28d64d5509f2e1b7690ee69e0"
+    },
+    "capture_receipt_sha256": "cc2dd7fbddef8ee12de00b7a5cc88a16ba9d531783ab09ae8e66abe50df43408",
+    "exporter_checker_source_sha256": "e8579d15f9fc8c514a6494de50ed31b8f23f5d1ddb57411918ad8cfe9ae46b97",
+    "transport_source_sha256": "8ce4f4bef589e11d7bb26ee06375487af836a6d41cacd06b805924334c046469",
+    "export_receipt_sha256": "cd268d7dec2683c391277a37154231733f6394acabf971cf642f4d09514110bd",
+    "check_receipt_sha256": "8be8fc1be8574115deb43a0f209a88bb2d5a59bef54735755507f70acaed3240",
+    "saved_audit_source_sha256": "d7179a7fe51766d8b8b251b903fc68cc1eebd222e01a9a7fb62d8b23826db454",
+    "saved_audit_sha256": "34a434b045aab4299ce58ea7bb68c73e7e0cea668b12666e5f640f193af1069b",
+    "fresh_calibration_source_sha256": "25330a72013fa19e8d63ac70d475aab083952e78246b27fd2543d28d65a45a84",
+    "fresh_calibration_receipt_sha256": "7e8fae1a2add288164e111dd1d6970d7f8ae27f8eb0f77e13ce83730bc9efcec",
+    "fresh_calibration_saved_audit_sha256": "081dc3218d8b46b6fcf5322b88c034aef7e5a83ea5ec368b5ffca7b0db117a85",
+    "fresh_calibration_generated_metadata": [
+      {
+        "file": "dataset.txt",
+        "bytes": 260,
+        "sha256": "551d4b38fb3202ec8aec3ae085336e1826e7da8f2caf89bcbccf4186c8504171"
+      },
+      {
+        "file": "pair-A-key-centered.data",
+        "bytes": 3029980,
+        "sha256": "e86f2167dd069178ad07253ddcd7c826b8e5162df836a7e97c2af425fe3dcf96"
+      },
+      {
+        "file": "pair-A-key-centered.model",
+        "bytes": 155572050,
+        "sha256": "9dc53699b3ccb9b29cdb783260510a7df324f593ce203dd30790e2952138d05e"
+      },
+      {
+        "file": "pair-A-key-centered.quantization.cfg",
+        "bytes": 57864,
+        "sha256": "e9953f1569ad0215d9bece85268b1772f02095af984b48514b1e0cabd79fe1f2"
+      },
+      {
+        "file": "public-graph-semantic-index.json",
+        "bytes": 54790,
+        "sha256": "7d8e4168fed23db580f1be3daf8caddf7adc783f28daf5cbc6de2f8bfed33432"
+      }
+    ],
+    "centered_step2_compiler_source_sha256": "82290aba88127429350a4294e7454317a2b105699223e68b91022c20b7dd0dfb",
+    "centered_step2_transport_source_sha256": "5981e9bd85285e43977e1fd5740f7d92338acaf6dc53bc4d11600e5ae42c74ae",
+    "centered_step2_receipt_sha256": "22c51147d8425b6003032c524646f47fbf28ddf6755fd77f434f1dc434a363f5",
+    "centered_step2_actual_compiler_table_log_sha256": "9ac0c28689d4b51c3bb354250cdf9684daa7a3505c8040c7b0bde7e4a930da4d",
+    "centered_step2_saved_audit_source_sha256": "a69acf5754abc33d440c899c06043b1c6bdc8c8c3ca9ed49f299019a7df0c3d2",
+    "centered_step2_saved_audit_sha256": "cc6ebc387a30864dd39e080e0204aedf988259ec497d6bf424deb5f424383e23",
+    "normal_worker_source_sha256": "907231d3c99b1750b9cf674a944bb1386baac1292274713a267a532b1d2b7470",
+    "normal_transport_source_sha256": "a04ddfa1a53d5f6c26fa4d3056a99c7bbd9225f4856fa62f37a7b18322100c76",
+    "normal_receipt_sha256": "52506ed90ac8125d5c6285b316a40c97ce6f8ed3a7730f10ebcb3e695471f59e",
+    "normal_saved_audit_source_sha256": "863cfc22d4978170be255badf34ed00e1953bc4e577c0b375170d8721fb0b7da",
+    "normal_saved_audit_sha256": "1db628c80e4ecc94999afdcc9ace2b85e5159c13d1326f14e8b7eaabb9823a6a"
+  },
+  "independent_saved_audit": {
+    "four_file_and_raw_SHA_shape_dtype_finite_identities_verified": true,
+    "two_metric_dictionaries_recomputed": true,
+    "two_CPU_controls_checked": true,
+    "model_ORT_SDK_GPU_board_or_calibration_execution_by_auditor": false,
+    "actual_compile_hashes_sources_requests_and_visible_precision_placement_checked": true,
+    "normal_four_NPU_outputs_four_FP32_references_and_same_pair0_input_checked": true,
+    "normal_three_finite_frame_comparisons_recomputed": true,
+    "normal_two_global_nonfinite_diagnostics_recomputed": true,
+    "normal_resource_ledgers_and_clock_restore_checked": true,
+    "auditor_execution_scope": "Host saved-artifact and saved-array inspection only; no model, NN, SDK, board or calibration execution"
+  },
+  "decision": "The same-input board FP32 screen passes and actual floating K-centering followed by a post-Sub INT8 conversion into all three INT8 SDPA instances is verified. Fresh calibration makes all three K and QK quantization steps coarser. Both the original A20 and centered graph normal runs retain nonfinite global endpoints; their finite frame errors exceed the fixed gate. Reject this centered runtime candidate. No steady-state speedup, isolated centering effect, trajectory or deployment acceptance is established.",
+  "limits": [
+    "Centered RKNN compilation, actual visible precision placement and two normal diagnostic calls are complete. Both global outputs contain NaNs and negative infinities, so the candidate fails numerical acceptance.",
+    "No arithmetic MAC reduction follows; Mean/Sub adds work. Centering does not guarantee a smaller key/score quantization grid.",
+    "One calibration pair is not heldout accuracy, complete original Torch equivalence, full48-block execution, trajectory quality,20Hz/P95, sustained or physical8GB acceptance.",
+    "The normal comparison includes one ordered calibration pair0 call per model and lacks a matched original-A Krope-FLOAT16-only control. No isolated centering attribution or steady-state latency claim follows."
+  ],
+  "publication": "Metadata only; original parameters, captured arrays, weight-bearing graphs and SDK binaries remain private. Code and original weights retain separate license provenance.",
+  "fresh_board_calibration": {
+    "same_configuration_and_four_input_dataset": true,
+    "heldout_arrays_loaded": false,
+    "centered_FP32_case_count": 1,
+    "worker_seconds": 594.7023269620004,
+    "calibration_peak_rss_mib": 12411.0546875,
+    "quantization_catalogue_comparison": [
+      {
+        "branch": "frame0/batch0/",
+        "role": "K",
+        "original_scale": 0.026365121205647785,
+        "centered_scale": 0.02799956190819834,
+        "scale_change_percent": 6.199253513010339
+      },
+      {
+        "branch": "frame0/batch0/",
+        "role": "QK",
+        "original_scale": 0.2054127711875766,
+        "centered_scale": 0.21832780277027802,
+        "scale_change_percent": 6.287355702390984
+      },
+      {
+        "branch": "frame0/batch0/",
+        "role": "Softmax",
+        "original_scale": 0.00020352428158124287,
+        "centered_scale": 0.0002035240332285563,
+        "scale_change_percent": -0.0001220260720913302
+      },
+      {
+        "branch": "frame0/batch1/",
+        "role": "K",
+        "original_scale": 0.02627286630518296,
+        "centered_scale": 0.026624313055300244,
+        "scale_change_percent": 1.3376795132853614
+      },
+      {
+        "branch": "frame0/batch1/",
+        "role": "QK",
+        "original_scale": 0.205303955078125,
+        "centered_scale": 0.21563870299096202,
+        "scale_change_percent": 5.033876677584859
+      },
+      {
+        "branch": "frame0/batch1/",
+        "role": "Softmax",
+        "original_scale": 0.0001822362927829518,
+        "centered_scale": 0.000182236453481749,
+        "scale_change_percent": 8.818155523560023e-05
+      },
+      {
+        "branch": "global0/",
+        "role": "K",
+        "original_scale": 0.043701400008856084,
+        "centered_scale": 0.05481783268498439,
+        "scale_change_percent": 25.43724611540035
+      },
+      {
+        "branch": "global0/",
+        "role": "QK",
+        "original_scale": 0.2674014371984145,
+        "centered_scale": 0.35073834587545955,
+        "scale_change_percent": 31.165467751472175
+      },
+      {
+        "branch": "global0/",
+        "role": "Softmax",
+        "original_scale": 0.0010132497432185155,
+        "centered_scale": 0.0010132484576281379,
+        "scale_change_percent": -0.00012687793766730238
+      }
+    ],
+    "all_three_key_and_score_grids_coarser": true,
+    "control": {
+      "sha256": "f3f9992ae975c27ab86a3697d11ff73e525e615929ca818b2aa8edc0e0a1b0c8",
+      "seconds": 595.7458827340015,
+      "sample_count": 5700,
+      "sampled_max_temperature_c": 71.153,
+      "thermal_pause_count": 103,
+      "frequency_written": false,
+      "owned_group_gone": true
+    },
+    "sdk_version": "2.3.2",
+    "calibration_ids": [
+      "pair0",
+      "pair1",
+      "pair2",
+      "pair3"
+    ],
+    "dataset_sha256": "551d4b38fb3202ec8aec3ae085336e1826e7da8f2caf89bcbccf4186c8504171",
+    "sdk_released": true,
+    "source_and_inputs_unchanged": true,
+    "cleanup_errors": [],
+    "all_generated_file_hashes_verified": true,
+    "calibration_memory_is_inference_memory": false
+  },
+  "board_mixed_precision_compile": {
+    "sdk_version": "2.3.2",
+    "same_configuration_as_original_A": true,
+    "requested_selector_count": 38,
+    "original_base_selector_count": 20,
+    "additional_actual_centering_selector_count": 18,
+    "original_model_data_and_quantization_parameter_section_preserved": true,
+    "Q_V_PV_q_matmul_q_softmax_selectors_added": false,
+    "actual_FLOAT16_centering_then_INT8_SDPA_precision_established": true,
+    "actual_branch_placement": [
+      {
+        "region": "frame0/batch0/",
+        "Krope_Transpose_meanConv_Transpose_Expand_Sub_consumption_FLOAT16": true,
+        "mean_Conv_id": 37,
+        "Sub_id": 40,
+        "post_Sub_FLOAT16_to_INT8_conversion_id": 41,
+        "INT8_SDPA_id": 48,
+        "actual_SDPA_on_NPU": true,
+        "actual_QKV_buffers_INT8": true
+      },
+      {
+        "region": "frame0/batch1/",
+        "Krope_Transpose_meanConv_Transpose_Expand_Sub_consumption_FLOAT16": true,
+        "mean_Conv_id": 43,
+        "Sub_id": 46,
+        "post_Sub_FLOAT16_to_INT8_conversion_id": 47,
+        "INT8_SDPA_id": 59,
+        "actual_SDPA_on_NPU": true,
+        "actual_QKV_buffers_INT8": true
+      },
+      {
+        "region": "global0/",
+        "Krope_Transpose_meanConv_Transpose_Expand_Sub_consumption_FLOAT16": true,
+        "mean_Conv_id": 94,
+        "Sub_id": 97,
+        "post_Sub_FLOAT16_to_INT8_conversion_id": 98,
+        "INT8_SDPA_id": 99,
+        "actual_SDPA_on_NPU": true,
+        "actual_QKV_buffers_INT8": true
+      }
+    ],
+    "operator_count": 119,
+    "memory_table_rows": 278,
+    "operator_precision_target_counts": {
+      "FLOAT16 CPU": 2,
+      "FLOAT16 NPU": 43,
+      "INT8 NPU": 73,
+      "INT8 CPU": 1
+    },
+    "fused_SDPA_accumulator_score_or_probability_internal_dtype_independently_established": false,
+    "rknn_metadata": {
+      "file": "pair-A-K-centered-hybrid.rknn",
+      "bytes": 46370041,
+      "sha256": "cf62e2328412cb57108a893e89dbd6b15293d1bc617615eb54629076c4a6a3ed"
+    },
+    "worker_seconds": 41.673231603999994,
+    "compilation_peak_rss_mib": 1236.52734375,
+    "calibration_or_explicit_runtime_calls_in_compile": false,
+    "control": {
+      "seconds": 41.673231603999994,
+      "peak_rss_mib": 1236.52734375,
+      "controller_sha256": "269bd126478651163f6ffdb1c9441ffcb52a31f726d07f82432c1e815fcdc2a0",
+      "controller_seconds": 42.616358614999996,
+      "maximum_sampled_temperature_c": 60.076
+    },
+    "candidate_accepted": false
+  },
+  "board_normal_diagnostic": {
+    "pair_id": "pair0",
+    "source_pair_indices": [
+      0,
+      8
+    ],
+    "split": "calibration",
+    "input_sha256": "ef6c1cc6a028113c9cf60e61749ac40ba80055ba04b9511f1ddfcfd26589c4f7",
+    "input_raw_sha256": "642b8b919c4130df15c04ffba36baa5fb8975d704ea72ec87fd9fd7a8476a132",
+    "flags": 0,
+    "core_mask": 1,
+    "maximum_live_contexts": 1,
+    "schedule": [
+      "original_A20",
+      "centered_A"
+    ],
+    "logical_IO": "FP32/pass0 input; want_float1 owned outputs with SDK conversions",
+    "reference_scope": "Same-input conditional CPU two-block ONNX, not original full Torch or trajectory",
+    "production_finite_guard_modified": false,
+    "nonfinite_outputs_preserved_only_after_owned_copy_and_SDK_buffer_release": true,
+    "saved_endpoint_array_count": 4,
+    "all_outputs_finite": false,
+    "numerical_acceptance": false,
+    "calls": [
+      {
+        "route": "original_A20",
+        "status": "completed_invalid_numeric_diagnostic",
+        "outputs": [
+          {
+            "name": "frame_output",
+            "bytes": 8528000,
+            "sha256": "a5e88ef3bbd21867d1fd1b3ff07a490141e10028627b4f211c30ba66e40ac163",
+            "raw_sha256": "b078a0b884f711f2dd7801766dabeb26c46cd74fad7b8cf930bcb929338738bf",
+            "shape": [
+              2,
+              1041,
+              1024
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "nan_count": 0,
+            "positive_inf_count": 0,
+            "negative_inf_count": 0
+          },
+          {
+            "name": "global_output",
+            "bytes": 8528000,
+            "sha256": "390391186af117a85b1631cc1eaa3d272192684b1e6e498e1778c5430401ec4f",
+            "raw_sha256": "829db26d08ef9344ce0318a4494a8d5099944cf30d9e157b580a1044b622ab9a",
+            "shape": [
+              1,
+              2082,
+              1024
+            ],
+            "dtype": "float32",
+            "finite": false,
+            "nan_count": 114745,
+            "positive_inf_count": 0,
+            "negative_inf_count": 1225
+          }
+        ],
+        "comparisons": {
+          "frame_output_vs_original_A": {
+            "numeric_comparison_available": true,
+            "relative_l2": 0.046186495439959244,
+            "max_abs": 0.7631521299481392,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "reference_norm": 265.45689148859213,
+            "outside_count": 2128193
+          },
+          "global_output_vs_original_A": {
+            "numeric_comparison_available": false,
+            "relative_l2": null,
+            "max_abs": null,
+            "fixed_gate_passed": false,
+            "strict_pass": false
+          }
+        },
+        "single_call_SDK_stages": {
+          "input_prepare_and_finite_seconds": 0.0012034169999992628,
+          "inputs_set_seconds": 0.027018252999994274,
+          "SDK_run_seconds": 0.6586808989999895,
+          "outputs_get_seconds": 0.054200129999969704,
+          "all_owned_copies_seconds": 0.01725033499997153,
+          "outputs_release_seconds": 6.56249999906322e-05,
+          "complete_boundary_seconds": 0.7622100350000096
+        },
+        "single_call_outer_owned_seconds": 0.7655017860000157,
+        "init_seconds": 0.16212176699997372,
+        "destroy_seconds": 0.05181537999999364
+      },
+      {
+        "route": "centered_A",
+        "status": "completed_invalid_numeric_diagnostic",
+        "outputs": [
+          {
+            "name": "frame_output",
+            "bytes": 8528000,
+            "sha256": "be94abbc05bff8bf5ef907da4a3b290beaaeb3a1a25441bf35c985dada09f3e2",
+            "raw_sha256": "da223a8eddb27e36639382828037ce55d87de11ab6d6175534d3fa90f06f391f",
+            "shape": [
+              2,
+              1041,
+              1024
+            ],
+            "dtype": "float32",
+            "finite": true,
+            "nan_count": 0,
+            "positive_inf_count": 0,
+            "negative_inf_count": 0
+          },
+          {
+            "name": "global_output",
+            "bytes": 8528000,
+            "sha256": "df523c21b2b1f0d43f6d464dee0b31639b3f76c9a82593bf94498ad2bb0650a3",
+            "raw_sha256": "1c05f7deab591f68fbe5f9ed0a7532afa1928addb8e682bfecd101e2e954a0aa",
+            "shape": [
+              1,
+              2082,
+              1024
+            ],
+            "dtype": "float32",
+            "finite": false,
+            "nan_count": 114755,
+            "positive_inf_count": 0,
+            "negative_inf_count": 1225
+          }
+        ],
+        "comparisons": {
+          "frame_output_vs_original_A": {
+            "numeric_comparison_available": true,
+            "relative_l2": 0.04618085893049225,
+            "max_abs": 0.7631521299481392,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "reference_norm": 265.45689148859213,
+            "outside_count": 2128198
+          },
+          "frame_output_vs_centered_A": {
+            "numeric_comparison_available": true,
+            "relative_l2": 0.046180858871003816,
+            "max_abs": 0.7631520703434944,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "reference_norm": 265.45689141197937,
+            "outside_count": 2128198
+          },
+          "global_output_vs_original_A": {
+            "numeric_comparison_available": false,
+            "relative_l2": null,
+            "max_abs": null,
+            "fixed_gate_passed": false,
+            "strict_pass": false
+          },
+          "global_output_vs_centered_A": {
+            "numeric_comparison_available": false,
+            "relative_l2": null,
+            "max_abs": null,
+            "fixed_gate_passed": false,
+            "strict_pass": false
+          }
+        },
+        "single_call_SDK_stages": {
+          "input_prepare_and_finite_seconds": 0.001192625000044245,
+          "inputs_set_seconds": 0.02595600199998671,
+          "SDK_run_seconds": 0.686840028000006,
+          "outputs_get_seconds": 0.05231042200000502,
+          "all_owned_copies_seconds": 0.01722816800003102,
+          "outputs_release_seconds": 6.0666999956993095e-05,
+          "complete_boundary_seconds": 0.7874358710000138
+        },
+        "single_call_outer_owned_seconds": 0.7907757460000084,
+        "init_seconds": 0.16171459999998206,
+        "destroy_seconds": 0.04569221299999526
+      }
+    ],
+    "resource_totals": {
+      "contexts_created": 2,
+      "contexts_destroyed": 2,
+      "runs_completed": 2,
+      "output_buffers_acquired": 4,
+      "output_buffers_released": 4
+    },
+    "all_resources_closed": true,
+    "source_input_environment_and_affinity_restored": true,
+    "control": {
+      "seconds": 3.5410425229999873,
+      "sample_count": 8,
+      "sampled_max_temperature_c": 52.692,
+      "requested_frequency_hz": 1000000000,
+      "frequency_governor_limits_restored": true,
+      "userspace_request_was_undefined": true,
+      "restore_errors": []
+    },
+    "timing_is_steady_state_or_performance_acceptance": false,
+    "Krope_FLOAT16_only_control_included": false,
+    "isolated_centering_effect_established": false,
+    "heldout_trajectory_fresh_pose_or_physical8GB_acceptance": false
+  }
+}

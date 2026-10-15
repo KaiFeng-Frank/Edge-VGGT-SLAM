@@ -1,0 +1,259 @@
+{
+  "schema": "original_native518_global0_value_candidates_v138",
+  "status": "two_original_global0_candidates_four_input_board_FP32_equivalence_passed_quantized_evaluation_pending",
+  "original_model_only": true,
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "scope": "Original aggregator frame0/global0 on four captured native518 original image-encoder inputs. Only the global0 value coordinate or original QK/V column representation changes, retaining all2082 global keys,16heads and all original learned values. This is a component FP32 representation check, not complete-model or trajectory evaluation.",
+  "related_result": "original_native518_global_value_mean_v136.json",
+  "parent_global_value_mean_graph_sha256": "f7ad01cd93f11b83ee90437811d88a04d96276d50bf98b3f4913fe208db8a457",
+  "original_parameters_and_source_lineage_retained": true,
+  "new_learned_models_or_parameters": 0,
+  "calibration_ids": [
+    "pair0",
+    "pair1",
+    "pair2",
+    "pair3"
+  ],
+  "source_pair_indices": [
+    [
+      0,
+      8
+    ],
+    [
+      16,
+      24
+    ],
+    [
+      48,
+      56
+    ],
+    [
+      64,
+      72
+    ]
+  ],
+  "heldout_ids_reserved": [
+    "pair4",
+    "pair5"
+  ],
+  "heldout_arrays_accessed": false,
+  "heldout_used_for_coefficient_choice": false,
+  "statistics_capture": {
+    "worker_source_sha256": "f55286a7d850209107788af8bbb3f9bfa05623c4b6107ea1f8e4f08f7c236598",
+    "worker_receipt_sha256": "8b091eac9754addb5ba62d249f3d38b0964f38e1e45d598fc3e2205820a14e9c",
+    "controller_receipt_sha256": "45330c0058fce6a1a73605127b3b22065b1b73ca305ace29475f575268df5d45",
+    "static_source_peer_audit_sha256": "b5f0048b0e9c0361d365990faafbb80283a53208664ea8f267c060a1b8e33127",
+    "original_graph_nodes": 143,
+    "original_initializers": 79,
+    "graph_change": "Append output ValueInfos for existing original global0 QKV, V and PV; every original node and initializer remains unchanged.",
+    "CPU_sessions_created_dropped": 1,
+    "CPU_calls": 4,
+    "saved_outputs": 20,
+    "all_saved_outputs_finite": true,
+    "original_frame_and_global_endpoints_byte_equal_canonical_references": true,
+    "statistics_axes": {
+      "V_mean_and_peak": "Per head/channel across batch and all2082 keys",
+      "QKV_mean_and_peak": "Per original column across batch and all2082 queries"
+    },
+    "coefficient_selection_during_capture": false,
+    "SDK_or_GPU_invoked": false,
+    "worker_seconds": 25.585248819999833,
+    "worker_peak_rss_mib": 1123.36328125,
+    "CPU_controller_frequency_writes": false,
+    "CPU_timing_is_not_NPU_performance": true
+  },
+  "value_balance_candidate": {
+    "static_source_sha256": "d04b01efe06686190bbfde2a2d99b8a9b56256890e78ff849c3a3950d4d378c5",
+    "static_receipt_sha256": "3f8b7a023c7ae3affe147656c249a3c2578bbf3875cac78c4743a7642a09fbde",
+    "candidate_graph_sha256": "28e433b6133c45c67d471ce9379ad64d1ad517cfbfccd59e581a5a1e6d18bc63",
+    "nodes": 146,
+    "initializers": 79,
+    "predeclared_selection": {
+      "formula": "d_j=2**clip(round(log2(sqrt(max_o_abs_Wo[j,o]/max_cal_key_abs(V_j-mean_keys(V_j))))),-4,4)",
+      "alpha": 0.5,
+      "exponent_bounds": [
+        -4,
+        4
+      ],
+      "zero_channel_scale": 1,
+      "rounding": "nearest_ties_even",
+      "global_normalization": null,
+      "selected_on_four_calibrations_only": true,
+      "heldout_arrays_accessed": false
+    },
+    "exponent_counts": {
+      "-2": 65,
+      "-1": 822,
+      "0": 137
+    },
+    "changes": "Multiply only original global V QKV columns and bias by positive powers of two, and divide matching original projection input rows by the same factors. Original Q/K columns, nodes and dense products are retained.",
+    "changed_initializers": 3,
+    "added_nodes": 0,
+    "added_MACs": 0,
+    "exact_FP32_initializer_inverse": true,
+    "whole_parent_ModelProto_inverse_byte_equal": true,
+    "FP16_storage_reversibility_or_quantized_equivalence_established": false,
+    "diagnostic_quantization_proxy": {
+      "definition": "Symmetric[-127,127] round-to-nearest diagnostic only; not SDK asymmetric/channel quantization or a forward.",
+      "activation_cases": [
+        {
+          "input_id": "pair0",
+          "centered_V_relative_l2_before": 0.05239526361991859,
+          "centered_V_relative_l2_after_inverse": 0.027871975841798118,
+          "joint_QK_relative_l2_before": 0.0296137547742618,
+          "joint_QK_relative_l2_after": 0.015377506030436448,
+          "joint_V_relative_l2_before": 0.040577000744264735,
+          "joint_V_relative_l2_after_inverse": 0.04446690989424602
+        },
+        {
+          "input_id": "pair1",
+          "centered_V_relative_l2_before": 0.05221128181640038,
+          "centered_V_relative_l2_after_inverse": 0.027771324413375136,
+          "joint_QK_relative_l2_before": 0.02973692061150477,
+          "joint_QK_relative_l2_after": 0.015208940138539318,
+          "joint_V_relative_l2_before": 0.03892500774578379,
+          "joint_V_relative_l2_after_inverse": 0.042046003414762306
+        },
+        {
+          "input_id": "pair2",
+          "centered_V_relative_l2_before": 0.05187404238752126,
+          "centered_V_relative_l2_after_inverse": 0.027604505119105185,
+          "joint_QK_relative_l2_before": 0.02975493392337812,
+          "joint_QK_relative_l2_after": 0.015386709868173833,
+          "joint_V_relative_l2_before": 0.03930488270715151,
+          "joint_V_relative_l2_after_inverse": 0.04291277216324138
+        },
+        {
+          "input_id": "pair3",
+          "centered_V_relative_l2_before": 0.05289957477522568,
+          "centered_V_relative_l2_after_inverse": 0.02814793012244233,
+          "joint_QK_relative_l2_before": 0.02973598474267106,
+          "joint_QK_relative_l2_after": 0.01536736852501161,
+          "joint_V_relative_l2_before": 0.04113450305290459,
+          "joint_V_relative_l2_after_inverse": 0.044854745468196115
+        }
+      ],
+      "projection_weight_relative_l2_original": 0.009897034026724394,
+      "projection_weight_relative_l2_after_inverse": 0.017488767576973416,
+      "QKV_weight_relative_l2_original": 0.011518288377666422,
+      "QKV_weight_relative_l2_after_inverse": 0.011518288377666422,
+      "interpretation": "The symmetric diagnostic improves centered-V and shared-grid QK error on all four inputs, but worsens shared-grid V and projection-weight error. This mixed tradeoff does not predict actual SDK activation grids, fused SDPA or full-forward quantized quality.",
+      "actual_SDK_grid_or_NN_forward": false
+    }
+  },
+  "QKV_column_split_candidate": {
+    "static_source_sha256": "f42cd4b1c48e15480b3b1a3fa8ba75407e4f88f96d5e53113ab3dee7454293af",
+    "static_receipt_sha256": "bb8f2c92b6eaeda4f2db3cfb6980bb05a873c92391212b0ae7fe91ae008704bc",
+    "candidate_graph_sha256": "b79a4d3bd522a83199bfdf1389a8d44e8f6bb94ab09f2a83301fea8502e8f452",
+    "parent_nodes": 146,
+    "candidate_nodes": 149,
+    "parent_initializers": 79,
+    "candidate_initializers": 81,
+    "changes": "Separate the unchanged original1024-input QKV product into original2048-column QK and1024-column V products, restoring the same query/key/value logical tensors. All downstream normalization, RoPE, mean/Sub/restore and projection operations remain unchanged.",
+    "original_QKV_MACs": 6549405696,
+    "candidate_QK_plus_V_MACs": 6549405696,
+    "original_weight_and_bias_column_merge_byte_equal": true,
+    "all_other_node_and_initializer_protos_byte_equal": true,
+    "whole_parent_ModelProto_inverse_byte_equal": true,
+    "V_basis_scaling_applied": false,
+    "independent_SDK_activation_grids_established": false,
+    "SDPA_fusion_or_weighted_precision_established": false,
+    "added_launch_or_layout_cost_not_measured": true
+  },
+  "actual_board_FP32_gate": {
+    "worker_source_sha256": "9c705ac5ccc0d6e60d68838870792c79a2c1f54abe79321dcb2d032bfcaa66ef",
+    "transport_source_sha256": "832820aa51f0a252d24c4e142b68db209d9cf7b3a783a2216ede1e948931a58d",
+    "worker_receipt_sha256": "990a2055fa833e18d288c586da82fdbe19d7a8f7d2ab8890a52e0d3074c61d35",
+    "controller_receipt_sha256": "8933c770435c2e1a746a9d2a273ee8bc3e75df9ac8d5bb424dd9a97a94b4409e",
+    "independent_saved_audit_sha256": "da44bb57ac9c7c7b08e1b5138fef9bc62cb296a1d33b886040b36610b765a8a9",
+    "CPU_sessions_created_dropped": 2,
+    "maximum_simultaneous_CPU_sessions": 1,
+    "CPU_calls": 8,
+    "saved_outputs": 8,
+    "all_outputs_saved_before_verdict": true,
+    "all_file_raw_shape_dtype_finite_checks_passed": true,
+    "reference": "Original canonical A FP32 global endpoint for each identical reserved input; the candidate parent is not substituted as the numeric reference.",
+    "fixed_gate": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001
+    },
+    "strict_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05,
+      "outside_count_required": 0
+    },
+    "all8_fixed_gate_passed": true,
+    "all8_strict_gate_passed": true,
+    "per_variant_same_four_case_metrics": [
+      {
+        "input_id": "pair0",
+        "relative_l2": 4.5787863568697714e-08,
+        "max_abs": 4.76837158203125e-07,
+        "strict_outside_count": 0
+      },
+      {
+        "input_id": "pair1",
+        "relative_l2": 4.8873874240199066e-08,
+        "max_abs": 4.76837158203125e-07,
+        "strict_outside_count": 0
+      },
+      {
+        "input_id": "pair2",
+        "relative_l2": 4.811205235308923e-08,
+        "max_abs": 7.152557373046875e-07,
+        "strict_outside_count": 0
+      },
+      {
+        "input_id": "pair3",
+        "relative_l2": 4.5894474312530567e-08,
+        "max_abs": 5.960464477539062e-07,
+        "strict_outside_count": 0
+      }
+    ],
+    "worst_relative_l2": 4.8873874240199066e-08,
+    "worst_max_abs": 7.152557373046875e-07,
+    "both_candidates_byte_equal_mean_parent_on_all_four_cases": true,
+    "byte_equal_original_A_reference": false,
+    "clean_session_drop_and_process_state_restore": true,
+    "CPU_controller_no_frequency_writes_and_group_reaped": true,
+    "no_additional_model_or_SDK_execution_in_saved_audit": true
+  },
+  "next_evaluation": {
+    "priority": "Fresh SDK step1 for the original QKV column-split candidate",
+    "status": "sources_frozen_metadata_plan_passed_board_calibration_not_recorded_here",
+    "worker_source_sha256": "40eb79cda3f79a6f0db17e0105f5ee7c18b3d5f828a274f132160b9ce5c318cf",
+    "transport_source_sha256": "6d1c0761e33197c3f19c7ca049f89c9cf15452875121b654cd0104c1642ab809",
+    "additional_explicit_NN_forwards_before_SDK": 0,
+    "original_calibration_input_count": 4,
+    "minimum_pre_SDK_MemAvailable_bytes": 13958643712,
+    "original_CONFIG_and_step1_options_retained": true,
+    "dataset_difference_only_fresh_staged_absolute_paths": true,
+    "precision_mapping_requirement": "Do not blindly request FLOAT16 for the new weighted V producer. Audit actual explicit conversion into FLOAT16 mean/Sub/restore, with original weighted QK and V products INT8, and verify actual SDPA fusion before inference acceptance."
+  },
+  "acceptance": {
+    "original_component_FP32_representation_gate_passed": true,
+    "quantized_quality_accepted": false,
+    "performance_accepted": false,
+    "full_model_evaluated": false,
+    "trajectory_evaluated": false,
+    "sustained_realtime_accepted": false,
+    "physical_8GB_accepted": false,
+    "production_defaults_changed": false,
+    "GitHub_push": false
+  },
+  "licensing": {
+    "code_and_model_weight_licenses_are_separate": true,
+    "model_license_document": "../MODEL_LICENSES.md",
+    "VGGT_weight_commercial_use_terms_not_granted_by_repository_code_license": true
+  },
+  "privacy": "Only aggregate metadata and evidence identities are public. Original weights, weight-bearing ONNX/RKNN graphs, tensor arrays, SDK files and private paths remain private.",
+  "limits": [
+    "Four calibration inputs prove representation equivalence only; they are not a heldout accuracy or generalization result.",
+    "No individual probability-row mass or sole quantization root cause is established.",
+    "No original multiply-accumulates are removed by column separation; actual compiler lowering and launch/layout cost remain to be measured.",
+    "The completed first-group diagnostic in R136 still fails original precision gates. These new FP32 candidates do not repair or accept it."
+  ]
+}

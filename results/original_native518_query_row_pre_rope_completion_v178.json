@@ -1,0 +1,355 @@
+{
+  "schema": "original_native518_query_row_pre_rope_completion_v178",
+  "status": "original_pre_RoPE_NPU_outputs_with_fixed_FP32_CPU_completion_verified_close_full_QK_no_integration_or_speed_acceptance",
+  "original_model_only": true,
+  "scope": {
+    "component": "Original global0 QKV producer ending at Q/K normalization, followed by original fixed CPU RoPE; no consumers execute.",
+    "full_Q_K_Vc_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "mu_shape": [
+      1,
+      1,
+      1024
+    ],
+    "heads": 16,
+    "head_dimension": 64,
+    "reused_engineering_cases": [
+      {
+        "id": "pair4",
+        "source_indices": [
+          96,
+          104
+        ]
+      },
+      {
+        "id": "pair5",
+        "source_indices": [
+          112,
+          120
+        ]
+      }
+    ],
+    "input": "Same captured original FLOAT32 frame output, reshaped to GLOBAL without a halfcast.",
+    "reference": "Preserved R174 original board-CPU producer tensors, conditional on the captured original encoder boundary.",
+    "fresh_final_generalization_holdout": false
+  },
+  "static_identity": {
+    "original_producer_nodes": 29,
+    "candidate_nodes": 19,
+    "initializers": 18,
+    "outputs": 4,
+    "original15_untouched_node_protos_byte_equal": true,
+    "all18_original_initializer_protos_byte_equal": true,
+    "whole_parent_inverse_with_original_CPU_completion_ModelProto_byte_equal": true,
+    "all_original_learned_operations_and_parameters_retained": true,
+    "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "all2082_tokens16_heads64_channels_and_full_key_mean_preserved": true,
+    "only10_original_nonlearned_RoPE_nodes_moved_to_CPU": true,
+    "observer_outputs_added": false,
+    "all_four_original_fixed_RoPE_initializer_protos_retained": true
+  },
+  "fixed_CPU_completion": {
+    "nonlearned_constants": [
+      "original_permutation",
+      "original_rotation_sign",
+      "original_FLOAT32_cosine",
+      "original_FLOAT32_sine"
+    ],
+    "constant_protobuf_and_raw_SHA_checks_passed": true,
+    "original_order": [
+      "Gather normalized Q/K on channel axis3",
+      "Mul by original rotation sign",
+      "Mul normalized Q/K by cosine",
+      "Mul rotated Q/K by sine",
+      "Add cosine branch then sine branch"
+    ],
+    "completed_Q_K_are_FLOAT32": true,
+    "completed_Q_K_halfcast_performed": false,
+    "Vc_and_mu_pass_through_unchanged": true
+  },
+  "actual_placement": {
+    "operators": 23,
+    "feature_rows": 33,
+    "constant_rows": 17,
+    "internal_NPU_operations": 15,
+    "internal_CPU_transposes": 3,
+    "public_CPU_IO_operations": 5,
+    "all_operator_and_activation_storage_FLOAT16": true,
+    "full_original_QKV_QK_norms_and_mean_on_NPU": true,
+    "RoPE_or_measurement_arithmetic_in_NPU_prefix": false,
+    "strict_all_internal_NPU_placement": false,
+    "all_actual_table_rows_consumed": true,
+    "printed_static_memory_KB": {
+      "internal": 50194.3,
+      "weight": 6169.25
+    },
+    "printed_static_memory_is_physical_or_peak_measurement": false,
+    "historical_compile_pending_flags_retained_and_later_actual_checks_recorded_separately": true
+  },
+  "actual_CPU_guard": {
+    "CPU_sessions_created": 1,
+    "CPU_sessions_dropped": 1,
+    "CPU_calls": 2,
+    "completed_original_output_comparisons": 8,
+    "all8_completed_original_CPU_outputs_byte_equal": true,
+    "CPU_session_dropped_before_NPU_owner": true,
+    "audit_basis": "Frozen source and actual receipt establish the hard byte guard; the raw CPU pre-RoPE arrays were not independently saved or rerun."
+  },
+  "saved_NPU_result": {
+    "core_mask": 1,
+    "init_flags": 0,
+    "calls": 2,
+    "raw_lossless_FLOAT16_arrays": 8,
+    "saved_NPY_bytes": 25588736,
+    "completed_full_FLOAT32_hashes_reconstructed": 8,
+    "full_original_CPU_R175_R177_comparisons_recomputed": 24,
+    "original_four_constant_source_and_payloads_verified": true,
+    "all_raw_file_hash_dtype_shape_finite_and_roundtrip_checks_passed": true,
+    "completed_FLOAT32_results_reproducible_from_saved_raw_and_fixed_constants": true,
+    "all_Vc_mu_outputs_byte_equal_both_prior_NPU_routes": true,
+    "Q_K_byte_equal_R175_or_R177": false,
+    "cases": [
+      {
+        "id": "pair4",
+        "full_outputs_vs_original_CPU": {
+          "producer_Q": {
+            "relative_l2": 0.0012449630371976473,
+            "max_abs": 0.01085042953491211,
+            "strict_outside": 1968778,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "completed_FLOAT32_raw_sha256": "0c3274d21f8e4a4e207eca853076bba29e95a6fd8c6a2d4a9e65962671c6abe8",
+            "versus_R175_relative_l2": 0.4407039392326093,
+            "versus_R177_relative_l2": 0.00033898796425059914,
+            "byte_equal_R175_and_R177": false
+          },
+          "producer_K": {
+            "relative_l2": 0.001571441081909365,
+            "max_abs": 0.02235734462738037,
+            "strict_outside": 1998446,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "completed_FLOAT32_raw_sha256": "9e5335e45a2eec2d199bddaf110f76db159919b21ac9124b5f9a96722edbee00",
+            "versus_R175_relative_l2": 0.42156442907622255,
+            "versus_R177_relative_l2": 0.0003437377509221992,
+            "byte_equal_R175_and_R177": false
+          },
+          "producer_Vc": {
+            "relative_l2": 0.0014611748769711485,
+            "max_abs": 0.005684852600097656,
+            "strict_outside": 1664957,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "completed_FLOAT32_raw_sha256": "e234e18c0e7398e636023b867ee2be5aeabf00842bdc1c9dba48dd8bade5d86c",
+            "versus_R175_relative_l2": 0.0,
+            "versus_R177_relative_l2": 0.0,
+            "byte_equal_R175_and_R177": true
+          },
+          "producer_mu": {
+            "relative_l2": 0.0002624241928764355,
+            "max_abs": 0.0002486705780029297,
+            "strict_outside": 434,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "completed_FLOAT32_raw_sha256": "992a1f12dea70524bad542e9273aab10a250ad2f7c650e408f36808946fea9a3",
+            "versus_R175_relative_l2": 0.0,
+            "versus_R177_relative_l2": 0.0,
+            "byte_equal_R175_and_R177": true
+          }
+        },
+        "diagnostic_seconds": {
+          "complete_producer_plus_CPU_RoPE": 0.31434232300671283,
+          "owned_NPU_API_boundary": 0.26513377600349486,
+          "SDK_run_nested_within_owned": 0.2122438130027149,
+          "fixed_CPU_RoPE_completion": 0.049206796000362374
+        }
+      },
+      {
+        "id": "pair5",
+        "full_outputs_vs_original_CPU": {
+          "producer_Q": {
+            "relative_l2": 0.0012484445495871282,
+            "max_abs": 0.010613441467285156,
+            "strict_outside": 1969677,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "completed_FLOAT32_raw_sha256": "f776ec1b279ed27f9ffa12ea4128d8036ccfcae21eb490259101dce30ed8e2fe",
+            "versus_R175_relative_l2": 0.44307294341509584,
+            "versus_R177_relative_l2": 0.0003386079567284755,
+            "byte_equal_R175_and_R177": false
+          },
+          "producer_K": {
+            "relative_l2": 0.0015871461323277228,
+            "max_abs": 0.018972396850585938,
+            "strict_outside": 1998219,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "completed_FLOAT32_raw_sha256": "d90c4958907bc667a6f6280915fe86d2e793442e691274e5702ab67a602b20f8",
+            "versus_R175_relative_l2": 0.4194763653726754,
+            "versus_R177_relative_l2": 0.0003430959240299083,
+            "byte_equal_R175_and_R177": false
+          },
+          "producer_Vc": {
+            "relative_l2": 0.0015100386108599423,
+            "max_abs": 0.004422664642333984,
+            "strict_outside": 1672758,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "completed_FLOAT32_raw_sha256": "ed1f9f7409845a434faf5edac965e813f8c1576c8f7174e4d973a0b0f3474311",
+            "versus_R175_relative_l2": 0.0,
+            "versus_R177_relative_l2": 0.0,
+            "byte_equal_R175_and_R177": true
+          },
+          "producer_mu": {
+            "relative_l2": 0.0003121948619356034,
+            "max_abs": 0.0003472566604614258,
+            "strict_outside": 468,
+            "fixed_gate_passed": false,
+            "strict_pass": false,
+            "completed_FLOAT32_raw_sha256": "59696669c31e35c1ab9a0b964a166b439aba89635f99d75eb6f75bd9ec215b7a",
+            "versus_R175_relative_l2": 0.0,
+            "versus_R177_relative_l2": 0.0,
+            "byte_equal_R175_and_R177": true
+          }
+        },
+        "diagnostic_seconds": {
+          "complete_producer_plus_CPU_RoPE": 0.31059724000806455,
+          "owned_NPU_API_boundary": 0.2541906510014087,
+          "SDK_run_nested_within_owned": 0.2154506049992051,
+          "fixed_CPU_RoPE_completion": 0.056405422001262195
+        }
+      }
+    ]
+  },
+  "resources_and_controller": {
+    "contexts_created": 1,
+    "contexts_destroyed": 1,
+    "runs_completed": 2,
+    "output_buffers_acquired": 8,
+    "output_buffers_released": 8,
+    "maximum_live_NPU_owners": 1,
+    "all_resources_closed": true,
+    "cleanup_errors": [],
+    "CPU_owner_dropped_before_NPU_owner": true,
+    "source_inputs_affinity_environment_and_policy_restored": true,
+    "controller_frequency_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "controller_temperature_limit_c": 75,
+    "maximum_controller_sample_c": 65.615,
+    "controller_baseline_restored": true,
+    "initialization_seconds": 0.07190517400158569,
+    "teardown_seconds": 0.03347154500079341,
+    "all18_root_f_bfree_write_checks_passed": true,
+    "new_root_filesystem_floor_bytes": 536870912,
+    "read_only_data_filesystem_floor_bytes": 3221225472,
+    "all_staging_raw_failure_and_JSON_bytes_budgeted_by_filesystem": true
+  },
+  "interpretation": {
+    "finding": "Much closer full Q/K can be exported without the R177 observer outputs by moving only the original fixed RoPE arithmetic to FP32 CPU completion.",
+    "prior_run_producer_timings_are_a_matched_speed_comparison": false,
+    "exact_cause_of_old_NPU_QK_discrepancy_established": false,
+    "completed_QK_errors_are_not_consumer_or_model_accuracy": true
+  },
+  "acceptance": {
+    "NPU_original_fixed_and_strict_tensor_gates_passed": false,
+    "consumer_integration_measured": false,
+    "component_speed_accepted": false,
+    "original_model_or_trajectory_quality_accepted": false,
+    "sustained_full_model_or_SLAM_rate_accepted": false,
+    "physical_8GB_operation_verified": false
+  },
+  "evidence": [
+    {
+      "role": "Original pre-RoPE static inverse and CPU specification",
+      "basename": "result.json",
+      "bytes": 14768,
+      "sha256": "75237dd81b0cafc4b6befa5f97f4d575e11031a9301882b2cfbc19c977a281f9"
+    },
+    {
+      "role": "Fixed original CPU completion and exporter source",
+      "basename": "export_pre_rope_static.py",
+      "bytes": 12089,
+      "sha256": "c5ca12dd7b8a783f37ee4162cc8749ec91dee71d3a5f6175170887ed78b0c230"
+    },
+    {
+      "role": "Original learned pre-RoPE ONNX",
+      "basename": "producer-pre-rope.onnx",
+      "bytes": 13674836,
+      "sha256": "f1184ef403aba75e16e92b1791ccb31aa317a8dba5858f73412604c5e06dfa1b"
+    },
+    {
+      "role": "Noncalibrating pre-RoPE compile",
+      "basename": "result.json",
+      "bytes": 7624,
+      "sha256": "b3eb381c9e3f8b8418ed149dd091db9046f09ea8819f75572c7a9933f4ce6329"
+    },
+    {
+      "role": "Pre-RoPE compiled model",
+      "basename": "compiled.rknn",
+      "bytes": 6823227,
+      "sha256": "1167c99f1a0093e8da6e5dddefef00c267a91a60eb88550c186e838df28323f6"
+    },
+    {
+      "role": "Actual pre-RoPE placement audit",
+      "basename": "producer-pre-rope-host-compile-placement-audit-r1.json",
+      "bytes": 14756,
+      "sha256": "8ebd2bcce517c09f5253d8bf4e7a771224bf374f3f1bd3160aea997bd415f91a"
+    },
+    {
+      "role": "Actual CPU and NPU completion control",
+      "basename": "result.json",
+      "bytes": 54955,
+      "sha256": "69241c44346d0577e52dfa1c6ca05bfa9596e4da76c987dc3c97057090c8f41c"
+    },
+    {
+      "role": "Executed control worker",
+      "basename": "probe_query_row_pre_rope_completion_board.py",
+      "bytes": 34935,
+      "sha256": "a1383c48184612948309dd5ebab0b1bc2432efa05a3431a9b605f4360a2123d8"
+    },
+    {
+      "role": "Actual transport and payload index",
+      "basename": "producer-pre-rope-r1-transport.json",
+      "bytes": 40988,
+      "sha256": "3cc1e8b1268fd20e24d804ce747288593ea202673b79e72d8b4964e360f1f80a"
+    },
+    {
+      "role": "Executed transport source",
+      "basename": "execute_query_row_pre_rope_completion_host.py",
+      "bytes": 17215,
+      "sha256": "2e84a8882f7a8c6e2088a2f3cfdc5ee20bf185697946b7798d54a348dbb765a9"
+    },
+    {
+      "role": "Actual restoring controller",
+      "basename": "control.json",
+      "bytes": 4609,
+      "sha256": "dd6aec86199f67a08cb36124f9da3be2d5b368f4d762d7807f3bcf7519da6221"
+    },
+    {
+      "role": "Executed source and artifact manifest",
+      "basename": "manifest.json",
+      "bytes": 19560,
+      "sha256": "51da13a75a55263077ed2607e76b8adffa71704a34ab97a3619c1a321534df46"
+    },
+    {
+      "role": "Independent raw-to-FLOAT32 completion audit",
+      "basename": "producer-pre-rope-r1-saved-audit-r1.json",
+      "bytes": 20678,
+      "sha256": "053e38360ea5e79bf757298d7c09bb55bfdecdd38a5991ddd59af5ca4613c1c2"
+    },
+    {
+      "role": "Independent saved audit source",
+      "basename": "audit_query_row_pre_rope_completion_saved.py",
+      "bytes": 19712,
+      "sha256": "37c3873461848a874023e68eda3789ce61a7a784a6df0ccdcfa047ce40290abd"
+    }
+  ],
+  "related_public_records": [
+    "original_native518_query_row_fusion_v174.json",
+    "original_native518_query_row_producer_diagnostic_v176.json",
+    "original_native518_query_row_producer_taps_v177.json"
+  ]
+}

@@ -1,0 +1,481 @@
+{
+  "schema": "original_native518_three_core_block_v124",
+  "status": "complete_original_DINO0_three_core_schedule_rejected_for_deployment",
+  "candidate_accepted": false,
+  "original_model_only": true,
+  "scope": "One complete original DINO block0 at native518 preprocessing, [1,1041,1024], all 16 heads, all 14 original parameter tensors and full K reductions. No full-model or trajectory rerun.",
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "original_parameters": {
+    "count": 14,
+    "weights": {
+      "bytes": 50396702,
+      "sha256": "034497947f816fab655c11109d479a7fd94b582f7dd8e81c17977f9b9c593ae2"
+    },
+    "original_FP32_values_verified_on_board": true,
+    "storage": "original FP32 weights converted once to FP16 by pinned board NEON; no quantization or retraining"
+  },
+  "execution": {
+    "baseline_A": "Original fused RKNN FP16 DINO0, flags0/core_mask7; same model artifact as historical core1 runs",
+    "candidate_B": "Four weighted linears partitioned by output channels across masks 1,2,4; all 32 QK/PV products across three fixed SDK owners; DMA-imported Mali original FP32 normalization, biases, scales, residuals, Erf GELU and softmax",
+    "MatMul_type": 1,
+    "A_and_B_dtype": "FP16",
+    "C_dtype": "FP32",
+    "native_combined_mask_used": false,
+    "weighted_N_partitions": {
+      "qkv": [
+        1024,
+        1024,
+        1024
+      ],
+      "proj": [
+        352,
+        352,
+        320
+      ],
+      "fc1": [
+        1376,
+        1376,
+        1344
+      ],
+      "fc2": [
+        352,
+        352,
+        320
+      ]
+    },
+    "weighted_M": 1041,
+    "K_split": false,
+    "attention_head_ranges_inclusive": [
+      [
+        0,
+        5
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        11,
+        15
+      ]
+    ],
+    "shared_weighted_A_buffers": 4,
+    "weighted_C_gather_kernels_or_buffers": false,
+    "DMA_imports": 112,
+    "native_contexts": 44,
+    "ordinary_native_memories": 132,
+    "GPU_kernels_per_complete_block": 7,
+    "original_Erf_exp_and_half_boundaries_preserved": true,
+    "original_math_layers_tokens_and_parameters_retained": true,
+    "reference_intermediate_substituted": false,
+    "original_FP32_equivalence_proven": false,
+    "internal_NPU_accumulation_precision_proven": false,
+    "GPU_FP_CONTRACT_OFF": true,
+    "GPU_build_options": "-cl-std=CL1.2"
+  },
+  "performance": {
+    "schedule": "ABBAABBA",
+    "timing_scope": "Each complete block includes input upload/validation, all four static-weight products and32 attention products, all GPU operations and synchronizations, final owned output and finite check. Init/destroy separate. Comparisons, file IO, and first-B buffer capture outside. No intermediate reference fed into either route.",
+    "calls": [
+      {
+        "index": 0,
+        "route": "A",
+        "first_for_route": true,
+        "complete_block_seconds": 0.1369400559924543
+      },
+      {
+        "index": 1,
+        "route": "B",
+        "first_for_route": true,
+        "complete_block_seconds": 0.2929774460499175
+      },
+      {
+        "index": 2,
+        "route": "B",
+        "first_for_route": false,
+        "complete_block_seconds": 0.2597422759863548
+      },
+      {
+        "index": 3,
+        "route": "A",
+        "first_for_route": false,
+        "complete_block_seconds": 0.15933680802118033
+      },
+      {
+        "index": 4,
+        "route": "A",
+        "first_for_route": false,
+        "complete_block_seconds": 0.13929709704825655
+      },
+      {
+        "index": 5,
+        "route": "B",
+        "first_for_route": false,
+        "complete_block_seconds": 0.31641678197775036
+      },
+      {
+        "index": 6,
+        "route": "B",
+        "first_for_route": false,
+        "complete_block_seconds": 0.30557553097605705
+      },
+      {
+        "index": 7,
+        "route": "A",
+        "first_for_route": false,
+        "complete_block_seconds": 0.15575755800819024
+      }
+    ],
+    "subsequent_indices": {
+      "A": [
+        3,
+        4,
+        7
+      ],
+      "B": [
+        2,
+        5,
+        6
+      ]
+    },
+    "subsequent_three_mean_seconds": {
+      "A": 0.15146382102587572,
+      "B": 0.29391152964672074
+    },
+    "B_duration_increase_percent": 94.04734916631318,
+    "initialization_seconds": {
+      "baseline": 0.0987880930188112,
+      "candidate": 0.8699264200404286
+    },
+    "destroy_seconds": 0.17593135096831247,
+    "summed_eight_call_lifecycle_seconds": 2.9106894180877134,
+    "B_subsequent_stage_wall_means_seconds": {
+      "weighted_wall_seconds": 0.07254965997223432,
+      "QK_dispatch_wall_seconds": 0.01442694632957379,
+      "PV_dispatch_wall_seconds": 0.01723401533672586,
+      "GPU_stage_wall_seconds": 0.17626348968284825,
+      "GPU_softmax_wall_seconds": 0.09092517633689567,
+      "contained_GPU_kernel_seconds": 0.08244254333333334,
+      "owned_output_seconds": 0.005373959332549323,
+      "inner_other_seconds": 0.000832555660357078,
+      "outer_other_seconds": 0.0051912780036218464
+    },
+    "GPU_events_nested_in_stage_wall_times": true,
+    "parallel_SDK_durations_not_summed_as_latency": true,
+    "host_SDK_overlap_is_not_device_utilization": true,
+    "peak_process_rss_mib": 862.6953125,
+    "interpretation": "The candidate is 94.05% slower than its interleaved original fused core7 comparator. Three subsequent calls per route do not establish P95 or sustained throughput. Earlier serial-core stage times are cross-run observations, not controlled causal gains. Initialization, cleanup, first-B diagnostics, saving and comparisons are outside call timing."
+  },
+  "precision": {
+    "original_FP32_whole_output": {
+      "A": {
+        "relative_l2": 0.025482275865970065,
+        "max_abs": 0.22928571701049805,
+        "l2_error": 4.887401903291877,
+        "reference_l2_norm": 191.79613033774143,
+        "cosine": 0.9996921679794498,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 886557,
+        "byte_equal": false,
+        "fixed_gate_passed": false
+      },
+      "B": {
+        "relative_l2": 0.0002507712480020981,
+        "max_abs": 0.005247354507446289,
+        "l2_error": 0.04809695496676849,
+        "reference_l2_norm": 191.79613033774143,
+        "cosine": 0.9999999690540029,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 135979,
+        "byte_equal": false,
+        "fixed_gate_passed": false
+      }
+    },
+    "original_FP32_residual_update": {
+      "A": {
+        "relative_l2": 0.045285889581022906,
+        "max_abs": 0.22928571701049805,
+        "l2_error": 4.887401908169567,
+        "reference_l2_norm": 107.92328368476252,
+        "cosine": 0.9989742335582575,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 921999,
+        "byte_equal": false,
+        "fixed_gate_passed": false
+      },
+      "B": {
+        "relative_l2": 0.00044565863252522803,
+        "max_abs": 0.005247354507446289,
+        "l2_error": 0.04809694302458352,
+        "reference_l2_norm": 107.92328368476252,
+        "cosine": 0.9999999013466717,
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "outside_count": 165275,
+        "byte_equal": false,
+        "fixed_gate_passed": false
+      }
+    },
+    "strict_gate": {
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "fixed_gate": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001
+    },
+    "all_whole_and_residual_update_strict_and_fixed_gates_passed": false,
+    "route_raw_sha256": {
+      "A": "e52d53b8abcbb15da0c129457f93e3eabcd94d48ae48eb5eaef0bb0edb900554",
+      "B": "70de59362e3bb03eb875bc3ee9be56a7af538b4098e662d9fd6b817d5c3c3e0d"
+    },
+    "within_each_route_all_four_outputs_byte_equal": true,
+    "saved_arrays_checked": 16,
+    "all16_outputs_and_diagnostics_byte_equal_R121_and_R122": true,
+    "unchanged_candidate_bytes_do_not_establish_original_FP32_or_trajectory_acceptance": true
+  },
+  "resources": {
+    "candidate_SDK_attempts": {
+      "rknn_matmul_create": 44,
+      "rknn_matmul_set_core_mask": 44,
+      "rknn_create_mem": 132,
+      "rknn_matmul_set_io_mem": 460,
+      "rknn_mem_sync": 1020,
+      "rknn_matmul_run": 176,
+      "rknn_destroy_mem": 132,
+      "rknn_matmul_destroy": 44
+    },
+    "candidate_SDK_successes": {
+      "rknn_matmul_create": 44,
+      "rknn_matmul_set_core_mask": 44,
+      "rknn_create_mem": 132,
+      "rknn_matmul_set_io_mem": 460,
+      "rknn_mem_sync": 1020,
+      "rknn_matmul_run": 176,
+      "rknn_destroy_mem": 132,
+      "rknn_matmul_destroy": 44
+    },
+    "verified_final_ledger": {
+      "native_contexts": 44,
+      "native_memories": 132,
+      "native_runs": 176,
+      "bindings": 460,
+      "sync_calls": 1020,
+      "outside_timer_diagnostic_FROM_sync_calls": 16,
+      "GPU_imports": 112,
+      "OpenCL_objects_created_released": 136,
+      "GPU_kernels_events_created_released": 28,
+      "baseline_contexts": 1,
+      "baseline_runs": 4,
+      "baseline_output_buffers": 4,
+      "live_workers": 0,
+      "live_contexts": 0,
+      "live_memories": 0,
+      "shared_A_borrowers_released": true
+    },
+    "GPU_objects_created": {
+      "Context": 1,
+      "CommandQueue": 1,
+      "Program": 1,
+      "MemObject": 126,
+      "Kernel": 7
+    },
+    "GPU_objects_released": {
+      "Kernel": 7,
+      "MemObject": 126,
+      "Program": 1,
+      "CommandQueue": 1,
+      "Context": 1
+    },
+    "GPU_events_created": 28,
+    "GPU_events_released": 28,
+    "GPU_fully_released": true,
+    "cleanup_errors": [],
+    "worker_close_scope": "Pinned source joins borrower destroy jobs before leader/shared-A close; terminal per-worker ledgers agree. No per-destroy timestamps captured.",
+    "GPU_imports_released_before_native_cleanup": true,
+    "borrower_contexts_destroyed_before_shared_A_leader": true
+  },
+  "controller": {
+    "child_exit": 0,
+    "observed_NPU_hz": 1000000000,
+    "restored_NPU_hz": 300000000,
+    "exact_policy_restored": true,
+    "max_sampled_temperature_c": 55.461,
+    "requested_NPU_hz": 1000000000,
+    "seconds": 7.601519013987854,
+    "temperature_limit_c": 75.0,
+    "timeout_seconds": 180.0,
+    "restore_errors": [],
+    "GPU_before": {
+      "frequency_hz": 300000000,
+      "governor": "simple_ondemand"
+    },
+    "GPU_after": {
+      "frequency_hz": 300000000,
+      "governor": "simple_ondemand"
+    },
+    "GPU_endpoint_readings_are_not_continuous_DVFS_measurements": true
+  },
+  "separate_fused_core7_preflight": {
+    "requested_core_mask": 7,
+    "set_core_mask_code": 0,
+    "original_fused_model_sha256": "fe8acac49eb10b1215edf1d4c348b69da3ddfed53f16c2e202b0e3f6428b32c0",
+    "all_four_outputs_byte_equal_historical_core1": true,
+    "first_seconds": 0.13956363894976676,
+    "following_three_mean_seconds": 0.1521276543304945,
+    "not_pooled_with_matched_ABBA": true,
+    "independently_saved_audited": true
+  },
+  "non_neural_checks": {
+    "static_layout": "passed_static_indices_and_inverse_source_only",
+    "inverse_original_source_byte_equality": true,
+    "full_1041_row_C4_index_check": true,
+    "fake_owner_failure_tests": {
+      "schema": "v124_generated_native_owner_failure_smoke",
+      "status": "passed_fake_only",
+      "runtime_sha256": "bfee2265cd0c8685c45aa04cfbc21f905d54c5f029a63250259606ce59bb0454",
+      "script_sha256": "52cd8bd042115b67e28deb0c5a0043a963b1ce423bb0cbed4d08551ca95d9c16",
+      "checks": [
+        "borrower failure retains leader and workers; same-owner retry and idempotent ledger",
+        "busy timeout preserves GPU/native owners; terminal metrics refuses busy state; retry joins"
+      ],
+      "check_count": 2,
+      "all_fake_owner_threads_joined": true,
+      "model_SDK_OpenCL_board_or_array_execution": false,
+      "deployed_source_unchanged": true,
+      "numerical_or_performance_acceptance": false
+    },
+    "actual_largest_kernel_argument_bytes": 824,
+    "board_device_max_parameter_bytes": 1024,
+    "not_neural_or_hardware_precision_acceptance": true
+  },
+  "evidence": {
+    "block-r1/result.json": {
+      "file": "block-r1/result.json",
+      "bytes": 416433,
+      "sha256": "a3201f914ebfde5cd70df376a6fd10155cae08eb02368bb4ef866349743da6bd"
+    },
+    "control-r1/control.json": {
+      "file": "control-r1/control.json",
+      "bytes": 6754,
+      "sha256": "8ba92daeabcd269a4c20c90bd3efa205d7dfc1ed6ffb102587776a0fc6569086"
+    },
+    "fused-core7-r1/result.json": {
+      "file": "fused-core7-r1/result.json",
+      "bytes": 11860,
+      "sha256": "b01ffed1323d271db006c959adfd4b9c77f5447119b6f211af1c66548a70917b"
+    },
+    "fused-core7-control-r1/control.json": {
+      "file": "fused-core7-control-r1/control.json",
+      "bytes": 2433,
+      "sha256": "ddb615830a18a8d7a3ba973accdad0e7581fcc6707139c47fe5ab9a39a5626b2"
+    },
+    "native-threecore-saved-audit.json": {
+      "file": "native-threecore-saved-audit.json",
+      "bytes": 57295,
+      "sha256": "ac85b49793b99c3043e728fbd6b98272e3a17c86d38cd570b2c649f6c98c6c07"
+    },
+    "audit_native_threecore_saved.py": {
+      "file": "audit_native_threecore_saved.py",
+      "bytes": 23855,
+      "sha256": "6ea1776550a506565cbb92aabaf6bcf396c2865d65b2e865e06f6b7e869d48c5"
+    },
+    "fused-core7-saved-audit.json": {
+      "file": "fused-core7-saved-audit.json",
+      "bytes": 6498,
+      "sha256": "a91adedfb93eefc0a0a6d479324f25419d2b02e2d94b46e5d30a4bbd8903deeb"
+    },
+    "audit_fused_core7_saved.py": {
+      "file": "audit_fused_core7_saved.py",
+      "bytes": 8834,
+      "sha256": "8b788a7fa4247741ab6292efc8c1a54fd9e723203776170a36dbd2bb49376c97"
+    },
+    "executed-source-r1/sources.json": {
+      "file": "executed-source-r1/sources.json",
+      "bytes": 825,
+      "sha256": "b2e383e03c4c514ca332b55185bdfc4e0c8be71c4b50eff1180c98ca093e1cf2"
+    },
+    "static-layout-proof.json": {
+      "file": "static-layout-proof.json",
+      "bytes": 3679,
+      "sha256": "3b699ddfd56b4424bd351a0ec30c6a0f117d4a83d404bc7ba853d25b28f37014"
+    },
+    "generate_sharded_bridge.py": {
+      "file": "generate_sharded_bridge.py",
+      "bytes": 14073,
+      "sha256": "74ea5274490e3f6529ac132e6613f2d2da58b536814a88fd2a048365fded32cd"
+    },
+    "generated-owner-smoke.json": {
+      "file": "generated-owner-smoke.json",
+      "bytes": 674,
+      "sha256": "07e159f8c733c7f67c230a39ffcbb98a26a520093f1bb1170a0b54bfb3d955e3"
+    },
+    "check_native_owner_generated.py": {
+      "file": "check_native_owner_generated.py",
+      "bytes": 5789,
+      "sha256": "52cd8bd042115b67e28deb0c5a0043a963b1ce423bb0cbed4d08551ca95d9c16"
+    }
+  },
+  "executed_source_bundle": {
+    "run_native_dino_board.py": {
+      "bytes": 19694,
+      "sha256": "fdc0ed82738b473929a62870e83f33696d9b2fd916af7518f58bd1a7480d072a"
+    },
+    "native_dino_runtime.py": {
+      "bytes": 25950,
+      "sha256": "bfee2265cd0c8685c45aa04cfbc21f905d54c5f029a63250259606ce59bb0454"
+    },
+    "native_dino_bridge_opencl.py": {
+      "bytes": 26224,
+      "sha256": "ded8d841dd58986147abd02496e7c78a6f7714d06c167a95be1d02b94692eca5"
+    },
+    "dino0_native_bridge.cl": {
+      "bytes": 11148,
+      "sha256": "5f4a9ffc008aec7a608262c4810496332aa6ac4689cb046967c387513bf30c6b"
+    },
+    "attention_softmax.cl": {
+      "bytes": 3364,
+      "sha256": "5cbb36e03e09c38db9e6769f067e3168e1cf7f67d719009601c4456e9f2b150a"
+    },
+    "dino0_batched_bridge.cl": {
+      "bytes": 17879,
+      "sha256": "9e1fe632dd17e7bd74e5669970333ae4f4d469041ef70bad13519ca957a09680"
+    }
+  },
+  "private_archive": "v124-native518-three-core-block-r1",
+  "decision": "Reject this three-core schedule and do not expand it to the full model. Preserve the stronger fused core7 comparator and the source/resource evidence. Production execution is unchanged.",
+  "acceptance": {
+    "complete_DINO0_ABBA_completed": true,
+    "saved_evidence_and_cleanup_verified": true,
+    "candidate_speedup": false,
+    "original_FP32_strict_precision": false,
+    "full_model_validation": false,
+    "SL4_or_trajectory_validation": false,
+    "fresh_observation_20Hz": false,
+    "capture_to_pose_P95_100ms": false,
+    "dense_map_every_2_to_5s": false,
+    "30_minute_stability": false,
+    "physical_8GB_board_validation": false
+  },
+  "limits": [
+    "Audit verifies stored evidence and cleanup, not component/full-model precision or performance acceptance",
+    "Comparator is original fused core7 in the same ABBA; historical core1 is not the performance baseline",
+    "Parallel worker durations are not summed as block latency; weighted/heads dispatch wall and SDK spans are separately recorded",
+    "Overlapping blocking host SDK calls do not prove parallel device execution, core utilization or bandwidth",
+    "First A/B calls excluded; three subsequent samples per route do not measure P95 or sustained throughput",
+    "GPU profiling events are contained in stage wall time; endpoint GPU auto-governor readings do not prove constant frequency",
+    "Init/destroy and first-B diagnostics/file/reference work are outside persistent call timers",
+    "One DINO0 block only; no full24 encoder, aggregator, original SL4, trajectory or realtime acceptance",
+    "Original14 FP32 weight identity is saved board metadata, not a new host weight/inference check"
+  ]
+}

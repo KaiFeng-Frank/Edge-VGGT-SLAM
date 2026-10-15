@@ -1,0 +1,64 @@
+{
+  "schema": "v130_public_text_sources",
+  "scope": "Sources and actual recorded launchers only; no captured arrays or weight-bearing graph",
+  "files": [
+    {
+      "file": "export_depth_basis_board.py",
+      "bytes": 28953,
+      "sha256": "57d888a469581af4c41af58ee858835ba216c98e9c26154a014812e8aeb9bdf7",
+      "original_source_sha256": "57d888a469581af4c41af58ee858835ba216c98e9c26154a014812e8aeb9bdf7",
+      "public_only_adapter": false
+    },
+    {
+      "file": "verify_generated_basis_consumer_algebra.py",
+      "bytes": 5039,
+      "sha256": "cdf7e3032aaa8153e4f3ea50f5a61f595d7376eed6bb1ae5140027cbb5fbdc2c",
+      "original_source_sha256": "cdf7e3032aaa8153e4f3ea50f5a61f595d7376eed6bb1ae5140027cbb5fbdc2c",
+      "public_only_adapter": false
+    },
+    {
+      "file": "generated-basis-consumer-algebra.json",
+      "bytes": 2451,
+      "sha256": "e31ff44070f9ae63a6dcb7a3630dde85ea4526a2979f0fd9b67ab903bbf13ddf",
+      "original_source_sha256": "e31ff44070f9ae63a6dcb7a3630dde85ea4526a2979f0fd9b67ab903bbf13ddf",
+      "public_only_adapter": false
+    },
+    {
+      "file": "run_sampled_cpu_stage_r126.py",
+      "bytes": 9763,
+      "sha256": "700ec5b12b6f15cf9907cfacbff3a63258ef70a14cf5efe06ba5470991de1b89",
+      "original_source_sha256": "700ec5b12b6f15cf9907cfacbff3a63258ef70a14cf5efe06ba5470991de1b89",
+      "public_only_adapter": false
+    },
+    {
+      "file": "run_export_r1.sh",
+      "bytes": 901,
+      "sha256": "40a8f1c5a5389f0c9632a8e1f2a61736c6f20d37e9d357a0f3c142e5ccc67500",
+      "original_source_sha256": "40a8f1c5a5389f0c9632a8e1f2a61736c6f20d37e9d357a0f3c142e5ccc67500",
+      "public_only_adapter": false
+    },
+    {
+      "file": "run_check0_r1.sh",
+      "bytes": 1072,
+      "sha256": "ef69384873eaf88dc2e519c1a70fe5e64d30af23f29ebd73ef121dcde18d8dd0",
+      "original_source_sha256": "ef69384873eaf88dc2e519c1a70fe5e64d30af23f29ebd73ef121dcde18d8dd0",
+      "public_only_adapter": false
+    },
+    {
+      "file": "run_check1_r1.sh",
+      "bytes": 1072,
+      "sha256": "71f191da41507887cb45eb48d7d40c377c69f378e4ee8987f7a22167b0805957",
+      "original_source_sha256": "71f191da41507887cb45eb48d7d40c377c69f378e4ee8987f7a22167b0805957",
+      "public_only_adapter": false
+    },
+    {
+      "file": "audit_depth_basis_saved.py",
+      "bytes": 12805,
+      "sha256": "383d5c993e2d5c263b5d2ddd62ed439e71af8819c5b8e02031b62672010f2392",
+      "original_source_sha256": "fab4441f775c402ece0cf2d2722f8e621ca0a9b9493e6cde8ac0f97c1c1882b1",
+      "public_only_adapter": true,
+      "delta": "Require explicit --original-metadata-dir instead of a private host default; all verification math and resource/provenance checks unchanged.",
+      "executed_audit_source_is_original_private_copy": true
+    }
+  ]
+}

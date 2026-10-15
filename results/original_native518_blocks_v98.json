@@ -1,0 +1,213 @@
+{
+  "schema": "original_VGGT_native518_block_review_v98",
+  "date": "2026-10-13",
+  "status": "two_component_optimizations_measured_full_pipeline_not_accepted",
+  "scope": "Native 518 original frame0/global0 on saved real TUM pair. Not full-model or SLAM replay.",
+  "image_shape": [
+    2,
+    3,
+    392,
+    518
+  ],
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "no_new_or_replacement_model": true,
+  "actual_execution": "RK3588S CPU and NPU only; no GPU used",
+  "runtime_version": "2.3.2",
+  "npu_frequency_hz": 1000000000,
+  "normal_init_flags": 0,
+  "normal_core_mask": 1,
+  "normal_timing": "FP32 inputs_set/conversion, synchronous run, output get/conversion, owned copy, release, finite check; initialization and file saving excluded",
+  "ABBA": "A,B,B,A in separate fresh processes; each phase has 1 recorded first call plus 3 warm calls; 6 warm calls per route",
+  "matched_results": {
+    "frame": {
+      "baseline": {
+        "warm_count": 6,
+        "samples_seconds": [
+          0.6191979789873585,
+          0.6230556879891083,
+          0.6215941039845347,
+          0.6224332299898379,
+          0.6207338130334392,
+          0.6222611459670588
+        ],
+        "mean_seconds": 0.6215459933252229,
+        "min_seconds": 0.6191979789873585,
+        "max_seconds": 0.6230556879891083,
+        "first_calls_seconds": [
+          0.621165729011409,
+          0.6222948539652862
+        ],
+        "fp32_relative_l2": 0.0017034232563576759,
+        "raw_output_sha256": "7ec7017ce8e04b83235d1ff3784f48543e2ffeb68ce47781534ea2e45502d456"
+      },
+      "candidate": {
+        "warm_count": 6,
+        "samples_seconds": [
+          0.3742804129724391,
+          0.3862588310148567,
+          0.3983192899613641,
+          0.3848742049885914,
+          0.3884835810167715,
+          0.3989397480036132
+        ],
+        "mean_seconds": 0.3885260113262727,
+        "min_seconds": 0.3742804129724391,
+        "max_seconds": 0.3989397480036132,
+        "first_calls_seconds": [
+          0.4066147489938885,
+          0.4084368330077268
+        ],
+        "fp32_relative_l2": 0.0017034232563576759,
+        "raw_output_sha256": "7ec7017ce8e04b83235d1ff3784f48543e2ffeb68ce47781534ea2e45502d456"
+      },
+      "time_reduction_percent": 37.49038438045612,
+      "byte_equal_to_baseline": true
+    },
+    "global": {
+      "baseline": {
+        "warm_count": 6,
+        "samples_seconds": [
+          0.5086322170100175,
+          0.5034729249891825,
+          0.5085079270065762,
+          0.49946946697309613,
+          0.5086334270308726,
+          0.532969554013107
+        ],
+        "mean_seconds": 0.5102809195038086,
+        "min_seconds": 0.49946946697309613,
+        "max_seconds": 0.532969554013107,
+        "first_calls_seconds": [
+          0.508204301004298,
+          0.5080994669697247
+        ],
+        "fp32_relative_l2": 0.00567522241335312,
+        "raw_output_sha256": "4d91c01b72bc2c735226f5136137bf261b119120c744977cd8af9b5be7c679ef"
+      },
+      "candidate": {
+        "warm_count": 6,
+        "samples_seconds": [
+          0.43766221101395786,
+          0.4216329589835368,
+          0.4310410430189222,
+          0.42362700100056827,
+          0.42118908395059407,
+          0.42411045904736966
+        ],
+        "mean_seconds": 0.42654379283582483,
+        "min_seconds": 0.42118908395059407,
+        "max_seconds": 0.43766221101395786,
+        "first_calls_seconds": [
+          0.4303664590115659,
+          0.4272306259954348
+        ],
+        "fp32_relative_l2": 0.0057064053094198494,
+        "raw_output_sha256": "d923ed1b1416256a8e7ac4d7c69a2e54b93f69df83aab03dc46e0fdf2c98512d"
+      },
+      "time_reduction_percent": 16.41000544355231,
+      "byte_equal_to_baseline": false
+    }
+  },
+  "frame_changes": {
+    "description": "Two independent original B1 frame branches, shared logical parameters, original B2 output order",
+    "original_learned_parameters": 18,
+    "FP32_same_gate_passed": true,
+    "FP32_vs_baseline_byte_equal": true,
+    "FP16_vs_baseline_byte_equal": true,
+    "CPU_transpose_count_before": 4,
+    "CPU_transpose_count_after": 0,
+    "profile_CPU_transpose_us_before": 225326,
+    "profile_init_flags": 8,
+    "profile_is_not_normal_performance": true,
+    "SDK_memory_delta_bytes": {
+      "weight": 4471360,
+      "internal": -30050944,
+      "dma": -18526208
+    }
+  },
+  "global_changes": {
+    "description": "Original FC2 K=4096 split into four K=1024 partial dot products, ordered sum then original bias once",
+    "original_weight_values_preserved": true,
+    "floating_reduction_order_changed": true,
+    "FP32_same_gate_passed": true,
+    "FP16_vs_baseline_byte_equal": false,
+    "original_fp32_relative_l2_before": 0.00567522241335312,
+    "original_fp32_relative_l2_after": 0.0057064053094198494
+  },
+  "rejected_candidate": {
+    "description": "Global FC2 N=1024 output channels split into four N=256 branches",
+    "FP32_gate_passed": true,
+    "preliminary_mean_seconds": 0.5097571070073172,
+    "reason": "No measured speed benefit; four partial FC2 Conv calls still total about 114.8ms plus concat/add. No production adoption."
+  },
+  "three_core_burst": {
+    "graph": "unchanged original native global0",
+    "workers": [
+      1,
+      3
+    ],
+    "masks": [
+      1,
+      2,
+      4
+    ],
+    "calls": [
+      6,
+      18
+    ],
+    "makespan_seconds": [
+      3.284752787963953,
+      4.166114252002444
+    ],
+    "throughput_gain": 2.3653356023914625,
+    "three_core_equivalent_block_interval_seconds": 0.23145079177791356,
+    "not_single_call_latency": true,
+    "not_map_cadence": true,
+    "all_outputs_byte_stable": true,
+    "dup_or_shared_scratch_used": false
+  },
+  "validation_limits": [
+    "One real pair and layer0 only; no other native518 layer/head performance measured here.",
+    "FP16 outputs, including baseline, fail strict original FP32 elementwise comparison; full trajectory/depth accuracy remains untested.",
+    "6 warm samples per route are a component comparison, not production latency tails.",
+    "No full native518 network/SL4/loop closure/map interval acceptance.",
+    "No physical camera/8GB/30-minute/20Hz/P95<=100ms acceptance.",
+    "No permanent frequency/governor/driver/cooling changes; no GitHub push."
+  ],
+  "maximum_sampled_temperature_c": 68.384,
+  "engineering_next_actions": [
+    "Apply the measured frame layout transformation across original native layers only after per-layer equivalence checks.",
+    "Measure native global attention next; query-row partition must retain every original key and value and is still only a hypothesis.",
+    "Capture native DINO0 and DPT inputs, then measure complete original layers and heads; do not multiply the layer0 gain into a claimed full-model result.",
+    "Measure whole-pipeline three-core throughput and memory; each concurrent lane needs its own scratch and I/O.",
+    "Use matched host CPU original FP32 only for quality comparison, as the user clarified; paper numbers are separate references."
+  ],
+  "licensing": "Repository code license does not license model weights. Checkpoints, captured arrays, ONNX/RKNN and SDK files remain private.",
+  "evidence_sha256": {
+    "REVIEW.json": "0a816ef2d742bb56b904fccba214ccfff70321e88ff5c7447c5d424f08669684",
+    "matched-abba-summary.json": "3447d125d33c489106e39c768d422cde866471503b34ebf1394dd4f1a6a96d58",
+    "evidence-audit.json": "51aeba2492c15be1e9643d4ee4e1048b29b1bfc6ecfc4bdb865ded90bb24a25c",
+    "export.json": "b922ca37e4052800c44520ad7826be97ff463c9d6298e695b70f3d1a7d9c115e",
+    "reference-r1/capture.json": "4ebbc4adaaed5e3c3cf8558b4947ec3fc090d56e82f8c61c9509951eb34dd35d",
+    "frame-b1-export/export.json": "54cdac3b68da2f07d1fb53fcda94d4a4f3ac3b0994ebdc0320b7b1fac20ac447",
+    "global-fc2k4-export/result.json": "7ad10c71635233e2056dade6f0b6c769e0ae0c1dfdf192514f1be18e3afdc9ff"
+  },
+  "validation_sources_sha256": {
+    "bench_native_three_cores.py": "a068c1ddf08a0859c8994b8a21bc056a546760ff815069f37ad71892c389688e",
+    "bench_native_three_cores_r1.py": "a068c1ddf08a0859c8994b8a21bc056a546760ff815069f37ad71892c389688e",
+    "capture_native_block_references.py": "1d6e91c872aa56c367f10664ef1e616d5cb298a1944162328ac38b5754fa31f0",
+    "compile_native_block.py": "ade8f932c267bdc2a9ff5854e305d87456984630025aa34c0c448499f5a6a81b",
+    "compile_native_block_r1.py": "ade8f932c267bdc2a9ff5854e305d87456984630025aa34c0c448499f5a6a81b",
+    "export_fc2_ksplit_native.py": "03e4f82612713e683d1340ee330ec8429d789c95856aff03d1a2d8a10fc5ffd3",
+    "export_fc2_nsplit_native.py": "ef8d60ab0ebf9ba3f06e2868d0651f094e11e027140fb072b6fc6142a361436a",
+    "export_frame_batch1_branches.py": "5df6a3c299466443b14e7bbec45bb611309b31f2a39a722daf1767b78135879d",
+    "export_native_blocks.py": "86c7a9f9a76bb44317b41ad8f93c037c2eebeeb1eee3ed880707bfdb4729bb88",
+    "profile_native_block.py": "268d4f9b39526c0372045ebe833f817ac6a16c0b96453c12e1f2841ebde08160",
+    "run_native_block.py": "56ce45635a5d010e862bf59db2f9fcc6e8ec642b2b023c8c40cad0bd5808050f",
+    "run_native_block_r1.py": "56ce45635a5d010e862bf59db2f9fcc6e8ec642b2b023c8c40cad0bd5808050f",
+    "validate_native_onnx.py": "cef15b86bf5bc9ad0afad67fb1f4919c28506814ed269b417a86bc1d45f5101e"
+  }
+}

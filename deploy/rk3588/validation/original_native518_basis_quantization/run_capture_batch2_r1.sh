@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+exec env -u PYTHONPATH -u PYTHONHOME -u VIRTUAL_ENV LD_LIBRARY_PATH=/mnt/vggt-data/vggt-slam2/sysroot/usr/lib/aarch64-linux-gnu OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 CUDA_VISIBLE_DEVICES= taskset -c 4-7 /mnt/vggt-data/vggt-slam2/venv/bin/python -B -u /dev/shm/edge-vggt-v128-capture-source-r1/capture_frame0_inputs_board.py --batch-index 2 --pair-pins /dev/shm/edge-vggt-v128-capture-source-r1/real-image-pair-pins.json --dino-lineage /dev/shm/edge-vggt-v128-capture-source-r1/dino-board-preflight.json --output-dir /dev/shm/edge-vggt-v128-capture-batch2-r1

@@ -21,7 +21,8 @@ def main():
     p.add_argument('--rgb-index', type=Path, required=True)
     p.add_argument('--checkpoint', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
-    p.add_argument('--image-size', type=int, default=112)
+    p.add_argument('--image-size', type=int, default=518,
+                   help='Original preprocessing width (default: 518); --image-size 112 is only for explicit historical reduced-resolution diagnostics')
     p.add_argument('--model-threads', type=int, choices=(1, 2, 4), default=4)
     p.add_argument('--model-cpus', nargs='+', type=int, choices=(4, 5, 6, 7),
                    help='Model CPU affinity; defaults to 6,7 for two threads and 4,5,6,7 otherwise')

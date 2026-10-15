@@ -1,0 +1,379 @@
+{
+  "schema": "original_native518_matched_trajectory_quality_v111",
+  "status": "completed_matched_short_trajectory_diagnostic_ATE_and_translation_RPE_exceed_20_percent_goal",
+  "original_model_only": true,
+  "checkpoint": {
+    "bytes": 5026874952,
+    "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+  },
+  "input_shape": [
+    2,
+    3,
+    392,
+    518
+  ],
+  "source_indices": [
+    32,
+    56,
+    80,
+    104,
+    128,
+    152,
+    176,
+    200,
+    224,
+    248,
+    272,
+    296,
+    320,
+    344,
+    368,
+    392,
+    416
+  ],
+  "source_duration_seconds": 12.79994797706604,
+  "pair_count": 16,
+  "unique_observations": 17,
+  "loop_closure_count": 0,
+  "matched_inputs": {
+    "original_PNG_hashes_equal": true,
+    "original_prepared_pixel_hashes_equal": true,
+    "same_GT_timestamp_matches": true,
+    "matching_count": 17,
+    "no_interpolation": true
+  },
+  "comparison_routes": {
+    "native": "RK3588S full native518 original model, frozen v110 executor, exact previous-tail DINO reuse, core mask7; four cache-cold batches of four pairs",
+    "reference": "Complete original checkpoint/model/source CPU FP32 on host, all heads retained, no model/cache/hooks/forward overrides; host GPU unused",
+    "backend": "Both routes consumed by one unchanged original SL4 Solver per route on RK3588S across all16pairs; 16submaps,32nodes/factors,17poses"
+  },
+  "trajectory_RMSE": {
+    "ate_translation": {
+      "original_FP32_absolute_error": 0.02430865408446568,
+      "native_absolute_error": 0.030243227188524742,
+      "units": "metres",
+      "absolute_change": 0.005934573104059062,
+      "relative_change_percent": 24.413417063067765,
+      "original_baseline_zero": false,
+      "zero_baseline_policy": "Percentage undefined at exactly zero; report absolute difference, no epsilon flooring."
+    },
+    "rpe_translation": {
+      "original_FP32_absolute_error": 0.01684892790066232,
+      "native_absolute_error": 0.02386036330616413,
+      "units": "metres",
+      "absolute_change": 0.007011435405501813,
+      "relative_change_percent": 41.61354032042715,
+      "original_baseline_zero": false,
+      "zero_baseline_policy": "Percentage undefined at exactly zero; report absolute difference, no epsilon flooring."
+    },
+    "rpe_rotation": {
+      "original_FP32_absolute_error": 1.4115893162369988,
+      "native_absolute_error": 1.274685712929015,
+      "units": "degrees",
+      "absolute_change": -0.1369036033079838,
+      "relative_change_percent": -9.698543459718167,
+      "original_baseline_zero": false,
+      "zero_baseline_policy": "Percentage undefined at exactly zero; report absolute difference, no epsilon flooring."
+    }
+  },
+  "trajectory_maximum_errors": {
+    "ate_translation": {
+      "original_FP32_absolute_error": 0.04371715799771917,
+      "native_absolute_error": 0.05161921999280728,
+      "units": "metres",
+      "absolute_change": 0.007902061995088111,
+      "relative_change_percent": 18.075424746275548,
+      "original_baseline_zero": false,
+      "zero_baseline_policy": "Percentage undefined at exactly zero; report absolute difference, no epsilon flooring."
+    },
+    "rpe_translation": {
+      "original_FP32_absolute_error": 0.029899369414104905,
+      "native_absolute_error": 0.051052967958155365,
+      "units": "metres",
+      "absolute_change": 0.02115359854405046,
+      "relative_change_percent": 70.74931330849851,
+      "original_baseline_zero": false,
+      "zero_baseline_policy": "Percentage undefined at exactly zero; report absolute difference, no epsilon flooring."
+    },
+    "rpe_rotation": {
+      "original_FP32_absolute_error": 2.5411258353127426,
+      "native_absolute_error": 2.19344551811232,
+      "units": "degrees",
+      "absolute_change": -0.3476803172004228,
+      "relative_change_percent": -13.682136963423265,
+      "original_baseline_zero": false,
+      "zero_baseline_policy": "Percentage undefined at exactly zero; report absolute difference, no epsilon flooring."
+    }
+  },
+  "alignment_and_RPE_scope": {
+    "alignment": "Each route positive Sim3 against identical17 TUM GT positions; same fitted scale used in that route RPE",
+    "RPE": "Adjacent selected frames, approximately0.8seconds; not fixed1second RPE",
+    "metric_scale_validated": false
+  },
+  "numerical_output_diagnostics": {
+    "pose_enc": {
+      "elements": 288,
+      "strict_passed_arrays": 0,
+      "max_abs": 0.03814709186553955,
+      "relative_l2": 0.01634071972335693,
+      "rmse": 0.009486399926201688,
+      "strict_failed_arrays": 16
+    },
+    "extrinsic": {
+      "elements": 384,
+      "strict_passed_arrays": 0,
+      "max_abs": 0.020638108253479004,
+      "relative_l2": 0.0067452981636281755,
+      "rmse": 0.003387469299469189,
+      "strict_failed_arrays": 16
+    },
+    "intrinsic": {
+      "elements": 288,
+      "strict_passed_arrays": 0,
+      "max_abs": 19.334320068359375,
+      "relative_l2": 0.02020199379963762,
+      "rmse": 4.540787999635093,
+      "strict_failed_arrays": 16
+    },
+    "depth": {
+      "elements": 6497792,
+      "strict_passed_arrays": 0,
+      "max_abs": 1.4310755133628845,
+      "relative_l2": 0.031890069345003505,
+      "rmse": 0.034854423210837635,
+      "strict_failed_arrays": 16
+    },
+    "depth_conf": {
+      "elements": 6497792,
+      "strict_passed_arrays": 0,
+      "max_abs": 7.319678902626038,
+      "relative_l2": 0.21877294833522157,
+      "rmse": 0.8787893866355118,
+      "strict_failed_arrays": 16
+    }
+  },
+  "map_reference_disagreement": {
+    "scope": "Original CPU map as reference, not ground-truth map accuracy. Each route uses its own trajectory-to-same-GT positive Sim3; all32 occurrences and fixed pixels retained.",
+    "units": "distance in each GT-fitted similarity gauge; metric map scale not independently validated",
+    "unfiltered": {
+      "count": 129984,
+      "rmse": 0.06053565959529649,
+      "mean": 0.041966433605347846,
+      "median": 0.03048619024616904,
+      "p95": 0.11373477071830392,
+      "maximum": 2.1158655804259796
+    },
+    "common_confidence_subset": {
+      "count": 93988,
+      "rmse": 0.039826937404357284,
+      "mean": 0.032648950830453154,
+      "median": 0.027370960859628462,
+      "p95": 0.07531630801167791,
+      "maximum": 0.37987927574625446
+    },
+    "full_confidence_masks": {
+      "original_count": 4873004,
+      "native_count": 4873172,
+      "intersection": 4697584,
+      "union": 5048592,
+      "IoU": 0.9304740806941817,
+      "different_pixels": 351008,
+      "empty_union": false
+    }
+  },
+  "short_sample_execution_failures": {
+    "native": 0,
+    "reference": 0,
+    "original_SL4_replays": 0,
+    "scope": "Only these16pairs and two17-observation replay chains; not deployment tracking failure rate"
+  },
+  "prediction_seconds": {
+    "per_pair": [
+      29.57398926303722,
+      26.805003068002407,
+      27.023320464999415,
+      26.836533862981014,
+      29.883000419009477,
+      26.664149719988927,
+      26.696003390999977,
+      26.93093512300402,
+      29.75461769796675,
+      26.757007771986537,
+      26.499840953969397,
+      26.58261558797676,
+      29.76810694904998,
+      26.52003854000941,
+      26.131050374999177,
+      27.367556000011973
+    ],
+    "cold_batch_starts": [
+      29.57398926303722,
+      29.883000419009477,
+      29.75461769796675,
+      29.76810694904998
+    ],
+    "tail_reuse_mean": 26.734504571577418,
+    "tail_reuse_min": 26.131050374999177,
+    "tail_reuse_max": 27.367556000011973,
+    "scope": "Offline board prediction boundary; includes checks, excludes subsequent saved SL4 replay. Not image-to-pose latency/P95 or paced stream."
+  },
+  "resources": {
+    "contexts_created": 160,
+    "contexts_destroyed": 160,
+    "runs_completed": 240,
+    "output_buffers_acquired": 320,
+    "output_buffers_released": 320
+  },
+  "controllers": {
+    "0": {
+      "observations": 235,
+      "maximum_temperature_c": 72.076,
+      "restored_NPU_hz": 300000000
+    },
+    "4": {
+      "observations": 233,
+      "maximum_temperature_c": 72.076,
+      "restored_NPU_hz": 300000000
+    },
+    "8": {
+      "observations": 230,
+      "maximum_temperature_c": 68.384,
+      "restored_NPU_hz": 300000000
+    },
+    "12": {
+      "observations": 231,
+      "maximum_temperature_c": 72.076,
+      "restored_NPU_hz": 300000000
+    }
+  },
+  "saved_head_group_counterfactual": {
+    "status": "diagnostic_only_not_deployable_predictions",
+    "routes": [
+      {
+        "name": "native",
+        "CPU_output_keys": [],
+        "unmixed_endpoint_byte_equal": true,
+        "ATE_m": 0.03024322718852475,
+        "RPE_translation_m": 0.02386036330616416,
+        "RPE_rotation_degrees": 1.2746857129290154
+      },
+      {
+        "name": "cpu",
+        "CPU_output_keys": [
+          "pose_enc",
+          "extrinsic",
+          "intrinsic",
+          "depth",
+          "depth_conf"
+        ],
+        "unmixed_endpoint_byte_equal": true,
+        "ATE_m": 0.02430865408446564,
+        "RPE_translation_m": 0.016848927900662263,
+        "RPE_rotation_degrees": 1.4115893162369988
+      },
+      {
+        "name": "cpu_camera",
+        "CPU_output_keys": [
+          "pose_enc",
+          "extrinsic",
+          "intrinsic"
+        ],
+        "unmixed_endpoint_byte_equal": null,
+        "ATE_m": 0.02414729378848278,
+        "RPE_translation_m": 0.016792967688035024,
+        "RPE_rotation_degrees": 1.4115893162369997
+      },
+      {
+        "name": "cpu_depth_confidence",
+        "CPU_output_keys": [
+          "depth",
+          "depth_conf"
+        ],
+        "unmixed_endpoint_byte_equal": null,
+        "ATE_m": 0.03211626534285637,
+        "RPE_translation_m": 0.024736217118663313,
+        "RPE_rotation_degrees": 1.2746857129290143
+      },
+      {
+        "name": "cpu_depth",
+        "CPU_output_keys": [
+          "depth"
+        ],
+        "unmixed_endpoint_byte_equal": null,
+        "ATE_m": 0.03201864300474179,
+        "RPE_translation_m": 0.02467150978835257,
+        "RPE_rotation_degrees": 1.2746857129290161
+      },
+      {
+        "name": "cpu_confidence",
+        "CPU_output_keys": [
+          "depth_conf"
+        ],
+        "unmixed_endpoint_byte_equal": null,
+        "ATE_m": 0.030357065604929397,
+        "RPE_translation_m": 0.02374850750982846,
+        "RPE_rotation_degrees": 1.2746857129290152
+      }
+    ],
+    "inference": "On this clip the original FP32 camera bundle almost restores baseline translation quality with native depth/confidence. This localizes priority to camera outputs and upstream inputs, not uniquely CameraHead arithmetic. It does not establish additive causal contributions or an executable mixed model."
+  },
+  "FP32_host_board_control": {
+    "source_pair_indices": [
+      32,
+      40
+    ],
+    "same_original_prepared_pixels": true,
+    "host_torch": "2.11.0.dev20260201+cu128",
+    "board_torch": "2.3.1",
+    "host_GPU_executed": false,
+    "relative_L2": {
+      "pose_enc": 5.958678432367871e-07,
+      "depth": 7.394297072326473e-07,
+      "depth_conf": 2.593828870426201e-06
+    },
+    "strict_rtol": 0.0001,
+    "strict_atol": 1e-05,
+    "all_three_saved_arrays_pass_strict_comparison": true,
+    "limit": "Single pair cross-platform FP32 control; not all-input platform equivalence. Raw first control used an incorrectly named looser diagnostic field; separate saved audit recomputes the frozen strict thresholds."
+  },
+  "acceptance": {
+    "ATE_RPE_relative_increase_at_most_20_percent_on_this_clip": false,
+    "fresh_pose_20Hz": false,
+    "image_to_pose_P95_100ms": false,
+    "map_every_2_to_5s": false,
+    "continuous_30min": false,
+    "physical_8GB": false,
+    "physical_camera": false,
+    "loop_support": false,
+    "ground_truth_map_accuracy": false
+  },
+  "source_sha256": {
+    "README.md": "83588ebc3de0c0ba465b1277b5c1fdf279911266df6911cec6e070be4e114c39",
+    "audit_native518_trajectory_saved.py": "d6d63bad28c3bf0483adbf3078d35993ce272fe99f04849f2f8d03105fa01cd4",
+    "diagnose_saved_head_groups.py": "fbd2c5d349aa754419076ee937cff9c87292c5b9f6dbc643c5ab1db7b1f7a1b8",
+    "replay_saved_native518_sl4.py": "a0d37e54b1b1655bf4443f5fa80c07043a1ada9c12dbf1d0cb851b41dc7af271",
+    "run_board_batch0.sh": "c0f995b39c62bbc74293f8adb62b2125510cfa8a03b9a043202f6537e42e9005",
+    "run_board_batch12.sh": "e95b1a0f1c1cb16b5f64856ddcac9185b2d9cb45638361867b5a068a8573df50",
+    "run_board_batch4.sh": "c7dd2849ce0c393d613b753d22ebeb9f9cd20688ca52cec2f7d7814cedd88cc5",
+    "run_board_batch8.sh": "9c73d3e0e2e123e2d7b23e984d8c278c5b8dfe110489cae12126c429d64f675d",
+    "run_native518_trajectory_batch.py": "78cb60f56df0b98879a987b34db1172c62cd0d51b5364cb1c3c81fd6f3ac1fe9",
+    "run_original_fp32_native518.py": "23e29fa0679e80755153b055702129309f39e495cf3349a9d080fa3980a5190c",
+    "run_saved_sl4_fp32.sh": "44035e9b94ef3cf152ae5e779ea19408080296c0fabe48182b1a32d033a2a522",
+    "run_saved_sl4_native.sh": "e37dd310a693d97a6c451061a10560072c3240fb2047c75738076376b241d8c5"
+  },
+  "evidence_sha256": {
+    "trajectory-quality-saved-audit.json": "d6e07516736883d4df6ea5cf1351688a6fdb944ebb2929836fdf2858462b32ce",
+    "head-group-diagnosis-r1/result.json": "eae913af0edb910655ae947e0222af7912300fe184d01667b343edc9aef2a6ef",
+    "head-group-diagnosis-metrics.json": "48b35c7693eccf68af57bcd8338930e9f31b5b02c895bef96cd9a7e4806684fa",
+    "head-group-diagnosis-saved-audit.json": "e7abaf2739e5a95a59f929402cea31f630cae321d616ef1ea5cd044ac4f4db49",
+    "host-board-fp32-control-strict-audit.json": "40b8ff00077ac62d92f9ee31fed4a843061a336020329b1a45d5e7c3f0065536",
+    "host-fp32-r1/result.json": "37a7856a6037fe16b29dc601dcf488c12a513d457dcdca8bb2e747ed43f1f77c",
+    "sl4-native-r1/result.json": "33ce8317fbc1581a38a57096d9f991d2eadf75b8b19e371e86f2f3e607481ff7",
+    "sl4-fp32-r1/result.json": "214b8da88e04ee8415eccf3331e1408e532dd1f35457f0cf9c7319ebc24435d0"
+  },
+  "audit_verified_NPY_arrays": 178,
+  "production_default_changed": false,
+  "committed": false,
+  "pushed_to_GitHub": false,
+  "raw_arrays_weights_or_SDK_binaries_published": false
+}

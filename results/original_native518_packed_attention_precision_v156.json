@@ -1,0 +1,625 @@
+{
+  "schema": "original_native518_packed_attention_precision_diagnosis_v156",
+  "date": "2026-10-15",
+  "status": "sampled_weight_path_distortion_observed_CPU_reconstruction_only_no_corrected_NPU_result",
+  "main_finding": "On the sampled queries, observed negative-tail Sigmoid values inflate exponent weights. Reconstructing with exp(observed X) on board CPU sharply reduces error while retaining observed centered V and V mean. This diagnosis does not establish corrected NPU accuracy or hidden kernel implementation.",
+  "scope": {
+    "original_model_only": true,
+    "one_original_R103_capture": true,
+    "heads": 16,
+    "full_queries_and_keys_evaluated": 2082,
+    "head_dim": 64,
+    "observed_query_indices": [
+      0,
+      1,
+      32,
+      128,
+      512,
+      1024,
+      1536,
+      2081
+    ],
+    "observed_head_query_pairs": 128,
+    "keys_per_observed_query": 2082,
+    "sampled_score_entries": 266496,
+    "component_only": true,
+    "candidate_accepted": false,
+    "speed_accepted": false,
+    "trajectory_or_realtime_accepted": false,
+    "R155_rejection_unchanged": true,
+    "quarter_exp_NPU_outcome_included": false,
+    "code_attribution_and_original_weight_licenses_unchanged_and_separate": true
+  },
+  "observer_invariance": {
+    "static_proof": {
+      "all45_original_node_protos_byte_equal": true,
+      "all23_original_initializer_protos_byte_equal": true,
+      "original_public_output_byte_equal": true,
+      "original_input_protos_byte_equal": true,
+      "whole_parent_inverse_ModelProto_byte_equal": true,
+      "original_nodes": 45,
+      "candidate_nodes": 52,
+      "original_initializers": 23,
+      "candidate_initializers": 24,
+      "output_count": 10,
+      "query_sampling_for_observation_only": true,
+      "all2082_queries_keys_and16_heads_still_evaluated": true,
+      "learned_parameters_added": 0,
+      "complete_score_tensor_exposed": false
+    },
+    "ten_taps": "Original full output; selected S, row max, X=S-max, Sigmoid, E, Z, PV numerator; full centered V and V mean",
+    "NPU_final_byte_equal_uninstrumented_R155B": true,
+    "CPU_final_byte_equal_parent_CPU": true,
+    "full_CPU_final_vs_original_FP32": {
+      "relative_l2": 3.290563211000177e-07,
+      "max_abs": 1.0013580322265625e-05,
+      "rms": 5.416906148003967e-08,
+      "outside_count": 0,
+      "fixed_gate_passed": true,
+      "strict_pass": true
+    },
+    "full_NPU_final_vs_original_FP32": {
+      "relative_l2": 0.022513160037512015,
+      "max_abs": 0.7118773460388184,
+      "rms": 0.003706103399275787,
+      "outside_count": 764324,
+      "fixed_gate_passed": false,
+      "strict_pass": false
+    },
+    "sampled_NPU_final_vs_matched_board_CPU_reference": {
+      "relative_l2": 0.1225975837096813,
+      "max_abs": 0.5830440521240234,
+      "rms": 0.02045299158442609,
+      "outside_count": 2853,
+      "fixed_gate_passed": false,
+      "strict_pass": false
+    },
+    "observed_endpoint_identities": [
+      {
+        "index": 0,
+        "name": "global0/attention_values",
+        "role": "original_public",
+        "shape": [
+          1,
+          16,
+          2082,
+          64
+        ],
+        "actual_format": 0,
+        "actual_type": 1,
+        "physical_raw_sha256": "472955e9037869c3e416e2ec9f48fb6673ee92bf13ad26c656fa3b1c246eb1ff",
+        "canonical_raw_sha256": "472955e9037869c3e416e2ec9f48fb6673ee92bf13ad26c656fa3b1c246eb1ff",
+        "CPU_raw_sha256": "80e6eb0f173b15fc485d76191030ffcc20154667805d23669e218f07449db012"
+      },
+      {
+        "index": 1,
+        "name": "__precision_probe/S_q8",
+        "role": "sampled_scaled_scores",
+        "shape": [
+          16,
+          2082,
+          1,
+          8
+        ],
+        "actual_format": 0,
+        "actual_type": 1,
+        "physical_raw_sha256": "75910a35008f137d61e8350ca8448264ec6903af99d237580ff03a0f46515600",
+        "canonical_raw_sha256": "75910a35008f137d61e8350ca8448264ec6903af99d237580ff03a0f46515600",
+        "CPU_raw_sha256": "f262ff05fe5954dc66f0d519b5e84ff41820f49eea04fc89449a4b8ffd4a28ee"
+      },
+      {
+        "index": 2,
+        "name": "__precision_probe/max_q8",
+        "role": "sampled_key_max",
+        "shape": [
+          16,
+          1,
+          1,
+          8
+        ],
+        "actual_format": 0,
+        "actual_type": 1,
+        "physical_raw_sha256": "a4aab68016c61b65af3afb6b9558a79c33c2a651bdc5b0ca837a0c69fe8e40fb",
+        "canonical_raw_sha256": "a4aab68016c61b65af3afb6b9558a79c33c2a651bdc5b0ca837a0c69fe8e40fb",
+        "CPU_raw_sha256": "ea0e2700567634bd32a4e9d129b84cf77438136735c8deaf544905c518868a69"
+      },
+      {
+        "index": 3,
+        "name": "__precision_probe/centered_scores_q8",
+        "role": "sampled_centered_scores",
+        "shape": [
+          16,
+          2082,
+          1,
+          8
+        ],
+        "actual_format": 0,
+        "actual_type": 1,
+        "physical_raw_sha256": "25059db4d6fe2452da0c43d81901796c22ad79f7fadaf77bc2ad1edd2ad9b2a2",
+        "canonical_raw_sha256": "25059db4d6fe2452da0c43d81901796c22ad79f7fadaf77bc2ad1edd2ad9b2a2",
+        "CPU_raw_sha256": "51456de8b72a556949657aa355eafe4c79a542c885956fed33088f3d1779681c"
+      },
+      {
+        "index": 4,
+        "name": "__precision_probe/sigmoid_q8",
+        "role": "sampled_sigmoid",
+        "shape": [
+          16,
+          2082,
+          1,
+          8
+        ],
+        "actual_format": 0,
+        "actual_type": 1,
+        "physical_raw_sha256": "329c9c60080803cc89df386c0f8b974ae245e527098d29a6458da5ff4733f960",
+        "canonical_raw_sha256": "329c9c60080803cc89df386c0f8b974ae245e527098d29a6458da5ff4733f960",
+        "CPU_raw_sha256": "93ef74b553cdb9419296041e14d7e2eea7f33c7f34b2f923ee3a8a7d0877636a"
+      },
+      {
+        "index": 5,
+        "name": "__precision_probe/E_q8",
+        "role": "sampled_exponentials",
+        "shape": [
+          16,
+          2082,
+          1,
+          8
+        ],
+        "actual_format": 0,
+        "actual_type": 1,
+        "physical_raw_sha256": "4723ae8b029c01d9c3c5d29c2e28c88dcd4444ee3dd06c372ab8ba42adb0ce2c",
+        "canonical_raw_sha256": "4723ae8b029c01d9c3c5d29c2e28c88dcd4444ee3dd06c372ab8ba42adb0ce2c",
+        "CPU_raw_sha256": "2abcc256a4ca642bfd182469eb60f21c347b72eabcb6e8f524b29e0d51950754"
+      },
+      {
+        "index": 6,
+        "name": "__precision_probe/denominator_q8",
+        "role": "sampled_key_sum",
+        "shape": [
+          16,
+          1,
+          1,
+          8
+        ],
+        "actual_format": 0,
+        "actual_type": 1,
+        "physical_raw_sha256": "f3247c817ec389ea1c63b57f0b4b07102bcecec31b5fdb225bb6fd9107865db8",
+        "canonical_raw_sha256": "f3247c817ec389ea1c63b57f0b4b07102bcecec31b5fdb225bb6fd9107865db8",
+        "CPU_raw_sha256": "01d9bee225392d0681c7975b71446fa95274d4eb6b442928f57bb86f1fa0522b"
+      },
+      {
+        "index": 7,
+        "name": "__precision_probe/PV_numerator_q8",
+        "role": "sampled_PV_numerator_before_Div",
+        "shape": [
+          16,
+          64,
+          1,
+          8
+        ],
+        "actual_format": 0,
+        "actual_type": 1,
+        "physical_raw_sha256": "6ced9d669f42f7d37ad277c16dcf486eaf6c8bd4960ca9d93a80915b643f5608",
+        "canonical_raw_sha256": "6ced9d669f42f7d37ad277c16dcf486eaf6c8bd4960ca9d93a80915b643f5608",
+        "CPU_raw_sha256": "16f8e76382ffe9a4b82a3a6d48303c8675e119b2b85f4075f5c2668d62cf66ce"
+      },
+      {
+        "index": 8,
+        "name": "__global_value_mean/centered_value",
+        "role": "full_centered_V",
+        "shape": [
+          1,
+          16,
+          2082,
+          64
+        ],
+        "actual_format": 0,
+        "actual_type": 1,
+        "physical_raw_sha256": "7acd8773ab2ae720b2ae59798765e40812f97cb2d671696cf2c9f9741b54ab43",
+        "canonical_raw_sha256": "7acd8773ab2ae720b2ae59798765e40812f97cb2d671696cf2c9f9741b54ab43",
+        "CPU_raw_sha256": "27b30d4d3a68baa7e2e95bd4cfa5d711a765ae51bd910491464fb4987057af9c"
+      },
+      {
+        "index": 9,
+        "name": "__global_value_mean/mu",
+        "role": "full_V_mean",
+        "shape": [
+          1,
+          16,
+          1,
+          64
+        ],
+        "actual_format": 0,
+        "actual_type": 1,
+        "physical_raw_sha256": "0cc2de5a145f9f5485967b10faa54cfa1998da02b25435de1aa6a6a31aa6f033",
+        "canonical_raw_sha256": "0cc2de5a145f9f5485967b10faa54cfa1998da02b25435de1aa6a6a31aa6f033",
+        "CPU_raw_sha256": "00c08d26c18291c0f959d90f4d4abc8a6ed0cfe0d8a933a12bed3f43c227130c"
+      }
+    ],
+    "all20_NPU_physical_and_canonical_copies_verified": true,
+    "all10_CPU_references_verified": true,
+    "same_original_capture_and_parameters": true
+  },
+  "board_CPU_diagnostic_reconstructions": {
+    "reference": "The same eight query indices across all sixteen heads in the matched board FP32 probe output, itself byte equal to the R155B FP32 parent",
+    "terminal_reconstruction": "Observed N/Z plus observed V mean; no new exponent weights",
+    "weight_path_reconstruction": "E=exp(observed centered X), recompute full-key Z and PV in CPU FP64, retain observed centered V and V mean",
+    "metrics": {
+      "sampled_actual_output_vs_CPU": {
+        "relative_l2": 0.12259758370968006,
+        "max_abs": 0.5830440521240234,
+        "rms": 0.020452991584426095,
+        "mean_error": 0.00013781236240362205,
+        "byte_equal": false
+      },
+      "sampled_reconstructed_output_vs_CPU": {
+        "relative_l2": 0.12256835642795402,
+        "max_abs": 0.5826256633748479,
+        "rms": 0.020448115588267708,
+        "mean_error": 0.00013827634279840593,
+        "byte_equal": false
+      },
+      "sampled_half_rounded_reconstruction_vs_CPU": {
+        "relative_l2": 0.12259752835500622,
+        "max_abs": 0.5830440521240234,
+        "rms": 0.020452982349589147,
+        "mean_error": 0.00013797693001293965,
+        "byte_equal": false
+      },
+      "sampled_output_vs_observed_numerator_div_denominator_plus_mean": {
+        "relative_l2": 0.00023872693917968842,
+        "max_abs": 0.0007733267026714952,
+        "rms": 3.806859818318316e-05,
+        "mean_error": -4.639803947838754e-07,
+        "byte_equal": false
+      },
+      "replace_sigmoid_ratio_with_exp_observed_X_vs_CPU": {
+        "relative_l2": 0.0004240095006646945,
+        "max_abs": 0.0020983570259496265,
+        "rms": 7.073763190429745e-05,
+        "mean_error": 1.3609954999673732e-07,
+        "byte_equal": false
+      }
+    },
+    "interpretation": "The near-unchanged error after terminal reconstruction rules out the final division/add/layout as the dominant error source for these samples. Replacing the weight path strongly reduces sampled error.",
+    "new_model_or_SDK_invocation": false,
+    "new_NPU_corrected_execution": false,
+    "deployment_precision_or_speed_established": false,
+    "saved_reconstruction_vectors_rehashed_and_metrics_independently_recomputed": true,
+    "saved_arithmetic_artifacts": {
+      "r1": [
+        {
+          "file": "FP64_reconstructed_output.npy",
+          "bytes": 65664,
+          "sha256": "167051395d57915865e4703c5bb319e8547a7ce776c6010c61e5513132f3b430",
+          "shape": [
+            1,
+            16,
+            8,
+            64
+          ],
+          "dtype": "float64"
+        },
+        {
+          "file": "half_rounded_reconstructed_output.npy",
+          "bytes": 65664,
+          "sha256": "fa743689e77f41615578ddd711aba15a68d7bee3dd0571c7e0a77d60108361e3",
+          "shape": [
+            1,
+            16,
+            8,
+            64
+          ],
+          "dtype": "float64"
+        },
+        {
+          "file": "sampled_actual_output.npy",
+          "bytes": 65664,
+          "sha256": "498301495d8b03ace0dee84b38dc3aaba4e1b20b9ed82659f8320641004ae00a",
+          "shape": [
+            1,
+            16,
+            8,
+            64
+          ],
+          "dtype": "float64"
+        },
+        {
+          "file": "sampled_CPU_reference.npy",
+          "bytes": 65664,
+          "sha256": "1d362535f983b2f1a816636d003ec01c3cfe562834778e2b93e24766e208e1ba",
+          "shape": [
+            1,
+            16,
+            8,
+            64
+          ],
+          "dtype": "float64"
+        },
+        {
+          "file": "observed_PV_div_Z.npy",
+          "bytes": 65664,
+          "sha256": "02b04b5f22e8a732938dd7062f9abaa092ebee688ea05afd32c4a62565b5f0e8",
+          "shape": [
+            16,
+            64,
+            1,
+            8
+          ],
+          "dtype": "float64"
+        }
+      ],
+      "r2": [
+        {
+          "file": "FP64_reconstructed_output.npy",
+          "bytes": 65664,
+          "sha256": "167051395d57915865e4703c5bb319e8547a7ce776c6010c61e5513132f3b430",
+          "shape": [
+            1,
+            16,
+            8,
+            64
+          ],
+          "dtype": "float64"
+        },
+        {
+          "file": "half_rounded_reconstructed_output.npy",
+          "bytes": 65664,
+          "sha256": "fa743689e77f41615578ddd711aba15a68d7bee3dd0571c7e0a77d60108361e3",
+          "shape": [
+            1,
+            16,
+            8,
+            64
+          ],
+          "dtype": "float64"
+        },
+        {
+          "file": "sampled_actual_output.npy",
+          "bytes": 65664,
+          "sha256": "498301495d8b03ace0dee84b38dc3aaba4e1b20b9ed82659f8320641004ae00a",
+          "shape": [
+            1,
+            16,
+            8,
+            64
+          ],
+          "dtype": "float64"
+        },
+        {
+          "file": "sampled_CPU_reference.npy",
+          "bytes": 65664,
+          "sha256": "1d362535f983b2f1a816636d003ec01c3cfe562834778e2b93e24766e208e1ba",
+          "shape": [
+            1,
+            16,
+            8,
+            64
+          ],
+          "dtype": "float64"
+        },
+        {
+          "file": "observed_PV_div_Z.npy",
+          "bytes": 65664,
+          "sha256": "02b04b5f22e8a732938dd7062f9abaa092ebee688ea05afd32c4a62565b5f0e8",
+          "shape": [
+            16,
+            64,
+            1,
+            8
+          ],
+          "dtype": "float64"
+        },
+        {
+          "file": "FP64_exp_of_observed_X_output.npy",
+          "bytes": 65664,
+          "sha256": "86c57ad10fc12f8b3c7c7038304936b927b3aa343a5ee306b9e97053f28745df",
+          "shape": [
+            1,
+            16,
+            8,
+            64
+          ],
+          "dtype": "float64"
+        }
+      ]
+    }
+  },
+  "observed_negative_tail": {
+    "condition": "Observed X < -7",
+    "element_count": 2060,
+    "minimum_observed_X": -8.171875,
+    "unique_observed_sigmoid_count": 18,
+    "observed_sigmoid_values": [
+      0.001007080078125,
+      0.00103759765625,
+      0.001068115234375,
+      0.0010986328125,
+      0.001129150390625,
+      0.00115966796875,
+      0.001190185546875,
+      0.001220703125,
+      0.001251220703125,
+      0.00128173828125,
+      0.001312255859375,
+      0.0013427734375,
+      0.001373291015625,
+      0.00140380859375,
+      0.001434326171875,
+      0.00146484375,
+      0.001495361328125,
+      0.00152587890625
+    ],
+    "integer_codes_in_units_of_2_power_minus15": [
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50
+    ],
+    "code_step": 3.0517578125e-05,
+    "minimum_observed_sigmoid": 0.001007080078125,
+    "maximum_exact_sigmoid_under_condition": 0.0009110511944006454,
+    "all2060_observed_sigmoid_values_exceed_exact_value_at_same_X": true,
+    "entries_at_minimum_code": 34,
+    "X_range_at_minimum_code": [
+      -8.171875,
+      -8.1328125
+    ],
+    "exact_sigmoid_at_minimum_X": 0.00028240807799315707,
+    "uniform_floor_established": false,
+    "hidden_LUT_or_accumulator_type_established": false,
+    "specific_head15_query1": {
+      "head": 15,
+      "query": 1,
+      "observed_Z": 5.921875,
+      "CPU_Z": 4.374467372894287,
+      "exp_observed_X_Z": 4.379852372846965,
+      "original_actual_max_abs": 0.5830440521240234,
+      "exp_reconstructed_max_abs": 0.0020983570259496265,
+      "min_X": -8.171875,
+      "minimum_code_keys": 34
+    }
+  },
+  "closed_resources": {
+    "observer_init_flags": 0,
+    "observer_core_mask": 7,
+    "observer_resource_totals": {
+      "contexts_created": 1,
+      "contexts_destroyed": 1,
+      "runs_completed": 1,
+      "output_buffers_acquired": 10,
+      "output_buffers_released": 10
+    },
+    "all_owned_resources_closed": true,
+    "original_clock_governor_and_limits_restored": true,
+    "maximum_NPU_controller_temperature_c": 57.307,
+    "maximum_NPU_worker_temperature_c": 57.307,
+    "board_CPU_arithmetic_controllers": {
+      "r1": {
+        "status": "completed",
+        "returncode": 0,
+        "frequency_written": false,
+        "leader_reaped": true,
+        "live_process_group_gone": true,
+        "cleanup_errors": [],
+        "controller_wall_seconds": 0.8087166640034411
+      },
+      "r2": {
+        "status": "completed",
+        "returncode": 0,
+        "frequency_written": false,
+        "leader_reaped": true,
+        "live_process_group_gone": true,
+        "cleanup_errors": [],
+        "controller_wall_seconds": 0.8059513729967875
+      }
+    }
+  },
+  "limits": "One repeated capture and eight sampled query indices in all sixteen heads. The full output remains rejected. CPU arithmetic reconstructs saved observations and does not provide a new NPU deployment, timing result or complete-model quality. Follow-up quarter-exp has no NPU outcome recorded here.",
+  "evidence": [
+    {
+      "role": "precision exporter source",
+      "basename": "export_precision_probes.py",
+      "bytes": 8028,
+      "sha256": "459a74f29b3493334458ba737060f29a2a32a723197798fa4741772e35eace76"
+    },
+    {
+      "role": "observer static proof",
+      "basename": "result.json",
+      "bytes": 12999,
+      "sha256": "926feb7f5a7c66faa23695a3c9d031f3cdbab056d8a12ddd9875da6838c8d3cb"
+    },
+    {
+      "role": "observer actual compile",
+      "basename": "result.json",
+      "bytes": 11976,
+      "sha256": "17bbc840fa67445861d82521660f6bd5110b38fc14358968d8e8c4bca9565572"
+    },
+    {
+      "role": "observer compiler source",
+      "basename": "compile_precision_probe_board.py",
+      "bytes": 11423,
+      "sha256": "b97d546fff7522566c77c15034bf2ffacc551669798a1882f16a2a7705f0958f"
+    },
+    {
+      "role": "owned observer source",
+      "basename": "run_precision_probe_board.py",
+      "bytes": 12576,
+      "sha256": "6e37145c53245ff82689cfe522f29522b0fad5e6e9d59baef10fbb2e2659fc89"
+    },
+    {
+      "role": "observer runtime receipt",
+      "basename": "result.json",
+      "bytes": 45815,
+      "sha256": "157b4f81fe7d6dfc3b9dff65271710980aa7d6ec909b7a8fe30b1138cc5a5463"
+    },
+    {
+      "role": "observer saved audit",
+      "basename": "runtime-r1-saved-audit.json",
+      "bytes": 13172,
+      "sha256": "d5d96b991a6e0c480d48121eb48ff0077c972271c83c7058b2629b53f4bd7b8b"
+    },
+    {
+      "role": "observer saved audit source",
+      "basename": "audit_precision_probe_runtime_saved.py",
+      "bytes": 19136,
+      "sha256": "afeae87466019a08c69987a69c48b03c57821c791bcc471de7d3f6e2e2751a28"
+    },
+    {
+      "role": "observer restoring controller",
+      "basename": "control.json",
+      "bytes": 3544,
+      "sha256": "e5db62351a30b7345a78c8ca969dbb2915e7d94c9788b774816268ace49bf7b4"
+    },
+    {
+      "role": "board CPU arithmetic r1 source",
+      "basename": "check_observed_arithmetic_board.py",
+      "bytes": 6454,
+      "sha256": "ddef2d942a5318d7c3e2bda69705e46329e140962999345f74e352bc03bf1b68"
+    },
+    {
+      "role": "board CPU arithmetic r1 receipt",
+      "basename": "result.json",
+      "bytes": 8957,
+      "sha256": "e89710777a35db1738a62e177c347bff88d7ef9838809bfd03c56112f0969168"
+    },
+    {
+      "role": "board CPU arithmetic r1 controller",
+      "basename": "vggt-v83-native518observedarithmeticr1-control-r1.json",
+      "bytes": 6068,
+      "sha256": "1c8a8b4ec5c246e20dfd5b9b0410330d8c5ddfedebb49754c74195c303fbf332"
+    },
+    {
+      "role": "board CPU arithmetic r2 source",
+      "basename": "check_observed_arithmetic_board_r2.py",
+      "bytes": 8003,
+      "sha256": "a17f6354ad3ba362bd62a4ea990077d8c6385133f93535e4fa3a88a0d825d7a2"
+    },
+    {
+      "role": "board CPU arithmetic r2 receipt",
+      "basename": "result.json",
+      "bytes": 51743,
+      "sha256": "4069ba6f0dea2db0309b5e0889840ced660122ea74b7e4708fff6a5f78afcbbc"
+    },
+    {
+      "role": "board CPU arithmetic r2 controller",
+      "basename": "vggt-v83-native518observedarithmeticr2-control-r1.json",
+      "bytes": 6069,
+      "sha256": "813b1f9f5bde9b644cf97a36473b017b3d9ebba5e93f0cf8f11a88ee68bb8e18"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "schema": "recovered_original_native518_global_split_v114",
+  "experiment_version": 114,
+  "recovery": {
+    "regenerated_after_volatile_loss": true,
+    "byte_exact_original_public_file_recovered": false,
+    "original_public_file_sha256_claimed": false,
+    "based_on_persistent_completed_evidence_not_unexecuted_drafts": true,
+    "metadata_only_selection": true,
+    "private_path_labels_redacted": true,
+    "new_NN_SDK_GPU_board_or_experiment_execution": false
+  },
+  "original_model_only": true,
+  "recorded_measurements": {
+    "original_experiment_status": "completed_original_global0_split_ABBA_not_quality_or_integration_accepted",
+    "scope": {
+      "parent_graph_sha256": "c44094793c3b590c6066cbdd634cf0c4d8bd5b75987c8b491db7b17b2201f55d",
+      "schedule": [
+        "A",
+        "B",
+        "B",
+        "A"
+      ],
+      "phase_calls": 2,
+      "init_flags": 0,
+      "weighted_core_mask": 7,
+      "maximum_live_weighted_contexts": 1,
+      "maximum_live_total_contexts": 3,
+      "no_reference_QKV_attention_or_suffix_input_reset": true,
+      "suffix_residual_is_original_input": true,
+      "CPU_attention_fallback": false,
+      "timing_scope": "Complete fresh-context block lifecycle: constructor checks/model/helper/library hashes, init/query, input/residual copies and residual-invariant hash, all SDK IO/layout/owned-copy/release, B worker dispatch/join/headconcat, all destroys/thread shutdown and finite checks.",
+      "sample_policy": "Report first invocation of each route separately; summary includes remaining3 route calls. Every call initializes/destroys all contexts, no resident-context or hidden-warmup claim."
+    },
+    "summary": {
+      "A": {
+        "count": 3,
+        "mean_seconds": 0.6449327736821336,
+        "min_seconds": 0.6395296900300309,
+        "max_seconds": 0.6498015240067616
+      },
+      "B": {
+        "count": 3,
+        "mean_seconds": 1.3990666123184685,
+        "min_seconds": 1.3479635099647567,
+        "max_seconds": 1.4354757270193659
+      }
+    },
+    "subsequent3_stage_means": {
+      "A_IO_seconds": 0.416827055994266,
+      "A_initialization_seconds": 0.13523855531821027,
+      "A_destruction_seconds": 0.08252652199007571,
+      "B_prefix_IO_seconds": 0.26198883201383677,
+      "B_head_dispatch_join_seconds": 0.21717159100808203,
+      "B_suffix_IO_seconds": 0.15339743198516467,
+      "B_prefix_initialization_seconds": 0.07491653532876323,
+      "B_head_worker_initialization_seconds": 0.24493060800402114,
+      "B_suffix_initialization_seconds": 0.17425397564268982,
+      "B_prefix_destruction_seconds": 0.032222656339096524,
+      "B_head_worker_destruction_and_shutdown_seconds": 0.1463289176657175,
+      "B_suffix_destruction_seconds": 0.06937795165382947,
+      "B_partition_IO_sum_seconds": 0.6325578550070835,
+      "B_initialization_sum_seconds": 0.4941011189754742,
+      "B_destruction_shutdown_sum_seconds": 0.2479295256586435
+    },
+    "original_FP32_metrics": {
+      "A": {
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "byte_equal": false,
+        "relative_L2": 0.005706405309430338,
+        "max_abs": 0.017194777727127075,
+        "fixed_gate_passed": false
+      },
+      "B": {
+        "strict_rtol": 0.0001,
+        "strict_atol": 1e-05,
+        "strict_pass": false,
+        "byte_equal": false,
+        "relative_L2": 0.005706405309430338,
+        "max_abs": 0.017194777727127075,
+        "fixed_gate_passed": false
+      }
+    },
+    "original_FP32_graph_gate_passed": true,
+    "original_FP32_runtime_fixed_gate_passed": false,
+    "all_A_B_and_repeats_byte_equal": true,
+    "SDK_totals": {
+      "contexts_created": 24,
+      "contexts_destroyed": 24,
+      "runs_completed": 24,
+      "output_buffers_acquired": 32,
+      "output_buffers_released": 32
+    },
+    "controller": {
+      "sha256": "0c15ece0fa5a9a4abfab9db48dc34855c5fd622379312c92f5ec09233de0d31a",
+      "seconds": 10.164525522035547,
+      "maximum_temperature_c": 57.307,
+      "clock_samples": 21,
+      "all_samples_1GHz": true,
+      "prior_configuration_restored_300MHz": true
+    },
+    "all_contexts_outputs_workers_closed": true,
+    "observed_percent_slower": 116.93216245326413,
+    "decision": "Reject this fresh-context split schedule; no production integration.",
+    "limits": [
+      "Reject this complete global0 split schedule; do not infer generic head parallelism is impossible.",
+      "Lifecycle is timed; the separate partition IO walls are not a persistent-context prediction or full-model speed measurement."
+    ]
+  },
+  "source_evidence": [
+    {
+      "archive": "v114-native518-global-split-r1",
+      "file": "board-abba-r1/result.json",
+      "bytes": 271464,
+      "sha256": "80d7bf6a556dcada5dfe740f3ab81e9524265d6e52de5f14450564e4f0260285"
+    },
+    {
+      "archive": "v114-native518-global-split-r1",
+      "file": "saved-global0-split-audit.json",
+      "bytes": 7374,
+      "sha256": "9fda74b23e4f3177b40362a25a971ff2780f88a2b138c2c80729611e1fa98195"
+    }
+  ],
+  "document_evidence": {
+    "document": "docs/ENGINEERING_NOTES.md",
+    "heading": "## 180. Complete-block measurement rejects the three-context attention split",
+    "section_sha256": "1092ac2b993e26eeaad74427d805fb7317212b5fe1d450825f31fd6894fed265"
+  },
+  "production_defaults_changed_by_recovery": false,
+  "realtime_full_model_quality_or_physical8GB_acceptance_established_by_recovery": false,
+  "publication": "Metadata summary only. Original model sources/checkpoint, repository code and SDK retain separate licenses; no weights, model arrays, weight-bearing exports or SDK binaries included."
+}
