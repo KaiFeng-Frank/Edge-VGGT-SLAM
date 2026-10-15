@@ -1,0 +1,278 @@
+{
+  "schema": "original_native518_original_group2_compute_profile_v206",
+  "record": 206,
+  "status": "original_group2_flags8_operator_profile_independently_audited_same_input_flags0_outputs_equal_no_speed_or_quality_acceptance",
+  "scope": {
+    "board": "16 GB RK3588S",
+    "original_model_bytes": 397920172,
+    "original_model_sha256": "95c39104f44f99328669c8412b8e78ea029abe50ef63add0b48117b093f9bb44",
+    "original_graph_sha256": "f1bb768a6cce23cbdb7ba00b481c663baa9a54e847cb30871a656975ae35e849",
+    "original_pairs": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "input_shape": [
+      2,
+      1041,
+      1024
+    ],
+    "input_authority": "The same saved original Torch GLOBAL11-conditioned case used by the R194 original flags0 control; not the unsaved group2 intermediate from R205 fresh pixels.",
+    "model_graph_weights_layers_tokens_or_resolution_modified": false,
+    "compiled_dtype_policy": "Original nonquantized FP16 model, unchanged.",
+    "init_flags": 8,
+    "requested_core_mask": 7,
+    "profiling_forwards": 1,
+    "CPU_core": 4,
+    "expected_NPU_hz": 1000000000
+  },
+  "raw_profile_integrity": {
+    "bytes": 100774,
+    "sha256": "b2ea59b9110d6a9cbae067b1d349736c4fd4f380c1d2ec9e75292505de43f6d7",
+    "operator_rows": 399,
+    "all_text_lines_retained": 429,
+    "unparsed_or_unclassified_operator_rows": 0,
+    "IDs_contiguous_from_one": true,
+    "independent_full_reparse_equals_executed_parse": true,
+    "sum_operator_time_us": 3764671,
+    "reported_operator_total_us": 3764671,
+    "actual_source_names_verified": "pair12/frame12/global12 through pair17/frame17/global17",
+    "operator_type_precedes_name_in_classification": true,
+    "FC2_named_nonproducts": {
+      "Split_rows": 6,
+      "Add_rows": 6,
+      "included_in_product_time": false
+    },
+    "SDK_query3_bytes_copied_and_saved_before_query4": true
+  },
+  "operator_categories": [
+    {
+      "category": "SDPA",
+      "operator_rows": 18,
+      "reported_time_us": 2343001,
+      "percent_of_reported_total": 62.23654072294764
+    },
+    {
+      "category": "FC2_product_kernel",
+      "operator_rows": 36,
+      "reported_time_us": 371739,
+      "percent_of_reported_total": 9.874408680067926
+    },
+    {
+      "category": "FC1_fused_GELU_kernel",
+      "operator_rows": 18,
+      "reported_time_us": 370257,
+      "percent_of_reported_total": 9.835042690317428
+    },
+    {
+      "category": "normalization",
+      "operator_rows": 72,
+      "reported_time_us": 279511,
+      "percent_of_reported_total": 7.424579730871569
+    },
+    {
+      "category": "layout",
+      "operator_rows": 90,
+      "reported_time_us": 112732,
+      "percent_of_reported_total": 2.994471495649952
+    },
+    {
+      "category": "QKV_kernel",
+      "operator_rows": 18,
+      "reported_time_us": 109236,
+      "percent_of_reported_total": 2.9016081352128777
+    },
+    {
+      "category": "pointwise_arithmetic",
+      "operator_rows": 90,
+      "reported_time_us": 97338,
+      "percent_of_reported_total": 2.5855645818718287
+    },
+    {
+      "category": "output_projection_kernel",
+      "operator_rows": 18,
+      "reported_time_us": 45435,
+      "percent_of_reported_total": 1.2068783699823968
+    },
+    {
+      "category": "fixed_RoPE_or_mean_kernel",
+      "operator_rows": 36,
+      "reported_time_us": 34684,
+      "percent_of_reported_total": 0.9213022864414978
+    },
+    {
+      "category": "external_IO",
+      "operator_rows": 3,
+      "reported_time_us": 738,
+      "percent_of_reported_total": 0.019603306636888057
+    }
+  ],
+  "attention_geometry_and_cost": {
+    "all_attention_rows": 18,
+    "frame": {
+      "rows": 12,
+      "time_us": 775134,
+      "percent_of_reported_total": 20.589687651324645,
+      "per_row_output_shape": [
+        16,
+        64,
+        1,
+        1041
+      ]
+    },
+    "global": {
+      "rows": 6,
+      "time_us": 1567867,
+      "percent_of_reported_total": 41.64685307162299,
+      "per_row_output_shape": [
+        16,
+        64,
+        1,
+        2082
+      ]
+    },
+    "input_shape_limit": "The SDK truncates some input lists with ellipses; omitted shapes are not reconstructed from the raw table."
+  },
+  "actual_SDK_labels": {
+    "NPU_FLOAT16_rows": 396,
+    "CPU_FLOAT16_rows": 3,
+    "CPU_rows_are_public_input_output_operators_only": true,
+    "WorkLoad_literal_counts": {
+      "0.0%/0.0%/0.0%": 49,
+      "100.0%/0.0%/0.0%": 224,
+      "33.3%/33.3%/33.3%": 18,
+      "50.0%/25.0%/25.0%": 36,
+      "34.4%/32.8%/32.8%": 54,
+      "33.6%/33.6%/32.8%": 18
+    },
+    "all18_SDPA_WorkLoad_raw": "100.0%/0.0%/0.0%",
+    "all72_norm_and18_fused_FC1_WorkLoad_raw": "100.0%/0.0%/0.0%",
+    "FC2_and_projection_WorkLoad_raw": "34.4%/32.8%/32.8%",
+    "QKV_WorkLoad_raw": "33.3%/33.3%/33.3%",
+    "MacUsage_present_rows": 126,
+    "interpretation": "Literal SDK distributions/counters are not measured occupancy, utilization or proof that requested core7 uses all three cores. FLOAT16 labels do not establish accumulator precision."
+  },
+  "diagnostic_timing": {
+    "complete_call_seconds": 3.912442810003995,
+    "SDK_run_wall_seconds": 3.8061707580054644,
+    "SDK_query4_run_duration_us": 3806114,
+    "operator_table_total_us": 3764671,
+    "initialization_including_model_advice_seconds": 1.6244441629969515,
+    "close_including_model_advice_seconds": 0.19880206199013628,
+    "startup_full_model_SHA_seconds": 1.6714799589972245,
+    "terminal_full_model_SHA_seconds": 1.6334582480048994,
+    "controller_seconds": 10.193672440989758,
+    "scope": "One flags8 diagnostic call includes ordinary IO, owned copies/release and finite checks. Profile queries, file work, initialization, close and model verification are separate. This is not ordinary flags0 latency or a matched speed comparison."
+  },
+  "endpoint_and_lifecycle_verification": {
+    "new_lossless_FLOAT16_files": 2,
+    "new_NPY_bytes": 8528128,
+    "complete_endpoint_and_control_NPY_files_independently_read": 4,
+    "both_widened_outputs_byte_equal_same_input_R194_flags0": true,
+    "relative_L2_and_max_abs_vs_flags0": 0,
+    "endpoint_shapes": {
+      "frame_output": [
+        2,
+        1041,
+        1024
+      ],
+      "global_output": [
+        1,
+        2082,
+        1024
+      ]
+    },
+    "contexts_created_and_destroyed": 1,
+    "SDK_runs": 1,
+    "outputs_acquired_and_released": 2,
+    "PERF_DETAIL_queries": 1,
+    "PERF_RUN_queries": 1,
+    "all_resources_closed": true,
+    "startup_terminal_full_model_SHA_records": 2,
+    "model_IO_events_verified": 106,
+    "terminal_full_SHA_after_owner_known_closed": true,
+    "NOATIME_file_identity_aligned_advice_and_FD_closure_verified": true,
+    "private_IO_hooks_and_whole_source_transport_integrity_passed": true
+  },
+  "guards": {
+    "saved_memory_checks": 5,
+    "minimum_serialized_DMA_free_bytes": 1366237184,
+    "DMA_reserve_bytes": 268435456,
+    "minimum_serialized_MemAvailable_bytes": 5029154816,
+    "MemAvailable_floor_bytes": 2684354560,
+    "data_free_floor_bytes": 3221225472,
+    "root_free_floor_bytes": 536870912,
+    "timeout_seconds": 180,
+    "temperature_limit_c": 75,
+    "maximum_sampled_temperature_c": 55.461,
+    "prior_frequency_governor_and_environment_restored": true,
+    "scope": "Saved samples and SDK workspace requests are not continuous minima, unique physical totals or proof of physical8GB operation."
+  },
+  "decision": "Fused attention dominates this exact original group2 diagnostic. Retain the measured category evidence for later original-model work; no graph rewrite, faster route or default-path change is validated by this profile.",
+  "limits": [
+    "One existing conditioned group2 input establishes neither fresh-pixel rate nor full-model timing. R205 current intermediates are not asserted identical to this input.",
+    "Same-input flags8/flags0 output identity is not an original-FP32 precision result, trajectory result or improvement over the control.",
+    "Fused kernels combine source operations; category time cannot be assigned to individual original nodes without a separate proof.",
+    "No speculative or unexecuted research candidate is presented as an achieved result."
+  ],
+  "acceptance": {
+    "saved_operator_and_endpoint_audits_passed": true,
+    "profile_attributed_to_exact_original_model_and_flags0_control": true,
+    "ordinary_latency_or_core_utilization_validated": false,
+    "new_precision_trajectory_map_realtime_or_physical8GB_acceptance": false
+  },
+  "evidence": {
+    "worker_receipt": {
+      "bytes": 775258,
+      "sha256": "5c0a1e54a0927517787a1ba5fb2ae1c07fad0f13fd49479e93adfb22c0de22ba"
+    },
+    "raw_profile": {
+      "bytes": 100774,
+      "sha256": "b2ea59b9110d6a9cbae067b1d349736c4fd4f380c1d2ec9e75292505de43f6d7"
+    },
+    "controller": {
+      "bytes": 8581,
+      "sha256": "7d4682cbe8d538820fa9a31863a302686bfafb3621d1cbebd0b268e39f7deff2"
+    },
+    "transport": {
+      "bytes": 15233,
+      "sha256": "ac1df28864507d63a603631d169c50f943e5e683f0bdc9019cfbfe0aa5ec8347"
+    },
+    "manifest": {
+      "bytes": 5864,
+      "sha256": "ee188e2c917867bb60d5dffe21ca21b09704cea39c3373d028dc0dd8e1753e26"
+    },
+    "worker_source": {
+      "bytes": 35909,
+      "sha256": "3798ad4b630eb57ea6624ae1f78ae102c808a9b7aaafc53f0e45e86fa0e82615"
+    },
+    "launcher_source": {
+      "bytes": 17011,
+      "sha256": "bac12ec7b6120f8e97146e9e26bdb2a14d9ea838c7f19e00818bcc25c465e738"
+    },
+    "parser_source": {
+      "bytes": 8971,
+      "sha256": "5d69e628cdda8f7f160dd7d844224dd8b373f4a706fce548b0290420488f9096"
+    },
+    "independent_operator_saved_audit": {
+      "bytes": 24855,
+      "sha256": "337c3de64864db4b920ce3b2592d309ea0bd188e5ba3a13dc83e7a8a849b7f3c"
+    },
+    "operator_auditor_source": {
+      "bytes": 15800,
+      "sha256": "81c70471cca7ad079913ebd8890bab7478133cd57fc02b48c3f8f6c9bc550f3a"
+    },
+    "independent_endpoint_saved_audit": {
+      "bytes": 4782,
+      "sha256": "b25173306a8490e8e223329ea101468b58632c3b6d6249db8f415cf6f5d07a01"
+    },
+    "endpoint_auditor_source": {
+      "bytes": 17821,
+      "sha256": "4c733435b77b665de4b4d524af8557bf499dfbc50522f34b71b5a2ae1f045eed"
+    }
+  },
+  "publication": "Sanitized metadata and hashes only. Model bytes, PNGs, captured arrays, SDKs, raw private receipts and absolute private paths are excluded."
+}

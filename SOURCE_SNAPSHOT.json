@@ -220,7 +220,8 @@
     "results/original_native518_fresh_pixel_capacity_skip_v202.json",
     "results/original_native518_checkpoint_cache_io_v203.json",
     "results/original_native518_original_model_cache_io_v204.json",
-    "results/original_native518_fresh_pixel_persistent_v205.json"
+    "results/original_native518_fresh_pixel_persistent_v205.json",
+    "results/original_native518_original_group2_compute_profile_v206.json"
   ],
   "file_sha256": {
     ".gitignore": "5c914f3ced73f7a831f890a98f771bde1e11fdcf288b87f45a9fb538bef93b2e",
@@ -229,7 +230,7 @@
     "LICENSE": "dc493d7ac51f587fd71184315999c792ead523bf46da0f0cbf3e26a577b1a580",
     "MEASUREMENTS.json": "9c445ab2c3a65b397b7cba316bbb14a5198fead3b564297511617fbc3b3700a7",
     "MODEL_LICENSES.md": "a5750f37f5bcaa28912eaf3a1ab26cde0f570644a01077a81ff0ac4e8ab54a4e",
-    "README.md": "5444ee62a22d34c88014bf9d63a57938fd75e1b5a68ea39c0abe7f6310742bc5",
+    "README.md": "61b81f938419e90d861f57deff93c2f6aa0acfa30403d4d56a2bf3c4178be07c",
     "THIRD_PARTY_NOTICES.md": "99176fb73e78ba0950493b942dfc6c6198a4b6ce432bb0904926edb31bc631ee",
     "UPSTREAMS.json": "9325cc1d2c33794ea3361d0884a5796b9b22b119b9a9822113e7b726e2d88a0a",
     "assets/office_loop_figure.png": "5d20d0acb81d3fb38e14235499ba67a22441cfe835e899f3e224a99e514c28e9",
@@ -1180,7 +1181,7 @@
     "deploy/rk3588/validation/vggt-v16-camera-step-compile112-r1.json": "c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a",
     "deploy/rk3588/validation/vggt-v16-camera-step-export112-r1.json": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
     "deploy/rk3588/vggt-spark.patch": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864",
-    "docs/ENGINEERING_NOTES.md": "2175572ad76ee65b197f17018f5c3cb54215fed59121e97a035737a971b45040",
+    "docs/ENGINEERING_NOTES.md": "3264e487c4952e47dfee1397c7a92de5e8e76448601e17c64f3cb3da7ef82fd3",
     "docs/GRAPH_OPTIMIZATION_REVIEW.md": "5c87954f156b25bbf3353b0edf3e60c497743de2e1ea8ac9e6ab3fa75bedd493",
     "docs/PUBLICATION_SOURCE_ADAPTATIONS.json": "c379873854a5cec3d9d1a9285f63bf3093bb33884230aaf378cd141800c50d80",
     "evals/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -1300,6 +1301,7 @@
     "results/original_native518_merged_group0_profile_v149.json": "87f5988d1744301e22622c0b8998a0bfea16d107e0dce89117483d011d7b4d96",
     "results/original_native518_native_attention_v118.json": "5328b9ea7856893d67fdb21b4d25e958c95a677d18cf6cfd93f7e2a4d7d994e3",
     "results/original_native518_native_block_v121.json": "6ae4230b83068bf694cd78dbc94617ce4346e14f6cd40d36f6e77e159d093f34",
+    "results/original_native518_original_group2_compute_profile_v206.json": "35ff3833917ffecd575bebf0c5d5d79c3f548d8dd786f206de4fd904700c36ca",
     "results/original_native518_original_groups_external_scratch_v191.json": "28993a0c5f65980a629eece59ef3d3bc9c9ee1bad21f95b3b63043b3468951eb",
     "results/original_native518_original_groups_storage_relocation_v199.json": "bc930bafb8a155e84215615808836bd236bac7dd3fdbfdcdc7ca385b42d78233",
     "results/original_native518_original_model_cache_io_v204.json": "0021b3ceb372395e519151eca2b2116f6011c3048c49b4a8c17dc3e8ac4e2f7e",
@@ -1466,10 +1468,10 @@
     "vggt_slam/viewer.py": "49c77ebd3b8faf58b579528a900b129fae676fe8f72e02a151dc53f0b7d3b397",
     "vggt_slam/xnnpack_linear.py": "4a8884e756a0200345bcdf58f316f74d89edd4e6f82f528ff944118a2ef9c5ac"
   },
-  "latest_completed_public_result": 205,
+  "latest_completed_public_result": 206,
   "publication_date": "2026-10-16",
   "publication_validation": {
-    "scope": "Existing source validation plus curated JSON, unchanged notes prefix, local links, public-artifact privacy, source-index hashes and saved R204/R205 evidence consistency. No new inference or SDK execution for publication.",
+    "scope": "Existing source validation plus curated JSON, unchanged notes prefix, local links, public-artifact privacy, source-index hashes and audited R206 diagnostic evidence consistency. No new inference or SDK execution for publication.",
     "focused_generated_tests_passed": 123,
     "actual_NN_SDK_or_board_execution_performed_for_publication": false,
     "published_source_path_adaptations": "docs/PUBLICATION_SOURCE_ADAPTATIONS.json",
