@@ -595,5 +595,17 @@
     "NPU_comparisons_per_trial": 8,
     "candidate_accepted": false,
     "real_time_or_full_model_quality_validated": false
+  },
+  "original_native518_key_partition_thread_affinity_v208": {
+    "record": "results/original_native518_key_partition_thread_affinity_v208.json",
+    "scope": "One unchanged CIP V66 captured-attention component with actor calling threads on CPU5/6/7; not a full system measurement.",
+    "baseline_complete_mean_seconds": 0.40705333249934483,
+    "partition_complete_mean_seconds": 0.30237785300050746,
+    "all5_full_outputs_byte_equal_prior_CIP": true,
+    "NPU_fixed_and_strict_comparisons_passed": 0,
+    "NPU_comparisons": 8,
+    "affinity_only_causal_speedup_established": false,
+    "candidate_accepted": false,
+    "real_time_or_full_model_quality_validated": false
   }
 }

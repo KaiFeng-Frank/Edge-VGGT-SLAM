@@ -1,0 +1,199 @@
+{
+  "schema": "original_native518_key_partition_thread_affinity_v208",
+  "record": 208,
+  "status": "isolated_CIP_actor_CPU_affinity_and_byte_parity_audited_precision_still_failed_no_full_model_acceptance",
+  "scope": {
+    "board": "16 GB RK3588S",
+    "operator": "One original captured global0 attention case, using the unchanged CIP V66 graphs from R207.",
+    "previous_public_record": "results/original_native518_key_partition_attention_v207.json",
+    "previous_public_record_sha256": "ebe48c0b1f4484b6de53715935e0d46c9258c46e61d32717f9cca837372a7c35",
+    "original_QKV_shape": [
+      1,
+      16,
+      2082,
+      64
+    ],
+    "original_scale": 0.125,
+    "all_original_queries_keys_heads_and_value_channels_retained": true,
+    "graph_model_weight_input_or_FLOAT32_completion_changed_from_CIP": false,
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    },
+    "fresh_pixels_or_whole_model_executed": false
+  },
+  "CPU_thread_policy": {
+    "main_and_baseline_CPU": 4,
+    "actor_CPUs": [
+      5,
+      6,
+      7
+    ],
+    "corresponding_NPU_core_masks": [
+      1,
+      2,
+      4
+    ],
+    "baseline_NPU_core_mask": 7,
+    "original_actor_thread_affinity": [
+      4
+    ],
+    "restored_to_original_after_known_native_close": true,
+    "constructor_all_six_runs_and_single_close_on_same_actor_thread_verified": true,
+    "saved_actor_events_verified": 51,
+    "main_CPU4_observations_verified": 30,
+    "SDK_internal_worker_thread_affinities_independently_observed": false,
+    "CPU_thread_affinity_is_not_NPU_utilization": true
+  },
+  "trial": {
+    "schedule": "ABBA; each phase has one warmup and two measured complete calls.",
+    "complete_calls": 12,
+    "measured_calls": 8,
+    "warmup_calls": 4,
+    "baseline_complete_mean_seconds": 0.40705333249934483,
+    "partition_complete_mean_seconds": 0.30237785300050746,
+    "within_trial_descriptive_mean_reduction_percent": 25.71542133216803,
+    "measured_complete_seconds": {
+      "baseline": [
+        0.40817241599143017,
+        0.4065746240084991,
+        0.40645037399372086,
+        0.4070159160037292
+      ],
+      "key_partition": [
+        0.30370994699478615,
+        0.308493239004747,
+        0.2952272789989365,
+        0.30208094700356014
+      ]
+    },
+    "partition_mean_input_packing_seconds": 0.010233563501969911,
+    "partition_mean_CPU_completion_seconds": 0.03731618075835286,
+    "partition_mean_dispatch_and_collect_seconds": 0.25482315049885074,
+    "complete_timer": "NHWC packing/slices, ordinary SDK IO, owned output copies/release, finite checks, three-actor submit/drain and unchanged FLOAT32 m/p completion. Hashes, saves, reference comparisons, init and close are separate.",
+    "candidate_sum_of_concurrent_SDK_durations_is_not_latency": true,
+    "no_interleaved_unpinned_actor_control_in_this_trial": true,
+    "isolated_affinity_speedup_or_cross_trial_causal_effect_established": false
+  },
+  "saved_output_and_precision": {
+    "full_FLOAT32_outputs": 5,
+    "saved_NPY_bytes": 43439488,
+    "all5_full_NPY_files_and_array_bytes_equal_prior_CIP": true,
+    "all12_call_raw_and_merged_hashes_equal_prior_CIP": true,
+    "unchanged_thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "original_and_CPU_fixed_and_strict_comparisons_passed": 0,
+    "comparisons_total": 8,
+    "baseline_vs_original_FP32": {
+      "name": "baseline_vs_original_Torch",
+      "relative_l2": 0.0013111764193869666,
+      "max_abs": 0.04167795181274414,
+      "outside_count": 816777,
+      "fixed_gate_passed": false,
+      "strict_pass": false,
+      "byte_equal": false
+    },
+    "merged_vs_original_FP32": {
+      "name": "merged_vs_original_Torch",
+      "relative_l2": 0.0005971723129626661,
+      "max_abs": 0.01900506019592285,
+      "outside_count": 482950,
+      "fixed_gate_passed": false,
+      "strict_pass": false,
+      "byte_equal": false
+    },
+    "verdict_basis": "The independent AF audit reads all five current and five prior full outputs. Exact full-file/raw-byte parity with the independently audited CIP outputs preserves all eight failed numerical verdicts.",
+    "original_or_CPU_reference_arrays_reread_by_AF_numeric_audit": false,
+    "original_reference_norms_freshly_recomputed_by_AF_numeric_audit": false
+  },
+  "lifecycle": {
+    "resource_totals": {
+      "contexts_created": 4,
+      "contexts_destroyed": 4,
+      "runs_completed": 24,
+      "output_buffers_acquired": 24,
+      "output_buffers_released": 24
+    },
+    "all_fanouts_drained": true,
+    "each_actor_close_attempted_once": true,
+    "all_actor_affinity_policies_verified": true,
+    "all_actor_affinities_restored": true,
+    "all_resources_closed": true,
+    "sources_inputs_environment_and_frequency_restored": true,
+    "maximum_sampled_temperature_c": 58.23,
+    "minimum_sampled_DMA_free_bytes": 1595932672,
+    "DMA_reserve_bytes": 268435456,
+    "minimum_sampled_MemAvailable_bytes": 4792885248,
+    "controller_timeout_seconds": 180,
+    "temperature_limit_c": 75,
+    "NPU_hz": 1000000000,
+    "sampled_values_are_not_continuous_minima_or_unique_physical_memory_totals": true
+  },
+  "decision": "Retain the verified thread ownership/restoration and isolated component observation. Precision still fails, so this does not change the default full-model path or establish deployment acceptance.",
+  "limits": [
+    "This is one captured operator case with four measured samples per route, not fresh-observation throughput, complete input-to-pose P95, trajectory, map cadence, endurance or physical8GB validation.",
+    "The within-trial control is the original unsplit fused attention; it changes graph execution as well as the actor CPU policy. It does not isolate the latency effect of affinity alone.",
+    "Prior CIP and current AF trials are separate bounded runs. No cross-run speed comparison, statistical significance or attribution to CPU scheduling alone is claimed.",
+    "Calling-thread affinity and SDK duration sums do not measure NPU occupancy, utilization or internal SDK thread placement."
+  ],
+  "acceptance": {
+    "independent_saved_numeric_and_runtime_audits_passed": true,
+    "full_output_parity_with_prior_CIP_passed": true,
+    "NPU_precision_accepted": false,
+    "candidate_adopted_as_full_model_default": false,
+    "full_model_quality_trajectory_realtime_or_physical8GB_accepted": false
+  },
+  "evidence": {
+    "NPU_receipt": {
+      "bytes": 279450,
+      "sha256": "0d9c5be7ace8b38254b4a36f39c9092b77bda8ca27751569f91ae4c7ae99f180"
+    },
+    "manifest": {
+      "bytes": 12455,
+      "sha256": "13daaadc78bbb633ec580d2a532591c78bf7d7fb6d831ec2e8ef112afc3f75cd"
+    },
+    "controller": {
+      "bytes": 6779,
+      "sha256": "4218847cac78a23cdca8825f6742b75c3c428d0f59540dd0ab8bb1fdd3899933"
+    },
+    "transport": {
+      "bytes": 33760,
+      "sha256": "c6eac72f069f8d3e0d58df2edf751f3e59343353b3aa40a8f5fa297a68296242"
+    },
+    "independent_numeric_saved_comparison": {
+      "bytes": 10371,
+      "sha256": "efb86720be3222b82b87e12e9b93dee548bba9b3d83097723bbcbc7fab446528"
+    },
+    "independent_runtime_saved_audit": {
+      "bytes": 18374,
+      "sha256": "84e063711fa454599c383ce9d7428f4f0821ff02820e9702b6cb74f78fac837c"
+    },
+    "prior_CIP_numeric_saved_audit": {
+      "bytes": 30464,
+      "sha256": "5c75f8613713b9bce46bdf9ada25494b07ddcb7054214e10487ea9df233a023c"
+    },
+    "prior_CIP_runtime_saved_audit": {
+      "bytes": 7335,
+      "sha256": "c84b7ef37223bd6d79afff731d578ab72313b7addb8f53d6fb0ddc3ed275d9a9"
+    },
+    "executed_worker_source": {
+      "bytes": 56864,
+      "sha256": "e1d30f8b434c18f256b83603caa6d22aba476fc52dad068bd36a0ec54cb7c6e4"
+    },
+    "executed_actor_adapter_source": {
+      "bytes": 10183,
+      "sha256": "b06b9f5a37b2714727e9d036fe33bd2de356bdb143dd1fec4dbc5281f1c5292d"
+    },
+    "frozen_parent_actor_source": {
+      "bytes": 6813,
+      "sha256": "78ccf0b6c57929dc84f0b3c3b43dc64de8a6d15c107da4bd830f17bea3a0a916"
+    },
+    "numeric_auditor_source_sha256": "866155d902ff9b6da33d38451b8c188f61cf2a27f02dbb2a5bb0f57870b10d80",
+    "runtime_auditor_source_sha256": "9e15c90b86f5d857680d6bcf36b4e0f634687b749301f299c1570881614759fd"
+  },
+  "publication": "Sanitized metadata and provenance hashes only. Private absolute paths, weights, captured arrays, model binaries, SDKs and raw private receipts are excluded. Original-model and repository licenses remain separate; see MODEL_LICENSES.md."
+}
