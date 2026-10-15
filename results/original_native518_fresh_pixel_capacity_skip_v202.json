@@ -1,0 +1,100 @@
+{
+  "schema": "original_native518_fresh_pixel_capacity_skip_v202",
+  "record": 202,
+  "status": "constructor_live_DMA_guard_clean_skip_before_any_PNG_or_SDK_forward",
+  "scope": {
+    "intended_route": "Actual replay PNGs through original DINO/group0 and the R200 continuation; no reference-intermediate injection.",
+    "observed_boundary": "Original prefix/checkpoint construction and SDK-free continuation constructors only; no input image was prepared.",
+    "initial_intended_execution_flags_are_not_observed_forward_counts": true,
+    "original_network_weights_layers_and_tokens_unchanged": true
+  },
+  "observed_execution": {
+    "PNG_preparations": 0,
+    "complete_calls": 0,
+    "SDK_contexts_created": 0,
+    "SDK_runs": 0,
+    "output_buffers": 0,
+    "scratch_pools": 0,
+    "imported_views": 0,
+    "internal_binds": 0,
+    "saved_arrays": 0,
+    "failure_arrays": 0,
+    "numeric_comparisons": 0,
+    "candidate_opened": false,
+    "all_resources_closed": true
+  },
+  "capacity": {
+    "prelaunch_DMA_free_bytes": 1621630976,
+    "prelaunch_upstream_screen_bytes": 715878400,
+    "post_constructor_DMA_free_bytes": 56549376,
+    "required_live_DMA_reserve_bytes": 268435456,
+    "failed_live_reserve_deficit_bytes": 211886080,
+    "post_constructor_MemAvailable_bytes": 5379706880,
+    "post_constructor_Cached_bytes": 15795015680,
+    "observed_signed_prelaunch_to_guard_DMA_decrease_bytes": 1565081600,
+    "unchanged_R200_candidate_open_screen_bytes": 1727107072,
+    "R200_candidate_open_screen_reached": false,
+    "interpretation": "MemAvailable is not interchangeable with free DMA. Phase observations are consistent with checkpoint page-cache pressure but do not isolate its sole physical cause."
+  },
+  "checkpoint_guard": {
+    "full_original_bytes": 5026874952,
+    "full_SHA_before_mmap_deserialization_verified_from_frozen_source_and_receipt": true
+  },
+  "controller_and_cleanup": {
+    "worker_elapsed_seconds": 41.57494221899833,
+    "controller_seconds": 42.78386425699864,
+    "fullpixel_call_timing_available": false,
+    "timeout_seconds": 180,
+    "requested_NPU_hz": 1000000000,
+    "sampled_peak_temperature_c": 63.769,
+    "source_and_inputs_unchanged": true,
+    "all_source_and_evidence_pulls_verified": true,
+    "environment_affinity_and_frequency_policy_restored": true
+  },
+  "decision": "Preserve the clean skip and investigate file-cache pressure before another fresh-input attempt. Keep every memory, thermal, timing and numerical guard unchanged.",
+  "acceptance": {
+    "clean_skip_and_zero_work_audit_passed": true,
+    "fresh_pixel_inference_completed": false,
+    "fullpixel_performance_or_precision_measured": false,
+    "persistent_residency_or_trajectory_realtime_or_physical8GB_accepted": false
+  },
+  "evidence": {
+    "worker_receipt": {
+      "bytes": 11617,
+      "sha256": "e36581f325174dbae5aa6bef7529b19350ce105dceaf34c4dbe5b6684e760659"
+    },
+    "controller": {
+      "bytes": 31590,
+      "sha256": "4a02b1a15a2343ba653116e023a8a929e58dc14e76c4fbed88fd7a14bd2197a8"
+    },
+    "transport": {
+      "bytes": 23554,
+      "sha256": "8ae08af7c92979cefa9168405f3949974be001567110fbec45f5af187c7a155b"
+    },
+    "manifest": {
+      "bytes": 15546,
+      "sha256": "a0bc6b0963731a7480117d5aac72d186a1baab0953a5336ab6a7a84187e4c6ab"
+    },
+    "worker_source": {
+      "bytes": 15142,
+      "sha256": "eaa0ec434fae726ddb4a0b193acf0355c483c27ef3d567027725d12e024ff56b"
+    },
+    "pipeline_source": {
+      "bytes": 33344,
+      "sha256": "e1262e72d473d152c4bf0c12623be100383bb524bac63b061ad6d53a87c05c7c"
+    },
+    "transport_source": {
+      "bytes": 16340,
+      "sha256": "3e86d479e6ae12a41cebb034ff2ee7393832e0d159d64b90c6b78f7330fdc4d7"
+    },
+    "independent_saved_scope_audit": {
+      "bytes": 7052,
+      "sha256": "b6201c44cc44e79adb097eea03b92560988a5d81a7545f249435861b6fd0ce67"
+    },
+    "saved_auditor_source": {
+      "bytes": 18987,
+      "sha256": "53b5c57229db8975bed8fd5e12cb9dd88a1396f39bfa66f6f8f52ae2038035ad"
+    }
+  },
+  "publication": "Metadata and hashes only; no private paths or captured/learned payloads."
+}

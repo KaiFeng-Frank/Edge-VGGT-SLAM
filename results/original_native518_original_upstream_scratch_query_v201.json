@@ -1,0 +1,159 @@
+{
+  "schema": "original_native518_original_upstream_scratch_query_v201",
+  "record": 201,
+  "status": "five_original_upstream_models_queried_and_closed_zero_forwards_no_residency_acceptance",
+  "scope": {
+    "network": "Unchanged original VGGT compiled graphs and weights.",
+    "models": "Four original six-layer DINO groups and restored original aggregation group0.",
+    "init_flags": 512,
+    "core_mask": 7,
+    "maximum_live_contexts": 1,
+    "order": [
+      "dino0",
+      "dino1",
+      "dino2",
+      "dino3",
+      "group0"
+    ],
+    "lifecycle": "Each context binds its own pool through one FD view before native queries; view, pool and context close before the next model.",
+    "shared_cross_model_pool_or_persistent_execution_tested": false
+  },
+  "query_results": {
+    "independently_decoded_raw_SDK_queries": 53,
+    "post_bind_native_attributes": 22,
+    "profiles": [
+      {
+        "model": "dino0",
+        "model_sha256": "b2b6cd6426aaadfdbff173397e387d849819d656421fee55f562e5e8f13c78c0",
+        "post_bind_native_attributes": 4,
+        "SDK_context_weight_bytes": 151293184,
+        "SDK_context_internal_bytes": 36414784,
+        "SDK_context_DMA_bytes": 318599168,
+        "page_rounded_arena_bytes": 36417536,
+        "page_rounded_native_IO_bytes": 4280320,
+        "observed_signed_init_DMA_free_decrease_bytes": 160690176,
+        "derived_preinit_screen_with_reserve_bytes": 469823488
+      },
+      {
+        "model": "dino1",
+        "model_sha256": "e6b4b1368d14878bf691bf5c260726d31858e4b4d15ec7090e98fa1f09555466",
+        "post_bind_native_attributes": 4,
+        "SDK_context_weight_bytes": 151293184,
+        "SDK_context_internal_bytes": 36414784,
+        "SDK_context_DMA_bytes": 318599168,
+        "page_rounded_arena_bytes": 36417536,
+        "page_rounded_native_IO_bytes": 4280320,
+        "observed_signed_init_DMA_free_decrease_bytes": 159301632,
+        "derived_preinit_screen_with_reserve_bytes": 468434944
+      },
+      {
+        "model": "dino2",
+        "model_sha256": "ef3c051967c067887d420a330244b1311e330d45a1be2294fbe5f33ceb1b3ccc",
+        "post_bind_native_attributes": 4,
+        "SDK_context_weight_bytes": 151293184,
+        "SDK_context_internal_bytes": 36414784,
+        "SDK_context_DMA_bytes": 318599168,
+        "page_rounded_arena_bytes": 36417536,
+        "page_rounded_native_IO_bytes": 4280320,
+        "observed_signed_init_DMA_free_decrease_bytes": 159227904,
+        "derived_preinit_screen_with_reserve_bytes": 468361216
+      },
+      {
+        "model": "dino3",
+        "model_sha256": "ff9efed3fbb385ed139b2200e815060729d2a92c2270a62eac2e1d0fbb7e864d",
+        "post_bind_native_attributes": 4,
+        "SDK_context_weight_bytes": 151293184,
+        "SDK_context_internal_bytes": 36414784,
+        "SDK_context_DMA_bytes": 318599168,
+        "page_rounded_arena_bytes": 36417536,
+        "page_rounded_native_IO_bytes": 4280320,
+        "observed_signed_init_DMA_free_decrease_bytes": 159113216,
+        "derived_preinit_screen_with_reserve_bytes": 468246528
+      },
+      {
+        "model": "group0",
+        "model_sha256": "7a7798e26194b58e6981c540aafe36cc088b104b87f495eec3b895faffc60f92",
+        "post_bind_native_attributes": 6,
+        "SDK_context_weight_bytes": 287901376,
+        "SDK_context_internal_bytes": 96392512,
+        "SDK_context_DMA_bytes": 668418048,
+        "page_rounded_arena_bytes": 96395264,
+        "page_rounded_native_IO_bytes": 12832768,
+        "observed_signed_init_DMA_free_decrease_bytes": 338214912,
+        "derived_preinit_screen_with_reserve_bytes": 715878400
+      }
+    ],
+    "memory_interpretation": "SDK fields are per-context reports; signed OS DMA deltas include background/cache effects. These are not unique physical totals or allocation guarantees.",
+    "derived_screen": "max(0, observed init DMA decrease) + page-rounded internal arena + page-rounded native IO + 256 MiB reserve",
+    "maximum_derived_upstream_preinit_screen_bytes": 715878400,
+    "unchanged_R200_candidate_open_screen_bytes": 1727107072,
+    "saved_preflight_DMA_free_bytes": 1620377600,
+    "saved_preflight_meets_R200_candidate_open_screen": false
+  },
+  "resources": {
+    "contexts_created": 5,
+    "contexts_destroyed": 5,
+    "pool_allocations": 5,
+    "imported_views": 5,
+    "memory_wrappers_destroyed": 10,
+    "internal_binds": 5,
+    "neural_forwards": 0,
+    "inputs_set": 0,
+    "outputs_acquired": 0,
+    "IO_bindings": 0,
+    "saved_arrays": 0,
+    "scratch_CPU_touch_or_sync_calls": 0,
+    "all_resources_closed": true,
+    "all_source_and_model_pins_unchanged": true
+  },
+  "controller": {
+    "timeout_seconds": 180,
+    "temperature_limit_c": 75,
+    "requested_NPU_hz": 1000000000,
+    "sampled_peak_temperature_c": 58.23,
+    "frequency_policy_restored": true,
+    "worker_elapsed_seconds": 3.643074240986607
+  },
+  "decision": "Retain actual descriptor and capacity profiles for a separately guarded fresh-input attempt. No runtime compatibility, co-residency or inference result is established.",
+  "acceptance": {
+    "saved_descriptor_and_lifetime_audit_passed": true,
+    "forwards_or_shared_residency_validated": false,
+    "precision_or_speed_accepted": false,
+    "fresh_pose_rate_trajectory_realtime_or_physical8GB_accepted": false
+  },
+  "evidence": {
+    "worker_receipt": {
+      "bytes": 214379,
+      "sha256": "56eda745dcbb23f1b2592d21ac8b3665443094e19f007f721e9ab99e84df8807"
+    },
+    "controller": {
+      "bytes": 4259,
+      "sha256": "9660392d0f1a03e16e2619863fc69613774401fd31e07d173c0d65f95ddc2eaa"
+    },
+    "transport": {
+      "bytes": 17388,
+      "sha256": "d0b93ba35b5bd6135c1a89fe2848dd6cfdf55d0511e866d415e77e50777a8c49"
+    },
+    "manifest": {
+      "bytes": 6624,
+      "sha256": "d75d8b9afd2caecf951184e9cb1799fd4654e6870d441fb2badb3585e3856d2f"
+    },
+    "query_worker_source": {
+      "bytes": 39892,
+      "sha256": "d3438cafae8d13737354aae1d99efbcea67222797503150fc938bfc9f6aea761"
+    },
+    "transport_source": {
+      "bytes": 13121,
+      "sha256": "531a79feb91f482229459d52119e2291c93c1d60be25a58fdcc85950b2dc9cb7"
+    },
+    "independent_saved_scope_audit": {
+      "bytes": 7377,
+      "sha256": "4574de0a8f3339a553d6481afc8063e0edda4567feaddcf0e28be24b4aed4752"
+    },
+    "saved_auditor_source": {
+      "bytes": 17185,
+      "sha256": "1eb95135259bb693f10031b9a6313d783eb17ee724a1b455b34febff68e506b1"
+    }
+  },
+  "publication": "Metadata and hashes only; no private paths, models, arrays, raw receipts or SDK payloads."
+}

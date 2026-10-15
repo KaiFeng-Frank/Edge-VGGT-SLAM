@@ -1,0 +1,139 @@
+{
+  "schema": "original_native518_checkpoint_cache_io_v203",
+  "record": 203,
+  "status": "executed_file_cache_probe_scope_verified_whole_transport_postrun_host_source_integrity_failed",
+  "scope": {
+    "operation": "Read-only verification of the exact original checkpoint with file-scoped POSIX_FADV_DONTNEED before and during its full stream SHA.",
+    "original_checkpoint_bytes": 5026874952,
+    "original_checkpoint_sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0",
+    "full_expected_bytes_and_digest_verified": true,
+    "no_model_deserialization_preprocessing_or_NN_SDK_GPU_execution": true,
+    "checkpoint_payload_writes": 0,
+    "global_cache_clock_mount_driver_or_weight_changes": false
+  },
+  "observed_phases": [
+    {
+      "phase": "before_helper",
+      "checkpoint_resident_file_bytes": 2527057480,
+      "DMA_free_bytes": 56680448,
+      "Normal_zone_free_bytes": 45780992,
+      "MemAvailable_bytes": 5591093248
+    },
+    {
+      "phase": "initial_file_DONTNEED",
+      "checkpoint_resident_file_bytes": 0,
+      "DMA_free_bytes": 488792064,
+      "Normal_zone_free_bytes": 2145497088,
+      "MemAvailable_bytes": 5589712896
+    },
+    {
+      "phase": "after_verified_full_hash",
+      "checkpoint_resident_file_bytes": 0,
+      "DMA_free_bytes": 489259008,
+      "Normal_zone_free_bytes": 2133405696,
+      "MemAvailable_bytes": 5577568256
+    }
+  ],
+  "observations": {
+    "residency_method": "Three PROT_NONE/MAP_SHARED mincore snapshots; the observer does not touch file payload pages.",
+    "helper_events_verified": 605,
+    "memory_samples_verified": 80,
+    "checkpoint_inode_size_links_owner_mode_mtime_and_ctime_unchanged": true,
+    "helper_no_atime_read_verified": true,
+    "FD_and_mappings_closed": true,
+    "observed_DMA_free_increase_bytes": 432578560,
+    "final_DMA_meets_upstream_preinit_screen": false,
+    "upstream_preinit_screen_bytes": 715878400,
+    "upstream_screen_deficit_bytes": 226619392,
+    "final_DMA_meets_R200_candidate_open_screen": false,
+    "R200_candidate_open_screen_bytes": 1727107072,
+    "candidate_open_screen_deficit_bytes": 1237848064,
+    "later_readonly_original_model_inventory": {
+      "models": 10,
+      "total_file_bytes": 2795115035,
+      "resident_file_bytes": 2795115035,
+      "model_cache_advice_or_eviction_attempted": false
+    }
+  },
+  "timing_and_controller": {
+    "full_SHA_helper_seconds": 23.287430880998727,
+    "file_probe_seconds": 23.514361488007125,
+    "controller_seconds": 23.795385599005385,
+    "timeout_seconds": 900,
+    "own_CPU_core": 4,
+    "peak_sampled_temperature_c": 56.384,
+    "frequency_written": false,
+    "prior_NPU_policy_unchanged": true,
+    "process_group_cleanup_and_environment_affinity_restoration_verified": true,
+    "category": "File IO and observations only; not inference timing or a throughput result."
+  },
+  "provenance_failure": {
+    "executed_archived_worker_sha256": "701c60be5eea8f3db10d1ec86b43d8d6f8e6057f0952240159e1a205941ad9f0",
+    "executed_helper_sha256": "24bd6af0c9e9666df0f444afa1f1c09db256fa976b848bd79afec94f79fa54a8",
+    "worker_and_controller_completed": true,
+    "all_three_evidence_pulls_completed": true,
+    "preserved_transport_status": "failed_preserved",
+    "failure": "The live host worker source was edited after launch from the executed 701c pin to an unexecuted 09a pin before final verification; the transport rejected the changed host source.",
+    "edited_unexecuted_worker_sha256": "09a763e80c30b5979032cd782894bda8450773c8c2fab93a7ada46df32bedfbe",
+    "exact_original_host_source_later_restored": true,
+    "restoration_retroactively_validates_whole_transport": false,
+    "whole_transport_integrity_passed": false,
+    "saved_scope_audit": "Executed archive/source pins, complete receipt, controller and phase arithmetic are verified; this does not certify the failed transport as a whole."
+  },
+  "decision": "Retain the scoped file-IO evidence and the failed transport record. File-scoped cache advice is a candidate loading mechanism, not a validated full-pixel integration; live DMA remains below both required opening screens.",
+  "limits": [
+    "Successful advice is not an eviction guarantee. Three residency snapshots and OS zone counters do not prove a future cache bound or contiguous allocations.",
+    "Full checkpoint SHA and file identity are source/receipt verified; the saved-only auditor did not independently re-read the 5 GB payload.",
+    "The aligned final-page advice extends 2488 bytes beyond EOF without writing content; every actual file byte remains required by the checksum.",
+    "No unfinished retry/helper application is presented as a verified inference result. No model-cache eviction occurred in this record."
+  ],
+  "acceptance": {
+    "executed_file_probe_saved_scope_audit_passed": true,
+    "whole_transport_integrity_passed": false,
+    "fullpixel_execution_validated": false,
+    "capacity_speed_precision_trajectory_realtime_or_physical8GB_accepted": false
+  },
+  "evidence": {
+    "worker_receipt": {
+      "bytes": 254032,
+      "sha256": "1183117b9545f21669c8d629fb7f65e1195995cc44124611e2fc15120c260464"
+    },
+    "controller": {
+      "bytes": 99874,
+      "sha256": "62f4de003dd6e2cb55e2433f44acbd61a5acc504a7af9a13acc4c85e14491783"
+    },
+    "failed_transport": {
+      "bytes": 5871,
+      "sha256": "825e4dafaea1b4077e1a5541b2c088f05728b7466c67764a156495791fec33d1"
+    },
+    "executed_worker_source": {
+      "bytes": 12008,
+      "sha256": "701c60be5eea8f3db10d1ec86b43d8d6f8e6057f0952240159e1a205941ad9f0"
+    },
+    "executed_helper_source": {
+      "bytes": 8488,
+      "sha256": "24bd6af0c9e9666df0f444afa1f1c09db256fa976b848bd79afec94f79fa54a8"
+    },
+    "CPU_guard_source": {
+      "bytes": 9763,
+      "sha256": "700ec5b12b6f15cf9907cfacbff3a63258ef70a14cf5efe06ba5470991de1b89"
+    },
+    "transport_source": {
+      "bytes": 8754,
+      "sha256": "5ef65e5c32292e9e2f71f790436f55a42a22d0e6d616eeb9f7ca6e9d6a6e9116"
+    },
+    "independent_saved_scope_audit": {
+      "bytes": 4527,
+      "sha256": "756ed822d26409669649c11518561938e30e6da737e58259365c04e30c293b5f"
+    },
+    "saved_auditor_source": {
+      "bytes": 16181,
+      "sha256": "8874cb3d81e00cf1b709a12f7878bfece4f511ba156ebeee28858f9ac99b7a37"
+    },
+    "later_readonly_original_model_residency_inventory": {
+      "bytes": 6156,
+      "sha256": "948e7d98a58be125750e109507a90503899eaf9ff734b8ded19c07523a40aca1"
+    }
+  },
+  "publication": "Metadata and hashes only; private paths, checkpoint/model bytes, SDKs and raw receipts are excluded."
+}
