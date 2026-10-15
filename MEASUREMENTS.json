@@ -631,5 +631,28 @@
     "F16_route_adopted": false,
     "original_FP32_precision_accepted": false,
     "real_time_or_full_model_quality_validated": false
+  },
+  "original_native518_bare_query_native_input_v210": {
+    "record": "results/original_native518_bare_query_native_input_v210.json",
+    "scope": "Same three original attention contexts; ordinary F32 NHWC/pass0 vs genuine blocked F16/pass1. Isolated component only.",
+    "complete_mean_seconds": {
+      "A_F32": 0.288936289245612,
+      "B_native_F16": 0.22791313699417515
+    },
+    "same_run_descriptive_reduction_percent": 21.119933536477223,
+    "all4_cross_path_endpoints_byte_equal": true,
+    "paired_comparisons_passed": 4,
+    "original_and_CPU_comparisons_passed": 0,
+    "total_comparisons": 14,
+    "resource_totals": {
+      "contexts_created": 3,
+      "contexts_destroyed": 3,
+      "runs_completed": 36,
+      "output_buffers_acquired": 36,
+      "output_buffers_released": 36
+    },
+    "original_FP32_precision_accepted": false,
+    "full_model_default_changed": false,
+    "real_time_or_physical8GB_validated": false
   }
 }

@@ -1,0 +1,419 @@
+{
+  "schema": "original_native518_bare_query_native_input_v210",
+  "record": 210,
+  "status": "same_three_owner_native8_input_output_equivalence_and_component_latency_verified_original_FP32_precision_still_failed",
+  "scope": {
+    "board": "16 GB RK3588S",
+    "operator": "One captured original global0 attention, not fresh pixels or a complete model.",
+    "full_original_QKV_shape": [
+      1,
+      16,
+      2082,
+      64
+    ],
+    "query_ranges": [
+      [
+        0,
+        694
+      ],
+      [
+        694,
+        1388
+      ],
+      [
+        1388,
+        2082
+      ]
+    ],
+    "full_original_KV_retained_by_each_partition": true,
+    "original_scale": 0.125,
+    "original_graph_model_weights_layers_tokens_or_resolution_changed": false,
+    "compiled_query_partition_model": {
+      "bytes": 1896517,
+      "sha256": "91b60acb281a09b545a8b7565a6cb16192c16ed9475d70038a7a18670fa9e191"
+    },
+    "prior_bare_query_and_input_dtype_record": "results/original_native518_bare_query_partition_input_dtype_v209.json",
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    }
+  },
+  "native_input_contract": {
+    "API": "Ordinary rknn_inputs_set; output API remains ordinary want_float1 with owned FLOAT32 copies and release.",
+    "A_F32": {
+      "type": 0,
+      "fmt": 1,
+      "pass_through": 0,
+      "layout": "NHWC",
+      "shapes": [
+        [
+          1,
+          694,
+          64,
+          16
+        ],
+        [
+          1,
+          2082,
+          64,
+          16
+        ],
+        [
+          1,
+          2082,
+          64,
+          16
+        ]
+      ],
+      "bytes": [
+        2842624,
+        8527872,
+        8527872
+      ]
+    },
+    "B_native_F16": {
+      "type": 1,
+      "fmt": 2,
+      "pass_through": 1,
+      "layout": "NC1HWC2",
+      "shapes": [
+        [
+          1,
+          2,
+          694,
+          64,
+          8
+        ],
+        [
+          1,
+          2,
+          2082,
+          64,
+          8
+        ],
+        [
+          1,
+          2,
+          2082,
+          64,
+          8
+        ]
+      ],
+      "bytes": [
+        1421312,
+        4263936,
+        4263936
+      ]
+    },
+    "mapping": "native[b,h//8,s,d,h%8] = IEEE binary16 round-to-nearest ties-to-even(original[b,h,s,d])",
+    "half_NHWC_relabelled_as_native": false,
+    "constructor_native8_rows_checked_on_each_owner": true,
+    "native8_type_format_identity_quantization_size_and_strides_checked": true,
+    "size_with_stride_equals_size": true,
+    "w_stride": 64,
+    "h_stride": 0,
+    "native8_fields_revalidated_each_run_from_constructor_queries_not_new_queries": true,
+    "FLOAT32_finite_checks_and_all_binary16_exponent_bit_finite_checks_retained": true,
+    "no_clipping_or_dropped_finite_guard": true,
+    "new_external_native_allocation_FD_import_or_set_io_mem": false,
+    "scope": "Observed support for this exact model, runtime2.3.2, queried geometry, data and three core masks; not a generic pass-through support claim."
+  },
+  "prerequisite_gate": {
+    "schedule": "A_F32 NHWC/pass0, B_F16 native8/pass1, A_F32 repeat on one unchanged context.",
+    "core_mask": 1,
+    "owner_CPU": 5,
+    "query_range": [
+      0,
+      694
+    ],
+    "complete_calls": 3,
+    "resource_totals": {
+      "contexts_created": 1,
+      "contexts_destroyed": 1,
+      "runs_completed": 3,
+      "output_buffers_acquired": 3,
+      "output_buffers_released": 3
+    },
+    "saved_FLOAT32_outputs": 3,
+    "saved_NPY_bytes": 8528256,
+    "all3_input_set_return_codes_zero": true,
+    "native_B_current_A_repeat_A_and_prior_partition0_byte_equal": true,
+    "all9_input_packets_independently_reconstructed": true,
+    "all9_typed_requests_verified": true,
+    "all11_actor_affinity_events_verified": true,
+    "original_FP32_precision_accepted": false,
+    "performance_comparison_claimed": false,
+    "scope": "Compatibility and output-parity gate on core1/query0 only; the later three-owner trial separately validates the other ranges/cores and concurrent calls."
+  },
+  "paired_trial": {
+    "schedule": "ABBA; each phase has one explicit warmup and two measured complete calls.",
+    "same_three_persistent_contexts_and_same_compiled_model_for_both_routes": true,
+    "unused_unsplit_baseline_context_created": false,
+    "main_CPU": 4,
+    "actor_CPUs": [
+      5,
+      6,
+      7
+    ],
+    "NPU_core_masks": [
+      1,
+      2,
+      4
+    ],
+    "init_flags": 0,
+    "complete_calls": 12,
+    "warmup_calls": 4,
+    "measured_calls": 8,
+    "measured_calls_per_route": 4,
+    "runs_per_owner": 12,
+    "A_F32_complete_mean_seconds": 0.288936289245612,
+    "B_native_F16_complete_mean_seconds": 0.22791313699417515,
+    "same_run_descriptive_mean_reduction_percent": 21.119933536477223,
+    "measured_complete_seconds": {
+      "A_F32": [
+        0.28964598700986244,
+        0.28827032100525685,
+        0.29000573698431253,
+        0.28782311198301613
+      ],
+      "B_native_F16": [
+        0.22672473097918555,
+        0.22891318899928592,
+        0.2284434390021488,
+        0.2275711889960803
+      ]
+    },
+    "component_mean_seconds": {
+      "A_F32": {
+        "input_layout_pack_seconds": 0.01477634524781024,
+        "dispatch_and_collect_seconds": 0.2662009434934589,
+        "CPU_completion_seconds": 0.007953313244797755,
+        "SDK_seconds": 0.42038722949655494
+      },
+      "B_native_F16": {
+        "input_layout_pack_seconds": 0.04416037949704332,
+        "dispatch_and_collect_seconds": 0.17788872624805663,
+        "CPU_completion_seconds": 0.0058599484982551076,
+        "SDK_seconds": 0.44492237774829846
+      }
+    },
+    "per_owner_inputs_set_mean_seconds": {
+      "A_F32": [
+        0.0645647880010074,
+        0.10306826074520359,
+        0.10263943750032922
+      ],
+      "B_native_F16": [
+        0.002109041997755412,
+        0.002656281503732316,
+        0.002807510507409461
+      ]
+    },
+    "resource_totals": {
+      "contexts_created": 3,
+      "contexts_destroyed": 3,
+      "runs_completed": 36,
+      "output_buffers_acquired": 36,
+      "output_buffers_released": 36
+    },
+    "saved_FLOAT32_outputs": 8,
+    "saved_NPY_bytes": 34112512,
+    "all4_cross_route_endpoint_pairs_byte_equal": true,
+    "both_routes_match_prior_four_audited_BQP_NPU_hashes": true,
+    "all12_call_raw_and_concat_repeat_hashes_verified": true,
+    "independent_numeric_audit_NPY_files_read": 16,
+    "independent_numeric_audit_NPY_scope": "Eight new outputs, four CPU attention outputs, original Q/K/V and original FP32 attention. Prior BQP NPU output arrays are not reread; their pinned independently audited raw hashes are compared.",
+    "all36_input_set_histories_and_zero_return_codes_verified": true,
+    "typed_buffer_requests_verified": 108,
+    "all_actual_packets_independently_reconstructed_by_per_head_coordinate_assignment": true,
+    "packet_hashing_and_request_extraction_validation_after_complete_timer": true,
+    "shared_full_KV_Python_buffers_readonly": true,
+    "shared_Python_buffers_are_not_shared_SDK_allocations": true
+  },
+  "numerical_results": {
+    "unchanged_thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "both_routes_merged_vs_original_FP32": {
+      "relative_l2": 0.001311176419387162,
+      "max_abs": 0.04167795181274414,
+      "outside_count": 816777,
+      "fixed_gate_passed": false,
+      "strict_pass": false,
+      "byte_equal": false
+    },
+    "CPU_metrics_for_each_of_the_byte_identical_routes": [
+      {
+        "endpoint": "partition0",
+        "relative_l2": 0.001320615310483708,
+        "max_abs": 0.034601688385009766,
+        "outside_count": 271976,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "endpoint": "partition1",
+        "relative_l2": 0.0017975124566755394,
+        "max_abs": 0.041678428649902344,
+        "outside_count": 273169,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "endpoint": "partition2",
+        "relative_l2": 0.00032474242717392464,
+        "max_abs": 0.0005753636360168457,
+        "outside_count": 271666,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "endpoint": "merged",
+        "relative_l2": 0.0013111767118062236,
+        "max_abs": 0.041678428649902344,
+        "outside_count": 816811,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      }
+    ],
+    "all14_comparisons_freshly_recomputed_from_saved_arrays": true,
+    "paired_comparison_count": 4,
+    "paired_fixed_and_strict_passed": 4,
+    "original_FP32_and_CPU_comparison_count": 10,
+    "original_FP32_and_CPU_fixed_and_strict_passed": 0,
+    "total_comparisons": 14,
+    "fixed_pass_count": 4,
+    "strict_pass_count": 4,
+    "report_consistency_tolerance_only": {
+      "rtol": 1e-12,
+      "atol": 1e-15,
+      "maximum_absolute_drift": 1.953732314818879e-16,
+      "raw_hashes_outlier_counts_and_fixed_strict_verdicts_compared_exactly": true
+    },
+    "interpretation": "The four passes establish cross-input-path byte equivalence only. All original-FP32/CPU comparisons still fail; unchanged output is not improved precision."
+  },
+  "lifetime_and_measurement": {
+    "complete_timer_includes": "Every fresh Q slice, F32 or blocked-F16 cast/pack, finite guard, owner native-attribute validation and request-history construction, submit/drain, ordinary SDK IO, owned copies/release, output finite/nonzero and affinity checks, FLOAT32 query-axis2 concat.",
+    "complete_timer_excludes": "Initialization/destruction, expected-packet preparation, packet/output hashes, request extraction/validation, saves and reference comparisons.",
+    "all_first_raws_saved_before_concat_verdict_all8_outputs_before_numerical_verdict": true,
+    "all_fanouts_drained_and_each_known_owner_closed_once": true,
+    "affinity_events_verified": 87,
+    "native_and_logical_raw_structures_and_three_command6_rows_verified": true,
+    "no_fatal_SDK_lines_in_complete_worker_and_controller_logs": true,
+    "original_affinities_sources_inputs_environment_and_clock_policy_restored": true,
+    "controller_NPU_hz": 1000000000,
+    "controller_timeout_seconds": 180,
+    "temperature_limit_c": 75,
+    "maximum_sampled_temperature_c": 57.307,
+    "minimum_sampled_DMA_free_bytes": 1687023616,
+    "minimum_sampled_MemAvailable_bytes": 4851331072,
+    "samples_are_not_continuous_minima_or_unique_physical_allocation_totals": true,
+    "concurrent_SDK_sum_is_not_latency_or_utilization": true
+  },
+  "engineering_findings": [
+    "Native layout matters independently of dtype. R209 ordinary F16 NHWC/pass0 was 23.656% slower than its own F32 control. This trial changes both the blocked layout and pass-through path; it is not the same intervention.",
+    "Native packing still costs 44.160 ms versus 14.776 ms for the same-run F32 route, but three-owner dispatch/drain decreases from 266.201 ms to 177.889 ms. These measured phases include opaque SDK IO; no vendor-internal cause is established.",
+    "Per-owner inputs_set means decrease from 64.565/103.068/102.639 ms to 2.109/2.656/2.808 ms. Summed concurrent SDK run time increases from 420.387 ms to 444.922 ms, so the complete-call gain is not evidence that attention kernel execution became faster.",
+    "All 16 heads, 2082 query rows/full 2082 keys and 64 original value components remain. Completion is only FLOAT32 axis2 concatenation; no sentinel, denominator, centering, fitted correction or attention-mask change."
+  ],
+  "decision": "Retain the exact-model native-input representation and bounded component finding for further integration work. Do not change the complete-model default or accept original-FP32 quality from these failed tensor gates.",
+  "acceptance": {
+    "independent_numeric_and_runtime_audits_passed": true,
+    "native_input_output_equivalence_for_tested_operator": true,
+    "original_FP32_precision_accepted": false,
+    "whole_model_default_changed": false,
+    "whole_model_trajectory_fresh20Hz_input_to_pose_P95_or_physical8GB_accepted": false
+  },
+  "limits": [
+    "One captured attention component on 16 GB hardware, with four measured calls per route, is not fresh-pixel throughput, complete input-to-pose latency, trajectory, endurance or physical8GB validation.",
+    "The single-owner gate is not a speed benchmark. Compare paired N3 routes within their own run; no cross-trial or statistically significant speedup is claimed.",
+    "No new graph, learned model, original layer/token omission or checkpoint is introduced. Original-model and repository licenses remain separate; see MODEL_LICENSES.md."
+  ],
+  "evidence": {
+    "native_gate": {
+      "result": {
+        "bytes": 89138,
+        "sha256": "4e7c79b458aa3e7aa7b572ef8d30fe94711384463e4674d3070d0124e7fa0c0c"
+      },
+      "manifest": {
+        "bytes": 3550,
+        "sha256": "aa4e25ef71a3ba7ac5a2e285fcd6c6b5e41901e75d7aaaaa52b91aaa7ba5bd45"
+      },
+      "controller": {
+        "bytes": 2821,
+        "sha256": "d54df454ad8eed163a366228cb291477675a60cbe7ca0f93edb83d0fbfc6591a"
+      },
+      "transport": {
+        "bytes": 23118,
+        "sha256": "0743d687ca929951b6c6dff9e17d0b1c7a11dc7a784f58e13e73d5baf8f6855a"
+      },
+      "independent_numeric_audit": {
+        "bytes": 4436,
+        "sha256": "afd48f75f01f32bdd4a6ca0fc5a3d684cf6bc31661450130dca0a48f53ba2a10"
+      },
+      "independent_runtime_audit": {
+        "bytes": 15135,
+        "sha256": "44856c9d7ce23bb0e3190850b7bb0f340b07b7cf8d05b71d8560988ab69bc1a8"
+      }
+    },
+    "paired_trial": {
+      "result": {
+        "bytes": 431077,
+        "sha256": "f16218b4442e019af77a17d0a90d6644ece763daf4ceb0d60ee0ccc49badc7cd"
+      },
+      "manifest": {
+        "bytes": 6016,
+        "sha256": "69b01a228644b0f82728cb1fdaa2ba66b271e48911b56afff572c73e8b6e93b1"
+      },
+      "controller": {
+        "bytes": 6062,
+        "sha256": "60066799d50931bf5f5b98766f50948f4dfe754f188f8e72038334ab22fab3d4"
+      },
+      "transport": {
+        "bytes": 30018,
+        "sha256": "9af6b57d7ad26a7165fc3a5ed52e5d538ea631278b92aec8611ceef5cea2cf12"
+      },
+      "independent_numeric_audit": {
+        "bytes": 31777,
+        "sha256": "ed76dfdac63a89876f05db4ff1f1f6ae427f8ed5172948314615c0bc7fda5cad"
+      },
+      "independent_runtime_audit": {
+        "bytes": 18579,
+        "sha256": "1579e7a7a66d318a9b7be4d927a988e4daeb2a38bfa74d48df481ce8675fda97"
+      }
+    },
+    "executed_worker_source": {
+      "bytes": 59833,
+      "sha256": "8ba1fa3ec3691229738d8eea0228af095dd80c88ae5bd5e7382cc9b51d5c0a6b"
+    },
+    "executed_host_source": {
+      "bytes": 22388,
+      "sha256": "6a58bd069304a8c6926271ffc5c6707e88f81266275c131a8877bfd75aea3681"
+    },
+    "unchanged_native_owner_source": {
+      "bytes": 9201,
+      "sha256": "092f643f335a9e510c1ee80185efa32eb2f960d2160feaebc8aecec35cb676ef"
+    },
+    "numeric_auditor_source": {
+      "bytes": 31369,
+      "sha256": "06de642c95388f4d373c8f11c491485522d1dc208bd8320a3fdfefc2c586f67d"
+    },
+    "runtime_auditor_source": {
+      "bytes": 35855,
+      "sha256": "8f2613c3000041095cd78f0225373d4d399a73832a21ed6e5955cefa24d348e3"
+    },
+    "exhaustive_binary16_finite_guard_proof": {
+      "bytes": 1130,
+      "sha256": "1dddd1d86fb70b69d60563d58f50764a3840c1738b9574d09fbcf396123f1e3a",
+      "all65536_bit_patterns_verified": true
+    }
+  },
+  "publication": "Sanitized numerical metadata and immutable source/receipt hashes only. No weights, captured arrays, private absolute paths, compiled models, SDK binaries or credentials are published."
+}
