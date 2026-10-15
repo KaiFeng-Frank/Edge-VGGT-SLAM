@@ -114,9 +114,11 @@
     },
     {
       "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/r1/audit_joint_mlp_NPU_saved.py",
-      "bytes": 14368,
-      "sha256": "5cb222560d54c732b6a0cbefaa91c7732317fbeba63824976453a097f95a0c50",
-      "kind": "executed_saved_data_auditor"
+      "bytes": 14400,
+      "sha256": "fa182558d632c50e1495cca5f32a75d59a3ea6114643d80c234e4e03bc99f292",
+      "kind": "portable_publication_copy_of_executed_saved_data_auditor",
+      "executed_source_bytes": 14368,
+      "executed_source_sha256": "5cb222560d54c732b6a0cbefaa91c7732317fbeba63824976453a097f95a0c50"
     },
     {
       "destination_relative": "deploy/rk3588/validation/original_native518_joint_mlp/pre-runtime-triage.json",
@@ -144,10 +146,11 @@
     }
   ],
   "publication_adapted_paths": [
-    "deploy/rk3588/validation/original_native518_joint_mlp/r1/execute_joint_mlp_host.py",
+    "deploy/rk3588/validation/original_native518_joint_mlp/r1/audit_joint_mlp_NPU_saved.py",
+    "deploy/rk3588/validation/original_native518_joint_mlp/r1/audit_joint_mlp_saved.py",
     "deploy/rk3588/validation/original_native518_joint_mlp/r1/execute_joint_mlp_fp16_host.py",
-    "deploy/rk3588/validation/original_native518_joint_mlp/r1/execute_joint_mlp_runtime_host.py",
-    "deploy/rk3588/validation/original_native518_joint_mlp/r1/audit_joint_mlp_saved.py"
+    "deploy/rk3588/validation/original_native518_joint_mlp/r1/execute_joint_mlp_host.py",
+    "deploy/rk3588/validation/original_native518_joint_mlp/r1/execute_joint_mlp_runtime_host.py"
   ],
   "publication_identity_scope": "Current bytes/sha256 identify the published file; archive/executed_source fields retain the frozen historical source identity. No new model or device execution is claimed."
 }

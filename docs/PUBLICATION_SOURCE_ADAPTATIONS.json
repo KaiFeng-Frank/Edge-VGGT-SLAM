@@ -9,10 +9,10 @@
         "sha256": "20c49f30b2e49182b55991f48f5adf3e726a6418f6282cc2d12c7aff3df59ba7"
       },
       "published_source": {
-        "bytes": 20132,
-        "sha256": "2c63d33f067e922b9a9d5f7b92d534f5fe6292dd39b22c96713094c843f5fa1a"
+        "bytes": 20163,
+        "sha256": "66eae3bdb2f25aafd406d931418e0c9f964d78466459962fd2c2db54b6daabd1"
       },
-      "change": "Portable artifact/ADB path defaults only; algorithm and frozen historical hash gates unchanged."
+      "change": "Portable artifact/dependency paths and exact hashes for the current published saved-only helper; numerical algorithms, thresholds and historical runtime/data receipt pins unchanged."
     },
     {
       "file": "deploy/rk3588/validation/original_native518_batched_block/audit_native_dino_saved.py",
@@ -21,10 +21,10 @@
         "sha256": "48aa76efcccd7496329ba903d62d8a50b70dc0670497fbf14efc19fbc3f74ec0"
       },
       "published_source": {
-        "bytes": 18988,
-        "sha256": "bf8727ad32da169295a94dec008f43302451307c437d35583faffebee62e7d9e"
+        "bytes": 19019,
+        "sha256": "4fd810d2064a022c8a16869149d05ab2198fd19fc39d4e9232cafb4550b1869b"
       },
-      "change": "Portable artifact/ADB path defaults only; algorithm and frozen historical hash gates unchanged."
+      "change": "Portable artifact/dependency paths and exact hashes for the current published saved-only helper; numerical algorithms, thresholds and historical runtime/data receipt pins unchanged."
     },
     {
       "file": "deploy/rk3588/validation/original_native518_batched_block/r1/generate_dino0_batched_bridge.py",
@@ -61,6 +61,18 @@
         "sha256": "acc947bceb6b1920feca8fb655b354b291e97a88f010e1f853c377f4e0f7c340"
       },
       "change": "Portable artifact/ADB path defaults only; algorithm and frozen historical hash gates unchanged."
+    },
+    {
+      "file": "deploy/rk3588/validation/original_native518_joint_mlp/r1/audit_joint_mlp_NPU_saved.py",
+      "executed_or_prepublication_source": {
+        "bytes": 14368,
+        "sha256": "5cb222560d54c732b6a0cbefaa91c7732317fbeba63824976453a097f95a0c50"
+      },
+      "published_source": {
+        "bytes": 14400,
+        "sha256": "fa182558d632c50e1495cca5f32a75d59a3ea6114643d80c234e4e03bc99f292"
+      },
+      "change": "Portable artifact/dependency paths and exact hashes for the current published saved-only helper; numerical algorithms, thresholds and historical runtime/data receipt pins unchanged."
     },
     {
       "file": "deploy/rk3588/validation/original_native518_joint_mlp/r1/audit_joint_mlp_saved.py",
@@ -129,10 +141,10 @@
         "sha256": "b03c394c73deaba0e38bd7732a1ffa1c905a6b1b2513fcc2b557285a56369733"
       },
       "published_source": {
-        "bytes": 16340,
-        "sha256": "26cffbaef1bac847039c8845d73768785082054599f784c2873504c40535968d"
+        "bytes": 16371,
+        "sha256": "f4a7d16c19abfddf4c483f5a35cc457af946cbe661fd684b415a9a9fff85beb1"
       },
-      "change": "Portable artifact/ADB path defaults only; algorithm and frozen historical hash gates unchanged."
+      "change": "Portable artifact/dependency paths and exact hashes for the current published saved-only helper; numerical algorithms, thresholds and historical runtime/data receipt pins unchanged."
     },
     {
       "file": "deploy/rk3588/validation/original_native518_rolling_preload/audit_full_r2_saved.py",
@@ -165,10 +177,10 @@
         "sha256": "888301236a668050a22272bc89c5d277c299d483359356a2c632596c9644de86"
       },
       "published_source": {
-        "bytes": 17216,
-        "sha256": "29a6dd577eac5d9359fd07b5e4838e1ae58ed6728bee4e487cf8bf357314001c"
+        "bytes": 17275,
+        "sha256": "1f3e2997ea8429b56285ea79a9bf8279c5fce9bee8523bba953c139883c24179"
       },
-      "change": "Portable artifact/ADB path defaults only; algorithm and frozen historical hash gates unchanged."
+      "change": "Portable artifact/dependency paths and exact hashes for the current published saved-only helper; numerical algorithms, thresholds and historical runtime/data receipt pins unchanged."
     },
     {
       "file": "deploy/rk3588/validation/original_native518_shared_block/audit_dino0_shared_block_saved.py",
@@ -213,10 +225,10 @@
         "sha256": "6ea1776550a506565cbb92aabaf6bcf396c2865d65b2e865e06f6b7e869d48c5"
       },
       "published_source": {
-        "bytes": 23840,
-        "sha256": "f05300864c60241f4aea4cd260c1eb7ac6a24fc1b31f3f6a5ae1ef47de95d4ae"
+        "bytes": 23871,
+        "sha256": "b18f7a28391e97721720606e4088764c8c0cf3777e25547088a864942c70ad60"
       },
-      "change": "Portable artifact/ADB path defaults only; algorithm and frozen historical hash gates unchanged."
+      "change": "Portable artifact/dependency paths and exact hashes for the current published saved-only helper; numerical algorithms, thresholds and historical runtime/data receipt pins unchanged."
     },
     {
       "file": "deploy/rk3588/validation/original_native518_trajectory/check_host_board_fp32.py",
@@ -266,5 +278,43 @@
   "historical_artifact_hashes_or_numerical_results_modified": false,
   "neural_SDK_or_board_execution_performed": false,
   "weights_captures_and_vendor_binaries_published": false,
-  "historical_audit_limit": "Frozen saved audits continue to require the original archived source/helper bytes at their recorded historical hashes. Portable published copies have distinct hashes and have not been executed as new device experiments. Pass artifact locations through the existing command-line options; /path/to/research-artifacts is a placeholder."
+  "historical_audit_limit": "Historical runtime/data receipts, model identities and numerical thresholds remain pinned unchanged. Current published saved-only auditors import their current published helper at its exact published hash, separately from archived executed-source hashes. Original historical source-bound manifests are not silently reusable for adapted programs: rebuild those manifests for a new execution and retain separate new receipts; no adapted program is claimed to have produced a historical device result.",
+  "published_saved_audit_helper_bindings": [
+    {
+      "importer": "deploy/rk3588/validation/original_native518_joint_mlp/r1/audit_joint_mlp_NPU_saved.py",
+      "constant": "HELPER_SHA",
+      "published_helper": "deploy/rk3588/validation/original_native518_joint_mlp/r1/audit_joint_mlp_saved.py",
+      "sha256": "bcc4751d7ea5f036d1b52b401e0d359e631b4e8d14952c664972cee7eaeae6c6"
+    },
+    {
+      "importer": "deploy/rk3588/validation/original_native518_shared_attention/audit_shared_attention_saved.py",
+      "constant": "HELPER_SHA",
+      "published_helper": "deploy/rk3588/validation/original_native518_native_attention/audit_same_qkv_native_saved.py",
+      "sha256": "480ea456c56d79c1f9660a3f1d34bc063c86f4000bd819e1c50cc2b726d9d12b"
+    },
+    {
+      "importer": "deploy/rk3588/validation/original_native518_batched_block/audit_native_dino_r2_saved.py",
+      "constant": "METRICS_SHA",
+      "published_helper": "deploy/rk3588/validation/original_native518_shared_block/audit_dino0_shared_block_saved.py",
+      "sha256": "c390494e5515d83539a65545e19b6bccaa0ad08907a1cd63759e84a8cb39fc71"
+    },
+    {
+      "importer": "deploy/rk3588/validation/original_native518_batched_block/audit_native_dino_saved.py",
+      "constant": "METRICS_SHA",
+      "published_helper": "deploy/rk3588/validation/original_native518_shared_block/audit_dino0_shared_block_saved.py",
+      "sha256": "c390494e5515d83539a65545e19b6bccaa0ad08907a1cd63759e84a8cb39fc71"
+    },
+    {
+      "importer": "deploy/rk3588/validation/original_native518_native_block/audit_native_dino_saved.py",
+      "constant": "METRICS_SHA",
+      "published_helper": "deploy/rk3588/validation/original_native518_shared_block/audit_dino0_shared_block_saved.py",
+      "sha256": "c390494e5515d83539a65545e19b6bccaa0ad08907a1cd63759e84a8cb39fc71"
+    },
+    {
+      "importer": "deploy/rk3588/validation/original_native518_three_core_block/audit_native_threecore_saved.py",
+      "constant": "METRICS_SHA",
+      "published_helper": "deploy/rk3588/validation/original_native518_shared_block/audit_dino0_shared_block_saved.py",
+      "sha256": "c390494e5515d83539a65545e19b6bccaa0ad08907a1cd63759e84a8cb39fc71"
+    }
+  ]
 }

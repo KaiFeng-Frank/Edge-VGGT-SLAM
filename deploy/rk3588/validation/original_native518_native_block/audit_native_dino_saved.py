@@ -11,8 +11,8 @@ import numpy as np
 
 ROOT = Path('/dev/shm/edge-vggt-v121-review')
 PRIOR = Path('/path/to/research-artifacts/v117-native518-attention-dump-r1')
-METRICS = Path('/dev/shm/edge-vggt-v120-review/audit_dino0_shared_block_saved.py')
-METRICS_SHA = '67424215747b36d495e27ffc31448c53bdb2a1660523393c9c9465f39da3a7a9'
+METRICS = Path(__file__).resolve().parents[1]/'original_native518_shared_block/audit_dino0_shared_block_saved.py'
+METRICS_SHA = 'c390494e5515d83539a65545e19b6bccaa0ad08907a1cd63759e84a8cb39fc71'
 RESULT_SHA = 'baa246379666a5b2320d62b7935ae553d398feef8be21ef58e27d727f5a295ff'
 CAPTURE_SHA = '17d77cfe3d8cdb3ff88e15de4a06634683899348b53b24fbadad6eef1584e91d'
 BASE_RAW = 'e52d53b8abcbb15da0c129457f93e3eabcd94d48ae48eb5eaef0bb0edb900554'

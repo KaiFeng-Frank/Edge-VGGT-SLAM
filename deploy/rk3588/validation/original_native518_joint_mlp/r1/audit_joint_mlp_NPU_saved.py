@@ -9,7 +9,7 @@ from pathlib import Path
 import re
 import numpy as np
 
-HELPER_SHA = '0adee65bc57501525e490fae1c2224828d6a1cb2b353b9881a4cd4721050d2ec'
+HELPER_SHA = 'bcc4751d7ea5f036d1b52b401e0d359e631b4e8d14952c664972cee7eaeae6c6'
 SOURCE_SHA = '4b9f83cead499cc120cae590bdf48d538a9dae308273dbd65a88b5e73505540e'
 RESULT_SHA = 'c6603cef8afcf1b199f892393cb51fd36381b6da023dca273b53be5422090531'
 CONTROL_SHA = '6c405ce85dcb6972226f5d497bb4e50b8ce6de7f7db41e4b55e274e20a5ebad3'
@@ -26,7 +26,7 @@ def main():
     p.add_argument('--workdir', type=Path, default=Path(__file__).resolve().parent)
     p.add_argument('--output', type=Path)
     a = p.parse_args(); w = a.workdir
-    helper = w / 'audit_joint_mlp_saved.py'
+    helper = Path(__file__).resolve().with_name('audit_joint_mlp_saved.py')
     def sha(path):
         h = hashlib.sha256()
         with Path(path).open('rb') as stream:

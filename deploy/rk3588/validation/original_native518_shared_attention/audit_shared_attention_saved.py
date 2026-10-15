@@ -20,7 +20,7 @@ D118 = Path('/path/to/research-artifacts/v118-native518-native-attention-r1')
 DRIVER_SHA = '10b15ffa734866283aede7ac865ab698114d204dd4f691d42cb0e0450059b092'
 BRIDGE_SHA = '73ff0c5ad33e0c334485553e9d8ab0764e6eb816a8f743b399531a58b619155e'
 KERNEL_SHA = '5cbb36e03e09c38db9e6769f067e3168e1cf7f67d719009601c4456e9f2b150a'
-HELPER_SHA = 'a27e7a1c48b9babe63e801cc5c3d210da3855fcb2435e2db53e7385d00847b61'
+HELPER_SHA = '480ea456c56d79c1f9660a3f1d34bc063c86f4000bd819e1c50cc2b726d9d12b'
 CF_SHA = '03e9a5797ca21c542e467a68057f7290f0a881a689b273db74f7f7d5d3dea94d'
 DUMP_SHA = '565054e051afd2565bcd07d6487e02cedeca62456e09e1214021f30c9c4f46d4'
 TAP_SHA = '1f89eac69b85ec84ea76f9e8ca0a50ca7d4c5f19620c4159f41eaf6f3661225a'
@@ -48,7 +48,7 @@ def main():
         actual=sha(path);require(digest is None or actual==digest,'Pinned identity differs: '+str(path))
         files.append(dict(file=str(path),bytes=path.stat().st_size,sha256=actual));return path
     def receipt(path, digest=None): return json.loads(record(path,digest).read_text())
-    helper=record(native_prior/'audit_same_qkv_native_saved.py',HELPER_SHA)
+    helper=record(Path(__file__).resolve().parents[1]/'original_native518_native_attention/audit_same_qkv_native_saved.py',HELPER_SHA)
     spec=importlib.util.spec_from_file_location('_v119_frozen_saved_metrics',helper);h=importlib.util.module_from_spec(spec);spec.loader.exec_module(h)
     def load(path, row, new=False):
         nonlocal checked
