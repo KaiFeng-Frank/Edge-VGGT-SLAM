@@ -2061,3 +2061,32 @@ The subsequent same-three-owner trial independently covers all three query range
 This is a descriptive **21.1199% complete-component reduction**, including all cast/pack, finite guards, owner metadata/request-history work, ordinary SDK IO/copies/release, dispatch/drain and concatenation. Init/close, hashes, saves and numerical comparisons are separate. Per-owner inputs_set means change from 64.565/103.068/102.639 ms to 2.109/2.656/2.808 ms, but summed concurrent SDK run durations increase from 420.387 ms to 444.922 ms. Their sum is not latency or utilization; no faster attention kernel or vendor-internal cause is proved. Native packing costs more CPU work, so the complete boundary remains essential.
 
 All eight saved FLOAT32 files (**34,112,512 NPY bytes**) pass file/raw/shape/finite checks. Four cross-path endpoint comparisons pass with **byte equality**. The two original-FP32 plus eight CPU comparisons still fail unchanged fixed/strict gates: both complete outputs have relative L2 **0.0013111764**, maxabs **0.04167795** and **816,777 strict outliers** versus original FP32. This is distinct from R209's slower F16 NHWC/pass0 negative control; no cross-trial speed claim is made. Retain the verified exact-model input representation for later integration checks, while leaving the full-model default and precision acceptance unchanged. One component does not establish fresh 20 Hz poses, full input-to-pose P95, trajectory, endurance or physical 8 GB operation. Weights and licensing are unchanged; only sanitized metadata and hashes are published.
+
+
+## 276. Original QKV CPU gates pass while the producer compiler retains CPU layouts
+
+[R211](../results/original_native518_native_layout_producer_v211.json) extracts the original global0 prefix through post-RoPE Q/K and raw V. The canonical control preserves all **20 original NodeProtos and 16 used TensorProtos**; the layout candidate adds only Slice, Reshape, Transpose and Cast operations. Recombining the retained prefix with the original remainder recovers the complete parent ModelProto byte-for-byte. All 2082 tokens, sixteen heads, 64 channels and original absolute-position RoPE arithmetic remain. This prefix does not include attention or the original output-projection/residual/MLP suffix.
+
+The board CPU gate uses the original input and positions provenance, with only `__global_input` fed to ORT; RoPE positions are already baked into the original tables. Two sequential core4, single-threaded CPU sessions produce three canonical FLOAT32 Q/K/V arrays and five FLOAT16 layouts. **All eight full outputs, 38,376,448 NPY bytes, are saved before numerical verdicts.** An independent audit verifies thirteen complete files, including input, positions and the three saved original Torch references.
+
+| Canonical CPU output vs original Torch | Relative L2 | Maximum absolute error | Strict outliers | Fixed / strict |
+| --- | ---: | ---: | ---: | --- |
+| Q | 5.637442e-7 | 5.632639e-6 | 0 | pass / pass |
+| K | 8.869550e-7 | 9.834766e-6 | 0 | pass / pass |
+| V | 6.142543e-7 | 3.099442e-6 | 0 | pass / pass |
+
+These canonical arrays pass the unchanged relative-L2/maxabs limits 1e-5/0.001 and strict rtol/atol 1e-4/1e-5; they are **not byte-identical to Torch**. Separately, all five half layouts exactly match independent per-head/channel conversion and inverse checks. Their public shapes are `[1,2,T,512]`, with T=694 for Q0/Q1/Q2 and T=2082 for full K/V; the same word stream views as `[1,2,T,64,8]`. Exact half mapping is a distinct gate from canonical FP32 precision. Both sessions close, sources and process state restore, and the bounded controller completes with no cleanup errors. The 0.558/0.571 s single-call CPU intervals are correctness observations, not warmed performance comparisons or NPU timings.
+
+Only the native-half graph is noncalibrating FP16-compiled. The actual table has **34 operators, 51 features and 24 constants**: 23 operators target NPU and 11 target CPU. Six CPU rows are public input/output operators; the remaining five are internal layouts:
+
+| Operator ID | Internal CPU layout |
+| --- | --- |
+| 8 | Q-normalization output Transpose |
+| 15 | Query native-layout flatten Reshape |
+| 21 | K-normalization output Transpose |
+| 28 | Full-key flatten Reshape |
+| 32 | Full-value flatten Reshape |
+
+All operator/feature domains are printed FLOAT16, and original QKV projection, the three norms and RoPE arithmetic target NPU. Nevertheless, the **all-internal-NPU placement condition fails**. The compiler removes all five explicit Cast nodes; compile-time output annotations and planner spans do not verify ordinary returned half-output sizes, rounding or word order. The printed output spans are four times the logical half payloads, but those overlapping planner spans are not measured unique allocations or actual runtime ABI. CPU-targeted Reshape rows also do not prove a copy cost.
+
+The compiled producer has not executed on the NPU and is not adopted. The prior isolated input-pack interval cannot be counted as saved time: producer work, output acquisition/copies and consumer handoff remain unmeasured. A separate artifact needs actual placement, returned-output ABI, matched original QKV NPU precision and complete producer-to-consumer timing before integration. This record establishes no full-block/model speedup, fresh-pose rate, P95, trajectory, endurance or physical 8 GB result; unfinished follow-up results are excluded. Original weight and implementation licenses remain separate from the repository code license, and only sanitized metadata and hashes are published.

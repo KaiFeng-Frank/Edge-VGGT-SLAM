@@ -1,0 +1,497 @@
+{
+  "schema": "original_native518_native_layout_producer_v211",
+  "record": 211,
+  "status": "CPU_original_QKV_and_exact_half_layout_verified_noncalibrating_compile_retains_internal_CPU_layouts_no_NPU_acceptance",
+  "scope": {
+    "board": "16 GB RK3588S",
+    "component": "Original global0 norm/QKV projection, Q/K normalization and full-position RoPE prefix only. Attention, output projection, residual and MLP suffix are outside this exported prefix.",
+    "full_original_input_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "canonical_QKV_shape": [
+      1,
+      16,
+      2082,
+      64
+    ],
+    "heads": 16,
+    "head_dimension": 64,
+    "original_model_weights_and_prefix_math_retained": true,
+    "full_model_default_changed": false,
+    "prior_native_input_control": "results/original_native518_bare_query_native_input_v210.json",
+    "original_checkpoint": {
+      "bytes": 5026874952,
+      "sha256": "d15bf50a8615c8225ed48b51ea5cac673d82442ec0309036df555a053253afe0"
+    }
+  },
+  "source_and_static_proof": {
+    "original_parent": {
+      "bytes": 102417440,
+      "sha256": "57b60feceea0edb57ca4cea38200d6ea47d4e4ee51e4a546357267cbc9f676bb",
+      "nodes": 143,
+      "initializers": 79
+    },
+    "retained_original_NodeProtos": 20,
+    "retained_original_TensorProtos": 16,
+    "all20_original_nodes_and16_initializers_byte_unchanged": true,
+    "complete_original_parent_inverse_byte_equal": true,
+    "canonical_graph": {
+      "bytes": 13674604,
+      "sha256": "4fd773f0e1bf9290bc0e972cd5ec69eeed75dda3bd6a2903df82f72cf1dd60ce",
+      "nodes": 20,
+      "initializers": 16
+    },
+    "native_half_graph": {
+      "bytes": 13678979,
+      "sha256": "5d81f4c76f9bc31fdfbfaf843b1afc1a4f3ee86671db2060bbc85f014c368c36",
+      "nodes": 43,
+      "initializers": 28
+    },
+    "added_ops": {
+      "Slice": 3,
+      "Reshape": 10,
+      "Transpose": 5,
+      "Cast": 5
+    },
+    "new_constants": "Twelve INT64 shape or Slice-index tensors; no learned parameter or fitted scale is added.",
+    "unique_half_payload_bytes": 12791808,
+    "query_ranges": [
+      [
+        0,
+        694
+      ],
+      [
+        694,
+        1388
+      ],
+      [
+        1388,
+        2082
+      ]
+    ],
+    "full_original_absolute_positions_preserved": true,
+    "only_runtime_feed": "__global_input",
+    "positions_are_baked_RoPE_provenance_not_a_second_feed": true,
+    "same_original_input": {
+      "bytes": 8528000,
+      "sha256": "30ce3a7eaeac13f19d82ae661fdb2047bd10a306296c1352a2d2211cc7061590"
+    },
+    "same_original_positions": {
+      "bytes": 33440,
+      "sha256": "881d332e010cec28be8d23209ba430901a0b73376b7aba5ee772df93a89ad2fd"
+    },
+    "original_QKV_capture": {
+      "bytes": 12587,
+      "sha256": "e4ffaea2b11df9ac558c119cb4854d490b0030c02b7706eee344b8894cefa686"
+    }
+  },
+  "CPU_gate": {
+    "execution": "Two sequential board ONNX Runtime CPU sessions, one original learned-prefix call per graph; core4, one thread, ORT_DISABLE_ALL, CPUExecutionProvider.",
+    "versions": {
+      "numpy": "1.26.4",
+      "onnxruntime": "1.16.0"
+    },
+    "sessions_created": 2,
+    "sessions_dropped": 2,
+    "calls": 2,
+    "saved_outputs": 8,
+    "saved_NPY_bytes": 38376448,
+    "output_types": "Three canonical FLOAT32 Q/K/V arrays and five proposed native-layout FLOAT16 arrays.",
+    "all8_outputs_saved_before_numeric_verdict": true,
+    "independent_complete_NPY_files_verified": 13,
+    "independent_file_scope": "Eight new outputs, original input and positions, and the three saved original Torch Q/K/V references; no new reference forward.",
+    "unchanged_thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "canonical_FP32_vs_original_Torch": [
+      {
+        "name": "canonical_query_vs_original_Torch",
+        "relative_l2": 5.637442103429028e-07,
+        "max_abs": 5.632638931274414e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      },
+      {
+        "name": "canonical_key_vs_original_Torch",
+        "relative_l2": 8.869550112868834e-07,
+        "max_abs": 9.834766387939453e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      },
+      {
+        "name": "canonical_value_vs_original_Torch",
+        "relative_l2": 6.142543075170734e-07,
+        "max_abs": 3.0994415283203125e-06,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": false
+      }
+    ],
+    "all3_original_fixed_and_strict_gates_passed": true,
+    "canonical_FP32_outputs_byte_equal_original_Torch": false,
+    "native_half_mapping": "For each role, start = source_token_range[0] (K/V start=0). View output as [1,2,T,64,8]: B[0,h//8,t,d,h%8] = IEEE binary16 round-to-nearest ties-to-even(canonical[0,h,start+t,d]).",
+    "native_half_public_shapes": [
+      [
+        1,
+        2,
+        694,
+        512
+      ],
+      [
+        1,
+        2,
+        694,
+        512
+      ],
+      [
+        1,
+        2,
+        694,
+        512
+      ],
+      [
+        1,
+        2,
+        2082,
+        512
+      ],
+      [
+        1,
+        2,
+        2082,
+        512
+      ]
+    ],
+    "half_layout_checks": [
+      {
+        "role": "Q0",
+        "source_token_range": [
+          0,
+          694
+        ],
+        "shape": [
+          1,
+          2,
+          694,
+          512
+        ],
+        "different_half_words": 0,
+        "byte_equal": true,
+        "independent_inverse_byte_equal": true,
+        "exact_half_layout_gate_passed": true
+      },
+      {
+        "role": "Q1",
+        "source_token_range": [
+          694,
+          1388
+        ],
+        "shape": [
+          1,
+          2,
+          694,
+          512
+        ],
+        "different_half_words": 0,
+        "byte_equal": true,
+        "independent_inverse_byte_equal": true,
+        "exact_half_layout_gate_passed": true
+      },
+      {
+        "role": "Q2",
+        "source_token_range": [
+          1388,
+          2082
+        ],
+        "shape": [
+          1,
+          2,
+          694,
+          512
+        ],
+        "different_half_words": 0,
+        "byte_equal": true,
+        "independent_inverse_byte_equal": true,
+        "exact_half_layout_gate_passed": true
+      },
+      {
+        "role": "K",
+        "source_token_range": [
+          0,
+          2082
+        ],
+        "shape": [
+          1,
+          2,
+          2082,
+          512
+        ],
+        "different_half_words": 0,
+        "byte_equal": true,
+        "independent_inverse_byte_equal": true,
+        "exact_half_layout_gate_passed": true
+      },
+      {
+        "role": "V",
+        "source_token_range": [
+          0,
+          2082
+        ],
+        "shape": [
+          1,
+          2,
+          2082,
+          512
+        ],
+        "different_half_words": 0,
+        "byte_equal": true,
+        "independent_inverse_byte_equal": true,
+        "exact_half_layout_gate_passed": true
+      }
+    ],
+    "all5_half_layout_gates_passed": true,
+    "half_layout_exactness_implies_original_FP32_precision": false,
+    "two_process_local_allocator_release_events_verified": true,
+    "source_input_and_process_restoration_verified": true,
+    "controller_seconds": 2.5336649629753083,
+    "peak_RSS_MiB": 215.7890625,
+    "maximum_sampled_temperature_C": 58.23,
+    "single_call_wall_seconds_including_possible_controller_pauses": {
+      "canonical": 0.5583891810092609,
+      "native_half": 0.5706254740071017
+    },
+    "timing_scope": "One correctness call per graph, excluding graph/session loading and output saving. These are not warm means, a speed comparison, P95 or NPU timings.",
+    "cleanup_errors": []
+  },
+  "noncalibrating_compile": {
+    "compiled_graph": "native_half only; the canonical graph is a CPU reference control.",
+    "location": "Host compiler only, with no explicit host forward, ORT session, tracing, calibration or GPU execution.",
+    "SDK_build_internal_execution_independently_observed": false,
+    "configuration": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "mean_values": null,
+      "std_values": null,
+      "quant_img_RGB2BGR": false,
+      "model_pruning": false,
+      "remove_reshape": false,
+      "quantize_weight": false,
+      "enable_flash_attention": false,
+      "quantized_dtype": "w8a8",
+      "quantized_algorithm": "normal",
+      "quantized_method": "channel"
+    },
+    "do_quantization": false,
+    "dataset": null,
+    "auto_hybrid": false,
+    "SDK_calls": [
+      "config",
+      "load_onnx",
+      "build",
+      "export_rknn",
+      "release"
+    ],
+    "SDK_sessions_created": 1,
+    "SDK_sessions_released": 1,
+    "source_environment_and_affinity_restored": true,
+    "compiled_model": {
+      "bytes": 11283852,
+      "sha256": "55873fe92f693faa1224b0cf1d51a0c5d94b9c44c76bba42669b8b033e4f79b6"
+    },
+    "compiled_model_board_inference_executed": false,
+    "SDK_version": "2.3.2"
+  },
+  "actual_compile_placement": {
+    "all_table_rows_consumed": true,
+    "table_counts": {
+      "operators": 34,
+      "features": 51,
+      "constants": 24
+    },
+    "operator_target_counts": {
+      "CPU": 11,
+      "NPU": 23
+    },
+    "all_operator_and_feature_domains_FLOAT16": true,
+    "constant_dtype_counts": {
+      "INT64": 12,
+      "FLOAT16": 8,
+      "FLOAT": 4
+    },
+    "original_QKV_projection_three_norms_and_RoPE_operations_NPU": true,
+    "public_CPU_input_output_operators": 6,
+    "internal_CPU_layout_operators": [
+      {
+        "id": 8,
+        "op": "Transpose",
+        "name": "Transpose:global0/attn.q_norm#1_rs_tp",
+        "dtype": "FLOAT16",
+        "target": "CPU"
+      },
+      {
+        "id": 15,
+        "op": "Reshape",
+        "name": "Reshape:global0/query_rope_rs_tp_rs",
+        "dtype": "FLOAT16",
+        "target": "CPU"
+      },
+      {
+        "id": 21,
+        "op": "Transpose",
+        "name": "Transpose:global0/attn.k_norm#1_rs_tp",
+        "dtype": "FLOAT16",
+        "target": "CPU"
+      },
+      {
+        "id": 28,
+        "op": "Reshape",
+        "name": "Reshape:__original_native_layout/K/flat_view",
+        "dtype": "FLOAT16",
+        "target": "CPU"
+      },
+      {
+        "id": 32,
+        "op": "Reshape",
+        "name": "Reshape:__original_native_layout/V/flat_view",
+        "dtype": "FLOAT16",
+        "target": "CPU"
+      }
+    ],
+    "strict_all_internal_NPU_placement_passed": false,
+    "compiler_warning": "An actual transpose warning reports 8 x 2082 = 16656, above the printed height-times-width limit of 8192.",
+    "declared_FLOAT16_Casts_optimized_away": 5,
+    "actual_RKNN_half_output_rounding_or_returned_word_layout_verified": false,
+    "five_output_planner_spans_to_logical_half_payload_ratio": [
+      4.0,
+      4.0,
+      4.0,
+      4.0,
+      4.0
+    ],
+    "printed_internal_KiB": 105668.0,
+    "printed_weight_KiB": 10329.8,
+    "memory_plan_limit": "Planner spans overlap and do not establish actual returned sizes, unique physical allocations, DMA headroom or co-residency.",
+    "CPU_layout_runtime_copy_or_noop_cost_measured": false
+  },
+  "decision": {
+    "CPU_derivation_and_half_word_mapping_passed": true,
+    "noncalibrating_compile_passed": true,
+    "all_internal_NPU_layout_hypothesis_rejected_by_placement": true,
+    "compiled_route_adopted": false,
+    "packing_or_latency_benefit_established": false,
+    "NPU_original_QKV_precision_or_output_ABI_accepted": false,
+    "reason": "The compiler retains two CPU normalization-output Transposes and three CPU flatten Reshapes. Their runtime cost is unmeasured; successful CPU equivalence and compilation do not verify the intended producer-to-native-consumer boundary.",
+    "next_validation_boundary": "A separately evaluated artifact must establish actual placement, logical/native output attributes, returned half sizes and word order, original QKV NPU precision, and complete producer-plus-consumer cost before integration."
+  },
+  "engineering_lessons": [
+    "Preserve an unrounded canonical FP32 control when validating a half-layout producer; exact half mapping alone is not original FP32 precision.",
+    "Inspect the complete compile table and public output annotations. An explicit ONNX Cast and a declared shape do not establish the RKNN ordinary output ABI.",
+    "Source equivalence can coexist with internal CPU layout operations. CPU-targeted Reshape rows alone do not establish a measured copy cost.",
+    "The earlier native-input pack interval is not promised savings: producer work, output copies and handoff must be measured together."
+  ],
+  "acceptance": {
+    "fresh_20Hz_pose_rate": false,
+    "complete_input_to_pose_P95_at_most_100ms": false,
+    "full_model_NPU_precision": false,
+    "trajectory_quality": false,
+    "map_cadence": false,
+    "thirty_minute_stability": false,
+    "physical_8GB_operation": false
+  },
+  "evidence": {
+    "static_exporter": {
+      "bytes": 12350,
+      "sha256": "5477cd721b419a72e45d79d364b703840f62d640961e97b467ec022cf99282ed"
+    },
+    "static_result": {
+      "bytes": 30677,
+      "sha256": "f60ec2c4d34b84ff7ce53debe4122c8dd03c9eb707858edfefda134cf32bcfff"
+    },
+    "CPU_worker": {
+      "bytes": 28089,
+      "sha256": "b1b27c8814c12f4250da417ea81e9f402872824dd98c0160a9aa55ee0243f5ca"
+    },
+    "CPU_host": {
+      "bytes": 16538,
+      "sha256": "1cf63d127e148908709d141a646e8eead6625ebd372320f8bfec5cd2c6c8b18c"
+    },
+    "CPU_result": {
+      "bytes": 31947,
+      "sha256": "9fa06a0c5296357d5f8d080d87edddba0d77bbd397ece927bccba9ad2ec98464"
+    },
+    "CPU_manifest": {
+      "bytes": 4404,
+      "sha256": "4476a979ff992deaaa9e7c1d3afd055eea02d85d567d027223f10d5687b0333d"
+    },
+    "CPU_controller": {
+      "bytes": 13217,
+      "sha256": "47ada7cbb5b841ade7cf58a24665be209663fe462a44d319ed020caa94ac4f1a"
+    },
+    "CPU_transport": {
+      "bytes": 20002,
+      "sha256": "42cf2a47a47a2033da7abfd9d7be6e735309d838f74b21f84b7470745627d42c"
+    },
+    "CPU_numeric_auditor": {
+      "bytes": 22485,
+      "sha256": "7e1ba46d87ee94b262296f8cfed1792bec70a3db268ad447c3c8dbd5bc95ba05"
+    },
+    "CPU_numeric_audit": {
+      "bytes": 13329,
+      "sha256": "800fb1e2bd2d87bc9cf5833b9086be5a176034503027977c78bae87c49fa27e2"
+    },
+    "CPU_runtime_auditor": {
+      "bytes": 23775,
+      "sha256": "02f4cf960b296b48ad3ebe220b6cd9d2682a73f2d7ab7a67adb4fbb5233196e5"
+    },
+    "CPU_runtime_audit": {
+      "bytes": 3352,
+      "sha256": "114b61bbc8b7149e945da95d9324c9cda95fe6d2c509844b99584b750b708230"
+    },
+    "compiler": {
+      "bytes": 15189,
+      "sha256": "2efc7d3f45b6713f2f257ec55886f78986c2b204eee3ab0128d7a60315eee18c"
+    },
+    "compile_result": {
+      "bytes": 6029,
+      "sha256": "cc17979b2789bd65d1877c421103adeb8dc4b2c0321b6dc11112de783a44cf8a"
+    },
+    "compile_stdout": {
+      "bytes": 66701,
+      "sha256": "eb470bca605216adc5ae1ede49b6adae0987ec2de31f66346cb5c0ed7e790d47"
+    },
+    "compile_verbose": {
+      "bytes": 8623,
+      "sha256": "28df777a254f103f18cd037d94132a8d23ffb689f3d45f748de0098699c9648a"
+    },
+    "placement_auditor": {
+      "bytes": 15877,
+      "sha256": "ccda904b279bb2fec11e07858dd4d6c525d36b55beb8ddc0f47f04e9a34fe940"
+    },
+    "placement_audit": {
+      "bytes": 62042,
+      "sha256": "3ccf003695d28c20be317d117cd5ba72cdbf34b7fa1aa66850a145459dad302d"
+    },
+    "private_fact_index": {
+      "bytes": 29281,
+      "sha256": "f3f85b9fe3a63d845c92e16767ee6b208568d9a89735d65ea49ad3263603bbac"
+    }
+  },
+  "publication": {
+    "private_arrays_weights_ONNX_RKNN_SDK_or_credentials_included": false,
+    "private_absolute_paths_included": false,
+    "in_progress_followup_results_included": false,
+    "scope": "Sanitized completed r83 evidence and hashes only. No unfinished follow-up is reported as verified.",
+    "license": "Repository code, original implementation, original checkpoint and external SDK retain separate licenses; the repository license does not grant model-weight rights."
+  }
+}

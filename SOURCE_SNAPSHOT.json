@@ -223,16 +223,17 @@
     "results/original_native518_fresh_pixel_persistent_v205.json",
     "results/original_native518_original_group2_compute_profile_v206.json",
     "results/original_native518_bare_query_partition_input_dtype_v209.json",
-    "results/original_native518_bare_query_native_input_v210.json"
+    "results/original_native518_bare_query_native_input_v210.json",
+    "results/original_native518_native_layout_producer_v211.json"
   ],
   "file_sha256": {
     ".gitignore": "5c914f3ced73f7a831f890a98f771bde1e11fdcf288b87f45a9fb538bef93b2e",
     "AGENTS.md": "5f341d96c5a6a17d849a3087eca18ed015eb82e638f166daefc6e7dab2dbc47e",
     "ARCHITECTURE.md": "933d175121556ccec1053d17414965ad6eaad07f11e978bf55c02100618d6695",
     "LICENSE": "dc493d7ac51f587fd71184315999c792ead523bf46da0f0cbf3e26a577b1a580",
-    "MEASUREMENTS.json": "d110cea8a878c45d4658fb2af4db35dfd579117bf4bb8a69d0fe700c6ca01a3e",
+    "MEASUREMENTS.json": "7d4ecb5209d339d635e650fe2d69b10783e2bd34feeda415d65e64b728d0d31a",
     "MODEL_LICENSES.md": "a5750f37f5bcaa28912eaf3a1ab26cde0f570644a01077a81ff0ac4e8ab54a4e",
-    "README.md": "95909ee435023ad90a46a4f914532a7e2a47b35e34f8d38a11060a77f924dc96",
+    "README.md": "5a0ecfc9acf5640da0f8837ca98fb6ab49636d30af8062207de280c400743979",
     "THIRD_PARTY_NOTICES.md": "99176fb73e78ba0950493b942dfc6c6198a4b6ce432bb0904926edb31bc631ee",
     "UPSTREAMS.json": "9325cc1d2c33794ea3361d0884a5796b9b22b119b9a9822113e7b726e2d88a0a",
     "assets/office_loop_figure.png": "5d20d0acb81d3fb38e14235499ba67a22441cfe835e899f3e224a99e514c28e9",
@@ -1183,7 +1184,7 @@
     "deploy/rk3588/validation/vggt-v16-camera-step-compile112-r1.json": "c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a",
     "deploy/rk3588/validation/vggt-v16-camera-step-export112-r1.json": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
     "deploy/rk3588/vggt-spark.patch": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864",
-    "docs/ENGINEERING_NOTES.md": "86f1465965fbabd889dec489e79f6aeef6d390de9e4c47756a6d2e7f9a773221",
+    "docs/ENGINEERING_NOTES.md": "5e6b5a423f7099d74035c0318736f8766b5c1dfb3d0b9ff20f500efe74ac0d8d",
     "docs/GRAPH_OPTIMIZATION_REVIEW.md": "5c87954f156b25bbf3353b0edf3e60c497743de2e1ea8ac9e6ab3fa75bedd493",
     "docs/PUBLICATION_SOURCE_ADAPTATIONS.json": "c379873854a5cec3d9d1a9285f63bf3093bb33884230aaf378cd141800c50d80",
     "evals/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -1472,12 +1473,13 @@
     "vggt_slam/viewer.py": "49c77ebd3b8faf58b579528a900b129fae676fe8f72e02a151dc53f0b7d3b397",
     "vggt_slam/xnnpack_linear.py": "4a8884e756a0200345bcdf58f316f74d89edd4e6f82f528ff944118a2ef9c5ac",
     "results/original_native518_bare_query_partition_input_dtype_v209.json": "145e0ba2a57cca9d97d7da41591be522dab5982a322f228663cce6884e8c2317",
-    "results/original_native518_bare_query_native_input_v210.json": "3c2ea761d01f176ebbd6a7011c0089a63399800dbecd6fa1f5f2df60da470f20"
+    "results/original_native518_bare_query_native_input_v210.json": "3c2ea761d01f176ebbd6a7011c0089a63399800dbecd6fa1f5f2df60da470f20",
+    "results/original_native518_native_layout_producer_v211.json": "63526ad86e7297484f384a35a3795f99b8d9132cf4b1e730faf12bf8f665d723"
   },
-  "latest_completed_public_result": 210,
+  "latest_completed_public_result": 211,
   "publication_date": "2026-10-16",
   "publication_validation": {
-    "scope": "Existing source validation plus curated R210 native-input compatibility and paired saved-evidence metadata, exact metrics, unchanged notes prefix, local links/privacy and all indexed hashes. No inference or SDK execution for publication.",
+    "scope": "Existing source validation plus curated R211 original QKV CPU-equivalence, exact half-layout and noncalibrating compile-placement evidence; pinned independent audits, unchanged notes prefix, local links/privacy and all indexed hashes. No inference or SDK execution for publication.",
     "focused_generated_tests_passed": 123,
     "actual_NN_SDK_or_board_execution_performed_for_publication": false,
     "published_source_path_adaptations": "docs/PUBLICATION_SOURCE_ADAPTATIONS.json",

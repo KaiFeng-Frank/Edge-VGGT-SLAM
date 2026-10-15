@@ -654,5 +654,31 @@
     "original_FP32_precision_accepted": false,
     "full_model_default_changed": false,
     "real_time_or_physical8GB_validated": false
+  },
+  "original_native518_native_layout_producer_v211": {
+    "record": "results/original_native518_native_layout_producer_v211.json",
+    "scope": "Original global0 QKV prefix CPU correctness and noncalibrating compile placement only; no producer NPU execution or speed acceptance.",
+    "board_CPU_calls": 2,
+    "board_CPU_sessions_created_and_dropped": 2,
+    "saved_outputs": 8,
+    "saved_NPY_bytes": 38376448,
+    "original_FP32_QKV_fixed_and_strict_gates_passed": 3,
+    "exact_half_layout_gates_passed": 5,
+    "compile_table_counts": {
+      "operators": 34,
+      "features": 51,
+      "constants": 24
+    },
+    "operator_targets": {
+      "CPU": 11,
+      "NPU": 23
+    },
+    "internal_CPU_layout_operators": 5,
+    "public_CPU_IO_operators": 6,
+    "all_internal_NPU_placement_passed": false,
+    "compiled_producer_NPU_inference_executed": false,
+    "output_ABI_or_latency_benefit_verified": false,
+    "full_model_default_changed": false,
+    "real_time_or_physical8GB_validated": false
   }
 }
