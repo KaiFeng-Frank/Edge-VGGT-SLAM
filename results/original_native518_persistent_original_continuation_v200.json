@@ -1,0 +1,268 @@
+{
+  "schema": "original_native518_persistent_original_continuation_v200",
+  "record": 200,
+  "status": "two_case_original_continuation_predictions_byte_equal_with_two_persistent_groups_and_one_shared_arena_first_screen",
+  "scope": {
+    "network": "Original pretrained VGGT only; unchanged compiled continuation graphs, weights, layer and token computation.",
+    "boundary": "Previously saved actual R185 group0 frame4/global4 endpoints, widened exactly from lossless FLOAT16 for pair4 and pair5.",
+    "remaining_original_pairs": 19,
+    "retained_indices": [
+      4,
+      11,
+      17,
+      23
+    ],
+    "frame_tokens": 1041,
+    "global_tokens": 2082,
+    "embedding_channels": 1024,
+    "original_camera_refinements_per_case": 4,
+    "original_DPT_frames_per_case": 2,
+    "original_DPT_branches_per_frame": 4,
+    "new_pixels_DINO_or_group0_executed": false,
+    "reference_intermediate_injection": false,
+    "storage_prerequisite_record": 199
+  },
+  "routes": {
+    "A": {
+      "description": "Fresh original sequential continuation; five contexts created and closed per case.",
+      "init_flags": 0,
+      "core_mask": 7,
+      "maximum_live_contexts": 1
+    },
+    "B": {
+      "description": "Original groups1 and2 persist across both cases; group3, camera and depth initialize and close serially while borrowing one arena.",
+      "init_flags": 512,
+      "core_mask": 7,
+      "persistent_groups": [
+        1,
+        2
+      ],
+      "transient_models": [
+        "group3",
+        "camera",
+        "depth"
+      ],
+      "maximum_observed_live_contexts": 3,
+      "live_contexts_between_cases": 2,
+      "concurrent_forwards": 0
+    }
+  },
+  "schedule": [
+    "A_pair4",
+    "A_pair5",
+    "B_pair4",
+    "B_pair5"
+  ],
+  "numerical_verification": {
+    "independent_saved_audits_passed": true,
+    "complete_FLOAT32_files": 20,
+    "saved_file_bytes": 12999104,
+    "same_case_final_prediction_pairs": 10,
+    "all_same_case_raw_and_NPY_bytes_equal": true,
+    "all_pair_relative_L2": 0.0,
+    "all_pair_max_abs_error": 0.0,
+    "canonical_shapes": {
+      "pose_enc": [
+        2,
+        9
+      ],
+      "extrinsic": [
+        2,
+        3,
+        4
+      ],
+      "intrinsic": [
+        2,
+        3,
+        3
+      ],
+      "depth": [
+        2,
+        392,
+        518,
+        1
+      ],
+      "depth_conf": [
+        2,
+        392,
+        518
+      ]
+    },
+    "stage_hash_rows": 48,
+    "same_case_stage_hash_pairs": 24,
+    "all_recorded_retained_target_and_group_hash_pairs_equal": true,
+    "actual_seed_files_exact_widening_and_retained4_reconstruction_verified": true,
+    "intermediate_evidence_scope": "Final prediction arrays are independently read and compared. Other intermediate evidence is source-bound hash telemetry, except retained4 reconstructed from the actual saved seeds.",
+    "same_case_common_final_raw_sha256": {
+      "pair4": {
+        "pose_enc": "fc88454656a44b99ae5c6ec7b65bd763c0554300a96b0a39e11cbac81f799236",
+        "extrinsic": "1067ec56fe88c10083548406e8e7b8a1bc44deee184a0fe6a6f52417c1610e3a",
+        "intrinsic": "a93531a9aa3934a7c0512aeb169e9a749aa3adbad77e5bffeded54f1cf73e1ea",
+        "depth": "aeea4360c4053da933885a38f0596fa95a2ef8b563f38c231d627fe74e7af378",
+        "depth_conf": "afbcfdada3b5f529f115455d0a231db65a9794037faae190462d52e7f6eef307"
+      },
+      "pair5": {
+        "pose_enc": "b3454584fc0835078cd2ccd4d923f14145f03d35711c8a817af9ee7a556bc30f",
+        "extrinsic": "426a2163fcd7b90bbe954ee58b49234d3146a279b324b0607d39c60e944e0206",
+        "intrinsic": "86b88e40b2e72d79065137768016dd31837e52d93dfd40f88e610ec1e0c2a236",
+        "depth": "bd27055b00171c4bc8f7f3366b7209ae2d1f98838f258ca6280bc992c7ebeb40",
+        "depth_conf": "7a4ad13422f48935587b8f83af3a72f66a43a4ab28ca0120904574bb892b71cd"
+      }
+    }
+  },
+  "timing_seconds": {
+    "category": "Outer obj.run boundary, including each route's checks/hashes, actual SDK IO/run/copy/release, retained construction, original head mathematics and pose codec. Saved-seed loading/widening and later file/metric work are outside this boundary.",
+    "per_case": [
+      {
+        "case": "pair4",
+        "A_outer_call": 18.771074552991195,
+        "B_outer_call": 16.11408207801287
+      },
+      {
+        "case": "pair5",
+        "A_outer_call": 18.486047774000326,
+        "B_outer_call": 16.09799524200207
+      }
+    ],
+    "A_two_outer_calls": 37.25712232699152,
+    "B_two_outer_calls": 32.21207732001494,
+    "descriptive_outer_call_reduction_percent": 13.541155870005595,
+    "B_open": 1.8493383530003484,
+    "B_final_close": 0.39612508099526167,
+    "B_two_outer_calls_plus_open_and_close": 34.45754075401055,
+    "descriptive_subtotal_reduction_percent": 7.514218485287493,
+    "B_top_level_constructor_reported_separately": 4.087554160010768,
+    "A_top_level_constructor": null,
+    "constructor_scope": "Both top-level source/provenance constructors are excluded from the comparable subtotal; A constructor was not measured, so no complete cold-start comparison is established.",
+    "separate_evidence_inclusive_category": {
+      "A_two_cases_with_evidence_and_close": 37.82916680100607,
+      "B_open_two_cases_with_evidence_and_close": 35.05369477199565,
+      "scope": "Includes seed/file/hash/report work; distinct from outer-call timing. Top-level constructors remain excluded."
+    },
+    "timing_limit": "One A/A then B/B screen using two inputs; no order-balanced sessions, steady-state rate, statistical speed acceptance or isolated-kernel causal attribution."
+  },
+  "resources": {
+    "A_two_case": {
+      "contexts_created": 10,
+      "contexts_destroyed": 10,
+      "runs_completed": 18,
+      "output_buffers_acquired": 26,
+      "output_buffers_released": 26
+    },
+    "B_two_case": {
+      "contexts_created": 8,
+      "contexts_destroyed": 8,
+      "runs_completed": 18,
+      "output_buffers_acquired": 26,
+      "output_buffers_released": 26
+    },
+    "combined": {
+      "contexts_created": 18,
+      "contexts_destroyed": 18,
+      "runs_completed": 36,
+      "output_buffers_acquired": 52,
+      "output_buffers_released": 52
+    },
+    "shared_arena_requested_bytes": 120938496,
+    "pool_allocations": 1,
+    "context_views": 8,
+    "memory_wrappers_destroyed": 9,
+    "successful_internal_binds": 8,
+    "post_bind_native_attributes_independently_decoded": 60,
+    "ownership_events_verified": 86,
+    "one_FD_object_and_base_with_zero_offsets_and_valid_per_context_spans_verified": true,
+    "borrower_views_and_contexts_closed_before_pool_and_allocator_context": true,
+    "all_resources_closed": true,
+    "maximum_live_contexts_observed": 3,
+    "two_contexts_live_between_B_calls": true,
+    "minimum_sampled_candidate_DMA_free_bytes": 326508544,
+    "DMA_reserve_bytes": 268435456,
+    "minimum_observed_DMA_reserve_margin_bytes": 58073088,
+    "minimum_sampled_candidate_MemAvailable_bytes": 3643490304,
+    "MemAvailable_floor_bytes": 2684354560,
+    "worker_peak_process_RSS_MiB": 1896.88671875,
+    "memory_scope": "Requested workspace, SDK context fields, DMA snapshots and process RSS are different quantities; none is a unique physical full-model total or physical8GB proof."
+  },
+  "controller_and_integrity": {
+    "NPU_hz": 1000000000,
+    "timeout_seconds": 180,
+    "temperature_limit_c": 75,
+    "controller_seconds": 88.75204975099768,
+    "peak_sampled_temperature_c": 68.384,
+    "frequency_policy_restored": true,
+    "source_and_inputs_unchanged": true,
+    "environment_affinity_and_cwd_restored": true,
+    "complete_evidence_pulls": 2,
+    "all_pull_returncodes_zero": true,
+    "new_model_or_input_array_push": false,
+    "SDK_error_log_rows": 0,
+    "readonly_final_health_idle_and_restored": true
+  },
+  "decision": "Retain the verified storage aliases and this bounded unchanged-network ownership schedule for separate fresh-input integration. Upstream co-residency still needs a new capacity gate.",
+  "acceptance": {
+    "bounded_two_case_shared_arena_lifetime_and_current_control_output_identity_verified": true,
+    "original_FP32_precision_improvement_accepted": false,
+    "all_model_contexts_resident": false,
+    "cold_start_or_statistical_speedup_established": false,
+    "fresh_pixel_pose_rate_trajectory_realtime_or_physical8GB_accepted": false,
+    "deployment_accepted": false
+  },
+  "limits": [
+    "The inference starts from existing actual group0 endpoints. It is not a complete fresh-pixel model execution or fresh-pose FPS measurement.",
+    "Byte identity to the current compiled flags0 control preserves its existing numerical behavior; no original FP32 precision comparison or improvement is measured here.",
+    "All20 final prediction arrays are saved; other intermediate stages use source-attributed hashes with the retained4 reconstruction exception.",
+    "Fresh capacity guards and sampled headroom support only this completed run; they do not guarantee contiguous allocations, all-model residency or sustained deployment.",
+    "This healthy run does not exercise general failure coverage. Frozen r1 failure fallback does not prioritize an owner's copied nonfinite outputs; a failing run cannot assume complete offending-array preservation."
+  ],
+  "evidence": {
+    "worker_receipt": {
+      "bytes": 706237,
+      "sha256": "db7aebb27afc32267158d4995c003b7a9c298e297e193131669a587572bdb358"
+    },
+    "controller": {
+      "bytes": 62292,
+      "sha256": "09cc067d58ca49767b9ad6d0b48f0a97375760129c2d487ff29a2b63884a335d"
+    },
+    "manifest": {
+      "bytes": 9014,
+      "sha256": "f5320d01f1e684a41a70aac3549935dbf818f39502bb2828573d261d196e4dd4"
+    },
+    "transport": {
+      "bytes": 15254,
+      "sha256": "c75219b8f0e4ea3fa77f897cb702d8ca8ea63c9a94481f04c7361d6ab2580e04"
+    },
+    "worker_source": {
+      "bytes": 15116,
+      "sha256": "034c1e60b1fc4dad0caf57e00d451ed6905e9dad540affad5caff36fbd6e8376"
+    },
+    "persistent_runtime_source": {
+      "bytes": 39122,
+      "sha256": "42decc8ca244009b0e811add3bd8bdc4611e2346ed1cf9cfab99fa81d46f300b"
+    },
+    "transport_source": {
+      "bytes": 11610,
+      "sha256": "10a9090d952330b401b321a9586f643bfcf990b956a4e3fe1b5e29c0dd7eba24"
+    },
+    "ownership_and_saved_array_audit": {
+      "bytes": 83415,
+      "sha256": "333401f30d6839e7b01ac72902682dc583a83ca30bb7d8de7e358cccbf767b81"
+    },
+    "ownership_auditor_source": {
+      "bytes": 32351,
+      "sha256": "848bd709c54733c0094dab6b0801c2b4d3276a393b3b74a1d42e679b63013f73"
+    },
+    "numeric_timing_peer_audit": {
+      "bytes": 22942,
+      "sha256": "df59efdce528c5d9153468adf7aa71c40ddae9d147a143f8475eb2d60e5b16a3"
+    },
+    "numeric_peer_source": {
+      "bytes": 22993,
+      "sha256": "8b8bbb7aa012c86173a0b21fdfec3a24b4f187a103ab887153c00cff7ed35d38"
+    },
+    "post_run_readonly_health": {
+      "bytes": 1067,
+      "sha256": "bed79be82caab1bee03177dd23fbcea737254a1c178efacd72c3d97a5e67fe26"
+    }
+  },
+  "publication": "Metadata and hashes only; models, arrays, raw private receipts and private paths are excluded."
+}

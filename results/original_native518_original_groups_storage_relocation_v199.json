@@ -1,0 +1,153 @@
+{
+  "schema": "original_native518_original_groups_storage_relocation_v199",
+  "record": 199,
+  "status": "six_original_compile_payloads_and_paths_preserved_observed_DMA_capacity_gain_no_persistent_execution_acceptance",
+  "scope": "Storage relocation of original VGGT aggregation groups1\u20133 compiled models and their receipts; no model or inference execution during maintenance.",
+  "relocation": {
+    "original_group_indices": [
+      1,
+      2,
+      3
+    ],
+    "files": 6,
+    "compiled_models": 3,
+    "compile_receipts": 3,
+    "payload_bytes": 1260115203,
+    "prior_source_regular_file_allocated_bytes": 1260122112,
+    "source_filesystem": "tmpfs",
+    "destination_filesystem": "existing data ext4",
+    "operation": "Verify and fsync all six destination copies before any source replacement; then atomically replace individual source entries with absolute symlinks, retaining original directories.",
+    "all_original_paths_and_payload_hashes_preserved": true,
+    "all_three_model_and_receipt_resolved_parent_pairs_preserved": true,
+    "resolved_parent_reason": "The frozen loader resolves the receipt first, then its relative model filename; both aliases must resolve into the same destination parent.",
+    "fresh_inventory_and_pre_alias_process_FD_and_mmap_checks": true,
+    "original_network_weights_math_layers_tokens_and_defaults_unchanged": true,
+    "recompile_or_model_SDK_GPU_execution": false,
+    "raw_research_records_deleted": 0,
+    "root_filesystem_payload_writes": false,
+    "mounts_drivers_reserved_blocks_global_cache_policy_and_clocks_changed": false
+  },
+  "observed_capacity_bytes": {
+    "MemAvailable": {
+      "before_bytes": 4339621888,
+      "after_bytes": 5599428608,
+      "change_bytes": 1259806720
+    },
+    "Shmem": {
+      "before_bytes": 11738316800,
+      "after_bytes": 10478383104,
+      "change_bytes": -1259933696
+    },
+    "DMA_zone_free": {
+      "before_bytes": 1007341568,
+      "after_bytes": 1874067456,
+      "change_bytes": 866725888
+    },
+    "Normal_zone_free": {
+      "before_bytes": 2382917632,
+      "after_bytes": 1475678208,
+      "change_bytes": -907239424
+    }
+  },
+  "data_budget": {
+    "floor_bytes": 3221225472,
+    "future_reserve_bytes": 67108864,
+    "receipt_reserve_bytes": 8388608,
+    "before_free_bytes": 4594925568,
+    "after_free_bytes": 3334770688,
+    "before_margin_after_full_budget_bytes": 38080512,
+    "after_margin_above_floor_and_future_bytes": 46436352,
+    "observed_data_free_decrease_bytes": 1260154880,
+    "free_space_uses": "statvfs f_bfree times block size under the verified root process, not f_bavail"
+  },
+  "verification": {
+    "independent_saved_audit_passed": true,
+    "all_six_inventory_host_provenance_and_completion_hashes_match": true,
+    "all_copy_verify_fsync_before_alias_source_order_and_receipt_verified": true,
+    "all_three_frozen_loader_topologies_verified": true,
+    "actual_transport_returncode": 0,
+    "receipt_pull_returncode": 0,
+    "audit_scope": "Small saved receipts and pinned source control flow; no new board observations, large-weight rereads or independent syscall trace."
+  },
+  "retained_payload_metadata": [
+    {
+      "group_index": 1,
+      "compiled_model": {
+        "bytes": 464223148,
+        "sha256": "9827e019589fcbb54c50e65767315dbe4bf76dcbe35688108fd27e2c3aeb89c4"
+      },
+      "compile_receipt": {
+        "bytes": 12142,
+        "sha256": "59ba7372b3f87a75ac6858cb9232a7262cd6e941b180b5a824f803cdc476235c"
+      }
+    },
+    {
+      "group_index": 2,
+      "compiled_model": {
+        "bytes": 397920172,
+        "sha256": "95c39104f44f99328669c8412b8e78ea029abe50ef63add0b48117b093f9bb44"
+      },
+      "compile_receipt": {
+        "bytes": 12144,
+        "sha256": "fe2e2cab7741626cd119d6dc481f8b5083502d37bea94800ae84e27fdd63ffa1"
+      }
+    },
+    {
+      "group_index": 3,
+      "compiled_model": {
+        "bytes": 397933475,
+        "sha256": "5b5c5611de4db14a139ace7da72f5f934e33adc2cfa12c1205fac395560377fb"
+      },
+      "compile_receipt": {
+        "bytes": 14122,
+        "sha256": "954877a33e3d8f795a3c432603d88b85283067869ae3a81593af293694caabf5"
+      }
+    }
+  ],
+  "decision": "Retain the verified disk-backed aliases and measured capacity for a separately bounded persistent original-group continuation gate. That persistent execution is not yet validated.",
+  "limits": [
+    "All source pathnames and payload bytes remain; inode, device, file type, ctime and alias mtime can change. This is not metadata identity.",
+    "Aliases and their disk targets are immutable. Future writers must use fresh outputs. Rollback requires verified, fsynced fresh regular copies before atomic alias replacement; retain the disk copy until separately checked.",
+    "Prior source file-block allocation, observed Shmem/MemAvailable changes and observed DMA-free change are different quantities. Normal-zone free fell in these snapshots; disk page-cache and background effects are not isolated.",
+    "Observed DMA headroom does not guarantee contiguous allocation, all-model residency or physical8GB feasibility. This maintenance establishes no inference speedup, numerical quality, full-model trajectory or realtime result."
+  ],
+  "acceptance": {
+    "storage_integrity_and_budget_audit_passed": true,
+    "DMA_capacity_increase_observed": true,
+    "all_model_residency_validated": false,
+    "inference_speedup_validated": false,
+    "numerical_quality_trajectory_realtime_or_physical8GB_accepted": false,
+    "persistent_original_group_continuation_validated": false
+  },
+  "evidence": {
+    "readonly_inventory": {
+      "bytes": 6704,
+      "sha256": "2d2d753eddc4ee36727b04e869537b2d8d1bb5dd21a4b4189fbc03def7ce3986"
+    },
+    "host_original_provenance": {
+      "bytes": 9237,
+      "sha256": "a6106f79d1fdb0d97f3a32e80b54fed081fb96882c0896ffd44961cc64bd74b6"
+    },
+    "relocation_source": {
+      "bytes": 12480,
+      "sha256": "3a74cbfaa14fa89de3f9be754e62d0f6bcded9fcc9c30007381028065858936a"
+    },
+    "relocation_receipt": {
+      "bytes": 11940,
+      "sha256": "527891c878b6dee6ab326302b48988c36358528fec6cc9f0d55dd7c5692f5780"
+    },
+    "transport": {
+      "bytes": 1907,
+      "sha256": "5aa62b62fe2468ee201b5643e42119237e1dc86fd7e5fe9b9adcc95304a73b2b"
+    },
+    "saved_auditor_source": {
+      "bytes": 12451,
+      "sha256": "2dda7755a7a0a85f350731bea1a11d606cd185e6b219b1247cd2152b4581f35d"
+    },
+    "saved_audit": {
+      "bytes": 5386,
+      "sha256": "52af1227c9e7db24fedf3f5d20691f34e13c5013657b6ae6663ba6a024314082"
+    }
+  },
+  "publication": "Metadata and hashes only; original models, receipts, arrays and private paths remain private."
+}

@@ -1899,3 +1899,35 @@ Both graphs receive fresh matched noncalibrating FP16 compilation. Actual placem
 Relative L2 error **increases 0.091341%**, and maxabs worsens **0.22928572→0.23319197**. Strict outliers increase **886,557→886,726**; all NPU original-reference and cross-route fixed/strict gates fail. Candidate-versus-baseline L2 is **0.000311302**, maxabs **0.01171875**. Complete latency is **1.323528% / 2.199 ms higher**, while the SDK mean is 0.204 ms lower. Four measured calls per route support only this descriptive comparison, without a statistical-significance or causal timing claim. **Do not adopt or expand this value-bias-fold route.**
 
 Core7/flags0 ordinary OwnedContext uses the actual full-block BNC descriptors, with no attention-layout adapter or CPU output correction. Four sequential ABBA contexts each run one warmup and two measured calls. Complete timers include ordinary IO, owned copies/release and finite/nonzero checks; init/close, files, hashes and metrics are separate. Independent saved audit verifies **two complete FLOAT32 files / 8,528,128 bytes**, three comparisons, repeat hashes and **4 contexts / 12 runs / 12 acquired and released outputs**, all closed. Later repeats have hash telemetry, not separate payloads. All three pulls succeed and the 1 GHz controller restores its policy, sampled peak **54.538°C**. The fresh compile/core7 baseline has no historical R117 core1 byte gate. Scalar report tolerance does not change any original array gate. One reused full-block input establishes no full-model, trajectory or realtime result; process RSS **140.949 MiB** is not physical8GB evidence.
+
+
+## 264. Preserving original group archives recovers measured DMA headroom
+
+[R199](../results/original_native518_original_groups_storage_relocation_v199.json) relocates **three original VGGT aggregation models and their three compile receipts**, totaling **1,260,115,203 payload bytes**, from tmpfs to existing data ext4. Every destination is hashed and fsynced before any source entry becomes an atomic symlink. All six original paths, payload hashes and existing directories remain; each receipt and its relative model resolve into the same new parent, preserving the frozen loader contract. The **original network, weights, layers, tokens and computation are unchanged**. No model/SDK inference or recompile runs during maintenance.
+
+| Recorded capacity | Before (bytes) | After (bytes) | Change (bytes) |
+| --- | ---: | ---: | ---: |
+| MemAvailable | 4,339,621,888 | 5,599,428,608 | +1,259,806,720 |
+| Shmem | 11,738,316,800 | 10,478,383,104 | −1,259,933,696 |
+| DMA-zone free | 1,007,341,568 | 1,874,067,456 | +866,725,888 |
+| Normal-zone free | 2,382,917,632 | 1,475,678,208 | −907,239,424 |
+
+These are observed OS snapshots, distinct from **1,260,122,112 prior source file-block bytes**; disk page-cache and background effects are not isolated. Data-disk free space ends at **3,334,770,688 bytes**, retaining the **3 GiB floor plus 64 MiB future budget**, with **46,436,352 bytes** additional margin. Independent saved audit verifies six-file identity/completion, copy-before-alias source ordering, all three loader topologies and the budget; it performs no new board access or large-weight reads.
+
+Aliases and disk targets are **immutable**; future writers need fresh outputs. Verified copy-back before atomic replacement provides a rollback path. File type, inode/device, ctime and alias mtime can change, so this is byte/path preservation rather than metadata identity. No mounts, drivers, reserved blocks, clocks or global cache policy change. The measured DMA capacity gain is **not an inference speedup** or a guarantee of contiguous allocation. **Persistent execution of the original group continuation remains unvalidated**; this storage step establishes no all-model residency, physical8GB, trajectory or realtime acceptance.
+
+
+## 265. Two persistent original groups preserve connected continuation outputs
+
+[R200](../results/original_native518_persistent_original_continuation_v200.json) uses the capacity recovered in R199 to keep **original groups1 and2 resident** across two inputs. Original group3, camera and DPT contexts initialize and close serially, borrowing **one 120,938,496-byte internal arena**. All compiled graphs, weights, layers, tokens, retained branches and original camera/DPT/pose-codec mathematics remain unchanged. Execution starts from the actual saved R185 group0 endpoints for pair4/pair5, widened exactly from lossless half files; no fresh pixels, DINO or group0 run occurs here.
+
+| Conditional continuation | Sequential flags0 outer call | Persistent/shared flags512 outer call |
+| --- | ---: | ---: |
+| pair4 | 18.771075 s | 16.114082 s |
+| pair5 | 18.486048 s | 16.097995 s |
+
+Outer calls total **37.257122→32.212077 s**. Candidate open **1.849338 s** and final close **0.396125 s** raise its comparable two-input subtotal to **34.457541 s**, an observed **7.5142%** reduction. Candidate top-level construction separately costs **4.087554 s**; baseline construction is unmeasured, so this is **not a complete cold-start comparison**. Calls include ordinary SDK IO/copies/release, checks, retained construction and original heads/codec; seed loading/widening and subsequent file work are separate. This single **A/A then B/B** screen establishes no order-balanced, steady-state or statistically accepted speed result.
+
+Independent saved audits verify **20 complete FLOAT32 files / 12,999,104 bytes**: all ten same-input pairs of pose encoding, extrinsics, intrinsics, depth and confidence are **byte-identical, L2/maxabs zero**. All **24 retained/target/group hash pairs** also match. These intermediates have hash telemetry rather than separately saved payloads, except retained4 independently reconstructed from the actual seeds. Equality is to the current compiled control; it does not resolve its original-FP32 accuracy limits.
+
+A creates/closes ten contexts; B creates/closes eight, with **two alive between inputs and at most three live**. All **18 contexts / 36 runs / 52 acquired and released outputs** close. The independent ownership audit verifies **60 native attributes, 86 events, one pool, eight views/binds and nine memory-wrapper destructions**, with no concurrent forward using the arena. Sampled candidate DMA free stays at least **326,508,544 bytes**, above the **256 MiB reserve**; MemAvailable stays at least **3,643,490,304 bytes**. The 1 GHz controller restores its policy, peak **68.384°C**. Process RSS **1,896.887 MiB** is not physical8GB evidence. Retain this bounded storage/lifetime result for separately guarded fresh-input integration; **full-pixel pose rate, trajectory, realtime and deployment acceptance remain false**.

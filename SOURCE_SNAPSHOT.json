@@ -213,7 +213,9 @@
     "results/original_retained_groups_v67.json",
     "results/original_staged_pageout_v74.json",
     "results/original_timestamp_replay_v52.json",
-    "results/original_weight_compression_v65.json"
+    "results/original_weight_compression_v65.json",
+    "results/original_native518_original_groups_storage_relocation_v199.json",
+    "results/original_native518_persistent_original_continuation_v200.json"
   ],
   "file_sha256": {
     ".gitignore": "5c914f3ced73f7a831f890a98f771bde1e11fdcf288b87f45a9fb538bef93b2e",
@@ -1173,7 +1175,7 @@
     "deploy/rk3588/validation/vggt-v16-camera-step-compile112-r1.json": "c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a",
     "deploy/rk3588/validation/vggt-v16-camera-step-export112-r1.json": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
     "deploy/rk3588/vggt-spark.patch": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864",
-    "docs/ENGINEERING_NOTES.md": "89ddd30aaac6c582f8c42546ea8f20d2bb4df04c6ac94b166bcda0aeb41a9ed9",
+    "docs/ENGINEERING_NOTES.md": "73b5bfb700543117fa1876ad0d85ef84e8ca88a9ad23a84b6913697325d01f33",
     "docs/GRAPH_OPTIMIZATION_REVIEW.md": "5c87954f156b25bbf3353b0edf3e60c497743de2e1ea8ac9e6ab3fa75bedd493",
     "docs/PUBLICATION_SOURCE_ADAPTATIONS.json": "c379873854a5cec3d9d1a9285f63bf3093bb33884230aaf378cd141800c50d80",
     "evals/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -1291,8 +1293,10 @@
     "results/original_native518_native_attention_v118.json": "5328b9ea7856893d67fdb21b4d25e958c95a677d18cf6cfd93f7e2a4d7d994e3",
     "results/original_native518_native_block_v121.json": "6ae4230b83068bf694cd78dbc94617ce4346e14f6cd40d36f6e77e159d093f34",
     "results/original_native518_original_groups_external_scratch_v191.json": "28993a0c5f65980a629eece59ef3d3bc9c9ee1bad21f95b3b63043b3468951eb",
+    "results/original_native518_original_groups_storage_relocation_v199.json": "bc930bafb8a155e84215615808836bd236bac7dd3fdbfdcdc7ca385b42d78233",
     "results/original_native518_packed_attention_precision_v156.json": "e56701790590e8bb62a9aa9f3b47cd118f04f57d2229205fde5907af67841463",
     "results/original_native518_packed_native_v155.json": "beb1abfb4aedb97245024c9807eb8739fc547b0ee8f2b5fd0f6892c2f35ae8d6",
+    "results/original_native518_persistent_original_continuation_v200.json": "cabe7a91e0d2bf768a50a31ca7e2f44318294691d98b4437be0a5d8c23e5dda4",
     "results/original_native518_pool_sigmoid_v153.json": "929823bf25e92abc9231e01cbc89c33d73a21ddcb35e7de70df12723a099bf7f",
     "results/original_native518_pre_rope_query_consumers_v179.json": "8db70d054cb797027604cba61789988272419a8f9e19d51088046996ec001167",
     "results/original_native518_producer_projection_v130.json": "f57ea747bd9348fbce134c9be5658f03bd8a6f95c5db199685ed560d94f2c129",
@@ -1452,11 +1456,11 @@
     "vggt_slam/viewer.py": "49c77ebd3b8faf58b579528a900b129fae676fe8f72e02a151dc53f0b7d3b397",
     "vggt_slam/xnnpack_linear.py": "4a8884e756a0200345bcdf58f316f74d89edd4e6f82f528ff944118a2ef9c5ac"
   },
-  "latest_completed_public_result": 198,
+  "latest_completed_public_result": 200,
   "publication_date": "2026-10-16",
   "publication_validation": {
     "scope": "Source syntax, curated JSON, shell parsing, local links, public-artifact privacy, source identities, and focused generated service tests only.",
-    "focused_generated_tests_passed": 66,
+    "focused_generated_tests_passed": 123,
     "actual_NN_SDK_or_board_execution_performed_for_publication": false,
     "published_source_path_adaptations": "docs/PUBLICATION_SOURCE_ADAPTATIONS.json",
     "real_time_or_full_model_quality_accepted": false,
