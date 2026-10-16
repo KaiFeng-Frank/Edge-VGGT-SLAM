@@ -1,0 +1,166 @@
+{
+  "schema": "original_native518_DINO24_static_fusion_compile_v216",
+  "record": 216,
+  "status": "original_DINO24_static_fusion_and_noncalibrating_compile_verified_runtime_capacity_skipped",
+  "scope": {
+    "board": "16 GB RK3588S",
+    "component": "Original internal DINO24 full-token encoder stack only; static and compile placement, with no fused runtime result.",
+    "original_model_only": true,
+    "new_full_model_or_trajectory_run": false
+  },
+  "original_DINO24_fusion": {
+    "input_output_shape": [
+      1,
+      1041,
+      1024
+    ],
+    "domain": "Original internal DINO24 stack only, from full prepared tokens through the complete pre-finalnorm token endpoint. Original token preparation, positional embeddings and final norm remain required outside this graph.",
+    "static": {
+      "parent_graphs": 4,
+      "original_layers_per_parent": 6,
+      "original_layers_retained": 24,
+      "original_learned_parameter_bindings_retained": 336,
+      "nodes": 744,
+      "initializers": 552,
+      "only_three_boundary_tensor_names_joined": true,
+      "added_arithmetic_casts_or_initializers": 0,
+      "all_four_actual_parent_ModelProto_inverses_byte_exact": true,
+      "all_node_and_initializer_protobufs_preserved_except_boundary_tensor_names": true,
+      "parent_graph_pins": [
+        {
+          "group_index": 0,
+          "bytes": 302391032,
+          "sha256": "1c94cecf7864afd5f19a71170cef53a9b0639a5d32097185bd226087cbb2a37e",
+          "byte_equal": true
+        },
+        {
+          "group_index": 1,
+          "bytes": 302391032,
+          "sha256": "f1ada0cbfe081e5848983f9856fc2f506f76bc5b67d26160090a61c9f6b815f5",
+          "byte_equal": true
+        },
+        {
+          "group_index": 2,
+          "bytes": 302391032,
+          "sha256": "ed364760be5551debd56ff4519c26f09ee778cd96fbdb5212feef9d3c20975c9",
+          "byte_equal": true
+        },
+        {
+          "group_index": 3,
+          "bytes": 302391032,
+          "sha256": "36da58bde42f76cd6ecba77f706ea0b1379e31db3a64113788bd617c88e0df7d",
+          "byte_equal": true
+        }
+      ],
+      "fused_graph": {
+        "bytes": 1209563426,
+        "sha256": "3ee634fcbf593668104e83e9580025754f3689cb6be400ab87989df5530b69ca"
+      }
+    },
+    "compile": {
+      "configuration": {
+        "target_platform": "rk3588",
+        "float_dtype": "float16",
+        "optimization_level": 3,
+        "mean_values": null,
+        "std_values": null,
+        "quant_img_RGB2BGR": false,
+        "model_pruning": false,
+        "remove_reshape": false,
+        "quantize_weight": false,
+        "enable_flash_attention": false,
+        "quantized_dtype": "w8a8",
+        "quantized_algorithm": "normal",
+        "quantized_method": "channel"
+      },
+      "do_quantization": false,
+      "dataset": null,
+      "auto_hybrid": false,
+      "SDK_sessions_created": 1,
+      "SDK_sessions_released": 1,
+      "all_source_environment_and_affinity_restored": true,
+      "compiled_model": {
+        "bytes": 635093302,
+        "sha256": "29d0b89835c7305ad2c1415d7a2724d3f4f51c54ae05cd966842fd7a16230e0c"
+      },
+      "actual_table_counts": {
+        "operators": 246,
+        "features": 465,
+        "constants": 362
+      },
+      "operator_target_counts": {
+        "CPU": 2,
+        "NPU": 244
+      },
+      "public_CPU_IO_rows": 2,
+      "internal_CPU_rows": 0,
+      "all24_layers_full1041_query_key_attention_and_full1024_norms_verified_NPU": true,
+      "compiler_memory_plan": {
+        "printed_internal_KiB": 35561.3,
+        "printed_weight_KiB": 590983.0,
+        "maximum_feature_end_offset_bytes": 36414784,
+        "not_physical_DMA_or_runtime_output_allocation_proof": true
+      },
+      "compiler_plan_is_not_physical_DMA_or_returned_output_ABI": true,
+      "runtime_precision_or_latency_established": false
+    },
+    "actual_capacity_gate": {
+      "status": "clean_capacity_skip_before_worker",
+      "worker_started": false,
+      "models_or_sources_pushed": 0,
+      "worker_SDK_contexts_created": 0,
+      "MemAvailable_bytes": 4910526464,
+      "required_MemAvailable_bytes": 5180800830,
+      "MemAvailable_shortfall_bytes": 270274366,
+      "DMA_free_bytes": 2098647040,
+      "required_DMA_free_bytes": 2032435200,
+      "DMA_screen_passed": true,
+      "conservative_screen_not_measured_fused_context_allocation": true,
+      "memory_floor_bytes": 2684354560,
+      "DMA_floor_bytes": 268435456,
+      "pending_fused_model_stage_bytes": 635093302,
+      "runtime_result_exists": false
+    },
+    "required_next_validation": [
+      "Fresh safe staging and live capacity; actual context queries, ownership and ordinary IO geometry.",
+      "Original full-token pre-finalnorm FP32 endpoint gate and comparison with the fresh four-group NPU route; neither is inherited from graph inversion or final placement.",
+      "Matched complete lifecycle timing including comparable model SHA/init/query/run/get/copy/release/close work. No latency benefit is asserted before execution."
+    ]
+  },
+  "acceptance": {
+    "static_parent_inverse_and_all24_original_layers": true,
+    "compiled_all_internal_NPU_placement": true,
+    "fused_DINO24_runtime_precision_or_latency": false,
+    "full_model_quality_or_default_change": false,
+    "trajectory_quality": false,
+    "fresh20Hz_pose_rate": false,
+    "complete_input_to_pose_P95_at_most100ms": false,
+    "thirty_minute_stability": false,
+    "physical8GB_operation": false
+  },
+  "evidence": {
+    "DINO24_static_result": {
+      "bytes": 106376,
+      "sha256": "6c2e108145c154181719be464e96128ff31994bcf6aa6f04bf35a7782dd382ed"
+    },
+    "DINO24_compile_result": {
+      "bytes": 5281,
+      "sha256": "f1d988e7a7dd7407b154509ef050aad24deb466e10c152f1cf56cda12266bd0c"
+    },
+    "DINO24_compile_placement_audit": {
+      "bytes": 15681,
+      "sha256": "e7044aa5dcfa1da0a46b1bbab40dd794bd32a5a0099e4b25f0d26d03e9116f60"
+    },
+    "DINO24_capacity_transport": {
+      "bytes": 23155,
+      "sha256": "e0824521e476f0bb89939eba113e9b977febcae6aef85392a38aef2194c37b56"
+    }
+  },
+  "publication": {
+    "raw_receipts_remain_private_hashes_are_identity_references_not_payload_distribution": true,
+    "only_sanitized_metadata_and_reproduction_protocol_published": true,
+    "weights_captured_arrays_ONNX_RKNN_SDK_and_credentials_distributed": false,
+    "executed_private_scripts_redistributed": false,
+    "licenses": "Repository code, original-model implementation, pretrained weights and third-party SDK keep their separate terms; repository BSD-2-Clause grants no model-weight rights."
+  }
+}

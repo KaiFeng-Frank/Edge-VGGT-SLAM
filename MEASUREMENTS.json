@@ -785,5 +785,38 @@
     "all_original_fixed_and_strict_gates_passed": false,
     "candidate_adopted": false,
     "full_model_or_realtime_accepted": false
+  },
+  "original_native518_complete_global0_shared_HALF_input_v215": {
+    "record": "results/original_native518_complete_global0_shared_HALF_input_v215.json",
+    "scope": "Same three complete original global0 query-row models, one captured input, ordinary F32 versus shared native HALF; one ABBA sequence.",
+    "block_median_complete_seconds": {
+      "A_F32": 0.3485602025029948,
+      "B_native_F16": 0.2871359665005002
+    },
+    "same_sequence_block_median_reduction_percent": 17.622274591708965,
+    "all4_paired_block_outputs_byte_equal": true,
+    "both_block_original_FP32_gates_passed": false,
+    "block_original_FP32_relative_l2": 0.005706405309430045,
+    "block_original_FP32_max_abs": 0.017194777727127075,
+    "full_model_or_realtime_accepted": false
+  },
+  "original_native518_DINO24_static_fusion_compile_v216": {
+    "record": "results/original_native518_DINO24_static_fusion_compile_v216.json",
+    "scope": "Exact fusion of four original six-layer DINO graphs plus noncalibrating FP16 compilation; actual RAM guard skips before model upload and runtime.",
+    "original_layers": 24,
+    "original_parameter_bindings": 336,
+    "compile_tables": {
+      "operators": 246,
+      "features": 465,
+      "constants": 362
+    },
+    "operator_targets": {
+      "CPU": 2,
+      "NPU": 244
+    },
+    "internal_CPU_rows": 0,
+    "runtime_status": "clean_capacity_skip_before_worker",
+    "runtime_executed": false,
+    "full_model_or_realtime_accepted": false
   }
 }

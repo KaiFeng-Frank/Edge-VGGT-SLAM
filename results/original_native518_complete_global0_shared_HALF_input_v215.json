@@ -1,0 +1,255 @@
+{
+  "schema": "original_native518_complete_global0_shared_HALF_input_v215",
+  "record": 215,
+  "status": "shared_HALF_block_ABBA_output_bytes_preserved_original_FP32_rejected",
+  "scope": {
+    "board": "16 GB RK3588S",
+    "component": "One complete original global0 block on a fixed captured input; not the complete 48-block aggregator or VGGT model.",
+    "original_model_only": true,
+    "new_full_model_or_trajectory_run": false
+  },
+  "complete_global0_shared_input_control": {
+    "input_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "query_ranges": [
+      [
+        0,
+        694
+      ],
+      [
+        694,
+        1388
+      ],
+      [
+        1388,
+        2082
+      ]
+    ],
+    "part_output_shape": [
+      1,
+      694,
+      1024
+    ],
+    "endpoint_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "graph_contract": {
+      "three_unchanged_original_full_X_query_row_models": true,
+      "each_model_computes_full_original_QKV_norm_RoPE_and_full2082_key_value_attention": true,
+      "all16_heads_and64_channels_preserved": true,
+      "matching_residual_rows_and_original_projection_norm_FC1_GELU_FC2_retained": true,
+      "original_logical_learned_parameters_per_branch": 18,
+      "original_learned_initializer_protobufs_per_branch": 21,
+      "all44_original_initializer_protobufs_retained_per_branch": true,
+      "full_prefix_computation_duplicated_across_three_branches": true,
+      "no_centering_correction_new_learned_parameter_or_model_substitution": true
+    },
+    "A_ordinary_F32": {
+      "input_type_code": 0,
+      "format_code": 3,
+      "pass_through": 0,
+      "actual_request_payload_bytes_per_context": 8527872,
+      "preparation": "Original F32 input route with the retained per-owner Mixed input copy."
+    },
+    "B_shared_native_HALF": {
+      "input_type_code": 1,
+      "format_code": 3,
+      "pass_through": 1,
+      "actual_request_payload_bytes_per_context": 4263936,
+      "preparation": "Once per complete call, cast the original full X to one contiguous readonly FLOAT16 array and share it across all three owners.",
+      "native8_query_verified_original_rank3_shape": true,
+      "blocked_layout_repacking_added": false,
+      "first_actual_HALF_snapshot_exact_original_F32_to_F16_cast": true,
+      "all18_HALF_requests_share_one_readonly_packet_per_B_call": true,
+      "Python_packet_sharing_is_not_proof_of_SDK_zero_copy": true
+    },
+    "schedule": {
+      "phase_order": [
+        "A_F32",
+        "B_native_F16",
+        "B_native_F16",
+        "A_F32"
+      ],
+      "warmup_calls_per_phase": 1,
+      "measured_calls_per_phase": 2,
+      "complete_calls": 12,
+      "measured_calls": 8,
+      "measured_calls_per_route": 4,
+      "persistent_contexts": 3,
+      "main_CPU": 4,
+      "actor_CPUs": [
+        5,
+        6,
+        7
+      ],
+      "NPU_core_masks": [
+        1,
+        2,
+        4
+      ],
+      "init_flags": 0,
+      "frequency_hz": 1000000000,
+      "bounded_controller_seconds": 180,
+      "temperature_limit_c": 75
+    },
+    "timing": {
+      "scope": "Complete captured-input original global0 block calls. Includes full-X copy/cast and finite checks, actor dispatch/drain, all owned SDK input/run/output/copy/release work, ordered F32 row concatenation and finite checks. Context initialization/destruction, file hashing/saving and postclock packet extraction/hashing/validation are excluded.",
+      "measured_complete_seconds": {
+        "A_F32": [
+          0.3390654090035241,
+          0.3475983690004796,
+          0.34952203600551,
+          0.35182770201936364
+        ],
+        "B_native_F16": [
+          0.2828376120014582,
+          0.28573565400438383,
+          0.28853973699733615,
+          0.2885362789966166
+        ]
+      },
+      "median_complete_seconds": {
+        "A_F32": 0.3485602025029948,
+        "B_native_F16": 0.2871359665005002
+      },
+      "mean_complete_seconds": {
+        "A_F32": 0.34700337900721934,
+        "B_native_F16": 0.2864123204999487
+      },
+      "same_sequence_median_reduction_percent": 17.622274591708965,
+      "same_sequence_mean_reduction_percent": 17.46123011269295,
+      "B_input_preparation_median_seconds": 0.014580272501916625,
+      "limitations": [
+        "One fixed input and one ABBA sequence; no P95 or unseen-input claim.",
+        "Routes retain matched output copies but differ in input preparation and guard-boundary counts; the reduction is not attributed solely to one conversion or kernel.",
+        "Concurrent per-owner SDK times overlap and cannot be summed into complete wall latency.",
+        "No cross-experiment timing comparison or full-model speedup is claimed."
+      ]
+    },
+    "evidence_integrity": {
+      "resource_totals": {
+        "contexts_created": 3,
+        "contexts_destroyed": 3,
+        "runs_completed": 36,
+        "output_buffers_acquired": 36,
+        "output_buffers_released": 36
+      },
+      "fresh_saved_arrays": 9,
+      "fresh_saved_NPY_bytes": 38376576,
+      "normal_output_arrays": 8,
+      "saved_actual_shared_HALF_input_arrays": 1,
+      "all9_saved_before_numeric_verdict": true,
+      "independently_checked_NPYs_including_original_input_positions_and_endpoint": 12,
+      "full_NPY_bytes_independently_checked": 55466016,
+      "exact_ordered_F32_axis1_concatenations": 2,
+      "all4_A_B_part_and_full_output_pairs_byte_equal": true,
+      "all12_recorded_repeats_match_saved_first_outputs": true,
+      "repeat_hashes_are_telemetry_not12_saved_full_output_sets": true,
+      "all36_actual_typed_requests_and_payload_hashes_verified": true,
+      "current_A_matches_prior_independent_row_control_hash_chain": true,
+      "prior_parity_is_hash_chain_not_new_prior_array_read": true,
+      "complete_logs_and_controller_process_source_resource_restoration_verified": true
+    },
+    "unchanged_original_precision_limits": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "independent_endpoint_comparisons": [
+      {
+        "name": "A_F32_vs_original_FP32",
+        "relative_l2": 0.005706405309430045,
+        "max_abs": 0.017194777727127075,
+        "outside_count": 1143813,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "name": "B_native_F16_vs_original_FP32",
+        "relative_l2": 0.005706405309430045,
+        "max_abs": 0.017194777727127075,
+        "outside_count": 1143813,
+        "fixed_gate_passed": false,
+        "strict_pass": false,
+        "byte_equal": false
+      },
+      {
+        "name": "B_native_F16_vs_A_F32",
+        "relative_l2": 0.0,
+        "max_abs": 0.0,
+        "outside_count": 0,
+        "fixed_gate_passed": true,
+        "strict_pass": true,
+        "byte_equal": true
+      }
+    ],
+    "all_original_FP32_fixed_and_strict_gates_passed": false,
+    "A_B_paired_output_equivalence_on_this_input_passed": true,
+    "numerical_equivalence_rejected": true,
+    "full_model_default_changed": false,
+    "reproduction_contract": [
+      "Use separately licensed pinned original weights/source and exact full-X row graphs, with the source-derived parent inverse and original full-key attention retained.",
+      "Use the same original captured full-X input for both routes. Original FP32 endpoint and positions are comparison/provenance only, never NN feeds.",
+      "Validate actual native8 rank3 HALF identity attributes before pass-through; retain actual typed request bytes, sizes and source pins.",
+      "Run the recorded ABBA schedule on the same three persistent contexts and core/CPU assignments under the bounded restoring controller.",
+      "Save first A/B three row outputs and full concatenations plus the actual first B HALF input before numerical verdict; independently verify exact cast, concatenation, complete repeat hashes and all typed requests.",
+      "Apply unchanged original-FP32 and paired-output limits separately. Preserve numerical rejection even when A/B match."
+    ]
+  },
+  "acceptance": {
+    "paired_block_output_bytes_on_one_input": true,
+    "original_FP32_block_equivalence": false,
+    "full_model_quality_or_default_change": false,
+    "trajectory_quality": false,
+    "fresh20Hz_pose_rate": false,
+    "complete_input_to_pose_P95_at_most100ms": false,
+    "thirty_minute_stability": false,
+    "physical8GB_operation": false
+  },
+  "evidence": {
+    "block_static_result": {
+      "bytes": 15446,
+      "sha256": "ce6f4e79ce5f9ad865931dcfebc13759cee2cb4e8b2faf3876be1281314d76b9"
+    },
+    "block_NPU_result": {
+      "bytes": 363581,
+      "sha256": "08b751f2fc784ba2f31b32875e5bb98f5b5579cfafc6fea05dec5721b0c7d1d9"
+    },
+    "block_manifest": {
+      "bytes": 9274,
+      "sha256": "e405ff1c4af8f6b009511eeb8ec4bb3c0b21bf60ecc6fc47effe0379f4ad7464"
+    },
+    "block_transport": {
+      "bytes": 34537,
+      "sha256": "cf769f81c0e137d8d6c5917cdb8e26cf181fec6594bff3d7e23947ba88c62464"
+    },
+    "block_controller": {
+      "bytes": 6422,
+      "sha256": "c6be5a7447617a2748ad4b30a8b1c6e845b519ba845b473b068a43cbb8c7b3c7"
+    },
+    "block_numeric_audit": {
+      "bytes": 41186,
+      "sha256": "d3935b547a9a6513c31ce51dae2bb955d3bb837e669960517bde51325bc701de"
+    },
+    "block_runtime_audit": {
+      "bytes": 13101,
+      "sha256": "b628878397ab5a41e05c5cffc45f3a21bfcb378fc470025d9eb51ce730d589a3"
+    },
+    "executed_block_worker_source_sha256": "29523dcd081650e04c1427e1578bcaa839328f058c73d33ff4f4f02cbda52af0",
+    "executed_shared_input_adapter_source_sha256": "98b5e2690ac4f435006f4641db3bac573639ad452e282aec36b1d49078a1508b"
+  },
+  "publication": {
+    "raw_receipts_remain_private_hashes_are_identity_references_not_payload_distribution": true,
+    "only_sanitized_metadata_and_reproduction_protocol_published": true,
+    "weights_captured_arrays_ONNX_RKNN_SDK_and_credentials_distributed": false,
+    "executed_private_scripts_redistributed": false,
+    "licenses": "Repository code, original-model implementation, pretrained weights and third-party SDK keep their separate terms; repository BSD-2-Clause grants no model-weight rights."
+  }
+}

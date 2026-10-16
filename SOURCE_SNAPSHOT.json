@@ -227,16 +227,18 @@
     "results/original_native518_native_layout_producer_v211.json",
     "results/original_native518_cf_rope_controls_v212.json",
     "results/original_native518_quarter_rope_NPU_diagnostic_v213.json",
-    "results/original_native518_octet_rope_NPU_control_v214.json"
+    "results/original_native518_octet_rope_NPU_control_v214.json",
+    "results/original_native518_complete_global0_shared_HALF_input_v215.json",
+    "results/original_native518_DINO24_static_fusion_compile_v216.json"
   ],
   "file_sha256": {
     ".gitignore": "5c914f3ced73f7a831f890a98f771bde1e11fdcf288b87f45a9fb538bef93b2e",
     "AGENTS.md": "5f341d96c5a6a17d849a3087eca18ed015eb82e638f166daefc6e7dab2dbc47e",
     "ARCHITECTURE.md": "933d175121556ccec1053d17414965ad6eaad07f11e978bf55c02100618d6695",
     "LICENSE": "dc493d7ac51f587fd71184315999c792ead523bf46da0f0cbf3e26a577b1a580",
-    "MEASUREMENTS.json": "32a5af4bea7d9da1d2ff63156e53304ef6aa0d61fa55053aa9a3464e95492b64",
+    "MEASUREMENTS.json": "5b193b38036b3dde6e99b11f75e0533953f04f3953ab8dfb3454639b5be0aefd",
     "MODEL_LICENSES.md": "a5750f37f5bcaa28912eaf3a1ab26cde0f570644a01077a81ff0ac4e8ab54a4e",
-    "README.md": "02a20adca4a1c98f5e77ac50fe4aca3ed05a0e7a97b21b95d9ac645501967a6b",
+    "README.md": "749027e0a5fc63365ea80f47dc7d197f6c967a958095276977e21434f30811ed",
     "THIRD_PARTY_NOTICES.md": "99176fb73e78ba0950493b942dfc6c6198a4b6ce432bb0904926edb31bc631ee",
     "UPSTREAMS.json": "9325cc1d2c33794ea3361d0884a5796b9b22b119b9a9822113e7b726e2d88a0a",
     "assets/office_loop_figure.png": "5d20d0acb81d3fb38e14235499ba67a22441cfe835e899f3e224a99e514c28e9",
@@ -1194,7 +1196,7 @@
     "deploy/rk3588/validation/vggt-v16-camera-step-compile112-r1.json": "c8771d743d9840bcd32b22c6894f791ed239b4ad3795db703e7f7122329fbc7a",
     "deploy/rk3588/validation/vggt-v16-camera-step-export112-r1.json": "8ccf7ff593346962766b4eae6da7eb95ce43eeaa3183a8fc0e82bf134c172503",
     "deploy/rk3588/vggt-spark.patch": "05af9d3af94051512c4a43b262ab8ee4575c93435752aef73f2e77a9d8c82864",
-    "docs/ENGINEERING_NOTES.md": "4150ff4c497cca0828982b2270646007bbb841e49ba5edb4d50147405693e1f2",
+    "docs/ENGINEERING_NOTES.md": "8c64b0086eb0dcfa547a5af1afb928bea336b49ba9ef37ae2b02a29114a76f23",
     "docs/GRAPH_OPTIMIZATION_REVIEW.md": "5c87954f156b25bbf3353b0edf3e60c497743de2e1ea8ac9e6ab3fa75bedd493",
     "docs/PUBLICATION_SOURCE_ADAPTATIONS.json": "99199bbdedbe6cc2544867f24f42bf0b0a4321310c9fe79a80298e58eba04b42",
     "evals/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -1241,6 +1243,7 @@
     "results/original_guard_diagnostic_v62.json": "d50c6ae4fa39349b2930233fe7cadb6675bb06f1a7e295d514e40136383b5746",
     "results/original_immutable_execution_v77.json": "38a73472ea909eb6f0270eabc621195ae1bd93d65c970755161020a3a5d08561",
     "results/original_mixed_precision_v50.json": "df81409dd7090d2b6f9352c8e44b55d7397224dda64d3e694bf658168ae0325f",
+    "results/original_native518_DINO24_static_fusion_compile_v216.json": "edf42fa50a309162757b1bb92daba1120e546eb5c30290de62fc5fc742e6a136",
     "results/original_native518_adjacent_pairs_native_v166.json": "ce8fc060e66447784a4d0c42abcf42ac313787c8c2583ef26188ff1a713477b2",
     "results/original_native518_archival_storage_and_shmem_v182.json": "d124030d65342ac9ef8684069e0795d853ca0c8e413e1cc635cf58666a3fcd4a",
     "results/original_native518_attention_dump_v117.json": "f60cba624f77dacfe9775de371a780d58d3ea53d982e30b07677bc4f9073000f",
@@ -1258,6 +1261,7 @@
     "results/original_native518_camera_precision_v113.json": "977f8a868c2d2a44ff0226128080aca3e9b3c8c6a58861b0f68b8aaf571894ea",
     "results/original_native518_cf_rope_controls_v212.json": "05b4744ee3d16e0d5412a290b5bd15f3ceeb431a3c32036f327e5db34b2c4fbf",
     "results/original_native518_checkpoint_cache_io_v203.json": "29bae28d639184f2ea2eec23d1d4f75dc225a309958576497798b8a840326b34",
+    "results/original_native518_complete_global0_shared_HALF_input_v215.json": "d935ac4c1c5a9f34c18cb04cd20877002d1f78bb4af7f83147f9dbd704d1e4e7",
     "results/original_native518_components_v99.json": "cba7bf72452e5b9651acfb7d82541a35d6b7682482acee5f5abc1d8277988ccd",
     "results/original_native518_connected_basis_v130.json": "99119fc0f0a23bb7e2e2b72347ee0b063dfa5a69cddabcda99bca45c9e168cd3",
     "results/original_native518_connected_single_frame_cf_v173.json": "c29fe9d11d824aba66f3d6e21fb238eb38a3a2e43cbff3051c7810d3c1b4b647",
@@ -1489,19 +1493,21 @@
     "vggt_slam/viewer.py": "49c77ebd3b8faf58b579528a900b129fae676fe8f72e02a151dc53f0b7d3b397",
     "vggt_slam/xnnpack_linear.py": "4a8884e756a0200345bcdf58f316f74d89edd4e6f82f528ff944118a2ef9c5ac"
   },
-  "latest_completed_public_result": 214,
+  "latest_completed_public_result": 216,
   "publication_date": "2026-10-16",
   "publication_validation": {
-    "scope": "R214 completed octet static/CPU/compile/NPU audits and actual prior-control byte comparison. One portable pure static builder has separate historical and published source identities. The earlier partial capacity attempt is historical notes only; later retries/integrations excluded. No publication inference or SDK execution.",
+    "scope": "R215 one captured original complete-global0 shared-HALF-input ABBA control with independent numeric/runtime audits; R216 exact original DINO24 static fusion and closed noncalibrating compile/placement, followed by pre-upload RAM capacity skip. No fused runtime result.",
     "focused_generated_tests_passed": 123,
+    "focused_test_files": [
+      "tests/test_runtime_loading.py",
+      "tests/test_model_execution.py",
+      "tests/test_solver_execution.py",
+      "tests/test_patch_cache.py"
+    ],
     "actual_NN_SDK_or_board_execution_performed_for_publication": false,
-    "published_source_path_adaptations": "docs/PUBLICATION_SOURCE_ADAPTATIONS.json",
-    "real_time_or_full_model_quality_accepted": false,
-    "current_public_audit_helper_bindings_checked": 6,
-    "new_executable_sources": 1,
-    "new_octet_exact_function_AST_identities": 7,
-    "new_octet_generated_Fraction_components": 3072,
-    "new_octet_scalar_steps_per_component": 4,
-    "stdlib_only_new_metadata_entrypoints": 1
+    "new_executable_sources": 0,
+    "previous_executable_sources_unchanged": true,
+    "published_payloads": "Sanitized metadata, reproduction protocol and hashes only; no weights, captured arrays, graph/model exports, SDK or credentials.",
+    "real_time_or_full_model_quality_accepted": false
   }
 }
