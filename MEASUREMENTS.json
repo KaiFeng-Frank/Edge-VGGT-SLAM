@@ -743,5 +743,47 @@
     "unique_physical_cause_proven": false,
     "candidate_adopted": false,
     "full_model_or_realtime_accepted": false
+  },
+  "original_native518_octet_rope_NPU_control_v214": {
+    "record": "results/original_native518_octet_rope_NPU_control_v214.json",
+    "scope": "Same-input original QKV producer octet representation control; two correctness calls, no warmed or full-model timing.",
+    "all8_CPU_outputs_exact_prior_CF": true,
+    "compile_operator_feature_constant_counts": {
+      "operators": 73,
+      "features": 146,
+      "constants": 49
+    },
+    "internal_CPU_rows": 0,
+    "NPU_contexts_created_and_destroyed": 1,
+    "NPU_calls": 2,
+    "saved_outputs": 10,
+    "saved_NPY_bytes": 38376704,
+    "all10_outputs_byte_equal_prior_direct4_NPU_control": true,
+    "original_FP32_QKV_metrics": {
+      "query": {
+        "relative_l2": 0.001299212462078377,
+        "max_abs": 0.010828733444213867,
+        "outside_count": 1977980,
+        "fixed_gate_passed": false,
+        "strict_pass": false
+      },
+      "key": {
+        "relative_l2": 0.0016532327424488907,
+        "max_abs": 0.020561695098876953,
+        "outside_count": 2005003,
+        "fixed_gate_passed": false,
+        "strict_pass": false
+      },
+      "value": {
+        "relative_l2": 0.0010837756029536585,
+        "max_abs": 0.006417036056518555,
+        "outside_count": 1656012,
+        "fixed_gate_passed": false,
+        "strict_pass": false
+      }
+    },
+    "all_original_fixed_and_strict_gates_passed": false,
+    "candidate_adopted": false,
+    "full_model_or_realtime_accepted": false
   }
 }
