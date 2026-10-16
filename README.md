@@ -1,85 +1,66 @@
 # Edge-VGGT-SLAM
 
-Ports **VGGT-SLAM2's original pretrained VGGT** to RK3588S for camera poses and dense maps. Model execution is separated from the original submap construction and SL4 graph optimization so embedded backends can be implemented and validated.
+An RK3588S port of **VGGT-SLAM2 with its original pretrained VGGT**, producing camera poses and dense maps from image sequences.
+Model execution is decoupled from the original SL4 backend to support embedded CPU/NPU runtimes.
 
-Only the original VGGT checkpoint is supported. Its internal DINO, frame/global attention, CameraHead and DPT are retained, with no additional model or traditional pose frontend. Deployment inference, calibration and performance measurements run on the RK3588S board. Matched original FP32 references may run on the host CPU; the host GPU is unused.
+## Features
 
-## Current status
+- **Original model only:** native 518-width preprocessing, all original layers and tokens, including VGGT's internal DINO, CameraHead and DPT. No auxiliary learned model or traditional pose frontend is added.
+- **Original SLAM backend:** retains the pose codec, submap construction and SL4 graph optimization. Loop closure is disabled (`max_loops=0`).
+- **Dataset replay:** exports camera trajectories, dense map chunks and run metadata from timestamped image sequences.
 
-The experimental complete native518 route now runs from fresh PNGs to predictions on a **16 GB RK3588S**, preserving two `392×518` frames, all 24 internal DINO layers per image, all 48 aggregator blocks, four CameraHead refinements, both DPT frames and the original pose codec. In R205’s completed two-pair check, complete PNG-to-prediction calls take **32.84–36.80 s**, with startup and terminal verification measured separately. Keeping two original groups resident preserves all current control output bytes, but **both routes fail all ten same-input original-FP32 tensor gates**. These two pairs establish neither a trajectory result nor real-time operation. See [R205](results/original_native518_fresh_pixel_persistent_v205.json) and the [engineering evidence](docs/ENGINEERING_NOTES.md#270-fresh-pngs-complete-the-original-pipeline-with-two-persistent-groups).
+## Status
 
-**Native-size trajectory quality has been measured and fails the current quality goal.** The matched 17-observation comparison used the complete original CPU FP32 model and unchanged original SL4 on identical frames. With Sim3 alignment, translation ATE RMSE increased **24.4%** and translation RPE RMSE increased **41.6%**; rotation RPE RMSE decreased 9.7%. These increases exceed the 20% limit on this short clip. Map comparisons measure agreement with the CPU reference, without establishing ground-truth map accuracy. See [quality and reproduction](deploy/rk3588/validation/original_native518_trajectory/README.md) and the [v111 results](results/original_native518_trajectory_quality_v111.json).
-
-Operator, precision, file-IO and execution experiments, including the [diagnostic original group2 profile](results/original_native518_original_group2_compute_profile_v206.json) and rejected routes, are recorded in the [engineering notes](docs/ENGINEERING_NOTES.md). Component profiles establish no real-time or quality acceptance. The [native execution and cache guide](deploy/rk3588/validation/original_native518_tail_reuse/README.md) retains the earlier reuse-based measurements; they are not matched speed comparisons with the fresh-pair result above.
-
-The [isolated attention native-input control](results/original_native518_bare_query_native_input_v210.json) keeps all 2082 queries and keys, sixteen heads and 64 value components on the same three attention contexts. Exact blocked F16 inputs with native-layout pass-through (pass1) preserve all output bytes while complete component time changes from **288.94 to 227.91 ms (−21.1199%)**. **Original-FP32/CPU precision still fails**; this is not a full-model or fresh-pose speedup. The earlier [R209 controls](results/original_native518_bare_query_partition_input_dtype_v209.json) retain their findings: bare query partitions preserve output bytes, while ordinary F16 NHWC/pass0 inputs are 23.656% slower than their own F32 control. Native blocked/pass1 input is a different path; separate trials are not compared as speedups. Earlier [key-partition](results/original_native518_key_partition_attention_v207.json) and [actor-CPU placement](results/original_native518_key_partition_thread_affinity_v208.json) records remain available.
-
-The [octet RoPE producer control](results/original_native518_octet_rope_NPU_control_v214.json) computes the original arithmetic in eight-channel groups after the full 64-channel norms. Its CPU outputs remain exact, and all internal compiled operators target NPU. On the captured case, all ten actual NPU output files match the prior direct4 control byte for byte, removing the [quarter control's large Q/K discrepancy](results/original_native518_quarter_rope_NPU_diagnostic_v213.json). **Original-FP32 gates still fail** (Q/K relative L2 **0.001299/0.001653**); no producer-to-consumer or full-model speedup is established. [Static builders and typed-output source](deploy/rk3588/validation/original_qkv_layout/cf_rope_controls/README.md) are available; no new deployment default is accepted.
-
-The [complete-global0 input control](results/original_native518_complete_global0_shared_HALF_input_v215.json) shares one explicitly cast HALF input across three unchanged full-block query-row contexts. In one matched ABBA sequence, median complete block time changes from **348.56 to 287.14 ms (17.62% lower)**, including input preparation and output concatenation. All paired output bytes match, but **both routes still fail original FP32 precision**; this is one captured block input, not fresh-pose throughput. Separately, [all 24 original internal DINO layers](results/original_native518_DINO24_static_fusion_compile_v216.json) fuse statically and compile with **244 NPU operators, two public CPU IO rows and no internal CPU operator**. Its runtime gate stops before model upload because the conservative RAM screen fails; fused-DINO precision and latency remain unmeasured.
-
-**The real-time targets remain unmet: at least 20 Hz fresh poses and complete input-to-pose P95 at most 100 ms.** Acceptance requires original 518-width preprocessing and all original layers and tokens. Physical-camera tests are deferred; 2–5 s map cadence, thirty-minute stability and operation on physical 8 GB hardware remain unvalidated. The Solver supports only `max_loops=0`.
-
-Historical v82 timestamp-paced replay achieved 1.1167 Hz with input-to-pose P95 1.0688 s using two-frame `84×112` inputs. Its reduced-resolution performance, memory and quality results do not establish native518 acceptance. The [historical reproduction guide](deploy/rk3588/validation/original_calibrated_camera/README.md), [v82 results](results/original_calibrated_camera_v82.json) and [first native integration record](results/original_native518_integration_v100.json) remain available.
+The experimental native518 route completes fresh-image predictions on a **16 GB RK3588S**, with complete prediction calls taking **tens of seconds**.
+Real-time performance, original-FP32 numerical agreement and trajectory-quality targets remain unmet.
+The targets are at least **20 Hz fresh poses** and complete input-to-pose **P95 ≤ 100 ms**, retaining original resolution and all layers.
+Physical-camera input, 30-minute stability and physical 8 GB operation remain unvalidated.
 
 ## Prepare the board
 
-The tested environment is Linux aarch64, Python 3.11.17, CPU PyTorch 2.3.1, torchvision 0.18.1 and a GTSAM build with SL4 support. The NPU path uses RKNN SDK/runtime 2.3.2.
-
-Follow the [deployment guide](deploy/rk3588/README.md) to prepare the original source and [external dependencies](deploy/rk3588/dependencies/README.md). Commands below use the validated board directory `/mnt/vggt-data/vggt-slam2`, with this repository under `src/`. Prepare the required `python/`, `wheelhouse/` and other files, then run the offline installer:
+Start with the [RK3588 deployment guide](deploy/rk3588/README.md), including the pinned upstream source and [external dependencies](deploy/rk3588/dependencies/README.md). The tested layout places this repository at `/mnt/vggt-data/vggt-slam2/src`. Prepare the required offline packages before running:
 
 ```sh
 sh /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/install-offline.sh
 . /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/env.sh
 ```
 
-Download the original weights separately; they are not distributed in this repository:
+Obtain the original checkpoint separately:
 
 ```sh
-python /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/download_weights.py \
-  --output /mnt/vggt-data/vggt-slam2/weights/model.pt
+python "$VGGT_DEPLOY_ROOT/src/deploy/rk3588/download_weights.py" \
+  --output "$VGGT_DEPLOY_ROOT/weights/model.pt"
 ```
 
-The only supported checkpoint is the original `facebook/VGGT-1B/model.pt`, **5,026,874,952 bytes**. The downloader and loader require its pinned full SHA256 before loading; see [source, checkpoint versions and hashes](UPSTREAMS.json). Generate ONNX/RKNN artifacts in an authorized environment using the relevant reproduction directory.
+Only the pinned original `facebook/VGGT-1B/model.pt` is supported. The downloader and loader verify its identity before loading; [UPSTREAMS.json](UPSTREAMS.json) records the source revisions and checkpoint SHA256.
+NPU experiments require separately prepared, pinned compiled artifacts and the matching external RKNN runtime, as described in their reproduction guides.
 
-## Run timestamp replay
+## CPU reference replay
 
-Prepare the TUM dataset's `rgb.txt` and images, then run the original CPU FP32 reference path on the board:
+Run the **original FP32 CPU reference on the board** with a TUM dataset (`rgb.txt` and images).
+Source the environment above and choose a new output directory:
 
 ```sh
-. /mnt/vggt-data/vggt-slam2/src/deploy/rk3588/env.sh
-python -B -u /mnt/vggt-data/vggt-slam2/src/scripts/replay_original_vggt.py \
-  --rgb-index /mnt/vggt-data/vggt-slam2/datasets/rgbd_dataset_freiburg1_xyz/rgb.txt \
-  --checkpoint /mnt/vggt-data/vggt-slam2/weights/model.pt \
+python -B -u "$VGGT_DEPLOY_ROOT/src/scripts/replay_original_vggt.py" \
+  --rgb-index "$VGGT_DEPLOY_ROOT/datasets/rgbd_dataset_freiburg1_xyz/rgb.txt" \
+  --checkpoint "$VGGT_DEPLOY_ROOT/weights/model.pt" \
   --image-size 518 \
-  --output /mnt/vggt-data/vggt-slam2/experiments/original-replay-new-run
+  --output "$VGGT_DEPLOY_ROOT/experiments/original-replay-new-run"
 ```
 
-Use a new output directory. The CPU replay defaults to the original preprocessing width of 518. These `640×480` TUM images become `392×518` (height × width) in original crop mode. Explicit `--image-size 112` is reserved for reproducing historical reduced-resolution diagnostics; it does not satisfy original-size acceptance. The decoder uses CPU0 and the model defaults to CPU4–7, so keep CPU0 available to the process. See `python scripts/replay_original_vggt.py --help` for all options.
+Original crop preprocessing converts these `640×480` images to `392×518`. Outputs include `poses.tum`, `map.json`, `map_chunks/` and `results.json`; fresh predictions pass through the original SL4 processing. Keep CPU0 available for decoding. See the replay script's `--help` for supported options.
 
-Outputs include `poses.tum`, `map.json`, `map_chunks/` and `results.json`. Each fresh pose and map is published after the new observation's model computation and original SL4 processing. The input queue has capacity 1.
+## Documentation
 
-The historical `112` NPU timestamp-replay wrappers require that size explicitly and pinned compiled artifacts; follow their [reproduction guide](deploy/rk3588/validation/original_calibrated_camera/README.md). The separate [native518 harness](deploy/rk3588/validation/original_native518_trajectory/README.md) supplies complete offline board predictions and matched saved-prediction SL4 quality evaluation. It does not establish a real-time timestamp-paced native518 service. The regular command above defaults to the original-size CPU reference. Authorized frequency tests use a bounded thermal controller and restore the prior clock state; the replay entrypoint does not change clocks or governors.
-
-## Development and evidence
-
-- [Architecture](ARCHITECTURE.md): original prediction contract, caching and SL4 boundaries.
-- [Project constraints](AGENTS.md): original-model-only scope, board execution and acceptance targets.
-- [Measurement index](MEASUREMENTS.json) and [results](results/): complete runs, component experiments and failure records.
-- [Engineering notes](docs/ENGINEERING_NOTES.md): useful findings, supporting evidence and remaining validation conditions.
-
-With development dependencies installed, run the existing lightweight regression checks:
-
-```sh
-PYTHONDONTWRITEBYTECODE=1 python -m pytest -q -p no:cacheprovider \
-  tests/test_runtime_loading.py tests/test_model_execution.py \
-  tests/test_solver_execution.py tests/test_patch_cache.py
-```
-
-These checks use generated data or fake services. Board inference, trajectory quality and real-time acceptance require separate validation. Component timings and end-to-end replay results are reported separately.
+- [Architecture](ARCHITECTURE.md): prediction contract, execution boundaries and SL4 integration.
+- [Native518 validation](deploy/rk3588/validation/original_native518_trajectory/README.md): offline board predictions and matched trajectory evaluation.
+- [Measurements](MEASUREMENTS.json) and [results](results/): scoped numerical and performance evidence.
+- [Engineering notes](docs/ENGINEERING_NOTES.md): implementation findings, reproduction conditions and known limits.
+- [Project constraints](AGENTS.md): original-model scope and validation requirements.
 
 ## Licensing and attribution
 
-Based on MIT-SPARK's [VGGT-SLAM](https://github.com/MIT-SPARK/VGGT-SLAM) and the pinned [VGGT_SPARK](https://github.com/MIT-SPARK/VGGT_SPARK) revision. MIT-SPARK copyright notices and the repository's [BSD-2-Clause license](LICENSE) are retained.
+Based on MIT-SPARK's [VGGT-SLAM](https://github.com/MIT-SPARK/VGGT-SLAM) and pinned [VGGT_SPARK](https://github.com/MIT-SPARK/VGGT_SPARK). Existing attribution and the repository's [BSD-2-Clause license](LICENSE) are retained.
 
-**The repository code license does not grant rights to the model weights.** The original VGGT weights and pinned implementation have separate noncommercial terms, which also apply to weights embedded in compiled artifacts. See [model provenance and licenses](MODEL_LICENSES.md), [third-party notices](THIRD_PARTY_NOTICES.md) and [upstream revisions](UPSTREAMS.json). This repository distributes no weights, captured arrays, weight-bearing exports or SDK binaries.
+**The code license does not license the model weights.**
+Original VGGT weights and the pinned model implementation have separate noncommercial terms; compiled artifacts containing weights retain those terms. See [model provenance and licenses](MODEL_LICENSES.md) and [third-party notices](THIRD_PARTY_NOTICES.md). This repository distributes no weights, captured tensors, weight-bearing exports or SDK binaries.
