@@ -703,5 +703,45 @@
     "quarter_native_final_internal_CPU_ops": 0,
     "quarter_NPU_precision_or_handoff_verified": false,
     "full_model_or_real_time_accepted": false
+  },
+  "original_native518_quarter_rope_NPU_diagnostic_v213": {
+    "record": "results/original_native518_quarter_rope_NPU_diagnostic_v213.json",
+    "scope": "Actual one-producer/two-call numerical and typed-output ABI gate plus frozen saved lane localization; no warmed speed or full-model acceptance.",
+    "NPU_contexts_created_and_destroyed": 1,
+    "NPU_calls": 2,
+    "NPU_output_buffers_acquired_and_released": 10,
+    "saved_outputs": 10,
+    "saved_NPY_bytes": 38376704,
+    "all5_cross_run_readback_comparisons_byte_equal": true,
+    "original_FP32_QKV_metrics": {
+      "query": {
+        "relative_l2": 0.23633986511351485,
+        "max_abs": 6.326991319656372,
+        "outside_count": 2045079,
+        "fixed_gate_passed": false,
+        "strict_pass": false
+      },
+      "key": {
+        "relative_l2": 0.24072843518246473,
+        "max_abs": 6.044150114059448,
+        "outside_count": 2062969,
+        "fixed_gate_passed": false,
+        "strict_pass": false
+      },
+      "value": {
+        "relative_l2": 0.0010837756029536585,
+        "max_abs": 0.006417036056518555,
+        "outside_count": 1656012,
+        "fixed_gate_passed": false,
+        "strict_pass": false
+      }
+    },
+    "all_original_fixed_and_strict_gates_passed": false,
+    "V_byte_equal_prior_NPU_controls": true,
+    "each_quarter_first8_channels_word_equal_prior_direct4": true,
+    "error_in_each_quarter_second8_channels": true,
+    "unique_physical_cause_proven": false,
+    "candidate_adopted": false,
+    "full_model_or_realtime_accepted": false
   }
 }

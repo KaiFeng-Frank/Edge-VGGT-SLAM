@@ -1,6 +1,6 @@
 # Original QKV layout and RoPE compiler controls
 
-[R212](../../../../../results/original_native518_cf_rope_controls_v212.json) separates static/CPU equivalence, actual compiler placement, ordinary returned-output ABI and original-FP32 accuracy. The CF native producer removes internal CPU layouts, but its board Q/K accuracy fails badly. Replacing Gather with four Slices plus Concat passes CPU equivalence and is rebuilt as Gather → ConvAdd by the compiler. The quarter-arithmetic control passes CPU word-equivalence and its final compile table has no internal CPU operator, Gather or ConvAdd; NPU accuracy and handoff cost remain unverified. No producer-to-consumer speedup or deployment default is accepted.
+[R212](../../../../../results/original_native518_cf_rope_controls_v212.json) separates static/CPU equivalence, actual compiler placement, ordinary returned-output ABI and original-FP32 accuracy. The CF native producer removes internal CPU layouts, but its board Q/K accuracy fails badly. Replacing Gather with four Slices plus Concat passes CPU equivalence and is rebuilt as Gather → ConvAdd by the compiler. The quarter-arithmetic control passes CPU word-equivalence and its final compile table has no internal CPU operator, Gather or ConvAdd, but its [subsequent actual NPU gate](../../../../../results/original_native518_quarter_rope_NPU_diagnostic_v213.json) rejects original Q/K precision. Handoff cost remains unmeasured. No producer-to-consumer speedup or deployment default is accepted.
 
 ## Published source
 

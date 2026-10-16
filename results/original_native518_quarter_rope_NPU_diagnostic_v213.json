@@ -1,0 +1,292 @@
+{
+  "schema": "original_native518_quarter_RoPE_NPU_lane_diagnostic_v213",
+  "record": 213,
+  "status": "actual_quarter_NPU_readback_and_lifecycles_verified_original_QK_precision_rejected_saved_error_lane_structure_localized_no_unique_cause",
+  "scope": {
+    "prior_CPU_and_compile_record": "results/original_native518_cf_rope_controls_v212.json",
+    "board": "16 GB RK3588S",
+    "component": "Original global0 QKV/full64-channel norm/quarter RoPE producer only, not attention, suffix or complete model.",
+    "input_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "canonical_QKV_shape": [
+      1,
+      16,
+      2082,
+      64
+    ],
+    "query_ranges": [
+      [
+        0,
+        694
+      ],
+      [
+        694,
+        1388
+      ],
+      [
+        1388,
+        2082
+      ]
+    ],
+    "original_checkpoint_parameters_norm_dimension_positions_heads_and_tokens_retained": true,
+    "only_runtime_feed": "__global_input",
+    "input_positions_and_reference_identity": "Same original captured case as R212; positions are baked RoPE provenance and Q/K/V arrays are comparison-only.",
+    "graph": {
+      "bytes": 13689011,
+      "sha256": "ebd272dd73920a98ae8215dcb5a1791a0f8502295f3b641fcb6a3282d04e3043",
+      "nodes": 84,
+      "initializers": 34
+    },
+    "model": {
+      "bytes": 8176391,
+      "sha256": "819ab679a7b016733bf21baca95ef5c206bc141792abfd187be4608ca624fe46"
+    },
+    "no_full_model_default_changed": true
+  },
+  "prior_compile_boundary": {
+    "all8_CPU_outputs_exact_prior_CF": true,
+    "all3_original_fixed_and_strict_CPU_gates_passed": true,
+    "final_table_counts": {
+      "operators": 49,
+      "features": 90,
+      "constants": 33
+    },
+    "internal_NPU_rows": 43,
+    "public_CPU_IO_rows": 6,
+    "internal_CPU_rows": 0,
+    "Gather_rows": 0,
+    "ConvAdd_rows": 0,
+    "CPU_equivalence_or_all_internal_NPU_placement_implies_NPU_numerical_equivalence": false
+  },
+  "actual_NPU_gate": {
+    "schedule": "One context, same original X, one requested-F32 call followed by one ordinary-declared-F16 call. CPU4/core mask7/flags0; no consumer chain.",
+    "counts": {
+      "contexts_created": 1,
+      "contexts_destroyed": 1,
+      "runs_completed": 2,
+      "output_buffers_acquired": 10,
+      "output_buffers_released": 10
+    },
+    "outputs_get_calls": 2,
+    "outputs_release_calls": 2,
+    "saved_outputs": 10,
+    "saved_NPY_bytes": 38376704,
+    "all10_outputs_saved_before_numeric_verdict": true,
+    "independently_checked_complete_NPY_files": 23,
+    "all_outputs_finite_and_nonzero": true,
+    "output_ABI": {
+      "logical_cmd2_dtype": "FLOAT16",
+      "logical_cmd2_format": "NCHW",
+      "five_roles_name_joined_to_actual_indices": true,
+      "half_Q_payload_bytes": 1421312,
+      "half_KV_payload_bytes": 4263936,
+      "requested_F32_spans_twice_declared_HALF": true,
+      "actual_returned_sizes_checked_before_typed_copy": true,
+      "native9_padding_recorded_separately_not_reinterpreted_as_ordinary_readback": true,
+      "all5_requested_F32_buffers_byte_equal_exact_widening_of_separate_HALF_call": true,
+      "cross_run_readback_consistency_is_same_run_conversion_or_absolute_layout_proof": false
+    },
+    "unchanged_thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "original_FP32_metrics": {
+      "query": {
+        "relative_l2": 0.23633986511351485,
+        "max_abs": 6.326991319656372,
+        "outside_count": 2045079,
+        "fixed_gate_passed": false,
+        "strict_pass": false
+      },
+      "key": {
+        "relative_l2": 0.24072843518246473,
+        "max_abs": 6.044150114059448,
+        "outside_count": 2062969,
+        "fixed_gate_passed": false,
+        "strict_pass": false
+      },
+      "value": {
+        "relative_l2": 0.0010837756029536585,
+        "max_abs": 0.006417036056518555,
+        "outside_count": 1656012,
+        "fixed_gate_passed": false,
+        "strict_pass": false
+      }
+    },
+    "metric_group_counts": {
+      "comparisons": 6,
+      "cross_run_readback_comparisons": 5,
+      "CPU_half_numeric_comparisons": 5,
+      "CPU_canonical_comparisons": 6,
+      "representation_floor_diagnostics": 3
+    },
+    "all6_original_fixed_and_strict_gates_passed": false,
+    "all5_CPU_half_and_all6_CPU_canonical_gates_passed": false,
+    "original_HALF_representation_floor_is_diagnostic_not_relaxed_tolerance": true,
+    "numerical_equivalence_rejected": true,
+    "all_resources_closed_and_no_unknown_operation_or_retry": true,
+    "all_actual_requests_raw_descriptors_storage_memory_and_controller_checks_verified": true,
+    "descriptor_query_count": 12,
+    "complete_SDK_logs_clean": true,
+    "controller_policy_and_environment_restored": true,
+    "timing_scope": "Two ordered correctness calls only. No warmed mean, paired speedup, P95, utilization or full producer-consumer timing is established."
+  },
+  "saved_lane_diagnostic": {
+    "reference": "Prior actual direct4-control NPU output on the identical original input; not the original FP32 oracle.",
+    "saved_complete_NPY_files_verified": 16,
+    "channel_partition": "For each original16-channel RoPE quarter: first8 means d%16<8, second8 means d%16>=8; these are channels, not first/second8heads.",
+    "query_key": {
+      "query": {
+        "first8_channels_of_each16_word_comparison": {
+          "byte_equal": true,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "equal_F32_words": 1065984,
+          "F32_words": 1065984
+        },
+        "second8_channels_of_each16_vs_direct4": {
+          "relative_l2": 0.2694104030994993,
+          "max_abs": 6.328125,
+          "equal_F32_words": 33456,
+          "F32_words": 1065984
+        },
+        "fraction_of_squared_error_in_second8": 1.0,
+        "fraction_of_squared_error_at_identity_positions": 0.08588979745703575
+      },
+      "key": {
+        "first8_channels_of_each16_word_comparison": {
+          "byte_equal": true,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "equal_F32_words": 1065984,
+          "F32_words": 1065984
+        },
+        "second8_channels_of_each16_vs_direct4": {
+          "relative_l2": 0.27686574742842557,
+          "max_abs": 6.041015625,
+          "equal_F32_words": 34401,
+          "F32_words": 1065984
+        },
+        "fraction_of_squared_error_in_second8": 1.0000000000000004,
+        "fraction_of_squared_error_at_identity_positions": 0.07461608986070283
+      }
+    },
+    "V_byte_equal_both_prior_NPU_controls": true,
+    "all2082_positions_and_all16heads_included": true,
+    "error_not_confined_to_identity_positions_single_head_or_single_frame": true,
+    "relative_pair_phase": {
+      "definition": "Normalized complex dot/cross relation between reference and current RoPE pairs, grouped by original token/frequency across heads and Q/K; descriptive saved-output diagnostic only.",
+      "zero_norm_pair_vectors_excluded": 1024,
+      "minimum_valid_group_coherence_at_identity_positions": 0.9999999737558071,
+      "minimum_valid_group_coherence_at_nonidentity_positions": 0.9999999300509141,
+      "all_valid_groups_coherence_at_least_0_999": true,
+      "no_epsilon_clamp_phase_fit_or_output_correction": true,
+      "entirely_undefined_token_frequency_groups": 32,
+      "undefined_token_indices": [
+        33,
+        34
+      ],
+      "actual_zero_pair_vectors_per_undefined_group": 32,
+      "reference_zero_pair_vectors_per_undefined_group": 0
+    },
+    "interpretation": "The exact channel-bank pattern and coherent pair-phase errors support investigating a shared token/frequency coefficient path. They do not uniquely identify a hardware kernel, physical stride, normalization defect or output-layout cause.",
+    "equal_RMS_or_pair_energy_proves_original_precision": false,
+    "global_exact_rotation_model_proved": false,
+    "fixed_source_derived_permutations_explain_error": false
+  },
+  "decision": {
+    "quarter_graph_adopted": false,
+    "removing_Gather_ConvAdd_was_sufficient_for_original_NPU_precision": false,
+    "source_CPU_and_compiler_success_kept_distinct_from_actual_NPU_rejection": true,
+    "no_fitted_reference_correction_or_threshold_change": true,
+    "new_component_speedup_or_full_model_gain_claimed": false
+  },
+  "acceptance": {
+    "original_FP32_equivalence": false,
+    "full_model_precision": false,
+    "trajectory_quality": false,
+    "fresh20Hz_pose_rate": false,
+    "complete_input_to_pose_P95_at_most100ms": false,
+    "map_cadence": false,
+    "thirty_minute_stability": false,
+    "physical8GB_operation": false
+  },
+  "evidence": {
+    "NPU_result": {
+      "bytes": 82233,
+      "sha256": "b9913a86e8e2e53ecb73552b1e3bf4a5e700916b906fcffc64d6e2d2d330e062"
+    },
+    "NPU_manifest": {
+      "bytes": 11347,
+      "sha256": "fb8e9cf8ea8710103a0a672e6f68e7aed73e4edc7bbfb741e83fbe9799e39ef6"
+    },
+    "NPU_transport": {
+      "bytes": 31168,
+      "sha256": "ba5fd8e9a7b36fece494d015adbd5439ac4efc4880e640d4808d41031703011f"
+    },
+    "NPU_controller": {
+      "bytes": 3896,
+      "sha256": "90d7ae7cb7370f23669e7c3f1c4f81bf822573e17ba29d7ff2e0707c6e15f733"
+    },
+    "independent_NPU_numeric_audit": {
+      "bytes": 23750,
+      "sha256": "7a060d0a3e28ac9cd9e7040b53589765eaa8b09dd36db1e5b5235cee1e57d295"
+    },
+    "independent_NPU_runtime_audit": {
+      "bytes": 9039,
+      "sha256": "725634638e243945f326e389a9a07667b137783664f6787fbfdab5b945546613"
+    },
+    "saved_lane_diagnostic": {
+      "bytes": 32381,
+      "sha256": "87350eff06f9151a04f33e66b645593ff37c58f6b89a7b853e1a026522feaa25"
+    },
+    "static_result": {
+      "bytes": 37899,
+      "sha256": "98130a821b55d0d1d700f006a59d9d1a61635aac8828eda65f1c7416b2556dab"
+    },
+    "CPU_result": {
+      "bytes": 37292,
+      "sha256": "13c831b80eda567edd995aa4484d1bdd3c0d61cdddd1eb3ef6b92651fa532939"
+    },
+    "CPU_numeric_audit": {
+      "bytes": 17020,
+      "sha256": "3656dce38f61d6528ccc3bcd4c57b72cf9ff3e62a0fd1f17c3a390ccb4c2a662"
+    },
+    "CPU_runtime_audit": {
+      "bytes": 3103,
+      "sha256": "1813833ef7a7f6c5da7aa4556f427aa6765b6fea8c95cde4aaecc415e92b9361"
+    },
+    "compile_placement_audit": {
+      "bytes": 250148,
+      "sha256": "a551426627f0e20902ef2706b0301c6cf36f16f35ff06067ab0ffdd1517817b6"
+    },
+    "NPU_worker": {
+      "bytes": 56699,
+      "sha256": "7c186f05ab145436dbaa6586a7c9bc859894f0cb0b4501c4a7b6154e6f9c9e8f"
+    },
+    "numeric_auditor": {
+      "bytes": 23576,
+      "sha256": "ae7f299b2e77e9475843be0966ebb714711c543c421f37c821aa3ad98d8bfa75"
+    },
+    "runtime_auditor": {
+      "bytes": 34323,
+      "sha256": "0b8db331e3a50247c7882208771c9138c66c20cc35285e2d0d3fb9909ae8840e"
+    },
+    "lane_diagnostic_source": {
+      "bytes": 15774,
+      "sha256": "c814fb5eb05b70a7665a42acc648b35391b15ac009bf27d9d9faafd7900b663b"
+    }
+  },
+  "publication": {
+    "cutoff": "Completed quarter NPU and frozen saved lane diagnostic only. Subsequent broadcast CPU/compile work and the non-runnable tail-cache draft are excluded.",
+    "new_inference_or_SDK_execution_for_publication": false,
+    "weights_arrays_weight_bearing_graphs_models_SDK_binaries_credentials_or_private_absolute_paths_included": false,
+    "existing_reviewable_static_and_typed_output_source": "deploy/rk3588/validation/original_qkv_layout/cf_rope_controls/README.md",
+    "license": "Repository code, original implementation, weights and SDK retain separate licenses; BSD-2-Clause grants no original-weight rights."
+  }
+}
