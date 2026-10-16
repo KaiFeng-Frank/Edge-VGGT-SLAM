@@ -265,6 +265,66 @@
         "sha256": "da5479eb205c7e0bbdbb2941b8cbcf0d6493b641cdbfc36b57bb6744209999fc"
       },
       "change": "Private host artifact paths replaced with relative publication locators; numerical facts and artifact hashes unchanged."
+    },
+    {
+      "file": "deploy/rk3588/validation/original_qkv_layout/cf_rope_controls/extract_original_qkv_prefix.py",
+      "executed_or_prepublication_source": {
+        "bytes": 12350,
+        "sha256": "5477cd721b419a72e45d79d364b703840f62d640961e97b467ec022cf99282ed"
+      },
+      "published_source": {
+        "bytes": 11243,
+        "sha256": "5b0757ab9981fb9eb577944385532ca8abded393aed788e9989ca7fb24111c2f"
+      },
+      "change": "Exact pure original-prefix extraction/build and proof functions retained. Private original-A paths/receipt orchestration replaced by an explicit exact-parent CLI; no model artifacts or inference entrypoint published."
+    },
+    {
+      "file": "deploy/rk3588/validation/original_qkv_layout/cf_rope_controls/export_cf_rope_direct4.py",
+      "executed_or_prepublication_source": {
+        "bytes": 29930,
+        "sha256": "6f0cfa49c639cb61a73000150f9a78cca50332211b616fd890f208776cc89ada"
+      },
+      "published_source": {
+        "bytes": 28954,
+        "sha256": "0c027e48d0e64594efbbb5f39c0a54ef0a277a2f0a15d1d6154cbc366da808d8"
+      },
+      "change": "Pure build and proof/helper functions and graph constants preserved exactly. Private artifact paths and the historical orchestration entrypoint replaced by explicit, pinned parent-path CLI. No inference entrypoint or graph payload is included."
+    },
+    {
+      "file": "deploy/rk3588/validation/original_qkv_layout/cf_rope_controls/export_cf_rope_slice_concat.py",
+      "executed_or_prepublication_source": {
+        "bytes": 14708,
+        "sha256": "13c34926bc29b00336d508647d015a92a3bf817cfafd8823fe3905c15e95146e"
+      },
+      "published_source": {
+        "bytes": 13918,
+        "sha256": "eff9f7abe92aca3b784fcf4f2b69810f40d24dcec9c2a4e0d5c07ce96ed52fa0"
+      },
+      "change": "Pure build and proof/helper functions and graph constants preserved exactly. Private artifact paths and the historical orchestration entrypoint replaced by explicit, pinned parent-path CLI. No inference entrypoint or graph payload is included."
+    },
+    {
+      "file": "deploy/rk3588/validation/original_qkv_layout/cf_rope_controls/export_cf_rope_quarter_arithmetic.py",
+      "executed_or_prepublication_source": {
+        "bytes": 19137,
+        "sha256": "941cf799e6fb9caefa3dd17ea7e288a6ef0eeef721764def39b6f3c997478b81"
+      },
+      "published_source": {
+        "bytes": 18300,
+        "sha256": "97d0ada200e21d88aac222ef55099d7d0dcbb7b6187b119e4d8139c8aa3f1b5b"
+      },
+      "change": "Pure build and proof/helper functions and graph constants preserved exactly. Private artifact paths and the historical orchestration entrypoint replaced by explicit, pinned parent-path CLI. No inference entrypoint or graph payload is included."
+    },
+    {
+      "file": "deploy/rk3588/validation/original_qkv_layout/cf_rope_controls/producer_output_owner.py",
+      "executed_or_prepublication_source": {
+        "bytes": 54775,
+        "sha256": "3abfdbd6e50316eefbdb5849c508800bc3d238d39134f25d726dabd7d9688f82"
+      },
+      "published_source": {
+        "bytes": 17265,
+        "sha256": "42404cf6ac21cf72296279895805fb01274e7fe1db18b9e5a6f5cca42d7d6245"
+      },
+      "change": "Exact ProducerOutputOwner class plus unchanged name-join, floating-identity and inverse helpers extracted from the executed diagnostic worker. Private manifest, paths, numerical orchestration and execution entrypoint omitted; ABI dependency remains explicit."
     }
   ],
   "source_identity_manifests_updated": [

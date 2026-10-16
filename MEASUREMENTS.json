@@ -680,5 +680,28 @@
     "output_ABI_or_latency_benefit_verified": false,
     "full_model_default_changed": false,
     "real_time_or_physical8GB_validated": false
+  },
+  "original_native518_cf_rope_controls_v212": {
+    "record": "results/original_native518_cf_rope_controls_v212.json",
+    "scope": "Original QKV prefix CPU controls, typed NPU readback and final noncalibrating compile-placement gates; no full-model or quarter-NPU acceptance.",
+    "direct4_and_CF_NPU_contexts": 2,
+    "NPU_calls": 4,
+    "NPU_outputs": 20,
+    "CF_NPU_original_FP32_query_key_relative_l2": [
+      0.4384054543860363,
+      0.4165226707389895
+    ],
+    "all_original_NPU_QKV_fixed_and_strict_gates_passed": false,
+    "CF_V_byte_equal_direct4_control": true,
+    "SliceConcat_CPU8_outputs_exact_prior": true,
+    "SliceConcat_targeted_ConvAdd_elimination_passed": false,
+    "quarter_CPU8_outputs_exact_prior": true,
+    "quarter_native_final_Gather_ConvAdd_counts": [
+      0,
+      0
+    ],
+    "quarter_native_final_internal_CPU_ops": 0,
+    "quarter_NPU_precision_or_handoff_verified": false,
+    "full_model_or_real_time_accepted": false
   }
 }

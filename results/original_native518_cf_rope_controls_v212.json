@@ -1,0 +1,519 @@
+{
+  "schema": "original_native518_cf_rope_controls_v212",
+  "record": 212,
+  "status": "CPU_equivalent_CF_producer_fails_original_NPU_QK_precision_SliceConcat_recanonicalized_quarter_compile_changes_lowering_without_NPU_acceptance",
+  "scope": {
+    "board": "16 GB RK3588S",
+    "component": "Original global0 QKV/normalization/full-position RoPE producer only; no attention, output projection, residual, MLP or complete-model execution in this record.",
+    "prior_record": "results/original_native518_native_layout_producer_v211.json",
+    "original_input_shape": [
+      1,
+      2082,
+      1024
+    ],
+    "canonical_QKV_shape": [
+      1,
+      16,
+      2082,
+      64
+    ],
+    "heads": 16,
+    "head_dimension": 64,
+    "query_ranges": [
+      [
+        0,
+        694
+      ],
+      [
+        694,
+        1388
+      ],
+      [
+        1388,
+        2082
+      ]
+    ],
+    "only_runtime_feed": "__global_input",
+    "positions_and_QKV_references_are_comparison_or_provenance_only": true,
+    "all_original_learned_parameters_layers_tokens_and_absolute_positions_retained": true,
+    "full_model_default_changed": false
+  },
+  "static_controls": {
+    "original_capture_sha256": "e4ffaea2b11df9ac558c119cb4854d490b0030c02b7706eee344b8894cefa686",
+    "original_input_sha256": "30ce3a7eaeac13f19d82ae661fdb2047bd10a306296c1352a2d2211cc7061590",
+    "original_positions_sha256": "881d332e010cec28be8d23209ba430901a0b73376b7aba5ee772df93a89ad2fd",
+    "changes": {
+      "direct4_control": "Remove the five flatten views after an exact rank4 packing rewrite; retain all20 original prefix NodeProtos.",
+      "cf_native": "Keep original full64-channel norms; transpose normalized Q/K to channel-first RoPE, preserving per-scalar Gather/sign Mul/cosine Mul/sine Mul/Add order and all8 learned TensorProtos.",
+      "cf_slice_native": "Replace only the two CF Gathers by four channel Slices [16:32,0:16,48:64,32:48] and Concat axis1; preserve all other nodes and parent tensors.",
+      "cf_quarter_native": "After unchanged full64-channel norms, each16-channel quarter performs the original sign/cosine/sine Mul and Add before final Concat; no per-quarter norm or learned approximation."
+    },
+    "all_graph_parent_inverse_proofs_and_ONNX_checks_passed": true,
+    "graphs": {
+      "direct4_control": {
+        "bytes": 13678048,
+        "sha256": "eac151344afe17d57a08dbf4ca57c1e37c4d4975c21b17bed5c76d791f302697",
+        "nodes": 38,
+        "initializers": 26
+      },
+      "cf_canonical": {
+        "bytes": 13675800,
+        "sha256": "927d20943b900d026e795ba361c45ff30173402bd9950d22cedd0da57945ea7f",
+        "nodes": 24,
+        "initializers": 16
+      },
+      "cf_native": {
+        "bytes": 13678828,
+        "sha256": "decd625e8db757e06fbeb8eb0bdea780c3fb313916429410ff98a205c29f2b3b",
+        "nodes": 40,
+        "initializers": 27
+      },
+      "cf_slice_canonical": {
+        "bytes": 13678384,
+        "sha256": "362dd34fb6d33278350723621c4775a34590a2b00c893d352a39bebfc8679d4d",
+        "nodes": 32,
+        "initializers": 23
+      },
+      "cf_slice_native": {
+        "bytes": 13681406,
+        "sha256": "ecae58a992258e8aad9b33558320c98eca0cbc6e40c36130cd25ee55b956c2ce",
+        "nodes": 48,
+        "initializers": 34
+      },
+      "cf_quarter_canonical": {
+        "bytes": 13685989,
+        "sha256": "3febc11b3c9ba50e00a1f893967f3a231140ce65ab515d6e19bc71370c6ffd08",
+        "nodes": 68,
+        "initializers": 23
+      },
+      "cf_quarter_native": {
+        "bytes": 13689011,
+        "sha256": "ebd272dd73920a98ae8215dcb5a1791a0f8502295f3b641fcb6a3282d04e3043",
+        "nodes": 84,
+        "initializers": 34
+      }
+    },
+    "five_half_output_shapes": [
+      [
+        2,
+        694,
+        64,
+        8
+      ],
+      [
+        2,
+        694,
+        64,
+        8
+      ],
+      [
+        2,
+        694,
+        64,
+        8
+      ],
+      [
+        2,
+        2082,
+        64,
+        8
+      ],
+      [
+        2,
+        2082,
+        64,
+        8
+      ]
+    ],
+    "word_identity": "Y[h//8,t,d,h%8]=binary16(canonical[0,h,start+t,d]); Q ranges cover2082 exactly; K/V start0 and retain2082."
+  },
+  "CPU_gates": {
+    "execution": "Board ORT CPUExecutionProvider, CPU4, one thread, optimization disabled; separate sequential sessions, one learned-prefix call per graph.",
+    "unchanged_original_thresholds": {
+      "relative_l2_max": 1e-05,
+      "max_abs_max": 0.001,
+      "rtol": 0.0001,
+      "atol": 1e-05
+    },
+    "direct4_and_CF": {
+      "sessions_created_and_dropped": 3,
+      "calls": 3,
+      "saved_outputs": 13,
+      "saved_NPY_bytes": 51168896,
+      "all3_original_fixed_and_strict_gates_passed": true,
+      "all5_control_half_layouts_exact": true,
+      "all5_CF_half_layouts_exact": true,
+      "all5_cross_control_half_outputs_exact": true
+    },
+    "slice_concat": {
+      "sessions_created_and_dropped": 2,
+      "calls": 2,
+      "saved_outputs": 8,
+      "saved_NPY_bytes": 38376448,
+      "all3_original_fixed_and_strict_gates_passed": true,
+      "all3_canonical_outputs_exact_vs_prior_CF": true,
+      "all5_native_outputs_exact_vs_fresh_canonical_half": true,
+      "all5_native_outputs_exact_vs_prior_CF": true
+    },
+    "quarter_arithmetic": {
+      "sessions_created_and_dropped": 2,
+      "calls": 2,
+      "saved_outputs": 8,
+      "saved_NPY_bytes": 38376448,
+      "all3_original_fixed_and_strict_gates_passed": true,
+      "all3_canonical_outputs_exact_vs_prior_CF": true,
+      "all5_native_outputs_exact_vs_fresh_canonical_half": true,
+      "all5_native_outputs_exact_vs_prior_CF": true
+    },
+    "all_full_raw_outputs_saved_before_numeric_verdict": true,
+    "all_sessions_closed_and_process_policy_restored": true,
+    "CPU_exact_half_layout_implies_NPU_precision": false
+  },
+  "noncalibrating_compilation": {
+    "SDK": "RKNN2.3.2",
+    "configuration": {
+      "target_platform": "rk3588",
+      "float_dtype": "float16",
+      "optimization_level": 3,
+      "mean_values": null,
+      "std_values": null,
+      "quant_img_RGB2BGR": false,
+      "model_pruning": false,
+      "remove_reshape": false,
+      "quantize_weight": false,
+      "enable_flash_attention": false,
+      "quantized_dtype": "w8a8",
+      "quantized_algorithm": "normal",
+      "quantized_method": "channel"
+    },
+    "do_quantization": false,
+    "dataset": null,
+    "auto_hybrid": false,
+    "toolchain_inventory_sha256": "0850a72d937551410a735bc466da6784e19088acaa4abe297a0e0443467d4062",
+    "all_fresh_SDK_owners_released_and_source_environment_restored": true,
+    "all_actual_operator_feature_constant_rows_consumed": true,
+    "final_native_output_contexts": [
+      {
+        "graph": "direct4_control",
+        "table_counts": {
+          "operators": 31,
+          "features": 48,
+          "constants": 21
+        },
+        "internal_CPU_operators": 2,
+        "ConvAdd_operators": 0,
+        "printed_internal_KiB": 107200.0,
+        "maximum_feature_end_offset_bytes": 109772800,
+        "model": {
+          "bytes": 11349831,
+          "sha256": "200713ed3f53977e030b82c1128f98e1c12bb83e7c5b228e22d2483a283c3d94"
+        }
+      },
+      {
+        "graph": "cf_native",
+        "table_counts": {
+          "operators": 27,
+          "features": 44,
+          "constants": 21
+        },
+        "internal_CPU_operators": 0,
+        "ConvAdd_operators": 2,
+        "printed_internal_KiB": 120900.0,
+        "maximum_feature_end_offset_bytes": 123801600,
+        "model": {
+          "bytes": 8162887,
+          "sha256": "9eb8582a9ad5d9a38529a6223c00484b8ff80901497d1a279609c06b1c9f542c"
+        }
+      },
+      {
+        "graph": "cf_slice_native",
+        "table_counts": {
+          "operators": 27,
+          "features": 44,
+          "constants": 21
+        },
+        "internal_CPU_operators": 0,
+        "ConvAdd_operators": 2,
+        "printed_internal_KiB": 108456.0,
+        "maximum_feature_end_offset_bytes": 111058944,
+        "model": {
+          "bytes": 8171527,
+          "sha256": "e53d0dd4cd44f4897da144a17cade3715182f0445d83e325f66841461967be5e"
+        }
+      },
+      {
+        "graph": "cf_quarter_native",
+        "table_counts": {
+          "operators": 49,
+          "features": 90,
+          "constants": 33
+        },
+        "internal_CPU_operators": 0,
+        "ConvAdd_operators": 0,
+        "Gather_operators": 0,
+        "printed_internal_KiB": 116688.0,
+        "maximum_feature_end_offset_bytes": 119488512,
+        "model": {
+          "bytes": 8176391,
+          "sha256": "819ab679a7b016733bf21baca95ef5c206bc141792abfd187be4608ca624fe46"
+        }
+      }
+    ],
+    "planner_bytes_are_physical_DMA_or_returned_output_ABI_proof": false,
+    "slice_concat_decision": {
+      "observed_passes": [
+        "replace_parallel_slice_by_split",
+        "fuse_channel_shuffle_split_concat_to_gather",
+        "gather_to_conv"
+      ],
+      "targeted_ConvAdd_elimination_passed": false,
+      "all27_native_operator_geometry_dtype_target_cycle_RW_signatures_match_prior_after_only_2gather_name_removal": true,
+      "compiled_binary_or_constant_values_proven_identical": false,
+      "actual_changes": "Two separate permutation constants replace one shared table; model grows8640bytes, printed weight+8KiB, planner internal120900\u2192108456KiB. These do not establish measured allocation or speed.",
+      "new_NPU_trial_performed": false
+    },
+    "quarter_decision": {
+      "final_operator_counts": {
+        "operators": 49,
+        "features": 90,
+        "constants": 33,
+        "NPU": 43,
+        "public_CPU_IO": 6,
+        "internal_CPU": 0,
+        "Gather": 0,
+        "ConvAdd": 0
+      },
+      "retained_quarter_ops": {
+        "Split": 2,
+        "Mul": 16,
+        "Add": 8,
+        "Concat": 2
+      },
+      "original_three_norms_and_full64_QK_norms_preserved": true,
+      "final_packing_Transposes_NPU": [
+        23,
+        44,
+        47
+      ],
+      "early_CPU_fallback_warnings_are_final_placement": false,
+      "lowering_target_changed": true,
+      "single_ConvAdd_causal_ablation": false,
+      "output_packing_and_memory_plan_also_change": true,
+      "NPU_inference_executed_for_this_publication_cutoff": false,
+      "NPU_precision_output_ABI_and_speed_verified": false
+    }
+  },
+  "producer_NPU_diagnostic": {
+    "models_tested": [
+      "direct4_control",
+      "cf_native"
+    ],
+    "schedule": "One producer owner at a time; each exact-input owner runs want_float1 then want_float0 once. CPU4, core mask7, flags0; no consumer chain.",
+    "contexts_created_and_destroyed": 2,
+    "runs_completed": 4,
+    "output_get_and_release_calls": 4,
+    "output_buffers_acquired_and_released": 20,
+    "saved_outputs": 20,
+    "saved_NPY_bytes": 76753408,
+    "all20_saved_before_any_numeric_verdict": true,
+    "ordinary_output_ABI": {
+      "actual_logical_cmd2_type": "FLOAT16",
+      "actual_logical_cmd2_format": "NCHW",
+      "role_name_join_not_compiler_row_order": true,
+      "normal_HALF_Q_payload_bytes": 1421312,
+      "normal_HALF_KV_payload_bytes": 4263936,
+      "requested_FLOAT32_sizes_are_twice_HALF": true,
+      "actual_returned_spans_checked_before_typed_dereference": true,
+      "native9_queried_and_saved_but_not_used_to_interpret_ordinary_readback": true,
+      "all10_cross_run_FLOAT32_outputs_byte_equal_exact_widened_HALF": true,
+      "scope": "Cross-run readback/determinism consistency, not same-run conversion isolation, absolute head-order proof or original-FP32 precision."
+    },
+    "original_FP32_metrics": {
+      "direct4_control": {
+        "query": {
+          "relative_l2": 0.0012992124620784182,
+          "max_abs": 0.010828733444213867,
+          "outside_count": 1977980,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "key": {
+          "relative_l2": 0.0016532327424489436,
+          "max_abs": 0.020561695098876953,
+          "outside_count": 2005003,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "value": {
+          "relative_l2": 0.0010837756029537004,
+          "max_abs": 0.006417036056518555,
+          "outside_count": 1656012,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        }
+      },
+      "cf_native": {
+        "query": {
+          "relative_l2": 0.4384054543860363,
+          "max_abs": 6.334803819656372,
+          "outside_count": 2130253,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "key": {
+          "relative_l2": 0.4165226707389895,
+          "max_abs": 6.147665739059448,
+          "outside_count": 2130217,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        },
+        "value": {
+          "relative_l2": 0.0010837756029537004,
+          "max_abs": 0.006417036056518555,
+          "outside_count": 1656012,
+          "fixed_gate_passed": false,
+          "strict_pass": false
+        }
+      }
+    },
+    "all12_original_fixed_and_strict_comparisons_passed": false,
+    "all10_CPU_half_comparisons_passed": false,
+    "all12_CPU_canonical_comparisons_passed": false,
+    "all3_representation_floor_comparisons_passed": false,
+    "original_FP32_to_HALF_to_FLOAT32_floor_is_diagnostic_only": true,
+    "CPU_half_mismatch_alone_establishes_layout_corruption": false,
+    "control_and_CF_V_outputs_byte_equal_for_both_readback_modes": true,
+    "QK_error_cause_isolated_to_ConvAdd": false,
+    "complete_logs_clean_and_all_resources_and_controller_restored": true,
+    "minimum_DMA_free_bytes": 1698119680,
+    "minimum_MemAvailable_bytes": 4599472128,
+    "maximum_sampled_temperature_C": 60.076,
+    "timing_scope": "Only four correctness calls. No warm mean, paired speedup, P95, NPU utilization or complete producer-to-consumer latency is inferred.",
+    "numerical_equivalence_rejected": true,
+    "candidate_accepted": false
+  },
+  "decision": {
+    "CF_original_NPU_QK_equivalence_rejected": true,
+    "SliceConcat_targeted_compiler_change_rejected": true,
+    "quarter_CPU_and_compile_screen_only": true,
+    "quarter_NPU_or_consumer_handoff_pending_at_cutoff": true,
+    "none_adopted_as_full_model_default": true
+  },
+  "acceptance": {
+    "fresh_20Hz_pose_rate": false,
+    "complete_input_to_pose_P95_at_most_100ms": false,
+    "full_model_NPU_precision": false,
+    "trajectory_quality": false,
+    "map_cadence": false,
+    "thirty_minute_stability": false,
+    "physical_8GB_operation": false
+  },
+  "evidence": {
+    "direct4_static": {
+      "bytes": 19491,
+      "sha256": "94fa2b3644ca2660028d1120f48d97f3a4b108a0781220e300afa48676fe69b8"
+    },
+    "direct4_CPU_result": {
+      "bytes": 52999,
+      "sha256": "c94d137a7bf1fc999f36aac4982898772c7bd4d49887972eea8046b53f0dea2f"
+    },
+    "direct4_CPU_numeric_audit": {
+      "bytes": 23361,
+      "sha256": "93cb528afbf671ee96f2f0678ad0949125e97b8b91be24c1ae1d3d8f26a24c48"
+    },
+    "direct4_CPU_runtime_audit": {
+      "bytes": 3712,
+      "sha256": "667f32cafdda0670dc4ce538b9306ef23ca8559d40a00681f53f56235d27e3e5"
+    },
+    "direct4_compile_placement_audit": {
+      "bytes": 222881,
+      "sha256": "abb44083f5525466ad7b8d581f907eb63a3bae2af58061924b9f728700b734cf"
+    },
+    "producer_NPU_result": {
+      "bytes": 154537,
+      "sha256": "a49a9438a7e6dacf62d68954bfc98387d794d17067fa7940b8d66127b4649798"
+    },
+    "producer_NPU_transport": {
+      "bytes": 36253,
+      "sha256": "fbb14a26abe0d3d996df0d3cd506724ea8a76342a372ecd0018f3f3a78f13e73"
+    },
+    "producer_NPU_controller": {
+      "bytes": 6052,
+      "sha256": "ae4d554aa749dc067013ce38b8a263fe38cb7e4bd2b065deeafa14dd4279ebf5"
+    },
+    "producer_NPU_numeric_audit": {
+      "bytes": 44271,
+      "sha256": "6ae5d48f46013a75c29e669819ba5065f561d2415c36c5d3f2b2d47b59f515a4"
+    },
+    "producer_NPU_runtime_audit": {
+      "bytes": 11113,
+      "sha256": "3e2a884f1a4571ffb5831d746885b1b55ee6d1d47225b5f1d98c999c109788cb"
+    },
+    "slice_static": {
+      "bytes": 19383,
+      "sha256": "69b19e1e68c39222ab8101ad43f3f84e26faf7b3a0b0b83ccc66bf06841d6e0a"
+    },
+    "slice_CPU_result": {
+      "bytes": 37162,
+      "sha256": "431084ae836e6946e3d52e7e2b5073542fc969047b51b160cf6c92954e24faba"
+    },
+    "slice_CPU_numeric_audit": {
+      "bytes": 16950,
+      "sha256": "5ae86f265d9360b6ec32656e878898f72eb6f6b60138312a8bf80b85cbe94494"
+    },
+    "slice_CPU_runtime_audit": {
+      "bytes": 3092,
+      "sha256": "2ba253f0e7f5578b916bf594a7b19e7e94f0c09f1c59f0acb4240442576cb111"
+    },
+    "slice_compile_placement_audit": {
+      "bytes": 228662,
+      "sha256": "3e24a94713a4c54681d29dcd543d9bbbde8c44b0c8bd02e8f1623907039b3510"
+    },
+    "quarter_static": {
+      "bytes": 37899,
+      "sha256": "98130a821b55d0d1d700f006a59d9d1a61635aac8828eda65f1c7416b2556dab"
+    },
+    "quarter_CPU_result": {
+      "bytes": 37292,
+      "sha256": "13c831b80eda567edd995aa4484d1bdd3c0d61cdddd1eb3ef6b92651fa532939"
+    },
+    "quarter_CPU_numeric_audit": {
+      "bytes": 17020,
+      "sha256": "3656dce38f61d6528ccc3bcd4c57b72cf9ff3e62a0fd1f17c3a390ccb4c2a662"
+    },
+    "quarter_CPU_runtime_audit": {
+      "bytes": 3103,
+      "sha256": "1813833ef7a7f6c5da7aa4556f427aa6765b6fea8c95cde4aaecc415e92b9361"
+    },
+    "quarter_compile_result": {
+      "bytes": 6567,
+      "sha256": "edf60743ddf437a264ae0026c9b201dccbd4139b5c6a51f3b6d7a19522aececd"
+    },
+    "quarter_compile_placement_audit": {
+      "bytes": 250148,
+      "sha256": "a551426627f0e20902ef2706b0301c6cf36f16f35ff06067ab0ffdd1517817b6"
+    },
+    "producer_NPU_executed_worker": {
+      "bytes": 54775,
+      "sha256": "3abfdbd6e50316eefbdb5849c508800bc3d238d39134f25d726dabd7d9688f82"
+    },
+    "producer_NPU_executed_host": {
+      "bytes": 17710,
+      "sha256": "0675934548a8ad4e55d83701165a48337e10d626743f2bb704c016c58e74f142"
+    }
+  },
+  "reproducible_source": {
+    "directory": "deploy/rk3588/validation/original_qkv_layout/cf_rope_controls",
+    "manifest": "docs/PUBLICATION_SOURCE_ADAPTATIONS.json",
+    "source_functions_and_owner_class_unchanged": true,
+    "portable_entrypoints_are_new_source_identities": true,
+    "original_parent_graphs_and_case_must_be_prepared_separately": true,
+    "no_historical_receipt_is_claimed_to_be_generated_by_adapted_source": true
+  },
+  "publication": {
+    "private_arrays_weights_ONNX_RKNN_SDK_or_credentials_included": false,
+    "private_absolute_paths_included": false,
+    "cutoff": "Completed CPU, saved-output ABI/numerics and compile-placement evidence only. Quarter NPU execution and producer-consumer integration are outside this publication cutoff.",
+    "license": "Repository code, original implementation, checkpoint and SDK have separate terms. BSD-2-Clause grants no original-weight rights."
+  }
+}
